@@ -268,11 +268,11 @@
                         // console.log("(D+6)/7 * (1 + 4W -1.5T) * アビ * マスター * 耐性");
                         // console.log(Math.floor(wepK*10)/10  + " * (1 + " + 4*sv+ " - " + 1.5 * v+") * Mlv " + master + "  * アビリティ " + (1 + ability) + " * 耐性 " / (1 + 0.008 * resist));
                     }
-                        // console.log("Base : " + wepK * (1 + fieldSTR) );
-                        // console.log("Master : " + wepK * (1 + fieldSTR)  * master );
-                        // console.log("Ability : " + wepK * (1 + fieldSTR) * master * (1 + ability) );
-                        // console.log("Resist : " + wepK * (1 + fieldSTR) * master * (1 + ability) / (1 + 0.008 * resist) );
-                        return wepK * (1 + fieldSTR) * master * (1 + ability) / (1 + 0.008 * resist);
+                        // console.log("Base : " + wepK * (fieldSTR) );
+                        // console.log("Master : " + wepK * (fieldSTR)  * master );
+                        // console.log("Ability : " + wepK * (fieldSTR) * master * (1 + ability) );
+                        // console.log("Resist : " + wepK * (fieldSTR) * master * (1 + ability) / (1 + 0.008 * resist) );
+                        return wepK * (fieldSTR) * master * (1 + ability) / (1 + 0.008 * resist);
                 }
 
                 function guessVitCulc() {
@@ -296,9 +296,9 @@
 
                 function getFieldSTR(guess) {
                     if (type == 3) {
-                        return ((2 * sv + 2.5 * agi) > 1.2 * guess) ? ((2 * sv + 2.5 * agi) - 1.2 * guess) : 0;
+                        return ((2 * sv + 2.5 * agi) > 1.2 * guess) ? (1 + (2 * sv + 2.5 * agi) - 1.2 * guess) : 0;
                     } else {
-                        return (4 * sv > 1.5 * guess) ? (4 * sv - 1.5 * guess) : 0;
+                        return (4 * sv > 1.5 * guess) ? (1 + 4 * sv - 1.5 * guess) : 0;
                     }
                 }
 
