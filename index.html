@@ -98,7 +98,18 @@
                 <div class="form-group col-xs-12 col-md-6 col-lg-4">
                     <label for="resist" class="badge badge-pill badge-light">敵耐性</label>
                     <input type="number" class="form-control damage" id="resist">
-                    <small class="form-text text-muted  opacity">対応する耐性値を入力して下さい。弱点の場合はマイナスの値を入力をして下さい</small>
+                    <div class="form-group">
+                    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text small">ダメージ変化量</span>
+      </div>
+      <input type="text" class="form-control" readonly="" id="resistDamage">
+      <div class="input-group-append">
+        <span class="input-group-text">%</span>
+      </div>
+    </div>
+    </div>
+                    <small class="form-text text-muted  opacity">対応する耐性値を入力して下さい。弱点はマイナスの値を入力をして下さい</small>
                 </div>
                 <div class="form-group damageCulc col-xs-12 col-md-6 col-lg-4">
                     <label for="vit" class="badge badge-pill badge-light">敵体力</label>
@@ -184,6 +195,11 @@
                     $(".vitCulc").show();
                 });
 
+                $('#resist').change(function () {
+                    var r = $('#resist').val();
+                    $("#resistDamage").val(Math.round(1 / (1+0.008*r) * 100 *100)/100 );
+                });
+
                 $('#type').change(function () {
                     type = $("#type").val();
                     if (type == 1) {
@@ -206,7 +222,7 @@
                     // グローバル変数へ代入
                     wepon = Number($("#wepon").val());
                     ability = Number($("#ability").val()) / 100;
-                    resist = Number($("#resist").val()) * -1;
+                    resist = Number($("#resist").val());
                     damage1 = Number($("#damage1").val());
                     damage2 = Number($("#damage2").val());
                     damage3 = Number($("#damage3").val());
@@ -246,23 +262,26 @@
                     if (type == 3) {
                         // (D+6) / 7 * (1 + 4W -1.5T) * アビ * マスター * 耐性
                         // console.log("(D+6)/7 * (1 + 4W -1.5T) * アビ * マスター * 耐性");
-                        // console.log(wepK  + " * (1 + " + 4*sv+ " - " + 1.5 * v+") * Mlv " + master + "  * アビリティ " + (1 + ability) + " * 耐性 " + (1 + 0.008 * resist));
-                        return wepK * (1 + fieldSTR) * master * (1 + ability) * (1 + 0.008 * resist);
+                        // console.log(wepK  + " * (1 + " + 4*sv+ " - " + 1.5 * v+") * Mlv " + master + "  * アビリティ " + (1 + ability) + " * 耐性 " / (1 + 0.008 * resist));
                     } else {
                         // (D+9) / 7 * (1 + 4W -1.5T) * アビ * マスター * 耐性
                         // console.log("(D+6)/7 * (1 + 4W -1.5T) * アビ * マスター * 耐性");
-                        // console.log(Math.floor(wepK*10)/10  + " * (1 + " + 4*sv+ " - " + 1.5 * v+") * Mlv " + master + "  * アビリティ " + (1 + ability) + " * 耐性 " + (1 + 0.008 * resist));
-                        return wepK * (1 + fieldSTR) * master * (1 + ability) * (1 + 0.008 * resist);
+                        // console.log(Math.floor(wepK*10)/10  + " * (1 + " + 4*sv+ " - " + 1.5 * v+") * Mlv " + master + "  * アビリティ " + (1 + ability) + " * 耐性 " / (1 + 0.008 * resist));
                     }
+                        // console.log("Base : " + wepK * (1 + fieldSTR) );
+                        // console.log("Master : " + wepK * (1 + fieldSTR)  * master );
+                        // console.log("Ability : " + wepK * (1 + fieldSTR) * master * (1 + ability) );
+                        // console.log("Resist : " + wepK * (1 + fieldSTR) * master * (1 + ability) / (1 + 0.008 * resist) );
+                        return wepK * (1 + fieldSTR) * master * (1 + ability) / (1 + 0.008 * resist);
                 }
 
                 function guessVitCulc() {
                     if (type == 3) {
-                        console.log("guessVitCulc : 1 + 2 * " + sv + " + 2.5 * " + agi + " - (" + damage + "/ ( " + wepK + " * " + master + " * (1 + " + ability + ") * (1 + 0.008 * " + resist + ") ) ))/ 1.2");
+                        console.log("guessVitCulc : 1 + 2 * " + sv + " + 2.5 * " + agi + " - (" + damage + "/ ( " + wepK + " * " + master + " * (1 + " + ability + ") / (1 + 0.008 * " + resist + ") ) ))/ 1.2");
                         return  (1 + (2 * sv + 2.5 * agi) - (damage / (wepK * master * (1 + ability) * (1 + 0.008 * resist)))) / 1.2;
                     } else {
-                        console.log("guessVitCulc : 1 + 4 * " + sv + "- (" + damage + "/ ( " + wepK + " * " + master + " * (1 + " + ability + ") * (1 + 0.008 * " + resist + ") ) ))/ 1.5");
-                        return  (1 + 4 * sv - (damage / (wepK * master * (1 + ability) * (1 + 0.008 * resist)))) / 1.5;
+                        console.log("guessVitCulc : 1 + 4 * " + sv + "- (" + damage + "/ ( " + wepK + " * " + master + " * (1 + " + ability + ") / (1 + 0.008 * " + resist + ") ) ))/ 1.5");
+                        return  (1 + 4 * sv - (damage / (wepK * master * (1 + ability) / (1 + 0.008 * resist)))) / 1.5;
                     }
                 }
 
@@ -290,7 +309,6 @@
                     var countdown = 20;
                     var limit = 100; // 無限ループ回避
                     while (countdown > 0 && limit > 0) {
-                        console.log(memoryMaxDamage + " / " + maxDamage + " / " + countdown);
                         // D10値が記録の最大を超えてもバッファで少し見てみる
                         if (memoryMaxDamage >= maxDamage) {
                             countdown--;
@@ -299,20 +317,23 @@
                         fieldSTR = getFieldSTR(guess);
                         var base = baseDamageCulc(fieldSTR);
                         var range = damageRange(base);
+
+                        console.log("guess:" + guess + " input:" + memoryMaxDamage + " max:" + maxDamage + " CD:" + countdown + " range:" + range);
                         var pushFlg1 = false;
                         var pushFlg2 = !(damage2 > 0);
                         var pushFlg3 = !(damage3 > 0);
                         maxDamage = range[9];
+                        var gosa = 2;
                         range.forEach(function (d, i) {
-                            if (d == damage1 || d == damage1 + 1 || d == damage1 - 1) {
+                            if (d <= damage1 + gosa && d >= damage1 - gosa) {
                                 range[i] = d + "R";
                                 pushFlg1 = true;
                             }
-                            if (d == damage2 || d == damage2 + 1 || d == damage2 - 1) {
+                            if (d <= damage2 + gosa && d >= damage2 - gosa) {
                                 range[i] = d + "R";
                                 pushFlg2 = true;
                             }
-                            if (d == damage3 || d == damage3 + 1 || d == damage3 - 1) {
+                            if (d <= damage3 + gosa && d >= damage3 - gosa) {
                                 range[i] = d + "R";
                                 pushFlg3 = true;
                             }
