@@ -8,7 +8,6 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-        <script src="jquery.table_transpose.js"></script>
 
         <title>ロマサガRS 計算機@nao_romasaga</title>
 
@@ -18,13 +17,23 @@
           <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
+        <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
         <style type="text/css"><!--
             .haikei { background:url(https://www.jp.square-enix.com/saga_reuniverse/assets/img/index_kv01_sp.jpg) center no-repeat; background-size: cover;}
             .opacity {
                 background-color: rgba(245, 245, 245, 1);
                 opacity: 0.8;
             }
-            --></style>    
+            body {
+                color: #333;
+                font-family: 'M PLUS Rounded 1c', sans-serif;
+                line-height: 1.8;
+            }            
+            .kadomaru {
+                border-radius: 8px;
+                padding-left: 3px;
+            }
+            --></style>
     </head>
     <body>
         <div class ="haikei">
@@ -46,19 +55,23 @@
             <br>
 
             <ul class="nav nav-tabs ">
-                <li class="nav-item col-6 text-center bg-white">
-                    <a class="nav-link active" data-toggle="tab" href="#home" id="damageTab">ダメージ計算器</a>
+                <li class="nav-item col-4 text-center">
+                    <a class="nav-link active bg-white" data-toggle="tab" href="#home" id="damageTab" class=""><img src="https://www.silhouette-illust.com/wp-content/uploads/2017/05/buki_saber_30117-300x300.jpg" width="16" height="16">ダメージ計算器<img src="https://www.silhouette-illust.com/wp-content/uploads/2017/05/buki_tsurugi_30115-300x300.jpg" width="16" height="16"></a>
                 </li>
-                <li class="nav-item col-6 text-center bg-white">
-                    <a class="nav-link" data-toggle="tab" href="#profile" id="vitTab">モンスター体力測定器</a>
+                <li class="nav-item col-4 text-center">
+                    <a class="nav-link bg-white" data-toggle="tab" href="#profile" id="vitTab" class="bg-white">
+                        <img src="http://icooon-mono.com/i/icon_11077/icon_110770.svg" width="16" height="16">
+                        モンスター体力測定器
+                        <img src="http://icooon-mono.com/i/icon_13327/icon_133270.svg" width="16" height="16">
+                    </a>
                 </li>
             </ul>
-            <div id="myTabContent" class="tab-content opacity">
+            <div id="myTabContent" class="tab-content opacity kadomaru">
                 <div class="tab-pane fade show active" id="home">
                     <p>ダメージ計算機はA武器とB武器のどちらの方が強いか。AスタイルとBスタイルのどちらの方が強いかなどの比較検討にご利用ください</p>
                 </div>
                 <div class="tab-pane fade" id="profile">
-                    <p>モンスター体力測定器は敵モンスターの体力を測定します。<br>何かの検証に役立ててください</p>
+                    <p>モンスター体力測定器は武器威力・腕力・マスターレベル・ダメージから敵モンスターの体力を測定します。<br>何かの検証に役立ててください</p>
                 </div>
             </div>
 
@@ -78,7 +91,7 @@
                 <div class="form-group col-xs-12 col-md-6 col-lg-4">
                     <label for="str" id="param_label" class="badge badge-pill badge-light">腕力</label>
                     <input type="number" class="form-control damage" id="str">
-                    <small class="form-text text-muted   opacity">スタイル、装備込みの値を入力してください。陣形ボーナスは後日対応</small>
+                    <small class="form-text text-muted   opacity kadomaru">スタイル、装備込みの値を入力してください。陣形ボーナスは後日対応</small>
                 </div>    
                 <div class="form-group col-xs-12 col-md-6 col-lg-4"  id="taijyutsu">
                     <label for="agi" id="param_label" class="badge badge-pill badge-light">素早さ</label>
@@ -87,40 +100,44 @@
                 <div class="form-group col-xs-12 col-md-6 col-lg-4">
                     <label for="master" class="badge badge-pill badge-light">マスターレベル</label>
                     <input type="number" class="form-control damage" id="master">
-                    <small class="form-text text-muted  opacity">対象武器種類のマスターレベルを入力して下さい</small>
+                    <small class="form-text text-muted  opacity kadomaru">対象武器種類のマスターレベルを入力して下さい</small>
                 </div>
                 <div class="form-group col-xs-12 col-md-6 col-lg-4">
                     <label for="ability" class="badge badge-pill badge-light">アビリティ</label>
                     <input type="number" class="form-control damage" id="ability">
-                    <small class="form-text text-muted  opacity">テンションアップや勇健強撃などによる補正の%を入力して下さい<br>
+                    <small class="form-text text-muted  opacity kadomaru">テンションアップや勇健強撃などによる補正の%を入力して下さい<br>
                         勇健強撃 I:5% II:10% III:15%、テンションアップ I:2% II:5% III:10% IV:15%</small>
                 </div>
                 <div class="form-group col-xs-12 col-md-6 col-lg-4">
                     <label for="resist" class="badge badge-pill badge-light">敵耐性</label>
                     <input type="number" class="form-control damage" id="resist">
                     <div class="form-group">
-                    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text small">ダメージ変化量</span>
-      </div>
-      <input type="text" class="form-control" readonly="" id="resistDamage">
-      <div class="input-group-append">
-        <span class="input-group-text">%</span>
-      </div>
-    </div>
-    </div>
-                    <small class="form-text text-muted  opacity">対応する耐性値を入力して下さい。弱点はマイナスの値を入力をして下さい</small>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text small">ダメージ変化量</span>
+                            </div>
+                            <input type="text" class="form-control" readonly="" id="resistDamage">
+                            <div class="input-group-append">
+                                <span class="input-group-text">%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <small class="form-text text-muted  opacity kadomaru">対応する耐性値を入力して下さい。弱点はマイナスの値を入力をして下さい</small>
                 </div>
                 <div class="form-group damageCulc col-xs-12 col-md-6 col-lg-4">
                     <label for="vit" class="badge badge-pill badge-light">敵体力</label>
                     <input type="number" class="form-control damage" id="vit" placeholder="">
                 </div>
-                <div class="form-group vitCulc col-xs-12 col-md-6 col-lg-4">
+                <div class="form-group vitCulc col-xs-12 col-md-6 col-lg-4" id="damageMemo">
                     <label for="damage1" class="badge badge-pill badge-light">ダメージメモ</label>
                     <input type="number" class="form-control damage" id="damage1" placeholder="ダメージ記録1">
                     <input type="number" class="form-control damage" id="damage2" placeholder="ダメージ記録2">
                     <input type="number" class="form-control damage" id="damage3" placeholder="ダメージ記録3">
-                    <small class="form-text text-muted  opacity">発生したダメージを記録します</small>
+                    <input type="number" class="form-control damage" id="damage4" placeholder="ダメージ記録4">
+                    <input type="number" class="form-control damage" id="damage5" placeholder="ダメージ記録5">
+                    <small class="form-text text-muted  opacity">発生したダメージを記録します<br>
+                        ・背景が緑は重要な値です<br>
+                        ・背景が黄は推定に使わない値です</small>
                 </div>
             </div>
             <h1 class="vitCulc opacity text-center">推定体力計算</h1>
@@ -194,10 +211,15 @@
                     $(".damageCulc").hide();
                     $(".vitCulc").show();
                 });
+                $('#skillTab').click(function () {
+                    $(".damageCulc").hide();
+                    $(".vitCulc").hide();
+                    $("#damageMemo").show();
+                });
 
                 $('#resist').change(function () {
                     var r = $('#resist').val();
-                    $("#resistDamage").val(Math.round(1 / (1+0.008*r) * 100 *100)/100 );
+                    $("#resistDamage").val(Math.round(1 / (1 + 0.008 * r) * 100 * 100) / 100);
                 });
 
                 $('#type').change(function () {
@@ -217,6 +239,21 @@
                 $('.damage').change(function () {
                     culc();
                 });
+                function damageColor(damage, max, min, target) {
+                    if (damage > 0 && (damage == max || damage == min)) {
+                        target.removeClass("bg-warning");
+                        target.addClass("bg-success");
+                        target.addClass("text-white");
+                    } else if (damage > 0) {
+                        target.addClass("bg-warning");
+                        target.removeClass("bg-success");
+                        target.removeClass("text-white");
+                    } else {
+                        target.removeClass("bg-warning");
+                        target.removeClass("bg-success");
+                        target.removeClass("text-white");
+                    }
+                }
 
                 function culc() {
                     // グローバル変数へ代入
@@ -226,6 +263,23 @@
                     damage1 = Number($("#damage1").val());
                     damage2 = Number($("#damage2").val());
                     damage3 = Number($("#damage3").val());
+                    damage4 = Number($("#damage4").val());
+                    damage5 = Number($("#damage5").val());
+                    // 必要なダメージの設定
+                    var max = Math.max(damage1, damage2, damage3, damage4, damage5);
+                    var tmp1 = (damage1 > 0) ? damage1 : 99999;
+                    var tmp2 = (damage2 > 0) ? damage2 : 99999;
+                    var tmp3 = (damage3 > 0) ? damage3 : 99999;
+                    var tmp4 = (damage4 > 0) ? damage4 : 99999;
+                    var tmp5 = (damage5 > 0) ? damage5 : 99999;
+                    var min = Math.min(tmp1, tmp2, tmp3, tmp4, tmp5);
+                    console.log("======== max " + max + " / " + min);
+                    damageColor(damage1, max, min, $("#damage1"));
+                    damageColor(damage2, max, min, $("#damage2"));
+                    damageColor(damage3, max, min, $("#damage3"));
+                    damageColor(damage4, max, min, $("#damage4"));
+                    damageColor(damage5, max, min, $("#damage5"));
+
                     damage = damage1;
                     master = masterLevel($("#master").val());
                     type = $("#type").val();
@@ -253,7 +307,7 @@
                     console.log("damageRange: " + dRange);
                     console.log("damage1 :" + damage1);
                     if (damage1 > 0) {
-                        var vitCuld = vitCulc(Math.floor(gVit), damage1, damage2, damage3);
+                        var vitCuld = vitCulc(Math.floor(gVit), damage1, damage2, damage3, damage4, damage5);
                         dispGuess(vitCuld);
                     }
                 }
@@ -268,11 +322,11 @@
                         // console.log("(D+6)/7 * (1 + 4W -1.5T) * アビ * マスター * 耐性");
                         // console.log(Math.floor(wepK*10)/10  + " * (1 + " + 4*sv+ " - " + 1.5 * v+") * Mlv " + master + "  * アビリティ " + (1 + ability) + " * 耐性 " / (1 + 0.008 * resist));
                     }
-                        // console.log("Base : " + wepK * (fieldSTR) );
-                        // console.log("Master : " + wepK * (fieldSTR)  * master );
-                        // console.log("Ability : " + wepK * (fieldSTR) * master * (1 + ability) );
-                        // console.log("Resist : " + wepK * (fieldSTR) * master * (1 + ability) / (1 + 0.008 * resist) );
-                        return wepK * (fieldSTR) * master * (1 + ability) / (1 + 0.008 * resist);
+                    // console.log("Base : " + wepK * (fieldSTR) );
+                    // console.log("Master : " + wepK * (fieldSTR)  * master );
+                    // console.log("Ability : " + wepK * (fieldSTR) * master * (1 + ability) );
+                    // console.log("Resist : " + wepK * (fieldSTR) * master * (1 + ability) / (1 + 0.008 * resist) );
+                    return wepK * (fieldSTR) * master * (1 + ability) / (1 + 0.008 * resist);
                 }
 
                 function guessVitCulc() {
@@ -302,7 +356,7 @@
                     }
                 }
 
-                function vitCulc(guess, damage1, damage2, damage3) {
+                function vitCulc(guess, damage1, damage2, damage3, damage4, damage5) {
                     var maxDamage = 99999;
                     var result = [];
                     memoryMaxDamage = Math.max(damage1, damage2, damage3);
@@ -322,8 +376,17 @@
                         var pushFlg1 = false;
                         var pushFlg2 = !(damage2 > 0);
                         var pushFlg3 = !(damage3 > 0);
+                        var pushFlg4 = !(damage4 > 0);
+                        var pushFlg5 = !(damage5 > 0);
                         maxDamage = range[9];
-                        var gosa = 2;
+                        var gosa = 0;
+                        if (maxDamage <= 200) {
+                            gosa = 0;
+                        } else if (maxDamage < 1000) {
+                            gosa = 1;
+                        } else {
+                            gosa = 2;
+                        }
                         range.forEach(function (d, i) {
                             if (d <= damage1 + gosa && d >= damage1 - gosa) {
                                 range[i] = d + "R";
@@ -337,8 +400,16 @@
                                 range[i] = d + "R";
                                 pushFlg3 = true;
                             }
+                            if (d <= damage4 + gosa && d >= damage4 - gosa) {
+                                range[i] = d + "R";
+                                pushFlg4 = true;
+                            }
+                            if (d <= damage5 + gosa && d >= damage5 - gosa) {
+                                range[i] = d + "R";
+                                pushFlg5 = true;
+                            }
                         });
-                        if (pushFlg1 && pushFlg2 && pushFlg3) {
+                        if (pushFlg1 && pushFlg2 && pushFlg3 && pushFlg4 && pushFlg5) {
                             result.push(range);
                         }
                         range.unshift(guess);
