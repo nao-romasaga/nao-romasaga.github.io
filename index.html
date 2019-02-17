@@ -20,6 +20,10 @@
         <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
         <style type="text/css"><!--
             .haikei { background:url(https://www.jp.square-enix.com/saga_reuniverse/assets/img/index_kv01_sp.jpg) center no-repeat; background-size: cover;}
+            .side-padding-zero {
+                padding-left: 0px !important;
+                padding-right: 0px !important;
+            }
             .opacity {
                 background-color: rgba(245, 245, 245, 1);
                 opacity: 0.8;
@@ -55,13 +59,17 @@
             <br>
 
             <ul class="nav nav-tabs ">
-                <li class="nav-item col-4 text-center">
-                    <a class="nav-link active bg-white" data-toggle="tab" href="#home" id="damageTab" class=""><img src="https://www.silhouette-illust.com/wp-content/uploads/2017/05/buki_saber_30117-300x300.jpg" width="16" height="16">ダメージ計算器<img src="https://www.silhouette-illust.com/wp-content/uploads/2017/05/buki_tsurugi_30115-300x300.jpg" width="16" height="16"></a>
+                <li class="nav-item col-6 text-center side-padding-zero">
+                    <a class="nav-link active bg-white" data-toggle="tab" href="#home" id="damageTab" class="">
+                        <img src="https://www.silhouette-illust.com/wp-content/uploads/2017/05/buki_saber_30117-300x300.jpg" width="16" height="16">
+                        ダメージ計算器
+                        <img src="https://www.silhouette-illust.com/wp-content/uploads/2017/05/buki_tsurugi_30115-300x300.jpg" width="16" height="16">
+                    </a>
                 </li>
-                <li class="nav-item col-4 text-center">
+                <li class="nav-item col-6 text-center side-padding-zero">
                     <a class="nav-link bg-white" data-toggle="tab" href="#profile" id="vitTab" class="bg-white">
                         <img src="http://icooon-mono.com/i/icon_11077/icon_110770.svg" width="16" height="16">
-                        モンスター体力測定器
+                        敵体力測定器
                         <img src="http://icooon-mono.com/i/icon_13327/icon_133270.svg" width="16" height="16">
                     </a>
                 </li>
@@ -77,7 +85,17 @@
 
             <div class="row">
                 <div class="form-group col-xs-12 col-md-6 col-lg-4">
-                    <label for="type" class="badge badge-pill badge-light">武器種類</label>
+                    <label for="type" class="badge badge-pill badge-light">武器種類
+                        <img src="https://www.silhouette-illust.com/wp-content/uploads/2017/05/buki_tsurugi_30115-300x300.jpg" width="16" height="16">
+                        <img src="https://icon-rainbow.com/i/icon_03146/icon_031460.svg" width="16" height="16">
+                        <img src="https://www.silhouette-ac.com/sozai/m/130/72/130729m.jpg" width="16" height="16">
+                        <img src="https://data.ac-illust.com/data/thumbnails/c3/c32a863d8869dac257763aee737baaed_t.jpeg" width="16" height="16">
+                        <img src="https://www.silhouette-illust.com/wp-content/uploads/2016/12/20579-300x300.jpg" width="16" height="16">
+                        <img src="https://www.silhouette-illust.com/wp-content/uploads/2017/09/witch_tsue_39880-300x300.jpg" width="16" height="16">
+                        <img src="https://www.silhouette-illust.com/wp-content/uploads/2017/04/kobushi_nigiru_28889-300x300.jpg" width="16" height="16">
+                        <img src="" width="16" height="16">
+
+                    </label>
                     <select class="form-control" id="type" name="type">
                         <option value="1">剣・大剣・斧・槍・棍棒・杖</opition>
                         <option value="2">小剣・弓</opition>
@@ -85,11 +103,16 @@
                     </select>
                 </div>
                 <div class="form-group col-xs-12 col-md-6 col-lg-4">
-                    <label for="wepon" class="badge badge-pill badge-light">武器威力</label>
+                    <label for="wepon" class="badge badge-pill badge-light">武器威力
+                        <img src="https://www.silhouette-illust.com/wp-content/uploads/2017/05/buki_tsurugi_30115-300x300.jpg" width="16" height="16">
+                    </label>
                     <input type="number" class="form-control damage" id="wepon">
                 </div>
                 <div class="form-group col-xs-12 col-md-6 col-lg-4">
-                    <label for="str" id="param_label" class="badge badge-pill badge-light">腕力</label>
+                    <label for="str" id="param_label" class="badge badge-pill badge-light">
+                        腕力
+                        <img src="https://www.silhouette-illust.com/wp-content/uploads/2017/04/training_chikara-kobu_28491-300x300.jpg" width="16" height="16">
+                    </label>
                     <input type="number" class="form-control damage" id="str">
                     <small class="form-text text-muted   opacity kadomaru">スタイル、装備込みの値を入力してください。陣形ボーナスは後日対応</small>
                 </div>    
@@ -98,18 +121,28 @@
                     <input type="number" class="form-control damage" id="agi">
                 </div>
                 <div class="form-group col-xs-12 col-md-6 col-lg-4">
-                    <label for="master" class="badge badge-pill badge-light">マスターレベル</label>
+                    <label for="master" class="badge badge-pill badge-light">
+                        マスターレベル
+                        <img src="https://www.silhouette-illust.com/wp-content/uploads/2016/09/8957-300x300.jpg" width="16" height="16">
+
+                    </label>
                     <input type="number" class="form-control damage" id="master">
                     <small class="form-text text-muted  opacity kadomaru">対象武器種類のマスターレベルを入力して下さい</small>
                 </div>
                 <div class="form-group col-xs-12 col-md-6 col-lg-4">
-                    <label for="ability" class="badge badge-pill badge-light">アビリティ</label>
+                    <label for="ability" class="badge badge-pill badge-light">アビリティ
+                        <img src="https://www.silhouette-illust.com/wp-content/uploads/2017/03/idea_hirameki_28161-300x300.jpg" width="16" height="16">
+
+                    </label>
                     <input type="number" class="form-control damage" id="ability">
                     <small class="form-text text-muted  opacity kadomaru">テンションアップや勇健強撃などによる補正の%を入力して下さい<br>
                         勇健強撃 I:5% II:10% III:15%、テンションアップ I:2% II:5% III:10% IV:15%</small>
                 </div>
                 <div class="form-group col-xs-12 col-md-6 col-lg-4">
-                    <label for="resist" class="badge badge-pill badge-light">敵耐性</label>
+                    <label for="resist" class="badge badge-pill badge-light">
+                        敵耐性
+                        <img src="https://www.silhouette-illust.com/wp-content/uploads/2016/12/shield_21084-300x300.jpg" width="16" height="16">
+                    </label>
                     <input type="number" class="form-control damage" id="resist">
                     <div class="form-group">
                         <div class="input-group mb-3">
@@ -125,19 +158,24 @@
                     <small class="form-text text-muted  opacity kadomaru">対応する耐性値を入力して下さい。弱点はマイナスの値を入力をして下さい</small>
                 </div>
                 <div class="form-group damageCulc col-xs-12 col-md-6 col-lg-4">
-                    <label for="vit" class="badge badge-pill badge-light">敵体力</label>
+                    <label for="vit" class="badge badge-pill badge-light">敵体力
+                        <img src="https://www.silhouette-illust.com/wp-content/uploads/2016/05/646-300x300.jpg" width="16" height="16">
+                    </label>
                     <input type="number" class="form-control damage" id="vit" placeholder="">
                 </div>
                 <div class="form-group vitCulc col-xs-12 col-md-6 col-lg-4" id="damageMemo">
-                    <label for="damage1" class="badge badge-pill badge-light">ダメージメモ</label>
+                    <label for="damage1" class="badge badge-pill badge-light">
+                        ダメージメモ
+                        <img src="https://www.silhouette-illust.com/wp-content/uploads/2016/08/6654-300x300.jpg" width="16" height="16">
+                    </label>
                     <input type="number" class="form-control damage" id="damage1" placeholder="ダメージ記録1">
                     <input type="number" class="form-control damage" id="damage2" placeholder="ダメージ記録2">
                     <input type="number" class="form-control damage" id="damage3" placeholder="ダメージ記録3">
                     <input type="number" class="form-control damage" id="damage4" placeholder="ダメージ記録4">
                     <input type="number" class="form-control damage" id="damage5" placeholder="ダメージ記録5">
                     <small class="form-text text-muted  opacity">発生したダメージを記録します<br>
-                        ・背景が緑は重要な値です<br>
-                        ・背景が黄は推定に使わない値です</small>
+                        ・背景が緑は重要だと思われる値です<br>
+                        ・背景が黄は推定に必要なさそうな値です</small>
                 </div>
             </div>
             <h1 class="vitCulc opacity text-center">推定体力計算</h1>
