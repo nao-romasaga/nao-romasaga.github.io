@@ -651,8 +651,9 @@
 
                     var fieldSTR = getFieldSTR(culcSv, culcAgi, v);
                     var baseDamage = baseDamageCulc(fieldSTR);
-                    console.log("baseDamage: " + baseDamage);
-                    dRange = damageRange(baseDamage);
+                    var damageStep = damageStepCulc(fieldSTR);
+                    console.log("baseDamage: " + baseDamage + " step:" + damageStep);
+                    dRange = damageRange(baseDamage, damageStep);
                     console.log("damageRange: " + dRange);
                     dispDamageRange(dRange);
 
@@ -692,12 +693,15 @@
                 function baseDamageCulc(fieldSTR) {
                     return wepK * (fieldSTR) * master * (1 + ability) / (1 + 0.008 * resist);
                 }
+                function damageStepCulc(fieldSTR) {
+                    return wepK * (fieldSTR) * master / (1 + 0.008 * resist) * 0.01;
+                }
 
-                function damageRange(baseDamage) {
+                function damageRange(baseDamage, step) {
                     var damageRange = [];
                     var tanni = 1; // 小数点何位まで出す？(1,10,100)
                     for (var i = 0; i < 10; i++) {
-                        damageRange.push(Math.round(baseDamage * (1 + 0.01 * i) * tanni) / tanni);
+                        damageRange.push(Math.round( (baseDamage + step * i) * tanni) / tanni);
                     }
                     return damageRange;
                 }
@@ -733,7 +737,8 @@
                         }
                         fieldSTR = getFieldSTR(guess);
                         var base = baseDamageCulc(fieldSTR);
-                        var range = damageRange(base);
+                        var step = damageStepCulc(fieldSTR);
+                        var range = damageRange(base,step);
 
                         console.log("guess:" + guess + " input:" + memoryMaxDamage + " max:" + maxDamage + " CD:" + countdown + " range:" + range);
                         var pushFlg1 = false;
