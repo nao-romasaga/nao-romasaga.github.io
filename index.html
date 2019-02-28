@@ -168,28 +168,30 @@
                     <label for="str" id="param_label" class="badge badge-pill badge-light">
                         腕力
                     </label>
-                    <div class="form-group">
-                        <div class="input-group mb-3">
+                    <div class="input-group">
                             <div class="input-group-prepend charOnly">
                                 <span class="input-group-text small">キャラのみ</span>
                             </div>
                             <input type="number" class="form-control damage charOnly" id="strOnlyChar">
+                    </div>
+                    <div class="input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text small">スタイル装備有</span>
                             </div>
                             <input type="number" class="form-control damage" id="str">
-                        </div>
                     </div>
                     <small class="form-text text-muted   opacity kadomaru">陣形を指定している場合はキャラのみの値も必要です<br>
                         キャラのみはスタイルおよび装備抜きの値を入力してください</small>
                 </div>    
                 <div class="form-group col-xs-12 col-md-6 col-lg-4"  id="taijyutsu">
                     <label for="agi" id="param_label" class="badge badge-pill badge-light">素早さ</label>
-                    <div class="input-group mb-3">
+                    <div class="input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text small charOnly">キャラのみ</span>
                         </div>
                         <input type="number" class="form-control damage charOnly" id="agiOnlyChar">
+                    </div>
+                    <div class="input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text small">スタイル装備有</span>
                         </div>
@@ -275,6 +277,7 @@
                         <option value="71">密林7 パイロヒドラ(71)</opition>
                         <option value="77">密林9 ゴールデンバウム(77)</opition>
                         <option value="85">密林10 カイザーアント(85)</opition>
+                        <option value="90">HV721 オーガ(90)</opition>
                         <option value="99">密林10 パイロヒドラ(99)</opition>
                     </select>
                     <div class="form-group">
@@ -304,7 +307,7 @@
                 </div>
             </div>
             <h1 class="vitCulc opacity text-center">推定体力計算</h1>
-            <table class="vitCulc table table-hover table-bordered table-sm table-responsive" id="guess">
+            <table class="vitCulc table table-hover table-bordered table-sm" id="guess">
                 <thead>
                     <tr class="table-primary">
                         <th class="col-xs-1">体</th>
@@ -325,7 +328,8 @@
 
 
             <h1 class="damageCulc  opacity text-center">ダメージレンジ</h1>
-            <table class="damageCulc table table-hover table-bordered table-sm table-responsive" id="damageRangeTable">
+            <div class="table-responsive">
+            <table class="damageCulc table table-hover table-bordered table-sm " id="damageRangeTable">
                 <thead>
                     <tr class="table-primary opacity small">
                         <th class="col-xs-1">AVG</th>
@@ -343,7 +347,9 @@
                 </thead>
                 <tbody class=""></tbody>
             </table>
+            </div>
             <h2 class="damageCulc  opacity text-center">ダメージランキング</h2>
+            <div class="table-responsive">
             <table class="damageCulc table table-hover table-striped table-bordered table-sm" id="damageRankTable">
                 <thead>
                     <tr class="table-primary opacity small">
@@ -354,6 +360,7 @@
                 </thead>
                 <tbody class=""></tbody>
             </table>
+            </div>
             <br>
             <div class="opacity">
                 Powered by <a href="https://twitter.com/nao_romasaga_rs" target="_new">nao_romasaga_rs</a><br>
