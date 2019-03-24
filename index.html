@@ -350,21 +350,21 @@
                 </table>
 
 
-<!--
-                <h2 class="damageCulc opacity text-center">ダメージランキング</h2>
-                <div class="table-responsive">
-                    <table class="damageCulc table table-hover table-striped table-bordered table-sm" id="damageRankTable">
-                        <thead>
-                            <tr class="table-primary opacity small">
-                                <th class="text-center">説明</th>
-                                <th class="">AVG</th>
-                                <th class="">D1</th>
-                            </tr>
-                        </thead>
-                        <tbody class=""></tbody>
-                    </table>
-                </div>
--->
+                <!--
+                                <h2 class="damageCulc opacity text-center">ダメージランキング</h2>
+                                <div class="table-responsive">
+                                    <table class="damageCulc table table-hover table-striped table-bordered table-sm" id="damageRankTable">
+                                        <thead>
+                                            <tr class="table-primary opacity small">
+                                                <th class="text-center">説明</th>
+                                                <th class="">AVG</th>
+                                                <th class="">D1</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class=""></tbody>
+                                    </table>
+                                </div>
+                -->
                 <br>
                 <div class="opacity">
                     Powered by <a href="https://twitter.com/nao_romasaga_rs" target="new">nao_romasaga_rs</a><br>
@@ -475,14 +475,14 @@
                  */
                 function culc() {
                     var wepon = Number($("#wepon").val());
-                    var ability = Number($("#ability").val()) / 100;
+                    var ability = Number($("#ability").val());
                     var resist = Number($("#resist").val());
                     var skill = Number($("#skill").val());
                     var rank = Number($("#skill_rank").val());
                     var type = $("#type").val();
                     var vit = Number($("#vit").val());
-                    var master = masterLevel($("#master").val());
-                    $("#masterDamage").val(Math.round(master * 10000) / 100);
+                    var master = masterLevel($("#master").val()) * 100;
+                    $("#masterDamage").val(Math.round(master * 100) / 100);
                     // 陣形込みの値を取得
                     var tmpStrAgi = getStrAgi();
                     var str = tmpStrAgi[0];
@@ -558,7 +558,7 @@
                     var culcAgi = orgAgi;
                     var lavel = "";
                     if (type !== 'tai') {
-                        var lavel = (type === "yumi" || type === "sken") ? "器用さ+": "腕力+";
+                        var lavel = (type === "yumi" || type === "sken") ? "器用さ+" : "腕力+";
                         [...Array(3)].map((_, i) => {
                             if ($("#jinkei").val() != "0") {
                                 var tmpStrAgi = getStrAgi();
