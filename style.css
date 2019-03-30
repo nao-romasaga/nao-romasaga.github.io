@@ -1,0 +1,36 @@
+.haikei { background:url(https://www.jp.square-enix.com/saga_reuniverse/assets/img/index_kv01_sp.jpg) center no-repeat; background-size: cover;}
+.side-padding-zero {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+.opacityWhite {
+    background-color: rgba(245, 245, 245, 1);
+    opacity: 1;
+}
+.opacity {
+    background-color: rgba(245, 245, 245, 1);
+    opacity: 0.8;
+}
+.opacity-even {
+    background-color: rgba(245, 245, 245, 1);
+    opacity: 0.8;
+}
+.opacity-odd {
+    background-color: rgba(245, 245, 245, 1);
+    opacity: 0.9;
+}
+body {
+    color: #333;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    line-height: 1.8;
+}            
+.kadomaru {
+    border-radius: 8px;
+    padding-left: 3px;
+}
+#footer {
+    position: fixed;
+    bottom: 0;
+    height: 150px;
+    right: 20px;
+}
