@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <script src="./utils.js" ></script>
+
+        <title>ロマサガRS 計算機@nao_romasaga</title>
+        <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+        <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="./style.css">
+    </head>
+    <body>
+        <div class ="haikei"><div class="container">
+                <div class="text-center">
+                    <a href="https://www.jp.square-enix.com/saga_reuniverse/" target="new"><img src="https://www.jp.square-enix.com/saga_reuniverse/assets/img/cmn_logo01_sp.png" class="col-sm-12 col-md-8 col-lg-6"></a>
+                </div>
+
+                <h1 class="text-center opacity">ロマサガRS計算機</h1>
+                <br>
+                <div class="text-center">
+                </div>
+                <p class="text-right opacity"><small>バグ発見、ご要望は <a href="https://twitter.com/nao_romasaga_rs" target="new">nao_romasaga_rs</a>まで</small>
+                </p>
+                <div class="text-center">
+                    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="true">Tweet</a>
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+
+                <br>
+
+                <label for="type" class="badge badge-pill badge-light">武器種別 技一覧</label>
+                <ul class="nav nav-tabs ">
+                    <li class="nav-item text-center side-padding-zero">
+                        <a class="nav-link active bg-white" data-toggle="tab" href="#ken">
+                            剣
+                            <img src="https://www.silhouette-illust.com/wp-content/uploads/2017/05/buki_saber_30117-101x101.jpg" width="16" height="16">
+                        </a>
+                    </li>
+                    <li class="nav-item text-center side-padding-zero">
+                        <a class="nav-link bg-white" data-toggle="tab" href="#dken">
+                            大剣
+                            <img src="https://www.silhouette-illust.com/wp-content/uploads/2017/05/buki_tsurugi_30115-300x300.jpg" width="16" height="16">
+                        </a>
+                    </li>
+                    <li class="nav-item text-center side-padding-zero">
+                        <a class="nav-link bg-white" data-toggle="tab" href="#ono">
+                            斧
+                            <img src="https://icon-rainbow.com/i/icon_03146/icon_031460.svg" width="16" height="16">
+                        </a>
+                    </li>
+                    <li class="nav-item text-center side-padding-zero">
+                        <a class="nav-link bg-white" data-toggle="tab" href="#kon">
+                            棍棒
+                        </a>
+                    </li>
+                    <li class="nav-item text-center side-padding-zero">
+                        <a class="nav-link bg-white" data-toggle="tab" href="#tai">
+                            体術
+                            <img src="https://www.silhouette-illust.com/wp-content/uploads/2017/04/kobushi_nigiru_28889-300x300.jpg" width="16" height="16">
+                        </a>
+                    </li>
+                    <li class="nav-item text-center side-padding-zero">
+                        <a class="nav-link bg-white" data-toggle="tab" href="#ju">
+                            銃
+                        </a>
+                    </li>
+                    <li class="nav-item text-center side-padding-zero">
+                        <a class="nav-link bg-white" data-toggle="tab" href="#sken">
+                            小剣
+                            <img src="https://data.ac-illust.com/data/thumbnails/c3/c32a863d8869dac257763aee737baaed_t.jpeg" width="16" height="16">
+                        </a>
+                    </li>
+                    <li class="nav-item text-center side-padding-zero">
+                        <a class="nav-link bg-white" data-toggle="tab" href="#yari">
+                            槍
+                            <img src="https://www.silhouette-ac.com/sozai/m/130/72/130729m.jpg" width="16" height="16">
+                        </a>
+                    </li>
+                    <li class="nav-item text-center side-padding-zero">
+                        <a class="nav-link bg-white" data-toggle="tab" href="#yumi">
+                            弓
+                            <img src="https://www.silhouette-illust.com/wp-content/uploads/2016/12/20579-300x300.jpg" width="16" height="16">
+                        </a>
+                    </li>
+                </ul>
+                <div id="myTabContent" class="tab-content bg-white">
+                    <div class="tab-pane fade show active" id="ken">
+                        <select class="form-control skill_select" id="skill_ken" name="type"></select>
+                    </div>
+                    <div class="tab-pane fade" id="dken">
+                        <select class="form-control skill_select" id="skill_dken" name="type"></select>
+                    </div>
+                    <div class="tab-pane fade" id="ono">
+                        <select class="form-control skill_select" id="skill_ono" name="type"></select>
+                    </div>
+                    <div class="tab-pane fade" id="kon">
+                        <select class="form-control skill_select" id="skill_kon" name="type"></select>
+                    </div>
+                    <div class="tab-pane fade" id="tai">
+                        <select class="form-control skill_select" id="skill_tai" name="type"></select>
+                    </div>
+                    <div class="tab-pane fade" id="ju">
+                        <select class="form-control skill_select" id="skill_ju" name="type"></select>
+                    </div>
+                    <div class="tab-pane fade" id="sken">
+                        <select class="form-control skill_select" id="skill_sken" name="type"></select>
+                    </div>
+                    <div class="tab-pane fade" id="yari">
+                        <select class="form-control skill_select" id="skill_yari" name="type"></select>
+                    </div>
+                    <div class="tab-pane fade" id="yumi">
+                        <select class="form-control skill_select" id="skill_yumi" name="type"></select>
+                    </div>
+                </div>
+                <label for="type" class="badge badge-pill badge-light">術 一覧</label>
+                <ul class="nav nav-tabs ">
+                    <li class="nav-item text-center side-padding-zero"><a class="nav-link active bg-white" data-toggle="tab" href="#hi">火術</a></li>
+                    <li class="nav-item text-center side-padding-zero"><a class="nav-link bg-white" data-toggle="tab" href="#mizu">水術</a></li>
+                    <li class="nav-item text-center side-padding-zero"><a class="nav-link bg-white" data-toggle="tab" href="#kaze">風術</a></li>
+                    <li class="nav-item text-center side-padding-zero"><a class="nav-link bg-white" data-toggle="tab" href="#tsuchi">土術</a></li>
+                    <li class="nav-item text-center side-padding-zero"><a class="nav-link bg-white" data-toggle="tab" href="#hikari">光術</a></li>
+                    <li class="nav-item text-center side-padding-zero"><a class="nav-link bg-white" data-toggle="tab" href="#yami">闇術</a></li>
+
+                </ul>
+                <div id="myTabContent" class="tab-content bg-white">
+                    <div class="tab-pane fade show active" id="hi"><select class="form-control skill_select" id="skill_hi" name="type"></select></div>
+                    <div class="tab-pane fade" id="mizu"><select class="form-control skill_select" id="skill_mizu" name="type"></select></div>
+                    <div class="tab-pane fade" id="kaze"><select class="form-control skill_select" id="skill_kaze" name="type"></select></div>
+                    <div class="tab-pane fade" id="tsuchi"><select class="form-control skill_select" id="skill_tsuchi" name="type"></select></div>
+                    <div class="tab-pane fade" id="hikari"><select class="form-control skill_select" id="skill_hikari" name="type"></select></div>
+                    <div class="tab-pane fade" id="yami"><select class="form-control skill_select" id="skill_yami" name="type"></select></div>
+                </div>
+                <label for="type" class="badge badge-pill badge-light">距離/属性/範囲 別 技/術一覧</label>
+                <ul class="nav nav-tabs ">
+                    <li class="nav-item text-center side-padding-zero">
+                        <a class="nav-link active bg-white" data-toggle="tab" href="#kin">近</a>
+                    </li>
+                    <li class="nav-item text-center side-padding-zero">
+                        <a class="nav-link bg-white" data-toggle="tab" href="#en">遠</a>
+                    </li>
+                    <li class="nav-item text-center side-padding-zero">
+                        <a class="nav-link bg-white" data-toggle="tab" href="#netsu">熱</a>
+                    </li>
+                    <li class="nav-item text-center side-padding-zero">
+                        <a class="nav-link bg-white" data-toggle="tab" href="#rei">冷</a>
+                    </li>
+                    <li class="nav-item text-center side-padding-zero">
+                        <a class="nav-link bg-white" data-toggle="tab" href="#rai">雷</a>
+                    </li>
+                    <li class="nav-item text-center side-padding-zero">
+                        <a class="nav-link bg-white" data-toggle="tab" href="#in">陰</a>
+                    </li>
+                    <li class="nav-item text-center side-padding-zero">
+                        <a class="nav-link bg-white" data-toggle="tab" href="#you">陽</a>
+                    </li>
+                    <li class="nav-item text-center side-padding-zero">
+                        <a class="nav-link bg-white" data-toggle="tab" href="#zen">全体</a>
+                    </li>
+                    <li class="nav-item text-center side-padding-zero">
+                        <a class="nav-link bg-white" data-toggle="tab" href="#tate">縦一列</a>
+                    </li>
+                    <li class="nav-item text-center side-padding-zero">
+                        <a class="nav-link bg-white" data-toggle="tab" href="#yoko">横一列</a>
+                    </li>
+                    <li class="nav-item text-center side-padding-zero">
+                        <a class="nav-link bg-white" data-toggle="tab" href="#mikata">味方単</a>
+                    </li>
+                    <li class="nav-item text-center side-padding-zero">
+                        <a class="nav-link bg-white" data-toggle="tab" href="#jishin">自身</a>
+                    </li>
+                    <li class="nav-item text-center side-padding-zero">
+                        <a class="nav-link bg-white" data-toggle="tab" href="#fast">ファスト</a>
+                    </li>
+                    <li class="nav-item text-center side-padding-zero">
+                        <a class="nav-link bg-white" data-toggle="tab" href="#delay">ディレイ</a>
+                    </li>
+                </ul>
+                <div id="myTabContent" class="tab-content bg-white">
+                    <div class="tab-pane fade show active" id="kin"><select class="form-control skill_select" id="skill_kin" name="type"></select></div>
+                    <div class="tab-pane fade" id="en"><select class="form-control skill_select" id="skill_en" name="type"></select></div>
+                    <div class="tab-pane fade" id="netsu"><select class="form-control skill_select" id="skill_netsu" name="type"></select></div>
+                    <div class="tab-pane fade" id="rei"><select class="form-control skill_select" id="skill_rei" name="type"></select></div>
+                    <div class="tab-pane fade" id="rai"><select class="form-control skill_select" id="skill_rai" name="type"></select></div>
+                    <div class="tab-pane fade" id="in"><select class="form-control skill_select" id="skill_in" name="type"></select></div>
+                    <div class="tab-pane fade" id="you"><select class="form-control skill_select" id="skill_you" name="type"></select></div>
+                    <div class="tab-pane fade" id="tan"><select class="form-control skill_select" id="skill_tantai" name="type"></select></div>
+                    <div class="tab-pane fade" id="zen"><select class="form-control skill_select" id="skill_zentai" name="type"></select></div>
+                    <div class="tab-pane fade" id="tate"><select class="form-control skill_select" id="skill_tate" name="type"></select></div>
+                    <div class="tab-pane fade" id="yoko"><select class="form-control skill_select" id="skill_yoko" name="type"></select></div>
+                    <div class="tab-pane fade" id="jishin"><select class="form-control skill_select" id="skill_jishin" name="type"></select></div>
+                    <div class="tab-pane fade" id="mikata"><select class="form-control skill_select" id="skill_mikata" name="type"></select></div>
+                    <div class="tab-pane fade" id="fast"><select class="form-control skill_select" id="skill_fast" name="type"></select></div>
+                    <div class="tab-pane fade" id="delay"><select class="form-control skill_select" id="skill_delay" name="type"></select></div>
+                </div>
+                <label for="type" class="badge badge-pill badge-light">状態異常 別 技/術一覧</label>
+                <ul class="nav nav-tabs ">
+                    <li class="nav-item text-center side-padding-zero"><a class="nav-link active bg-white" data-toggle="tab" href="#doku">毒</a></li>
+                    <li class="nav-item text-center side-padding-zero"><a class="nav-link bg-white" data-toggle="tab" href="#kurayami">暗闇</a></li>
+                    <li class="nav-item text-center side-padding-zero"><a class="nav-link bg-white" data-toggle="tab" href="#sutan">スタン</a></li>
+                    <li class="nav-item text-center side-padding-zero"><a class="nav-link bg-white" data-toggle="tab" href="#mahi">マヒ</a></li>
+                    <li class="nav-item text-center side-padding-zero"><a class="nav-link bg-white" data-toggle="tab" href="#nemuri">眠り</a></li>
+                    <li class="nav-item text-center side-padding-zero"><a class="nav-link bg-white" data-toggle="tab" href="#sekika">石化</a></li>
+                    <li class="nav-item text-center side-padding-zero"><a class="nav-link bg-white" data-toggle="tab" href="#konran">混乱</a></li>
+                    <li class="nav-item text-center side-padding-zero"><a class="nav-link bg-white" data-toggle="tab" href="#miryo">魅了</a></li>
+                    <li class="nav-item text-center side-padding-zero"><a class="nav-link bg-white" data-toggle="tab" href="#kyosenshi">狂戦士</a></li>
+                    <li class="nav-item text-center side-padding-zero"><a class="nav-link bg-white" data-toggle="tab" href="#sokushi">気絶(即死)</a></li>
+
+                </ul>
+                <div id="myTabContent" class="tab-content bg-white">
+                    <div class="tab-pane fade show active" id="doku"><select class="form-control skill_select" id="skill_doku" name="type"></select></div>
+                    <div class="tab-pane fade" id="kurayami"><select class="form-control skill_select" id="skill_kurayami" name="type"></select></div>
+                    <div class="tab-pane fade" id="sutan"><select class="form-control skill_select" id="skill_sutan" name="type"></select></div>
+                    <div class="tab-pane fade" id="mahi"><select class="form-control skill_select" id="skill_mahi" name="type"></select></div>
+                    <div class="tab-pane fade" id="nemuri"><select class="form-control skill_select" id="skill_nemuri" name="type"></select></div>
+                    <div class="tab-pane fade" id="sekika"><select class="form-control skill_select" id="skill_sekika" name="type"></select></div>
+                    <div class="tab-pane fade" id="konran"><select class="form-control skill_select" id="skill_konran" name="type"></select></div>
+                    <div class="tab-pane fade" id="miryo"><select class="form-control skill_select" id="skill_miryo" name="type"></select></div>
+                    <div class="tab-pane fade" id="kyosenshi"><select class="form-control skill_select" id="skill_kyosenshi" name="type"></select></div>
+                    <div class="tab-pane fade" id="sokushi"><select class="form-control skill_select" id="skill_sokushi" name="type"></select></div>
+                </div>
+                <label for="type" class="badge badge-pill badge-light">デバフ 技/術一覧</label>
+                <ul class="nav nav-tabs ">
+                    <li class="nav-item text-center side-padding-zero"><a class="nav-link active bg-white" data-toggle="tab" href="#deb_wan">腕力</a></li>
+                    <li class="nav-item text-center side-padding-zero"><a class="nav-link bg-white" data-toggle="tab" href="#deb_tai">体力</a></li>
+                    <li class="nav-item text-center side-padding-zero"><a class="nav-link bg-white" data-toggle="tab" href="#deb_kiyo">器用さ</a></li>
+                    <li class="nav-item text-center side-padding-zero"><a class="nav-link bg-white" data-toggle="tab" href="#deb_suba">素早さ</a></li>
+                    <li class="nav-item text-center side-padding-zero"><a class="nav-link bg-white" data-toggle="tab" href="#deb_chi">知力</a></li>
+                    <li class="nav-item text-center side-padding-zero"><a class="nav-link bg-white" data-toggle="tab" href="#deb_sei">精神</a></li>
+
+                </ul>
+                <div id="myTabContent" class="tab-content bg-white">
+                    <div class="tab-pane fade show active" id="deb_wan"><select class="form-control skill_select" id="skill_deb_wan" name="type"></select></div>
+                    <div class="tab-pane fade" id="deb_tai"><select class="form-control skill_select" id="skill_deb_tai" name="type"></select></div>
+                    <div class="tab-pane fade" id="deb_kiyo"><select class="form-control skill_select" id="skill_deb_kiyo" name="type"></select></div>
+                    <div class="tab-pane fade" id="deb_suba"><select class="form-control skill_select" id="skill_deb_suba" name="type"></select></div>
+                    <div class="tab-pane fade" id="deb_chi"><select class="form-control skill_select" id="skill_deb_chi" name="type"></select></div>
+                    <div class="tab-pane fade" id="deb_sei"><select class="form-control skill_select" id="skill_deb_sei" name="type"></select></div>
+                </div>
+                <div class="form-group col-xs-12 col-md-12 col-lg-12">
+                    <label for="wepon" class="badge badge-pill badge-light">技情報</label>
+                    <table class="table table-hover table-bordered table-sm">
+                        <tr class="text-center bg-white">
+                            <td id="skill_dtl_btAttr">武器種別</td>
+                            <td colspan="4" id="skill_dtl_name">技名称</td>
+                            <td id="skill_dtl_atAtttr">技属性</td>
+                        </tr>
+                        <tr class="text-center bg-white">
+                            <th>威力</th>
+                            <th id="skill_dtl_grade">E(計測中)</th>
+                            <th>初期BP</th>
+                            <th id="skill_dtl_bp">X</th>
+                            <th>最小BP</th>
+                            <th id="skill_dtl_minBp">X</th>
+                        </tr>
+                        <tr class="bg-white">
+                            <td colspan="6" id="skill_dtl_text">説明</td>
+                        </tr>
+                    </table>
+                </div>                
+                <div class="form-group col-xs-12 col-md-12 col-lg-12">
+                    <label for="wepon" class="badge badge-pill badge-light">技保持者</label>
+                    <table class="table table-hover table-bordered table-sm" id="skill_holder_table">
+                        <thead>
+                            <tr class="text-center opacity table-success">
+                                <th>Rare</th>
+                                <th>Name</th>
+                                <th>Style</th>
+                                <th>Wepon</th>
+                                <th>Role</th>
+                                <th>Skill</th>
+                                <th>Ability</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white"></tbody>
+                    </table>
+                </div>
+                <br>
+                <div class="opacity">
+                    Powered by <a href="https://twitter.com/nao_romasaga_rs" target="new">nao_romasaga_rs</a><br>
+                    Special thanks <a href="https://twitter.com/imonoki" target="new">imonoki</a><br>
+                    © 2019 SQUARE ENIX CO., LTD. All Rights Reserved. Powered by Akatsuki Inc.<br>
+                    ILLUSTRATION: TOMOMI KOBAYASHI
+                </div>
+
+            </div></div> <!-- main -->
+
+        <!--script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script-->
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
+        <script src="./Firebase.js"></script>
+        <script src="./skill_display.js" ></script>
+
+        <script type="text/javascript">
+            $(function () {
+                readData();
+            });
+        </script>
+    </body>
+</html>
