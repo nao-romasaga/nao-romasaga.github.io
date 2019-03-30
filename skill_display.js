@@ -35,7 +35,8 @@ function readData() {
             if (row['Holders'] !== undefined) {
                 var x = (row['SkillIryoku'] == 0) ? "計測中" : row['SkillIryoku'];
                 var iryoku = row['PowerGrade'] + "(" + x + ")";
-                var name = row['Name'] +
+                var name = "[" + row['BattleType'] + "]" +
+                        row['Name'] +
                         " 威力:" + iryoku +
                         " BP:" + row['ConsumeBp'] +
                         " " + row["AttackDistance"] + "/" + row["AttackArea"];
