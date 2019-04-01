@@ -8,11 +8,11 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="./style.css">
         <script src="./fileopen.js" ></script>
         <script src="./jinkei.js" ></script>
         <script src="./damage.js" ></script>
         <script src="./utils.js" ></script>
-
         <title>ロマサガRS 計算機@nao_romasaga</title>
         <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -22,44 +22,6 @@
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
         <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
-        <style type="text/css"><!--
-            .haikei { background:url(https://www.jp.square-enix.com/saga_reuniverse/assets/img/index_kv01_sp.jpg) center no-repeat; background-size: cover;}
-            .side-padding-zero {
-                padding-left: 0px !important;
-                padding-right: 0px !important;
-            }
-            .opacityWhite {
-                background-color: rgba(245, 245, 245, 1);
-                opacity: 1;
-            }
-            .opacity {
-                background-color: rgba(245, 245, 245, 1);
-                opacity: 0.8;
-            }
-            .opacity-even {
-                background-color: rgba(245, 245, 245, 1);
-                opacity: 0.8;
-            }
-            .opacity-odd {
-                background-color: rgba(245, 245, 245, 1);
-                opacity: 0.9;
-            }
-            body {
-                color: #333;
-                font-family: 'M PLUS Rounded 1c', sans-serif;
-                line-height: 1.8;
-            }            
-            .kadomaru {
-                border-radius: 8px;
-                padding-left: 3px;
-            }
-            #footer {
-                position: fixed;
-                bottom: 0;
-                height: 150px;
-                right: 20px;
-            }
-            --></style>
     </head>
     <body>
         <div class ="haikei"><div class="container">
@@ -115,7 +77,12 @@
                             <option value="yumi">弓</option>
                             <option value="bou">棍棒</option>
                             <option value="tai">体術</option>
-                            <option value="tsue">杖</option>
+                            <option value="hi">火術</option>
+                            <option value="mizu">水術</option>
+                            <option value="kaze">風術</option>
+                            <option value="tsuchi">土術</option>
+                            <option value="hikari">光術</option>
+                            <option value="yami">闇術</option>
                         </select>
                     </div>
                     <div class="form-group col-xs-12 col-md-6 col-lg-4">
@@ -154,7 +121,7 @@
                             <div class="col-xs-6 col-md-6 col-lg-6" id="jinkei_w">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text small">腕</span>
+                                        <span class="input-group-text small jinkei_label">腕</span>
                                     </div>
                                     <input type="text" class="form-control" readonly="" id="jinkei_w_v">
                                     <div class="input-group-append">
@@ -272,7 +239,8 @@
                             例:勇健強撃III＋テンションアップIV = 30%</small>
                     </div>
                     <div class="form-group damageCulc col-xs-12 col-md-6 col-lg-4">
-                        <label for="vit" class="badge badge-pill badge-light">敵体力
+                        <label for="vit" class="badge badge-pill badge-light">敵
+                            <span class="param_label_teki">体力</span>
                             <img src="https://www.silhouette-illust.com/wp-content/uploads/2016/05/646-300x300.jpg" width="16" height="16">
                             敵耐性
                             <img src="https://www.silhouette-illust.com/wp-content/uploads/2016/12/shield_21084-300x300.jpg" width="16" height="16">
@@ -291,7 +259,7 @@
                         <div class="form-group">
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text small">体力直接入力</span>
+                                    <span class="input-group-text small"><span class="param_label_teki">体力</span>直接入力</span>
                                 </div>
                                 <input type="number" class="form-control damage" id="vit" placeholder="直接入力可">
                             </div>
@@ -398,7 +366,7 @@
                 $("#jinkei_k").hide();
                 $("#jinkei_s").hide();
                 $(".charOnly").hide(); // 初期表示は陣形ないので入れない
-                $("#input_rank").hide(); // 初期表示は通常攻撃なので入れない
+                //$("#input_rank").hide(); // 初期表示は通常攻撃なので入れない
 
 
                 /**
@@ -408,10 +376,10 @@
                 $('#skill').change(function () {
                     var text = $('#skill option:selected').text();
                     if (text.indexOf('通常攻撃') !== -1) {
-                        $('#input_rank').hide();
+                        //$('#input_rank').hide();
                         $('#skill_rank').val(1);
                     } else {
-                        $('#input_rank').show();
+                        //$('#input_rank').show();
                     }
                 });
 
@@ -425,7 +393,21 @@
 
                     // 影響のある陣形を入れ替える
                     $('#jinkei > option').remove();
-                    if (type === "yumi" || type === "sken") {
+                    if ($.inArray(type, ["hi","mizu","tsuchi","kaze","hikari","yami"]) > -1){
+                        console.log($(".param_label_teki"), 1, type, $.inArray(type, ["hi","mizu","tsuchi","kaze","hikari","yami"]));
+                        $(".param_label_teki").text("精神");
+                        $(".jinkei_label").text("知");
+                    }else{
+                        console.log($(".param_label_teki"), 2, type, $.inArray(type, ["hi","mizu","tsuchi","kaze","hikari","yami"]));
+                        $(".param_label_teki").text("体力");
+                        $(".jinkei_label").text("腕");
+                    }
+                    if ($.inArray(type, ["hi","mizu","tsuchi","kaze","hikari","yami"]) > -1){
+                        console.log(type, $.inArray(type, ["hi","mizu","tsuchi","kaze","hikari","yami"]));
+                        $("#param_label").text("知力");
+                        $("#taijyutsu").hide();
+                        addOption(jJinkei, "jinkei");
+                    } else if ($.inArray(type, ["yumi","sken"]) > 0){
                         $("#param_label").text("器用さ");
                         $("#taijyutsu").hide();
                         addOption(kJinkei, "jinkei");
@@ -823,9 +805,13 @@
                         $("#jinkei_s").show();
                         $("#jinkei_s_v").val(-10);
                     }
-                    if (r == "hj") {
+                    if (r == "hjs") {
                         $("#jinkei_s").show();
                         $("#jinkei_s_v").val(-25);
+                    }
+                    if (r == "hjc") {
+                        $("#jinkei_w").show();
+                        $("#jinkei_w_v").val(25);
                     }
                     if (r == "sp1") {
                         $("#jinkei_w").show();
@@ -848,6 +834,11 @@
                         $("#jinkei_s_v").val(25);
                     }
                     if (r == "pl2") {
+                        type = $("#type").val();
+                        if ($.inArray(type, ["hi","mizu","tsuchi","kaze","hikari","yami"]) > -1){
+                            $("#jinkei_w").show();
+                            $("#jinkei_w_v").val(50);
+                        }
                         $("#jinkei_s").show();
                         $("#jinkei_s_v").val(-50);
                     }
