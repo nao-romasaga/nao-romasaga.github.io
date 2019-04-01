@@ -27,7 +27,13 @@ var sJinkei = {
     "龍陣 前列": "rj2",
     "龍陣 後列": "rj3",
     "インペリアルクロス 前列": "ic",
-    "鳳天舞の陣：外周": "hi"
+    "鳳天舞の陣：外周": "hjs"
+};
+var jJinkei = {
+    "指定なし": "0",
+    "パワーレイズ 最後列": "pl2",
+    "龍陣 最前列": "rj1",
+    "鳳天舞の陣：中央": "hjc"
 };
 function getJinkei(type) {
     var list;
