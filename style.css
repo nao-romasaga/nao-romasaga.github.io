@@ -1,4 +1,3 @@
-.haikei { background:url(https://www.jp.square-enix.com/saga_reuniverse/assets/img/index_kv01_sp.jpg) center no-repeat; background-size: cover;}
 .side-padding-zero {
     padding-left: 0px !important;
     padding-right: 0px !important;
@@ -33,4 +32,125 @@ body {
     bottom: 0;
     height: 150px;
     right: 20px;
+}
+.haikei { background:url(https://www.jp.square-enix.com/saga_reuniverse/assets/img/index_kv01_sp.jpg) center no-repeat; background-size: cover;}
+
+.char_dot1 {
+    display: inline-block;
+    width: 40px;
+    height: 50px;
+    background-position: 0px 0px;
+    margin: 0 0 0 0px;
+    animation: shomen-aruki 0.8s steps(3) infinite;
+}
+.char_dot1_middle {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background-position: 0px 0px;
+    margin: 0 0 0 0px;
+    animation: shomen-aruki-300px 0.8s steps(3) infinite;
+}
+.char_dot1_big {
+    display: inline-block;
+    width: 65px;
+    height: 70px;
+    background-position: 0px 0px;
+    margin: 0 0 0 0px;
+    animation: shomen-aruki-400px 0.8s steps(3) infinite;
+}
+.char_dot2 {
+    display: inline-block;
+    width: 40px;
+    height: 50px;
+    background-position: 0px -140px;
+    margin: 0 0 0 0px;
+    animation: hashiri 0.6s steps(3) infinite;
+}            
+.char_dot2_middle {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background-position: 0px -180px;
+    margin: 0 0 0 0px;
+    animation: hashiri-300px 0.6s steps(3) infinite;
+}            
+.char_dot2_big {
+    display: inline-block;
+    width: 65px;
+    height: 70px;
+    background-position: 0px -240px;
+    margin: 0 0 0 0px;
+    animation: hashiri-400px 0.6s steps(3) infinite;
+}            
+@keyframes shomen-aruki {
+    to {
+        background-position: -142px 0px;
+    }
+}
+@keyframes hashiri {
+    to {
+        background-position: -142px -140px;
+    }
+}
+@keyframes shomen-aruki-300px {
+    to {
+        background-position: -180px 0px;
+    }
+}
+@keyframes hashiri-300px {
+    to {
+        background-position: -180px -180px;
+    }
+}
+@keyframes shomen-aruki-400px {
+    to {
+        background-position: -240px 0px;
+    }
+}
+@keyframes hashiri-400px {
+    to {
+        background-position: -240px -240px;
+    }
+}
+.positionTop-10{
+    position: -10px 0 0 0;
+}
+@media screen and (max-width: 799px) { 
+    .skillIconList {
+        width: 35px;
+        height: 35px;
+    }
+    .skillIconListJotai {
+        width: 35px;
+        height: 35px;
+    }
+    .skillIconListJutsu{
+        width: 35px;
+        height: 35px;
+    }
+    .xs-hide {
+        display: none;
+    }
+    .xs-show {
+        display: display;
+    }
+    .xs-pad0 {
+        padding: 0px 0px 0px 0px !important;
+    }
+}
+@media screen and (min-width:800px) {
+    .skillIconList {
+        width: 45px;
+        height: 45px;
+    }
+    .xs-hide {
+        display: display;
+    }
+    .xs-show {
+        display: none;
+    }
+}
+.pad0{
+    padding:0px !important; 
 }
