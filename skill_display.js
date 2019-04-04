@@ -1,8 +1,57 @@
+const ICON_LIST = {
+    "剣": "icon_ken", "大剣": "icon_dken", "斧": "icon_ono",
+    "小剣": "icon_sken", "槍": "icon_yari", "弓": "icon_yumi",
+    "棍棒": "icon_kon", "体術": "icon_tai", "銃": "icon_ju",
+    "斬": "icon_zan", "突": "icon_totsu", "打": "icon_da",
+    "熱": "icon_netsu", "冷": "icon_rei", "雷": "icon_rai",
+    "陰": "icon_in", "陽": "icon_yo",
+    "火術": "icon_hi", "水術": "icon_mizu", "風術": "icon_kaze",
+    "土術": "icon_tsuchi", "光術": "icon_hikari", "闇術": "icon_yami",
+    "スタン": "icon_stan", "マヒ": "icon_mahi", "気絶": "icon_kizetsu", "毒": "icon_doku", "石化": "icon_sekika",
+    "魅了": "icon_miryo", "眠り": "icon_zzz", "混乱": "icon_konran", "狂戦士": "icon_kyosenshi", "暗闇": "icon_kurayami"
+};
+setImgTag("icon/icon_ken.png", "icon_ken");
+setImgTag("icon/icon_dken.png", "icon_dken");
+setImgTag("icon/icon_sken.png", "icon_sken");
+setImgTag("icon/icon_ono.png", "icon_ono");
+setImgTag("icon/icon_yumi.png", "icon_yumi");
+setImgTag("icon/icon_yari.png", "icon_yari");
+setImgTag("icon/icon_kon.png", "icon_kon");
+setImgTag("icon/icon_tai.png", "icon_tai");
+setImgTag("icon/icon_ju.png", "icon_ju");
+setImgTag("icon/icon_hi.png", "icon_hi");
+setImgTag("icon/icon_mizu.png", "icon_mizu");
+setImgTag("icon/icon_tsuchi.png", "icon_tsuchi");
+setImgTag("icon/icon_kaze.png", "icon_kaze");
+setImgTag("icon/icon_hikari.png", "icon_hikari");
+setImgTag("icon/icon_yami.png", "icon_yami");
+setImgTag("icon/icon_zan.png", "icon_zan");
+setImgTag("icon/icon_da.png", "icon_da");
+setImgTag("icon/icon_totsu.png", "icon_totsu");
+setImgTag("icon/icon_netsu.png", "icon_netsu");
+setImgTag("icon/icon_rei.png", "icon_rei");
+setImgTag("icon/icon_rai.png", "icon_rai");
+setImgTag("icon/icon_in.png", "icon_in");
+setImgTag("icon/icon_yo.png", "icon_yo");
+setImgTag("icon/icon_doku.png", "icon_doku");
+setImgTag("icon/icon_mahi.png", "icon_mahi");
+setImgTag("icon/icon_konran.png", "icon_konran");
+setImgTag("icon/icon_stan.png", "icon_stan");
+setImgTag("icon/icon_miryo.png", "icon_miryo");
+setImgTag("icon/icon_kizetsu.png", "icon_kizetsu");
+setImgTag("icon/icon_kyosenshi.png", "icon_kyosenshi");
+setImgTag("icon/icon_kurayami.png", "icon_kurayami");
+setImgTag("icon/icon_sekika.png", "icon_sekika");
+setImgTag("icon/icon_zzz.png", "icon_zzz");
+setImgTag("icon/icon_a.png", "icon_A");
+setImgTag("icon/icon_s.png", "icon_S");
+setImgTag("icon/icon_ss.png", "icon_SS");
+
 var skillList, styleList, abilityList;
 
 function readData() {
     firebase.database().ref('Skill').once("value").then(function (snapshot) {
-        //console.log(snapshot.val());
+        console.log(snapshot.val());
         skillList = snapshot.val();
         var skillTypeList = {"ファスト": {}, "ディレイ": {},
             "スタン": {}, "マヒ": {}, "即死": {}, "毒": {}, "石化": {},
@@ -33,6 +82,7 @@ function readData() {
             var row = skillList[key];
             // 威力設定されてないものは未実装もあるので弾いておく
             if (row['Holders'] !== undefined) {
+                //console.log(row);
                 var x = (row['SkillIryoku'] == 0) ? "計測中" : row['SkillIryoku'];
                 var iryoku = row['PowerGrade'] + "(" + x + ")";
                 var name = "[" + row['BattleType'] + "]" +
@@ -116,9 +166,22 @@ $(".skill_select").change(function (e) {
     $("table#skill_holder_table tbody *").remove();
 
     for (key in skillHolders['Holders']) {
-        var styleId = skillHolders['Holders'][key];
+        let styleId = skillHolders['Holders'][key];
+        let imgId = "cutin" + styleId;
+        let imgId2 = "tmp" + styleId;
+        var imgSrc = "";
+        // 画像が存在する場合は再取得しない
+        if ($('#' + imgId).length == 0) {
+            $("#imgTank").append("<img src=\"\" id=\"" + imgId + "\">");
+            setImgTag("style_cutin/" + styleId.substr(2) + ".png", imgId);
+            setImgTag("style_cutin/" + styleId.substr(2) + ".png", imgId2);
+        } else {
+            imgSrc = $("#" + imgId).attr('src');
+        }
         var styleInfo = styleList[styleId];
-        //console.log(styleInfo);
+
+        var rarityIcon = $("#icon_" + styleInfo['Rarity']).attr('src');
+
         var color = "background-color: rgb(246,236,100);}";
         if (styleInfo['Rarity'] === "A") {
             color = "background-color: rgb(247,170,150);}";
@@ -126,29 +189,41 @@ $(".skill_select").change(function (e) {
             color = "background-color: rgb(200,224,234);}";
         }
         var col = "";
-        col += "<td>" + styleInfo['Rarity'] + "</td>";
-        col += "<td>" + styleInfo['Name'] + "</td>";
-        col += "<td>" + styleInfo['AnotherName'] + "</td>";
-        col += "<td>" + styleInfo['WeaponType'] + "</td>";
-        col += "<td>" + styleInfo['Role'] + "</td>";
-        col += "<td>" + styleInfo['Skill'].join("<br>") + "</td>";
+        var styleName = styleInfo['AnotherName'];
+        var Name = styleInfo['Name'];
+        var height = 50;
+        col += "<td><img src=\"" + rarityIcon + "\" height=" + height + "></td>";
+        col += "<td class='text-center'><img src=\"" + imgSrc + "\" height=" + 40 + " id=\"" + imgId2 + "\"><br><small>" + Name + " " + styleName + "<small></td>";
+        col += "<td class='xs-hide'>" + styleInfo['Skill'].join("<br>") + "</td>";
         var ab = [];
         for (lv in styleInfo['StyleAbility']) {
             ab.push(lv + ":" + styleInfo['StyleAbility'][lv]);
         }
-        col += "<td>" + ab.join("<br>") + "</td>";
+        col += "<td class='xs-hide'>" + ab.join("<br>") + "</td>";
+        col += "<tr class='xs-show' style='" + color + "'><td colspan=2>" + styleInfo['Skill'].join(" / ") + "</td></tr>";
         $("table#skill_holder_table tbody").append("<tr style='" + color + "'>" + col + "</tr>\n");
     }
 });
 
 function setSkillTable(skillInfo) {
     //console.log(skillInfo);
-    $("#skill_dtl_btAttr").text(skillInfo['BattleType']); // 武器種別
+    let battleType = skillInfo['BattleType'];
+    let id = ICON_LIST[battleType];
+    let img = '<img src="' + $("#" + id).attr("src") + '" width="35" height="35" />';
+    $("#skill_dtl_btAttr").html(img + "<br>" + battleType); // 武器種別
     $("#skill_dtl_name").text(skillInfo['Name']); // 技名称
-    $("#skill_dtl_atAtttr").text(skillInfo['AttackAttributes']); // 技属性
+
+    var imgList = [];
+    skillInfo['AttackAttributes'].split(',').forEach(function (value) {
+        let id = ICON_LIST[value];
+        imgList.push('<img src="' + $("#" + id).attr("src") + '" data-value="' + value + '"/>');
+    });
+    $("#skill_dtl_atAtttr").html(imgList.join("")); // 技属性
+
     var iryoku = (skillInfo['SkillIryoku'] != 0) ? skillInfo['SkillIryoku'] : "計測中";
     $("#skill_dtl_grade").text(skillInfo['PowerGrade'] + " (" + iryoku + ")"); // 技威力
     $("#skill_dtl_bp").text(skillInfo['ConsumeBp']); //　初期BP
-    $("#skill_dtl_minBp").text((skillInfo['ConsumeBp'] - skillInfo['MaxKakuseiCount'])); // 最大覚醒BP
+    $("#skill_dtl_minBp").text((skillInfo['ConsumeBp'] - skillInfo['Kakusei'])); // 最大覚醒BP
     $("#skill_dtl_text").html(skillInfo['FlavorText']); // フレーバーテキスト
 }
+
