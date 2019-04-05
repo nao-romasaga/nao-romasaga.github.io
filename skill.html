@@ -8,8 +8,7 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-        <script src="./utils.js" ></script>
-
+        <script src="./utils.js?update=20190405_1" ></script>
         <title>ロマサガRS スタイル検索(技/術)@nao_romasaga</title>
         <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -19,126 +18,120 @@
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
         <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="./style.css?updt=201904041">
+        <link rel="stylesheet" type="text/css" href="./style.css?update=20190405_1">
     </head>
     <body>
+
         <div class ="haikei"><div class="container">
                 <div class="text-center">
                     <a href="https://www.jp.square-enix.com/saga_reuniverse/" target="new"><img src="https://www.jp.square-enix.com/saga_reuniverse/assets/img/cmn_logo01_sp.png" class="col-sm-12 col-md-8 col-lg-6"></a>
                 </div>
-
-                <h1 class="text-center opacity">ロマサガRS スタイル検索(技/術)</h1>
-                <br>
+                <h2 class="text-center opacity">スタイル検索(技/術)</h2>
                 <div class="text-center">
                 </div>
                 <p class="text-right opacity"><small>バグ発見、ご要望は <a href="https://twitter.com/nao_romasaga_rs" target="new">nao_romasaga_rs</a>まで</small>
                 </p>
-                <div class="text-center">
-                    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="true">Tweet</a>
-                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                </div>
-
-                <br>
-
                 <label for="type" class="badge badge-pill badge-light">武器種別 技・術一覧</label>
-                <ul class="row nav nav-tabs text-center">
-                    <li class="col-1 xs-hide table-info text-center">武器</li>
-                    <li class="col-12 xs-show table-info text-center">武器</li>
-                    <li class="col-1 xs-show opacity-odd"></li>
-                    <li class="col-1 xs-pad0 opacity-even"><a class="nav-link pad0" data-toggle="tab" href="#ken"><img src="" class="skillIconList" id="icon_ken" /></a></li>
-                    <li class="col-1 xs-pad0 opacity-even"><a class="nav-link pad0" data-toggle="tab" href="#dken"><img src="" class="skillIconList" id="icon_dken" /></a></li>
-                    <li class="col-1 xs-pad0 opacity-even"><a class="nav-link pad0" data-toggle="tab" href="#ono"><img src="" class="skillIconList" id="icon_ono" /></a></li>
-                    <li class="col-1 xs-pad0 opacity-even"><a class="nav-link pad0" data-toggle="tab" href="#kon"><img src="" class="skillIconList" id="icon_kon" /></a></li>
-                    <li class="col-1 xs-pad0 opacity-even"><a class="nav-link pad0" data-toggle="tab" href="#tai"><img src="" class="skillIconList" id="icon_tai" /></a></li>
-                    <li class="col-1 xs-pad0 opacity-even"><a class="nav-link pad0" data-toggle="tab" href="#ju"><img src="" class="skillIconList" id="icon_ju" /></a></li>
-                    <li class="col-1 xs-pad0 opacity-even"><a class="nav-link pad0" data-toggle="tab" href="#sken"><img src="" class="skillIconList" id="icon_sken" /></a></li>
-                    <li class="col-1 xs-pad0 opacity-even"><a class="nav-link pad0" data-toggle="tab" href="#yumi"><img src="" class="skillIconList" id="icon_yumi" /></a></li>
-                    <li class="col-1 xs-pad0 opacity-even"><a class="nav-link pad0" data-toggle="tab" href="#yari"><img src="" class="skillIconList" id="icon_yari" /></a></li>
-                    <li class="col-2 opacity-even"></li>
+                <div>
+                    <ul class="row nav nav-tabs text-center">
+                        <li class="col-1 xs-hide table-info text-center">武器</li>
+                        <li class="col-12 xs-show table-info text-center">武器</li>
+                        <li class="col-1 xs-show opacity-odd"></li>
+                        <li class="col-1 xs-pad0 opacity-even"><a class="nav-link pad0" data-toggle="tab" href="#ken"><img src="" class="skillIconList" id="icon_ken" /></a></li>
+                        <li class="col-1 xs-pad0 opacity-even"><a class="nav-link pad0" data-toggle="tab" href="#dken"><img src="" class="skillIconList" id="icon_dken" /></a></li>
+                        <li class="col-1 xs-pad0 opacity-even"><a class="nav-link pad0" data-toggle="tab" href="#ono"><img src="" class="skillIconList" id="icon_ono" /></a></li>
+                        <li class="col-1 xs-pad0 opacity-even"><a class="nav-link pad0" data-toggle="tab" href="#kon"><img src="" class="skillIconList" id="icon_kon" /></a></li>
+                        <li class="col-1 xs-pad0 opacity-even"><a class="nav-link pad0" data-toggle="tab" href="#tai"><img src="" class="skillIconList" id="icon_tai" /></a></li>
+                        <li class="col-1 xs-pad0 opacity-even"><a class="nav-link pad0" data-toggle="tab" href="#ju"><img src="" class="skillIconList" id="icon_ju" /></a></li>
+                        <li class="col-1 xs-pad0 opacity-even"><a class="nav-link pad0" data-toggle="tab" href="#sken"><img src="" class="skillIconList" id="icon_sken" /></a></li>
+                        <li class="col-1 xs-pad0 opacity-even"><a class="nav-link pad0" data-toggle="tab" href="#yumi"><img src="" class="skillIconList" id="icon_yumi" /></a></li>
+                        <li class="col-1 xs-pad0 opacity-even"><a class="nav-link pad0" data-toggle="tab" href="#yari"><img src="" class="skillIconList" id="icon_yari" /></a></li>
+                        <li class="col-2 opacity-even"></li>
 
-                    <li class="col-1 xs-hide table-success text-center">術</li>
-                    <li class="col-12 xs-show table-success text-center">術</li>
-                    <li class="col-1 xs-show opacity-odd"></li>
-                    <li class="col-1 xs-pad0 opacity-odd"><a class="nav-link pad0" data-toggle="tab" href="#hi"><img src="" class="skillIconListJutsu" id="icon_hi" /></a></li>
-                    <li class="col-1 xs-show opacity-odd"></li>
-                    <li class="col-1 xs-pad0 opacity-odd"><a class="nav-link pad0" data-toggle="tab" href="#mizu"><img src="" class="skillIconListJutsu" id="icon_mizu" /></a></li>
-                    <li class="col-1 xs-show opacity-odd"></li>
-                    <li class="col-1 xs-pad0 opacity-odd"><a class="nav-link pad0" data-toggle="tab" href="#kaze"><img src="" class="skillIconListJutsu" id="icon_kaze" /></a></li>
-                    <li class="col-1 xs-show opacity-odd"></li>
-                    <li class="col-1 xs-pad0 opacity-odd"><a class="nav-link pad0" data-toggle="tab" href="#tsuchi"><img src="" class="skillIconListJutsu" id="icon_tsuchi" /></a></li>
-                    <li class="col-1 xs-show opacity-odd"></li>
-                    <li class="col-1 xs-pad0 opacity-odd"><a class="nav-link pad0" data-toggle="tab" href="#hikari"><img src="" class="skillIconListJutsu" id="icon_hikari" /></a></li>
-                    <li class="col-1 xs-show opacity-odd"></li>
-                    <li class="col-1 xs-pad0 opacity-odd"><a class="nav-link pad0" data-toggle="tab" href="#yami"><img src="" class="skillIconListJutsu" id="icon_yami"/></a></li>
-                    <li class="col-5 xs-hide opacity-odd"></li>
+                        <li class="col-1 xs-hide table-success text-center">術</li>
+                        <li class="col-12 xs-show table-success text-center">術</li>
+                        <li class="col-1 xs-show opacity-odd"></li>
+                        <li class="col-1 xs-pad0 opacity-odd"><a class="nav-link pad0" data-toggle="tab" href="#hi"><img src="" class="skillIconListJutsu" id="icon_hi" /></a></li>
+                        <li class="col-1 xs-show opacity-odd"></li>
+                        <li class="col-1 xs-pad0 opacity-odd"><a class="nav-link pad0" data-toggle="tab" href="#mizu"><img src="" class="skillIconListJutsu" id="icon_mizu" /></a></li>
+                        <li class="col-1 xs-show opacity-odd"></li>
+                        <li class="col-1 xs-pad0 opacity-odd"><a class="nav-link pad0" data-toggle="tab" href="#kaze"><img src="" class="skillIconListJutsu" id="icon_kaze" /></a></li>
+                        <li class="col-1 xs-show opacity-odd"></li>
+                        <li class="col-1 xs-pad0 opacity-odd"><a class="nav-link pad0" data-toggle="tab" href="#tsuchi"><img src="" class="skillIconListJutsu" id="icon_tsuchi" /></a></li>
+                        <li class="col-1 xs-show opacity-odd"></li>
+                        <li class="col-1 xs-pad0 opacity-odd"><a class="nav-link pad0" data-toggle="tab" href="#hikari"><img src="" class="skillIconListJutsu" id="icon_hikari" /></a></li>
+                        <li class="col-1 xs-show opacity-odd"></li>
+                        <li class="col-1 xs-pad0 opacity-odd"><a class="nav-link pad0" data-toggle="tab" href="#yami"><img src="" class="skillIconListJutsu" id="icon_yami"/></a></li>
+                        <li class="col-5 xs-hide opacity-odd"></li>
 
-                    <li class="col-1 xs-hide table-info text-center">属性</li>
-                    <li class="col-12 xs-show table-info text-center">属性</li>
-                    <li class="col-1 xs-show opacity-odd text-center"></li>
-                    <li class="col-1 xs-pad0 opacity-even"><a class="nav-link pad0" data-toggle="tab" href="#netsu"><img src="" class="skillIconListJutsu" id="icon_netsu" /></a></li>
-                    <li class="col-1 xs-show opacity-odd"></li>
-                    <li class="col-1 xs-pad0 opacity-even"><a class="nav-link pad0" data-toggle="tab" href="#rei"><img src="" class="skillIconListJutsu" id="icon_rei" /></a></li>
-                    <li class="col-1 xs-show opacity-odd"></li>
-                    <li class="col-1 xs-pad0 opacity-even"><a class="nav-link pad0" data-toggle="tab" href="#rai"><img src="" class="skillIconListJutsu" id="icon_rai" /></a></li>
-                    <li class="col-1 xs-show opacity-odd"></li>
-                    <li class="col-1 xs-pad0 opacity-even"><a class="nav-link pad0" data-toggle="tab" href="#in"><img src="" class="skillIconListJutsu" id="icon_in" /></a></li>
-                    <li class="col-1 xs-show opacity-odd"></li>
-                    <li class="col-1 xs-pad0 opacity-even"><a class="nav-link pad0" data-toggle="tab" href="#you"><img src="" class="skillIconListJutsu" id="icon_yo" /></a></li>
-                    <li class="col-6 xs-hide opacity-even"><img src="" id="icon_zan" width="0" height="0"/><img src="" id="icon_da" width="0" height="0"/><img src="" id="icon_totsu" width="0" height="0"/></li>
-                    <li class="col-2 xs-show opacity-even"><img src="" id="icon_zan" width="0" height="0"/><img src="" id="icon_da" width="0" height="0"/><img src="" id="icon_totsu" width="0" height="0"/></li>
+                        <li class="col-1 xs-hide table-info text-center">属性</li>
+                        <li class="col-12 xs-show table-info text-center">属性</li>
+                        <li class="col-1 xs-show opacity-odd text-center"></li>
+                        <li class="col-1 xs-pad0 opacity-even"><a class="nav-link pad0" data-toggle="tab" href="#netsu"><img src="" class="skillIconListJutsu" id="icon_netsu" /></a></li>
+                        <li class="col-1 xs-show opacity-odd"></li>
+                        <li class="col-1 xs-pad0 opacity-even"><a class="nav-link pad0" data-toggle="tab" href="#rei"><img src="" class="skillIconListJutsu" id="icon_rei" /></a></li>
+                        <li class="col-1 xs-show opacity-odd"></li>
+                        <li class="col-1 xs-pad0 opacity-even"><a class="nav-link pad0" data-toggle="tab" href="#rai"><img src="" class="skillIconListJutsu" id="icon_rai" /></a></li>
+                        <li class="col-1 xs-show opacity-odd"></li>
+                        <li class="col-1 xs-pad0 opacity-even"><a class="nav-link pad0" data-toggle="tab" href="#in"><img src="" class="skillIconListJutsu" id="icon_in" /></a></li>
+                        <li class="col-1 xs-show opacity-odd"></li>
+                        <li class="col-1 xs-pad0 opacity-even"><a class="nav-link pad0" data-toggle="tab" href="#you"><img src="" class="skillIconListJutsu" id="icon_yo" /></a></li>
+                        <li class="col-6 xs-hide opacity-even"><img src="" id="icon_zan" width="0" height="0"/><img src="" id="icon_da" width="0" height="0"/><img src="" id="icon_totsu" width="0" height="0"/></li>
+                        <li class="col-2 xs-show opacity-even"><img src="" id="icon_zan" width="0" height="0"/><img src="" id="icon_da" width="0" height="0"/><img src="" id="icon_totsu" width="0" height="0"/></li>
 
-                    <li class="col-1 xs-hide table-success text-center">状態<br>異常</li>
-                    <li class="col-12 xs-show table-success text-center">状態異常</li>
-                    <li class="col-1 xs-show opacity-odd text-center"></li>
-                    <li class="col-1 xs-pad0 opacity-odd"><a class="nav-link pad0" data-toggle="tab" href="#doku"><img src="" class="skillIconListJotai" id="icon_doku" /><br><small>毒</small></a></li>
-                    <li class="col-1 xs-pad0 opacity-odd"><a class="nav-link pad0" data-toggle="tab" href="#kurayami"><img src="" class="skillIconListJotai" id="icon_kurayami" /><br><small>暗闇</small></a></li>
-                    <li class="col-1 xs-pad0 opacity-odd"><a class="nav-link pad0" data-toggle="tab" href="#sutan"><img src="" class="skillIconListJotai" id="icon_stan" /><small class="xs-hide"><br>スタン</small></a></li>
-                    <li class="col-1 xs-pad0 opacity-odd"><a class="nav-link pad0" data-toggle="tab" href="#nemuri"><img src="" class="skillIconListJotai" id="icon_zzz" /><br><small>眠り</small></a></li>
-                    <li class="col-1 xs-pad0 opacity-odd"><a class="nav-link pad0" data-toggle="tab" href="#sekika"><img src="" class="skillIconListJotai" id="icon_sekika" /><br><small>石化</small></a></li>
-                    <li class="col-1 xs-pad0 opacity-odd"><a class="nav-link pad0" data-toggle="tab" href="#konran"><img src="" class="skillIconListJotai" id="icon_konran" /><br><small>混乱</small></a></li>
-                    <li class="col-1 xs-pad0 opacity-odd"><a class="nav-link pad0" data-toggle="tab" href="#miryo"><img src="" class="skillIconListJotai" id="icon_miryo" /><br><small>魅了</small></a></li>
-                    <li class="col-1 xs-pad0 opacity-odd"><a class="nav-link pad0" data-toggle="tab" href="#kyosenshi"><img src="" class="skillIconListJotai" id="icon_kyosenshi" /><br><small>狂戦<span class="xs-hide">士</span></small></a></li>
-                    <li class="col-1 xs-pad0 opacity-odd"><a class="nav-link pad0" data-toggle="tab" href="#sokushi"><img src="" class="skillIconListJotai" id="icon_kizetsu" /><br><small>気絶</small></a></li>
-                    <li class="col-2 opacity-odd text-center"></li>
+                        <li class="col-1 xs-hide table-success text-center">状態<br>異常</li>
+                        <li class="col-12 xs-show table-success text-center">状態異常</li>
+                        <li class="col-1 xs-show opacity-odd text-center"></li>
+                        <li class="col-1 xs-pad0 opacity-odd"><a class="nav-link pad0" data-toggle="tab" href="#doku"><img src="" class="skillIconListJotai" id="icon_doku" /><br><small>毒</small></a></li>
+                        <li class="col-1 xs-pad0 opacity-odd"><a class="nav-link pad0" data-toggle="tab" href="#kurayami"><img src="" class="skillIconListJotai" id="icon_kurayami" /><br><small>暗闇</small></a></li>
+                        <li class="col-1 xs-pad0 opacity-odd"><a class="nav-link pad0" data-toggle="tab" href="#sutan"><img src="" class="skillIconListJotai" id="icon_stan" /><small class="xs-hide"><br>スタン</small></a></li>
+                        <li class="col-1 xs-pad0 opacity-odd"><a class="nav-link pad0" data-toggle="tab" href="#nemuri"><img src="" class="skillIconListJotai" id="icon_zzz" /><br><small>眠り</small></a></li>
+                        <li class="col-1 xs-pad0 opacity-odd"><a class="nav-link pad0" data-toggle="tab" href="#sekika"><img src="" class="skillIconListJotai" id="icon_sekika" /><br><small>石化</small></a></li>
+                        <li class="col-1 xs-pad0 opacity-odd"><a class="nav-link pad0" data-toggle="tab" href="#konran"><img src="" class="skillIconListJotai" id="icon_konran" /><br><small>混乱</small></a></li>
+                        <li class="col-1 xs-pad0 opacity-odd"><a class="nav-link pad0" data-toggle="tab" href="#miryo"><img src="" class="skillIconListJotai" id="icon_miryo" /><br><small>魅了</small></a></li>
+                        <li class="col-1 xs-pad0 opacity-odd"><a class="nav-link pad0" data-toggle="tab" href="#kyosenshi"><img src="" class="skillIconListJotai" id="icon_kyosenshi" /><br><small>狂戦<span class="xs-hide">士</span></small></a></li>
+                        <li class="col-1 xs-pad0 opacity-odd"><a class="nav-link pad0" data-toggle="tab" href="#sokushi"><img src="" class="skillIconListJotai" id="icon_kizetsu" /><br><small>気絶</small></a></li>
+                        <li class="col-2 opacity-odd text-center"></li>
 
-                    <li class="col-1 xs-hide table-info text-center"><small>デバフ</small></li>
-                    <li class="col-1 xs-hide opacity-even side-padding-zero"><a class="nav-link small" data-toggle="tab" href="#deb_wan">腕力</a></li>
-                    <li class="col-1 xs-hide opacity-even side-padding-zero"><a class="nav-link small" data-toggle="tab" href="#deb_tai">体力</a></li>
-                    <li class="col-1 xs-hide opacity-even side-padding-zero"><a class="nav-link small" data-toggle="tab" href="#deb_kiyo">器用さ</a></li>
-                    <li class="col-1 xs-hide opacity-even side-padding-zero"><a class="nav-link small" data-toggle="tab" href="#deb_suba">素早さ</a></li>
-                    <li class="col-1 xs-hide opacity-even side-padding-zero"><a class="nav-link small" data-toggle="tab" href="#deb_chi">知力</a></li>
-                    <li class="col-1 xs-hide opacity-even side-padding-zero"><a class="nav-link small" data-toggle="tab" href="#deb_sei">精神</a></li>
-                    <li class="col-5 xs-hide opacity-even text-center"> </li>
-                    <li class="col-12 xs-show table-info text-center">デバフ(敵能力低下)</li>
-                    <li class="col-2 xs-show opacity-even side-padding-zero"><a class="nav-link small" data-toggle="tab" href="#deb_wan">腕力</a></li>
-                    <li class="col-2 xs-show opacity-even side-padding-zero"><a class="nav-link small" data-toggle="tab" href="#deb_tai">体力</a></li>
-                    <li class="col-2 xs-show opacity-even side-padding-zero"><a class="nav-link small" data-toggle="tab" href="#deb_kiyo">器用</a></li>
-                    <li class="col-2 xs-show opacity-even side-padding-zero"><a class="nav-link small" data-toggle="tab" href="#deb_suba">素早</a></li>
-                    <li class="col-2 xs-show opacity-even side-padding-zero"><a class="nav-link small" data-toggle="tab" href="#deb_chi">知力</a></li>
-                    <li class="col-2 xs-show opacity-even side-padding-zero"><a class="nav-link small" data-toggle="tab" href="#deb_sei">精神</a></li>                    
-                    <li class="col-1 xs-hide table-success text-center"><small>その他</small></li>
-                    <li class="col-12 xs-show table-success text-center">攻撃範囲 / 補助 / 速度 など</li>
-                    <li class="col-1 xs-hide opacity-odd text-center side-padding-zero"><a class="nav-link  small" data-toggle="tab" href="#kin">近</a></li>
-                    <li class="col-1 xs-hide opacity-odd text-center side-padding-zero"><a class="nav-link  small" data-toggle="tab" href="#en">遠</a></li>
-                    <li class="col-1 xs-hide opacity-odd text-center side-padding-zero"><a class="nav-link  small" data-toggle="tab" href="#zen">全体</a></li>
-                    <li class="col-1 xs-hide opacity-odd text-center side-padding-zero"><a class="nav-link  small" data-toggle="tab" href="#tate">縦一列</a></li>
-                    <li class="col-1 xs-hide opacity-odd text-center side-padding-zero"><a class="nav-link  small" data-toggle="tab" href="#yoko">横一列</a></li>
-                    <li class="col-1 xs-hide opacity-odd text-center side-padding-zero"><a class="nav-link  small" data-toggle="tab" href="#mikata">味方単</a></li>
-                    <li class="col-1 xs-hide opacity-odd text-center side-padding-zero"><a class="nav-link  small" data-toggle="tab" href="#jishin">自身</a></li>
-                    <li class="col-2 xs-hide opacity-odd text-center side-padding-zero"><a class="nav-link  small" data-toggle="tab" href="#fast">ファスト</a></li>
-                    <li class="col-2 xs-hide opacity-odd text-center side-padding-zero"><a class="nav-link  small" data-toggle="tab" href="#delay">ディレイ</a></li>
+                        <li class="col-1 xs-hide table-info text-center"><small>デバフ</small></li>
+                        <li class="col-1 xs-hide opacity-even side-padding-zero"><a class="nav-link small" data-toggle="tab" href="#deb_wan">腕力</a></li>
+                        <li class="col-1 xs-hide opacity-even side-padding-zero"><a class="nav-link small" data-toggle="tab" href="#deb_tai">体力</a></li>
+                        <li class="col-1 xs-hide opacity-even side-padding-zero"><a class="nav-link small" data-toggle="tab" href="#deb_kiyo">器用さ</a></li>
+                        <li class="col-1 xs-hide opacity-even side-padding-zero"><a class="nav-link small" data-toggle="tab" href="#deb_suba">素早さ</a></li>
+                        <li class="col-1 xs-hide opacity-even side-padding-zero"><a class="nav-link small" data-toggle="tab" href="#deb_chi">知力</a></li>
+                        <li class="col-1 xs-hide opacity-even side-padding-zero"><a class="nav-link small" data-toggle="tab" href="#deb_sei">精神</a></li>
+                        <li class="col-5 xs-hide opacity-even text-center"> </li>
+                        <li class="col-12 xs-show table-info text-center">デバフ(敵能力低下)</li>
+                        <li class="col-2 xs-show opacity-even side-padding-zero"><a class="nav-link small" data-toggle="tab" href="#deb_wan">腕力</a></li>
+                        <li class="col-2 xs-show opacity-even side-padding-zero"><a class="nav-link small" data-toggle="tab" href="#deb_tai">体力</a></li>
+                        <li class="col-2 xs-show opacity-even side-padding-zero"><a class="nav-link small" data-toggle="tab" href="#deb_kiyo">器用</a></li>
+                        <li class="col-2 xs-show opacity-even side-padding-zero"><a class="nav-link small" data-toggle="tab" href="#deb_suba">素早</a></li>
+                        <li class="col-2 xs-show opacity-even side-padding-zero"><a class="nav-link small" data-toggle="tab" href="#deb_chi">知力</a></li>
+                        <li class="col-2 xs-show opacity-even side-padding-zero"><a class="nav-link small" data-toggle="tab" href="#deb_sei">精神</a></li>                    
+                        <li class="col-1 xs-hide table-success text-center"><small>その他</small></li>
+                        <li class="col-12 xs-show table-success text-center">攻撃範囲 / 補助 / 速度 など</li>
+                        <li class="col-1 xs-hide opacity-odd text-center side-padding-zero"><a class="nav-link  small" data-toggle="tab" href="#kin">近</a></li>
+                        <li class="col-1 xs-hide opacity-odd text-center side-padding-zero"><a class="nav-link  small" data-toggle="tab" href="#en">遠</a></li>
+                        <li class="col-1 xs-hide opacity-odd text-center side-padding-zero"><a class="nav-link  small" data-toggle="tab" href="#zen">全体</a></li>
+                        <li class="col-1 xs-hide opacity-odd text-center side-padding-zero"><a class="nav-link  small" data-toggle="tab" href="#tate">縦一列</a></li>
+                        <li class="col-1 xs-hide opacity-odd text-center side-padding-zero"><a class="nav-link  small" data-toggle="tab" href="#yoko">横一列</a></li>
+                        <li class="col-1 xs-hide opacity-odd text-center side-padding-zero"><a class="nav-link  small" data-toggle="tab" href="#mikata">味方単</a></li>
+                        <li class="col-1 xs-hide opacity-odd text-center side-padding-zero"><a class="nav-link  small" data-toggle="tab" href="#jishin">自身</a></li>
+                        <li class="col-2 xs-hide opacity-odd text-center side-padding-zero"><a class="nav-link  small" data-toggle="tab" href="#fast">ファスト</a></li>
+                        <li class="col-2 xs-hide opacity-odd text-center side-padding-zero"><a class="nav-link  small" data-toggle="tab" href="#delay">ディレイ</a></li>
 
-                    <li class="col-1 xs-show opacity-odd text-center side-padding-zero"><a class="nav-link  xs-pad0 small" data-toggle="tab" href="#kin">近</a></li>
-                    <li class="col-1 xs-show opacity-odd text-center side-padding-zero"><a class="nav-link  xs-pad0  small" data-toggle="tab" href="#en">遠</a></li>
-                    <li class="col-1 xs-show opacity-odd text-center side-padding-zero"><a class="nav-link  xs-pad0  small" data-toggle="tab" href="#zen">全体</a></li>
-                    <li class="col-1 xs-show opacity-odd text-center side-padding-zero"><a class="nav-link  xs-pad0  small" data-toggle="tab" href="#tate">縦列</a></li>
-                    <li class="col-1 xs-show opacity-odd text-center side-padding-zero"><a class="nav-link  xs-pad0  small" data-toggle="tab" href="#yoko">横列</a></li>
-                    <li class="col-2 xs-show opacity-odd text-center side-padding-zero"><a class="nav-link  xs-pad0  small" data-toggle="tab" href="#mikata">味方単</a></li>
-                    <li class="col-1 xs-show opacity-odd text-center side-padding-zero"><a class="nav-link  xs-pad0  small" data-toggle="tab" href="#jishin">自身</a></li>
-                    <li class="col-2 xs-show opacity-odd text-center side-padding-zero"><a class="nav-link  xs-pad0 small" data-toggle="tab" href="#fast">ファスト</a></li>
-                    <li class="col-2 xs-show opacity-odd text-center side-padding-zero"><a class="nav-link  xs-pad0 small" data-toggle="tab" href="#delay">ディレイ</a></li>
+                        <li class="col-1 xs-show opacity-odd text-center side-padding-zero"><a class="nav-link  xs-pad0 small" data-toggle="tab" href="#kin">近</a></li>
+                        <li class="col-1 xs-show opacity-odd text-center side-padding-zero"><a class="nav-link  xs-pad0  small" data-toggle="tab" href="#en">遠</a></li>
+                        <li class="col-1 xs-show opacity-odd text-center side-padding-zero"><a class="nav-link  xs-pad0  small" data-toggle="tab" href="#zen">全体</a></li>
+                        <li class="col-1 xs-show opacity-odd text-center side-padding-zero"><a class="nav-link  xs-pad0  small" data-toggle="tab" href="#tate">縦列</a></li>
+                        <li class="col-1 xs-show opacity-odd text-center side-padding-zero"><a class="nav-link  xs-pad0  small" data-toggle="tab" href="#yoko">横列</a></li>
+                        <li class="col-2 xs-show opacity-odd text-center side-padding-zero"><a class="nav-link  xs-pad0  small" data-toggle="tab" href="#mikata">味方単</a></li>
+                        <li class="col-1 xs-show opacity-odd text-center side-padding-zero"><a class="nav-link  xs-pad0  small" data-toggle="tab" href="#jishin">自身</a></li>
+                        <li class="col-2 xs-show opacity-odd text-center side-padding-zero"><a class="nav-link  xs-pad0 small" data-toggle="tab" href="#fast">ファスト</a></li>
+                        <li class="col-2 xs-show opacity-odd text-center side-padding-zero"><a class="nav-link  xs-pad0 small" data-toggle="tab" href="#delay">ディレイ</a></li>
 
-                </ul>
+                    </ul>
+                </div>
                 <label for="wepon" class="badge badge-pill badge-light">技・術選択</label>
                 <div id="myTabContent" class="row tab-content">
                     <div class="tab-pane fade show active" id="ken"><select class="form-control skill_select" id="skill_ken" name="type"></select></div>
@@ -225,13 +218,6 @@
                     <img src="" id="icon_S">
                     <img src="" id="icon_SS">
                 </div>
-                <div class="opacity">
-                    Powered by <a href="https://twitter.com/nao_romasaga_rs" target="new">nao_romasaga_rs</a><br>
-                    Special thanks <a href="https://twitter.com/imonoki" target="new">imonoki</a><br>
-                    © 2019 SQUARE ENIX CO., LTD. All Rights Reserved. Powered by Akatsuki Inc.<br>
-                    ILLUSTRATION: TOMOMI KOBAYASHI
-                </div>
-
             </div></div> <!-- main -->
 
         <!--script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script-->
@@ -240,11 +226,13 @@
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-storage.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
         <script src="./Firebase.js?v=20190404"></script>
-        <script src="./skill_display.js?v=20190404" ></script>
+        <script src="./skill_display.js?v=20190405" ></script>
+
         <script type="text/javascript">
             $(function () {
                 readData();
             });
         </script>
+        
     </body>
 </html>
