@@ -208,6 +208,11 @@ body {
         flex: 0 0 25%;
         max-width: 25%;
     }
+    .my-col-1or3{
+        -ms-flex: 0 0 25%;
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
 }
 @media screen and (min-width:800px) {
     .skillIconList {
@@ -224,6 +229,11 @@ body {
         -ms-flex: 0 0 16.666667%;
         flex: 0 0 16.666667%;
         max-width: 16.666667%;        
+    }
+    .my-col-1or3{
+        -ms-flex: 0 0 8.333334%;
+        flex: 0 0 8.333334%;
+        max-width: 8.333334%;        
     }
 
 }
