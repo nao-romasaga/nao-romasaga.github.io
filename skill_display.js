@@ -60,7 +60,8 @@ function readData() {
         var skillTypeList = {"ファスト": {}, "ディレイ": {},
             "スタン": {}, "マヒ": {}, "即死": {}, "毒": {}, "石化": {},
             "魅了": {}, "眠り": {}, "混乱": {}, "狂戦士": {}, "暗闇": {},
-            "腕力": {}, "体力": {}, "器用さ": {}, "素早さ": {}, "知力": {}, "精神": {}
+            "腕力": {}, "体力": {}, "器用さ": {}, "素早さ": {}, "知力": {}, "精神": {},
+            "E": [], "D": [], "C": [], "B": [], "A": [], "S": [], "SS": [], "SSS": [], "-": []
         };
         var optionList = {
             "剣": "skill_ken", "大剣": "skill_dken", "斧": "skill_ono",
@@ -80,37 +81,44 @@ function readData() {
             "魅了": "skill_miryo", "眠り": "skill_nemuri", "混乱": "skill_konran", "狂戦士": "skill_kyosenshi", "暗闇": "skill_kurayami",
             "腕力": "skill_deb_wan", "体力": "skill_deb_tai",
             "器用さ": "skill_deb_kiyo", "素早さ": "skill_deb_suba",
-            "知力": "skill_deb_chi", "精神": "skill_deb_sei"
+            "知力": "skill_deb_chi", "精神": "skill_deb_sei",
+            "E": "skill_iryoku_e", "D": "skill_iryoku_d", "C": "skill_iryoku_c",
+            "B": "skill_iryoku_b", "A": "skill_iryoku_a", "S": "skill_iryoku_s",
+            "SS": "skill_iryoku_ss", "SSS": "skill_iryoku_sss"
         };
-        for (key in skillList) {
-            var row = skillList[key];
+        for (let key in skillList) {
+            let row = skillList[key];
             // 威力設定されてないものは未実装もあるので弾いておく
             if (row['Holders'] !== undefined) {
                 //console.log(row);
-                var x = (row['SkillIryoku'] == 0) ? "計測中" : row['SkillIryoku'];
-                var iryoku = row['PowerGrade'] + "(" + x + ")";
-                var name = "[" + row['BattleType'] + "]" +
+                let x = (row['SkillIryoku'] == 0 || row['SkillIryoku'] == "-") ? "計測中" : row['SkillIryoku'];
+                let iryoku = row['PowerGrade'] + "(" + x + ")";
+                let name = "[" + row['BattleType'] + "]" +
                         row['Name'] +
                         " 威力:" + iryoku +
                         " BP:" + row['ConsumeBp'] +
                         " " + row["AttackDistance"] + "/" + row["AttackArea"];
-                var battleType = row['BattleType'];
+                row['dispName'] = name;
+                let battleType = row['BattleType'];
                 if (skillTypeList[battleType] === undefined) {
                     skillTypeList[battleType] = {};
                 }
                 skillTypeList[battleType][name] = key;
 
-                var attackArea = row['AttackArea'];
+                let attackArea = row['AttackArea'];
                 if (skillTypeList[attackArea] === undefined) {
                     skillTypeList[attackArea] = {};
                 }
                 skillTypeList[attackArea][name] = key;
 
-                var attackDistance = row['AttackDistance'];
+                let attackDistance = row['AttackDistance'];
                 if (skillTypeList[attackDistance] === undefined) {
                     skillTypeList[attackDistance] = {};
                 }
                 skillTypeList[attackDistance][name] = key;
+                // 威力だけは再ソートかけるので中身を入れておく
+                let grade = row['PowerGrade'];
+                skillTypeList[grade].push(row);
 
                 // 特殊な奴ら
                 if (row['Fast']) {
@@ -131,21 +139,50 @@ function readData() {
                 }
 
 
-                var attackAttributes = row['AttackAttributes'];
+                let attackAttributes = row['AttackAttributes'];
                 attackAttributes.split(',').forEach(function (attr) {
                     if (skillTypeList[attr] === undefined) {
                         skillTypeList[attr] = {};
                     }
                     skillTypeList[attr][name] = key;
-                })
+                });
             }
         }
+        skillTypeList["E"] = sortSkill(skillTypeList["E"]);
+        skillTypeList["D"] = sortSkill(skillTypeList["D"]);
+        skillTypeList["C"] = sortSkill(skillTypeList["C"]);
+        skillTypeList["B"] = sortSkill(skillTypeList["B"]);
+        skillTypeList["A"] = sortSkill(skillTypeList["A"]);
+        skillTypeList["S"] = sortSkill(skillTypeList["S"]);
+        skillTypeList["SS"] = sortSkill(skillTypeList["SS"]);
+        skillTypeList["SSS"] = sortSkill(skillTypeList["SSS"]);
 
         for (key in optionList) {
             addOption({"技(術)を選択してください": 0}, optionList[key]);
             addOption(skillTypeList[key], optionList[key]);
         }
     });
+    function sortSkill(typeList) {
+        let result = {};
+        typeList.sort(function (a, b) {
+            if (a.SkillIryoku > b.SkillIryoku) {
+                return -1;
+            } else if (a.SkillIryoku < b.SkillIryoku) {
+                return 1;
+            } else if (a.ConsumeBp < b.ConsumeBp) {
+                return -1;
+            } else if (a.ConsumeBp > b.ConsumeBp) {
+                return 1;
+            } else if (a.AttackAttributes > b.AttackAttributes) {
+                return -1;
+            }
+            return 0;
+        });
+        for (let row of typeList) {
+            result[row['dispName']] = row['Id'];
+        }
+        return result;
+    }
 
     firebase.database().ref('Style').once("value").then(function (snapshot) {
         //console.log(snapshot.val());
@@ -173,7 +210,7 @@ $(".skill_select").change(function (e) {
         let styleId = skillHolders['Holders'][key];
         let imgId = "cutin" + styleId;
         let imgId2 = "tmp" + styleId;
-        var imgSrc = "";
+        let imgSrc = "";
         // 画像が存在する場合は再取得しない
         if ($('#' + imgId).length == 0) {
             $("#imgTank").append("<img src=\"\" id=\"" + imgId + "\">");
@@ -182,24 +219,24 @@ $(".skill_select").change(function (e) {
         } else {
             imgSrc = $("#" + imgId).attr('src');
         }
-        var styleInfo = styleList[styleId];
+        let styleInfo = styleList[styleId];
 
-        var rarityIcon = $("#icon_" + styleInfo['Rarity']).attr('src');
+        let rarityIcon = $("#icon_" + styleInfo['Rarity']).attr('src');
 
-        var color = "background-color: rgb(246,236,100);}";
+        let color = "background-color: rgb(246,236,100);}";
         if (styleInfo['Rarity'] === "A") {
             color = "background-color: rgb(247,170,150);}";
         } else if (styleInfo['Rarity'] === "S") {
             color = "background-color: rgb(200,224,234);}";
         }
-        var col = "";
-        var styleName = styleInfo['AnotherName'];
-        var Name = styleInfo['Name'];
-        var height = 50;
+        let col = "";
+        let styleName = styleInfo['AnotherName'];
+        let Name = styleInfo['Name'];
+        let height = 50;
         col += "<td><img src=\"" + rarityIcon + "\" height=" + height + "></td>";
         col += "<td class='text-center'><img src=\"" + imgSrc + "\" height=" + 40 + " id=\"" + imgId2 + "\"><br><small>" + Name + " " + styleName + "<small></td>";
         col += "<td class='xs-hide'>" + styleInfo['Skill'].join("<br>") + "</td>";
-        var ab = [];
+        let ab = [];
         for (lv in styleInfo['StyleAbility']) {
             ab.push(lv + ":" + styleInfo['StyleAbility'][lv]);
         }
@@ -217,14 +254,14 @@ function setSkillTable(skillInfo) {
     $("#skill_dtl_btAttr").html(img + "<br>" + battleType); // 武器種別
     $("#skill_dtl_name").text(skillInfo['Name']); // 技名称
 
-    var imgList = [];
+    let imgList = [];
     skillInfo['AttackAttributes'].split(',').forEach(function (value) {
         let id = ICON_LIST[value];
         imgList.push('<img src="' + $("#" + id).attr("src") + '" data-value="' + value + '"/>');
     });
     $("#skill_dtl_atAtttr").html(imgList.join("")); // 技属性
 
-    var iryoku = (skillInfo['SkillIryoku'] != 0) ? skillInfo['SkillIryoku'] : "計測中";
+    let iryoku = (skillInfo['SkillIryoku'] != 0) ? skillInfo['SkillIryoku'] : "計測中";
     $("#skill_dtl_grade").text(skillInfo['PowerGrade'] + " (" + iryoku + ")"); // 技威力
     $("#skill_dtl_bp").text(skillInfo['ConsumeBp']); //　初期BP
     $("#skill_dtl_minBp").text((skillInfo['ConsumeBp'] - skillInfo['Kakusei'])); // 最大覚醒BP
