@@ -46,6 +46,10 @@ setImgTag("icon/icon_zzz.png", "icon_zzz");
 setImgTag("icon/icon_a.png", "icon_A");
 setImgTag("icon/icon_s.png", "icon_S");
 setImgTag("icon/icon_ss.png", "icon_SS");
+showimage("dot/35bc4.png", "icon_allSkill", "200px 200px");
+showimage("dot/367e0.png", "icon_healSkill", "200px 200px");
+showimage("dot/641f4.png", "icon_yokoSkill", "200px 200px");
+showimage("dot/36204.png", "icon_tateSkill", "200px 200px");
 
 var skillList, styleList, abilityList;
 
