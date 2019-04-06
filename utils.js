@@ -94,12 +94,9 @@ function insertCommonComponent() {
 
     //$("$header").html(nav);
     let url = $(location).attr('href');
-    console.log(url, url.indexOf('index.html'), url.indexOf('skill.html'));
     if (url.indexOf('index.html') != -1) {
-        console.log("this is index");
         $("#headIndex").addClass("active");
     } else if (url.indexOf('skill.html') != -1) {
-        console.log("this is skill");
         $("#headSkill").addClass("active");
     }
 }
