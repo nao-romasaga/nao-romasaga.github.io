@@ -51,7 +51,7 @@ showimage("dot/367e0.png", "icon_healSkill", "200px 200px");
 showimage("dot/641f4.png", "icon_yokoSkill", "200px 200px");
 showimage("dot/36204.png", "icon_tateSkill", "200px 200px");
 
-var skillList, styleList, abilityList;
+var skillList, styleList, abilityList, charList;
 
 function readData() {
     firebase.database().ref('Skill').once("value").then(function (snapshot) {
@@ -184,6 +184,10 @@ function readData() {
         return result;
     }
 
+    firebase.database().ref('Char').once("value").then(function (snapshot) {
+        //console.log(snapshot.val());
+        charList = snapshot.val();
+    });
     firebase.database().ref('Style').once("value").then(function (snapshot) {
         //console.log(snapshot.val());
         styleList = snapshot.val();
@@ -229,17 +233,47 @@ $(".skill_select").change(function (e) {
         } else if (styleInfo['Rarity'] === "S") {
             color = "background-color: rgb(200,224,234);}";
         }
+
         let col = "";
         let styleName = styleInfo['AnotherName'];
         let Name = styleInfo['Name'];
         let height = 50;
         col += "<td><img src=\"" + rarityIcon + "\" height=" + height + "></td>";
-        col += "<td class='text-center'><img src=\"" + imgSrc + "\" height=" + 40 + " id=\"" + imgId2 + "\"><br><small>" + Name + " " + styleName + "<small></td>";
+        col += "<td class='text-center'>";
+        col += "<img src=\"" + imgSrc + "\" height=" + height + " id=\"" + imgId2 + "\"><br>";
+        col += "<small style='line-height:0px !important;'>" + Name;
+        col += "<span class='xs-show'> " + styleName + "</span>";
+        col += "<p class='xs-hide'>" + styleName + "</p>";
+        col += "</small></td>";
         col += "<td class='xs-hide'>" + styleInfo['Skill'].join("<br>") + "</td>";
-        let ab = [];
+        let ab1 = [];
         for (lv in styleInfo['StyleAbility']) {
-            ab.push(lv + ":" + styleInfo['StyleAbility'][lv]);
+            ab1.push(lv + ":" + styleInfo['StyleAbility'][lv]);
         }
+        let ab = [];
+        let charId = styleInfo['CharacterId'];
+        for (let holderStyleId of charList[charId]['Holders']) {
+            if (holderStyleId !== styleId) {
+                let imgId = "icon" + holderStyleId;
+                let imgId2 = "tmpIcon" + holderStyleId;
+                let imgSrc = "";
+                // 画像が存在する場合は再取得しない
+                if ($('#' + imgId).length === 0) {
+                    $("#imgTank").append("<img src=\"\" id=\"" + imgId + "\">");
+                    setImgTag("style_icon/" + holderStyleId.substr(2) + ".png", imgId);
+                    setImgClassTag("style_icon/" + holderStyleId.substr(2) + ".png", imgId2);
+                } else {
+                    imgSrc = $("#" + imgId).attr('src');
+                }
+                let sInfo = styleList[holderStyleId];
+                ab.push("<img src=\"" + imgSrc + "\" height=" + 40 + " class=\"" + imgId2 + "\"><small>" + sInfo['Skill'].join("/")+"</small>");
+            }
+        }
+        if(ab.length === 0){
+            ab.push("NONE");
+        }
+
+        col += "<td class='xs-hide'>" + ab1.join("<br>") + "</td>";
         col += "<td class='xs-hide'>" + ab.join("<br>") + "</td>";
         col += "<tr class='xs-show' style='" + color + "'><td colspan=2>" + styleInfo['Skill'].join(" / ") + "</td></tr>";
         $("table#skill_holder_table tbody").append("<tr style='" + color + "'>" + col + "</tr>\n");
@@ -269,17 +303,17 @@ function setSkillTable(skillInfo) {
 }
 
 
-var SKILL_NAME_LABEL={
-    "ken":"剣","dken":"大剣","ono":"斧","yari":"槍","sken":"小剣","yumi":"弓","kon":"棍棒","tai":"体術","ju":"銃",
-    "hi":"火術","mizu":"水術","kaze":"風術","tsuchi":"土術","hikari":"光術","yami":"術",
-    "netsu":"熱属性","rei":"冷属性","rai":"雷属性","in":"陰属性","you":"陽属性",
-    "doku":"毒付与","kurayami":"暗闇付与","sutan":"スタン付与","nemuri":"睡眠付与","sekika":"石化付与","konran":"混乱付与","miryo":"魅了付与","kyosenshi":"狂戦士付与","sokushi":"即死",
-    "deb_wan":"腕力減少付与","deb_tai":"体力減少付与","deb_kiyo":"器用さ減少付与","deb_suba":"素早さ減少付与","deb_chi":"知力減少付与","deb_sei":"精神減少付与"
-    ,"zen":"全体攻撃","tate":"縦一列攻撃","yoko":"横一列攻撃","mikata":"味方単体対象","kin":"近接攻撃","en":"遠距離攻撃",
-    "jishin":"自身が対象","fast":"ファスト効果","delay":"ディレイ効果",
-    "iryoku_e":"技威力[E]","iryoku_d":"技威力[D]","iryoku_c":"技威力[C]","iryoku_b":"技威力[B]","iryoku_a":"技威力[A]",
-    "iryoku_s":"技威力[S]","iryoku_ss":"技威力[SS]","iryoku_sss":"技威力[SSS]"
+var SKILL_NAME_LABEL = {
+    "ken": "剣", "dken": "大剣", "ono": "斧", "yari": "槍", "sken": "小剣", "yumi": "弓", "kon": "棍棒", "tai": "体術", "ju": "銃",
+    "hi": "火術", "mizu": "水術", "kaze": "風術", "tsuchi": "土術", "hikari": "光術", "yami": "術",
+    "netsu": "熱属性", "rei": "冷属性", "rai": "雷属性", "in": "陰属性", "you": "陽属性",
+    "doku": "毒付与", "kurayami": "暗闇付与", "sutan": "スタン付与", "nemuri": "睡眠付与", "sekika": "石化付与", "konran": "混乱付与", "miryo": "魅了付与", "kyosenshi": "狂戦士付与", "sokushi": "即死",
+    "deb_wan": "腕力減少付与", "deb_tai": "体力減少付与", "deb_kiyo": "器用さ減少付与", "deb_suba": "素早さ減少付与", "deb_chi": "知力減少付与", "deb_sei": "精神減少付与"
+    , "zen": "全体攻撃", "tate": "縦一列攻撃", "yoko": "横一列攻撃", "mikata": "味方単体対象", "kin": "近接攻撃", "en": "遠距離攻撃",
+    "jishin": "自身が対象", "fast": "ファスト効果", "delay": "ディレイ効果",
+    "iryoku_e": "技威力[E]", "iryoku_d": "技威力[D]", "iryoku_c": "技威力[C]", "iryoku_b": "技威力[B]", "iryoku_a": "技威力[A]",
+    "iryoku_s": "技威力[S]", "iryoku_ss": "技威力[SS]", "iryoku_sss": "技威力[SSS]"
 };
-$(".nav-link").click(function(){
+$(".nav-link").click(function () {
     $("#skill_name_label").text(SKILL_NAME_LABEL[$(this).attr('href').substr(1)]);
 });
