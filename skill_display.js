@@ -268,3 +268,18 @@ function setSkillTable(skillInfo) {
     $("#skill_dtl_text").html(skillInfo['FlavorText']); // フレーバーテキスト
 }
 
+
+var SKILL_NAME_LABEL={
+    "ken":"剣","dken":"大剣","ono":"斧","yari":"槍","sken":"小剣","yumi":"弓","kon":"棍棒","tai":"体術","ju":"銃",
+    "hi":"火術","mizu":"水術","kaze":"風術","tsuchi":"土術","hikari":"光術","yami":"術",
+    "netsu":"熱属性","rei":"冷属性","rai":"雷属性","in":"陰属性","you":"陽属性",
+    "doku":"毒付与","kurayami":"暗闇付与","sutan":"スタン付与","nemuri":"睡眠付与","sekika":"石化付与","konran":"混乱付与","miryo":"魅了付与","kyosenshi":"狂戦士付与","sokushi":"即死",
+    "deb_wan":"腕力減少付与","deb_tai":"体力減少付与","deb_kiyo":"器用さ減少付与","deb_suba":"素早さ減少付与","deb_chi":"知力減少付与","deb_sei":"精神減少付与"
+    ,"zen":"全体攻撃","tate":"縦一列攻撃","yoko":"横一列攻撃","mikata":"味方単体対象","kin":"近接攻撃","en":"遠距離攻撃",
+    "jishin":"自身が対象","fast":"ファスト効果","delay":"ディレイ効果",
+    "iryoku_e":"技威力[E]","iryoku_d":"技威力[D]","iryoku_c":"技威力[C]","iryoku_b":"技威力[B]","iryoku_a":"技威力[A]",
+    "iryoku_s":"技威力[S]","iryoku_ss":"技威力[SS]","iryoku_sss":"技威力[SSS]"
+};
+$(".nav-link").click(function(){
+    $("#skill_name_label").text(SKILL_NAME_LABEL[$(this).attr('href').substr(1)]);
+});
