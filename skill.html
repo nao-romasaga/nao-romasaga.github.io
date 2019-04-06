@@ -8,7 +8,7 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-        <script src="./utils.js?update=20190405_1" ></script>
+        <script src="./utils.js?update=20190407" ></script>
         <title>ロマサガRS スタイル検索(技/術)@nao_romasaga</title>
         <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -18,7 +18,7 @@
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
         <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="./style.css?update=20190405_1">
+        <link rel="stylesheet" type="text/css" href="./style.css?update=20190407">
     </head>
     <body>
 
@@ -139,7 +139,7 @@
 
                     </ul>
                 </div>
-                <label for="wepon" class="badge badge-pill badge-light">技・術選択</label>
+                <label for="wepon" class="badge badge-pill badge-light"><span id="skill_name_label">剣</span>の技・術選択</label>
                 <div id="myTabContent" class="row tab-content">
                     <div class="tab-pane fade show active" id="ken"><select class="form-control skill_select" id="skill_ken" name="type"></select></div>
                     <div class="tab-pane fade" id="dken"><select class="form-control skill_select" id="skill_dken" name="type"></select></div>
@@ -242,13 +242,13 @@
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-storage.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
         <script src="./Firebase.js?v=20190404"></script>
-        <script src="./skill_display.js?v=20190406_1" ></script>
+        <script src="./skill_display.js?v=20190407" ></script>
 
         <script type="text/javascript">
             $(function () {
                 readData();
             });
         </script>
-        
+
     </body>
 </html>
