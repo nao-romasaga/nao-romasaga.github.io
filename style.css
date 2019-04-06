@@ -1,3 +1,10 @@
+.nav-link.active,
+.nav-item.show .nav-link {
+    background-color: #93CBFF !important;
+    border-color: #0000FF !important;
+}
+
+
 .side-padding-zero {
     padding-left: 0px !important;
     padding-right: 0px !important;
