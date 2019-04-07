@@ -61,6 +61,9 @@ function insertCommonComponent() {
     nav += '        <a class="nav-link" href="./skill.html">スタイル検索(技・術)</a>';
     nav += '      </li>';
     nav += '      <li class="nav-item">';
+    nav += '        <a class="nav-link" href="./ability.html">アビリティツリー(仮)</a>';
+    nav += '      </li>';
+    nav += '      <li class="nav-item">';
     nav += '        <a class="nav-link disabled" href="#">スタイル情報(coming soon)</a>';
     nav += '      </li>';
     nav += '    </ul>';
