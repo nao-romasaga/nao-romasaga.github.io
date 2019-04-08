@@ -83,15 +83,12 @@ $(function () {
             }
             $(".abilityName").click(function () {
                 let id = $(this).attr("abid");
-                console.log(id);
+                //console.log(id, ABILITY_MASTER[id]);
                 displayAbilityHolder(ABILITY_MASTER[id]);
                 scrollStyleList();
             });
 
         }
-        let ab = ABILITY_MASTER["ID29d93221"];
-        displayAbilityHolder(ab);
-
     });
 });
 function scrollStyleList() {
@@ -178,7 +175,6 @@ function displayAbilityHolder(holders) {
             imgSrc = $("#" + imgId).attr('src');
         }
         let styleInfo = STYLE_MASTER[styleId];
-
         let rarityIcon = $("#icon_" + styleInfo['Rarity']).attr('src');
 
         let color = "background-color: rgb(246,236,100);}";
