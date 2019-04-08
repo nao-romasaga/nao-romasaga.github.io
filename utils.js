@@ -60,8 +60,8 @@ function insertCommonComponent() {
     nav += '      <li class="nav-item" id="headSkill">';
     nav += '        <a class="nav-link" href="./skill.html">スタイル検索(技・術)</a>';
     nav += '      </li>';
-    nav += '      <li class="nav-item">';
-    nav += '        <a class="nav-link" href="./ability.html">アビリティツリー(仮)</a>';
+    nav += '      <li class="nav-item" id="headAbility">';
+    nav += '        <a class="nav-link" href="./ability.html">アビリティツリー</a>';
     nav += '      </li>';
     nav += '      <li class="nav-item">';
     nav += '        <a class="nav-link disabled" href="#">スタイル情報(coming soon)</a>';
@@ -70,7 +70,6 @@ function insertCommonComponent() {
     nav += '  </div>';
     nav += '</nav>';
     $('body').prepend(nav);
-
     var footer = "";
     footer += '<div class="opacity" style ="position: relative;">';
     footer += 'Powered by <a href="https://twitter.com/nao_romasaga_rs" target="new">nao_romasaga_rs</a><br>';
@@ -90,19 +89,40 @@ function insertCommonComponent() {
     footer += '<br>';
     footer += '</div>';
     $('body').append(footer);
-
     showimage("dot/36a44.png", "dotCat", "400px");
     showimage("dot/ad5d4.png", "dotPoruka", "400px");
     showimage("dot/ad638.png", "dotRiz", "400px");
-
     //$("$header").html(nav);
     let url = $(location).attr('href');
     if (url.indexOf('index.html') != -1) {
         $("#headIndex").addClass("active");
     } else if (url.indexOf('skill.html') != -1) {
         $("#headSkill").addClass("active");
+    } else if (url.indexOf('ability.html') != -1) {
+        $("#headAbility").addClass("active");
     }
+    
 }
 $(document).ready(function () {
     insertCommonComponent();
 });
+function getDevice() {
+    var ua = navigator.userAgent;
+    if (ua.indexOf('iPhone') > 0 || ua.indexOf('iPod') > 0 || ua.indexOf('Android') > 0 && ua.indexOf('Mobile') > 0) {
+        return 'sp';
+    } else if (ua.indexOf('iPad') > 0 || ua.indexOf('Android') > 0) {
+        return 'tab';
+    } else {
+        return 'other';
+    }
+}
+
+function getTime(time) {
+    var x = {"まれに": "25%", "ごくまれに": "10%", "僅かな確率で": "10%未満", "必ず": "100%"};
+    if (time == "") {
+        return "";
+    } else {
+        return x[time];
+    }
+}
+$('[data-toggle="tooltip"]').tooltip();
