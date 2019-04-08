@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <script src="./utils.js?update=20190408" ></script>
+        <title>ロマサガRS スタイル検索(技/術)@nao_romasaga</title>
+        <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+        <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="./style.css?update=20190405_1">
+    </head>
+    <body>
+
+        <div class ="haikei"><div class="container">
+                <div class="text-center">
+                    <a href="https://www.jp.square-enix.com/saga_reuniverse/" target="new"><img src="https://www.jp.square-enix.com/saga_reuniverse/assets/img/cmn_logo01_sp.png" class="col-sm-12 col-md-8 col-lg-6"></a>
+                </div>
+                <h2 class="text-center opacity">スタイル検索(技/術)</h2>
+                <div class="text-center">
+                </div>
+                <p class="text-right opacity"><small>バグ発見、ご要望は <a href="https://twitter.com/nao_romasaga_rs" target="new">nao_romasaga_rs</a>まで</small>
+                </p>
+                <label for="type" class="badge badge-pill badge-light">武器種別 技・術一覧</label>
+                <div>
+                    <ul class="row nav nav-tabs text-center">
+                        <li class="col-1 xs-hide table-info text-center">武器</li>
+                        <li class="col-12 xs-show table-info text-center">武器</li>
+                        <li class="col-1 xs-show opacity-odd"></li>
+                        <li class="col-1 xs-pad0 opacity-even"><a class="nav-link pad0" data-toggle="tab" href="#ken"><img src="" class="skillIconList" id="icon_ken" /></a></li>
+                        <li class="col-1 xs-pad0 opacity-even"><a class="nav-link pad0" data-toggle="tab" href="#dken"><img src="" class="skillIconList" id="icon_dken" /></a></li>
+                        <li class="col-1 xs-pad0 opacity-even"><a class="nav-link pad0" data-toggle="tab" href="#ono"><img src="" class="skillIconList" id="icon_ono" /></a></li>
+                        <li class="col-1 xs-pad0 opacity-even"><a class="nav-link pad0" data-toggle="tab" href="#kon"><img src="" class="skillIconList" id="icon_kon" /></a></li>
+                        <li class="col-1 xs-pad0 opacity-even"><a class="nav-link pad0" data-toggle="tab" href="#tai"><img src="" class="skillIconList" id="icon_tai" /></a></li>
+                        <li class="col-1 xs-pad0 opacity-even"><a class="nav-link pad0" data-toggle="tab" href="#ju"><img src="" class="skillIconList" id="icon_ju" /></a></li>
+                        <li class="col-1 xs-pad0 opacity-even"><a class="nav-link pad0" data-toggle="tab" href="#sken"><img src="" class="skillIconList" id="icon_sken" /></a></li>
+                        <li class="col-1 xs-pad0 opacity-even"><a class="nav-link pad0" data-toggle="tab" href="#yumi"><img src="" class="skillIconList" id="icon_yumi" /></a></li>
+                        <li class="col-1 xs-pad0 opacity-even"><a class="nav-link pad0" data-toggle="tab" href="#yari"><img src="" class="skillIconList" id="icon_yari" /></a></li>
+                        <li class="col-2 opacity-even"></li>
+
+                        <li class="col-1 xs-hide table-success text-center">術</li>
+                        <li class="col-12 xs-show table-success text-center">術</li>
+                        <li class="col-1 xs-show opacity-odd"></li>
+                        <li class="col-1 xs-pad0 opacity-odd"><a class="nav-link pad0" data-toggle="tab" href="#hi"><img src="" class="skillIconListJutsu" id="icon_hi" /></a></li>
+                        <li class="col-1 xs-show opacity-odd"></li>
+                        <li class="col-1 xs-pad0 opacity-odd"><a class="nav-link pad0" data-toggle="tab" href="#mizu"><img src="" class="skillIconListJutsu" id="icon_mizu" /></a></li>
+                        <li class="col-1 xs-show opacity-odd"></li>
+                        <li class="col-1 xs-pad0 opacity-odd"><a class="nav-link pad0" data-toggle="tab" href="#kaze"><img src="" class="skillIconListJutsu" id="icon_kaze" /></a></li>
+                        <li class="col-1 xs-show opacity-odd"></li>
+                        <li class="col-1 xs-pad0 opacity-odd"><a class="nav-link pad0" data-toggle="tab" href="#tsuchi"><img src="" class="skillIconListJutsu" id="icon_tsuchi" /></a></li>
+                        <li class="col-1 xs-show opacity-odd"></li>
+                        <li class="col-1 xs-pad0 opacity-odd"><a class="nav-link pad0" data-toggle="tab" href="#hikari"><img src="" class="skillIconListJutsu" id="icon_hikari" /></a></li>
+                        <li class="col-1 xs-show opacity-odd"></li>
+                        <li class="col-1 xs-pad0 opacity-odd"><a class="nav-link pad0" data-toggle="tab" href="#yami"><img src="" class="skillIconListJutsu" id="icon_yami"/></a></li>
+                        <li class="col-5 xs-hide opacity-odd"></li>
+
+                        <li class="col-1 xs-hide table-info text-center">属性</li>
+                        <li class="col-12 xs-show table-info text-center">属性</li>
+                        <li class="col-1 xs-show opacity-odd text-center"></li>
+                        <li class="col-1 xs-pad0 opacity-even"><a class="nav-link pad0" data-toggle="tab" href="#netsu"><img src="" class="skillIconListJutsu" id="icon_netsu" /></a></li>
+                        <li class="col-1 xs-show opacity-odd"></li>
+                        <li class="col-1 xs-pad0 opacity-even"><a class="nav-link pad0" data-toggle="tab" href="#rei"><img src="" class="skillIconListJutsu" id="icon_rei" /></a></li>
+                        <li class="col-1 xs-show opacity-odd"></li>
+                        <li class="col-1 xs-pad0 opacity-even"><a class="nav-link pad0" data-toggle="tab" href="#rai"><img src="" class="skillIconListJutsu" id="icon_rai" /></a></li>
+                        <li class="col-1 xs-show opacity-odd"></li>
+                        <li class="col-1 xs-pad0 opacity-even"><a class="nav-link pad0" data-toggle="tab" href="#in"><img src="" class="skillIconListJutsu" id="icon_in" /></a></li>
+                        <li class="col-1 xs-show opacity-odd"></li>
+                        <li class="col-1 xs-pad0 opacity-even"><a class="nav-link pad0" data-toggle="tab" href="#you"><img src="" class="skillIconListJutsu" id="icon_yo" /></a></li>
+                        <li class="col-6 xs-hide opacity-even"><img src="" id="icon_zan" width="0" height="0"/><img src="" id="icon_da" width="0" height="0"/><img src="" id="icon_totsu" width="0" height="0"/></li>
+                        <li class="col-2 xs-show opacity-even"><img src="" id="icon_zan" width="0" height="0"/><img src="" id="icon_da" width="0" height="0"/><img src="" id="icon_totsu" width="0" height="0"/></li>
+
+                        <li class="col-1 xs-hide table-success text-center">状態<br>異常</li>
+                        <li class="col-12 xs-show table-success text-center">状態異常</li>
+                        <li class="col-1 xs-show opacity-odd text-center"></li>
+                        <li class="col-1 xs-pad0 opacity-odd"><a class="nav-link pad0" data-toggle="tab" href="#doku"><img src="" class="skillIconListJotai" id="icon_doku" /><br><small>毒</small></a></li>
+                        <li class="col-1 xs-pad0 opacity-odd"><a class="nav-link pad0" data-toggle="tab" href="#kurayami"><img src="" class="skillIconListJotai" id="icon_kurayami" /><br><small>暗闇</small></a></li>
+                        <li class="col-1 xs-pad0 opacity-odd"><a class="nav-link pad0" data-toggle="tab" href="#sutan"><img src="" class="skillIconListJotai" id="icon_stan" /><small class="xs-hide"><br>スタン</small></a></li>
+                        <li class="col-1 xs-pad0 opacity-odd"><a class="nav-link pad0" data-toggle="tab" href="#nemuri"><img src="" class="skillIconListJotai" id="icon_zzz" /><br><small>眠り</small></a></li>
+                        <li class="col-1 xs-pad0 opacity-odd"><a class="nav-link pad0" data-toggle="tab" href="#sekika"><img src="" class="skillIconListJotai" id="icon_sekika" /><br><small>石化</small></a></li>
+                        <li class="col-1 xs-pad0 opacity-odd"><a class="nav-link pad0" data-toggle="tab" href="#konran"><img src="" class="skillIconListJotai" id="icon_konran" /><br><small>混乱</small></a></li>
+                        <li class="col-1 xs-pad0 opacity-odd"><a class="nav-link pad0" data-toggle="tab" href="#miryo"><img src="" class="skillIconListJotai" id="icon_miryo" /><br><small>魅了</small></a></li>
+                        <li class="col-1 xs-pad0 opacity-odd"><a class="nav-link pad0" data-toggle="tab" href="#kyosenshi"><img src="" class="skillIconListJotai" id="icon_kyosenshi" /><br><small>狂戦<span class="xs-hide">士</span></small></a></li>
+                        <li class="col-1 xs-pad0 opacity-odd"><a class="nav-link pad0" data-toggle="tab" href="#sokushi"><img src="" class="skillIconListJotai" id="icon_kizetsu" /><br><small>気絶</small></a></li>
+                        <li class="col-2 opacity-odd text-center"></li>
+
+                        <li class="col-1 xs-hide table-info text-center"><small>デバフ</small></li>
+                        <li class="col-1 xs-hide opacity-even side-padding-zero"><a class="nav-link small" data-toggle="tab" href="#deb_wan">腕力↓</a></li>
+                        <li class="col-1 xs-hide opacity-even side-padding-zero"><a class="nav-link small" data-toggle="tab" href="#deb_tai">体力↓</a></li>
+                        <li class="col-2 xs-hide opacity-even side-padding-zero"><a class="nav-link small" data-toggle="tab" href="#deb_kiyo">器用さ↓</a></li>
+                        <li class="col-2 xs-hide opacity-even side-padding-zero"><a class="nav-link small" data-toggle="tab" href="#deb_suba">素早さ↓</a></li>
+                        <li class="col-1 xs-hide opacity-even side-padding-zero"><a class="nav-link small" data-toggle="tab" href="#deb_chi">知力↓</a></li>
+                        <li class="col-1 xs-hide opacity-even side-padding-zero"><a class="nav-link small" data-toggle="tab" href="#deb_sei">精神↓</a></li>
+                        <li class="col-3 xs-hide opacity-even text-center"> </li>
+                        <li class="col-12 xs-show table-info text-center">デバフ(敵能力低下)</li>
+                        <li class="col-2 xs-show opacity-even side-padding-zero"><a class="nav-link small" data-toggle="tab" href="#deb_wan">腕↓</a></li>
+                        <li class="col-2 xs-show opacity-even side-padding-zero"><a class="nav-link small" data-toggle="tab" href="#deb_tai">体↓</a></li>
+                        <li class="col-2 xs-show opacity-even side-padding-zero"><a class="nav-link small" data-toggle="tab" href="#deb_kiyo">器↓</a></li>
+                        <li class="col-2 xs-show opacity-even side-padding-zero"><a class="nav-link small" data-toggle="tab" href="#deb_suba">速↓</a></li>
+                        <li class="col-2 xs-show opacity-even side-padding-zero"><a class="nav-link small" data-toggle="tab" href="#deb_chi">知↓</a></li>
+                        <li class="col-2 xs-show opacity-even side-padding-zero"><a class="nav-link small" data-toggle="tab" href="#deb_sei">精↓</a></li>                    
+                        <li class="col-1 xs-hide table-success text-center"><small>攻撃<br>範囲</small></li>
+                        <li class="col-12 xs-show table-success text-center">攻撃範囲</li>
+                        <li class="my-col-2or3 opacity-odd text-center side-padding-zero"><a class="nav-link  small" data-toggle="tab" href="#zen"><span class="char-eisho-mini" id="icon_allSkill"></span><br>全体</a></li>
+                        <li class="my-col-2or3 opacity-odd text-center side-padding-zero"><a class="nav-link  small" data-toggle="tab" href="#tate"><span class="char-tate-mini" id="icon_tateSkill"></span><br>縦一列</a></li>
+                        <li class="my-col-2or3 opacity-odd text-center side-padding-zero"><a class="nav-link  small" data-toggle="tab" href="#yoko"><span class="char-tsuki-mini" id="icon_yokoSkill"></span><br>横一列</a></li>
+                        <li class="my-col-2or3 opacity-odd text-center side-padding-zero"><a class="nav-link  small" data-toggle="tab" href="#mikata"><span class="char-eisho-mini" id="icon_healSkill"></span><br>味方単</a></li>
+                        <li class="col-3 xs-hide opacity-odd text-center"></li>
+                        <li class="col-1 xs-hide table-success text-center"><small>その他</small></li>
+                        <li class="col-12 xs-show table-success text-center"><small>その他</small></li>
+                        <li class="col-1  opacity-even text-center side-padding-zero"><a class="nav-link  small" data-toggle="tab" href="#kin">近</a></li>
+                        <li class="col-1  opacity-even text-center side-padding-zero"><a class="nav-link  small" data-toggle="tab" href="#en">遠</a></li>
+                        <li class="col-2  opacity-even text-center side-padding-zero"><a class="nav-link  small" data-toggle="tab" href="#jishin">自身</a></li>
+                        <li class="col-3  opacity-even text-center side-padding-zero"><a class="nav-link  small" data-toggle="tab" href="#fast">ファスト</a></li>
+                        <li class="col-3  opacity-even text-center side-padding-zero"><a class="nav-link  small" data-toggle="tab" href="#delay">ディレイ</a></li>
+                        <li class="col-1 opacity-even text-center"></li>
+                        <li class="col-1 xs-show opacity-even text-center"></li>
+
+                        <li class="col-1 xs-hide table-success text-center">技威力</li>
+                        <li class="col-12 xs-show table-success text-center">技威力</li>
+                        <li class="my-col-1or3 opacity-odd text-center side-padding-zero"><a class="nav-link" style="font-family:arial black; font-size:15px" data-toggle="tab" href="#iryoku_e">E</a></li>
+                        <li class="my-col-1or3 opacity-odd text-center side-padding-zero"><a class="nav-link" style="font-family:arial black; font-size:15px" data-toggle="tab" href="#iryoku_d">D</a></li>
+                        <li class="my-col-1or3 opacity-odd text-center side-padding-zero"><a class="nav-link " style="font-family:arial black; font-size:15px" data-toggle="tab" href="#iryoku_c">C</a></li>
+                        <li class="my-col-1or3 opacity-odd text-center side-padding-zero"><a class="nav-link " style="font-family:arial black; font-size:15px" data-toggle="tab" href="#iryoku_b">B</a></li>
+                        <li class="my-col-1or3 opacity-odd text-center side-padding-zero"><a class="nav-link " style="font-family:arial black; font-size:15px" data-toggle="tab" href="#iryoku_a">A</a></li>
+                        <li class="my-col-1or3 opacity-odd text-center side-padding-zero"><a class="nav-link " style="font-family:arial black; font-size:15px" data-toggle="tab" href="#iryoku_s">S</a></li>
+                        <li class="my-col-1or3 opacity-odd text-center side-padding-zero"><a class="nav-link " style="font-family:arial black; font-size:15px" data-toggle="tab" href="#iryoku_ss">SS</a></li>
+                        <li class="my-col-1or3 opacity-odd text-center side-padding-zero"><a class="nav-link " style="font-family:arial black; font-size:15px" data-toggle="tab" href="#iryoku_sss">SSS</a></li>
+                        <li class="col-3 xs-hide opacity-odd"></li>
+
+                    </ul>
+                </div>
+                <label for="wepon" class="badge badge-pill badge-light"><span id="skill_name_label">剣</span>の技・術選択</label>
+                <div id="myTabContent" class="row tab-content">
+                    <div class="tab-pane fade show active" id="ken"><select class="form-control skill_select" id="skill_ken" name="type"></select></div>
+                    <div class="tab-pane fade" id="dken"><select class="form-control skill_select" id="skill_dken" name="type"></select></div>
+                    <div class="tab-pane fade" id="ono"><select class="form-control skill_select" id="skill_ono" name="type"></select></div>
+                    <div class="tab-pane fade" id="kon"><select class="form-control skill_select" id="skill_kon" name="type"></select></div>
+                    <div class="tab-pane fade" id="tai"><select class="form-control skill_select" id="skill_tai" name="type"></select></div>
+                    <div class="tab-pane fade" id="ju"><select class="form-control skill_select" id="skill_ju" name="type"></select></div>
+                    <div class="tab-pane fade" id="sken"><select class="form-control skill_select" id="skill_sken" name="type"></select></div>
+                    <div class="tab-pane fade" id="yari"><select class="form-control skill_select" id="skill_yari" name="type"></select></div>
+                    <div class="tab-pane fade" id="yumi"><select class="form-control skill_select" id="skill_yumi" name="type"></select></div>
+                    <div class="tab-pane fade" id="hi"><select class="form-control skill_select" id="skill_hi" name="type"></select></div>
+                    <div class="tab-pane fade" id="mizu"><select class="form-control skill_select" id="skill_mizu" name="type"></select></div>
+                    <div class="tab-pane fade" id="kaze"><select class="form-control skill_select" id="skill_kaze" name="type"></select></div>
+                    <div class="tab-pane fade" id="tsuchi"><select class="form-control skill_select" id="skill_tsuchi" name="type"></select></div>
+                    <div class="tab-pane fade" id="hikari"><select class="form-control skill_select" id="skill_hikari" name="type"></select></div>
+                    <div class="tab-pane fade" id="yami"><select class="form-control skill_select" id="skill_yami" name="type"></select></div>
+                    <div class="tab-pane fade" id="netsu"><select class="form-control skill_select" id="skill_netsu" name="type"></select></div>
+                    <div class="tab-pane fade" id="rei"><select class="form-control skill_select" id="skill_rei" name="type"></select></div>
+                    <div class="tab-pane fade" id="rai"><select class="form-control skill_select" id="skill_rai" name="type"></select></div>
+                    <div class="tab-pane fade" id="in"><select class="form-control skill_select" id="skill_in" name="type"></select></div>
+                    <div class="tab-pane fade" id="you"><select class="form-control skill_select" id="skill_you" name="type"></select></div>
+                    <div class="tab-pane fade" id="doku"><select class="form-control skill_select" id="skill_doku" name="type"></select></div>
+                    <div class="tab-pane fade" id="kurayami"><select class="form-control skill_select" id="skill_kurayami" name="type"></select></div>
+                    <div class="tab-pane fade" id="sutan"><select class="form-control skill_select" id="skill_sutan" name="type"></select></div>
+                    <div class="tab-pane fade" id="mahi"><select class="form-control skill_select" id="skill_mahi" name="type"></select></div>
+                    <div class="tab-pane fade" id="nemuri"><select class="form-control skill_select" id="skill_nemuri" name="type"></select></div>
+                    <div class="tab-pane fade" id="sekika"><select class="form-control skill_select" id="skill_sekika" name="type"></select></div>
+                    <div class="tab-pane fade" id="konran"><select class="form-control skill_select" id="skill_konran" name="type"></select></div>
+                    <div class="tab-pane fade" id="miryo"><select class="form-control skill_select" id="skill_miryo" name="type"></select></div>
+                    <div class="tab-pane fade" id="kyosenshi"><select class="form-control skill_select" id="skill_kyosenshi" name="type"></select></div>
+                    <div class="tab-pane fade" id="sokushi"><select class="form-control skill_select" id="skill_sokushi" name="type"></select></div>
+                    <div class="tab-pane fade" id="deb_wan"><select class="form-control skill_select" id="skill_deb_wan" name="type"></select></div>
+                    <div class="tab-pane fade" id="deb_tai"><select class="form-control skill_select" id="skill_deb_tai" name="type"></select></div>
+                    <div class="tab-pane fade" id="deb_kiyo"><select class="form-control skill_select" id="skill_deb_kiyo" name="type"></select></div>
+                    <div class="tab-pane fade" id="deb_suba"><select class="form-control skill_select" id="skill_deb_suba" name="type"></select></div>
+                    <div class="tab-pane fade" id="deb_chi"><select class="form-control skill_select" id="skill_deb_chi" name="type"></select></div>
+                    <div class="tab-pane fade" id="deb_sei"><select class="form-control skill_select" id="skill_deb_sei" name="type"></select></div>
+                    <div class="tab-pane fade" id="kin"><select class="form-control skill_select" id="skill_kin" name="type"></select></div>
+                    <div class="tab-pane fade" id="en"><select class="form-control skill_select" id="skill_en" name="type"></select></div>
+                    <div class="tab-pane fade" id="tan"><select class="form-control skill_select" id="skill_tantai" name="type"></select></div>
+                    <div class="tab-pane fade" id="zen"><select class="form-control skill_select" id="skill_zentai" name="type"></select></div>
+                    <div class="tab-pane fade" id="tate"><select class="form-control skill_select" id="skill_tate" name="type"></select></div>
+                    <div class="tab-pane fade" id="yoko"><select class="form-control skill_select" id="skill_yoko" name="type"></select></div>
+                    <div class="tab-pane fade" id="jishin"><select class="form-control skill_select" id="skill_jishin" name="type"></select></div>
+                    <div class="tab-pane fade" id="mikata"><select class="form-control skill_select" id="skill_mikata" name="type"></select></div>
+                    <div class="tab-pane fade" id="fast"><select class="form-control skill_select" id="skill_fast" name="type"></select></div>
+                    <div class="tab-pane fade" id="delay"><select class="form-control skill_select" id="skill_delay" name="type"></select></div>
+
+                    <div class="tab-pane fade" id="iryoku_e"><select class="form-control skill_select" id="skill_iryoku_e" name="type"></select></div>
+                    <div class="tab-pane fade" id="iryoku_d"><select class="form-control skill_select" id="skill_iryoku_d" name="type"></select></div>
+                    <div class="tab-pane fade" id="iryoku_c"><select class="form-control skill_select" id="skill_iryoku_c" name="type"></select></div>
+                    <div class="tab-pane fade" id="iryoku_b"><select class="form-control skill_select" id="skill_iryoku_b" name="type"></select></div>
+                    <div class="tab-pane fade" id="iryoku_a"><select class="form-control skill_select" id="skill_iryoku_a" name="type"></select></div>
+                    <div class="tab-pane fade" id="iryoku_s"><select class="form-control skill_select" id="skill_iryoku_s" name="type"></select></div>
+                    <div class="tab-pane fade" id="iryoku_ss"><select class="form-control skill_select" id="skill_iryoku_ss" name="type"></select></div>
+                    <div class="tab-pane fade" id="iryoku_sss"><select class="form-control skill_select" id="skill_iryoku_sss" name="type"></select></div>
+                </div>
+                <label for="wepon" class="badge badge-pill badge-light">技情報</label>
+                <table class="table table-hover table-bordered table-sm">
+                    <tr class="text-center bg-white">
+                        <td id="skill_dtl_btAttr">武器種別</td>
+                        <td colspan="4" id="skill_dtl_name">技名称</td>
+                        <td id="skill_dtl_atAtttr">技属性</td>
+                    </tr>
+                    <tr class="text-center bg-white">
+                        <th>威力</th>
+                        <th id="skill_dtl_grade">E(計測中)</th>
+                        <th>初期BP</th>
+                        <th id="skill_dtl_bp">X</th>
+                        <th>最小BP</th>
+                        <th id="skill_dtl_minBp">X</th>
+                    </tr>
+                    <tr class="bg-white">
+                        <td colspan="6" id="skill_dtl_text">説明</td>
+                    </tr>
+                </table>
+                <label for="wepon" class="badge badge-pill badge-light">技保持者</label>
+                <table class="table table-hover table-bordered table-sm" id="skill_holder_table">
+                    <thead>
+                        <tr class="text-center opacity table-success xs-hide">
+                            <th style="width:50px">Rare</th>
+                            <th style="width:160px">Name/Style</th>
+                            <th>Skill</th>
+                            <th>Ability</th>
+                            <th>Other Style</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white"></tbody>
+                </table>
+                <br>
+                <div style="display: none" id="imgTank">
+                    <img src="" id="icon_A">
+                    <img src="" id="icon_S">
+                    <img src="" id="icon_SS">
+                </div>
+            </div></div> <!-- main -->
+
+        <!--script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script-->
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-storage.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
+        <script src="./Firebase.js?v=20190407_2"></script>
+        <script src="./skill_display.js?v=20190407_1" ></script>
+
+        <script type="text/javascript">
+            $(function () {
+                readData();
+            });
+        </script>
+
+    </body>
+</html>

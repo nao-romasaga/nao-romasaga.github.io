@@ -8,7 +8,11 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-
+        <link rel="stylesheet" type="text/css" href="./style.css?update=20190405_1">
+        <script src="./fileopen.js" ></script>
+        <script src="./jinkei.js" ></script>
+        <script src="./damage.js" ></script>
+        <script src="./utils.js?update=20190408" ></script>
         <title>ロマサガRS 計算機@nao_romasaga</title>
         <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -18,240 +22,260 @@
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
         <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
-        <style type="text/css"><!--
-            .haikei { background:url(https://www.jp.square-enix.com/saga_reuniverse/assets/img/index_kv01_sp.jpg) center no-repeat; background-size: cover;}
-            .side-padding-zero {
-                padding-left: 0px !important;
-                padding-right: 0px !important;
-            }
-            .opacity {
-                background-color: rgba(245, 245, 245, 1);
-                opacity: 0.8;
-            }
-            .opacity-even {
-                background-color: rgba(245, 245, 245, 1);
-                opacity: 0.8;
-            }
-            .opacity-odd {
-                background-color: rgba(245, 245, 245, 1);
-                opacity: 0.9;
-            }
-            body {
-                color: #333;
-                font-family: 'M PLUS Rounded 1c', sans-serif;
-                line-height: 1.8;
-            }            
-            .kadomaru {
-                border-radius: 8px;
-                padding-left: 3px;
-            }
-            --></style>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-storage.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
+        <script src="./Firebase.js?v=20190404"></script>        
     </head>
     <body>
         <div class ="haikei"><div class="container">
-            <div class="text-center">
-                <a href="https://www.jp.square-enix.com/saga_reuniverse/" target="_new"><img src="https://www.jp.square-enix.com/saga_reuniverse/assets/img/cmn_logo01_sp.png" class="col-sm-12 col-md-8 col-lg-6"></a>
-            </div>
-
-            <h1 class="text-center opacity">ロマサガRS計算機</h1>
-            <br>
-            <div class="text-center">
-            </div>
-            <p class="text-right opacity"><small>バグ発見、ご要望は <a href="https://twitter.com/nao_romasaga_rs" target="_new">nao_romasaga_rs</a>まで</small>
-            </p>
-            <div class="text-center">
-                <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="true">Tweet</a>
-                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-            </div>
-
-            <br>
-
-            <ul class="nav nav-tabs ">
-                <li class="nav-item col-6 text-center side-padding-zero">
-                    <a class="nav-link active bg-white" data-toggle="tab" href="#home" id="damageTab" class="">
-                        <img src="https://www.silhouette-illust.com/wp-content/uploads/2017/05/buki_saber_30117-300x300.jpg" width="16" height="16">
-                        ダメージ計算
-                        <img src="https://www.silhouette-illust.com/wp-content/uploads/2017/05/buki_tsurugi_30115-300x300.jpg" width="16" height="16">
-                    </a>
-                </li>
-                <!--
-                <li class="nav-item col-6 text-center side-padding-zero">
-                    <a class="nav-link bg-white" data-toggle="tab" href="#profile" id="vitTab" class="bg-white">
-                        <img src="http://icooon-mono.com/i/icon_11077/icon_110770.svg" width="16" height="16">
-                        敵体力測定器
-                        <img src="http://icooon-mono.com/i/icon_13327/icon_133270.svg" width="16" height="16">
-                    </a>
-                </li>
-                -->
-            </ul>
-            <div id="myTabContent" class="tab-content opacity kadomaru">
-                <div class="tab-pane fade show active" id="home">
-                    <p>ダメージ計算機はA武器とB武器のどちらの方が強いか。AスタイルとBスタイルのどちらの方が強いかなどの比較検討にご利用ください</p>
+                <div class="text-center">
+                    <a href="https://www.jp.square-enix.com/saga_reuniverse/" target="new"><img src="https://www.jp.square-enix.com/saga_reuniverse/assets/img/cmn_logo01_sp.png" class="col-sm-12 col-md-8 col-lg-6"></a>
                 </div>
-                <div class="tab-pane fade" id="profile">
-                    <p>モンスター体力測定器は武器威力・腕力・マスターレベル・ダメージから敵モンスターの体力を測定します。<br>何かの検証に役立ててください</p>
-                </div>
-            </div>
 
-            <div class="row">
-                <div class="form-group col-xs-12 col-md-6 col-lg-4">
-                    <label for="type" class="badge badge-pill badge-light">武器種類
-                        <img src="https://www.silhouette-illust.com/wp-content/uploads/2017/05/buki_tsurugi_30115-300x300.jpg" width="16" height="16">
-                        <img src="https://icon-rainbow.com/i/icon_03146/icon_031460.svg" width="16" height="16">
-                        <img src="https://www.silhouette-ac.com/sozai/m/130/72/130729m.jpg" width="16" height="16">
-                        <img src="https://data.ac-illust.com/data/thumbnails/c3/c32a863d8869dac257763aee737baaed_t.jpeg" width="16" height="16">
-                        <img src="https://www.silhouette-illust.com/wp-content/uploads/2016/12/20579-300x300.jpg" width="16" height="16">
-                        <img src="https://www.silhouette-illust.com/wp-content/uploads/2017/09/witch_tsue_39880-300x300.jpg" width="16" height="16">
-                        <img src="https://www.silhouette-illust.com/wp-content/uploads/2017/04/kobushi_nigiru_28889-300x300.jpg" width="16" height="16">
-                    </label>
-                    <select class="form-control" id="type" name="type">
-                        <option value="1">剣・大剣・斧・槍・棍棒・杖</opition>
-                        <option value="2">小剣・弓</opition>
-                        <option value="3">体術</opition>
-                    </select>
+                <h1 class="text-center opacity">ダメージ計算機</h1>
+                <br>
+                <div class="text-center">
                 </div>
-                <div class="form-group col-xs-12 col-md-6 col-lg-4">
-                    <label for="wepon" class="badge badge-pill badge-light">陣形
-                        <img src="https://icon-rainbow.com/i/icon_01281/icon_012810.svg" width="16" height="16">
-                    </label>
-                    <select class="form-control damage" id="jinkei" name="type">
-                        <option value="0">指定なし</opition>
-                        <option value="sp1">スペキュレイション 最前＆前2列</opition>
-                        <option value="as1">アマゾンストライク 最前列</opition>
-                        <option value="as2">アマゾンストライク 前列</opition>
-                        <option value="rj1">龍陣 最前列</opition>
-                    </select>
-                    <div class="form-group row">
-                        <div class="col-xs-5 col-md-5 col-lg-5" id="jinkei_w">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text small">腕</span>
-                                </div>
-                                <input type="text" class="form-control" readonly="" id="jinkei_w_v">
-                                <div class="input-group-append">
-                                    <span class="input-group-text">%</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xs-5 col-md-5 col-lg-5" id="jinkei_k">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text small">器</span>
-                                </div>
-                                <input type="text" class="form-control" readonly="" id="jinkei_k_v">
-                                <div class="input-group-append">
-                                    <span class="input-group-text">%</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xs-5 col-md-5 col-lg-5" id="jinkei_s">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text small">速</span>
-                                </div>
-                                <input type="text" class="form-control" readonly="" id="jinkei_s_v">
-                                <div class="input-group-append">
-                                    <span class="input-group-text">%</span>
-                                </div>
-                            </div>
-                        </div>
+                <p class="text-right opacity"><small>バグ発見、ご要望は <a href="https://twitter.com/nao_romasaga_rs" target="new">nao_romasaga_rs</a>まで</small>
+                </p>
+                <div class="text-center">
+                    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="true">Tweet</a>
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+
+                <br>
+
+                <ul class="nav nav-tabs ">
+                    <li class="nav-item col-6 text-center side-padding-zero">
+                        <a class="nav-link active bg-white" data-toggle="tab" href="#home" id="damageTab" class="">
+                            <img src="https://www.silhouette-illust.com/wp-content/uploads/2017/05/buki_saber_30117-300x300.jpg" width="16" height="16">
+                            ダメージ計算
+                            <img src="https://www.silhouette-illust.com/wp-content/uploads/2017/05/buki_tsurugi_30115-300x300.jpg" width="16" height="16">
+                        </a>
+                    </li>
+                </ul>
+                <div id="myTabContent" class="tab-content opacity kadomaru">
+                    <div class="tab-pane fade show active" id="home">
+                        <p>ダメージ計算機はA武器とB武器のどちらの方が強いか。AスタイルとBスタイルのどちらの方が強いかなどの比較検討にご利用ください</p>
                     </div>
                 </div>
 
-                <div class="form-group col-xs-12 col-md-6 col-lg-4">
-                    <label for="wepon" class="badge badge-pill badge-light">武器威力
-                        <img src="https://www.silhouette-illust.com/wp-content/uploads/2017/05/buki_tsurugi_30115-300x300.jpg" width="16" height="16">
-                    </label>
-                    <input type="number" class="form-control damage" id="wepon">
-                </div>
-                <div class="form-group col-xs-12 col-md-6 col-lg-4">
-                    <label for="str" id="param_label" class="badge badge-pill badge-light">
-                        腕力
-                    </label>
-                    <div class="form-group">
-                        <div class="input-group mb-3">
+                <div class="row">
+                    <div class="form-group col-xs-12 col-md-6 col-lg-4">
+                        <label for="type" class="badge badge-pill badge-light">武器種類
+                            <img src="https://www.silhouette-illust.com/wp-content/uploads/2017/05/buki_tsurugi_30115-300x300.jpg" width="16" height="16">
+                            <img src="https://icon-rainbow.com/i/icon_03146/icon_031460.svg" width="16" height="16">
+                            <img src="https://www.silhouette-ac.com/sozai/m/130/72/130729m.jpg" width="16" height="16">
+                            <img src="https://data.ac-illust.com/data/thumbnails/c3/c32a863d8869dac257763aee737baaed_t.jpeg" width="16" height="16">
+                            <img src="https://www.silhouette-illust.com/wp-content/uploads/2016/12/20579-300x300.jpg" width="16" height="16">
+                            <img src="https://www.silhouette-illust.com/wp-content/uploads/2017/09/witch_tsue_39880-300x300.jpg" width="16" height="16">
+                            <img src="https://www.silhouette-illust.com/wp-content/uploads/2017/04/kobushi_nigiru_28889-300x300.jpg" width="16" height="16">
+                        </label>
+                        <select class="form-control" id="type" name="type">
+                            <option value="ken">剣</option>
+                            <option value="dken">大剣</option>
+                            <option value="ono">斧</option>
+                            <option value="sken">小剣</option>
+                            <option value="yari">槍</option>
+                            <option value="yumi">弓</option>
+                            <option value="bou">棍棒</option>
+                            <option value="tai">体術</option>
+                            <option value="hi">火術</option>
+                            <option value="mizu">水術</option>
+                            <option value="kaze">風術</option>
+                            <option value="tsuchi">土術</option>
+                            <option value="hikari">光術</option>
+                            <option value="yami">闇術</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-xs-12 col-md-6 col-lg-4">
+                        <label for="wepon" class="badge badge-pill badge-light">武器威力
+                            <img src="https://www.silhouette-illust.com/wp-content/uploads/2017/05/buki_tsurugi_30115-300x300.jpg" width="16" height="16">
+                            ＋使用技
+                            <img src="https://www.silhouette-illust.com/wp-content/uploads/2017/04/training_chikara-kobu_28491-101x101.jpg" width="16" height="16">
+                        </label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text small">武器威力</span>
+                            </div>
+                            <input type="number" class="form-control damage" id="wepon">
+                        </div>
+                        <select class="form-control damage" id="skill" name="type">
+                        </select>
+                        <div class="input-group" id="input_rank">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text small">Rank</span>
+                            </div>
+                            <input type="number" class="form-control damage" id="skill_rank" value="1">
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12 col-md-6 col-lg-4">
+                        <label for="wepon" class="badge badge-pill badge-light">陣形
+                            <img src="https://icon-rainbow.com/i/icon_01281/icon_012810.svg" width="16" height="16">
+                        </label>
+                        <select class="form-control damage" id="jinkei" name="type">
+                            <option value="0">指定なし</option>
+                            <option value="sp1">スペキュレイション 最前＆前2列</option>
+                            <option value="as1">アマゾンストライク 最前列</option>
+                            <option value="as2">アマゾンストライク 前列</option>
+                            <option value="rj1">龍陣 最前列</option>
+                        </select>
+                        <div class="form-group row">
+                            <div class="col-xs-6 col-md-6 col-lg-6" id="jinkei_w">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text small jinkei_label">腕</span>
+                                    </div>
+                                    <input type="text" class="form-control" readonly="" id="jinkei_w_v">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-md-6 col-lg-6" id="jinkei_k">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text small">器</span>
+                                    </div>
+                                    <input type="text" class="form-control" readonly="" id="jinkei_k_v">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-md-6 col-lg-6" id="jinkei_s">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text small">速</span>
+                                    </div>
+                                    <input type="text" class="form-control" readonly="" id="jinkei_s_v">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                    
+
+                    <div class="form-group col-xs-12 col-md-6 col-lg-4">
+                        <label for="str" id="param_label" class="badge badge-pill badge-light">
+                            腕力
+                        </label>
+                        <div class="input-group">
                             <div class="input-group-prepend charOnly">
                                 <span class="input-group-text small">キャラのみ</span>
                             </div>
                             <input type="number" class="form-control damage charOnly" id="strOnlyChar">
+                        </div>
+                        <div class="input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text small">スタイル装備有</span>
                             </div>
                             <input type="number" class="form-control damage" id="str">
                         </div>
-                    </div>
-                    <small class="form-text text-muted   opacity kadomaru">陣形を指定している場合はキャラのみの値も必要です<br>
-                        キャラのみはスタイルおよび装備抜きの値を入力してください</small>
-                </div>    
-                <div class="form-group col-xs-12 col-md-6 col-lg-4"  id="taijyutsu">
-                    <label for="agi" id="param_label" class="badge badge-pill badge-light">素早さ</label>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text small charOnly">キャラのみ</span>
-                        </div>
-                        <input type="number" class="form-control damage charOnly" id="agiOnlyChar">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text small">スタイル装備有</span>
-                        </div>
-                        <input type="number" class="form-control damage" id="agi">
-                    </div>
-                    <small class="form-text text-muted   opacity kadomaru">陣形を指定している場合はキャラのみの値も必要です<br>
-                        キャラのみはスタイルおよび装備抜きの値を入力してください</small>
-                </div>
-                <div class="form-group col-xs-12 col-md-6 col-lg-4">
-                    <label for="master" class="badge badge-pill badge-light">
-                        マスターレベル
-                        <img src="https://www.silhouette-illust.com/wp-content/uploads/2016/09/8957-300x300.jpg" width="16" height="16">
-                    </label>
-                    <input type="number" class="form-control damage" id="master">
-                    <div class="form-group">
-                        <div class="input-group mb-3">
+                        <small class="form-text text-muted   opacity kadomaru">陣形を指定している場合はキャラのみの値も必要です<br>
+                            キャラのみはスタイルおよび装備抜きの値を入力してください</small>
+                    </div>    
+                    <div class="form-group col-xs-12 col-md-6 col-lg-4"  id="taijyutsu">
+                        <label for="agi" id="param_label" class="badge badge-pill badge-light">素早さ</label>
+                        <div class="input-group">
                             <div class="input-group-prepend">
-                                <span class="input-group-text small">ダメージ変化量</span>
+                                <span class="input-group-text small charOnly">キャラのみ</span>
                             </div>
-                            <input type="text" class="form-control" readonly="" id="masterDamage">
-                            <div class="input-group-append">
-                                <span class="input-group-text">%</span>
-                            </div>
+                            <input type="number" class="form-control damage charOnly" id="agiOnlyChar">
                         </div>
-                    </div>
-                    <small class="form-text text-muted  opacity kadomaru">対象武器種類のマスターレベルを入力して下さい</small>
-                </div>
-                <div class="form-group col-xs-12 col-md-6 col-lg-4">
-                    <label for="ability" class="badge badge-pill badge-light">アビリティ
-                        <img src="https://www.silhouette-illust.com/wp-content/uploads/2017/03/idea_hirameki_28161-300x300.jpg" width="16" height="16">
-                    </label>
-                    <select class="form-control" id="ability_list" name="type">
-                        <option value="0">アビリティなし</opition>
-                        <option value="5">勇健強撃 I</opition>
-                        <option value="10">勇健強撃 II</opition>
-                        <option value="15">勇健強撃 III</opition>
-                        <option value="2">テンションアップI</opition>
-                        <option value="5">テンションアップII</opition>
-                        <option value="10">テンションアップIII</opition>
-                        <option value="15">テンションアップIV</opition>
-                    </select>
-                    <div class="form-group">
-                        <div class="input-group mb-3">
+                        <div class="input-group">
                             <div class="input-group-prepend">
-                                <span class="input-group-text small">直接入力</span>
+                                <span class="input-group-text small">スタイル装備有</span>
                             </div>
-                            <input type="number" class="form-control damage" id="ability"  placeholder="直接入力可">
-                            <div class="input-group-append">
-                                <span class="input-group-text">%</span>
+                            <input type="number" class="form-control damage" id="agi">
+                        </div>
+                        <small class="form-text text-muted   opacity kadomaru">陣形を指定している場合はキャラのみの値も必要です<br>
+                            キャラのみはスタイルおよび装備抜きの値を入力してください</small>
+                    </div>
+                    <div class="form-group col-xs-12 col-md-6 col-lg-4">
+                        <label for="master" class="badge badge-pill badge-light">
+                            マスターレベル
+                            <img src="https://www.silhouette-illust.com/wp-content/uploads/2016/09/8957-300x300.jpg" width="16" height="16">
+                        </label>
+                        <input type="number" class="form-control damage" id="master">
+                        <div class="form-group">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text small">ダメージ変化量</span>
+                                </div>
+                                <input type="text" class="form-control" readonly="" id="masterDamage">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">%</span>
+                                </div>
                             </div>
                         </div>
+                        <small class="form-text text-muted  opacity kadomaru">対象武器種類のマスターレベルを入力して下さい</small>
                     </div>
-                    <small class="form-text text-muted  opacity kadomaru">テンションアップや勇健強撃などによる補正の%を入力して下さい</small>
-                </div>
-                <div class="form-group col-xs-12 col-md-6 col-lg-4">
-                    <label for="resist" class="badge badge-pill badge-light">
-                        敵耐性
-                        <img src="https://www.silhouette-illust.com/wp-content/uploads/2016/12/shield_21084-300x300.jpg" width="16" height="16">
-                    </label>
-                    <input type="number" class="form-control damage" id="resist">
-                    <div class="form-group">
-                        <div class="input-group mb-3">
+                    <div class="form-group col-xs-12 col-md-6 col-lg-4">
+                        <label for="ability" class="badge badge-pill badge-light">アビリティ
+                            <img src="https://www.silhouette-illust.com/wp-content/uploads/2017/03/idea_hirameki_28161-300x300.jpg" width="16" height="16">
+                        </label>
+                        <select class="form-control" id="ability_list" name="type">
+                            <option value="0">アビリティなし</option>
+                            <option value="5">勇健強撃I (小)</option>
+                            <option value="10">勇健強撃II (中)</option>
+                            <option value="15">勇健強撃III (大)</option>
+                            <option value="2">テンションアップI (極小)</option>
+                            <option value="5">テンションアップII (小)</option>
+                            <option value="10">テンションアップIII (中)</option>
+                            <option value="15">テンションアップIV (大)</option>
+                        </select>
+                        <div class="form-group">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text small">直接入力</span>
+                                </div>
+                                <input type="number" class="form-control damage" id="ability"  placeholder="直接入力可">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <small class="form-text text-muted  opacity kadomaru">極小:2% 小:5% 中:10% 大:15% 特大:30% 極大:50%<br>
+                            複数のアビリティを持つ場合は合計値%を入力してください<br>
+                            例:勇健強撃III＋テンションアップIV = 30%</small>
+                    </div>
+                    <div class="form-group damageCulc col-xs-12 col-md-6 col-lg-4">
+                        <label for="vit" class="badge badge-pill badge-light">敵
+                            <span class="param_label_teki">体力</span>
+                            <img src="https://www.silhouette-illust.com/wp-content/uploads/2016/05/646-300x300.jpg" width="16" height="16">
+                            敵耐性
+                            <img src="https://www.silhouette-illust.com/wp-content/uploads/2016/12/shield_21084-300x300.jpg" width="16" height="16">
+                        </label>
+                        <select class="form-control" id="enemy_vit" name="type">
+                            <option value="0">敵を選択</option>
+                            <option value="21">密林2 ロックアイン(21)</option>
+                            <option value="46">密林6 スカルロード(46)</option>
+                            <option value="52">密林7 ナックルラビー(52)</option>
+                            <option value="71">密林7 パイロヒドラ(71)</option>
+                            <option value="77">密林9 ゴールデンバウム(77)</option>
+                            <option value="85">密林10 カイザーアント(85)</option>
+                            <option value="90">HV721 オーガ(90)</option>
+                            <option value="99">密林10 パイロヒドラ(99)</option>
+                        </select>
+                        <div class="form-group">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text small"><span class="param_label_teki">体力</span>直接入力</span>
+                                </div>
+                                <input type="number" class="form-control damage" id="vit" placeholder="直接入力可">
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text small">耐性</span>
+                            </div>
+                            <input type="number" class="form-control damage" id="resist">
+                        </div>
+                        <div class="input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text small">ダメージ変化量</span>
                             </div>
@@ -260,188 +284,135 @@
                                 <span class="input-group-text">%</span>
                             </div>
                         </div>
+                        <small class="form-text text-muted  opacity kadomaru">対応する耐性値を入力して下さい。弱点はマイナスの値を入力をして下さい</small>
+
                     </div>
-                    <small class="form-text text-muted  opacity kadomaru">対応する耐性値を入力して下さい。弱点はマイナスの値を入力をして下さい</small>
-                </div>
-                <div class="form-group damageCulc col-xs-12 col-md-6 col-lg-4">
-                    <label for="vit" class="badge badge-pill badge-light">敵体力
-                        <img src="https://www.silhouette-illust.com/wp-content/uploads/2016/05/646-300x300.jpg" width="16" height="16">
-                    </label>
-                    <select class="form-control" id="enemy_vit" name="type">
-                        <option value="0">敵を選択</opition>
-                        <option value="21">密林2 ロックアイン(21)</opition>
-                        <option value="46">密林6 スカルロード(46)</opition>
-                        <option value="52">密林7 ナックルラビー(52)</opition>
-                        <option value="71">密林7 パイロヒドラ(71)</opition>
-                        <option value="77">密林9 ゴールデンバウム(77)</opition>
-                        <option value="85">密林10 カイザーアント(85)</opition>
-                        <option value="99">密林10 パイロヒドラ(99)</opition>
-                    </select>
-                    <div class="form-group">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text small">体力直接入力</span>
-                            </div>
-                            <input type="number" class="form-control damage" id="vit" placeholder="直接入力可">
-                        </div>
+                    <div class="form-group vitCulc col-xs-12 col-md-6 col-lg-4" id="damageMemo">
+                        <label for="damage1" class="badge badge-pill badge-light">
+                            ダメージメモ
+                            <img src="https://www.silhouette-illust.com/wp-content/uploads/2016/08/6654-300x300.jpg" width="16" height="16">
+                        </label>
+                        <input type="number" class="form-control damage" id="damage1" placeholder="ダメージ記録1">
+                        <input type="number" class="form-control damage" id="damage2" placeholder="ダメージ記録2">
+                        <input type="number" class="form-control damage" id="damage3" placeholder="ダメージ記録3">
+                        <input type="number" class="form-control damage" id="damage4" placeholder="ダメージ記録4">
+                        <input type="number" class="form-control damage" id="damage5" placeholder="ダメージ記録5">
+                        <small class="form-text text-muted  opacity">発生したダメージを記録します<br>
+                            ・背景が緑は重要だと思われる値です<br>
+                            ・背景が黄は推定に必要なさそうな値です</small>
                     </div>
-                    <small class="form-text text-muted  opacity kadomaru">情報提供いただければ今後増やす予定です(๑′ᴗ‵๑)</small>
-
                 </div>
-                <div class="form-group vitCulc col-xs-12 col-md-6 col-lg-4" id="damageMemo">
-                    <label for="damage1" class="badge badge-pill badge-light">
-                        ダメージメモ
-                        <img src="https://www.silhouette-illust.com/wp-content/uploads/2016/08/6654-300x300.jpg" width="16" height="16">
-                    </label>
-                    <input type="number" class="form-control damage" id="damage1" placeholder="ダメージ記録1">
-                    <input type="number" class="form-control damage" id="damage2" placeholder="ダメージ記録2">
-                    <input type="number" class="form-control damage" id="damage3" placeholder="ダメージ記録3">
-                    <input type="number" class="form-control damage" id="damage4" placeholder="ダメージ記録4">
-                    <input type="number" class="form-control damage" id="damage5" placeholder="ダメージ記録5">
-                    <small class="form-text text-muted  opacity">発生したダメージを記録します<br>
-                        ・背景が緑は重要だと思われる値です<br>
-                        ・背景が黄は推定に必要なさそうな値です</small>
-                </div>
-            </div>
-            <h1 class="vitCulc opacity text-center">推定体力計算</h1>
-            <table class="vitCulc table table-hover table-bordered table-sm" id="guess">
-                <thead>
-                    <tr class="table-primary">
-                        <th class="col-xs-1">体</th>
-                        <th class="col-xs-1">D1</th>
-                        <th class="col-xs-1">D2</th>
-                        <th class="col-xs-1">D3</th>
-                        <th class="col-xs-1">D4</th>
-                        <th class="col-xs-1">D5</th>
-                        <th class="col-xs-1">D6</th>
-                        <th class="col-xs-1">D7</th>
-                        <th class="col-xs-1">D8</th>
-                        <th class="col-xs-1">D9</th>
-                        <th class="col-xs-1">D10</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
+                <h1 class="vitCulc opacity text-center">推定体力計算</h1>
+                <table class="vitCulc table table-hover table-bordered table-sm" id="guess">
+                    <thead>
+                        <tr class="table-primary">
+                            <th class="col-xs-1">体</th>
+                            <th class="col-xs-1">D1</th>
+                            <th class="col-xs-1">D2</th>
+                            <th class="col-xs-1">D3</th>
+                            <th class="col-xs-1">D4</th>
+                            <th class="col-xs-1">D5</th>
+                            <th class="col-xs-1">D6</th>
+                            <th class="col-xs-1">D7</th>
+                            <th class="col-xs-1">D8</th>
+                            <th class="col-xs-1">D9</th>
+                            <th class="col-xs-1">D10</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
 
 
-            <h1 class="damageCulc  opacity text-center">ダメージレンジ</h1>
-            <table class="damageCulc table table-hover table-bordered table-sm" id="damageRangeTable">
-                <thead>
-                    <tr class="table-primary opacity small">
-                        <th class="col-xs-1">AVG</th>
-                        <th class="col-xs-1">D1</th>
-                        <th class="col-xs-1">D2</th>
-                        <th class="col-xs-1">D3</th>
-                        <th class="col-xs-1">D4</th>
-                        <th class="col-xs-1">D5</th>
-                        <th class="col-xs-1">D6</th>
-                        <th class="col-xs-1">D7</th>
-                        <th class="col-xs-1">D8</th>
-                        <th class="col-xs-1">D9</th>
-                        <th class="col-xs-1">D10</th>
-                    </tr>
-                </thead>
-                <tbody class=""></tbody>
-            </table>
-            <h2 class="damageCulc  opacity text-center">ダメージランキング</h2>
-            <table class="damageCulc table table-hover table-striped table-bordered table-sm" id="damageRankTable">
-                <thead>
-                    <tr class="table-primary opacity small">
-                        <th class="text-center">説明</th>
-                        <th class="">AVG</th>
-                        <th class="">D1</th>
-                    </tr>
-                </thead>
-                <tbody class=""></tbody>
-            </table>
-            <br>
-            <div class="opacity">
-                Powered by <a href="https://twitter.com/nao_romasaga_rs" target="_new">nao_romasaga_rs</a><br>
-                Special thanks <a href="https://twitter.com/imonoki" target="_new">imonoki</a><br>
-                © 2019 SQUARE ENIX CO., LTD. All Rights Reserved. Powered by Akatsuki Inc.<br>
-                ILLUSTRATION: TOMOMI KOBAYASHI
-            </div>
-
-        </div></div> <!-- main -->
+                <!--
+                                <h2 class="damageCulc opacity text-center">ダメージランキング</h2>
+                                <div class="table-responsive">
+                                    <table class="damageCulc table table-hover table-striped table-bordered table-sm" id="damageRankTable">
+                                        <thead>
+                                            <tr class="table-primary opacity small">
+                                                <th class="text-center">説明</th>
+                                                <th class="">AVG</th>
+                                                <th class="">D1</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class=""></tbody>
+                                    </table>
+                                </div>
+                -->
+            </div></div> <!-- main -->
         <script type="text/javascript">
             $(function () {
-                var wepon;
-                var ability;
-                var resist;
-                var damage;
-                var master;
-                var wepK;
-                var sv;
-                var v;
-                var agi;
-                var type = 1;
-                var wJinkei = {
-                    "指定なし": "0",
-                    "スペキュレイション 最前＆前2列": "sp1",
-                    "アマゾンストライク 最前列": "as1",
-                    "アマゾンストライク 前列": "as2",
-                    "龍陣 最前列": "rj1"
-                };
-                var kJinkei = {
-                    "指定なし": "0",
-                    "ハンターシフト 最後列": "hs2"
-                };
-                var sJinkei = {
-                    "指定なし": "0",
-                    "スペキュレイション 最前列": "sp1",
-                    "スペキュレイション 前列": "sp1",
-                    "スペキュレイション 後列": "sp2",
-                    "アマゾンストライク 最前列": "as1",
-                    "アマゾンストライク 前列": "as2",
-                    "アマゾンストライク 後列": "as3",
-                    "ラピッドストリーム": "rs",
-                    "パワーレイズ 前列": "pl1",
-                    "パワーレイズ 最後列": "pl2",
-                    "ハンターシフト 前中列": "hs2",
-                    "デザートランス 最前列": "dr1",
-                    "デザートランス 後列": "dr2",
-                    "龍陣 最前列": "rj1",
-                    "龍陣 前列": "rj2",
-                    "龍陣 後列": "rj3",
-                    "インペリアルクロス 前列": "ic",
-                    "鳳天舞の陣：外周": "hi"
-                };
+                var data = loadTSV("https://nao-romasaga.github.io/skill_list.tsv");
+                //var data = {"剣": [], "大剣": [], "小剣": [], "体術": []};
+                // 初回表示
+                addOption(createSkillOption(data["剣"]), "skill");
+
+
                 $("#taijyutsu").hide();
                 $(".vitCulc").hide();
                 $("#jinkei_w").hide();
                 $("#jinkei_k").hide();
                 $("#jinkei_s").hide();
-                //$(".charOnly").hide();
+                $(".charOnly").hide(); // 初期表示は陣形ないので入れない
+                //$("#input_rank").hide(); // 初期表示は通常攻撃なので入れない
 
-                function getJinkei() {
-                    var list;
-                    if (type == 1) {
-                        list = wJinkei;
-                    } else if (type == 2) {
-                        list = kJinkei;
-                    } else if (type == 3) {
-                        list = sJinkei;
+
+                /**
+                 * 技が変更された場合
+                 * 通常攻撃はrankを非表示で1に設定。それ以外はrankを表示
+                 */
+                $('#skill').change(function () {
+                    var text = $('#skill option:selected').text();
+                    if (text.indexOf('通常攻撃') !== -1) {
+                        //$('#input_rank').hide();
+                        $('#skill_rank').val(1);
+                    } else {
+                        //$('#input_rank').show();
                     }
-                    return list
-                }
-
-
-
-                $('#damageTab').click(function () {
-                    $(".damageCulc").show();
-                    $(".vitCulc").hide();
                 });
-                $('#vitTab').click(function () {
-                    $(".damageCulc").hide();
-                    $(".vitCulc").show();
+
+                // 武器種別が変更された場合
+                $('#type').change(function () {
+                    type = $("#type").val();
+                    // 技リストを更新する
+                    type_tx = $('#type option:selected').text();
+                    $('#skill').children().remove();
+                    addOption(createSkillOption(data[type_tx]), "skill");
+
+                    // 影響のある陣形を入れ替える
+                    $('#jinkei > option').remove();
+                    if ($.inArray(type, ["hi","mizu","tsuchi","kaze","hikari","yami"]) > -1){
+                        console.log($(".param_label_teki"), 1, type, $.inArray(type, ["hi","mizu","tsuchi","kaze","hikari","yami"]));
+                        $(".param_label_teki").text("精神");
+                        $(".jinkei_label").text("知");
+                    }else{
+                        console.log($(".param_label_teki"), 2, type, $.inArray(type, ["hi","mizu","tsuchi","kaze","hikari","yami"]));
+                        $(".param_label_teki").text("体力");
+                        $(".jinkei_label").text("腕");
+                    }
+                    if ($.inArray(type, ["hi","mizu","tsuchi","kaze","hikari","yami"]) > -1){
+                        console.log(type, $.inArray(type, ["hi","mizu","tsuchi","kaze","hikari","yami"]));
+                        $("#param_label").text("知力");
+                        $("#taijyutsu").hide();
+                        addOption(jJinkei, "jinkei");
+                    } else if ($.inArray(type, ["yumi","sken"]) > 0){
+                        $("#param_label").text("器用さ");
+                        $("#taijyutsu").hide();
+                        addOption(kJinkei, "jinkei");
+                    } else if (type === "tai") {
+                        $("#param_label").text("腕力");
+                        $("#taijyutsu").show();
+                        addOption(sJinkei, "jinkei");
+                    } else {
+                        $("#param_label").text("腕力");
+                        $("#taijyutsu").hide();
+                        addOption(wJinkei, "jinkei");
+                    }
+                    // 必要な陣形が変わるので対応
+                    jinkeiHosei();
                 });
-                $('#skillTab').click(function () {
-                    $(".damageCulc").hide();
-                    $(".vitCulc").hide();
-                    $("#damageMemo").show();
-                });
+
                 $('#jinkei').change(function () {
-                    jinkeiChange();
+                    jinkeiHosei();
                 });
 
                 $('#resist').change(function () {
@@ -449,38 +420,56 @@
                     $("#resistDamage").val(Math.round(1 / (1 + 0.008 * r) * 100 * 100) / 100);
                 });
 
-                $('#type').change(function () {
-                    type = $("#type").val();
-                    $('#jinkei > option').remove();
-                    if (type == 1) {
-                        $("#param_label").text("腕力");
-                        $("#taijyutsu").hide();
-                        addJinkeiOptions(wJinkei);
-                    } else if (type == 2) {
-                        $("#param_label").text("器用さ");
-                        $("#taijyutsu").hide();
-                        addJinkeiOptions(kJinkei);
-                    } else if (type == 3) {
-                        $("#param_label").text("腕力");
-                        $("#taijyutsu").show();
-                        addJinkeiOptions(sJinkei);
-                    }
-                    jinkeiChange();
-                });
 
                 $('.damage').change(function () {
                     culc();
-                    patternReCulc();
+                    //patternReCulc();
                 });
 
                 $('#ability_list').change(function () {
                     $("#ability").val($("#ability_list").val());
+                    // abilityの値を入れ替えるので計算はこのタイミング
+                    culc();
                 });
                 $('#enemy_vit').change(function () {
                     $("#vit").val($("#enemy_vit").val());
+                    // vitの値を入れ替えるので計算はこのタイミング
                     culc();
-                    patternReCulc();
+                    //patternReCulc();
                 });
+
+                /**
+                 * 計算処理
+                 * @returns {undefined}
+                 */
+                function culc() {
+                    var wepon = Number($("#wepon").val());
+                    var ability = Number($("#ability").val());
+                    var resist = Number($("#resist").val());
+                    var skill = Number($("#skill").val());
+                    var rank = Number($("#skill_rank").val());
+                    var type = $("#type").val();
+                    var vit = Number($("#vit").val());
+                    var master = masterLevel($("#master").val()) * 100;
+                    $("#masterDamage").val(Math.round(master * 100) / 100);
+                    // 陣形込みの値を取得
+                    var tmpStrAgi = getStrAgi();
+                    var str = tmpStrAgi[0];
+                    var agi = tmpStrAgi[1];
+
+                    dRange = damageStepCulc(type, str, agi, wepon, skill, rank, vit, master, ability, resist);
+                    console.log("damageRange: " + dRange);
+                    dispDamageRange(dRange);
+
+                    if (damage1 > 0) {
+                        console.log("damage1 :" + damage1);
+                        var gVit = vitGuessCulc();
+                        console.log("guessVit: " + gVit);
+                        var vitCuld = vitCulc(s, a, Math.floor(gVit), damage1, damage2, damage3, damage4, damage5);
+                        dispGuess(vitCuld);
+                    }
+                }
+
 
                 function damageColor(damage, max, min, target) {
                     if (damage > 0 && (damage == max || damage == min)) {
@@ -498,50 +487,56 @@
                     }
                 }
 
+                /**
+                 * パターン毎にダメージを出して何が強いかみる
+                 * @returns {undefined}
+                 */
                 function patternReCulc() {
+                    var wepon = Number($("#wepon").val());
+                    var ability = Number($("#ability").val()) / 100;
+                    var resist = Number($("#resist").val());
+                    var skill = Number($("#skill").val());
+                    var rank = Number($("#skill_rank").val());
+                    var type = $("#type").val();
+                    var vit = Number($("#vit").val());
+                    var master = masterLevel($("#master").val());
+
                     var result = [];
                     console.log("ダメージランキング作成");
-
-                    var v = $("#vit").val();
-
                     var orgJinkei = $("#jinkei").val();
 
                     var list = ($("#strOnlyChar").val() != 0) ? getJinkei() : {"フリーファイト": 0};
                     for (key in list) {
                         $("#jinkei").val(list[key]); // 陣形を入れ替える
-                        jinkeiChange(); // #jinkeiを入れ替えたら実行
-                        var jinkeiStrAgi = getJinkeiStrAgi();
-                        culcSv = jinkeiStrAgi[0];
-                        culcAgi = jinkeiStrAgi[1];
-                        var fieldSTR = getFieldSTR(culcSv, culcAgi, v);
-                        var baseDamage = baseDamageCulc(fieldSTR);
+                        jinkeiHosei(); // #jinkeiを入れ替えたら実行
+                        // 陣形込みの値を取得
+                        var tmpStrAgi = getStrAgi();
+                        var str = tmpStrAgi[0];
+                        var agi = tmpStrAgi[1];
+                        var dRange = damageStepCulc(type, str, agi, wepon, skill, rank, vit, master, ability, resist);
 
-                        console.log(key + " = " + list[key]
-                                + " S:" + $("#jinkei_w_v").val()
-                                + " A:" + $("#jinkei_s_v").val()
-                                + " K:" + $("#jinkei_k_v").val()
-                                + " fieldSTR:" + fieldSTR + " baseDamage:" + baseDamage);
-                        var map = {name:"陣形: " + key,  d1:baseDamage, jinkei:list[key]};
+                        var map = {name: "陣形: " + key, d1: dRange[0], d10: dRange[9], avg: arrayAvg(dRange), jinkei: list[key]};
                         result.push(map);
                     }
                     $("#jinkei").val(orgJinkei); // 元に戻す
-                    jinkeiChange(); // #jinkeiを入れ替えたら実行                    
+                    jinkeiHosei(); // #jinkeiを入れ替えたら実行                    
 
                     var orgStr = Number($("#str").val());
                     var orgAgi = Number($("#agi").val());
                     var culcSv = orgStr;
                     var culcAgi = orgAgi;
                     var lavel = "";
-                    if (type == 1 || type == 2) {
-                        var lavel = (type == 1) ? "腕力+" : "器用さ+";
+                    if (type !== 'tai') {
+                        var lavel = (type === "yumi" || type === "sken") ? "器用さ+" : "腕力+";
                         [...Array(3)].map((_, i) => {
                             if ($("#jinkei").val() != "0") {
-                                var jinkeiStrAgi = getJinkeiStrAgi();
-                                culcSv = jinkeiStrAgi[0];
+                                var tmpStrAgi = getStrAgi();
+                                var str = tmpStrAgi[0];
                             }
-                            var fieldSTR = getFieldSTR((culcSv + i + 1), orgAgi, v);
+                            var fieldSTR = getFieldSTR((str + i + 1), orgAgi, v);
                             var baseDamage = baseDamageCulc(fieldSTR);
-                            var map = {name:lavel + (i + 1),  d1:baseDamage};
+                            var dRange = damageStepCulc(type, str, agi, wepon, skill, rank, vit, master, ability, resist);
+                            var map = {name: lavel + (i + 1), d1: baseDamage};
                             result.push(map);
                         });
                     } else {
@@ -554,16 +549,16 @@
                             }
                             var fieldSTR = getFieldSTR((culcSv + i + 1), culcAgi, v);
                             var baseDamage = baseDamageCulc(fieldSTR);
-                            var map = {name:"腕力+" + (i + 1),  d1:baseDamage};
+                            var map = {name: "腕力+" + (i + 1), d1: baseDamage};
                             result.push(map);
 
                             fieldSTR = getFieldSTR(culcSv, (culcAgi + i + 1), v);
                             baseDamage = baseDamageCulc(fieldSTR);
-                            map = {name:"素早さ+" + (i + 1),  d1:baseDamage};
+                            map = {name: "素早さ+" + (i + 1), d1: baseDamage};
                             result.push(map);
                             fieldSTR = getFieldSTR((culcSv + i + 1), (culcAgi + i + 1), v);
                             baseDamage = baseDamageCulc(fieldSTR);
-                            map = {name:"腕力+" + (i + 1) + " 素早さ+" + (i + 1),  d1:baseDamage};
+                            map = {name: "腕力+" + (i + 1) + " 素早さ+" + (i + 1), d1: baseDamage};
                             result.push(map);
                         });
                     }
@@ -582,8 +577,8 @@
                             wepK = ((orgWepon + 6 + i + 1) / 7);
                         }
                         var baseDamage = baseDamageCulc(fieldSTR);
-                            var map = {name:"武器威力+" + (i + 1),  d1:baseDamage};
-                            result.push(map);
+                        var map = {name: "武器威力+" + (i + 1), d1: baseDamage};
+                        result.push(map);
                     });
                     console.log(result);
                     // 変数は元に戻す
@@ -591,127 +586,32 @@
                     dispDamageRank(result);
                 }
 
-                function culc() {
-                    // グローバル変数へ代入
-                    wepon = Number($("#wepon").val());
-                    ability = Number($("#ability").val()) / 100;
-                    resist = Number($("#resist").val());
-                    damage1 = Number($("#damage1").val());
-                    damage2 = Number($("#damage2").val());
-                    damage3 = Number($("#damage3").val());
-                    damage4 = Number($("#damage4").val());
-                    damage5 = Number($("#damage5").val());
-                    sv = Number($("#str").val());
-                    var sTmp = Number($("#strOnlyChar").val());
-                    if (sTmp > 0 && sv == 0) {
-                        $("#str").val(sTmp);
-                        sv = sTmp;
-                    }
-                    agi = Number($("#agi").val());
-                    var aTmp = Number($("#agiOnlyChar").val());
-                    if (aTmp > 0 && agi == 0) {
-                        $("#agi").val(aTmp);
-                        agi = sTmp;
-                    }
 
-                    // 必要なダメージの設定
-                    var max = Math.max(damage1, damage2, damage3, damage4, damage5);
-                    var tmp1 = (damage1 > 0) ? damage1 : 99999;
-                    var tmp2 = (damage2 > 0) ? damage2 : 99999;
-                    var tmp3 = (damage3 > 0) ? damage3 : 99999;
-                    var tmp4 = (damage4 > 0) ? damage4 : 99999;
-                    var tmp5 = (damage5 > 0) ? damage5 : 99999;
-                    var min = Math.min(tmp1, tmp2, tmp3, tmp4, tmp5);
-                    console.log("======== max " + max + " / " + min);
-                    damageColor(damage1, max, min, $("#damage1"));
-                    damageColor(damage2, max, min, $("#damage2"));
-                    damageColor(damage3, max, min, $("#damage3"));
-                    damageColor(damage4, max, min, $("#damage4"));
-                    damageColor(damage5, max, min, $("#damage5"));
-
-                    damage = damage1;
-                    master = masterLevel($("#master").val());
-                    type = $("#type").val();
-
-                    if (type == 3) { // 他のfunctionでも使うのでここで定義（やり方としては下の下）
-                        wepK = ((wepon + 9) / 10.5);
-                    } else {
-                        wepK = ((wepon + 6) / 7);
-                    }
-
-                    v = Number($("#vit").val());
-                    var culcSv = sv;
-                    var culcAgi = agi;
+                /**
+                 * 陣形補正込みの値を取得
+                 * @returns {Array} 0:str, 1:agi
+                 */
+                function getStrAgi() {
+                    var culcSv = Number($("#str").val());
+                    var culcAgi = Number($("#agi").val());
                     // 陣形を使っている場合こちらも必要
                     if ($("#jinkei").val() != "0") {
-                        var jinkeiStrAgi = getJinkeiStrAgi();
-                        culcSv = jinkeiStrAgi[0];
-                        culcAgi = jinkeiStrAgi[1];
-                    }
+                        var charStr = Number($("#strOnlyChar").val());
+                        var charAgi = Number($("#agiOnlyChar").val());
+                        var soubiStr = culcSv - charStr;
+                        var soubiAgi = culcAgi - charAgi;
 
-                    var fieldSTR = getFieldSTR(culcSv, culcAgi, v);
-                    var baseDamage = baseDamageCulc(fieldSTR);
-                    var damageStep = damageStepCulc(fieldSTR);
-                    console.log("baseDamage: " + baseDamage + " step:" + damageStep);
-                    dRange = damageRange(baseDamage, damageStep);
-                    console.log("damageRange: " + dRange);
-                    dispDamageRange(dRange);
-
-                    if (damage1 > 0) {
-                        console.log("damage1 :" + damage1);
-                        var gVit = vitGuessCulc();
-                        console.log("guessVit: " + gVit);
-                        var vitCuld = vitCulc(s, a, Math.floor(gVit), damage1, damage2, damage3, damage4, damage5);
-                        dispGuess(vitCuld);
-                    }
-                }
-                function getJinkeiStrAgi() {
-                    var culcSv = 0;
-                    var culcAgi = 0;
-                    if (type != 2) {
-                        var sC = Number($("#strOnlyChar").val());
-                        var sJinkei = Number($("#jinkei_w_v").val());
-                        var sCJ = new Number(sC * sJinkei / 100).toFixed(0);
-                        culcSv = sv + Number(sCJ);
-
-                        var aC = Number($("#agiOnlyChar").val());
-                        var aJinkei = Number($("#jinkei_s_v").val());
-                        var aCJ = new Number(aC * aJinkei / 100).toFixed(0);
-                        culcAgi = agi + Number(aCJ);
-                        // console.log("腕力 陣形値" + sCJ + "("+sJinkei+"%) 陣形こみ" + culcSv);
-                        // console.log("素早さ 陣形値" + aCJ +"("+aJinkei+"%)  陣形こみ" + culcAgi);
-                    } else {
-                        var sC = Number($("#strOnlyChar").val());
-                        var sJinkei = Number($("#jinkei_k_v").val());
-                        var sCJ = new Number(sC * sJinkei / 100).toFixed(0);
-                        culcSv = sv + Number(sCJ);
-                        // console.log("器用さ 陣形値" + sCJ + "("+sJinkei+"%) 陣形こみ" + culcSv);
+                        var jinkeiStr = Number($("#jinkei_w_v").val());
+                        var jinkeiAgi = Number($("#jinkei_s_v").val());
+                        // 器用さの場合は入れ替える
+                        if (type === "sken" || type === "yumi") {
+                            jinkeiStr = Number($("#jinkei_k_v").val());
+                        }
+                        var jinkeiStrAgi = getJinkeiStrAgi(charStr, jinkeiStr, charAgi, jinkeiAgi);
+                        culcSv = jinkeiStrAgi[0] + soubiStr;
+                        culcAgi = jinkeiStrAgi[1] + soubiAgi;
                     }
                     return [culcSv, culcAgi];
-                }
-
-                function baseDamageCulc(fieldSTR) {
-                    return wepK * (fieldSTR) * master * (1 + ability) / (1 + 0.008 * resist);
-                }
-                function damageStepCulc(fieldSTR) {
-                    return wepK * (fieldSTR) * master / (1 + 0.008 * resist) * 0.01;
-                }
-
-                function damageRange(baseDamage, step) {
-                    var damageRange = [];
-                    var tanni = 1; // 小数点何位まで出す？(1,10,100)
-                    for (var i = 0; i < 10; i++) {
-                        damageRange.push(Math.round( (baseDamage + step * i) * tanni) / tanni);
-                    }
-                    return damageRange;
-                }
-
-                function getFieldSTR(s, a, v) {
-                    if (type == 3) {
-                        return ((2 * s + 2.5 * a) > 1.2 * v) ? (1 + (2 * s + 2.5 * a) - 1.2 * v) : 0;
-                    } else {
-                        return (4 * s > 1.5 * v) ? (1 + 4 * s - 1.5 * v) : 0;
-                    }
                 }
 
                 function vitGuessCulc() {
@@ -738,7 +638,7 @@
                         fieldSTR = getFieldSTR(guess);
                         var base = baseDamageCulc(fieldSTR);
                         var step = damageStepCulc(fieldSTR);
-                        var range = damageRange(base,step);
+                        var range = damageRange(base, step);
 
                         console.log("guess:" + guess + " input:" + memoryMaxDamage + " max:" + maxDamage + " CD:" + countdown + " range:" + range);
                         var pushFlg1 = false;
@@ -787,13 +687,6 @@
                     return result;
                 }
 
-                function masterLevel(lv) {
-                    var skill = Math.ceil((lv - 1) / 2) * 0.005 + 1;
-                    var od = Math.ceil((lv - 2) / 2) * 0.005;
-                    $("#masterDamage").val(100 + Math.ceil((lv - 1) / 2) * 0.5);
-                    return skill;
-                }
-
                 function dispGuess(dRange) {
                     $("table#guess tbody *").remove();
 
@@ -813,42 +706,59 @@
                 function dispDamageRange(dRange) {
                     $("table#damageRangeTable tbody *").remove();
 
-                    var col = "";
+                    var col1 = "";
+                    var col2 = "";
                     var sum = 0;
-                    for (i = 0; i < dRange.length; i++) {
-                        col += "<td class=\"small opacity col-xs-1\" >" + dRange[i] + "</td>";
+                    for (i = 0; i < 5; i++) {
+                        col1 += "<td class=\"small opacity col-xs-1\" >" + number_format(dRange[i]) + "</td>";
                         sum += dRange[i];
                     }
-                    console.log(sum + " / " + dRange.length);
-                    $("table#damageRangeTable tbody").append("<tr>" + "<td class=\"small opacity col-xs-1\" >" + Math.round(sum / dRange.length) + "</td>" + col + "</tr>\n");
+                    for (i = 5; i < dRange.length; i++) {
+                        col2 += "<td class=\"small opacity col-xs-1\" >" + number_format(dRange[i]) + "</td>";
+                        sum += dRange[i];
+                    }
+                    $("table#damageRangeTable tbody").append("<tr>");
+                    $("table#damageRangeTable tbody").append("<th class=\"table-primary col-xs-1\">平均</th>");
+                    $("table#damageRangeTable tbody").append("<td class=\"opacity col-xs-1\" colspan=5>" + number_format(Math.round(sum / dRange.length)) + "</td>");
+                    $("table#damageRangeTable tbody").append("</tr>");
+                    $("table#damageRangeTable tbody").append("<tr>");
+                    $("table#damageRangeTable tbody").append("<th class=\"table-primary small col-xs-1\">乱数1〜5</th>");
+                    $("table#damageRangeTable tbody").append(col1);
+                    $("table#damageRangeTable tbody").append("</tr>\n");
+                    $("table#damageRangeTable tbody").append("<tr>");
+                    $("table#damageRangeTable tbody").append("<th class=\"table-primary small col-xs-1\">乱数6〜10</th>");
+                    $("table#damageRangeTable tbody").append(col2);
+                    $("table#damageRangeTable tbody").append("</tr>\n");
                 }
 
                 function dispDamageRank(dRange) {
-dRange.sort(function(a,b){
-    if(a.d1 > b.d1) return -1;
-    if(a.d1 <= b.d1) return 1;
-});                    
-                    var nowJinkei = $("#jinkei :selected").val();                    
+                    dRange.sort(function (a, b) {
+                        if (a.d1 > b.d1)
+                            return -1;
+                        if (a.d1 <= b.d1)
+                            return 1;
+                    });
+                    var nowJinkei = $("#jinkei :selected").val();
                     $("table#damageRankTable tbody *").remove();
-                    dRange.forEach(function(element, index, array) {
+                    dRange.forEach(function (element, index, array) {
                         var classColor = ((index % 2) == 0) ? "opacity-even" : "opacity-odd";
-                        if(nowJinkei == element.jinkei) {
-                            classColor +=  " bg-primary text-white"
-                        }                        
+                        if (nowJinkei == element.jinkei) {
+                            classColor += " bg-primary text-white"
+                        }
                         var col = "";
                         col += "<tr>";
                         col += "<td class=\"small " + classColor + " \" >" + element.name + "</td>";
-                        col += "<td class=\"small " + classColor + " \" >" + Math.round(element.d1*1.045) + "</td>";
+                        col += "<td class=\"small " + classColor + " \" >" + Math.round(element.d1 * 1.045) + "</td>";
                         col += "<td class=\"small " + classColor + " \" >" + Math.round(element.d1) + "</td>";
                         col += "</tr>\n";
                         $("table#damageRankTable tbody").append(col);
                     });
                 }
-                function Compare(a,b){
-                    return arr[a]-arr[b];    
+                function Compare(a, b) {
+                    return arr[a] - arr[b];
                 }
 
-                function jinkeiChange() {
+                function jinkeiHosei() {
                     var r = $('#jinkei').val();
                     $("#jinkei_w").hide();
                     $("#jinkei_k").hide();
@@ -856,7 +766,7 @@ dRange.sort(function(a,b){
                     $("#jinkei_w_v").val(0);
                     $("#jinkei_k_v").val(0);
                     $("#jinkei_s_v").val(0);
-                    //$(".charOnly").hide();
+                    $(".charOnly").hide();
                     if (r != "0") {
                         $(".charOnly").show();
                     }
@@ -882,9 +792,13 @@ dRange.sort(function(a,b){
                         $("#jinkei_s").show();
                         $("#jinkei_s_v").val(-10);
                     }
-                    if (r == "hj") {
+                    if (r == "hjs") {
                         $("#jinkei_s").show();
                         $("#jinkei_s_v").val(-25);
+                    }
+                    if (r == "hjc") {
+                        $("#jinkei_w").show();
+                        $("#jinkei_w_v").val(25);
                     }
                     if (r == "sp1") {
                         $("#jinkei_w").show();
@@ -907,6 +821,11 @@ dRange.sort(function(a,b){
                         $("#jinkei_s_v").val(25);
                     }
                     if (r == "pl2") {
+                        type = $("#type").val();
+                        if ($.inArray(type, ["hi","mizu","tsuchi","kaze","hikari","yami"]) > -1){
+                            $("#jinkei_w").show();
+                            $("#jinkei_w_v").val(50);
+                        }
                         $("#jinkei_s").show();
                         $("#jinkei_s_v").val(-50);
                     }
@@ -942,16 +861,18 @@ dRange.sort(function(a,b){
                     }
                 }
 
-// コールバック関数の引数の順序が $.each と異なることに注意。
-                function addJinkeiOptions(list) {
-                    $.map(list, function (name, value) {
-                        $option = $('<option>', {value: name, text: value});
-                        $('#jinkei').append($option);
-                    });
-                }
-
-
             });
         </script>
     </body>
+                <div id="footer">
+                    <h2 class="damageCulc kadomaru bg-white text-center">ダメージ計算結果
+                        <img src="https://www.silhouette-illust.com/wp-content/uploads/2017/10/icon_calculator_41158-101x101.jpg" width="32" height="32">
+                    </h2>
+                    <div class="table-responsive">
+                        <table class="damageCulc table table-hover table-bordered table-sm " id="damageRangeTable">
+                            <tbody class=""></tbody>
+                        </table>
+                    </div>
+                </div>
+    
 </html>
