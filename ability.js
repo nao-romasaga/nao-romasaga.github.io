@@ -1,7 +1,7 @@
 // 動的に追加されるものに対してはonで対応する
-$(document).on('click', '.switch .toggle', function () {
-    $(this).toggleClass("accordionActive").next().slideToggle(300);
-});
+//$(document).on('click', '.switch .toggle', function () {
+//    $(this).toggleClass("accordionActive").next().slideToggle(300);
+//});
 
 
 setImgTag("icon/icon_a.png", "icon_A");
@@ -87,7 +87,9 @@ $(function () {
                 displayAbilityHolder(ABILITY_MASTER[id]);
                 scrollStyleList();
             });
-
+            $(".switch .toggle").click(function () {
+                $(this).toggleClass("accordionActive").next().slideToggle(300);
+            });
         }
     });
 });
