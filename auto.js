@@ -188,7 +188,7 @@ function kakuseiLabel(skillInfo) {
     $(skillLeft).append("(");
     let kakuseiList = [];
     for (let i = 1; i <= skillInfo['Kakusei']; i++) {
-        kakuseiList.push("◇");
+        kakuseiList.push("＝＝◇＝＝");
     }
     $(skillLeft).append(kakuseiList.join(" "));
     $(skillLeft).append(")");
@@ -218,9 +218,9 @@ $(document).on('click', '.kakuseiCheck', function () {
     $(".kakusei" + id).each(function () {
         let k = $(this).attr("data-kakusei");
         if (k <= kakusei) {
-            $(this).html("◆ ");
+            $(this).html("＝＝◆＝＝");
         } else {
-            $(this).html("◇ ");
+            $(this).html("＝＝◇＝＝");
         }
     });
     for (let i in USE_SKILL_LIST) {
@@ -238,7 +238,7 @@ function addSkillArea(skillInfo, target) {
         let kCheck = $("#baseKakuseiCheck").clone(true).removeAttr("id")
                 .addClass('kakusei' + skillInfo['Id'])
                 .attr("data-id", skillInfo['Id']).attr("data-kakusei", kakusei);
-        $(kCheck).html("◇ ");
+        $(kCheck).html("＝＝◇＝＝");
         kakuseiList.push(kCheck);
     }
     let link = "";
@@ -512,3 +512,4 @@ setImgTag("icon/icon_rei.png", "icon_rei");
 setImgTag("icon/icon_rai.png", "icon_rai");
 setImgTag("icon/icon_in.png", "icon_in");
 setImgTag("icon/icon_yo.png", "icon_yo");
+        
