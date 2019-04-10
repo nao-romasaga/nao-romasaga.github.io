@@ -218,9 +218,9 @@ $(document).on('click', '.kakuseiCheck', function () {
     $(".kakusei" + id).each(function () {
         let k = $(this).attr("data-kakusei");
         if (k <= kakusei) {
-            $(this).html("◆");
+            $(this).html(" ◆");
         } else {
-            $(this).html("◇");
+            $(this).html(" ◇");
         }
     });
     for (let i in USE_SKILL_LIST) {
@@ -235,7 +235,7 @@ function addSkillArea(skillInfo, target) {
     let skillName = $("<span>").addClass("skill").attr("data-id", skillInfo['Id']).html(skillInfo['Name']);
     let kakuseiList = [];
     for (let kakusei = 1; kakusei <= skillInfo['Kakusei']; kakusei++) {
-        let kCheck = $("<button>").addClass('kakuseiCheck')
+        let kCheck = $("<p>").addClass('kakuseiCheck').addClass("floatLeft")
                 .addClass('kakusei' + skillInfo['Id'])
                 .attr("data-id", skillInfo['Id']).attr("data-kakusei", kakusei);
         $(kCheck).html("◇");
@@ -512,4 +512,3 @@ setImgTag("icon/icon_rei.png", "icon_rei");
 setImgTag("icon/icon_rai.png", "icon_rai");
 setImgTag("icon/icon_in.png", "icon_in");
 setImgTag("icon/icon_yo.png", "icon_yo");
-        
