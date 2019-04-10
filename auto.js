@@ -171,7 +171,7 @@ function displaySkillTable(styleId) {
     });
 }
 function kakuseiLabel(skillInfo) {
-    let skillName = $("#baseKeishoSkill").clone(true);
+    let skillName = $("<button>").addClass("skill").addClass("keishoSkill");
     skillName.removeAttr("id").attr("data-id", skillInfo['Id']);
     let size = (device === "sp") ? 20 : 35;
     let skillLeft = $("<p>").addClass("floatLeft");
@@ -188,7 +188,7 @@ function kakuseiLabel(skillInfo) {
     $(skillLeft).append("(");
     let kakuseiList = [];
     for (let i = 1; i <= skillInfo['Kakusei']; i++) {
-        kakuseiList.push("＝＝◇＝＝");
+        kakuseiList.push("◇");
     }
     $(skillLeft).append(kakuseiList.join(" "));
     $(skillLeft).append(")");
@@ -218,9 +218,9 @@ $(document).on('click', '.kakuseiCheck', function () {
     $(".kakusei" + id).each(function () {
         let k = $(this).attr("data-kakusei");
         if (k <= kakusei) {
-            $(this).html("＝＝◆＝＝");
+            $(this).html("◆");
         } else {
-            $(this).html("＝＝◇＝＝");
+            $(this).html("◇");
         }
     });
     for (let i in USE_SKILL_LIST) {
@@ -235,10 +235,10 @@ function addSkillArea(skillInfo, target) {
     let skillName = $("<span>").addClass("skill").attr("data-id", skillInfo['Id']).html(skillInfo['Name']);
     let kakuseiList = [];
     for (let kakusei = 1; kakusei <= skillInfo['Kakusei']; kakusei++) {
-        let kCheck = $("#baseKakuseiCheck").clone(true).removeAttr("id")
+        let kCheck = $("<button>").addClass('kakuseiCheck')
                 .addClass('kakusei' + skillInfo['Id'])
                 .attr("data-id", skillInfo['Id']).attr("data-kakusei", kakusei);
-        $(kCheck).html("＝＝◇＝＝");
+        $(kCheck).html("◇");
         kakuseiList.push(kCheck);
     }
     let link = "";
@@ -263,17 +263,10 @@ function addSkillArea(skillInfo, target) {
     }
     let td3 = $("<td>").append(link);
     let td4 = $("<td>").append(skillInfo['PowerGrade'] + "(" + skillInfo['SkillIryoku'] + ")");
-    let td5 = $("<td>").append("<button class='btn bt' >覚醒</button>");
-    let tr = $("<tr>").append(tdIcon).append(td1).append(td2).append(td3).append(td4).append(td5);
-    $(target).append(tr.addClass("aaa"));
+    let tr = $("<tr>").append(tdIcon).append(td1).append(td2).append(td3).append(td4);
+    $(target).append(tr);
 }
-$(document).on('click', '.aaa tr', function () {
-    $(this).append("◆◆");
-});
 
-$(document).on('click', '.aaa td', function () {
-    $(this).append("xxx");
-});
 $(document).on('click', '.bt', function () {
     $(this).append("A");
 });
