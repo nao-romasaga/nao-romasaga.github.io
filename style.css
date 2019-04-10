@@ -197,12 +197,12 @@ body {
     font-size: 200%;
 }
 .kakuseiCheck{
+    -webkit-appearance: none;
     padding:0px;
-    color: black; /* #faf0b4; */
+    color: #faf0b4;
     background-color: rgba(0, 0, 0, 0);
     border: 0px;
 }
-
 .width-100{
     width: 100%;
 }
