@@ -196,3 +196,10 @@ body {
 .auto-start{
     font-size: 200%;
 }
+.kakuseiCheck{
+    padding:0px;
+    color: #faf0b4;
+}
+.width-100{
+    width: 100%;
+}
