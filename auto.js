@@ -218,9 +218,9 @@ $(document).on('click', '.kakuseiCheck', function () {
     $(".kakusei" + id).each(function () {
         let k = $(this).attr("data-kakusei");
         if (k <= kakusei) {
-            $(this).html(" ◆");
+            $(this).html("◆");
         } else {
-            $(this).html(" ◇");
+            $(this).html("◇");
         }
     });
     for (let i in USE_SKILL_LIST) {
@@ -238,7 +238,7 @@ function addSkillArea(skillInfo, target) {
         let kCheck = $("<button>").addClass('kakuseiCheck').addClass("floatLeft")
                 .addClass('kakusei' + skillInfo['Id'])
                 .attr("data-id", skillInfo['Id']).attr("data-kakusei", kakusei);
-        $(kCheck).html("◇.");
+        $(kCheck).html("◇");
         kakuseiList.push(kCheck);
     }
     let link = "";
