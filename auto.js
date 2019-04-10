@@ -266,8 +266,12 @@ function addSkillArea(skillInfo, target) {
     let tr = $("<tr>").append(tdIcon).append(td1).append(td2).append(td3).append(td4);
     $(target).append(tr.addClass("aaa"));
 }
-$(document).on('click', '.aaa', function () {
+$(document).on('click', '.aaa tr', function () {
     $(this).append("◆◆");
+});
+
+$(document).on('click', '.aaa td', function () {
+    $(this).append("xxx");
 });
 
 function displayResult() {
