@@ -264,8 +264,11 @@ function addSkillArea(skillInfo, target) {
     let td3 = $("<td>").append(link);
     let td4 = $("<td>").append(skillInfo['PowerGrade'] + "(" + skillInfo['SkillIryoku'] + ")");
     let tr = $("<tr>").append(tdIcon).append(td1).append(td2).append(td3).append(td4);
-    $(target).append(tr);
+    $(target).append(tr.addClass("aaa"));
 }
+$(document).on('click', '.aaa', function () {
+    $(this).append("◆◆");
+});
 
 function displayResult() {
     let skillList = USE_SKILL_LIST.slice();
