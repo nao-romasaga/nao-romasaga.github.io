@@ -76,9 +76,9 @@ function insertCommonComponent() {
     nav += '      <li class="nav-item" id="headAbility">';
     nav += '        <a class="nav-link" href="./ability.html">アビリティツリー</a>';
     nav += '      </li>';
-//    nav += '      <li class="nav-item" id="headAuto">';
-//    nav += '        <a class="nav-link" href="./auto.html">全力AUTOシミュレーション</a>';
-//    nav += '      </li>';
+    nav += '      <li class="nav-item" id="headAuto">';
+    nav += '        <a class="nav-link" href="./auto.html">全力AUTOシミュレーション</a>';
+    nav += '      </li>';
     nav += '      <li class="nav-item">';
     nav += '        <a class="nav-link disabled" href="#">スタイル情報(coming soon)</a>';
     nav += '      </li>';
