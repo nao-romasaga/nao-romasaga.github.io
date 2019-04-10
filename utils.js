@@ -125,8 +125,9 @@ $(document).ready(function () {
     insertCommonComponent();
 });
 function getDevice() {
+    let width = window.innerWidth;
     var ua = navigator.userAgent;
-    if (ua.indexOf('iPhone') > 0 || ua.indexOf('iPod') > 0 || ua.indexOf('Android') > 0 && ua.indexOf('Mobile') > 0) {
+    if (width < 800 || ua.indexOf('iPhone') > 0 || ua.indexOf('iPod') > 0 || ua.indexOf('Android') > 0 && ua.indexOf('Mobile') > 0) {
         return 'sp';
     } else if (ua.indexOf('iPad') > 0 || ua.indexOf('Android') > 0) {
         return 'tab';
