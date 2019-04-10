@@ -263,7 +263,8 @@ function addSkillArea(skillInfo, target) {
     }
     let td3 = $("<td>").append(link);
     let td4 = $("<td>").append(skillInfo['PowerGrade'] + "(" + skillInfo['SkillIryoku'] + ")");
-    let tr = $("<tr>").append(tdIcon).append(td1).append(td2).append(td3).append(td4);
+    let td5 = $("<td>").append("<button class='btn bt' >覚醒</button>");
+    let tr = $("<tr>").append(tdIcon).append(td1).append(td2).append(td3).append(td4).append(td5);
     $(target).append(tr.addClass("aaa"));
 }
 $(document).on('click', '.aaa tr', function () {
@@ -272,6 +273,9 @@ $(document).on('click', '.aaa tr', function () {
 
 $(document).on('click', '.aaa td', function () {
     $(this).append("xxx");
+});
+$(document).on('click', '.bt', function () {
+    $(this).append("A");
 });
 
 function displayResult() {
