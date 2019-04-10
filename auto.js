@@ -13,7 +13,64 @@ $(document).ready(function ($) {
     };
     option['height'] = (device === "sp") ? 310 : 250;
     $('#slider-pro').sliderPro(option);
+
+    // 後から差し込まれる要素はdocument.onにしないとfunctionがbindされない
+    $(document).on('click', '.char', function () {
+        $("#skillAreaParent").hide();
+        $("#culcStart").hide();
+        $("#keishoKaijo").hide();
+        $(".skillChoice").html("");
+        $("table#skillArea > tbody *").remove();
+        $("table#skillArea > tfoot *").remove();
+        $("#keisyoSkill").html(""); // クリア
+        $("#culcSummaryArea").hide();
+        $("table#culcSummary tbody *").remove();
+        $("#culcDetail").html("");
+
+        let charId = $(this).attr("data-id");
+        $(".char-selected").each(function (i, e) {
+            $(this).removeClass('char-winner');
+            $(this).addClass('char-aruku');
+        });
+        $(this).removeClass('char-aruku');
+        $(this).addClass('char-winner').addClass('char-selected');
+        displayStyleList(charId);
+    });
+    $(document).on('click', '.style', function () {
+        $("#skillAreaParent").show();
+        $("#culcStart").show();
+        $("#keishoKaijo").show();
+        $(".skillChoice").html("");
+        $("table#skillArea > tbody *").remove();
+        $("table#skillArea > tfoot *").remove();
+        $("table#culcSummary tbody *").remove();
+        let styleId = $(this).attr("data-id");
+        NOW_STYLE = STYLE_MASTER[styleId];
+        displaySkillTable(styleId);
+    });
+    $(document).on('click', '#keishoKaijo', function () {
+        $("#noKeisho").show();
+        $("table#skillArea > tfoot").html("");
+        USE_SKILL_LIST = BASE_SKILL_LIST.slice();
+    });
+
+    $(document).on('click', '.keishoSkill', function () {
+        let id = $(this).attr("data-id");
+        keishoSkill(id);
+    });
 });
+
+function keishoSkill(id) {
+    $("#noKeisho").hide();
+    $("table#skillArea > tfoot").html("");
+    // 中身をイジイジするので値渡しにしておく
+    let skillInfo = Object.assign({}, SKILL_MASTER[id]);
+    skillInfo['isKeisho'] = true;
+    skillInfo['UseBp'] = skillInfo['ConsumeBp'];
+    addSkillArea(skillInfo, "table#skillArea tfoot");
+    USE_SKILL_LIST = BASE_SKILL_LIST.slice();
+    USE_SKILL_LIST.push(skillInfo);
+}
 
 var device = getDevice();
 var NORMAL_ATTACK = {"Name": "通常攻撃", "AttackArea": "敵単体", "ConsumeBp": 0, "AutoUseBp": 0, "UseBp": 0, "isNotUseAuto": false, "UseCount": 0, "isKeisho": 0, "SkillIryoku": 7};
@@ -30,57 +87,7 @@ $("#culcStart").click(function () {
     displayResult();
 });
 
-// 後から差し込まれる要素はdocument.onにしないとfunctionがbindされない
-$(document).on('click', '.char', function () {
-    $("#skillAreaParent").hide();
-    $("#culcStart").hide();
-    $("#keishoKaijo").hide();
-    $(".skillChoice").html("");
-    $("table#skillArea > tbody *").remove();
-    $("table#skillArea > tfoot *").remove();
-    $("#keisyoSkill").html(""); // クリア
-    $("#culcSummaryArea").hide();
-    $("table#culcSummary tbody *").remove();
-    $("#culcDetail").html("");
 
-    let charId = $(this).attr("data-id");
-    $(".char-selected").each(function (i, e) {
-        $(this).removeClass('char-winner');
-        $(this).addClass('char-aruku');
-    });
-    $(this).removeClass('char-aruku');
-    $(this).addClass('char-winner').addClass('char-selected');
-    displayStyleList(charId);
-});
-$(document).on('click', '.style', function () {
-    $("#skillAreaParent").show();
-    $("#culcStart").show();
-    $("#keishoKaijo").show();
-    $(".skillChoice").html("");
-    $("table#skillArea > tbody *").remove();
-    $("table#skillArea > tfoot *").remove();
-    $("table#culcSummary tbody *").remove();
-    let styleId = $(this).attr("data-id");
-    NOW_STYLE = STYLE_MASTER[styleId];
-    displaySkillTable(styleId);
-});
-$(document).on('click', '#keishoKaijo', function () {
-    $("#noKeisho").show();
-    $("table#skillArea > tfoot").html("");
-    USE_SKILL_LIST = BASE_SKILL_LIST.slice();
-});
-
-$(document).on('click', '.keishoSkill', function () {
-    $("#noKeisho").hide();
-    $("table#skillArea > tfoot").html("");
-    // 中身をイジイジするので値渡しにしておく
-    let skillInfo = Object.assign({}, SKILL_MASTER[$(this).attr("data-id")]);
-    skillInfo['isKeisho'] = true;
-    skillInfo['UseBp'] = skillInfo['ConsumeBp'];
-    addSkillArea(skillInfo, "table#skillArea tfoot");
-    USE_SKILL_LIST = BASE_SKILL_LIST.slice();
-    USE_SKILL_LIST.push(skillInfo);
-});
 
 function displayStyleList(charId) {
     $(".styleChoiceArea").show();
@@ -196,6 +203,13 @@ function kakuseiLabel(skillInfo) {
     $(skillRight).append(" BP:" + skillInfo['ConsumeBp']);
     $(skillRight).append(" " + skillInfo['PowerGrade'] + "(" + skillInfo['SkillIryoku'] + ")");
     skillName.append(skillLeft).append(skillRight);
+    
+    // これ動くかな？
+    $(document).on('click', '.keishoSkill', function () {
+        let id = $(this).attr("data-id");
+        keishoSkill(id);
+    });
+    
     return skillName;
 }
 
