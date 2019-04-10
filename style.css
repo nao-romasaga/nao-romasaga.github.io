@@ -199,7 +199,10 @@ body {
 .kakuseiCheck{
     padding:0px;
     color: #faf0b4;
+    background-color: rgba(0, 0, 0, 0);
+    border: 0px;
 }
+
 .width-100{
     width: 100%;
 }
