@@ -1,3 +1,16 @@
+const ICON_LIST = {
+    "剣": "icon_ken", "大剣": "icon_dken", "斧": "icon_ono",
+    "小剣": "icon_sken", "槍": "icon_yari", "弓": "icon_yumi",
+    "棍棒": "icon_kon", "体術": "icon_tai", "銃": "icon_ju",
+    "斬": "icon_zan", "突": "icon_totsu", "打": "icon_da",
+    "熱": "icon_netsu", "冷": "icon_rei", "雷": "icon_rai",
+    "陰": "icon_in", "陽": "icon_yo",
+    "火術": "icon_hi", "水術": "icon_mizu", "風術": "icon_kaze",
+    "土術": "icon_tsuchi", "光術": "icon_hikari", "闇術": "icon_yami",
+    "スタン": "icon_stan", "マヒ": "icon_mahi", "気絶": "icon_kizetsu", "毒": "icon_doku", "石化": "icon_sekika",
+    "魅了": "icon_miryo", "眠り": "icon_zzz", "混乱": "icon_konran", "狂戦士": "icon_kyosenshi", "暗闇": "icon_kurayami"
+};
+
 function masterLevel(lv) {
     var skill = Math.ceil((lv - 1) / 2) * 0.005;
     return Number(skill);
@@ -63,6 +76,9 @@ function insertCommonComponent() {
     nav += '      <li class="nav-item" id="headAbility">';
     nav += '        <a class="nav-link" href="./ability.html">アビリティツリー</a>';
     nav += '      </li>';
+    nav += '      <li class="nav-item" id="headAuto">';
+    nav += '        <a class="nav-link" href="./auto.html">全力AUTOシミュレーション</a>';
+    nav += '      </li>';
     nav += '      <li class="nav-item">';
     nav += '        <a class="nav-link disabled" href="#">スタイル情報(coming soon)</a>';
     nav += '      </li>';
@@ -100,8 +116,10 @@ function insertCommonComponent() {
         $("#headSkill").addClass("active");
     } else if (url.indexOf('ability.html') != -1) {
         $("#headAbility").addClass("active");
+    } else if (url.indexOf('auto.html') != -1) {
+        $("#headAuto").addClass("active");
     }
-    
+
 }
 $(document).ready(function () {
     insertCommonComponent();
@@ -125,4 +143,3 @@ function getTime(time) {
         return x[time];
     }
 }
-$('[data-toggle="tooltip"]').tooltip();
