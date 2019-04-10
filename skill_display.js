@@ -1,15 +1,3 @@
-const ICON_LIST = {
-    "剣": "icon_ken", "大剣": "icon_dken", "斧": "icon_ono",
-    "小剣": "icon_sken", "槍": "icon_yari", "弓": "icon_yumi",
-    "棍棒": "icon_kon", "体術": "icon_tai", "銃": "icon_ju",
-    "斬": "icon_zan", "突": "icon_totsu", "打": "icon_da",
-    "熱": "icon_netsu", "冷": "icon_rei", "雷": "icon_rai",
-    "陰": "icon_in", "陽": "icon_yo",
-    "火術": "icon_hi", "水術": "icon_mizu", "風術": "icon_kaze",
-    "土術": "icon_tsuchi", "光術": "icon_hikari", "闇術": "icon_yami",
-    "スタン": "icon_stan", "マヒ": "icon_mahi", "気絶": "icon_kizetsu", "毒": "icon_doku", "石化": "icon_sekika",
-    "魅了": "icon_miryo", "眠り": "icon_zzz", "混乱": "icon_konran", "狂戦士": "icon_kyosenshi", "暗闇": "icon_kurayami"
-};
 setImgTag("icon/icon_ken.png", "icon_ken");
 setImgTag("icon/icon_dken.png", "icon_dken");
 setImgTag("icon/icon_sken.png", "icon_sken");
