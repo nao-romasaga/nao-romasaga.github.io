@@ -267,10 +267,6 @@ function addSkillArea(skillInfo, target) {
     $(target).append(tr);
 }
 
-$(document).on('click', '.bt', function () {
-    $(this).append("A");
-});
-
 function displayResult() {
     let skillList = USE_SKILL_LIST.slice();
     // 先頭に通常攻撃を入れる
