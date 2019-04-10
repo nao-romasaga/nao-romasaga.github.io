@@ -55,22 +55,18 @@ $(document).ready(function ($) {
     });
 
     $(document).on('click', '.keishoSkill', function () {
-        let id = $(this).attr("data-id");
-        keishoSkill(id);
+        $("#noKeisho").hide();
+        $("table#skillArea > tfoot").html("");
+        // 中身をイジイジするので値渡しにしておく
+        let skillInfo = Object.assign({}, SKILL_MASTER[$(this).attr("data-id")]);
+        skillInfo['isKeisho'] = true;
+        skillInfo['UseBp'] = skillInfo['ConsumeBp'];
+        addSkillArea(skillInfo, "table#skillArea tfoot");
+        USE_SKILL_LIST = BASE_SKILL_LIST.slice();
+        USE_SKILL_LIST.push(skillInfo);
     });
 });
 
-function keishoSkill(id) {
-    $("#noKeisho").hide();
-    $("table#skillArea > tfoot").html("");
-    // 中身をイジイジするので値渡しにしておく
-    let skillInfo = Object.assign({}, SKILL_MASTER[id]);
-    skillInfo['isKeisho'] = true;
-    skillInfo['UseBp'] = skillInfo['ConsumeBp'];
-    addSkillArea(skillInfo, "table#skillArea tfoot");
-    USE_SKILL_LIST = BASE_SKILL_LIST.slice();
-    USE_SKILL_LIST.push(skillInfo);
-}
 
 var device = getDevice();
 var NORMAL_ATTACK = {"Name": "通常攻撃", "AttackArea": "敵単体", "ConsumeBp": 0, "AutoUseBp": 0, "UseBp": 0, "isNotUseAuto": false, "UseCount": 0, "isKeisho": 0, "SkillIryoku": 7};
@@ -175,8 +171,8 @@ function displaySkillTable(styleId) {
     });
 }
 function kakuseiLabel(skillInfo) {
-    let skillName = $("<div>").addClass("skill").addClass("keishoSkill")
-            .attr("data-id", skillInfo['Id']);
+    let skillName = $("#baseKeishoSkill").clone(true);
+    skillName.removeAttr("id").attr("data-id", skillInfo['Id']);
     let size = (device === "sp") ? 20 : 35;
     let skillLeft = $("<p>").addClass("floatLeft");
     //BattleType , AttackAttributes
@@ -203,13 +199,7 @@ function kakuseiLabel(skillInfo) {
     $(skillRight).append(" BP:" + skillInfo['ConsumeBp']);
     $(skillRight).append(" " + skillInfo['PowerGrade'] + "(" + skillInfo['SkillIryoku'] + ")");
     skillName.append(skillLeft).append(skillRight);
-    
-    // これ動くかな？
-    $(document).on('click', '.keishoSkill', function () {
-        let id = $(this).attr("data-id");
-        keishoSkill(id);
-    });
-    
+
     return skillName;
 }
 
@@ -245,7 +235,8 @@ function addSkillArea(skillInfo, target) {
     let skillName = $("<span>").addClass("skill").attr("data-id", skillInfo['Id']).html(skillInfo['Name']);
     let kakuseiList = [];
     for (let kakusei = 1; kakusei <= skillInfo['Kakusei']; kakusei++) {
-        let kCheck = $("<span>").addClass("kakuseiCheck").addClass('kakusei' + skillInfo['Id'])
+        let kCheck = $("#baseKakuseiCheck").clone(true).removeAttr("id")
+                .addClass('kakusei' + skillInfo['Id'])
                 .attr("data-id", skillInfo['Id']).attr("data-kakusei", kakusei);
         $(kCheck).html("◇ ");
         kakuseiList.push(kCheck);
@@ -521,4 +512,3 @@ setImgTag("icon/icon_rei.png", "icon_rei");
 setImgTag("icon/icon_rai.png", "icon_rai");
 setImgTag("icon/icon_in.png", "icon_in");
 setImgTag("icon/icon_yo.png", "icon_yo");
-        
