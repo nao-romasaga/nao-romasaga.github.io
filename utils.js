@@ -93,7 +93,7 @@ function insertCommonComponent() {
     footer += '<a href="https://twitter.com/imonoki" target="new">imonoki</a>, ';
     footer += '<a href="https://twitter.com/chin_ohnck" target="new">ちん</a>, ';
     footer += '<a href="https://twitter.com/HarMakeIt" target="new">春巻</a>, ';
-    footer += '<a href="https://twitter.com/PeNN128" target="new">こやん</a>, ';
+    footer += '<a href="https://twitter.com/PeNN128RS" target="new">こやん</a>, ';
     footer += '<a href="https://twitter.com/ruchigame" target="new">ruchi</a>';
     footer += '</small><br>';
     footer += '© 2019 SQUARE ENIX CO., LTD. All Rights Reserved. Powered by Akatsuki Inc.<br>';
