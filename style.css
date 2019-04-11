@@ -206,3 +206,46 @@ body {
 .width-100{
     width: 100%;
 }
+
+.sorry_cat {
+    background: url(https://nao-romasaga.github.io/img/36a44.png) no-repeat; /* riz */
+    background-size: 400px 400px
+}
+.sorry_center{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    margin: auto;
+    width: 200px;
+    height: 64px;      
+}
+.icon-nemuri {
+    display: inline-block;
+    width: 65px;
+    height: 70px;
+    background-position: 0px -320px;
+    margin: 0 0 0 0px;
+    animation: nemuri 2s steps(1);
+}        
+.icon-zzz {
+    background: url(https://nao-romasaga.github.io/img/icon_zzz.png?v=1) no-repeat;
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    left: -50px;
+    margin: 0 0 0 0px;
+    animation: zzz 2s infinite;
+}                      
+@keyframes nemuri {
+    0% { background-position: -80px 0px;}
+    25% { background-position: -320px -240px;}
+    80% { background-position: 0px -320px;}
+    100% { background-position: 0px -320px; }
+}
+@keyframes zzz {
+    0% { transform: scale(0);} /* 1.1 */
+    50% { transform: scale(1.5);} /* 5.1 */
+    100% { transform: scale(1);} /* 5.1 */
+}
