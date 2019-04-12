@@ -107,7 +107,7 @@ function displayStyleList(charId) {
         }
 
         // スタイルアイコンの追加
-        let icon = $("<span>").attr("id", "icon" + styleId).addClass("style")
+        let icon = $("<button>").attr("id", "icon" + styleId).addClass("style")
                 .addClass(getStyleIconClass(styleInfo['Rarity']))
                 .attr("style", getImgUrl('style_icon/' + styleId + ".png"))
                 .attr("data-id", styleId).attr("width", 80);
@@ -399,9 +399,9 @@ function addBonus(org, per, add) {
 }
 
 function culcAutoMode(skillList) {
-    console.log(NOW_CHAR);
-    console.log(NOW_STYLE);
-    console.log(skillList);
+    //console.log(NOW_CHAR);
+    //console.log(NOW_STYLE);
+    //console.log(skillList);
     let battleType = NOW_STYLE['WeaponType']; // 弓
     $(".culcAfter").show();
     $("table#culcSummary tbody *").remove();
