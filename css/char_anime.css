@@ -10,13 +10,13 @@
 .slide1{
     transition-duration: 1s;
     margin-top:-100px;
-    margin-left: -100px;
+    margin-left: -200px;
     animation: slideanime 3s;
 }
 .slide2{
     transition-duration: 1s;
     margin-top:-80px;
-    margin-left: -100px;
+    margin-left: -200px;
     animation: slideanime2 4s;
 }
 @keyframes slideanime {
