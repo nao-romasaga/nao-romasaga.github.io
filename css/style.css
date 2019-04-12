@@ -1,0 +1,282 @@
+@import url("char_anime.css");
+@import url("icon.css");
+.text-left {
+    text-align: left !important;
+}
+
+.text-right {
+    text-align: right !important;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.nav-link.active,
+.nav-item.show .nav-link {
+    background-color: #93CBFF !important;
+    border-color: #0000FF !important;
+}
+
+.dot {
+    image-rendering: pixelated;
+}
+
+.side-padding-zero {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+.opacityWhite {
+    background-color: rgba(245, 245, 245, 1);
+    opacity: 1;
+}
+.opacity {
+    background-color: rgba(245, 245, 245, 0.8);
+}
+
+.opacity-char-back {
+    background-color: rgba(131, 5, 5, 0.7);
+    border-radius: 20px;
+    color:#faf0b4;
+
+}
+.char-bottom {
+    border-bottom: 2px groove;
+}
+.ff-menu{
+    background: #3378B8;
+    opacity: 0.8;
+    border: 3px solid #fff;
+    border-radius: 8px;
+}
+.game-banner{
+    border: 4px solid #dcc8b4;
+    border-radius: 12px;
+    color:#faf0b4;
+    background: -moz-linear-gradient(to bottom,#d87242, #520c0b 50%,#d87242); 
+    background: -webkit-linear-gradient(to bottom,#d87242, #520c0b 50%,#d87242); 
+    background: linear-gradient(to bottom,#d87242, #520c0b 50%,#d87242); 
+}
+.darkButton{
+    border: 2px solid #d0c0b0;
+    border-radius: 12px;
+    padding: 5px;
+    color:#faf0b4;
+    background: -moz-linear-gradient(to bottom,#e6dcb4, #1c1c16 50%,#e6dcb4); 
+    background: -webkit-linear-gradient(to bottom,#e6dcb4, #1c1c16 50%,#e6dcb4); 
+    background: linear-gradient(to bottom,#e6dcb4, #1c1c16 50%,#e6dcb4); 
+}
+.darkButtonShine{
+    border: 2px solid #d0c0b0;
+    border-radius: 12px;
+    padding: 5px;
+    color:#faf0b4;
+    background: -moz-linear-gradient(to bottom,white, #1c1c16 50%,white); 
+    background: -webkit-linear-gradient(to bottom,white, #1c1c16 50%,white); 
+    background: linear-gradient(to bottom,white, #1c1c16 50%,white); 
+}
+.keishoSkillArea{
+    margin: 1px 10px 1px 10px;
+}
+.keishoSkill{
+    width: 100%;
+    padding: 3px;
+    border: 2px solid #91ffd2;
+    border-radius: 12px;
+    color: #f8f3e6;
+    background: -moz-linear-gradient(to bottom,#91aa64, #28140a 50%,#91aa64); 
+    background: -webkit-linear-gradient(to bottom,#91aa64, #28140a 50%,#91aa64); 
+    background: linear-gradient(to bottom,#91aa64, #28140a 50%,#91aa64); 
+}
+.zenryokuAuto{
+    color: white;
+    text-shadow: 2px 2px 1px #F00,
+        -2px 2px 1px #F00,
+        2px -2px 1px #F00,
+        -2px -2px 1px #F00;    
+    width: 100%;
+    background:    -moz-linear-gradient(to bottom,#ffff7d, #956400 50%,#ffff7d); 
+    background: -webkit-linear-gradient(to bottom,#ffff7d, #956400 50%,#ffff7d); 
+    background:         linear-gradient(to bottom,#ffff7d, #956400 50%,#ffff7d); 
+}
+.zenryokuAuto:active{
+    animation: anime 0.2s 0s;  /* アニメーション指定 */
+}
+
+@keyframes anime {
+    0% {color: white; }
+    50% {color: red; }
+    100% {color: white; }
+}
+
+
+.opacity-even {
+    background-color: rgba(245, 245, 245, 1);
+    opacity: 0.8;
+}
+.opacity-odd {
+    background-color: rgba(245, 245, 245, 1);
+    opacity: 0.9;
+}
+.haikei {
+    background: url(https://nao-romasaga.github.io/img/bg.jpg) no-repeat;
+    width:100%;
+    background-size: cover;
+}
+body {
+    color: #333;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    line-height: 1.8;
+}            
+.kadomaru {
+    border-radius: 8px;
+    padding-left: 3px;
+}
+#footer {
+    position: fixed;
+    bottom: 0;
+    height: 150px;
+    z-index: 3;
+}
+
+.positionTop-10{
+    position: -10px 0 0 0;
+}
+@media screen and (max-width: 799px) { 
+    .skillIconList {
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+    }
+    .skillIconListJotai {
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+    }
+    .skillIconListJutsu{
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+    }
+    .xs-hide {
+        display: none !important;
+    }
+    .xs-show {
+        display: display !important;
+    }
+    .xs-pad0 {
+        padding: 0px 0px 0px 0px !important;
+    }
+    .my-col-2or3{
+        -ms-flex: 0 0 25%;
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+    .my-col-1or3{
+        -ms-flex: 0 0 25%;
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+    .keishoSkillArea {
+        font-size: 70%;
+    }
+}
+@media screen and (min-width:800px) {
+    .skillIconList {
+        display: inline-block;
+        width: 45px;
+        height: 45px;
+    }
+    .xs-hide {
+        display: display !important;
+    }
+    .xs-show {
+        display: none !important;
+    }
+    .my-col-2or3{
+        -ms-flex: 0 0 16.666667%;
+        flex: 0 0 16.666667%;
+        max-width: 16.666667%;        
+    }
+    .my-col-1or3{
+        -ms-flex: 0 0 8.333334%;
+        flex: 0 0 8.333334%;
+        max-width: 8.333334%;        
+    }
+
+}
+.pad0{
+    padding:0px !important; 
+}
+
+.keishoSkillTr {
+    border-top:2px solid #faf0b4;
+}
+#skillArea tfoot {
+    border-top:2px solid #faf0b4;
+}
+.floatLeft {
+    text-align: left;
+    float: left;
+    margin: 0px;
+}
+.floatRight {
+    text-align: right;
+    margin: 0px;
+}
+.auto-start{
+    font-size: 200%;
+}
+.kakuseiCheck{
+    -webkit-appearance: none;
+    padding:0px;
+    color: #faf0b4;
+    background-color: rgba(0, 0, 0, 0);
+    border: 0px;
+}
+.width-100{
+    width: 100%;
+}
+
+.sorry_cat {
+    background: url(https://nao-romasaga.github.io/img/36a44.png) no-repeat; /* riz */
+    background-size: 400px 400px
+}
+.sorry_center{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    margin: auto;
+    width: 200px;
+    height: 64px;      
+}
+.icon-nemuri {
+    display: inline-block;
+    width: 65px;
+    height: 70px;
+    background-position: 0px -320px;
+    margin: 0 0 0 0px;
+    animation: nemuri 2s steps(1);
+}        
+.icon-zzz {
+    background: url(https://nao-romasaga.github.io/img/icon_zzz.png?v=1) no-repeat;
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    left: -50px;
+    margin: 0 0 0 0px;
+    animation: zzz 2s infinite;
+}                      
+@keyframes nemuri {
+    0% { background-position: -80px 0px;}
+    25% { background-position: -320px -240px;}
+    80% { background-position: 0px -320px;}
+    100% { background-position: 0px -320px; }
+}
+@keyframes zzz {
+    0% { transform: scale(0);} /* 1.1 */
+    50% { transform: scale(1.5);} /* 5.1 */
+    100% { transform: scale(1);} /* 5.1 */
+}

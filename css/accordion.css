@@ -1,0 +1,97 @@
+.acdList ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none; 
+}
+
+.acdList a {
+    display: block; 
+}
+.acdList .child {
+    display: none;
+    margin: 0 0 -1px;
+    padding: 0;
+    background: #fff;
+    border: 1px solid #eaeaea; 
+}
+.acdList .child .menu {
+    background: #eaeaea;
+    color: #5e5e5e; 
+}
+.acdList .child .menu:hover {
+    background: #d0d0d0; 
+}
+.acdList .child > li {
+    margin: 4px 0;
+    padding: 0 16px;
+    border-bottom: 1px dotted #dddddd; 
+}
+.acdList .child > li:last-child {
+    border-bottom: 0; 
+}
+
+.switch .menu:after {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    margin-top: -1.4rem;
+    content: '>';
+    font-size: 1.4rem;
+    font-weight: bold;
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+    -moz-transition: all, 0.25s, linear;
+    -o-transition: all, 0.25s, linear;
+    -webkit-transition: all, 0.25s, linear;
+    transition: all, 0.25s, linear; 
+}
+.switch .menu.accordionActive:after {
+    -moz-transform: translate(0, 50%);
+    -ms-transform: translate(0, 50%);
+    -webkit-transform: translate(0, 50%);
+    transform: translate(0, 50%);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg); 
+}
+
+.child01 {
+    border: 1px solid #eaeaea; 
+}
+
+.child02 {
+    color: #5e5e5e; 
+}
+
+.menu {
+    display: block;
+    position: relative;
+    margin: 1px 0 0;
+    padding: 10px;
+    color:white;
+
+}
+
+.skillListSP .child > li {
+    border-bottom: 0; 
+}
+.skillListSP .parent {
+    color: #fff !important;
+}
+
+.skillListSP .menu {
+    background: #3378B8;
+    opacity: 0.8;
+    border: 3px solid #fff;
+    border-radius: 8px;
+
+}
+.skillListSP .menu:hover {
+    background: #334CB8;
+    opacity: 0.8;
+    text-decoration: none; 
+
+}
