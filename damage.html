@@ -8,11 +8,11 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-        <link rel="stylesheet" type="text/css" href="./css/style.css">
-        <script src="./js/fileopen.js" ></script>
-        <script src="./js/jinkei.js" ></script>
-        <script src="./js/damage.js" ></script>
-        <script src="./js/utils.js" ></script>
+        <link rel="stylesheet" type="text/css" href="./style.css?v=20190409">
+        <script src="./fileopen.js" ></script>
+        <script src="./jinkei.js" ></script>
+        <script src="./damage.js" ></script>
+        <script src="./utils.js?v=20190409" ></script>
         <title>ロマサガRS 計算機@nao_romasaga</title>
         <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -24,8 +24,9 @@
         <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-storage.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
-        <script src="./js/Firebase.js"></script>
+        <script src="./Firebase.js?v=20190409"></script>        
     </head>
     <body>
         <div class ="haikei"><div class="container">
@@ -42,6 +43,23 @@
                 <div class="text-center">
                     <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="true">Tweet</a>
                     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+
+                <br>
+
+                <ul class="nav nav-tabs ">
+                    <li class="nav-item col-6 text-center side-padding-zero">
+                        <a class="nav-link active bg-white" data-toggle="tab" href="#home" id="damageTab" class="">
+                            <img src="https://www.silhouette-illust.com/wp-content/uploads/2017/05/buki_saber_30117-300x300.jpg" width="16" height="16">
+                            ダメージ計算
+                            <img src="https://www.silhouette-illust.com/wp-content/uploads/2017/05/buki_tsurugi_30115-300x300.jpg" width="16" height="16">
+                        </a>
+                    </li>
+                </ul>
+                <div id="myTabContent" class="tab-content opacity kadomaru">
+                    <div class="tab-pane fade show active" id="home">
+                        <p>ダメージ計算機はA武器とB武器のどちらの方が強いか。AスタイルとBスタイルのどちらの方が強いかなどの比較検討にご利用ください</p>
+                    </div>
                 </div>
 
                 <div class="row">
