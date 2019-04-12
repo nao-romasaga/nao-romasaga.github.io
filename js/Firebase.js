@@ -32,7 +32,7 @@ function readFile(target, callback) {
 
 function getImgUrl(target) {
 //    return "https://nao-romasaga.github.io/img/";
-    let url = "/Users/naonakam/NetBeansProjects/nao-romasaga.github.io/img/" + target;
+    let url = "https://nao-romasaga.github.io/img/" + target;
     return 'background:url(' + url + ') no-repeat;'
 
 }
