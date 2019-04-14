@@ -365,21 +365,26 @@ function setSkillDamage(skillList) {
     // culcStyleBonus依存
     let styleBonus = culcStyleAddintional(NOW_STYLE);
     CULC_DAMAGE_PARAM['orgSTR'] = Number(NOW_CHAR['STR']) + 40;
+    CULC_DAMAGE_PARAM['orgDEX'] = Number(NOW_CHAR['DEX']) + 40;
     CULC_DAMAGE_PARAM['orgAGI'] = Number(NOW_CHAR['AGI']) + 40;
     CULC_DAMAGE_PARAM['orgINT'] = Number(NOW_CHAR['INT']) + 40;
     CULC_DAMAGE_PARAM['STRPer'] = styleBonus["腕力"][50]["Per"];
+    CULC_DAMAGE_PARAM['DEXPer'] = styleBonus["器用さ"][50]["Per"];
     CULC_DAMAGE_PARAM['AGIPer'] = styleBonus["素早さ"][50]["Per"];
     CULC_DAMAGE_PARAM['INTPer'] = styleBonus["知力"][50]["Per"];
     CULC_DAMAGE_PARAM['STRBonus'] = styleBonus["腕力"][50]["Bonus"];
+    CULC_DAMAGE_PARAM['DEXBonus'] = styleBonus["器用さ"][50]["Bonus"];
     CULC_DAMAGE_PARAM['AGIBonus'] = styleBonus["素早さ"][50]["Bonus"];
     CULC_DAMAGE_PARAM['INTBonus'] = styleBonus["知力"][50]["Bonus"];
     CULC_DAMAGE_PARAM['ability'] = ability;
     CULC_DAMAGE_PARAM['wepon'] = 28;
     CULC_DAMAGE_PARAM['master'] = 5;
     let str = addBonus(Number(NOW_CHAR['STR']) + 40, styleBonus["腕力"][50]["Per"], styleBonus["腕力"][50]["Bonus"]);
+    let dex = addBonus(Number(NOW_CHAR['DEX']) + 40, styleBonus["器用さ"][50]["Per"], styleBonus["器用さ"][50]["Bonus"]);
     let agi = addBonus(Number(NOW_CHAR['AGI']) + 40, styleBonus["素早さ"][50]["Per"], styleBonus["素早さ"][50]["Bonus"]);
     let int = addBonus(Number(NOW_CHAR['INT']) + 40, styleBonus["知力"][50]["Per"], styleBonus["知力"][50]["Bonus"]);
     CULC_DAMAGE_PARAM['str'] = str;
+    CULC_DAMAGE_PARAM['dex'] = dex;
     CULC_DAMAGE_PARAM['agi'] = agi;
     CULC_DAMAGE_PARAM['int'] = int;
     let wepon = 28;
@@ -390,6 +395,9 @@ function setSkillDamage(skillList) {
     for (let skillInfo of skillList) {
         let type = (skillInfo['BattleType'] === "体術") ? 'tai' : 'other';
         let culcValue = (skillInfo['SkillType'] === "術") ? int : str;
+        if(skillInfo['BattleType'] === '小剣' || skillInfo['BattleType'] === '弓' ){
+            culcValue = dex;
+        }
         let skill = skillInfo['SkillIryoku'];
         skillInfo['culcDamage'] = damage(type, culcValue, agi, wepon, skill, rank, vit, master, ability, resist, 6);
     }
@@ -531,6 +539,8 @@ function culcAutoMode(skillList) {
     $("#styleRank").html("スタイルLV:50 , 全技Rank:99");
     $("#culcSTR").text("腕力:" + CULC_DAMAGE_PARAM['str']);
     $("#culcSTRDtl").text(CULC_DAMAGE_PARAM['orgSTR'] + " * " + CULC_DAMAGE_PARAM['STRPer'] + "% +" + CULC_DAMAGE_PARAM['STRBonus']);
+    $("#culcDEX").text("器用さ:" + CULC_DAMAGE_PARAM['dex']);
+    $("#culcDEXDtl").text(CULC_DAMAGE_PARAM['orgDEX'] + " * " + CULC_DAMAGE_PARAM['DEXPer'] + "% +" + CULC_DAMAGE_PARAM['DEXBonus']);
     $("#culcAGI").text("素早さ:" + CULC_DAMAGE_PARAM['agi']);
     $("#culcAGIDtl").text(CULC_DAMAGE_PARAM['orgAGI'] + " * " + CULC_DAMAGE_PARAM['AGIPer'] + "% +" + CULC_DAMAGE_PARAM['AGIBonus']);
     $("#culcINT").text("知力:" + CULC_DAMAGE_PARAM['int']);
