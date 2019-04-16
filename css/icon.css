@@ -1,69 +1,98 @@
 
 .icon_mini { 
     display: inline-block;
-    width:35px;
-    height:35px;
+    width: 40px;
+    height: 40px;
     background-size: cover !important;
     margin: 0 0 0 0px;
 }
 
 .icon_mini_zokusei { 
     display: inline-block;
-    width:35px;
-    height:35px;
+    width: 35px;
+    height: 35px;
     background-size: cover !important;
     margin: 0 0 0 0px;
 }
 .style_icon_a {
-    margin: 0 0 0 0px;
-    display: inline-block;
     width: 80px;
     height: 80px;
-    background-size: 76px !important;
-    background-position: -3px -3px !important;
-    border-radius: 10px;
     border: 5px ridge rgb(247,170,150);
-    background-color: rgb(247,170,150) !important;
+    border-radius: 10px;    
+    background-size: 80px !important;
+    background-position: -5px -5px !important;    
 }
 .bg_a{
     background-color: rgb(247,170,150);
 }
 .style_icon_s {
-    margin: 0 0 0 0px;
-    display: inline-block;
     width: 80px;
     height: 80px;
-    background-size: 76px !important;
-    background-position: -3px -3px !important;
-    border-radius: 10px;
     border: 5px ridge rgb(200,224,234);
-    background-color: rgb(200,224,234) !important;
+    border-radius: 10px;    
+    background-size: 80px !important;
+    background-position: -5px -5px !important;    
 }
 .bg_s{
     background-color: rgb(200,224,234);;
 }
-.style_icon_ss {
-    margin: 0 0 0 0px;
+
+.icon_bg_ss{
+    background:url(/Users/naonakam/NetBeansProjects/nao-romasaga.github.io/img/bg_ss.png);
+    background-size:  10px !important;
     display: inline-block;
+    border-radius: 10px;
+    height: 75px;
+}
+.icon_bg_s{
+    background:url(/Users/naonakam/NetBeansProjects/nao-romasaga.github.io/img/bg_s.png);
+    background-size:  10px !important;
+    display: inline-block;
+    border-radius: 10px;
+    height: 75px;
+}
+.icon_bg_a{
+    background:url(/Users/naonakam/NetBeansProjects/nao-romasaga.github.io/img/bg_a.png);
+    background-size:  10px !important;
+    display: inline-block;
+    border-radius: 10px;
+    height: 75px;
+}
+
+.style_icon_ss {
     width: 80px;
     height: 80px;
-    background-size: 76px !important;
-    background-position: -3px -3px !important;
-    border-radius: 10px;
     border: 5px ridge rgb(246,236,100);
-    background-color: rgb(246,236,100) !important;
+    border-radius: 10px;    
+    background-size: 80px !important;
+    background-position: -5px -5px !important;
 }
+
 .bg_ss{
     background-color: rgb(246,236,100);
 }
 @media (max-width: 576px) {
-    .icon_xs { 
+    .icon_xs {
         display: inline-block;
-        width:20px;
-        height:20px;
+        width:20px !important;
+        height:20px !important;
         background-size: cover !important;
         margin: 0 0 0 0px;
     }    
+    .icon_sm {
+        display: inline-block;
+        width: 30px !important;
+        height: 30px !important;
+        background-size: cover !important;
+        margin: 0 0 0 0px;
+    }
+    .icon_sm_buf {
+        display: inline-block;
+        width: 28px !important;
+        height: 28px !important;
+        background-size: 26px !important;
+        margin: 0 0 0 0px;
+    }
     .cutin { 
         display: inline-block;
         width: 200px;
@@ -75,8 +104,15 @@
 @media screen and (min-width: 576px) { 
     .icon_xs { 
         display: inline-block;
-        width: 25px;
-        height: 25px;
+        width: 25px !important;
+        height: 25px !important;
+        background-size: cover !important;
+        margin: 0 0 0 0px;
+    }
+    .icon_sm {
+        display: inline-block;
+        width: 35px !important;
+        height: 35px !important;
         background-size: cover !important;
         margin: 0 0 0 0px;
     }    
@@ -89,6 +125,22 @@
     }
 }
 
+.icon_buff_str{        background:url(/Users/naonakam/NetBeansProjects/nao-romasaga.github.io/img/icon/icon_buf_str.png) no-repeat;}
+.icon_debuff_str{        background:url(/Users/naonakam/NetBeansProjects/nao-romasaga.github.io/img/icon/icon_debuf_str.png) no-repeat;}
+.icon_buff_vit{        background:url(/Users/naonakam/NetBeansProjects/nao-romasaga.github.io/img/icon/icon_buf_vit.png) no-repeat;}
+.icon_debuff_vit{        background:url(/Users/naonakam/NetBeansProjects/nao-romasaga.github.io/img/icon/icon_debuf_vit.png) no-repeat;}
+.icon_buff_dex{        background:url(/Users/naonakam/NetBeansProjects/nao-romasaga.github.io/img/icon/icon_buf_dex.png) no-repeat;}
+.icon_debuff_dex{        background:url(/Users/naonakam/NetBeansProjects/nao-romasaga.github.io/img/icon/icon_debuf_dex.png) no-repeat;}
+.icon_buff_agi{        background:url(/Users/naonakam/NetBeansProjects/nao-romasaga.github.io/img/icon/icon_buf_agi.png) no-repeat;}
+.icon_debuff_agi{        background:url(/Users/naonakam/NetBeansProjects/nao-romasaga.github.io/img/icon/icon_debuf_agi.png) no-repeat;}
+.icon_buff_int{        background:url(/Users/naonakam/NetBeansProjects/nao-romasaga.github.io/img/icon/icon_buf_int.png) no-repeat;}
+.icon_debuff_int{        background:url(/Users/naonakam/NetBeansProjects/nao-romasaga.github.io/img/icon/icon_debuf_int.png) no-repeat;}
+.icon_buff_mnd{        background:url(/Users/naonakam/NetBeansProjects/nao-romasaga.github.io/img/icon/icon_buf_mnd.png) no-repeat;}
+.icon_debuff_mnd{        background:url(/Users/naonakam/NetBeansProjects/nao-romasaga.github.io/img/icon/icon_debuf_mnd.png) no-repeat;}
+.icon_buff_ai{        background:url(/Users/naonakam/NetBeansProjects/nao-romasaga.github.io/img/icon/icon_buf_ai.png) no-repeat;}
+.icon_debuff_ai{        background:url(/Users/naonakam/NetBeansProjects/nao-romasaga.github.io/img/icon/icon_debuf_ai.png) no-repeat;}
+.icon_buff_mi{        background:url(/Users/naonakam/NetBeansProjects/nao-romasaga.github.io/img/icon/icon_buf_mi.png) no-repeat;}
+.icon_debuff_mi{        background:url(/Users/naonakam/NetBeansProjects/nao-romasaga.github.io/img/icon/icon_debuf_mi.png) no-repeat;}
 
 .icon_ken {    background:url(https://nao-romasaga.github.io/img/icon/icon_ken.png) no-repeat; }
 .icon_dken {    background:url(https://nao-romasaga.github.io/img/icon/icon_dken.png) no-repeat; }
@@ -129,3 +181,15 @@
 .icon_sekika {    background:url(https://nao-romasaga.github.io/img/icon/icon_sekika.png) no-repeat; }
 .icon_zzz {    background:url(https://nao-romasaga.github.io/img/icon/icon_zzz.png) no-repeat; }
 
+.icon_keisho_e { 
+    display: inline-block;
+    /*
+        background:url(https://nao-romasaga.github.io/img/icon/icon_keisho_e.png) no-repeat;
+    */
+    
+    background:url(/Users/naonakam/NetBeansProjects/nao-romasaga.github.io/img/icon/icon_keisho_e.png) no-repeat;
+    width: 28px;
+    height: 14px;
+    background-size: cover !important;
+    margin: 0 0 0 0px;
+}

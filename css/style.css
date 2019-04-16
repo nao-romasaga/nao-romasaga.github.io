@@ -28,17 +28,18 @@
 }
 .opacityWhite {
     background-color: rgba(245, 245, 245, 1);
-    opacity: 1;
 }
 .opacity {
     background-color: rgba(245, 245, 245, 0.8);
+}
+.opacity_nocheck {
+    opacity: 0.6;
 }
 
 .opacity-char-back {
     background-color: rgba(131, 5, 5, 0.7);
     border-radius: 20px;
     color:#faf0b4;
-
 }
 .char-bottom {
     border-bottom: 2px groove;
@@ -279,4 +280,50 @@ body {
     0% { transform: scale(0);} /* 1.1 */
     50% { transform: scale(1.5);} /* 5.1 */
     100% { transform: scale(1);} /* 5.1 */
+}
+
+/* パソコン・スマホ共通のCSS */
+#PageTopBtn {
+    position: fixed; /*ボタンの配置場所を固定*/
+    bottom: -10px; /*下からのボタンの配置場所を指定*/
+    right: 50px; /*右からのボタンの配置場所を指定*/
+    z-index: 100;
+}
+#PageTopBtn a {
+    display: block; /*配置の調整*/
+    text-decoration: none; /*文字の下線を消す*/
+    color: #fff; /*文字の色*/
+    background: #00bfff; /*ボタンの背景色*/
+    text-align: center; /*文字を中央に配置*/
+    outline: none; /*クリックしたときの黒い枠を消す*/
+    font-size: 25px;
+}
+#PageTopBtn a:hover {
+    text-decoration: none; 
+    background: #87cefa; /*マウスオーバー時の背景色*/
+}
+
+/* パソコンで表示する場合のCSS */
+@media (min-width: 768px) {
+#PageTopBtn {
+    font-size: 13px; /*文字のサイズ*/
+}
+#PageTopBtn a {
+    width: 100px; /*ボタンの幅*/
+    height: 50px; /*ボタンの高さ*/
+    padding: 0px 0; /*文字の配置場所の調整*/
+}
+}
+
+/* スマホで表示する場合のCSS */
+@media (max-width: 767px) {
+#PageTopBtn {
+    font-size: 10px;
+}
+#PageTopBtn a {
+    width: 50px;
+    height: 50px;
+    padding: 0px 0;
+    border-radius: 70%; /*ボタンの角を少し丸くする*/
+}
 }
