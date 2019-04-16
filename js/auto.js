@@ -13,7 +13,6 @@ var CHAR_MASTER, STYLE_MASTER, SKILL_MASTER;
 $(document).ready(function ($) {
     readFile('Char', function (result) {
         CHAR_MASTER = result;
-        //$(".loading").hide();
         dispChar();
     });
     readFile('Skill', function (result) {
@@ -28,6 +27,8 @@ $(document).ready(function ($) {
 
     // 後から差し込まれる要素はdocument.onにしないとfunctionがbindされない
     $(document).on('click', '.char', function () {
+        $("html,body").animate({scrollTop: $('.sp-slides-container').offset().top}, 500, 'swing');
+
         $("#skillAreaParent").hide();
         $("#culcStart").hide();
         $("#keishoKaijo").hide();
@@ -49,8 +50,16 @@ $(document).ready(function ($) {
         $(this).removeClass('char-aruku');
         $(this).addClass('char-winner').addClass('char-selected').addClass("dot");
         displayStyleList(charId);
+
+        // 1件目はデフォルトで出しちゃう
+        let styleId = NOW_CHAR['Holders'][0];
+        clickStyle(styleId);
     });
     $(document).on('click', '.style', function () {
+        let styleId = $(this).attr("data-id");
+        clickStyle(styleId);
+    });
+    function clickStyle(styleId) {
         $("#skillAreaParent").show();
         $("#culcStart").show();
         if (NOW_CHAR['Holders'].length > 1) {
@@ -60,11 +69,10 @@ $(document).ready(function ($) {
         $("table#skillArea > tbody *").remove();
         $("table#skillArea > tfoot *").remove();
         $("table#culcSummary tbody *").remove();
-        let styleId = $(this).attr("data-id");
         NOW_STYLE = STYLE_MASTER[styleId];
-
         displaySkillTable(styleId);
-    });
+    }
+
     $(document).on('click', '#keishoKaijo', function () {
         $("#noKeisho").show();
         $("table#skillArea > tfoot").html("");
@@ -72,6 +80,8 @@ $(document).ready(function ($) {
     });
 
     $(document).on('click', '.keishoSkill', function () {
+        $("#x").remove();
+        $(this).children(".floatLeft").append("<span id='x' class='icon_keisho_e'></span>");
         $("#noKeisho").hide();
         $("table#skillArea > tfoot").html("");
         // 中身をイジイジするので値渡しにしておく
@@ -84,6 +94,7 @@ $(document).ready(function ($) {
     });
     $("#culcStart").click(function () {
         displayResult();
+        $("html,body").animate({scrollTop: $('#culcStart').offset().top}, 500, 'swing');
     });
 
     $(".switch .toggle").click(function () {
@@ -107,12 +118,15 @@ function displayStyleList(charId) {
         }
 
         // スタイルアイコンの追加
-        let icon = $("<button>").attr("id", "icon" + styleId).addClass("style")
+        let icon = $("<button>").addClass("style")
                 .addClass(getStyleIconClass(styleInfo['Rarity']))
                 .attr("style", getImgUrl('style_icon/' + styleId + ".png"))
-                .attr("data-id", styleId).attr("width", 80);
+                .attr("data-id", styleId);
         //let link = '<span class="style" data-id="' + styleInfo['Id'] + '">' + styleInfo['AnotherName'] + '</span><br>';
-        $("#styleChoice").append(icon);
+        let background = $("<span>")
+                .addClass(getStyleIconBgClass(styleInfo['Rarity']))
+                .append(icon);
+        $("#styleChoice").append(background);
     }
 }
 
@@ -153,8 +167,11 @@ function displaySkillTable(styleId) {
     // 継承データ
     let isKeishoSkill = [];
     $(".style").each(function () {
+
         let subStyleId = $(this).attr("data-id");
+        $(this).parent().addClass("opacity_nocheck");
         if (styleId === subStyleId) {
+            $(this).parent().removeClass("opacity_nocheck");
             return;
         }
         for (let skillId of STYLE_MASTER[subStyleId]['SkillIds']) {
@@ -337,8 +354,8 @@ function isNotUseAuto(skillInfo) {
     if (skillInfo["AttackArea"] === "味方単体" || skillInfo["AttackArea"] === "自身") {
         return true;
     }
-    // ナップ
-    if (skillInfo["Id"] === "ID77973c5") {
+    // ナップ、足がらめ
+    if (skillInfo["Id"] === "ID77973c5" || skillInfo["Id"] === "ID777ed23") {
         return true;
     }
     return false;
@@ -348,58 +365,10 @@ function isNotUseAuto(skillInfo) {
 // ["Param"]["Lv"]["Bonus"] = ボーナス値
 var CULC_DAMAGE_PARAM = {};
 function setSkillDamage(skillList) {
-    let ability = 0;
-    //極小:2% 小:5% 中:10% 大:15% 特大:30% 極大:50%
-    for (let key in NOW_STYLE['StyleAbilityIds']) {
-        let abilityId = NOW_STYLE['StyleAbilityIds'][key];
-        if (["ID29d93221", "ID29d9322e"].indexOf(abilityId) > -1) {
-            ability += 15;
-        } else if (["ID29d93222", "ID29d9322f"].indexOf(abilityId) > -1) {
-            ability += 10;
-        } else if (["ID29d93223", "ID29d93230"].indexOf(abilityId) > -1) {
-            ability += 5;
-        } else if (abilityId === "ID29d93224") {
-            ability += 2;
-        }
-    }
     // culcStyleBonus依存
-    let styleBonus = culcStyleAddintional(NOW_STYLE);
-    CULC_DAMAGE_PARAM['orgSTR'] = Number(NOW_CHAR['STR']) + 40;
-    CULC_DAMAGE_PARAM['orgDEX'] = Number(NOW_CHAR['DEX']) + 40;
-    CULC_DAMAGE_PARAM['orgAGI'] = Number(NOW_CHAR['AGI']) + 40;
-    CULC_DAMAGE_PARAM['orgINT'] = Number(NOW_CHAR['INT']) + 40;
-    CULC_DAMAGE_PARAM['STRPer'] = styleBonus["腕力"][50]["Per"];
-    CULC_DAMAGE_PARAM['DEXPer'] = styleBonus["器用さ"][50]["Per"];
-    CULC_DAMAGE_PARAM['AGIPer'] = styleBonus["素早さ"][50]["Per"];
-    CULC_DAMAGE_PARAM['INTPer'] = styleBonus["知力"][50]["Per"];
-    CULC_DAMAGE_PARAM['STRBonus'] = styleBonus["腕力"][50]["Bonus"];
-    CULC_DAMAGE_PARAM['DEXBonus'] = styleBonus["器用さ"][50]["Bonus"];
-    CULC_DAMAGE_PARAM['AGIBonus'] = styleBonus["素早さ"][50]["Bonus"];
-    CULC_DAMAGE_PARAM['INTBonus'] = styleBonus["知力"][50]["Bonus"];
-    CULC_DAMAGE_PARAM['ability'] = ability;
-    CULC_DAMAGE_PARAM['wepon'] = 28;
-    CULC_DAMAGE_PARAM['master'] = 5;
-    let str = addBonus(Number(NOW_CHAR['STR']) + 40, styleBonus["腕力"][50]["Per"], styleBonus["腕力"][50]["Bonus"]);
-    let dex = addBonus(Number(NOW_CHAR['DEX']) + 40, styleBonus["器用さ"][50]["Per"], styleBonus["器用さ"][50]["Bonus"]);
-    let agi = addBonus(Number(NOW_CHAR['AGI']) + 40, styleBonus["素早さ"][50]["Per"], styleBonus["素早さ"][50]["Bonus"]);
-    let int = addBonus(Number(NOW_CHAR['INT']) + 40, styleBonus["知力"][50]["Per"], styleBonus["知力"][50]["Bonus"]);
-    CULC_DAMAGE_PARAM['str'] = str;
-    CULC_DAMAGE_PARAM['dex'] = dex;
-    CULC_DAMAGE_PARAM['agi'] = agi;
-    CULC_DAMAGE_PARAM['int'] = int;
-    let wepon = 28;
-    let rank = 99;
-    let vit = 85;
-    let master = 5.5;
-    let resist = 0;
     for (let skillInfo of skillList) {
-        let type = (skillInfo['BattleType'] === "体術") ? 'tai' : 'other';
-        let culcValue = (skillInfo['SkillType'] === "術") ? int : str;
-        if(skillInfo['BattleType'] === '小剣' || skillInfo['BattleType'] === '弓' ){
-            culcValue = dex;
-        }
-        let skill = skillInfo['SkillIryoku'];
-        skillInfo['culcDamage'] = damage(type, culcValue, agi, wepon, skill, rank, vit, master, ability, resist, 6);
+        CULC_DAMAGE_PARAM = culcSkillDamageWithStyle(NOW_CHAR, 40, NOW_STYLE, 50, skillInfo, 99, 28, 5.5, 85, 0);
+        skillInfo['culcDamage'] = CULC_DAMAGE_PARAM['culcDamage'];
     }
 }
 function addBonus(org, per, add) {
