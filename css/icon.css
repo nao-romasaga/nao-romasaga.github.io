@@ -183,11 +183,7 @@
 
 .icon_keisho_e { 
     display: inline-block;
-    /*
-        background:url(https://nao-romasaga.github.io/img/icon/icon_keisho_e.png) no-repeat;
-    */
-    
-    background:url(/Users/naonakam/NetBeansProjects/nao-romasaga.github.io/img/icon/icon_keisho_e.png) no-repeat;
+    background:url(https://nao-romasaga.github.io/img/icon/icon_keisho_e.png) no-repeat;
     width: 28px;
     height: 14px;
     background-size: cover !important;
