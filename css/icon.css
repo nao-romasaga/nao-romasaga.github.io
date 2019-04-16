@@ -38,21 +38,21 @@
 }
 
 .icon_bg_ss{
-    background:url(/Users/naonakam/NetBeansProjects/nao-romasaga.github.io/img/bg_ss.png);
+    background:url(https://nao-romasaga.github.io/img/bg_ss.png);
     background-size:  10px !important;
     display: inline-block;
     border-radius: 10px;
     height: 75px;
 }
 .icon_bg_s{
-    background:url(/Users/naonakam/NetBeansProjects/nao-romasaga.github.io/img/bg_s.png);
+    background:url(https://nao-romasaga.github.io/img/bg_s.png);
     background-size:  10px !important;
     display: inline-block;
     border-radius: 10px;
     height: 75px;
 }
 .icon_bg_a{
-    background:url(/Users/naonakam/NetBeansProjects/nao-romasaga.github.io/img/bg_a.png);
+    background:url(https://nao-romasaga.github.io/img/bg_a.png);
     background-size:  10px !important;
     display: inline-block;
     border-radius: 10px;
@@ -125,22 +125,22 @@
     }
 }
 
-.icon_buff_str{        background:url(/Users/naonakam/NetBeansProjects/nao-romasaga.github.io/img/icon/icon_buf_str.png) no-repeat;}
-.icon_debuff_str{        background:url(/Users/naonakam/NetBeansProjects/nao-romasaga.github.io/img/icon/icon_debuf_str.png) no-repeat;}
-.icon_buff_vit{        background:url(/Users/naonakam/NetBeansProjects/nao-romasaga.github.io/img/icon/icon_buf_vit.png) no-repeat;}
-.icon_debuff_vit{        background:url(/Users/naonakam/NetBeansProjects/nao-romasaga.github.io/img/icon/icon_debuf_vit.png) no-repeat;}
-.icon_buff_dex{        background:url(/Users/naonakam/NetBeansProjects/nao-romasaga.github.io/img/icon/icon_buf_dex.png) no-repeat;}
-.icon_debuff_dex{        background:url(/Users/naonakam/NetBeansProjects/nao-romasaga.github.io/img/icon/icon_debuf_dex.png) no-repeat;}
-.icon_buff_agi{        background:url(/Users/naonakam/NetBeansProjects/nao-romasaga.github.io/img/icon/icon_buf_agi.png) no-repeat;}
-.icon_debuff_agi{        background:url(/Users/naonakam/NetBeansProjects/nao-romasaga.github.io/img/icon/icon_debuf_agi.png) no-repeat;}
-.icon_buff_int{        background:url(/Users/naonakam/NetBeansProjects/nao-romasaga.github.io/img/icon/icon_buf_int.png) no-repeat;}
-.icon_debuff_int{        background:url(/Users/naonakam/NetBeansProjects/nao-romasaga.github.io/img/icon/icon_debuf_int.png) no-repeat;}
-.icon_buff_mnd{        background:url(/Users/naonakam/NetBeansProjects/nao-romasaga.github.io/img/icon/icon_buf_mnd.png) no-repeat;}
-.icon_debuff_mnd{        background:url(/Users/naonakam/NetBeansProjects/nao-romasaga.github.io/img/icon/icon_debuf_mnd.png) no-repeat;}
-.icon_buff_ai{        background:url(/Users/naonakam/NetBeansProjects/nao-romasaga.github.io/img/icon/icon_buf_ai.png) no-repeat;}
-.icon_debuff_ai{        background:url(/Users/naonakam/NetBeansProjects/nao-romasaga.github.io/img/icon/icon_debuf_ai.png) no-repeat;}
-.icon_buff_mi{        background:url(/Users/naonakam/NetBeansProjects/nao-romasaga.github.io/img/icon/icon_buf_mi.png) no-repeat;}
-.icon_debuff_mi{        background:url(/Users/naonakam/NetBeansProjects/nao-romasaga.github.io/img/icon/icon_debuf_mi.png) no-repeat;}
+.icon_buff_str{        background:url(https://nao-romasaga.github.io/img/icon/icon_buf_str.png) no-repeat;}
+.icon_debuff_str{        background:url(https://nao-romasaga.github.io/img/icon/icon_debuf_str.png) no-repeat;}
+.icon_buff_vit{        background:url(https://nao-romasaga.github.io/img/icon/icon_buf_vit.png) no-repeat;}
+.icon_debuff_vit{        background:url(https://nao-romasaga.github.io/img/icon/icon_debuf_vit.png) no-repeat;}
+.icon_buff_dex{        background:url(https://nao-romasaga.github.io/img/icon/icon_buf_dex.png) no-repeat;}
+.icon_debuff_dex{        background:url(https://nao-romasaga.github.io/img/icon/icon_debuf_dex.png) no-repeat;}
+.icon_buff_agi{        background:url(https://nao-romasaga.github.io/img/icon/icon_buf_agi.png) no-repeat;}
+.icon_debuff_agi{        background:url(https://nao-romasaga.github.io/img/icon/icon_debuf_agi.png) no-repeat;}
+.icon_buff_int{        background:url(https://nao-romasaga.github.io/img/icon/icon_buf_int.png) no-repeat;}
+.icon_debuff_int{        background:url(https://nao-romasaga.github.io/img/icon/icon_debuf_int.png) no-repeat;}
+.icon_buff_mnd{        background:url(https://nao-romasaga.github.io/img/icon/icon_buf_mnd.png) no-repeat;}
+.icon_debuff_mnd{        background:url(https://nao-romasaga.github.io/img/icon/icon_debuf_mnd.png) no-repeat;}
+.icon_buff_ai{        background:url(https://nao-romasaga.github.io/img/icon/icon_buf_ai.png) no-repeat;}
+.icon_debuff_ai{        background:url(https://nao-romasaga.github.io/img/icon/icon_debuf_ai.png) no-repeat;}
+.icon_buff_mi{        background:url(https://nao-romasaga.github.io/img/icon/icon_buf_mi.png) no-repeat;}
+.icon_debuff_mi{        background:url(https://nao-romasaga.github.io/img/icon/icon_debuf_mi.png) no-repeat;}
 
 .icon_ken {    background:url(https://nao-romasaga.github.io/img/icon/icon_ken.png) no-repeat; }
 .icon_dken {    background:url(https://nao-romasaga.github.io/img/icon/icon_dken.png) no-repeat; }
