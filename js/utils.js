@@ -91,8 +91,8 @@ function insertCommonComponent() {
     nav += '        <a class="nav-link" href="./index.html">ダメージ計算機</a>';
     nav += '      </li>';
     nav += '      <li class="nav-item" id="headSkill">';
-    //nav += '        <a class="nav-link" href="./skill.html">【工事中】スタイル検索(技・術)</a>';
-    nav += '        <a class="nav-link disabled" href="#">【工事中】スタイル検索</a>';
+    nav += '        <a class="nav-link" href="./skill.html">スタイル検索(技・術)</a>';
+    //nav += '        <a class="nav-link disabled" href="#">【工事中】スタイル検索</a>';
     nav += '      </li>';
     nav += '      <li class="nav-item" id="headAbility">';
     //nav += '        <a class="nav-link" href="./ability.html">【工事中】アビリティツリー</a>';

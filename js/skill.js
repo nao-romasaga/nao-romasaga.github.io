@@ -72,6 +72,7 @@ $(document).ready(function ($) {
     function displaySkillHolders(skillId) {
         $("html,body").animate({scrollTop: $('#holder_label').offset().top});
         var skillInfo = SKILL_MASTER[skillId];
+        //console.log(skillInfo);
 
         $("table#skill_holder_table tbody *").remove();
         $("#skill_holder_list").html("");
@@ -107,21 +108,26 @@ $(document).ready(function ($) {
                     .append(icon);
 
             let padding = $("<div>").addClass('col-3 col-sm-2 text-center')
-                    .append(background)
-                    .append("<p class='pad0 damage-label'>ダメージ " + styleInfo["culcDamage"] + "</p>")
-                    .append("<div class='style-label'>" + styleInfo["Name"] + "</div>")
-                    ;
+                    .append(background);
+            if (skillInfo['SkillIryoku'] !== "-") {
+                padding.append("<p class='pad0 damage-label'>ダメージ " + styleInfo["culcDamage"] + "</p>")
+                        .append("<div class='style-label'>" + styleInfo["Name"] + "</div>");
+            }
             $("#skill_holder_list").append(padding);
         }
         for (key in holderResult) {
             let styleInfo = holderResult[key];
+            //console.log(styleInfo);
             let styleId = styleInfo["Id"];
             let colorClass = getStyleBgColor(styleInfo["Rarity"]);
             let trHead = $("<tr>").addClass(colorClass).addClass("darkButton").attr("style", "border:initial;");
             let score = $("<td>").addClass("text-center");
-            score.append("<b>" + styleInfo['culcDamage'] + "</b>");
-            let button = '　<button class="icon_info" data-toggle="tooltip" data-placement="top" title="' + "アビリティ倍率:" + styleInfo['ability'] + "% " + styleInfo['culcKey'] + ":" + styleInfo['culcValue'] + '"></button>';
-            score.append(button);
+            if (skillInfo['SkillIryoku'] !== "-") {
+                score.append("<b>" + styleInfo['culcDamage'] + "</b>");
+                let button = '　<button class="icon_info" data-toggle="tooltip" data-placement="top" title="' + "アビリティ倍率:" + styleInfo['ability'] + "% " + styleInfo['culcKey'] + ":" + styleInfo['culcValue'] + '"></button>';
+                score.append(button);
+            }
+
             trHead.append(score);
 
             trHead.append("<td colspan=2>" + styleInfo['Name'] + styleInfo['AnotherName'] + "</td>");
@@ -147,7 +153,6 @@ $(document).ready(function ($) {
             }
             let abilityTD = $("<td>").addClass("small");
             abilityTD.append(ab.join("<br>"));
-            //console.log(styleInfo);
 
             tr.append(iconTD);
             tr.append(infoTD);
