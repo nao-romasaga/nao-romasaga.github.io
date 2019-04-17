@@ -124,7 +124,15 @@
         margin: 0 0 0 0px;
     }
 }
-
+.icon_info {
+    background:url(https://nao-romasaga.github.io/img/icon/icon_info.png) no-repeat;
+    background-size: 15px;
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    -webkit-appearance: none;
+    border: 0px;
+}
 .icon_buff_str{        background:url(https://nao-romasaga.github.io/img/icon/icon_buf_str.png) no-repeat;}
 .icon_debuff_str{        background:url(https://nao-romasaga.github.io/img/icon/icon_debuf_str.png) no-repeat;}
 .icon_buff_vit{        background:url(https://nao-romasaga.github.io/img/icon/icon_buf_vit.png) no-repeat;}
