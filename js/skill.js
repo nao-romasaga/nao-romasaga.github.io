@@ -123,14 +123,14 @@ $(document).ready(function ($) {
             let trHead = $("<tr>").addClass(colorClass).addClass("darkButton").attr("style", "border:initial;");
             let score = $("<td>").addClass("text-center");
             if (skillInfo['SkillIryoku'] !== "-") {
-                score.append("<b>" + styleInfo['culcDamage'] + "</b>");
-                let button = '　<button class="icon_info" data-toggle="tooltip" data-placement="top" title="' + "アビリティ倍率:" + styleInfo['ability'] + "% " + styleInfo['culcKey'] + ":" + styleInfo['culcValue'] + '"></button>';
+                score.append("<b>" + styleInfo['culcDamage'].toLocaleString() + "</b>");
+                let button = '<button class="icon_info" data-toggle="tooltip" data-placement="top" title="' + "アビリティ倍率:" + styleInfo['ability'] + "% " + styleInfo['culcKey'] + ":" + styleInfo['culcValue'] + '"></button>';
                 score.append(button);
             }
 
             trHead.append(score);
 
-            trHead.append("<td colspan=2>" + styleInfo['Name'] + styleInfo['AnotherName'] + "</td>");
+            trHead.append("<td colspan=2>" + styleInfo['Name'] +" <small>" +styleInfo['AnotherName'] + "</small></td>");
             let tr = $("<tr>").addClass(colorClass);
             let iconTD = $("<td>").addClass("text-center");
             // スタイルアイコンの追加
