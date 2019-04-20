@@ -1,7 +1,6 @@
 //console.log(firebase);
 //firebase.database().ref('Skill').once("value").then(function (snapshot) {});
 
-var device = getDevice();
 var NORMAL_ATTACK = {"Name": "通常攻撃", "AttackArea": "敵単体", "ConsumeBp": 0, "AutoUseBp": 0, "UseBp": 0, "isNotUseAuto": false, "UseCount": 0, "isKeisho": 0, "SkillIryoku": 7};
 var BASE_SKILL_LIST = [];
 var USE_SKILL_LIST = [];
@@ -13,7 +12,7 @@ var CHAR_MASTER, STYLE_MASTER, SKILL_MASTER;
 $(document).ready(function ($) {
     readFile('Char', function (result) {
         CHAR_MASTER = result;
-        dispChar();
+        dispChar(CHAR_MASTER, device);
     });
     readFile('Skill', function (result) {
         SKILL_MASTER = result;
@@ -126,7 +125,7 @@ function displayStyleList(charId) {
         let background = $("<span>")
                 .addClass(getStyleIconBgClass(styleInfo['Rarity']))
                 .append(icon);
-        $("#styleChoice").append(background);
+        $("#styleChoice").append(background);        
     }
 }
 
@@ -494,15 +493,15 @@ function culcAutoMode(skillList) {
         summary.append("</tr>");
     }
     summary.append("<tr>");
-    summary.append("<td colspan=5 class='text-center' style='font-size:200%'>合計威力=" + totalIryoku + "</td>");
+    summary.append("<td colspan=5 class='text-center' style='font-size:200%'>平均ダメージ " + Math.round(totalDamage / maxTurn)+ "</td>");
     summary.append("</tr>");
     if (NOW_STYLE['hasRenki']) {
         summary.append("<tr>");
-        summary.append("<td colspan=5 class='text-center'>練気高揚発動回数:" + renkiCount + "回</td>");
+        summary.append("<td colspan=5 class='text-center'>練気高揚発動回数 = " + renkiCount + "回</td>");
         summary.append("</tr>");
     }
     summary.append("<tr style='border-top: 1px solid'>");
-    summary.append("<td colspan=5 class='text-center'>" + "合計ダメージ = " + totalDamage + "<br>平均ダメージ = " + (totalDamage / maxTurn) + "</td>");
+    summary.append("<td colspan=5 class='text-center'>" + "合計ダメージ = " + totalDamage + "<br>合計威力 = " + totalIryoku  + "</td>");
     summary.append("</tr>");
 
     $("#styleRank").html("スタイルLV:50 , 全技Rank:99");
@@ -519,67 +518,6 @@ function culcAutoMode(skillList) {
     $("#culcMaster").text("マスターレベル ダメージ補正:" + CULC_DAMAGE_PARAM['master'] + "%");
     $("#culcMasterDtl").text("Lv22〜23");
     $("#culcEnemy").text("敵 体力/精神: 85 属性耐性:0");
-}
-
-/*
- firebase.database().ref('Skill').once("value").then(function (snapshot) {
- SKILL_MASTER = snapshot.val();
- });
- firebase.database().ref('Style').once("value").then(function (snapshot) {
- STYLE_MASTER = snapshot.val();
- });
- 
- firebase.database().ref('Char').once("value").then(function (snapshot) {
- //console.log(snapshot.val());
- CHAR_MASTER = snapshot.val();
- dispChar();
- 
- });
- */
-function dispChar() {
-    let idx = {};
-    let width = (device === "sp") ? 6 : 12;
-    for (let i in CHAR_MASTER) {
-        if (CHAR_MASTER[i]['Holders'] === undefined) {
-            continue;
-        }
-        let series = CHAR_MASTER[i]['Series'];
-        if (idx[series] >= 24) {
-            series = series + "2";
-        }
-
-        if (idx[series] === undefined) {
-            idx[series] = 0;
-        }
-        let dotId = CHAR_MASTER[i]['DotId'];
-        let pngName = (dotId !== "ID4e2c8") ? dotId : "ID4e2c9";
-        let id = CHAR_MASTER[i]['Id'];
-        let url = getImgUrl('dot/' + pngName + ".png");
-        let charDot = $("<span>").attr("id", "dot" + pngName)
-                .addClass("char-aruku").addClass("char").addClass("char-bottom").addClass('dot_mid').addClass("dot")
-                .attr("data-id", id).attr('style', url);
-        $("#" + series).append(charDot);
-        if (++idx[series] % width === 0) {
-            $("#" + series).append("<br>");
-        }
-    }
-}
-
-function setSlider() {
-    let option = {
-        buttons: true, //スライダーのページャを表示する
-        startSlide: 0, //最初のスライドを指定する
-        arrows: true, //左右の矢印ボタンを表示する
-        width: '100%', //横幅を設定する
-        height: 250, //高さを設定する
-        //autoHeight: true, //高さを設定する
-        autoplay: false, //自動再生の設定
-        loop: true, //スライドをループさせる設定
-        visibleSize: '100%', //前後のスライドを表示するかの設定
-        forceSize: 'fullWidth' //スライダーの幅をブラウザ幅に設定する
-    };
-    option['height'] = (device === "sp") ? 310 : 250;
-    $('#slider-pro').sliderPro(option);
 }
 
 function initialHide() {
