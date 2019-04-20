@@ -1,3 +1,5 @@
+var device = getDevice();
+
 const ICON_LIST = {
     "剣": "icon_ken", "大剣": "icon_dken", "斧": "icon_ono",
     "小剣": "icon_sken", "槍": "icon_yari", "弓": "icon_yumi",
@@ -199,4 +201,94 @@ function getStyleIconBgClass(rare) {
         colorClass = "icon_bg_s";
     }
     return colorClass;
+}
+function dispChar(master) {
+    let idx = {};
+    let width = (device === "sp") ? 6 : 12;
+    for (let i in master) {
+        if (master[i]['Holders'] === undefined) {
+            continue;
+        }
+        let series = master[i]['Series'];
+        if (idx[series] >= 24) {
+            series = series + "2";
+        }
+
+        if (idx[series] === undefined) {
+            idx[series] = 0;
+        }
+        let dotId = master[i]['DotId'];
+        let pngName = (dotId !== "ID4e2c8") ? dotId : "ID4e2c9";
+        let id = master[i]['Id'];
+        let url = getImgUrl('dot/' + pngName + ".png");
+        let charDot = $("<span>").attr("id", "dot" + pngName)
+                .addClass("char-aruku").addClass("char").addClass("char-bottom").addClass('dot_mid').addClass("dot")
+                .attr("data-id", id).attr('style', url);
+        $("#" + series).append(charDot);
+        if (++idx[series] % width === 0) {
+            $("#" + series).append("<br>");
+        }
+    }
+}
+function setSlider() {
+    let option = {
+        buttons: true, //スライダーのページャを表示する
+        startSlide: 0, //最初のスライドを指定する
+        arrows: true, //左右の矢印ボタンを表示する
+        width: '100%', //横幅を設定する
+        height: 250, //高さを設定する
+        //autoHeight: true, //高さを設定する
+        autoplay: false, //自動再生の設定
+        loop: true, //スライドをループさせる設定
+        visibleSize: '100%', //前後のスライドを表示するかの設定
+        forceSize: 'fullWidth' //スライダーの幅をブラウザ幅に設定する
+    };
+    option['height'] = (device === "sp") ? 310 : 250;
+    $('#slider-pro').sliderPro(option);
+}
+
+function skillLabel(skillInfo) {
+    let skillList = $("<button>").addClass("skill_select").addClass("keishoSkill").attr("data-id", skillInfo['Id']);
+    let topDiv = $('<div>').attr('style', 'width:100%; display: inline-flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid;');
+    // 武器種別 BattleType、名称、所有数
+    let skillName = $("<p>").addClass("text-left skillNameClass").attr('style', 'margin:0;');
+    skillName.append(skillInfo['Name']);    // 技名称
+    let skillRight = $("<p>").addClass('text-right').addClass('small').attr('style', 'margin:0;');
+    skillRight.append("覚醒:" + skillInfo['Kakusei']);
+    skillRight.append(" BP:" + skillInfo['ConsumeBp']);
+    skillRight.append(" 威力:" + skillInfo['PowerGrade'] + "(" + skillInfo['SkillIryoku'] + ")");
+    topDiv.append(skillName).append(skillRight);
+
+    // 属性 AttackAttributes
+    let bottomDiv = $('<div>').addClass("iconClass").attr('style', 'display: table-cell; vertical-align: middle; height:30px');
+    bottomDiv.append($('<span>').addClass('icon_sm').addClass(ICON_LIST[skillInfo['BattleType']]));
+    skillInfo['AttackAttributes'].split(',').forEach(function (value) {
+        let img = $('<span>').addClass('icon_sm').addClass(ICON_LIST[value]);
+        bottomDiv.append(img);
+    });
+    if (skillInfo['BadStatus'] != "") {
+        let img = $('<span>').addClass('').addClass("icon_sm").addClass(ICON_LIST[skillInfo['BadStatus']]);
+        bottomDiv.append(img);
+    }
+    if (skillInfo['DeBuff'] != "") {
+        let img = $('<span>').addClass('icon_sm_buf').addClass(ICON_LIST[skillInfo['DeBuff'] + "低下"]);
+        bottomDiv.append(img);
+    }
+    if (skillInfo['AttackDistance'] !== "近") {
+        bottomDiv.append("[" + skillInfo['AttackDistance'] + "]");
+    }
+    if (skillInfo['AttackArea'] !== "敵単体") {
+        bottomDiv.append("[" + AREA_SHORT[skillInfo['AttackArea']] + "]");
+    }
+    if (skillInfo['Fast']) {
+        bottomDiv.append("[ファスト]");
+    }
+    if (skillInfo['Delay']) {
+        bottomDiv.append("[ディレイ]");
+    }
+    bottomDiv.append(" <span class='holderClass'>所持者(" + skillInfo['Holders'].length + ")</span>");   // 所有者数
+
+    skillList.append(topDiv).append(bottomDiv);
+
+    return skillList;
 }
