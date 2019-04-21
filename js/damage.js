@@ -9,16 +9,15 @@ function damageStepCulc(type, str, agi, wepon, skill, rank, vit, master, ability
 function damage(type, str, agi, wepon, skill, rank, vit, master, ability, resist, n) {
     //console.log(type, str, agi, wepon, skill, rank, vit, master, ability, resist, n);
     if (type !== "tai") {
-        d1 = 1.5 * wepon + skill + ((skill - 5) * (1 + rank / 100));
-        d2 = (4 * str) > (1.5 * vit) ? (1 + 4 * str - 1.5 * vit) : 1;
+        damage1 = 1.5 * wepon + skill + ((skill - 5) * (1 + rank / 100));
+        damage2 = (4 * str) > (1.5 * vit) ? (1 + 4 * str - 1.5 * vit) : 1;
     } else {
-        d1 = wepon + skill + ((skill - 5) * (1 + rank / 100));
-        d2 = (2 * str + 2.5 * agi) > (1.2 * vit) ? 1 + 2 * str + 2.5 * agi - 1.2 * vit : 1;
+        damage1 = wepon + skill + ((skill - 5) * (1 + rank / 100));
+        damage2 = (2 * str + 2.5 * agi) > (1.2 * vit) ? 1 + 2 * str + 2.5 * agi - 1.2 * vit : 1;
         //console.log(2*str, 2.5*agi, 1.2*vit);
     }
-    d3 = (1 / (1 + 0.008 * resist)) * (1 / 10) * (1 + (master + ability + n - 6) / 100);
-    //console.log(d1, d2, d3);
-    return Math.floor(d1 * d2 * d3);
+    damage3 = (1 / (1 + 0.008 * resist)) * (1 / 10) * (1 + (master + ability + n - 6) / 100);
+    return Math.floor(damage1 * damage2 * damage3);
 }
 
 
@@ -40,6 +39,7 @@ function culcSkillDamageWithStyle(charInfo, stBonus, styleInfo, styleLevel, skil
             ability += 2;
         }
     }
+
     // culcStyleBonus依存
     let PARAM = {};
     let styleBonus = culcStyleAddintional(styleInfo);
@@ -65,6 +65,8 @@ function culcSkillDamageWithStyle(charInfo, stBonus, styleInfo, styleLevel, skil
     PARAM['master'] = master;
     PARAM['vit'] = vit;
     PARAM['resist'] = resist;
+    PARAM['SkillType'] = skillInfo['SkillType'];
+    PARAM['BattleType'] = skillInfo['BattleType'];
 
     let type = 'other';
     let culcValue = PARAM['str'];
@@ -84,7 +86,11 @@ function culcSkillDamageWithStyle(charInfo, stBonus, styleInfo, styleLevel, skil
         PARAM['culcValue'] = culcValue + "/" + PARAM['agi'];
     }
 
-    PARAM['culcDamage'] = damage(type, culcValue, PARAM['agi'], wepon, skillInfo['SkillIryoku'], rank, vit, master, ability, resist, 6);
+    if (skillInfo['SkillIryoku'] > 0) {
+        PARAM['culcDamage'] = damage(type, culcValue, PARAM['agi'], wepon, skillInfo['SkillIryoku'], rank, vit, master, ability, resist, 6);
+    } else {
+        PARAM['culcDamage'] = 0;
+    }
     return PARAM;
 }
 
