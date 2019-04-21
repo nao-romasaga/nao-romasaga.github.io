@@ -232,7 +232,10 @@ body {
 
 }
 .pad0{
-    padding:0px !important; 
+    padding: 0px !important; 
+}
+.mar0{
+    margin: 0px !important; 
 }
 
 .keishoSkillTr {
@@ -351,4 +354,153 @@ body {
         padding: 0px 0;
         border-radius: 70%; /*ボタンの角を少し丸くする*/
     }
+}
+
+.style-param-window {
+    background-color: rgba(160, 40, 40, 0.6);
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid lightcyan;    
+    margin-right: 15px;
+}
+.style-skill-window {
+    color: white;
+    margin: 0 20px 0 20px;
+    background: url(https://nao-romasaga.github.io/img/bg_window.png) no-repeat;
+    background-size: 100% 100%;
+    opacity: 0.8;    
+}
+
+.style-tab-active{
+    padding-top: 5px;
+    display: inline-block; 
+    height:40px; 
+    background:url(https://nao-romasaga.github.io/img/icon/icon_tab_active.png) no-repeat; 
+    background-size: 100%;    
+}
+.style-tab-disabled{
+    padding-top: 5px;
+    display: inline-block;
+    height:40px;
+    background:url(https://nao-romasaga.github.io/img/icon/icon_tab_disable.png) no-repeat;
+    background-size: 100%;
+}
+
+
+
+
+
+
+
+/* slider */
+
+input[type=range] {
+    -webkit-appearance: none;
+    margin: 0;
+    width: 100%;
+}
+input[type=range]:focus {
+    outline: none;
+}
+
+/* WebKit・Blink向け 溝のスタイル */
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 12px;
+    cursor: pointer;
+    animate: 0.2s;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    background: #cccccc;
+    border-radius: 1.3px;
+    border: 1px solid #010101;
+}
+/* WebKit・Blink向け つまみのスタイル */
+input[type=range]::-webkit-slider-thumb {
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    border: 1px solid #000000;
+    height: 36px;
+    width: 36px;
+    border-radius: 50%;
+    background: #ffffff;
+    cursor: pointer;
+    -webkit-appearance: none;
+    /* 以下は つまみの縦位置調整 */
+    margin-top: -14px;  /* (つまみの高さ - トラックの高さ) / 2 。つまみの高さは border を含む */	
+}
+
+/* WebKit・Blink向け focus時のスタイル */
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #999999;
+}
+
+/* Firefox向け 溝のスタイル */
+input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 12px;
+    cursor: pointer;
+    animate: 0.2s;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    background: #cccccc;
+    border-radius: 1.3px;
+    border: 0.2px solid #010101;
+}
+/* Firefox向け つまみのスタイル */
+input[type=range]::-moz-range-thumb {
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    border: 1px solid #000000;
+    height: 36px;
+    width: 36px;
+    border-radius: 50%;
+    background: #ffffff;
+    cursor: pointer;
+}
+
+/* Edge・IE向け 溝のスタイル */
+input[type=range]::-ms-track {
+    width: 100%;
+    height: 12px;
+    cursor: pointer;
+    animate: 0.2s;
+    background: transparent;
+    border-color: transparent;
+    border-width: 16px 0;
+    color: transparent;
+}
+/* Edge・IE向け 溝の色（つまみより左側） */
+input[type=range]::-ms-fill-lower {
+    background: #cccccc;
+    border: 0.2px solid #010101;
+    border-radius: 2.6px;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+/* Edge・IE向け 溝の色（つまみより右側） */
+input[type=range]::-ms-fill-upper {
+    background: #cccccc;
+    border: 0.2px solid #010101;
+    border-radius: 2.6px;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+/* Edge・IE向け つまみのスタイル */
+input[type=range]::-ms-thumb {
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    border: 1px solid #000000;
+    height: 36px;
+    width: 36px;
+    border-radius: 50%;
+    background: #ffffff;
+    cursor: pointer;
+}
+/* Edge・IE向け focus時の色（つまみより左側） */
+input[type=range]:focus::-ms-fill-lower {
+    background: #999999;
+}
+/* Edge・IE向け focus時の色（つまみより右側） */
+input[type=range]:focus::-ms-fill-upper {
+    background: #999999;
+}
+
+/* Edge・IE向け ポップアップを非表示に */
+input[type=range]::-ms-tooltip {
+    display: none;
 }

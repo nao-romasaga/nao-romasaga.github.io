@@ -22,6 +22,14 @@
     background-size: 80px !important;
     background-position: -5px -5px !important;    
 }
+.style_icon_a_small {
+    width: 30px;
+    height: 30px;
+    background-size: 30px !important;
+    background-position: -2px -2px !important;
+    border-radius: 5px;
+    border: 2px ridge rgb(247,170,150);
+}
 .bg_a{
     background-color: rgb(247,170,150);
 }
@@ -32,6 +40,14 @@
     border-radius: 10px;    
     background-size: 80px !important;
     background-position: -5px -5px !important;    
+}
+.style_icon_s_small {
+    width: 30px;
+    height: 30px;
+    background-size: 30px !important;
+    background-position: -2px -2px !important;
+    border-radius: 5px;
+    border: 2px ridge rgb(200,224,234);
 }
 .bg_s{
     background-color: rgb(200,224,234);;
@@ -66,6 +82,14 @@
     border-radius: 10px;    
     background-size: 80px !important;
     background-position: -5px -5px !important;
+}
+.style_icon_ss_small {
+    width: 30px;
+    height: 30px;
+    background-size: 30px !important;
+    background-position: -2px -2px !important;
+    border-radius: 5px;
+    border: 2px ridge rgb(246,236,100);
 }
 
 .bg_ss{
@@ -133,6 +157,37 @@
     -webkit-appearance: none;
     border: 0px;
 }
+.icon_info_md {
+    background:url(https://nao-romasaga.github.io/img/icon/icon_info.png) no-repeat;
+    background-size: 20px;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    -webkit-appearance: none;
+    border: 0px;
+}
+
+.icon_btn_on {
+    padding-top: 5px;
+    display: inline-block;
+    height:40px;
+    width:200px; 
+    color: #faf0b4;
+    -webkit-appearance: none;
+    border: 0px;
+    background:url(https://nao-romasaga.github.io/img/icon/icon_button_on.png) no-repeat;
+}
+.icon_btn_off {
+    padding-top: 5px;
+    display: inline-block;
+    height:40px;
+    width:200px; 
+    color: #faf0b4;
+    -webkit-appearance: none;
+    border: 0px;
+    background:url(https://nao-romasaga.github.io/img/icon/icon_button_off.png) no-repeat;
+}
+
 .icon_buff_str{        background:url(https://nao-romasaga.github.io/img/icon/icon_buf_str.png) no-repeat;}
 .icon_debuff_str{        background:url(https://nao-romasaga.github.io/img/icon/icon_debuf_str.png) no-repeat;}
 .icon_buff_vit{        background:url(https://nao-romasaga.github.io/img/icon/icon_buf_vit.png) no-repeat;}
@@ -196,4 +251,10 @@
     height: 14px;
     background-size: cover !important;
     margin: 0 0 0 0px;
+}
+
+.icon_rare_large {
+    width:46px;
+    height:46px;
+    display: inline-block;
 }

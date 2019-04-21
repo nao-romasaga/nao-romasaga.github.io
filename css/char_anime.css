@@ -49,6 +49,27 @@
     75% { background-position: -175px -10px;}
     100% { background-position: -175px -10px;}
 }
+@keyframes shomen-aruki {
+    0% { background-position: -15px -10px;}
+    25% { background-position: -95px -10px;}
+    75% { background-position: -175px -10px;}
+    100% { background-position: -175px -10px;}
+}
+.char-aruku-wide {
+    display: inline-block;
+    width: 70px;
+    height: 70px;
+    background-position: 0px 0px;
+    margin: 0 0 0 0px;
+    animation: shomen-aruki-wide 0.7s steps(1) infinite alternate;
+}            
+@keyframes shomen-aruki-wide {
+    0% { background-position: -5px -10px;}
+    25% { background-position: -85px -10px;}
+    75% { background-position: -165px -10px;}
+    100% { background-position: -165px -10px;}
+}        
+
 .char-hashiri {
     display: inline-block;
     width: 50px;
