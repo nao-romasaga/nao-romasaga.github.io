@@ -96,6 +96,9 @@ function insertCommonComponent() {
     nav += '        <a class="nav-link" href="./skill.html">スタイル検索(技・術)</a>';
     //nav += '        <a class="nav-link disabled" href="#">【工事中】スタイル検索</a>';
     nav += '      </li>';
+    nav += '      <li class="nav-item" id="headStyle">';
+    nav += '        <a class="nav-link" href="./style.html">キャラクター+スタイル詳細</a>';
+    nav += '      </li>';
     nav += '      <li class="nav-item" id="headAbility">';
     //nav += '        <a class="nav-link" href="./ability.html">【工事中】アビリティツリー</a>';
     nav += '        <a class="nav-link disabled" href="#">【工事中】アビリティ検索</a>';
@@ -145,6 +148,8 @@ function insertCommonComponent() {
         $("#headIndex").addClass("active");
     } else if (url.indexOf('skill.html') != -1) {
         $("#headSkill").addClass("active");
+    } else if (url.indexOf('style.html') != -1) {
+        $("#headStyle").addClass("active");
     } else if (url.indexOf('ability.html') != -1) {
         $("#headAbility").addClass("active");
     } else if (url.indexOf('auto.html') != -1) {
