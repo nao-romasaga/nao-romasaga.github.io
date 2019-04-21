@@ -3,14 +3,36 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-        <link rel="stylesheet" type="text/css" href="./style.css">
-        <script src="./utils.js" ></script>
-        <title>ロマサガRS 計算機@nao_romasaga</title>
+        <link rel="stylesheet" type="text/css" href="./css/style.css">
+        <link rel="stylesheet" type="text/css" href="./css/accordion.css">
+        <script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
+        <script src="https://d3js.org/d3-path.v1.min.js" charset="utf-8"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
+
+        <script src="./js/Firebase_local.js"></script>
+        <script src="./js/utils.js" ></script>
+        <script src="./js/style.js" ></script>
+        <script src="./js/culcStyleBonus.js" ></script>
+        <script src="./js/damage.js" ></script>
+        <script src="./js/radarChart.js" charset="utf-8"></script>
+        <script type="text/javascript" src="js/jquery.sliderPro.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/slider-pro.min.css">
+        <style>
+            /* スライド下のページャーの設定 */
+            .sp-buttons { padding-top: 40px; }
+            .sp-button { width: 30px; height: 10px; border: none; margin: 7px; background: white; }
+            .sp-selected-button { background: #000; }
+            @media only screen and (min-width: 768px) and (max-width: 1024px) { .xs-show { display:none; } .xs-hide { display:block; } }
+            @media only screen and (min-width: 568px) and (max-width: 768px) { .sp-button { width: 25px; height: 18px; } }
+        </style>
+        <title>ロマサガRS キャラクター詳細@nao_romasaga</title>
         <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -18,693 +40,135 @@
           <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
-        <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
     </head>
     <body>
         <div class ="haikei"><div class="container">
                 <div class="text-center">
                     <a href="https://www.jp.square-enix.com/saga_reuniverse/" target="new"><img src="https://www.jp.square-enix.com/saga_reuniverse/assets/img/cmn_logo01_sp.png" class="col-sm-12 col-md-8 col-lg-6"></a>
                 </div>
-
-                <h1 class="text-center opacity">ロマサガRS計算機</h1>
-                <br>
-                <div class="text-center">
-                </div>
+                <h3 class="text-center opacity">キャラクター詳細</h3>
                 <p class="text-right opacity"><small>バグ発見、ご要望は <a href="https://twitter.com/nao_romasaga_rs" target="new">nao_romasaga_rs</a>まで</small>
                 </p>
-                <div class="text-center">
-                    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="true">Tweet</a>
-                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                <p class="slide1 loading"><i class="dot_yuki dot_mid dot char-hashiri"></i></p>
+                <p class="slide2 loading"><i class="dot_monika dot_mid dot char-hashiri"></i></p>
+                <div id="slider-pro" class="slider-pro">
+                    <div class="sp-slides">
+                        <div class="sp-slide text-center opacity-char-back" id="RS1"><h5 class="game-banner">ロマンシング・サガ</h5></div>
+                        <div class="sp-slide text-center opacity-char-back" id="RS2"><h5 class="game-banner">ロマンシング・サガ2(1)</h5></div>
+                        <div class="sp-slide text-center opacity-char-back" id="RS22"><h5 class="game-banner">ロマンシング・サガ2(2)</h5></div>
+                        <div class="sp-slide text-center opacity-char-back" id="RS3"><h5 class="game-banner">ロマンシング・サガ3</h5></div>
+                        <div class="sp-slide text-center opacity-char-back" id="SF1"><h5 class="game-banner">サガフロンティア1</h5></div>
+                        <div class="sp-slide text-center opacity-char-back" id="SF2"><h5 class="game-banner">サガフロンティア2</h5></div>
+                        <div class="sp-slide text-center opacity-char-back">
+                            <h5 class="game-banner">アンリミテッド・サガ<br>サガ・スカーレットグレイス</h5><span id="US"></span><span id="SS"></span>
+                            <h5 class="game-banner">ロマンシング・サガRS</h5><span id="RSR"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="opacity-char-back" style="width:100%;" id="charData">
+                    <p class="text-center darkButton width-100 pad0 mar0" id="charName"></p>
+                    <div style="margin: 0px 15px 0px 15px">スタイルLv <span class='nowStyleLevel'>50</span><input type="range" class="input-range" value="50" min="30" max="50" id="styleChartLv"></div>
+                    <div class="row">
+                        <div class="col-3 text-center m-auto">
+                            <span id="charDot" class="char-hashiri char dot_mid dot"></span>
+                        </div>
+                        <div class="col-9">
+                            <table class="table table-sm width-100 small">
+                                <tbody>
+                                    <tr class="char-bottom text-nowrap">
+                                        <td>腕力</td><td id="tdStr" class="text-right"><input id="charSTR" type="number" class="input charParam" style="width: 60px" value="3"></td>
+                                        <td>体力</td><td id="tdVit" class="text-right"><input id="charVIT" type="number" class="input charParam" style="width: 60px" value="3"></td>
+                                    </tr>
+                                    <tr class="char-bottom text-nowrap">
+                                        <td>器用さ</td><td id="tdDex" class="text-right"><input id="charDEX" type="number" class="input charParam" style="width: 60px" value="6"></td>
+                                        <td>素早さ</td><td id="tdAgi" class="text-right"><input id="charAGI" type="number" class="input charParam" style="width: 60px" value="7"></td>
+                                    </tr>
+                                    <tr class="char-bottom text-nowrap">
+                                        <td>知力</td><td id="tdInt" class="text-right"><input id="charINT" type="number" class="input charParam" style="width: 60px" value="9"></td>
+                                        <td>精神</td><td id="tdMnd" class="text-right"><input id="charMND" type="number" class="input charParam" style="width: 60px" value="6"></td>
+                                    </tr>
+                                    <tr class="char-bottom text-nowrap">
+                                        <td>愛</td><td id="tdAi" class="text-right"><input id="charAI" type="number" class="input charParam" style="width: 60px" value="7"></td>
+                                        <td>魅力</td><td id="tdMi" class="text-right"><input id="charMI" type="number" class="input charParam" style="width: 60px" value="6"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
 
-                <br>
-                <label for="type" class="badge badge-pill badge-light">キャラクター 一覧</label>
-                <ul class="nav nav-tabs table-info">
-                    <li class="nav-item text-center side-padding-zero"><a class="nav-link active" data-toggle="tab" href="#rs1">ロマサガ1</a></li>
-                    <li class="nav-item text-center side-padding-zero"><a class="nav-link" data-toggle="tab" href="#rs2">ロマサガ2</a></li>
-                    <li class="nav-item text-center side-padding-zero"><a class="nav-link" data-toggle="tab" href="#rs3">ロマサガ3</a></li>
-                    <li class="nav-item text-center side-padding-zero"><a class="nav-link" data-toggle="tab" href="#sf1">サガフロ1</a></li>
-                    <li class="nav-item text-center side-padding-zero"><a class="nav-link" data-toggle="tab" href="#sf2">サガフロ2</a></li>
-                    <li class="nav-item text-center side-padding-zero"><a class="nav-link" data-toggle="tab" href="#us">アンサガ</a></li>
-                    <li class="nav-item text-center side-padding-zero"><a class="nav-link" data-toggle="tab" href="#ss">サガスカ</a></li>
-                    <li class="nav-item text-center side-padding-zero"><a class="nav-link" data-toggle="tab" href="#rsr">ロマサガRS</a></li>
-                </ul>
-                <div id="myTabContent" class="tab-content bg-white">
-                    <div class="tab-pane fade show active" id="rs1"><select class="form-control char_select" id="char_rs1" name="type"></select></div>
-                    <div class="tab-pane fade" id="rs2"><select class="form-control char_select" id="char_rs2" name="type"></select></div>
-                    <div class="tab-pane fade" id="rs3"><select class="form-control char_select" id="char_rs3" name="type"></select></div>
-                    <div class="tab-pane fade" id="sf1"><select class="form-control char_select" id="char_sf1" name="type"></select></div>
-                    <div class="tab-pane fade" id="sf2"><select class="form-control char_select" id="char_sf2" name="type"></select></div>
-                    <div class="tab-pane fade" id="us"><select class="form-control char_select" id="char_us" name="type"></select></div>
-                    <div class="tab-pane fade" id="ss"><select class="form-control char_select" id="char_ss" name="type"></select></div>
-                    <div class="tab-pane fade" id="rsr"><select class="form-control char_select" id="char_rsr" name="type"></select></div>
+                <div class=" tabArea" style="color: #faf0b4; width:100%; border-bottom: 2px solid;">
+                    <div class="text-center m-auto style-tab-active styleTab" id="tabStyle" style="width: 30%">スタイル</div>
+                    <div class="text-center m-auto style-tab-disabled styleTab" id="tabSkill" style="width: 30%">技・術</div>
+                    <div class="text-center m-auto style-tab-disabled styleTab" id="tabDiff" style="width: 35%">ステータス比較</div>
                 </div>
-                <label class="badge badge-pill badge-light">キャラクター情報</label>
-                <table class="table table-hover table-bordered table-sm">
-                    <tr class="text-center bg-white">
-                        <td><i id="char_img" class="char_dot1_big"></i></td>
-                        <td id="char_name" colspan="7">キャラクター名</td>
-                    </tr>
-                    <tr class="text-center bg-white">
-                        <td class="table-info">腕力</td>
-                        <td class="table-info">体力</td>
-                        <td class="table-info">器用さ</td>
-                        <td class="table-info">素早さ</td>
-                        <td class="table-info">知力</td>
-                        <td class="table-info">精神</td>
-                        <td class="table-info">愛</td>
-                        <td class="table-info">魅力</td>
-                    </tr>
-                    <tr class="text-center bg-white">
-                        <td class="opacity"><input id="st_wan" type="number" value="10" class="bg-white form-control charStatus" /></td>
-                        <td class="opacity"><input id="st_tai" type="number" value="10" class="bg-white form-control charStatus" /></td>
-                        <td class="opacity"><input id="st_kiyo" type="number" value="10" class="bg-white form-control charStatus" /></td>
-                        <td class="opacity"><input id="st_suba" type="number" value="10" class="bg-white form-control charStatus" /></td>
-                        <td class="opacity"><input id="st_chi" type="number" value="10" class="bg-white form-control charStatus" /></td>
-                        <td class="opacity"><input id="st_sei" type="number" value="10" class="bg-white form-control charStatus" /></td>
-                        <td class="opacity"><input id="st_ai" type="number" value="10" class="bg-white form-control charStatus" /></td>
-                        <td class="opacity"><input id="st_mi" type="number" value="10" class="bg-white form-control charStatus" /></td>
-                    </tr>
-                </table>
-                <label class="badge badge-pill badge-light">スタイル比較</label>
-                <ul class="nav nav-tabs table-info">
-                    <li class="nav-item text-center side-padding-zero"><a class="nav-link active lvTab" data-lv="50" data-toggle="tab" href="#raderLv50">Lv50</a></li>
-                    <li class="nav-item text-center side-padding-zero"><a class="nav-link lvTab" data-lv="46" data-toggle="tab" href="#raderLv46">Lv46</a></li>
-                    <li class="nav-item text-center side-padding-zero"><a class="nav-link lvTab" data-lv="42" data-toggle="tab" href="#raderLv42">Lv42</a></li>
-                    <li class="nav-item text-center side-padding-zero"><a class="nav-link lvTab" data-lv="38" data-toggle="tab" href="#raderLv38">Lv38</a></li>
-                    <li class="nav-item text-center side-padding-zero"><a class="nav-link lvTab" data-lv="34" data-toggle="tab" href="#raderLv34">Lv34</a></li>
-                    <li class="nav-item text-center side-padding-zero"><a class="nav-link lvTab" data-lv="30" data-toggle="tab" href="#raderLv30">Lv30</a></li>
-                </ul>
-                <table class="table table-hover table-bordered table-sm" id="styleRadar">
-                    <thead>
-                        <tr class="text-center bg-white">
-                            <td id="char_style" colspan="8" class="table-primary">Lv<span class="dispLv">50</span>スタイル補正</td>
-                            <td id="char_style" colspan="8" class="table-success">Lv<span class="dispLv">50</span> ステータス値+スタイルボーナス</td>
-                        </tr>
-                        <tr class="text-center bg-white">
-                            <td id="char_style" colspan="8"><div class="radarChart" style="display: inline-flex;"></div></td>
-                            <td id="char_style" colspan="8"><div class="radarChart2" style="display: inline-flex;"></div></td>
-                        </tr>
-                        <tr class="text-center bg-white">
-                            <td class="table-primary">腕</td><td class="table-primary">体</td><td class="table-primary">器</td><td class="table-primary">速</td><td class="table-primary">知</td><td class="table-primary">精</td><td class="table-primary">愛</td><td class="table-primary">魅</td>
-                            <td class="table-success">腕</td><td class="table-success">体</td><td class="table-success">器</td><td class="table-success">速</td><td class="table-success">知</td><td class="table-success">精</td><td class="table-success">愛</td><td class="table-success">魅</td>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-
-                <label class="badge badge-pill badge-light">ステータスチャート</label>
-                <ul class="nav nav-tabs table-info">
-                    <li class="nav-item text-center side-padding-zero"><a class="nav-link active" data-toggle="tab" href="#st_chart_wan">腕力</a></li>
-                    <li class="nav-item text-center side-padding-zero"><a class="nav-link" data-toggle="tab" href="#st_chart_tai">体力</a></li>
-                    <li class="nav-item text-center side-padding-zero"><a class="nav-link" data-toggle="tab" href="#st_chart_kiyo">器用さ</a></li>
-                    <li class="nav-item text-center side-padding-zero"><a class="nav-link" data-toggle="tab" href="#st_chart_suba">素早さ</a></li>
-                    <li class="nav-item text-center side-padding-zero"><a class="nav-link" data-toggle="tab" href="#st_chart_chi">知力</a></li>
-                    <li class="nav-item text-center side-padding-zero"><a class="nav-link" data-toggle="tab" href="#st_chart_sei">精神</a></li>
-                    <li class="nav-item text-center side-padding-zero"><a class="nav-link" data-toggle="tab" href="#st_chart_ai">愛</a></li>
-                    <li class="nav-item text-center side-padding-zero"><a class="nav-link" data-toggle="tab" href="#st_chart_mi">魅力</a></li>
-                </ul>
-                <div id="myTabContent" class="tab-content bg-white">
-                    <div class="tab-pane fade show active" id="st_chart_wan">
-                        <div class="row">
-                            <div class="col-5" id="chartContainerWanPer" style="height: 400px;"></div><div class="col-1"></div>
-                            <div class="col-5" id="chartContainerWanVal" style="height: 400px;"></div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="st_chart_tai">
-                        <div class="row">
-                            <div class="col-5" id="chartContainerTaiPer" style="height: 400px;"></div><div class="col-1"></div>
-                            <div class="col-5" id="chartContainerTaiVal" style="height: 400px;"></div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="st_chart_kiyo">
-                        <div class="row">
-                            <div class="col-5" id="chartContainerKiyoPer" style="height: 400px;"></div><div class="col-1"></div>
-                            <div class="col-5" id="chartContainerKiyoVal" style="height: 400px;"></div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="st_chart_suba">
-                        <div class="row">
-                            <div class="col-5" id="chartContainerSubaPer" style="height: 400px;"></div><div class="col-1"></div>
-                            <div class="col-5" id="chartContainerSubaVal" style="height: 400px;"></div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="st_chart_chi">
-                        <div class="row">
-                            <div class="col-5" id="chartContainerChiPer" style="height: 400px;"></div><div class="col-1"></div>
-                            <div class="col-5" id="chartContainerChiVal" style="height: 400px;"></div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="st_chart_sei">
-                        <div class="row">
-                            <div class="col-5" id="chartContainerSeiPer" style="height: 400px;"></div><div class="col-1"></div>
-                            <div class="col-5" id="chartContainerSeiVal" style="height: 400px;"></div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="st_chart_ai">
-                        <div class="row">
-                            <div class="col-5" id="chartContainerAiPer" style="height: 400px;"></div><div class="col-1"></div>
-                            <div class="col-5" id="chartContainerAiVal" style="height: 400px;"></div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="st_chart_mi">
-                        <div class="row">
-                            <div class="col-5" id="chartContainerMiPer" style="height: 400px;"></div><div class="col-1"></div>
-                            <div class="col-5" id="chartContainerMiVal" style="height: 400px;"></div>
-                        </div>
-                    </div>
-                </div>                
-                <br><br>
-                <label for="wepon" class="badge badge-pill badge-light">スタイル一覧</label>
-                <table class="table table-hover table-bordered table-sm" id="char_holder_table">
-                    <thead>
-                        <tr class="text-center table-success">
-                            <th>Rare</th>
-                            <th>Name</th>
-                            <th>Style</th>
-                            <th>Wepon</th>
-                            <th>Role</th>
-                            <th>Skill</th>
-                            <th>Ability</th>
-                        </tr>
-                    </thead>
-                    <tbody class="bg-white"></tbody>
-                </table>
-                <div class="skillRank">
-                    <h2 class="opacity">技・術シミュレーション</h2>
-                    <label for="wepon" class="badge badge-pill badge-light" id="skillListLabel"></label>
-                    <table class="table table-hover table-bordered table-sm" id="skill_list_table">
-                        <thead>
-                            <tr class="text-center table-success">
-                                <th>枠</th>
-                                <th>技名</th>
-                                <th>消費BP</th>
-                                <th>最大数</th>
-                                <th>威力</th>
-                                <th>Rank</th>
-                            </tr>
-                        </thead>
-                        <tbody class="bg-white"></tbody>
-                    </table>
-                    <label for="wepon" class="badge badge-pill badge-light">全力オートシミュレーション</label>
-                    <table class="table table-hover table-bordered table-sm" id="auto_ranking_table">
-                        <thead>
-                            <tr class="text-center table-success">
-                                <th>覚醒パターン</th>
-                                <th>総威力</th>
-                                <th>Turn1</th>
-                                <th>Turn2</th>
-                                <th>Turn3</th>
-                                <th>Turn4</th>
-                                <th>Turn5</th>
-                                <th>Turn6</th>
-                                <th>Turn7</th>
-                                <th>Turn8</th>
-                                <th>Turn9</th>
-                                <th>Turn10</th>
-                            </tr>
-
-                        </thead>
-                        <tbody class="bg-white"></tbody>
-                    </table>
+                <div class="style-bgcolor styleChoiceArea">
+                    <div id="styleChoice">                    </div>
                 </div>
-
-                <label for="wepon" class="badge badge-pill badge-light">全力オートシミュレーション</label>
-                <table class="table table-hover table-bordered table-sm" id="">
-                    <thead>
-                        <tr class="text-center table-success">
-                            <th>ターン</th>
-                            <th>技名</th>
-                            <th>現在BP</th>
-                            <th>消費BP</th>
-                            <th>残BP</th>
-                            <th>威力</th>
-                            <th>累計威力</th>
-                        </tr>
-                    </thead>
-                    <tbody class="bg-white">
-                        <tr><td>1</td><td>ベアクラッシュ</td><td>10</td><td>9</td><td>1</td><td>133.57</td><td>48</td></tr>
-                        <tr><td>2</td><td>払い抜け</td><td>4</td><td>4</td><td>0</td><td>25.93</td><td>73.93</td></tr>
-                        <tr><td>3</td><td>通常攻撃</td><td>3</td><td>0</td><td>3</td><td>7</td><td>80.93</td></tr>
-                        <tr><td>4</td><td>ブルクラッシュ</td><td>6</td><td>6</td><td>0</td><td>76.76</td><td>157.69</td></tr>
-                        <tr><td>5</td><td>通常攻撃</td><td>3</td><td>0</td><td>3</td><td>7</td><td>164.69</td></tr>
-                        <tr><td>6</td><td>ブルクラッシュ</td><td>6</td><td>6</td><td>0</td><td>76.76</td><td>241.45</td></tr>
-                        <tr><td>7</td><td>通常攻撃</td><td>3</td><td>0</td><td>3</td><td>7</td><td>248.45</td></tr>
-                        <tr><td>8</td><td>ブルクラッシュ</td><td>6</td><td>6</td><td>0</td><td>76.76</td><td>325.21</td></tr>
-                        <tr><td>9</td><td>通常攻撃</td><td>3</td><td>0</td><td>3</td><td>7</td><td>332.21</td></tr>
-                        <tr><td>10</td><td>ブルクラッシュ</td><td>6</td><td>6</td><td>0</td><td>76.76</td><td>408.97</td></tr>
-
-                    </tbody>
-                </table>
-                <label for="wepon" class="badge badge-pill badge-light">全力オート ダメージランキング</label>
-                <table class="table table-hover table-bordered table-sm" id="">
-                    <tr class="table-success">
-                        <td style="width:100px">Rank</td>
-                        <td>総威力</td>
-                        <td>覚醒</td>
-                        <td>継承</td>
-                    </tr>
-                    <tr class="bg-white">
-                        <td style="color:gold">
-                            <?xml version="1.0" encoding="utf-8"?>                            <!-- Generator: Adobe Illustrator 15.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->                            <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">                    <svg version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"                         width="32px" height="32px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">                    <style type="text/css">                        <![CDATA[                        .st0{fill:currentColor;}                        ]]>                    </style>                    <g>                    <path class="st0" d="M476.406,124.953c-19.656,0-35.625,15.938-35.625,35.594c0,12.516,6.469,23.531,16.234,29.875                          c-9.266,31.781-27.891,78.031-44.766,87.625c-32.047,18.203-61.094-9.313-47.031-84.703c17.813-1.953,31.688-17.063,31.688-35.391                          c0-19.672-15.938-35.609-35.609-35.609s-35.609,15.938-35.609,35.609c0,12.141,6.094,22.844,15.375,29.281                          c-9.5,42.063-23.5,58.859-40.563,56.531c-25.781-3.516-30.5-50.016-30.906-114.938c12.938-5.328,22.016-18.063,22.016-32.906                          c0-19.672-15.938-35.609-35.609-35.609c-19.656,0-35.594,15.938-35.594,35.609c0,14.844,9.094,27.578,22,32.906                          C242,193.75,237.297,240.25,211.5,243.766c-17.063,2.328-31.063-14.469-40.547-56.531c9.297-6.438,15.359-17.141,15.359-29.281                          c0-19.672-15.938-35.609-35.594-35.609c-19.688,0-35.625,15.938-35.625,35.609c0,18.328,13.875,33.438,31.688,35.391                          c14.063,75.391-14.969,102.906-47,84.703C82.875,268.453,64.266,222.203,55,190.422c9.766-6.344,16.219-17.359,16.219-29.875                          c0-19.656-15.938-35.594-35.625-35.594C15.953,124.953,0,140.891,0,160.547c0,18.609,14.281,33.859,32.469,35.469l25.734,175.672                          h395.609l25.719-175.672C497.734,194.406,512,179.156,512,160.547C512,140.891,496.063,124.953,476.406,124.953z"/>                    <polygon class="st0" points="69.922,451.688 256,451.688 442.094,451.688 449.125,403.688 62.891,403.688 	"/>                    </g>                    </svg>
-                    1位</td>
-                    <td><font size=4 face="arial black">494.54</font></td>
-                    <td>払い抜け(4)、<s>流し斬り(7)</s>、ベアクラッシュ(9)</td>
-                    <td>ブルクラッシュ(6)</td>
-                    </tr>
-                    <tr class="bg-white">
-                        <td style="color:silver">                            <?xml version="1.0" encoding="utf-8"?>                            <!-- Generator: Adobe Illustrator 15.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->                            <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">                    <svg version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"                         width="32px" height="32px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">                    <style type="text/css">                        <![CDATA[                        .st0{fill:currentColor;}                        ]]>                    </style>                    <g>                    <path class="st0" d="M476.406,124.953c-19.656,0-35.625,15.938-35.625,35.594c0,12.516,6.469,23.531,16.234,29.875                          c-9.266,31.781-27.891,78.031-44.766,87.625c-32.047,18.203-61.094-9.313-47.031-84.703c17.813-1.953,31.688-17.063,31.688-35.391                          c0-19.672-15.938-35.609-35.609-35.609s-35.609,15.938-35.609,35.609c0,12.141,6.094,22.844,15.375,29.281                          c-9.5,42.063-23.5,58.859-40.563,56.531c-25.781-3.516-30.5-50.016-30.906-114.938c12.938-5.328,22.016-18.063,22.016-32.906                          c0-19.672-15.938-35.609-35.609-35.609c-19.656,0-35.594,15.938-35.594,35.609c0,14.844,9.094,27.578,22,32.906                          C242,193.75,237.297,240.25,211.5,243.766c-17.063,2.328-31.063-14.469-40.547-56.531c9.297-6.438,15.359-17.141,15.359-29.281                          c0-19.672-15.938-35.609-35.594-35.609c-19.688,0-35.625,15.938-35.625,35.609c0,18.328,13.875,33.438,31.688,35.391                          c14.063,75.391-14.969,102.906-47,84.703C82.875,268.453,64.266,222.203,55,190.422c9.766-6.344,16.219-17.359,16.219-29.875                          c0-19.656-15.938-35.594-35.625-35.594C15.953,124.953,0,140.891,0,160.547c0,18.609,14.281,33.859,32.469,35.469l25.734,175.672                          h395.609l25.719-175.672C497.734,194.406,512,179.156,512,160.547C512,140.891,496.063,124.953,476.406,124.953z"/>                    <polygon class="st0" points="69.922,451.688 256,451.688 442.094,451.688 449.125,403.688 62.891,403.688 	"/>                    </g>                    </svg>
-                    2位</td>
-                    <td><font size=4 face="arial black">405.83</font></td>
-                    <td>払い抜け(4)、<s>流し斬り(7)</s>、<s>ベアクラッシュ(12)</s></td>
-                    <td>ブルクラッシュ(6)</td>
-                    </tr>
-                    <tr class="bg-white">
-                        <td style="color:#B87333">                            <?xml version="1.0" encoding="utf-8"?>                            <!-- Generator: Adobe Illustrator 15.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->                            <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">                    <svg version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"                         width="32px" height="32px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">                    <style type="text/css">                        <![CDATA[                        .st0{fill:currentColor;}                        ]]>                    </style>                    <g>                    <path class="st0" d="M476.406,124.953c-19.656,0-35.625,15.938-35.625,35.594c0,12.516,6.469,23.531,16.234,29.875                          c-9.266,31.781-27.891,78.031-44.766,87.625c-32.047,18.203-61.094-9.313-47.031-84.703c17.813-1.953,31.688-17.063,31.688-35.391                          c0-19.672-15.938-35.609-35.609-35.609s-35.609,15.938-35.609,35.609c0,12.141,6.094,22.844,15.375,29.281                          c-9.5,42.063-23.5,58.859-40.563,56.531c-25.781-3.516-30.5-50.016-30.906-114.938c12.938-5.328,22.016-18.063,22.016-32.906                          c0-19.672-15.938-35.609-35.609-35.609c-19.656,0-35.594,15.938-35.594,35.609c0,14.844,9.094,27.578,22,32.906                          C242,193.75,237.297,240.25,211.5,243.766c-17.063,2.328-31.063-14.469-40.547-56.531c9.297-6.438,15.359-17.141,15.359-29.281                          c0-19.672-15.938-35.609-35.594-35.609c-19.688,0-35.625,15.938-35.625,35.609c0,18.328,13.875,33.438,31.688,35.391                          c14.063,75.391-14.969,102.906-47,84.703C82.875,268.453,64.266,222.203,55,190.422c9.766-6.344,16.219-17.359,16.219-29.875                          c0-19.656-15.938-35.594-35.625-35.594C15.953,124.953,0,140.891,0,160.547c0,18.609,14.281,33.859,32.469,35.469l25.734,175.672                          h395.609l25.719-175.672C497.734,194.406,512,179.156,512,160.547C512,140.891,496.063,124.953,476.406,124.953z"/>                    <polygon class="st0" points="69.922,451.688 256,451.688 442.094,451.688 449.125,403.688 62.891,403.688 	"/>                    </g>                    </svg>
-                    3位</td>
-                    <td><font size=4 face="arial black">366.94</font></td>
-                    <td>払い抜け(3)、<s>流し斬り(7)</s>、ベアクラッシュ(9)</td>
-                    <td></td>
-                    </tr>
-                    <tr class="bg-white">
-                        <td style="color:#B87333">                            <?xml version="1.0" encoding="utf-8"?>                            <!-- Generator: Adobe Illustrator 15.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->                            <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">                    <svg version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"                         width="32px" height="32px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">                    <style type="text/css">                        <![CDATA[                        .st0{fill:currentColor;}                        ]]>                    </style>                    <g>                    <path class="st0" d="M476.406,124.953c-19.656,0-35.625,15.938-35.625,35.594c0,12.516,6.469,23.531,16.234,29.875                          c-9.266,31.781-27.891,78.031-44.766,87.625c-32.047,18.203-61.094-9.313-47.031-84.703c17.813-1.953,31.688-17.063,31.688-35.391                          c0-19.672-15.938-35.609-35.609-35.609s-35.609,15.938-35.609,35.609c0,12.141,6.094,22.844,15.375,29.281                          c-9.5,42.063-23.5,58.859-40.563,56.531c-25.781-3.516-30.5-50.016-30.906-114.938c12.938-5.328,22.016-18.063,22.016-32.906                          c0-19.672-15.938-35.609-35.609-35.609c-19.656,0-35.594,15.938-35.594,35.609c0,14.844,9.094,27.578,22,32.906                          C242,193.75,237.297,240.25,211.5,243.766c-17.063,2.328-31.063-14.469-40.547-56.531c9.297-6.438,15.359-17.141,15.359-29.281                          c0-19.672-15.938-35.609-35.594-35.609c-19.688,0-35.625,15.938-35.625,35.609c0,18.328,13.875,33.438,31.688,35.391                          c14.063,75.391-14.969,102.906-47,84.703C82.875,268.453,64.266,222.203,55,190.422c9.766-6.344,16.219-17.359,16.219-29.875                          c0-19.656-15.938-35.594-35.625-35.594C15.953,124.953,0,140.891,0,160.547c0,18.609,14.281,33.859,32.469,35.469l25.734,175.672                          h395.609l25.719-175.672C497.734,194.406,512,179.156,512,160.547C512,140.891,496.063,124.953,476.406,124.953z"/>                    <polygon class="st0" points="69.922,451.688 256,451.688 442.094,451.688 449.125,403.688 62.891,403.688 	"/>                    </g>                    </svg>
-                    4位</td>
-                    <td><font size=4 face="arial black">360.96</font></td>
-                    <td>払い抜け(3)、<s>流し斬り(7)</s>、<s>ベアクラッシュ(12)</s></td>
-                    <td>ブルクラッシュ(6)</td>
-                    </tr>
-                    <tr class="bg-white">
-                        <td style="color:#B87333">                            <?xml version="1.0" encoding="utf-8"?>                            <!-- Generator: Adobe Illustrator 15.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->                            <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">                    <svg version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"                         width="32px" height="32px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">                    <style type="text/css">                        <![CDATA[                        .st0{fill:currentColor;}                        ]]>                    </style>                    <g>                    <path class="st0" d="M476.406,124.953c-19.656,0-35.625,15.938-35.625,35.594c0,12.516,6.469,23.531,16.234,29.875                          c-9.266,31.781-27.891,78.031-44.766,87.625c-32.047,18.203-61.094-9.313-47.031-84.703c17.813-1.953,31.688-17.063,31.688-35.391                          c0-19.672-15.938-35.609-35.609-35.609s-35.609,15.938-35.609,35.609c0,12.141,6.094,22.844,15.375,29.281                          c-9.5,42.063-23.5,58.859-40.563,56.531c-25.781-3.516-30.5-50.016-30.906-114.938c12.938-5.328,22.016-18.063,22.016-32.906                          c0-19.672-15.938-35.609-35.609-35.609c-19.656,0-35.594,15.938-35.594,35.609c0,14.844,9.094,27.578,22,32.906                          C242,193.75,237.297,240.25,211.5,243.766c-17.063,2.328-31.063-14.469-40.547-56.531c9.297-6.438,15.359-17.141,15.359-29.281                          c0-19.672-15.938-35.609-35.594-35.609c-19.688,0-35.625,15.938-35.625,35.609c0,18.328,13.875,33.438,31.688,35.391                          c14.063,75.391-14.969,102.906-47,84.703C82.875,268.453,64.266,222.203,55,190.422c9.766-6.344,16.219-17.359,16.219-29.875                          c0-19.656-15.938-35.594-35.625-35.594C15.953,124.953,0,140.891,0,160.547c0,18.609,14.281,33.859,32.469,35.469l25.734,175.672                          h395.609l25.719-175.672C497.734,194.406,512,179.156,512,160.547C512,140.891,496.063,124.953,476.406,124.953z"/>                    <polygon class="st0" points="69.922,451.688 256,451.688 442.094,451.688 449.125,403.688 62.891,403.688 	"/>                    </g>                    </svg>
-                    5位</td>
-                    <td><font size=4 face="arial black">323.1</font></td>
-                    <td>払い抜け(4)、<s>流し斬り(7)</s>、<s>ベアクラッシュ(12)</s></td>
-                    <td>ブルクラッシュ(6)</td>
-                    </tr>
-                    <tr class="bg-white">
-                        <td style="color:#B87333">                            <?xml version="1.0" encoding="utf-8"?>                            <!-- Generator: Adobe Illustrator 15.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->                            <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">                    <svg version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"                         width="32px" height="32px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">                    <style type="text/css">                        <![CDATA[                        .st0{fill:currentColor;}                        ]]>                    </style>                    <g>                    <path class="st0" d="M476.406,124.953c-19.656,0-35.625,15.938-35.625,35.594c0,12.516,6.469,23.531,16.234,29.875                          c-9.266,31.781-27.891,78.031-44.766,87.625c-32.047,18.203-61.094-9.313-47.031-84.703c17.813-1.953,31.688-17.063,31.688-35.391                          c0-19.672-15.938-35.609-35.609-35.609s-35.609,15.938-35.609,35.609c0,12.141,6.094,22.844,15.375,29.281                          c-9.5,42.063-23.5,58.859-40.563,56.531c-25.781-3.516-30.5-50.016-30.906-114.938c12.938-5.328,22.016-18.063,22.016-32.906                          c0-19.672-15.938-35.609-35.609-35.609c-19.656,0-35.594,15.938-35.594,35.609c0,14.844,9.094,27.578,22,32.906                          C242,193.75,237.297,240.25,211.5,243.766c-17.063,2.328-31.063-14.469-40.547-56.531c9.297-6.438,15.359-17.141,15.359-29.281                          c0-19.672-15.938-35.609-35.594-35.609c-19.688,0-35.625,15.938-35.625,35.609c0,18.328,13.875,33.438,31.688,35.391                          c14.063,75.391-14.969,102.906-47,84.703C82.875,268.453,64.266,222.203,55,190.422c9.766-6.344,16.219-17.359,16.219-29.875                          c0-19.656-15.938-35.594-35.625-35.594C15.953,124.953,0,140.891,0,160.547c0,18.609,14.281,33.859,32.469,35.469l25.734,175.672                          h395.609l25.719-175.672C497.734,194.406,512,179.156,512,160.547C512,140.891,496.063,124.953,476.406,124.953z"/>                    <polygon class="st0" points="69.922,451.688 256,451.688 442.094,451.688 449.125,403.688 62.891,403.688 	"/>                    </g>                    </svg>
-                    6位</td>
-                    <td><font size=4 face="arial black">303.31</font></td>
-                    <td>払い抜け(4)、流し斬り(5)、<s>ベアクラッシュ(12)</s></td>
-                    <td></td>
-                    </tr>
-                </table>
-
-                <br>
-                <div class="opacity">
-                    Powered by <a href="https://twitter.com/nao_romasaga_rs" target="new">nao_romasaga_rs</a><br>
-                    Special thanks <a href="https://twitter.com/imonoki" target="new">imonoki</a><br>
-                    © 2019 SQUARE ENIX CO., LTD. All Rights Reserved. Powered by Akatsuki Inc.<br>
-                    ILLUSTRATION: TOMOMI KOBAYASHI
+                <div class="style-bgcolor styleChoiceArea">
+                    <div id="styleBgImg">
+                        <div class="text-center darkButton" style="margin-bottom: 10px; opacity: 0.8; padding-right:46px;" id="styleNameLabel"></div>
+                        <div id="styleInfo" class="row" style="margin-top:50px;">
+                            <div class="float-right text-center m-auto">
+                                <span id="styleDot" class="char dot_mid dot char-aruku"></span>
+                            </div>
+                            <div class="small text-nowrap style-param-window">
+                                <div class="text-center char-bottom">Lv<span class="nowStyleLevel">50</span> ステータス</div>
+                                <span id="styleSTR"></span><br>
+                                <span id="styleVIT"></span><br>
+                                <span id="styleDEX"></span><br>
+                                <span id="styleAGI"></span><br>
+                                <span id="styleINT"></span><br>
+                                <span id="styleMND"></span><br>
+                                <span id="styleAI"></span><br>
+                                <span id="styleMI"></span><br>
+                            </div>
+                            <table class="width-100 small style-skill-window">
+                                <tr>
+                                    <td>.</td><td></td><td></td>
+                                </tr>
+                                <tr>
+                                    <td>　</td>
+                                    <td id="skillList"></td>
+                                    <td id="abilityList"></td>
+                                </tr>
+                                <tr>
+                                    <td>.</td><td></td>
+                                </tr>
+                            </table>
+                            <div class="m-auto width-100 styleChoiceArea"  style="padding: 0px 15px 0px 15px;">
+                                <div class="text-center darkButton" style="margin-bottom: 10px">スタイルLv別 ステータス値比較</div>
+                                <table class="table table-sm width-100 small text-nowrap style-param-window" id="statusDiffTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Lv</th><th>腕</th><th>体</th><th>器</th><th>速</th><th>知</th><th>精</th><th>愛</th><th>魅</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class='pad0'>
+                                    </tbody>
+                                </table>                                    
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-            </div></div> <!-- main -->
-
-        <!--script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script-->
-        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-storage.js"></script>
-        <script src="./Firebase.js"></script>
-        <script src="./culcStyleBonus.js"></script>
-        <script src="./style_function.js"></script>
-
-        <script type="text/javascript">
-            $(function () {
-                readData();
-            });
-            $(".char_select").change(function (e) {
-                $("table#auto_ranking_table tbody *").remove();
-
-                var id = $(e.target).attr("id");
-                //var text = $('#' + id + ' option:selected').text();
-                var charId = $('#' + id).val();
-                if (charId == 0) {
-                    return;
-                }
-                var charInfo = CHAR_MASTER[charId];
-                console.log(charInfo);
-                NOW_CHAR_INFO = charInfo;
-                // 初期ステータスの入力
-                setCharTable(charInfo);
-                // スタイルの追加
-                addStyleInfoTable(charInfo);
-                
-                // スタイル補正とボーナス値の計算
-                culcStyleAddintional(charInfo, STYLE_MASTER);
-                // チャート用のデータ計算
-                createPercentChartData(charInfo);
-                // 初回はLv50を表示？
-                RadarChart(".radarChart", raderDataPer[NOW_LV], radarChartOptions);
-                // スタイルテーブルの表示
-                showStyleTableData(charInfo);
-                // 実値の表示
-                reculcValueChartData(charInfo);
-                drawChart(charInfo);
-            });
-
-            $(".skillRank").hide();
-
-            $(".lvTab").click(function () {
-                NOW_LV = $(this).data("lv");
-                //if (raderDataPer[NOW_LV].length > 0) {
-                if (NOW_CHAR_INFO !== undefined) {
-                    RadarChart(".radarChart", raderDataPer[NOW_LV], radarChartOptions);
-                    // 実値の表示
-                    reculcValueChartData(NOW_CHAR_INFO);
-                }
-                $(".dispLv").text(NOW_LV);
-            });
-
-            $(".charStatus").change(function () {
-                // すでにキャラクターが選択されてた場合のみ
-                if (NOW_CHAR_INFO !== undefined) {
-                    // 実値の表示
-                    reculcValueChartData(NOW_CHAR_INFO);
-                    drawChart(NOW_CHAR_INFO);
-                }
-            });
-
-            // 動的に追加されるものに対してはonで対応する
-            $(document).on('click', '.tr_style_choise', function () {
-                $("table#skill_list_table tbody *").remove();
-                var styleId = $(this).closest("tr").attr('data-styleId');
-                console.log(STYLE_MASTER);
-                NOW_STYLE_INFO = STYLE_MASTER[styleId];
-                $(".skillRank").show();
-
-                $("#skillListLabel").text(NOW_STYLE_INFO['AnotherName'] + " 技・術 一覧");
-                var i = 1;
-                for (skillId of NOW_STYLE_INFO['SkillIds']) {
-                    let skillInfo = SKILL_MASTER[skillId];
-                    let col = "";
-                    col += "<td> " + i++ + " </td>";
-                    col += "<td> " + skillInfo['Name'] + " </td>";
-                    col += "<td> " + skillInfo['ConsumeBp'] + " </td>";
-                    col += "<td> " + skillInfo['MaxKakuseiCount'] + " </td>";
-                    let disp = "";
-                    if (SKILL_MASTER[skillId]['AttackArea'] !== "味方単体") {
-                        disp += " 威力:" + SKILL_MASTER[skillId]['PowerGrade'] +
-                                " (<span id='skillIryoku" + skillId + "'>" + skillInfo['SkillIryoku'] + "</span>)";
-                    }
-                    col += "<td> " + disp + " </td>";
-                    col += "<td> <input type='number' class='form-control' value='99' min='1' max='99'/></td>";
-                    let row = "<tr> " + col + "</tr>";
-                    $("table#skill_list_table tbody").append(row);
-                }
-                var col = "<td>継承</td>";
-                col += "<td><select id='keisyoSkill' class='form-control'></select></td>";
-                col += "<td></td>";
-                col += "<td></td>";
-                col += "<td></td>";
-                col += "<td> <input type='number' class='form-control' value='99' min='1' max='99'/></td>";
-                var row = "<tr> " + col + "</tr>";
-                $("table#skill_list_table tbody").append(row);
-
-                // その他のスタイルの技を継承枠に出す
-                var charHolders = NOW_CHAR_INFO['Holders'];
-                for (let id of charHolders) {
-                    if (styleId != id) {
-                        let otherStyle = STYLE_MASTER[id];
-                        for (let skillId of otherStyle['SkillIds']) {
-                            if ($.inArray(skillId, NOW_STYLE_INFO['SkillIds'])) {
-                                let tmp = {};
-                                tmp[SKILL_MASTER[skillId]['Name']] = skillId;
-                                addOption(tmp, "keisyoSkill");
-                            } else {
-                                console.log(skillId + "被り", NOW_STYLE_INFO['SkillIds']);
-                            }
-                        }
-                    }
-                }
-
-            });
-            // 動的に追加されるものに対してはonで対応する
-            $(document).on('change', '#keisyoSkill', function () {
-                console.log($(this).val());
-            });
-
-
-
-            $(".skill_select").change(function () {
-                var autoList = culcSkillDamageRate(NOW_STYLE_INFO);
-                displayAutoPatternRanking(autoList);
-            });
-
-            var raderData = {50: [], 46: [], 42: [], 38: [], 34: [], 30: []};
-            var raderDataPer;
-
-            // スタイル補正の値なのでパラメータに影響されない
-            function createPercentChartData(charInfo) {
-                // キャラクター変換でリセットする
-                raderDataPer = {50: [], 46: [], 42: [], 38: [], 34: [], 30: []};
-
-                // ["StyleName"]["Param"]["Lv"]["Per"] = パーセンテージ
-                // ["StyleName"]["Param"]["Lv"]["Bonus"] = ボーナス値
-                // var STYLE_ADD = {};
-                for (let key in charInfo['Holders']) {
-                    let styleId = charInfo['Holders'][key];
-                    let styleInfo = STYLE_MASTER[styleId];
-                    let styleName = styleInfo['AnotherName'];
-                    for (let lv in raderDataPer) {
-                        let styleMax = {"name": styleInfo['AnotherName'], "axes": []};
-                        for (let pName of PARAM_NAME) {
-                            styleMax["axes"].push({"axis": pName, "value": STYLE_ADD[styleName][pName][lv]["Per"]});
-                        }
-                        raderDataPer[lv].push(styleMax);
-                    }
-                }
-            }
-            function showStyleTableData(charInfo) {
-                $("table#styleRadar tbody *").remove();
-                for (let key in charInfo['Holders']) {
-                    let pCol = "", vCol = "";
-                    let styleId = charInfo['Holders'][key];
-                    let styleInfo = STYLE_MASTER[styleId];
-                    let styleName = styleInfo['AnotherName'];
-                    let color = RARE_COLOR[styleInfo['Rarity']];
-                    pCol += "<tr class='styleLink' style='" + color + ";'>" +
-                            '<td id="icon_' + styleInfo['Rarity'] + styleId + '" height="50px"></td>' +
-                            '<td id="cutin_' + styleId + '" class="positionTop-10" colspan="3"></td>' +
-                            '<td class="text-left" colspan="12">' +
-                            styleName +
-                            "</td></tr>";
-                    showimage('icon/icon_' + styleInfo['Rarity'].toLowerCase() + ".png", "icon_" + styleInfo['Rarity'] + styleId);
-                    showimage('style_cutin/' + styleId.substr(2) + ".png", "cutin_" + styleId, "200px");
-                    pCol += "<tr class='styleLink' style='" + color + ";'>";
-                    for (let pName of PARAM_NAME) {
-                        let per = Number(STYLE_ADD[styleName][pName][NOW_LV]["Per"]);
-                        pCol += '<td class="text-right small">' + per.toFixed(2) + "%</td>";
-                        vCol += '<td class="small" id="'+styleId+pName+'"></td>';
-                    }
-                    $("table#styleRadar tbody").append(pCol + vCol + "</tr>\n");
-                }
-            }
-
-            function reculcValueChartData(charInfo) {
-                var raderDataVal = [];
-                var params = {
-                    '腕力': $("#st_wan").val(),
-                    '体力': $("#st_tai").val(),
-                    '器用さ': $("#st_kiyo").val(),
-                    '素早さ': $("#st_suba").val(),
-                    '知力': $("#st_chi").val(),
-                    '精神': $("#st_sei").val(),
-                    '愛': $("#st_ai").val(),
-                    '魅力': $("#st_mi").val()
-                };
-                for (let key in charInfo['Holders']) {
-                    let styleId = charInfo['Holders'][key];
-                    let styleInfo = STYLE_MASTER[styleId];
-                    let styleName = styleInfo['AnotherName'];
-
-                    let styleMax = {"name": styleName, "axes": []};
-                    for (let pName of PARAM_NAME) {
-                        let input = Number(params[pName]);
-                        let per = Number(STYLE_ADD[styleName][pName][NOW_LV]["Per"]);
-                        let bonus = Number(STYLE_ADD[styleName][pName][NOW_LV]["Bonus"]);
-                        let val = input + Math.floor(input * per / 100);
-                        styleMax["axes"].push({"axis": pName, "value": (val + bonus)});
-                        $("#"+styleId+pName).text((val + bonus) + "(+" + bonus + ")");
-                    }
-                    raderDataVal.push(styleMax);
-                }
-                let ops = Object.assign({}, radarChartOptions);
-                delete ops["maxValue"];
-                delete ops['unit'];
-                RadarChart(".radarChart2", raderDataVal, ops);
-            }
-
-            $(".styleLink > td").click(function () {
-                var id = $(this).data('styleid');
-                console.log(id);
-                $("html,body").animate({scrollTop: $('#styleLink' + id).offset().top}, 500, 'swing');
-            });
-
-            function drawChart(charInfo) {
-                var params = {
-                    '腕力': $("#st_wan").val(),
-                    '体力': $("#st_tai").val(),
-                    '器用さ': $("#st_kiyo").val(),
-                    '素早さ': $("#st_suba").val(),
-                    '知力': $("#st_chi").val(),
-                    '精神': $("#st_sei").val(),
-                    '愛': $("#st_ai").val(),
-                    '魅力': $("#st_mi").val()
-                };
-                var paramOptionsPer = {'腕力': [], '体力': [], '器用さ': [], '素早さ': [], '知力': [], '精神': [], '愛': [], '魅力': []};
-                var paramOptionsVal = {'腕力': [], '体力': [], '器用さ': [], '素早さ': [], '知力': [], '精神': [], '愛': [], '魅力': []};
-                // ["StyleName"]["Param"]["Lv"]["Per"] = パーセンテージ
-                // ["StyleName"]["Param"]["Lv"]["Bonus"] = ボーナス値
-                // var STYLE_ADD = {};
-                for (let key in charInfo['Holders']) {
-                    var bonus = {'腕力': 0, '体力': 0, '器用さ': 0, '素早さ': 0, '知力': 0, '精神': 0, '愛': 0, '魅力': 0}
-                    var styleId = charInfo['Holders'][key];
-                    var styleInfo = STYLE_MASTER[styleId];
-                    var styleName = styleInfo['AnotherName'];
-                    // スタイル補正の計算
-                    var stylePerData = STYLE_ADD[styleName];
-
-                    for (let pName in params) {
-                        let perOption = {
-                            type: "line",
-                            showInLegend: true,
-                            yValueFormatString: "##,#0 %",
-                            dataPoints: []
-                        };
-                        let valOption = {
-                            type: "line",
-                            axisYType: "secondary",
-                            showInLegend: true,
-                            dataPoints: []
-                        };
-                        let dataPointsPer = [];
-                        let dataPointsVal = [];
-                        for (let lv in stylePerData[pName]) {
-                            let input = Number(params[pName]);
-                            let per = Number(STYLE_ADD[styleName][pName][lv]["Per"]);
-                            let bonus = Number(STYLE_ADD[styleName][pName][lv]["Bonus"]);
-                            let val = input + Math.floor(input * per / 100) + bonus;
-
-                            if ($.inArray(lv, ["30", "34", "38", "42", "46", "50"]) > -1) {
-                                dataPointsPer.push({x: Number(lv), y: per, indexLabel: lv});
-                                dataPointsVal.push({x: Number(lv), y: val, indexLabel: lv});
-                            } else {
-                                dataPointsPer.push({x: Number(lv), y: per});
-                                dataPointsVal.push({x: Number(lv), y: val});
-                            }
-                        }
-                        perOption['dataPoints'] = dataPointsPer;
-                        perOption['name'] = styleName + pName + "補正";
-                        valOption['dataPoints'] = dataPointsVal;
-                        valOption['name'] = styleName + pName + "値";
-                        paramOptionsPer[pName].push(perOption);
-                        paramOptionsVal[pName].push(valOption);
-                    }
-                }
-                var chartIds = {'腕力': "#chartContainerWan",
-                    '体力': "#chartContainerTai", '器用さ': "#chartContainerKiyo",
-                    '素早さ': "#chartContainerSuba", '知力': "#chartContainerChi",
-                    '精神': "#chartContainerSei", '愛': "#chartContainerAi", '魅力': "#chartContainerMi"};
-                for (let p in chartIds) {
-                    let opsP = Object.assign({}, lineChartOptions);
-                    opsP['data'] = paramOptionsPer[p];
-                    $(chartIds[p] + "Per").CanvasJSChart(opsP);
-
-                    let opsV = Object.assign({}, lineChartOptions);
-                    opsV['data'] = paramOptionsVal[p];
-                    $(chartIds[p] + "Val").CanvasJSChart(opsV);
-                }
-            }
-
-            function addStyleInfoTable(charInfo) {
-                for (let key in charInfo['Holders']) {
-                    let styleInfo = STYLE_MASTER[charInfo['Holders'][key]];
-                    console.log(styleInfo);
-                    let color = RARE_COLOR[styleInfo['Rarity']];
-                    let col = "";
-                    col += "<td>" + styleInfo['Rarity'] + "</td>";
-                    col += "<td>" + styleInfo['Name'] + "</td>";
-                    col += "<td>" + styleInfo['AnotherName'] + "</td>";
-                    col += "<td>" + styleInfo['WeaponType'] + "</td>";
-                    col += "<td>" + styleInfo['Role'] + "</td>";
-                    let skills = [];
-                    for (let skillId of styleInfo['SkillIds']) {
-                        let bp = Number(SKILL_MASTER[skillId]['ConsumeBp']);
-                        let kakusei = Number(SKILL_MASTER[skillId]['Kakusei']);
-                        let disp = SKILL_MASTER[skillId]['Name'] + " BP:" + bp + "〜" + (bp - kakusei);
-                        if (SKILL_MASTER[skillId]['AttackArea'] !== "味方単体") {
-                            disp += " 威力:" + SKILL_MASTER[skillId]['PowerGrade'] + " (" + SKILL_MASTER[skillId]['SkillIryoku'] + ")";
-                        }
-                        skills.push(disp);
-                    }
-                    //col += "<td>" + styleInfo['Skill'].join("<br>") + "</td>";
-                    col += "<td>" + skills.join("<br>") + "</td>";
-                    let ab = [];
-                    for (let lv in styleInfo['StyleAbility']) {
-                        ab.push(lv + ":" + styleInfo['StyleAbility'][lv]);
-                    }
-                    col += "<td>" + ab.join("<br>") + "</td>";
-                    $("table#char_holder_table tbody").append("<tr style='" + color + "; cursor:pointer; ' class='tr_style_choise' data-styleId='" + styleInfo["Id"] + "'>" + col + "</tr>\n");
-                }
-            }
-
-            function displayAutoPatternRanking(autoList) {
-                // 降順に設定
-                autoList.sort((a, b) => {
-                    if (a.total < b.total)
-                        return 1;
-                    if (a.total > b.total)
-                        return -1;
-                    return 0;
-                });
-                for (let pattern of autoList) {
-                    let total = pattern["total"];
-                    let kakusei = [];
-                    for (let skillData of pattern["kakusei"]) {
-                        let id = skillData["Id"];
-                        let kakuseiBp = skillData["BP"];
-                        let orgBp = SKILL_MASTER[id]['ConsumeBp'];
-                        let dispBp = (orgBp != kakuseiBp) ? orgBp + " > " + kakuseiBp : orgBp;
-                        kakusei.push(SKILL_MASTER[id]['Name'] + "(" + dispBp + ")");
-                    }
-                    let col = "";
-                    col += "<td>" + kakusei.join("<br>") + "</td>";
-                    col += '<td><font size="4" face="arial black">' + total.toFixed() + "</font></td>";
-                    for (let sId of pattern["list"]) {
-                        if (sId === 0) {
-                            name = "通常";
-                        } else {
-                            var sInfo = SKILL_MASTER[sId];
-                            name = sInfo['Name'];
-                        }
-                        col += "<td>" + name.substr(0, 4) + "</td>";
-                    }
-                    let row = "<tr>" + col + "</tr>\n";
-                    $("table#auto_ranking_table tbody").append(row);
-                }
-            }
-
-            function setCharTable(charInfo) {
-                $("table#char_holder_table tbody *").remove();
-                console.log(charInfo);
-                showimage('dot/' + charInfo['DotId'].substr(2) + '.png', "char_img", "400px");
-                $("#char_name").html(charInfo['Name'] + "<br><small>" + charInfo['FlavorText'].replace("。", "。<br>") + "</small>"); // 武器種別
-                $("#char_txt").text();
-                $("#st_wan").val(charInfo['STR'] + 40);
-                $("#st_tai").val(charInfo['VIT'] + 40);
-                $("#st_kiyo").val(charInfo['DEX'] + 40);
-                $("#st_suba").val(charInfo['AGI'] + 40);
-                $("#st_chi").val(charInfo['INT'] + 40);
-                $("#st_sei").val(charInfo['MND'] + 40);
-                $("#st_ai").val(charInfo['AI'] + 40);
-                $("#st_mi").val(charInfo['MI'] + 40);
-            }
-
-        </script>
-        <script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
-        <script src="https://d3js.org/d3-path.v1.min.js" charset="utf-8"></script>
-        <script src="radarChart.js" charset="utf-8"></script>
-        <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
-        <script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
-    </body>
+                <div id="slider-pro-chart" class="slider-pro style-bgcolor styleDiffArea">
+                    <div class="sp-slides">
+                        <div class="sp-slide" ><div class="text-center darkButton" style="margin-bottom: 10px">スタイル別 補正値</div>
+                            <div class=" radarChart m-auto" id="perChart" style="display: inline-flex;"></div>
+                        </div>
+                        <div class="sp-slide" ><div class=" text-center darkButton" style="margin-bottom: 10px">スタイル別 ステータス値</div>
+                            <div class=" radarChart m-auto" id="valueChart" style="display: inline-flex;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="style-bgcolor styleSkillArea">
+                    <div class="text-center m-auto">
+                        <button class="icon_btn_on" id="displayDamage" style="background-size: 200px 40px;">ダメージ<span class="d-none" id="msg">非</span>表示</button>
+                    </div>
+                </div>
+                <div id="styleSkill" class=' styleSkillArea'></div>
+            </div>
+            <br>
+        </div></div> <!-- main -->
+</body>
 </html>
