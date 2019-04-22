@@ -5,6 +5,17 @@
 
 var ABILITY_MASTER, STYLE_MASTER;
 var tree;
+$(document).on('click', '.abilityName', function () {
+    let id = $(this).attr("abid");
+    //console.log(id, ABILITY_MASTER[id]);
+    displayAbilityHolder(ABILITY_MASTER[id]);
+    scrollStyleList();
+});
+$(document).on('click', '.switch .toggle', function () {
+    $(this).toggleClass("accordionActive").next().slideToggle(300);
+});
+
+
 $(function () {
     readFile('Ability', function (result) {
         ABILITY_MASTER = result;
@@ -12,15 +23,6 @@ $(function () {
     });
     readFile('Style', function (result) {
         STYLE_MASTER = result;
-    });
-    $(".abilityName").click(function () {
-        let id = $(this).attr("abid");
-        //console.log(id, ABILITY_MASTER[id]);
-        displayAbilityHolder(ABILITY_MASTER[id]);
-        scrollStyleList();
-    });
-    $(".switch .toggle").click(function () {
-        $(this).toggleClass("accordionActive").next().slideToggle(300);
     });
 });
 
@@ -210,7 +212,7 @@ function displayAbilityHolder(holders) {
             let abInfo = ABILITY_MASTER[styleInfo['StyleAbilityIds'][lv]];
             let ab = $("<span>").append(lv + ":" + abInfo["Name"])
                     .attr("data-toggle", "tooltip").attr("data-placement", "right")
-                    .attr("data-html", 'true').attr("title", abInfo["FlavorText"].replace("　","<br>"));
+                    .attr("data-html", 'true').attr("title", abInfo["FlavorText"].replace("　", "<br>"));
             tdAb.append(ab);
             if (lv !== 30) {
                 tdAb.append("<br>");
