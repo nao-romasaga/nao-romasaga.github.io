@@ -36,6 +36,7 @@ $(document).ready(function ($) {
         $(".styleChoiceArea").show();
         tabChange($("#tabStyle"));
 
+
         $("html,body").animate({scrollTop: $('#charData').offset().top}, 500, 'swing');
         let charId = $(this).attr("data-id");
         NOW_CHAR = CHAR_MASTER[charId];
@@ -473,11 +474,6 @@ function setSliderChart() {
     $('#slider-pro-chart').sliderPro(option);
 }
 
-function createInfoButton() {
-    return $("<button>")
-            .addClass("icon_info_md").attr("data-toggle", "tooltip").attr("data-placement", "top")
-            .attr("data-html", 'true');
-}
 
 
 

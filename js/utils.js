@@ -12,10 +12,10 @@ const ICON_LIST = {
     "スタン": "icon_stan", "マヒ": "icon_mahi", "気絶": "icon_kizetsu", "即死": "icon_kizetsu", "毒": "icon_doku", "石化": "icon_sekika",
     "魅了": "icon_miryo", "眠り": "icon_zzz", "混乱": "icon_konran", "狂戦士": "icon_kyosenshi", "暗闇": "icon_kurayami",
     "B": "icon_b", "A": "icon_a", "S": "icon_s", "SS": "icon_ss",
-    "腕力上昇":"icon_buff_str","体力上昇":"icon_buff_vit","器用さ上昇":"icon_buff_dex","素早さ上昇":"icon_buff_agi",
-    "知力上昇":"icon_buff_int","精神上昇":"icon_buff_mnd","愛上昇":"icon_buff_ai","魅力上昇":"icon_buff_mi",
-    "腕力低下":"icon_debuff_str","体力低下":"icon_debuff_vit","器用さ低下":"icon_debuff_dex","素早さ低下":"icon_debuff_agi",
-    "知力低下":"icon_debuff_int","精神低下":"icon_debuff_mnd","愛低下":"icon_debuff_ai","魅力低下":"icon_debuff_mi"
+    "腕力上昇": "icon_buff_str", "体力上昇": "icon_buff_vit", "器用さ上昇": "icon_buff_dex", "素早さ上昇": "icon_buff_agi",
+    "知力上昇": "icon_buff_int", "精神上昇": "icon_buff_mnd", "愛上昇": "icon_buff_ai", "魅力上昇": "icon_buff_mi",
+    "腕力低下": "icon_debuff_str", "体力低下": "icon_debuff_vit", "器用さ低下": "icon_debuff_dex", "素早さ低下": "icon_debuff_agi",
+    "知力低下": "icon_debuff_int", "精神低下": "icon_debuff_mnd", "愛低下": "icon_debuff_ai", "魅力低下": "icon_debuff_mi"
 };
 const WEPON_ATTR = {
     "剣": "斬", "大剣": "斬", "斧": "斬",
@@ -23,7 +23,7 @@ const WEPON_ATTR = {
     "棍棒": "打", "体術": "打", "銃": "打", "杖": "打"
 };
 const AREA_SHORT = {
-    "敵単体":"単","敵全体":"全","敵縦一列": "縦","敵横一列": "横","味方単体":"味単","自身":"自"
+    "敵単体": "単", "敵全体": "全", "敵縦一列": "縦", "敵横一列": "横", "味方単体": "味単", "自身": "自"
 }
 function masterLevel(lv) {
     var skill = Math.ceil((lv - 1) / 2) * 0.005;
@@ -296,4 +296,9 @@ function skillLabel(skillInfo) {
     skillList.append(topDiv).append(bottomDiv);
 
     return skillList;
+}
+function createInfoButton() {
+    return $("<button>")
+            .addClass("icon_info_md").attr("data-toggle", "tooltip").attr("data-placement", "top")
+            .attr("data-html", 'true');
 }

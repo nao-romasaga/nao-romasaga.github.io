@@ -3,104 +3,138 @@
 //    $(this).toggleClass("accordionActive").next().slideToggle(300);
 //});
 
-
-setImgTag("icon/icon_a.png", "icon_A");
-setImgTag("icon/icon_s.png", "icon_S");
-setImgTag("icon/icon_ss.png", "icon_SS");
-
 var ABILITY_MASTER, STYLE_MASTER;
-var data = {"name": "Abiliry", "children": []};
 var tree;
 $(function () {
-    firebase.database().ref('Ability').once("value").then(function (snapshot) {
-        ABILITY_MASTER = snapshot.val();
-        let tmpList = {};
-        for (let key in ABILITY_MASTER) {
-            let row = ABILITY_MASTER[key];
-            let main = row['main'];
-            let sub = row['sub'];
-            let when = row['when'];
-            let time = row['time'];
-            let size = row['size'];
-
-            if (tmpList[main] === undefined) {
-                tmpList[main] = {};
-            }
-            if (tmpList[main][sub] === undefined) {
-                tmpList[main][sub] = {};
-            }
-            if (tmpList[main][sub][size] === undefined) {
-                tmpList[main][sub][size] = [];
-            }
-            /*
-             if (tmpList[main][sub][size][when] === undefined) {
-             tmpList[main][sub][size][when] = {};
-             }
-             if (tmpList[main][sub][size][when][time] === undefined) {
-             tmpList[main][sub][size][when][time] = [];
-             }
-             */
-            tmpList[main][sub][size].push(row);
-        }
-        if (getDevice() != "sp") {
-            initialSkillTree(tmpList);
-        } else {
-            for (let main in tmpList) {
-                let li = $('<li>');
-                let mainLink = '<a class="toggle menu parent">' + main + '</a>';
-                li.append(mainLink);
-                let ul = $('<ul class="inner child child01">');
-                for (let sub in tmpList[main]) {
-                    if (sub != "") {
-                        let liSub = $('<li>');
-                        let subLink = '<a class="toggle menu">' + sub + '</a>';
-                        liSub.append(subLink);
-                        let ulSub = $('<ul class="inner child child02">');
-                        for (let size in tmpList[main][sub]) {
-                            for (let row of tmpList[main][sub][size]) {
-                                let time = (row['time'] !== undefined && row['time'] !== "") ? " " + getTime(row['time']) : "";
-                                let size = (row['size'] !== undefined && row['size'] !== "") ? " " + row['size'] : "";
-                                let disp = '<li class="abilityName" abid="' + row['Id'] + '"><p style="text-align:left;float: left;">' + row['Name'] + "</p><p style='text-align:right;'><small>" + row['when'] + time + size + "</small></p></li>";
-                                ulSub.append(disp);
-                            }
-                        }
-                        liSub.append(ulSub);
-                        ul.append(liSub);
-                    } else {
-                        for (let size in tmpList[main][sub]) {
-                            for (let row of tmpList[main][sub][size]) {
-                                let time = (row['time'] !== undefined && row['time'] !== "") ? " " + getTime(row['time']) : "";
-                                let size = (row['size'] !== undefined && row['size'] !== "") ? " " + row['size'] : "";
-                                let disp = '<li class="abilityName" abid="' + row['Id'] + '"><p style="text-align:left;float: left;">' + row['Name'] + "</p><p style='text-align:right;'><small>" + row['when'] + time + size + "</small></p></li>";
-                                ul.append(disp);
-                            }
-                        }
-                    }
-                }
-                li.append(ul);
-
-                $("#sp_skill_tree > ul").append(li);
-            }
-            $(".abilityName").click(function () {
-                let id = $(this).attr("abid");
-                //console.log(id, ABILITY_MASTER[id]);
-                displayAbilityHolder(ABILITY_MASTER[id]);
-                scrollStyleList();
-            });
-            $(".switch .toggle").click(function () {
-                $(this).toggleClass("accordionActive").next().slideToggle(300);
-            });
-        }
+    readFile('Ability', function (result) {
+        ABILITY_MASTER = result;
+        initial();
+    });
+    readFile('Style', function (result) {
+        STYLE_MASTER = result;
+    });
+    $(".abilityName").click(function () {
+        let id = $(this).attr("abid");
+        //console.log(id, ABILITY_MASTER[id]);
+        displayAbilityHolder(ABILITY_MASTER[id]);
+        scrollStyleList();
+    });
+    $(".switch .toggle").click(function () {
+        $(this).toggleClass("accordionActive").next().slideToggle(300);
     });
 });
+
 function scrollStyleList() {
     $("html,body").animate({scrollTop: $('#abilty_label').offset().top});
 }
-firebase.database().ref('Style').once("value").then(function (snapshot) {
-    //console.log(snapshot.val());
-    STYLE_MASTER = snapshot.val();
-});
 
+function sortTree(tmpList) {
+    let mainList = ["", "ダメージ強化", "自身強化(バフ)", "敵弱体化(デバフ)", "状態異常付与", "HP回復", "BP回復", "状態異常解除"];
+    let subList = ["腕力", "体力", "器用さ", "素早さ", "知力", "精神", "愛", "魅力",
+        "毒", "暗闇", "スタン", "マヒ", "眠り", "石化", "混乱", "魅了", "狂戦士", "気絶",
+        "毒耐性", "暗闇耐性", "スタン耐性", "マヒ耐性", "眠り耐性", "石化耐性", "混乱耐性", "魅了耐性", "狂戦士耐性", "気絶耐性",
+        "全て", "技", "術"];
+    let result = [];
+    for (let main in tmpList) {
+        let tmp3 = [];
+        for (let sub in tmpList[main]) {
+            let tmp2 = [];
+            for (let size in tmpList[main][sub]) {
+                let tmp1 = [];
+                for (let idx in tmpList[main][sub][size]) {
+                    tmp1.push(tmpList[main][sub][size][idx]);
+                }
+                tmp2.push({"name": size, "list": tmp1});
+            }
+            tmp3.push({"name": sub, "sort": subList.indexOf(sub), "list": tmp2});
+        }
+        result.push({"name": main, "sort": mainList.indexOf(main), "list": tmp3});
+    }
+    // メインの並び替え
+    result.sort(function (a, b) {
+        if (a.sort === -1)
+            return 1;
+        if (b.sort === -1 || a.sort === b.sort)
+            return -1;
+        return a.sort - b.sort;
+    });
+    // サブの並び替え
+    for (let tmp of result) {
+        tmp['list'].sort(function (a, b) {
+            if (a.sort === -1)
+                return 1;
+            if (b.sort === -1 || a.sort === b.sort)
+                return -1;
+            return a.sort - b.sort;
+        });
+    }
+    return result;
+}
+
+function initial() {
+    let tmpList = {};
+    for (let key in ABILITY_MASTER) {
+        let row = ABILITY_MASTER[key];
+        let main = row['main'];
+        let sub = row['sub'];
+        let size = row['size'];
+
+        if (tmpList[main] === undefined) {
+            tmpList[main] = {};
+        }
+        if (tmpList[main][sub] === undefined) {
+            tmpList[main][sub] = {};
+        }
+        if (tmpList[main][sub][size] === undefined) {
+            tmpList[main][sub][size] = [];
+        }
+        tmpList[main][sub][size].push(row);
+    }
+
+    tmpList = sortTree(tmpList);
+
+    if (getDevice() != "sp") {
+        initialSkillTree(tmpList);
+    } else {
+        for (let main of tmpList) {
+            let li = $('<li>');
+            let mainLink = '<a class="toggle menu parent">' + main['name'] + '</a>';
+            li.append(mainLink);
+            let ul = $('<ul class="inner child child01">');
+            for (let sub of main['list']) {
+                if (sub['name'] != "") {
+                    let liSub = $('<li>');
+                    let subLink = '<a class="toggle menu">' + sub['name'] + '</a>';
+                    liSub.append(subLink);
+                    let ulSub = $('<ul class="inner child child02">');
+                    for (let size of sub['list']) {
+                        for (let row of size['list']) {
+                            let time = (row['time'] !== undefined && row['time'] !== "" && row['time'] !== null) ? " " + getTime(row['time']) : "";
+                            let size = (row['size'] !== undefined && row['size'] !== "" && row['size'] !== null) ? " " + row['size'] : "";
+                            let holders = " (" + row['Holders'].length + ")";
+                            let disp = '<li class="abilityName" abid="' + row['Id'] + '"><p style="text-align:left;float: left;">' + row['Name'] + holders + "</p><p style='text-align:right;'><small>" + row['when'] + time + size + "</small></p></li>";
+                            ulSub.append(disp);
+                        }
+                    }
+                    liSub.append(ulSub);
+                    ul.append(liSub);
+                } else {
+                    for (let size of sub['list']) {
+                        for (let row of size['list']) {
+                            let time = (row['time'] !== undefined && row['time'] !== "" && row['time'] !== null) ? " " + getTime(row['time']) : "";
+                            let size = (row['size'] !== undefined && row['size'] !== "" && row['size'] !== null) ? " " + row['size'] : "";
+                            let holders = " (" + row['Holders'].length + ")";
+                            let disp = '<li class="abilityName" abid="' + row['Id'] + '"><p style="text-align:left;float: left;">' + row['Name'] + holders + "</p><p style='text-align:right;'><small>" + row['when'] + time + size + "</small></p></li>";
+                            ul.append(disp);
+                        }
+                    }
+                }
+            }
+            li.append(ul);
+            $("#sp_skill_tree > ul").append(li);
+        }
+    }
+}
 
 function initialSkillTree(tmpList) {
     for (let main in tmpList) {
@@ -161,70 +195,52 @@ function initialSkillTree(tmpList) {
 
 function displayAbilityHolder(holders) {
     $("table#ability_holder_table tbody *").remove();
-    var imgPath = (getDevice() != "sp") ? "cutin" : "icon";
     for (key in holders['Holders']) {
-
         let styleId = holders['Holders'][key];
-        let imgId = imgPath + styleId;
-        let imgId2 = "tmp" + styleId;
-        let imgSrc = "";
-        // 画像が存在する場合は再取得しない
-        if ($('#' + imgId).length == 0) {
-            $("#imgTank").append("<img src=\"\" id=\"" + imgId + "\">");
-            setImgTag("style_" + imgPath + "/" + styleId.substr(2) + ".png", imgId);
-            setImgTag("style_" + imgPath + "/" + styleId.substr(2) + ".png", imgId2);
-        } else {
-            imgSrc = $("#" + imgId).attr('src');
-        }
         let styleInfo = STYLE_MASTER[styleId];
-        let rarityIcon = $("#icon_" + styleInfo['Rarity']).attr('src');
 
-        let color = "background-color: rgb(246,236,100);}";
-        if (styleInfo['Rarity'] === "A") {
-            color = "background-color: rgb(247,170,150);}";
-        } else if (styleInfo['Rarity'] === "S") {
-            color = "background-color: rgb(200,224,234);}";
-        }
+        let tr1 = $("<tr>").addClass("darkButton");
+        let td = $("<td>").attr('colspan', 2);
+        let name = $("<small>").addClass('text-nowrap')
+                .append(styleInfo['Name'] + styleInfo['AnotherName']);
+        tr1.append(td.append(name));
 
-        let col = "";
-        let styleName = styleInfo['AnotherName'];
-        let Name = styleInfo['Name'];
-        let height = 50;
-        if ((getDevice() != "sp")) {
-            col += "<td><img src=\"" + rarityIcon + "\" height=" + height + "></td>";
-            col += "<td class='text-center'>";
-            col += "<img src=\"" + imgSrc + "\" height=" + height + " id=\"" + imgId2 + "\"><br>";
-            col += "<small style='line-height:0px !important;'>" + Name;
-            col += "<p class='xs-hide'>" + styleName + "</p>";
-            col += "</small></td>";
-            col += "<td class='xs-hide'>" + styleInfo['Skill'].join("<br>") + "</td>";
-            let ab = [];
-            for (let lv in styleInfo['StyleAbilityIds']) {
-                let abId = styleInfo['StyleAbilityIds'][lv];
-                let abInfo = ABILITY_MASTER[abId];
-                ab.push(lv + ":" + abInfo["Name"] + " <small>" + abInfo["FlavorText"] + "</small>");
+        let tdAb = $("<td>").addClass("style-skill-window small").attr("style", "padding: 10px 20px !important; width:270px;");
+        for (let lv in styleInfo['StyleAbilityIds']) {
+            let abInfo = ABILITY_MASTER[styleInfo['StyleAbilityIds'][lv]];
+            let ab = $("<span>").append(lv + ":" + abInfo["Name"])
+                    .attr("data-toggle", "tooltip").attr("data-placement", "right")
+                    .attr("data-html", 'true').attr("title", abInfo["FlavorText"].replace("　","<br>"));
+            tdAb.append(ab);
+            if (lv !== 30) {
+                tdAb.append("<br>");
             }
-            col += "<td>" + ab.join("<br>") + "</td>";
-            col = "<tr style='" + color + "'>" + col + "</tr>\n";
-        } else {
-            col += "<td><img src=\"" + rarityIcon + "\" height=" + height + "><br>";
-            col += "<img src=\"" + imgSrc + "\" height=" + height + " id=\"" + imgId2 + "\"></td>";
-            col += "<td><small>" + Name + styleName + "</small><br>";
-            let ab = [];
-            for (let lv in styleInfo['StyleAbilityIds']) {
-                let abId = styleInfo['StyleAbilityIds'][lv];
-                let abInfo = ABILITY_MASTER[abId];
-                let button = '<span data-toggle="tooltip" data-placement="top" title="' + abInfo["FlavorText"] + '">' + lv + ":" + abInfo["Name"] + '</span>';
-                //ab.push(abInfo["Name"] + " <small>" + abInfo["FlavorText"] + "</small>");
-                ab.push(button);
-            }
-            col += ab.join("<br>") + "</td>";
-            col = "<tr style='" + color + "'>" + col + "</tr>\n";
         }
-        $("table#ability_holder_table tbody").append(col);
+        let tr2 = $("<tr>").addClass(getStyleBgColor(styleInfo['Rarity']));
+        let rare = $("<span>").addClass('icon_rare_large float-left')
+                .attr('style', getImgUrl('icon/icon_' + styleInfo['Rarity'] + ".png") +
+                        "width:30px; height:30px; background-size:cover; position:absolute; z-index:3;");
+        // スタイルアイコンの追加
+        let icon = $("<button>")
+                .addClass(getStyleIconClass(styleInfo['Rarity']))
+                .attr("style", getImgUrl('style_icon/' + styleId + ".png"));
+        let background = $("<span>")
+                .addClass(getStyleIconBgClass(styleInfo['Rarity']))
+                .append(icon);
+
+        let tdImg = $("<td>").append(rare).append(background);
+        tr2.append(tdAb).append(tdImg);
+
+        $("table#ability_holder_table tbody").append(tr1).append(tr2);
         $('[data-toggle="tooltip"]').tooltip();
     }
 }
+
+
+
+
+
+// 以下、PCのグラフ用
 // 5. クリック時の呼び出し関数
 function toggle(d) {
     // childrenが定義されているかどうかで末端ノードを判断する
@@ -376,3 +392,4 @@ function update(source) {
         d.y0 = d.y;
     });
 }
+
