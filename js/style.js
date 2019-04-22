@@ -31,10 +31,13 @@ $(document).ready(function ($) {
         $("#displayDamage").find("#msg").addClass("d-none");
         $(".culcDamageResultClass").slideDown();
         $("#charData").show();
-        $(".tabArea").show();
         $(".styleInfoArea").show();
-        $(".styleChoiceArea").show();
+
+        $(".tabArea").show();
         tabChange($("#tabStyle"));
+        $(".styleChoiceArea").show();
+        $(".styleSkillArea").hide();
+        $(".styleDiffArea").hide();
 
 
         $("html,body").animate({scrollTop: $('#charData').offset().top}, 500, 'swing');
