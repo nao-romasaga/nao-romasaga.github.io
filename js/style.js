@@ -34,7 +34,7 @@ $(document).ready(function ($) {
         $(".tabArea").show();
         $(".styleInfoArea").show();
         $(".styleChoiceArea").show();
-
+        tabChange($("#tabStyle"));
 
         $("html,body").animate({scrollTop: $('#charData').offset().top}, 500, 'swing');
         let charId = $(this).attr("data-id");
