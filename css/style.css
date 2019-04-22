@@ -504,3 +504,37 @@ input[type=range]:focus::-ms-fill-upper {
 input[type=range]::-ms-tooltip {
     display: none;
 }
+
+/* ラベル*/
+.cb label {
+    padding-left: 30px;         /* ラベルの位置 */
+    font-size: 20px;
+    line-height: 30px;
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+}
+
+/* ボックス */
+.cb label:before {
+    content: '';
+    width: 25px;            /* ボックスの横幅 */
+    height: 30px;           /* ボックスの縦幅 */
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    background-color: #fff;
+    border: solid 2px #333;
+    border-radius: 5px 5px 5px 5px;
+}
+/* 元のチェックボックス非表示 */
+.cb input[type=checkbox] {
+    display: none;
+}
+/* チェックした時 */
+.cb input[type=checkbox]:checked + label:before {
+    content: '\2713';       /* チェックの文字content CSS */
+    font-size: 20px;            /* チェックのサイズ */
+    color: #fff;            /* チェックの色 */
+    background-color: #06f;         /* チェックした時の色 */
+}
