@@ -36,28 +36,23 @@
                 <label class="badge badge-pill badge-light">
                     <span class="xs-hide">ラベルor○クリックで展開します。<br></span>
                     アビリティ名をクリックでスタイル表示します。</label><br>
+                    <!--
                 <div class="xs-hide">
                     <svg width="100%" height="500" class="bg-white"></svg>
                 </div>
-                <div class="xs-show">
+                    -->
+                <div class="xs-show-tmp">
                     <div class="acdList skillListSP switch" id="sp_skill_tree"><ul></ul></div>
                 </div>
                 <br>
                 <label class="badge badge-pill badge-light" id="abilty_label">
                     アビリティ保持者
-                    <span class="xs-show"><br>アビリティ名をクリックで説明を表示します。</span>
+                    <span class="xs-show"><br>アビリティ名をタップで説明を表示します。</span>
                 </label>
-                <table class="table table-hover table-bordered table-sm" id="ability_holder_table">
-                    <thead>
-                        <tr class="text-center opacity table-success xs-hide">
-                            <th style="width:50px">Rare</th>
-                            <th style="width:160px">Name/Style</th>
-                            <th>Skill</th>
-                            <th>Ability</th>
-                        </tr>
-                    </thead>
+                <table class="table table-bordered table-sm" id="ability_holder_table">
                     <tbody class="bg-white"></tbody>
                 </table>
+                <br><br><br>
             </div></div> <!-- main -->
     </body>
 
@@ -67,4 +62,5 @@
     <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
     <script src="./js/Firebase.js"></script>
     <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="./js/ability.js"></script>
 </html>
