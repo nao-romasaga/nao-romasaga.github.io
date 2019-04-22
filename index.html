@@ -197,9 +197,13 @@
                         <small class="form-text text-muted  opacity kadomaru">対象武器種類のマスターレベルを入力して下さい</small>
                     </div>
                     <div class="form-group col-xs-12 col-md-6 col-lg-4">
-                        <label for="ability" class="badge badge-pill badge-light">アビリティ
+                        <label for="ability" class="badge badge-pill badge-light">アビリティ＋特攻
                             <img src="https://www.silhouette-illust.com/wp-content/uploads/2017/03/idea_hirameki_28161-300x300.jpg" width="16" height="16">
                         </label>
+                        <div class="cb kadomaru bg-white">
+                            <input type="checkbox" id="tokkouCheck" name="cb" value="1" />
+                            <label for="tokkouCheck" style="width:90%; margin:10px">特攻あり</label>
+                        </div>
                         <select class="form-control" id="ability_list" name="type">
                             <option value="0">アビリティなし</option>
                             <option value="5">勇健強撃I (小)</option>
@@ -268,20 +272,6 @@
                         </div>
                         <small class="form-text text-muted  opacity kadomaru">対応する耐性値を入力して下さい。弱点はマイナスの値を入力をして下さい</small>
 
-                    </div>
-                    <div class="form-group vitCulc col-xs-12 col-md-6 col-lg-4" id="damageMemo">
-                        <label for="damage1" class="badge badge-pill badge-light">
-                            ダメージメモ
-                            <img src="https://www.silhouette-illust.com/wp-content/uploads/2016/08/6654-300x300.jpg" width="16" height="16">
-                        </label>
-                        <input type="number" class="form-control damage" id="damage1" placeholder="ダメージ記録1">
-                        <input type="number" class="form-control damage" id="damage2" placeholder="ダメージ記録2">
-                        <input type="number" class="form-control damage" id="damage3" placeholder="ダメージ記録3">
-                        <input type="number" class="form-control damage" id="damage4" placeholder="ダメージ記録4">
-                        <input type="number" class="form-control damage" id="damage5" placeholder="ダメージ記録5">
-                        <small class="form-text text-muted  opacity">発生したダメージを記録します<br>
-                            ・背景が緑は重要だと思われる値です<br>
-                            ・背景が黄は推定に必要なさそうな値です</small>
                     </div>
                 </div>
                 <h1 class="vitCulc opacity text-center">推定体力計算</h1>
@@ -362,21 +352,21 @@
 
                     // 影響のある陣形を入れ替える
                     $('#jinkei > option').remove();
-                    if ($.inArray(type, ["hi","mizu","tsuchi","kaze","hikari","yami"]) > -1){
-                        console.log($(".param_label_teki"), 1, type, $.inArray(type, ["hi","mizu","tsuchi","kaze","hikari","yami"]));
+                    if ($.inArray(type, ["hi", "mizu", "tsuchi", "kaze", "hikari", "yami"]) > -1) {
+                        console.log($(".param_label_teki"), 1, type, $.inArray(type, ["hi", "mizu", "tsuchi", "kaze", "hikari", "yami"]));
                         $(".param_label_teki").text("精神");
                         $(".jinkei_label").text("知");
-                    }else{
-                        console.log($(".param_label_teki"), 2, type, $.inArray(type, ["hi","mizu","tsuchi","kaze","hikari","yami"]));
+                    } else {
+                        console.log($(".param_label_teki"), 2, type, $.inArray(type, ["hi", "mizu", "tsuchi", "kaze", "hikari", "yami"]));
                         $(".param_label_teki").text("体力");
                         $(".jinkei_label").text("腕");
                     }
-                    if ($.inArray(type, ["hi","mizu","tsuchi","kaze","hikari","yami"]) > -1){
-                        console.log(type, $.inArray(type, ["hi","mizu","tsuchi","kaze","hikari","yami"]));
+                    if ($.inArray(type, ["hi", "mizu", "tsuchi", "kaze", "hikari", "yami"]) > -1) {
+                        console.log(type, $.inArray(type, ["hi", "mizu", "tsuchi", "kaze", "hikari", "yami"]));
                         $("#param_label").text("知力");
                         $("#taijyutsu").hide();
                         addOption(jJinkei, "jinkei");
-                    } else if ($.inArray(type, ["yumi","sken"]) > 0){
+                    } else if ($.inArray(type, ["yumi", "sken"]) > 0) {
                         $("#param_label").text("器用さ");
                         $("#taijyutsu").hide();
                         addOption(kJinkei, "jinkei");
@@ -409,7 +399,11 @@
                 });
 
                 $('#ability_list').change(function () {
-                    $("#ability").val($("#ability_list").val());
+                    let abVal = Number($("#ability_list").val());
+                    if ($("#tokkouCheck").prop('checked')) {
+                        abVal += 20;
+                    }
+                    $("#ability").val(abVal);
                     // abilityの値を入れ替えるので計算はこのタイミング
                     culc();
                 });
@@ -418,6 +412,16 @@
                     // vitの値を入れ替えるので計算はこのタイミング
                     culc();
                     //patternReCulc();
+                });
+                $("#tokkouCheck").click(function () {
+                    let isTokkou = $(this).prop('checked');
+                    let org = Number($("#ability").val());
+                    if (isTokkou) {
+                        $("#ability").val(org + 20);
+                    } else {
+                        $("#ability").val(org - 20);
+                    }
+                    culc();
                 });
 
                 /**
@@ -442,14 +446,6 @@
                     dRange = damageStepCulc(type, str, agi, wepon, skill, rank, vit, master, ability, resist);
                     console.log("damageRange: " + dRange);
                     dispDamageRange(dRange);
-
-                    if (damage1 > 0) {
-                        console.log("damage1 :" + damage1);
-                        var gVit = vitGuessCulc();
-                        console.log("guessVit: " + gVit);
-                        var vitCuld = vitCulc(s, a, Math.floor(gVit), damage1, damage2, damage3, damage4, damage5);
-                        dispGuess(vitCuld);
-                    }
                 }
 
 
@@ -596,95 +592,6 @@
                     return [culcSv, culcAgi];
                 }
 
-                function vitGuessCulc() {
-                    if (type == 3) {
-                        console.log("vitGuessCulc : 1 + 2 * " + sv + " + 2.5 * " + agi + " - (" + damage + "/ ( " + wepK + " * " + master + " * (1 + " + ability + ") / (1 + 0.008 * " + resist + ") ) ))/ 1.2");
-                        return  (1 + (2 * sv + 2.5 * agi) - (damage / (wepK * master * (1 + ability) * (1 + 0.008 * resist)))) / 1.2;
-                    } else {
-                        console.log("vitGuessCulc : 1 + 4 * " + sv + "- (" + damage + "/ ( " + wepK + " * " + master + " * (1 + " + ability + ") / (1 + 0.008 * " + resist + ") ) ))/ 1.5");
-                        return  (1 + 4 * sv - (damage / (wepK * master * (1 + ability) / (1 + 0.008 * resist)))) / 1.5;
-                    }
-                }
-
-                function vitCulc(guess, damage1, damage2, damage3, damage4, damage5) {
-                    var maxDamage = 99999;
-                    var result = [];
-                    memoryMaxDamage = Math.max(damage1, damage2, damage3);
-                    var countdown = 20;
-                    var limit = 100; // 無限ループ回避
-                    while (countdown > 0 && limit > 0) {
-                        // D10値が記録の最大を超えてもバッファで少し見てみる
-                        if (memoryMaxDamage >= maxDamage) {
-                            countdown--;
-                        }
-                        fieldSTR = getFieldSTR(guess);
-                        var base = baseDamageCulc(fieldSTR);
-                        var step = damageStepCulc(fieldSTR);
-                        var range = damageRange(base, step);
-
-                        console.log("guess:" + guess + " input:" + memoryMaxDamage + " max:" + maxDamage + " CD:" + countdown + " range:" + range);
-                        var pushFlg1 = false;
-                        var pushFlg2 = !(damage2 > 0);
-                        var pushFlg3 = !(damage3 > 0);
-                        var pushFlg4 = !(damage4 > 0);
-                        var pushFlg5 = !(damage5 > 0);
-                        maxDamage = range[9];
-                        var gosa = 0;
-                        if (maxDamage <= 100) {
-                            gosa = 0;
-                        } else if (maxDamage < 1000) {
-                            gosa = 1;
-                        } else {
-                            gosa = 2;
-                        }
-                        range.forEach(function (d, i) {
-                            if (d <= damage1 + gosa && d >= damage1 - gosa) {
-                                range[i] = d + "R";
-                                pushFlg1 = true;
-                            }
-                            if (d <= damage2 + gosa && d >= damage2 - gosa) {
-                                range[i] = d + "R";
-                                pushFlg2 = true;
-                            }
-                            if (d <= damage3 + gosa && d >= damage3 - gosa) {
-                                range[i] = d + "R";
-                                pushFlg3 = true;
-                            }
-                            if (d <= damage4 + gosa && d >= damage4 - gosa) {
-                                range[i] = d + "R";
-                                pushFlg4 = true;
-                            }
-                            if (d <= damage5 + gosa && d >= damage5 - gosa) {
-                                range[i] = d + "R";
-                                pushFlg5 = true;
-                            }
-                        });
-                        if (pushFlg1 && pushFlg2 && pushFlg3 && pushFlg4 && pushFlg5) {
-                            result.push(range);
-                        }
-                        range.unshift(guess);
-                        guess++;
-                        limit--;
-                    }
-                    return result;
-                }
-
-                function dispGuess(dRange) {
-                    $("table#guess tbody *").remove();
-
-                    for (i = 0; i < dRange.length; i++) {
-                        var col = "";
-                        for (j = 0; j < dRange[i].length; j++) {
-                            if (String(dRange[i][j]).indexOf("R") !== -1) {
-                                col += "<td class=\"small table-light\">" + dRange[i][j].replace(/R/g, "") + "</td>";
-                            } else {
-                                col += "<td class=\"small opacity col-xs-1\" >" + dRange[i][j] + "</td>";
-                            }
-                        }
-                        $("table#guess tbody").append("<tr>" + col + "</tr>\n");
-                    }
-                }
-
                 function dispDamageRange(dRange) {
                     $("table#damageRangeTable tbody *").remove();
 
@@ -804,7 +711,7 @@
                     }
                     if (r == "pl2") {
                         type = $("#type").val();
-                        if ($.inArray(type, ["hi","mizu","tsuchi","kaze","hikari","yami"]) > -1){
+                        if ($.inArray(type, ["hi", "mizu", "tsuchi", "kaze", "hikari", "yami"]) > -1) {
                             $("#jinkei_w").show();
                             $("#jinkei_w_v").val(50);
                         }
@@ -846,15 +753,15 @@
             });
         </script>
     </body>
-                <div id="footer">
-                    <h2 class="damageCulc kadomaru bg-white text-center">ダメージ計算結果
-                        <img src="https://www.silhouette-illust.com/wp-content/uploads/2017/10/icon_calculator_41158-101x101.jpg" width="32" height="32">
-                    </h2>
-                    <div class="table-responsive">
-                        <table class="damageCulc table table-hover table-bordered table-sm " id="damageRangeTable">
-                            <tbody class=""></tbody>
-                        </table>
-                    </div>
-                </div>
-    
+    <div id="footer">
+        <h2 class="damageCulc kadomaru bg-white text-center">ダメージ計算結果
+            <img src="https://www.silhouette-illust.com/wp-content/uploads/2017/10/icon_calculator_41158-101x101.jpg" width="32" height="32">
+        </h2>
+        <div class="table-responsive">
+            <table class="damageCulc table table-hover table-bordered table-sm " id="damageRangeTable">
+                <tbody class=""></tbody>
+            </table>
+        </div>
+    </div>
+
 </html>
