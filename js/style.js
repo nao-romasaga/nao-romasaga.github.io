@@ -104,7 +104,7 @@ function reculc() {
 
     calcAndDisplaySkill(NOW_CHAR, NOW_LV);
     changeStyleStatusDiffTable(NOW_STYLE);
-    displayLv50StatusTable(NOW_STYLE, NOW_LV);
+    displayStyleStatusTable(NOW_STYLE, NOW_LV);
 
     RADER_DATA_PER = createPercentChartData(NOW_CHAR, NOW_LV);
     RadarChart("#perChart", RADER_DATA_PER, radarChartOptions);
@@ -112,9 +112,11 @@ function reculc() {
     RADER_DATA_VAL = createValueChartData(NOW_CHAR, NOW_LV);
     RadarChart("#valueChart", RADER_DATA_VAL, radarChartOptionsValue);
 
-    if($("#displayDamage").hasClass("icon_btn_on")){
+    if ($("#displayDamage").hasClass("icon_btn_on")) {
         $(".culcDamageResultClass").slideToggle();
     }
+    let w = $("#charData").width();
+    $(".chartLabel").attr("style", "width:" + w + "px !important;");
 }
 
 function tabChange(target) {
@@ -158,7 +160,7 @@ function displayStyleInfo(styleId) {
     let pngName = (dotId !== "ID4e2c8") ? dotId : "ID4e2c9";
     $("#styleDot").attr('style', getImgUrl('dot/' + pngName + ".png") + " margin-left:20px;");
 
-    displayLv50StatusTable(styleInfo, 50);
+    displayStyleStatusTable(styleInfo, NOW_LV);
 
     $("#abilityList").html("");
     let abList = [];
@@ -189,7 +191,7 @@ function displayStyleInfo(styleId) {
 }
 
 // スタイルLv50の表示テーブル
-function displayLv50StatusTable(styleInfo, lv) {
+function displayStyleStatusTable(styleInfo, lv) {
     let styleBonus = culcStyleAddintional(styleInfo);
     for (let key in PARAM_KEY) {
         let input = $("#char" + PARAM_KEY[key]).val();
@@ -459,14 +461,15 @@ function setSliderChart() {
         buttons: true, //スライダーのページャを表示する
         startSlide: 0, //最初のスライドを指定する
         arrows: true, //左右の矢印ボタンを表示する
-        width: '80%', //横幅を設定する
+        width: '100%', //横幅を設定する
         height: 300, //高さを設定する
         //autoHeight: true, //高さを設定する
         autoplay: false, //自動再生の設定
-        loop: false, //スライドをループさせる設定
+        loop: true, //スライドをループさせる設定
         visibleSize: '100%', //前後のスライドを表示するかの設定
-        forceSize: 'fullWidth' //スライダーの幅をブラウザ幅に設定する
+        //forceSize: 'fullWidth' //スライダーの幅をブラウザ幅に設定する
     };
+    //option['height'] = (device === "sp") ? 310 : 250;
     $('#slider-pro-chart').sliderPro(option);
 }
 
