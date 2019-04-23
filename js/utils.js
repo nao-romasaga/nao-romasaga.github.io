@@ -89,12 +89,14 @@ function insertCommonComponent() {
     nav += '  </button>';
     nav += '  <div class="collapse navbar-collapse" id="navbarSupportedContent">';
     nav += '    <ul class="navbar-nav mr-auto">';
-    nav += '      <li class="nav-item" id="headIndex">';
-    nav += '        <a class="nav-link" href="./index.html">ダメージ計算機</a>';
+    nav += '      <li class="nav-item " id="headAuto">';
+    nav += '        <a class="nav-link" href="./auto.html">全力AUTOシミュレーター</a>';
     nav += '      </li>';
     nav += '      <li class="nav-item" id="headSkill">';
     nav += '        <a class="nav-link" href="./skill.html">スタイル検索(技・術)</a>';
-    //nav += '        <a class="nav-link disabled" href="#">【工事中】スタイル検索</a>';
+    nav += '      </li>';
+    nav += '      <li class="nav-item" id="headIndex">';
+    nav += '        <a class="nav-link" href="./index.html">ダメージ計算機</a>';
     nav += '      </li>';
     nav += '      <li class="nav-item" id="headStyle">';
     nav += '        <a class="nav-link" href="./style.html">キャラクター+スタイル詳細</a>';
@@ -103,8 +105,11 @@ function insertCommonComponent() {
     //nav += '        <a class="nav-link" href="./ability.html">【工事中】アビリティツリー</a>';
     nav += '        <a class="nav-link disabled" href="#">【工事中】アビリティ検索</a>';
     nav += '      </li>';
-    nav += '      <li class="nav-item " id="headAuto">';
-    nav += '        <a class="nav-link" href="./auto.html">全力AUTOシミュレーター</a>';
+    nav += '      <li class="nav-item " id="headSite">';
+    nav += '        <a class="nav-link" href="./site.html"><small>利用規約・免責事項</small></a>';
+    nav += '      </li>';
+    nav += '      <li class="nav-item " id="headKifu">';
+    nav += '        <a class="nav-link" href="./kifu.html"><small>寄付について</small></a>';
     nav += '      </li>';
     //nav += '      <li class="nav-item">';
     //nav += '        <a class="nav-link disabled" href="#">スタイル情報(coming soon)</a>';
@@ -127,11 +132,10 @@ function insertCommonComponent() {
     footer += '© 2019 SQUARE ENIX CO., LTD. All Rights Reserved. Powered by Akatsuki Inc.<br>';
     footer += 'ILLUSTRATION: TOMOMI KOBAYASHI';
     footer += '<span class="char-utau footer-liz dot dot_mid dot_liz"></span>';
-    footer += '<hr>';
-    footer += '利用規約・免責事項<br>';
-    footer += '当サイトは趣味で運営してる非公式のゲーム攻略サイトです。各社の協力や要請の元作成されたものではありません。また情報の内容の一切の保障を致しません。当サイトを利用したことにより発生する全ての損害を、当管理人はいかなる場合でも一切の責任を負いません。<br>';
-    footer += '当サイトの内容、データ、プログラムの複製を固く禁じます。テキスト、画像の著作権は各社に帰属するものであり当サイトからの引用を固く禁じます。<br>';
-    footer += '<br>';
+    //footer += '<hr>';
+    //footer += '利用規約・免責事項<br>';
+    //footer += '当サイトは趣味で運営してる非公式のゲーム攻略サイトです。各社の協力や要請の元作成されたものではありません。また情報の内容の一切の保障を致しません。当サイトを利用したことにより発生する全ての損害を、当管理人はいかなる場合でも一切の責任を負いません。<br>';
+    //footer += '当サイトの内容、データ、プログラムの複製を固く禁じます。テキスト、画像の著作権は各社に帰属するものであり当サイトからの引用を固く禁じます。<br>';
     footer += '</div>';
     let imgTank = $("<div>").attr("style", "display:none");
     for (let icon in ICON_LIST) {
@@ -155,6 +159,10 @@ function insertCommonComponent() {
         $("#headAbility").addClass("active");
     } else if (url.indexOf('auto.html') != -1) {
         $("#headAuto").addClass("active");
+    } else if (url.indexOf('site.html') != -1) {
+        $("#headSite").addClass("active");
+    } else if (url.indexOf('kifu.html') != -1) {
+        $("#headKifu").addClass("active");
     }
 }
 $(document).ready(function () {
