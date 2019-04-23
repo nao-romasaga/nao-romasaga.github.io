@@ -37,7 +37,6 @@ $(function () {
             let disp = row['quest'] + " " + row['name'] + " 体:" + row['vit'] + " 精:" + row['mnd'];
             //" 推定HP:" + row['hp'];
             $option = $('<option>', {value: idx, text: disp});
-            console.log($option);
             $('#enemy_vit').append($option);
         }
         //console.log(ENEMY_DATA);
