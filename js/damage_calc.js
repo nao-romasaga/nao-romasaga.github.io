@@ -146,14 +146,12 @@ $(function () {
         culc();
     });
     $('#enemy_vit').change(function () {
-        console.log("test");
         let idx = $("#enemy_vit").val();
         if (idx === "x") {
             return;
         }
         let row = ENEMY_DATA[idx];
         type = $("#type").val();
-        console.log(row);
         if ($.inArray(type, ["hi", "mizu", "tsuchi", "kaze", "hikari", "yami"]) > -1) {
             $("#vit").val(row['mnd']);
         } else {
