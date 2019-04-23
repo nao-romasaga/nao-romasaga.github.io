@@ -7,38 +7,6 @@ let SKILL_LIST = {
     "土術": [], "光術": [], "闇術": []};
 
 
-readFile('Enemy', function (result) {
-    ENEMY_DATA = result;
-    for (let idx in ENEMY_DATA) {
-        let row = ENEMY_DATA[idx];
-        let disp = row['quest'] + " " + row['name'] + " 体:" + row['vit'] + " 精:" + row['mnd'];
-        //" 推定HP:" + row['hp'];
-        $option = $('<option>', {value: idx, text: disp});
-        $('#enemy_vit').append($option);
-    }
-    //console.log(ENEMY_DATA);
-});
-readFile('Skill', function (result) {
-    SKILL_MASTER = result;
-    for (let idx in result) {
-        let row = result[idx];
-        SKILL_LIST[row['BattleType']].push(row);
-    }
-    for (let name in SKILL_LIST) {
-        SKILL_LIST[name].sort(function (a, b) {
-            if (a.SkillIryoku === "-" || b.SkillIryoku === "-"
-                    || a.SkillIryoku > b.SkillIryoku) {
-                return -1;
-            } else if (a.SkillIryoku < b.SkillIryoku || a.ConsumeBp > b.ConsumeBp) {
-                return 1;
-            } else {
-                return -1;
-            }
-        });
-    }
-    // 初回表示
-    addOption(createSkillOption(SKILL_LIST["剣"]), "skill");
-});
 function createSkillOption(list) {
     var result = {};
     list.forEach(function (rows) {
@@ -62,109 +30,144 @@ $(function () {
     $("#jinkei_s").hide();
     $(".charOnly").hide(); // 初期表示は陣形ないので入れない
     //$("#input_rank").hide(); // 初期表示は通常攻撃なので入れない
-});
+    readFile('Enemy', function (result) {
+        ENEMY_DATA = result;
+        for (let idx in ENEMY_DATA) {
+            let row = ENEMY_DATA[idx];
+            let disp = row['quest'] + " " + row['name'] + " 体:" + row['vit'] + " 精:" + row['mnd'];
+            //" 推定HP:" + row['hp'];
+            $option = $('<option>', {value: idx, text: disp});
+            console.log($option);
+            $('#enemy_vit').append($option);
+        }
+        //console.log(ENEMY_DATA);
+    });
+    readFile('Skill', function (result) {
+        SKILL_MASTER = result;
+        for (let idx in result) {
+            let row = result[idx];
+            SKILL_LIST[row['BattleType']].push(row);
+        }
+        for (let name in SKILL_LIST) {
+            SKILL_LIST[name].sort(function (a, b) {
+                if (a.SkillIryoku === "-" || b.SkillIryoku === "-"
+                        || a.SkillIryoku > b.SkillIryoku) {
+                    return -1;
+                } else if (a.SkillIryoku < b.SkillIryoku || a.ConsumeBp > b.ConsumeBp) {
+                    return 1;
+                } else {
+                    return -1;
+                }
+            });
+        }
+        // 初回表示
+        addOption(createSkillOption(SKILL_LIST["剣"]), "skill");
+    });
+    /**
+     * 技が変更された場合
+     * 通常攻撃はrankを非表示で1に設定。それ以外はrankを表示
+     */
+    $('#skill').change(function () {
+        let skillId = $('#skill option:selected').val();
+        let skill = SKILL_MASTER[skillId];
+        $("#skill_val").val(skill['SkillIryoku']);
 
-/**
- * 技が変更された場合
- * 通常攻撃はrankを非表示で1に設定。それ以外はrankを表示
- */
-$('#skill').change(function () {
-    let skillId = $('#skill option:selected').val();
-    let skill = SKILL_MASTER[skillId];
-    $("#skill_val").val(skill['SkillIryoku']);
-
-    let text = $('#skill option:selected').text();
-    if (text.indexOf('通常攻撃') !== -1) {
-        //$('#input_rank').hide();
-        $('#skill_rank').val(1);
-    } else {
-        //$('#input_rank').show();
-    }
-});
+        let text = $('#skill option:selected').text();
+        if (text.indexOf('通常攻撃') !== -1) {
+            //$('#input_rank').hide();
+            $('#skill_rank').val(1);
+        } else {
+            //$('#input_rank').show();
+        }
+    });
 
 // 武器種別が変更された場合
-$('#type').change(function () {
-    type = $("#type").val();
-    // 技リストを更新する
-    type_tx = $('#type option:selected').text();
-    $('#skill').children().remove();
-    addOption(createSkillOption(SKILL_LIST[type_tx]), "skill");
+    $('#type').change(function () {
+        type = $("#type").val();
+        // 技リストを更新する
+        type_tx = $('#type option:selected').text();
+        $('#skill').children().remove();
+        addOption(createSkillOption(SKILL_LIST[type_tx]), "skill");
 
-    // 影響のある陣形を入れ替える
-    $('#jinkei > option').remove();
-    if ($.inArray(type, ["hi", "mizu", "tsuchi", "kaze", "hikari", "yami"]) > -1) {
-        //console.log($(".param_label_teki"), 1, type, $.inArray(type, ["hi", "mizu", "tsuchi", "kaze", "hikari", "yami"]));
-        $(".param_label_teki").text("精神");
-        $(".jinkei_label").text("知");
-    } else {
-        //console.log($(".param_label_teki"), 2, type, $.inArray(type, ["hi", "mizu", "tsuchi", "kaze", "hikari", "yami"]));
-        $(".param_label_teki").text("体力");
-        $(".jinkei_label").text("腕");
-    }
-    if ($.inArray(type, ["hi", "mizu", "tsuchi", "kaze", "hikari", "yami"]) > -1) {
-        //console.log(type, $.inArray(type, ["hi", "mizu", "tsuchi", "kaze", "hikari", "yami"]));
-        $("#param_label").text("知力");
-        $("#taijyutsu").hide();
-        addOption(jJinkei, "jinkei");
-    } else if ($.inArray(type, ["yumi", "sken"]) > 0) {
-        $("#param_label").text("器用さ");
-        $("#taijyutsu").hide();
-        addOption(kJinkei, "jinkei");
-    } else if (type === "tai") {
-        $("#param_label").text("腕力");
-        $("#taijyutsu").show();
-        addOption(sJinkei, "jinkei");
-    } else {
-        $("#param_label").text("腕力");
-        $("#taijyutsu").hide();
-        addOption(wJinkei, "jinkei");
-    }
-    // 必要な陣形が変わるので対応
-    jinkeiHosei();
+        // 影響のある陣形を入れ替える
+        $('#jinkei > option').remove();
+        if ($.inArray(type, ["hi", "mizu", "tsuchi", "kaze", "hikari", "yami"]) > -1) {
+            //console.log($(".param_label_teki"), 1, type, $.inArray(type, ["hi", "mizu", "tsuchi", "kaze", "hikari", "yami"]));
+            $(".param_label_teki").text("精神");
+            $(".jinkei_label").text("知");
+        } else {
+            //console.log($(".param_label_teki"), 2, type, $.inArray(type, ["hi", "mizu", "tsuchi", "kaze", "hikari", "yami"]));
+            $(".param_label_teki").text("体力");
+            $(".jinkei_label").text("腕");
+        }
+        if ($.inArray(type, ["hi", "mizu", "tsuchi", "kaze", "hikari", "yami"]) > -1) {
+            //console.log(type, $.inArray(type, ["hi", "mizu", "tsuchi", "kaze", "hikari", "yami"]));
+            $("#param_label").text("知力");
+            $("#taijyutsu").hide();
+            addOption(jJinkei, "jinkei");
+        } else if ($.inArray(type, ["yumi", "sken"]) > 0) {
+            $("#param_label").text("器用さ");
+            $("#taijyutsu").hide();
+            addOption(kJinkei, "jinkei");
+        } else if (type === "tai") {
+            $("#param_label").text("腕力");
+            $("#taijyutsu").show();
+            addOption(sJinkei, "jinkei");
+        } else {
+            $("#param_label").text("腕力");
+            $("#taijyutsu").hide();
+            addOption(wJinkei, "jinkei");
+        }
+        // 必要な陣形が変わるので対応
+        jinkeiHosei();
+    });
+
+    $('#jinkei').change(function () {
+        jinkeiHosei();
+    });
+
+    $('#resist').change(function () {
+        var r = $('#resist').val();
+        $("#resistDamage").val(Math.round(1 / (1 + 0.008 * r) * 100 * 100) / 100);
+    });
+
+
+    $('.damage').change(function () {
+        culc();
+        //patternReCulc();
+    });
+
+    $('#ability_list').change(function () {
+        let abVal = Number($("#ability_list").val());
+        if ($("#tokkouCheck").prop('checked')) {
+            abVal += 20;
+        }
+        $("#ability").val(abVal);
+        // abilityの値を入れ替えるので計算はこのタイミング
+        culc();
+    });
+    $('#enemy_vit').change(function () {
+        console.log("test");
+        let idx = $("#enemy_vit").val();
+        if (idx === "x") {
+            return;
+        }
+        let row = ENEMY_DATA[idx];
+        type = $("#type").val();
+        console.log(row);
+        if ($.inArray(type, ["hi", "mizu", "tsuchi", "kaze", "hikari", "yami"]) > -1) {
+            $("#vit").val(row['mnd']);
+        } else {
+            $("#vit").val(row['vit']);
+        }
+        for (let z of ["zan", "da", "totsu", "netsu", "rei", "rai", "in", "you"]) {
+            setTaisei($("#taisei_" + z), row[z]);
+        }
+        // vitの値を入れ替えるので計算はこのタイミング
+        culc();
+    });
 });
 
-$('#jinkei').change(function () {
-    jinkeiHosei();
-});
-
-$('#resist').change(function () {
-    var r = $('#resist').val();
-    $("#resistDamage").val(Math.round(1 / (1 + 0.008 * r) * 100 * 100) / 100);
-});
-
-
-$('.damage').change(function () {
-    culc();
-    //patternReCulc();
-});
-
-$('#ability_list').change(function () {
-    let abVal = Number($("#ability_list").val());
-    if ($("#tokkouCheck").prop('checked')) {
-        abVal += 20;
-    }
-    $("#ability").val(abVal);
-    // abilityの値を入れ替えるので計算はこのタイミング
-    culc();
-});
-$('#enemy_vit').change(function () {
-    let idx = $("#enemy_vit").val();
-    if (idx === "x") {
-        return;
-    }
-    let row = ENEMY_DATA[idx];
-    type = $("#type").val();
-    if ($.inArray(type, ["hi", "mizu", "tsuchi", "kaze", "hikari", "yami"]) > -1) {
-        $("#vit").val(row['mnd']);
-    } else {
-        $("#vit").val(row['vit']);
-    }
-    for (let z of ["zan", "da", "totsu", "netsu", "rei", "rai", "in", "you"]) {
-        setTaisei($("#taisei_" + z), row[z]);
-    }
-    // vitの値を入れ替えるので計算はこのタイミング
-    culc();
-});
 function setTaisei(target, val) {
     target.removeClass("resist_plus");
     target.removeClass("resist_minus");
