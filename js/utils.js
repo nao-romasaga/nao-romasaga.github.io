@@ -54,17 +54,6 @@ function showimage(path, id, size) {
     }
 }
 
-
-function createSkillOption(list) {
-    var result = {};
-    list.forEach(function (rows) {
-        if (rows[1] != "-" && rows[1] > 0) {
-            // 0:種別、1:威力、2:Name、3:Grade、4:BP、5:覚醒
-            result[rows[2] + " BP:" + rows[4] + " 威力[" + rows[3] + "]:" + rows[1]] = rows[1];
-        }
-    });
-    return result;
-}
 // 正規表現でセパレート
 function number_format(num) {
     return String(num).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,');
