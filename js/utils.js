@@ -128,8 +128,9 @@ function insertCommonComponent() {
     footer += 'ILLUSTRATION: TOMOMI KOBAYASHI';
     footer += '<span class="char-utau footer-liz dot dot_mid dot_liz"></span>';
     footer += '<hr>';
-    footer += '免責事項<br>';
+    footer += '利用規約・免責事項<br>';
     footer += '当サイトは趣味で運営してる非公式のゲーム攻略サイトです。各社の協力や要請の元作成されたものではありません。また情報の内容の一切の保障を致しません。当サイトを利用したことにより発生する全ての損害を、当管理人はいかなる場合でも一切の責任を負いません。<br>';
+    footer += '当サイトの内容、データ、プログラムの複製を固く禁じます。テキスト、画像の著作権は各社に帰属するものであり当サイトからの引用を固く禁じます。<br>';
     footer += '<br>';
     footer += '</div>';
     let imgTank = $("<div>").attr("style", "display:none");
