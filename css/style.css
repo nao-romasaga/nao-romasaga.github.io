@@ -1,5 +1,14 @@
 @import url("char_anime.css");
 @import url("icon.css");
+
+.resist_plus{
+    font-size: 20px;
+    color: rgba(108 , 188,224, 1);
+}
+.resist_minus{
+    font-size: 20px;
+    color: rgba(215 , 100,100, 1);
+}
 .text-left {
     text-align: left !important;
 }

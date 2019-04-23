@@ -14,6 +14,13 @@
     background-size: cover !important;
     margin: 0 0 0 0px;
 }
+.icon_xs_zokusei { 
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-size: cover !important;
+    margin: 0 0 0 0px;
+}
 .style_icon_a {
     width: 80px;
     height: 80px;
