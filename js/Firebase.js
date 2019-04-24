@@ -1,7 +1,7 @@
 var config = {
-    apiKey: "AIzaSyCKpg76hjQg4YNSW3hGEw5uCJOBbQNUsnQ",
-    databaseURL: "https://nao-romasaga-rs.firebaseio.com",
-    storageBucket: "nao-romasaga-rs.appspot.com",
+    apiKey: "AIzaSyDQu_mik-suR6L4OzPM7gbqc9Pimt1NZ68",
+    databaseURL: "https://nao-romasaga-rs-dev.firebaseio.com",
+    storageBucket: "nao-romasaga-rs-dev.appspot.com",
 };
 
 firebase.initializeApp(config);
