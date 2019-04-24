@@ -61,15 +61,14 @@ $(function () {
         }
         // 初回表示
         addOption(createSkillOption(SKILL_LIST["剣"]), "skill");
+        setDefaultSkillIryoku()();
     });
     /**
      * 技が変更された場合
      * 通常攻撃はrankを非表示で1に設定。それ以外はrankを表示
      */
     $('#skill').change(function () {
-        let skillId = $('#skill option:selected').val();
-        let skill = SKILL_MASTER[skillId];
-        $("#skill_val").val(skill['SkillIryoku']);
+        setDefaultSkillIryoku();
 
         let text = $('#skill option:selected').text();
         if (text.indexOf('通常攻撃') !== -1) {
@@ -87,6 +86,7 @@ $(function () {
         type_tx = $('#type option:selected').text();
         $('#skill').children().remove();
         addOption(createSkillOption(SKILL_LIST[type_tx]), "skill");
+        setDefaultSkillIryoku();
 
         // 影響のある陣形を入れ替える
         $('#jinkei > option').remove();
@@ -164,6 +164,11 @@ $(function () {
         culc();
     });
 });
+function setDefaultSkillIryoku() {
+    let skillId = $('#skill option:selected').val();
+    let skill = SKILL_MASTER[skillId];
+    $("#skill_val").val(skill['SkillIryoku']);
+}
 
 function setTaisei(target, val) {
     target.removeClass("resist_plus");
