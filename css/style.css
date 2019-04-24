@@ -139,6 +139,11 @@
     width:100%;
     background-size: cover;
 }
+.dojohaikei {
+    /* background: url(https://nao-romasaga.github.io/img/bg.jpg) no-repeat; */
+    background: url(/Users/naonakam/NetBeansProjects/nao-romasaga.github.io/img/bg_dojo.png);
+    width:100%;
+}
 body {
     color: #333;
     font-family: 'M PLUS Rounded 1c', sans-serif;
@@ -365,13 +370,22 @@ body {
     }
 }
 
+.series-button {
+    background-color: rgba(160, 40, 40, 0.6);
+    color: white;
+    padding: 0px;
+    border-radius: 2px;
+    border: 2px solid lightcyan;
+    margin-right: 15px;
+}
 .style-param-window {
     background-color: rgba(160, 40, 40, 0.6);
     color: white;
-    padding: 10px;
-    border-radius: 10px;
-    border: 2px solid lightcyan;    
-    margin-right: 15px;
+    padding: 0px 3px;
+    border-radius: 6px;
+    border: 1px solid lightcyan;    
+    margin-left: 0px;
+    font-size: 8px;
 }
 .style-skill-window {
     color: white;
