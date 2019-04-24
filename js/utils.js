@@ -227,7 +227,7 @@ function dispChar(master) {
         let charDot = $("<span>").attr("id", "dot" + pngName)
                 .addClass("char-aruku").addClass("char").addClass("char-bottom").addClass('dot_mid').addClass("dot")
                 .attr("data-id", id).attr('style', url);
-        let seriesBanner = $("<span>").addClass("style-param-window");
+        let seriesBanner = $("<span>").addClass("series-button");
         seriesBanner.append(series);
         charDot.append(seriesBanner);
         $("#" + series).append(charDot);
