@@ -31,8 +31,7 @@ function readFile(target, callback) {
 }
 
 function getImgUrl(target) {
-//    return "https://nao-romasaga.github.io/img/";
-    let url = "https://nao-romasaga.github.io/img/" + target;
+    return "https://nao-romasaga.github.io/img/";
     return 'background:url(' + url + ') no-repeat;'
 
 }
