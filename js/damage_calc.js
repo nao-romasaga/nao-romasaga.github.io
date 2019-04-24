@@ -61,7 +61,7 @@ $(function () {
         }
         // 初回表示
         addOption(createSkillOption(SKILL_LIST["剣"]), "skill");
-        setDefaultSkillIryoku()();
+        setDefaultSkillIryoku();
     });
     /**
      * 技が変更された場合
@@ -163,6 +163,18 @@ $(function () {
         // vitの値を入れ替えるので計算はこのタイミング
         culc();
     });
+    $("#tokkouCheck").click(function () {
+        let isTokkou = $(this).prop('checked');
+        let org = Number($("#ability").val());
+        if (isTokkou) {
+            $("#ability").val(org + 20);
+        } else {
+            $("#ability").val(org - 20);
+        }
+        culc();
+    });
+
+
 });
 function setDefaultSkillIryoku() {
     let skillId = $('#skill option:selected').val();
@@ -180,17 +192,6 @@ function setTaisei(target, val) {
     }
     target.html(val);
 }
-
-$("#tokkouCheck").click(function () {
-    let isTokkou = $(this).prop('checked');
-    let org = Number($("#ability").val());
-    if (isTokkou) {
-        $("#ability").val(org + 20);
-    } else {
-        $("#ability").val(org - 20);
-    }
-    culc();
-});
 
 /**
  * 計算処理
