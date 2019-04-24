@@ -223,10 +223,13 @@ function dispChar(master) {
         let dotId = master[i]['DotId'];
         let pngName = (dotId !== "ID4e2c8") ? dotId : "ID4e2c9";
         let id = master[i]['Id'];
-        let url = getImgUrl('dot/' + pngName + ".png");
+        let url = getImgUrl('dot/' + pngName + ".png") + " padding-top:35px;";
         let charDot = $("<span>").attr("id", "dot" + pngName)
                 .addClass("char-aruku").addClass("char").addClass("char-bottom").addClass('dot_mid').addClass("dot")
                 .attr("data-id", id).attr('style', url);
+        let seriesBanner = $("<span>").addClass("style-param-window");
+        seriesBanner.append(series);
+        charDot.append(seriesBanner);
         $("#" + series).append(charDot);
         if (++idx[series] % width === 0) {
             $("#" + series).append("<br>");
