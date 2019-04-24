@@ -47,6 +47,7 @@ $(function () {
             let row = result[idx];
             SKILL_LIST[row['BattleType']].push(row);
         }
+        let idx = 0;
         for (let name in SKILL_LIST) {
             SKILL_LIST[name].sort(function (a, b) {
                 if (a.SkillIryoku === "-" || b.SkillIryoku === "-"
@@ -58,6 +59,7 @@ $(function () {
                     return -1;
                 }
             });
+            SKILL_LIST[name].unshift({"Id": "ID" + (idx++), "ConsumeBp": 0, "Name": "通常攻撃(" + name + ")", "PowerGrade": "E", "SkillIryoku": 7, "SkillType": "技"});
         }
         // 初回表示
         addOption(createSkillOption(SKILL_LIST["剣"]), "skill");
@@ -179,7 +181,8 @@ $(function () {
 function setDefaultSkillIryoku() {
     let skillId = $('#skill option:selected').val();
     let skill = SKILL_MASTER[skillId];
-    $("#skill_val").val(skill['SkillIryoku']);
+    let iryoku = (skill === undefined) ? 7 : skill['SkillIryoku'];
+    $("#skill_val").val(iryoku);
 }
 
 function setTaisei(target, val) {
