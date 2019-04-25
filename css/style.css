@@ -1,5 +1,6 @@
 @import url("char_anime.css");
 @import url("icon.css");
+@import url("git.css");
 
 .resist_plus{
     font-size: 20px;
@@ -374,8 +375,7 @@ body {
     font-size: 8px;
 }
 .dojohaikei {
-    background: url(https://nao-romasaga.github.io/img/bg_dojo.jpg) no-repeat;
-   width:100%;
+    background: url(https://nao-romasaga.github.io/img/bg_dojo.png?v=1);
 }
 .style-param-window {
     background-color: rgba(160, 40, 40, 0.6);
@@ -408,7 +408,36 @@ body {
     background-size: 100%;
 }
 
+.kakashi{
+    position: absolute;
+    margin-left:60px;
+    width:60px;
+    height:60px;
+    background: url(https://nao-romasaga.github.io/img/icon/icon_kakashi.png);
+    background-size: cover;    
+}
+.arrow_box {
+    position: relative;
+    background: #e6dcb4;
+    border-radius: 6px;
+}
+.arrow_box:after, .arrow_box:before {
+    bottom: 100%;
+    left: 40px;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
 
+.arrow_box:after {
+    border-color: rgba(136, 183, 213, 0);
+    border-bottom-color: #e6dcb4;
+    border-width: 30px;
+    margin-left: -30px;
+}
 
 
 

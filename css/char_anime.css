@@ -1,6 +1,9 @@
-.dot_cat {    background:url(https://nao-romasaga.github.io/img/dot/ID36a44.png);}
-.dot_poruka {    background:url(https://nao-romasaga.github.io/img/dot/IDad5d4.png);}
-.dot_liz {    background:url(https://nao-romasaga.github.io/img/dot/IDad638.png);}
+.dot_cat {    background:url(/Users/naonakam/NetBeansProjects/nao-romasaga.github.io/img/dot/ID36a44.png);}
+.dot_liz {    background:url(/Users/naonakam/NetBeansProjects/nao-romasaga.github.io/img/dot/IDad638.png);}
+.dot_poruka {    background:url(/Users/naonakam/NetBeansProjects/nao-romasaga.github.io/img/dot/IDad5d4.png);}
+//.dot_cat {    background:url(https://nao-romasaga.github.io/img/dot/ID36a44.png);}
+//.dot_poruka {    background:url(https://nao-romasaga.github.io/img/dot/IDad5d4.png);}
+//.dot_liz {    background:url(https://nao-romasaga.github.io/img/dot/IDad638.png);}
 .dot_yuki {    background: url(https://nao-romasaga.github.io/img/dot/ID38dc4.png) no-repeat;}
 .dot_monika {    background: url(https://nao-romasaga.github.io/img/dot/ID3852e.png) no-repeat;}
 .dot_leon {    background: url(https://nao-romasaga.github.io/img/dot/ID35bc4.png) no-repeat;}
@@ -8,7 +11,7 @@
 .dot_roza {    background: url(https://nao-romasaga.github.io/img/dot/ID641f4.png) no-repeat;}
 .dot_sofia {    background: url(https://nao-romasaga.github.io/img/dot/ID367e0.png) no-repeat;}
 .dot_mini {    background-size: 200px !important;}
-            
+
 
 .dot_mid {
     background-size: 400px !important;
@@ -224,4 +227,35 @@
     95% { background-position: -335px -10px; transform: scale(-1, 1);} /* 5.1 */
     97% { background-position: -15px -10px;} /* 1.1 */
     99% { background-position: -175px -10px;} /* 3.1 */
+}
+
+.char-dojo {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    background-position: -10px -10px;
+    margin: 0 0 0 0px;
+    animation: dojo 4s steps(1) infinite;
+}                      
+@keyframes dojo {
+    0% { background-position: -10px -250px;  transform: scale(-1, 1);} /*4,5*/
+    20% { background-position: -250px -170px;} /*4,5*/
+    25% { background-position: -330px -170px;} /*4,5*/
+    30% { background-position: -250px -170px;} /*4,5*/
+    35% { background-position: -330px -170px;} /*4,5*/
+    60% { background-position: -330px -250px;} /*4,5*/
+    90% { background-position: -330px -90px; } /*4,5*/
+}
+.dojo-slide {
+    transition-duration: 2s;
+    margin-top: 0px;
+    margin-left: 0px;
+    animation: dojoslide 4s infinite;
+}
+@keyframes dojoslide {
+    0% { transform:translateX(0%)}
+    10% { transform:translateX(15%);}
+    50% { transform:translateX(25%);}
+    90% { transform:translateX(25%);}
+    100% { transform:translateX(0%)}
 }
