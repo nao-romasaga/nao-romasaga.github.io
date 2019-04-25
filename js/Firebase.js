@@ -3,8 +3,13 @@ var config = {
     databaseURL: "https://nao-romasaga-rs.firebaseio.com",
     storageBucket: "nao-romasaga-rs.appspot.com",
 };
-
-firebase.initializeApp(config);
+var configTmp = {
+    apiKey: "AIzaSyBliZfwz-xZnVtIZmeAQv0uo2IgmL5eUKM",
+    databaseURL: "https://nao-romasaga-rs-blue.firebaseio.com",
+    storageBucket: "nao-romasaga-rs-blue.appspot.com",
+};
+    
+firebase.initializeApp(configTmp);
 firebase.auth().signInAnonymously().catch(function (error) {
     // Handle Errors here.
     var errorCode = error.code;
