@@ -13,7 +13,6 @@
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
         <script src="./js/Firebase.js"></script>
-
         <script src="./js/utils.js" ></script>
         <title>特訓タイマー@nao_romasaga</title>
         <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
@@ -23,61 +22,6 @@
           <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
-        <style>
-            .char-dojo {
-                display: inline-block;
-                width: 60px;
-                height: 60px;
-                background-position: -10px -10px;
-                margin: 0 0 0 0px;
-                animation: dojo 4s steps(1) infinite;
-            }                      
-            @keyframes dojo {
-                0% { background-position: -10px -250px;  transform: scale(-1, 1);} /*4,5*/
-                20% { background-position: -250px -170px;} /*4,5*/
-                25% { background-position: -330px -170px;} /*4,5*/
-                30% { background-position: -250px -170px;} /*4,5*/
-                35% { background-position: -330px -170px;} /*4,5*/
-                60% { background-position: -330px -250px;} /*4,5*/
-                90% { background-position: -330px -90px; } /*4,5*/
-            }
-            .dojo-slide {
-                transition-duration: 2s;
-                margin-top: 0px;
-                margin-left: 0px;
-                animation: dojoslide 4s infinite;
-            }
-            @keyframes dojoslide {
-                0% { transform:translateX(0%)}
-                10% { transform:translateX(15%);}
-                50% { transform:translateX(25%);}
-                90% { transform:translateX(25%);}
-                100% { transform:translateX(0%)}
-            }
-
-            .arrow_box {
-                position: relative;
-                background: #e6dcb4;
-                border-radius: 6px;
-            }
-            .arrow_box:after, .arrow_box:before {
-                bottom: 100%;
-                left: 40px;
-                border: solid transparent;
-                content: " ";
-                height: 0;
-                width: 0;
-                position: absolute;
-                pointer-events: none;
-            }
-
-            .arrow_box:after {
-                border-color: rgba(136, 183, 213, 0);
-                border-bottom-color: #e6dcb4;
-                border-width: 30px;
-                margin-left: -30px;
-            }
-        </style>
     </head>
     <body>
         <div class="dojohaikei"><div class="container">
@@ -337,11 +281,53 @@
                             ・ミッションでの獲得:<span id="missonp1"></span>個
                         </div>
                         <div>
-                            現在Lv　<input id="nowLv1" type="number" class="input kadomaru calc" style="width:30px" min="31" max="50" value="30">　 
-                            目標Lv　<input id="nextLv1" type="number" class="input kadomaru calc" style="width:30px" min="31" max="50" value="50"><br>
-                            現在の所持ピース数　<input id="nowPiece1" type="number" class="input kadomaru calc" style="width:50px" min="0" max="599" value="0">個
+                            現在Lv:<select id="nowLv1" class="input kadomaru calc" style="width:50px">
+                                <option>30</option>
+                                <option>31</option>
+                                <option>32</option>
+                                <option>33</option>
+                                <option>34</option>
+                                <option>35</option>
+                                <option>36</option>
+                                <option>37</option>
+                                <option>38</option>
+                                <option>39</option>
+                                <option>40</option>
+                                <option>41</option>
+                                <option>42</option>
+                                <option>43</option>
+                                <option>44</option>
+                                <option>45</option>
+                                <option>46</option>
+                                <option>47</option>
+                                <option>48</option>
+                                <option>49</option>
+                            </select>
+                            目標Lv:<select id="nextLv1" class="input kadomaru calc" style="width:50px">
+                                <option>50</option>
+                                <option>49</option>
+                                <option>48</option>
+                                <option>47</option>
+                                <option>46</option>
+                                <option>45</option>
+                                <option>44</option>
+                                <option>43</option>
+                                <option>42</option>
+                                <option>41</option>
+                                <option>40</option>
+                                <option>39</option>
+                                <option>38</option>
+                                <option>37</option>
+                                <option>36</option>
+                                <option>35</option>
+                                <option>34</option>
+                                <option>33</option>
+                                <option>32</option>
+                                <option>31</option>
+                            </select><br>
+                            現在の所持ピース数:<input id="nowPiece1" type="number" class="input kadomaru calc" style="width:50px" min="0" max="599" value="0">個
                             <br>
-                            他スタイル<select id="otherStyle1" class="input kadomaru calc" style="width:50px" >
+                            他スタイル:<select id="otherStyle1" class="input kadomaru calc" style="width:50px" >
                                 <option>0</option>
                                 <option>1</option>
                                 <option>2</option>
