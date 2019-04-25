@@ -24,7 +24,8 @@ const WEPON_ATTR = {
 };
 const AREA_SHORT = {
     "敵単体": "単", "敵全体": "全", "敵縦一列": "縦", "敵横一列": "横", "味方単体": "味単", "自身": "自"
-}
+};
+
 function masterLevel(lv) {
     var skill = Math.ceil((lv - 1) / 2) * 0.005;
     return Number(skill);
@@ -82,17 +83,20 @@ function insertCommonComponent() {
     nav += '        <a class="nav-link" href="./auto.html">全力AUTOシミュレーター</a>';
     nav += '      </li>';
     nav += '      <li class="nav-item" id="headSkill">';
-    nav += '        <a class="nav-link" href="./skill.html">スタイル検索(技・術)</a>';
-    nav += '      </li>';
-    nav += '      <li class="nav-item" id="headIndex">';
-    nav += '        <a class="nav-link" href="./index.html">ダメージ計算機</a>';
+    nav += '        <a class="nav-link" href="./skill.html">技・術検索</a>';
     nav += '      </li>';
     nav += '      <li class="nav-item" id="headStyle">';
-    nav += '        <a class="nav-link" href="./style.html">キャラクター+スタイル詳細</a>';
+    nav += '        <a class="nav-link" href="./style.html">スタイル詳細</a>';
     nav += '      </li>';
-    nav += '      <li class="nav-item" id="headAbility">';
+    nav += '      <li class="nav-item" id="headIndex">';
+    nav += '        <a class="nav-link" href="./index.html">ダメージ計算</a>';
+    nav += '      </li>';
+    nav += '      <li class="nav-item" id="headDojo">';
+    nav += '        <a class="nav-link" href="./dojo.html">特訓タイマー</a>';
+    nav += '      </li>';
+//    nav += '      <li class="nav-item" id="headAbility">';
     //nav += '        <a class="nav-link" href="./ability.html">【工事中】アビリティツリー</a>';
-    nav += '        <a class="nav-link disabled" href="#">【工事中】アビリティ検索</a>';
+//    nav += '        <a class="nav-link disabled" href="#">【工事中】アビリティ検索</a>';
     nav += '      </li>';
     nav += '      <li class="nav-item " id="headSite">';
     nav += '        <a class="nav-link" href="./site.html"><small>利用規約・免責事項</small></a>';
@@ -152,9 +156,18 @@ function insertCommonComponent() {
         $("#headSite").addClass("active");
     } else if (url.indexOf('kifu.html') != -1) {
         $("#headKifu").addClass("active");
+    } else if (url.indexOf('dojo.html') != -1) {
+        $("#headDojo").addClass("active");
     }
+    
 }
 $(document).ready(function () {
+    $("body").bind("contextmenu", function (e) {
+        return false;
+    });
+    $("body").mousedown(function (e) {
+        //return false;
+    });
     insertCommonComponent();
 });
 function getDevice() {
