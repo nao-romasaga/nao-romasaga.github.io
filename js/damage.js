@@ -60,12 +60,18 @@ function culcSkillDamageWithStyle(charInfo, stBonus, styleInfo, styleLevel, skil
     PARAM['agi'] = addBonus(PARAM['orgAGI'], PARAM['AGIPer'], PARAM['AGIBonus']);
     PARAM['int'] = addBonus(PARAM['orgINT'], PARAM['INTPer'], PARAM['INTBonus']);
     PARAM['ability'] = ability;
-    PARAM['rank'] = rank;
     PARAM['wepon'] = wepon;
     PARAM['master'] = master;
     PARAM['vit'] = vit;
     PARAM['resist'] = resist;
     PARAM['SkillType'] = skillInfo['SkillType'];
+    // 通常攻撃対応
+    if(skillInfo['Name'] === "通常攻撃"){
+        rank = 1;
+        skillInfo['BattleType'] = styleInfo['WeaponType'];
+    }
+
+    PARAM['rank'] = rank;
     PARAM['BattleType'] = skillInfo['BattleType'];
 
     let type = 'other';
@@ -87,7 +93,7 @@ function culcSkillDamageWithStyle(charInfo, stBonus, styleInfo, styleLevel, skil
     }
 
     if (skillInfo['SkillIryoku'] > 0) {
-        PARAM['culcDamage'] = damage(type, culcValue, PARAM['agi'], wepon, skillInfo['SkillIryoku'], rank, vit, master, ability, resist, 6);
+        PARAM['culcDamage'] = damage(type, culcValue, PARAM['agi'], wepon, skillInfo['SkillIryoku'], PARAM['rank'], vit, master, ability, resist, 6);
     } else {
         PARAM['culcDamage'] = 0;
     }
