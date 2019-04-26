@@ -75,13 +75,14 @@
                         });
                         $(".inputOpen").click(function () {
                             let id = $(this).attr("data-id");
-                            $("#detail" + id).parent().toggleClass("d-none");
-                            $("#detail" + id).slideToggle(300);
+                            console.log(id);
+                            $("#detail" + id).parent().removeClass("d-none");
+                            $("#detail" + id).slideDown(300);
                         });
                         $(".inputClose").click(function () {
                             let id = $(this).attr("data-id");
-                            $("#detail" + id).slideToggle(300, function () {
-                                $("#detail" + id).parent().toggleClass("d-none");
+                            $("#detail" + id).slideUp(300, function () {
+                                $("#detail" + id).parent().addClass("d-none");
                             });
                         });
                         $(".charToggle").click(function () {
