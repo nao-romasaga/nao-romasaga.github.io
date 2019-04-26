@@ -26,10 +26,7 @@
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
         <script src="./js/Firebase.js"></script>
-        <script src="./js/jinkei.js" ></script>
-        <script src="./js/damage.js" ></script>
         <script src="./js/utils.js" ></script>
-        <script src="./js/damage_calc.js" ></script>
         <title>ロマサガRS 計算機@nao_romasaga</title>
         <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -40,311 +37,45 @@
         <![endif]-->
     </head>
     <body>
-        <div class ="haikei"><div class="container">
-                <div class="text-center">
-                    <a href="https://www.jp.square-enix.com/saga_reuniverse/" target="new"><img src="https://www.jp.square-enix.com/saga_reuniverse/assets/img/cmn_logo01_sp.png" class="col-sm-12 col-md-8 col-lg-6"></a>
-                </div>
-
-                <h1 class="text-center opacity">ダメージ計算機</h1>
+        <div class ="" style="background: url(http://nao-romasaga.github.io/img/bg_repeat.png); background-size: contain;">
+            <div class="container">
+                <h1 class="text-center opacity">ロマサガRS <br class="hidden spBlock">便利ツール</h1>
                 <br>
+                <div class="opacity kadomaru">
                 <div class="text-center">
+                    このサイトについて
+                    </div>
+                    当サイトは趣味で運営してる非公式のゲーム攻略サイトです。<br>
+                    各社の協力や要請の元作成されたものではありません。<br>
+                    また、当サイトを利用したことにより発生する全ての損害を管理人はいかなる場合でも責任を負いません。<br>
+                    詳しくは<a href="site.html">利用規約・免責事項</a>をご覧ください
                 </div>
-                <p class="text-right opacity"><small>バグ発見、ご要望は <a href="https://twitter.com/nao_romasaga_rs" target="new">nao_romasaga_rs</a>まで</small>
-                </p>
-                <div class="text-center">
-                    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="true">Tweet</a>
-                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                </div>
-
+                <br>
                 <div class="row">
-                    <div class="form-group col-xs-12 col-md-6 col-lg-4">
-                        <label for="type" class="badge badge-pill badge-light">武器種類
-                            <img src="https://www.silhouette-illust.com/wp-content/uploads/2017/05/buki_tsurugi_30115-300x300.jpg" width="16" height="16">
-                            <img src="https://icon-rainbow.com/i/icon_03146/icon_031460.svg" width="16" height="16">
-                            <img src="https://www.silhouette-ac.com/sozai/m/130/72/130729m.jpg" width="16" height="16">
-                            <img src="https://data.ac-illust.com/data/thumbnails/c3/c32a863d8869dac257763aee737baaed_t.jpeg" width="16" height="16">
-                            <img src="https://www.silhouette-illust.com/wp-content/uploads/2016/12/20579-300x300.jpg" width="16" height="16">
-                            <img src="https://www.silhouette-illust.com/wp-content/uploads/2017/09/witch_tsue_39880-300x300.jpg" width="16" height="16">
-                            <img src="https://www.silhouette-illust.com/wp-content/uploads/2017/04/kobushi_nigiru_28889-300x300.jpg" width="16" height="16">
-                        </label>
-                        <select class="form-control" id="type" name="type">
-                            <option value="ken">剣</option>
-                            <option value="dken">大剣</option>
-                            <option value="ono">斧</option>
-                            <option value="sken">小剣</option>
-                            <option value="yari">槍</option>
-                            <option value="yumi">弓</option>
-                            <option value="bou">棍棒</option>
-                            <option value="tai">体術</option>
-                            <option value="hi">火術</option>
-                            <option value="mizu">水術</option>
-                            <option value="kaze">風術</option>
-                            <option value="tsuchi">土術</option>
-                            <option value="hikari">光術</option>
-                            <option value="yami">闇術</option>
-                        </select>
+                    <div class="col-12 col-sm-7">
+                        <h2 class="text-center opacity kadomaru">更新情報</h2>
+                        <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">[update] ロマサガ便利ツール スタイル追加<br>・リズを追加しました<a href="https://t.co/vsr2OMd3zG">https://t.co/vsr2OMd3zG</a><a href="https://t.co/wlT0E1mLzJ">https://t.co/wlT0E1mLzJ</a> <a href="https://t.co/vfi1q9lrsS">pic.twitter.com/vfi1q9lrsS</a></p>&mdash; (nAo)@ロマサガRS (@nao_romasaga_rs) <a href="https://twitter.com/nao_romasaga_rs/status/1121618880919511040?ref_src=twsrc%5Etfw">April 26, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                        <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">[new] 特訓タイマー<br>目標のスタイルレベルにいつ達成できるのかメモできます<br>ミッションでのピース獲得、Aスタイルを特訓して白結晶 &gt; 汎用ピースにも対応<br>これで限界突破を定期的に見に行かなくてすむー🤣やったー<a href="https://t.co/1lWyWHnk4U">https://t.co/1lWyWHnk4U</a> <br><br>お布施もお待ちしております😘<a href="https://t.co/3qFDqY1Kdx">https://t.co/3qFDqY1Kdx</a> <a href="https://t.co/5TIAO3hWjG">pic.twitter.com/5TIAO3hWjG</a></p>&mdash; (nAo)@ロマサガRS (@nao_romasaga_rs) <a href="https://twitter.com/nao_romasaga_rs/status/1121472533159526400?ref_src=twsrc%5Etfw">April 25, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                        <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">[bugfix] ダメージ計算機<br>下記のバグを修正しましたm(_ _)m<br>・特攻チェックボックスが動いてないバグ<br>・武器種変更直後、技威力が反映されてないバグ<br>・カイザーアント精神の間違い<br>・モンスター名称の間違い<a href="https://t.co/N8ml2zUh8f">https://t.co/N8ml2zUh8f</a></p>&mdash; (nAo)@ロマサガRS (@nao_romasaga_rs) <a href="https://twitter.com/nao_romasaga_rs/status/1120900700710375425?ref_src=twsrc%5Etfw">April 24, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                        <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">[update] ダメージ計算機<a href="https://twitter.com/chin_ohnck?ref_src=twsrc%5Etfw">@chin_ohnck</a> さんがVH91、VH92の体力/精神を調査してくださいましたので、ダメージ計算機に反映しました。ありがとうございます！<br>おまけで耐性も表示するようにしました。（入力には反映されません）<a href="https://t.co/gAKgSI5CGf">https://t.co/gAKgSI5CGf</a> <a href="https://t.co/GmcHaLh4el">pic.twitter.com/GmcHaLh4el</a></p>&mdash; (nAo)@ロマサガRS (@nao_romasaga_rs) <a href="https://twitter.com/nao_romasaga_rs/status/1120761108229316608?ref_src=twsrc%5Etfw">April 23, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                        <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">[update] キャラ+スタイル詳細 新ガチャデータ追加しました<br>SSアニー<br>SSクジンシー<br>Sクジンシー<br>Sヴィクトール<br>Aレオン<br><br>ガチャ引く参考にご利用ください(๑′ᴗ‵๑)<a href="https://t.co/vsr2OLVsI8">https://t.co/vsr2OLVsI8</a> <a href="https://t.co/jMHAshl8qd">pic.twitter.com/jMHAshl8qd</a></p>&mdash; (nAo)@ロマサガRS (@nao_romasaga_rs) <a href="https://twitter.com/nao_romasaga_rs/status/1120522711531438082?ref_src=twsrc%5Etfw">April 23, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                        <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">[update] ダメージ計算機<br>特攻つけました<a href="https://t.co/gAKgSI5CGf">https://t.co/gAKgSI5CGf</a> <a href="https://t.co/r2yaRnKJBx">pic.twitter.com/r2yaRnKJBx</a></p>&mdash; (nAo)@ロマサガRS (@nao_romasaga_rs) <a href="https://twitter.com/nao_romasaga_rs/status/1120167353600241664?ref_src=twsrc%5Etfw">April 22, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                        <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">[new] キャラクターとスタイル詳細機能を作成しました。<br>スタイルレベル50の性能や、所有技の比較などが簡単に出来ます<br><br>ガチャを引く判断や限界突破の判断にご活用下さい✨<a href="https://t.co/vsr2OMd3zG">https://t.co/vsr2OMd3zG</a><br><br>お布施もお待ちしております😘<a href="https://t.co/3qFDqY1Kdx">https://t.co/3qFDqY1Kdx</a> <a href="https://t.co/lka5BOKblU">pic.twitter.com/lka5BOKblU</a></p>&mdash; (nAo)@ロマサガRS (@nao_romasaga_rs) <a href="https://twitter.com/nao_romasaga_rs/status/1120049965747687424?ref_src=twsrc%5Etfw">April 21, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                        <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">[update] 全力オートシミュレーター：表記修正<br>@ <a href="https://t.co/wlT0E1mLzJ">https://t.co/wlT0E1mLzJ</a><br>平均威力がダメージに繋がらないので、平均ダメージの文字を大きく表記<br><br>Ofuseに活動を作成しました！ <a href="https://t.co/zIqLUECb8J">https://t.co/zIqLUECb8J</a><a href="https://twitter.com/hashtag/Ofuse?src=hash&amp;ref_src=twsrc%5Etfw">#Ofuse</a></p>&mdash; (nAo)@ロマサガRS (@nao_romasaga_rs) <a href="https://twitter.com/nao_romasaga_rs/status/1119614907253571584?ref_src=twsrc%5Etfw">April 20, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                        <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">[update]工事中だったスタイル検索を再開しました。<br>全体技って何があるっけ？<br>ライトボール持ちって誰がいるっけ？<br>技ランク上げのためにファスト技で先制しようなど調べる際にご活用ください<a href="https://t.co/emmYdRf09B">https://t.co/emmYdRf09B</a><br><br>😘o O(併せてお布施もお待ちしております)<a href="https://t.co/3qFDqY1Kdx">https://t.co/3qFDqY1Kdx</a> <a href="https://t.co/vzinCrBB7c">pic.twitter.com/vzinCrBB7c</a></p>&mdash; (nAo)@ロマサガRS (@nao_romasaga_rs) <a href="https://twitter.com/nao_romasaga_rs/status/1118585278694694912?ref_src=twsrc%5Etfw">April 17, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                        <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">[update] 全力オートシミュレーター UI調整<br>・スタイルの背景追加、選択スタイルを明るく<br>・継承中技のEアイコン<br>・キャラ選択時初期スタイル選択<br>・キャラ選択時スクロール<br>・シミュレーション実行時間スクロール<a href="https://t.co/wlT0E1mLzJ">https://t.co/wlT0E1mLzJ</a><br><br>Ofuseに活動を作成しました！ <a href="https://t.co/ggveSFaTgh">https://t.co/ggveSFaTgh</a> <a href="https://t.co/vNMZ96INA3">pic.twitter.com/vNMZ96INA3</a></p>&mdash; (nAo)@ロマサガRS (@nao_romasaga_rs) <a href="https://twitter.com/nao_romasaga_rs/status/1118195765824765952?ref_src=twsrc%5Etfw">April 16, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                        <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">[update] 全力オートシミュレータ復活しました！<a href="https://t.co/wlT0E1mLzJ">https://t.co/wlT0E1mLzJ</a><br>ついでにいくつか機能追加しました。ぜひお楽しみ下さい。<br>早めに復旧できてよかったです(･ω･*)<br><br>使ってみて気に入ったらお布施も頂けると周回用の石ができて嬉しいです。10円から受け付けてます⭐️<a href="https://t.co/3qFDqY1Kdx">https://t.co/3qFDqY1Kdx</a> <a href="https://t.co/oHYwD9MwZt">pic.twitter.com/oHYwD9MwZt</a></p>&mdash; (nAo)@ロマサガRS (@nao_romasaga_rs) <a href="https://twitter.com/nao_romasaga_rs/status/1116778642011348992?ref_src=twsrc%5Etfw">April 12, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                        <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">[update]アビリティツリー<a href="https://t.co/ESK0C5gHcC">https://t.co/ESK0C5gHcC</a><br><br>スマホから見れるようになりました <a href="https://t.co/gfWs3N4YC7">pic.twitter.com/gfWs3N4YC7</a></p>&mdash; (nAo)@ロマサガRS (@nao_romasaga_rs) <a href="https://twitter.com/nao_romasaga_rs/status/1115317630208888832?ref_src=twsrc%5Etfw">April 8, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                        <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">[update] アビリティツリー機能 仮オープン<a href="https://t.co/ESK0C5gHcC">https://t.co/ESK0C5gHcC</a><br><br>ロマサガRSには300近くアビリティがあるため、どういうアビリティが存在知るか把握しづらい。<br>アビリティをグループで分類して網羅できるように＋アビリティの所持スタイルを調べられる機能を作成。<br><br>横幅を多く取るのでPCのみ対応 <a href="https://t.co/oWvwgtSQJg">pic.twitter.com/oWvwgtSQJg</a></p>&mdash; (nAo)@ロマサガRS (@nao_romasaga_rs) <a href="https://twitter.com/nao_romasaga_rs/status/1114965006922084352?ref_src=twsrc%5Etfw">April 7, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                        <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">[update] スタイル検索ツール<br>・何を選択しているか背景と枠線に色付けしました<br>・選択中の技はラベルで「xxxの技・術選択」と表示するようにしました<a href="https://twitter.com/hashtag/%E3%83%AD%E3%83%9E%E3%82%B5%E3%82%ACRS?src=hash&amp;ref_src=twsrc%5Etfw">#ロマサガRS</a> <a href="https://t.co/Lt8MsxsbP7">pic.twitter.com/Lt8MsxsbP7</a></p>&mdash; (nAo)@ロマサガRS (@nao_romasaga_rs) <a href="https://twitter.com/nao_romasaga_rs/status/1114551191986298880?ref_src=twsrc%5Etfw">April 6, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                        <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">ロマサガRS ダメージ計算機 更新しました(･∀･)<a href="https://t.co/gAKgSI5CGf">https://t.co/gAKgSI5CGf</a><a href="https://twitter.com/chin_ohnck?ref_src=twsrc%5Etfw">@chin_ohnck</a> さんが術威力を計測してくださったので、それをもとに術を追加しました。<br>なお、敵精神部分はプルダウンで変更されません_( _ `ω、)_ 〜∞<a href="https://twitter.com/hashtag/%E3%83%AD%E3%83%9E%E3%82%B5%E3%82%ACRS?src=hash&amp;ref_src=twsrc%5Etfw">#ロマサガRS</a></p>&mdash; (nAo)@ロマサガRS (@nao_romasaga_rs) <a href="https://twitter.com/nao_romasaga_rs/status/1112757082371973125?ref_src=twsrc%5Etfw">April 1, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                     </div>
-                    <div class="form-group col-xs-12 col-md-6 col-lg-4">
-                        <label for="wepon" class="badge badge-pill badge-light">武器威力
-                            <img src="https://www.silhouette-illust.com/wp-content/uploads/2017/05/buki_tsurugi_30115-300x300.jpg" width="16" height="16">
-                            ＋使用技
-                            <img src="https://www.silhouette-illust.com/wp-content/uploads/2017/04/training_chikara-kobu_28491-101x101.jpg" width="16" height="16">
-                        </label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text small">武器威力</span>
-                            </div>
-                            <input type="number" class="form-control damage" id="wepon">
-                        </div>
-                        <select class="form-control damage" id="skill" name="type"></select>
-                        <input id="skill_val" type="hidden" value="0">
-                        <div class="input-group" id="input_rank">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text small">Rank</span>
-                            </div>
-                            <input type="number" class="form-control damage" id="skill_rank" value="1">
-                        </div>
-                    </div>
-                    <div class="form-group col-xs-12 col-md-6 col-lg-4">
-                        <label for="wepon" class="badge badge-pill badge-light">陣形
-                            <img src="https://icon-rainbow.com/i/icon_01281/icon_012810.svg" width="16" height="16">
-                        </label>
-                        <select class="form-control damage" id="jinkei" name="type">
-                            <option value="0">指定なし</option>
-                            <option value="sp1">スペキュレイション 最前＆前2列</option>
-                            <option value="as1">アマゾンストライク 最前列</option>
-                            <option value="as2">アマゾンストライク 前列</option>
-                            <option value="rj1">龍陣 最前列</option>
-                        </select>
-                        <div class="form-group row">
-                            <div class="col-xs-6 col-md-6 col-lg-6" id="jinkei_w">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text small jinkei_label">腕</span>
-                                    </div>
-                                    <input type="text" class="form-control" readonly="" id="jinkei_w_v">
-                                    <div class="input-group-append">
-                                        <span class="input-group-text">%</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-6 col-md-6 col-lg-6" id="jinkei_k">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text small">器</span>
-                                    </div>
-                                    <input type="text" class="form-control" readonly="" id="jinkei_k_v">
-                                    <div class="input-group-append">
-                                        <span class="input-group-text">%</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-6 col-md-6 col-lg-6" id="jinkei_s">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text small">速</span>
-                                    </div>
-                                    <input type="text" class="form-control" readonly="" id="jinkei_s_v">
-                                    <div class="input-group-append">
-                                        <span class="input-group-text">%</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>                    
-
-                    <div class="form-group col-xs-12 col-md-6 col-lg-4">
-                        <label for="str" id="param_label" class="badge badge-pill badge-light">
-                            腕力
-                        </label>
-                        <div class="input-group">
-                            <div class="input-group-prepend charOnly">
-                                <span class="input-group-text small">キャラのみ</span>
-                            </div>
-                            <input type="number" class="form-control damage charOnly" id="strOnlyChar">
-                        </div>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text small">スタイル装備有</span>
-                            </div>
-                            <input type="number" class="form-control damage" id="str">
-                        </div>
-                        <small class="form-text text-muted   opacity kadomaru">陣形を指定している場合はキャラのみの値も必要です<br>
-                            キャラのみはスタイルおよび装備抜きの値を入力してください</small>
-                    </div>    
-                    <div class="form-group col-xs-12 col-md-6 col-lg-4"  id="taijyutsu">
-                        <label for="agi" id="param_label" class="badge badge-pill badge-light">素早さ</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text small charOnly">キャラのみ</span>
-                            </div>
-                            <input type="number" class="form-control damage charOnly" id="agiOnlyChar">
-                        </div>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text small">スタイル装備有</span>
-                            </div>
-                            <input type="number" class="form-control damage" id="agi">
-                        </div>
-                        <small class="form-text text-muted   opacity kadomaru">陣形を指定している場合はキャラのみの値も必要です<br>
-                            キャラのみはスタイルおよび装備抜きの値を入力してください</small>
-                    </div>
-                    <div class="form-group col-xs-12 col-md-6 col-lg-4">
-                        <label for="master" class="badge badge-pill badge-light">
-                            マスターレベル
-                            <img src="https://www.silhouette-illust.com/wp-content/uploads/2016/09/8957-300x300.jpg" width="16" height="16">
-                        </label>
-                        <input type="number" class="form-control damage" id="master">
-                        <div class="form-group">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text small">ダメージ変化量</span>
-                                </div>
-                                <input type="text" class="form-control" readonly="" id="masterDamage">
-                                <div class="input-group-append">
-                                    <span class="input-group-text">%</span>
-                                </div>
-                            </div>
-                        </div>
-                        <small class="form-text text-muted  opacity kadomaru">対象武器種類のマスターレベルを入力して下さい</small>
-                    </div>
-                    <div class="form-group col-xs-12 col-md-6 col-lg-4">
-                        <label for="ability" class="badge badge-pill badge-light">アビリティ＋特攻
-                            <img src="https://www.silhouette-illust.com/wp-content/uploads/2017/03/idea_hirameki_28161-300x300.jpg" width="16" height="16">
-                        </label>
-                        <div class="cb kadomaru bg-white">
-                            <input type="checkbox" id="tokkouCheck" name="cb" value="1" />
-                            <label for="tokkouCheck" style="width:90%; margin:10px">特攻あり</label>
-                        </div>
-                        <select class="form-control" id="ability_list" name="type">
-                            <option value="0">アビリティなし</option>
-                            <option value="5">勇健強撃I (小)</option>
-                            <option value="10">勇健強撃II (中)</option>
-                            <option value="15">勇健強撃III (大)</option>
-                            <option value="2">テンションアップI (極小)</option>
-                            <option value="5">テンションアップII (小)</option>
-                            <option value="10">テンションアップIII (中)</option>
-                            <option value="15">テンションアップIV (大)</option>
-                        </select>
-                        <div class="form-group">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text small">直接入力</span>
-                                </div>
-                                <input type="number" class="form-control damage" id="ability"  placeholder="直接入力可">
-                                <div class="input-group-append">
-                                    <span class="input-group-text">%</span>
-                                </div>
-                            </div>
-                        </div>
-                        <small class="form-text text-muted  opacity kadomaru">極小:2% 小:5% 中:10% 大:15% 特大:30% 極大:50%<br>
-                            複数のアビリティを持つ場合は合計値%を入力してください<br>
-                            例:勇健強撃III＋テンションアップIV = 30%</small>
-                    </div>
-                    <div class="form-group damageCulc col-xs-12 col-md-6 col-lg-4">
-                        <label for="vit" class="badge badge-pill badge-light">敵
-                            <span class="param_label_teki">体力</span>
-                            <img src="https://www.silhouette-illust.com/wp-content/uploads/2016/05/646-300x300.jpg" width="16" height="16">
-                            敵耐性
-                            <img src="https://www.silhouette-illust.com/wp-content/uploads/2016/12/shield_21084-300x300.jpg" width="16" height="16">
-                        </label>
-                        <select class="form-control" id="enemy_vit" name="type">
-                            <option value="x">敵を選択</option>
-                        </select>
-                        <div class="form-group">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text small"><span class="param_label_teki">体力</span>直接入力</span>
-                                </div>
-                                <input type="number" class="form-control damage" id="vit" placeholder="直接入力可">
-                            </div>
-                            <table class="width-100 text-center table-dark">
-                                <tr class="char-bottom">
-                                    <th><span class="icon_xs_zokusei icon_zan"></span></th>
-                                    <td id="taisei_zan">999</td>
-                                    <th><span class="icon_xs_zokusei icon_da"></span></th>
-                                    <td id="taisei_da">999</td>
-                                    <th><span class="icon_xs_zokusei icon_totsu"></span></th>
-                                    <td id="taisei_totsu">999</td>
-                                    <th><span class="icon_xs_zokusei icon_netsu"></span></th>
-                                    <td id="taisei_netsu">999</td>
-                                </tr>
-                                <tr>
-                                    <th><span class="icon_xs_zokusei icon_rei"></span></th>
-                                    <td id="taisei_rei">999</td>
-                                    <th><span class="icon_xs_zokusei icon_rai"></span></th>
-                                    <td id="taisei_rai">999</td>
-                                    <th><span class="icon_xs_zokusei icon_yo"></span></th>
-                                    <td id="taisei_you">999</td>
-                                    <th><span class="icon_xs_zokusei icon_in"></span></th>
-                                    <td id="taisei_in">999</td>
-                            </table>
-                        </div>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text small">耐性</span>
-                            </div>
-                            <input type="number" class="form-control damage" id="resist">
-                        </div>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text small">ダメージ変化量</span>
-                            </div>
-                            <input type="text" class="form-control" readonly="" id="resistDamage">
-                            <div class="input-group-append">
-                                <span class="input-group-text">%</span>
-                            </div>
-                        </div>
-                        <small class="form-text text-muted  opacity kadomaru">対応する耐性値を入力して下さい。弱点はマイナスの値を入力をして下さい</small>
-
+                    <div class="col-12 col-sm-4">
+                        <h3 class="text-center opacity kadomaru">開発者 Tweet</h3>
+                        <a class="twitter-timeline" data-lang="ja" data-width="320" data-height="400" data-chrome="noheader" data-dnt="true" data-theme="light" href="https://twitter.com/nao_romasaga_rs?ref_src=twsrc%5Etfw">Tweets by nao_romasaga_rs</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                     </div>
                 </div>
-                <h1 class="vitCulc opacity text-center">推定体力計算</h1>
-                <table class="vitCulc table table-hover table-bordered table-sm" id="guess">
-                    <thead>
-                        <tr class="table-primary">
-                            <th class="col-xs-1">体</th>
-                            <th class="col-xs-1">D1</th>
-                            <th class="col-xs-1">D2</th>
-                            <th class="col-xs-1">D3</th>
-                            <th class="col-xs-1">D4</th>
-                            <th class="col-xs-1">D5</th>
-                            <th class="col-xs-1">D6</th>
-                            <th class="col-xs-1">D7</th>
-                            <th class="col-xs-1">D8</th>
-                            <th class="col-xs-1">D9</th>
-                            <th class="col-xs-1">D10</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-
-
-                <!--
-                                <h2 class="damageCulc opacity text-center">ダメージランキング</h2>
-                                <div class="table-responsive">
-                                    <table class="damageCulc table table-hover table-striped table-bordered table-sm" id="damageRankTable">
-                                        <thead>
-                                            <tr class="table-primary opacity small">
-                                                <th class="text-center">説明</th>
-                                                <th class="">AVG</th>
-                                                <th class="">D1</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody class=""></tbody>
-                                    </table>
-                                </div>
-                -->
-            </div></div> <!-- main -->
-        <div id="footer">
-            <h2 class="damageCulc kadomaru bg-white text-center">ダメージ計算結果
-                <img src="https://www.silhouette-illust.com/wp-content/uploads/2017/10/icon_calculator_41158-101x101.jpg" width="32" height="32">
-            </h2>
-            <div class="table-responsive">
-                <table class="damageCulc table table-hover table-bordered table-sm " id="damageRangeTable">
-                    <tbody class=""></tbody>
-                </table>
             </div>
-        </div>
-
+        </div> <!-- main -->
+    </body>
 </html>
