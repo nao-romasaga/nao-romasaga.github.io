@@ -72,13 +72,12 @@ function insertCommonComponent() {
     var nav = "";
     nav += '<nav class="navbar navbar-expand-lg navbar-light bg-light">';
     nav += '  <span class="char-aruku dot dot_mid dot_cat"></span>';
-    nav += '  <a class="navbar-brand" href="#">ロマサガRS 便利ツール</a>';
-    nav += '  <span class="xs-hide char-aruku dot dot_mid dot_poruka" id=""></span>';
+    nav += '  <a class="navbar-brand" href="./index.html">ロマサガRS 便利ツール</a>';
     nav += '  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">';
     nav += '    <span class="navbar-toggler-icon"></span>';
     nav += '  </button>';
     nav += '  <div class="collapse navbar-collapse" id="navbarSupportedContent">';
-    nav += '    <ul class="navbar-nav mr-auto">';
+    nav += '    <ul class="navbar-nav mr-auto small">';
     nav += '      <li class="nav-item " id="headAuto">';
     nav += '        <a class="nav-link" href="./auto.html">全力AUTOシミュレーター</a>';
     nav += '      </li>';
@@ -88,8 +87,8 @@ function insertCommonComponent() {
     nav += '      <li class="nav-item" id="headStyle">';
     nav += '        <a class="nav-link" href="./style.html">スタイル詳細</a>';
     nav += '      </li>';
-    nav += '      <li class="nav-item" id="headIndex">';
-    nav += '        <a class="nav-link" href="./index.html">ダメージ計算</a>';
+    nav += '      <li class="nav-item" id="headDamage">';
+    nav += '        <a class="nav-link" href="./damage.html">ダメージ計算</a>';
     nav += '      </li>';
     nav += '      <li class="nav-item" id="headDojo">';
     nav += '        <a class="nav-link" href="./dojo.html">特訓タイマー</a>';
@@ -99,10 +98,10 @@ function insertCommonComponent() {
 //    nav += '        <a class="nav-link disabled" href="#">【工事中】アビリティ検索</a>';
     nav += '      </li>';
     nav += '      <li class="nav-item " id="headSite">';
-    nav += '        <a class="nav-link" href="./site.html"><small>利用規約・免責事項</small></a>';
+    nav += '        <a class="nav-link" href="./site.html">利用規約・免責事項</a>';
     nav += '      </li>';
     nav += '      <li class="nav-item " id="headKifu">';
-    nav += '        <a class="nav-link" href="./kifu.html"><small>寄付について</small></a>';
+    nav += '        <a class="nav-link" href="./kifu.html">寄付について</a>';
     nav += '      </li>';
     //nav += '      <li class="nav-item">';
     //nav += '        <a class="nav-link disabled" href="#">スタイル情報(coming soon)</a>';
@@ -142,8 +141,8 @@ function insertCommonComponent() {
 
     //$("$header").html(nav);
     let url = $(location).attr('href');
-    if (url.indexOf('index.html') != -1) {
-        $("#headIndex").addClass("active");
+    if (url.indexOf('damage.html') != -1) {
+        $("#headDamage").addClass("active");
     } else if (url.indexOf('skill.html') != -1) {
         $("#headSkill").addClass("active");
     } else if (url.indexOf('style.html') != -1) {
