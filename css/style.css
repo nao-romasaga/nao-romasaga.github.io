@@ -22,6 +22,12 @@
     text-align: center !important;
 }
 
+.title-text{
+    background:url(../img/bg_window_large.png);
+    background-size:100% 100%;
+    color:#faf0b4;
+    padding:5px;    
+}
 .nav-link.active,
 .nav-item.show .nav-link {
     background-color: #93CBFF !important;
@@ -587,4 +593,18 @@ input[type=range]::-ms-tooltip {
     font-size: 20px;            /* チェックのサイズ */
     color: #fff;            /* チェックの色 */
     background-color: #06f;         /* チェックした時の色 */
+}
+.hidden {
+  display: none;
+}
+.hidden.pcBlock {
+  display: inline;
+}
+@media screen and (max-width: 640px) {
+  .hidden.pcBlock {
+    display: none;
+  }
+  .hidden.spBlock {
+    display: inline;
+  }
 }
