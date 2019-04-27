@@ -20,9 +20,11 @@ $(function () {
     readFile('Ability', function (result) {
         ABILITY_MASTER = result;
         initial();
+        $('.container').on('click', function(){});
     });
     readFile('Style', function (result) {
         STYLE_MASTER = result;
+        $('.container').on('click', function(){});
     });
 });
 
