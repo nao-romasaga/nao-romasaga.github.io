@@ -8,6 +8,28 @@ const PARAM_KEY = ["STR", "VIT", "DEX", "AGI", "INT", "MND", "AI", "MI"];
 
 
 $(document).ready(function ($) {
+    firebase.auth().onAuthStateChanged((user) => {
+        if (!user) {
+            var uiConfig = {
+                // ログイン完了時のリダイレクト先
+                signInSuccessUrl: 'http://localhost/style.html',
+                // 利用する認証機能
+                signInOptions: [
+                    firebase.auth.TwitterAuthProvider.PROVIDER_ID
+                ],
+            };
+            var ui = new firebaseui.auth.AuthUI(firebase.auth());
+            ui.start('#firebaseui-auth-container', uiConfig);
+        } else {
+            $("#loginInfo").hide();
+            let icon = $("<img>").attr("src", user.photoURL)
+                    .attr("style", "width:40px; heidht:40px;    border-radius: 50%;");
+            let name = `${user.displayName} さん:ログイン中`;
+            $("#firebaseui-auth-container").addClass("bg-white kadomaru")
+                    .append(icon).append(name);
+        }
+    });
+
     readFile('Char', function (result) {
         CHAR_MASTER = result;
         dispChar(CHAR_MASTER, device);
@@ -25,6 +47,8 @@ $(document).ready(function ($) {
     initialHide();
     setSlider();
     setSliderChart();
+
+    // キャラクタークリック時
     $(document).on('click', '.char', function () {
         $("#displayDamage").removeClass("icon_btn_off");
         $("#displayDamage").addClass("icon_btn_on");
@@ -32,30 +56,35 @@ $(document).ready(function ($) {
         $(".culcDamageResultClass").slideDown();
         $("#charData").show();
         $(".styleInfoArea").show();
-
         $(".tabArea").show();
         tabChange($("#tabStyle"));
         $(".styleChoiceArea").show();
         $(".styleSkillArea").hide();
         $(".styleDiffArea").hide();
-
-
         $("html,body").animate({scrollTop: $('#charData').offset().top}, 500, 'swing');
+
+
         let charId = $(this).attr("data-id");
         NOW_CHAR = CHAR_MASTER[charId];
-        let charInfo = CHAR_MASTER[charId];
-        let styleId = charInfo['Holders'][0];
+        //console.log(NOW_CHAR);
+        let styleId = NOW_CHAR['Holders'][0];
         NOW_STYLE = STYLE_MASTER[styleId];
 
-        //console.log(NOW_CHAR);
         $(".char-selected").each(function (i, e) {
             $(this).removeClass('char-winner');
             $(this).addClass('char-aruku');
         });
         $(this).removeClass('char-aruku');
         $(this).addClass('char-winner').addClass('char-selected').addClass("dot");
-        displayStyleList(charId);
-        displayStyleInfo(styleId);
+        readCharData(charId, function (result) {
+            // キャラクター情報表示
+            displayCharInfo(result);
+            // スタイル一覧表示
+            displayStyleList();
+            // スタイル初期表示
+            displayStyleInfo(styleId);
+        });
+
     });
 
     $(document).on('click', '.style', function () {
@@ -72,8 +101,71 @@ $(document).ready(function ($) {
     });
 
     $(".charParam").change(function () {
+        updateDB();
         reculc();
     });
+
+    function updateDB() {
+        let update = {}
+        for (let key of PARAM_KEY) {
+            NOW_CHAR[key] = Number($("#char" + key).val());
+            update[key] = Number($("#char" + key).val());
+        }
+        updateCharData({[NOW_CHAR['Id']]: update});
+    }
+
+    $("#allparams").change(function () {
+        let input = splitParam("不明");
+        let output = "";
+        output += `腕力: ${input[0]} 体力:${input[1]}<br>`;
+        output += `器用さ: ${input[2]} 素早さ:${input[3]}<br>`;
+        output += `知力: ${input[4]} 精神:${input[5]}<br>`;
+        output += `　愛: ${input[6]} 魅力:${input[7]}<br>`;
+        output += "が入力されました<br>";
+        output += "この内容を反映してもよろしいですか？";
+
+        $("#allParamConfirm").html(output);
+        $("#modal01").fadeIn();
+        $("#allParamConfirmInner").css("animation", "modal 0.5s forwards");
+        return false;
+    });
+
+    $(".modalClose").click(function () {
+        if ($(this).attr("data-id") === "ok") {
+            let input = splitParam(0);
+            for (let i in input) {
+                $("#char" + PARAM_KEY[i]).val(input[i]);
+            }
+            updateDB();
+            reculc();
+        }
+        $("#modal01").fadeOut();
+        $("#allParamConfirmInner").css("animation", "modalClose 0.5s forwards");
+        return false;
+    });
+    function splitParam(initial) {
+        let input = $("#allparams").val();
+        k = (/,|\.|\s|\t/g);
+        let tmp = input.split(k);
+
+        if (tmp.length === 1) {
+            tmp[0] = input.substr(0, 2);
+            tmp[1] = input.substr(2, 2);
+            tmp[2] = input.substr(4, 2);
+            tmp[3] = input.substr(6, 2);
+            tmp[4] = input.substr(8, 2);
+            tmp[5] = input.substr(10, 2);
+            tmp[6] = input.substr(12, 2);
+            tmp[7] = input.substr(14, 2);
+        }
+        for (let i = 0; i < 8; i++) {
+            if (tmp[i] === undefined || tmp[i] === "") {
+                tmp[i] = initial;
+            }
+        }
+        return tmp;
+    }
+
     $("#styleChartLv").change(function () {
         reculc();
     });
@@ -236,27 +328,35 @@ STATUS_TABLE += "</table>";
 var RADER_DATA_PER;
 var NOW_LV = 50;
 // キャラクタークリック時
-function displayStyleList(charId) {
+function displayCharInfo(charData) {
+    $("#charName").html(NOW_CHAR['Name']);
+
+    let dotId = NOW_CHAR['DotId'];
+    let pngName = (dotId !== "ID4e2c8") ? dotId : "ID4e2c9";
+    $("#charDot").attr('style', getImgUrl('dot/' + pngName + ".png") + " margin-left:20px;");
+
+    if (charData !== null) {
+        for (let key of PARAM_KEY) {
+            NOW_CHAR[key] = Number(charData[key]);
+        }
+    } else if (NOW_CHAR['init'] === undefined) {
+        for (let key of PARAM_KEY) {
+            NOW_CHAR[key] = Number(NOW_CHAR[key]) + 45;
+        }
+    }
+    NOW_CHAR['init'] = false;
+    for (let key of PARAM_KEY) {
+        $("#char" + key).val(NOW_CHAR[key]);
+    }
+}
+// キャラクタークリック時
+function displayStyleList() {
     // キャラクター再選択でリセットされる
     $(".styleChoiceArea").show();
     $("#styleChoice").html("");
 
-    let charInfo = CHAR_MASTER[charId];
-    $("#charName").html(charInfo['Name']);
+    let charInfo = NOW_CHAR;
 
-    let dotId = charInfo['DotId'];
-    let pngName = (dotId !== "ID4e2c8") ? dotId : "ID4e2c9";
-    $("#charDot").attr('style', getImgUrl('dot/' + pngName + ".png") + " margin-left:20px;");
-
-    if (charInfo['init'] === undefined) {
-        for (let key of PARAM_KEY) {
-            charInfo[key] = Number(charInfo[key]) + 45;
-        }
-    }
-    charInfo['init'] = false;
-    for (let key of PARAM_KEY) {
-        $("#char" + key).val(charInfo[key]);
-    }
     // 所持スタイルの表示
     for (let styleId of charInfo['Holders']) {
         let styleInfo = STYLE_MASTER[styleId];
@@ -268,6 +368,11 @@ function displayStyleList(charId) {
         let background = $("<span>")
                 .addClass(getStyleIconBgClass(styleInfo['Rarity']))
                 .append(icon);
+        //let styleLevel = $("<select>");
+        //for (let i = 50; i > 30; i--) {
+        //    styleLevel.append("<option>" + i + "</option>");
+        //}
+        //background.append(styleLevel);
         $("#styleChoice").append(background);
     }
 
