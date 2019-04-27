@@ -12,7 +12,7 @@ $(document).ready(function ($) {
         if (!user) {
             var uiConfig = {
                 // ログイン完了時のリダイレクト先
-                signInSuccessUrl: 'http://localhost/style.html',
+                signInSuccessUrl: 'https://nao-romasaga.github.io/style.html',
                 // 利用する認証機能
                 signInOptions: [
                     firebase.auth.TwitterAuthProvider.PROVIDER_ID
