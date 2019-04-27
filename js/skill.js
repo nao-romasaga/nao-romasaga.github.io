@@ -69,6 +69,7 @@ $(document).ready(function ($) {
         var skillId = $(this).attr("data-id");
         displaySkillHolders(skillId);
     });
+
     function displaySkillHolders(skillId) {
         $("html,body").animate({scrollTop: $('#holder_label').offset().top});
         var skillInfo = SKILL_MASTER[skillId];
@@ -77,6 +78,7 @@ $(document).ready(function ($) {
         $("table#skill_holder_table tbody *").remove();
         $("#skill_holder_list").html("");
 
+        // 技所持者の表示
         let holderResult = [];
         for (key in skillInfo['Holders']) {
             let styleId = skillInfo['Holders'][key];
@@ -92,29 +94,36 @@ $(document).ready(function ($) {
             }
             return 1;
         });
-        let bgsize = "70px !important;";
-        let size = "width:70px;height:70px;";
         for (key in holderResult) {
             let styleInfo = holderResult[key];
-            let styleId = styleInfo["Id"];
-            // スタイルアイコンの追加
-            let icon = $("<div>").addClass("style")
-                    .addClass(getStyleIconClass(styleInfo['Rarity']))
-                    .attr("style", getImgUrl('style_icon/' + styleId + ".png") + "; " + size + " background-size: " + bgsize)
-                    .attr("data-id", styleId);
-            let background = $("<span>")
-                    .attr("style", size)
-                    .addClass(getStyleIconBgClass(styleInfo['Rarity']))
-                    .append(icon);
-
-            let padding = $("<div>").addClass('col-3 col-sm-2 text-center')
-                    .append(background);
-            if (skillInfo['SkillIryoku'] !== "-") {
-                padding.append("<p class='pad0 damage-label'>ダメージ " + styleInfo["culcDamage"] + "</p>")
-                        .append("<div class='style-label'>" + styleInfo["Name"] + "</div>");
-            }
+            let padding = createStyleIcon(styleInfo, skillInfo);
             $("#skill_holder_list").append(padding);
         }
+        // 技所持者の継承含めたスタイル分の追加
+        let holderStyleResult = [];
+        for (key in skillInfo['Holders']) {
+            let styleInfo = STYLE_MASTER[skillInfo['Holders'][key]];
+            let charInfo = CHAR_MASTER[styleInfo['CharacterId']];
+            for(key in charInfo['Holders']){
+                let styleInfoTmp = STYLE_MASTER[charInfo['Holders'][key]];
+                let result = culcSkillDamageWithStyleBase(charInfo, styleInfoTmp, skillInfo);
+                result = Object.assign(result, styleInfoTmp);
+                holderStyleResult.push(result);
+            }
+        }
+        holderStyleResult.sort((a, b) => {
+            if (a.culcDamage > b.culcDamage) {
+                return -1;
+            }
+            return 1;
+        });
+        console.log(holderStyleResult);
+        for (key in holderStyleResult) {
+            let styleInfo = holderStyleResult[key];
+            let padding = createStyleIcon(styleInfo, skillInfo);
+            $("#skill_damage_ranking").append(padding);
+        }
+        // 技所持者の詳細表示
         for (key in holderResult) {
             let styleInfo = holderResult[key];
             //console.log(styleInfo);
@@ -130,7 +139,7 @@ $(document).ready(function ($) {
 
             trHead.append(score);
 
-            trHead.append("<td colspan=2>" + styleInfo['Name'] +" <small>" +styleInfo['AnotherName'] + "</small></td>");
+            trHead.append("<td colspan=2>" + styleInfo['Name'] + " <small>" + styleInfo['AnotherName'] + "</small></td>");
             let tr = $("<tr>").addClass(colorClass);
             let iconTD = $("<td>").addClass("text-center");
             // スタイルアイコンの追加
@@ -165,52 +174,30 @@ $(document).ready(function ($) {
     //displaySkillHolders("ID69184db");
 });
 
+var STYLE_ICON_BG_SIZE = "70px !important;";
+var STYLE_ICON_SIZE = "width:70px;height:70px;";
+function createStyleIcon(styleInfo, skillInfo) {
+    let styleId = styleInfo["Id"];
+    // スタイルアイコンの追加
+    let icon = $("<div>").addClass("style")
+            .addClass(getStyleIconClass(styleInfo['Rarity']))
+            .attr("style", getImgUrl('style_icon/' + styleId + ".png") + "; " + STYLE_ICON_SIZE + " background-size: " + STYLE_ICON_BG_SIZE)
+            .attr("data-id", styleId);
+    let background = $("<span>")
+            .attr("style", STYLE_ICON_SIZE)
+            .addClass(getStyleIconBgClass(styleInfo['Rarity']))
+            .append(icon);
 
-function skillLabel(skillInfo) {
-    let skillList = $("<button>").addClass("skill_select").addClass("keishoSkill").attr("data-id", skillInfo['Id']);
-    let topDiv = $('<div>').attr('style', 'width:100%; display: inline-flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid;');
-    // 武器種別 BattleType、名称、所有数
-    let skillName = $("<p>").addClass("text-left").attr('style', 'margin:0;');
-    skillName.append(skillInfo['Name']);    // 技名称
-    let skillRight = $("<p>").addClass('text-right').addClass('small').attr('style', 'margin:0;');
-    skillRight.append("覚醒:" + skillInfo['Kakusei']);
-    skillRight.append(" BP:" + skillInfo['ConsumeBp']);
-    skillRight.append(" 威力:" + skillInfo['PowerGrade'] + "(" + skillInfo['SkillIryoku'] + ")");
-    topDiv.append(skillName).append(skillRight);
-
-    // 属性 AttackAttributes
-    let bottomDiv = $('<div>').attr('style', 'display: table-cell; vertical-align: middle; height:30px');
-    bottomDiv.append($('<span>').addClass('icon_sm').addClass(ICON_LIST[skillInfo['BattleType']]));
-    skillInfo['AttackAttributes'].split(',').forEach(function (value) {
-        let img = $('<span>').addClass('icon_sm').addClass(ICON_LIST[value]);
-        bottomDiv.append(img);
-    });
-    if (skillInfo['BadStatus'] != "") {
-        let img = $('<span>').addClass('').addClass("icon_sm").addClass(ICON_LIST[skillInfo['BadStatus']]);
-        bottomDiv.append(img);
+    let padding = $("<div>").addClass('col-3 col-sm-2 text-center')
+            .append(background);
+    if (skillInfo['SkillIryoku'] !== "-") {
+        padding.append("<p class='pad0 damage-label'>ダメージ " + styleInfo["culcDamage"] + "</p>")
+                .append("<div class='style-label'>" + styleInfo["Name"] + "</div>");
     }
-    if (skillInfo['DeBuff'] != "") {
-        let img = $('<span>').addClass('icon_sm_buf').addClass(ICON_LIST[skillInfo['DeBuff'] + "低下"]);
-        bottomDiv.append(img);
-    }
-    if (skillInfo['AttackDistance'] !== "近") {
-        bottomDiv.append("[" + skillInfo['AttackDistance'] + "]");
-    }
-    if (skillInfo['AttackArea'] !== "敵単体") {
-        bottomDiv.append("[" + AREA_SHORT[skillInfo['AttackArea']] + "]");
-    }
-    if (skillInfo['Fast']) {
-        bottomDiv.append("[ファスト]");
-    }
-    if (skillInfo['Delay']) {
-        bottomDiv.append("[ディレイ]");
-    }
-    bottomDiv.append(" 所持者(" + skillInfo['Holders'].length + ")");   // 所有者数
-
-    skillList.append(topDiv).append(bottomDiv);
-
-    return skillList;
+    return padding;
 }
+
+
 
 
 function createSkillList() {
