@@ -25,7 +25,8 @@
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
-
+        <script src="https://www.gstatic.com/firebasejs/ui/3.5.2/firebase-ui-auth__ja.js"></script>
+        <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
         <script src="./js/Firebase.js"></script>
         <script src="./js/utils.js" ></script>
         <script src="./js/style.js" ></script>
@@ -60,6 +61,10 @@
                 <h3 class="text-center title-text">キャラクター詳細</h3>
                 <p class="text-right opacity"><small>バグ発見、ご要望は <a href="https://twitter.com/nao_romasaga_rs" target="new">nao_romasaga_rs</a>まで</small>
                 </p>
+                <div id="firebaseui-auth-container" style="margin-bottom:10px;"></div>
+                <div id="loginInfo" class="opacity kadomaru" style="margin-bottom:10px;">Twitterログインすると入力したキャラクターの情報が保存され次回以降自動入力されます<br>
+                    また今後オープン予定の「みんなの育成状況」や「ステータス上限チェック」などが利用可能になります。</div>
+                
                 <h5 class="text-center opacity kadomaru" onclick="$('.movie').toggleClass('d-none')">つかいかた動画をみる</h5>
                 <div class="movie d-none">
                     <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">[new] キャラクターとスタイル詳細機能を作成しました。<br>スタイルレベル50の性能や、所有技の比較などが簡単に出来ます<br><br>ガチャを引く判断や限界突破の判断にご活用下さい✨<a href="https://t.co/vsr2OMd3zG">https://t.co/vsr2OMd3zG</a><br><br>お布施もお待ちしております😘<a href="https://t.co/3qFDqY1Kdx">https://t.co/3qFDqY1Kdx</a> <a href="https://t.co/lka5BOKblU">pic.twitter.com/lka5BOKblU</a></p>&mdash; (nAo)@ロマサガRS (@nao_romasaga_rs) <a href="https://twitter.com/nao_romasaga_rs/status/1120049965747687424?ref_src=twsrc%5Etfw">April 21, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -113,6 +118,17 @@
                                 </tbody>
                             </table>
                         </div>
+                        <div class="col-12" style="margin-bottom: 15px;">
+                            <span onclick="" data-toggle="tooltip" data-placement="top" data-html="true" style="margin-left:10px" title="" 
+                                  data-original-title="
+                                  腕.体.器.速.知.精.愛.魅の順に入力出来ます<br>
+                                  区切り文字は,.スペースタブが利用可能です<br>
+                                  区切り文字なしで16桁の数字でも入力可能です<br>
+                                  ステータス1桁の場合は先頭に0をつけてください">
+                                まとめて入力<button class="icon_info_md"></button>
+                            </span>
+                            <input type="tel" class="input" placeholder="50.41.01.20.30.40.50.99" id="allparams"></div>
+
                     </div>
                 </div>
 
@@ -185,5 +201,61 @@
             </div>
             <br>
         </div></div> <!-- main -->
+    <!-- モーダルウィンドウ -->
+    <div class="modal" id="modal01"> 
+        <!-- モーダルウィンドウが開いている時のオーバーレイ -->
+        <div class="overLay modalClose"></div>
+        <!-- モーダルウィンドウの中身 -->
+        <div class="inner text-center width-100" id="allParamConfirmInner">
+            <div id="allParamConfirm">
+
+            </div>
+            <div class="">
+                <button data-id="ng" class="icon_btn_off modalClose" style="background-size: 150px 40px; width:150px;">やり直し</button>
+                <button data-id="ok" class="icon_btn_on modalClose" style="background-size: 150px 40px; width:150px;">決定</button>
+            </div>
+        </div> 
+    </div>
+    <style>
+        /* モーダルウィンドウのスタイル */
+        .modal {
+            /* 
+            position:absolute;
+            */
+            width:100%;
+            height:100%;
+            top:0;
+            left:0;
+            display:none;
+        }
+
+        /* オーバーレイのスタイル */
+        .overLay {
+            /* 
+            position:absolute;
+            */
+            top:0;
+            left:0;
+            background:rgba(200,200,200,0.9);
+            width:100%;
+            height:100%;
+            z-index:10;
+        }
+
+        /* モーダルウィンドウの中身のスタイル */
+        .modal .inner {
+            position:absolute;
+            z-index:11;
+            top:50%;
+        }
+        @keyframes modal{
+            0% {top:-100%}
+            100% {top:50%}
+        }
+        @keyframes modalClose {
+            0% {top:50%}
+            100% {top:100%}
+        }
+    </style>        
 </body>
 </html>
