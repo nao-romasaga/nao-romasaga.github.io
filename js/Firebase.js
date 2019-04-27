@@ -1,11 +1,13 @@
 var config = {
     apiKey: "AIzaSyCKpg76hjQg4YNSW3hGEw5uCJOBbQNUsnQ",
     databaseURL: "https://nao-romasaga-rs.firebaseio.com",
+    authDomain: "nao-romasaga-rs.firebaseapp.com",
     storageBucket: "nao-romasaga-rs.appspot.com",
 };
 var configTmp = {
     apiKey: "AIzaSyBliZfwz-xZnVtIZmeAQv0uo2IgmL5eUKM",
     databaseURL: "https://nao-romasaga-rs-blue.firebaseio.com",
+    authDomain: "nao-romasaga-rs-blue.firebaseapp.com",
     storageBucket: "nao-romasaga-rs-blue.appspot.com",
 };
     
