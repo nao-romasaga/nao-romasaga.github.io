@@ -242,6 +242,9 @@ function displayAbilityHolder(holders) {
     for (key in holders['Holders']) {
         let styleId = holders['Holders'][key];
         let styleInfo = STYLE_MASTER[styleId];
+        if(styleInfo === undefined){
+            continue;
+        }
 
         let tr1 = $("<tr>").addClass("darkButton");
         let td = $("<td>").attr('colspan', 2);
