@@ -94,47 +94,87 @@ function initial() {
     }
 
     tmpList = sortTree(tmpList);
+    let ICON_LIST = {
+        "自身強化(バフ)腕力": "icon_buff_str",
+        "自身強化(バフ)体力": "icon_buff_vit",
+        "自身強化(バフ)器用さ": "icon_buff_dex",
+        "自身強化(バフ)素早さ": "icon_buff_agi",
+        "自身強化(バフ)知力": "icon_buff_int",
+        "自身強化(バフ)精神": "icon_buff_mnd",
+        "自身強化(バフ)愛": "icon_buff_ai",
+        "自身強化(バフ)魅力": "icon_buff_mi",
+        "敵弱体化(デバフ)腕力": "icon_debuff_str",
+        "敵弱体化(デバフ)体力": "icon_debuff_vit",
+        "敵弱体化(デバフ)器用さ": "icon_debuff_dex",
+        "敵弱体化(デバフ)素早さ": "icon_debuff_agi",
+        "敵弱体化(デバフ)知力": "icon_debuff_int",
+        "敵弱体化(デバフ)精神": "icon_debuff_mnd",
+        "敵弱体化(デバフ)愛": "icon_debuff_ai",
+        "敵弱体化(デバフ)魅力": "icon_debuff_mi",
+        "毒": "icon_doku", "暗闇": "icon_kurayami", "スタン": "icon_stan", "マヒ": "icon_mahi", "眠り": "icon_zzz",
+        "石化": "icon_sekika", "混乱": "icon_konran", "魅了": "icon_miryo", "狂戦士": "icon_kyosenshi", "気絶": "icon_kizetsu",
+    }
+    for (let main of tmpList) {
+        let li = $('<li>');
+        let mainLink = '<a class="toggle menu parent">' + main['name'] + '</a>';
+        li.append(mainLink);
+        let ul = $('<ul class="inner child child01">');
+        for (let sub of main['list']) {
+            if (sub['name'] != "") {
+                let subLink;
+                let icon = "";
 
-    if (getDevice() != "sp") {
-        initialSkillTree(tmpList);
-    } else {
-        for (let main of tmpList) {
-            let li = $('<li>');
-            let mainLink = '<a class="toggle menu parent">' + main['name'] + '</a>';
-            li.append(mainLink);
-            let ul = $('<ul class="inner child child01">');
-            for (let sub of main['list']) {
-                if (sub['name'] != "") {
-                    let liSub = $('<li>');
-                    let subLink = '<a class="toggle menu">' + sub['name'] + '</a>';
-                    liSub.append(subLink);
-                    let ulSub = $('<ul class="inner child child02">');
-                    for (let size of sub['list']) {
-                        for (let row of size['list']) {
-                            let time = (row['time'] !== undefined && row['time'] !== "" && row['time'] !== null) ? " " + getTime(row['time']) : "";
-                            let size = (row['size'] !== undefined && row['size'] !== "" && row['size'] !== null) ? " " + row['size'] : "";
-                            let holders = " (" + row['Holders'].length + ")";
-                            let disp = '<li class="abilityName" abid="' + row['Id'] + '"><p style="text-align:left;float: left;">' + row['Name'] + holders + "</p><p style='text-align:right;'><small>" + row['when'] + time + size + "</small></p></li>";
-                            ulSub.append(disp);
-                        }
-                    }
-                    liSub.append(ulSub);
-                    ul.append(liSub);
+                if (ICON_LIST[main['name'] + sub['name']] !== undefined) {
+                    icon = ICON_LIST[main['name'] + sub['name']];
+                } else if (ICON_LIST[sub['name']] !== undefined) {
+                    icon = ICON_LIST[sub['name']];
+                } else if (ICON_LIST[sub['name'].replace("耐性", "")] !== undefined) {
+                    icon = ICON_LIST[sub['name'].replace("耐性", "")];
+                }
+
+                if (icon !== "") {
+                    let subIcon = $("<span>").addClass("icon_xs_zokusei").addClass(icon)
+                            .addClass("text-nowrap")
+                            .attr("style", "padding-left:30px;")
+                            .text(sub['name']);
+                    subLink = $("<a>").addClass("toggle menu").append(subIcon);
                 } else {
-                    for (let size of sub['list']) {
-                        for (let row of size['list']) {
-                            let time = (row['time'] !== undefined && row['time'] !== "" && row['time'] !== null) ? " " + getTime(row['time']) : "";
-                            let size = (row['size'] !== undefined && row['size'] !== "" && row['size'] !== null) ? " " + row['size'] : "";
-                            let holders = " (" + row['Holders'].length + ")";
-                            let disp = '<li class="abilityName" abid="' + row['Id'] + '"><p style="text-align:left;float: left;">' + row['Name'] + holders + "</p><p style='text-align:right;'><small>" + row['when'] + time + size + "</small></p></li>";
-                            ul.append(disp);
-                        }
+                    subLink = '<a class="toggle menu">' + sub['name'] + '</a>';
+                }
+
+                let liSub = $('<li>');
+                liSub.append(subLink);
+                let ulSub = $('<ul class="inner child child02">');
+                for (let size of sub['list']) {
+                    for (let row of size['list']) {
+                        let time = (row['time'] !== undefined && row['time'] !== "" && row['time'] !== null) ? " " + getTime(row['time']) : "";
+                        let size = (row['size'] !== undefined && row['size'] !== "" && row['size'] !== null) ? " " + row['size'] : "";
+                        let holders = " (" + row['Holders'].length + ")";
+                        let disp = '<li class="abilityName" abid="' + row['Id'] + '"><p style="text-align:left;float: left;">' + row['Name'] + holders + "</p><p style='text-align:right;'><small>" + row['when'] + time + size + "</small></p></li>";
+                        ulSub.append(disp);
+                    }
+                }
+                liSub.append(ulSub);
+                ul.append(liSub);
+            } else {
+                for (let size of sub['list']) {
+                    for (let row of size['list']) {
+                        let time = (row['time'] !== undefined && row['time'] !== "" && row['time'] !== null) ? " " + getTime(row['time']) : "";
+                        let size = (row['size'] !== undefined && row['size'] !== "" && row['size'] !== null) ? " " + row['size'] : "";
+                        let holders = " (" + row['Holders'].length + ")";
+                        let disp = '<li class="abilityName" abid="' + row['Id'] + '"><p style="text-align:left;float: left;">' + row['Name'] + holders + "</p><p style='text-align:right;'><small>" + row['when'] + time + size + "</small></p></li>";
+                        ul.append(disp);
                     }
                 }
             }
-            li.append(ul);
-            $("#sp_skill_tree > ul").append(li);
         }
+        li.append(ul);
+        $("#sp_skill_tree > ul").append(li);
+        // SP画面
+//    if (getDevice() != "sp") {
+//        initialSkillTree(tmpList);
+//    } else {
+//        }
     }
 }
 

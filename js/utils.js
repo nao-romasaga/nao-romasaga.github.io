@@ -93,9 +93,8 @@ function insertCommonComponent() {
     nav += '      <li class="nav-item" id="headDojo">';
     nav += '        <a class="nav-link" href="./dojo.html">特訓タイマー</a>';
     nav += '      </li>';
-//    nav += '      <li class="nav-item" id="headAbility">';
-    //nav += '        <a class="nav-link" href="./ability.html">【工事中】アビリティツリー</a>';
-//    nav += '        <a class="nav-link disabled" href="#">【工事中】アビリティ検索</a>';
+    nav += '      <li class="nav-item" id="headAbility">';
+    nav += '        <a class="nav-link" href="./ability.html">アビリティ検索</a>';
     nav += '      </li>';
     nav += '      <li class="nav-item " id="headSite">';
     nav += '        <a class="nav-link" href="./site.html">利用規約・免責事項</a>';
