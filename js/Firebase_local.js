@@ -16,28 +16,38 @@ firebase.auth().signInAnonymously().catch(function (error) {
     var errorMessage = error.message;
     // ...
 });
-firebase.auth().onAuthStateChanged(function (user) {
+
+var REF;
+var UID;
+firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-        // User is signed in.
-        var isAnonymous = user.isAnonymous;
-        var uid = user.uid;
-        // ...
+        database = firebase.database();
+        UID = user.uid;
+        REF = database.ref('user_data/' + UID);
+        console.log(REF);
     } else {
-        // User is signed out.
-        // ...
     }
-    // ...
 });
 
 function readFile(target, callback) {
-    return firebase.database().ref(target).once("value").then(function (snapshot) {
+    return firebase.database().ref(`game_data/${target}`).once("value").then(function (snapshot) {
         return callback(snapshot.val());
     });
+}
+
+function readCharData(charId, callback) {
+    return firebase.database().ref(`user_data/${UID}/${charId}`).once("value").then(function (snapshot) {
+        return callback(snapshot.val());
+    });
+}
+function updateCharData(data) {
+    if (REF !== undefined) {
+        REF.update(data);
+    }
 }
 
 function getImgUrl(target) {
     let url = "https://nao-romasaga.github.io/img/" + target;
     return 'background:url(' + url + ') no-repeat;'
 }
-
 
