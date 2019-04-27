@@ -22,7 +22,7 @@
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
-        <script src="./js/Firebase.js"></script>
+        <script src="./js/Firebase_local.js"></script>
         <script src="./js/utils.js" ></script>
         <script src="./js/skill.js" ></script>
         <script src="./js/damage.js" ></script>
@@ -88,7 +88,7 @@
                         <li class="col-2 col-sm-1 xs-pad0"><a class="nav-link pad0 icon_mini_zokusei icon_yo" data-toggle="tab" href="#skill_yo"></a></li>
                         <li class="col-2 col-sm-5"></li>
 
-                        <li class="col-12 col-sm-2 table-success">状態異常</li>
+                        <li class="col-12 col-sm-2 table-success">状態<br class="hidden pcBlock">異常</li>
                         <li class="col-2 col-sm-1 xs-pad0"><a class="nav-link pad0 icon_mini_zokusei icon_doku" data-toggle="tab" href="#skill_doku"><br><small>毒</small></a></li>
                         <li class="col-2 col-sm-1 xs-pad0"><a class="nav-link pad0 icon_mini_zokusei icon_mahi" data-toggle="tab" href="#skill_mahi"><br><small>マヒ</small></a></li>
                         <li class="col-2 col-sm-1 xs-pad0"><a class="nav-link pad0 icon_mini_zokusei icon_kurayami" data-toggle="tab" href="#skill_kurayami"><br><small>暗闇</small></a></li>
@@ -107,33 +107,30 @@
                         <li class="col-2 col-sm-1 xs-showside-padding-zero"><a class="nav-link icon_mini_zokusei icon_debuff_agi" data-toggle="tab" href="#skill_deb_suba"></a></li>
                         <li class="col-2 col-sm-1 xs-showside-padding-zero"><a class="nav-link icon_mini_zokusei icon_debuff_int" data-toggle="tab" href="#skill_deb_chi"></a></li>
                         <li class="col-2 col-sm-1 xs-showside-padding-zero"><a class="nav-link icon_mini_zokusei icon_debuff_mnd" data-toggle="tab" href="#skill_deb_sei"></a></li>                  
-                        <li class="col-sm-4 xs-hide"></li>
-                        <li class="col-12 col-sm-2 table-success">攻撃範囲</li>
+                        <li class="col-sm-4 xs-showside-padding-zero"></li>                  
+                        <li class="col-12 col-sm-2 table-success">攻撃<br class="hidden pcBlock">範囲</li>
                         <li class="col-3 col-sm-2 m-auto side-padding-zero"><a class="nav-link  small" data-toggle="tab" href="#skill_zentai"><span class="char-eisho-mini dot_leon dot dot_mini" id="icon_allSkill"></span><br>全体</a></li>
                         <li class="col-3 col-sm-2 m-auto side-padding-zero"><a class="nav-link  small" data-toggle="tab" href="#skill_tate"><span class="char-tate-mini dot_hector dot dot_mini" id="icon_tateSkill"></span><br>縦一列</a></li>
                         <li class="col-3 col-sm-2 m-auto side-padding-zero"><a class="nav-link  small" data-toggle="tab" href="#skill_yoko"><span class="char-tsuki-mini dot_roza dot dot_mini" id="icon_yokoSkill"></span><br>横一列</a></li>
                         <li class="col-3 col-sm-2 m-auto side-padding-zero"><a class="nav-link  small" data-toggle="tab" href="#skill_mikata"><span class="char-eisho-mini dot_sofia dot dot_mini" id="icon_healSkill"></span><br>味方単</a></li>
-                        <li class="col-sm-2 xs-hide"></li>
-                        <li class="col-12 col-sm-2 table-info"><small>その他</small></li>
-                        <li class="col-1 m-auto side-padding-zero"><a class="nav-link  small" data-toggle="tab" href="#skill_kin">近</a></li>
-                        <li class="col-1 m-auto side-padding-zero"><a class="nav-link  small" data-toggle="tab" href="#skill_en">遠</a></li>
-                        <li class="col-2 m-auto side-padding-zero"><a class="nav-link  small" data-toggle="tab" href="#skill_jishin">自身</a></li>
-                        <li class="col-3 m-auto side-padding-zero"><a class="nav-link  small" data-toggle="tab" href="#skill_fast">ファスト</a></li>
-                        <li class="col-3 m-auto side-padding-zero"><a class="nav-link  small" data-toggle="tab" href="#skill_delay">ディレイ</a></li>
-                        <li class="col-1m-auto"></li>
-                        <li class="col-1 xs-showm-auto"></li>
+                        <li class="col-sm-2"></li>
+                        <li class="col-12 col-sm-2 table-info">その他</li>
+                        <li class="col-1 col-sm-1 m-auto side-padding-zero"><a class="nav-link  small" data-toggle="tab" href="#skill_kin">近</a></li>
+                        <li class="col-1 col-sm-1 m-auto side-padding-zero"><a class="nav-link  small" data-toggle="tab" href="#skill_en">遠</a></li>
+                        <li class="col-2 col-sm-2 m-auto side-padding-zero"><a class="nav-link  small" data-toggle="tab" href="#skill_jishin">自身</a></li>
+                        <li class="col-3 col-sm-2 m-auto side-padding-zero"><a class="nav-link  small" data-toggle="tab" href="#skill_fast">ファスト</a></li>
+                        <li class="col-3 col-sm-2 m-auto side-padding-zero"><a class="nav-link  small" data-toggle="tab" href="#skill_delay">ディレイ</a></li>
+                        <li class="col-1 col-sm-2 m-auto"></li>
 
-                        <li class="col-1 xs-hide table-success m-auto">技威力</li>
-                        <li class="col-12 xs-show table-success m-auto">技威力</li>
-                        <li class="my-col-1or3 m-auto side-padding-zero"><a class="nav-link" style="font-family:arial black; font-size:15px" data-toggle="tab" href="#skill_iryoku_e">E</a></li>
-                        <li class="my-col-1or3 m-auto side-padding-zero"><a class="nav-link" style="font-family:arial black; font-size:15px" data-toggle="tab" href="#skill_iryoku_d">D</a></li>
-                        <li class="my-col-1or3 m-auto side-padding-zero"><a class="nav-link " style="font-family:arial black; font-size:15px" data-toggle="tab" href="#skill_iryoku_c">C</a></li>
-                        <li class="my-col-1or3 m-auto side-padding-zero"><a class="nav-link " style="font-family:arial black; font-size:15px" data-toggle="tab" href="#skill_iryoku_b">B</a></li>
-                        <li class="my-col-1or3 m-auto side-padding-zero"><a class="nav-link " style="font-family:arial black; font-size:15px" data-toggle="tab" href="#skill_iryoku_a">A</a></li>
-                        <li class="my-col-1or3 m-auto side-padding-zero"><a class="nav-link " style="font-family:arial black; font-size:15px" data-toggle="tab" href="#skill_iryoku_s">S</a></li>
-                        <li class="my-col-1or3 m-auto side-padding-zero"><a class="nav-link " style="font-family:arial black; font-size:15px" data-toggle="tab" href="#skill_iryoku_ss">SS</a></li>
-                        <li class="my-col-1or3 m-auto side-padding-zero"><a class="nav-link " style="font-family:arial black; font-size:15px" data-toggle="tab" href="#skill_iryoku_sss">SSS</a></li>
-                        <li class="col-3 xs-hide"></li>
+                        <li class="col-12 col-sm-2 table-success">技威力</li>
+                        <li class="col-1 col-sm-1 m-auto side-padding-zero"><a class="nav-link" style="font-family:arial black; font-size:15px" data-toggle="tab" href="#skill_iryoku_e">E</a></li>
+                        <li class="col-1 col-sm-1 m-auto side-padding-zero"><a class="nav-link" style="font-family:arial black; font-size:15px" data-toggle="tab" href="#skill_iryoku_d">D</a></li>
+                        <li class="col-1 col-sm-1 m-auto side-padding-zero"><a class="nav-link " style="font-family:arial black; font-size:15px" data-toggle="tab" href="#skill_iryoku_c">C</a></li>
+                        <li class="col-1 col-sm-1 m-auto side-padding-zero"><a class="nav-link " style="font-family:arial black; font-size:15px" data-toggle="tab" href="#skill_iryoku_b">B</a></li>
+                        <li class="col-1 col-sm-1 m-auto side-padding-zero"><a class="nav-link " style="font-family:arial black; font-size:15px" data-toggle="tab" href="#skill_iryoku_a">A</a></li>
+                        <li class="col-1 col-sm-1 m-auto side-padding-zero"><a class="nav-link " style="font-family:arial black; font-size:15px" data-toggle="tab" href="#skill_iryoku_s">S</a></li>
+                        <li class="col-1 col-sm-1 m-auto side-padding-zero"><a class="nav-link " style="font-family:arial black; font-size:15px" data-toggle="tab" href="#skill_iryoku_ss">SS</a></li>
+                        <li class="col-1 col-sm-3 m-auto side-padding-zero"><a class="nav-link " style="font-family:arial black; font-size:15px" data-toggle="tab" href="#skill_iryoku_sss">SSS</a></li>
 
                     </ul>
                 </div>
@@ -149,6 +146,8 @@
                     </thead>
                     <tbody class="bg-white"></tbody>
                 </table>
+                <label class="badge badge-pill badge-light" id="holder_label">継承：ダメージランキング</label>
+                <div id="skill_damage_ranking" class="row style-bgcolor"></div>
                 <br>
             </div></div> <!-- main -->
         <p id="PageTopBtn"><a href="#wrap"><i class="fas fa-arrow-up"></i></a></p>
