@@ -60,7 +60,7 @@ $(document).ready(function ($) {
                 });
             }
         });
-        $("#PARTY1").sortable();
+        //$("#PARTY1").sortable();
         $('[data-toggle="tooltip"]').tooltip();
     });
     readFile('Style', function (result) {
@@ -88,7 +88,7 @@ $(document).ready(function ($) {
         updatePartyDB();
     });
 
-    $(document).on('click', '.icon_btn_on', function () {
+    $(document).on('click', '.btn_close', function () {
         closeInput($(this).attr("data-id"));
     });
     function closeInput(charId) {
@@ -320,7 +320,7 @@ function displayCharInfo(charInfo, myData) {
         tr.find(".icn").attr("src", "./img/style_icon/" + styleId + ".png");
         for (let key of PARAM_KEY) {
             let limit = styleInfo['Limit' + key];
-            limit = 45 + Number(limit) - Number(charInfo[key]);
+            limit = BASE + Number(limit) - Number(charInfo[key]);
             let span = $("<span>").append((limit !== 99) ? limit : "?");
             if (limit > 0) {
                 tr.find("." + key).addClass("status_plus");
