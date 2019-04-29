@@ -187,17 +187,24 @@ $(document).ready(function ($) {
             NOW_CHAR[key] = Number(val);
             update[key] = Number(val);
         }
+        setLimitData();
         updateCharData({[NOW_CHAR['Id']]: update});
     }
     function updatePartyDB() {
         updateCharData({PARTY: PARTY_LIST});
     }
+    $(document).on('click', '.hanei', function () {
+        showModal($(this).parent().find(".allparams"));
+    });
 
     $(document).on('change', '.allparams', function () {
-        $("#allSubmit").attr("data-input", $(this).val());
-        $("#allSubmit").attr("data-charId", $(this).attr("data-id"));
+        showModal($(this));
+    });
+    function showModal(allparams) {
+        $("#allSubmit").attr("data-input", $(allparams).val());
+        $("#allSubmit").attr("data-charId", $(allparams).attr("data-id"));
 
-        let input = splitParam($(this).val(), "不明");
+        let input = splitParam($(allparams).val(), "不明");
         let output = "";
         output += `腕力: ${input[0]} 体力:${input[1]}<br>`;
         output += `器用さ: ${input[2]} 素早さ:${input[3]}<br>`;
@@ -210,10 +217,10 @@ $(document).ready(function ($) {
         $("#modal01").fadeIn();
         $("#allParamConfirmInner").css("animation", "modal 0.5s forwards");
         return false;
-    });
+    }
 
     $(".modalClose").click(function () {
-        if ($(this).attr("data-id") === "ok") {            
+        if ($(this).attr("data-id") === "ok") {
             let id = $(this).attr("data-charId");
             let input = splitParam($(this).attr("data-input"), 0);
             for (let i in input) {
@@ -221,7 +228,7 @@ $(document).ready(function ($) {
                     $(el).val(input[i]);
                 });
             }
-            updateDB();
+            updateDB(); // spanに入れる
         }
         $("#modal01").fadeOut();
         $("#allParamConfirmInner").css("animation", "modalClose 0.5s forwards");
@@ -234,30 +241,34 @@ $(document).ready(function ($) {
         });
         $(this).addClass("icon_btn_off");
         BASE = Number($(this).attr("data-id"));
+        setLimitData();
+    });
+
+    function setLimitData() {
         $(".LIMIT").each(function () {
             let styleId = $(this).attr("data-styleId");
             let styleInfo = STYLE_MASTER[styleId];
             let tr = $(".limit" + styleId);
             let charId = tr.attr("data-charId");
-            console.log(CHAR_MASTER[charId]);
             for (let key of PARAM_KEY) {
-                let limit = Number(styleInfo['Limit' + key]);
-                let now = Number(CHAR_MASTER[charId][key]);
-                console.log(key, limit, now);
-                limit = (limit !== 99) ? BASE + limit : "?";
-                limit = limit - now;
+                let limit = styleInfo['Limit' + key];
+                let limitValue = (styleInfo['Limit' + key] !== 99)
+                        ? BASE + Number(limit) - Number(CHAR_MASTER[charId][key])
+                        : "?";
                 tr.find("." + key).each(function () {
                     $(this).removeClass("status_plus").removeClass("status_minus");
-                    if (limit > 0) {
+                    if (limitValue === "?") {
+                    } else if (limitValue > 0) {
                         $(this).addClass("status_plus");
-                    } else if (limit < 0) {
+                    } else if (limitValue < 0) {
                         $(this).addClass("status_minus");
                     }
+                    $(this).text(limitValue);
                 });
-                tr.find("." + key).text(limit);
+
             }
         });
-    });
+    }
 
 });
 
@@ -279,7 +290,7 @@ function displayCharInfo(charInfo, myData) {
     charBaseTmpl.find(".openMenu").attr("data-id", charId);
     charBaseTmpl.find(".char").parent().attr("data-id", charId);
     charBaseTmpl.find(".allparams").attr("data-id", charId);
-    
+
 
     let dotId = charInfo['DotId'];
     let pngName = (dotId !== "ID4e2c8") ? dotId : "ID4e2c9";
@@ -317,18 +328,22 @@ function displayCharInfo(charInfo, myData) {
 
         let tr = $("#LIMIT_TEMPLATE").clone().removeClass("d-none").removeAttr("id").addClass("LIMIT limit" + styleId)
                 .attr("data-styleId", styleId).attr("data-charId", charId)
-        ;
+                ;
         tr.find(".rare").attr("src", "./img/icon/icon_" + styleInfo['Rarity'] + ".png");
         tr.find(".icn").attr("src", "./img/style_icon/" + styleId + ".png");
         for (let key of PARAM_KEY) {
             let limit = styleInfo['Limit' + key];
-            let span = $("<span>").append((limit !== 99) ? BASE + Number(limit) - Number(charInfo[key]) : "?");
-            if (limit > 0) {
-                tr.find("." + key).addClass("status_plus");
-            } else if (limit < 0) {
-                tr.find("." + key).addClass("status_minus");
+            if (limit === 99) {
+                tr.find("." + key).text("?");
+            } else {
+                let limitValue = BASE + Number(limit) - Number(charInfo[key]);
+                tr.find("." + key).text(limitValue);
+                if (limitValue > 0) {
+                    tr.find("." + key).addClass("status_plus");
+                } else if (limitValue < 0) {
+                    tr.find("." + key).addClass("status_minus");
+                }
             }
-            tr.find("." + key).append(span);
         }
         charBaseTmpl.append(tr);
     }
