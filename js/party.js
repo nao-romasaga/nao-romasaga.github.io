@@ -11,6 +11,7 @@ var PARTY_LIST = [[]];
 var BASE = 45;
 
 $(document).ready(function ($) {
+    $('.tab-content').on('click', function(){});
     firebase.auth().onAuthStateChanged((user) => {
         if (!user) {
             var uiConfig = {
