@@ -15,7 +15,7 @@ $(document).ready(function ($) {
         if (!user) {
             var uiConfig = {
                 // ログイン完了時のリダイレクト先
-                signInSuccessUrl: 'https://nao-romasaga.github.io/style.html',
+                signInSuccessUrl: 'https://nao-romasaga.github.io/party.html',
                 // 利用する認証機能
                 signInOptions: [
                     firebase.auth.TwitterAuthProvider.PROVIDER_ID
