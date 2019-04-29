@@ -2,6 +2,17 @@
 @import url("icon.css");
 @import url("git.css");
 
+.status_plus{
+    font-size: 20px;
+    background-color: rgba(108 , 188,224, 1);
+    color: white;
+}
+.status_minus{
+    font-size: 20px;
+    background-color: rgba(215 , 100,100, 1);
+    color: white;
+}
+
 .resist_plus{
     font-size: 20px;
     color: rgba(108 , 188,224, 1);
@@ -595,16 +606,26 @@ input[type=range]::-ms-tooltip {
     background-color: #06f;         /* チェックした時の色 */
 }
 .hidden {
-  display: none;
+    display: none;
 }
 .hidden.pcBlock {
-  display: inline;
+    display: inline;
 }
 @media screen and (max-width: 640px) {
-  .hidden.pcBlock {
-    display: none;
-  }
-  .hidden.spBlock {
-    display: inline;
-  }
+    .hidden.pcBlock {
+        display: none;
+    }
+    .hidden.spBlock {
+        display: inline;
+    }
+}
+
+.fukidashi {
+    background:-webkit-gradient(radial, center center, 0, center center, 300, from(rgba(247,241,220,1)), to(rgba(191,183,166,1)));
+    background:-webkit-radial-gradient(center, circle cover, rgba(247,241,220,1) 0%, rgba(191,183,166,1) 100%);
+    background:-moz-radial-gradient(center, circle cover, rgba(247,241,220,1) 0, rgba(191,183,166,1) 100%);
+    background:-o-radial-gradient(center, circle cover, rgba(247,241,220,1) 0, rgba(191,183,166,1) 100%);
+    background:radial-gradient(rgba(247,241,220,1) 0, rgba(191,183,166,1) 100%);
+    border-radius: 30px;
+    color: black;    
 }
