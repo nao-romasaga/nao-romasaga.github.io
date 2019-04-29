@@ -195,6 +195,7 @@ $(document).ready(function ($) {
 
     $(document).on('change', '.allparams', function () {
         $("#allSubmit").attr("data-input", $(this).val());
+        $("#allSubmit").attr("data-charId", $(this).attr("data-id"));
 
         let input = splitParam($(this).val(), "不明");
         let output = "";
@@ -212,7 +213,7 @@ $(document).ready(function ($) {
     });
 
     $(".modalClose").click(function () {
-        if ($(this).attr("data-id") === "ok") {
+        if ($(this).attr("data-id") === "ok") {            
             let id = $(this).attr("data-charId");
             let input = splitParam($(this).attr("data-input"), 0);
             for (let i in input) {
@@ -273,11 +274,12 @@ function displayCharInfo(charInfo, myData) {
     let charBaseTmpl = $("#CHAR_TEMPLATE").clone().removeClass("d-none").removeAttr("id").addClass("charTmpl" + charId)
             .attr("data-charId", charId);
     charBaseTmpl.find(".darkButton").html(charInfo['Name']);
-    $("#allSubmit").attr("data-charId", charId);
     charBaseTmpl.find(".icon_btn_on").attr("data-id", charId);
     charBaseTmpl.find(".charUnset").attr("data-id", charId);
     charBaseTmpl.find(".openMenu").attr("data-id", charId);
     charBaseTmpl.find(".char").parent().attr("data-id", charId);
+    charBaseTmpl.find(".allparams").attr("data-id", charId);
+    
 
     let dotId = charInfo['DotId'];
     let pngName = (dotId !== "ID4e2c8") ? dotId : "ID4e2c9";
