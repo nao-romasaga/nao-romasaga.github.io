@@ -91,7 +91,7 @@ function insertCommonComponent() {
     nav += '        <a class="nav-link" href="./style.html">キャラ+スタイル詳細</a>';
     nav += '      </li>';
     nav += '      <li class="nav-item" id="headParty">';
-    nav += '        <a class="nav-link" href="./party.html">パーティ育成メモ</a>';
+    nav += '        <a class="nav-link" href="./party.html">ステータス上限チェック</a>';
     nav += '      </li>';
     nav += '      <li class="nav-item" id="headMinna">';
     nav += '        <a class="nav-link disabled" href="#" aria-disabled="true">【データ収集中】みんなの育成状況</a>';
