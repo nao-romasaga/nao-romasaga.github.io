@@ -76,16 +76,16 @@ $(document).ready(function ($) {
         $(".charTmpl" + charId).find('.inputArea').removeClass('d-none').slideDown(500);
         $(".LIMIT").attr("style", "border:0px");
 
-
-        PARTY_LIST[NOW_PARTY] = [];
-        $(".ui-sortable").find(".charTable").each(function (idx, el) {
-            console.log(idx, $(el).attr("data-charId"));
-            PARTY_LIST[NOW_PARTY].push({
-                "char": $(el).attr("data-charId"),
-                "style": $(el).attr("data-styleId")
-            });
-        });
-        updatePartyDB();
+// ソートについては保留なのでコメントアウト
+//        PARTY_LIST[NOW_PARTY] = [];
+//        $(".ui-sortable").find(".charTable").each(function (idx, el) {
+//            console.log(idx, $(el).attr("data-charId"));
+//            PARTY_LIST[NOW_PARTY].push({
+//                "char": $(el).attr("data-charId"),
+//                "style": $(el).attr("data-styleId")
+//            });
+//        });
+//        updatePartyDB();
     });
 
     $(document).on('click', '.btn_close', function () {
@@ -156,7 +156,7 @@ $(document).ready(function ($) {
 
             $("html,body").animate({scrollTop: $(".charTmpl" + charId).offset().top}, 500, 'swing');
         });
-        $("#PARTY1").sortable();
+        //$("#PARTY1").sortable();
         $('[data-toggle="tooltip"]').tooltip();
     });
 
@@ -322,8 +322,7 @@ function displayCharInfo(charInfo, myData) {
         tr.find(".icn").attr("src", "./img/style_icon/" + styleId + ".png");
         for (let key of PARAM_KEY) {
             let limit = styleInfo['Limit' + key];
-            limit = BASE + Number(limit) - Number(charInfo[key]);
-            let span = $("<span>").append((limit !== 99) ? limit : "?");
+            let span = $("<span>").append((limit !== 99) ? BASE + Number(limit) - Number(charInfo[key]) : "?");
             if (limit > 0) {
                 tr.find("." + key).addClass("status_plus");
             } else if (limit < 0) {
