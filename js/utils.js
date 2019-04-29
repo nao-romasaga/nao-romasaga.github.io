@@ -90,6 +90,9 @@ function insertCommonComponent() {
     nav += '      <li class="nav-item" id="headStyle">';
     nav += '        <a class="nav-link" href="./style.html">キャラ+スタイル詳細</a>';
     nav += '      </li>';
+    nav += '      <li class="nav-item" id="headParty">';
+    nav += '        <a class="nav-link" href="./party.html">パーティ育成メモ</a>';
+    nav += '      </li>';
     nav += '      <li class="nav-item" id="headMinna">';
     nav += '        <a class="nav-link disabled" href="#" aria-disabled="true">【データ収集中】みんなの育成状況</a>';
     nav += '      </li>';
@@ -159,6 +162,8 @@ function insertCommonComponent() {
         $("#headKifu").addClass("active");
     } else if (url.indexOf('dojo.html') != -1) {
         $("#headDojo").addClass("active");
+    } else if (url.indexOf('party.html') != -1) {
+        $("#headParty").addClass("active");
     }
 
 }
