@@ -194,6 +194,16 @@
     border: 0px;
     background:url(https://nao-romasaga.github.io/img/icon/icon_button_off.png) no-repeat;
 }
+.icon_btn_red {
+    padding-top: 5px;
+    display: inline-block;
+    height:40px;
+    width:200px; 
+    color: #faf0b4;
+    -webkit-appearance: none;
+    border: 0px;
+    background:url(https://nao-romasaga.github.io/img/icon/icon_button_red.png) no-repeat;
+}
 
 .icon_buff_str{        background:url(https://nao-romasaga.github.io/img/icon/icon_buf_str.png) no-repeat;}
 .icon_debuff_str{        background:url(https://nao-romasaga.github.io/img/icon/icon_debuf_str.png) no-repeat;}
