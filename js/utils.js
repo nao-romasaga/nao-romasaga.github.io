@@ -160,7 +160,7 @@ function insertCommonComponent() {
     } else if (url.indexOf('dojo.html') != -1) {
         $("#headDojo").addClass("active");
     }
-    
+
 }
 $(document).ready(function () {
     $("body").bind("contextmenu", function (e) {
@@ -316,4 +316,14 @@ function createInfoButton() {
     return $("<button>")
             .addClass("icon_info_md").attr("data-toggle", "tooltip").attr("data-placement", "top")
             .attr("data-html", 'true');
+}
+
+function addBonus(org, per, add) {
+    return Number(org) + Math.floor(org * per / 100) + Number(add);
+}
+
+function animeReset(selector, animeClass) {
+    $(selector).removeClass(animeClass);
+    $(selector)[0].offsetWidth = $(selector)[0].offsetWidth;
+    $(selector).addClass(animeClass);
 }

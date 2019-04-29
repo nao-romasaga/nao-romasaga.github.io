@@ -99,7 +99,3 @@ function culcSkillDamageWithStyle(charInfo, stBonus, styleInfo, styleLevel, skil
     }
     return PARAM;
 }
-
-function addBonus(org, per, add) {
-    return Number(org) + Math.floor(org * per / 100) + Number(add);
-}

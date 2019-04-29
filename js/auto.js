@@ -370,9 +370,6 @@ function setSkillDamage(skillList) {
         skillInfo['culcDamage'] = CULC_DAMAGE_PARAM['culcDamage'];
     }
 }
-function addBonus(org, per, add) {
-    return Number(org) + Math.floor(org * per / 100) + Number(add);
-}
 
 function culcAutoMode(skillList) {
     //console.log(NOW_CHAR);
