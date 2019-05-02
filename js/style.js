@@ -3,8 +3,6 @@ var USE_SKILL_LIST = [];
 var NOW_CHAR = {};
 var NOW_STYLE = {};
 var CHAR_MASTER, STYLE_MASTER, SKILL_MASTER, ABILITY_MASTER;
-const PARAM_NAME = ['腕力', '体力', '器用さ', '素早さ', '知力', '精神', '愛', '魅力'];
-const PARAM_KEY = ["STR", "VIT", "DEX", "AGI", "INT", "MND", "AI", "MI"];
 
 
 $(document).ready(function ($) {
@@ -66,9 +64,10 @@ $(document).ready(function ($) {
 
         let charId = $(this).attr("data-id");
         NOW_CHAR = CHAR_MASTER[charId];
-        //console.log(NOW_CHAR);
+        console.log(Object.assign({},NOW_CHAR));
         let styleId = NOW_CHAR['Holders'][0];
         NOW_STYLE = STYLE_MASTER[styleId];
+        console.log(NOW_STYLE);
 
         $(".char-selected").each(function (i, e) {
             $(this).removeClass('char-winner');
@@ -330,6 +329,7 @@ var NOW_LV = 50;
 // キャラクタークリック時
 function displayCharInfo(charData) {
     $("#charName").html(NOW_CHAR['Name']);
+    console.log(charData);
 
     let dotId = NOW_CHAR['DotId'];
     let pngName = (dotId !== "ID4e2c8") ? dotId : "ID4e2c9";

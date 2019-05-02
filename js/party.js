@@ -3,8 +3,6 @@ var USE_SKILL_LIST = [];
 var NOW_CHAR = {};
 var NOW_STYLE = {};
 var CHAR_MASTER, STYLE_MASTER;
-const PARAM_NAME = ['腕力', '体力', '器用さ', '素早さ', '知力', '精神', '愛', '魅力'];
-const PARAM_KEY = ["STR", "VIT", "DEX", "AGI", "INT", "MND", "AI", "MI"];
 
 var NOW_PARTY = 0;
 var PARTY_LIST = [[]];
@@ -25,6 +23,8 @@ $(document).ready(function ($) {
             var ui = new firebaseui.auth.AuthUI(firebase.auth());
             ui.start('#firebaseui-auth-container', uiConfig);
         } else {
+            $(".noLogin").hide();
+            $(".isLogin").removeClass("d-none");
             $("#loginInfo").hide();
             let icon = $("<img>").attr("src", user.photoURL)
                     .attr("style", "width:40px; heidht:40px;    border-radius: 50%;");

@@ -117,7 +117,8 @@ $(document).ready(function ($) {
             }
             return 1;
         });
-        console.log(holderStyleResult);
+        //console.log(holderStyleResult);
+        $("#skill_damage_ranking").html("");
         for (key in holderStyleResult) {
             let styleInfo = holderStyleResult[key];
             let padding = createStyleIcon(styleInfo, skillInfo);

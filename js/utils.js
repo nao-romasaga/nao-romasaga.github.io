@@ -25,6 +25,8 @@ const WEPON_ATTR = {
 const AREA_SHORT = {
     "敵単体": "単", "敵全体": "全", "敵縦一列": "縦", "敵横一列": "横", "味方単体": "味単", "自身": "自"
 };
+const PARAM_KEY = ["STR", "VIT", "DEX", "AGI", "INT", "MND", "AI", "MI"];
+const PARAM_NAME = ['腕力', '体力', '器用さ', '素早さ', '知力', '精神', '愛', '魅力'];
 
 function masterLevel(lv) {
     var skill = Math.ceil((lv - 1) / 2) * 0.005;
@@ -79,7 +81,7 @@ function insertCommonComponent() {
     nav += '  <div class="collapse navbar-collapse" id="navbarSupportedContent">';
     nav += '    <ul class="navbar-nav mr-auto small">';
     nav += '      <li class="nav-item " id="headAuto">';
-    nav += '        <a class="nav-link" href="./auto.html">全力AUTOシミュレーター</a>';
+    nav += '        <a class="nav-link" href="./auto.html">全力AUTO<br class="hidden pcBlock">シミュレーター</a>';
     nav += '      </li>';
     nav += '      <li class="nav-item" id="headSkill">';
     nav += '        <a class="nav-link" href="./skill.html">技・術検索</a>';
@@ -90,11 +92,11 @@ function insertCommonComponent() {
     nav += '      <li class="nav-item" id="headStyle">';
     nav += '        <a class="nav-link" href="./style.html">キャラ+スタイル詳細</a>';
     nav += '      </li>';
-    nav += '      <li class="nav-item" id="headParty">';
-    nav += '        <a class="nav-link" href="./party.html">ステータス上限チェック</a>';
+    nav += '      <li class="nav-item " id="headParty">';
+    nav += '        <a class="nav-link" href="./party.html">ステータス上限チェック<br class="hidden pcBlock">[ログイン必須]</a>';
     nav += '      </li>';
     nav += '      <li class="nav-item" id="headMinna">';
-    nav += '        <a class="nav-link disabled" href="#" aria-disabled="true">【データ収集中】みんなの育成状況</a>';
+    nav += '        <a class="nav-link disabled" href="#" aria-disabled="true">【データ収集中】<br class="hidden pcBlock">みんなの育成状況</a>';
     nav += '      </li>';
     nav += '      <li class="nav-item" id="headDamage">';
     nav += '        <a class="nav-link" href="./damage.html">ダメージ計算</a>';
@@ -103,7 +105,7 @@ function insertCommonComponent() {
     nav += '        <a class="nav-link" href="./dojo.html">特訓タイマー</a>';
     nav += '      </li>';
     nav += '      <li class="nav-item " id="headSite">';
-    nav += '        <a class="nav-link" href="./site.html">利用規約・免責事項</a>';
+    nav += '        <a class="nav-link" href="./site.html">利用規約・<br class="hidden pcBlock">免責事項</a>';
     nav += '      </li>';
     nav += '      <li class="nav-item " id="headKifu">';
     nav += '        <a class="nav-link" href="./kifu.html">寄付について</a>';
