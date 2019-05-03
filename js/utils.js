@@ -71,6 +71,7 @@ function arrayAvg(arr) {
 }
 
 function insertCommonComponent() {
+    var newIcon = "<img src='./img/icon/icon_new.gif'>";
     var nav = "";
     nav += '<nav class="navbar navbar-expand-lg navbar-light bg-light">';
     nav += '  <span class="char-aruku dot dot_mid dot_cat"></span>';
@@ -101,6 +102,9 @@ function insertCommonComponent() {
     nav += '      <li class="nav-item" id="headDamage">';
     nav += '        <a class="nav-link" href="./damage.html">ダメージ計算</a>';
     nav += '      </li>';
+    nav += '      <li class="nav-item" id="headStyleCheck">';
+    nav += '        <a class="nav-link" href="./stylecheck.html">スタイル所持チェッカー '+newIcon+'</a>';
+    nav += '      </li>';
     nav += '      <li class="nav-item" id="headDojo">';
     nav += '        <a class="nav-link" href="./dojo.html">特訓タイマー</a>';
     nav += '      </li>';
@@ -119,7 +123,7 @@ function insertCommonComponent() {
     $('body').prepend(nav);
     let word = "下記の時間帯にメンテナンスを予定しています<br>5/3 21:00〜22:00<br>メンテナンス中はアクセス出来ませんのでご容赦ください。詫び石はありません";
     let info = `<div class="card"><div class="card-header bg-warning">お知らせ</div><div class="card-body">${word}</div></div>`;
-//    $(".title-text").after(info);
+    //$(".title-text").after(info);
 
     var footer = "";
     footer += '<div class="opacity" style ="position: relative;">';
@@ -152,7 +156,7 @@ function insertCommonComponent() {
     //$("$header").html(nav);
     let url = $(location).attr('href');
     if (url.indexOf('debug') === -1) {
-//        $('body').html('<div class="sorry_center"><p class="sorry_cat icon-nemuri"><span class="icon-zzz"></span></p><br>申し訳ございません。<br>現在メンテナンス中です。</div>');
+    //    $('body').html('<div class="sorry_center"><p class="sorry_cat icon-nemuri"><span class="icon-zzz"></span></p><br>申し訳ございません。<br>現在メンテナンス中です。</div>');
     }
     
     if (url.indexOf('damage.html') != -1) {
@@ -173,6 +177,8 @@ function insertCommonComponent() {
         $("#headDojo").addClass("active");
     } else if (url.indexOf('party.html') != -1) {
         $("#headParty").addClass("active");
+    } else if (url.indexOf('stylecheck.html') != -1) {
+        $("#headStyleCheck").addClass("active");
     }
 
 

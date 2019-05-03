@@ -1,3 +1,10 @@
+var configTest = {
+    apiKey: "AIzaSyBNwPxcs6OdaNe1xkeS7S78Y2wuscpJFNw",
+    authDomain: "test-14aab.firebaseapp.com",
+    databaseURL: "https://test-14aab.firebaseio.com",
+    projectId: "test-14aab",
+    storageBucket: "test-14aab.appspot.com",
+};
 var config = {
     apiKey: "AIzaSyCKpg76hjQg4YNSW3hGEw5uCJOBbQNUsnQ",
     databaseURL: "https://nao-romasaga-rs.firebaseio.com",
@@ -12,12 +19,6 @@ var configTmp = {
 };
     
 firebase.initializeApp(configTmp);
-firebase.auth().signInAnonymously().catch(function (error) {
-    // Handle Errors here.
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    // ...
-});
 
 var REF;
 var UID;
@@ -46,6 +47,11 @@ function readPartyData(callback) {
         return callback(snapshot.val());
     });
 }
+function readStyleCheckData(callback) {
+    return firebase.database().ref(`user_data/${UID}/STYLECHECK`).once("value").then(function (snapshot) {
+        return callback(snapshot.val());
+    });
+}
 function updateData(key, data) {
     if (REF !== undefined) {
         REF = database.ref(`user_data/${UID}/${key}`);
@@ -53,9 +59,9 @@ function updateData(key, data) {
     }
 }
 
+
 function getImgUrl(target) {
+    //let url = "http://localhost/img/" + target;
     let url = "https://nao-romasaga.github.io/img/" + target;
     return 'background:url(' + url + ') no-repeat;'
 }
-
-
