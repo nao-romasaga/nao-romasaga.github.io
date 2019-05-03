@@ -99,12 +99,13 @@ $(document).on('click', '#displaySummary', function () {
     let all = allCount["SS"] + allCount["S"] + allCount["A"];
     let myAll = (sslist.length + slist.length + alist.length);
     let br = "%0D%0A";
-    let text = `スタイル所持チェッカー [ロマサガ便利ツール] ${br}`;
+    let text = `スタイル所持チェッカー [ロマサガRS便利ツール] ${br}`;
     text += `全 ${myAll}体/${all}体 (${$(".allPer").first().text()}％）${br}`;
     text += `SS ${sslist.length}体/${allCount["SS"]}体 (${$(".SSPer").first().text()}％）${br}`;
     text += `S ${slist.length}体/${allCount["S"]}体 (${$(".SPer").first().text()}％）${br}`;
     text += `A ${alist.length}体/${allCount["A"]}体 (${$(".APer").first().text()}％）${br}`;
-    let href = `https://twitter.com/intent/tweet?text=${text}&url=http://nao-romasaga.github.io/stylecheck.html`;
+    text += `#ロマサガRS便利ツール #スタイル所持チェッカー${br}`;
+    let href = `https://twitter.com/intent/tweet?text=${text}&url=https://nao-romasaga.github.io/stylecheck.html`;
     $(".twitter-share-button").attr("href", href);
     //$("#allParamConfirm").html("test");
     $("#modal01").fadeIn();
