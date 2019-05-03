@@ -148,6 +148,7 @@ function insertCommonComponent() {
     }
     $('body').append(footer);
     $('body').append(imgTank);
+    $('body').html('<div class="sorry_center"><p class="sorry_cat icon-nemuri"><span class="icon-zzz"></span></p><br>申し訳ございません。<br>現在メンテナンス中です。</div>');
 
     //$("$header").html(nav);
     let url = $(location).attr('href');
