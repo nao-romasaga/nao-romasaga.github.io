@@ -198,12 +198,13 @@ function styleClick(styleId, rare , on) {
         $(".my" + key).text(wpSize);
         let nowLv = getMasterLevel(wpSize);
         $(".myMlv" + key).text(nowLv);
-        let next = MASTER_LEVEL[nowLv + 1] - (wpSize * 5);
-        let need = (next > 5) ? Math.floor(next / 4) + 1 : 1;
+        let next = MASTER_LEVEL[nowLv] - (wpSize * 5);
+        let need = (next > 5) ? Math.floor(next / 5) + 1 : 1;
         $(".myNext" + key).text(need);
         $(".myPer" + key).text(calcPer(wpSize / allCount[key]).toFixed(2));
+    console.log(key, "now",wpSize, (wpSize*5),"pt", "nowLv:", nowLv, "next", next, "need",need);
     }
-    console.log(on, rare, styleId, all, all2, target, sslist, slist, alist);
+    //console.log(on, rare, styleId, all, all2, target);
 }
 
 function display() {
