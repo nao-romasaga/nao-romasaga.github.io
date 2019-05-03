@@ -92,8 +92,27 @@ $(document).ready(function ($) {
         USE_SKILL_LIST.push(skillInfo);
     });
     $("#culcStart").click(function () {
-        displayResult();
+        let skillList = displayResult();
         $("html,body").animate({scrollTop: $('#culcStart').offset().top}, 500, 'swing');
+        console.log(skillList);
+        console.log(NOW_STYLE);
+        let br = "%0D%0A";
+        let text = `全力オートシミュレータ${br}`;
+        text += `${NOW_STYLE['Name']} ${NOW_STYLE['Rarity']} ${NOW_STYLE['AnotherName']}${br}`;
+        text += `${$("#avgDamage").text()}${br}`;
+        for (let skill of skillList) {
+            let kakusei = Number(skill['ConsumeBp']) - Number(skill['AutoUseBp']);
+            //let damage = skill['culcDamage'];
+            let use = skill['UseCount'];
+            let keisho = "";
+            if (skill['isKeisho']) {
+                keisho = "[継承]";
+            }
+            text += `・${skill['Name']}${keisho} 覚醒:${kakusei} 発動:${use}${br}`;
+        }
+        let href = `https://twitter.com/intent/tweet?text=${text}&url=https://nao-romasaga.github.io/auto.html&hashtags=ロマサガRS便利ツール,全力オートシミュレータ`;
+        $(".my-twitter-share-button").attr("href", href);
+
     });
 
     $(".switch .toggle").click(function () {
@@ -125,7 +144,7 @@ function displayStyleList(charId) {
         let background = $("<span>")
                 .addClass(getStyleIconBgClass(styleInfo['Rarity']))
                 .append(icon);
-        $("#styleChoice").append(background);        
+        $("#styleChoice").append(background);
     }
 }
 
@@ -295,6 +314,7 @@ function displayResult() {
     rewriteBP(skillList);
     setSkillDamage(skillList);
     culcAutoMode(skillList);
+    return skillList;
 }
 
 
@@ -490,7 +510,7 @@ function culcAutoMode(skillList) {
         summary.append("</tr>");
     }
     summary.append("<tr>");
-    summary.append("<td colspan=5 class='text-center' style='font-size:200%'>平均ダメージ " + Math.round(totalDamage / maxTurn)+ "</td>");
+    summary.append("<td colspan=5 class='text-center' id='avgDamage' style='font-size:200%'>平均ダメージ " + Math.round(totalDamage / maxTurn).toLocaleString() + "</td>");
     summary.append("</tr>");
     if (NOW_STYLE['hasRenki']) {
         summary.append("<tr>");
@@ -498,7 +518,7 @@ function culcAutoMode(skillList) {
         summary.append("</tr>");
     }
     summary.append("<tr style='border-top: 1px solid'>");
-    summary.append("<td colspan=5 class='text-center'>" + "合計ダメージ = " + totalDamage + "<br>合計威力 = " + totalIryoku  + "</td>");
+    summary.append("<td colspan=5 class='text-center'>" + "合計ダメージ = " + totalDamage + "<br>合計威力 = " + totalIryoku + "</td>");
     summary.append("</tr>");
 
     $("#styleRank").html("スタイルLV:50 , 全技Rank:99");
