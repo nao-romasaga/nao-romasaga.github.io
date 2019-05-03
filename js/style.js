@@ -110,7 +110,8 @@ $(document).ready(function ($) {
             NOW_CHAR[key] = Number($("#char" + key).val());
             update[key] = Number($("#char" + key).val());
         }
-        updateCharData({[NOW_CHAR['Id']]: update});
+        console.log(update);
+        updateData("CHAR", {[NOW_CHAR['Id']]: update});
     }
 
     $("#allparams").change(function () {

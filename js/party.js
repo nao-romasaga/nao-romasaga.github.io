@@ -39,7 +39,7 @@ $(document).ready(function ($) {
         CHAR_MASTER = result;
         dispChar(CHAR_MASTER);
         $("#charData").show();
-        readCharData("PARTY", function (result) {
+        readPartyData(function (result) {
             if (result === null) {
                 return;
             }
@@ -189,10 +189,10 @@ $(document).ready(function ($) {
             update[key] = Number(val);
         }
         setLimitData();
-        updateCharData({[NOW_CHAR['Id']]: update});
+        updateData("CHAR", {[NOW_CHAR['Id']]: update});
     }
     function updatePartyDB() {
-        updateCharData({PARTY: PARTY_LIST});
+        updateData("PARTY", PARTY_LIST);
     }
     $(document).on('click', '.hanei', function () {
         showModal($(this).parent().find(".allparams"));
