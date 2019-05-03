@@ -189,7 +189,7 @@ $(document).ready(function ($) {
             update[key] = Number(val);
         }
         setLimitData();
-        updateData("CHAR", {[NOW_CHAR['Id']]: update});
+        updateData(`CHAR/${NOW_CHAR['Id']}`, update);
     }
     function updatePartyDB() {
         updateData("PARTY", PARTY_LIST);

@@ -111,7 +111,7 @@ $(document).ready(function ($) {
             update[key] = Number($("#char" + key).val());
         }
         console.log(update);
-        updateData("CHAR", {[NOW_CHAR['Id']]: update});
+        updateData(`CHAR/${NOW_CHAR['Id']}`, update);
     }
 
     $("#allparams").change(function () {
