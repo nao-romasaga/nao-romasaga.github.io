@@ -111,8 +111,9 @@ $(document).ready(function ($) {
             text += `・${skill['Name']}${keisho} 覚醒:${kakusei} 発動:${use}${br}`;
         }
         let href = `https://twitter.com/intent/tweet?text=${text}&url=https://nao-romasaga.github.io/auto.html&hashtags=ロマサガRS便利ツール,全力オートシミュレータ`;
+        console.log($(".my-twitter-share-button"));
+        console.log(href);
         $(".my-twitter-share-button").attr("href", href);
-
     });
 
     $(".switch .toggle").click(function () {
