@@ -9,7 +9,7 @@ var slist = [];
 var alist = [];
 var weponType = Object.assign({}, WEPON_ATTR);
 for (let key in weponType) {
-    weponType[key] = 0;
+    weponType[key] = [];
 }
 
 $(document).ready(function ($) {
@@ -133,7 +133,7 @@ let MASTER_LEVEL = [
     22, 25, 28, 31, 35, 39, 43, 48, 53, 58,
     64, 70, 76, 83, 90, 98, 106];
 function getMasterLevel(styleNum) {
-    let point = Number(styleNum) * 4;
+    let point = Number(styleNum) * 5;
     let nowLv = 1;
     for (let lv in MASTER_LEVEL) {
         let total = MASTER_LEVEL[lv];
@@ -166,11 +166,13 @@ function styleClick(styleId, rare , on) {
     if (on) {
         if (target.indexOf(styleId) === -1) {
             target.push(styleId);
-            weponType[wepon]++;
+        }
+        if (weponType[wepon].indexOf(styleId) === -1) {
+            weponType[wepon].push(styleId);
         }
     } else {
-        if (target.indexOf(styleId) > -1) {
-            weponType[wepon]--;
+        if (weponType[wepon].indexOf(styleId) > -1) {
+            weponType[wepon] = weponType[wepon].filter(n => n !== styleId);
         }
         if (rare === "SS") {
             sslist = target.filter(n => n !== styleId);
@@ -192,15 +194,16 @@ function styleClick(styleId, rare , on) {
     $(".SPer").text(calcPer(slist.length / allCount["S"]).toFixed(2));
     $(".APer").text(calcPer(alist.length / allCount["A"]).toFixed(2));
     for (let key in WEPON_ATTR) {
-        $(".my" + key).text(weponType[key]);
-        let nowLv = getMasterLevel(weponType[key]);
+        let wpSize = Number(weponType[key].length);
+        $(".my" + key).text(wpSize);
+        let nowLv = getMasterLevel(wpSize);
         $(".myMlv" + key).text(nowLv);
-        let next = MASTER_LEVEL[nowLv + 1] - (weponType[key] * 4);
-        let need = (next > 4) ? Math.floor(next / 4) + 1 : 1;
+        let next = MASTER_LEVEL[nowLv + 1] - (wpSize * 5);
+        let need = (next > 5) ? Math.floor(next / 4) + 1 : 1;
         $(".myNext" + key).text(need);
-        $(".myPer" + key).text(calcPer(weponType[key] / allCount[key]).toFixed(2));
+        $(".myPer" + key).text(calcPer(wpSize / allCount[key]).toFixed(2));
     }
-    //console.log(on, rare, styleId, all, all2, target, sslist, slist, alist, weponType);                
+    console.log(on, rare, styleId, all, all2, target, sslist, slist, alist);
 }
 
 function display() {
