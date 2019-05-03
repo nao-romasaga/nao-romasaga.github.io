@@ -202,7 +202,7 @@ function styleClick(styleId, rare , on) {
         let need = (next > 5) ? Math.floor(next / 5) + 1 : 1;
         $(".myNext" + key).text(need);
         $(".myPer" + key).text(calcPer(wpSize / allCount[key]).toFixed(2));
-    console.log(key, "now",wpSize, (wpSize*5),"pt", "nowLv:", nowLv, "next", next, "need",need);
+    //console.log(key, "now",wpSize, (wpSize*5),"pt", "nowLv:", nowLv, "next", next, "need",need);
     }
     //console.log(on, rare, styleId, all, all2, target);
 }
