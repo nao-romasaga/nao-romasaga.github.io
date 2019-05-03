@@ -48,7 +48,8 @@ function readPartyData(callback) {
 }
 function updateData(key, data) {
     if (REF !== undefined) {
-        REF.update({[key] : data});
+        REF = database.ref(`user_data/${UID}/${key}`);
+        REF.update(data);
     }
 }
 
