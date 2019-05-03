@@ -104,8 +104,7 @@ $(document).on('click', '#displaySummary', function () {
     text += `SS ${sslist.length}体/${allCount["SS"]}体 (${$(".SSPer").first().text()}％）${br}`;
     text += `S ${slist.length}体/${allCount["S"]}体 (${$(".SPer").first().text()}％）${br}`;
     text += `A ${alist.length}体/${allCount["A"]}体 (${$(".APer").first().text()}％）${br}`;
-    text += `#ロマサガRS便利ツール #スタイル所持チェッカー${br}`;
-    let href = `https://twitter.com/intent/tweet?text=${text}&url=https://nao-romasaga.github.io/stylecheck.html`;
+    let href = `https://twitter.com/intent/tweet?text=${text}&url=https://nao-romasaga.github.io/stylecheck.html&hashtags=ロマサガRS便利ツール,スタイル所持チェッカー`;
     $(".twitter-share-button").attr("href", href);
     //$("#allParamConfirm").html("test");
     $("#modal01").fadeIn();
