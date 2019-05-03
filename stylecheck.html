@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138966739-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', 'UA-138966739-1');
+        </script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
+        <!--
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script type="text/javascript" src="./js/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="./js/jquery.ui.touch-punch.js"></script>
+        -->
+        <link rel="stylesheet" type="text/css" href="./css/bootstrap/bootstrap.min.css">
+        <script src="./js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="./css/style.css">
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/ui/3.5.2/firebase-ui-auth__ja.js"></script>
+        <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+        <script src="./js/Firebase.js"></script>
+        <script src="./js/utils.js" ></script>
+        <script src="./js/stylecheck.js" ></script>
+        <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" >
+        <title>ロマサガRS スタイルチェッカー@nao_romasaga</title>
+        <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div class ="haikei">
+            <div class="container">
+                <div class="text-center">
+                    <a href="https://www.jp.square-enix.com/saga_reuniverse/" target="new"><img src="https://www.jp.square-enix.com/saga_reuniverse/assets/img/cmn_logo01_sp.png" class="col-sm-12 col-md-8 col-lg-6"></a>
+                </div>
+                <h3 class="text-center title-text">スタイル所持チェッカー</h3>
+                <p class="text-right opacity"><small>バグ発見、ご要望は <a href="https://twitter.com/nao_romasaga_rs" target="new">nao_romasaga_rs</a>まで</small>
+                </p>
+                <div id="firebaseui-auth-container" style="margin-bottom:10px;"></div>
+                <div id="loginInfo" class="opacity kadomaru" style="margin-bottom:10px;">Twitterログインするとチェックしたスタイル情報が保存され、次回開いた場合に自動入力されます<br>
+                    また、今後オープン予定の「みんなのスタイル保持状況」などが利用可能になります。</div>
+                <div style="color: rgb(250, 240, 180);">
+                    <div class="text-center m-auto styleTab style-tab-active" id="tabRare" style="width: 160px">レアリティ表示</div>
+                    <div class="text-center m-auto styleTab style-tab-disabled" id="tabChar" style="width: 160px">キャラ表示</div>
+                </div>
+                <div class="style-bgcolor" id="styleAreaRare">
+                    <img src="./img/icon/icon_SS.png">
+                    <button class="icon_btn_on allOn" data-rare="SS" style="background-size: 150px 40px; width:150px;">全てチェック</button>
+                    <button class="icon_btn_off allOff" data-rare="SS" style="background-size: 110px 40px; width:110px;">全て外す</button>
+                    <div id="SSArea"></div>
+                    <img src="./img/icon/icon_S.png">
+                    <button class="icon_btn_on allOn" data-rare="S" style="background-size: 150px 40px; width:150px;">全てチェック</button>
+                    <button class="icon_btn_off allOff" data-rare="S" style="background-size: 110px 40px; width:110px;">全て外す</button>
+                    <div id="SArea"></div>
+                    <img src="./img/icon/icon_A.png">
+                    <button class="icon_btn_on allOn" data-rare="A" style="background-size: 150px 40px; width:150px;">全てチェック</button>
+                    <button class="icon_btn_off allOff" data-rare="A" style="background-size: 110px 40px; width:110px;">全て外す</button>
+                    <div id="AArea"></div>
+                </div>
+                <div class="style-bgcolor d-none" id="styleAreaChar"></div>
+            </div>
+        </div>
+        <div id="footer">
+            <h5 class="kadomaru bg-white text-center">スタイル所持数 <button class="icon_btn_on" id="displaySummary" style="background-size: 150px 40px; width:150px !important;">サマリ表示</button></h5>
+            <div class="table-responsive bg-white">
+                <table class="table table-hover table-bordered table-sm " id="damageRangeTable">
+                    <tr>
+                        <td></td>
+                        <td class="text-center">全体</td>
+                        <td><img src="./img/icon/icon_SS.png" width="30"></td>
+                        <td><img src="./img/icon/icon_S.png" width="30"></td>
+                        <td><img src="./img/icon/icon_A.png" width="30"></td>
+                    </tr>
+                    <tr>
+                        <td>所持</td>
+                        <td><span class="myAll"></span>/<span class="all"></span></td>
+                        <td><span class="mySS"></span>/<span class="allSS"></span></td>
+                        <td><span class="myS"></span>/<span class="allS"></span></td>
+                        <td><span class="myA"></span>/<span class="allA"></span></td>
+                    </tr>
+                    <tr>
+                        <td>割合</td>
+                        <td><span class="allPer"></span>%</td>
+                        <td><span class="SSPer"></span>%</td>
+                        <td><span class="SPer"></span>%</td>
+                        <td><span class="APer"></span>%</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- モーダルウィンドウ -->
+        <div class="modal" id="modal01">
+            <!-- モーダルウィンドウの中身 -->
+            <div class="inner text-center width-100" id="modalInner">
+                <div class="row modalClose" id="allParamConfirm" onclick="">
+                    <div class="col-2 char-bottom">Rare</div><div class="col-5 char-bottom">所持数</div><div class="col-5 char-bottom">所持率</div>
+                    <div class="col-2">全体</div><div class="col-5"><span class="myAll h4">0</span>/<span class="all small">0</span></div><div class="col-5"><span class="allPer"></span>%</div>
+                    <div class="col-2"><img src="./img/icon/icon_SS.png" width="30"></div><div class="col-5"><span class="mySS h4">0</span>/<span class="allSS small">0</span></div><div class="col-5"><span class="SSPer"></span>%</div>
+                    <div class="col-2"><img src="./img/icon/icon_S.png" width="30"></div><div class="col-5"><span class="myS h4">0</span>/<span class="allS small">0</span></div><div class="col-5"><span class="SPer"></span>%</div>
+                    <div class="col-2"><img src="./img/icon/icon_A.png" width="30"></div><div class="col-5"><span class="myA h4">0</span>/<span class="allA small">0</span></div><div class="col-5"><span class="APer"></span>%</div>
+                    <div class="col-2 char-bottom">種別</div>
+                    <div class="col-2 char-bottom text-nowrap">所持数</div>
+                    <div class="col-2 char-bottom text-nowrap">所持率</div>
+                    <div class="col-3 char-bottom text-nowrap">限界MLv</div>
+                    <div class="col-3 char-bottom text-nowrap">次のMLv</div>
+                    <div class="col-2"><a class="pad0" data-toggle="tab" href="#skill_ken"><span class="icon_mini_zokusei icon_ken"></span></a></div>
+                    <div class="col-2 text-nowrap"><span class="my剣 h4">0</span>/<span class="all剣 small">0</span></div><div class="col-2"><span class="myPer剣">0</span>%</div><div class="col-3">Lv.<span class="myMlv剣">0</span></div><div class="col-3"><span class="myNext剣">0</span>体</div>
+                    <div class="col-2"><a class="pad0" data-toggle="tab" href="#skill_ken"><span class="icon_mini_zokusei icon_dken"></span></a></div>
+                    <div class="col-2 text-nowrap"><span class="my大剣 h4">0</span>/<span class="all大剣 small">0</span></div><div class="col-2"><span class="myPer大剣">0</span>%</div><div class="col-3">Lv.<span class="myMlv大剣">0</span></div><div class="col-3"><span class="myNext大剣">0</span>体</div>
+                    <div class="col-2"><a class="pad0" data-toggle="tab" href="#skill_ken"><span class="icon_mini_zokusei icon_ono"></span></a></div>
+                    <div class="col-2 text-nowrap"><span class="my斧 h4">0</span>/<span class="all斧 small">0</span></div><div class="col-2"><span class="myPer斧">0</span>%</div><div class="col-3">Lv.<span class="myMlv斧">0</span></div><div class="col-3"><span class="myNext斧">0</span>体</div>
+                    <div class="col-2"><a class="pad0" data-toggle="tab" href="#skill_ken"><span class="icon_mini_zokusei icon_kon"></span></a></div>
+                    <div class="col-2 text-nowrap"><span class="my棍棒 h4">0</span>/<span class="all棍棒 small">0</span></div><div class="col-2"><span class="myPer棍棒">0</span>%</div><div class="col-3">Lv.<span class="myMlv棍棒">0</span></div><div class="col-3"><span class="myNext棍棒">0</span>体</div>
+                    <div class="col-2"><a class="pad0" data-toggle="tab" href="#skill_ken"><span class="icon_mini_zokusei icon_tai"></span></a></div>
+                    <div class="col-2 text-nowrap"><span class="my体術 h4">0</span>/<span class="all体術 small">0</span></div><div class="col-2"><span class="myPer体術">0</span>%</div><div class="col-3">Lv.<span class="myMlv体術">0</span></div><div class="col-3"><span class="myNext体術">0</span>体</div>
+                    <div class="col-2"><a class="pad0" data-toggle="tab" href="#skill_ken"><span class="icon_mini_zokusei icon_ju"></span></a></div>
+                    <div class="col-2 text-nowrap"><span class="my銃 h4">0</span>/<span class="all銃 small">0</span></div><div class="col-2"><span class="myPer銃">0</span>%</div><div class="col-3">Lv.<span class="myMlv銃">0</span></div><div class="col-3"><span class="myNext銃">0</span>体</div>
+                    <div class="col-2"><a class="pad0" data-toggle="tab" href="#skill_ken"><span class="icon_mini_zokusei icon_sken"></span></a></div>
+                    <div class="col-2 text-nowrap"><span class="my小剣 h4">0</span>/<span class="all小剣 small">0</span></div><div class="col-2"><span class="myPer小剣">0</span>%</div><div class="col-3">Lv.<span class="myMlv小剣">0</span></div><div class="col-3"><span class="myNext小剣">0</span>体</div>
+                    <div class="col-2"><a class="pad0" data-toggle="tab" href="#skill_ken"><span class="icon_mini_zokusei icon_yumi"></span></a></div>
+                    <div class="col-2 text-nowrap"><span class="my弓 h4">0</span>/<span class="all弓 small">0</span></div><div class="col-2"><span class="myPer弓">0</span>%</div><div class="col-3">Lv.<span class="myMlv弓">0</span></div><div class="col-3"><span class="myNext弓">0</span>体</div>
+                    <div class="col-2"><a class="pad0" data-toggle="tab" href="#skill_ken"><span class="icon_mini_zokusei icon_yari"></span></a></div>
+                    <div class="col-2 text-nowrap"><span class="my槍 h4">0</span>/<span class="all槍 small">0</span></div><div class="col-2"><span class="myPer槍">0</span>%</div><div class="col-3">Lv.<span class="myMlv槍">0</span></div><div class="col-3"><span class="myNext槍">0</span>体</div>
+                    <div class="col-2"><a class="pad0" data-toggle="tab" href="#skill_ken"><span class="icon_mini_zokusei icon_tsue"></span></a></div>
+                    <div class="col-2 text-nowrap"><span class="my杖 h4">0</span>/<span class="all杖 small">0</span></div><div class="col-2"><span class="myPer杖">0</span>%</div><div class="col-3">Lv.<span class="myMlv杖">0</span></div><div class="col-3"><span class="myNext杖">0</span>体</div>
+                </div>
+                <a href="" class="twitter-share-button width-100" rel=”nofollow” onClick="window.open(encodeURI(decodeURI(this.href)), 'twwindow', 'width=550, height=450, personalbar=0, toolbar=0, scrollbars=1'); return false;" style="background-color: rgba(41,163,239,1); color:white; padding:5px 10px; border-radius:10px;"><i class="fab fa-twitter"></i>　結果をツイートする</a>
+            </div> 
+            <!-- モーダルウィンドウが開いている時のオーバーレイ -->
+            <div class="overLay modalClose"></div>
+        </div>        
+        <style>
+            .nocheck{
+                background: initial;
+                background-color: rgba(0,0,0,0.9);
+                display: inline-block;
+                border-radius: 10px;
+                opacity: 0.4;
+            }
+            /* モーダルウィンドウのスタイル */
+            .modal {
+                /* 
+                position:absolute;
+                */
+                width:100%;
+                height:100%;
+                top:0;
+                left:0;
+                display:none;
+            }
+
+            /* オーバーレイのスタイル */
+            .overLay {
+                /* 
+                position:absolute;
+                */
+                top:0;
+                left:0;
+                background: rgba(230, 225, 207, 0.9);
+                width:100%;
+                height:100%;
+                z-index:10;
+            }
+
+            /* モーダルウィンドウの中身のスタイル */
+            .modal .inner {
+                position:absolute;
+                z-index:11;
+            }
+            @keyframes modal{
+                0% {top:-100%}
+                100% {top:0%}
+            }
+            @keyframes modalClose {
+                0% {top:0%}
+                100% {top:100%}
+            }
+        </style>
+    </body>
+</html>
