@@ -41,6 +41,7 @@
         <script type="text/javascript" src="js/jquery.sliderPro.js"></script>
         <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="css/slider-pro.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" >
         <style>
             /* スライド下のページャーの設定 */
             .sp-buttons { padding-top: 40px; }
@@ -68,84 +69,86 @@
                 <p class="text-right opacity"><small>バグ発見、ご要望は <a href="https://twitter.com/nao_romasaga_rs" target="new">nao_romasaga_rs</a>まで</small>
                 </p>
                 <div id="firebaseui-auth-container" style="margin-bottom:10px;"></div>
-                <div id="loginInfo" class="opacity kadomaru" style="margin-bottom:10px;">Twitterログインすると入力したキャラクターの情報が保存され次回以降自動入力されます<br>
-                    また今後オープン予定の「みんなの育成状況」や「ステータス上限チェック」などが利用可能になります。</div>
-
                 <h5 class="text-center opacity kadomaru" onclick="$('.movie').toggleClass('d-none')">つかいかた動画をみる</h5>
                 <div class="movie d-none">
                     <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">[new] パーティ育成メモ<br>育成の際に各スタイルのステータス上限を確認を行える機能を作成しました<a href="https://t.co/T9hQHFJD1n">https://t.co/T9hQHFJD1n</a><br><br>スプシだとパーティ切り替えが面倒だったので作りました(๑′ᴗ‵๑)<br>ゆくゆくは複数パーティ設定を予定しています<br><br>お布施もお待ちしております😘<a href="https://t.co/3qFDqY1Kdx">https://t.co/3qFDqY1Kdx</a> <a href="https://t.co/Y1aVBPYZWu">pic.twitter.com/Y1aVBPYZWu</a></p>&mdash; (nAo)@ロマサガRS (@nao_romasaga_rs) <a href="https://twitter.com/nao_romasaga_rs/status/1122948484208910336?ref_src=twsrc%5Etfw">April 29, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                 </div>
                 <div class="opacity kadomaru">侯国学園以降にでたスタイル、キャラクターは上限値がわかっていません。<br>みなさんが入力してくださった値を元に暫定的に「ここまでは上がる」というのを補完していく予定です</div>
                 <br>
-                <p class="slide1 loading"><i class="dot_yuki dot_mid dot char-hashiri"></i></p>
-                <p class="slide2 loading"><i class="dot_monika dot_mid dot char-hashiri"></i></p>
-                <ul class="nav nav-tabs ">
-                    <li class="nav-item text-center side-padding-zero">
-                        <a class="nav-link active bg-white" style="padding: 5px 5px;" data-toggle="tab" href="#RS1" class="">RS1</a>
-                    </li>
-                    <li class="nav-item text-center side-padding-zero">
-                        <a class="nav-link bg-white" style="padding: 5px 5px;" data-toggle="tab" href="#rs2" class="bg-white">RS2</a>
-                    </li>
-                    <li class="nav-item text-center side-padding-zero">
-                        <a class="nav-link bg-white" style="padding: 5px 5px;" data-toggle="tab" href="#RS3" class="bg-white">RS3</a>
-                    </li>
-                    <li class="nav-item text-center side-padding-zero">
-                        <a class="nav-link bg-white" style="padding: 5px 5px;" data-toggle="tab" href="#sf" class="bg-white">SF1+2</a>
-                    </li>
-                    <li class="nav-item text-center side-padding-zero">
-                        <a class="nav-link bg-white" style="padding: 5px 5px;" data-toggle="tab" href="#other" class="bg-white">US/SS/ES/RSR</a>
-                    </li>
-                </ul>
-                <div id="myTabContent" class="tab-content">
-                    <div class="tab-pane fade show active text-center opacity-char-back" id="RS1"><h5 class="game-banner">ロマンシング・サガ</h5></div>
-                    <div class="tab-pane fade text-center opacity-char-back" id="rs2">
-                        <div class="" id="RS2"><h5 class="game-banner">ロマンシング・サガ2(1)</h5></div>
-                        <div class="" id="RS22"><h5 class="game-banner">ロマンシング・サガ2(2)</h5></div>
+                    <div class="noLogin opacity kadomaru bg-danger text-white"><i class="fas fa-exclamation-triangle"></i>本機能はログイン必須です</div>
+                <div class="isLogin d-none">
+                    <p class="slide1 loading"><i class="dot_yuki dot_mid dot char-hashiri"></i></p>
+                    <p class="slide2 loading"><i class="dot_monika dot_mid dot char-hashiri"></i></p>
+                    <ul class="nav nav-tabs ">
+                        <li class="nav-item text-center side-padding-zero">
+                            <a class="nav-link active bg-white" style="padding: 5px 5px;" data-toggle="tab" href="#RS1" class="">RS1</a>
+                        </li>
+                        <li class="nav-item text-center side-padding-zero">
+                            <a class="nav-link bg-white" style="padding: 5px 5px;" data-toggle="tab" href="#rs2" class="bg-white">RS2</a>
+                        </li>
+                        <li class="nav-item text-center side-padding-zero">
+                            <a class="nav-link bg-white" style="padding: 5px 5px;" data-toggle="tab" href="#RS3" class="bg-white">RS3</a>
+                        </li>
+                        <li class="nav-item text-center side-padding-zero">
+                            <a class="nav-link bg-white" style="padding: 5px 5px;" data-toggle="tab" href="#sf" class="bg-white">SF1+2</a>
+                        </li>
+                        <li class="nav-item text-center side-padding-zero">
+                            <a class="nav-link bg-white" style="padding: 5px 5px;" data-toggle="tab" href="#other" class="bg-white">US/SS/ES/RSR</a>
+                        </li>
+                    </ul>
+                    <div id="myTabContent" class="tab-content">
+                        <div class="tab-pane fade show active text-center opacity-char-back" id="RS1"><h5 class="game-banner">ロマンシング・サガ</h5></div>
+                        <div class="tab-pane fade text-center opacity-char-back" id="rs2">
+                            <div class="" id="RS2"><h5 class="game-banner">ロマンシング・サガ2(1)</h5></div>
+                            <div class="" id="RS22"><h5 class="game-banner">ロマンシング・サガ2(2)</h5></div>
+                        </div>
+                        <div class="tab-pane fade text-center opacity-char-back" id="RS3"><h5 class="game-banner">ロマンシング・サガ3</h5></div>
+                        <div class="tab-pane fade text-center opacity-char-back" id="sf">
+                            <h5 class="game-banner">サガフロンティア1/2</h5>
+                            <span id="SF1"></span><br><span id="SF2"></span>
+                        </div>
+                        <div class="tab-pane fade text-center opacity-char-back" id="other">
+                            <h5 class="game-banner">アンリミテッド・サガ<br>エンペラーズ・サガ<br>サガ・スカーレットグレイス</h5>
+                            <span id="US"></span>　<span id="ES"></span>　<span id="SS"></span>
+                            <h5 class="game-banner">ロマンシング・サガRS</h5><span id="RSR"></span>
+                        </div>
                     </div>
-                    <div class="tab-pane fade text-center opacity-char-back" id="RS3"><h5 class="game-banner">ロマンシング・サガ3</h5></div>
-                    <div class="tab-pane fade text-center opacity-char-back" id="sf">
-                        <h5 class="game-banner">サガフロンティア1/2</h5>
-                        <span id="SF1"></span><br><span id="SF2"></span>
+                    <br>
+                    <label class="badge badge-pill badge-light" id="styleLabel">周回クエスト</label>
+                    <div class="style-bgcolor text-center small row" style="width:100%; margin: 0px;">
+                        <div class="col-4 col-lg-2">
+                            <button class="icon_btn_on baseValue" data-id="42" style="width:100%; background-size: 100% 100%;">H712</button>
+                        </div>
+                        <div class="col-4 col-lg-2">
+                            <button class="icon_btn_off baseValue" data-id="45" style="width:100%; background-size: 100% 100%;">VH415</button>
+                        </div>
+                        <div class="col-4 col-sm-3 col-lg-2">
+                            <button class="icon_btn_on baseValue" data-id="48" style="width:100%; background-size: 100% 100%;">VH7</button><br>
+                        </div>
+                        <div class="col-4 col-sm-3 col-lg-2">
+                            <button class="icon_btn_on baseValue" data-id="51" style="width:100%; background-size: 100% 100%;">VH8</button>
+                        </div>
+                        <div class="col-4 col-sm-3 col-lg-2">
+                            <button class="icon_btn_on baseValue" data-id="54" style="width:100%; background-size: 100% 100%;">VH9</button>
+                        </div>
+                        <div class="col-4 col-sm-3 col-lg-2">
+                            <button class="icon_btn_on baseValue" data-id="57" style="width:100%; background-size: 100% 100%;">VH10</button>
+                        </div>
                     </div>
-                    <div class="tab-pane fade text-center opacity-char-back" id="other">
-                        <h5 class="game-banner">アンリミテッド・サガ<br>エンペラーズ・サガ<br>サガ・スカーレットグレイス</h5>
-                        <span id="US"></span>　<span id="ES"></span>　<span id="SS"></span>
-                        <h5 class="game-banner">ロマンシング・サガRS</h5><span id="RSR"></span>
-                    </div>
-                </div>
-                <br>
-                <label class="badge badge-pill badge-light" id="styleLabel">周回クエスト</label>
-                <div class="style-bgcolor text-center small row" style="width:100%; margin: 0px;">
-                    <div class="col-6 col-lg-2">
-                    <button class="icon_btn_off baseValue" data-id="45" style="width:100%; background-size: 100% 100%;">VH6以前(45)</button>
-                    </div>
-                    <div class="col-6 col-sm-3 col-lg-2">
-                    <button class="icon_btn_on baseValue" data-id="48" style="width:100%; background-size: 100% 100%;">VH7(48)</button><br>
-                    </div>
-                    <div class="col-4 col-sm-3 col-lg-2">
-                    <button class="icon_btn_on baseValue" data-id="51" style="width:100%; background-size: 100% 100%;">VH8(51)</button>
-                    </div>
-                    <div class="col-4 col-sm-3 col-lg-2">
-                    <button class="icon_btn_on baseValue" data-id="54" style="width:100%; background-size: 100% 100%;">VH9(54)</button>
-                    </div>
-                    <div class="col-4 col-sm-3 col-lg-2">
-                    <button class="icon_btn_on baseValue" data-id="57" style="width:100%; background-size: 100% 100%;">VH10(57)</button>
-                    </div>
-                </div>
-                
-                <!--
-                <div id="slider-pro-party" class="slider-pro">
-                    <div class="sp-slides">
-                        <div class="sp-slide text-center opacity-char-back">パーティ1</div>
-                        <div class="sp-slide text-center opacity-char-back">パーティ2</div>
-                    </div>
-                </div>
-                -->
-                <label class="badge badge-pill badge-light" >パーティ編成</label>
-                <div class="opacity-char-back" style="width:100%;" id="charData">
-                    <div class="" id="PARTY1"></div>
-                </div>
 
+                    <!--
+                    <div id="slider-pro-party" class="slider-pro">
+                        <div class="sp-slides">
+                            <div class="sp-slide text-center opacity-char-back">パーティ1</div>
+                            <div class="sp-slide text-center opacity-char-back">パーティ2</div>
+                        </div>
+                    </div>
+                    -->
+                    <label class="badge badge-pill badge-light" >パーティ編成</label>
+                    <div class="opacity-char-back" style="width:100%;" id="charData">
+                        <div class="" id="PARTY1"></div>
+                    </div>
+                </div>
                 <br>
             </div>
         </div> <!-- main -->
@@ -195,8 +198,8 @@
                                     まとめて入力<button class="icon_info_md"></button>
                                 </span>
                                 <div class="text-center width-100">
-                                <input type="tel" class="input allparams" placeholder="50.41.01.20.30.40.50.99">
-                                <button class="icon_btn_on hanei" style="width:100px; height:40px; background-size: 100px 40px;">反映</button>
+                                    <input type="tel" class="input allparams" placeholder="50.41.01.20.30.40.50.99">
+                                    <button class="icon_btn_on hanei" style="width:100px; height:40px; background-size: 100px 40px;">反映</button>
                                 </div>
                             </td>
                         </tr>
