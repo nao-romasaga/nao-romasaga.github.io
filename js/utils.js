@@ -148,10 +148,13 @@ function insertCommonComponent() {
     }
     $('body').append(footer);
     $('body').append(imgTank);
-    $('body').html('<div class="sorry_center"><p class="sorry_cat icon-nemuri"><span class="icon-zzz"></span></p><br>申し訳ございません。<br>現在メンテナンス中です。</div>');
 
     //$("$header").html(nav);
     let url = $(location).attr('href');
+    if (url.indexOf('debug') !== -1) {
+        $('body').html('<div class="sorry_center"><p class="sorry_cat icon-nemuri"><span class="icon-zzz"></span></p><br>申し訳ございません。<br>現在メンテナンス中です。</div>');
+    }
+    
     if (url.indexOf('damage.html') != -1) {
         $("#headDamage").addClass("active");
     } else if (url.indexOf('skill.html') != -1) {
@@ -171,6 +174,7 @@ function insertCommonComponent() {
     } else if (url.indexOf('party.html') != -1) {
         $("#headParty").addClass("active");
     }
+
 
 }
 $(document).ready(function () {
