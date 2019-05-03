@@ -117,6 +117,9 @@ function insertCommonComponent() {
     nav += '  </div>';
     nav += '</nav>';
     $('body').prepend(nav);
+    let word = "下記の時間帯にメンテナンスを予定しています<br>5/3 21:00〜22:00<br>メンテナンス中はアクセス出来ませんのでご容赦ください。詫び石はありません";
+    let info = `<div class="card"><div class="card-header bg-warning">お知らせ</div><div class="card-body">${word}</div></div>`;
+    $(".title-text").after(info);
 
     var footer = "";
     footer += '<div class="opacity" style ="position: relative;">';
