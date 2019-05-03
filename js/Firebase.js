@@ -26,25 +26,29 @@ firebase.auth().onAuthStateChanged((user) => {
         database = firebase.database();
         UID = user.uid;
         REF = database.ref('user_data/' + UID);
-        console.log(REF);
+        $(".RequireLoginMenu").removeClass("d-none");
     } else {
     }
 });
-
 function readFile(target, callback) {
-    return firebase.database().ref(`game_data/${target}`).once("value").then(function (snapshot) {
-        return callback(snapshot.val());
+    return firebase.database().ref(`game_data`).once("value").then(function (snapshot) {
+        return callback(snapshot.val()[target]);
     });
 }
 
 function readCharData(charId, callback) {
-    return firebase.database().ref(`user_data/${UID}/${charId}`).once("value").then(function (snapshot) {
+    return firebase.database().ref(`user_data/${UID}/CHAR/${charId}`).once("value").then(function (snapshot) {
         return callback(snapshot.val());
     });
 }
-function updateCharData(data) {
+function readPartyData(callback) {
+    return firebase.database().ref(`user_data/${UID}/PARTY`).once("value").then(function (snapshot) {
+        return callback(snapshot.val());
+    });
+}
+function updateData(key, data) {
     if (REF !== undefined) {
-        REF.update(data);
+        REF.update({[key] : data});
     }
 }
 
