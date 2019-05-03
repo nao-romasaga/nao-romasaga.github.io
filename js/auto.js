@@ -97,10 +97,12 @@ $(document).ready(function ($) {
         console.log(skillList);
         console.log(NOW_STYLE);
         let br = "%0D%0A";
-        let text = `全力オートシミュレータ${br}`;
-        text += `${NOW_STYLE['Name']} ${NOW_STYLE['Rarity']} ${NOW_STYLE['AnotherName']}${br}`;
+        let text = `${NOW_STYLE['Name']} ${NOW_STYLE['Rarity']} ${NOW_STYLE['AnotherName']}${br}`;
         text += `${$("#avgDamage").text()}${br}`;
         for (let skill of skillList) {
+            if (skill['Id'] == "0") {
+                continue;
+            }
             let kakusei = Number(skill['ConsumeBp']) - Number(skill['AutoUseBp']);
             //let damage = skill['culcDamage'];
             let use = skill['UseCount'];
@@ -110,7 +112,7 @@ $(document).ready(function ($) {
             }
             text += `・${skill['Name']}${keisho} 覚醒:${kakusei} 発動:${use}${br}`;
         }
-        let href = `https://twitter.com/intent/tweet?text=${text}&url=https://nao-romasaga.github.io/auto.html&hashtags=ロマサガRS便利ツール,全力オートシミュレータ`;
+        let href = `https://twitter.com/intent/tweet?text=${text}&url=https://nao-romasaga.github.io/auto.html&hashtags=全力オートシミュレータ`;
         console.log($(".my-twitter-share-button"));
         console.log(href);
         $(".my-twitter-share-button").attr("href", href);
