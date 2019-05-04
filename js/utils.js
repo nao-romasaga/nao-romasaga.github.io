@@ -103,7 +103,10 @@ function insertCommonComponent() {
     nav += '        <a class="nav-link" href="./damage.html">ダメージ計算</a>';
     nav += '      </li>';
     nav += '      <li class="nav-item" id="headStyleCheck">';
-    nav += '        <a class="nav-link" href="./stylecheck.html">スタイル所持チェッカー '+newIcon+'</a>';
+    nav += '        <a class="nav-link" href="./stylecheck.html">スタイル所持<br class="hidden pcBlock">チェッカー '+newIcon+'</a>';
+    nav += '      </li>';
+    nav += '      <li class="nav-item" id="headOurStyle">';
+    nav += '        <a class="nav-link" href="./ourstyle.html">みんなのスタイル '+newIcon+'</a>';
     nav += '      </li>';
     nav += '      <li class="nav-item" id="headDojo">';
     nav += '        <a class="nav-link" href="./dojo.html">特訓タイマー</a>';
@@ -179,6 +182,8 @@ function insertCommonComponent() {
         $("#headParty").addClass("active");
     } else if (url.indexOf('stylecheck.html') != -1) {
         $("#headStyleCheck").addClass("active");
+    } else if (url.indexOf('oursytle.html') != -1) {
+        $("#headOurStyle").addClass("active");
     }
 
 
