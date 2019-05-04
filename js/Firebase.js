@@ -36,7 +36,11 @@ function readFile(target, callback) {
         return callback(snapshot.val()[target]);
     });
 }
-
+function readAnalyzeFile(target, callback) {
+    return firebase.database().ref(`analyze_data/${target}`).once("value").then(function (snapshot) {
+        return callback(snapshot.val());
+    });
+}
 function readCharData(charId, callback) {
     return firebase.database().ref(`user_data/${UID}/CHAR/${charId}`).once("value").then(function (snapshot) {
         return callback(snapshot.val());
