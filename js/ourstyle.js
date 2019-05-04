@@ -1,27 +1,28 @@
-firebase.auth().onAuthStateChanged((user) => {
-    if (!user) {
-        $("#myStyleInput").hide();
-        var uiConfig = {
-            // ログイン完了時のリダイレクト先
-            signInSuccessUrl: 'https://nao-romasaga.github.io/stylecheck.html',
-            // 利用する認証機能
-            signInOptions: [
-                firebase.auth.TwitterAuthProvider.PROVIDER_ID
-            ],
-        };
-        var ui = new firebaseui.auth.AuthUI(firebase.auth());
-        ui.start('#firebaseui-auth-container', uiConfig);
-        $(".firebaseui-idp-text").text("Twitterでログインして自分のスタイルを登録")
-    } else {
-        let icon = $("<img>").attr("src", user.photoURL)
-                .attr("style", "width:40px; heidht:40px;    border-radius: 50%;");
-        let name = `${user.displayName} さん:ログイン中`;
-        $("#firebaseui-auth-container").addClass("bg-white kadomaru")
-                .append(icon).append(name);
-    }
-});
 var ANALYZE_DATA;
 $(document).ready(function ($) {
+    firebase.auth().onAuthStateChanged((user) => {
+        if (!user) {
+            $("#myStyleInput").hide();
+            var uiConfig = {
+                // ログイン完了時のリダイレクト先
+                signInSuccessUrl: 'https://nao-romasaga.github.io/stylecheck.html',
+                // 利用する認証機能
+                signInOptions: [
+                    firebase.auth.TwitterAuthProvider.PROVIDER_ID
+                ],
+            };
+            var ui = new firebaseui.auth.AuthUI(firebase.auth());
+            ui.start('#firebaseui-auth-container', uiConfig);
+            $(".firebaseui-idp-text").text("Twitterでログインして自分のスタイルを登録")
+        } else {
+            let icon = $("<img>").attr("src", user.photoURL)
+                    .attr("style", "width:40px; heidht:40px;    border-radius: 50%;");
+            let name = `${user.displayName} さん:ログイン中`;
+            $("#firebaseui-auth-container").addClass("bg-white kadomaru")
+                    .append(icon).append(name);
+        }
+    });
+
     readFile('Style', function (result) {
         STYLE_MASTER = result;
         readAnalyzeFile('STYLECHECK', function (result) {
