@@ -59,6 +59,21 @@
                     <div class="text-center m-auto styleTab style-tab-disabled" id="tabChar" style="width: 160px">キャラ表示</div>
                 </div>
                 <div class="style-bgcolor" id="styleAreaRare">
+                    <div class="row">
+                        <div class="col-6 h3 text-center">武器種別</div>
+                        <div class="col-6"><button class="icon_btn_on allType" style="background-size: 150px 40px; width:150px;">全て表示</button></div>
+                        <div class="col-2 col-sm-1 xs-pad0 offset-1"><button class="filterButton icon_mini icon_ken" data-id="剣"></button></div>
+                        <div class="col-2 col-sm-1 xs-pad0"><button class="filterButton icon_mini icon_dken" data-id="大剣"></button></div>
+                        <div class="col-2 col-sm-1 xs-pad0"><button class="filterButton icon_mini icon_ono" data-id="斧"></button></div>
+                        <div class="col-2 col-sm-1 xs-pad0"><button class="filterButton icon_mini icon_kon" data-id="棍棒"></button></div>
+                        <div class="col-2 col-sm-1 xs-pad0"><button class="filterButton icon_mini icon_tai" data-id="体術"></button></div>
+                        <div class="col-2 col-sm-1 xs-pad0 offset-1 offset-sm-0"><button class="filterButton icon_mini icon_ju" data-id="銃"></button></div>
+                        <div class="col-2 col-sm-1 xs-pad0"><button class="filterButton icon_mini icon_sken" data-id="小剣"></button></div>
+                        <div class="col-2 col-sm-1 xs-pad0"><button class="filterButton icon_mini icon_yumi" data-id="弓"></button></div>
+                        <div class="col-2 col-sm-1 xs-pad0"><button class="filterButton icon_mini icon_yari" data-id="槍"></button></div>
+                        <div class="col-2 col-sm-1 xs-pad0"><button class="filterButton icon_mini icon_tsue" data-id="杖"></button></div>
+                    </div>
+                    <hr>
                     <img src="./img/icon/icon_SS.png">
                     <button class="icon_btn_on allOn" data-rare="SS" style="background-size: 150px 40px; width:150px;">全てチェック</button>
                     <button class="icon_btn_off allOff" data-rare="SS" style="background-size: 110px 40px; width:110px;">全て外す</button>
@@ -72,8 +87,26 @@
                     <button class="icon_btn_off allOff" data-rare="A" style="background-size: 110px 40px; width:110px;">全て外す</button>
                     <div id="AArea"></div>
                 </div>
-                <div class="style-bgcolor d-none" id="styleAreaChar"></div>
+                <div class="style-bgcolor d-none">
+                    <div class="row">
+                        <div class="col-6 h3 text-center">武器種別</div>
+                        <div class="col-6"><button class="icon_btn_on allType" style="background-size: 150px 40px; width:150px;">全て表示</button></div>
+                        <div class="col-2 col-sm-1 xs-pad0 offset-1"><button class="filterButton icon_mini icon_ken" data-id="剣"></button></div>
+                        <div class="col-2 col-sm-1 xs-pad0"><button class="filterButton icon_mini icon_dken" data-id="大剣"></button></div>
+                        <div class="col-2 col-sm-1 xs-pad0"><button class="filterButton icon_mini icon_ono" data-id="斧"></button></div>
+                        <div class="col-2 col-sm-1 xs-pad0"><button class="filterButton icon_mini icon_kon" data-id="棍棒"></button></div>
+                        <div class="col-2 col-sm-1 xs-pad0"><button class="filterButton icon_mini icon_tai" data-id="体術"></button></div>
+                        <div class="col-2 col-sm-1 xs-pad0 offset-1 offset-sm-0"><button class="filterButton icon_mini icon_ju" data-id="銃"></button></div>
+                        <div class="col-2 col-sm-1 xs-pad0"><button class="filterButton icon_mini icon_sken" data-id="小剣"></button></div>
+                        <div class="col-2 col-sm-1 xs-pad0"><button class="filterButton icon_mini icon_yumi" data-id="弓"></button></div>
+                        <div class="col-2 col-sm-1 xs-pad0"><button class="filterButton icon_mini icon_yari" data-id="槍"></button></div>
+                        <div class="col-2 col-sm-1 xs-pad0"><button class="filterButton icon_mini icon_tsue" data-id="杖"></button></div>
+                    </div>
+                    <hr>
+                    <div id="styleAreaChar"></div>
+                </div>
             </div>
+        <br><br><br>
         </div>
         <div id="footer" style="bottom:20px; left:15px;">
             <h5 class="kadomaru bg-white text-center">スタイル所持数 <button class="icon_btn_on" id="displaySummary" style="background-size: 150px 40px; width:150px !important;">サマリ表示</button></h5>
@@ -102,6 +135,7 @@
                     </tr>
                 </table>
             </div>
+        <br><br><br>
         </div>
 
         <!-- モーダルウィンドウ -->
