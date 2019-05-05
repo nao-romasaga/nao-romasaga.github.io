@@ -56,7 +56,7 @@ $(document).on('click', '.style', function () {
     let rare = $(this).attr('data-rare');
     let styleId = $(this).attr('data-id');
     styleClick(styleId, rare, on);
-    updateData("STYLECHECK", {"SS":sslist,"S":slist,"A":alist});
+    updateData("STYLECHECK", {"SS": sslist, "S": slist, "A": alist});
 });
 $(document).on('click', '.allOn', function () {
     let r = $(this).attr("data-rare");
@@ -67,7 +67,7 @@ $(document).on('click', '.allOn', function () {
             styleClick(styleId, rare, true);
         }
     });
-    updateData("STYLECHECK", {"SS":sslist,"S":slist,"A":alist});
+    updateData("STYLECHECK", {"SS": sslist, "S": slist, "A": alist});
 });
 $(document).on('click', '.allOff', function () {
     let r = $(this).attr("data-rare");
@@ -78,7 +78,7 @@ $(document).on('click', '.allOff', function () {
             styleClick(styleId, rare, false);
         }
     });
-    updateData("STYLECHECK", {"SS":sslist,"S":slist,"A":alist});
+    updateData("STYLECHECK", {"SS": sslist, "S": slist, "A": alist});
 });
 
 
@@ -131,7 +131,8 @@ $(document).on('click', '.modalClose', function () {
 let MASTER_LEVEL = [
     0, 2, 4, 6, 8, 10, 12, 14, 16, 19,
     22, 25, 28, 31, 35, 39, 43, 48, 53, 58,
-    64, 70, 76, 83, 90, 98, 106];
+    64, 70, 76, 83, 90, 98, 106, 115, 124, 134,
+    144];
 function getMasterLevel(styleNum) {
     let point = Number(styleNum) * 5;
     let nowLv = 1;
@@ -147,7 +148,7 @@ function getMasterLevel(styleNum) {
 function calcPer(i) {
     return Math.round(i * 10000) / 100;
 }
-function styleClick(styleId, rare , on) {
+function styleClick(styleId, rare, on) {
     let wepon = STYLE_MASTER[styleId]['WeaponType'];
     let target = alist;
     if (rare === "SS") {
@@ -202,7 +203,7 @@ function styleClick(styleId, rare , on) {
         let need = (next > 5) ? Math.floor(next / 5) + 1 : 1;
         $(".myNext" + key).text(need);
         $(".myPer" + key).text(calcPer(wpSize / allCount[key]).toFixed(2));
-    //console.log(key, "now",wpSize, (wpSize*5),"pt", "nowLv:", nowLv, "next", next, "need",need);
+        //console.log(key, "now",wpSize, (wpSize*5),"pt", "nowLv:", nowLv, "next", next, "need",need);
     }
     //console.log(on, rare, styleId, all, all2, target);
 }
@@ -242,16 +243,16 @@ function display() {
     }
     readStyleCheckData(function (result) {
         if (result !== null) {
-            sslist = (result['SS'] !== undefined) ? result['SS'] : [] ;
-            slist = (result['S'] !== undefined) ? result['S'] : [] ;
-            alist = (result['A'] !== undefined) ? result['A'] : [] ;
-            for(let styleId of sslist){
+            sslist = (result['SS'] !== undefined) ? result['SS'] : [];
+            slist = (result['S'] !== undefined) ? result['S'] : [];
+            alist = (result['A'] !== undefined) ? result['A'] : [];
+            for (let styleId of sslist) {
                 styleClick(styleId, "SS", true);
             }
-            for(let styleId of slist){
+            for (let styleId of slist) {
                 styleClick(styleId, "S", true);
             }
-            for(let styleId of alist){
+            for (let styleId of alist) {
                 styleClick(styleId, "A", true);
             }
         }
