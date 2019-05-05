@@ -51,6 +51,22 @@ $(document).ready(function ($) {
 });
 
 
+$(document).on('click', '.allType', function () {
+    $(".style").each(function () {
+        $(this).parent().removeClass("d-none");
+    });
+});
+
+$(document).on('click', '.filterButton', function () {
+    let type = $(this).attr('data-id');
+    $(".style").each(function () {
+        $(this).parent().addClass("d-none");
+        if ($(this).attr("data-type") === type) {
+            $(this).parent().removeClass("d-none");
+        }
+    });
+});
+
 $(document).on('click', '.style', function () {
     let on = $(this).parent().hasClass("nocheck");
     let rare = $(this).attr('data-rare');
@@ -61,7 +77,7 @@ $(document).on('click', '.style', function () {
 $(document).on('click', '.allOn', function () {
     let r = $(this).attr("data-rare");
     $(".style").each(function () {
-        if ($(this).attr("data-rare") === r) {
+        if ($(this).attr("data-rare") === r && !$(this).hasClass("d-none")) {
             let rare = $(this).attr('data-rare');
             let styleId = $(this).attr('data-id');
             styleClick(styleId, rare, true);
@@ -72,7 +88,7 @@ $(document).on('click', '.allOn', function () {
 $(document).on('click', '.allOff', function () {
     let r = $(this).attr("data-rare");
     $(".style").each(function () {
-        if ($(this).attr("data-rare") === r) {
+        if ($(this).attr("data-rare") === r && !$(this).hasClass("d-none")) {
             let rare = $(this).attr('data-rare');
             let styleId = $(this).attr('data-id');
             styleClick(styleId, rare, false);
@@ -85,13 +101,13 @@ $(document).on('click', '.allOff', function () {
 $(document).on('click', '#tabRare', function () {
     $("#tabRare").removeClass("style-tab-disabled").addClass("style-tab-active");
     $("#tabChar").addClass("style-tab-disabled").removeClass("style-tab-active");
-    $("#styleAreaChar").addClass("d-none");
+    $("#styleAreaChar").parent().addClass("d-none");
     $("#styleAreaRare").removeClass("d-none");
 });
 $(document).on('click', '#tabChar', function () {
     $("#tabChar").removeClass("style-tab-disabled").addClass("style-tab-active");
     $("#tabRare").addClass("style-tab-disabled").removeClass("style-tab-active");
-    $("#styleAreaChar").removeClass("d-none");
+    $("#styleAreaChar").parent().removeClass("d-none");
     $("#styleAreaRare").addClass("d-none");
 });
 
@@ -214,6 +230,7 @@ function display() {
         $("#styleAreaChar").append(charInfo['Name'] + "<br>");
         for (let styleId of charInfo['Holders']) {
             let styleInfo = STYLE_MASTER[styleId];
+            //console.log(styleInfo);
             let rare = styleInfo['Rarity'];
             let wepon = STYLE_MASTER[styleId]['WeaponType'];
             allCount[rare]++;
@@ -224,7 +241,8 @@ function display() {
                     .addClass(styleId)
                     .attr("style", getImgUrl('style_icon/' + styleId + ".png"))
                     .attr("data-id", styleId)
-                    .attr("data-rare", rare);
+                    .attr("data-rare", rare)
+                    .attr("data-type", styleInfo['WeaponType']);
             let background = $("<span>")
                     .addClass(getStyleIconBgClass(rare))
                     .addClass("nocheck")
