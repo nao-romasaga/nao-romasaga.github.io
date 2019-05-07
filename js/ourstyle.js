@@ -1,5 +1,6 @@
 var ANALYZE_DATA;
 $(document).ready(function ($) {
+    $(".baseValue").hide();
     firebase.auth().onAuthStateChanged((user) => {
         if (!user) {
             $("#myStyleInput").hide();
@@ -26,6 +27,7 @@ $(document).ready(function ($) {
     readFile('Style', function (result) {
         STYLE_MASTER = result;
         readAnalyzeFile('STYLECHECK', function (result) {
+            $(".baseValue").show();
             ANALYZE_DATA = result;
             let style = result["STYLE"];
             let ss = result["SS"];
@@ -57,10 +59,18 @@ $(document).ready(function ($) {
         $(this).removeClass("icon_btn_on");
         $(this).addClass("icon_btn_off");
         let rare = $(this).attr("data-id");
-        ga("send","event","ourstyle","rare",rare,"1");
+        gtag('event', "changeRarity", {'event_category': "ourstyle", 'event_label': rare, 'value': 1});
         display(ANALYZE_DATA[rare]);
     });
 });
+$(document).on('click', '.firebaseui-idp-button', function () {
+    gtag('event', "inputMyStyle", {'event_category': "ourstyle", 'event_label': "top", 'value': 1});
+});
+$(document).on('click', '#inputStyleLogined', function () {
+    gtag('event', "inputMyStyle", {'event_category': "ourstyle", 'event_label': "logined", 'value': 1});
+});
+
+
 function ascSort(list) {
     list.sort(function (a, b) {
         return (a.per >= b.per) ? 1 : -1;
