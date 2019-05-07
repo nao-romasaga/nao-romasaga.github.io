@@ -57,6 +57,7 @@ $(document).ready(function ($) {
         $(this).removeClass("icon_btn_on");
         $(this).addClass("icon_btn_off");
         let rare = $(this).attr("data-id");
+        ga("send","event","ourstyle","rare",rare,"1");
         display(ANALYZE_DATA[rare]);
     });
 });
