@@ -26,6 +26,9 @@ $(document).ready(function ($) {
 
     // 後から差し込まれる要素はdocument.onにしないとfunctionがbindされない
     $(document).on('click', '.char', function () {
+        let charId = $(this).attr("data-id");
+        NOW_CHAR = CHAR_MASTER[charId];
+
         $("html,body").animate({scrollTop: $('.sp-slides-container').offset().top}, 500, 'swing');
 
         $("#skillAreaParent").hide();
@@ -39,8 +42,6 @@ $(document).ready(function ($) {
         $("table#culcSummary tbody *").remove();
         $("#culcDetail").html("");
 
-        let charId = $(this).attr("data-id");
-        NOW_CHAR = CHAR_MASTER[charId];
 
         $(".char-selected").each(function (i, e) {
             $(this).removeClass('char-winner');
@@ -53,10 +54,12 @@ $(document).ready(function ($) {
         // 1件目はデフォルトで出しちゃう
         let styleId = NOW_CHAR['Holders'][0];
         clickStyle(styleId);
+        gtag('event', "clickChar", {'event_category': "auto", 'event_label': CHAR_MASTER['Name'], 'value': 1});
     });
     $(document).on('click', '.style', function () {
         let styleId = $(this).attr("data-id");
         clickStyle(styleId);
+        gtag('event', "clickStyle", {'event_category': "auto", 'event_label': NOW_STYLE['Name'] + NOW_STYLE['AnotherName'], 'value': 1});
     });
     function clickStyle(styleId) {
         $("#skillAreaParent").show();
@@ -91,11 +94,16 @@ $(document).ready(function ($) {
         USE_SKILL_LIST = BASE_SKILL_LIST.slice();
         USE_SKILL_LIST.push(skillInfo);
     });
+    
+    $("#showJoken").click(function () {
+        gtag('event', "showJoken", {'event_category': "auto", 'event_label': "none", 'value': 1});
+    });
     $("#culcStart").click(function () {
+        gtag('event', "clickCalc", {'event_category': "auto", 'event_label': NOW_STYLE['Name'] + NOW_STYLE['AnotherName'], 'value': 1});
         let skillList = displayResult();
         $("html,body").animate({scrollTop: $('#culcStart').offset().top}, 500, 'swing');
-        console.log(skillList);
-        console.log(NOW_STYLE);
+        //console.log(skillList);
+        //console.log(NOW_STYLE);
         let br = "%0D%0A";
         let text = `${NOW_STYLE['Name']} ${NOW_STYLE['Rarity']} ${NOW_STYLE['AnotherName']}${br}`;
         text += `${$("#avgDamage").text()}${br}`;
@@ -113,8 +121,8 @@ $(document).ready(function ($) {
             text += `・${skill['Name']}${keisho} 覚醒:${kakusei} 発動:${use}${br}`;
         }
         let href = `https://twitter.com/intent/tweet?text=${text}&url=https://nao-romasaga.github.io/auto.html&hashtags=全力オートシミュレータ`;
-        console.log($(".my-twitter-share-button"));
-        console.log(href);
+        //console.log($(".my-twitter-share-button"));
+        //console.log(href);
         $(".my-twitter-share-button").attr("href", href);
     });
 
