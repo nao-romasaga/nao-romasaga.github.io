@@ -116,6 +116,9 @@ $(document).on('click', '#tabRare', function () {
     $("#styleAreaRare").removeClass("d-none");
     $("#styleAreaChar").parent().addClass("d-none");
     $("#styleAreaGacha").parent().addClass("d-none");
+    $("#tabRare").attr("style","width:33%")
+    $("#tabChar").attr("style","width:30%")
+    $("#tabGacha").attr("style","width:30%")
 });
 $(document).on('click', '#tabChar', function () {
     gtag('event', "tab", {'event_category': "stylecheck", 'event_label': "Char", 'value': 1});
@@ -125,6 +128,9 @@ $(document).on('click', '#tabChar', function () {
     $("#styleAreaRare").addClass("d-none");
     $("#styleAreaChar").parent().removeClass("d-none");
     $("#styleAreaGacha").parent().addClass("d-none");
+    $("#tabRare").attr("style","width:30%")
+    $("#tabChar").attr("style","width:33%")
+    $("#tabGacha").attr("style","width:30%")
 });
 
 $(document).on('click', '#tabGacha', function () {
@@ -135,6 +141,9 @@ $(document).on('click', '#tabGacha', function () {
     $("#styleAreaRare").addClass("d-none");
     $("#styleAreaChar").parent().addClass("d-none");
     $("#styleAreaGacha").parent().removeClass("d-none");
+    $("#tabRare").attr("style","width:30%")
+    $("#tabChar").attr("style","width:30%")
+    $("#tabGacha").attr("style","width:33%")
 });
 
 $(document).on('click', '#displaySummary', function () {
