@@ -51,7 +51,16 @@ $(document).ready(function ($) {
 });
 
 
+$(document).on('click', '.onlyDisable', function () {
+    gtag('event', "filter", {'event_category': "stylecheck", 'event_label': "OnlyDisable", 'value': 1});
+    $(".style").each(function () {
+        if(!$(this).parent().hasClass("nocheck")){
+            $(this).parent().addClass("d-none");
+        }
+    });
+});
 $(document).on('click', '.allType', function () {
+    gtag('event', "filter", {'event_category': "stylecheck", 'event_label': "ALL", 'value': 1});
     $(".style").each(function () {
         $(this).parent().removeClass("d-none");
     });
@@ -59,6 +68,7 @@ $(document).on('click', '.allType', function () {
 
 $(document).on('click', '.filterButton', function () {
     let type = $(this).attr('data-id');
+    gtag('event', "filter", {'event_category': "stylecheck", 'event_label': type, 'value': 1});
     $(".style").each(function () {
         $(this).parent().addClass("d-none");
         if ($(this).attr("data-type") === type) {
@@ -99,16 +109,32 @@ $(document).on('click', '.allOff', function () {
 
 
 $(document).on('click', '#tabRare', function () {
+    gtag('event', "tab", {'event_category': "stylecheck", 'event_label': "Rarity", 'value': 1});
     $("#tabRare").removeClass("style-tab-disabled").addClass("style-tab-active");
     $("#tabChar").addClass("style-tab-disabled").removeClass("style-tab-active");
-    $("#styleAreaChar").parent().addClass("d-none");
+    $("#tabGacha").addClass("style-tab-disabled").removeClass("style-tab-active");
     $("#styleAreaRare").removeClass("d-none");
+    $("#styleAreaChar").parent().addClass("d-none");
+    $("#styleAreaGacha").parent().addClass("d-none");
 });
 $(document).on('click', '#tabChar', function () {
+    gtag('event', "tab", {'event_category': "stylecheck", 'event_label': "Char", 'value': 1});
     $("#tabChar").removeClass("style-tab-disabled").addClass("style-tab-active");
     $("#tabRare").addClass("style-tab-disabled").removeClass("style-tab-active");
-    $("#styleAreaChar").parent().removeClass("d-none");
+    $("#tabGacha").addClass("style-tab-disabled").removeClass("style-tab-active");
     $("#styleAreaRare").addClass("d-none");
+    $("#styleAreaChar").parent().removeClass("d-none");
+    $("#styleAreaGacha").parent().addClass("d-none");
+});
+
+$(document).on('click', '#tabGacha', function () {
+    gtag('event', "tab", {'event_category': "stylecheck", 'event_label': "Gacha", 'value': 1});
+    $("#tabChar").addClass("style-tab-disabled").removeClass("style-tab-active");
+    $("#tabRare").addClass("style-tab-disabled").removeClass("style-tab-active");
+    $("#tabGacha").removeClass("style-tab-disabled").addClass("style-tab-active");
+    $("#styleAreaRare").addClass("d-none");
+    $("#styleAreaChar").parent().addClass("d-none");
+    $("#styleAreaGacha").parent().removeClass("d-none");
 });
 
 $(document).on('click', '#displaySummary', function () {
@@ -225,6 +251,7 @@ function styleClick(styleId, rare, on) {
 }
 
 function display() {
+    let gacha = [];
     for (let charId in CHAR_MASTER) {
         let charInfo = CHAR_MASTER[charId];
         $("#styleAreaChar").append(charInfo['Name'] + "<br>");
@@ -249,8 +276,26 @@ function display() {
                     .append(icon);
             $("#styleAreaChar").append(background.clone());
             $("#" + rare + "Area").append(background.clone());
+            if (gacha[styleInfo['gacha']] === undefined) {
+                gacha[styleInfo['gacha']] = {"SS":[], "S":[], "A":[]};
+            }
+            gacha[styleInfo['gacha']][rare].push(background.clone());
         }
         $("#styleAreaChar").append("<br>");
+    }
+    for (let name in gacha) {
+        let d = (name === "") ? "汎用" : name;
+        $("#styleAreaGacha").append(d + "<br>");
+        for (let background of gacha[name]["SS"]) {
+            $("#styleAreaGacha").append(background);
+        }
+        for (let background of gacha[name]["S"]) {
+            $("#styleAreaGacha").append(background);
+        }
+        for (let background of gacha[name]["A"]) {
+            $("#styleAreaGacha").append(background);
+        }
+        $("#styleAreaGacha").append("<br>");
     }
     $(".all").text(allCount["SS"] + allCount["S"] + allCount["A"]);
     $(".allSS").text(allCount["SS"]);
