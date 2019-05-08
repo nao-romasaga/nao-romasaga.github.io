@@ -103,10 +103,10 @@ function insertCommonComponent() {
     nav += '        <a class="nav-link" href="./damage.html">ダメージ計算</a>';
     nav += '      </li>';
     nav += '      <li class="nav-item" id="headStyleCheck">';
-    nav += '        <a class="nav-link" href="./stylecheck.html">スタイル所持<br class="hidden pcBlock">チェッカー '+newIcon+'</a>';
+    nav += '        <a class="nav-link" href="./stylecheck.html">スタイル所持<br class="hidden pcBlock">チェッカー</a>';
     nav += '      </li>';
     nav += '      <li class="nav-item" id="headOurStyle">';
-    nav += '        <a class="nav-link" href="./ourstyle.html">みんなのスタイル '+newIcon+'</a>';
+    nav += '        <a class="nav-link" href="./ourstyle.html">みんなのスタイル</a>';
     nav += '      </li>';
     nav += '      <li class="nav-item" id="headDojo">';
     nav += '        <a class="nav-link" href="./dojo.html">特訓タイマー</a>';
@@ -117,6 +117,9 @@ function insertCommonComponent() {
     nav += '      <li class="nav-item " id="headKifu">';
     nav += '        <a class="nav-link" href="./kifu.html">寄付について</a>';
     nav += '      </li>';
+    nav += '      <li class="nav-item " id="headConvert">';
+    nav += '        <a class="nav-link" href="./convert.html">データ移行 '+newIcon+'</a>';
+    nav += '      </li>';
     //nav += '      <li class="nav-item">';
     //nav += '        <a class="nav-link disabled" href="#">スタイル情報(coming soon)</a>';
     //nav += '      </li>';
@@ -125,11 +128,11 @@ function insertCommonComponent() {
     nav += '</nav>';
     $('body').prepend(nav);
     let title = "お知らせ";
-    let word = "<b>[悲報] 5月上旬だというのにDB利用限界の85%に到達<b><hr>"
-            + "というわけで下記の時間帯にメンテナンスを予定しています<br>";
-    word += "・5/9 00:00〜01:00<br>メンテナンス中はアクセス出来ませんのでご容赦ください。<br>";
-    word += "バックアップは取っていますがDB移設するので入力内容が消えるかもしれません...そうならないよう尽力します(･ω･)💦<br>";
-    word += "メンテが長引いていたらご察しください";
+    let word = "<b>データコンバートについて<b><hr>"
+            + "5/9に行いましたメンテナンスで御入力頂いておりましたユーザ情報が一時的に消えております。<br>";
+    word += "データの復旧にはデータ移行処理が必要であるため、下記から移行処理(Twitter再ログイン)をお願い致します<br>";
+    word += '<a href="./convert.html" class="text-center icon_btn_on" style="width:100%; background-size: 100% 100%;">データ移行</a>'
+    word += "ご迷惑をおかけし誠に申し訳ございません(･ω･)💦<br>";
     let info = `<div class="card"><div class="card-header bg-warning">${title}</div><div class="card-body">${word}</div></div>`;
     $(".title-text").after(info);
 
@@ -163,7 +166,7 @@ function insertCommonComponent() {
 
     let url = $(location).attr('href');
     if (url.indexOf('debug') === -1) {
-        $('body').html('<div class="sorry_center"><p class="sorry_cat icon-nemuri"><span class="icon-zzz"></span></p><br>申し訳ございません。<br>現在メンテナンス中です。<hr>データ移行に手間取っておりメンテナンス終了時刻は未定です(･ω･)💦<br>ご不便をおかけし申し訳ございません。</div>');
+    //    $('body').html('<div class="sorry_center"><p class="sorry_cat icon-nemuri"><span class="icon-zzz"></span></p><br>申し訳ございません。<br>現在メンテナンス中です。</div>');
     }
     
     if (url.indexOf('damage.html') != -1) {
@@ -356,4 +359,14 @@ function animeReset(selector, animeClass) {
     $(selector).removeClass(animeClass);
     $(selector)[0].offsetWidth = $(selector)[0].offsetWidth;
     $(selector).addClass(animeClass);
+}
+function setTaisei(target, val) {
+    target.removeClass("resist_plus");
+    target.removeClass("resist_minus");
+    if (val > 0) {
+        target.addClass("resist_plus");
+    } else if (val < 0) {
+        target.addClass("resist_minus");
+    }
+    target.html(val);
 }
