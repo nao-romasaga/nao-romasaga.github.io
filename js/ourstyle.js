@@ -1,7 +1,7 @@
 var ANALYZE_DATA;
 $(document).ready(function ($) {
     $(".baseValue").hide();
-    firebase.auth().onAuthStateChanged((user) => {
+    firebase.auth(appUsers).onAuthStateChanged((user) => {
         if (!user) {
             $("#myStyleInput").hide();
             var uiConfig = {
@@ -12,7 +12,7 @@ $(document).ready(function ($) {
                     firebase.auth.TwitterAuthProvider.PROVIDER_ID
                 ],
             };
-            var ui = new firebaseui.auth.AuthUI(firebase.auth());
+            var ui = new firebaseui.auth.AuthUI(firebase.auth(appUsers));
             ui.start('#firebaseui-auth-container', uiConfig);
             $(".firebaseui-idp-text").text("Twitterでログインして自分のスタイルを登録")
         } else {

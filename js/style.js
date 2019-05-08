@@ -6,7 +6,7 @@ var CHAR_MASTER, STYLE_MASTER, SKILL_MASTER, ABILITY_MASTER;
 
 
 $(document).ready(function ($) {
-    firebase.auth().onAuthStateChanged((user) => {
+    firebase.auth(appUsers).onAuthStateChanged((user) => {
         if (!user) {
             var uiConfig = {
                 // ログイン完了時のリダイレクト先
@@ -16,7 +16,7 @@ $(document).ready(function ($) {
                     firebase.auth.TwitterAuthProvider.PROVIDER_ID
                 ],
             };
-            var ui = new firebaseui.auth.AuthUI(firebase.auth());
+            var ui = new firebaseui.auth.AuthUI(firebase.auth(appUsers));
             ui.start('#firebaseui-auth-container', uiConfig);
         } else {
             $("#loginInfo").hide();
@@ -64,7 +64,7 @@ $(document).ready(function ($) {
 
         let charId = $(this).attr("data-id");
         NOW_CHAR = CHAR_MASTER[charId];
-        console.log(Object.assign({},NOW_CHAR));
+        console.log(Object.assign({}, NOW_CHAR));
         let styleId = NOW_CHAR['Holders'][0];
         NOW_STYLE = STYLE_MASTER[styleId];
         console.log(NOW_STYLE);
@@ -245,16 +245,23 @@ function displayStyleInfo(styleId) {
         }
     });
     let styleInfo = STYLE_MASTER[styleId];
+    console.log(styleInfo);
+    for (let z of ["Zan", "Da", "Totsu", "Netsu", "Rei", "Rai", "Inn", "You"]) {
+        setTaisei($("#taisei_" + z), styleInfo["Resist"+z]);
+    }
+
     let another = $("<p>").attr('style', 'font-size:10px; margin-bottom:0px;').append(styleInfo['AnotherName']);
+    let name = $("<p>").attr('style', 'font-size:18px; margin-bottom:0px;').append(styleInfo['Name']);
     let rareIcon = $("<div>").addClass('icon_rare_large float-left')
             .attr('style', getImgUrl('icon/icon_' + styleInfo['Rarity'] + ".png"));
-    $("#styleNameLabel").html('').append(rareIcon).append(another).append(styleInfo['Name']);
+    rareIcon.html('<span id="styleDot" class="char dot_mid dot char-aruku"></span>');
+    $("#styleNameLabel").html('').append(rareIcon).append(another).append(name);
 
-    $("#styleBgImg").attr("style", getImgUrl("style_all/" + styleInfo['IllustId'] + ".png") + " background-size: contain;");
+    $("#styleBgImg").attr("style", getImgUrl("style_all/" + styleInfo['IllustId'] + ".png") + " background-size: cover;");
 
     let dotId = styleInfo['DotId'];
     let pngName = (dotId !== "ID4e2c8") ? dotId : "ID4e2c9";
-    $("#styleDot").attr('style', getImgUrl('dot/' + pngName + ".png") + " margin-left:20px;");
+    $("#styleDot").attr('style', getImgUrl('dot/' + pngName + ".png") + " margin-left:40px; margin-top: -5px;");
 
     displayStyleStatusTable(styleInfo, NOW_LV);
 
@@ -266,22 +273,58 @@ function displayStyleInfo(styleId) {
         let infoBtn = createInfoButton();
         infoBtn.attr("style", "margin-left:10px")
                 .attr("title", abInfo["FlavorText"]);
-        name.append(infoBtn);
+        //name.append(infoBtn);
+        let flavor = $("<span>").addClass("small").html(abInfo["FlavorText"]);
+        name.append(":").append(flavor);
         abList.push(name.html());
     }
     $("#abilityList").append(abList.join("<br>"));
     $("#skillList").html("");
-    let skillList = [];
     for (let key in styleInfo['SkillIds']) {
         let skillInfo = SKILL_MASTER[styleInfo['SkillIds'][key]];
-        let name = $("<span>").append(skillInfo["Name"]);
+        //console.log(skillInfo);
+        let name = $("<div>").addClass("test");
+        name.append($('<span>').addClass('icon_sm').addClass(ICON_LIST[skillInfo['BattleType']]).append("　"));
+        name.append($('<span>').append(skillInfo["Name"]));
+
         let infoBtn = createInfoButton();
         infoBtn.attr("style", "margin-left:10px")
                 .attr("title", skillInfo["FlavorText"]);
-        name.append(infoBtn);
-        skillList.push(name.html());
+        //name.append(infoBtn);
+
+        skillInfo['AttackAttributes'].split(',').forEach(function (value) {
+            let img = $('<span>').addClass('icon_sm').addClass(ICON_LIST[value]).append("　");
+            name.append(img);
+        });
+        if (skillInfo['BadStatus'] !== "") {
+            let img = $('<span>').addClass('').addClass("icon_sm").addClass(ICON_LIST[skillInfo['BadStatus']]).append("　");
+            name.append(img);
+            name.append("(" + skillInfo['BadStatusPer'] + ")");
+        }
+        if (skillInfo['DeBuff'] !== "") {
+            let img = $('<span>').addClass('icon_sm_buf').addClass(ICON_LIST[skillInfo['DeBuff'] + "低下"]).append("　");
+            name.append(img);
+            name.append("(" + skillInfo['DeBuffPer'] + ")");
+        }
+        if (skillInfo['AttackDistance'] !== "近") {
+            name.append("[" + skillInfo['AttackDistance'] + "]");
+        }
+        if (skillInfo['AttackArea'] !== "敵単体") {
+            name.append("[" + AREA_SHORT[skillInfo['AttackArea']] + "]");
+        }
+        if (skillInfo['Fast']) {
+            name.append("[ファスト]");
+        }
+        if (skillInfo['Delay']) {
+            name.append("[ディレイ]");
+        }
+        name.append(
+                " <span class='small'>BP:" + skillInfo['ConsumeBp']
+                + " " + skillInfo['PowerGrade'] + "(" + skillInfo['SkillIryoku'] + ")</span>"
+                );
+
+        $("#skillList").append(name);
     }
-    $("#skillList").append(skillList.join("<br>"));
     $('[data-toggle="tooltip"]').tooltip();
     changeStyleStatusDiffTable(styleInfo);
 }

@@ -13,7 +13,7 @@ for (let key in weponType) {
 }
 
 $(document).ready(function ($) {
-    firebase.auth().onAuthStateChanged((user) => {
+    firebase.auth(appUsers).onAuthStateChanged((user) => {
         if (!user) {
             var uiConfig = {
                 // ログイン完了時のリダイレクト先
@@ -23,7 +23,7 @@ $(document).ready(function ($) {
                     firebase.auth.TwitterAuthProvider.PROVIDER_ID
                 ],
             };
-            var ui = new firebaseui.auth.AuthUI(firebase.auth());
+            var ui = new firebaseui.auth.AuthUI(firebase.auth(appUsers));
             ui.start('#firebaseui-auth-container', uiConfig);
         } else {
             $("#loginInfo").hide();

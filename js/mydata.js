@@ -3,15 +3,15 @@ var USE_SKILL_LIST = [];
 var NOW_CHAR = {};
 var NOW_STYLE = {};
 var CHAR_MASTER, STYLE_MASTER;
+const PARAM_NAME = ['腕力', '体力', '器用さ', '素早さ', '知力', '精神', '愛', '魅力'];
+const PARAM_KEY = ["STR", "VIT", "DEX", "AGI", "INT", "MND", "AI", "MI"];
 
 var NOW_PARTY = 0;
 var PARTY_LIST = [[]];
 var BASE = 45;
-var UID;
+
 $(document).ready(function ($) {
-    initialHide();
-    
-    $('.tab-content').on('click', function () {});
+    $('.tab-content').on('click', function(){});
     firebase.auth(appUsers).onAuthStateChanged((user) => {
         if (!user) {
             var uiConfig = {
@@ -25,52 +25,50 @@ $(document).ready(function ($) {
             var ui = new firebaseui.auth.AuthUI(firebase.auth(appUsers));
             ui.start('#firebaseui-auth-container', uiConfig);
         } else {
-            UID = user.uid;
-            $(".noLogin").hide();
-            $(".isLogin").removeClass("d-none");
             $("#loginInfo").hide();
             let icon = $("<img>").attr("src", user.photoURL)
                     .attr("style", "width:40px; heidht:40px;    border-radius: 50%;");
             let name = `${user.displayName} さん:ログイン中`;
             $("#firebaseui-auth-container").addClass("bg-white kadomaru")
                     .append(icon).append(name);
-
-            readPartyData(function (result) {
-                if (result === null) {
-                    return;
-                }
-                PARTY_LIST = result;
-                partyFlg = true;
-                if (charFlg && partyFlg) {
-                    renderParty();
-                }
-            });
         }
     });
-    $(document).on('click', '.logout', function () {
-        firebase.auth(appUsers).signOut().then(() => {
-            console.log("ログアウトしました");
-        }).catch((error) => {
-            console.log(`ログアウト時にエラーが発生しました (${error})`);
-        });
-    });
     $('[data-toggle="tooltip"]').tooltip();
-    let charFlg = false, partyFlg = false;
+
     readFile('Char', function (result) {
         CHAR_MASTER = result;
         dispChar(CHAR_MASTER);
         $("#charData").show();
-        charFlg = true;
-        if (charFlg && partyFlg) {
-            renderParty();
-        }
+        readPartyData(function (result) {
+            if (result === null) {
+                return;
+            }
+            PARTY_LIST = result;
+            // 初期表示のパーティは0固定かな？
+            for (let data of result[0]) {
+                console.log(data);
+                let charId = data['char'];
+                let styleId = data['style'];
+                NOW_CHAR = CHAR_MASTER[charId];
+                selectDotHensei(CHAR_MASTER[charId]);
+                readCharData(charId, function (r) {
+                    // キャラクター情報表示
+                    displayCharInfo(CHAR_MASTER[charId], r);
+                    // スタイル初期表示
+                    displayStyleInfo(charId, styleId);
+                    // 入力エリアは初期表示は消す
+                    closeInput(charId);
+                });
+            }
+        });
         //$("#PARTY1").sortable();
         $('[data-toggle="tooltip"]').tooltip();
     });
-
     readFile('Style', function (result) {
         STYLE_MASTER = result;
     });
+
+    initialHide();
 
     $(document).on('click', '.openMenu, .nowData > td', function () {
         let charId = ($(this).attr("data-id") !== undefined) ? $(this).attr("data-id") : $(this).parent().attr("data-id");
@@ -90,23 +88,6 @@ $(document).ready(function ($) {
 //        });
 //        updatePartyDB();
     });
-    function renderParty() {
-        // 初期表示のパーティは0固定かな？
-        for (let data of PARTY_LIST[0]) {
-            let charId = data['char'];
-            let styleId = data['style'];
-            NOW_CHAR = CHAR_MASTER[charId];
-            selectDotHensei(CHAR_MASTER[charId]);
-            readCharData(charId, function (r) {
-                // キャラクター情報表示
-                displayCharInfo(CHAR_MASTER[charId], r);
-                // スタイル初期表示
-                displayStyleInfo(charId, styleId);
-                // 入力エリアは初期表示は消す
-                closeInput(charId);
-            });
-        }
-    }
 
     $(document).on('click', '.btn_close', function () {
         closeInput($(this).attr("data-id"));
@@ -129,6 +110,7 @@ $(document).ready(function ($) {
         updatePartyDB();
     });
     function getCharFromPartyList(charId) {
+        console.log(PARTY_LIST[NOW_PARTY]);
         for (let key in PARTY_LIST[NOW_PARTY]) {
             if (PARTY_LIST[NOW_PARTY][key]['char'] === charId) {
                 return key;
