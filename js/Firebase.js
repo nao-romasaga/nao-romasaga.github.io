@@ -1,24 +1,16 @@
-var configTest = {
-    apiKey: "AIzaSyBNwPxcs6OdaNe1xkeS7S78Y2wuscpJFNw",
-    authDomain: "test-14aab.firebaseapp.com",
-    databaseURL: "https://test-14aab.firebaseio.com",
-    projectId: "test-14aab",
-    storageBucket: "test-14aab.appspot.com",
-};
-var config = {
+var configGreen = {
     apiKey: "AIzaSyCKpg76hjQg4YNSW3hGEw5uCJOBbQNUsnQ",
     databaseURL: "https://nao-romasaga-rs.firebaseio.com",
     authDomain: "nao-romasaga-rs.firebaseapp.com",
     storageBucket: "nao-romasaga-rs.appspot.com",
 };
-var configTmp = {
+var configBlue = {
     apiKey: "AIzaSyBliZfwz-xZnVtIZmeAQv0uo2IgmL5eUKM",
     databaseURL: "https://nao-romasaga-rs-blue.firebaseio.com",
     authDomain: "nao-romasaga-rs-blue.firebaseapp.com",
     storageBucket: "nao-romasaga-rs-blue.appspot.com",
-};
-    
-firebase.initializeApp(configTmp);
+};    
+firebase.initializeApp(configGreen);
 
 var REF;
 var UID;
