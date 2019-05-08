@@ -4,24 +4,26 @@ var configGreen = {
     authDomain: "nao-romasaga-rs.firebaseapp.com",
     storageBucket: "nao-romasaga-rs.appspot.com",
 };
-var configBlue = {
-    apiKey: "AIzaSyBliZfwz-xZnVtIZmeAQv0uo2IgmL5eUKM",
-    databaseURL: "https://nao-romasaga-rs-blue.firebaseio.com",
-    authDomain: "nao-romasaga-rs-blue.firebaseapp.com",
-    storageBucket: "nao-romasaga-rs-blue.appspot.com",
-};    
-firebase.initializeApp(configGreen);
+var configUsers = {
+    apiKey: "AIzaSyDvB6eT5hyVrgYQwuPMRomveJmwI3M6OOQ",
+    databaseURL: "https://nao-romasaga-rs-users.firebaseio.com",
+    authDomain: "nao-romasaga-rs-users.firebaseapp.com",
+    storageBucket: "nao-romasaga-rs-users.appspot.com",
+};
+const app = firebase.initializeApp(configGreen);
+const appUsers = firebase.initializeApp(configUsers, "Users");
 
 var REF;
 var UID;
-firebase.auth().onAuthStateChanged((user) => {
+firebase.auth(appUsers).onAuthStateChanged((user) => {
     if (user) {
-        database = firebase.database();
         UID = user.uid;
-        REF = database.ref('user_data/' + UID);
+        REF = firebase.database(appUsers).ref('user_data/' + UID);
         $(".RequireLoginMenu").removeClass("d-none");
     } else {
+        console.log("no login");
     }
+        console.log(UID);
 });
 function readFile(target, callback) {
     return firebase.database().ref(`game_data`).once("value").then(function (snapshot) {
@@ -29,28 +31,30 @@ function readFile(target, callback) {
     });
 }
 function readAnalyzeFile(target, callback) {
-    return firebase.database().ref(`analyze_data/${target}`).once("value").then(function (snapshot) {
-        return callback(snapshot.val());
+    return firebase.database().ref(`analyze_data`).once("value").then(function (snapshot) {
+        return callback(snapshot.val()[target]);
     });
 }
+
 function readCharData(charId, callback) {
-    return firebase.database().ref(`user_data/${UID}/CHAR/${charId}`).once("value").then(function (snapshot) {
+    return firebase.database(appUsers).ref(`user_data/${UID}/CHAR/${charId}`).once("value").then(function (snapshot) {
         return callback(snapshot.val());
     });
 }
 function readPartyData(callback) {
-    return firebase.database().ref(`user_data/${UID}/PARTY`).once("value").then(function (snapshot) {
+    console.log(`user_data/${UID}/PARTY`);
+    return firebase.database(appUsers).ref(`user_data/${UID}/PARTY`).once("value").then(function (snapshot) {
         return callback(snapshot.val());
     });
 }
 function readStyleCheckData(callback) {
-    return firebase.database().ref(`user_data/${UID}/STYLECHECK`).once("value").then(function (snapshot) {
+    return firebase.database(appUsers).ref(`user_data/${UID}/STYLECHECK`).once("value").then(function (snapshot) {
         return callback(snapshot.val());
     });
 }
 function updateData(key, data) {
     if (REF !== undefined) {
-        REF = database.ref(`user_data/${UID}/${key}`);
+        REF = firebase.database(appUsers).ref(`user_data/${UID}/${key}`);
         REF.update(data);
     }
 }
