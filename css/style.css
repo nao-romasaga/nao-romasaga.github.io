@@ -317,7 +317,7 @@ body {
     animation: nemuri 2s steps(1);
 }        
 .icon-zzz {
-    background: url(https://nao-romasaga.github.io/img/icon_zzz.png?v=1) no-repeat;
+    background: url(https://nao-romasaga.github.io/img/icon/icon_zzz.png) no-repeat;
     display: inline-block;
     width: 60px;
     height: 60px;
@@ -401,6 +401,13 @@ body {
     border-radius: 10px;
     border: 2px solid lightcyan;    
     margin-right: 15px;
+}
+.style-taisei-window {
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 5px;
+    border-radius: 10px;
+    border: 2px solid lightcyan;    
 }
 .style-skill-window {
     color: white;
