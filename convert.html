@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>メンテ中</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="./css/style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/ui/3.5.2/firebase-ui-auth__ja.js"></script>
+        <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+    </head>
+    <body style="margin:0px; ">
+        <div class="haikei" style="position:absolute; "><div class="container">
+                <h3 class="text-center title-text">データコンバート</h3>
+                <div class="opacity kadomaru" style="margin:10px;">
+                    ロマサガRS便利ツールをご利用いただきありがとうございます。<br>
+                    利用者増加に伴うアクセス増加でデータベース転送量が限界となったため移設作業を行いました。<br>
+                    <br>
+                    移設に伴い再度ツイッターログインとが必要になりました。<br>
+                    以前入力データ頂いたデータをご利用いただきたい場合は、下記から新環境のログインください。
+                </div>
+                <div class="text-center" style="margin:10px">
+                    <div class="opacity-char-back">旧環境のログイン状況</div>
+                    <div id="firebaseui-auth-container" class="opacity" style="margin-bottom:10px;"></div>
+                    <div class="opacity-char-back">旧環境のデータ入力状況</div>
+                    <div id="myDataOld" class="opacity" style="margin-bottom:10px;"></div>
+                    <div class="opacity-char-back">新環境のログイン状況</div>
+                    <div id="firebaseui-auth-container2" class="opacity" style="margin-bottom:10px;"></div>
+                    <div class="opacity-char-back">新環境のデータ入力状況</div>
+                    <div id="myDataNew" class="opacity" style="margin-bottom:10px;"></div>
+                </div>
+                <a href="./index.html" class="text-center icon_btn_on" style="font-size:15px; width:100%; background-size: 100% 100%;">ロマサガ便利ツールに戻る</a>
+                <div class="opacity kadomaru" style="margin:10px;">
+                    新環境ログイン後、旧環境とデータが異なる場合はお手数ですが
+                    <a href="https://twitter.com/nao_romasaga_rs">@nao_romasaga_rs</a>まで旧環境のIDと新環境のIDをご連絡ください
+                </div>
+            </div>
+        </div>
+        <script>
+            var configBlue = {
+                apiKey: "AIzaSyBliZfwz-xZnVtIZmeAQv0uo2IgmL5eUKM",
+                authDomain: "nao-romasaga-rs-blue.firebaseapp.com",
+                databaseURL: "https://nao-romasaga-rs-blue.firebaseio.com",
+                projectId: "nao-romasaga-rs-blue",
+                storageBucket: "nao-romasaga-rs-blue.appspot.com",
+                messagingSenderId: "593259380066",
+                appId: "1:593259380066:web:fb3ac46f01df8c11"
+            };
+            var configUsers = {
+                apiKey: "AIzaSyDvB6eT5hyVrgYQwuPMRomveJmwI3M6OOQ",
+                authDomain: "nao-romasaga-rs-users.firebaseapp.com",
+                databaseURL: "https://nao-romasaga-rs-users.firebaseio.com",
+                projectId: "nao-romasaga-rs-users",
+                storageBucket: "nao-romasaga-rs-users.appspot.com",
+                messagingSenderId: "82869347272",
+                appId: "1:82869347272:web:17b30ed91988d949"
+            };
+            const app1 = firebase.initializeApp(configBlue);
+            const appUsers = firebase.initializeApp(configUsers, "Users");
+            var OLD_UID;
+            var NEW_UID;
+            var UNAME;
+            var uiConfig = {
+                // ログイン完了時のリダイレクト先
+                signInSuccessUrl: 'https://nao-romasaga.github.io/convert.html',
+                // 利用する認証機能
+                signInOptions: [
+                    firebase.auth.TwitterAuthProvider.PROVIDER_ID
+                ]
+            };
+
+            var oLogin = false, nLogin = false;
+            firebase.auth().onAuthStateChanged((user) => {
+                if (!user) {
+                    var ui = new firebaseui.auth.AuthUI(firebase.auth());
+                    ui.start('#firebaseui-auth-container', uiConfig);
+                    $("#myDataOld").html("登録情報はありません");
+                } else {
+                    database = firebase.database();
+                    OLD_UID = user.uid;
+                    UNAME = user.displayName;
+                    $("#loginInfo").hide();
+                    let icon = $("<img>").attr("src", user.photoURL)
+                            .attr("style", "width:40px; heidht:40px;    border-radius: 50%;");
+                    let name = `${user.displayName} さん:ログイン中<br>ID : ${OLD_UID}`;
+                    $("#firebaseui-auth-container").addClass("bg-white kadomaru")
+                            .append(icon).append(name);
+                    firebase.database().ref(`user_data/${OLD_UID}/`).once("value").then(function (snapshot) {
+                        $("#myDataOld").html(mydata(snapshot.val()));
+                    });
+                    oLogin = true;
+                    if (oLogin && nLogin) {
+                        convert();
+                    }
+                }
+            });
+            firebase.auth(appUsers).onAuthStateChanged((user) => {
+                if (!user) {
+                    var ui = new firebaseui.auth.AuthUI(firebase.auth(appUsers));
+                    ui.start('#firebaseui-auth-container2', uiConfig);
+                    $("#myDataNew").html("登録情報はありません");
+                } else {
+                    NEW_UID = user.uid;
+                    UNAME = user.displayName;
+                    let icon = $("<img>").attr("src", user.photoURL)
+                            .attr("style", "width:40px; heidht:40px;    border-radius: 50%;");
+                    let name = `${user.displayName} さん:ログイン中<br>ID : ${NEW_UID}`;
+                    $("#firebaseui-auth-container2").addClass("bg-white kadomaru")
+                            .append(icon).append(name);
+                    firebase.database(appUsers).ref(`user_data/${NEW_UID}/`).once("value").then(function (snapshot) {
+                        $("#myDataNew").html(mydata(snapshot.val()));
+                    });
+                    nLogin = true;
+                    if (oLogin && nLogin) {
+                        convert();
+                    }
+                }
+            });
+            function convert() {
+                firebase.database().ref(`user_data/${OLD_UID}`).once("value").then(function (snapshot) {
+                    let org = snapshot.val();
+                    REF2 = firebase.database(appUsers).ref(`user_data/${NEW_UID}/`);
+                    REF2.update(org);
+                });
+            }
+            function mydata(data) {
+                let char = (data['CHAR'] !== undefined) ? Object.keys(data['CHAR']).length : 0;
+                let ss = (data['STYLECHECK']['SS'] !== undefined) ? data['STYLECHECK']['SS'].length : 0;
+                let s = (data['STYLECHECK']['S'] !== undefined) ? data['STYLECHECK']['S'].length : 0;
+                let a = (data['STYLECHECK']['A'] !== undefined) ? data['STYLECHECK']['A'].length : 0;
+                let str = "ステータス入力キャラ数:" + char + "<br>"
+                        + `所持スタイル数:SS[${ss}],S[${s}],A[${a}]<br>`;
+                return str;
+            }
+        </script>        
+    </body>
+</html>
