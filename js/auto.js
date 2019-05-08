@@ -54,7 +54,7 @@ $(document).ready(function ($) {
         // 1件目はデフォルトで出しちゃう
         let styleId = NOW_CHAR['Holders'][0];
         clickStyle(styleId);
-        gtag('event', "clickChar", {'event_category': "auto", 'event_label': CHAR_MASTER['Name'], 'value': 1});
+        gtag('event', "clickChar", {'event_category': "auto", 'event_label': NOW_CHAR['Name'], 'value': 1});
     });
     $(document).on('click', '.style', function () {
         let styleId = $(this).attr("data-id");
