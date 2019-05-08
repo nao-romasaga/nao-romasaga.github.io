@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html prefix="og: http://ogp.me/ns#" lang="ja">
     <head>
         <!-- Global site tag (gtag.js) - Google Analytics -->
+        <!--
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138966739-1"></script>
         <script>
             window.dataLayer = window.dataLayer || [];
@@ -12,8 +13,21 @@
 
             gtag('config', 'UA-138966739-1');
         </script>
+        -->
         <meta charset="utf-8">
+        <title>ロマサガRS スタイル詳細</title>
+        <meta property="og:title" content="ロマサガRS スタイル詳細" />
+        <meta property="og:url" content="https://http://nao-romasaga.github.io/style.html" />
+        <meta property="og:description" content="ロマサガRSのキャラクターごとのスタイルを調べるツールです。技・アビリティ・スタイル補正などが比較できます。攻略等にお役立て下さい。" />
+        <meta name="description" content="ロマサガRSのキャラクターごとのスタイルを調べるツールです。技・アビリティ・スタイル補正などが比較できます。攻略等にお役立て下さい。【ロマンシングサガ リユニバース】" />
+        <meta property="og:image" content="https://http://nao-romasaga.github.io/img/twitter_card_style.png" />
+        <meta property="og:site_name" content="ロマサガRS便利ツール" />
+        <meta property="og:type" content="article">
+        <meta property="og:locale" content="ja_JP" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@nao_romasaga_rs" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
@@ -44,7 +58,6 @@
             @media only screen and (min-width: 768px) and (max-width: 1024px) { .xs-show { display:none; } .xs-hide { display:block; } }
             @media only screen and (min-width: 568px) and (max-width: 768px) { .sp-button { width: 25px; height: 18px; } }
         </style>
-        <title>ロマサガRS キャラクター詳細@nao_romasaga</title>
         <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -64,7 +77,7 @@
                 <div id="firebaseui-auth-container" style="margin-bottom:10px;"></div>
                 <div id="loginInfo" class="opacity kadomaru" style="margin-bottom:10px;">Twitterログインすると入力したキャラクターの情報が保存され次回以降自動入力されます<br>
                     また今後オープン予定の「みんなの育成状況」や「ステータス上限チェック」などが利用可能になります。</div>
-                
+
                 <h5 class="text-center opacity kadomaru" onclick="$('.movie').toggleClass('d-none')">つかいかた動画をみる</h5>
                 <div class="movie d-none">
                     <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">[new] キャラクターとスタイル詳細機能を作成しました。<br>スタイルレベル50の性能や、所有技の比較などが簡単に出来ます<br><br>ガチャを引く判断や限界突破の判断にご活用下さい✨<a href="https://t.co/vsr2OMd3zG">https://t.co/vsr2OMd3zG</a><br><br>お布施もお待ちしております😘<a href="https://t.co/3qFDqY1Kdx">https://t.co/3qFDqY1Kdx</a> <a href="https://t.co/lka5BOKblU">pic.twitter.com/lka5BOKblU</a></p>&mdash; (nAo)@ロマサガRS (@nao_romasaga_rs) <a href="https://twitter.com/nao_romasaga_rs/status/1120049965747687424?ref_src=twsrc%5Etfw">April 21, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -143,13 +156,16 @@
                     <div id="styleChoice">                    </div>
                 </div>
                 <div class="style-bgcolor styleChoiceArea">
-                    <div id="styleBgImg">
-                        <div class="text-center darkButton" style="margin-bottom: 10px; opacity: 0.8; padding-right:46px;" id="styleNameLabel"></div>
-                        <div id="styleInfo" class="row" style="margin-top:50px;">
-                            <div class="float-right text-center m-auto">
-                                <span id="styleDot" class="char dot_mid dot char-aruku"></span>
-                            </div>
-                            <div class="small text-nowrap style-param-window">
+                    <div >
+                        <div class="text-center darkButton" style="opacity: 0.8; padding-right:46px;" >
+                            <span id="styleNameLabel"></span>
+                        </div>
+                        <div class="row">
+                            <!--
+                            <div class="float-right text-center m-auto" id="styleBgImg" style="width:100%; height:100%"></div>
+                            -->
+                            <div class="col-7" id="styleBgImg" >　</div>
+                            <div class="col-4 col-md-0 small text-nowrap style-param-window" style="margin-top: 10px; ">
                                 <div class="text-center char-bottom">Lv<span class="nowStyleLevel">50</span> ステータス</div>
                                 <span id="styleSTR"></span><br>
                                 <span id="styleVIT"></span><br>
@@ -160,19 +176,33 @@
                                 <span id="styleAI"></span><br>
                                 <span id="styleMI"></span><br>
                             </div>
-                            <table class="small style-skill-window" style="width:90%">
-                                <tr>
-                                    <td>.</td><td></td><td></td>
-                                </tr>
-                                <tr>
-                                    <td>　</td>
-                                    <td id="skillList"></td>
-                                    <td id="abilityList"></td>
-                                </tr>
-                                <tr>
-                                    <td>.</td><td></td>
-                                </tr>
-                            </table>
+                            <div class="col-12 col-md-4">
+                                <table class="style-taisei-window width-100 text-center">
+                                    <tr class="char-bottom">
+                                        <th><span class="icon_xs_zokusei icon_zan" style="width:23px; height:23px;"></span></th>
+                                        <th><span class="icon_xs_zokusei icon_da" style="width:23px; height:23px;"></span></th>
+                                        <th><span class="icon_xs_zokusei icon_totsu" style="width:23px; height:23px;"></span></th>
+                                        <th><span class="icon_xs_zokusei icon_netsu" style="width:23px; height:23px;"></span></th>
+                                        <th><span class="icon_xs_zokusei icon_rei" style="width:23px; height:23px;"></span></th>
+                                        <th><span class="icon_xs_zokusei icon_rai" style="width:23px; height:23px;"></span></th>
+                                        <th><span class="icon_xs_zokusei icon_yo" style="width:23px; height:23px;"></span></th>
+                                        <th><span class="icon_xs_zokusei icon_in" style="width:23px; height:23px;"></span></th>
+                                    </tr>
+                                    <tr>
+                                        <td id="taisei_Zan" style="font-size:100%;">999</td>
+                                        <td id="taisei_Da" style="font-size:100%;">999</td>
+                                        <td id="taisei_Totsu" style="font-size:100%;">999</td>
+                                        <td id="taisei_Netsu" style="font-size:100%;">999</td>
+                                        <td id="taisei_Rei" style="font-size:100%;">999</td>
+                                        <td id="taisei_Rai" style="font-size:100%;">999</td>
+                                        <td id="taisei_You" style="font-size:100%;">999</td>
+                                        <td id="taisei_Inn" style="font-size:100%;">999</td>
+                                </table>         
+                            </div>
+                            <div class="row no-gutters" style="padding: 0px 15px;">
+                                <div class="col-12"><div class="style-taisei-window width-100" id="skillList"></div></div>
+                                <div class="col-12"><div class="style-taisei-window width-100" id="abilityList"></div></div>
+                            </div>
                             <div class="m-auto width-100 styleChoiceArea"  style="padding: 0px 15px 0px 15px;">
                                 <div class="text-center darkButton" style="margin-bottom: 10px">スタイルLv別 ステータス値比較</div>
                                 <table class="table table-sm width-100 small text-nowrap style-param-window" id="statusDiffTable">
