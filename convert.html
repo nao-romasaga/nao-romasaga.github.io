@@ -104,7 +104,7 @@ and open the template in the editor.
             });
             firebase.auth(appUsers).onAuthStateChanged((user) => {
                 if (!user) {
-                    var ui = new firebaseui.auth.AuthUI(firebase.auth(appUsers));
+                    var ui = new firebaseui.auth.AuthUI(firebase.auth(appUsers), "Users");
                     ui.start('#firebaseui-auth-container2', uiConfig);
                     $("#myDataNew").html("登録情報はありません");
                 } else {
