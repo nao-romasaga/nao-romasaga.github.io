@@ -124,9 +124,14 @@ function insertCommonComponent() {
     nav += '  </div>';
     nav += '</nav>';
     $('body').prepend(nav);
-    let word = "下記の時間帯にメンテナンスを予定しています<br>5/3 21:00〜22:00<br>メンテナンス中はアクセス出来ませんのでご容赦ください。詫び石はありません";
-    let info = `<div class="card"><div class="card-header bg-warning">お知らせ</div><div class="card-body">${word}</div></div>`;
-    //$(".title-text").after(info);
+    let title = "お知らせ";
+    let word = "<b>[悲報] 5月上旬だというのにDB利用限界の85%に到達<b><hr>"
+            + "というわけで下記の時間帯にメンテナンスを予定しています<br>";
+    word += "・5/9 00:00〜01:00<br>メンテナンス中はアクセス出来ませんのでご容赦ください。<br>";
+    word += "バックアップは取っていますがDB移設するので入力内容が消えるかもしれません...そうならないよう尽力します(･ω･)💦<br>";
+    word += "メンテが長引いていたらご察しください";
+    let info = `<div class="card"><div class="card-header bg-warning">${title}</div><div class="card-body">${word}</div></div>`;
+    $(".title-text").after(info);
 
     var footer = "";
     footer += '<div class="opacity" style ="position: relative;">';
