@@ -163,7 +163,7 @@ function insertCommonComponent() {
 
     let url = $(location).attr('href');
     if (url.indexOf('debug') === -1) {
-        $('body').html('<div class="sorry_center"><p class="sorry_cat icon-nemuri"><span class="icon-zzz"></span></p><br>申し訳ございません。<br>現在メンテナンス中です。</div>');
+        $('body').html('<div class="sorry_center"><p class="sorry_cat icon-nemuri"><span class="icon-zzz"></span></p><br>申し訳ございません。<br>現在メンテナンス中です。<hr>データ移行に手間取っておりメンテナンス終了時刻は未定です(･ω･)💦<br>ご不便をおかけし申し訳ございません。</div>');
     }
     
     if (url.indexOf('damage.html') != -1) {
