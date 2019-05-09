@@ -153,7 +153,7 @@
     opacity: 0.9;
 }
 .haikei {
-    background: url(https://nao-romasaga.github.io/img/bg.jpg) no-repeat;
+    background: url(../img/bg.jpg) no-repeat;
     width:100%;
     background-size: cover;
 }
@@ -295,7 +295,7 @@ body {
 }
 
 .sorry_cat {
-    background: url(https://nao-romasaga.github.io/img/dot/ID36a44.png) no-repeat; /* riz */
+    background: url(../img/dot/ID36a44.png) no-repeat; /* riz */
     background-size: 400px 400px
 }
 .sorry_center{
@@ -317,7 +317,7 @@ body {
     animation: nemuri 2s steps(1);
 }        
 .icon-zzz {
-    background: url(https://nao-romasaga.github.io/img/icon/icon_zzz.png) no-repeat;
+    background: url(../img/icon/icon_zzz.png) no-repeat;
     display: inline-block;
     width: 60px;
     height: 60px;
@@ -392,7 +392,7 @@ body {
     font-size: 8px;
 }
 .dojohaikei {
-    background: url(https://nao-romasaga.github.io/img/bg_dojo.png?v=1);
+    background: url(../img/bg_dojo.png);
 }
 .style-param-window {
     background-color: rgba(160, 40, 40, 0.6);
@@ -400,7 +400,6 @@ body {
     padding: 10px;
     border-radius: 10px;
     border: 2px solid lightcyan;    
-    margin-right: 15px;
 }
 .style-taisei-window {
     background-color: rgba(0, 0, 0, 0.9);
@@ -412,23 +411,30 @@ body {
 .style-skill-window {
     color: white;
     margin: 0 20px 0 20px;
-    background: url(https://nao-romasaga.github.io/img/bg_window.png) no-repeat;
+    background: url(../img/bg_window.png) no-repeat;
     background-size: 100% 100%;
     opacity: 0.8;    
 }
 
+.style-skill-list {
+    background: linear-gradient(to left,rgba(38,16,25,1), rgba(56,38,24,1) 10%, rgba(88,66,38,1) 50%, rgba(56,38,24,1) 90%,rgba(38,16,25,1));
+    color: white;
+    padding: 5px;
+    border-radius: 10px;
+    border: 2px outset gold;    
+}
 .style-tab-active{
     padding-top: 5px;
     display: inline-block; 
     height:40px; 
-    background:url(https://nao-romasaga.github.io/img/icon/icon_tab_active.png) no-repeat; 
+    background:url(../img/icon/icon_tab_active.png) no-repeat; 
     background-size: 100%;    
 }
 .style-tab-disabled{
     padding-top: 5px;
     display: inline-block;
     height:40px;
-    background:url(https://nao-romasaga.github.io/img/icon/icon_tab_disable.png) no-repeat;
+    background:url(../img/icon/icon_tab_disable.png) no-repeat;
     background-size: 100%;
 }
 
@@ -437,7 +443,7 @@ body {
     margin-left:60px;
     width:60px;
     height:60px;
-    background: url(https://nao-romasaga.github.io/img/icon/icon_kakashi.png);
+    background: url(../img/icon/icon_kakashi.png);
     background-size: cover;    
 }
 .arrow_box {
