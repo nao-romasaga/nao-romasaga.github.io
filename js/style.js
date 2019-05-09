@@ -64,10 +64,8 @@ $(document).ready(function ($) {
 
         let charId = $(this).attr("data-id");
         NOW_CHAR = CHAR_MASTER[charId];
-        console.log(Object.assign({}, NOW_CHAR));
         let styleId = NOW_CHAR['Holders'][0];
         NOW_STYLE = STYLE_MASTER[styleId];
-        console.log(NOW_STYLE);
 
         $(".char-selected").each(function (i, e) {
             $(this).removeClass('char-winner');
@@ -110,7 +108,6 @@ $(document).ready(function ($) {
             NOW_CHAR[key] = Number($("#char" + key).val());
             update[key] = Number($("#char" + key).val());
         }
-        console.log(update);
         updateData(`CHAR/${NOW_CHAR['Id']}`, update);
     }
 
@@ -245,9 +242,8 @@ function displayStyleInfo(styleId) {
         }
     });
     let styleInfo = STYLE_MASTER[styleId];
-    console.log(styleInfo);
     for (let z of ["Zan", "Da", "Totsu", "Netsu", "Rei", "Rai", "Inn", "You"]) {
-        setTaisei($("#taisei_" + z), styleInfo["Resist"+z]);
+        setTaisei($(".taisei_" + z), styleInfo["Resist"+z]);
     }
 
     let another = $("<p>").attr('style', 'font-size:10px; margin-bottom:0px;').append(styleInfo['AnotherName']);
@@ -265,27 +261,32 @@ function displayStyleInfo(styleId) {
 
     displayStyleStatusTable(styleInfo, NOW_LV);
 
-    $("#abilityList").html("");
+    $("#abilityList1").html("");
+    $("#abilityList2").html("");
     let abList = [];
     for (let key in styleInfo['StyleAbilityIds']) {
         let abInfo = ABILITY_MASTER[styleInfo['StyleAbilityIds'][key]];
+        //console.log(abInfo);
         let name = $("<span>").append(abInfo["Name"]);
         let infoBtn = createInfoButton();
         infoBtn.attr("style", "margin-left:10px")
                 .attr("title", abInfo["FlavorText"]);
         //name.append(infoBtn);
         let flavor = $("<span>").addClass("small").html(abInfo["FlavorText"]);
-        name.append(":").append(flavor);
+        name.append(":<br class='hidden pcBlock'>").append(flavor);
         abList.push(name.html());
     }
-    $("#abilityList").append(abList.join("<br>"));
-    $("#skillList").html("");
+    $("#abilityList1").append(abList.join("<br>"));
+    $("#abilityList2").append(abList.join("<br>"));
+    $("#skillList1").html("");
+    $("#skillList2").html("");
     for (let key in styleInfo['SkillIds']) {
         let skillInfo = SKILL_MASTER[styleInfo['SkillIds'][key]];
         //console.log(skillInfo);
         let name = $("<div>").addClass("test");
         name.append($('<span>').addClass('icon_sm').addClass(ICON_LIST[skillInfo['BattleType']]).append("　"));
         name.append($('<span>').append(skillInfo["Name"]));
+        name.append("<br class='hidden pcBlock'><span class='hidden pcBlock'>　</span>");
 
         let infoBtn = createInfoButton();
         infoBtn.attr("style", "margin-left:10px")
@@ -323,7 +324,8 @@ function displayStyleInfo(styleId) {
                 + " " + skillInfo['PowerGrade'] + "(" + skillInfo['SkillIryoku'] + ")</span>"
                 );
 
-        $("#skillList").append(name);
+        $("#skillList1").append(name.clone());
+        $("#skillList2").append(name.clone());
     }
     $('[data-toggle="tooltip"]').tooltip();
     changeStyleStatusDiffTable(styleInfo);
@@ -373,7 +375,7 @@ var NOW_LV = 50;
 // キャラクタークリック時
 function displayCharInfo(charData) {
     $("#charName").html(NOW_CHAR['Name']);
-    console.log(charData);
+    //console.log(charData);
 
     let dotId = NOW_CHAR['DotId'];
     let pngName = (dotId !== "ID4e2c8") ? dotId : "ID4e2c9";
