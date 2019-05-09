@@ -81,13 +81,14 @@ $(document).ready(function ($) {
             // スタイル初期表示
             displayStyleInfo(styleId);
         });
-
+        gtag('event', "clickChar", {'event_category': "style", 'event_label': NOW_CHAR['Name'], 'value': 1});
     });
 
     $(document).on('click', '.style', function () {
         let styleId = $(this).attr("data-id");
         NOW_STYLE = STYLE_MASTER[styleId];
         displayStyleInfo(styleId);
+        gtag('event', "clickStyle", {'event_category': "auto", 'event_label': NOW_STYLE['Name'] + NOW_STYLE['AnotherName'], 'value': 1});
     });
 
     $("#displayDamage").click(function () {
@@ -95,6 +96,7 @@ $(document).ready(function ($) {
         $(this).toggleClass("icon_btn_on");
         $(this).find("#msg").toggleClass("d-none");
         $(".culcDamageResultClass").slideToggle();
+        gtag('event', "displayDamage", {'event_category': "auto", 'event_label': "on", 'value': 1});
     });
 
     $(".charParam").change(function () {
@@ -172,18 +174,21 @@ $(document).ready(function ($) {
         $(".styleSkillArea").hide();
         $(".styleDiffArea").hide();
         tabChange($(this));
+        gtag('event', "changeTab", {'event_category': "auto", 'event_label': "スタイル", 'value': 1});
     });
     $("#tabSkill").click(function () {
         $(".styleChoiceArea").hide();
         $(".styleSkillArea").show();
         $(".styleDiffArea").hide();
         tabChange($(this));
+        gtag('event', "changeTab", {'event_category': "auto", 'event_label': "技・術", 'value': 1});
     });
     $("#tabDiff").click(function () {
         $(".styleChoiceArea").hide();
         $(".styleSkillArea").hide();
         $(".styleDiffArea").show();
         tabChange($(this));
+        gtag('event', "changeTab", {'event_category': "auto", 'event_label': "ステータス比較", 'value': 1});
     });
 
 });
