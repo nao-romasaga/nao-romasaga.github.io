@@ -3,6 +3,14 @@ var config = {
     databaseURL: "https://nao-romasaga-rs-dev.firebaseio.com",
     storageBucket: "nao-romasaga-rs-dev.appspot.com",
 };
+var configUsers = {
+    apiKey: "AIzaSyDvB6eT5hyVrgYQwuPMRomveJmwI3M6OOQ",
+    databaseURL: "https://nao-romasaga-rs-users.firebaseio.com",
+    authDomain: "nao-romasaga-rs-users.firebaseapp.com",
+    storageBucket: "nao-romasaga-rs-users.appspot.com",
+};
+const app = firebase.initializeApp(config);
+const appUsers = firebase.initializeApp(configUsers, "Users");
 
 var REF;
 var UID;
@@ -12,12 +20,12 @@ firebase.auth(appUsers).onAuthStateChanged((user) => {
         REF = firebase.database(appUsers).ref('user_data/' + UID);
         $(".RequireLoginMenu").removeClass("d-none");
     } else {
-        console.log("no login");
     }
-        console.log(UID);
 });
 function readFile(target, callback) {
+    console.log(target);
     return firebase.database().ref(`game_data`).once("value").then(function (snapshot) {
+    console.log(snapshot.val()[target]);
         return callback(snapshot.val()[target]);
     });
 }
