@@ -60,7 +60,7 @@
                 <script>
                     $(document).ready(function () {
                         let SKILL_LIST = [];
-                        let rand = Math.floor(Math.random() * 11);
+                        let rand = Math.floor(Math.random() * 9);
                         console.log(rand);
                         $("#haikei").attr("style", `background: url(./img/bg_renkei_${rand + 1}.png); height:640px;`);
                         readFile('Skill', function (result) {
@@ -180,12 +180,18 @@
                     <div class="col-10 offset-1 text-center renkeiName" id="renkeiName"></div>
                     <div class="col-12" id="renkeiDisplay">
                     </div>
-                    <div class="col-12 text-center">
+                    <div class="col-12 text-center" style="margin-top:30px">
                         <a href="" class="twitter-share-button width-100" rel=”nofollow” onClick="window.open(encodeURI(decodeURI(this.href)), 'twwindow', 'width=550, height=450, personalbar=0, toolbar=0, scrollbars=1'); return false;" style="background-color: rgba(41,163,239,1); color:white; padding:5px 10px; border-radius:10px;"><i class="fab fa-twitter"></i>　結果をツイートする</a>
                     </div>
                 </div>
-                <div class="row renkeiHaikei slide1" id="TEMPLATE" style="display: none"><div class="col-4 text-center text-nowrap m-auto renkeiFont" id="name"></div><div class="col-8" id="img"></div></div>
             </div>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
         </div>
+                <div class="row renkeiHaikei slide1" id="TEMPLATE" style="display: none"><div class="col-4 text-center text-nowrap m-auto renkeiFont" id="name"></div><div class="col-8" id="img"></div></div>
     </body>
 </html>
