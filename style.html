@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html prefix="og: http://ogp.me/ns#" lang="ja">
     <head>
-        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <!-- Global site tag (gtag.js) - Google Analytics         -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138966739-1"></script>
         <script>
             window.dataLayer = window.dataLayer || [];
@@ -151,31 +151,52 @@
                     <div class="text-center m-auto style-tab-disabled styleTab" id="tabDiff" style="width: 35%">ステータス比較</div>
                 </div>
                 <div class="style-bgcolor styleChoiceArea">
-                    <div id="styleChoice">                    </div>
+                    <div id="styleChoice"></div>
                 </div>
                 <div class="style-bgcolor styleChoiceArea">
                     <div >
                         <div class="text-center darkButton" style="opacity: 0.8; padding-right:46px;" >
                             <span id="styleNameLabel"></span>
                         </div>
-                        <div class="row">
-                            <!--
-                            <div class="float-right text-center m-auto" id="styleBgImg" style="width:100%; height:100%"></div>
-                            -->
-                            <div class="col-7" id="styleBgImg" >　</div>
-                            <div class="col-4 col-md-0 small text-nowrap style-param-window" style="margin-top: 10px; ">
-                                <div class="text-center char-bottom">Lv<span class="nowStyleLevel">50</span> ステータス</div>
-                                <span id="styleSTR"></span><br>
-                                <span id="styleVIT"></span><br>
-                                <span id="styleDEX"></span><br>
-                                <span id="styleAGI"></span><br>
-                                <span id="styleINT"></span><br>
-                                <span id="styleMND"></span><br>
-                                <span id="styleAI"></span><br>
-                                <span id="styleMI"></span><br>
+                        <div class="row no-gutters ">
+                            <div class="col-7 col-md-8" id="styleBgImg" >　</div>
+                            <div class="col-5 col-md-4 row">
+                                <div class="col-12 col-md-5 small text-nowrap style-param-window" style="margin-top: 10px; ">
+                                    <div class="text-center char-bottom">Lv<span class="nowStyleLevel">50</span> ステータス</div>
+                                    <span id="styleSTR"></span><br>
+                                    <span id="styleVIT"></span><br>
+                                    <span id="styleDEX"></span><br>
+                                    <span id="styleAGI"></span><br>
+                                    <span id="styleINT"></span><br>
+                                    <span id="styleMND"></span><br>
+                                    <span id="styleAI"></span><br>
+                                    <span id="styleMI"></span><br>
+                                </div>
+                                <div class="col-12 col-md-5 offset-1 d-none d-md-inline small text-nowrap style-taisei-window" style="margin-top: 10px; ">
+                                    <div class="text-center char-bottom">耐性</div>
+                                    <span class="icon_xs_zokusei icon_zan" style="width:23px; height:23px;">　</span>
+                                    <span class="taisei_Zan" style="font-size:100%;">999</span><br>
+                                    <span class="icon_xs_zokusei icon_da" style="width:23px; height:23px;">　</span>
+                                    <span class="taisei_Da" style="font-size:100%;">999</span><br>
+                                    <span class="icon_xs_zokusei icon_totsu" style="width:23px; height:23px;">　</span>
+                                    <span class="taisei_Totsu" style="font-size:100%;">999</span><br>
+                                    <span class="icon_xs_zokusei icon_netsu" style="width:23px; height:23px;">　</span>
+                                    <span class="taisei_Netsu" style="font-size:100%;">999</span><br>
+                                    <span class="icon_xs_zokusei icon_rei" style="width:23px; height:23px;">　</span>
+                                    <span class="taisei_Rei" style="font-size:100%;">999</span><br>
+                                    <span class="icon_xs_zokusei icon_rai" style="width:23px; height:23px;">　</span>
+                                    <span class="taisei_Rai" style="font-size:100%;">999</span><br>
+                                    <span class="icon_xs_zokusei icon_yo" style="width:23px; height:23px;">　</span>
+                                    <span class="taisei_You" style="font-size:100%;">999</span><br>
+                                    <span class="icon_xs_zokusei icon_in" style="width:23px; height:23px;">　</span>
+                                    <span class="taisei_Inn" style="font-size:100%;">999</span><br>
+                                </div>                                
+                                <div class="col-md-12 d-none d-md-inline pad0" style="margin-top: 10px; "><div class="style-skill-list width-100" id="skillList2"></div></div>
+                                <div class="col-md-12 d-none d-md-inline  pad0" style="margin-top: 10px; "><div class="style-skill-list width-100" id="abilityList2"></div></div>
                             </div>
-                            <div class="col-12 col-md-4">
-                                <table class="style-taisei-window width-100 text-center">
+
+                            <div class="col-12 d-md-none">
+                                <table class="style-taisei-window width-100 text-center ">
                                     <tr class="char-bottom">
                                         <th><span class="icon_xs_zokusei icon_zan" style="width:23px; height:23px;"></span></th>
                                         <th><span class="icon_xs_zokusei icon_da" style="width:23px; height:23px;"></span></th>
@@ -187,21 +208,21 @@
                                         <th><span class="icon_xs_zokusei icon_in" style="width:23px; height:23px;"></span></th>
                                     </tr>
                                     <tr>
-                                        <td id="taisei_Zan" style="font-size:100%;">999</td>
-                                        <td id="taisei_Da" style="font-size:100%;">999</td>
-                                        <td id="taisei_Totsu" style="font-size:100%;">999</td>
-                                        <td id="taisei_Netsu" style="font-size:100%;">999</td>
-                                        <td id="taisei_Rei" style="font-size:100%;">999</td>
-                                        <td id="taisei_Rai" style="font-size:100%;">999</td>
-                                        <td id="taisei_You" style="font-size:100%;">999</td>
-                                        <td id="taisei_Inn" style="font-size:100%;">999</td>
-                                </table>         
+                                        <td class="taisei_Zan" style="font-size:100%;">999</td>
+                                        <td class="taisei_Da" style="font-size:100%;">999</td>
+                                        <td class="taisei_Totsu" style="font-size:100%;">999</td>
+                                        <td class="taisei_Netsu" style="font-size:100%;">999</td>
+                                        <td class="taisei_Rei" style="font-size:100%;">999</td>
+                                        <td class="taisei_Rai" style="font-size:100%;">999</td>
+                                        <td class="taisei_You" style="font-size:100%;">999</td>
+                                        <td class="taisei_Inn" style="font-size:100%;">999</td>
+                                </table>
                             </div>
-                            <div class="row no-gutters" style="padding: 0px 15px;">
-                                <div class="col-12"><div class="style-taisei-window width-100" id="skillList"></div></div>
-                                <div class="col-12"><div class="style-taisei-window width-100" id="abilityList"></div></div>
+                            <div class="row no-gutters d-md-none">
+                                <div class="col-12"><div class="style-skill-list width-100" id="skillList1"></div></div>
+                                <div class="col-12"><div class="style-skill-list width-100" id="abilityList1"></div></div>
                             </div>
-                            <div class="m-auto width-100 styleChoiceArea"  style="padding: 0px 15px 0px 15px;">
+                            <div class="m-auto width-100 styleChoiceArea">
                                 <div class="text-center darkButton" style="margin-bottom: 10px">スタイルLv別 ステータス値比較</div>
                                 <table class="table table-sm width-100 small text-nowrap style-param-window" id="statusDiffTable">
                                     <thead>
