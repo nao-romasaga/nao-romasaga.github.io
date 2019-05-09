@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html prefix="og: http://ogp.me/ns#" lang="ja">
     <head>
-        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <!-- Global site tag (gtag.js) - Google Analytics 
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138966739-1"></script>
         <script>
             window.dataLayer = window.dataLayer || [];
@@ -12,6 +12,7 @@
 
             gtag('config', 'UA-138966739-1');
         </script>
+        -->
         <meta charset="utf-8">
         <title>ロマサガRS 連携ジェネレーター</title>
         <meta property="og:title" content="ロマサガRS 連携ジェネレーター" />
@@ -72,6 +73,7 @@
                     $("#renkeiStart").hide();
                     $("#renkeiName").hide();
                     SKILL_MASTER = result;
+                    console.log(SKILL_MASTER);
                     SKILL_LIST = [];
                     for (let i in SKILL_MASTER) {
                         SKILL_LIST.push(SKILL_MASTER[i]);
@@ -137,6 +139,9 @@
                     var random = Math.floor(Math.random() * SKILL_LIST.length);
                     let holders = SKILL_LIST[random]['Holders'];
                     if (i === 5 && SKILL_LIST[random]['SkillIryoku'] === "-") {
+                        return false;
+                    }
+                    if(SKILL_LIST[random]['Id'] === "ID68ffe30"){
                         return false;
                     }
                     var randomStyle = Math.floor(Math.random() * holders.length);
