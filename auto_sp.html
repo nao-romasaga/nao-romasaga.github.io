@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html prefix="og: http://ogp.me/ns#" lang="ja">
     <head>
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138966739-1"></script>
@@ -13,7 +13,20 @@
             gtag('config', 'UA-138966739-1');
         </script>
         <meta charset="utf-8">
+        <title>ロマサガRS 全力AUTOシミュレーター</title>
+        <meta name="robots" content="noindex,nofollow">
+        <meta property="og:title" content="ロマサガRS 全力AUTOシミュレーター" />
+        <meta property="og:url" content="https://http://nao-romasaga.github.io/auto.html" />
+        <meta property="og:description" content="ロマサガRS 全力オート機能で技の覚醒や継承を効率よく行うためのシミュレーターです。ダメージ計算もできます。攻略や覚醒の検討などにご参考ください。" />
+        <meta name="description" content="ロマサガRS 全力オート機能で技の覚醒や継承を効率よく行うためのシミュレーターです。ダメージ計算もできます。攻略や覚醒の検討などにご参考ください。【ロマンシングサガ リユニバース】" />
+        <meta property="og:image" content="https://nao-romasaga.github.io/img/twitter_card_auto.png" />
+        <meta property="og:site_name" content="ロマサガRS便利ツール" />
+        <meta property="og:type" content="article">
+        <meta property="og:locale" content="ja_JP" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@nao_romasaga_rs" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
@@ -31,6 +44,7 @@
         <script type="text/javascript" src="js/jquery.sliderPro.js"></script>
         <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="css/slider-pro.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" >
         <style>
             /* スライド下のページャーの設定 */
             .sp-buttons { padding-top: 40px; }
@@ -39,7 +53,6 @@
             @media only screen and (min-width: 768px) and (max-width: 1024px) { .xs-show { display:none; } .xs-hide { display:block; } }
             @media only screen and (min-width: 568px) and (max-width: 768px) { .sp-button { width: 25px; height: 18px; } }
         </style>
-        <title>ロマサガRS 全力AUTOシミュレーター@nao_romasaga</title>
         <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -53,9 +66,14 @@
                 <div class="text-center">
                     <a href="https://www.jp.square-enix.com/saga_reuniverse/" target="new"><img src="https://www.jp.square-enix.com/saga_reuniverse/assets/img/cmn_logo01_sp.png" class="col-sm-12 col-md-8 col-lg-6"></a>
                 </div>
-                <h3 class="text-center opacity">全力AUTOシミュレーター</h3>
-                <p class="text-right opacity"><small>バグ発見、ご要望は <a href="https://twitter.com/nao_romasaga_rs" target="new">nao_romasaga_rs</a>まで</small>
-                </p>
+                <h3 class="text-center title-text">全力AUTOシミュレーター</h3>
+                <p class="text-right opacity"><small>バグ発見、ご要望は <a href="https://twitter.com/nao_romasaga_rs" target="new">nao_romasaga_rs</a>まで</small></p>
+                <h5 class="text-center opacity kadomaru" onclick="$('.movie').toggleClass('d-none')">つかいかた動画をみる</h5>
+                <div class="movie d-none">
+                    <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">[new] 全力オートシミュレータを作成しました<a href="https://t.co/wlT0E1mLzJ">https://t.co/wlT0E1mLzJ</a><br><br>覚醒パターンによる技威力の効率化や回復発動チャンスなども調べられます(･∀･) <a href="https://t.co/SchEaJbh0E">pic.twitter.com/SchEaJbh0E</a></p>&mdash; (nAo)@ロマサガRS (@nao_romasaga_rs) <a href="https://twitter.com/nao_romasaga_rs/status/1116035893498863616?ref_src=twsrc%5Etfw">April 10, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+                <br>
+
                 <p class="slide1 loading"><i class="dot_yuki dot_mid dot char-hashiri"></i></p>
                 <p class="slide2 loading"><i class="dot_monika dot_mid dot char-hashiri"></i></p>
                 <div id="slider-pro" class="slider-pro">
@@ -69,7 +87,9 @@
                             <span id="SF1"></span><br><span id="SF2"></span>
                         </div>
                         <div class="sp-slide text-center opacity-char-back">
-                            <h5 class="game-banner">アンリミテッド・サガ<br>エンペラーズ・サガ<br>サガ・スカーレットグレイス</h5>
+                            <h5 class="game-banner">
+                                アンリミテッド・サガ<span class="hidden pcBlock"> / </span><br class="hidden spBlock">
+                                エンペラーズ・サガ<span class="hidden pcBlock"> / </span><br class="hidden spBlock">サガ・スカーレットグレイス</h5>
                             <span id="US"></span>　<span id="ES"></span>　<span id="SS"></span>
                             <h5 class="game-banner">ロマンシング・サガRS</h5><span id="RSR"></span>
                         </div>
@@ -112,6 +132,8 @@
                 <br>
                 <div class="opacity-char-back text-center culcAfter" id="culcSummaryArea">
                     <label class="badge badge-pill badge-light" style="width:90%"><p style='border-bottom:1px solid; margin-bottom: 2px;'>シミュレーションサマリ</p>生命の水など全力AUTOで使われないものは<br>使えるタイミングが使用回数に表示されます</label>
+                    <br>
+                    <a href="" class="my-twitter-share-button width-100" rel=”nofollow” onClick="window.open(encodeURI(decodeURI(this.href)), 'twwindow', 'width=550, height=450, personalbar=0, toolbar=0, scrollbars=1'); return false;" style="background-color: rgba(41,163,239,1); color:white; padding:5px 10px; border-radius:10px;"><i class="fab fa-twitter"></i>　結果をツイートする</a>
                     <table class="table-sm text-left" id="culcSummary" style="width:100%; border-collapse:collapse">
                         <thead class="game-banner">
                             <tr>
@@ -128,7 +150,7 @@
                 <div class="acdList skillListSP switch culcAfter">
                     <ul>
                         <li>
-                            <a class="toggle menu parent accordionActive">ダメージ計算条件</a>
+                            <a class="toggle menu parent accordionActive" id="showJoken">ダメージ計算条件</a>
                             <ul class="inner child child01" style="display: none;">
                                 <li class="abilityName">
                                     <p style="text-align:left;" id='styleRank'></p>
@@ -168,6 +190,7 @@
                 </div>
                 <br>
                 <div id="culcDetail" class="opacity-char-back text-center"></div>
+
             </div></div> <!-- main -->
     </body>
 </html>
