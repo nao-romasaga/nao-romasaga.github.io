@@ -85,31 +85,31 @@ function insertCommonComponent() {
     nav += '        <a class="nav-link" href="./auto.html">全力AUTO<br class="hidden pcBlock">シミュレーター</a>';
     nav += '      </li>';
     nav += '      <li class="nav-item" id="headSkill">';
-    nav += '        <a class="nav-link" href="./skill.html">技・術検索</a>';
+    nav += '        <a class="nav-link" href="./skill.html">技・術<br class="hidden pcBlock">検索</a>';
     nav += '      </li>';
     nav += '      <li class="nav-item" id="headAbility">';
-    nav += '        <a class="nav-link" href="./ability.html">アビリティ検索</a>';
+    nav += '        <a class="nav-link" href="./ability.html">アビリティ<br class="hidden pcBlock">検索</a>';
     nav += '      </li>';
     nav += '      <li class="nav-item" id="headStyle">';
-    nav += '        <a class="nav-link" href="./style.html">キャラ+スタイル詳細</a>';
+    nav += '        <a class="nav-link" href="./style.html">キャラ+<br class="hidden pcBlock">スタイル詳細</a>';
     nav += '      </li>';
     nav += '      <li class="nav-item " id="headParty">';
-    nav += '        <a class="nav-link" href="./party.html">ステータス上限チェック<br class="hidden pcBlock">[ログイン必須]</a>';
-    nav += '      </li>';
-    nav += '      <li class="nav-item" id="headMinna">';
-    nav += '        <a class="nav-link disabled" href="#" aria-disabled="true">【データ収集中】<br class="hidden pcBlock">みんなの育成状況</a>';
+    nav += '        <a class="nav-link" href="./party.html">ステータス<br class="hidden pcBlock">上限チェック</a>';
     nav += '      </li>';
     nav += '      <li class="nav-item" id="headDamage">';
-    nav += '        <a class="nav-link" href="./damage.html">ダメージ計算</a>';
+    nav += '        <a class="nav-link" href="./damage.html">ダメージ<br class="hidden pcBlock">計算</a>';
     nav += '      </li>';
     nav += '      <li class="nav-item" id="headStyleCheck">';
     nav += '        <a class="nav-link" href="./stylecheck.html">スタイル所持<br class="hidden pcBlock">チェッカー</a>';
     nav += '      </li>';
     nav += '      <li class="nav-item" id="headOurStyle">';
-    nav += '        <a class="nav-link" href="./ourstyle.html">みんなのスタイル</a>';
+    nav += '        <a class="nav-link" href="./ourstyle.html">みんなの<br class="hidden pcBlock">スタイル</a>';
     nav += '      </li>';
     nav += '      <li class="nav-item" id="headDojo">';
-    nav += '        <a class="nav-link" href="./dojo.html">特訓タイマー</a>';
+    nav += '        <a class="nav-link" href="./dojo.html">特訓<br class="hidden pcBlock">タイマー</a>';
+    nav += '      </li>';
+    nav += '      <li class="nav-item" id="headRenkei">';
+    nav += '        <a class="nav-link" href="./renkei.html">連携<br class="hidden pcBlock">ジェネレーター '+newIcon+'</a>';
     nav += '      </li>';
     nav += '      <li class="nav-item " id="headSite">';
     nav += '        <a class="nav-link" href="./site.html">利用規約・<br class="hidden pcBlock">免責事項</a>';
@@ -134,6 +134,7 @@ function insertCommonComponent() {
     word += '<a href="./convert.html" class="text-center icon_btn_on" style="width:100%; background-size: 100% 100%;">データ移行</a>'
     word += "ご迷惑をおかけし誠に申し訳ございません(･ω･)💦<br>";
     let info = `<div class="card"><div class="card-header bg-warning">${title}</div><div class="card-body">${word}</div></div>`;
+    // Firebase側で暫定的に削除してるのでそっちも修正すること
     $(".title-text").after(info);
 
     var footer = "";
@@ -191,6 +192,8 @@ function insertCommonComponent() {
         $("#headStyleCheck").addClass("active");
     } else if (url.indexOf('oursytle.html') != -1) {
         $("#headOurStyle").addClass("active");
+    } else if (url.indexOf('renkei.html') != -1) {
+        $("#headRenkei").addClass("active");
     }
 
 
