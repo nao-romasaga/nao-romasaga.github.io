@@ -8,6 +8,7 @@ var tree;
 $(document).on('click', '.abilityName', function () {
     let id = $(this).attr("abid");
     //console.log(id, ABILITY_MASTER[id]);
+    $("#abilty_label").text(ABILITY_MASTER[id]['Name']);
     displayAbilityHolder(ABILITY_MASTER[id]);
     scrollStyleList();
 });
@@ -17,14 +18,16 @@ $(document).on('click', '.switch .toggle', function () {
 
 
 $(function () {
+    $('.container').on('click', function () {});
     readFile('Ability', function (result) {
         ABILITY_MASTER = result;
-        initial();
-        $('.container').on('click', function(){});
+    });
+
+    readAnalyzeFile('ABILITY_TREE', function (result) {
+        initial(result);
     });
     readFile('Style', function (result) {
         STYLE_MASTER = result;
-        $('.container').on('click', function(){});
     });
 });
 
@@ -74,8 +77,27 @@ function sortTree(tmpList) {
     }
     return result;
 }
-
-function initial() {
+let ABILITY_ICON_LIST = {
+    "自身強化(バフ)腕力": "icon_buff_str",
+    "自身強化(バフ)体力": "icon_buff_vit",
+    "自身強化(バフ)器用さ": "icon_buff_dex",
+    "自身強化(バフ)素早さ": "icon_buff_agi",
+    "自身強化(バフ)知力": "icon_buff_int",
+    "自身強化(バフ)精神": "icon_buff_mnd",
+    "自身強化(バフ)愛": "icon_buff_ai",
+    "自身強化(バフ)魅力": "icon_buff_mi",
+    "敵弱体化(デバフ)腕力": "icon_debuff_str",
+    "敵弱体化(デバフ)体力": "icon_debuff_vit",
+    "敵弱体化(デバフ)器用さ": "icon_debuff_dex",
+    "敵弱体化(デバフ)素早さ": "icon_debuff_agi",
+    "敵弱体化(デバフ)知力": "icon_debuff_int",
+    "敵弱体化(デバフ)精神": "icon_debuff_mnd",
+    "敵弱体化(デバフ)愛": "icon_debuff_ai",
+    "敵弱体化(デバフ)魅力": "icon_debuff_mi",
+    "毒": "icon_doku", "暗闇": "icon_kurayami", "スタン": "icon_stan", "マヒ": "icon_mahi", "眠り": "icon_zzz",
+    "石化": "icon_sekika", "混乱": "icon_konran", "魅了": "icon_miryo", "狂戦士": "icon_kyosenshi", "気絶": "icon_kizetsu",
+}
+function createSortList() {
     let tmpList = {};
     for (let key in ABILITY_MASTER) {
         let row = ABILITY_MASTER[key];
@@ -96,26 +118,11 @@ function initial() {
     }
 
     tmpList = sortTree(tmpList);
-    let ICON_LIST = {
-        "自身強化(バフ)腕力": "icon_buff_str",
-        "自身強化(バフ)体力": "icon_buff_vit",
-        "自身強化(バフ)器用さ": "icon_buff_dex",
-        "自身強化(バフ)素早さ": "icon_buff_agi",
-        "自身強化(バフ)知力": "icon_buff_int",
-        "自身強化(バフ)精神": "icon_buff_mnd",
-        "自身強化(バフ)愛": "icon_buff_ai",
-        "自身強化(バフ)魅力": "icon_buff_mi",
-        "敵弱体化(デバフ)腕力": "icon_debuff_str",
-        "敵弱体化(デバフ)体力": "icon_debuff_vit",
-        "敵弱体化(デバフ)器用さ": "icon_debuff_dex",
-        "敵弱体化(デバフ)素早さ": "icon_debuff_agi",
-        "敵弱体化(デバフ)知力": "icon_debuff_int",
-        "敵弱体化(デバフ)精神": "icon_debuff_mnd",
-        "敵弱体化(デバフ)愛": "icon_debuff_ai",
-        "敵弱体化(デバフ)魅力": "icon_debuff_mi",
-        "毒": "icon_doku", "暗闇": "icon_kurayami", "スタン": "icon_stan", "マヒ": "icon_mahi", "眠り": "icon_zzz",
-        "石化": "icon_sekika", "混乱": "icon_konran", "魅了": "icon_miryo", "狂戦士": "icon_kyosenshi", "気絶": "icon_kizetsu",
-    }
+    return tmpList;
+}
+
+function initial(tmpList) {
+
     for (let main of tmpList) {
         let li = $('<li>');
         let mainLink = '<a class="toggle menu parent">' + main['name'] + '</a>';
@@ -126,12 +133,12 @@ function initial() {
                 let subLink;
                 let icon = "";
 
-                if (ICON_LIST[main['name'] + sub['name']] !== undefined) {
-                    icon = ICON_LIST[main['name'] + sub['name']];
-                } else if (ICON_LIST[sub['name']] !== undefined) {
-                    icon = ICON_LIST[sub['name']];
-                } else if (ICON_LIST[sub['name'].replace("耐性", "")] !== undefined) {
-                    icon = ICON_LIST[sub['name'].replace("耐性", "")];
+                if (ABILITY_ICON_LIST[main['name'] + sub['name']] !== undefined) {
+                    icon = ABILITY_ICON_LIST[main['name'] + sub['name']];
+                } else if (ABILITY_ICON_LIST[sub['name']] !== undefined) {
+                    icon = ABILITY_ICON_LIST[sub['name']];
+                } else if (ABILITY_ICON_LIST[sub['name'].replace("耐性", "")] !== undefined) {
+                    icon = ABILITY_ICON_LIST[sub['name'].replace("耐性", "")];
                 }
 
                 if (icon !== "") {
@@ -239,10 +246,11 @@ function initialSkillTree(tmpList) {
 
 function displayAbilityHolder(holders) {
     $("table#ability_holder_table tbody *").remove();
+    $("#ability_holder_list").html("");
     for (key in holders['Holders']) {
         let styleId = holders['Holders'][key];
         let styleInfo = STYLE_MASTER[styleId];
-        if(styleInfo === undefined){
+        if (styleInfo === undefined) {
             continue;
         }
 
@@ -275,10 +283,11 @@ function displayAbilityHolder(holders) {
                 .addClass(getStyleIconBgClass(styleInfo['Rarity']))
                 .append(icon);
 
-        let tdImg = $("<td>").append(rare).append(background);
+        let tdImg = $("<td>").append(rare).append(background.clone());
         tr2.append(tdAb).append(tdImg);
 
         $("table#ability_holder_table tbody").append(tr1).append(tr2);
+        $("#ability_holder_list").append(background.clone());
         $('[data-toggle="tooltip"]').tooltip();
     }
 }
