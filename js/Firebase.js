@@ -27,13 +27,18 @@ firebase.auth(appUsers).onAuthStateChanged((user) => {
         console.log(UID);
 });
 function readFile(target, callback) {
-    return firebase.database().ref(`game_data`).once("value").then(function (snapshot) {
-        return callback(snapshot.val()[target]);
+    return firebase.database().ref(`game_data/${target}`).once("value").then(function (snapshot) {
+        return callback(snapshot.val());
+    });
+}
+async function readFileWithId(target, id, callback) {
+    return firebase.database().ref(`game_data/${target}/${id}`).once("value").then(function (snapshot) {
+        return callback(snapshot.val());
     });
 }
 function readAnalyzeFile(target, callback) {
-    return firebase.database().ref(`analyze_data`).once("value").then(function (snapshot) {
-        return callback(snapshot.val()[target]);
+    return firebase.database().ref(`analyze_data/${target}`).once("value").then(function (snapshot) {
+        return callback(snapshot.val());
     });
 }
 
