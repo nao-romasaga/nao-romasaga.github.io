@@ -6,7 +6,7 @@ var BASE_SKILL_LIST = [];
 var USE_SKILL_LIST = [];
 var NOW_CHAR = {};
 var NOW_STYLE = {};
-var CHAR_MASTER, STYLE_MASTER, SKILL_MASTER;
+var CHAR_MASTER, STYLE_MASTER = [], SKILL_MASTER;
 
 
 $(document).ready(function ($) {
@@ -17,15 +17,15 @@ $(document).ready(function ($) {
     readFile('Skill', function (result) {
         SKILL_MASTER = result;
     });
-    readFile('Style', function (result) {
-        STYLE_MASTER = result;
-    });
+    //readFile('Style', function (result) {
+    //    STYLE_MASTER = result;
+    //});
 
     initialHide();
     setSlider();
 
     // 後から差し込まれる要素はdocument.onにしないとfunctionがbindされない
-    $(document).on('click', '.char', function () {
+    $(document).on('click', '.char', async function () {
         let charId = $(this).attr("data-id");
         NOW_CHAR = CHAR_MASTER[charId];
 
@@ -49,7 +49,7 @@ $(document).ready(function ($) {
         });
         $(this).removeClass('char-aruku');
         $(this).addClass('char-winner').addClass('char-selected').addClass("dot");
-        displayStyleList(charId);
+        await displayStyleList(charId);
 
         // 1件目はデフォルトで出しちゃう
         let styleId = NOW_CHAR['Holders'][0];
@@ -61,7 +61,7 @@ $(document).ready(function ($) {
         clickStyle(styleId);
         gtag('event', "clickStyle", {'event_category': "auto", 'event_label': NOW_STYLE['Name'] + NOW_STYLE['AnotherName'], 'value': 1});
     });
-    function clickStyle(styleId) {
+    async function clickStyle(styleId) {
         $("#skillAreaParent").show();
         $("#culcStart").show();
         if (NOW_CHAR['Holders'].length > 1) {
@@ -71,7 +71,7 @@ $(document).ready(function ($) {
         $("table#skillArea > tbody *").remove();
         $("table#skillArea > tfoot *").remove();
         $("table#culcSummary tbody *").remove();
-        NOW_STYLE = STYLE_MASTER[styleId];
+        NOW_STYLE = await getStyleInfo(styleId); // STYLE_MASTER[styleId];
         displaySkillTable(styleId);
     }
 
@@ -94,7 +94,7 @@ $(document).ready(function ($) {
         USE_SKILL_LIST = BASE_SKILL_LIST.slice();
         USE_SKILL_LIST.push(skillInfo);
     });
-    
+
     $("#showJoken").click(function () {
         gtag('event', "showJoken", {'event_category': "auto", 'event_label': "none", 'value': 1});
     });
@@ -102,8 +102,6 @@ $(document).ready(function ($) {
         gtag('event', "clickCalc", {'event_category': "auto", 'event_label': NOW_STYLE['Name'] + NOW_STYLE['AnotherName'], 'value': 1});
         let skillList = displayResult();
         $("html,body").animate({scrollTop: $('#culcStart').offset().top}, 500, 'swing');
-        //console.log(skillList);
-        //console.log(NOW_STYLE);
         let br = "%0D%0A";
         let text = `${NOW_STYLE['Name']} ${NOW_STYLE['Rarity']} ${NOW_STYLE['AnotherName']}${br}`;
         text += `${$("#avgDamage").text()}${br}`;
@@ -121,8 +119,6 @@ $(document).ready(function ($) {
             text += `・${skill['Name']}${keisho} 覚醒:${kakusei} 発動:${use}${br}`;
         }
         let href = `https://twitter.com/intent/tweet?text=${text}&url=https://nao-romasaga.github.io/auto.html&hashtags=全力オートシミュレータ`;
-        //console.log($(".my-twitter-share-button"));
-        //console.log(href);
         $(".my-twitter-share-button").attr("href", href);
     });
 
@@ -131,14 +127,25 @@ $(document).ready(function ($) {
     });
 });
 
+async function getStyleInfo(id) {
+    if (STYLE_MASTER[id] === undefined) {
+        await readFileWithId('Style', id, function (result) {
+            STYLE_MASTER[id] = result;
+        });
+        return STYLE_MASTER[id];
+    } else {
+        return STYLE_MASTER[id];
+    }
+}
 
-function displayStyleList(charId) {
+
+async function displayStyleList(charId) {
     $(".styleChoiceArea").show();
     $("#styleChoice").html("");
 
     let charInfo = CHAR_MASTER[charId];
     for (let styleId of charInfo['Holders']) {
-        let styleInfo = STYLE_MASTER[styleId];
+        let styleInfo = await getStyleInfo(styleId); //STYLE_MASTER[styleId];
         styleInfo['hasRenki'] = false;
         for (let lv in styleInfo['StyleAbility']) {
             if (styleInfo['StyleAbility'][lv] === "練気高揚") {
@@ -161,14 +168,15 @@ function displayStyleList(charId) {
 
 var noKeishoTr = "<tr class='keishoSkillTr' id='noKeisho'><td colspan=5 class='text-center'>継承技未設定</td></tr>";
 var noKeishoTd = "<td colspan=5 class='text-center'>継承技未設定</td>";
-function displaySkillTable(styleId) {
+async function displaySkillTable(styleId) {
     $(".skillChoice").html(""); // クリア
     $("table#skillArea > tbody *").remove();
     $("#keisyoSkill").html(""); // クリア
     BASE_SKILL_LIST = []; // クリア
     kakuseiData = {}; // クリア
     // 絵を出す
-    let styleInfo = Object.assign({}, STYLE_MASTER[styleId]);
+    let orgStyleInfo = await getStyleInfo(styleId);
+    let styleInfo = Object.assign({}, orgStyleInfo); //STYLE_MASTER[styleId]);
     let url = getImgUrl('style_cutin/' + styleId + ".png");
     let icon = $("<span>")
             .addClass('cutin')
@@ -195,7 +203,7 @@ function displaySkillTable(styleId) {
 
     // 継承データ
     let isKeishoSkill = [];
-    $(".style").each(function () {
+    $(".style").each(async function () {
 
         let subStyleId = $(this).attr("data-id");
         $(this).parent().addClass("opacity_nocheck");
@@ -203,14 +211,14 @@ function displaySkillTable(styleId) {
             $(this).parent().removeClass("opacity_nocheck");
             return;
         }
-        for (let skillId of STYLE_MASTER[subStyleId]['SkillIds']) {
+        let subStyleInfo = await getStyleInfo(subStyleId);
+        for (let skillId of subStyleInfo['SkillIds']) {
             // 継承エリアに同じスキルは出さない
             if (isKeishoSkill.indexOf(skillId) > -1) {
                 continue;
             }
             isKeishoSkill.push(skillId); // 継承枠に表示済みの記録
             let skillInfo = SKILL_MASTER[skillId];
-            //console.log(subId, skillId, $(".kakusei" + skillId));
             if ($(".kakusei" + skillId).length === 0) {
                 let skillName = kakuseiLabel(skillInfo);
                 $("#keisyoSkill").append(skillName);
@@ -403,9 +411,6 @@ function setSkillDamage(skillList) {
 }
 
 function culcAutoMode(skillList) {
-    //console.log(NOW_CHAR);
-    //console.log(NOW_STYLE);
-    //console.log(skillList);
     let battleType = NOW_STYLE['WeaponType']; // 弓
     $(".culcAfter").show();
     $("table#culcSummary tbody *").remove();
@@ -478,7 +483,6 @@ function culcAutoMode(skillList) {
 
         if (renki[random] > 0) {
             renkiCount++;
-            //console.log("turn " + turn + " 練気高揚発動 BP:" + bp + " > " + (bp + 1));
             bp++;
             right.append(bp + "(+1)");
             turnDiv.removeClass('darkButton').addClass('darkButtonShine');
