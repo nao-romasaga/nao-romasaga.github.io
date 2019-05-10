@@ -51,7 +51,7 @@
                 <div class="text-center">
                     <a href="https://www.jp.square-enix.com/saga_reuniverse/" target="new"><img src="https://www.jp.square-enix.com/saga_reuniverse/assets/img/cmn_logo01_sp.png" class="col-sm-12 col-md-8 col-lg-6"></a>
                 </div>
-                <h2 class="text-center title-text">アビリティツリー</h2>
+                <h4 class="text-center title-text">アビリティ所有スタイル検索</h4>
                 <p class="text-right opacity"><small>バグ発見、ご要望は <a href="https://twitter.com/nao_romasaga_rs" target="new">nao_romasaga_rs</a>まで</small>
                 </p>
                 <h5 class="text-center opacity kadomaru" onclick="$('.movie').toggleClass('d-none')">つかいかた動画をみる</h5>
@@ -71,7 +71,13 @@
                     <div class="acdList skillListSP switch" id="sp_skill_tree"><ul></ul></div>
                 </div>
                 <br>
-                <label class="badge badge-pill badge-light" id="abilty_label">
+                <div id="abilty_label" class="text-center" style="background: url(./img/bg_window_large.png); background-size: 100% 100%; color: #faf0b4; padding: 5px;"></div>
+                <label class="badge badge-pill badge-light">アビリティ保持者一覧</label>
+                <div class="style-bgcolor styleChoiceArea">
+                    <div id="ability_holder_list"></div>
+                </div>
+                
+                <label class="badge badge-pill badge-light">
                     アビリティ保持者
                     <span class="xs-show"><br>アビリティ名をタップで説明を表示します。</span>
                 </label>
