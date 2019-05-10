@@ -133,9 +133,14 @@ function insertCommonComponent() {
     word += "データの復旧にはデータ移行処理が必要であるため、下記から移行処理(Twitter再ログイン)をお願い致します<br>";
     word += '<a href="./convert.html" class="text-center icon_btn_on" style="width:100%; background-size: 100% 100%;">データ移行</a>'
     word += "ご迷惑をおかけし誠に申し訳ございません(･ω･)💦<br>";
-    let info = `<div class="card"><div class="card-header bg-warning">${title}</div><div class="card-body">${word}</div></div>`;
+    let info = `<div class="card" id="infoCard"><div class="card-header bg-warning">${title}</div><div class="card-body">${word}</div></div>`;
     // Firebase側で暫定的に削除してるのでそっちも修正すること
     $(".title-text").after(info);
+    let title2 = "新機能オープン";
+    let word2 = "暇なときにぽちぽち触れる<a href='renkei.html'>連携ジェネレーター</a>を作成しました。";
+    let info2 = `<div class="card"><div class="card-header bg-info">${title2}</div><div class="card-body">${word2}</div></div>`;
+    // Firebase側で暫定的に削除してるのでそっちも修正すること
+    $(".title-text").after(info2);
 
     var footer = "";
     footer += '<div class="opacity" style ="position: relative;">';
