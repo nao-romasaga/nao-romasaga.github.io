@@ -19,6 +19,7 @@ firebase.auth(appUsers).onAuthStateChanged((user) => {
         UID = user.uid;
         REF = firebase.database(appUsers).ref('user_data/' + UID);
         $(".RequireLoginMenu").removeClass("d-none");
+        $("#infoCard").html('');
     } else {
     }
 });
