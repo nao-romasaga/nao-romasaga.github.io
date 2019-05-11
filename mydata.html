@@ -14,7 +14,19 @@
         </script>
         -->
         <meta charset="utf-8">
+        <title>ロマサガRS 周回適正キャラチェック</title>
+        <meta property="og:title" content="ロマサガRS 周回適正キャラチェック" />
+        <meta property="og:url" content="https://http://nao-romasaga.github.io/mydata.html" />
+        <meta property="og:description" content="ロマサガRSで育成対象キャラクターがどのクエストを周回するのがステータスをあげるのに適切か調べるツールです。攻略や育成の際にご利用ください。" />
+        <meta name="description" content="ロマサガRSで育成対象キャラクターがどのクエストを周回するのがステータスをあげるのに適切か調べるツールです。攻略や育成の際にご利用ください。【ロマンシングサガ リユニバース】" />
+        <meta property="og:image" content="https://nao-romasaga.github.io/img/twitter_card_mydata.png" />
+        <meta property="og:site_name" content="ロマサガRS便利ツール" />
+        <meta property="og:type" content="article">
+        <meta property="og:locale" content="ja_JP" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@nao_romasaga_rs" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
         <script type="text/javascript" src="./js/jquery-ui.min.js"></script>
@@ -33,12 +45,10 @@
         <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
         <script src="./js/Firebase.js"></script>
         <script src="./js/utils.js" ></script>
-
-        <!--
-        <script src="./js/mydata.js" ></script>
-        -->
         <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
-        <title>ロマサガRS パーティ育成メモ@nao_romasaga</title>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" >
+
+        <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
         <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -46,6 +56,8 @@
           <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
         <style>
             .filterActive{
                 background-color: #93CBFF !important;
@@ -60,336 +72,154 @@
                 <div class="text-center">
                     <a href="https://www.jp.square-enix.com/saga_reuniverse/" target="new"><img src="https://www.jp.square-enix.com/saga_reuniverse/assets/img/cmn_logo01_sp.png" class="col-sm-12 col-md-8 col-lg-6"></a>
                 </div>
-                <h3 class="text-center title-text">ステータス上限チェック</h3>
+                <h3 class="text-center title-text changeBase" data-base=0>周回適正キャラチェック</h3>
                 <p class="text-right opacity"><small>バグ発見、ご要望は <a href="https://twitter.com/nao_romasaga_rs" target="new">nao_romasaga_rs</a>まで</small>
                 </p>
                 <div id="firebaseui-auth-container" style="margin-bottom:10px;"></div>
 
-                <h5 class="text-center opacity kadomaru" onclick="$('.movie').toggleClass('d-none')">つかいかた動画をみる</h5>
+                <h5 class="text-center opacity kadomaru" onclick="$('.movie').toggleClass('d-none')">つかいかたをみる</h5>
                 <div class="movie d-none">
                     <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">[new] パーティ育成メモ<br>育成の際に各スタイルのステータス上限を確認を行える機能を作成しました<a href="https://t.co/T9hQHFJD1n">https://t.co/T9hQHFJD1n</a><br><br>スプシだとパーティ切り替えが面倒だったので作りました(๑′ᴗ‵๑)<br>ゆくゆくは複数パーティ設定を予定しています<br><br>お布施もお待ちしております😘<a href="https://t.co/3qFDqY1Kdx">https://t.co/3qFDqY1Kdx</a> <a href="https://t.co/Y1aVBPYZWu">pic.twitter.com/Y1aVBPYZWu</a></p>&mdash; (nAo)@ロマサガRS (@nao_romasaga_rs) <a href="https://twitter.com/nao_romasaga_rs/status/1122948484208910336?ref_src=twsrc%5Etfw">April 29, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                 </div>
                 <br>
-                <h3 class="text-center title-text changeBase" data-base=0>周回適正チェック</h3>
-                <label class="badge badge-pill badge-light">絞り込み</label>
-                <div class="style-bgcolor text-center small row" style="width:100%; margin: 0px;">
-                    <ul class="nav text-center width-100">
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" href="#icon_ken"><span class="icon_mini icon_ken" onclick=""></span></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" href="#icon_dken"><span class="icon_mini icon_dken" onclick=""></span></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" href="#icon_ono"><span class="icon_mini icon_ono" onclick=""></span></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" href="#icon_kon"><span class="icon_mini icon_kon" onclick=""></span></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" href="#icon_tai"><span class="icon_mini icon_tai" onclick=""></span></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" href="#icon_ju"><span class="icon_mini icon_ju" onclick=""></span></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" href="#icon_sken"><span class="icon_mini icon_sken" onclick=""></span></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" href="#icon_yumi"><span class="icon_mini icon_yumi" onclick=""></span></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" href="#icon_yari"><span class="icon_mini icon_yari" onclick=""></span></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" href="#icon_tsue"><span class="icon_mini icon_tsue" onclick=""></span></a></li>
-                    </ul>
-                    <ul class="nav text-center width-100">
-                        <li class="col-2 col-sm-1 blockquote text-center"><a class="filterList pad0" data-type="SeriesFilter" href="#RS1">RS1</a></li>
-                        <li class="col-2 col-sm-1 blockquote text-center"><a class="filterList pad0" data-type="SeriesFilter" href="#RS2">RS2</a></li>
-                        <li class="col-2 col-sm-1 blockquote text-center"><a class="filterList pad0" data-type="SeriesFilter" href="#RS3">RS3</a></li>
-                        <li class="col-2 col-sm-1 blockquote text-center"><a class="filterList pad0" data-type="SeriesFilter" href="#SF1">SF1</a></li>
-                        <li class="col-2 col-sm-1 blockquote text-center"><a class="filterList pad0" data-type="SeriesFilter" href="#SF2">SF2</a></li>
-                        <li class="col-2 col-sm-1 blockquote text-center"><a class="filterList pad0" data-type="SeriesFilter" href="#US">US</a></li>
-                        <li class="col-2 col-sm-1 blockquote text-center"><a class="filterList pad0" data-type="SeriesFilter" href="#SS">SS</a></li>
-                        <li class="col-2 col-sm-1 blockquote text-center"><a class="filterList pad0" data-type="SeriesFilter" href="#ES">ES</a></li>
-                        <li class="col-2 col-sm-1 blockquote text-center"><a class="filterList pad0" data-type="SeriesFilter" href="#ES">RSR</a></li>
-                    </ul>
-                </div>
-                
-                <label class="badge badge-pill badge-light">表示内容切り替え</label>
-                <div class="style-bgcolor text-center small row" style="width:100%; margin: 0px;">
-                    <div class="col-6 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_off changeBase" data-base="0" style="width:100%; background-size: 100% 100%;">ステータス値</button></div>
-                    <div class="col-6 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_on changeBase" data-base="45" style="width:100%; background-size: 100% 100%;">VH6以前</button></div>
-                    <div class="col-3 col-sm-3 col-lg-2"><button class="icon_btn_on changeBase" data-base="48" style="width:100%; background-size: 100% 100%;">VH7</button><br></div>
-                    <div class="col-3 col-sm-3 col-lg-2"><button class="icon_btn_on changeBase" data-base="51" style="width:100%; background-size: 100% 100%;">VH8</button></div>
-                    <div class="col-3 col-sm-3 col-lg-2"><button class="icon_btn_on changeBase" data-base="54" style="width:100%; background-size: 100% 100%;">VH9</button></div>
-                    <div class="col-3 col-sm-3 col-lg-2"><button class="icon_btn_on changeBase" data-base="57" style="width:100%; background-size: 100% 100%;">VH10</button></div>
-                </div>
+                <div class="noLogin opacity kadomaru bg-danger text-white"><i class="fas fa-exclamation-triangle"></i>本機能はログイン必須です<br>Twitterログインを行い、<a href="./style.html" style="color:lightskyblue">キャラ+スタイル詳細</a>あるいは<a href="./party.html" style="color:lightskyblue">ステータス上限チェック</a>で所持しているキャラクターのステータスを入力した後からご利用できます。</div>
+                <div class="isLogin d-none">
 
-                <label class="badge badge-pill badge-light">あなたのキャラクター一覧</label>
-                <div id="example-table-display" class="text-center">
-                    <div id="example-table" style="width:402px"></div>
-                </div>
-                <label class="badge badge-pill badge-light">スタイル別上限の確認 / キャラクター情報更新</label>
-                <table class="width-100 text-center charTable charTmplIDc3d" data-charid="IDc3d" data-styleid="ID4c7d6">
-                    <tbody><tr class="small text-center ">
-                            <td>
-                                <p class="width-100 pad0 mar0 openMenu" onclick="" data-id="IDc3d"><img src="./img/icon/icon_menu.png" width="25" height="25"></p>
-                            </td>
-                            <td colspan="9">
-                                <p class="width-100 pad0 mar0 darkButton">白薔薇姫</p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="10" class="inputArea" style="display: table-cell;">
-                                <table class="fukidashi width-100">
-                                    <tbody><tr class="text-nowrap">
-                                            <td class="text-center" colspan="4">▼ステータス入力▼</td>
-                                        </tr>
-                                        <tr class="text-nowrap">
-                                            <td >腕力</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="STR" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charSTR" style="width: 50px" value="3"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="STR" data-pm="plus" onclick=""></td>
-                                            <td >体力</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="VIT" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charVIT" style="width: 50px" value="3"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="VIT" data-pm="plus" onclick=""></td>
-                                        </tr>
-                                        <tr class="text-nowrap">
-                                            <td >器用さ</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="DEX" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charDEX" style="width: 50px" value="6"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="DEX" data-pm="plus" onclick=""></td>
-                                            <td >素早さ</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="AGI" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charAGI" style="width: 50px" value="7"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="AGI" data-pm="plus" onclick=""></td>
-                                        </tr>
-                                        <tr class="text-nowrap">
-                                            <td >知力</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="INT" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charINT" style="width: 50px" value="9"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="INT" data-pm="plus" onclick=""></td>
-                                            <td >精神</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="MND" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charMND" style="width: 50px" value="6"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="MND" data-pm="plus" onclick=""></td>
-                                        </tr>
-                                        <tr class="text-nowrap">
-                                            <td >愛</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="AI" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charAI" style="width: 50px" value="7"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="AI" data-pm="plus" onclick=""></td>
-                                            <td >魅力</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="MI" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charMI" style="width: 50px" value="6"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="MI" data-pm="plus" onclick=""></td>
-                                        </tr>
-                                        <tr class="char-bottom">
-                                            <td colspan="9">
-                                                <span data-toggle="tooltip" data-placement="top" data-html="true" style="margin-left:10px" title="" data-original-title="
-                                                      腕.体.器.速.知.精.愛.魅の順に入力出来ます<br>
-                                                      区切り文字は,.スペースタブが利用可能です<br>
-                                                      区切り文字なしで16桁の数字でも入力可能です<br>
-                                                      ステータス1桁の場合は先頭に0をつけてください">
-                                                    まとめて入力<button class="icon_info_md"></button>
-                                                </span>
-                                                <div class="text-center width-100">
-                                                    <input type="tel" class="input allparams" placeholder="50.41.01.20.30.40.50.99" data-id="IDc3d">
-                                                    <button class="icon_btn_on hanei" style="width:100px; height:40px; background-size: 100px 40px;" data-id="IDc3d">反映</button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="char-bottom text-nowrap">
-                                            <td class="text-center" colspan="4">▼スタイル選択▼</td>
-                                        </tr>
-                                        <tr style=""><td colspan="4" class="STYLE_ICON"><span class="icon_bg_ss"><button class="style style_icon_ss" style="background:url(https://nao-romasaga.github.io/img/style_icon/ID4c7d6.png) no-repeat;" data-id="ID4c7d6"></button></span></td></tr>
-                                        <tr style=""><td colspan="4">
-                                                <button class="icon_btn_red charUnset" style="background-size: 150px 40px; width:150px; height: 40px;" data-id="IDc3d">編成から外す</button>
-                                                <button class="icon_btn_on btn_close" style="background-size: 150px 40px; width:150px; height: 40px;" data-id="IDc3d">閉じる</button>
-                                            </td></tr>
-                                    </tbody></table>
-                            </td>
-                        </tr>
-                        <tr class="text-center nowData" onclick="" data-id="IDc3d">
-                            <td style="width:20%" colspan="2" data-id="IDc3d">
-                                <span class="char dot_mid dot char-winner" style="background:url(https://nao-romasaga.github.io/img/dot/ID4c7d6.png) no-repeat; margin-left:20px;"></span>
-                            </td>
-                            <td style="width:10%">腕<br><span class="STR charSTRIDc3d">53</span></td>
-                            <td style="width:10%; border-left: 1px solid #faf0b4">体<br><span class="VIT charVITIDc3d">54</span></td>
-                            <td style="width:10%; border-left: 1px solid #faf0b4">器<br><span class="DEX charDEXIDc3d">55</span></td>
-                            <td style="width:10%; border-left: 1px solid #faf0b4">速<br><span class="AGI charAGIIDc3d">54</span></td>
-                            <td style="width:10%; border-left: 1px solid #faf0b4">知<br><span class="INT charINTIDc3d">58</span></td>
-                            <td style="width:10%; border-left: 1px solid #faf0b4">精<br><span class="MND charMNDIDc3d">57</span></td>
-                            <td style="width:10%; border-left: 1px solid #faf0b4">愛<br><span class="AI charAIIDc3d">58</span></td>
-                            <td style="width:10%; border-left: 1px solid #faf0b4">魅<br><span class="MI charMIIDc3d">55</span></td>
-                        </tr>
-                        <tr class="text-center LIMIT limitID4c7d6" style="border: 1px solid #faf0b4" data-styleid="ID4c7d6" data-charid="IDc3d">
-                            <td style="width:10%">
-                                <img class="rare" src="./img/icon/icon_SS.png" width="25">
-                            </td>
-                            <td style="width:10%">
-                                <img class="icn" src="./img/style_icon/ID4c7d6.png" width="30">
-                            </td>
-                            <td class="STR status_plus" style="width:10%; ">2</td>
-                            <td class="VIT status_plus" style="width:10%; border-left: 1px solid #faf0b4;">2</td>
-                            <td class="DEX status_plus" style="width:10%; border-left: 1px solid #faf0b4;">3</td>
-                            <td class="AGI status_plus" style="width:10%; border-left: 1px solid #faf0b4;">3</td>
-                            <td class="INT status_plus" style="width:10%; border-left: 1px solid #faf0b4;">3</td>
-                            <td class="MND status_plus" style="width:10%; border-left: 1px solid #faf0b4;">3</td>
-                            <td class="AI status_plus" style="width:10%; border-left: 1px solid #faf0b4;">3</td>
-                            <td class="MI status_plus" style="width:10%; border-left: 1px solid #faf0b4;">3</td>
-                        </tr></tbody></table>
+                    <label class="badge badge-pill badge-light">絞り込み</label>
+                    <div class="style-bgcolor text-center small row" style="width:100%; margin: 0px;">
+                        <ul class="nav text-center width-100">
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="剣" href="#icon_ken"><span class="icon_mini icon_ken" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="大剣" href="#icon_dken"><span class="icon_mini icon_dken" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="斧" href="#icon_ono"><span class="icon_mini icon_ono" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="棍棒" href="#icon_kon"><span class="icon_mini icon_kon" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="体術" href="#icon_tai"><span class="icon_mini icon_tai" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="銃" href="#icon_ju"><span class="icon_mini icon_ju" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="小剣" href="#icon_sken"><span class="icon_mini icon_sken" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="弓" href="#icon_yumi"><span class="icon_mini icon_yumi" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="槍" href="#icon_yari"><span class="icon_mini icon_yari" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="杖" href="#icon_tsue"><span class="icon_mini icon_tsue" onclick=""></span></a></li>
+                        </ul>
+                        <ul class="nav text-center width-100">
+                            <li class="col-2 col-sm-1 blockquote text-center"><a class="filterList pad0" data-type="SeriesFilter" href="#RS1">RS1</a></li>
+                            <li class="col-2 col-sm-1 blockquote text-center"><a class="filterList pad0" data-type="SeriesFilter" href="#RS2">RS2</a></li>
+                            <li class="col-2 col-sm-1 blockquote text-center"><a class="filterList pad0" data-type="SeriesFilter" href="#RS3">RS3</a></li>
+                            <li class="col-2 col-sm-1 blockquote text-center"><a class="filterList pad0" data-type="SeriesFilter" href="#SF1">SF1</a></li>
+                            <li class="col-2 col-sm-1 blockquote text-center"><a class="filterList pad0" data-type="SeriesFilter" href="#SF2">SF2</a></li>
+                            <li class="col-2 col-sm-1 blockquote text-center"><a class="filterList pad0" data-type="SeriesFilter" href="#US">US</a></li>
+                            <li class="col-2 col-sm-1 blockquote text-center"><a class="filterList pad0" data-type="SeriesFilter" href="#SS">SS</a></li>
+                            <li class="col-2 col-sm-1 blockquote text-center"><a class="filterList pad0" data-type="SeriesFilter" href="#ES">ES</a></li>
+                            <li class="col-2 col-sm-1 blockquote text-center"><a class="filterList pad0" data-type="SeriesFilter" href="#ES">RSR</a></li>
+                        </ul>
+                    </div>
+
+                    <label class="badge badge-pill badge-light">表示内容切り替え</label>
+                    <div class="style-bgcolor text-center small row" style="width:100%; margin: 0px;">
+                        <div class="col-6 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_off changeBase" data-base="0" style="width:100%; background-size: 100% 100%;">ステータス値</button></div>
+                        <div class="col-6 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_on changeBase" data-base="45" style="width:100%; background-size: 100% 100%;">VH6以前</button></div>
+                        <div class="col-3 col-sm-3 col-lg-2"><button class="icon_btn_on changeBase" data-base="48" style="width:100%; background-size: 100% 100%;">VH7</button><br></div>
+                        <div class="col-3 col-sm-3 col-lg-2"><button class="icon_btn_on changeBase" data-base="51" style="width:100%; background-size: 100% 100%;">VH8</button></div>
+                        <div class="col-3 col-sm-3 col-lg-2"><button class="icon_btn_on changeBase" data-base="54" style="width:100%; background-size: 100% 100%;">VH9</button></div>
+                        <div class="col-3 col-sm-3 col-lg-2"><button class="icon_btn_on changeBase" data-base="57" style="width:100%; background-size: 100% 100%;">VH10</button></div>
+                    </div>
+                    <br>
+                    <h6 id="listLabel" style="background: url(./img/bg_window_large.png);background-size: 100% 100%;color: #faf0b4;padding: 10px 30px;"><span id="label1"></span><span id="label2">ステータス一覧</span></h6>
+                    <div id="example-table-display" class="text-center">
+                        <div id="example-table" style="width:402px"></div>
+                    </div>
+                    <!--
+                    <label class="badge badge-pill badge-light">スタイル別上限の確認 / キャラクター情報更新</label>
+                    <table class="width-100 text-center charTable charTmplIDc3d" data-charid="IDc3d" data-styleid="ID4c7d6">
+                        <tbody><tr class="small text-center ">
+                                <td>
+                                    <p class="width-100 pad0 mar0 openMenu" onclick="" data-id="IDc3d"><img src="./img/icon/icon_menu.png" width="25" height="25"></p>
+                                </td>
+                                <td colspan="9">
+                                    <p class="width-100 pad0 mar0 darkButton">白薔薇姫</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="10" class="inputArea" style="display: table-cell;">
+                                    <table class="fukidashi width-100">
+                                        <tbody><tr class="text-nowrap">
+                                                <td class="text-center" colspan="4">▼ステータス入力▼</td>
+                                            </tr>
+                                            <tr class="text-nowrap">
+                                                <td >腕力</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="STR" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charSTR" style="width: 50px" value="3"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="STR" data-pm="plus" onclick=""></td>
+                                                <td >体力</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="VIT" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charVIT" style="width: 50px" value="3"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="VIT" data-pm="plus" onclick=""></td>
+                                            </tr>
+                                            <tr class="text-nowrap">
+                                                <td >器用さ</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="DEX" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charDEX" style="width: 50px" value="6"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="DEX" data-pm="plus" onclick=""></td>
+                                                <td >素早さ</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="AGI" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charAGI" style="width: 50px" value="7"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="AGI" data-pm="plus" onclick=""></td>
+                                            </tr>
+                                            <tr class="text-nowrap">
+                                                <td >知力</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="INT" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charINT" style="width: 50px" value="9"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="INT" data-pm="plus" onclick=""></td>
+                                                <td >精神</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="MND" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charMND" style="width: 50px" value="6"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="MND" data-pm="plus" onclick=""></td>
+                                            </tr>
+                                            <tr class="text-nowrap">
+                                                <td >愛</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="AI" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charAI" style="width: 50px" value="7"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="AI" data-pm="plus" onclick=""></td>
+                                                <td >魅力</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="MI" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charMI" style="width: 50px" value="6"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="MI" data-pm="plus" onclick=""></td>
+                                            </tr>
+                                            <tr class="char-bottom">
+                                                <td colspan="9">
+                                                    <span data-toggle="tooltip" data-placement="top" data-html="true" style="margin-left:10px" title="" data-original-title="
+                                                          腕.体.器.速.知.精.愛.魅の順に入力出来ます<br>
+                                                          区切り文字は,.スペースタブが利用可能です<br>
+                                                          区切り文字なしで16桁の数字でも入力可能です<br>
+                                                          ステータス1桁の場合は先頭に0をつけてください">
+                                                        まとめて入力<button class="icon_info_md"></button>
+                                                    </span>
+                                                    <div class="text-center width-100">
+                                                        <input type="tel" class="input allparams" placeholder="50.41.01.20.30.40.50.99" data-id="IDc3d">
+                                                        <button class="icon_btn_on hanei" style="width:100px; height:40px; background-size: 100px 40px;" data-id="IDc3d">反映</button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class="char-bottom text-nowrap">
+                                                <td class="text-center" colspan="4">▼スタイル選択▼</td>
+                                            </tr>
+                                            <tr style=""><td colspan="4" class="STYLE_ICON"><span class="icon_bg_ss"><button class="style style_icon_ss" style="background:url(https://nao-romasaga.github.io/img/style_icon/ID4c7d6.png) no-repeat;" data-id="ID4c7d6"></button></span></td></tr>
+                                            <tr style=""><td colspan="4">
+                                                    <button class="icon_btn_red charUnset" style="background-size: 150px 40px; width:150px; height: 40px;" data-id="IDc3d">編成から外す</button>
+                                                    <button class="icon_btn_on btn_close" style="background-size: 150px 40px; width:150px; height: 40px;" data-id="IDc3d">閉じる</button>
+                                                </td></tr>
+                                        </tbody></table>
+                                </td>
+                            </tr>
+                            <tr class="text-center nowData" onclick="" data-id="IDc3d">
+                                <td style="width:20%" colspan="2" data-id="IDc3d">
+                                    <span class="char dot_mid dot char-winner" style="background:url(https://nao-romasaga.github.io/img/dot/ID4c7d6.png) no-repeat; margin-left:20px;"></span>
+                                </td>
+                                <td style="width:10%">腕<br><span class="STR charSTRIDc3d">53</span></td>
+                                <td style="width:10%; border-left: 1px solid #faf0b4">体<br><span class="VIT charVITIDc3d">54</span></td>
+                                <td style="width:10%; border-left: 1px solid #faf0b4">器<br><span class="DEX charDEXIDc3d">55</span></td>
+                                <td style="width:10%; border-left: 1px solid #faf0b4">速<br><span class="AGI charAGIIDc3d">54</span></td>
+                                <td style="width:10%; border-left: 1px solid #faf0b4">知<br><span class="INT charINTIDc3d">58</span></td>
+                                <td style="width:10%; border-left: 1px solid #faf0b4">精<br><span class="MND charMNDIDc3d">57</span></td>
+                                <td style="width:10%; border-left: 1px solid #faf0b4">愛<br><span class="AI charAIIDc3d">58</span></td>
+                                <td style="width:10%; border-left: 1px solid #faf0b4">魅<br><span class="MI charMIIDc3d">55</span></td>
+                            </tr>
+                            <tr class="text-center LIMIT limitID4c7d6" style="border: 1px solid #faf0b4" data-styleid="ID4c7d6" data-charid="IDc3d">
+                                <td style="width:10%">
+                                    <img class="rare" src="./img/icon/icon_SS.png" width="25">
+                                </td>
+                                <td style="width:10%">
+                                    <img class="icn" src="./img/style_icon/ID4c7d6.png" width="30">
+                                </td>
+                                <td class="STR status_plus" style="width:10%; ">2</td>
+                                <td class="VIT status_plus" style="width:10%; border-left: 1px solid #faf0b4;">2</td>
+                                <td class="DEX status_plus" style="width:10%; border-left: 1px solid #faf0b4;">3</td>
+                                <td class="AGI status_plus" style="width:10%; border-left: 1px solid #faf0b4;">3</td>
+                                <td class="INT status_plus" style="width:10%; border-left: 1px solid #faf0b4;">3</td>
+                                <td class="MND status_plus" style="width:10%; border-left: 1px solid #faf0b4;">3</td>
+                                <td class="AI status_plus" style="width:10%; border-left: 1px solid #faf0b4;">3</td>
+                                <td class="MI status_plus" style="width:10%; border-left: 1px solid #faf0b4;">3</td>
+                            </tr></tbody></table>
+                    -->
+                </div><!-- isLogin -->
+                <hr>
+                <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5008373409434899" data-ad-slot="3051702111"></ins><script> (adsbygoogle = window.adsbygoogle || []).push({});</script>
             </div>
         </div>
-        <script>
-                    var tableLimit = 15;
-                    var MY_DATA_LIST = [];
-                    var table;
-                    $(".filterList").click(function () {
-                        $(this).parent().toggleClass("filterActive");
-                        if (table === undefined) {
-                            return;
-                        }
-                        filter();
-                    });
-                    function filter() {
-                        let weaopnFilter = [];
-                        let seriesFilter = [];
-                        $(".filterList").each(function () {
-                            let target = $(this).attr("data-type");
-                            let value = $(this).attr("href").substr(1);
-                            if ($(this).parent().hasClass("filterActive")) {
-                                if (target === "WeaponTypeFilter") {
-                                    weaopnFilter.push({field: target, type: "=", value: value});
-                                } else {
-                                    seriesFilter.push({field: target, type: "=", value: value});
-                                }
-                            }
-                        });
-                        table.clearFilter();
-                        let finalFilter = [{field: "SUM", type: ">", value: 0}];
-                        if (weaopnFilter.length > 0) {
-                            finalFilter.push(weaopnFilter);
-                        }
-                        if (seriesFilter.length > 0) {
-                            finalFilter.push(seriesFilter);
-                        }
-                        table.setFilter(finalFilter);
-                        console.log(finalFilter);
-                        changeId2Dot();
-                    }
-
-                    $(".changeBase").click(function () {
-                        let base = Number($(this).attr("data-base"));
-                        let pm = -1;
-                        let sort = "desc";
-
-                        if (base !== 0) {
-                            pm = 1;
-                            sort = "asc";
-                        }
-                        for (let mydata of MY_DATA_LIST) {
-                            let sum = 0;
-                            for (let key of PARAM_KEY) {
-                                if (base === 0) {
-                                    mydata[key] = mydata["org" + key];
-                                    sum += mydata["org" + key];
-                                } else {
-                                    console.log(CHAR_MASTER[mydata["id"]]['Name'], key, base, CHAR_MASTER[mydata["id"]]['MAX' + key], mydata["org" + key])
-                                    let calc = (base + CHAR_MASTER[mydata["id"]]['MAX' + key] - mydata["org" + key]) * pm;
-                                    if (calc > 0) {
-                                        mydata[key] = calc;
-                                        sum += calc;
-                                    } else {
-                                        mydata[key] = "x"
-                                    }
-                                }
-                            }
-                            mydata["SUM"] = sum;
-                        }
-                        drawTable(MY_DATA_LIST, sort);
-                        filter();
-                    });
-                    $(document).on('click', ".tabulator-header, .tabulator-footer, .tabulator-page", function () {
-                        changeId2Dot();
-                    });
-
-                    let MY_DATA, CHAR_MASTER;
-                    readMyChar(function (read) {
-                        MY_DATA = read;
-                        if (MY_DATA !== undefined && CHAR_MASTER !== undefined) {
-                            init();
-                        }
-                    });
-                    readFile('Char', function (read) {
-                        CHAR_MASTER = read;
-                        if (MY_DATA !== undefined && CHAR_MASTER !== undefined) {
-                            init();
-                        }
-                    });
-
-                    function init() {
-                        let mydata = MY_DATA;
-                        for (let i in mydata) {
-                            //let src = `<img src="./img/dot/${CHAR_MASTER[i]['DotId']}.png">`;
-                            mydata[i]['id'] = i;
-                            mydata[i]['DotId'] = "Dot" + CHAR_MASTER[i]['DotId'];
-                            mydata[i]['Name'] = CHAR_MASTER[i]['Name'];
-                            mydata[i]['Series'] = CHAR_MASTER[i]['Series'];
-                            mydata[i]['WeaponType'] = ICON_LIST[CHAR_MASTER[i]['WeaponType']];
-                            mydata[i]['SeriesFilter'] = CHAR_MASTER[i]['Series'];
-                            mydata[i]['WeaponTypeFilter'] = ICON_LIST[CHAR_MASTER[i]['WeaponType']];
-
-                            console.log(CHAR_MASTER[i]);
-                            for (let key of PARAM_KEY) {
-                                mydata[i]["org" + key] = mydata[i][key];
-                            }
-
-                            mydata[i]['SUM'] =
-                                    Number(mydata[i]["STR"]) + Number(mydata[i]["VIT"]) + Number(mydata[i]["DEX"]) + Number(mydata[i]["AGI"]) +
-                                    Number(mydata[i]["INT"]) + Number(mydata[i]["MND"]) + Number(mydata[i]["AI"]) + Number(mydata[i]["MI"]);
-                            MY_DATA_LIST.push(mydata[i]);
-                        }
-                        delete MY_DATA;
-                        drawTable(MY_DATA_LIST);
-                    }
-
-                    function changeId2Dot() {
-                        $("#example-table").find(".tabulator-cell").each(function () {
-                            let id = $(this).text();
-                            if (id.indexOf("Dot") > -1) {
-                                let src = `<img src="./img/dot/${id.substr(3)}.png" style="object-position: -10px -10px">`;
-                                $(this).html(src);
-                            } else if (id.indexOf("icon") > -1) {
-                                let src = `<span class="icon_mini_zokusei ${id}"></span>`;
-                                $(this).html(src);
-                            } else if (Number(id) < 5
-                                    && $(this).attr("tabulator-field") !== "SUM"
-                                    && $(this).attr("tabulator-field") !== "DotId") {
-                                let attr = $(this).attr("style");
-                                $(this).attr("style", attr + ' background-color: palegreen;');
-                            } else if (id.indexOf("x") > -1) {
-                                let attr = $(this).attr("style");
-                                $(this).attr("style", attr + ' background-color: lightslategray; color: white');
-                            }
-                        });
-                    }
-                    $(document).on('click', ".tabulator-cell", function () {
-                        $(this).parent().find(".tabulator-cell").each(function () {
-                            let id = $(this).text();
-                            if (id.indexOf("ID") > -1) {
-                                console.log(CHAR_MASTER[id]);
-                            }
-                        });
-                    });
-
-                    function drawTable(result, sort) {
-                        let dir = (sort === undefined) ? "desc" : sort;
-                        $("#example-table").remove();
-                        $("#example-table-display").append('<div id="example-table" style="width:100%"></div>');
-
-                        let base = {align: "right", sortable: true, sorter: "number", minWidth: 30, width: "8%"};
-                        table = new Tabulator("#example-table", {
-                            layout: "fitColumns",
-                            data: result,
-                            //layout: "fitColumns", //fit columns to width of table
-                            //responsiveLayout: "hide", //hide columns that dont fit on the table
-                            tooltips: false, //show tool tips on cells
-                            history: true, //allow undo and redo actions on the table
-                            pagination: "local", //paginate the data
-                            paginationSize: tableLimit, //allow 7 rows per page of data
-                            //movableColumns: true, //allow column order to be changed
-                            //resizableRows: true, //allow row order to be changed
-                            initialSort: [//set the initial sort order of the data
-                                {column: "SUM", dir: dir},
-                            ],
-                            autoResize: false,
-                            resizableRows: false,
-                            resizableColumns: false,
-                            responsiveLayout: true,
-                            columns: [
-                                {title: "", field: "DotId", width: 30, frozen: true},
-                                {title: "名前", field: "Name", responsive: 8},
-                                {title: "作品", field: "Series", width: 30, responsive: 10},
-                                {title: "武器", field: "WeaponType", width: 30, responsive: 9},
-                                {title: "", field: "id", visible: false},
-                                {title: "", field: "SeriesFilter", visible: false},
-                                {title: "", field: "WeaponTypeFilter", visible: false},
-                                Object.assign({title: "腕", field: "STR"}, base),
-                                Object.assign({title: "体", field: "VIT", }, base),
-                                Object.assign({title: "器", field: "DEX", }, base),
-                                Object.assign({title: "速", field: "AGI", }, base),
-                                Object.assign({title: "知", field: "INT", }, base),
-                                Object.assign({title: "精", field: "MND", }, base),
-                                Object.assign({title: "愛", field: "AI", }, base),
-                                Object.assign({title: "魅", field: "MI", }, base),
-                                {title: "合計", field: "SUM", sortable: true, sorter: "number"},
-                            ],
-                        });
-
-                        table.setFilter("SUM", ">", 0);
-                        changeId2Dot();
-                    }
-        </script>
+        <script src="./js/mydata.js" ></script>
     </body>
 </html>
