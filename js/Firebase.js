@@ -47,6 +47,12 @@ function readCharData(charId, callback) {
         return callback(snapshot.val());
     });
 }
+function readMyChar(callback){
+    return firebase.database(appUsers).ref(`user_data/${UID}/CHAR`).once("value").then(function (snapshot) {
+        return callback(snapshot.val());
+    });
+}
+
 function readPartyData(callback) {
     console.log(`user_data/${UID}/PARTY`);
     return firebase.database(appUsers).ref(`user_data/${UID}/PARTY`).once("value").then(function (snapshot) {
