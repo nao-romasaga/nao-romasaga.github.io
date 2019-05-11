@@ -378,3 +378,15 @@ function setTaisei(target, val) {
     }
     target.html(val);
 }
+
+async function getStyleInfo(id) {
+    if (STYLE_MASTER[id] === undefined) {
+        await readFileWithId('Style', id, function (result) {
+            console.log("readEnd", id);
+            STYLE_MASTER[id] = result;
+        });
+        return STYLE_MASTER[id];
+    } else {
+        return STYLE_MASTER[id];
+    }
+}

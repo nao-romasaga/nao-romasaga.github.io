@@ -2,7 +2,7 @@ var BASE_SKILL_LIST = [];
 var USE_SKILL_LIST = [];
 var NOW_CHAR = {};
 var NOW_STYLE = {};
-var CHAR_MASTER, STYLE_MASTER;
+var CHAR_MASTER, STYLE_MASTER = [];
 
 var NOW_PARTY = 0;
 var PARTY_LIST = [[]];
@@ -10,8 +10,22 @@ var BASE = 45;
 var UID;
 $(document).ready(function ($) {
     initialHide();
-    
+
     $('.tab-content').on('click', function () {});
+    $('.paramButton').on('click', function () {});
+    $(document).on('click', '.paramButton', function () {
+        let input = $(this).parent().find(".charParam");
+        let add = ($(this).attr("data-pm") === "plus") ? 1 : -1;
+        let org = input.val();
+        input.val(Number(org) + add);
+        updateDB();
+    });
+    // パラメータ修正時
+    $(document).on('change', '.charParam', function () {
+        updateDB();
+    });
+
+
     firebase.auth(appUsers).onAuthStateChanged((user) => {
         if (!user) {
             var uiConfig = {
@@ -68,10 +82,6 @@ $(document).ready(function ($) {
         $('[data-toggle="tooltip"]').tooltip();
     });
 
-    readFile('Style', function (result) {
-        STYLE_MASTER = result;
-    });
-
     $(document).on('click', '.openMenu, .nowData > td', function () {
         let charId = ($(this).attr("data-id") !== undefined) ? $(this).attr("data-id") : $(this).parent().attr("data-id");
         NOW_CHAR = CHAR_MASTER[charId];
@@ -97,12 +107,15 @@ $(document).ready(function ($) {
             let styleId = data['style'];
             NOW_CHAR = CHAR_MASTER[charId];
             selectDotHensei(CHAR_MASTER[charId]);
-            readCharData(charId, function (r) {
+            readCharData(charId, async function (r) {
                 // キャラクター情報表示
-                displayCharInfo(CHAR_MASTER[charId], r);
+                console.log("displayCharInfo", charId);
+                await displayCharInfo(CHAR_MASTER[charId], r);
                 // スタイル初期表示
-                displayStyleInfo(charId, styleId);
+                console.log("displayStyleInfo", charId);
+                await displayStyleInfo(charId, styleId);
                 // 入力エリアは初期表示は消す
+                console.log("closeInput", charId);
                 closeInput(charId);
             });
         }
@@ -138,7 +151,7 @@ $(document).ready(function ($) {
     }
 
     // キャラクタークリック時
-    $(document).on('click', '.tab-content .char', function () {
+    $(document).on('click', '.tab-content .char', async function () {
         let charId = $(this).attr("data-id");
         let idx = getCharFromPartyList(charId);
         if (PARTY_LIST[NOW_PARTY].length === 5 || idx !== -1) {
@@ -152,7 +165,7 @@ $(document).ready(function ($) {
 
         NOW_CHAR = CHAR_MASTER[charId];
         let styleId = NOW_CHAR['Holders'][0];
-        NOW_STYLE = STYLE_MASTER[styleId];
+        NOW_STYLE = await getStyleInfo(styleId);
 
         // パーティ登録
         PARTY_LIST[NOW_PARTY].push({
@@ -180,18 +193,13 @@ $(document).ready(function ($) {
     });
 
     // スタイルクリック時
-    $(document).on('click', '.style', function () {
+    $(document).on('click', '.style', async function () {
         let styleId = $(this).attr("data-id");
-        NOW_STYLE = STYLE_MASTER[styleId];
+        NOW_STYLE = await getStyleInfo(styleId);
         displayStyleInfo(NOW_CHAR['Id'], styleId);
         let idx = getCharFromPartyList(NOW_CHAR['Id']);
         PARTY_LIST[NOW_PARTY][idx]['style'] = styleId;
         updatePartyDB();
-    });
-
-    // パラメータ修正時
-    $(document).on('change', '.charParam', function () {
-        updateDB();
     });
 
     function updateDB() {
@@ -264,9 +272,9 @@ $(document).ready(function ($) {
     });
 
     function setLimitData() {
-        $(".LIMIT").each(function () {
+        $(".LIMIT").each(async function () {
             let styleId = $(this).attr("data-styleId");
-            let styleInfo = STYLE_MASTER[styleId];
+            let styleInfo = await getStyleInfo(styleId);
             let tr = $(".limit" + styleId);
             let charId = tr.attr("data-charId");
             for (let key of PARAM_KEY) {
@@ -299,7 +307,7 @@ function initialHide() {
 
 
 // キャラクタークリック時
-function displayCharInfo(charInfo, myData) {
+async function displayCharInfo(charInfo, myData) {
     let charId = charInfo['Id'];
     let charBaseTmpl = $("#CHAR_TEMPLATE").clone().removeClass("d-none").removeAttr("id").addClass("charTmpl" + charId)
             .attr("data-charId", charId);
@@ -334,7 +342,7 @@ function displayCharInfo(charInfo, myData) {
 
     // 所持スタイルの表示。選択部分とリミット部分
     for (let styleId of charInfo['Holders']) {
-        let styleInfo = STYLE_MASTER[styleId];
+        let styleInfo = await getStyleInfo(styleId);
         // スタイルアイコンの追加
         let icon = $("<button>").addClass("style")
                 .addClass(getStyleIconClass(styleInfo['Rarity']))
@@ -370,7 +378,7 @@ function displayCharInfo(charInfo, myData) {
 }
 
 // スタイルクリック時
-function displayStyleInfo(charId, styleId) {
+async function displayStyleInfo(charId, styleId) {
     $(".charTmpl" + charId).attr("data-styleId", styleId);
     // TODO 複数パーティの場合はここを直す必要がある
     $(".charTmpl" + charId).find(".style").each(function () {
@@ -389,12 +397,14 @@ function displayStyleInfo(charId, styleId) {
         }
     });
 
-    let styleInfo = STYLE_MASTER[styleId];
+    let styleInfo = await getStyleInfo(styleId);
     let dotId = styleInfo['DotId'];
     let pngName = (dotId !== "ID4e2c8") ? dotId : "ID4e2c9";
     let dot = $(".charTmpl" + charId).find(".char");
     dot.attr('style', getImgUrl('dot/' + pngName + ".png") + " margin-left:20px;");
-    animeReset(dot, "char-winner");
+    if (dot.length > 0) {
+        animeReset(dot, "char-winner");
+    }
 }
 
 

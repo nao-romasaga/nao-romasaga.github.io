@@ -127,18 +127,6 @@ $(document).ready(function ($) {
     });
 });
 
-async function getStyleInfo(id) {
-    if (STYLE_MASTER[id] === undefined) {
-        await readFileWithId('Style', id, function (result) {
-            STYLE_MASTER[id] = result;
-        });
-        return STYLE_MASTER[id];
-    } else {
-        return STYLE_MASTER[id];
-    }
-}
-
-
 async function displayStyleList(charId) {
     $(".styleChoiceArea").show();
     $("#styleChoice").html("");
