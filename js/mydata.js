@@ -7,6 +7,7 @@ $(".filterList").click(function () {
         return;
     }
     filter();
+    gtag('event', "clickFilter", {'event_category': "mydata", 'event_label': $(this).attr("href").substr(1), 'value': 1});
 });
 function filter() {
     let weaopnFilter = [];
@@ -50,6 +51,7 @@ function filter() {
 }
 
 $(".changeBase").click(function () {
+    gtag('event', "clickBase", {'event_category': "mydata", 'event_label': $(this).text(), 'value': 1});
     let base = Number($(this).attr("data-base"));
     let pm = -1;
     let sort = "desc";
