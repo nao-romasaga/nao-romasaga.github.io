@@ -96,6 +96,9 @@ function insertCommonComponent() {
     nav += '      <li class="nav-item " id="headParty">';
     nav += '        <a class="nav-link" href="./party.html">ステータス<br class="hidden pcBlock">上限チェック</a>';
     nav += '      </li>';
+    nav += '      <li class="nav-item " id="headMydata">';
+    nav += '        <a class="nav-link" href="./mydata.html">周回適正<br class="hidden pcBlock">キャラチェック '+newIcon+'</a>';
+    nav += '      </li>';
     nav += '      <li class="nav-item" id="headDamage">';
     nav += '        <a class="nav-link" href="./damage.html">ダメージ<br class="hidden pcBlock">計算</a>';
     nav += '      </li>';
@@ -118,7 +121,7 @@ function insertCommonComponent() {
     nav += '        <a class="nav-link" href="./kifu.html">寄付について</a>';
     nav += '      </li>';
     nav += '      <li class="nav-item " id="headConvert">';
-    nav += '        <a class="nav-link" href="./convert.html">データ移行 '+newIcon+'</a>';
+    nav += '        <a class="nav-link" href="./convert.html">データ移行</a>';
     nav += '      </li>';
     //nav += '      <li class="nav-item">';
     //nav += '        <a class="nav-link disabled" href="#">スタイル情報(coming soon)</a>';
@@ -136,8 +139,8 @@ function insertCommonComponent() {
     let info = `<div class="card" id="infoCard"><div class="card-header bg-warning">${title}</div><div class="card-body">${word}</div></div>`;
     // Firebase側で暫定的に削除してるのでそっちも修正すること
     $(".title-text").after(info);
-    let title2 = "新機能オープン";
-    let word2 = "暇なときにぽちぽち触れる<a href='renkei.html'>連携ジェネレーター</a>を作成しました。";
+    let title2 = "新機能オープン 5/12";
+    let word2 = "育成にどのキャラを連れて行くか検討できる<a href='mydata.html'>周回適正キャラチェック</a>を作成しました。";
     let info2 = `<div class="card"><div class="card-header bg-info">${title2}</div><div class="card-body">${word2}</div></div>`;
     // Firebase側で暫定的に削除してるのでそっちも修正すること
     $(".title-text").after(info2);
@@ -199,6 +202,8 @@ function insertCommonComponent() {
         $("#headOurStyle").addClass("active");
     } else if (url.indexOf('renkei.html') != -1) {
         $("#headRenkei").addClass("active");
+    } else if (url.indexOf('mydata.html') != -1) {
+        $("#headMydata").addClass("active");
     }
 
 
