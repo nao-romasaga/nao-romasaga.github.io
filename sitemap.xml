@@ -58,6 +58,11 @@
         <changefreq>daily</changefreq>
     </url>
     <url>
+        <loc>https://nao-romasaga.github.io/mydata.html</loc>
+        <lastmod>2019-05-12</lastmod>
+        <changefreq>daily</changefreq>
+    </url>
+    <url>
         <loc>https://nao-romasaga.github.io/site.html</loc>
         <lastmod>2019-05-12</lastmod>
         <changefreq>weekly</changefreq>
