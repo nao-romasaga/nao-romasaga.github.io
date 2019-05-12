@@ -70,204 +70,204 @@
                 <div id="main">
                 </div>
                 <script>
-                    $(document).ready(function () {
-                        tableCopy(1);
-                        tableCopy(2);
-                        tableCopy(3);
-                        tableCopy(4);
-                        tableCopy(5);
-                        addChar(1);
-                        addChar(2);
-                        addChar(3);
-                        addChar(4);
-                        addChar(5);
+            $(document).ready(function () {
+                tableCopy(1);
+                tableCopy(2);
+                tableCopy(3);
+                tableCopy(4);
+                tableCopy(5);
+                addChar(1);
+                addChar(2);
+                addChar(3);
+                addChar(4);
+                addChar(5);
 
-                        $(".char-hashiri").click(function () {
-                            let id = $(this).parent().parent().attr("data-id");
-                            let rare = $(this).attr("data-rare");
-                            $("#badge" + id).attr("src", "https://nao-romasaga.github.io/img/icon/icon_" + rare + ".png");
-                            $(".pieceImg" + id).attr("src", "https://nao-romasaga.github.io/img/icon/icon_piece_" + rare + ".png");
-                            $("#rare" + id).val(rare);
+                $(".char-hashiri").click(function () {
+                    let id = $(this).parent().parent().attr("data-id");
+                    let rare = $(this).attr("data-rare");
+                    $("#badge" + id).attr("src", "https://nao-romasaga.github.io/img/icon/icon_" + rare + ".png");
+                    $(".pieceImg" + id).attr("src", "https://nao-romasaga.github.io/img/icon/icon_piece_" + rare + ".png");
+                    $("#rare" + id).val(rare);
 
-                            $("#detail" + id).removeClass("d-none");
-                            let char = $("<span>")
-                                    .addClass("char-dojo dot dot_mid")
-                                    .attr("style", $(this).attr("style"));
-                            let div = $("<div>").addClass("dojo-slide").attr("id", "slidechar" + id).append(char);
-                            $("#slidechar" + id).remove();
-                            $("#slideTd" + id).append(div);
-                            $(".charChoise" + id).slideToggle(200, function () {
-                                $("#charChoise" + id).toggleClass("d-none");
-                            });
-
-                        });
-                        $(".inputOpen").click(function () {
-                            let id = $(this).attr("data-id");
-                            console.log(id);
-                            $("#detail" + id).parent().removeClass("d-none");
-                            $("#detail" + id).slideDown(300);
-                        });
-                        $(".inputClose").click(function () {
-                            let id = $(this).attr("data-id");
-                            $("#detail" + id).slideUp(300, function () {
-                                $("#detail" + id).parent().addClass("d-none");
-                            });
-                        });
-                        $(".charToggle").click(function () {
-                            let id = $(this).parent().attr("data-id");
-                            $("#charChoise" + id).toggleClass("d-none");
-                            $(".charChoise" + id).slideToggle(200);
-                        });
-
-                        $(".calc").change(function () {
-                            let id = $(this).attr("data-id");
-                            console.log($(this), id);
-                            calc(id, $("#rare" + id).val());
-                        });
-
+                    $("#detail" + id).removeClass("d-none");
+                    let char = $("<span>")
+                            .addClass("char-dojo dot dot_mid")
+                            .attr("style", $(this).attr("style"));
+                    let div = $("<div>").addClass("dojo-slide").attr("id", "slidechar" + id).append(char);
+                    $("#slidechar" + id).remove();
+                    $("#slideTd" + id).append(div);
+                    $(".charChoise" + id).slideToggle(200, function () {
+                        $("#charChoise" + id).toggleClass("d-none");
                     });
-                    function addChar(id) {
-                        let tmpl = $("#charTemplate").clone();
-                        tmpl.attr("data-id", id);
-                        tmpl.removeClass("d-none");
-                        tmpl.addClass("charChoise" + id);
-                        tmpl.removeAttr("id");
-                        $("#charChoise" + id).append(tmpl);
+
+                });
+                $(".inputOpen").click(function () {
+                    let id = $(this).attr("data-id");
+                    console.log(id);
+                    $("#detail" + id).parent().removeClass("d-none");
+                    $("#detail" + id).slideDown(300);
+                });
+                $(".inputClose").click(function () {
+                    let id = $(this).attr("data-id");
+                    $("#detail" + id).slideUp(300, function () {
+                        $("#detail" + id).parent().addClass("d-none");
+                    });
+                });
+                $(".charToggle").click(function () {
+                    let id = $(this).parent().attr("data-id");
+                    $("#charChoise" + id).toggleClass("d-none");
+                    $(".charChoise" + id).slideToggle(200);
+                });
+
+                $(".calc").change(function () {
+                    let id = $(this).attr("data-id");
+                    console.log($(this), id);
+                    calc(id, $("#rare" + id).val());
+                });
+
+            });
+            function addChar(id) {
+                let tmpl = $("#charTemplate").clone();
+                tmpl.attr("data-id", id);
+                tmpl.removeClass("d-none");
+                tmpl.addClass("charChoise" + id);
+                tmpl.removeAttr("id");
+                $("#charChoise" + id).append(tmpl);
+            }
+
+            let NEED_PIECE = {
+                31: 5, 32: 5, 33: 5,
+                34: 10, 35: 10, 36: 10,
+                37: 15, 38: 15, 39: 15,
+                40: 20, 41: 20,
+                42: 40, 43: 40,
+                44: 50, 45: 50, 46: 50,
+                47: 60, 48: 60, 49: 60, 50: 60
+            };
+            let DAILY_MISSION = {"A": 3, "S": 0, "SS": 0};
+            let WEEKLY_MISSION = {"A": 104, "S": 43, "SS": 5};
+            let PIECE_HOUR = {"A": 1, "S": 2, "SS": 5};
+            let WHITE_HOUR = {"A": 10, "S": 15, "SS": 25};
+            let WHITE_RATE = {"A": 400, "S": 600, "SS": 1000};
+            function calc(no, rare) {
+                console.log(no, rare);
+                let pieceHour = PIECE_HOUR[rare];  // 1,2,5
+                let whiteHour = WHITE_HOUR[rare]; // 10,15,25
+                let rate = WHITE_RATE[rare]; // 400,600,1000
+                let missionBonus = WEEKLY_MISSION[rare];
+                let dmissionBonus = DAILY_MISSION[rare];
+                let taskRate = pieceHour / whiteHour;
+
+                let nowLv = Number($("#nowLv" + no).val());
+                let targetLv = Number($("#nextLv" + no).val());
+                let mission = $("#missionUse" + no).prop('checked');
+                console.log(mission);
+
+                let total = 0;
+                for (let lv in NEED_PIECE) {
+                    lv = Number(lv);
+                    let piece = Number(NEED_PIECE[lv]);
+                    if (lv > nowLv) {
+                        total += piece;
                     }
-
-                    let NEED_PIECE = {
-                        31: 5, 32: 5, 33: 5,
-                        34: 10, 35: 10, 36: 10,
-                        37: 15, 38: 15, 39: 15,
-                        40: 20, 41: 20,
-                        42: 40, 43: 40,
-                        44: 50, 45: 50, 46: 50,
-                        47: 60, 48: 60, 49: 60, 50: 60
-                    };
-                    let DAILY_MISSION = {"A": 3, "S": 0, "SS": 0};
-                    let WEEKLY_MISSION = {"A": 104, "S": 43, "SS": 5};
-                    let PIECE_HOUR = {"A": 1, "S": 2, "SS": 5};
-                    let WHITE_HOUR = {"A": 10, "S": 15, "SS": 25};
-                    let WHITE_RATE = {"A": 400, "S": 600, "SS": 1000};
-                    function calc(no, rare) {
-                        console.log(no, rare);
-                        let pieceHour = PIECE_HOUR[rare];  // 1,2,5
-                        let whiteHour = WHITE_HOUR[rare]; // 10,15,25
-                        let rate = WHITE_RATE[rare]; // 400,600,1000
-                        let missionBonus = WEEKLY_MISSION[rare];
-                        let dmissionBonus = DAILY_MISSION[rare];
-                        let taskRate = pieceHour / whiteHour;
-
-                        let nowLv = Number($("#nowLv" + no).val());
-                        let targetLv = Number($("#nextLv" + no).val());
-                        let mission = $("#missionUse" + no).prop('checked');
-                        console.log(mission);
-
-                        let total = 0;
-                        for (let lv in NEED_PIECE) {
-                            lv = Number(lv);
-                            let piece = Number(NEED_PIECE[lv]);
-                            if (lv > nowLv) {
-                                total += piece;
-                            }
-                            //console.log(nowLv, targetLv, lv, piece, total);
-                            if (lv === targetLv) {
-                                break;
-                            }
-                        }
-                        let nowPiece = $("#nowPiece" + no).val();
-                        total -= nowPiece;
-                        // デイリーウィークリーのミッションピースを使う場合
-                        let missionRate = 0;
-                        if (mission) {
-                            // ウィークリーで増えるレート
-                            missionRate = pieceHour / (24 * 7 / missionBonus);
-                            missionRate += pieceHour / (24 / dmissionBonus);
-                        }
-                        console.log("missionRate", missionRate, pieceHour, missionBonus);
-
-                        let other = Number($("#otherStyle" + no).val());
-                        console.log("other", other);
-                        let needHour = Math.floor(total * pieceHour / (1 + (other * taskRate) + missionRate));
-                        console.log("needHour", needHour, "Hour:", total * pieceHour, (1 + (other * taskRate) + missionRate));
-                        let gold = Math.floor(needHour / pieceHour);
-                        let white = Math.floor(needHour / whiteHour * other);
-                        let week = Math.floor(needHour / (24 * 7));
-                        let day = Math.floor((needHour - (week * 24 * 7)) / 24);
-                        let missionP = (mission) ? week * missionBonus + day * dmissionBonus : 0;
-                        console.log("total", total, "gold", gold, "white", white, "mission", missionP);
-
-                        let i = 0;
-                        while ((gold + white + missionP) < total) {
-                            needHour = needHour + pieceHour;
-                            gold = Math.floor(needHour / pieceHour);
-                            white = Math.floor(needHour / whiteHour * other);
-                            week = Math.floor(needHour / (24 * 7));
-                            day = Math.floor((needHour - (week * 24 * 7)) / 24);
-                            lest = needHour - week * 24 * 7 - day * 24;
-                            missionP = (mission) ? week * missionBonus + day * dmissionBonus : 0;
-                            console.log(i, pieceHour, "needHour", needHour, "week", week, lest, "day", day, "gold", gold, "white", white, "mission", missionP);
-                        }
-                        needHour = Math.round(needHour);
-                        console.log(needHour, total, gold, white, missionP);
-                        // totalは単純にかかった時間
-                        // 5分で1.2 = 120
-                        // 83 = 415 + 16
-
-                        $("#missonp" + no).text(missionP);
-                        $("#kunrenp" + no).text(gold);
-                        $("#whitep" + no).text(white);
-                        $(".totalp" + no).text(total);
-                        $("#totalh" + no).text(needHour.toLocaleString());
-
-                        var date = new Date();
-                        console.log(getDateString(date));
-                        date.setHours(date.getHours() + needHour);
-                        $("#tassei" + no).text(getDateString(date));
+                    //console.log(nowLv, targetLv, lv, piece, total);
+                    if (lv === targetLv) {
+                        break;
                     }
-                    function getDateString(date) {
-                        var month = date.getMonth() + 1;
-                        var day = date.getDate();
-                        var hour = ("0" + date.getHours()).slice(-2);
-                        var minute = ("0" + date.getMinutes()).slice(-2);
-                        return month + "/" + day + " " + hour + ":" + minute;
-                    }
-                    function tableCopy(id) {
-                        let table = $("#template").clone();
-                        table.removeAttr("id").removeClass("d-none");
-                        table.find(".disp").attr("data-id", id);
+                }
+                let nowPiece = $("#nowPiece" + no).val();
+                total -= nowPiece;
+                // デイリーウィークリーのミッションピースを使う場合
+                let missionRate = 0;
+                if (mission) {
+                    // ウィークリーで増えるレート
+                    missionRate = pieceHour / (24 * 7 / missionBonus);
+                    missionRate += pieceHour / (24 / dmissionBonus);
+                }
+                console.log("missionRate", missionRate, pieceHour, missionBonus);
 
-                        table.find("#slideTd1").attr("id", "slideTd" + id);
-                        table.find("#rare1").attr("id", "rare" + id);
-                        table.find("#badge1").attr("id", "badge" + id);
-                        table.find("#slidechar1").attr("id", "slidechar" + id);
-                        table.find("#tassei1").attr("id", "tassei" + id);
-                        table.find("#totalh1").attr("id", "totalh" + id);
-                        table.find(".inputOpen").attr("data-id", id);
-                        table.find(".inputClose").attr("data-id", id);
-                        table.find(".detail1").removeClass("detail1").addClass("detail" + id).attr('id', "detail" + id);
+                let other = Number($("#otherStyle" + no).val());
+                console.log("other", other);
+                let needHour = Math.floor(total * pieceHour / (1 + (other * taskRate) + missionRate));
+                console.log("needHour", needHour, "Hour:", total * pieceHour, (1 + (other * taskRate) + missionRate));
+                let gold = Math.floor(needHour / pieceHour);
+                let white = Math.floor(needHour / whiteHour * other);
+                let week = Math.floor(needHour / (24 * 7));
+                let day = Math.floor((needHour - (week * 24 * 7)) / 24);
+                let missionP = (mission) ? week * missionBonus + day * dmissionBonus : 0;
+                console.log("total", total, "gold", gold, "white", white, "mission", missionP);
 
-                        table.find(".totalp1").each(function () {
-                            $(this).removeClass("totalp1").addClass("totalp" + id);
-                        });
-                        table.find(".pieceImg1").each(function () {
-                            $(this).removeClass("pieceImg1").addClass("pieceImg" + id);
-                        });
-                        table.find(".charChoise1").each(function () {
-                            $(this).removeClass("charChoise1").addClass("charChoise" + id).attr("data-id", 2);
-                        });
-                        table.find("#charChoise1").attr("id", "charChoise" + id);
-                        table.find("#kunrenp1").attr("id", "kunrenp" + id).attr("data-id", id);
-                        table.find("#whitep1").attr("id", "whitep" + id).attr("data-id", id);
-                        table.find("#missonp1").attr("id", "missonp" + id).attr("data-id", id);
-                        table.find("#nowLv1").attr("id", "nowLv" + id).attr("data-id", id);
-                        table.find("#nextLv1").attr("id", "nextLv" + id).attr("data-id", id);
-                        table.find("#nowPiece1").attr("id", "nowPiece" + id).attr("data-id", id);
-                        table.find("#otherStyle1").attr("id", "otherStyle" + id).attr("data-id", id);
-                        table.find("#missionUse1").attr("id", "missionUse" + id).attr("data-id", id);
-                        table.find("#forCb").removeAttr("for").attr("for", "missionUse" + id);
-                        $("#main").append(table);
-                    }
+                let i = 0;
+                while ((gold + white + missionP) < total) {
+                    needHour = needHour + pieceHour;
+                    gold = Math.floor(needHour / pieceHour);
+                    white = Math.floor(needHour / whiteHour * other);
+                    week = Math.floor(needHour / (24 * 7));
+                    day = Math.floor((needHour - (week * 24 * 7)) / 24);
+                    lest = needHour - week * 24 * 7 - day * 24;
+                    missionP = (mission) ? week * missionBonus + day * dmissionBonus : 0;
+                    console.log(i, pieceHour, "needHour", needHour, "week", week, lest, "day", day, "gold", gold, "white", white, "mission", missionP);
+                }
+                needHour = Math.round(needHour);
+                console.log(needHour, total, gold, white, missionP);
+                // totalは単純にかかった時間
+                // 5分で1.2 = 120
+                // 83 = 415 + 16
+
+                $("#missonp" + no).text(missionP);
+                $("#kunrenp" + no).text(gold);
+                $("#whitep" + no).text(white);
+                $(".totalp" + no).text(total);
+                $("#totalh" + no).text(needHour.toLocaleString());
+
+                var date = new Date();
+                console.log(getDateString(date));
+                date.setHours(date.getHours() + needHour);
+                $("#tassei" + no).text(getDateString(date));
+            }
+            function getDateString(date) {
+                var month = date.getMonth() + 1;
+                var day = date.getDate();
+                var hour = ("0" + date.getHours()).slice(-2);
+                var minute = ("0" + date.getMinutes()).slice(-2);
+                return month + "/" + day + " " + hour + ":" + minute;
+            }
+            function tableCopy(id) {
+                let table = $("#template").clone();
+                table.removeAttr("id").removeClass("d-none");
+                table.find(".disp").attr("data-id", id);
+
+                table.find("#slideTd1").attr("id", "slideTd" + id);
+                table.find("#rare1").attr("id", "rare" + id);
+                table.find("#badge1").attr("id", "badge" + id);
+                table.find("#slidechar1").attr("id", "slidechar" + id);
+                table.find("#tassei1").attr("id", "tassei" + id);
+                table.find("#totalh1").attr("id", "totalh" + id);
+                table.find(".inputOpen").attr("data-id", id);
+                table.find(".inputClose").attr("data-id", id);
+                table.find(".detail1").removeClass("detail1").addClass("detail" + id).attr('id', "detail" + id);
+
+                table.find(".totalp1").each(function () {
+                    $(this).removeClass("totalp1").addClass("totalp" + id);
+                });
+                table.find(".pieceImg1").each(function () {
+                    $(this).removeClass("pieceImg1").addClass("pieceImg" + id);
+                });
+                table.find(".charChoise1").each(function () {
+                    $(this).removeClass("charChoise1").addClass("charChoise" + id).attr("data-id", 2);
+                });
+                table.find("#charChoise1").attr("id", "charChoise" + id);
+                table.find("#kunrenp1").attr("id", "kunrenp" + id).attr("data-id", id);
+                table.find("#whitep1").attr("id", "whitep" + id).attr("data-id", id);
+                table.find("#missonp1").attr("id", "missonp" + id).attr("data-id", id);
+                table.find("#nowLv1").attr("id", "nowLv" + id).attr("data-id", id);
+                table.find("#nextLv1").attr("id", "nextLv" + id).attr("data-id", id);
+                table.find("#nowPiece1").attr("id", "nowPiece" + id).attr("data-id", id);
+                table.find("#otherStyle1").attr("id", "otherStyle" + id).attr("data-id", id);
+                table.find("#missionUse1").attr("id", "missionUse" + id).attr("data-id", id);
+                table.find("#forCb").removeAttr("for").attr("for", "missionUse" + id);
+                $("#main").append(table);
+            }
 
 
                 </script>
@@ -401,5 +401,18 @@
                 <span class="char-hashiri dot dot_mid" data-rare="A" style="background:url(https://nao-romasaga.github.io/img/dot/ID36718.png);" onclick=""></span>
             </div>            
         </div>
+        <!-- Twitter universal website tag code -->
+        <script>
+            !function (e, t, n, s, u, a) {
+                e.twq || (s = e.twq = function () {
+                    s.exe ? s.exe.apply(s, arguments) : s.queue.push(arguments);
+                }, s.version = '1.1', s.queue = [], u = t.createElement(n), u.async = !0, u.src = '//static.ads-twitter.com/uwt.js',
+                        a = t.getElementsByTagName(n)[0], a.parentNode.insertBefore(u, a))
+            }(window, document, 'script');
+        // Insert Twitter Pixel ID and Standard Event data below
+            twq('init', 'o1u7p');
+            twq('track', 'PageView');
+        </script>
+        <!-- End Twitter universal website tag code -->        
     </body>
 </html>
