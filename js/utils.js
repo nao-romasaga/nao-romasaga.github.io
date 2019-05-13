@@ -395,3 +395,25 @@ async function getStyleInfo(id) {
         return STYLE_MASTER[id];
     }
 }
+let USER_DATA = [];
+async function getUserCharData(id) {
+    if (USER_DATA[id] === undefined) {
+        await readAnalyzeWithId('OUR_CHAR/DETAIL', id, function (result) {
+            USER_DATA[id] = result;
+        });
+        return USER_DATA[id];
+    } else {
+        return USER_DATA[id];
+    }
+}
+let MY_CHAR_DATA = [];
+async function getMyCharData(id) {
+    if (MY_CHAR_DATA[id] === undefined) {
+        await readUserDataWithId('CHAR', id, function (result) {
+            MY_CHAR_DATA[id] = result;
+        });
+        return MY_CHAR_DATA[id];
+    } else {
+        return MY_CHAR_DATA[id];
+    }
+}
