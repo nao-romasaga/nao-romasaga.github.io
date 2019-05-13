@@ -36,6 +36,12 @@ async function readFileWithId(target, id, callback) {
         return callback(snapshot.val());
     });
 }
+async function readUserDataWithId(target, id, callback) {
+    return firebase.database(appUsers).ref(`user_data/${UID}/${target}/${id}`).once("value").then(function (snapshot) {
+        return callback(snapshot.val());
+    });
+}
+
 function readAnalyzeFile(target, callback) {
     return firebase.database().ref(`analyze_data/${target}`).once("value").then(function (snapshot) {
         return callback(snapshot.val());
