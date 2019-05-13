@@ -12,7 +12,6 @@ $(document).ready(function ($) {
     initialHide();
 
     $('.tab-content').on('click', function () {});
-    $('.paramButton').on('click', function () {});
     $(document).on('click', '.paramButton', function () {
         let input = $(this).parent().find(".charParam");
         let add = ($(this).attr("data-pm") === "plus") ? 1 : -1;
@@ -109,13 +108,10 @@ $(document).ready(function ($) {
             selectDotHensei(CHAR_MASTER[charId]);
             readCharData(charId, async function (r) {
                 // キャラクター情報表示
-                console.log("displayCharInfo", charId);
                 await displayCharInfo(CHAR_MASTER[charId], r);
                 // スタイル初期表示
-                console.log("displayStyleInfo", charId);
                 await displayStyleInfo(charId, styleId);
                 // 入力エリアは初期表示は消す
-                console.log("closeInput", charId);
                 closeInput(charId);
             });
         }
@@ -178,14 +174,13 @@ $(document).ready(function ($) {
         $(".styleInfoArea").show();
         selectDotHensei(NOW_CHAR);
 
-        readCharData(charId, function (result) {
+        readCharData(charId, async function (result) {
             // キャラクター情報表示
-            displayCharInfo(CHAR_MASTER[charId], result);
+            await displayCharInfo(CHAR_MASTER[charId], result);
             // スタイル初期表示
-            displayStyleInfo(NOW_CHAR['Id'], styleId);
+            await displayStyleInfo(NOW_CHAR['Id'], styleId);
             //setSliderChart();
             $(".charTmpl" + charId).find('.inputArea').removeClass('d-none').slideDown(500);
-
             $("html,body").animate({scrollTop: $(".charTmpl" + charId).offset().top}, 500, 'swing');
         });
         //$("#PARTY1").sortable();
@@ -196,7 +191,7 @@ $(document).ready(function ($) {
     $(document).on('click', '.style', async function () {
         let styleId = $(this).attr("data-id");
         NOW_STYLE = await getStyleInfo(styleId);
-        displayStyleInfo(NOW_CHAR['Id'], styleId);
+        await displayStyleInfo(NOW_CHAR['Id'], styleId);
         let idx = getCharFromPartyList(NOW_CHAR['Id']);
         PARTY_LIST[NOW_PARTY][idx]['style'] = styleId;
         updatePartyDB();
@@ -322,14 +317,14 @@ async function displayCharInfo(charInfo, myData) {
     let dotId = charInfo['DotId'];
     let pngName = (dotId !== "ID4e2c8") ? dotId : "ID4e2c9";
     charBaseTmpl.find(".dot_mid").attr('style', getImgUrl('dot/' + pngName + ".png") + " margin-left:20px;");
-    // ステータス反映。初回はデフォルト値(+45)を入れる
+    // ステータス反映。初回はデフォルト値(+35)を入れる
     if (myData !== null) {
         for (let key of PARAM_KEY) {
             charInfo[key] = Number(myData[key]);
         }
     } else if (myData === null) {
         for (let key of PARAM_KEY) {
-            charInfo[key] = Number(charInfo[key]) + 45;
+            charInfo[key] = Number(charInfo[key]) + 35;
         }
     }
 
