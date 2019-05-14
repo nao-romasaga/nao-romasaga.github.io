@@ -274,8 +274,9 @@ $(document).ready(function ($) {
             let charId = tr.attr("data-charId");
             for (let key of PARAM_KEY) {
                 let limit = styleInfo['Limit' + key];
+                let val = (CHAR_MASTER[charId]["NOW"+key] !== undefined) ? CHAR_MASTER[charId]["NOW"+key] : CHAR_MASTER[charId][key];
                 let limitValue = (styleInfo['Limit' + key] !== 99)
-                        ? BASE + Number(limit) - Number(CHAR_MASTER[charId][key])
+                        ? BASE + Number(limit) - Number(val)
                         : "?";
                 tr.find("." + key).each(function () {
                     $(this).removeClass("status_plus").removeClass("status_minus");
@@ -320,19 +321,19 @@ async function displayCharInfo(charInfo, myData) {
     // ステータス反映。初回はデフォルト値(+35)を入れる
     if (myData !== null) {
         for (let key of PARAM_KEY) {
-            charInfo[key] = Number(myData[key]);
+            charInfo["NOW"+key] = Number(myData[key]);
         }
     } else if (myData === null) {
         for (let key of PARAM_KEY) {
-            charInfo[key] = Number(charInfo[key]) + 35;
+            charInfo["NOW"+key] = Number(charInfo[key]) + 35;
         }
     }
 
     let nowInput = charBaseTmpl.find(".nowData");
     nowInput.attr("data-id", charId);
     for (let key of PARAM_KEY) {
-        charBaseTmpl.find(".char" + key).removeClass("char" + key).addClass("charInput" + key + charId).val(charInfo[key]);
-        nowInput.find("." + key).removeClass("char" + key).addClass("char" + key + charId).text(charInfo[key]);
+        charBaseTmpl.find(".char" + key).removeClass("char" + key).addClass("charInput" + key + charId).val(charInfo["NOW"+key]);
+        nowInput.find("." + key).removeClass("char" + key).addClass("char" + key + charId).text(charInfo["NOW"+key]);
     }
 
     // 所持スタイルの表示。選択部分とリミット部分
@@ -358,7 +359,7 @@ async function displayCharInfo(charInfo, myData) {
             if (limit === 99) {
                 tr.find("." + key).text("?");
             } else {
-                let limitValue = BASE + Number(limit) - Number(charInfo[key]);
+                let limitValue = BASE + Number(limit) - Number(charInfo["NOW"+key]);
                 tr.find("." + key).text(limitValue);
                 if (limitValue > 0) {
                     tr.find("." + key).addClass("status_plus");
