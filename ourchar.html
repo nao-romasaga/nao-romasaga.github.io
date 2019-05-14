@@ -149,12 +149,19 @@
                     <div id="example-table-display" class="text-center">
                         <div id="example-table" style="width:402px"></div>
                     </div>
+                    <br>
+                    <div class="text-center kadomaru" style="background-color: rgba(42,169,239,1); color:white; margin: 0px 10px; padding: 2px 5px;">
+                        <a href="./style.html" class="h4 " style="background-size: 340px 40px; width:340px" id="inputStyleLogined">自分のキャラを登録<i class="fas fa-pencil-alt"></i></a>
+                    </div>
 
                     <br>
                     <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5008373409434899" data-ad-slot="3051702111"></ins><script> (adsbygoogle = window.adsbygoogle || []).push({});</script>
                     <br>
 
                     <div id="initialHide" class="d-none">
+                        <div class="text-center kadomaru" style="background-color: rgba(42,169,239,1); color:white; margin: 0px 10px; padding: 2px 5px;">
+                            <a href="./style.html" class="h4 " style="background-size: 340px 40px; width:340px" id="inputStyleLogined">自分のキャラを登録<i class="fas fa-pencil-alt"></i></a>
+                        </div>
                         <label class="badge badge-pill badge-light" id="badge">スタイル別上限の確認</label>
                         <table class="width-100 text-center style-bgcolor">
                             <tbody>
@@ -191,7 +198,7 @@
                                     <td class="paramCell2"><span class="MAXSUM">999</span></td>
                                 </tr>
                                 <tr id="styleLabelRow">
-                                    <td class="small">スタイル別<br>限界値</td>
+                                    <td class="small">スタイル別<br>限界値(+12)</td>
                                     <td class="paramHead paramCell2">腕</td>
                                     <td class="paramHead paramCell2">体</td>
                                     <td class="paramHead paramCell2">器</td>
@@ -416,16 +423,16 @@
                         let userData = await getUserCharData(id);
                         let lim = 20;
                         let myRank = "登録がありません";
-                        let nowrank =1;
+                        let nowrank = 1;
                         let nowsum = 999;
                         $(".USER_RANK_DISP").remove();
                         for (let idx in userData['list']) {
                             let sum = Number(userData['list'][idx]["SUM"]);
-                            if(nowsum > sum){
+                            if (nowsum > sum) {
                                 nowsum = sum;
                                 nowrank = Number(idx) + 1;
                             }
-                            
+
                             let tr = $("<tr>").addClass("text-center USER_RANK_DISP");
                             if (UID === userData['list'][idx]['UserId']) {
                                 tr.addClass("bg-white");
