@@ -105,15 +105,10 @@
                 <div class="text-center">
                     <a href="https://www.jp.square-enix.com/saga_reuniverse/" target="new"><img src="https://www.jp.square-enix.com/saga_reuniverse/assets/img/cmn_logo01_sp.png" class="col-sm-12 col-md-8 col-lg-6"></a>
                 </div>
-                <h3 class="text-center title-text changeBase" data-base=0>みんなの育成状況</h3>
+                <h3 class="text-center title-text changeBase" data-base=0>キャラクター<br class="hidden spBlock">育成ランキング<span class="hidden pcBlock"><br>みんなの育成状況</span></h3>
                 <p class="text-right opacity"><small>バグ発見、ご要望は <a href="https://twitter.com/nao_romasaga_rs" target="new">nao_romasaga_rs</a>まで</small>
                 </p>
                 <div id="firebaseui-auth-container" style="margin-bottom:10px;"></div>
-
-                <h5 class="text-center opacity kadomaru" onclick="$('.movie').toggleClass('d-none')">つかいかたをみる</h5>
-                <div class="movie d-none">
-                    <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">[new] 周回適正キャラチェック<br>育成枠のキャラを選ぶ際にどのキャラが適切かを調べるツールを作りました<br>・あらかじめキャラのステータスを入力<br>・VHを周回する際にステータスが上げられるかを一覧化<br>・武器種別とシリーズで絞り込み可<br>・上昇余白が5未満で緑色表示になります<a href="https://t.co/BFRBEJm2La">https://t.co/BFRBEJm2La</a> <a href="https://t.co/6BSANPhWIq">pic.twitter.com/6BSANPhWIq</a></p>&mdash; (nAo)@ロマサガRS (@nao_romasaga_rs) <a href="https://twitter.com/nao_romasaga_rs/status/1127317211167772674?ref_src=twsrc%5Etfw">May 11, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                </div>
                 <br>
                 <!--
                 <div class="noLogin opacity kadomaru bg-danger text-white"><i class="fas fa-exclamation-triangle"></i>本機能はログイン必須です<br>Twitterログインを行い、<a href="./style.html" style="color:lightskyblue">キャラ+スタイル詳細</a>あるいは<a href="./party.html" style="color:lightskyblue">ステータス上限チェック</a>で所持しているキャラクターのステータスを入力した後からご利用できます。</div>
@@ -149,19 +144,18 @@
 
                     <br>
                     <h6 id="listLabel" style="background: url(./img/bg_window_large.png);background-size: 100% 100%;color: #faf0b4;padding: 10px 30px;"><span id="label1"></span><span id="label2">みんなが登録した<br>ステータス最高値一覧</span></h6>
+
+                    <label class="badge badge-pill badge-light">キャラクターをクリックすると詳細表示されます</label>
                     <div id="example-table-display" class="text-center">
                         <div id="example-table" style="width:402px"></div>
                     </div>
+                    
                     <br>
                     <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5008373409434899" data-ad-slot="3051702111"></ins><script> (adsbygoogle = window.adsbygoogle || []).push({});</script>
                     <br>
-
-
+                    
                     <div id="initialHide" class="d-none">
                         <label class="badge badge-pill badge-light" id="badge">スタイル別上限の確認</label>
-                        <style>
-
-                        </style>
                         <table class="width-100 text-center style-bgcolor">
                             <tbody>
                                 <tr class="text-center">
@@ -547,7 +541,7 @@
                         Object.assign({title: "精", field: "MAXMND", }, base),
                         Object.assign({title: "愛", field: "MAXAI", }, base),
                         Object.assign({title: "魅", field: "MAXMI", }, base),
-                        {title: "合計", field: "MAXSUM", sortable: true, sorter: "number"},
+                        {title: '<span class="hidden pcBlock">合</span>計', field: "MAXSUM", sortable: true, sorter: "number"},
                         {title: "rank", field: "rank", visible: false},
                         {title: "登録数", field: "size", responsive: 11},
                     ],
