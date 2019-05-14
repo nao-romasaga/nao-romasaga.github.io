@@ -149,11 +149,11 @@
                     <div id="example-table-display" class="text-center">
                         <div id="example-table" style="width:402px"></div>
                     </div>
-                    
+
                     <br>
                     <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5008373409434899" data-ad-slot="3051702111"></ins><script> (adsbygoogle = window.adsbygoogle || []).push({});</script>
                     <br>
-                    
+
                     <div id="initialHide" class="d-none">
                         <label class="badge badge-pill badge-light" id="badge">スタイル別上限の確認</label>
                         <table class="width-100 text-center style-bgcolor">
@@ -252,6 +252,7 @@
                                     <td colspan="11" class="fukidashi">
                                         データ登録数 : <span id="INPUT_COUNT"></span>件<br>
                                         愛され度 : <span id="RANK_COUNT"></span>位 (<span id="CHAR_COUNT"></span>キャラ中)<br>
+                                        あなたの順位 : <span id="MY_RANK">登録していません</span><br>
                                     </td>
                                 </tr>
                                 <tr class="text-center">
@@ -413,20 +414,36 @@
                         $(".YOURSUM").text(sum);
 
                         let userData = await getUserCharData(id);
-                        let lim = 9;
+                        let lim = 19;
+                        let myRank = "登録がありません";
+                        let nowrank =1;
+                        let nowsum = 999;
                         $(".USER_RANK_DISP").remove();
                         for (let idx in userData['list']) {
+                            let sum = Number(userData['list'][idx]["SUM"]);
+                            if(nowsum > sum){
+                                nowsum = sum;
+                                nowrank = Number(idx) + 1;
+                            }
+                            
+                            console.log(idx, UID, );
                             let tr = $("<tr>").addClass("text-center USER_RANK_DISP");
-                            tr.append(`<td class='paramCell2'>${(Number(idx) + 1)}</td>`)
+                            if (UID === userData['list'][idx]['UserId']) {
+                                tr.addClass("bg-white");
+                                myRank = `${nowrank}位(${sum}pt)`;
+                            }
+                            if (idx >= lim) {
+                                continue;
+                            }
+
+                            tr.append(`<td class='paramCell2'>${nowrank}</td>`)
                             for (let key of PARAM_KEY) {
                                 tr.append(`<td class='paramCell2'>${userData['list'][idx][key]}</td>`)
                             }
-                            tr.append(`<td class='paramCell2'>${userData['list'][idx]["SUM"]}</td>`)
+                            tr.append(`<td class='paramCell2'>${sum}</td>`)
                             $("#USER_RANK").before(tr);
-                            if (idx >= lim) {
-                                break;
-                            }
                         }
+                        $("#MY_RANK").text(myRank);
                     } else if (field.indexOf("MAX") > -1) {
                         $("." + field).text(id);
                         userMax[field] = (userMax[field] < Number(id)) ? Number(id) : userMax[field];
@@ -531,6 +548,7 @@
                         {title: "作品", field: "Series", width: 30, responsive: 10},
                         {title: "武器", field: "WeaponType", width: 30, responsive: 9},
                         {title: "", field: "Id", visible: false},
+                        {title: "", field: "UserId", visible: false},
                         {title: "", field: "SeriesFilter", visible: false},
                         {title: "", field: "WeaponTypeFilter", visible: false},
                         Object.assign({title: "腕", field: "MAXSTR"}, base),
