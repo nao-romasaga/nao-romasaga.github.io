@@ -96,8 +96,11 @@ function insertCommonComponent() {
     nav += '      <li class="nav-item " id="headParty">';
     nav += '        <a class="nav-link" href="./party.html">ステータス<br class="hidden pcBlock">上限チェック</a>';
     nav += '      </li>';
+    nav += '      <li class="nav-item " id="headOurchar">';
+    nav += '        <a class="nav-link" href="./ourchar.html">キャラクター<br class="hidden pcBlock">育成ランキング ' + newIcon + '</a>';
+    nav += '      </li>';
     nav += '      <li class="nav-item " id="headMydata">';
-    nav += '        <a class="nav-link" href="./mydata.html">周回適正<br class="hidden pcBlock">キャラチェック '+newIcon+'</a>';
+    nav += '        <a class="nav-link" href="./mydata.html">周回適正<br class="hidden pcBlock">キャラチェック ' + newIcon + '</a>';
     nav += '      </li>';
     nav += '      <li class="nav-item" id="headDamage">';
     nav += '        <a class="nav-link" href="./damage.html">ダメージ<br class="hidden pcBlock">計算</a>';
@@ -112,7 +115,7 @@ function insertCommonComponent() {
     nav += '        <a class="nav-link" href="./dojo.html">特訓<br class="hidden pcBlock">タイマー</a>';
     nav += '      </li>';
     nav += '      <li class="nav-item" id="headRenkei">';
-    nav += '        <a class="nav-link" href="./renkei.html">連携<br class="hidden pcBlock">ジェネレーター '+newIcon+'</a>';
+    nav += '        <a class="nav-link" href="./renkei.html">連携<br class="hidden pcBlock">ジェネレーター</a>';
     nav += '      </li>';
     nav += '      <li class="nav-item " id="headSite">';
     nav += '        <a class="nav-link" href="./site.html">利用規約・<br class="hidden pcBlock">免責事項</a>';
@@ -139,8 +142,9 @@ function insertCommonComponent() {
     let info = `<div class="card" id="infoCard"><div class="card-header bg-warning">${title}</div><div class="card-body">${word}</div></div>`;
     // Firebase側で暫定的に削除してるのでそっちも修正すること
     $(".title-text").after(info);
-    let title2 = "新機能オープン 5/12";
-    let word2 = "育成にどのキャラを連れて行くか検討できる<a href='mydata.html'>周回適正キャラチェック</a>を作成しました。";
+    let title2 = "新機能オープン";
+    let word2 = "5/14 みんなの育成状況がわかる<a href='ourchar.html'>キャラクター育成ランキング</a>を作成しました。<br>";
+    + "5/12 育成にどのキャラを連れて行くか検討できる<a href='mydata.html'>周回適正キャラチェック</a>を作成しました。";
     let info2 = `<div class="card"><div class="card-header bg-info">${title2}</div><div class="card-body">${word2}</div></div>`;
     // Firebase側で暫定的に削除してるのでそっちも修正すること
     $(".title-text").after(info2);
@@ -175,9 +179,9 @@ function insertCommonComponent() {
 
     let url = $(location).attr('href');
     if (url.indexOf('debug') === -1) {
-    //    $('body').html('<div class="sorry_center"><p class="sorry_cat icon-nemuri"><span class="icon-zzz"></span></p><br>申し訳ございません。<br>現在メンテナンス中です。</div>');
+        //    $('body').html('<div class="sorry_center"><p class="sorry_cat icon-nemuri"><span class="icon-zzz"></span></p><br>申し訳ございません。<br>現在メンテナンス中です。</div>');
     }
-    
+
     if (url.indexOf('damage.html') != -1) {
         $("#headDamage").addClass("active");
     } else if (url.indexOf('skill.html') != -1) {
@@ -204,7 +208,10 @@ function insertCommonComponent() {
         $("#headRenkei").addClass("active");
     } else if (url.indexOf('mydata.html') != -1) {
         $("#headMydata").addClass("active");
+    } else if (url.indexOf('ourchar.html') != -1) {
+        $("#headOurchar").addClass("active");
     }
+    
 
 
 }
