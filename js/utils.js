@@ -329,7 +329,8 @@ function setSlider() {
     option['height'] = (device === "sp") ? 310 : 250;
     $('#slider-pro').sliderPro(option);
 }
-
+let KAKUSEI_COLOR={"black":"k", "green":"g", "blue":"b","orange":"o","purple":"p","red":"r","yellow":"y","white":"w"};
+let KAKUSEI_ICON = ["","sand","stone","jewel"];
 function skillLabel(skillInfo) {
     let skillList = $("<button>").addClass("skill_select").addClass("keishoSkill").attr("data-id", skillInfo['Id']);
     let topDiv = $('<div>').attr('style', 'width:100%; display: inline-flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid;');
@@ -338,23 +339,26 @@ function skillLabel(skillInfo) {
     skillName.append(skillInfo['Name']);    // 技名称
     let skillRight = $("<p>").addClass('text-right').addClass('small').attr('style', 'margin:0;');
     skillRight.append("覚醒:" + skillInfo['Kakusei']);
-    skillRight.append(" BP:" + skillInfo['ConsumeBp']);
+    let iconClass = KAKUSEI_COLOR[skillInfo['KakuseiSozai']] + KAKUSEI_ICON[skillInfo['Kakusei']];
+    skillRight.append(`<span class="icon_${iconClass}" style="width:25px;height:25px; display: inline-block;background-size: contain;">　</span>`);
+    
+    skillRight.append("BP:" + skillInfo['ConsumeBp']);
     skillRight.append(" 威力:" + skillInfo['PowerGrade'] + "(" + skillInfo['SkillIryoku'] + ")");
     topDiv.append(skillName).append(skillRight);
 
     // 属性 AttackAttributes
     let bottomDiv = $('<div>').addClass("iconClass").attr('style', 'display: table-cell; vertical-align: middle; height:30px');
-    bottomDiv.append($('<span>').addClass('icon_sm').addClass(ICON_LIST[skillInfo['BattleType']]));
+    bottomDiv.append($('<span>').addClass('icon_sm').addClass(ICON_LIST[skillInfo['BattleType']]).text("　"));
     skillInfo['AttackAttributes'].split(',').forEach(function (value) {
-        let img = $('<span>').addClass('icon_sm').addClass(ICON_LIST[value]);
+        let img = $('<span>').addClass('icon_sm').addClass(ICON_LIST[value]).text("　");
         bottomDiv.append(img);
     });
     if (skillInfo['BadStatus'] != "") {
-        let img = $('<span>').addClass('').addClass("icon_sm").addClass(ICON_LIST[skillInfo['BadStatus']]);
+        let img = $('<span>').addClass('').addClass("icon_sm").addClass(ICON_LIST[skillInfo['BadStatus']]).text("　");
         bottomDiv.append(img);
     }
     if (skillInfo['DeBuff'] != "") {
-        let img = $('<span>').addClass('icon_sm_buf').addClass(ICON_LIST[skillInfo['DeBuff'] + "低下"]);
+        let img = $('<span>').addClass('icon_sm').addClass(ICON_LIST[skillInfo['DeBuff'] + "低下"]).text("　");
         bottomDiv.append(img);
     }
     if (skillInfo['AttackDistance'] !== "近") {
@@ -369,6 +373,7 @@ function skillLabel(skillInfo) {
     if (skillInfo['Delay']) {
         bottomDiv.append("[ディレイ]");
     }
+    
     bottomDiv.append(" <span class='holderClass'>所持者(" + skillInfo['Holders'].length + ")</span>");   // 所有者数
 
     skillList.append(topDiv).append(bottomDiv);
