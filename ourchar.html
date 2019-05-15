@@ -416,7 +416,9 @@
 
                         // 自分の入力値
                         let myUserData = await getMyCharData(id);
+                        let myDataFlg = "UNMATCH";
                         if (myUserData === null) {
+                            myDataFlg = "NONE";
                             myUserData = {"STR": 0, "VIT": 0, "DEX": 0, "AGI": 0, "INT": 0, "MND": 0, "AI": 0, "MI": 0};
                         }
                         sum = 0;
@@ -425,11 +427,14 @@
                             $(".YOUR" + key).text(myUserData[key]);
                         }
                         $(".YOURSUM").text(sum);
+                        let mySum = sum;
 
                         let userData = await getUserCharData(id);
-                        let myRank = (myUserData === null) ? "登録がありません" : "次のランキング反映までお待ちください";
+                        let myRank = "";
+                        let myTmpRank = 1;
                         let nowrank = 1;
                         let nowsum = 999;
+                        
                         $(".USER_RANK_DISP").remove();
                         for (let idx in userData['list']) {
                             let sum = Number(userData['list'][idx]["SUM"]);
@@ -437,9 +442,13 @@
                                 nowsum = sum;
                                 nowrank = Number(idx) + 1;
                             }
+                            if (nowsum > mySum) {
+                                myTmpRank = nowrank + 1;
+                            }
 
                             let tr = $("<tr>").addClass("text-center USER_RANK_DISP");
                             if (UID === userData['list'][idx]['UserId']) {
+                                myDataFlg = "MATCH";
                                 tr.addClass("bg-white");
                                 myRank = `${nowrank}位(${sum}pt)`;
                             }
@@ -454,7 +463,12 @@
                             tr.append(`<td class='paramCell2'>${sum}</td>`)
                             $("#USER_RANK").before(tr);
                         }
-                        $("#MY_RANK").text(myRank);
+                        if(myDataFlg === "UNMATCH"){
+                            myRank = `暫定${myTmpRank}位(${mySum}pt)<br>ランキング反映待機中...`;
+                        } else if(myDataFlg ==="NONE"){
+                            myRank = "登録がありません";
+                        }
+                        $("#MY_RANK").html(myRank);
                     } else if (field.indexOf("MAX") > -1) {
                         $("." + field).text(id);
                         userMax[field] = (userMax[field] < Number(id)) ? Number(id) : userMax[field];
