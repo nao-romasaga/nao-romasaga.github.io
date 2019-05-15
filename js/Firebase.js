@@ -4,13 +4,20 @@ var configGreen = {
     authDomain: "nao-romasaga-rs.firebaseapp.com",
     storageBucket: "nao-romasaga-rs.appspot.com",
 };
+var configBlue2 = {
+    apiKey: "AIzaSyB76NWQ5iHa_q1Rsh-NTKrMB7VWuPnZQcg",
+    databaseURL: "https://nao-romasaga-rs-blue2.firebaseio.com",
+    authDomain: "nao-romasaga-rs-blue2.firebaseapp.com",
+    storageBucket: "nao-romasaga-rs-blue2.appspot.com",
+};
+
 var configUsers = {
     apiKey: "AIzaSyDvB6eT5hyVrgYQwuPMRomveJmwI3M6OOQ",
     databaseURL: "https://nao-romasaga-rs-users.firebaseio.com",
     authDomain: "nao-romasaga-rs-users.firebaseapp.com",
     storageBucket: "nao-romasaga-rs-users.appspot.com",
 };
-const app = firebase.initializeApp(configGreen);
+const app = firebase.initializeApp(configBlue2);
 const appUsers = firebase.initializeApp(configUsers, "Users");
 
 var REF;
