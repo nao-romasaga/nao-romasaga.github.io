@@ -123,9 +123,9 @@ function insertCommonComponent() {
     nav += '      <li class="nav-item " id="headKifu">';
     nav += '        <a class="nav-link" href="./kifu.html">寄付について</a>';
     nav += '      </li>';
-    nav += '      <li class="nav-item " id="headConvert">';
-    nav += '        <a class="nav-link" href="./convert.html">データ移行</a>';
-    nav += '      </li>';
+    //nav += '      <li class="nav-item " id="headConvert">';
+    //nav += '        <a class="nav-link" href="./convert.html">データ移行</a>';
+    //nav += '      </li>';
     //nav += '      <li class="nav-item">';
     //nav += '        <a class="nav-link disabled" href="#">スタイル情報(coming soon)</a>';
     //nav += '      </li>';
@@ -141,12 +141,11 @@ function insertCommonComponent() {
     word += "ご迷惑をおかけし誠に申し訳ございません(･ω･)💦<br>";
     let info = `<div class="card" id="infoCard"><div class="card-header bg-warning">${title}</div><div class="card-body">${word}</div></div>`;
     // Firebase側で暫定的に削除してるのでそっちも修正すること
-    $(".title-text").after(info);
+    // $(".title-text").after(info);
+
     let title2 = "新機能オープン";
     let word2 = "5/14 みんなの育成状況がわかる<a href='ourchar.html'>キャラクター育成ランキング</a>を作成しました。<br>";
-    + "5/12 育成にどのキャラを連れて行くか検討できる<a href='mydata.html'>周回適正キャラチェック</a>を作成しました。";
     let info2 = `<div class="card"><div class="card-header bg-info">${title2}</div><div class="card-body">${word2}</div></div>`;
-    // Firebase側で暫定的に削除してるのでそっちも修正すること
     $(".title-text").after(info2);
 
     var footer = "";
@@ -211,7 +210,7 @@ function insertCommonComponent() {
     } else if (url.indexOf('ourchar.html') != -1) {
         $("#headOurchar").addClass("active");
     }
-    
+
 
 
 }
