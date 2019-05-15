@@ -392,7 +392,7 @@ function displayCharInfo(charData) {
         }
     } else if (NOW_CHAR['init'] === undefined) {
         for (let key of PARAM_KEY) {
-            NOW_CHAR[key] = Number(NOW_CHAR[key]) + 45;
+            NOW_CHAR[key] = Number(NOW_CHAR[key]) + 35;
         }
     }
     NOW_CHAR['init'] = false;
