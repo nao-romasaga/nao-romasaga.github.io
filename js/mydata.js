@@ -172,14 +172,17 @@ function changeId2Dot() {
         } else if (id.indexOf("icon") > -1) {
             let src = `<span class="icon_mini_zokusei ${id}"></span>`;
             $(this).html(src);
-        } else if (Number(id) < 5
-                && $(this).attr("tabulator-field") !== "SUM"
-                && $(this).attr("tabulator-field") !== "DotId") {
-            let attr = $(this).attr("style");
-            $(this).attr("style", attr + ' background-color: palegreen;');
         } else if (id.indexOf("x") > -1) {
             let attr = $(this).attr("style");
             $(this).attr("style", attr + ' background-color: lightslategray; color: white');
+        } else if ($(this).attr("tabulator-field") !== "SUM"
+                && $(this).attr("tabulator-field") !== "DotId") {
+            let attr = $(this).attr("style");
+            if(Number(id) <= 2){
+                $(this).attr("style", attr + ' background-color: pink;');
+            }else if (Number(id) < 7){
+                $(this).attr("style", attr + ' background-color: palegreen;');
+            }
         }
     });
 }
