@@ -45,9 +45,6 @@
         <script src="./js/Firebase.js"></script>
         <script src="./js/utils.js" ></script>
         <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" >
-
-        <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
         <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -430,7 +427,7 @@
                         $(".YOURSUM").text(sum);
 
                         let userData = await getUserCharData(id);
-                        let myRank = (myUserData === null) ? "登録がありません" : "上限を超えるなど不正な値が入力されている可能性があります";
+                        let myRank = (myUserData === null) ? "登録がありません" : "次のランキング反映までお待ちください";
                         let nowrank = 1;
                         let nowsum = 999;
                         $(".USER_RANK_DISP").remove();
