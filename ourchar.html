@@ -278,11 +278,11 @@
                         <br>
                         <div class="card"><div class="card-header bg-warning">補足説明</div>
                             <div class="card-body">
-                               ・更新タイミングについて<br>
-                               更新は手動で行っています(๑′ᴗ‵๑)💦そのためタイミングは不定期です。気長にお待ちくださいmm<br><br>
-                               ・最大値がランキングのトップ20に表示されない件について<br>
-                               ランキングは総ステータスの降順です。そのため最大値を持つ場合でも総ステータスが低い場合はランキングから外れます。<br><br>
-                               ・上限突破しているステータスについて<br>
+                                ・更新タイミングについて<br>
+                                更新は手動で行っています(๑′ᴗ‵๑)💦そのためタイミングは不定期です。気長にお待ちくださいmm<br><br>
+                                ・最大値がランキングのトップ20に表示されない件について<br>
+                                ランキングは総ステータスの降順です。そのため最大値を持つ場合でも総ステータスが低い場合はランキングから外れます。<br><br>
+                                ・上限突破しているステータスについて<br>
                                 このデータはユーザが入力した値を表示しています。上限を超える値も入力できてしまうため、おかしなデータが表示されてしまうケースもあります。正しいデータ入力のご協力をお願いいたします。
                             </div></div>
                         <br>
@@ -365,6 +365,7 @@
                 $(this).parent().find(".tabulator-cell").each(async function () {
                     let id = $(this).text();
                     let field = $(this).attr("tabulator-field");
+                    let nowRank = 1;
                     if (id.indexOf("ID") > -1) {
                         $(".STYLE_ROW").remove();
                         $("#charDot").html(`<span class="char dot_mid dot char-winner" style="background: url(./img/dot/${CHAR_MASTER[id]['DotId']}.png) no-repeat; margin: 0 10px;"></span>`);
@@ -432,40 +433,56 @@
                         let userData = await getUserCharData(id);
                         let myRank = "";
                         let myTmpRank = 1;
-                        let nowrank = 1;
                         let nowsum = 999;
-                        
+
                         $(".USER_RANK_DISP").remove();
-                        for (let idx in userData['list']) {
-                            let sum = Number(userData['list'][idx]["SUM"]);
-                            if (nowsum > sum) {
-                                nowsum = sum;
-                                nowrank = Number(idx) + 1;
+                        let lists = [userData['list'], userData['kyogiList']];
+                        for (let x in lists) {
+                            if(x == "1" && lists[x] !== undefined){
+                                $("#USER_RANK").before("<tr class='USER_RANK_DISP' style='background-color:red; color:white;'><td colspan=10>協議中</td></tr>");
                             }
-                            if (nowsum > mySum) {
-                                myTmpRank = nowrank + 1;
-                            }
+                            for (let idx in lists[x]) {
+                                let sum = Number(lists[x][idx]["SUM"]);
+                                if (nowsum > sum) {
+                                    nowsum = sum;
+                                    nowrank = Number(idx) + 1;
+                                }
+                                if (nowsum > mySum) {
+                                    myTmpRank = nowrank + 1;
+                                }
+                                if (x === "1") {
+                                    nowrank = "協議中";
+                                }
 
-                            let tr = $("<tr>").addClass("text-center USER_RANK_DISP");
-                            if (UID === userData['list'][idx]['UserId']) {
-                                myDataFlg = "MATCH";
-                                tr.addClass("bg-white");
-                                myRank = `${nowrank}位(${sum}pt)`;
-                            }
-                            if (idx >= RANK_LIMIT) {
-                                continue;
-                            }
+                                let tr = $("<tr>").addClass("text-center USER_RANK_DISP");
+                                if (UID === lists[x][idx]['UserId']) {
+                                    myDataFlg = "MATCH";
+                                    tr.addClass("bg-white");
+                                    if (x !== "1") {
+                                        myRank = `${nowrank}位(${sum}pt)`;
+                                    } else {
+                                        myRank = `${nowrank}(${sum}pt)<br>入力内容を再確認するか画像付きで報告お願い致します`;
+                                    }
+                                }
+                                if (idx >= RANK_LIMIT) {
+                                    continue;
+                                }
 
-                            tr.append(`<td class='paramCell2'>${nowrank}</td>`)
-                            for (let key of PARAM_KEY) {
-                                tr.append(`<td class='paramCell2'>${userData['list'][idx][key]}</td>`)
+                                tr.append(`<td class='paramCell2'>${nowrank}</td>`)
+                                for (let key of PARAM_KEY) {
+                                    let style = "";
+                                    if (styleMax[key] > 0 && lists[x][idx][key] > styleMax[key]) {
+                                        style = " background-color:red; color:white;";
+                                    }
+                                    tr.append(`<td class='paramCell2' style='${style}'>${lists[x][idx][key]}</td>`)
+                                }
+                                tr.append(`<td class='paramCell2'>${sum}</td>`)
+                                $("#USER_RANK").before(tr);
                             }
-                            tr.append(`<td class='paramCell2'>${sum}</td>`)
-                            $("#USER_RANK").before(tr);
                         }
-                        if(myDataFlg === "UNMATCH"){
+                        if (myDataFlg === "UNMATCH") {
                             myRank = `暫定${myTmpRank}位(${mySum}pt)<br>ランキング反映待機中...`;
-                        } else if(myDataFlg ==="NONE"){
+                        } else if (myDataFlg === "NONE") {
                             myRank = "登録がありません";
                         }
                         $("#MY_RANK").html(myRank);
