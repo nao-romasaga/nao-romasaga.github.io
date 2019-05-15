@@ -206,7 +206,7 @@ $(document).ready(function ($) {
             $(".char" + key + charId).each(function (idx, el) {
                 $(el).text(val);
             });
-            NOW_CHAR[key] = Number(val);
+            NOW_CHAR["NOW"+key] = Number(val);
             update[key] = Number(val);
         }
         setLimitData();
