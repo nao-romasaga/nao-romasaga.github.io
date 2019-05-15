@@ -150,6 +150,7 @@ function insertCommonComponent() {
 
     var footer = "";
     footer += '<div class="opacity" style ="position: relative;">';
+    footer += '<span class="kadomaru RequireLoginMenu logout d-none" style="background-color: rgba(42,169,239,1); color:white; padding: 2px 5px; background-size: 340px 40px; width:340px"><i class="fab fa-twitter"></i>ログアウト</span><br>'
     footer += 'Powered by <a href="https://twitter.com/nao_romasaga_rs" target="new">nao_romasaga_rs</a><br>';
     footer += 'Special thanks <small>';
     footer += '<a href="https://twitter.com/imonoki" target="new">imonoki</a>, ';
@@ -222,7 +223,17 @@ $(document).ready(function () {
         //return false;
     });
     insertCommonComponent();
+
 });
+$(document).on('click', '.logout', function () {
+    firebase.auth(appUsers).signOut().then(() => {
+        console.log("ログアウトしました");
+        $(".RequireLoginMenu").addClass("d-none");
+    }).catch((error) => {
+        console.log(`ログアウト時にエラーが発生しました (${error})`);
+    });
+});
+
 function getDevice() {
     let width = window.innerWidth;
     var ua = navigator.userAgent;
