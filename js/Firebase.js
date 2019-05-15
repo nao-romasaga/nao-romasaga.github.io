@@ -21,6 +21,7 @@ firebase.auth(appUsers).onAuthStateChanged((user) => {
         REF = firebase.database(appUsers).ref('user_data/' + UID);
         $(".RequireLoginMenu").removeClass("d-none");
     } else {
+        $(".RequireLoginMenu").addClass("d-none");        
         console.log("no login");
     }
         console.log(UID);
