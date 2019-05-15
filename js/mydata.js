@@ -30,7 +30,7 @@ function filter() {
 
     let labels = "";
     table.clearFilter();
-    let finalFilter = [{field: "SUM", type: ">", value: 0}];
+    let finalFilter = [{field: "SUM", type: ">=", value: 0}];
     if (weaopnFilter.length > 0) {
         finalFilter.push(weaopnFilter);
         labels += "武器種:" + weaopnLabel.join(",");
@@ -68,6 +68,7 @@ $(".changeBase").click(function () {
     }
     for (let mydata of MY_DATA_LIST) {
         let sum = 0;
+                console.log(mydata, CHAR_MASTER[mydata["id"]]);
         for (let key of PARAM_KEY) {
             if (base === 0) {
                 mydata[key] = mydata["org" + key];
@@ -77,6 +78,8 @@ $(".changeBase").click(function () {
                 if (calc > 0) {
                     mydata[key] = calc;
                     sum += calc;
+                } else if(CHAR_MASTER[mydata["id"]]['MAX' + key] === -99){
+                    mydata[key] = "??"
                 } else {
                     mydata[key] = "x"
                 }
@@ -231,6 +234,6 @@ function drawTable(result, sort) {
         ],
     });
 
-    table.setFilter("SUM", ">", 0);
+    table.setFilter("SUM", ">=", 0);
     changeId2Dot();
 }
