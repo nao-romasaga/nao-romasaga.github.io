@@ -167,13 +167,29 @@
         <!-- ============================= -->
         <table class="width-100 text-center d-none charTable" id="CHAR_TEMPLATE">
             <tr class="small text-center ">
+                <td rowspan="2">
+                    <span class="char-winner char dot_mid dot"></span>
+                </td>
+                <td colspan="8">
+                    <p class="width-100 pad0 mar0 fukidashi charName" style=" position: relative; left: -30px;"></p>
+                </td>
                 <td>
                     <p class="width-100 pad0 mar0 openMenu" onclick=""><img src="./img/icon/icon_menu.png" width="25" height="25"></p>
                 </td>
-                <td colspan="9">
-                    <p class="width-100 pad0 mar0 darkButton"></p>
-                </td>
             </tr>
+            <tr class="text-center nowData" onclick="">
+                <td style="width:10%">
+                    <p style="margin-bottom:-5px">HP</p><span class="HP">0</span>
+                </td>
+                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">腕</p><span class="STR"></span></td>
+                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">体</p><span class="VIT"></span></td>
+                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">器</p><span class="DEX"></span></td>
+                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">速</p><span class="AGI"></span></td>
+                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">知</p><span class="INT"></span></td>
+                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">精</p><span class="MND"></span></td>
+                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">愛</p><span class="AI"></span></td>
+                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">魅</p><span class="MI"></span></td>
+            </tr>            
             <tr>
                 <td colspan="10" class="inputArea">
                     <table class="fukidashi width-100">
@@ -181,12 +197,17 @@
                             <td class="text-center" colspan="4">▼ステータス入力▼</td>
                         </tr>
                         <tr class="text-nowrap">
+                            <td colspan="4">
+                                ＨＰ　<img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="HP" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charHP" style="width: 100px" value="3"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="HP" data-pm="plus" onclick="">
+                            </td>
+                        </tr>
+                        <tr class="text-nowrap">
                             <td >腕力</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="STR" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charSTR" style="width: 50px" value="3"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="STR" data-pm="plus" onclick=""></td>
                             <td >体力</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="VIT" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charVIT" style="width: 50px" value="3"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="VIT" data-pm="plus" onclick=""></td>
                         </tr>
                         <tr class="text-nowrap">
-                            <td >器用さ</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="DEX" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charDEX" style="width: 50px" value="6"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="DEX" data-pm="plus" onclick=""></td>
-                            <td >素早さ</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="AGI" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charAGI" style="width: 50px" value="7"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="AGI" data-pm="plus" onclick=""></td>
+                            <td class="small">器用さ</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="DEX" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charDEX" style="width: 50px" value="6"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="DEX" data-pm="plus" onclick=""></td>
+                            <td class="small">素早さ</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="AGI" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charAGI" style="width: 50px" value="7"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="AGI" data-pm="plus" onclick=""></td>
                         </tr>
                         <tr class="text-nowrap">
                             <td >知力</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="INT" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charINT" style="width: 50px" value="9"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="INT" data-pm="plus" onclick=""></td>
@@ -223,30 +244,16 @@
                     </table>
                 </td>
             </tr>
-            <tr class="text-center nowData" onclick="">
-                <td style="width:20%" colspan="2">
-                    <span class="char-winner char dot_mid dot"></span>
-                </td>
-                <td style="width:10%">腕<br><span class="STR"></span></td>
-                <td style="width:10%; border-left: 1px solid #faf0b4">体<br><span class="VIT"></span></td>
-                <td style="width:10%; border-left: 1px solid #faf0b4">器<br><span class="DEX"></span></td>
-                <td style="width:10%; border-left: 1px solid #faf0b4">速<br><span class="AGI"></span></td>
-                <td style="width:10%; border-left: 1px solid #faf0b4">知<br><span class="INT"></span></td>
-                <td style="width:10%; border-left: 1px solid #faf0b4">精<br><span class="MND"></span></td>
-                <td style="width:10%; border-left: 1px solid #faf0b4">愛<br><span class="AI"></span></td>
-                <td style="width:10%; border-left: 1px solid #faf0b4">魅<br><span class="MI"></span></td>
-            </tr>
+
         </table>
         <!-- テンプレート(スタイル別上限) -->
         <table>
             <tr class="text-center d-none inputArea" id="LIMIT_TEMPLATE">
-                <td style="width:10%">
+                <td style="width:20%" colspan="2">
                     <img class="rare" src="./img/icon/icon_SS.png" width="25">
-                </td>
-                <td style="width:10%">
                     <img class="icn" src="./img/style_icon/ID36a44.png" width="30">
                 </td>
-                <td class="STR" style="width:10%; "></td>
+                <td class="STR" style="width:10%; border-left: 1px solid #faf0b4"></td>
                 <td class="VIT" style="width:10%; border-left: 1px solid #faf0b4;"></td>
                 <td class="DEX" style="width:10%; border-left: 1px solid #faf0b4;"></td>
                 <td class="AGI" style="width:10%; border-left: 1px solid #faf0b4;"></td>
