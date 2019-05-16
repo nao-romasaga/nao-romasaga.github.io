@@ -1,1 +1,4 @@
-https://nao-romasaga.github.io/sitemap.xml
+Sitemap:https://nao-romasaga.github.io/sitemap.xml
+User-agent: Googlebot-Image
+Disallow: /img/
+Noindex: /img/
