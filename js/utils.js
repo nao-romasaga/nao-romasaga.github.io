@@ -150,7 +150,7 @@ function insertCommonComponent() {
 
     var footer = "";
     footer += '<div class="opacity" style ="position: relative;">';
-    footer += '<span class="kadomaru RequireLoginMenu logout d-none" style="background-color: rgba(42,169,239,1); color:white; padding: 2px 5px; background-size: 340px 40px; width:340px"><i class="fab fa-twitter"></i>ログアウト</span><br>'
+    footer += '<span class="kadomaru RequireLoginMenu logout d-none" style="background-color: rgba(42,169,239,1); color:white; padding: 2px 5px; background-size: 340px 40px; width:340px" onclick=""><i class="fab fa-twitter"></i>ログアウト</span><br>'
     footer += 'Powered by <a href="https://twitter.com/nao_romasaga_rs" target="new">nao_romasaga_rs</a><br>';
     footer += 'Special thanks <small>';
     footer += '<a href="https://twitter.com/imonoki" target="new">imonoki</a>, ';
