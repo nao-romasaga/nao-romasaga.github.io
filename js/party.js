@@ -8,6 +8,8 @@ var NOW_PARTY = 0;
 var PARTY_LIST = [[]];
 var BASE = 45;
 var UID;
+var dotStyle = " margin-left:0px; position: relative; bottom: -20px;";
+var PARAM_KEY_HP = ["HP"].concat(PARAM_KEY);
 $(document).ready(function ($) {
     initialHide();
 
@@ -60,13 +62,7 @@ $(document).ready(function ($) {
             });
         }
     });
-    $(document).on('click', '.logout', function () {
-        firebase.auth(appUsers).signOut().then(() => {
-            console.log("ログアウトしました");
-        }).catch((error) => {
-            console.log(`ログアウト時にエラーが発生しました (${error})`);
-        });
-    });
+
     $('[data-toggle="tooltip"]').tooltip();
     let charFlg = false, partyFlg = false;
     readFile('Char', function (result) {
@@ -105,6 +101,7 @@ $(document).ready(function ($) {
             let charId = data['char'];
             let styleId = data['style'];
             NOW_CHAR = CHAR_MASTER[charId];
+            //console.log(PARTY_LIST, CHAR_MASTER[charId]);
             selectDotHensei(CHAR_MASTER[charId]);
             readCharData(charId, async function (r) {
                 // キャラクター情報表示
@@ -198,9 +195,10 @@ $(document).ready(function ($) {
     });
 
     function updateDB() {
+        
         let charId = NOW_CHAR['Id'];
         let update = {};
-        for (let key of PARAM_KEY) {
+        for (let key of PARAM_KEY_HP) {
             // TODO firstじゃなくて修正したところの値を拾う必要があるので、PARTYNoをあとで設定する
             let val = $(".charInput" + key + charId).first().val();
             $(".char" + key + charId).each(function (idx, el) {
@@ -210,6 +208,7 @@ $(document).ready(function ($) {
             update[key] = Number(val);
         }
         setLimitData();
+        //console.log(update);
         updateData(`CHAR/${NOW_CHAR['Id']}`, update);
     }
     function updatePartyDB() {
@@ -246,7 +245,7 @@ $(document).ready(function ($) {
             let id = $(this).attr("data-charId");
             let input = splitParam($(this).attr("data-input"), 0);
             for (let i in input) {
-                $(".charInput" + PARAM_KEY[i] + id).each(function (idx, el) {
+                $(".charInput" + PARAM_KEY_HP[i] + id).each(function (idx, el) {
                     $(el).val(input[i]);
                 });
             }
@@ -307,7 +306,7 @@ async function displayCharInfo(charInfo, myData) {
     let charId = charInfo['Id'];
     let charBaseTmpl = $("#CHAR_TEMPLATE").clone().removeClass("d-none").removeAttr("id").addClass("charTmpl" + charId)
             .attr("data-charId", charId);
-    charBaseTmpl.find(".darkButton").html(charInfo['Name']);
+    charBaseTmpl.find(".charName").html(charInfo['Name']);
     charBaseTmpl.find(".icon_btn_on").attr("data-id", charId);
     charBaseTmpl.find(".charUnset").attr("data-id", charId);
     charBaseTmpl.find(".openMenu").attr("data-id", charId);
@@ -317,10 +316,10 @@ async function displayCharInfo(charInfo, myData) {
 
     let dotId = charInfo['DotId'];
     let pngName = (dotId !== "ID4e2c8") ? dotId : "ID4e2c9";
-    charBaseTmpl.find(".dot_mid").attr('style', getImgUrl('dot/' + pngName + ".png") + " margin-left:20px;");
+    charBaseTmpl.find(".dot_mid").attr('style', getImgUrl('dot/' + pngName + ".png") + dotStyle);
     // ステータス反映。初回はデフォルト値(+35)を入れる
     if (myData !== null) {
-        for (let key of PARAM_KEY) {
+        for (let key of PARAM_KEY_HP) {
             charInfo["NOW"+key] = Number(myData[key]);
         }
     } else if (myData === null) {
@@ -331,7 +330,7 @@ async function displayCharInfo(charInfo, myData) {
 
     let nowInput = charBaseTmpl.find(".nowData");
     nowInput.attr("data-id", charId);
-    for (let key of PARAM_KEY) {
+    for (let key of PARAM_KEY_HP) {
         charBaseTmpl.find(".char" + key).removeClass("char" + key).addClass("charInput" + key + charId).val(charInfo["NOW"+key]);
         nowInput.find("." + key).removeClass("char" + key).addClass("char" + key + charId).text(charInfo["NOW"+key]);
     }
@@ -372,7 +371,6 @@ async function displayCharInfo(charInfo, myData) {
     }
     $("#PARTY1").append(charBaseTmpl);
 }
-
 // スタイルクリック時
 async function displayStyleInfo(charId, styleId) {
     $(".charTmpl" + charId).attr("data-styleId", styleId);
@@ -397,7 +395,7 @@ async function displayStyleInfo(charId, styleId) {
     let dotId = styleInfo['DotId'];
     let pngName = (dotId !== "ID4e2c8") ? dotId : "ID4e2c9";
     let dot = $(".charTmpl" + charId).find(".char");
-    dot.attr('style', getImgUrl('dot/' + pngName + ".png") + " margin-left:20px;");
+    dot.attr('style', getImgUrl('dot/' + pngName + ".png") + dotStyle);
     if (dot.length > 0) {
         animeReset(dot, "char-winner");
     }
