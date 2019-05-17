@@ -221,7 +221,7 @@
                                     <td class="paramCell2 MI">99</td>
                                     <td class="paramCell2 SUM">999</td>
                                 </tr>
-                                <tr id="MY_CHAR_TR" class="text-center" style="background-color: white;">
+                                <tr class="text-center" style="background-color: white;">
                                     <td class="text-right small">
                                         あなたの<span><br>キャラ</span>
                                     </td>
@@ -234,8 +234,21 @@
                                     <td class="paramCell2"><span class="YOURAI">0</span></td>
                                     <td class="paramCell2"><span class="YOURMI">0</span></td>
                                     <td class="paramCell2"><span class="YOURSUM">000</span></td>
-                                </tr>                            
-                            </tbody>
+                                </tr>
+                                <tr class="text-center" style="background-color: white;    border-top: 1px solid darkgray;">
+                                    <td class="text-right small">
+                                        限界まで</span>
+                                    </td>
+                                    <td class="paramCell1"><span class="LIMITSTR">0</span></td>
+                                    <td class="paramCell2"><span class="LIMITVIT">0</span></td>
+                                    <td class="paramCell2"><span class="LIMITDEX">0</span></td>
+                                    <td class="paramCell2"><span class="LIMITAGI">0</span></td>
+                                    <td class="paramCell2"><span class="LIMITINT">0</span></td>
+                                    <td class="paramCell2"><span class="LIMITMND">0</span></td>
+                                    <td class="paramCell2"><span class="LIMITAI">0</span></td>
+                                    <td class="paramCell2"><span class="LIMITMI">0</span></td>
+                                    <td class="paramCell2"><span class="LIMITSUM">000</span></td>
+                                </tr>                            </tbody>
                         </table>
                         <div class="text-center">
                             <br>
@@ -422,12 +435,12 @@
                         styleRowMax.removeAttr("id").addClass("STYLE_ROW").removeClass("d-none")
                                 .css("background-color", "rgba(0,0,0, 0.2)");
                         styleRowMax.find(".IMG").html("最大値");
-                        let sum = 0;
+                        let styleSum = 0;
                         for (let key of PARAM_KEY) {
-                            sum += styleMax[key];
+                            styleSum += styleMax[key];
                             styleRowMax.find("." + key).text(styleMax[key]);
                         }
-                        styleRowMax.find(".SUM").text(sum);
+                        styleRowMax.find(".SUM").text(styleSum);
                         $("#styleLabelRow").after(styleRowMax);
 
                         // 自分の入力値
@@ -437,13 +450,16 @@
                             myDataFlg = "NONE";
                             myUserData = {"STR": 0, "VIT": 0, "DEX": 0, "AGI": 0, "INT": 0, "MND": 0, "AI": 0, "MI": 0};
                         }
-                        sum = 0;
+                        let sum = 0;
                         for (let key of PARAM_KEY) {
                             sum += Number(myUserData[key]);
                             $(".YOUR" + key).text(myUserData[key]);
+                            let limit = (styleMax[key] == "0") ? "?" : styleMax[key] - myUserData[key];
+                            $(".LIMIT" + key).text(limit);
                         }
 
                         $(".YOURSUM").text(sum);
+                        $(".LIMITSUM").text((styleSum === 0) ? "?" : styleSum - sum);
                         let mySum = sum;
 
                         let userData = await getUserCharData(id);
