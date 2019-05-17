@@ -10,7 +10,7 @@
             }
             gtag('js', new Date());
 
-            gtag('config', 'UA-138966739-1');
+            gtag('configST', 'UA-138966739-1');
         </script>
         <meta charset="utf-8">
         <title>ロマサガRS ステータスランキング みんなの育成状況</title>
@@ -320,7 +320,6 @@
             var CHAR_RANK, CHAR_MASTER, STYLE_MASTER = [];
             var table;
             var LIMIT_BASE = 57;
-            var allCharSize = 0;
 
             $(".filterList").click(function () {
                 $(this).parent().toggleClass("filterActive");
@@ -379,182 +378,190 @@
                 changeId2Dot();
             });
             $(document).on('click', ".tabulator-cell", function () {
-                $("#initialHide").removeClass("d-none");
-
-                let userMax = {"STR": 0, "VIT": 0, "DEX": 0, "AGI": 0, "INT": 0, "MND": 0, "AI": 0, "MI": 0, "SUM": 0};
-                let styleMax = {"STR": 0, "VIT": 0, "DEX": 0, "AGI": 0, "INT": 0, "MND": 0, "AI": 0, "MI": 0, "SUM": 0};
-                let charName = "";
-
-                let dispRank = "";
-                let br = "%0D%0A";
-                let text = "";
 
                 $(this).parent().find(".tabulator-cell").each(async function () {
                     let id = $(this).text();
                     let field = $(this).attr("tabulator-field");
-                    let nowRank = 1;
                     if (id.indexOf("ID") > -1) {
-                        $(".STYLE_ROW").remove();
-                        $("#charDot").html(`<span class="char dot_mid dot char-winner" style="background: url(./img/dot/${CHAR_MASTER[id]['DotId']}.png) no-repeat; margin: 0 10px;"></span>`);
-                        charName = CHAR_MASTER[id]['Name'];
-                        $(".charName").text(charName);
-                        $("#charDotAruku").attr("style", `background: url(./img/dot/${CHAR_MASTER[id]['DotId']}.png) no-repeat; margin: 0 10px;`);
-
-                        for (let styleId of CHAR_MASTER[id]['Holders']) {
-                            let styleInfo = await getStyleInfo(styleId);
-                            let styleRow = $("#STYLE_TEMPLATE").clone();
-                            styleRow.removeAttr("id");
-                            styleRow.addClass("STYLE_ROW");
-                            styleRow.removeClass("d-none");
-                            styleRow.find(".rare").attr("src", `./img/icon/icon_${styleInfo['Rarity']}.png`);
-                            styleRow.find(".icn").attr("src", `./img/style_icon/${styleInfo['IllustId']}.png`);
-                            let sum = 0;
-                            for (let key of PARAM_KEY) {
-                                let val = LIMIT_BASE + Number(styleInfo['Limit' + key]);
-                                if (styleInfo['Limit' + key] < 99) {
-                                    sum += val;
-                                    styleMax[key] = (styleMax[key] < val) ? val : styleMax[key];
-                                } else {
-                                    val = "?";
-                                }
-                                styleRow.find("." + key).text(val);
-                            }
-                            styleRow.find(".SUM").text(sum);
-                            $("#styleLabelRow").after(styleRow);
-                        }
-                        $(".STYLE_ROW").each(function () {
-                            for (let key of PARAM_KEY) {
-                                let td = $(this).find("." + key);
-                                if (td.text() == styleMax[key]) {
-                                    td.css("background-color", "lightgreen");
-                                }
-                            }
-                        });
-                        // スタイル複合最大値
-                        let styleRowMax = $("#STYLE_TEMPLATE").clone();
-                        styleRowMax.removeAttr("id").addClass("STYLE_ROW").removeClass("d-none")
-                                .css("background-color", "rgba(0,0,0, 0.2)");
-                        styleRowMax.find(".IMG").html("最大値");
-                        let styleSum = 0;
-                        for (let key of PARAM_KEY) {
-                            styleSum += styleMax[key];
-                            styleRowMax.find("." + key).text(styleMax[key]);
-                        }
-                        styleRowMax.find(".SUM").text(styleSum);
-                        $("#styleLabelRow").after(styleRowMax);
-
-                        // 自分の入力値
-                        let myUserData = await getMyCharData(id);
-                        let myDataFlg = "UNMATCH";
-                        if (myUserData === null) {
-                            myDataFlg = "NONE";
-                            myUserData = {"STR": 0, "VIT": 0, "DEX": 0, "AGI": 0, "INT": 0, "MND": 0, "AI": 0, "MI": 0};
-                        }
-                        let sum = 0;
-                        for (let key of PARAM_KEY) {
-                            sum += Number(myUserData[key]);
-                            $(".YOUR" + key).text(myUserData[key]);
-                            let limit = (styleMax[key] == "0") ? "?" : styleMax[key] - myUserData[key];
-                            $(".LIMIT" + key).text(limit);
-                        }
-
-                        $(".YOURSUM").text(sum);
-                        $(".LIMITSUM").text((styleSum === 0) ? "?" : styleSum - sum);
-                        let mySum = sum;
-
-                        let userData = await getUserCharData(id);
-                        let myRank = "";
-                        let myTmpRank = 1;
-                        let nowsum = 999;
-
-                        $(".USER_RANK_DISP").remove();
-                        let lists = [userData['list'], userData['kyogiList']];
-                        for (let x in lists) {
-                            if (x == "1" && lists[x] !== undefined) {
-                                $("#USER_RANK").before("<tr class='USER_RANK_DISP' style='background-color:red; color:white;'><td colspan=10>協議中</td></tr>");
-                            }
-                            for (let idx in lists[x]) {
-                                let sum = Number(lists[x][idx]["SUM"]);
-                                if (nowsum > sum) {
-                                    nowsum = sum;
-                                    nowrank = Number(idx) + 1;
-                                }
-                                if (nowsum > mySum) {
-                                    myTmpRank = nowrank + 1;
-                                }
-                                if (x === "1") {
-                                    nowrank = "協議中";
-                                }
-
-                                let tr = $("<tr>").addClass("text-center USER_RANK_DISP");
-                                if (UID === lists[x][idx]['UserId']) {
-                                    myDataFlg = "MATCH";
-                                    tr.addClass("bg-white");
-                                    if (x !== "1") {
-                                        myRank = `${nowrank}位(${sum}pt)`;
-                                        dispRank = `${nowrank}位`;
-                                    } else {
-                                        dispRank = nowrank;
-                                        myRank = `${nowrank}(${sum}pt)<br>入力内容を再確認するか画像付きで報告お願い致します`;
-                                    }
-                                }
-                                if (idx >= RANK_LIMIT) {
-                                    continue;
-                                }
-
-                                tr.append(`<td class='paramCell2'>${nowrank} </td>`)
-                                for (let key of PARAM_KEY) {
-                                    let style = "";
-                                    if (styleMax[key] > 0 && lists[x][idx][key] > styleMax[key]) {
-                                        style = " background-color:red; color:white;";
-                                    }
-                                    tr.append(`<td class='paramCell2' style='${style}'>${lists[x][idx][key]}</td>`)
-                                }
-                                tr.append(`<td class='paramCell2'>${sum}</td>`)
-                                $("#USER_RANK").before(tr);
-                            }
-                        }
-                        $(".twitter-share-button").parent().removeClass("d-none");
-                        if (myDataFlg === "UNMATCH") {
-                            dispRank = `暫定${myTmpRank}位`;
-                            myRank = `暫定${myTmpRank}位(${mySum}pt)<br>ランキング反映待機中...`;
-                        } else if (myDataFlg === "NONE") {
-                            $(".twitter-share-button").parent().addClass("d-none");
-                            myRank = "登録がありません";
-                        }
-
-                        $("#MY_RANK").html(myRank);
-                        text += `育成ランキング [ロマサガRS便利ツール] ${br}`;
-                        text += `${charName}でランキング${dispRank}!!${br}`;
-                        text += `腕/体/器/速/知/精/愛/魅/合計${br}`;
-                        text += ('0' + myUserData['STR']).slice(-2) + "/";
-                        text += ('0' + myUserData['VIT']).slice(-2) + "/";
-                        text += ('0' + myUserData['DEX']).slice(-2) + "/";
-                        text += ('0' + myUserData['AGI']).slice(-2) + "/";
-                        text += ('0' + myUserData['INT']).slice(-2) + "/";
-                        text += ('0' + myUserData['MND']).slice(-2) + "/";
-                        text += ('0' + myUserData['AI']).slice(-2) + "/";
-                        text += ('0' + myUserData['MI']).slice(-2) + "/";
-                        text += ('0' + sum).slice(-3) + br;
-                        let hash = "ロマサガRS便利ツール,ロマサガRS育成ランキング";
-                        let href = `https://twitter.com/intent/tweet?text=${text}&url=https://nao-romasaga.github.io/ourchar.html?${id}&hashtags=${hash}`;
-                        $(".twitter-share-button").attr("href", href);
-
-                    } else if (field.indexOf("MAX") > -1) {
-                        $("." + field).text(id);
-                        userMax[field] = (userMax[field] < Number(id)) ? Number(id) : userMax[field];
-                    } else if (field === "rank") {
-                        $("#RANK_COUNT").text(id);
-                    } else if (field === "size") {
-                        $("#INPUT_COUNT").text(id);
+                        dispRanking(id);
                     } else if (field === "Name") {
                         gtag('event', "clickChar", {'event_category': "ourchar", 'event_label': id, 'value': 1});
                     }
-                    $("#CHAR_COUNT").text(allCharSize);
                 });
 
                 $("html,body").animate({scrollTop: $('#badge').offset().top}, 500, 'swing');
             });
+
+            async function dispRanking(id) {
+                $("#initialHide").removeClass("d-none");
+                let styleMax = {"STR": 0, "VIT": 0, "DEX": 0, "AGI": 0, "INT": 0, "MND": 0, "AI": 0, "MI": 0, "SUM": 0};
+
+                for (let key of PARAM_KEY) {
+                    styleMax[key] = (CHAR_MASTER[id]["MAX" + key] === -99) ? "?" : LIMIT_BASE + Number(CHAR_MASTER[id]["MAX" + key]);
+                }
+                for (let idx in CHAR_RANK) {
+                    if (CHAR_RANK[idx]['Id'] === id) {
+                        for (let key of PARAM_KEY) {
+                            $(".MAX" + key).text(CHAR_RANK[idx]["MAX" + key]);
+                        }
+                        $(".MAXSUM").text(CHAR_RANK[idx]["MAXSUM"]);
+                        $("#RANK_COUNT").text(CHAR_RANK[idx]['rank']);
+                        $("#INPUT_COUNT").text(CHAR_RANK[idx]['size']);
+                        break;
+                    }
+                }
+
+                let charName = "";
+                let dispRank = "";
+                let br = "%0D%0A";
+                let text = "";
+
+
+                $(".STYLE_ROW").remove();
+                $("#charDot").html(`<span class="char dot_mid dot char-winner" style="background: url(./img/dot/${CHAR_MASTER[id]['DotId']}.png) no-repeat; margin: 0 10px;"></span>`);
+                charName = CHAR_MASTER[id]['Name'];
+                $(".charName").text(charName);
+                $("#charDotAruku").attr("style", `background: url(./img/dot/${CHAR_MASTER[id]['DotId']}.png) no-repeat; margin: 0 10px;`);
+
+                for (let styleId of CHAR_MASTER[id]['Holders']) {
+                    let styleInfo = await getStyleInfo(styleId);
+                    let styleRow = $("#STYLE_TEMPLATE").clone();
+                    styleRow.removeAttr("id");
+                    styleRow.addClass("STYLE_ROW");
+                    styleRow.removeClass("d-none");
+                    styleRow.find(".rare").attr("src", `./img/icon/icon_${styleInfo['Rarity']}.png`);
+                    styleRow.find(".icn").attr("src", `./img/style_icon/${styleInfo['IllustId']}.png`);
+                    let sum = 0;
+                    for (let key of PARAM_KEY) {
+                        let val = LIMIT_BASE + Number(styleInfo['Limit' + key]);
+                        if (styleInfo['Limit' + key] < 99) {
+                            sum += val;
+                        } else {
+                            val = "?";
+                        }
+                        styleRow.find("." + key).text(val);
+                    }
+                    styleRow.find(".SUM").text(sum);
+                    $("#styleLabelRow").after(styleRow);
+                }
+                $(".STYLE_ROW").each(function () {
+                    for (let key of PARAM_KEY) {
+                        let td = $(this).find("." + key);
+                        if (td.text() == styleMax[key]) {
+                            td.css("background-color", "lightgreen");
+                        }
+                    }
+                });
+                // スタイル複合最大値
+                let styleRowMax = $("#STYLE_TEMPLATE").clone();
+                styleRowMax.removeAttr("id").addClass("STYLE_ROW").removeClass("d-none")
+                        .css("background-color", "rgba(0,0,0, 0.2)");
+                styleRowMax.find(".IMG").html("最大値");
+                let styleSum = 0;
+                for (let key of PARAM_KEY) {
+                    styleSum += (styleMax[key] !== "?") ? styleMax[key] : 0;
+                    styleRowMax.find("." + key).text(styleMax[key]);
+                }
+                styleRowMax.find(".SUM").text(styleSum);
+                $("#styleLabelRow").after(styleRowMax);
+
+                // 自分の入力値
+                let myUserData = await getMyCharData(id);
+                let myDataFlg = "UNMATCH";
+                if (myUserData === null) {
+                    myDataFlg = "NONE";
+                    myUserData = {"STR": 0, "VIT": 0, "DEX": 0, "AGI": 0, "INT": 0, "MND": 0, "AI": 0, "MI": 0};
+                }
+                let sum = 0;
+                for (let key of PARAM_KEY) {
+                    sum += Number(myUserData[key]);
+                    $(".YOUR" + key).text(myUserData[key]);
+                    let limit = (styleMax[key] === "?") ? "?" : styleMax[key] - myUserData[key];
+                    $(".LIMIT" + key).text(limit);
+                }
+
+                $(".YOURSUM").text(sum);
+                $(".LIMITSUM").text((styleSum === 0) ? "?" : styleSum - sum);
+                let mySum = sum;
+
+                let userData = await getUserCharData(id);
+                let myRank = "";
+                let myTmpRank = 1;
+                let nowsum = 999;
+
+                $(".USER_RANK_DISP").remove();
+                let lists = [userData['list'], userData['kyogiList']];
+                for (let x in lists) {
+                    if (x == "1" && lists[x] !== undefined) {
+                        $("#USER_RANK").before("<tr class='USER_RANK_DISP' style='background-color:red; color:white;'><td colspan=10>協議中</td></tr>");
+                    }
+                    for (let idx in lists[x]) {
+                        let sum = Number(lists[x][idx]["SUM"]);
+                        if (nowsum > sum) {
+                            nowsum = sum;
+                            nowrank = Number(idx) + 1;
+                        }
+                        if (nowsum > mySum) {
+                            myTmpRank = nowrank + 1;
+                        }
+                        if (x === "1") {
+                            nowrank = "協議中";
+                        }
+
+                        let tr = $("<tr>").addClass("text-center USER_RANK_DISP");
+                        if (UID === lists[x][idx]['UserId']) {
+                            myDataFlg = "MATCH";
+                            tr.addClass("bg-white");
+                            if (x !== "1") {
+                                myRank = `${nowrank}位(${sum}pt)`;
+                                dispRank = `${nowrank}位`;
+                            } else {
+                                dispRank = nowrank;
+                                myRank = `${nowrank}(${sum}pt)<br>入力内容を再確認するか画像付きで報告お願い致します`;
+                            }
+                        }
+                        if (idx >= RANK_LIMIT) {
+                            continue;
+                        }
+
+                        tr.append(`<td class='paramCell2'>${nowrank} </td>`)
+                        for (let key of PARAM_KEY) {
+                            let style = "";
+                            if (styleMax[key] > 0 && lists[x][idx][key] > styleMax[key]) {
+                                style = " background-color:red; color:white;";
+                            }
+                            tr.append(`<td class='paramCell2' style='${style}'>${lists[x][idx][key]}</td>`)
+                        }
+                        tr.append(`<td class='paramCell2'>${sum}</td>`)
+                        $("#USER_RANK").before(tr);
+                    }
+                }
+                $(".twitter-share-button").parent().removeClass("d-none");
+                if (myDataFlg === "UNMATCH") {
+                    dispRank = `暫定${myTmpRank}位`;
+                    myRank = `暫定${myTmpRank}位(${mySum}pt)<br>ランキング反映待機中...`;
+                } else if (myDataFlg === "NONE") {
+                    $(".twitter-share-button").parent().addClass("d-none");
+                    myRank = "登録がありません";
+                }
+
+                $("#MY_RANK").html(myRank);
+                text += `育成ランキング [ロマサガRS便利ツール] ${br}`;
+                text += `${charName}でランキング${dispRank}!!${br}`;
+                text += `腕/体/器/速/知/精/愛/魅/合計${br}`;
+                text += ('0' + myUserData['STR']).slice(-2) + "/";
+                text += ('0' + myUserData['VIT']).slice(-2) + "/";
+                text += ('0' + myUserData['DEX']).slice(-2) + "/";
+                text += ('0' + myUserData['AGI']).slice(-2) + "/";
+                text += ('0' + myUserData['INT']).slice(-2) + "/";
+                text += ('0' + myUserData['MND']).slice(-2) + "/";
+                text += ('0' + myUserData['AI']).slice(-2) + "/";
+                text += ('0' + myUserData['MI']).slice(-2) + "/";
+                text += ('0' + sum).slice(-3) + br;
+                let hash = "ロマサガRS便利ツール,ロマサガRS育成ランキング";
+                let href = `https://twitter.com/intent/tweet?text=${text}&url=https://nao-romasaga.github.io/ourchar.html?${id}&hashtags=${hash}`;
+                $(".twitter-share-button").attr("href", href);
+            }
 
             readAnalyzeFile('OUR_CHAR/LIST', function (read) {
                 CHAR_RANK = read;
@@ -570,7 +577,7 @@
             });
 
             function init() {
-                allCharSize = CHAR_RANK.length;
+                $("#CHAR_COUNT").text(CHAR_RANK.length);
                 let nowSize = 999;
                 let nowRank = 1;
                 for (let i in CHAR_RANK) {
@@ -590,16 +597,10 @@
                 drawTable(CHAR_RANK);
                 if (location.search !== "") {
                     let inputId = (location.search).substr(1);
-                    $(".tabulator-cell").each(function () {
-                        let id = $(this).text();
-                        let field = $(this).attr("tabulator-field");
-                        if (field === "Id" && id === inputId) {
-                            $(this).click();
-                            $("html,body").animate({scrollTop: $('#RANKKING_TABLE').offset().top}, 500, 'swing');
-
-                            return false; // jqueryをbreak
-                        }
-                    });
+                    if (CHAR_MASTER[inputId] !== undefined) {
+                        dispRanking(inputId);
+                        $("html,body").animate({scrollTop: $('#RANKKING_TABLE').offset().top}, 500, 'swing');
+                    }
                 }
             }
 
