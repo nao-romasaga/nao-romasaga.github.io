@@ -245,7 +245,7 @@
 
 
                         <br>
-                        <table class="width-100 text-center style-bgcolor table-striped">
+                        <table class="width-100 text-center style-bgcolor table-striped" id="RANKKING_TABLE">
                             <tbody><tr class="small text-center ">
                                     <td colspan="11">
                                         <p class="width-100 pad0 mar0 darkButton">
@@ -521,7 +521,7 @@
                         text += ('0' + myUserData['MI']).slice(-2) + "/";
                         text += ('0' + sum).slice(-3) + br;
                         let hash = "ロマサガRS便利ツール,ロマサガRS育成ランキング";
-                        let href = `https://twitter.com/intent/tweet?text=${text}&url=https://nao-romasaga.github.io/ourchar.html&hashtags=${hash}`;
+                        let href = `https://twitter.com/intent/tweet?text=${text}&url=https://nao-romasaga.github.io/ourchar.html?${id}&hashtags=${hash}`;
                         $(".twitter-share-button").attr("href", href);
 
                     } else if (field.indexOf("MAX") > -1) {
@@ -572,6 +572,19 @@
                     CHAR_RANK[i]['rank'] = nowRank;
                 }
                 drawTable(CHAR_RANK);
+                if (location.search !== "") {
+                    let inputId = (location.search).substr(1);
+                    $(".tabulator-cell").each(function () {
+                        let id = $(this).text();
+                        let field = $(this).attr("tabulator-field");
+                        if (field === "Id" && id === inputId) {
+                            $(this).click();
+                            $("html,body").animate({scrollTop: $('#RANKKING_TABLE').offset().top}, 500, 'swing');
+
+                            return false; // jqueryをbreak
+                        }
+                    });
+                }
             }
 
             function changeId2Dot() {
@@ -583,16 +596,6 @@
                     } else if (id.indexOf("icon") > -1) {
                         let src = `<span class="icon_mini_zokusei ${id}"></span>`;
                         $(this).html(src);
-                    } else if (Number(id) < 5
-                            && $(this).attr("tabulator-field") !== "MAXSUM"
-                            && $(this).attr("tabulator-field") !== "DotId"
-                            && $(this).attr("tabulator-field") !== "size"
-                            ) {
-                        let attr = $(this).attr("style");
-                        $(this).attr("style", attr + ' background-color: palegreen;');
-                    } else if (id.indexOf("x") > -1) {
-                        let attr = $(this).attr("style");
-                        $(this).attr("style", attr + ' background-color: lightslategray; color: white');
                     }
                 });
             }
@@ -623,13 +626,14 @@
                     responsiveLayout: true,
                     columns: [
                         {title: "", field: "DotId", width: 30, frozen: true},
-                        {title: "名前", field: "Name", responsive: 8},
-                        {title: "作品", field: "Series", width: 30, responsive: 10},
-                        {title: "武器", field: "WeaponType", width: 30, responsive: 9},
                         {title: "", field: "Id", visible: false},
                         {title: "", field: "UserId", visible: false},
                         {title: "", field: "SeriesFilter", visible: false},
                         {title: "", field: "WeaponTypeFilter", visible: false},
+                        {title: "rank", field: "rank", visible: false},
+                        {title: "名前", field: "Name", responsive: 8},
+                        {title: "作品", field: "Series", width: 30, responsive: 10},
+                        {title: "武器", field: "WeaponType", width: 30, responsive: 9},
                         Object.assign({title: "腕", field: "MAXSTR"}, base),
                         Object.assign({title: "体", field: "MAXVIT", }, base),
                         Object.assign({title: "器", field: "MAXDEX", }, base),
@@ -639,7 +643,7 @@
                         Object.assign({title: "愛", field: "MAXAI", }, base),
                         Object.assign({title: "魅", field: "MAXMI", }, base),
                         {title: '<span class="hidden pcBlock">合</span>計', field: "MAXSUM", sortable: true, sorter: "number"},
-                        {title: "rank", field: "rank", visible: false},
+                        {title: '平均', field: "AVG", sortable: true, sorter: "number", responsive: 11},
                         {title: "登録数", field: "size", responsive: 11},
                     ],
                 });
