@@ -19,7 +19,21 @@ var configUsers = {
 };
 const app = firebase.initializeApp(configBlue2);
 const appUsers = firebase.initializeApp(configUsers, "Users");
+const database = firebase.database();
+const presenceRef = database.ref('/.info/connected');
+const listRef = database.ref('/presence/');
+const userRef = listRef.push();
 
+presenceRef.on('value', function(snap) {
+  if (snap.val()) {
+    userRef.onDisconnect().remove();
+    userRef.set(true);
+  }
+});
+
+listRef.on('value', function(snap) {
+  console.log('# of online users = ' + snap.numChildren());
+});
 var REF;
 var UID;
 firebase.auth(appUsers).onAuthStateChanged((user) => {
