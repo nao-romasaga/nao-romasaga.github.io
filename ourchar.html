@@ -237,6 +237,11 @@
                                 </tr>                            
                             </tbody>
                         </table>
+                        <div class="text-center kadomaru h5" style="background-color: rgba(42,169,239,1); color:white; margin: 0px 10px; padding: 2px 5px;">
+                            <a href="" class="twitter-share-button" rel=”nofollow” onClick="window.open(encodeURI(decodeURI(this.href)), 'twwindow', 'width=550, height=450, personalbar=0, toolbar=0, scrollbars=1'); return false;" style="background-color: rgba(41,163,239,1); color:white; padding:5px 10px; border-radius:10px;"><i class="fab fa-twitter"></i>　ランキングをツイートする</a>
+                        </div>
+
+
 
                         <br>
                         <table class="width-100 text-center style-bgcolor table-striped">
@@ -362,6 +367,12 @@
 
                 let userMax = {"STR": 0, "VIT": 0, "DEX": 0, "AGI": 0, "INT": 0, "MND": 0, "AI": 0, "MI": 0, "SUM": 0};
                 let styleMax = {"STR": 0, "VIT": 0, "DEX": 0, "AGI": 0, "INT": 0, "MND": 0, "AI": 0, "MI": 0, "SUM": 0};
+                let charName = "";
+
+                let dispRank = "";
+                let br = "%0D%0A";
+                let text = "";
+
                 $(this).parent().find(".tabulator-cell").each(async function () {
                     let id = $(this).text();
                     let field = $(this).attr("tabulator-field");
@@ -369,7 +380,8 @@
                     if (id.indexOf("ID") > -1) {
                         $(".STYLE_ROW").remove();
                         $("#charDot").html(`<span class="char dot_mid dot char-winner" style="background: url(./img/dot/${CHAR_MASTER[id]['DotId']}.png) no-repeat; margin: 0 10px;"></span>`);
-                        $(".charName").text(CHAR_MASTER[id]['Name']);
+                        charName = CHAR_MASTER[id]['Name'];
+                        $(".charName").text(charName);
                         $("#charDotAruku").attr("style", `background: url(./img/dot/${CHAR_MASTER[id]['DotId']}.png) no-repeat; margin: 0 10px;`);
 
                         for (let styleId of CHAR_MASTER[id]['Holders']) {
@@ -427,6 +439,7 @@
                             sum += Number(myUserData[key]);
                             $(".YOUR" + key).text(myUserData[key]);
                         }
+
                         $(".YOURSUM").text(sum);
                         let mySum = sum;
 
@@ -438,7 +451,7 @@
                         $(".USER_RANK_DISP").remove();
                         let lists = [userData['list'], userData['kyogiList']];
                         for (let x in lists) {
-                            if(x == "1" && lists[x] !== undefined){
+                            if (x == "1" && lists[x] !== undefined) {
                                 $("#USER_RANK").before("<tr class='USER_RANK_DISP' style='background-color:red; color:white;'><td colspan=10>協議中</td></tr>");
                             }
                             for (let idx in lists[x]) {
@@ -460,7 +473,9 @@
                                     tr.addClass("bg-white");
                                     if (x !== "1") {
                                         myRank = `${nowrank}位(${sum}pt)`;
+                                        dispRank = `${nowrank}位`;
                                     } else {
+                                        dispRank = nowrank;
                                         myRank = `${nowrank}(${sum}pt)<br>入力内容を再確認するか画像付きで報告お願い致します`;
                                     }
                                 }
@@ -468,7 +483,7 @@
                                     continue;
                                 }
 
-                                tr.append(`<td class='paramCell2'>${nowrank}</td>`)
+                                tr.append(`<td class='paramCell2'>${nowrank} </td>`)
                                 for (let key of PARAM_KEY) {
                                     let style = "";
                                     if (styleMax[key] > 0 && lists[x][idx][key] > styleMax[key]) {
@@ -480,12 +495,32 @@
                                 $("#USER_RANK").before(tr);
                             }
                         }
+                        $(".twitter-share-button").parent().removeClass("d-none");
                         if (myDataFlg === "UNMATCH") {
+                            dispRank = `暫定${myTmpRank}位`;
                             myRank = `暫定${myTmpRank}位(${mySum}pt)<br>ランキング反映待機中...`;
                         } else if (myDataFlg === "NONE") {
+                            $(".twitter-share-button").parent().addClass("d-none");
                             myRank = "登録がありません";
                         }
+
                         $("#MY_RANK").html(myRank);
+                        text += `育成ランキング [ロマサガRS便利ツール] ${br}`;
+                        text += `${charName}でランキング${dispRank}!!${br}`;
+                        text += `腕/体/器/速/知/精/愛/魅/合計${br}`;
+                        text += ('0' + myUserData['STR']).slice(-2) + "/";
+                        text += ('0' + myUserData['VIT']).slice(-2) + "/";
+                        text += ('0' + myUserData['DEX']).slice(-2) + "/";
+                        text += ('0' + myUserData['AGI']).slice(-2) + "/";
+                        text += ('0' + myUserData['INT']).slice(-2) + "/";
+                        text += ('0' + myUserData['MND']).slice(-2) + "/";
+                        text += ('0' + myUserData['AI']).slice(-2) + "/";
+                        text += ('0' + myUserData['MI']).slice(-2) + "/";
+                        text += ('0' + sum).slice(-3) + br;
+                        let hash = "ロマサガRS便利ツール,ロマサガRS育成ランキング";
+                        let href = `https://twitter.com/intent/tweet?text=${text}&url=https://nao-romasaga.github.io/stylecheck.html&hashtags=${hash}`;
+                        $(".twitter-share-button").attr("href", href);
+
                     } else if (field.indexOf("MAX") > -1) {
                         $("." + field).text(id);
                         userMax[field] = (userMax[field] < Number(id)) ? Number(id) : userMax[field];
@@ -497,10 +532,9 @@
                         gtag('event', "clickChar", {'event_category': "ourchar", 'event_label': id, 'value': 1});
                     }
                     $("#CHAR_COUNT").text(allCharSize);
-
                 });
-                $("html,body").animate({scrollTop: $('#badge').offset().top}, 500, 'swing');
 
+                $("html,body").animate({scrollTop: $('#badge').offset().top}, 500, 'swing');
             });
 
             readAnalyzeFile('OUR_CHAR/LIST', function (read) {
