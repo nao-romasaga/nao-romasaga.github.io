@@ -134,19 +134,18 @@ function insertCommonComponent() {
     nav += '</nav>';
     $('body').prepend(nav);
     let title = "お知らせ";
-    let word = "<b>データコンバートについて<b><hr>"
-            + "5/9に行いましたメンテナンスで御入力頂いておりましたユーザ情報が一時的に消えております。<br>";
-    word += "データの復旧にはデータ移行処理が必要であるため、下記から移行処理(Twitter再ログイン)をお願い致します<br>";
-    word += '<a href="./convert.html" class="text-center icon_btn_on" style="width:100%; background-size: 100% 100%;">データ移行</a>'
-    word += "ご迷惑をおかけし誠に申し訳ございません(･ω･)💦<br>";
+    let word = "<b>画面にキャラが出ない場合<b><hr>"
+    + "キャラが表示できないのはアクセス過多による同時接続数超過が原因です<br>"
+    + "同時接続数は複数画面を立ち上げるとその分増えていきます<br>"
+    + "現在対応中です。ご迷惑をおかけし申し訳ございませんm(_ _)m💦"
     let info = `<div class="card" id="infoCard"><div class="card-header bg-warning">${title}</div><div class="card-body">${word}</div></div>`;
     // Firebase側で暫定的に削除してるのでそっちも修正すること
-    // $(".title-text").after(info);
+    $(".title-text").after(info);
 
     let title2 = "新機能オープン";
     let word2 = "5/14 みんなの育成状況がわかる<a href='ourchar.html'>キャラクター育成ランキング</a>を作成しました。<br>";
     let info2 = `<div class="card"><div class="card-header bg-info">${title2}</div><div class="card-body">${word2}</div></div>`;
-    $(".title-text").after(info2);
+    //$(".title-text").after(info2);
 
     var footer = "";
     footer += '<div class="opacity" style ="position: relative;">';
