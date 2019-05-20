@@ -643,3 +643,31 @@ input[type=range]::-ms-tooltip {
     border-radius: 30px;
     color: black;    
 }
+.bg1{
+    background: url(../img/bg_renkei_1.png);
+    background-size: contain;
+}
+.bg2{
+    background: url(../img/bg_renkei_2.png);
+    background-size: contain;
+}
+.bg3{
+    background: url(../img/bg_renkei_3.png);
+    background-size: contain;
+}
+.bg4{
+    background: url(../img/bg_renkei_4.png);
+    background-size: contain;
+}
+.bg5{
+    background: url(../img/bg_renkei_5.png);
+    background-size: contain;
+}
+.updatePanel{
+    background:url("../img/bg_window_large.png");
+    background-size: contain;
+    width: 330px;
+    height: 33px;
+    color: #faf0b4;
+    padding: 5px;    
+}
