@@ -175,7 +175,7 @@
                                     <td class="paramCell2"><span class="MAXSUM">999</span></td>
                                 </tr>
                                 <tr id="styleLabelRow">
-                                    <td class="small">スタイル別<br>限界値(+12)</td>
+                                    <td class="small">スタイル別<br>限界値(+<span id="PLUS_LIMIT"></span>)</td>
                                     <td class="paramHead paramCell2">腕</td>
                                     <td class="paramHead paramCell2">体</td>
                                     <td class="paramHead paramCell2">器</td>
@@ -302,6 +302,7 @@
 
         <!-- Twitter universal website tag code -->
         <script>
+                $("#PLUS_LIMIT").text(LIMIT_BASE - 45);
                     !function (e, t, n, s, u, a) {
                         e.twq || (s = e.twq = function () {
                             s.exe ? s.exe.apply(s, arguments) : s.queue.push(arguments);
