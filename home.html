@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics   -->      
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138966739-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', 'UA-138966739-1');
+        </script>
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <meta charset="utf-8">
+        <title>ロマサガRS便利ツール マイページ</title>
+        <meta name="robots" content="noindex,nofollow">
+        <meta property="og:title" content="ロマサガRS便利ツール マイページ" />
+        <meta property="og:url" content="https://http://nao-romasaga.github.io/home.html" />
+        <meta property="og:description" content="ロマサガRS便利ツール 登録内容のまとめページです" />
+        <meta property="og:image" content="https://nao-romasaga.github.io/img/twitter_card_home.png" />
+        <meta property="og:site_name" content="ロマサガRS便利ツール" />
+        <meta property="og:type" content="article">
+        <meta property="og:locale" content="ja_JP" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@nao_romasaga_rs" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="./js/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="./js/jquery.ui.touch-punch.js"></script>
+        <link rel="stylesheet" href="./css/tabulator.css">
+        <script type="text/javascript" src="./js/tabulator.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="./css/bootstrap/bootstrap.min.css">
+        <script src="./js/popper.min.js"></script>
+        <script src="./js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="./css/style.css">
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/ui/3.5.2/firebase-ui-auth__ja.js"></script>
+        <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+        <script src="./js/Firebase.js"></script>
+        <script src="./js/utils.js" ></script>
+        <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+        <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+        <style>
+            .label-text {
+                background: url(./img/bg_window_large.png);
+                background-size: 100% 100%;
+                color: #faf0b4;
+                padding: 5px;
+            }
+            .field-text {
+                background: url(./img/bg_window_wide.png);
+                background-size: 100% 100%;
+                color: #faf0b4;
+                padding: 5px;
+            }
+            .fuchidori{
+                font-size: 18px;
+                color: gold;
+                text-shadow: 1px 1px 2px black,
+                    -1px 1px 2px black,
+                    1px -1px 2px black,
+                    -1px -1px 2px black;    
+            }            
+            .fuchidoriJewel{
+                font-size: 18px;
+                color: white;
+                text-shadow: 1px 1px 2px blue,
+                    -1px 1px 2px blue,
+                    1px -1px 2px blue,
+                    -1px -1px 2px blue;    
+            }            
+        </style>
+    </head>
+    <body>
+        <div class ="haikei">
+            <div class="container">
+                <!--
+                <div class="text-center">
+                    <a href="https://www.jp.square-enix.com/saga_reuniverse/" target="new"><img src="https://www.jp.square-enix.com/saga_reuniverse/assets/img/cmn_logo01_sp.png" class="col-sm-12 col-md-8 col-lg-6"></a>
+                </div>
+                -->
+                <h3 class="text-center title-text changeBase" data-base=0>
+                    HOME</h3>
+                <p class="text-right opacity"><small>バグ発見、ご要望は <a href="https://twitter.com/nao_romasaga_rs" target="new">nao_romasaga_rs</a>まで</small>
+                </p>
+                <div id="firebaseui-auth-container" style="margin-bottom:10px;"></div>
+                <br>
+                <div class="noLogin opacity kadomaru bg-danger text-white"><i class="fas fa-exclamation-triangle"></i>本機能はログイン必須です<br>Twitterログインを行い、<a href="./style.html" style="color:lightskyblue">キャラ+スタイル詳細</a>あるいは<a href="./party.html" style="color:lightskyblue">ステータス上限チェック</a>で所持しているキャラクターのステータスを入力した後からご利用できます。</div>
+                <div class="isLogin d-none">
+                    <div class="style-bgcolor text-center small" style="width:100%; margin: 0px;">
+                        <div class="row no-gutters">
+                            <!--
+                            <div class="col-12 text-center" style="margin-bottom: 10px;">
+                                <i class="fas fa-medal"></i>プレミアム
+                            </div>
+                            -->
+
+                            <div class="col-12 text-center" style="margin-bottom: 10px;">
+                                <div class="label-text m-auto" style="width:95%" id="NAME"></div>
+                            </div>
+                            <div class="col-3 d-md-none" id="MYICON"></div>
+                            <div class="col-3 d-none d-md-inline" id="MYICON2"></div>
+                            <div class="col-8 text-left">
+                                <p class="text-nowrap">
+                                    今日のRank: 
+                                    <span id="TODAY_RANK">
+                                        <input type="number" id="rank" class="kadomaru" style="width:45%">
+                                        <button id="SAVE_RANK" class="icon_btn_on hanei" style="width:55px; height:35px; background-size: 55px 35px;">保存</button>
+                                    </span>
+                                </p>
+                                <p class="text-nowrap">
+                                    今日の<img src="./img/icon/icon_jewel.png" width="30" height="30">:<span id="YESTERDAY_RANK"></span>
+                                    <span id="TODAY_RANK">
+                                        <input type="number" id="jewel" class="kadomaru" style="width:45%">
+                                        <button id="SAVE_JEWEL" class="icon_btn_on hanei" style="width:55px; height:35px; background-size: 55px 35px;">保存</button>
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="col-6 col-md-3 shadow rounded" style="position: relative; margin-bottom: 10px;">
+                                <div class="label-text"><i class="fas fa-address-card"></i> ステータス登録数</div>
+                                <div class="text-center kadomaru" style="background-color: rgba(42,169,239,1); color:white; margin:0 10px; padding: 2px 5px;">
+                                    <a href="./inputchar.html" style="color:white" id="inputStyleLogined">ステータス更新 <i class="fas fa-pencil-alt"></i></a>
+                                </div>
+                                登録キャラ数<span class="MY_CHAR_CNT"></span> / <span class="MY_CHAR_RANK"></span>位<br>
+                                HP合計<span id="MY_HP_SUM"></span> / <span id="MY_HP_RANK"></span>位<br>
+                                ST合計<span id="MY_ST_SUM"></span> / <span id="MY_ST_RANK"></span>位<br>
+                                <div style="position: absolute; bottom:0;width:100%">
+                                    <a onclick='$("html,body").animate({scrollTop: $("#CHAR_CHART").offset().top}, 500, "swing");' style="padding:2px 5px;border: 1px solid #0000FF; border-radius: 10px;">分布図をみる <i class="fas fa-arrow-circle-down"></i></a>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3 shadow rounded" style="margin-bottom: 10px;">
+                                <div class="label-text"><i class="fas fa-users"></i> スタイル登録数</div>
+                                <div class="text-center kadomaru" style="background-color: rgba(42,169,239,1); color:white; margin:0 10px;  padding: 2px 5px;">
+                                    <a href="./stylecheck.html" style="color:white" id="inputStyleLogined">所持スタイル更新 <i class="fas fa-pencil-alt"></i></a>
+                                </div>
+                                <img src="./img/icon/icon_ss.png" height="30"> <span class="MY_SSSTYLE_CNT"></span>体 / <span class="MY_SSSTYLE_RANK"></span>位<br>
+                                <img src="./img/icon/icon_s.png" height="30"> <span class="MY_SSTYLE_CNT"></span>体 / <span class="MY_SSTYLE_RANK"></span>位<br>
+                                <img src="./img/icon/icon_a.png" height="30"> <span class="MY_ASTYLE_CNT"></span>体 / <span class="MY_ASTYLE_RANK"></span>位<br>
+                                <span style="line-height: 30px;">合計 <span class="MY_STYLE_CNT"></span>体 / <span class="MY_STYLE_RANK"></span>位</span><br>
+                                <a onclick='$("html,body").animate({scrollTop: $("#STYLE_CHART").offset().top}, 500, "swing");' style="padding:2px 5px;border: 1px solid #0000FF; border-radius: 10px;">分布図をみる <i class="fas fa-arrow-circle-down"></i></a>
+                            </div>
+                            <div class="col-6 col-md-3 shadow rounded" style="margin-bottom: 10px;">
+                                <div class="label-text">Rank履歴</div>
+                                <div id="rankHistory">
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3 shadow rounded" style="margin-bottom: 10px;">
+                                <div class="label-text"><img src="./img/icon/icon_jewel.png" width="25" height="25">履歴</div>
+                                <div id="jewelHistory">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5008373409434899" data-ad-slot="3051702111"></ins><script> (adsbygoogle = window.adsbygoogle || []).push({});</script>
+                            </div>
+                            <div class="col-12">
+                                <div class="label-text h6  d-md-none"><i class="fas fa-crown"></i>  マイキャラクターランキング <i class="fas fa-crown"></i> </div>
+                                <div class="label-text h4 d-none d-md-block"><i class="fas fa-crown"></i>  マイキャラクターランキング <i class="fas fa-crown"></i> </div>
+                            </div>
+
+                            <div class="col-3 shadow rounded" style="margin-bottom: 10px;">
+                                <div class="label-text">
+                                    <img src="./img/icon/icon_zan.png">
+                                    <span class="d-none d-md-inline">
+                                        <img src="./img/icon/icon_ken.png" width="30">
+                                        <img src="./img/icon/icon_dken.png" width="30">
+                                        <img src="./img/icon/icon_ono.png" width="30">
+                                    </span>
+                                </div>
+                                <div id="DIV_RANK_斬" class="row"></div>
+                            </div>
+                            <div class="col-3 shadow rounded" style="margin-bottom: 10px;">
+                                <div class="label-text">
+                                    <img src="./img/icon/icon_da.png">
+                                    <span class="d-none d-md-inline">
+                                        <img src="./img/icon/icon_tai.png" width="30">
+                                        <img src="./img/icon/icon_kon.png" width="30">
+                                        <img src="./img/icon/icon_ju.png" width="30">
+                                    </span>
+                                </div>
+                                <div id="DIV_RANK_打" class="row"></div>
+                            </div>
+                            <div class="col-3 shadow rounded" style="margin-bottom: 10px;">
+                                <div class="label-text">
+                                    <img src="./img/icon/icon_totsu.png">
+                                    <span class="d-none d-md-inline">
+                                        <img src="./img/icon/icon_sken.png" width="30">
+                                        <img src="./img/icon/icon_yari.png" width="30">
+                                        <img src="./img/icon/icon_yumi.png" width="30">
+                                    </span>
+                                </div>
+                                <div id="DIV_RANK_突" class="row"></div>
+                            </div>
+                            <div class="col-3 shadow rounded" style="margin-bottom: 10px;">
+                                <div class="label-text">
+                                    <img src="./img/icon/icon_tsue.png" width="40">
+                                    <span class="d-none d-lg-inline">
+                                        <img src="./img/icon/icon_hi.png" width="30">
+                                        <img src="./img/icon/icon_mizu.png" width="30">
+                                        <img src="./img/icon/icon_tsuchi.png" width="30">
+                                        <img src="./img/icon/icon_kaze.png" width="30">
+                                        <img src="./img/icon/icon_hikari.png" width="30">
+                                        <img src="./img/icon/icon_yami.png" width="30">
+                                    </span>
+                                </div>
+                                <div id="DIV_RANK_杖" class="row"></div>
+                            </div>
+                            <div class="col-12" style='margin-bottom: 20px;'>
+                                <div class="text-center kadomaru" style="background-color: rgba(42,169,239,1); color:white; margin: 0px 10px; margin-bottom: 10px; padding: 2px 5px;">
+                                    <a href="./mydata.html" class="h6" style="background-size: 340px 40px; width:340px" id="inputStyleLogined">他のキャラのステータスを確認 <i class="fas fa-search"></i></a>
+                                </div>
+                                <div class="text-center kadomaru" style="background-color: rgba(42,169,239,1); color:white; margin: 0px 10px; padding: 2px 5px;">
+                                    <a href="./inputchar.html" class="h4 " style="background-size: 340px 40px; width:340px" id="inputStyleLogined">キャラステータス更新 <i class="fas fa-pencil-alt"></i></a>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5008373409434899" data-ad-slot="3051702111"></ins><script> (adsbygoogle = window.adsbygoogle || []).push({});</script>
+                            </div>
+                            <div class="col-12" id="STYLE_CHART">
+                                <div class="label-text h5 d-md-none"><i class="fas fa-users"></i> 全ユーザスタイル所持分布 <i class="fas fa-chart-line"></i></div>
+                                <div class="label-text h4 d-none d-md-block"><i class="fas fa-users"></i> 全ユーザのスタイル所持分布 <i class="fas fa-chart-line"></i></div>
+                            </div>
+                            <div class="col-12 col-md-6 shadow rounded">
+                                <div class="darkButton h6">
+                                    <img src="./img/icon/icon_ss.png" height="30">所持数 <span class="MY_SSSTYLE_CNT"></span>体 / <span class="MY_SSSTYLE_RANK"></span>位
+                                </div>
+                                分布図(横:所持スタイル数、縦:利用者数)
+                                <canvas id="styleRankSS" style="height:300px;"></canvas>
+                            </div>
+                            <div class="col-12 col-md-6 shadow rounded">
+                                <div class="darkButton h6">
+                                    <img src="./img/icon/icon_s.png" height="30">所持数 <span class="MY_SSTYLE_CNT"></span>体 / <span class="MY_SSTYLE_RANK"></span>位
+                                </div>
+                                分布図(横:所持スタイル数、縦:利用者数)
+                                <canvas id="styleRankS" style="height:300px;"></canvas>
+
+                            </div>
+                            <div class="col-12 col-md-6 shadow rounded">
+                                <div class="darkButton h6">
+                                    <img src="./img/icon/icon_a.png" height="30">所持数 <span class="MY_ASTYLE_CNT"></span>体 / <span class="MY_ASTYLE_RANK"></span>位
+                                </div>
+                                分布図(横:所持スタイル数、縦:利用者数)
+                                <canvas id="styleRankA" style="height:300px;"></canvas>
+                            </div>
+                            <div class="col-12 col-md-6 shadow rounded">
+                                <div class="darkButton h6 m-auto" style="height:44px;table-layout:fixed;">
+                                    <span style="line-height: 30px;">全スタイル合計所持数 <span class="MY_STYLE_CNT"></span>体 / <span class="MY_STYLE_RANK"></span>位
+                                    </span>
+                                </div>
+                                分布図(横:所持スタイル数、縦:利用者数)
+                                <canvas id="styleRankT" style="height:300px;"></canvas>
+                            </div>
+                            <div class="col-12 shadow rounded" style='margin-bottom: 20px;'>
+                                <div class="text-center kadomaru" style="background-color: rgba(42,169,239,1); color:white; margin: 0px 10px; padding: 2px 5px;">
+                                    <a href="./stylecheck.html" class="h4 " style="background-size: 340px 40px; width:340px" id="inputStyleLogined">所持スタイルを更新する<i class="fas fa-pencil-alt"></i></a>
+                                </div>
+                            </div>
+                            <div class="col-12" id="CHAR_CHART">
+                                <div class="label-text h5 d-md-none"><i class="fas fa-users"></i> 全ユーザ登録キャラ分布 <i class="fas fa-chart-line"></i></div>
+                                <div class="label-text h4 d-none d-md-block"><i class="fas fa-users"></i> 全ユーザの登録キャラ数分布 <i class="fas fa-chart-line"></i></div>
+                            </div>
+                            <div class="col-12 shadow rounded">
+                                <div class="darkButton h6 m-auto" style="height:44px;table-layout:fixed;">
+                                    <span style="line-height: 30px;">登録キャラ数 <span class="MY_CHAR_CNT"></span>体 / <span class="MY_CHAR_RANK"></span>位
+                                    </span>
+                                </div>
+                                分布図(横:登録キャラ数、縦:利用者数)
+                                <canvas id="myCharRank" style="height:300px;"></canvas>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div><!-- isLogin -->
+                <hr>
+            </div>
+        </div>
+        <script src="/js/home.js"></script>
+        <script src="/js/Chart.min.js"></script>
+    </body>
+</html>
