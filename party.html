@@ -84,8 +84,10 @@
                 <br>
                 <div class="noLogin opacity kadomaru bg-danger text-white"><i class="fas fa-exclamation-triangle"></i>本機能はログイン必須です</div>
                 <div class="isLogin d-none">
+                    <!--
                     <p class="slide1 loading"><i class="dot_yuki dot_mid dot char-hashiri"></i></p>
                     <p class="slide2 loading"><i class="dot_monika dot_mid dot char-hashiri"></i></p>
+                    -->
                     <ul class="nav nav-tabs ">
                         <li class="nav-item text-center side-padding-zero">
                             <a class="nav-link active bg-white" style="padding: 5px 5px;" data-toggle="tab" href="#RS1" class="">RS1</a>
@@ -126,12 +128,12 @@
                     <label class="badge badge-pill badge-light" id="styleLabel">周回クエスト</label>
                     <div class="style-bgcolor text-center small row" style="width:100%; margin: 0px;">
                         <div class="col-4 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_on baseValue" data-id="42" style="width:100%; background-size: 100% 100%;">H712</button></div>
-                        <div class="col-4 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_off baseValue" data-id="45" style="width:100%; background-size: 100% 100%;">VH415</button></div>
+                        <div class="col-4 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_on baseValue" data-id="45" style="width:100%; background-size: 100% 100%;">VH415</button></div>
                         <div class="col-4 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_on baseValue" data-id="48" style="width:100%; background-size: 100% 100%;">VH7</button><br></div>
                         <div class="col-4 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_on baseValue" data-id="51" style="width:100%; background-size: 100% 100%;">VH8</button></div>
                         <div class="col-4 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_on baseValue" data-id="54" style="width:100%; background-size: 100% 100%;">VH9</button></div>
                         <div class="col-4 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_on baseValue" data-id="56" style="width:100%; background-size: 100% 100%;">VH10</button></div>
-                        <div class="col-4 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_on baseValue" data-id="58" style="width:100%; background-size: 100% 100%;">VH11</button></div>
+                        <div class="col-4 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_off baseValue" data-id="58" style="width:100%; background-size: 100% 100%;">VH11</button></div>
                     </div>
 
                     <!--
@@ -220,6 +222,21 @@
                                     <input type="tel" class="input allparams" placeholder="50.41.01.20.30.40.50.99">
                                     <button class="icon_btn_on hanei" style="width:100px; height:40px; background-size: 100px 40px;">反映</button>
                                 </div>
+                            </td>
+                        </tr>
+                        <tr class="char-bottom text-nowrap">
+                            <td class="text-center" colspan="4">▼周回目安▼</td>
+                        </tr>
+                        <tr class="char-bottom">
+                            <td class="text-right" colspan="2">
+                                合計ステータス:　<br>
+                                旧上限合計369から:　<br>
+                                おすすめ周回場所:　
+                            </td>
+                            <td class="text-left" colspan="2">
+                                <span class="SUM"></span><br>
+                                <span class="AVG"></span><br>
+                                <span class="RECO"></span>
                             </td>
                         </tr>
                         <tr class="char-bottom text-nowrap">
