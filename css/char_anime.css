@@ -44,18 +44,25 @@
     background-position: 0px 0px;
     margin: 0 0 0 0px;
     animation: shomen-aruki 0.7s steps(1) infinite alternate;
-}            
-@keyframes shomen-aruki {
-    0% { background-position: -15px -10px;}
-    25% { background-position: -95px -10px;}
-    75% { background-position: -175px -10px;}
-    100% { background-position: -175px -10px;}
 }
 @keyframes shomen-aruki {
     0% { background-position: -15px -10px;}
     25% { background-position: -95px -10px;}
     75% { background-position: -175px -10px;}
     100% { background-position: -175px -10px;}
+}
+.char-aruku-left {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    margin: 0 0 0 0px;
+    animation: left-aruki 0.4s steps(1) infinite alternate;
+}            
+@keyframes left-aruki {
+    0% { background-position: -250px -10px;}
+    25% { background-position: -330px -10px;}
+    75% { background-position: -10px -90px;}
+    100% { background-position: -10px -90px;}
 }
 .char-aruku-wide {
     display: inline-block;
@@ -326,4 +333,17 @@
     10% { background-position: -90px -90px;} /* 2.2 */
     15% { background-position: -330px -10px; transform: scale(1, 1);} /* 5.1 */
     20% { background-position: -330px -250px} /* 1.1 */
+}
+.char-damage {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    margin: 0 0 0 0px;
+    animation: damage 0.4s steps(1) infinite alternate;
+}            
+@keyframes damage {
+    0% { background-position: -250px -250px;}
+    25% { background-position: -248px -250px;}
+    75% { background-position: -250px -250px;}
+    100% { background-position: -250px -250px;}
 }
