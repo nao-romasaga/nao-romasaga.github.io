@@ -99,15 +99,13 @@
                 <div id="firebaseui-auth-container" style="margin-bottom:10px;"></div>
                 <br>
                 <div class="noLogin opacity kadomaru bg-danger text-white"><i class="fas fa-exclamation-triangle"></i>本機能はログイン必須です<br>Twitterログインを行い、<a href="./style.html" style="color:lightskyblue">キャラ+スタイル詳細</a>あるいは<a href="./party.html" style="color:lightskyblue">ステータス上限チェック</a>で所持しているキャラクターのステータスを入力した後からご利用できます。</div>
+                                <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5008373409434899" data-ad-slot="3051702111"></ins><script> (adsbygoogle = window.adsbygoogle || []).push({});</script>
                 <div class="isLogin d-none">
                     <div class="style-bgcolor text-center small" style="width:100%; margin: 0px;">
                         <div class="row no-gutters">
-                            <!--
-                            <div class="col-12 text-center" style="margin-bottom: 10px;">
-                                <i class="fas fa-medal"></i>プレミアム
+                            <div class="col-12 text-center premium d-none" style="margin-bottom: 10px;">
+                                <i class="fas fa-medal"></i>プレミアムユーザ
                             </div>
-                            -->
-
                             <div class="col-12 text-center" style="margin-bottom: 10px;">
                                 <div class="label-text m-auto" style="width:95%" id="NAME"></div>
                             </div>
@@ -161,9 +159,6 @@
                                 <div class="label-text"><img src="./img/icon/icon_jewel.png" width="25" height="25">履歴</div>
                                 <div id="jewelHistory">
                                 </div>
-                            </div>
-                            <div class="col-12">
-                                <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5008373409434899" data-ad-slot="3051702111"></ins><script> (adsbygoogle = window.adsbygoogle || []).push({});</script>
                             </div>
                             <div class="col-12">
                                 <div class="label-text h6  d-md-none"><i class="fas fa-crown"></i>  マイキャラクターランキング <i class="fas fa-crown"></i> </div>
@@ -225,9 +220,13 @@
                                     <a href="./inputchar.html" class="h4 " style="background-size: 340px 40px; width:340px" id="inputStyleLogined">キャラステータス更新 <i class="fas fa-pencil-alt"></i></a>
                                 </div>
                             </div>
-                            <div class="col-12">
-                                <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5008373409434899" data-ad-slot="3051702111"></ins><script> (adsbygoogle = window.adsbygoogle || []).push({});</script>
-                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5008373409434899" data-ad-slot="3051702111"></ins><script> (adsbygoogle = window.adsbygoogle || []).push({});</script>
+                <div class="isLogin d-none">
+                    <div class="style-bgcolor text-center small" style="width:100%; margin: 0px;">
+                        <div class="row no-gutters">
                             <div class="col-12" id="STYLE_CHART">
                                 <div class="label-text h5 d-md-none"><i class="fas fa-users"></i> 全ユーザスタイル所持分布 <i class="fas fa-chart-line"></i></div>
                                 <div class="label-text h4 d-none d-md-block"><i class="fas fa-users"></i> 全ユーザのスタイル所持分布 <i class="fas fa-chart-line"></i></div>
@@ -280,13 +279,20 @@
                                 <canvas id="myCharRank" style="height:300px;"></canvas>
                             </div>
                         </div>
-
-
                     </div>
                 </div><!-- isLogin -->
                 <hr>
             </div>
         </div>
+        <script>
+            function _initial(){
+                //console.log(OFUSE_USER);
+                //console.log(OFUSE_FLG);
+                if(OFUSE_FLG){
+                    $(".premium").removeClass("d-none");
+                }
+            }
+        </script>
         <script src="/js/home.js"></script>
         <script src="/js/Chart.min.js"></script>
     </body>
