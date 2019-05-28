@@ -61,14 +61,12 @@ $(".changeBase").click(function () {
         $("#label2").html("ステータス一覧");
     }
 
-
     if (base !== 0) {
         pm = 1;
         sort = "asc";
     }
     for (let mydata of MY_DATA_LIST) {
         let sum = 0;
-                console.log(mydata, CHAR_MASTER[mydata["id"]]);
         for (let key of PARAM_KEY) {
             if (base === 0) {
                 mydata[key] = mydata["org" + key];
@@ -78,7 +76,7 @@ $(".changeBase").click(function () {
                 if (calc > 0) {
                     mydata[key] = calc;
                     sum += calc;
-                } else if(CHAR_MASTER[mydata["id"]]['MAX' + key] === -99){
+                } else if (CHAR_MASTER[mydata["id"]]['MAX' + key] === -99) {
                     mydata[key] = "??"
                 } else {
                     mydata[key] = "x"
@@ -104,45 +102,40 @@ $(document).on('click', ".tabulator-cell", function () {
 });
 
 let MY_DATA, CHAR_MASTER;
-firebase.auth(appUsers).onAuthStateChanged((user) => {
-    if (!user) {
-        var uiConfig = {
-            // ログイン完了時のリダイレクト先
-            signInSuccessUrl: 'https://nao-romasaga.github.io/mydata.html',
-            // 利用する認証機能
-            signInOptions: [
-                firebase.auth.TwitterAuthProvider.PROVIDER_ID
-            ],
-        };
-        var ui = new firebaseui.auth.AuthUI(firebase.auth(appUsers));
-        ui.start('#firebaseui-auth-container', uiConfig);
-    } else {
-        UID = user.uid;
-        $(".noLogin").hide();
-        $(".isLogin").removeClass("d-none");
-        $("#loginInfo").hide();
-        let icon = $("<img>").attr("src", user.photoURL)
-                .attr("style", "width:40px; heidht:40px;    border-radius: 50%;");
-        let name = `${user.displayName} さん:ログイン中`;
-        $("#firebaseui-auth-container").addClass("bg-white kadomaru")
-                .append(icon).append(name);
-        readMyChar(function (read) {
-            MY_DATA = read;
-            if (MY_DATA !== undefined && CHAR_MASTER !== undefined) {
-                init();
-            }
-        });
-        readFile('Char', function (read) {
-            CHAR_MASTER = read;
-            if (MY_DATA !== undefined && CHAR_MASTER !== undefined) {
-                init();
-            }
-        });
-    }
-});
 
-function init() {
-    let mydata = MY_DATA;
+function _noLoginInitial() {
+    var uiConfig = {
+        // ログイン完了時のリダイレクト先
+        signInSuccessUrl: 'https://nao-romasaga.github.io/mydata.html',
+        // 利用する認証機能
+        signInOptions: [
+            firebase.auth.TwitterAuthProvider.PROVIDER_ID
+        ],
+    };
+    var ui = new firebaseui.auth.AuthUI(firebase.auth(appUsers));
+    ui.start('#firebaseui-auth-container', uiConfig);
+}
+async function _initial() {
+    $(".noLogin").hide();
+    $(".isLogin").removeClass("d-none");
+    $("#loginInfo").hide();
+    let icon = $("<img>").attr("src", USER.photoURL)
+            .attr("style", "width:40px; heidht:40px;    border-radius: 50%;");
+    let name = `${USER.displayName} さん:ログイン中`;
+    $("#firebaseui-auth-container").addClass("bg-white kadomaru")
+            .append(icon).append(name);
+
+    let mycharFunc = readUserData("CHAR", function (read) {
+        MY_DATA = read;
+    });
+    let charFunc = readFile('Char', function (read) {
+        CHAR_MASTER = read;
+    });
+    await Promise.all([charFunc, mycharFunc]);
+    firebase.database().goOffline();
+    firebase.database(appUsers).goOffline();
+
+    let mydata = Object.assign({}, MY_DATA);
     for (let i in mydata) {
         //let src = `<img src="./img/dot/${CHAR_MASTER[i]['DotId']}.png">`;
         mydata[i]['id'] = i;
@@ -181,9 +174,9 @@ function changeId2Dot() {
         } else if ($(this).attr("tabulator-field") !== "SUM"
                 && $(this).attr("tabulator-field") !== "DotId") {
             let attr = $(this).attr("style");
-            if(Number(id) <= 2){
+            if (Number(id) <= 2) {
                 $(this).attr("style", attr + ' background-color: pink;');
-            }else if (Number(id) < 7){
+            } else if (Number(id) < 7) {
                 $(this).attr("style", attr + ' background-color: palegreen;');
             }
         }
