@@ -49,14 +49,33 @@
         <![endif]-->
         <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Anton&text=0123456789" rel="stylesheet">
+        <style>
+            .withLabel{
+                padding-top: 30px;
+            }
+            ._FilterLink{}
+            .filterActive{
+                background-color: #93CBFF !important;
+                border: 1px solid #0000FF !important;
+                border-radius: 3px;
+            }
+            .pari{
+                display: inline-block;
+                width: 35px;
+                height: 35px;
+                background-position: -365px -45px !important;
+                margin: 0 0 0 0px;
+                background-size: 200px !important;                
+            }
+        </style>
     </head>
     <body>
 
-        <div class ="haikei"><div class="container">
+        <div class="dojohaikei"><div class="container">
                 <div class="text-center">
                     <a href="https://www.jp.square-enix.com/saga_reuniverse/" target="new"><img src="https://www.jp.square-enix.com/saga_reuniverse/assets/img/cmn_logo01_sp.png" class="col-sm-12 col-md-8 col-lg-6" alt></a>
                 </div>
-                <h2 class="text-center title-text">スタイル検索(技/術)</h2>
+                <h2 class="text-center title-text">技・術 検索</h2>
                 <div class="text-center">
                 </div>
                 <p class="text-right opacity"><small>バグ発見、ご要望は <a href="https://twitter.com/nao_romasaga_rs" target="new">nao_romasaga_rs</a>まで</small>
@@ -65,154 +84,184 @@
                 <div class="movie d-none">
                     <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">[update]工事中だったスタイル検索を再開しました。<br>全体技って何があるっけ？<br>ライトボール持ちって誰がいるっけ？<br>技ランク上げのためにファスト技で先制しようなど調べる際にご活用ください<a href="https://t.co/emmYdRf09B">https://t.co/emmYdRf09B</a><br><br>😘o O(併せてお布施もお待ちしております)<a href="https://t.co/3qFDqY1Kdx">https://t.co/3qFDqY1Kdx</a> <a href="https://t.co/vzinCrBB7c">pic.twitter.com/vzinCrBB7c</a></p>&mdash; (nAo)@ロマサガRS (@nao_romasaga_rs) <a href="https://twitter.com/nao_romasaga_rs/status/1118585278694694912?ref_src=twsrc%5Etfw">April 17, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                 </div>
+                <div id="example-table-display" class="text-center">
+                    <div id="example-table" style="width:402px"></div>
+                </div>
 
                 <label class="badge badge-pill badge-light">武器種別 技・術一覧</label>
                 <div>
-                    <ul class="row nav nav-tabs text-center opacity">
-                        <li class="col-12 col-sm-2 table-info" id="weponLabel">武器</li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="nav-link pad0" data-toggle="tab" href="#skill_ken"><span class="icon_mini icon_ken"></span></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="nav-link pad0" data-toggle="tab" href="#skill_dken"><span class="icon_mini icon_dken"></span></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="nav-link pad0" data-toggle="tab" href="#skill_ono"><span class="icon_mini icon_ono"></span></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="nav-link pad0" data-toggle="tab" href="#skill_kon"><span class="icon_mini icon_kon"></span></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="nav-link pad0" data-toggle="tab" href="#skill_tai"><span class="icon_mini icon_tai"></span></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="nav-link pad0" data-toggle="tab" href="#skill_ju"><span class="icon_mini icon_ju"></span></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="nav-link pad0" data-toggle="tab" href="#skill_sken"><span class="icon_mini icon_sken"></span></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="nav-link pad0" data-toggle="tab" href="#skill_yumi"><span class="icon_mini icon_yumi"></span></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="nav-link pad0" data-toggle="tab" href="#skill_yari"><span class="icon_mini icon_yari"></span></a></li>
-                        <li class="col-sm-auto"></li>
+                    <ul class="row nav nav-tabs text-center opacity skillList">
+                        <li class="col-12 fukidashi" id="weponLabel">技・術</li>
+                        <li class="col-12 col-sm-4 xs-pad0 d-flex justify-content-around">
+                            <a class="_FilterLink pad0 d-inline-block" href="#skill_ken" data-col="BattleType"><span class="withLabel icon_mini icon_ken"><span class="series-button" id="count_skill_ken">...</span></span></a>
+                            <a class="_FilterLink pad0 d-inline-block" href="#skill_dken" data-col="BattleType"><span class="withLabel icon_mini icon_dken"><span class="series-button" id="count_skill_dken">...</span></span></a>
+                            <a class="_FilterLink pad0 d-inline-block" href="#skill_ono" data-col="BattleType"><span class="withLabel icon_mini icon_ono"><span class="series-button" id="count_skill_ono">...</span></span></a>
+                        </li>
+                        <li class="col-12 col-sm-4 xs-pad0 d-flex justify-content-around">
+                            <a class="_FilterLink pad0 d-inline-block" href="#skill_kon" data-col="BattleType"><span class="withLabel icon_mini icon_kon"><span class="series-button" id="count_skill_kon">...</span></span></a>
+                            <a class="_FilterLink pad0 d-inline-block" href="#skill_tai" data-col="BattleType"><span class="withLabel icon_mini icon_tai"><span class="series-button" id="count_skill_tai">...</span></span></a>
+                            <a class="_FilterLink pad0 d-inline-block" href="#skill_ju" data-col="BattleType"><span class="withLabel icon_mini icon_ju"><span class="series-button" id="count_skill_ju">...</span></span></a>
+                        </li>
+                        <li class="col-12 col-sm-4 xs-pad0 d-flex justify-content-around">
+                            <a class="_FilterLink pad0 d-inline-block" href="#skill_sken" data-col="BattleType"><span class="withLabel icon_mini icon_sken"><span class="series-button" id="count_skill_sken">...</span></span></a>
+                            <a class="_FilterLink pad0 d-inline-block" href="#skill_yumi" data-col="BattleType"><span class="withLabel icon_mini icon_yumi"><span class="series-button" id="count_skill_yumi">...</span></span></a>
+                            <a class="_FilterLink pad0 d-inline-block" href="#skill_yari" data-col="BattleType"><span class="withLabel icon_mini icon_yari"><span class="series-button" id="count_skill_yari">...</span></span></a>
+                        </li>
+                        <li class="col-12 xs-pad0 d-flex justify-content-around">
+                            <a class="_FilterLink pad0 d-inline-block" href="#skill_hi" data-col="BattleType"><span class="withLabel icon_mini_zokusei icon_hi"><span class="series-button" id="count_skill_hi">...</span></span></a>
+                            <a class="_FilterLink pad0 d-inline-block" href="#skill_mizu" data-col="BattleType"><span class="withLabel icon_mini_zokusei icon_mizu"><span class="series-button" id="count_skill_mizu">...</span></span></a>
+                            <a class="_FilterLink pad0 d-inline-block" href="#skill_kaze" data-col="BattleType"><span class="withLabel icon_mini_zokusei icon_kaze"><span class="series-button" id="count_skill_kaze">...</span></span></a>
+                            <a class="_FilterLink pad0 d-inline-block" href="#skill_tsuchi" data-col="BattleType"><span class="withLabel icon_mini_zokusei icon_tsuchi"><span class="series-button" id="count_skill_tsuchi">...</span></span></a>
+                            <a class="_FilterLink pad0 d-inline-block" href="#skill_hikari" data-col="BattleType"><span class="withLabel icon_mini_zokusei icon_hikari"><span class="series-button" id="count_skill_hikari">...</span></span></a>
+                            <a class="_FilterLink pad0 d-inline-block" href="#skill_yami" data-col="BattleType"><span class="withLabel icon_mini_zokusei icon_yami"><span class="series-button" id="count_skill_yami">...</span></span></a>
+                        </li>
+                        <li class="col-12 fukidashi">属性・追加効果・攻撃範囲など</li>
 
-                        <li class="col-12 col-sm-2 table-success">術</li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="nav-link pad0 icon_mini_zokusei icon_hi" data-toggle="tab" href="#skill_hi"></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="nav-link pad0 icon_mini_zokusei icon_mizu" data-toggle="tab" href="#skill_mizu"></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="nav-link pad0 icon_mini_zokusei icon_kaze" data-toggle="tab" href="#skill_kaze"></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="nav-link pad0 icon_mini_zokusei icon_tsuchi" data-toggle="tab" href="#skill_tsuchi"></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="nav-link pad0 icon_mini_zokusei icon_hikari" data-toggle="tab" href="#skill_hikari"></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="nav-link pad0 icon_mini_zokusei icon_yami" data-toggle="tab" href="#skill_yami"></a></li>
-                        <li class="col-auto col-sm-4"></li>
+                        <li class="col-12 col-sm-2 table-info char-bottom">属性</li>
+                        <li class="col-2 col-sm-1 xs-pad0 char-bottom"><a class="_FilterLink pad0 d-inline-block" href="#skill_netsu" data-col="AttackAttributes"><span class="withLabel icon_mini_zokusei icon_netsu"><span class="series-button" id="count_skill_netsu">...</span></span></a>
+                        <li class="col-2 col-sm-1 xs-pad0 char-bottom"><a class="_FilterLink pad0 d-inline-block" href="#skill_rei" data-col="AttackAttributes"><span class="withLabel icon_mini_zokusei icon_rei"><span class="series-button" id="count_skill_rei">...</span></span></a>
+                        <li class="col-2 col-sm-1 xs-pad0 char-bottom"><a class="_FilterLink pad0 d-inline-block" href="#skill_rai" data-col="AttackAttributes"><span class="withLabel icon_mini_zokusei icon_rai"><span class="series-button" id="count_skill_rai">...</span></span></a>
+                        <li class="col-2 col-sm-1 xs-pad0 char-bottom"><a class="_FilterLink pad0 d-inline-block" href="#skill_in" data-col="AttackAttributes"><span class="withLabel icon_mini_zokusei icon_in"><span class="series-button" id="count_skill_in">...</span></span></a>
+                        <li class="col-2 col-sm-1 xs-pad0 char-bottom"><a class="_FilterLink pad0 d-inline-block" href="#skill_yo" data-col="AttackAttributes"><span class="withLabel icon_mini_zokusei icon_yo"><span class="series-button" id="count_skill_yo">...</span></span></a>
+                        <li class="col-2 col-sm-5 char-bottom"></li>
 
-                        <li class="col-12 col-sm-2 table-info">属性</li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="nav-link pad0 icon_mini_zokusei icon_netsu" data-toggle="tab" href="#skill_netsu"></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="nav-link pad0 icon_mini_zokusei icon_rei" data-toggle="tab" href="#skill_rei"></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="nav-link pad0 icon_mini_zokusei icon_rai" data-toggle="tab" href="#skill_rai"></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="nav-link pad0 icon_mini_zokusei icon_in" data-toggle="tab" href="#skill_in"></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="nav-link pad0 icon_mini_zokusei icon_yo" data-toggle="tab" href="#skill_yo"></a></li>
-                        <li class="col-2 col-sm-5"></li>
+                        <li class="col-12 col-sm-2 table-success char-bottom">状態<br class="hidden pcBlock">異常</li>
+                        <li class="col-2 col-sm-1 char-bottom"><a class="_FilterLink pad0 d-inline-block" data-col="BadStatus" href="#skill_doku"><span class="withLabel icon_mini_zokusei icon_doku"><small>毒　</small><span class="series-button" id="count_skill_doku">...</span></span></a></li>
+                        <li class="col-2 col-sm-1 char-bottom"><a class="_FilterLink pad0 d-inline-block" data-col="BadStatus" href="#skill_mahi"><span class="withLabel icon_mini_zokusei icon_mahi"><small>マヒ</small><span class="series-button" id="count_skill_mahi">...</span></span></a></li>
+                        <li class="col-2 col-sm-1 char-bottom"><a class="_FilterLink pad0 d-inline-block" data-col="BadStatus" href="#skill_kurayami"><span class="withLabel icon_mini_zokusei icon_kurayami"><small>暗闇</small><span class="series-button" id="count_skill_kurayami">...</span></span></a></li>
+                        <li class="col-2 col-sm-1 char-bottom"><a class="_FilterLink pad0 d-inline-block" data-col="BadStatus" href="#skill_nemuri"><span class="withLabel icon_mini_zokusei icon_zzz"><small>眠り</small><span class="series-button" id="count_skill_nemuri">...</span></span></a></li>
+                        <li class="col-2 col-sm-1 char-bottom"><a class="_FilterLink pad0 d-inline-block" data-col="BadStatus" href="#skill_sekika"><span class="withLabel icon_mini_zokusei icon_sekika"><small>石化</small><span class="series-button" id="count_skill_sekika">...</span></span></a></li>
+                        <li class="col-2 col-sm-1 char-bottom"><a class="_FilterLink pad0 d-inline-block" data-col="BadStatus" href="#skill_sutan"><span class="withLabel icon_mini_zokusei icon_stan"><small>　　</small><span class="series-button" id="count_skill_sutan">...</span></span></a></li>
+                        <li class="col-2 col-sm-1 char-bottom"><a class="_FilterLink pad0 d-inline-block" data-col="BadStatus" href="#skill_konran"><span class="withLabel icon_mini_zokusei icon_konran"><small>混乱</small><span class="series-button" id="count_skill_konran">...</span></span></a></li>
+                        <li class="col-2 col-sm-1 char-bottom"><a class="_FilterLink pad0 d-inline-block" data-col="BadStatus" href="#skill_miryo"><span class="withLabel icon_mini_zokusei icon_miryo"><small>魅了</small><span class="series-button" id="count_skill_miryo">...</span></span></a></li>
+                        <li class="col-2 col-sm-1 char-bottom"><a class="_FilterLink pad0 d-inline-block" data-col="BadStatus" href="#skill_kyosenshi"><span class="withLabel icon_mini_zokusei icon_kyosenshi"><small>狂戦</small><span class="series-button" id="count_skill_kyosenshi">...</span></span></a></li>
+                        <li class="col-2 col-sm-1 char-bottom"><a class="_FilterLink pad0 d-inline-block" data-col="BadStatus" href="#skill_sokushi"><span class="withLabel icon_mini_zokusei icon_kizetsu"><small>気絶</small><span class="series-button" id="count_skill_sokushi">...</span></span></a></li>
 
-                        <li class="col-12 col-sm-2 table-success">状態<br class="hidden pcBlock">異常</li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="nav-link pad0 icon_mini_zokusei icon_doku" data-toggle="tab" href="#skill_doku"><br><small>毒</small></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="nav-link pad0 icon_mini_zokusei icon_mahi" data-toggle="tab" href="#skill_mahi"><br><small>マヒ</small></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="nav-link pad0 icon_mini_zokusei icon_kurayami" data-toggle="tab" href="#skill_kurayami"><br><small>暗闇</small></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="nav-link pad0 icon_mini_zokusei icon_zzz" data-toggle="tab" href="#skill_nemuri"><br><small>眠り</small></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="nav-link pad0 icon_mini_zokusei icon_sekika" data-toggle="tab" href="#skill_sekika"><br><small>石化</small></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="nav-link pad0 icon_mini_zokusei icon_stan" data-toggle="tab" href="#skill_sutan"></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="nav-link pad0 icon_mini_zokusei icon_konran" data-toggle="tab" href="#skill_konran"><br><small>混乱</small></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="nav-link pad0 icon_mini_zokusei icon_miryo" data-toggle="tab" href="#skill_miryo"><br><small>魅了</small></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="nav-link pad0 icon_mini_zokusei icon_kyosenshi " data-toggle="tab" href="#skill_kyosenshi"><br><small>狂戦</small></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="nav-link pad0 icon_mini_zokusei icon_kizetsu" data-toggle="tab" href="#skill_sokushi"><br><small>気絶</small></a></li>
-
-                        <li class="col-12 col-sm-2 table-info">デバフ</li>
-                        <li class="col-2 col-sm-1 xs-showside-padding-zero"><a class="nav-link icon_mini_zokusei icon_debuff_str" data-toggle="tab" href="#skill_deb_wan"></a></li>
-                        <li class="col-2 col-sm-1 xs-showside-padding-zero"><a class="nav-link icon_mini_zokusei icon_debuff_vit" data-toggle="tab" href="#skill_deb_tai"></a></li>
-                        <li class="col-2 col-sm-1 xs-showside-padding-zero"><a class="nav-link icon_mini_zokusei icon_debuff_dex" data-toggle="tab" href="#skill_deb_kiyo"></a></li>
-                        <li class="col-2 col-sm-1 xs-showside-padding-zero"><a class="nav-link icon_mini_zokusei icon_debuff_agi" data-toggle="tab" href="#skill_deb_suba"></a></li>
-                        <li class="col-2 col-sm-1 xs-showside-padding-zero"><a class="nav-link icon_mini_zokusei icon_debuff_int" data-toggle="tab" href="#skill_deb_chi"></a></li>
-                        <li class="col-2 col-sm-1 xs-showside-padding-zero"><a class="nav-link icon_mini_zokusei icon_debuff_mnd" data-toggle="tab" href="#skill_deb_sei"></a></li>                  
-                        <li class="col-sm-4 xs-showside-padding-zero"></li>                  
-                        <li class="col-12 col-sm-2 table-success">攻撃<br class="hidden pcBlock">範囲</li>
-                        <li class="col-3 col-sm-2 m-auto side-padding-zero"><a class="nav-link  small" data-toggle="tab" href="#skill_zentai"><span class="char-eisho-mini dot_leon dot dot_mini" id="icon_allSkill"></span><br>全体</a></li>
-                        <li class="col-3 col-sm-2 m-auto side-padding-zero"><a class="nav-link  small" data-toggle="tab" href="#skill_tate"><span class="char-tate-mini dot_hector dot dot_mini" id="icon_tateSkill"></span><br>縦一列</a></li>
-                        <li class="col-3 col-sm-2 m-auto side-padding-zero"><a class="nav-link  small" data-toggle="tab" href="#skill_yoko"><span class="char-tsuki-mini dot_roza dot dot_mini" id="icon_yokoSkill"></span><br>横一列</a></li>
-                        <li class="col-3 col-sm-2 m-auto side-padding-zero"><a class="nav-link  small" data-toggle="tab" href="#skill_mikata"><span class="char-eisho-mini dot_sofia dot dot_mini" id="icon_healSkill"></span><br>味方単</a></li>
-                        <li class="col-sm-2"></li>
-                        <li class="col-12 col-sm-2 table-info">その他</li>
-                        <li class="col-1 col-sm-1 m-auto side-padding-zero"><a class="nav-link  small" data-toggle="tab" href="#skill_kin">近</a></li>
-                        <li class="col-1 col-sm-1 m-auto side-padding-zero"><a class="nav-link  small" data-toggle="tab" href="#skill_en">遠</a></li>
-                        <li class="col-2 col-sm-2 m-auto side-padding-zero"><a class="nav-link  small" data-toggle="tab" href="#skill_jishin">自身</a></li>
-                        <li class="col-3 col-sm-2 m-auto side-padding-zero"><a class="nav-link  small" data-toggle="tab" href="#skill_fast">ファスト</a></li>
-                        <li class="col-3 col-sm-2 m-auto side-padding-zero"><a class="nav-link  small" data-toggle="tab" href="#skill_delay">ディレイ</a></li>
-                        <li class="col-1 col-sm-2 m-auto"></li>
+                        <li class="col-12 col-sm-2 table-info char-bottom">デバフ</li>
+                        <li class="col-2 col-sm-1 char-bottom"><a class="_FilterLink pad0 d-inline-block" href="#skill_deb_wan" data-col="DeBuff"><span class="withLabel icon_mini_zokusei icon_debuff_str"><span class="series-button" id="count_skill_deb_wan">...</span></span></a></li>
+                        <li class="col-2 col-sm-1 char-bottom"><a class="_FilterLink pad0 d-inline-block" href="#skill_deb_tai" data-col="DeBuff"><span class="withLabel icon_mini_zokusei icon_debuff_vit"><span class="series-button" id="count_skill_deb_tai">...</span></span></a></li>
+                        <li class="col-2 col-sm-1 char-bottom"><a class="_FilterLink pad0 d-inline-block" href="#skill_deb_kiyo" data-col="DeBuff"><span class="withLabel icon_mini_zokusei icon_debuff_dex"><span class="series-button" id="count_skill_deb_kiyo">...</span></span></a></li>
+                        <li class="col-2 col-sm-1 char-bottom"><a class="_FilterLink pad0 d-inline-block" href="#skill_deb_suba" data-col="DeBuff"><span class="withLabel icon_mini_zokusei icon_debuff_agi"><span class="series-button" id="count_skill_deb_suba">...</span></span></a></li>
+                        <li class="col-2 col-sm-1 char-bottom"><a class="_FilterLink pad0 d-inline-block" href="#skill_deb_chi" data-col="DeBuff"><span class="withLabel icon_mini_zokusei icon_debuff_int"><span class="series-button" id="count_skill_deb_chi">...</span></span></a></li>
+                        <li class="col-2 col-sm-1 char-bottom"><a class="_FilterLink pad0 d-inline-block" href="#skill_deb_sei" data-col="DeBuff"><span class="withLabel icon_mini_zokusei icon_debuff_mnd"><span class="series-button" id="count_skill_deb_sei">...</span></span></a></li>
+                        <li class="col-sm-4 char-bottom"></li>
+                        <li class="col-12 col-sm-2 table-success char-bottom">攻撃範囲</li>
+                        <li class="col-3 col-sm-2 m-auto side-padding-zero char-bottom"><a class="_FilterLink small d-inline-block" href="#skill_zentai" data-col="AttackArea"><span class="char-eisho-mini dot_leon dot dot_mini" id="icon_allSkill"></span><br>　全体<span class="series-button" id="count_skill_zentai">...</span></a></li>
+                        <li class="col-3 col-sm-2 m-auto side-padding-zero char-bottom"><a class="_FilterLink small d-inline-block" href="#skill_tate" data-col="AttackArea"><span class="char-tate-mini dot_hector dot dot_mini" id="icon_tateSkill"></span><br>縦一列<span class="series-button" id="count_skill_tate">...</span></a></li>
+                        <li class="col-3 col-sm-2 m-auto side-padding-zero char-bottom"><a class="_FilterLink small d-inline-block" href="#skill_yoko" data-col="AttackArea"><span class="char-tsuki-mini dot_roza dot dot_mini" id="icon_yokoSkill"></span><br>横一列<span class="series-button" id="count_skill_yoko">...</span></a></li>
+                        <li class="col-3 col-sm-2 m-auto side-padding-zero char-bottom"><a class="_FilterLink small d-inline-block" href="#skill_mikata" data-col="AttackArea"><span class="char-eisho-mini dot_sofia dot dot_mini" id="icon_healSkill"></span><br>味方単<span class="series-button" id="count_skill_mikata">...</span></a></li>
+                        <li class="col-12 col-sm-2  char-bottom"><a class="_FilterLink  small d-inline-block" href="#skill_jishin" data-col="AttackArea">
+                                <span class="pari" style="background: url(./img/dot/ID334b6.png)"></span>
+                                <span class="pari" style="background: url(./img/dot/ID3645c.png)"></span><br>自身 <span class="series-button" id="count_skill_jishin">...</span></a></li>
+                        <li class="col-12 col-sm-2 table-success">直接/間接</li>
+                        <li class="col-6 col-sm-5 m-auto side-padding-zero"><a class="_FilterLink small" href="#skill_cyoku" data-col="AttackKansetsu">直接攻撃 <span class="series-button" id="count_skill_cyoku">...</span></a></li>
+                        <li class="col-6 col-sm-5 m-auto side-padding-zero"><a class="_FilterLink small" href="#skill_kan" data-col="AttackKansetsu">間接攻撃 <span class="series-button" id="count_skill_kan">...</span></a></li>
+                        <li class="col-12 table-success char-bottom">間接攻撃とは: 敵のカウンターやセルフバーニングで反撃を受けない攻撃</li>
+                        <li class="col-12 col-sm-2 table-info char-bottom">その他</li>
+                        <li class="col-12 col-sm-5 d-flex justify-content-around char-bottom">
+                            <a class="_FilterLink  small" href="#skill_kin" data-col="AttackDistance">近距離 <span class="series-button" id="count_skill_kin">...</span></a>
+                            <a class="_FilterLink  small" href="#skill_en" data-col="AttackDistance">遠距離 <span class="series-button" id="count_skill_en">...</span></a>
+                        </li>
+                        <li class="col-12 col-sm-5 d-flex justify-content-around char-bottom">
+                            <a class="_FilterLink  small" href="#skill_fast" data-col="FastDelay">ファスト　<span class="series-button" id="count_skill_fast">...</span></a>
+                            <a class="_FilterLink  small" href="#skill_delay" data-col="FastDelay">ディレイ　<span class="series-button" id="count_skill_delay">...</span></a>
+                        </li>
 
                         <li class="col-12 col-sm-2 table-success">技威力</li>
-                        <li class="col m-auto side-padding-zero"><a class="nav-link pad0" style="font-family:arial black; font-size:15px" data-toggle="tab" href="#skill_iryoku_e">E</a></li>
-                        <li class="col m-auto side-padding-zero"><a class="nav-link pad0" style="font-family:arial black; font-size:15px" data-toggle="tab" href="#skill_iryoku_d">D</a></li>
-                        <li class="col m-auto side-padding-zero"><a class="nav-link pad0" style="font-family:arial black; font-size:15px" data-toggle="tab" href="#skill_iryoku_c">C</a></li>
-                        <li class="col m-auto side-padding-zero"><a class="nav-link pad0" style="font-family:arial black; font-size:15px" data-toggle="tab" href="#skill_iryoku_b">B</a></li>
-                        <li class="col m-auto side-padding-zero"><a class="nav-link pad0" style="font-family:arial black; font-size:15px" data-toggle="tab" href="#skill_iryoku_a">A</a></li>
-                        <li class="col m-auto side-padding-zero"><a class="nav-link pad0" style="font-family:arial black; font-size:15px" data-toggle="tab" href="#skill_iryoku_s">S</a></li>
-                        <li class="col m-auto side-padding-zero"><a class="nav-link pad0" style="font-family:arial black; font-size:15px" data-toggle="tab" href="#skill_iryoku_ss">SS</a></li>
-                        <li class="col m-auto side-padding-zero"><a class="nav-link " style="font-family:arial black; font-size:15px" data-toggle="tab" href="#skill_iryoku_sss">SSS</a></li>
+                        <li class="col m-auto side-padding-zero"><a class="_FilterLink pad0 d-inline-block" href="#skill_iryoku_e" data-col="PowerGrade"><span style="font-family:arial black; font-size:15px">E</span><br><span class="series-button" id="count_skill_iryoku_e">...</span></a></li>
+                        <li class="col m-auto side-padding-zero"><a class="_FilterLink pad0 d-inline-block" href="#skill_iryoku_d" data-col="PowerGrade"><span style="font-family:arial black; font-size:15px">D</span><br><span class="series-button" id="count_skill_iryoku_d">...</span></a></li>
+                        <li class="col m-auto side-padding-zero"><a class="_FilterLink pad0 d-inline-block" href="#skill_iryoku_c" data-col="PowerGrade"><span style="font-family:arial black; font-size:15px">C</span><br><span class="series-button" id="count_skill_iryoku_c">...</span></a></li>
+                        <li class="col m-auto side-padding-zero"><a class="_FilterLink pad0 d-inline-block" href="#skill_iryoku_b" data-col="PowerGrade"><span style="font-family:arial black; font-size:15px">B</span><br><span class="series-button" id="count_skill_iryoku_b">...</span></a></li>
+                        <li class="col m-auto side-padding-zero"><a class="_FilterLink pad0 d-inline-block" href="#skill_iryoku_a" data-col="PowerGrade"><span style="font-family:arial black; font-size:15px">A</span><br><span class="series-button" id="count_skill_iryoku_a">...</span></a></li>
+                        <li class="col m-auto side-padding-zero"><a class="_FilterLink pad0 d-inline-block" href="#skill_iryoku_s" data-col="PowerGrade"><span style="font-family:arial black; font-size:15px">S</span><br><span class="series-button" id="count_skill_iryoku_s">...</span></a></li>
+                        <li class="col m-auto side-padding-zero"><a class="_FilterLink pad0 d-inline-block" href="#skill_iryoku_ss" data-col="PowerGrade"><span style="font-family:arial black; font-size:15px">SS</span><br><span class="series-button" id="count_skill_iryoku_ss">...</span></a></li>
+                        <li class="col m-auto side-padding-zero"><a class="_FilterLink pad0 d-inline-block" href="#skill_iryoku_sss" data-col="PowerGrade"><span style="font-family:arial black; font-size:15px">SSS</span><br><span class="series-button" id="count_skill_iryoku_sss">...</span></a></li>
                         <li class="col-12 col-sm-1 table-info">覚醒<br class="hidden pcBlock">素材</li>
                         <li class="col m-auto side-padding-zero">
-                            <a class="nav-link pad0" data-toggle="tab" href="#skill_black1"><span class="icon_mini icon_ksand" href="#skill_black1"></span></a>
-                            <a class="nav-link pad0" data-toggle="tab" href="#skill_black2"><span class="icon_mini icon_kstone"></span></a>
-                            <a class="nav-link pad0" data-toggle="tab" href="#skill_black3"><span class="icon_mini icon_kjewel"></span></a>
+                            <a class="_FilterLink pad0 d-inline-block" href="#skill_black1" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_ksand"><span class="series-button" id="count_skill_black1">...</span></span></a>
+                            <a class="_FilterLink pad0 d-inline-block" href="#skill_black2" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_kstone"><span class="series-button" id="count_skill_black2">...</span></span></a>
+                            <a class="_FilterLink pad0 d-inline-block" href="#skill_black3" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_kjewel"><span class="series-button" id="count_skill_black3">...</span></span></a>
                         </li>
                         <li class="col m-auto side-padding-zero">
-                            <a class="nav-link pad0" data-toggle="tab" href="#skill_blue1"><span class="icon_mini icon_bsand"></span></a>
-                            <a class="nav-link pad0" data-toggle="tab" href="#skill_blue2"><span class="icon_mini icon_bstone"></span></a>
-                            <a class="nav-link pad0" data-toggle="tab" href="#skill_blue3"><span class="icon_mini icon_bjewel"></span></a>
+                            <a class="_FilterLink pad0 d-inline-block" href="#skill_blue1" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_bsand"><span class="series-button" id="count_skill_blue1">...</span></span></a>
+                            <a class="_FilterLink pad0 d-inline-block" href="#skill_blue2" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_bstone"><span class="series-button" id="count_skill_blue2">...</span></span></a>
+                            <a class="_FilterLink pad0 d-inline-block" href="#skill_blue3" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_bjewel"><span class="series-button" id="count_skill_blue3">...</span></span></a>
                         </li>
                         <li class="col m-auto side-padding-zero">
-                            <a class="nav-link pad0" data-toggle="tab" href="#skill_green1"><span class="icon_mini icon_gsand"></span></a>
-                            <a class="nav-link pad0" data-toggle="tab" href="#skill_green2"><span class="icon_mini icon_gstone"></span></a>
-                            <a class="nav-link pad0" data-toggle="tab" href="#skill_green3"><span class="icon_mini icon_gjewel"></span></a>
+                            <a class="_FilterLink pad0 d-inline-block" href="#skill_green1" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_gsand"><span class="series-button" id="count_skill_green1">...</span></span></a>
+                            <a class="_FilterLink pad0 d-inline-block" href="#skill_green2" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_gstone"><span class="series-button" id="count_skill_green2">...</span></span></a>
+                            <a class="_FilterLink pad0 d-inline-block" href="#skill_green3" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_gjewel"><span class="series-button" id="count_skill_green3">...</span></span></a>
                         </li>
                         <li class="col m-auto side-padding-zero">
-                            <a class="nav-link pad0" data-toggle="tab" href="#skill_orange1"><span class="icon_mini icon_osand"></span></a>
-                            <a class="nav-link pad0" data-toggle="tab" href="#skill_orange2"><span class="icon_mini icon_ostone"></span></a>
-                            <a class="nav-link pad0" data-toggle="tab" href="#skill_orange3"><span class="icon_mini icon_ojewel"></span></a>
+                            <a class="_FilterLink pad0 d-inline-block" href="#skill_orange1" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_osand"><span class="series-button" id="count_skill_orange1">...</span></span></a>
+                            <a class="_FilterLink pad0 d-inline-block" href="#skill_orange2" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_ostone"><span class="series-button" id="count_skill_orange2">...</span></span></a>
+                            <a class="_FilterLink pad0 d-inline-block" href="#skill_orange3" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_ojewel"><span class="series-button" id="count_skill_orange3">...</span></span></a>
                         </li>
                         <li class="col m-auto side-padding-zero">
-                            <a class="nav-link pad0" data-toggle="tab" href="#skill_purple1"><span class="icon_mini icon_psand"></span></a>
-                            <a class="nav-link pad0" data-toggle="tab" href="#skill_purple2"><span class="icon_mini icon_pstone"></span></a>
-                            <a class="nav-link pad0" data-toggle="tab" href="#skill_purple3"><span class="icon_mini icon_pjewel"></span></a>
+                            <a class="_FilterLink pad0 d-inline-block" href="#skill_purple1" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_psand"><span class="series-button" id="count_skill_purple1">...</span></span></a>
+                            <a class="_FilterLink pad0 d-inline-block" href="#skill_purple2" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_pstone"><span class="series-button" id="count_skill_purple2">...</span></span></a>
+                            <a class="_FilterLink pad0 d-inline-block" href="#skill_purple3" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_pjewel"><span class="series-button" id="count_skill_purple3">...</span></span></a>
                         </li>
                         <li class="col m-auto side-padding-zero">
-                            <a class="nav-link pad0" data-toggle="tab" href="#skill_red1"><span class="icon_mini icon_rsand"></span></a>
-                            <a class="nav-link pad0" data-toggle="tab" href="#skill_red2"><span class="icon_mini icon_rstone"></span></a>
-                            <a class="nav-link pad0" data-toggle="tab" href="#skill_red3"><span class="icon_mini icon_rjewel"></span></a>
+                            <a class="_FilterLink pad0 d-inline-block" href="#skill_red1" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_rsand"><span class="series-button" id="count_skill_red1">...</span></span></a>
+                            <a class="_FilterLink pad0 d-inline-block" href="#skill_red2" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_rstone"><span class="series-button" id="count_skill_red2">...</span></span></a>
+                            <a class="_FilterLink pad0 d-inline-block" href="#skill_red3" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_rjewel"><span class="series-button" id="count_skill_red3">...</span></span></a>
                         </li>
                         <li class="col m-auto side-padding-zero">
-                            <a class="nav-link pad0" data-toggle="tab" href="#skill_yellow1"><span class="icon_mini icon_ysand"></span></a>
-                            <a class="nav-link pad0" data-toggle="tab" href="#skill_yellow2"><span class="icon_mini icon_ystone"></span></a>
-                            <a class="nav-link pad0" data-toggle="tab" href="#skill_yellow3"><span class="icon_mini icon_yjewel"></span></a>
+                            <a class="_FilterLink pad0 d-inline-block" href="#skill_yellow1" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_ysand"><span class="series-button" id="count_skill_yellow1">...</span></span></a>
+                            <a class="_FilterLink pad0 d-inline-block" href="#skill_yellow2" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_ystone"><span class="series-button" id="count_skill_yellow2">...</span></span></a>
+                            <a class="_FilterLink pad0 d-inline-block" href="#skill_yellow3" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_yjewel"><span class="series-button" id="count_skill_yellow3">...</span></span></a>
                         </li>
                         <li class="col m-auto side-padding-zero">
-                            <a class="nav-link pad0" data-toggle="tab" href="#skill_white1"><span class="icon_mini icon_wsand"></span></a>
-                            <a class="nav-link pad0" data-toggle="tab" href="#skill_white2"><span class="icon_mini icon_wstone"></span></a>
-                            <a class="nav-link pad0" data-toggle="tab" href="#skill_white3"><span class="icon_mini icon_wjewel"></span></a>
+                            <a class="_FilterLink pad0 d-inline-block" href="#skill_white1" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_wsand"><span class="series-button" id="count_skill_white1">...</span></span></a>
+                            <a class="_FilterLink pad0 d-inline-block" href="#skill_white2" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_wstone"><span class="series-button" id="count_skill_white2">...</span></span></a>
+                            <a class="_FilterLink pad0 d-inline-block" href="#skill_white3" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_wjewel"><span class="series-button" id="count_skill_white3">...</span></span></a>
                         </li>
 
                     </ul>
                 </div>
-                <label class="badge badge-pill badge-light"><span id="skill_name_label">剣</span>の技・術選択</label>
+                <button class="skill_select keishoSkill d-none col-12 col-md-4" id="SKILL_TEMPLATE">
+                    <div style="width:100%; display: inline-flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid;">
+                        <p class="text-left skillNameClass" style="margin:0;"></p>
+                        <p class="text-right small skillKakuseiArea" style="margin:0;"></p>
+                    </div>
+                    <div style="width:100%; display: inline-flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid;">
+                        <p class="text-left iconArea" style="margin:0;"></p>
+                        <p class="text-right small iryokuArea" style="margin:0;"></p>
+                    </div>
+                    <div class="iconClass holderStyleArea" style="display: table-cell; vertical-align: middle; height:30px">
+                    </div>
+                </button>
+                <div class="selectJoken">
+                    <label class="badge badge-pill badge-light"><span id="skill_name_label">剣</span>の技・術選択</label>
 
-                <div id="skillList" class=""></div>
+                    <div id="skillList" class="row"></div>
 
-                <label class="badge badge-pill badge-light" id="holder_label">技保持者一覧</label>
-                <div id="skill_holder_list" class="row style-bgcolor"></div>
-                <label class="badge badge-pill badge-light" id="holder_label">技保持者詳細</label>
-                <table id="skill_holder_table" class="width-100">
-                    <thead>
-                    </thead>
-                    <tbody class="bg-white"></tbody>
-                </table>
-                <label class="badge badge-pill badge-light" id="holder_label">継承：ダメージランキング</label>
-                <div id="skill_damage_ranking" class="row style-bgcolor"></div>
+                    <label class="badge badge-pill badge-light" id="holder_label">技保持者一覧</label>
+                    <div id="skill_holder_list" class="row style-bgcolor"></div>
+                    <label class="badge badge-pill badge-light" id="holder_label">技保持者詳細</label>
+                    <table id="skill_holder_table" class="width-100">
+                        <thead>
+                        </thead>
+                        <tbody class="bg-white"></tbody>
+                    </table>
+                    <label class="badge badge-pill badge-light" id="holder_label">継承：ダメージランキング</label>
+                    <div id="skill_damage_ranking" class="row style-bgcolor"></div>
+                </div>
                 <br>
             </div></div> <!-- main -->
         <p id="PageTopBtn"><a href="#wrap"><i class="fas fa-arrow-up"></i></a></p>
         <!-- Twitter universal website tag code -->
         <script>
-                    !function (e, t, n, s, u, a) {
-                        e.twq || (s = e.twq = function () {
-                            s.exe ? s.exe.apply(s, arguments) : s.queue.push(arguments);
-                        }, s.version = '1.1', s.queue = [], u = t.createElement(n), u.async = !0, u.src = '//static.ads-twitter.com/uwt.js',
-                                a = t.getElementsByTagName(n)[0], a.parentNode.insertBefore(u, a))
-                    }(window, document, 'script');
-        // Insert Twitter Pixel ID and Standard Event data below
-                    twq('init', 'o1u7p');
-                    twq('track', 'PageView');
+            !function (e, t, n, s, u, a) {
+                e.twq || (s = e.twq = function () {
+                    s.exe ? s.exe.apply(s, arguments) : s.queue.push(arguments);
+                }, s.version = '1.1', s.queue = [], u = t.createElement(n), u.async = !0, u.src = '//static.ads-twitter.com/uwt.js',
+                        a = t.getElementsByTagName(n)[0], a.parentNode.insertBefore(u, a))
+            }(window, document, 'script');
+            // Insert Twitter Pixel ID and Standard Event data below
+            twq('init', 'o1u7p');
+            twq('track', 'PageView');
         </script>
         <!-- End Twitter universal website tag code -->
     </body>
