@@ -1,1 +1,257 @@
-var _0x55d5=['</i><div\x20class=\x22calendar-labels\x22>','calender-id','addClass','day','startDay','endDay','type','startPrefix','startSuffix','endPrefix','endSuffix','#calender-id','\x20.calendar-labels','<span\x20class=\x22calender-label','title','</span>','holiday','calendar-holiday','push','sort','replace','<span\x20class=\x27hidden\x20pcBlock\x27>[',']</span>\x20','<div\x20class=\x27d-flex\x20justify-content-between\x27><div>','<div>開始まであと','日<span\x20class=\x27hidden\x20pcBlock\x27>\x20(','日開始)</span></div></div>','<div><span\x20class=\x27hidden\x20pcBlock\x27>\x20終了まで</span>あと','日終了)</span></div></div>','<div><span\x20class=\x27hidden\x20pcBlock\x27>','日に終了しました</span></div></div>','<p\x20class=\x27calendar-year-month\x27\x20style=\x27font-size:14px;\x27>開催中のイベント</p>','join','#event_summary','<p\x20class=\x27calendar-year-month\x27\x20style=\x27font-size:14px;\x27>開催前のイベント</p>','<p\x20class=\x27calendar-year-month\x27\x20style=\x27font-size:14px;\x27>終了したイベント</p>','<br>','GET','jsonData','json','event','defaults','wop','miniCalendar','opts','extend','ele','events','date','year','getFullYear','month','getMonth','printType','setEvent','setEventSummary','prototype','append','<table><thead><tr>','weekType','length','<th\x20class=\x22calendar-sun\x22>','<th\x20class=\x22calendar-sat\x22>','<th>','</thead><tbody></tbody></table>','.calendar-head','html','月の<br\x20class=\x22hidden\x20spBlock\x22>イベントカレンダー','#thisMonth','text','getDay','getDate','ceil','<td\x20class=\x22calendar-none\x22>&nbsp;</td>','find','tbody','\x20id=\x22calender-id','\x20class=\x22calendar-sun\x22','\x20class=\x22calendar-sat\x22','<td','><i\x20class=\x22calendar-day-number\x22>'];(function(_0x36425a,_0x2def58){var _0x326a75=function(_0x3296ef){while(--_0x3296ef){_0x36425a['push'](_0x36425a['shift']());}};_0x326a75(++_0x2def58);}(_0x55d5,0x1bf));var _0x40a7=function(_0x4a8843,_0x4f0438){_0x4a8843=_0x4a8843-0x0;var _0x460acf=_0x55d5[_0x4a8843];return _0x460acf;};;(function(_0xc1ffda){_0xc1ffda[_0x40a7('0x0')]=_0xc1ffda[_0x40a7('0x0')]||{};_0xc1ffda[_0x40a7('0x0')][_0x40a7('0x1')]=function(_0x5ba919,_0x45a625){this[_0x40a7('0x2')]=_0xc1ffda[_0x40a7('0x3')]({},_0xc1ffda[_0x40a7('0x0')]['miniCalendar']['defaults'],_0x45a625);this[_0x40a7('0x4')]=_0x5ba919;this[_0x40a7('0x5')]={};this[_0x40a7('0x6')]=new Date();this['month']='';this[_0x40a7('0x7')]='';this['holiday']='';this['loadData']();this[_0x40a7('0x7')]=this[_0x40a7('0x7')]||new Date()[_0x40a7('0x8')]();this[_0x40a7('0x9')]=this[_0x40a7('0x9')]||new Date()[_0x40a7('0xa')]()+0x1;this['createFrame']();this[_0x40a7('0xb')](this[_0x40a7('0x7')],this[_0x40a7('0x9')]);this[_0x40a7('0xc')]();this[_0x40a7('0xd')]();};_0xc1ffda[_0x40a7('0x0')][_0x40a7('0x1')][_0x40a7('0xe')]={'createFrame':function(){this[_0x40a7('0x4')][_0x40a7('0xf')]('<div\x20class=\x22calendar-head\x22><p\x20class=\x22calendar-year-month\x22></p></div>');var _0x5e4fc9=_0x40a7('0x10');for(var _0x48af49=0x0;_0x48af49<this[_0x40a7('0x2')][_0x40a7('0x11')][_0x40a7('0x12')];_0x48af49++){if(_0x48af49===0x0){_0x5e4fc9+=_0x40a7('0x13');}else if(_0x48af49===this[_0x40a7('0x2')][_0x40a7('0x11')][_0x40a7('0x12')]-0x1){_0x5e4fc9+=_0x40a7('0x14');}else{_0x5e4fc9+=_0x40a7('0x15');}_0x5e4fc9+=this[_0x40a7('0x2')]['weekType'][_0x48af49]+'</th>';}_0x5e4fc9+=_0x40a7('0x16');this[_0x40a7('0x4')]['find'](_0x40a7('0x17'))['after'](_0x5e4fc9);},'printType':function(_0x55bb72,_0x3a6f91){_0xc1ffda(this[_0x40a7('0x4')])['find']('.calendar-year-month')[_0x40a7('0x18')](_0x55bb72+'年'+_0x3a6f91+_0x40a7('0x19'));_0xc1ffda(_0x40a7('0x1a'))[_0x40a7('0x1b')](_0x55bb72+'年'+_0x3a6f91+'月');var _0x21af92=new Date(_0x55bb72,_0x3a6f91-0x1,0x1);var _0x48c485=_0x21af92[_0x40a7('0x1c')]();var _0x59dbce=new Date(_0x55bb72,_0x3a6f91,0x0)[_0x40a7('0x1d')]();var _0x2a2d27=Math[_0x40a7('0x1e')]((_0x59dbce+_0x48c485)/0x7);var _0x34a82e='<tr>';var _0x525807=0x1;for(var _0x2ba9e8=0x0;_0x2ba9e8<_0x48c485;_0x2ba9e8++){_0x34a82e+='<td\x20class=\x22calendar-none\x22>&nbsp;</td>';}for(var _0x1137ec=0x0;_0x1137ec<_0x2a2d27;_0x1137ec++){if(_0x1137ec==0x0){for(var _0x12476b=_0x48c485;_0x12476b<0x7;_0x12476b++){_0x34a82e+=_0x56bf0c(_0x525807,_0x12476b);_0x525807++;}}else{_0x34a82e+='<tr>';for(var _0x12476b=0x0;_0x12476b<0x7;_0x12476b++){if(_0x59dbce>=_0x525807){_0x34a82e+=_0x56bf0c(_0x525807,_0x12476b);}else{_0x34a82e+=_0x40a7('0x1f');}_0x525807++;}}_0x34a82e+='</tr>';}_0xc1ffda(this[_0x40a7('0x4')])[_0x40a7('0x20')](_0x40a7('0x21'))[_0x40a7('0x18')](_0x34a82e);function _0x56bf0c(_0x5410a1,_0x12476b){var _0x2bef33='';var _0x2cf9ea=_0x40a7('0x22')+_0x5410a1+'\x22';if(_0x12476b===0x0)_0x2cf9ea+=_0x40a7('0x23');if(_0x12476b===0x6)_0x2cf9ea+=_0x40a7('0x24');return _0x40a7('0x25')+_0x2cf9ea+_0x40a7('0x26')+_0x5410a1+_0x40a7('0x27')+_0x2bef33+'</div></td>';}var _0x56ee10=new Date();if(_0x55bb72===_0x56ee10['getFullYear']()){if(_0x3a6f91===_0x56ee10[_0x40a7('0xa')]()+0x1){var _0xfa3842=_0x40a7('0x28')+_0x56ee10[_0x40a7('0x1d')]();_0xc1ffda(this[_0x40a7('0x4')])['find']('#'+_0xfa3842)[_0x40a7('0x29')]('calendar-today');}}},'setEvent':function(){for(var _0x24edf6=0x0;_0x24edf6<this[_0x40a7('0x5')][_0x40a7('0x12')];_0x24edf6++){var _0x40cf82=this[_0x40a7('0x5')][_0x24edf6][_0x40a7('0x2a')];var _0x3e638d=this[_0x40a7('0x5')][_0x24edf6][_0x40a7('0x2b')];var _0x4579f7=this[_0x40a7('0x5')][_0x24edf6][_0x40a7('0x2c')];if(_0x3e638d===undefined){_0x3e638d=_0x40cf82;_0x4579f7=_0x40cf82;}var _0x465717='';if(this['events'][_0x24edf6][_0x40a7('0x2d')]){_0x465717='-'+this[_0x40a7('0x5')][_0x24edf6][_0x40a7('0x2d')];}for(var _0x3de5e0=Number(_0x3e638d);_0x3de5e0<=Number(_0x4579f7);_0x3de5e0++){var _0x3f74a9='',_0xf1e44c='';if(_0x3de5e0===Number(_0x3e638d)){_0x3f74a9=this[_0x40a7('0x5')][_0x24edf6][_0x40a7('0x2e')]!==undefined?this['events'][_0x24edf6]['startPrefix']:'';_0xf1e44c=this[_0x40a7('0x5')][_0x24edf6][_0x40a7('0x2f')]!==undefined?this[_0x40a7('0x5')][_0x24edf6]['startSuffix']:'';}else if(_0x3de5e0===Number(_0x4579f7)){_0x3f74a9=this[_0x40a7('0x5')][_0x24edf6][_0x40a7('0x30')]!==undefined?this[_0x40a7('0x5')][_0x24edf6]['endPrefix']:'';_0xf1e44c=this[_0x40a7('0x5')][_0x24edf6][_0x40a7('0x31')]!==undefined?this[_0x40a7('0x5')][_0x24edf6][_0x40a7('0x31')]:'';}if(_0x3de5e0===Number(_0x3e638d)||_0x3de5e0===Number(_0x4579f7)){_0xc1ffda(this[_0x40a7('0x4')])['find'](_0x40a7('0x32')+_0x3de5e0+_0x40a7('0x33'))[_0x40a7('0xf')](_0x40a7('0x34')+_0x465717+'\x22>'+_0x3f74a9+this[_0x40a7('0x5')][_0x24edf6][_0x40a7('0x35')]+_0xf1e44c+_0x40a7('0x36'));}}}for(var _0x24edf6=0x0;_0x24edf6<this[_0x40a7('0x37')][_0x40a7('0x12')];_0x24edf6++){_0xc1ffda(this[_0x40a7('0x4')])[_0x40a7('0x20')]('#calender-id'+this[_0x40a7('0x37')][_0x24edf6])[_0x40a7('0x29')](_0x40a7('0x38'));}},'setEventSummary':function(){var _0x3238e0=new Date();var _0xdc42e0=Number(_0x3238e0[_0x40a7('0x1d')]());var _0x3b153c=[];var _0x1efcf8=[];var _0x180461=[];var _0x16362b=[];for(var _0x2b7b40=0x0;_0x2b7b40<this[_0x40a7('0x5')][_0x40a7('0x12')];_0x2b7b40++){_0x16362b[_0x40a7('0x39')](this[_0x40a7('0x5')][_0x2b7b40]);}_0x16362b[_0x40a7('0x3a')]((_0x5b7d45,_0x3acd12)=>{if(_0x5b7d45['endDay']>_0x3acd12[_0x40a7('0x2c')]){return 0x1;}else if(_0x5b7d45[_0x40a7('0x2b')]>_0x3acd12[_0x40a7('0x2b')]){return-0x1;}else if(_0x5b7d45['title']>_0x3acd12[_0x40a7('0x35')]){return-0x1;}return 0x1;});for(var _0x2b7b40=0x0;_0x2b7b40<_0x16362b[_0x40a7('0x12')];_0x2b7b40++){var _0x2ae8e7=_0x16362b[_0x2b7b40][_0x40a7('0x2a')];var _0x651fcb=_0x16362b[_0x2b7b40][_0x40a7('0x2b')];var _0x192226=_0x16362b[_0x2b7b40][_0x40a7('0x2c')];if(_0x651fcb===undefined){_0x651fcb=_0x2ae8e7;_0x192226=_0x2ae8e7;}let _0x34bc87=_0x16362b[_0x2b7b40]['title'][_0x40a7('0x3b')](/<br.*>/,'');_0x34bc87=_0x34bc87[_0x40a7('0x3b')]('[',_0x40a7('0x3c'))['replace'](']',_0x40a7('0x3d'));let _0x5921a9=_0x40a7('0x3e')+_0x34bc87+'</div>';if(_0xdc42e0<_0x651fcb){_0x3b153c[_0x40a7('0x39')](_0x5921a9+_0x40a7('0x3f')+(_0x651fcb-_0xdc42e0)+_0x40a7('0x40')+_0x651fcb+_0x40a7('0x41'));}else if(_0xdc42e0<=_0x192226){_0x1efcf8[_0x40a7('0x39')](_0x5921a9+_0x40a7('0x42')+(_0x192226-_0xdc42e0)+_0x40a7('0x40')+_0x192226+_0x40a7('0x43'));}else{_0x180461[_0x40a7('0x39')](_0x5921a9+_0x40a7('0x44')+_0x192226+_0x40a7('0x45'));}}if(_0x1efcf8[_0x40a7('0x12')]>0x0){_0xc1ffda('#event_summary')[_0x40a7('0xf')](_0x40a7('0x46'));_0xc1ffda('#event_summary')[_0x40a7('0xf')](_0x1efcf8[_0x40a7('0x47')](''));}if(_0x3b153c[_0x40a7('0x12')]>0x0){_0xc1ffda(_0x40a7('0x48'))['append'](_0x40a7('0x49'));_0xc1ffda('#event_summary')[_0x40a7('0xf')](_0x3b153c['join'](''));}if(_0x180461[_0x40a7('0x12')]>0x0){_0xc1ffda(_0x40a7('0x48'))[_0x40a7('0xf')](_0x40a7('0x4a'));_0xc1ffda(_0x40a7('0x48'))[_0x40a7('0xf')](_0x180461[_0x40a7('0x47')](_0x40a7('0x4b')));}},'loadData':function(){var _0xe66f58=this;_0xc1ffda['ajax']({'type':_0x40a7('0x4c'),'url':_0xe66f58[_0x40a7('0x2')][_0x40a7('0x4d')],'dataType':_0x40a7('0x4e'),'async':![],'success':function(_0x5888b0){_0xe66f58[_0x40a7('0x5')]=_0x5888b0[_0x40a7('0x4f')];_0xe66f58[_0x40a7('0x7')]=_0x5888b0[_0x40a7('0x7')];_0xe66f58[_0x40a7('0x9')]=_0x5888b0[_0x40a7('0x9')];_0xe66f58[_0x40a7('0x6')]=new Date(_0x5888b0['date']);_0xe66f58['holiday']=_0x5888b0[_0x40a7('0x37')];}});}};_0xc1ffda[_0x40a7('0x0')][_0x40a7('0x1')][_0x40a7('0x50')]={'weekType':['日','月','火','水','木','金','土'],'jsonData':'./js/event.json'};_0xc1ffda['fn'][_0x40a7('0x1')]=function(_0x206a0a){_0x206a0a=_0x206a0a||{};var _0x3b96ae=new _0xc1ffda[(_0x40a7('0x0'))][(_0x40a7('0x1'))](this,_0x206a0a);return _0x206a0a['api']?_0x3b96ae:this;};}(jQuery));
+/*
+ * jQuery Mini Calendar
+ * https://github.com/k-ishiwata/jQuery.MiniCalendar
+ *
+ * Copyright 2016, k.ishiwata
+ * http://www.webopixel.net
+ *
+ * Licensed under the MIT license:
+ * http://www.opensource.org/licenses/MIT
+ */
+
+;
+(function ($) {
+    $.wop = $.wop || {};
+    $.wop.miniCalendar = function (targets, option) {
+        this.opts = $.extend({}, $.wop.miniCalendar.defaults, option);
+        this.ele = targets;
+
+        // jsonファイルから読み込んだデータを入れる変数
+        this.events = {};
+        this.date = new Date();
+        this.month = "";
+        this.year = "";
+        this.holiday = "";
+
+        // jsonファイルから読み込む
+        this.loadData();
+
+        //表示する年月
+        this.year = this.year || new Date().getFullYear();
+        this.month = this.month || new Date().getMonth() + 1;
+
+        this.createFrame();
+        this.printType(this.year, this.month);
+        // 取得したイベントを表示
+        this.setEvent();
+        this.setEventSummary();
+    };
+    $.wop.miniCalendar.prototype = {
+
+        /**
+         * 枠を作成
+         */
+        createFrame: function () {
+            this.ele.append('<div class="calendar-head"><p class="calendar-year-month"></p></div>');
+
+            var outText = '<table><thead><tr>';
+            for (var i = 0; i < this.opts.weekType.length; i++) {
+                if (i === 0) {
+                    outText += '<th class="calendar-sun">';
+                } else if (i === this.opts.weekType.length - 1) {
+                    outText += '<th class="calendar-sat">';
+                } else {
+                    outText += '<th>';
+                }
+
+                outText += this.opts.weekType[i] + '</th>';
+            }
+            outText += '</thead><tbody></tbody></table>';
+            this.ele.find('.calendar-head').after(outText);
+        },
+
+        /**
+         * 日付・曜日の配置
+         */
+        printType: function (thisYear, thisMonth) {
+
+            $(this.ele).find('.calendar-year-month').html(thisYear + '年' + thisMonth　 + '月の<br class="hidden spBlock">イベントカレンダー');
+            $("#thisMonth").text(thisYear + '年' + thisMonth　 + '月')
+
+            var thisDate = new Date(thisYear, thisMonth - 1, 1);
+
+            // 開始の曜日
+            var startWeek = thisDate.getDay();
+
+            var lastday = new Date(thisYear, thisMonth, 0).getDate();
+            // 縦の数
+            //var rowMax = Math.ceil((lastday + (startWeek+1)) / 7);
+            var rowMax = Math.ceil((lastday + startWeek) / 7);
+
+            var outText = '<tr>';
+            var countDate = 1;
+            // 最初の空白を出力
+            for (var i = 0; i < startWeek; i++) {
+                outText += '<td class="calendar-none">&nbsp;</td>';
+            }
+            for (var row = 0; row < rowMax; row++) {
+                // 最初の行は曜日の最初から
+                if (row == 0) {
+                    for (var col = startWeek; col < 7; col++) {
+                        outText += printTD(countDate, col);
+                        countDate++;
+                    }
+                } else {
+                    // 2行目から
+                    outText += '<tr>';
+                    for (var col = 0; col < 7; col++) {
+                        if (lastday >= countDate) {
+                            outText += printTD(countDate, col);
+                        } else {
+                            outText += '<td class="calendar-none">&nbsp;</td>';
+                        }
+                        countDate++;
+                    }
+                }
+                outText += '</tr>';
+            }
+            $(this.ele).find('tbody').html(outText);
+
+            function printTD(count, col) {
+                var dayText = "";
+                var tmpId = ' id="calender-id' + count + '"';
+                // 曜日classを割り当てる
+                if (col === 0)
+                    tmpId += ' class="calendar-sun"';
+                if (col === 6)
+                    tmpId += ' class="calendar-sat"';
+                return '<td' + tmpId + '><i class="calendar-day-number">' + count + '</i><div class="calendar-labels">' + dayText + '</div></td>';
+            }
+
+            //今日の日付をマーク
+            var toDay = new Date();
+            if (thisYear === toDay.getFullYear()) {
+                if (thisMonth === (toDay.getMonth() + 1)) {
+                    var dateID = 'calender-id' + toDay.getDate();
+                    $(this.ele).find('#' + dateID).addClass('calendar-today');
+                }
+            }
+        },
+        /**
+         * イベントの表示
+         */
+        setEvent: function () {
+            for (var i = 0; i < this.events.length; i++) {
+                var date = this.events[i].day;
+                var startDate = this.events[i].startDay;
+                var endDate = this.events[i].endDay;
+                if (startDate === undefined) {
+                    startDate = date;
+                    endDate = date;
+                }
+                // typeがある場合classを付与
+                var type = "";
+                if (this.events[i].type) {
+                    type = '-' + this.events[i].type;
+                }
+                for (var j = Number(startDate); j <= Number(endDate); j++) {
+                    var prefix = "", suffix = "";
+                    if (j === Number(startDate)) {
+                        prefix = (this.events[i].startPrefix !== undefined) ? this.events[i].startPrefix : "";
+                        suffix = (this.events[i].startSuffix !== undefined) ? this.events[i].startSuffix : "";
+                    } else if (j === Number(endDate)) {
+                        prefix = (this.events[i].endPrefix !== undefined) ? this.events[i].endPrefix : "";
+                        suffix = (this.events[i].endSuffix !== undefined) ? this.events[i].endSuffix : "";
+                    }
+                    if (j === Number(startDate) || j === Number(endDate)) {
+                        $(this.ele).find('#calender-id' + j + ' .calendar-labels')
+                                .append('<span class="calender-label' + type + '">' + prefix + this.events[i].title + suffix + '</span>');
+                    }
+                }
+            }
+
+            // 休日
+            for (var i = 0; i < this.holiday.length; i++) {
+                $(this.ele).find('#calender-id' + this.holiday[i]).addClass('calendar-holiday');
+            }
+        },
+        setEventSummary: function () {
+            var toDay = new Date();
+            var today = Number(toDay.getDate());
+            var startList = [];
+            var nowList = [];
+            var endList = []
+            var tmpEvent = [];
+            for (var i = 0; i < this.events.length; i++) {
+                tmpEvent.push(this.events[i]);
+            }
+            tmpEvent.sort((a, b) => {
+                if (a.endDay > b.endDay) {
+                    // 基本は使用BP降順
+                    return 1;
+                } else if (a.startDay > b.startDay) {
+                    return -1;
+                } else if (a.title > b.title) {
+                    return -1;
+                }
+                return 1;
+            });
+
+            for (var i = 0; i < tmpEvent.length; i++) {
+                var date = tmpEvent[i].day;
+                var startDate = tmpEvent[i].startDay;
+                var endDate = tmpEvent[i].endDay;
+                if (startDate === undefined) {
+                    startDate = date;
+                    endDate = date;
+                }
+                let text = tmpEvent[i].title.replace(/<br.*>/, "");
+                text = text.replace("[", "<span class='hidden pcBlock'>[").replace("]", "]</span> ");
+                let pre = `<div class='d-flex justify-content-between'><div>${text}</div>`;
+                if (today < startDate) {
+                    // 開映前kaieimae
+                    startList.push(`${pre}<div>開始まであと${(startDate - today)}日<span class='hidden pcBlock'> (${startDate}日開始)</span></div></div>`);
+                } else if (today <= endDate) {
+                    // 開催中前
+                    nowList.push(`${pre}<div><span class='hidden pcBlock'> 終了まで</span>あと${(endDate - today)}日<span class='hidden pcBlock'> (${endDate}日終了)</span></div></div>`);
+                } else {
+                    // 終了前
+                    endList.push(`${pre}<div><span class='hidden pcBlock'>${endDate}日に終了しました</span></div></div>`);
+                }
+            }
+            if (nowList.length > 0) {
+                $("#event_summary").append("<p class='calendar-year-month' style='font-size:14px;'>開催中のイベント</p>");
+                $("#event_summary").append(nowList.join(""));
+            }
+            if (startList.length > 0) {
+                $("#event_summary").append("<p class='calendar-year-month' style='font-size:14px;'>開催前のイベント</p>");
+                $("#event_summary").append(startList.join(""));
+            }
+            if (endList.length > 0) {
+                $("#event_summary").append("<p class='calendar-year-month' style='font-size:14px;'>終了したイベント</p>");
+                $("#event_summary").append(endList.join("<br>"));
+            }
+
+        },
+
+        /**
+         * jsonファイルからデータを読み込む
+         */
+        loadData: function () {
+            var self = this;
+            $.ajax({
+                type: "GET",
+                url: self.opts.jsonData,
+                dataType: "json",
+                async: false,
+                success: function (data) {
+                    self.events = data.event;
+                    self.year = data.year;
+                    self.month = data.month;
+                    self.date = new Date(data.date);
+                    self.holiday = data.holiday;
+                }
+            });
+        }
+    };
+
+    $.wop.miniCalendar.defaults = {
+        weekType: ["日", "月", "火", "水", "木", "金", "土"],
+        jsonData: './js/event.json'
+    };
+    $.fn.miniCalendar = function (option) {
+        option = option || {};
+        var api = new $.wop.miniCalendar(this, option);
+        return option.api ? api : this;
+    };
+})(jQuery);
