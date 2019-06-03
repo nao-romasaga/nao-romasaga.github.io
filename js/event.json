@@ -93,8 +93,49 @@
             "endDay": "31",
             "title": "[イベント] <br class='hidden pcBlock'>武闘会 (〜7/1)",
             "type": "orange"
+        },
+        {
+            "startDay": "1",
+            "endDay": "26",
+            "title": "[交換所] <br class='hidden pcBlock'>竜印の金塊 交換終了",
+            "type": "red",
+            "startNone": true
+        },
+        {
+            "startDay": "1",
+            "endDay": "28",
+            "title": "[交換所] <br class='hidden pcBlock'><span class='hidden pcBlock'>忘れられた</span>礼拝堂ブーケ 交換終了",
+            "type": "red",
+            "startNone": true
+        },
+        {
+            "startDay": "1",
+            "endDay": "28",
+            "title": "[交換所] <br class='hidden pcBlock'>メダル(祭 カタリナ編) 交換終了",
+            "type": "red",
+            "startNone": true
+        },
+        {
+            "startDay": "1",
+            "endDay": "28",
+            "title": "[交換所] <br class='hidden pcBlock'>メダル(祭 エミリア編) 交換終了",
+            "type": "red",
+            "startNone": true
+        },
+        {
+            "startDay": "1",
+            "endDay": "14",
+            "title": "[交換所] <br class='hidden pcBlock'>メダル(クローディア<span class='hidden pcBlock'>/ハリード</span>) 交換終了",
+            "type": "red",
+            "startNone": true
+        },
+        {
+            "startDay": "1",
+            "endDay": "14",
+            "title": "[交換所] <br class='hidden pcBlock'>メダル(ワグナス<span class='hidden pcBlock'>/タチアナ</span>) 交換終了",
+            "type": "red",
+            "startNone": true
         }
-
     ],
     "holiday": [
     ]

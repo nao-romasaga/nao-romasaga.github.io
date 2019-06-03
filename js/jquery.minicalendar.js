@@ -135,6 +135,7 @@
                 var date = this.events[i].day;
                 var startDate = this.events[i].startDay;
                 var endDate = this.events[i].endDay;
+                var startNone = (this.events[i].startNone === undefined) ? false : true ;
                 if (startDate === undefined) {
                     startDate = date;
                     endDate = date;
@@ -153,7 +154,7 @@
                         prefix = (this.events[i].endPrefix !== undefined) ? this.events[i].endPrefix : "";
                         suffix = (this.events[i].endSuffix !== undefined) ? this.events[i].endSuffix : "";
                     }
-                    if (j === Number(startDate) || j === Number(endDate)) {
+                    if ((j === Number(startDate) && (!startNone)) || j === Number(endDate)) {
                         $(this.ele).find('#calender-id' + j + ' .calendar-labels')
                                 .append('<span class="calender-label' + type + '">' + prefix + this.events[i].title + suffix + '</span>');
                     }
@@ -195,7 +196,7 @@
                     startDate = date;
                     endDate = date;
                 }
-                let text = tmpEvent[i].title.replace(/<br.*>/, "");
+                let text = tmpEvent[i].title.replace(/<br.*?>/, "");
                 text = text.replace("[", "<span class='hidden pcBlock'>[").replace("]", "]</span> ");
                 let pre = `<div class='d-flex justify-content-between'><div>${text}</div>`;
                 if (today < startDate) {
