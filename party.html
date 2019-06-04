@@ -88,7 +88,32 @@
                     <p class="slide1 loading"><i class="dot_yuki dot_mid dot char-hashiri"></i></p>
                     <p class="slide2 loading"><i class="dot_monika dot_mid dot char-hashiri"></i></p>
                     -->
-                    <ul class="nav nav-tabs ">
+                    <label class="badge badge-pill badge-light">絞り込み</label>
+                    <div class="style-bgcolor text-center small row" style="width:100%; margin: 0px;">
+                        <ul class="nav text-center width-100">
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" href="#icon_ken"><span class="icon_mini icon_ken" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" href="#icon_dken"><span class="icon_mini icon_dken" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" href="#icon_ono"><span class="icon_mini icon_ono" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" href="#icon_kon"><span class="icon_mini icon_kon" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" href="#icon_tai"><span class="icon_mini icon_tai" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" href="#icon_ju"><span class="icon_mini icon_ju" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" href="#icon_sken"><span class="icon_mini icon_sken" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" href="#icon_yumi"><span class="icon_mini icon_yumi" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" href="#icon_yari"><span class="icon_mini icon_yari" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" href="#icon_tsue"><span class="icon_mini icon_tsue" onclick=""></span></a></li>
+                        </ul>
+                    </div>
+                    <div class="text-center opacity-char-back weaponList d-none" id="_icon_ken"><h5 class="game-banner"><span class="icon_mini icon_ken"></span></h5></div>
+                    <div class="text-center opacity-char-back weaponList d-none" id="_icon_dken"><h5 class="game-banner"><span class="icon_mini icon_dken"></span></h5></div>
+                    <div class="text-center opacity-char-back weaponList d-none" id="_icon_ono"><h5 class="game-banner"><span class="icon_mini icon_ono"></span></h5></div>
+                    <div class="text-center opacity-char-back weaponList d-none" id="_icon_sken"><h5 class="game-banner"><span class="icon_mini icon_sken"></span></h5></div>
+                    <div class="text-center opacity-char-back weaponList d-none" id="_icon_yumi"><h5 class="game-banner"><span class="icon_mini icon_yumi"></span></h5></div>
+                    <div class="text-center opacity-char-back weaponList d-none" id="_icon_yari"><h5 class="game-banner"><span class="icon_mini icon_yari"></span></h5></div>
+                    <div class="text-center opacity-char-back weaponList d-none" id="_icon_ju"><h5 class="game-banner"><span class="icon_mini icon_ju"></span></h5></div>
+                    <div class="text-center opacity-char-back weaponList d-none" id="_icon_tai"><h5 class="game-banner"><span class="icon_mini icon_tai"></span></h5></div>
+                    <div class="text-center opacity-char-back weaponList d-none" id="_icon_kon"><h5 class="game-banner"><span class="icon_mini icon_kon"></span></h5></div>
+                    <div class="text-center opacity-char-back weaponList d-none" id="_icon_tsue"><h5 class="game-banner"><span class="icon_mini icon_tsue"></span></h5></div>                    
+                    <ul class="nav nav-tabs SeriesChoise">
                         <li class="nav-item text-center side-padding-zero">
                             <a class="nav-link active bg-white" style="padding: 5px 5px;" data-toggle="tab" href="#RS1" class="">RS1</a>
                         </li>
@@ -105,7 +130,7 @@
                             <a class="nav-link bg-white" style="padding: 5px 5px;" data-toggle="tab" href="#other" class="bg-white">US/SS/ES/RSR</a>
                         </li>
                     </ul>
-                    <div id="myTabContent" class="tab-content">
+                    <div id="myTabContent" class="tab-content SeriesChoise">
                         <div class="tab-pane fade show active text-center opacity-char-back" id="RS1"><h5 class="game-banner">ロマンシング・サガ</h5></div>
                         <div class="tab-pane fade text-center opacity-char-back" id="rs2">
                             <div class="" id="RS2"><h5 class="game-banner">ロマンシング・サガ2(1)</h5></div>
@@ -351,6 +376,11 @@
             @keyframes modalClose {
                 0% {top:50%}
                 100% {top:100%}
+            }
+            .filterActive{
+                background-color: #93CBFF !important;
+                border: 1px solid #0000FF !important;
+                border-radius: 3px;
             }
         </style>        
         <!-- Twitter universal website tag code -->
