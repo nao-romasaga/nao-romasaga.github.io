@@ -3,15 +3,15 @@
     "month": 6,
     "event": [
         {
-            "startDay": "7",
-            "endDay": "10",
+            "startDay": "6",
+            "endDay": "7",
             "title": "[キャンペーン] <br class='hidden pcBlock'>武道会 スタ半",
             "startPrefix": "4:00 開始<br>",
             "endSuffix": "<br>4:00 終了",
             "type": "blue"
         },
         {
-            "startDay": "7",
+            "startDay": "6",
             "endDay": "10",
             "title": "[キャンペーン] <br class='hidden pcBlock'>洞窟修練 挑戦2倍",
             "startPrefix": "4:00 開始<br>",
@@ -19,7 +19,7 @@
             "type": "blue"
         },
         {
-            "startDay": "7",
+            "startDay": "6",
             "endDay": "10",
             "title": "[キャンペーン] <br class='hidden pcBlock'>財宝収集 オーラム2倍",
             "startPrefix": "4:00 開始<br>",
@@ -27,7 +27,7 @@
             "type": "blue"
         },
         {
-            "startDay": "7",
+            "startDay": "6",
             "endDay": "10",
             "title": "[キャンペーン] <br class='hidden pcBlock'>密林調査 卵のから2倍",
             "startPrefix": "4:00 開始<br>",
