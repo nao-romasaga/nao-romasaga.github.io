@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#" lang="ja">
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138966739-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', 'UA-138966739-1');
+        </script>
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <meta charset="utf-8">
+        <title>ロマサガRS イベントカレンダー</title>
+        <meta property="og:title" content="ロマサガRS イベントカレンダー" />
+        <meta property="og:url" content="https://http://nao-romasaga.github.io/calendar.html" />
+        <meta property="og:description" content="ロマサガRSのイベント情報カレンダーです。" />
+        <meta name="description" content="ロマサガRSのイベント情報カレンダーです。【ロマンシングサガ リユニバース】" />
+        <meta property="og:image" content="https://nao-romasaga.github.io/img/twitter_card_calendar.png" />
+        <meta property="og:site_name" content="ロマサガRS便利ツール" />
+        <meta property="og:type" content="website">
+        <meta property="og:locale" content="ja_JP" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@nao_romasaga_rs" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="./css/style.css">
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
+        <script src="./js/Firebase.js"></script>
+        <script src="./js/utils.js" ></script>
+        <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+        <script>
+                    var OneSignal = window.OneSignal || [];
+                    OneSignal.push(function () {
+                        OneSignal.init({
+                            appId: "d4feccd2-b3a5-4d25-8abc-97624ebb4f0e",
+                            notifyButton: {
+                                enable: true,
+                            },
+                        });
+                    });
+        </script>
+        <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+        <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+        <style>
+            /* ========================================
+             * #mini-calendar
+             * ========================================*/
+            .calendar-year-month {
+                text-align: center;
+                font-size: 32px;
+                margin-bottom: 20px;
+                font-weight: bold;
+                background: url(./img/bg_window_large.png);
+                background-size: 100% 100%;
+                color: #faf0b4;
+                padding: 5px;
+            }
+            #mini-calendar table {
+                width: 100%;
+                border-spacing: 0;
+                border-left: 1px solid #ccc;
+                border-top: 1px solid #ccc;
+                margin-bottom: 0;
+                line-height: 1.5;
+                border-collapse: separate;
+            }
+            #mini-calendar th,
+            #mini-calendar td {
+                background: #fff;
+                padding: 7px;
+                border-bottom: 1px solid #ccc;
+                border-right: 1px solid #ccc;
+            }
+            #mini-calendar th {
+                color: #fff;
+                background: #4F616B;
+                vertical-align: top;
+                padding-top: 7px;
+                padding-bottom: 7px;
+            }
+
+
+
+            /*
+            #mini-calendar th.calendar-sun {
+                    color: #DF0D2D;
+                    background: #F8E4E4;
+            }
+            #mini-calendar th.calendar-sat {
+                    color: #2574D3;
+                    background: #E2F3FC;
+            }
+            */
+            #mini-calendar td {
+                width: 14.3%;
+                height: 100px;
+                vertical-align: top;
+            }
+            #mini-calendar td.calendar-day-off {
+                background: #F4F3F2;
+                color: #555;
+            }
+            #mini-calendar td.calendar-holiday,
+            #mini-calendar td.calendar-sun {
+                color: #CE2727;
+                background: #FCF3F3;
+            }
+            #mini-calendar td.calendar-sat {
+                color: #54AFC8;
+                background: #F5FBFE;
+            }
+
+            #mini-calendar .calendar-day-number {
+                font-style: normal;
+                font-family: "Helvetica Neue", Arial, sans-serif;
+                font-weight: bold;
+                font-size: 16px;
+                display: block;
+                padding: 0 3px;
+                line-height: 1.2;
+            }
+            #mini-calendar td.calendar-holiday .day,
+            #mini-calendar td.calendar-sun .day {
+                color: #DF0D2D;
+            }
+            #mini-calendar td.calendar-sat .day {
+                color: #2574D3;
+            }
+            #mini-calendar td span {
+                font-size: 11px;
+                line-height: 1.3;
+                /*display: block;*/
+            }
+            #mini-calendar [class*=calender-label] {
+                font-size: 11px;
+                line-height: 1.3;
+                color: #000;
+                background: #FCEBCF;
+                border: solid 1px #D2AC8E;
+                display: block;
+                padding: 3px;
+                margin-top: 3px;
+                border-radius: 4px;
+                -webkit-border-radius: 4px;
+                -moz-border-radius: 4px;
+                -o-border-radius: 4px;
+                -ms-border-radius: 4px;
+            }
+            #mini-calendar td span.calender-label-red {
+                background-color: #FCCFD1;
+                border-color: #D28EA6;
+            }
+            #mini-calendar td span.calender-label-blue {
+                background-color: #CFE4FC;
+                border-color: #8E9BD2;
+            }
+            #mini-calendar td span.calender-label-green {
+                background-color: #E5FCCF;
+                border-color: #99C170;
+            }
+            #mini-calendar td span.calender-label-yellow {
+                background-color: yellow;
+                border-color: yellowgreen;
+            }
+            #mini-calendar td span.calender-label-orange {
+                background-color: orange;
+                border-color: orangered;
+            }
+            /* 何もない日 */
+            #mini-calendar td.calendar-none {
+                background: #FBFAF7;
+            }
+            #mini-calendar td.calendar-today {
+                background: #FEFBDA;
+            }
+
+            @media screen and (max-width: 600px) {
+                #mini-calendar thead {
+                    display: none;
+                }
+                #mini-calendar th,
+                #mini-calendar td {
+                    display: block;
+                    width: 100%;
+                    padding: 0;
+                }
+                #mini-calendar td {
+                    height: auto;
+                    display: -webkit-flex;
+                    display: flex;
+                }
+                #mini-calendar .calendar-none {
+                    display: none
+                }
+
+                #mini-calendar .calendar-labels {
+                    padding: 5px;
+                }
+                #mini-calendar [class*=calender-label] {
+                    display: inline-block;
+                    padding: 5px;
+                    margin-top: 0;
+                    margin-right: 5px;
+                    font-size: 12px;
+                }
+
+                /* 日付 */
+                #mini-calendar td .calendar-day-number {
+                    font-weight: normal;
+                    padding: 7px;
+                    font-size: 18px;
+                    display: block;
+                    background: #f2e6cd;
+                    margin-bottom: 0;
+                    width: 55px;
+                    height: auto;
+                }
+                #mini-calendar td.calendar-holiday .calendar-day-number,
+                #mini-calendar td.calendar-sun .calendar-day-number {
+                    background: #f8c7c7;
+                }
+
+                #mini-calendar td.calendar-sat .calendar-day-number {
+                    background: #c8ebfe;
+                }
+
+                /* モバイル用曜日を追加 */
+                #mini-calendar td i:after {
+                    font-size: 12px;
+                    position: relative;
+                    left: -5px;
+                }
+                #mini-calendar td:nth-child(1) i:after {
+                    content: "（日）";
+                }
+                #mini-calendar td:nth-child(2) i:after {
+                    content: "（月）";
+                }
+                #mini-calendar td:nth-child(3) i:after {
+                    content: "（火）";
+                }
+                #mini-calendar td:nth-child(4) i:after {
+                    content: "（水）";
+                }
+                #mini-calendar td:nth-child(5) i:after {
+                    content: "（木）";
+                }
+                #mini-calendar td:nth-child(6) i:after {
+                    content: "（金）";
+                }
+                #mini-calendar td:nth-child(7) i:after {
+                    content: "（土）";
+                }
+            }
+            @media screen and (min-width:1400px) { 
+                .container {
+                    max-width: 1300px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class ="" style="background: url(http://nao-romasaga.github.io/img/bg_repeat.png); background-size: contain;">
+            <div class="container" style="">
+                <h1 class="text-center title-text" style="font-size:28px;">イベントカレンダー</h1>
+                <br>
+                <p class="calendar-year-month"><span id="thisMonth"></span>の<br class="hidden spBlock">イベントまとめ</p>
+                <div id="event_summary" class="fukidashi" style="padding:10px"></div>
+                <br>
+                <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5008373409434899" data-ad-slot="3051702111"></ins><script> (adsbygoogle = window.adsbygoogle || []).push({});</script>
+                <br>
+                <div id="mini-calendar"></div>
+                <br>
+                <br>
+                <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5008373409434899" data-ad-slot="3051702111"></ins><script> (adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+        </div> <!-- main -->
+        <script src="./js/jquery.minicalendar.js"></script>
+        <script>
+                    (function ($) {
+                        $(function () {
+                            $('#mini-calendar').miniCalendar();
+                        });
+                    })(jQuery);
+        </script>
+    </body>
+</html>
