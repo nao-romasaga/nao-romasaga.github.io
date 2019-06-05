@@ -81,6 +81,30 @@
             "type": "orange"
         },
         {
+            "startDay": "6",
+            "endDay": "6",
+            "title": "[イベント] <br class='hidden pcBlock'>カウントダウンクエスト3日前",
+            "startPrefix": "4:00 開始<br>",
+            "endSuffix": "",
+            "type": "orange"
+        },
+        {
+            "startDay": "7",
+            "endDay": "7",
+            "title": "[イベント] <br class='hidden pcBlock'>カウントダウンクエスト2日前",
+            "startPrefix": "4:00 開始<br>",
+            "endSuffix": "",
+            "type": "orange"
+        },
+        {
+            "startDay": "8",
+            "endDay": "8",
+            "title": "[イベント] <br class='hidden pcBlock'>カウントダウンクエスト1日前",
+            "startPrefix": "4:00 開始<br>",
+            "endSuffix": "",
+            "type": "orange"
+        },
+        {
             "startDay": "1",
             "endDay": "15",
             "title": "[イベント] <br class='hidden pcBlock'>忘れられた礼拝堂へ",
