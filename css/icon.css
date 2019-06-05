@@ -147,6 +147,13 @@
         background-size: cover !important;
         margin: 0 0 0 0px;
     }    
+    .icon_sm_buf {
+        display: inline-block;
+        width: 35px !important;
+        height: 35px !important;
+        background-size: cover !important;
+        margin: 0 0 0 0px;
+    }
     .cutin { 
         display: inline-block;
         width: 250px;
