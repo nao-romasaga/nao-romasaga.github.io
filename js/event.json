@@ -4,10 +4,10 @@
     "event": [
         {
             "startDay": "6",
-            "endDay": "7",
+            "endDay": "6",
             "title": "[キャンペーン] <br class='hidden pcBlock'>武道会 スタ半",
             "startPrefix": "4:00 開始<br>",
-            "endSuffix": "<br>4:00 終了",
+            "endSuffix": "<br>7日4:00 終了",
             "type": "blue"
         },
         {
