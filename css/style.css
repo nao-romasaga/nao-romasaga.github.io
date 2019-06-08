@@ -169,7 +169,8 @@ body {
 }
 #footer {
     position: fixed;
-    bottom: 0;
+    bottom: 5px;
+    right: 5px;
     height: 150px;
     z-index: 3;
 }
