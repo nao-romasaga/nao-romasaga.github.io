@@ -32,11 +32,6 @@
         <link rel="stylesheet" type="text/css" href="./css/bootstrap/bootstrap.min.css">
         <script src="./js/popper.min.js"></script>
         <script src="./js/bootstrap.min.js"></script>
-        <!--
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-        -->
         <link rel="stylesheet" type="text/css" href="./css/style.css">
         <link rel="stylesheet" type="text/css" href="./css/accordion.css">
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
@@ -179,7 +174,7 @@
                 <br>
                 <hr>
                 <!--スクエア--><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5008373409434899" data-ad-slot="9303963278" data-ad-format="auto" data-full-width-responsive="true"></ins><script> (adsbygoogle = window.adsbygoogle || []).push({});</script>
-                
+
             </div>
         </div> <!-- main -->
 
@@ -188,17 +183,22 @@
         <!-- ============================= -->
         <table class="width-100 text-center d-none charTable" id="CHAR_TEMPLATE">
             <tr class="small text-center ">
-                <td rowspan="3">
+                <td rowspan="4">
                     <span class="char-winner char dot_mid dot"></span>
                 </td>
                 <td colspan="7">
-                    <p class="width-100 pad0 mar0 fukidashi charName" style=" position: relative; left: -60px; width:110%"></p>
+                    <p class="width-100 pad0 mar0 label-text charName" style=" position: relative; left: -60px; width:110%"></p>
                 </td>
                 <td>
                     <p class="width-100 pad0 mar0 charUnset" onclick=""><img src="./img/icon/icon_close.png" width="25" height="25"></p>
                 </td>
                 <td>
                     <p class="width-100 pad0 mar0 openMenu" onclick=""><img src="./img/icon/icon_menu.png" width="25" height="25"></p>
+                </td>
+            </tr>
+            <tr class="small text-center ">
+                <td colspan="10">
+                    <p class="width-100 pad0 mar0 fukidashi">合計:<span class="SUM"></span><span class="d-none d-lg-inline">(AVG:<span class="AVG"></span>)</span> おすすめ:<span class="RECO"></span></p>
                 </td>
             </tr>
             <tr class="text-center nowData" onclick="">
@@ -227,28 +227,46 @@
                 <td colspan="10" class="">
                     <div class="fukidashiInput">
                         <table class="fukidashi width-100 inputArea">
-                            <tr class="text-nowrap">
-                                <td class="text-center" colspan="4">▼ステータス入力▼</td>
-                            </tr>
-                            <tr class="text-nowrap">
+                            <tr style="">
                                 <td colspan="4">
-                                    ＨＰ　<img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="HP" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charHP" data-param="HP" style="width: 100px" value="3"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="HP" data-pm="plus" onclick="">
+                                    <button class="icon_btn_on btn_close" style="background-size: 150px 40px; width:150px; height: 40px;">閉じる</button>
                                 </td>
                             </tr>
-                            <tr class="text-nowrap">
+                            <tr class="text-nowrap d-table-row d-lg-none">
+                                <td class="text-center" colspan="2">▼ステータス入力▼</td>
+                                <td class="text-center" colspan="2">▼周回目安▼</td>
+                            </tr>
+                            <tr class="text-nowrap d-table-row d-lg-none">
+                                <td >ＨＰ</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="HP" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charHP" data-param="HP" style="width: 50px" value="3"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="HP" data-pm="plus" onclick=""></td>
+                                <td>ステータス合計</td>
+                            </tr>
+                            <tr class="text-nowrap d-table-row d-lg-none">
                                 <td >腕力</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="STR" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charSTR" data-param="STR" style="width: 50px" value="3"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="STR" data-pm="plus" onclick=""></td>
+                                <td><span class="SUM"></span></td>
+                            </tr>
+                            <tr class="text-nowrap d-table-row d-lg-none">
                                 <td >体力</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="VIT" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charVIT" data-param="VIT" style="width: 50px" value="3"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="VIT" data-pm="plus" onclick=""></td>
                             </tr>
-                            <tr class="text-nowrap">
+                            <tr class="text-nowrap d-table-row d-lg-none">
                                 <td class="small">器用さ</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="DEX" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charDEX" data-param="DEX" style="width: 50px" value="6"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="DEX" data-pm="plus" onclick=""></td>
+                                <td>旧上限合計369から</td>
+                            </tr>
+                            <tr class="text-nowrap d-table-row d-lg-none">
                                 <td class="small">素早さ</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="AGI" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charAGI" data-param="AGI" style="width: 50px" value="7"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="AGI" data-pm="plus" onclick=""></td>
+                                <td>平均 <span class="AVG"></span></td>
                             </tr>
-                            <tr class="text-nowrap">
+                            <tr class="text-nowrap d-table-row d-lg-none">
                                 <td >知力</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="INT" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charINT" data-param="INT" style="width: 50px" value="9"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="INT" data-pm="plus" onclick=""></td>
-                                <td >精神</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="MND" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charMND" data-param="MND" style="width: 50px" value="6"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="MND" data-pm="plus" onclick=""></td>
                             </tr>
-                            <tr class="text-nowrap">
+                            <tr class="text-nowrap d-table-row d-lg-none">
+                                <td >精神</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="MND" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charMND" data-param="MND" style="width: 50px" value="6"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="MND" data-pm="plus" onclick=""></td>
+                                <td>おすすめ周回場所</td>
+                            </tr>
+                            <tr class="text-nowrap d-table-row d-lg-none">
                                 <td >愛</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="AI" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charAI" data-param="AI" style="width: 50px" value="7"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="AI" data-pm="plus" onclick=""></td>
+                                <td><span class="RECO"></span></td>
+                            </tr>
+                            <tr class="text-nowrap d-table-row d-lg-none">
                                 <td >魅力</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="MI" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charMI" data-param="MI" style="width: 50px" value="6"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="MI" data-pm="plus" onclick=""></td>
                             </tr>
                             <tr class="char-bottom">
@@ -265,21 +283,6 @@
                                         <input type="tel" class="input allparams" placeholder="500.50.41.01.20.30.40.50.99">
                                         <button class="icon_btn_on hanei" style="width:100px; height:40px; background-size: 100px 40px;">反映</button>
                                     </div>
-                                </td>
-                            </tr>
-                            <tr class="char-bottom text-nowrap">
-                                <td class="text-center" colspan="4">▼周回目安▼</td>
-                            </tr>
-                            <tr class="char-bottom">
-                                <td class="text-right" colspan="2">
-                                    合計ステータス:　<br>
-                                    旧上限合計369から:　<br>
-                                    おすすめ周回場所:　
-                                </td>
-                                <td class="text-left" colspan="2">
-                                    <span class="SUM"></span><br>
-                                    平均<span class="AVG"></span><br>
-                                    <span class="RECO"></span>
                                 </td>
                             </tr>
                             <tr class="char-bottom text-nowrap">
@@ -342,7 +345,7 @@
                 </div>
             </div> 
         </div>
-        
+
         <style>
             /* モーダルウィンドウのスタイル */
             .modal {
