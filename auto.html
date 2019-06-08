@@ -73,20 +73,40 @@
                     <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">[new] 全力オートシミュレータを作成しました<a href="https://t.co/wlT0E1mLzJ">https://t.co/wlT0E1mLzJ</a><br><br>覚醒パターンによる技威力の効率化や回復発動チャンスなども調べられます(･∀･) <a href="https://t.co/SchEaJbh0E">pic.twitter.com/SchEaJbh0E</a></p>&mdash; (nAo)@ロマサガRS (@nao_romasaga_rs) <a href="https://twitter.com/nao_romasaga_rs/status/1116035893498863616?ref_src=twsrc%5Etfw">April 10, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                 </div>
                 <br>
-                <!--
-                <p class="slide1 loading"><i class="dot_yuki dot_mid dot char-hashiri"></i></p>
-                <p class="slide2 loading"><i class="dot_monika dot_mid dot char-hashiri"></i></p>
-                -->
+                <label class="badge badge-pill badge-light">絞り込み</label>
+                <div class="style-bgcolor text-center small row" style="width:100%; margin: 0px;">
+                    <ul class="nav text-center width-100">
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" href="#icon_ken"><span class="icon_mini icon_ken" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" href="#icon_dken"><span class="icon_mini icon_dken" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" href="#icon_ono"><span class="icon_mini icon_ono" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" href="#icon_kon"><span class="icon_mini icon_kon" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" href="#icon_tai"><span class="icon_mini icon_tai" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" href="#icon_ju"><span class="icon_mini icon_ju" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" href="#icon_sken"><span class="icon_mini icon_sken" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" href="#icon_yumi"><span class="icon_mini icon_yumi" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" href="#icon_yari"><span class="icon_mini icon_yari" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" href="#icon_tsue"><span class="icon_mini icon_tsue" onclick=""></span></a></li>
+                    </ul>
+                </div>
+                <div class="text-center opacity-char-back weaponList d-none" id="_icon_ken"><h5 class="game-banner"><span class="icon_mini icon_ken"></span></h5></div>
+                <div class="text-center opacity-char-back weaponList d-none" id="_icon_dken"><h5 class="game-banner"><span class="icon_mini icon_dken"></span></h5></div>
+                <div class="text-center opacity-char-back weaponList d-none" id="_icon_ono"><h5 class="game-banner"><span class="icon_mini icon_ono"></span></h5></div>
+                <div class="text-center opacity-char-back weaponList d-none" id="_icon_sken"><h5 class="game-banner"><span class="icon_mini icon_sken"></span></h5></div>
+                <div class="text-center opacity-char-back weaponList d-none" id="_icon_yumi"><h5 class="game-banner"><span class="icon_mini icon_yumi"></span></h5></div>
+                <div class="text-center opacity-char-back weaponList d-none" id="_icon_yari"><h5 class="game-banner"><span class="icon_mini icon_yari"></span></h5></div>
+                <div class="text-center opacity-char-back weaponList d-none" id="_icon_ju"><h5 class="game-banner"><span class="icon_mini icon_ju"></span></h5></div>
+                <div class="text-center opacity-char-back weaponList d-none" id="_icon_tai"><h5 class="game-banner"><span class="icon_mini icon_tai"></span></h5></div>
+                <div class="text-center opacity-char-back weaponList d-none" id="_icon_kon"><h5 class="game-banner"><span class="icon_mini icon_kon"></span></h5></div>
+                <div class="text-center opacity-char-back weaponList d-none" id="_icon_tsue"><h5 class="game-banner"><span class="icon_mini icon_tsue"></span></h5></div>
+
                 <div id="slider-pro" class="slider-pro">
                     <div class="sp-slides">
                         <div class="sp-slide text-center opacity-char-back" id="RS1"><h5 class="game-banner">ロマンシング・サガ</h5></div>
                         <div class="sp-slide text-center opacity-char-back" id="RS2"><h5 class="game-banner">ロマンシング・サガ2(1)</h5></div>
                         <div class="sp-slide text-center opacity-char-back" id="RS22"><h5 class="game-banner">ロマンシング・サガ2(2)</h5></div>
                         <div class="sp-slide text-center opacity-char-back" id="RS3"><h5 class="game-banner">ロマンシング・サガ3</h5></div>
-                        <div class="sp-slide text-center opacity-char-back">
-                            <h5 class="game-banner">サガフロンティア1/2</h5>
-                            <span id="SF1"></span><br><span id="SF2"></span>
-                        </div>
+                        <div class="sp-slide text-center opacity-char-back" id="SF1"><h5 class="game-banner">サガフロンティア1</h5></div>
+                        <div class="sp-slide text-center opacity-char-back" id="SF2"><h5 class="game-banner">サガフロンティア2</h5></div>
                         <div class="sp-slide text-center opacity-char-back">
                             <h5 class="game-banner">
                                 アンリミテッド・サガ<span class="hidden pcBlock"> / </span><br class="hidden spBlock">
@@ -166,6 +186,7 @@
                 <br>
                 <label class="badge badge-pill badge-light auto-start zenryokuAuto" id="culcStart">全力AUTO 開始</label>
                 <br>
+                <!--
                 <div class="acdList skillListSP switch ">
                     <ul>
                         <li>
@@ -237,7 +258,8 @@
                             </ul>
                         </li>
                     </ul>
-                </div>                
+                </div>
+                -->
 
                 <div class="opacity-char-back text-center culcAfter" id="culcSummaryArea">
                     <label class="badge badge-pill badge-light" style="width:90%"><p style='border-bottom:1px solid; margin-bottom: 2px;'>シミュレーションサマリ</p>生命の水など全力AUTOで使われないものは<br>使えるタイミングが使用回数に表示されます</label>
