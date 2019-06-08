@@ -2,7 +2,9 @@
 @import url("icon.css");
 @import url("git.css");
 @import url("https://use.fontawesome.com/releases/v5.8.1/css/all.css");
-
+html {
+  touch-action: manipulation;
+}
 .status_plus{
     font-size: 20px;
     background-color: rgba(108 , 188,224, 1);
@@ -35,6 +37,12 @@
 }
 
 .title-text{
+    background:url(../img/bg_window_large.png);
+    background-size:100% 100%;
+    color:#faf0b4;
+    padding:5px;    
+}
+.label-text{
     background:url(../img/bg_window_large.png);
     background-size:100% 100%;
     color:#faf0b4;
