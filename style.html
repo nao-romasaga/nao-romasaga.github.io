@@ -278,95 +278,93 @@
                     </div>
                 </div>
                 <div id="styleSkill" class=' styleSkillArea'></div>
+                <br>
+                <!--スクエア--><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5008373409434899" data-ad-slot="9303963278" data-ad-format="auto" data-full-width-responsive="true"></ins><script> (adsbygoogle = window.adsbygoogle || []).push({});</script>
+                <br>
             </div>
-            <br>
-            <br>
-            <!--スクエア--><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5008373409434899" data-ad-slot="9303963278" data-ad-format="auto" data-full-width-responsive="true"></ins><script> (adsbygoogle = window.adsbygoogle || []).push({}); </script>
+        </div> <!-- main -->
+        <!-- モーダルウィンドウ -->
+        <div class="modal" id="modal01"> 
+            <!-- モーダルウィンドウが開いている時のオーバーレイ -->
+            <div class="overLay modalClose"></div>
+            <!-- モーダルウィンドウの中身 -->
+            <div class="inner text-center width-100" id="allParamConfirmInner">
+                <div id="allParamConfirm">
 
+                </div>
+                <div class="">
+                    <button data-id="ng" class="icon_btn_off modalClose" style="background-size: 150px 40px; width:150px;">やり直し</button>
+                    <button data-id="ok" class="icon_btn_on modalClose" style="background-size: 150px 40px; width:150px;">決定</button>
+                </div>
+            </div> 
         </div>
-    </div> <!-- main -->
-    <!-- モーダルウィンドウ -->
-    <div class="modal" id="modal01"> 
-        <!-- モーダルウィンドウが開いている時のオーバーレイ -->
-        <div class="overLay modalClose"></div>
-        <!-- モーダルウィンドウの中身 -->
-        <div class="inner text-center width-100" id="allParamConfirmInner">
-            <div id="allParamConfirm">
+        <style>
+            /* モーダルウィンドウのスタイル */
+            .modal {
+                /* 
+                position:absolute;
+                */
+                width:100%;
+                height:100%;
+                top:0;
+                left:0;
+                display:none;
+            }
 
-            </div>
-            <div class="">
-                <button data-id="ng" class="icon_btn_off modalClose" style="background-size: 150px 40px; width:150px;">やり直し</button>
-                <button data-id="ok" class="icon_btn_on modalClose" style="background-size: 150px 40px; width:150px;">決定</button>
-            </div>
-        </div> 
-    </div>
-    <style>
-        /* モーダルウィンドウのスタイル */
-        .modal {
-            /* 
-            position:absolute;
-            */
-            width:100%;
-            height:100%;
-            top:0;
-            left:0;
-            display:none;
-        }
+            /* オーバーレイのスタイル */
+            .overLay {
+                /* 
+                position:absolute;
+                */
+                top:0;
+                left:0;
+                background:rgba(200,200,200,0.9);
+                width:100%;
+                height:100%;
+                z-index:10;
+            }
 
-        /* オーバーレイのスタイル */
-        .overLay {
-            /* 
-            position:absolute;
-            */
-            top:0;
-            left:0;
-            background:rgba(200,200,200,0.9);
-            width:100%;
-            height:100%;
-            z-index:10;
-        }
+            /* モーダルウィンドウの中身のスタイル */
+            .modal .inner {
+                position:absolute;
+                z-index:11;
+                top:50%;
+            }
+            @keyframes modal{
+                0% {top:-100%}
+                100% {top:50%}
+            }
+            @keyframes modalClose {
+                0% {top:50%}
+                100% {top:100%}
+            }
+            .gachaText{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform : translate(-50%,-50%);
+                width: 100%;
+                font-size: 3.3vw;
+                text-align: center;
+                background: linear-gradient(0deg, rgba(187, 174,84,1), rgba(244,244,200,1));
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
 
-        /* モーダルウィンドウの中身のスタイル */
-        .modal .inner {
-            position:absolute;
-            z-index:11;
-            top:50%;
-        }
-        @keyframes modal{
-            0% {top:-100%}
-            100% {top:50%}
-        }
-        @keyframes modalClose {
-            0% {top:50%}
-            100% {top:100%}
-        }
-        .gachaText{
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform : translate(-50%,-50%);
-            width: 100%;
-            font-size: 3.3vw;
-            text-align: center;
-            background: linear-gradient(0deg, rgba(187, 174,84,1), rgba(244,244,200,1));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-    </style>
-    <!-- Twitter universal website tag code -->
-    <script>
-        !function (e, t, n, s, u, a) {
-            e.twq || (s = e.twq = function () {
-                s.exe ? s.exe.apply(s, arguments) : s.queue.push(arguments);
-            }, s.version = '1.1', s.queue = [], u = t.createElement(n), u.async = !0, u.src = '//static.ads-twitter.com/uwt.js',
-                    a = t.getElementsByTagName(n)[0], a.parentNode.insertBefore(u, a))
-        }(window, document, 'script');
-        // Insert Twitter Pixel ID and Standard Event data below
-        twq('init', 'o1u7p');
-        twq('track', 'PageView');
-    </script>
-    <!-- End Twitter universal website tag code -->
-</body>
+        </style>
+        <!-- Twitter universal website tag code -->
+        <script>
+            !function (e, t, n, s, u, a) {
+                e.twq || (s = e.twq = function () {
+                    s.exe ? s.exe.apply(s, arguments) : s.queue.push(arguments);
+                }, s.version = '1.1', s.queue = [], u = t.createElement(n), u.async = !0, u.src = '//static.ads-twitter.com/uwt.js',
+                        a = t.getElementsByTagName(n)[0], a.parentNode.insertBefore(u, a))
+            }(window, document, 'script');
+            // Insert Twitter Pixel ID and Standard Event data below
+            twq('init', 'o1u7p');
+            twq('track', 'PageView');
+        </script>
+        <!-- End Twitter universal website tag code -->
+    </body>
 </html>
