@@ -59,7 +59,7 @@
         {
             "startDay": "1",
             "endDay": "15",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>イベントキャラ育成 2倍・3倍",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>エミリア・ハリード・ファティーマ・ヴァルドー・レン育成 2倍・3倍",
             "startPrefix": "4:00 開始<br>",
             "endSuffix": "<br>4:00 終了",
             "type": "blue"
@@ -167,8 +167,16 @@
             "startPrefix": "12:00 開始<br>",
             "endSuffix": "<br>4:00 終了",
             "type": "green"
+        },
+         {
+            "startDay": "9",
+            "endDay": "21",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>アセルス・白薔薇・T260G・特殊工作車育成 2倍・3倍",
+            "startPrefix": "12:00 開始<br>",
+            "endSuffix": "<br>4:00 終了",
+            "type": "blue"
         }
-    ],
+   ],
     "holiday": [
     ]
 }
