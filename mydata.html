@@ -113,99 +113,124 @@
                         <div class="col-4 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_on changeBase" data-base="58" style="width:100%; background-size: 100% 100%;">VH11</button></div>
                     </div>
                     <br>
+                    <div class="d-flex justify-content-between" style="background: url(./img/bg_window_large.png);background-size: 100% 100%;color: #faf0b4;padding: 10px 30px;">
+                        <div>スタイル別上限の確認</div>
+                        <div>
+                            <button class="icon_btn_on btn_close small" style="background-size: 100px 30px; width:100px; height: 30px;" data-id="ID927">開/閉</button></div>
+                    </div>
+                    <div class="style-bgcolor" id="LIMIT_TABLE_DIV">
+                        <table class="width-100 text-center table-bordered" id="LIMIT_TABLE">
+                            <tbody>
+                                <tr class="text-center">
+                                    <td colspan="21">
+                                        <p class="width-100 pad0 mar0 darkButton charName">キャラ名</p>
+                                    </td>
+                                </tr>
+                                <tr class="text-center">
+                                    <td rowspan=2 colspan=2 class="small"><span class="d-none d-md-inline">スタイル別<br></span>限界<span class="d-none d-md-inline">値</span>(+<span id="PLUS_LIMIT"></span>)</td>
+                                    <td colspan="9" class="text-center table-primary d-none d-md-table-cell">ステータス限界値</td>
+                                    <td colspan="9" class="text-center table-info">ステータス上昇余白</td>
+                                </tr>
+                                <tr id="styleLabelRow">
+                                    <td class="paramHead paramCell2 table-primary d-none d-md-table-cell">腕</td>
+                                    <td class="paramHead paramCell2 table-primary d-none d-md-table-cell">体</td>
+                                    <td class="paramHead paramCell2 table-primary d-none d-md-table-cell">器</td>
+                                    <td class="paramHead paramCell2 table-primary d-none d-md-table-cell">速</td>
+                                    <td class="paramHead paramCell2 table-primary d-none d-md-table-cell">知</td>
+                                    <td class="paramHead paramCell2 table-primary d-none d-md-table-cell">精</td>
+                                    <td class="paramHead paramCell2 table-primary d-none d-md-table-cell">愛</td>
+                                    <td class="paramHead paramCell2 table-primary d-none d-md-table-cell">魅</td>
+                                    <td class="paramHead paramCell2 table-primary d-none d-md-table-cell"><span class="hidden pcBlock">合</span>計</td>
+                                    <td class="paramHead paramCell2 table-info">腕</td>
+                                    <td class="paramHead paramCell2 table-info">体</td>
+                                    <td class="paramHead paramCell2 table-info">器</td>
+                                    <td class="paramHead paramCell2 table-info">速</td>
+                                    <td class="paramHead paramCell2 table-info">知</td>
+                                    <td class="paramHead paramCell2 table-info">精</td>
+                                    <td class="paramHead paramCell2 table-info">愛</td>
+                                    <td class="paramHead paramCell2 table-info">魅</td>
+                                    <td class="paramHead paramCell2 table-info"><span class="hidden pcBlock">合</span>計</td>
+                                </tr>
+                                <tr class="text-center d-none" id="STYLE_TEMPLATE">
+                                    <td class="MAXLABEL d-none" colspan="2">最大値</td>
+                                    <td class="IMG">
+                                        <img class="rare" src="./img/icon/icon_SS.png" width="25">
+                                    </td>
+                                    <td class="IMG">
+                                        <img class="icn" src="./img/style_icon/ID4c7d6.png" width="30">
+                                    </td>
+                                    <td class="paramCell2 ORGSTR d-none d-md-table-cell">99</td>
+                                    <td class="paramCell2 ORGVIT d-none d-md-table-cell">99</td>
+                                    <td class="paramCell2 ORGDEX d-none d-md-table-cell">99</td>
+                                    <td class="paramCell2 ORGAGI d-none d-md-table-cell">99</td>
+                                    <td class="paramCell2 ORGINT d-none d-md-table-cell">99</td>
+                                    <td class="paramCell2 ORGMND d-none d-md-table-cell">99</td>
+                                    <td class="paramCell2 ORGAI d-none d-md-table-cell">99</td>
+                                    <td class="paramCell2 ORGMI d-none d-md-table-cell">99</td>
+                                    <td class="paramCell2 ORGSUM d-none d-md-table-cell">999</td>
+                                    <td class="paramCell2 STR">99</td>
+                                    <td class="paramCell2 VIT">99</td>
+                                    <td class="paramCell2 DEX">99</td>
+                                    <td class="paramCell2 AGI">99</td>
+                                    <td class="paramCell2 INT">99</td>
+                                    <td class="paramCell2 MND">99</td>
+                                    <td class="paramCell2 AI">99</td>
+                                    <td class="paramCell2 MI">99</td>
+                                    <td class="paramCell2 SUM">999</td>
+                                </tr>
+                                <tr class="text-center" style="background-color: white;">
+                                    <td class="text-right small" colspan=2 >
+                                        あなたの<span><br class="hidden spBlock">キャラ</span>
+                                    </td>
+                                    <td class="paramCell1 d-none d-md-table-cell"><span class="YOURSTR">0</span></td>
+                                    <td class="paramCell2 d-none d-md-table-cell"><span class="YOURVIT">0</span></td>
+                                    <td class="paramCell2 d-none d-md-table-cell"><span class="YOURDEX">0</span></td>
+                                    <td class="paramCell2 d-none d-md-table-cell"><span class="YOURAGI">0</span></td>
+                                    <td class="paramCell2 d-none d-md-table-cell"><span class="YOURINT">0</span></td>
+                                    <td class="paramCell2 d-none d-md-table-cell"><span class="YOURMND">0</span></td>
+                                    <td class="paramCell2 d-none d-md-table-cell"><span class="YOURAI ">0</span></td>
+                                    <td class="paramCell2 d-none d-md-table-cell"><span class="YOURMI ">0</span></td>
+                                    <td class="paramCell2 d-none d-md-table-cell"><span class="YOURSUM">000</span></td>
+                                    <td class="paramCell1"><span class="YOURSTR">0</span></td>
+                                    <td class="paramCell2"><span class="YOURVIT">0</span></td>
+                                    <td class="paramCell2"><span class="YOURDEX">0</span></td>
+                                    <td class="paramCell2"><span class="YOURAGI">0</span></td>
+                                    <td class="paramCell2"><span class="YOURINT">0</span></td>
+                                    <td class="paramCell2"><span class="YOURMND">0</span></td>
+                                    <td class="paramCell2"><span class="YOURAI">0</span></td>
+                                    <td class="paramCell2"><span class="YOURMI">0</span></td>
+                                    <td class="paramCell2"><span class="YOURSUM">000</span></td>
+                                </tr>
+                                <tr class="text-center" style="background-color: white;    border-top: 1px solid darkgray;">
+                                    <td class="text-right small" colspan=2 >
+                                        限界まで
+                                    </td>
+                                    <td class="paramCell1 d-none d-md-table-cell"><span class="LIMITSTR">0</span></td>
+                                    <td class="paramCell2 d-none d-md-table-cell"><span class="LIMITVIT">0</span></td>
+                                    <td class="paramCell2 d-none d-md-table-cell"><span class="LIMITDEX">0</span></td>
+                                    <td class="paramCell2 d-none d-md-table-cell"><span class="LIMITAGI">0</span></td>
+                                    <td class="paramCell2 d-none d-md-table-cell"><span class="LIMITINT">0</span></td>
+                                    <td class="paramCell2 d-none d-md-table-cell"><span class="LIMITMND">0</span></td>
+                                    <td class="paramCell2 d-none d-md-table-cell"><span class="LIMITAI ">0</span></td>
+                                    <td class="paramCell2 d-none d-md-table-cell"><span class="LIMITMI ">0</span></td>
+                                    <td class="paramCell2 d-none d-md-table-cell"><span class="LIMITSUM">000</span></td>
+                                    <td class="paramCell1"><span class="LIMITSTR">0</span></td>
+                                    <td class="paramCell2"><span class="LIMITVIT">0</span></td>
+                                    <td class="paramCell2"><span class="LIMITDEX">0</span></td>
+                                    <td class="paramCell2"><span class="LIMITAGI">0</span></td>
+                                    <td class="paramCell2"><span class="LIMITINT">0</span></td>
+                                    <td class="paramCell2"><span class="LIMITMND">0</span></td>
+                                    <td class="paramCell2"><span class="LIMITAI">0</span></td>
+                                    <td class="paramCell2"><span class="LIMITMI">0</span></td>
+                                    <td class="paramCell2"><span class="LIMITSUM">000</span></td>
+                                </tr>                            </tbody>
+                        </table>
+                    </div>
+                    <br>
                     <h6 id="listLabel" style="background: url(./img/bg_window_large.png);background-size: 100% 100%;color: #faf0b4;padding: 10px 30px;"><span id="label1"></span><span id="label2">ステータス一覧</span></h6>
                     <div id="example-table-display" class="text-center">
                         <div id="example-table" style="width:402px"></div>
                     </div>
-                    <!--
-                    <label class="badge badge-pill badge-light">スタイル別上限の確認 / キャラクター情報更新</label>
-                    <table class="width-100 text-center charTable charTmplIDc3d" data-charid="IDc3d" data-styleid="ID4c7d6">
-                        <tbody><tr class="small text-center ">
-                                <td>
-                                    <p class="width-100 pad0 mar0 openMenu" onclick="" data-id="IDc3d"><img src="./img/icon/icon_menu.png" width="25" height="25"></p>
-                                </td>
-                                <td colspan="9">
-                                    <p class="width-100 pad0 mar0 darkButton">白薔薇姫</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="10" class="inputArea" style="display: table-cell;">
-                                    <table class="fukidashi width-100">
-                                        <tbody><tr class="text-nowrap">
-                                                <td class="text-center" colspan="4">▼ステータス入力▼</td>
-                                            </tr>
-                                            <tr class="text-nowrap">
-                                                <td >腕力</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="STR" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charSTR" style="width: 50px" value="3"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="STR" data-pm="plus" onclick=""></td>
-                                                <td >体力</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="VIT" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charVIT" style="width: 50px" value="3"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="VIT" data-pm="plus" onclick=""></td>
-                                            </tr>
-                                            <tr class="text-nowrap">
-                                                <td >器用さ</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="DEX" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charDEX" style="width: 50px" value="6"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="DEX" data-pm="plus" onclick=""></td>
-                                                <td >素早さ</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="AGI" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charAGI" style="width: 50px" value="7"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="AGI" data-pm="plus" onclick=""></td>
-                                            </tr>
-                                            <tr class="text-nowrap">
-                                                <td >知力</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="INT" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charINT" style="width: 50px" value="9"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="INT" data-pm="plus" onclick=""></td>
-                                                <td >精神</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="MND" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charMND" style="width: 50px" value="6"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="MND" data-pm="plus" onclick=""></td>
-                                            </tr>
-                                            <tr class="text-nowrap">
-                                                <td >愛</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="AI" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charAI" style="width: 50px" value="7"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="AI" data-pm="plus" onclick=""></td>
-                                                <td >魅力</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="MI" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charMI" style="width: 50px" value="6"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="MI" data-pm="plus" onclick=""></td>
-                                            </tr>
-                                            <tr class="char-bottom">
-                                                <td colspan="9">
-                                                    <span data-toggle="tooltip" data-placement="top" data-html="true" style="margin-left:10px" title="" data-original-title="
-                                                          腕.体.器.速.知.精.愛.魅の順に入力出来ます<br>
-                                                          区切り文字は,.スペースタブが利用可能です<br>
-                                                          区切り文字なしで16桁の数字でも入力可能です<br>
-                                                          ステータス1桁の場合は先頭に0をつけてください">
-                                                        まとめて入力<button class="icon_info_md"></button>
-                                                    </span>
-                                                    <div class="text-center width-100">
-                                                        <input type="tel" class="input allparams" placeholder="50.41.01.20.30.40.50.99" data-id="IDc3d">
-                                                        <button class="icon_btn_on hanei" style="width:100px; height:40px; background-size: 100px 40px;" data-id="IDc3d">反映</button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr class="char-bottom text-nowrap">
-                                                <td class="text-center" colspan="4">▼スタイル選択▼</td>
-                                            </tr>
-                                            <tr style=""><td colspan="4" class="STYLE_ICON"><span class="icon_bg_ss"><button class="style style_icon_ss" style="background:url(https://nao-romasaga.github.io/img/style_icon/ID4c7d6.png) no-repeat;" data-id="ID4c7d6"></button></span></td></tr>
-                                            <tr style=""><td colspan="4">
-                                                    <button class="icon_btn_red charUnset" style="background-size: 150px 40px; width:150px; height: 40px;" data-id="IDc3d">編成から外す</button>
-                                                    <button class="icon_btn_on btn_close" style="background-size: 150px 40px; width:150px; height: 40px;" data-id="IDc3d">閉じる</button>
-                                                </td></tr>
-                                        </tbody></table>
-                                </td>
-                            </tr>
-                            <tr class="text-center nowData" onclick="" data-id="IDc3d">
-                                <td style="width:20%" colspan="2" data-id="IDc3d">
-                                    <span class="char dot_mid dot char-winner" style="background:url(https://nao-romasaga.github.io/img/dot/ID4c7d6.png) no-repeat; margin-left:20px;"></span>
-                                </td>
-                                <td style="width:10%">腕<br><span class="STR charSTRIDc3d">53</span></td>
-                                <td style="width:10%; border-left: 1px solid #faf0b4">体<br><span class="VIT charVITIDc3d">54</span></td>
-                                <td style="width:10%; border-left: 1px solid #faf0b4">器<br><span class="DEX charDEXIDc3d">55</span></td>
-                                <td style="width:10%; border-left: 1px solid #faf0b4">速<br><span class="AGI charAGIIDc3d">54</span></td>
-                                <td style="width:10%; border-left: 1px solid #faf0b4">知<br><span class="INT charINTIDc3d">58</span></td>
-                                <td style="width:10%; border-left: 1px solid #faf0b4">精<br><span class="MND charMNDIDc3d">57</span></td>
-                                <td style="width:10%; border-left: 1px solid #faf0b4">愛<br><span class="AI charAIIDc3d">58</span></td>
-                                <td style="width:10%; border-left: 1px solid #faf0b4">魅<br><span class="MI charMIIDc3d">55</span></td>
-                            </tr>
-                            <tr class="text-center LIMIT limitID4c7d6" style="border: 1px solid #faf0b4" data-styleid="ID4c7d6" data-charid="IDc3d">
-                                <td style="width:10%">
-                                    <img class="rare" src="./img/icon/icon_SS.png" width="25">
-                                </td>
-                                <td style="width:10%">
-                                    <img class="icn" src="./img/style_icon/ID4c7d6.png" width="30">
-                                </td>
-                                <td class="STR status_plus" style="width:10%; ">2</td>
-                                <td class="VIT status_plus" style="width:10%; border-left: 1px solid #faf0b4;">2</td>
-                                <td class="DEX status_plus" style="width:10%; border-left: 1px solid #faf0b4;">3</td>
-                                <td class="AGI status_plus" style="width:10%; border-left: 1px solid #faf0b4;">3</td>
-                                <td class="INT status_plus" style="width:10%; border-left: 1px solid #faf0b4;">3</td>
-                                <td class="MND status_plus" style="width:10%; border-left: 1px solid #faf0b4;">3</td>
-                                <td class="AI status_plus" style="width:10%; border-left: 1px solid #faf0b4;">3</td>
-                                <td class="MI status_plus" style="width:10%; border-left: 1px solid #faf0b4;">3</td>
-                            </tr></tbody></table>
-                    -->
                 </div><!-- isLogin -->
                 <hr>
                 <!--スクエア--><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5008373409434899" data-ad-slot="9303963278" data-ad-format="auto" data-full-width-responsive="true"></ins><script> (adsbygoogle = window.adsbygoogle || []).push({});</script>
@@ -220,7 +245,7 @@
                         }, s.version = '1.1', s.queue = [], u = t.createElement(n), u.async = !0, u.src = '//static.ads-twitter.com/uwt.js',
                                 a = t.getElementsByTagName(n)[0], a.parentNode.insertBefore(u, a))
                     }(window, document, 'script');
-        // Insert Twitter Pixel ID and Standard Event data below
+                    // Insert Twitter Pixel ID and Standard Event data below
                     twq('init', 'o1u7p');
                     twq('track', 'PageView');
         </script>
