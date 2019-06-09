@@ -159,6 +159,14 @@
             "title": "[交換所] <br class='hidden pcBlock'>メダル(ワグナス<span class='hidden pcBlock'>/タチアナ</span>) 交換終了",
             "type": "red",
             "startNone": true
+        },
+        {
+            "startDay": "9",
+            "endDay": "21",
+            "title": "[ガチャ] <br class='hidden pcBlock'>半周年祭 アセルス編",
+            "startPrefix": "12:00 開始<br>",
+            "endSuffix": "<br>4:00 終了",
+            "type": "green"
         }
     ],
     "holiday": [
