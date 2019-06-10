@@ -175,7 +175,15 @@
             "startPrefix": "12:00 開始<br>",
             "endSuffix": "<br>4:00 終了",
             "type": "blue"
-        }
+        },
+        {
+            "startDay": "9",
+            "endDay": "21",
+            "title": "[期間限定ミッション] <br class='hidden pcBlock'>聖塔アセルス",
+            "startPrefix": "12:00 開始<br>",
+            "endSuffix": "<br>4:00 終了",
+            "type": "orange"
+        }        
    ],
     "holiday": [
     ]
