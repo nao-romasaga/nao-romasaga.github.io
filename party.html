@@ -78,13 +78,19 @@
                 <div class="opacity kadomaru">侯国学園以降にでたスタイル、キャラクターは上限値がわかっていません。<br>みなさんが入力してくださった値を元に暫定的に「ここまでは上がる」というのを補完していく予定です</div>
                 <br>
                 <div class="noLogin opacity kadomaru bg-danger text-white"><i class="fas fa-exclamation-triangle"></i>本機能はログイン必須です</div>
+
+                <div class="label-text text-center initialShow">
+                    <div class="loading">
+                        <span>L</span><span>O</span><span>A</span><span>D</span><span>I</span><span>N</span><span>G</span><span>.</span><span>.</span><span>.</span>
+                    </div>
+                    <div class="">
+                        <span id="char1" class="char dot_mid dot char-hashiri-right" style="background: url(./img/dot/IDad82c.png);"></span>
+                        <span id="char2" class="char dot_mid dot char-hashiri-right" style="background: url(./img/dot/ID38400.png);"></span>
+                    </div>
+                </div>                
                 <div class="isLogin d-none">
-                    <!--
-                    <p class="slide1 loading"><i class="dot_yuki dot_mid dot char-hashiri"></i></p>
-                    <p class="slide2 loading"><i class="dot_monika dot_mid dot char-hashiri"></i></p>
-                    -->
                     <label class="badge badge-pill badge-light">絞り込み</label>
-                    <div class="style-bgcolor text-center small row" style="width:100%; margin: 0px;">
+                    <div class="initialHide d-none style-bgcolor text-center small row" style="width:100%; margin: 0px;">
                         <ul class="nav text-center width-100">
                             <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" href="#icon_ken"><span class="icon_mini icon_ken" onclick=""></span></a></li>
                             <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" href="#icon_dken"><span class="icon_mini icon_dken" onclick=""></span></a></li>
@@ -148,7 +154,7 @@
                     <!-- ディスプレイ横長 --><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5008373409434899" data-ad-slot="1589124781" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
                     <br>
                     <label class="badge badge-pill badge-light" id="styleLabel">周回クエスト</label>
-                    <div class="style-bgcolor text-center small row" style="width:100%; margin: 0px;">
+                    <div class="initialHide d-none style-bgcolor text-center small row" style="width:100%; margin: 0px;">
                         <div class="col-4 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_on baseValue" data-id="42" style="width:100%; background-size: 100% 100%;">H712</button></div>
                         <div class="col-4 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_on baseValue" data-id="45" style="width:100%; background-size: 100% 100%;">VH415</button></div>
                         <div class="col-4 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_on baseValue" data-id="48" style="width:100%; background-size: 100% 100%;">VH7</button><br></div>

@@ -86,12 +86,18 @@
                 <div class="noLogin opacity kadomaru bg-danger text-white"><i class="fas fa-exclamation-triangle"></i>本機能はログイン必須です<br>Twitterログインを行い、<a href="./style.html" style="color:lightskyblue">キャラ+スタイル詳細</a>あるいは<a href="./party.html" style="color:lightskyblue">ステータス上限チェック</a>で所持しているキャラクターのステータスを入力した後からご利用できます。</div>
                 <div class="isLogin d-none">
                 -->
-                <script type="text/javascript" src="https://websurvey-charts.com/api/script/chart-factory/"></script>
-                <div class="websurvey-chart bg-white" data-source='7b20227175657374696f6e223a207b20226964223a2033333934207d2c20226368617274223a207b202274797065223a2031207d207d' data-decode=true></div>                
-
+                <div class="label-text text-center initialShow">
+                    <div class="loading">
+                        <span>L</span><span>O</span><span>A</span><span>D</span><span>I</span><span>N</span><span>G</span><span>.</span><span>.</span><span>.</span>
+                    </div>
+                    <div class="">
+                        <span id="char1" class="char dot_mid dot char-hashiri-right" style="background: url(./img/dot/IDad82c.png);"></span>
+                        <span id="char2" class="char dot_mid dot char-hashiri-right" style="background: url(./img/dot/ID38400.png);"></span>
+                    </div>
+                </div>
                 <div class="isLogin">
                     <label class="badge badge-pill badge-light">絞り込み</label>
-                    <div class="style-bgcolor text-center small row" style="width:100%; margin: 0px;">
+                    <div class="initialHide d-none style-bgcolor text-center small row" style="width:100%; margin: 0px;">
                         <ul class="nav text-center width-100">
                             <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="剣" href="#icon_ken"><span class="icon_mini icon_ken" onclick=""></span></a></li>
                             <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="大剣" href="#icon_dken"><span class="icon_mini icon_dken" onclick=""></span></a></li>
