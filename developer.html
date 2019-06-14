@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#" lang="ja">
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138966739-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', 'UA-138966739-1');
+        </script>
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({
+                google_ad_client: "ca-pub-5008373409434899",
+                enable_page_level_ads: true
+            });
+        </script>
+        <meta charset="utf-8">
+        <title>ロマサガRS 開発者からメッセージ</title>
+        <meta property="og:title" content="ロマサガRS 開発者からメッセージ" />
+        <meta property="og:url" content="https://http://nao-romasaga.github.io/site.html" />
+        <meta property="og:description" content="ロマサガRS便利ツールの開発者からのメッセージです。" />
+        <meta name="description" content="ロマサガRS便利ツールの開発者からのメッセージです。【ロマンシングサガ リユニバース】" />
+        <meta property="og:site_name" content="ロマサガRS便利ツール" />
+        <meta property="og:type" content="article">
+        <meta property="og:locale" content="ja_JP" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@nao_romasaga_rs" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <script src="./js/Firebase.js" ></script>
+        <script src="./js/utils.js" ></script>
+        <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="./css/style.css">
+    </head>
+    <body>
+        <div class ="haikei"><div class="container">
+                <div class="text-center">
+                    <a href="https://www.jp.square-enix.com/saga_reuniverse/" target="new"><img src="./img/cmn_logo01_sp.png" class="col-sm-12 col-md-8 col-lg-6"></a>
+                </div>
+                <h3 class="text-center label-text">開発者からのメッセージ</h3> 
+                <div class="bg-white kadomaru">
+                    <img src="./img/avatar20190424120328.jpg" width="100"> <a href="https://twitter.com/nao_romasaga_rs"><i class="fab fa-twitter"></i> nao_romasaga_rs</a>
+                    <br>
+                    ロマサガRS便利ツールをご利用の皆様。<br>
+                    いつもご利用ありがとうございます。<br>
+                    開発・運用を行なっているnaoです。<br>
+                    <br>
+                    今回メッセージを発信させて頂いたのは、最近のアクセス急増による運用コスト増加についてです。<br><br>
+                    結論を先に述べますと<br>
+                    <h3><i class="fas fa-server"></i>サーバ代がやばいです<i class="fas fa-bomb"></i></h3>
+                    <h4 class="width-100 bg-primary text-center kadomaru"><a href="./kifu.html" class="text-white ">便利ツールの支援はこちら<i class="fas fa-comment-dollar"></i></a></h4>
+                    <br>
+                    
+                    5月からアクセスが増え始め6月に入ったときにサーバ増設を行ったのですが、その増設したサーバの使用量も限界を迎えてました。<br>
+                    月間でデータ転送量が決まっているのですが、6/13の段階で<span style="color:red">使用限界の80%</span>に達していまいました(6月はまだ半分以上あるのに💦)<br>
+                    このままでは<span style="color:red">6/15,16あたりにサイトが動かなくなってしまいます</span>ので、再度サーバを増設しました。<br>
+                    <div class="text-center">＜６月の１日あたりのデータ転送量＞<br>
+                    <img src="./img/graph.png" width="320"></div>
+                    <br>
+                    現時点では寄付いただいている内容や広告収入で1-2ヶ月ぐらいは運用できるかもしれません。<br>
+                    しかし、今後アクセスが増加すればするほどサイト運営が難しくなっていきそうです。<br>
+                    <br>
+                    <h4>対応方法についての検討</h4>
+                    ・アクセスを絞って一部のユーザにのみ公開すること<br>
+                    ・負荷の高い機能のクローズ<br>
+                    など暫定対応はできるのですが、私はなるべく多くのユーザに便利ツールを使って頂き、ロマサガRSをもっと盛り上げていきたいと考えています<br>
+                    ですので、上記の対応は取らず利用者の皆様には今の機能をそのままお使い頂けるよう頑張ります<br>
+                    <br>
+                    <h4>今後の新機能について</h4>
+                    ・クエスト攻略<br>
+                    育成パーティの入力欄から周回クエストも記入して、他のユーザがどのクエストをどんなパーティで周回しているかのまとめ<br>
+                    <br>
+                    ・覚醒攻略<br>
+                    覚醒状況を記入して、「このスタイルはこの覚醒パターンが多い」などのまとめ<br>
+                    <br>
+                    などができれば良いなと考えています(๑′ᴗ‵๑)<br>
+                    それもサイト運営が続けられればの話ですがw<br>
+                    <br>
+                    <h4>寄付いただいている方へ</h4>
+                    寄付いただいき誠にありがとうございます<br>
+                    現在ロマサガRS便利ツールが稼動できているのも皆様のおかげです<br>
+                    サーバ運用に当てたり、開発時のカフェオレ☕︎代に当てたり(๑′ᴗ‵๑)非常に助かっております。<br>
+                    この場を借りてお礼申し上げます<br>
+                    <br>
+
+                    <h4>おわりに</h4>
+                    趣味で始めたサイトで見積もりが甘かったのは否めません( ◞‸◟)💦お詫び申し上げます<br>
+                    現在データ更新内容の見直しや負荷軽減などに尽力しております。<br>
+                    今後ともロマサガRS便利ツールをよろしくお願いいたしますm(_ _)m<br>
+                    <br>
+                    <h4 class="width-100 bg-primary text-center kadomaru"><a href="./kifu.html" class="text-white ">便利ツールの支援はこちら<i class="fas fa-comment-dollar"></i></a></h4>
+                    <br>
+                    <small>サーバに課金じゃなくてロマサガRSに課金したい(ºωº)</small><br>
+                </div>
+                <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5008373409434899" data-ad-slot="3051702111"></ins><script> (adsbygoogle = window.adsbygoogle || []).push({});</script>
+                <br><br>
+            </div></div> <!-- main -->
+    </body>
+</html>
