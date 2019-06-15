@@ -78,7 +78,6 @@
                     <a href="https://www.jp.square-enix.com/saga_reuniverse/" target="new"><img src="./img/cmn_logo01_sp.png" class="col-sm-12 col-md-8 col-lg-6"></a>
                 </div>
                 <h3 class="text-center title-text">キャラクター<br class="hidden spBlock">育成ランキング<span class="hidden pcBlock"><br>みんなの育成状況</span></h3>
-                <h5 class="text-center updatePanel">更新日時:<span id="UPDATE"></span></h5>
                 <p class="text-right opacity"><small>バグ発見、ご要望は <a href="https://twitter.com/nao_romasaga_rs" target="new">nao_romasaga_rs</a>まで</small></p>
                 <div id="firebaseui-auth-container" style="margin-bottom:10px;"></div>
                 <br>
@@ -95,7 +94,8 @@
                         <span id="char2" class="char dot_mid dot char-hashiri-right" style="background: url(./img/dot/ID38400.png);"></span>
                     </div>
                 </div>
-                <div class="isLogin">
+                <div class="">
+
                     <label class="badge badge-pill badge-light">絞り込み</label>
                     <div class="initialHide d-none style-bgcolor text-center small row" style="width:100%; margin: 0px;">
                         <ul class="nav text-center width-100">
@@ -124,6 +124,7 @@
                     </div>
 
                     <br>
+                    <h5 class="text-center updatePanel">更新日時:<span id="UPDATE"></span></h5>
                     <h6 id="listLabel" style="background: url(./img/bg_window_large.png);background-size: 100% 100%;color: #faf0b4;padding: 10px 30px;"><span id="label1"></span><span id="label2">みんなが登録した<br>ステータス最高値一覧</span></h6>
 
                     <label class="badge badge-pill badge-light">キャラクターをクリックすると詳細表示されます</label>
@@ -205,7 +206,7 @@
                                     <td class="paramCell2 MI">99</td>
                                     <td class="paramCell2 SUM">999</td>
                                 </tr>
-                                <tr class="text-center" style="background-color: white;">
+                                <tr class="text-center isLogin d-none" style="background-color: white;">
                                     <td class="text-right small">
                                         あなたの<span><br>キャラ</span>
                                     </td>
@@ -219,7 +220,7 @@
                                     <td class="paramCell2"><span class="YOURMI">0</span></td>
                                     <td class="paramCell2"><span class="YOURSUM">000</span></td>
                                 </tr>
-                                <tr class="text-center" style="background-color: white;    border-top: 1px solid darkgray;">
+                                <tr class="text-center isLogin d-none" style="background-color: white;    border-top: 1px solid darkgray;">
                                     <td class="text-right small">
                                         限界まで</span>
                                     </td>
