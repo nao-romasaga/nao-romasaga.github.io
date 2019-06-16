@@ -21,19 +21,24 @@
         <link rel="stylesheet" type="text/css" href="css/slider-pro.min.css">
     </head>
     <body>
-        Blue1 : <span class="game nologin" id="Blue1">0</span><br>
-        Blue2 : <span class="game nologin" id="Blue2">0</span><br>
-        Blue3 : <span class="game nologin" id="Blue3">0</span><br>
-        Blue3 : <span class="game nologin" id="Blue6">0</span><br>
-        GameData(nologin) : <span id="Nologin">0</span><br>
-        <br>
-        Blue4 : <span class="game login" id="Blue4">0</span><br>
-        Blue5 : <span class="game login" id="Blue5">0</span><br>
-        Green1 : <span class="game login" id="Green1">0</span><br>
         Green2 : <span class="game login" id="Green2">0</span><br>
         Green3 : <span class="game login" id="Green3">0</span><br>
         Green4 : <span class="game login" id="Green4">0</span><br>
         Green5 : <span class="game login" id="Green5">0</span><br>
+        Green6 : <span class="game login" id="Green6">0</span><br>
+        Green7 : <span class="game login" id="Green7">0</span><br>
+        Green8 : <span class="game login" id="Green8">0</span><br>
+        GameData(nologin) : <span id="Nologin">0</span><br>
+        <br>
+        Green : <span class="game nologin" id="Green1">0</span><br>
+        Blue1 : <span class="game nologin" id="Blue1">0</span><br>
+        Blue2 : <span class="game nologin" id="Blue2">0</span><br>
+        Blue3 : <span class="game nologin" id="Blue3">0</span><br>
+        Blue4 : <span class="game nologin" id="Blue4">0</span><br>
+        Blue5 : <span class="game nologin" id="Blue5">0</span><br>
+        Blue6 : <span class="game nologin" id="Blue6">0</span><br>
+        Blue7 : <span class="game nologin" id="Blue7">0</span><br>
+        Blue8 : <span class="game nologin" id="Blue8">0</span><br>
         GameData(nologin) : <span id="Login">0</span><br>
         <br>
         GameData(All) : <span id="Game">0</span><br>
@@ -98,11 +103,36 @@
                     "YXV0aERvbWFpbg==": "bmFvLXJvbWFzYWdhLXJzLWJsdWU1LmZpcmViYXNlYXBwLmNvbQ==",
                     "ZGF0YWJhc2VVUkw=": "aHR0cHM6Ly9uYW8tcm9tYXNhZ2EtcnMtYmx1ZTUuZmlyZWJhc2Vpby5jb20=",
                 };
-var configBlue6 = {
-    "YXBpS2V5": "QUl6YVN5Q2NhLUVndTlaTVYzM0RUNWlseTc0TXlYZnpnSW0xcDhR",
-    "YXV0aERvbWFpbg==": "bmFvLXJvbWFzYWdhLXJzLWJsdWU2LmZpcmViYXNlYXBwLmNvbQ==",
-    "ZGF0YWJhc2VVUkw=": "aHR0cHM6Ly9uYW8tcm9tYXNhZ2EtcnMtYmx1ZTYuZmlyZWJhc2Vpby5jb20=",
-};
+                var configBlue6 = {
+                    "YXBpS2V5": "QUl6YVN5Q2NhLUVndTlaTVYzM0RUNWlseTc0TXlYZnpnSW0xcDhR",
+                    "YXV0aERvbWFpbg==": "bmFvLXJvbWFzYWdhLXJzLWJsdWU2LmZpcmViYXNlYXBwLmNvbQ==",
+                    "ZGF0YWJhc2VVUkw=": "aHR0cHM6Ly9uYW8tcm9tYXNhZ2EtcnMtYmx1ZTYuZmlyZWJhc2Vpby5jb20=",
+                };
+                var configGreen6 = {
+                    "YXBpS2V5": "QUl6YVN5QmJmLWFXUXVLclo2TWFQTnFUbWE2akhtSV9TMGhqanpV",
+                    "YXV0aERvbWFpbg==": "bmFvLXJvbWFzYWdhLXJzLWdyZWVuNi5maXJlYmFzZWFwcC5jb20=",
+                    "ZGF0YWJhc2VVUkw=": "aHR0cHM6Ly9uYW8tcm9tYXNhZ2EtcnMtZ3JlZW42LmZpcmViYXNlaW8uY29t",
+                };
+                var configBlue7 = {
+                    "YXBpS2V5": "QUl6YVN5QVdLOHZZZzd1OVloWU5ycm1FMTlGejJkVEFDYWtTWnNJ",
+                    "YXV0aERvbWFpbg==": "bmFvLXJvbWFzYWdhLXJzLWJsdWU3LmZpcmViYXNlYXBwLmNvbQ==",
+                    "ZGF0YWJhc2VVUkw=": "aHR0cHM6Ly9uYW8tcm9tYXNhZ2EtcnMtYmx1ZTcuZmlyZWJhc2Vpby5jb20=",
+                };
+                var configGreen7 = {
+                    "YXBpS2V5": "QUl6YVN5Qkp5d0txOWlTNGk2cXFTaGY4bzZnbUNacWxXMjF4X0xN",
+                    "YXV0aERvbWFpbg==": "bmFvLXJvbWFzYWdhLXJzLWdyZWVuNy5maXJlYmFzZWFwcC5jb20=",
+                    "ZGF0YWJhc2VVUkw=": "aHR0cHM6Ly9uYW8tcm9tYXNhZ2EtcnMtZ3JlZW43LmZpcmViYXNlaW8uY29t",
+                };
+                var configBlue8 = {
+                    "YXBpS2V5": "QUl6YVN5QUZpTkRkUE5GczA3Sktxa05QcDdhY045aUZJcGFkTnhj",
+                    "YXV0aERvbWFpbg==": "bmFvLXJvbWFzYWdhLXJzLWJsdWU4LmZpcmViYXNlYXBwLmNvbQ==",
+                    "ZGF0YWJhc2VVUkw=": "aHR0cHM6Ly9uYW8tcm9tYXNhZ2EtcnMtYmx1ZTguZmlyZWJhc2Vpby5jb20=",
+                };
+                var configGreen8 = {
+                    "YXBpS2V5": "QUl6YVN5QVR6NHVreVRLZ3JNY19wbW5sQ0NaWlVYRC1BcUN3ZTlV",
+                    "YXV0aERvbWFpbg==": "bmFvLXJvbWFzYWdhLXJzLWdyZWVuOC5maXJlYmFzZWFwcC5jb20=",
+                    "ZGF0YWJhc2VVUkw=": "aHR0cHM6Ly9uYW8tcm9tYXNhZ2EtcnMtZ3JlZW44LmZpcmViYXNlaW8uY29t",
+                };
 
 
                 var configUsers = {
@@ -142,12 +172,17 @@ var configBlue6 = {
                 const green3 = firebase.initializeApp(decodeConfig(configGreen3), "Green3");
                 const green4 = firebase.initializeApp(decodeConfig(configGreen4), "Green4");
                 const green5 = firebase.initializeApp(decodeConfig(configGreen5), "Green5");
+                const green6 = firebase.initializeApp(decodeConfig(configGreen6), "Green6");
+                const green7 = firebase.initializeApp(decodeConfig(configGreen7), "Green7");
+                const green8 = firebase.initializeApp(decodeConfig(configGreen8), "Green8");
                 const blue1 = firebase.initializeApp(decodeConfig(configBlue), "Blue1");
                 const blue2 = firebase.initializeApp(decodeConfig(configBlue2), "Blue2");
                 const blue3 = firebase.initializeApp(decodeConfig(configBlue3), "Blue3");
                 const blue4 = firebase.initializeApp(decodeConfig(configBlue4), "Blue4");
                 const blue5 = firebase.initializeApp(decodeConfig(configBlue5), "Blue5");
                 const blue6 = firebase.initializeApp(decodeConfig(configBlue6), "Blue6");
+                const blue7 = firebase.initializeApp(decodeConfig(configBlue7), "Blue7");
+                const blue8 = firebase.initializeApp(decodeConfig(configBlue8), "Blue8");
                 const dev1 = firebase.initializeApp(decodeConfig(configDev), "dev1");
                 const dev2 = firebase.initializeApp(decodeConfig(configDev2), "dev2");
                 const user = firebase.initializeApp(decodeConfig(configUsers));
@@ -157,12 +192,17 @@ var configBlue6 = {
                 connect(firebase.database(green3), "Green3");
                 connect(firebase.database(green4), "Green4");
                 connect(firebase.database(green5), "Green5");
+                connect(firebase.database(green6), "Green6");
+                connect(firebase.database(green7), "Green7");
+                connect(firebase.database(green8), "Green8");
                 connect(firebase.database(blue1), "Blue1");
                 connect(firebase.database(blue2), "Blue2");
                 connect(firebase.database(blue3), "Blue3");
                 connect(firebase.database(blue4), "Blue4");
                 connect(firebase.database(blue5), "Blue5");
                 connect(firebase.database(blue6), "Blue6");
+                connect(firebase.database(blue7), "Blue7");
+                connect(firebase.database(blue8), "Blue8");
                 connect(firebase.database(dev1), "Dev1");
                 connect(firebase.database(dev2), "Dev2");
                 connect(firebase.database(user), "User");
@@ -178,18 +218,18 @@ var configBlue6 = {
                         }
                     });
                     listRefUser.on('value', function (snap) {
-                        $("#"+target).text(snap.numChildren());
+                        $("#" + target).text(snap.numChildren());
                         var sumn = 0, suml = 0;
-                        $(".nologin").each(function(){
+                        $(".nologin").each(function () {
                             sumn += Number($(this).text());
                         });
-                        $(".login").each(function(){
+                        $(".login").each(function () {
                             suml += Number($(this).text());
                         });
                         $("#Nologin").text(sumn);
                         $("#Login").text(suml);
-                        $("#Game").text(sumn+suml);
-                        console.log('# '+target+' of online games = ' + snap.numChildren());
+                        $("#Game").text(sumn + suml);
+                        console.log('# ' + target + ' of online games = ' + snap.numChildren());
                     });
                 }
             });
