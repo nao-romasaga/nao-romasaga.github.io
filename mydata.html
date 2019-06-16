@@ -75,6 +75,18 @@
                 <div class="noLogin opacity kadomaru bg-danger text-white"><i class="fas fa-exclamation-triangle"></i>本機能はログイン必須です<br>Twitterログインを行い、<a href="./style.html" style="color:lightskyblue">キャラ+スタイル詳細</a>あるいは<a href="./party.html" style="color:lightskyblue">ステータス上限チェック</a>で所持しているキャラクターのステータスを入力した後からご利用できます。</div>
                 <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5008373409434899" data-ad-slot="3051702111"></ins><script> (adsbygoogle = window.adsbygoogle || []).push({});</script>
                 <div class="isLogin d-none">
+                    <div class="card">
+                        <div class="card-header bg-primary" style="color:white">仕様変更 </div>
+                        <div class="card-body">
+                            この機能は「手持ちのスタイルで周回する際にどのクエストをどのスタイルで回るのが良いか」を調べる機能です<br>
+                            したがって、未所持のスタイルをこの機能で表示するのは不適切であるため<a href="./stylecheck.html">スタイル所持チェッカー</a>と連動して未所持のスタイルは表示しないようにしました<br>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="text-center kadomaru" style="background-color: rgba(42,169,239,1); color:white; margin: 0px 10px; padding: 2px 5px;">
+                        <a href="./stylecheck.html" class="h4 " style="background-size: 340px 40px; width:340px" id="inputStyleLogined"><span class="hidden pcBlock">自分の</span>所持スタイルを登録<span class="hidden pcBlock">する</span><i class="fas fa-pencil-alt"></i></a>
+                    </div>
+                    <br>
                     <label class="badge badge-pill badge-light">絞り込み</label>
                     <div class="style-bgcolor text-center small row" style="width:100%; margin: 0px;">
                         <ul class="nav text-center width-100">
@@ -116,7 +128,7 @@
                     <div class="d-flex justify-content-between" style="background: url(./img/bg_window_large.png);background-size: 100% 100%;color: #faf0b4;padding: 10px 30px;">
                         <div>スタイル別上限の確認</div>
                         <div>
-                            <button class="icon_btn_on btn_close small" style="background-size: 100px 30px; width:100px; height: 30px;" data-id="ID927">開/閉</button></div>
+                            <button class="icon_btn_on btn_close small" style="background-size: 100px 30px; width:100px; height: 30px;">開/閉</button></div>
                     </div>
                     <div class="style-bgcolor" id="LIMIT_TABLE_DIV">
                         <table class="width-100 text-center table-bordered" id="LIMIT_TABLE">
@@ -231,6 +243,11 @@
                     <div id="example-table-display" class="text-center">
                         <div id="example-table" style="width:402px"></div>
                     </div>
+                    <br>
+                    <div class="text-center kadomaru" style="background-color: rgba(42,169,239,1); color:white; margin: 0px 10px; padding: 2px 5px;">
+                        <a href="./stylecheck.html" class="h4 " style="background-size: 340px 40px; width:340px" id="inputStyleLogined"><span class="hidden pcBlock">自分の</span>所持スタイルを登録<span class="hidden pcBlock">する</span><i class="fas fa-pencil-alt"></i></a>
+                    </div>
+
                 </div><!-- isLogin -->
                 <hr>
                 <!--スクエア--><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5008373409434899" data-ad-slot="9303963278" data-ad-format="auto" data-full-width-responsive="true"></ins><script> (adsbygoogle = window.adsbygoogle || []).push({});</script>
