@@ -215,8 +215,71 @@
             "startPrefix": "4:00 開始<br>",
             "endSuffix": "<br>4:00 終了",
             "type": "blue"
+        },
+        {
+            "startDay": "21",
+            "endDay": "30",
+            "title": "[ガチャ] <br class='hidden pcBlock'>半周年祭 ようせい編",
+            "startPrefix": "12:00(?)開始<br>",
+            "endSuffix": "<br>4:00 終了",
+            "type": "green"
+        },
+        {
+            "startDay": "21",
+            "endDay": "30",
+            "title": "[ガチャ] <br class='hidden pcBlock'>半周年祭 ジニー編",
+            "startPrefix": "12:00(?)開始<br>",
+            "endSuffix": "<br>4:00 終了",
+            "type": "green"
+        },
+        {
+            "startDay": "21",
+            "endDay": "30",
+            "title": "[イベント] <br class='hidden pcBlock'>ペット捕獲大作戦",
+            "startPrefix": "12:00(?)開始<br>",
+            "endSuffix": "<br>4:00 終了",
+            "type": "orange"
+        },
+        {
+            "startDay": "21",
+            "endDay": "30",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>ようせい・教授・ノーラ・ファティーマ・バーニィ 2倍",
+            "startPrefix": "12:00(?)開始<br>",
+            "endSuffix": "<br>4:00 終了",
+            "type": "blue"
+        },
+        {
+            "day": "26",
+            "title": "[メイン] <br class='hidden pcBlock'>12話 解放",
+            "startPrefix": "メンテ後 開始<br>",
+            "type": "yellow"
+        },
+        {
+            "day": "26",
+            "title": "[新機能] <br class='hidden pcBlock'>着せ替え 実装",
+            "startPrefix": "メンテ後 開始<br>",
+            "type": "yellow"
+        },
+        {
+            "day": "26",
+            "title": "[メイン] <br class='hidden pcBlock'>銃ドロップ 解放",
+            "startPrefix": "メンテ後 開始<br>",
+            "type": "yellow"
+        },
+        {
+            "day": "26",
+            "title": "[イベント] <br class='hidden pcBlock'>虎印の金塊収集",
+            "startPrefix": "メンテ後 開始<br>",
+            "type": "orange"
+        },
+        {
+            "startDay": "26",
+            "endDay": "29",
+            "title": "[イベント] <br class='hidden pcBlock'>R杯(プレオープン)",
+            "startPrefix": "メンテ後 開始<br>",
+            "endSuffix": "<br>4:00 終了",
+            "type": "orange"
         }
-        
    ],
     "holiday": [
     ]
