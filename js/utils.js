@@ -1,1 +1,547 @@
-var _0x5f1b=['SkillIryoku','iconClass','display:\x20table-cell;\x20vertical-align:\x20middle;\x20height:30px','icon_sm','BattleType','text','AttackAttributes','split','forEach','BadStatus','DeBuff','Buff','[HP回復]','AttackDistance','AttackArea','敵単体','[ファスト]','Delay','[ディレイ]','\x20<span\x20class=\x27holderClass\x27>所持者(','icon_info_md','data-toggle','tooltip','data-placement','top','data-html','true','removeClass','offsetWidth','resist_plus','resist_minus','html','Style','OUR_CHAR/DETAIL','icon_ken','icon_dken','icon_ono','icon_sken','icon_yari','icon_yumi','icon_tai','icon_tsue','icon_netsu','icon_rai','icon_in','icon_yo','icon_hi','icon_mizu','icon_kaze','icon_hikari','icon_yami','icon_stan','icon_mahi','icon_kizetsu','icon_doku','icon_miryo','icon_zzz','icon_kyosenshi','icon_b','icon_a','icon_s','icon_ss','icon_buff_str','icon_buff_vit','icon_buff_agi','icon_buff_int','icon_buff_mnd','icon_buff_ai','icon_buff_mi','icon_debuff_str','icon_debuff_vit','icon_debuff_dex','icon_debuff_int','icon_debuff_ai','STR','VIT','DEX','INT','MND','concat','器用さ','素早さ','ceil','map','<option>','append','css','background','url(https://nao-romasaga.github.io/img/',')\x20no-repeat','background-size','replace','length','log','UTIL','uid','ncTVtjyH4qWQQLnMzpmdux39AoD3','<img\x20src=\x27./img/icon/icon_new.png\x27>','<img\x20src=\x27./img/icon/icon_up.png\x27>','<img\x20src=\x27./img/icon/icon_hot.png\x27>','<nav\x20class=\x22navbar\x20navbar-expand-lg\x20navbar-light\x20bg-light\x22>','\x20\x20<span\x20class=\x22char-aruku\x20dot\x20dot_mid\x20dot_cat\x22></span>','\x20\x20<div><a\x20class=\x22navbar-brand\x22\x20href=\x22./index.html\x22>ロマサガRS\x20便利ツール</a><br><small>','<span\x20id=\x22CONNECT_GAME\x22\x20class=\x22d-none\x22></span><span\x20id=\x22CONNECT_USER\x22\x20class=\x22d-none\x22></span></small></div>','\x20\x20<button\x20class=\x22navbar-toggler\x22\x20type=\x22button\x22\x20data-toggle=\x22collapse\x22\x20data-target=\x22#navbarSupportedContent\x22\x20aria-controls=\x22navbarSupportedContent\x22\x20aria-expanded=\x22false\x22\x20aria-label=\x22Toggle\x20navigation\x22>','\x20\x20\x20\x20<span\x20class=\x22navbar-toggler-icon\x22></span>','\x20\x20</button>','\x20\x20\x20\x20<ul\x20class=\x22navbar-nav\x20mr-auto\x20small\x22>','\x20\x20\x20\x20\x20\x20<li\x20class=\x22nav-item\x20RequireLoginMenu\x20d-none\x22\x20id=\x22headAuto\x22>','\x20\x20\x20\x20\x20\x20\x20\x20<a\x20class=\x22nav-link\x22\x20href=\x22./home.html\x22><i\x20class=\x22fas\x20fa-home\x22\x20style=\x22font-size:30px\x22></i></a>','\x20\x20\x20\x20\x20\x20</li>','\x20\x20\x20\x20\x20\x20<li\x20class=\x22nav-item\x22\x20id=\x22headCalendar\x22>','\x20\x20\x20\x20\x20\x20\x20\x20<a\x20class=\x22nav-link\x22\x20href=\x22./calendar.html\x22>イベント<br\x20class=\x22hidden\x20pcBlock\x22>カレンダー</a>','\x20\x20\x20\x20\x20\x20<li\x20class=\x22nav-item\x20\x22\x20id=\x22headAuto\x22>','</a>','\x20\x20\x20\x20\x20\x20<li\x20class=\x22nav-item\x20\x22\x20id=\x22headOurchar\x22>','\x20\x20\x20\x20\x20\x20\x20\x20<a\x20class=\x22nav-link\x22\x20href=\x22./ourchar.html\x22>キャラクター<br\x20class=\x22hidden\x20pcBlock\x22>育成ランキング\x20','\x20\x20\x20\x20\x20\x20<li\x20class=\x22nav-item\x20\x22\x20id=\x22headParty\x22>','\x20\x20\x20\x20\x20\x20\x20\x20<a\x20class=\x22nav-link\x22\x20href=\x22./party.html\x22>育成パーティ<br\x20class=\x22hidden\x20pcBlock\x22>上限チェック</a>','\x20\x20\x20\x20\x20\x20<li\x20class=\x22nav-item\x20\x22\x20id=\x22headInputchar\x22>','\x20\x20\x20\x20\x20\x20\x20\x20<a\x20class=\x22nav-link\x22\x20href=\x22./inputchar.html\x22>まとめて<br\x20class=\x22hidden\x20pcBlock\x22>ステータス登録</a>','\x20\x20\x20\x20\x20\x20<li\x20class=\x22nav-item\x20\x22\x20id=\x22headMydata\x22>','\x20\x20\x20\x20\x20\x20\x20\x20<a\x20class=\x22nav-link\x22\x20href=\x22./mydata.html\x22>周回適正<br\x20class=\x22hidden\x20pcBlock\x22>キャラチェック</a>','\x20\x20\x20\x20\x20\x20\x20\x20<a\x20class=\x22nav-link\x22\x20href=\x22./limitdata.html\x22>スタイル別素ステ<br\x20class=\x22hidden\x20pcBlock\x22>補正最大値一覧</a>','\x20\x20\x20\x20\x20\x20<li\x20class=\x22nav-item\x22\x20id=\x22headStyleCheck\x22>','\x20\x20\x20\x20\x20\x20\x20\x20<a\x20class=\x22nav-link\x22\x20href=\x22./stylecheck.html\x22>スタイル所持<br\x20class=\x22hidden\x20pcBlock\x22>チェッカー</a>','\x20\x20\x20\x20\x20\x20<li\x20class=\x22nav-item\x22\x20id=\x22headOurStyle\x22>','\x20\x20\x20\x20\x20\x20\x20\x20<a\x20class=\x22nav-link\x22\x20href=\x22./ourstyle.html\x22>みんなの<br\x20class=\x22hidden\x20pcBlock\x22>スタイル</a>','\x20\x20<li\x20class=\x22nav-item\x20dropdown\x22>','\x20\x20\x20\x20<a\x20class=\x22nav-link\x20dropdown-toggle\x22\x20href=\x22#\x22\x20id=\x22navbarDropdown\x22\x20role=\x22button\x22\x20data-toggle=\x22dropdown\x22\x20aria-haspopup=\x22true\x22\x20aria-expanded=\x22false\x22>','\x20\x20\x20\x20\x20\x20ゲームデータ検索','\x20\x20\x20\x20<div\x20class=\x22dropdown-menu\x20bg-white\x22\x20aria-labelledby=\x22navbarDropdown\x22>','\x20\x20\x20\x20\x20\x20<a\x20class=\x22dropdown-item\x22\x20href=\x22./ability.html\x22>アビリティ検索</a>','\x20\x20\x20\x20\x20\x20<div\x20class=\x22dropdown-divider\x22></div>','\x20\x20\x20\x20\x20\x20<a\x20class=\x22dropdown-item\x22\x20href=\x22./damage.html\x22>ダメージ計算</a>','\x20\x20\x20\x20\x20\x20<a\x20class=\x22dropdown-item\x22\x20href=\x22./dojo.html\x22>特訓タイマー</a>','\x20\x20\x20\x20</div>','\x20\x20</li>','\x20\x20\x20\x20\x20\x20おもちゃ','\x20\x20\x20\x20</a>','\x20\x20\x20\x20\x20\x20<a\x20class=\x22dropdown-item\x22\x20href=\x22./renkei.html\x22>連携ジェネレーター</a>','\x20\x20\x20\x20\x20\x20<a\x20class=\x22dropdown-item\x22\x20href=\x22./kururin.html\x22>無限ステアップ</a>','\x20\x20\x20\x20\x20\x20<li\x20class=\x22nav-item\x20\x22\x20id=\x22headSite\x22>','\x20\x20\x20\x20\x20\x20<li\x20class=\x22nav-item\x20\x22\x20id=\x22headKifu\x22>','\x20\x20\x20\x20\x20\x20\x20\x20<a\x20class=\x22nav-link\x22\x20href=\x22./kifu.html\x22>寄付に<br\x20class=\x22hidden\x20pcBlock\x22>ついて</a>','\x20\x20\x20\x20</ul>','\x20\x20</div>','</nav>','body','現在の負荷状況とお礼','6/14から発生していた大量アクセスも現在は落ち着いてきました。<br>','今後同等のアクセスが流れてきても大丈夫なようにサーバ増強と負荷軽減のプログラム対応を行うことができました。<br>','これもご支援、応援頂いたみなさまのおかげです。<br>','<br>','大量アクセスにも耐えられるようになりましたので、より多くの方に便利ツールを使っていただくことができるようになりました。<br>','便利ツールを使うことで、ロマサガRSがより楽しくなり継続して遊べるモチベーションになれば幸いです。<br>','<div\x20class=\x22card\x22><div\x20class=\x22card-header\x20bg-primary\x22\x20style=\x27color:white\x27>','</div><div\x20class=\x22card-body\x22>','</div></div>','お知らせ\x20','6/22\x20[更新]\x20<br>','・<a\x20href=\x22./developer.html\x22\x20style=\x27font-size:20px;\x27>開発者からのメッセージ</a>\x20ちょっと更新<br>','<div\x20class=\x22card\x22><div\x20class=\x22card-header\x20bg-info\x22\x20style=\x27color:white\x27>','.title-text','after','<div\x20class=\x22opacity\x22\x20style\x20=\x22position:\x20relative;\x22>','<span\x20class=\x22kadomaru\x20RequireLoginMenu\x20logout\x20d-none\x22\x20style=\x22background-color:\x20rgba(42,169,239,1);\x20color:white;\x20padding:\x202px\x205px;\x20background-size:\x20340px\x2040px;\x20width:340px\x22\x20onclick=\x22\x22><i\x20class=\x22fab\x20fa-twitter\x22></i>ログアウト</span><br>','Special\x20thanks\x20<small>','<a\x20href=\x22https://twitter.com/imonoki\x22\x20target=\x22new\x22>imonoki</a>,\x20','<a\x20href=\x22https://twitter.com/chin_ohnck\x22\x20target=\x22new\x22>ちん</a>,\x20','<a\x20href=\x22https://twitter.com/PeNN128RS\x22\x20target=\x22new\x22>こやん</a>,\x20','<a\x20href=\x22https://twitter.com/ruchigame\x22\x20target=\x22new\x22>ruchi</a>','</small><br>','©\x202019\x20SQUARE\x20ENIX\x20CO.,\x20LTD.\x20All\x20Rights\x20Reserved.\x20Powered\x20by\x20Akatsuki\x20Inc.<br>','<div\x20class=\x22row\x20text-right\x22\x20style=\x22width:100%\x22>','<div\x20class=\x22col-1\x20offset-5\x22><span\x20class=\x22char-utau\x20footer-liz\x20dot\x20dot_mid\x20\x22\x20style=\x22background:url(https://nao-romasaga.github.io/img/dot/ID4bd48.png)\x22></span></div>','<div\x20class=\x22col-1\x22><span\x20class=\x22char-utau\x20footer-liz\x20dot\x20dot_mid\x20\x22\x20style=\x22background:url(https://nao-romasaga.github.io/img/dot/ID4c7d4.png)\x22></span></div>','</div>','<div>','attr','style','display:none','<span>','.png','href','indexOf','debug','damage.html','#headDamage','addClass','skill.html','#headSkill','style.html','#headStyle','active','ability.html','#headAbility','auto.html','#headAuto','site.html','kifu.html','#headKifu','dojo.html','#headDojo','party.html','#headParty','stylecheck.html','#headStyleCheck','oursytle.html','#headOurStyle','renkei.html','#headRenkei','ourchar.html','#headOurchar','#headInputchar','calendar.html','#headCalendar','limitdata.html','#headLimitdata','ID335e0','ID33a2c','ID33ce8','ID7c8f8','IDad638','IDad5d4','IDad82c','ID38e28','ID38784','ID387ea','ID38978','ID38914','ID35db8','ID4bb56','ID4bb54','ID4c3ec','ID4bce4','ID4bfa0','ID4bd48','ID4c7d4','ID4e264','ID4e2c9','ID339c8','ID3357c','ready','bind','contextmenu','mousedown','.loading','floor','random','#char1','background:\x20url(./img/dot/','.png);','#char2','.logout','auth','then','ログアウトしました','.RequireLoginMenu','catch','ログアウト時にエラーが発生しました\x20(','iPad','Android','tab','25%','10%','10%未満','100%','bg_a','style_icon_ss','style_icon_a','style_icon_s','icon_bg_ss','icon_bg_a','icon_bg_s','Holders','Series','DotId','ID4e2c8','dot/','dot','char-aruku\x20char\x20char-bottom\x20dot_mid\x20dot','data-id','series-button','fullWidth','height','#slider-pro','sliderPro','sand','stone','jewel','skill_select','keishoSkill','<p>','margin:0;','Name','text-right','small','覚醒:','Kakusei','KakuseiSozai','<span\x20class=\x22icon_','\x22\x20style=\x22width:25px;height:25px;\x20display:\x20inline-block;background-size:\x20contain;\x22>\u3000</span>','ConsumeBp','PowerGrade'];(function(_0x4d2617,_0x2623a3){var _0xbd45b1=function(_0xcbf80d){while(--_0xcbf80d){_0x4d2617['push'](_0x4d2617['shift']());}};_0xbd45b1(++_0x2623a3);}(_0x5f1b,0x153));var _0x1e92=function(_0x38063c,_0x407951){_0x38063c=_0x38063c-0x0;var _0x3befe2=_0x5f1b[_0x38063c];return _0x3befe2;};var device=getDevice();var LIMIT_BASE=0x3a;const ICON_LIST={'剣':_0x1e92('0x0'),'大剣':_0x1e92('0x1'),'斧':_0x1e92('0x2'),'小剣':_0x1e92('0x3'),'槍':_0x1e92('0x4'),'弓':_0x1e92('0x5'),'棍棒':'icon_kon','体術':_0x1e92('0x6'),'銃':'icon_ju','杖':_0x1e92('0x7'),'斬':'icon_zan','突':'icon_totsu','打':'icon_da','熱':_0x1e92('0x8'),'冷':'icon_rei','雷':_0x1e92('0x9'),'陰':_0x1e92('0xa'),'陽':_0x1e92('0xb'),'火術':_0x1e92('0xc'),'水術':_0x1e92('0xd'),'風術':_0x1e92('0xe'),'土術':'icon_tsuchi','光術':_0x1e92('0xf'),'闇術':_0x1e92('0x10'),'スタン':_0x1e92('0x11'),'マヒ':_0x1e92('0x12'),'気絶':'icon_kizetsu','即死':_0x1e92('0x13'),'毒':_0x1e92('0x14'),'石化':'icon_sekika','魅了':_0x1e92('0x15'),'眠り':_0x1e92('0x16'),'混乱':'icon_konran','狂戦士':_0x1e92('0x17'),'暗闇':'icon_kurayami','B':_0x1e92('0x18'),'A':_0x1e92('0x19'),'S':_0x1e92('0x1a'),'SS':_0x1e92('0x1b'),'腕力上昇':_0x1e92('0x1c'),'体力上昇':_0x1e92('0x1d'),'器用さ上昇':'icon_buff_dex','素早さ上昇':_0x1e92('0x1e'),'知力上昇':_0x1e92('0x1f'),'精神上昇':_0x1e92('0x20'),'愛上昇':_0x1e92('0x21'),'魅力上昇':_0x1e92('0x22'),'腕力低下':_0x1e92('0x23'),'体力低下':_0x1e92('0x24'),'器用さ低下':_0x1e92('0x25'),'素早さ低下':'icon_debuff_agi','知力低下':_0x1e92('0x26'),'精神低下':'icon_debuff_mnd','愛低下':_0x1e92('0x27'),'魅力低下':'icon_debuff_mi'};const WEPON_ATTR={'剣':'斬','大剣':'斬','斧':'斬','小剣':'突','槍':'突','弓':'突','棍棒':'打','体術':'打','銃':'打','杖':'打'};const AREA_SHORT={'敵単体':'単','敵全体':'全','敵縦一列':'縦','敵横一列':'横','味方単体':'味単','自身':'自'};const PARAM_KEY=[_0x1e92('0x28'),_0x1e92('0x29'),_0x1e92('0x2a'),'AGI',_0x1e92('0x2b'),_0x1e92('0x2c'),'AI','MI'];const PARAM_KEY_HP=['HP'][_0x1e92('0x2d')](PARAM_KEY);const PARAM_NAME=['腕力','体力',_0x1e92('0x2e'),_0x1e92('0x2f'),'知力','精神','愛','魅力'];const CONST_STYLE_BONUS_VAL={'A':{2:0x1,6:0x1,8:0x1,18:0x2,22:0x1,38:0x2,46:0x3,50:0x2},'S':{2:0x1,6:0x1,8:0x2,18:0x3,22:0x1,38:0x3,46:0x4,50:0x2},'SS':{2:0x1,6:0x2,8:0x3,18:0x3,22:0x2,38:0x4,46:0x5,50:0x3}};function masterLevel(_0x17578e){var _0x1eeec0=Math['ceil']((_0x17578e-0x1)/0x2)*0.005;return Number(_0x1eeec0);}function overdrive(_0x50e509){var _0x89b809=Math[_0x1e92('0x30')]((_0x50e509-0x2)/0x2)*0.005;return Number(_0x89b809);}function addOption(_0x1f6a61,_0x2947c9){$[_0x1e92('0x31')](_0x1f6a61,function(_0x3a9a5c,_0x39422f){$option=$(_0x1e92('0x32'),{'value':_0x3a9a5c,'text':_0x39422f});$('#'+_0x2947c9)[_0x1e92('0x33')]($option);});}function culcSkillDamage(_0x36372d,_0xeb3410){var _0x239bcc=Number(_0x36372d);return _0x239bcc+(_0x239bcc-0x5)*(0x1+_0xeb3410/0x64);}function showimage(_0x108126,_0x15f00d,_0x1c0378){$('#'+_0x15f00d)[_0x1e92('0x34')](_0x1e92('0x35'),_0x1e92('0x36')+_0x108126+_0x1e92('0x37'));if(_0x1c0378!==undefined){$('#'+_0x15f00d)[_0x1e92('0x34')](_0x1e92('0x38'),_0x1c0378);}}function number_format(_0x1dc557){return String(_0x1dc557)[_0x1e92('0x39')](/(\d)(?=(\d\d\d)+(?!\d))/g,'$1,');}function arrayAvg(_0xe43b4){var _0x294c41=0x0;_0xe43b4['forEach'](function(_0x23fafc){_0x294c41+=_0x23fafc;});return _0x294c41/_0xe43b4[_0x1e92('0x3a')];}function insertCommonComponent(){console[_0x1e92('0x3b')](_0x1e92('0x3c'));if(OFUSE_FLG===undefined){OFUSE_FLG=![];}if(localStorage[_0x1e92('0x3d')]===_0x1e92('0x3e')){label=CONNECT_DB;}else if(OFUSE_FLG!==undefined&&OFUSE_FLG){label='プレミアムユーザ枠';}else{label='';}var _0x315779=_0x1e92('0x3f');var _0x3ac101=_0x1e92('0x40');var _0x20584f=_0x1e92('0x41');var _0x51e0f6='';_0x51e0f6+=_0x1e92('0x42');_0x51e0f6+=_0x1e92('0x43');_0x51e0f6+=_0x1e92('0x44')+label+_0x1e92('0x45');_0x51e0f6+=_0x1e92('0x46');_0x51e0f6+=_0x1e92('0x47');_0x51e0f6+=_0x1e92('0x48');_0x51e0f6+='\x20\x20<div\x20class=\x22collapse\x20navbar-collapse\x22\x20id=\x22navbarSupportedContent\x22>';_0x51e0f6+=_0x1e92('0x49');_0x51e0f6+=_0x1e92('0x4a');_0x51e0f6+=_0x1e92('0x4b');_0x51e0f6+=_0x1e92('0x4c');_0x51e0f6+=_0x1e92('0x4d');_0x51e0f6+=_0x1e92('0x4e');_0x51e0f6+=_0x1e92('0x4c');_0x51e0f6+=_0x1e92('0x4f');_0x51e0f6+='\x20\x20\x20\x20\x20\x20\x20\x20<a\x20class=\x22nav-link\x22\x20href=\x22./auto.html\x22>全力AUTO<br\x20class=\x22hidden\x20pcBlock\x22>シミュレーター\x20'+_0x20584f+_0x1e92('0x50');_0x51e0f6+='\x20\x20\x20\x20\x20\x20</li>';_0x51e0f6+=_0x1e92('0x51');_0x51e0f6+=_0x1e92('0x52')+_0x20584f+_0x1e92('0x50');_0x51e0f6+='\x20\x20\x20\x20\x20\x20</li>';_0x51e0f6+=_0x1e92('0x53');_0x51e0f6+=_0x1e92('0x54');_0x51e0f6+=_0x1e92('0x4c');_0x51e0f6+=_0x1e92('0x55');_0x51e0f6+=_0x1e92('0x56');_0x51e0f6+=_0x1e92('0x4c');_0x51e0f6+=_0x1e92('0x57');_0x51e0f6+=_0x1e92('0x58');_0x51e0f6+=_0x1e92('0x4c');_0x51e0f6+='\x20\x20\x20\x20\x20\x20<li\x20class=\x22nav-item\x20\x22\x20id=\x22headLimitdata\x22>';_0x51e0f6+=_0x1e92('0x59');_0x51e0f6+=_0x1e92('0x4c');_0x51e0f6+=_0x1e92('0x5a');_0x51e0f6+=_0x1e92('0x5b');_0x51e0f6+=_0x1e92('0x4c');_0x51e0f6+=_0x1e92('0x5c');_0x51e0f6+=_0x1e92('0x5d');_0x51e0f6+='\x20\x20\x20\x20\x20\x20</li>';_0x51e0f6+=_0x1e92('0x5e');_0x51e0f6+=_0x1e92('0x5f');_0x51e0f6+=_0x1e92('0x60');_0x51e0f6+='\x20\x20\x20\x20</a>';_0x51e0f6+=_0x1e92('0x61');_0x51e0f6+='\x20\x20\x20\x20\x20\x20<a\x20class=\x22dropdown-item\x22\x20href=\x22./skill.html\x22>技・術検索</a>';_0x51e0f6+=_0x1e92('0x62');_0x51e0f6+='\x20\x20\x20\x20\x20\x20<a\x20class=\x22dropdown-item\x22\x20href=\x22./style.html\x22>スタイル検索</a>';_0x51e0f6+=_0x1e92('0x63');_0x51e0f6+=_0x1e92('0x64');_0x51e0f6+=_0x1e92('0x65');_0x51e0f6+=_0x1e92('0x66');_0x51e0f6+=_0x1e92('0x67');_0x51e0f6+=_0x1e92('0x5e');_0x51e0f6+='\x20\x20\x20\x20<a\x20class=\x22nav-link\x20dropdown-toggle\x22\x20href=\x22#\x22\x20id=\x22navbarDropdown\x22\x20role=\x22button\x22\x20data-toggle=\x22dropdown\x22\x20aria-haspopup=\x22true\x22\x20aria-expanded=\x22false\x22>';_0x51e0f6+=_0x1e92('0x68');_0x51e0f6+=_0x1e92('0x69');_0x51e0f6+='\x20\x20\x20\x20<div\x20class=\x22dropdown-menu\x20bg-white\x22\x20aria-labelledby=\x22navbarDropdown\x22>';_0x51e0f6+=_0x1e92('0x6a');_0x51e0f6+=_0x1e92('0x6b');_0x51e0f6+=_0x1e92('0x66');_0x51e0f6+=_0x1e92('0x67');_0x51e0f6+=_0x1e92('0x4c');_0x51e0f6+=_0x1e92('0x6c');_0x51e0f6+='\x20\x20\x20\x20\x20\x20\x20\x20<a\x20class=\x22nav-link\x22\x20href=\x22./site.html\x22>利用規約・<br\x20class=\x22hidden\x20pcBlock\x22>免責事項</a>';_0x51e0f6+=_0x1e92('0x4c');_0x51e0f6+=_0x1e92('0x6d');_0x51e0f6+=_0x1e92('0x6e');_0x51e0f6+='\x20\x20\x20\x20\x20\x20</li>';_0x51e0f6+=_0x1e92('0x6f');_0x51e0f6+=_0x1e92('0x70');_0x51e0f6+=_0x1e92('0x71');$(_0x1e92('0x72'))['prepend'](_0x51e0f6);let _0x331a54=_0x1e92('0x73');let _0x47f552=''+_0x1e92('0x74')+_0x1e92('0x75')+_0x1e92('0x76')+'ご心配をおかけし申し訳ございせんでしたm(_\x20_)m💦💦<br>'+_0x1e92('0x77')+_0x1e92('0x78')+_0x1e92('0x79')+'これからもみんなでロマサガRSを盛り上げていきましょう(๑′ᴗ‵๑)b';let _0x23be3f=_0x1e92('0x7a')+_0x331a54+_0x1e92('0x7b')+_0x47f552+_0x1e92('0x7c');let _0x340b83=_0x1e92('0x7d');let _0x11574b=''+_0x1e92('0x7e')+'・<a\x20href=\x22./ourchar.html\x22>SS教授\x20素ステ最大値仮置き<br>'+'6/18\x20[更新]\x20<br>'+_0x1e92('0x7f');let _0x121511=_0x1e92('0x80')+_0x340b83+_0x1e92('0x7b')+_0x11574b+'</div></div>';$(_0x1e92('0x81'))[_0x1e92('0x82')](_0x121511);var _0xd556ed='';_0xd556ed+=_0x1e92('0x83');_0xd556ed+=_0x1e92('0x84');_0xd556ed+='Powered\x20by\x20<a\x20href=\x22https://twitter.com/nao_romasaga_rs\x22\x20target=\x22new\x22>nao_romasaga_rs</a><br>';_0xd556ed+=_0x1e92('0x85');_0xd556ed+=_0x1e92('0x86');_0xd556ed+=_0x1e92('0x87');_0xd556ed+='<a\x20href=\x22https://twitter.com/HarMakeIt\x22\x20target=\x22new\x22>春巻</a>,\x20';_0xd556ed+=_0x1e92('0x88');_0xd556ed+=_0x1e92('0x89');_0xd556ed+=_0x1e92('0x8a');_0xd556ed+=_0x1e92('0x8b');_0xd556ed+='ILLUSTRATION:\x20TOMOMI\x20KOBAYASHI';_0xd556ed+=_0x1e92('0x8c');_0xd556ed+=_0x1e92('0x8d');_0xd556ed+=_0x1e92('0x8e');_0xd556ed+=_0x1e92('0x8f');_0xd556ed+='</div>';let _0x480d26=$(_0x1e92('0x90'))[_0x1e92('0x91')](_0x1e92('0x92'),_0x1e92('0x93'));for(let _0x38740c in ICON_LIST){let _0x5d4112=$(_0x1e92('0x94'));let _0x50c8ab=getImgUrl()+'/icon/'+ICON_LIST[_0x38740c]+_0x1e92('0x95');_0x5d4112[_0x1e92('0x91')](_0x1e92('0x92'),'background:url('+_0x50c8ab+')');_0x480d26[_0x1e92('0x33')](_0x5d4112);}$(_0x1e92('0x72'))[_0x1e92('0x33')](_0xd556ed);$(_0x1e92('0x72'))[_0x1e92('0x33')](_0x480d26);let _0x2b4b9c=$(location)[_0x1e92('0x91')](_0x1e92('0x96'));if(_0x2b4b9c[_0x1e92('0x97')](_0x1e92('0x98'))===-0x1){}if(_0x2b4b9c[_0x1e92('0x97')](_0x1e92('0x99'))!=-0x1){$(_0x1e92('0x9a'))[_0x1e92('0x9b')]('active');}else if(_0x2b4b9c[_0x1e92('0x97')](_0x1e92('0x9c'))!=-0x1){$(_0x1e92('0x9d'))[_0x1e92('0x9b')]('active');}else if(_0x2b4b9c['indexOf'](_0x1e92('0x9e'))!=-0x1){$(_0x1e92('0x9f'))[_0x1e92('0x9b')](_0x1e92('0xa0'));}else if(_0x2b4b9c['indexOf'](_0x1e92('0xa1'))!=-0x1){$(_0x1e92('0xa2'))[_0x1e92('0x9b')](_0x1e92('0xa0'));}else if(_0x2b4b9c[_0x1e92('0x97')](_0x1e92('0xa3'))!=-0x1){$(_0x1e92('0xa4'))['addClass'](_0x1e92('0xa0'));}else if(_0x2b4b9c[_0x1e92('0x97')](_0x1e92('0xa5'))!=-0x1){$('#headSite')['addClass'](_0x1e92('0xa0'));}else if(_0x2b4b9c[_0x1e92('0x97')](_0x1e92('0xa6'))!=-0x1){$(_0x1e92('0xa7'))['addClass']('active');}else if(_0x2b4b9c[_0x1e92('0x97')](_0x1e92('0xa8'))!=-0x1){$(_0x1e92('0xa9'))['addClass'](_0x1e92('0xa0'));}else if(_0x2b4b9c[_0x1e92('0x97')](_0x1e92('0xaa'))!=-0x1){$(_0x1e92('0xab'))[_0x1e92('0x9b')](_0x1e92('0xa0'));}else if(_0x2b4b9c[_0x1e92('0x97')](_0x1e92('0xac'))!=-0x1){$(_0x1e92('0xad'))['addClass'](_0x1e92('0xa0'));}else if(_0x2b4b9c[_0x1e92('0x97')](_0x1e92('0xae'))!=-0x1){$(_0x1e92('0xaf'))[_0x1e92('0x9b')](_0x1e92('0xa0'));}else if(_0x2b4b9c[_0x1e92('0x97')](_0x1e92('0xb0'))!=-0x1){$(_0x1e92('0xb1'))[_0x1e92('0x9b')](_0x1e92('0xa0'));}else if(_0x2b4b9c[_0x1e92('0x97')]('mydata.html')!=-0x1){$('#headMydata')[_0x1e92('0x9b')](_0x1e92('0xa0'));}else if(_0x2b4b9c[_0x1e92('0x97')](_0x1e92('0xb2'))!=-0x1){$(_0x1e92('0xb3'))[_0x1e92('0x9b')](_0x1e92('0xa0'));}else if(_0x2b4b9c[_0x1e92('0x97')]('inputchar.html')!=-0x1){$(_0x1e92('0xb4'))['addClass'](_0x1e92('0xa0'));}else if(_0x2b4b9c[_0x1e92('0x97')](_0x1e92('0xb5'))!=-0x1){$(_0x1e92('0xb6'))[_0x1e92('0x9b')](_0x1e92('0xa0'));}else if(_0x2b4b9c[_0x1e92('0x97')](_0x1e92('0xb7'))!=-0x1){$(_0x1e92('0xb8'))[_0x1e92('0x9b')]('active');}}var charRand=[[_0x1e92('0xb9'),_0x1e92('0xba')],[_0x1e92('0xbb'),_0x1e92('0xbc')],[_0x1e92('0xbd'),_0x1e92('0xbe')],[_0x1e92('0xbf'),'ID38400'],[_0x1e92('0xc0'),'ID392d8'],[_0x1e92('0xc1'),_0x1e92('0xc2')],[_0x1e92('0xc3'),_0x1e92('0xc4')],['ID35c29',_0x1e92('0xc5')],[_0x1e92('0xc6'),'ID4c3ef'],[_0x1e92('0xc7'),_0x1e92('0xc8')],[_0x1e92('0xc9'),_0x1e92('0xca')],[_0x1e92('0xcb'),_0x1e92('0xcc')],['ID4e714',_0x1e92('0xcd')],['ID4ea34',_0x1e92('0xce')],[_0x1e92('0xcf'),_0x1e92('0xd0')]];$(document)[_0x1e92('0xd1')](function(){$(_0x1e92('0x72'))[_0x1e92('0xd2')](_0x1e92('0xd3'),function(_0x340bf5){return![];});$(_0x1e92('0x72'))[_0x1e92('0xd4')](function(_0x278171){});var _0x589286=$(_0x1e92('0xd5'));if(_0x589286['length']>0x0){var _0x4110cf=Math[_0x1e92('0xd6')](Math[_0x1e92('0xd7')]()*charRand[_0x1e92('0x3a')]);$(_0x1e92('0xd8'))[_0x1e92('0x91')](_0x1e92('0x92'),_0x1e92('0xd9')+charRand[_0x4110cf][0x0]+_0x1e92('0xda'));$(_0x1e92('0xdb'))[_0x1e92('0x91')](_0x1e92('0x92'),_0x1e92('0xd9')+charRand[_0x4110cf][0x1]+'.png);');}insertCommonComponent();});$(document)['on']('click',_0x1e92('0xdc'),function(){firebase[_0x1e92('0xdd')](appUsers)['signOut']()[_0x1e92('0xde')](()=>{console[_0x1e92('0x3b')](_0x1e92('0xdf'));$(_0x1e92('0xe0'))[_0x1e92('0x9b')]('d-none');})[_0x1e92('0xe1')](_0x498b05=>{console[_0x1e92('0x3b')](_0x1e92('0xe2')+_0x498b05+')');});});function getDevice(){let _0x196fd9=window['innerWidth'];var _0xa62d2d=navigator['userAgent'];if(_0x196fd9<0x2bc){return'sp';}else if(_0xa62d2d[_0x1e92('0x97')](_0x1e92('0xe3'))>0x0||_0xa62d2d[_0x1e92('0x97')](_0x1e92('0xe4'))>0x0){return _0x1e92('0xe5');}else{return'other';}}function getTime(_0x33229a){var _0x4377d2={'まれに':_0x1e92('0xe6'),'ごくまれに':_0x1e92('0xe7'),'僅かな確率で':_0x1e92('0xe8'),'必ず':_0x1e92('0xe9')};if(_0x33229a==''){return'';}else{return _0x4377d2[_0x33229a];}}function getStyleBgColor(_0x392758){let _0x443af8='bg_ss';if(_0x392758==='A'){_0x443af8=_0x1e92('0xea');}else if(_0x392758==='S'){_0x443af8='bg_s';}return _0x443af8;}function getStyleIconClass(_0x2aba79){let _0xce7d47=_0x1e92('0xeb');if(_0x2aba79==='A'){_0xce7d47=_0x1e92('0xec');}else if(_0x2aba79==='S'){_0xce7d47=_0x1e92('0xed');}return _0xce7d47;}function getStyleIconBgClass(_0x405c87){let _0x4754c1=_0x1e92('0xee');if(_0x405c87==='A'){_0x4754c1=_0x1e92('0xef');}else if(_0x405c87==='S'){_0x4754c1=_0x1e92('0xf0');}return _0x4754c1;}function dispChar(_0x52b659){let _0x4d4818={};let _0x103585=device==='sp'?0x6:0xc;for(let _0x318632 in _0x52b659){if(_0x52b659[_0x318632][_0x1e92('0xf1')]===undefined){continue;}let _0x43e871=_0x52b659[_0x318632][_0x1e92('0xf2')];let _0x2f0f77=ICON_LIST[_0x52b659[_0x318632]['WeaponType']];if(_0x4d4818[_0x43e871]>=0x18){_0x43e871=_0x43e871+'2';}if(_0x4d4818[_0x43e871]===undefined){_0x4d4818[_0x43e871]=0x0;}if(_0x4d4818[_0x2f0f77]===undefined){_0x4d4818[_0x2f0f77]=0x0;}let _0xdf690a=_0x52b659[_0x318632][_0x1e92('0xf3')];let _0x291966=_0xdf690a!==_0x1e92('0xf4')?_0xdf690a:'ID4e2c9';let _0x2d4fc0=_0x52b659[_0x318632]['Id'];let _0x1f9385=getImgUrl(_0x1e92('0xf5')+_0x291966+_0x1e92('0x95'))+'\x20padding-top:35px;';let _0x46d23d=$(_0x1e92('0x94'))['attr']('id',_0x1e92('0xf6')+_0x291966)[_0x1e92('0x9b')](_0x1e92('0xf7'))[_0x1e92('0x9b')](_0x1e92('0xf6')+_0x291966)['attr'](_0x1e92('0xf8'),_0x2d4fc0)[_0x1e92('0x91')]('style',_0x1f9385)['attr']('onclick','');let _0x7a675f=$(_0x1e92('0x94'))[_0x1e92('0x9b')](_0x1e92('0xf9'));_0x7a675f[_0x1e92('0x33')](_0x52b659[_0x318632]['Series']);_0x46d23d[_0x1e92('0x33')](_0x7a675f);$('#'+_0x43e871)[_0x1e92('0x33')](_0x46d23d['clone']());if(++_0x4d4818[_0x43e871]%_0x103585===0x0){$('#'+_0x43e871)[_0x1e92('0x33')](_0x1e92('0x77'));}$('#_'+_0x2f0f77)[_0x1e92('0x33')](_0x46d23d['clone']());if(++_0x4d4818[_0x2f0f77]%_0x103585===0x0){$('#_'+_0x2f0f77)[_0x1e92('0x33')](_0x1e92('0x77'));}}}function setSlider(){let _0x2e93f1={'buttons':!![],'startSlide':0x0,'arrows':!![],'width':_0x1e92('0xe9'),'height':0xfa,'autoplay':![],'loop':!![],'visibleSize':_0x1e92('0xe9'),'forceSize':_0x1e92('0xfa')};_0x2e93f1[_0x1e92('0xfb')]=device==='sp'?0x136:0xfa;$(_0x1e92('0xfc'))[_0x1e92('0xfd')](_0x2e93f1);}let KAKUSEI_COLOR={'black':'k','green':'g','blue':'b','orange':'o','purple':'p','red':'r','yellow':'y','white':'w'};let KAKUSEI_ICON=['',_0x1e92('0xfe'),_0x1e92('0xff'),_0x1e92('0x100')];function skillLabel(_0x1081e5){let _0x341fce=$('<button>')[_0x1e92('0x9b')](_0x1e92('0x101'))['addClass'](_0x1e92('0x102'))[_0x1e92('0x91')](_0x1e92('0xf8'),_0x1081e5['Id']);let _0x586027=$(_0x1e92('0x90'))['attr']('style','width:100%;\x20display:\x20inline-flex;\x20justify-content:\x20space-between;\x20align-items:\x20baseline;\x20border-bottom:\x201px\x20solid;');let _0x19c046=$(_0x1e92('0x103'))['addClass']('text-left\x20skillNameClass')[_0x1e92('0x91')](_0x1e92('0x92'),_0x1e92('0x104'));_0x19c046[_0x1e92('0x33')](_0x1081e5[_0x1e92('0x105')]);let _0x181005=$(_0x1e92('0x103'))[_0x1e92('0x9b')](_0x1e92('0x106'))[_0x1e92('0x9b')](_0x1e92('0x107'))[_0x1e92('0x91')](_0x1e92('0x92'),_0x1e92('0x104'));_0x181005[_0x1e92('0x33')](_0x1e92('0x108')+_0x1081e5[_0x1e92('0x109')]);let _0x56a504=KAKUSEI_COLOR[_0x1081e5[_0x1e92('0x10a')]]+KAKUSEI_ICON[_0x1081e5[_0x1e92('0x109')]];_0x181005[_0x1e92('0x33')](_0x1e92('0x10b')+_0x56a504+_0x1e92('0x10c'));_0x181005[_0x1e92('0x33')]('BP:'+_0x1081e5[_0x1e92('0x10d')]);_0x181005[_0x1e92('0x33')]('\x20威力:'+_0x1081e5[_0x1e92('0x10e')]+'('+_0x1081e5[_0x1e92('0x10f')]+')');_0x586027['append'](_0x19c046)[_0x1e92('0x33')](_0x181005);let _0x3ce181=$(_0x1e92('0x90'))[_0x1e92('0x9b')](_0x1e92('0x110'))[_0x1e92('0x91')](_0x1e92('0x92'),_0x1e92('0x111'));_0x3ce181[_0x1e92('0x33')]($('<span>')[_0x1e92('0x9b')](_0x1e92('0x112'))[_0x1e92('0x9b')](ICON_LIST[_0x1081e5[_0x1e92('0x113')]])[_0x1e92('0x114')]('\u3000'));_0x1081e5[_0x1e92('0x115')][_0x1e92('0x116')](',')[_0x1e92('0x117')](function(_0x4b844b){let _0x2aba0a=$('<span>')[_0x1e92('0x9b')](_0x1e92('0x112'))[_0x1e92('0x9b')](ICON_LIST[_0x4b844b])[_0x1e92('0x114')]('\u3000');_0x3ce181[_0x1e92('0x33')](_0x2aba0a);});if(_0x1081e5[_0x1e92('0x118')]!=''){let _0x4624cd=$(_0x1e92('0x94'))['addClass']('')['addClass']('icon_sm')[_0x1e92('0x9b')](ICON_LIST[_0x1081e5[_0x1e92('0x118')]])['text']('\u3000');_0x3ce181[_0x1e92('0x33')](_0x4624cd);}if(_0x1081e5[_0x1e92('0x119')]!=''){let _0x2e1aef=$('<span>')[_0x1e92('0x9b')](_0x1e92('0x112'))['addClass'](ICON_LIST[_0x1081e5[_0x1e92('0x119')]+'低下'])['text']('\u3000');_0x3ce181[_0x1e92('0x33')](_0x2e1aef);}if(_0x1081e5[_0x1e92('0x11a')]!=''){if(_0x1081e5['Buff']==='HP'){_0x3ce181[_0x1e92('0x33')](_0x1e92('0x11b'));}else{let _0x2b90cb=$(_0x1e92('0x94'))[_0x1e92('0x9b')](_0x1e92('0x112'))[_0x1e92('0x9b')](ICON_LIST[_0x1081e5[_0x1e92('0x11a')]+'上昇'])[_0x1e92('0x114')]('\u3000');_0x3ce181[_0x1e92('0x33')](_0x2b90cb);}}if(_0x1081e5[_0x1e92('0x11c')]!=='近'){_0x3ce181[_0x1e92('0x33')]('['+_0x1081e5[_0x1e92('0x11c')]+']');}if(_0x1081e5[_0x1e92('0x11d')]!==_0x1e92('0x11e')){_0x3ce181[_0x1e92('0x33')]('['+AREA_SHORT[_0x1081e5[_0x1e92('0x11d')]]+']');}if(_0x1081e5['Fast']){_0x3ce181[_0x1e92('0x33')](_0x1e92('0x11f'));}if(_0x1081e5[_0x1e92('0x120')]){_0x3ce181['append'](_0x1e92('0x121'));}_0x3ce181[_0x1e92('0x33')](_0x1e92('0x122')+_0x1081e5[_0x1e92('0xf1')][_0x1e92('0x3a')]+')</span>');_0x341fce[_0x1e92('0x33')](_0x586027)[_0x1e92('0x33')](_0x3ce181);return _0x341fce;}function createInfoButton(){return $('<button>')[_0x1e92('0x9b')](_0x1e92('0x123'))['attr'](_0x1e92('0x124'),_0x1e92('0x125'))['attr'](_0x1e92('0x126'),_0x1e92('0x127'))[_0x1e92('0x91')](_0x1e92('0x128'),_0x1e92('0x129'));}function addBonus(_0x48a0d1,_0x558f1f,_0x1729ea){return Number(_0x48a0d1)+Math[_0x1e92('0xd6')](_0x48a0d1*_0x558f1f/0x64)+Number(_0x1729ea);}function animeReset(_0x5774a8,_0x1b97d8){$(_0x5774a8)[_0x1e92('0x12a')](_0x1b97d8);$(_0x5774a8)[0x0]['offsetWidth']=$(_0x5774a8)[0x0][_0x1e92('0x12b')];$(_0x5774a8)[_0x1e92('0x9b')](_0x1b97d8);}function setTaisei(_0x18789e,_0x22d176){_0x18789e[_0x1e92('0x12a')](_0x1e92('0x12c'));_0x18789e[_0x1e92('0x12a')](_0x1e92('0x12d'));if(_0x22d176>0x0){_0x18789e[_0x1e92('0x9b')]('resist_plus');}else if(_0x22d176<0x0){_0x18789e[_0x1e92('0x9b')](_0x1e92('0x12d'));}_0x18789e[_0x1e92('0x12e')](_0x22d176);}async function getStyleInfo(_0x424675){if(STYLE_MASTER[_0x424675]===undefined){await readFileWithId(_0x1e92('0x12f'),_0x424675,function(_0x16bc61){STYLE_MASTER[_0x424675]=_0x16bc61;});return STYLE_MASTER[_0x424675];}else{return STYLE_MASTER[_0x424675];}}let USER_DATA=[];async function getUserCharData(_0x3c6300){if(USER_DATA[_0x3c6300]===undefined){await readAnalyzeWithId(_0x1e92('0x130'),_0x3c6300,function(_0x14b2fb){USER_DATA[_0x3c6300]=_0x14b2fb;});return USER_DATA[_0x3c6300];}else{return USER_DATA[_0x3c6300];}}
+var device = getDevice();
+var LIMIT_BASE = 58;
+
+const ICON_LIST = {
+    "剣": "icon_ken", "大剣": "icon_dken", "斧": "icon_ono",
+    "小剣": "icon_sken", "槍": "icon_yari", "弓": "icon_yumi",
+    "棍棒": "icon_kon", "体術": "icon_tai", "銃": "icon_ju", "杖": "icon_tsue",
+    "斬": "icon_zan", "突": "icon_totsu", "打": "icon_da",
+    "熱": "icon_netsu", "冷": "icon_rei", "雷": "icon_rai",
+    "陰": "icon_in", "陽": "icon_yo",
+    "火術": "icon_hi", "水術": "icon_mizu", "風術": "icon_kaze",
+    "土術": "icon_tsuchi", "光術": "icon_hikari", "闇術": "icon_yami",
+    "スタン": "icon_stan", "マヒ": "icon_mahi", "気絶": "icon_kizetsu", "即死": "icon_kizetsu", "毒": "icon_doku", "石化": "icon_sekika",
+    "魅了": "icon_miryo", "眠り": "icon_zzz", "混乱": "icon_konran", "狂戦士": "icon_kyosenshi", "暗闇": "icon_kurayami",
+    "B": "icon_b", "A": "icon_a", "S": "icon_s", "SS": "icon_ss",
+    "腕力上昇": "icon_buff_str", "体力上昇": "icon_buff_vit", "器用さ上昇": "icon_buff_dex", "素早さ上昇": "icon_buff_agi",
+    "知力上昇": "icon_buff_int", "精神上昇": "icon_buff_mnd", "愛上昇": "icon_buff_ai", "魅力上昇": "icon_buff_mi",
+    "腕力低下": "icon_debuff_str", "体力低下": "icon_debuff_vit", "器用さ低下": "icon_debuff_dex", "素早さ低下": "icon_debuff_agi",
+    "知力低下": "icon_debuff_int", "精神低下": "icon_debuff_mnd", "愛低下": "icon_debuff_ai", "魅力低下": "icon_debuff_mi"
+};
+const WEPON_ATTR = {
+    "剣": "斬", "大剣": "斬", "斧": "斬",
+    "小剣": "突", "槍": "突", "弓": "突",
+    "棍棒": "打", "体術": "打", "銃": "打", "杖": "打"
+};
+const AREA_SHORT = {
+    "敵単体": "単", "敵全体": "全", "敵縦一列": "縦", "敵横一列": "横", "味方単体": "味単", "自身": "自"
+};
+const PARAM_KEY = ["STR", "VIT", "DEX", "AGI", "INT", "MND", "AI", "MI"];
+const PARAM_KEY_HP = ["HP"].concat(PARAM_KEY);
+const PARAM_NAME = ['腕力', '体力', '器用さ', '素早さ', '知力', '精神', '愛', '魅力'];
+const CONST_STYLE_BONUS_VAL = {
+    "A": {2: 1, 6: 1, 8: 1, 18: 2, 22: 1, 38: 2, 46: 3, 50: 2},
+    "S": {2: 1, 6: 1, 8: 2, 18: 3, 22: 1, 38: 3, 46: 4, 50: 2},
+    "SS": {2: 1, 6: 2, 8: 3, 18: 3, 22: 2, 38: 4, 46: 5, 50: 3}
+};
+
+function masterLevel(lv) {
+    var skill = Math.ceil((lv - 1) / 2) * 0.005;
+    return Number(skill);
+}
+
+function overdrive(lv) {
+    var od = Math.ceil((lv - 2) / 2) * 0.005;
+    return Number(od);
+}
+
+
+function addOption(list, target) {
+    $.map(list, function (name, value) {
+        $option = $('<option>', {value: name, text: value});
+        $('#' + target).append($option);
+    });
+}
+function culcSkillDamage(iryoku, rank) {
+    var v = Number(iryoku);
+    return v + (v - 5) * (1 + rank / 100);
+}
+
+function showimage(path, id, size) {
+    $("#" + id).css("background", "url(https://nao-romasaga.github.io/img/" + path + ") no-repeat");
+    if (size !== undefined) {
+        $("#" + id).css("background-size", size);
+    }
+}
+
+// 正規表現でセパレート
+function number_format(num) {
+    return String(num).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,');
+}
+
+function arrayAvg(arr) {
+    var sum = 0;
+    arr.forEach(function (elm) {
+        sum += elm;
+    });
+    return sum / arr.length;
+}
+
+function insertCommonComponent() {
+    console.log("UTIL");
+
+    if (OFUSE_FLG === undefined) {
+        OFUSE_FLG = false;
+    }
+
+    if (localStorage.uid === "ncTVtjyH4qWQQLnMzpmdux39AoD3") {
+        label = CONNECT_DB;// + " 混雑度";
+    } else if (OFUSE_FLG !== undefined && OFUSE_FLG) {
+        label = "プレミアムユーザ枠";// 混雑度";
+    } else {
+        label = ""; //`サイト混雑度(${CONNECT_DB})`;
+    }
+    //lavel+= `:<span id="CONNECT">混雑中...</span>`;
+    var newIcon = "<img src='./img/icon/icon_new.png'>";
+    var upIcon = "<img src='./img/icon/icon_up.png'>";
+    var newHot = "<img src='./img/icon/icon_hot.png'>";
+    var nav = "";
+    nav += '<nav class="navbar navbar-expand-lg navbar-light bg-light">';
+    nav += '  <span class="char-aruku dot dot_mid dot_cat"></span>';
+    nav += `  <div><a class="navbar-brand" href="./index.html">ロマサガRS 便利ツール</a><br><small>${label}<span id="CONNECT_GAME" class="d-none"></span><span id="CONNECT_USER" class="d-none"></span></small></div>`;
+    nav += '  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">';
+    nav += '    <span class="navbar-toggler-icon"></span>';
+    nav += '  </button>';
+    nav += '  <div class="collapse navbar-collapse" id="navbarSupportedContent">';
+    nav += '    <ul class="navbar-nav mr-auto small">';
+    nav += '      <li class="nav-item RequireLoginMenu d-none" id="headAuto">';
+    nav += '        <a class="nav-link" href="./home.html"><i class="fas fa-home" style="font-size:30px"></i></a>';
+    nav += '      </li>';
+    nav += '      <li class="nav-item" id="headCalendar">';
+    nav += '        <a class="nav-link" href="./calendar.html">イベント<br class="hidden pcBlock">カレンダー</a>';
+    nav += '      </li>';
+    nav += '      <li class="nav-item " id="headAuto">';
+    nav += '        <a class="nav-link" href="./auto.html">全力AUTO<br class="hidden pcBlock">シミュレーター ' + newHot + '</a>';
+    nav += '      </li>';
+    nav += '      <li class="nav-item " id="headOurchar">';
+    nav += '        <a class="nav-link" href="./ourchar.html">キャラクター<br class="hidden pcBlock">育成ランキング ' + newHot + '</a>';
+    nav += '      </li>';
+    nav += '      <li class="nav-item " id="headParty">';
+    nav += '        <a class="nav-link" href="./party.html">育成パーティ<br class="hidden pcBlock">上限チェック</a>';
+    nav += '      </li>';
+    nav += '      <li class="nav-item " id="headInputchar">';
+    nav += '        <a class="nav-link" href="./inputchar.html">まとめて<br class="hidden pcBlock">ステータス登録</a>';
+    nav += '      </li>';
+    nav += '      <li class="nav-item " id="headMydata">';
+    nav += '        <a class="nav-link" href="./mydata.html">周回適正<br class="hidden pcBlock">キャラチェック</a>';
+    nav += '      </li>';
+    nav += '      <li class="nav-item " id="headLimitdata">';
+    nav += '        <a class="nav-link" href="./limitdata.html">スタイル別素ステ<br class="hidden pcBlock">補正最大値一覧</a>';
+    nav += '      </li>';
+    nav += '      <li class="nav-item" id="headStyleCheck">';
+    nav += '        <a class="nav-link" href="./stylecheck.html">スタイル所持<br class="hidden pcBlock">チェッカー</a>';
+    nav += '      </li>';
+    nav += '      <li class="nav-item" id="headOurStyle">';
+    nav += '        <a class="nav-link" href="./ourstyle.html">みんなの<br class="hidden pcBlock">スタイル</a>';
+    nav += '      </li>';
+    nav += '  <li class="nav-item dropdown">';
+    nav += '    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+    nav += '      ゲームデータ検索';
+    nav += '    </a>';
+    nav += '    <div class="dropdown-menu bg-white" aria-labelledby="navbarDropdown">';
+    nav += '      <a class="dropdown-item" href="./skill.html">技・術検索</a>';
+    nav += '      <a class="dropdown-item" href="./ability.html">アビリティ検索</a>';
+    nav += '      <a class="dropdown-item" href="./style.html">スタイル検索</a>';
+    nav += '      <div class="dropdown-divider"></div>';
+    nav += '      <a class="dropdown-item" href="./damage.html">ダメージ計算</a>';
+    nav += '      <a class="dropdown-item" href="./dojo.html">特訓タイマー</a>';
+    nav += '    </div>';
+    nav += '  </li>';
+//    nav += '      <li class="nav-item" id="headSkill">';
+//    nav += '        <a class="nav-link" href="./skill.html">技・術<br class="hidden pcBlock">検索</a>';
+//    nav += '      </li>';
+//    nav += '      <li class="nav-item" id="headAbility">';
+//    nav += '        <a class="nav-link" href="./ability.html">アビリティ<br class="hidden pcBlock">検索</a>';
+//    nav += '      </li>';
+//    nav += '      <li class="nav-item" id="headStyle">';
+//    nav += '        <a class="nav-link" href="./style.html">キャラ+<br class="hidden pcBlock">スタイル詳細</a>';
+//    nav += '      </li>';
+//    nav += '      <li class="nav-item" id="headDamage">';
+//    nav += '        <a class="nav-link" href="./damage.html">ダメージ<br class="hidden pcBlock">計算</a>';
+//    nav += '      </li>';
+//    nav += '      <li class="nav-item" id="headDojo">';
+//    nav += '        <a class="nav-link" href="./dojo.html">特訓<br class="hidden pcBlock">タイマー</a>';
+//    nav += '      </li>';
+    nav += '  <li class="nav-item dropdown">';
+    nav += '    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+    nav += '      おもちゃ';
+    nav += '    </a>';
+    nav += '    <div class="dropdown-menu bg-white" aria-labelledby="navbarDropdown">';
+    nav += '      <a class="dropdown-item" href="./renkei.html">連携ジェネレーター</a>';
+    nav += '      <a class="dropdown-item" href="./kururin.html">無限ステアップ</a>';
+    nav += '    </div>';
+    nav += '  </li>';
+    nav += '      </li>';
+    nav += '      <li class="nav-item " id="headSite">';
+    nav += '        <a class="nav-link" href="./site.html">利用規約・<br class="hidden pcBlock">免責事項</a>';
+    nav += '      </li>';
+    nav += '      <li class="nav-item " id="headKifu">';
+    nav += '        <a class="nav-link" href="./kifu.html">寄付に<br class="hidden pcBlock">ついて</a>';
+    nav += '      </li>';
+    //nav += '      <li class="nav-item " id="headConvert">';
+    //nav += '        <a class="nav-link" href="./convert.html">データ移行</a>';
+    //nav += '      </li>';
+    //nav += '      <li class="nav-item">';
+    //nav += '        <a class="nav-link disabled" href="#">スタイル情報(coming soon)</a>';
+    //nav += '      </li>';
+    nav += '    </ul>';
+    nav += '  </div>';
+    nav += '</nav>';
+    $('body').prepend(nav);
+
+    let title3 = "現在の負荷状況とお礼";
+    let word3 = ""
+            + "6/14から発生していた大量アクセスも現在は落ち着いてきました。<br>"
+            + "今後同等のアクセスが流れてきても大丈夫なようにサーバ増強と負荷軽減のプログラム対応を行うことができました。<br>"
+            + "これもご支援、応援頂いたみなさまのおかげです。<br>"
+            + "ご心配をおかけし申し訳ございせんでしたm(_ _)m💦💦<br>"
+            + "<br>"
+            + "大量アクセスにも耐えられるようになりましたので、より多くの方に便利ツールを使っていただくことができるようになりました。<br>"
+            + "便利ツールを使うことで、ロマサガRSがより楽しくなり継続して遊べるモチベーションになれば幸いです。<br>"
+            + "これからもみんなでロマサガRSを盛り上げていきましょう(๑′ᴗ‵๑)b";
+    let info3 = `<div class="card"><div class="card-header bg-primary" style='color:white'>${title3}</div><div class="card-body">${word3}</div></div>`;
+    //$(".title-text").after(info3);
+
+    let title2 = "お知らせ ";
+    let word2 = ""
+            + "6/25 [更新] <br>"
+            + "・<a href=\"./limitdata.html\">素ステ+補正値一覧</a> 補正込み最大値を表の右に追加<br>"
+            + "・<a href=\"./ourchar.html\">育成ランキング</a>　SSようせい、SSバーニィ 素ステ最大値仮置き<br>"
+            + "6/22 [更新] "
+            + "<a href=\"./ourchar.html\">SS教授 素ステ最大値仮置き</a><br>"
+            + "6/18 [更新] "
+            + "<a href=\"./developer.html\">開発者からのメッセージ</a> ちょっと更新<br>"
+            ;
+    let info2 = `<div class="card"><div class="card-header bg-info" style='color:white'>${title2}</div><div class="card-body">${word2}</div></div>`;
+    $(".title-text").after(info2);
+
+    var footer = "";
+    footer += '<div class="opacity" style ="position: relative;">';
+    footer += '<span class="kadomaru RequireLoginMenu logout d-none" style="background-color: rgba(42,169,239,1); color:white; padding: 2px 5px; background-size: 340px 40px; width:340px" onclick=""><i class="fab fa-twitter"></i>ログアウト</span><br>'
+    footer += 'Powered by <a href="https://twitter.com/nao_romasaga_rs" target="new">nao_romasaga_rs</a><br>';
+    footer += 'Special thanks <small>';
+    footer += '<a href="https://twitter.com/imonoki" target="new">imonoki</a>, ';
+    footer += '<a href="https://twitter.com/chin_ohnck" target="new">ちん</a>, ';
+    footer += '<a href="https://twitter.com/HarMakeIt" target="new">春巻</a>, ';
+    footer += '<a href="https://twitter.com/PeNN128RS" target="new">こやん</a>, ';
+    footer += '<a href="https://twitter.com/ruchigame" target="new">ruchi</a>';
+    footer += '</small><br>';
+    footer += '© 2019 SQUARE ENIX CO., LTD. All Rights Reserved. Powered by Akatsuki Inc.<br>';
+    footer += 'ILLUSTRATION: TOMOMI KOBAYASHI';
+    //footer += '<span class="char-utau footer-liz dot dot_mid dot_liz"></span>';
+    footer += '<div class="row text-right" style="width:100%">';
+    footer += '<div class="col-1 offset-5"><span class="char-utau footer-liz dot dot_mid " style="background:url(https://nao-romasaga.github.io/img/dot/ID4bd48.png)"></span></div>';
+    footer += '<div class="col-1"><span class="char-utau footer-liz dot dot_mid " style="background:url(https://nao-romasaga.github.io/img/dot/ID4c7d4.png)"></span></div>';
+    footer += '</div>';
+    //footer += '<hr>';
+    //footer += '利用規約・免責事項<br>';
+    //footer += '当サイトは趣味で運営してる非公式のゲーム攻略サイトです。各社の協力や要請の元作成されたものではありません。また情報の内容の一切の保障を致しません。当サイトを利用したことにより発生する全ての損害を、当管理人はいかなる場合でも一切の責任を負いません。<br>';
+    //footer += '当サイトの内容、データ、プログラムの複製を固く禁じます。テキスト、画像の著作権は各社に帰属するものであり当サイトからの引用を固く禁じます。<br>';
+    footer += '</div>';
+    let imgTank = $("<div>").attr("style", "display:none");
+    for (let icon in ICON_LIST) {
+        let img = $("<span>");
+        let url = getImgUrl() + "/icon/" + ICON_LIST[icon] + ".png";
+        img.attr("style", "background:url(" + url + ")");
+        imgTank.append(img);
+    }
+    $('body').append(footer);
+    $('body').append(imgTank);
+
+    let url = $(location).attr('href');
+    if (url.indexOf('debug') === -1) {
+        //    $('body').html('<div class="sorry_center"><p class="sorry_cat icon-nemuri"><span class="icon-zzz"></span></p><br>申し訳ございません。<br>現在メンテナンス中です。</div>');
+    }
+
+    if (url.indexOf('damage.html') != -1) {
+        $("#headDamage").addClass("active");
+    } else if (url.indexOf('skill.html') != -1) {
+        $("#headSkill").addClass("active");
+    } else if (url.indexOf('style.html') != -1) {
+        $("#headStyle").addClass("active");
+    } else if (url.indexOf('ability.html') != -1) {
+        $("#headAbility").addClass("active");
+    } else if (url.indexOf('auto.html') != -1) {
+        $("#headAuto").addClass("active");
+    } else if (url.indexOf('site.html') != -1) {
+        $("#headSite").addClass("active");
+    } else if (url.indexOf('kifu.html') != -1) {
+        $("#headKifu").addClass("active");
+    } else if (url.indexOf('dojo.html') != -1) {
+        $("#headDojo").addClass("active");
+    } else if (url.indexOf('party.html') != -1) {
+        $("#headParty").addClass("active");
+    } else if (url.indexOf('stylecheck.html') != -1) {
+        $("#headStyleCheck").addClass("active");
+    } else if (url.indexOf('oursytle.html') != -1) {
+        $("#headOurStyle").addClass("active");
+    } else if (url.indexOf('renkei.html') != -1) {
+        $("#headRenkei").addClass("active");
+    } else if (url.indexOf('mydata.html') != -1) {
+        $("#headMydata").addClass("active");
+    } else if (url.indexOf('ourchar.html') != -1) {
+        $("#headOurchar").addClass("active");
+    } else if (url.indexOf('inputchar.html') != -1) {
+        $("#headInputchar").addClass("active");
+    } else if (url.indexOf('calendar.html') != -1) {
+        $("#headCalendar").addClass("active");
+    } else if (url.indexOf('limitdata.html') != -1) {
+        $("#headLimitdata").addClass("active");
+    }
+    
+}
+
+var charRand = [
+    ["ID335e0", "ID33a2c"],
+    ["ID33ce8", "ID7c8f8"],
+    ["IDad638", "IDad5d4"],
+    ["IDad82c", "ID38400"],
+    ["ID38e28", "ID392d8"],
+    ["ID38784", "ID387ea"],
+    ["ID38978", "ID38914"],
+    ["ID35c29", "ID35db8"],
+    ["ID4bb56", "ID4c3ef"],
+    ["ID4bb54", "ID4c3ec"],
+    ["ID4bce4", "ID4bfa0"],
+    ["ID4bd48", "ID4c7d4"],
+    ["ID4e714", "ID4e264"],
+    ["ID4ea34", "ID4e2c9"],
+    ["ID339c8", "ID3357c"],
+];
+$(document).ready(function () {
+    $("body").bind("contextmenu", function (e) {
+        return false;
+    });
+    $("body").mousedown(function (e) {
+        //return false;
+    });
+    var loading = $(".loading");
+    if (loading.length > 0) {
+        var random = Math.floor(Math.random() * charRand.length)
+        $("#char1").attr("style", `background: url(./img/dot/${charRand[random][0]}.png);`);
+        $("#char2").attr("style", `background: url(./img/dot/${charRand[random][1]}.png);`);
+    }
+
+    insertCommonComponent();
+
+});
+$(document).on('click', '.logout', function () {
+    firebase.auth(appUsers).signOut().then(() => {
+        console.log("ログアウトしました");
+        $(".RequireLoginMenu").addClass("d-none");
+    }).catch((error) => {
+        console.log(`ログアウト時にエラーが発生しました (${error})`);
+    });
+});
+
+function getDevice() {
+    let width = window.innerWidth;
+    var ua = navigator.userAgent;
+    if (width < 700) {
+        return 'sp';
+    } else if (ua.indexOf('iPad') > 0 || ua.indexOf('Android') > 0) {
+        return 'tab';
+    } else {
+        return 'other';
+    }
+}
+
+function getTime(time) {
+    var x = {"まれに": "25%", "ごくまれに": "10%", "僅かな確率で": "10%未満", "必ず": "100%"};
+    if (time == "") {
+        return "";
+    } else {
+        return x[time];
+    }
+}
+
+function getStyleBgColor(rare) {
+    let colorClass = "bg_ss";
+    if (rare === "A") {
+        colorClass = "bg_a";
+    } else if (rare === "S") {
+        colorClass = "bg_s";
+    }
+    return colorClass;
+}
+function getStyleIconClass(rare) {
+    let colorClass = "style_icon_ss";
+    if (rare === "A") {
+        colorClass = "style_icon_a";
+    } else if (rare === "S") {
+        colorClass = "style_icon_s";
+    }
+    return colorClass;
+}
+function getStyleIconBgClass(rare) {
+    let colorClass = "icon_bg_ss";
+    if (rare === "A") {
+        colorClass = "icon_bg_a";
+    } else if (rare === "S") {
+        colorClass = "icon_bg_s";
+    }
+    return colorClass;
+}
+function dispChar(master) {
+    let idx = {};
+    let width = (device === "sp") ? 6 : 12;
+    for (let i in master) {
+        if (master[i]['Holders'] === undefined) {
+            continue;
+        }
+        let series = master[i]['Series'];
+        let weaponType = ICON_LIST[master[i]['WeaponType']];
+        if (idx[series] >= 24) {
+            series = series + "2";
+        }
+
+        if (idx[series] === undefined) {
+            idx[series] = 0;
+        }
+        if (idx[weaponType] === undefined) {
+            idx[weaponType] = 0;
+        }
+
+        let dotId = master[i]['DotId'];
+        let pngName = (dotId !== "ID4e2c8") ? dotId : "ID4e2c9";
+        let id = master[i]['Id'];
+        let url = getImgUrl('dot/' + pngName + ".png") + " padding-top:35px;";
+        let charDot = $("<span>").attr("id", "dot" + pngName)
+                .addClass("char-aruku char char-bottom dot_mid dot")
+                .addClass("dot" + pngName)
+                .attr("data-id", id).attr('style', url).attr("onclick", "");
+        let seriesBanner = $("<span>").addClass("series-button");
+        seriesBanner.append(master[i]['Series']);
+        charDot.append(seriesBanner);
+        $("#" + series).append(charDot.clone());
+        if (++idx[series] % width === 0) {
+            $("#" + series).append("<br>");
+        }
+        $("#_" + weaponType).append(charDot.clone());
+        if (++idx[weaponType] % width === 0) {
+            $("#_" + weaponType).append("<br>");
+        }
+    }
+}
+function setSlider() {
+    let option = {
+        buttons: true, //スライダーのページャを表示する
+        startSlide: 0, //最初のスライドを指定する
+        arrows: true, //左右の矢印ボタンを表示する
+        width: '100%', //横幅を設定する
+        height: 250, //高さを設定する
+        //autoHeight: true, //高さを設定する
+        autoplay: false, //自動再生の設定
+        loop: true, //スライドをループさせる設定
+        visibleSize: '100%', //前後のスライドを表示するかの設定
+        forceSize: 'fullWidth' //スライダーの幅をブラウザ幅に設定する
+    };
+    option['height'] = (device === "sp") ? 310 : 250;
+    $('#slider-pro').sliderPro(option);
+}
+let KAKUSEI_COLOR = {"black": "k", "green": "g", "blue": "b", "orange": "o", "purple": "p", "red": "r", "yellow": "y", "white": "w"};
+let KAKUSEI_ICON = ["", "sand", "stone", "jewel"];
+function skillLabel(skillInfo) {
+    let skillList = $("<button>").addClass("skill_select").addClass("keishoSkill").attr("data-id", skillInfo['Id']);
+    let topDiv = $('<div>').attr('style', 'width:100%; display: inline-flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid;');
+    // 武器種別 BattleType、名称、所有数
+    let skillName = $("<p>").addClass("text-left skillNameClass").attr('style', 'margin:0;');
+    skillName.append(skillInfo['Name']);    // 技名称
+    let skillRight = $("<p>").addClass('text-right').addClass('small').attr('style', 'margin:0;');
+    skillRight.append("覚醒:" + skillInfo['Kakusei']);
+    let iconClass = KAKUSEI_COLOR[skillInfo['KakuseiSozai']] + KAKUSEI_ICON[skillInfo['Kakusei']];
+    skillRight.append(`<span class="icon_${iconClass}" style="width:25px;height:25px; display: inline-block;background-size: contain;">　</span>`);
+
+    skillRight.append("BP:" + skillInfo['ConsumeBp']);
+    skillRight.append(" 威力:" + skillInfo['PowerGrade'] + "(" + skillInfo['SkillIryoku'] + ")");
+    topDiv.append(skillName).append(skillRight);
+
+    // 属性 AttackAttributes
+    let bottomDiv = $('<div>').addClass("iconClass").attr('style', 'display: table-cell; vertical-align: middle; height:30px');
+    bottomDiv.append($('<span>').addClass('icon_sm').addClass(ICON_LIST[skillInfo['BattleType']]).text("　"));
+    skillInfo['AttackAttributes'].split(',').forEach(function (value) {
+        let img = $('<span>').addClass('icon_sm').addClass(ICON_LIST[value]).text("　");
+        bottomDiv.append(img);
+    });
+    if (skillInfo['BadStatus'] != "") {
+        let img = $('<span>').addClass('').addClass("icon_sm").addClass(ICON_LIST[skillInfo['BadStatus']]).text("　");
+        bottomDiv.append(img);
+    }
+    if (skillInfo['DeBuff'] != "") {
+        let img = $('<span>').addClass('icon_sm').addClass(ICON_LIST[skillInfo['DeBuff'] + "低下"]).text("　");
+        bottomDiv.append(img);
+    }
+    if (skillInfo['Buff'] != "") {
+        if (skillInfo['Buff'] === "HP") {
+            bottomDiv.append("[HP回復]");
+        } else {
+            let img = $('<span>').addClass('icon_sm').addClass(ICON_LIST[skillInfo['Buff'] + "上昇"]).text("　");
+            bottomDiv.append(img);
+        }
+    }
+    if (skillInfo['AttackDistance'] !== "近") {
+        bottomDiv.append("[" + skillInfo['AttackDistance'] + "]");
+    }
+    if (skillInfo['AttackArea'] !== "敵単体") {
+        bottomDiv.append("[" + AREA_SHORT[skillInfo['AttackArea']] + "]");
+    }
+    if (skillInfo['Fast']) {
+        bottomDiv.append("[ファスト]");
+    }
+    if (skillInfo['Delay']) {
+        bottomDiv.append("[ディレイ]");
+    }
+
+    bottomDiv.append(" <span class='holderClass'>所持者(" + skillInfo['Holders'].length + ")</span>");   // 所有者数
+
+    skillList.append(topDiv).append(bottomDiv);
+
+    return skillList;
+}
+function createInfoButton() {
+    return $("<button>")
+            .addClass("icon_info_md").attr("data-toggle", "tooltip").attr("data-placement", "top")
+            .attr("data-html", 'true');
+}
+
+function addBonus(org, per, add) {
+    return Number(org) + Math.floor(org * per / 100) + Number(add);
+}
+
+function animeReset(selector, animeClass) {
+    $(selector).removeClass(animeClass);
+    $(selector)[0].offsetWidth = $(selector)[0].offsetWidth;
+    $(selector).addClass(animeClass);
+}
+function setTaisei(target, val) {
+    target.removeClass("resist_plus");
+    target.removeClass("resist_minus");
+    if (val > 0) {
+        target.addClass("resist_plus");
+    } else if (val < 0) {
+        target.addClass("resist_minus");
+    }
+    target.html(val);
+}
+
+async function getStyleInfo(id) {
+    if (STYLE_MASTER[id] === undefined) {
+        await readFileWithId('Style', id, function (result) {
+            STYLE_MASTER[id] = result;
+        });
+        return STYLE_MASTER[id];
+    } else {
+        return STYLE_MASTER[id];
+    }
+}
+let USER_DATA = [];
+async function getUserCharData(id) {
+    if (USER_DATA[id] === undefined) {
+        await readAnalyzeWithId('OUR_CHAR/DETAIL', id, function (result) {
+            USER_DATA[id] = result;
+        });
+        return USER_DATA[id];
+    } else {
+        return USER_DATA[id];
+    }
+}

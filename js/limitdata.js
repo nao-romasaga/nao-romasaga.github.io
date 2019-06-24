@@ -56,7 +56,7 @@ async function initialLoad() {
         tableData.push(tmpTable);
     }
     drawTable();
-}
+};
 
 $(".baseValue").click(function () {
     $(".baseValue").each(function () {
@@ -119,7 +119,7 @@ function filter() {
         finalFilter.push(rareFilter);
     }
     table.setFilter(finalFilter);
-}
+};
 
 function drawTable() {
     $("#example-table").remove();
@@ -194,4 +194,4 @@ function drawTable() {
         ],
     });
 
-}
+};
