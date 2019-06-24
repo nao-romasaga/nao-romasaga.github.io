@@ -1,0 +1,337 @@
+@media only screen and (min-width: 768px) and (max-width: 1024px) { .xs-show { display:none; } .xs-hide { display:block; } }
+@media only screen and (min-width: 568px) and (max-width: 768px) { .sp-button { width: 25px; height: 18px; } }
+
+#listWithHandle div {
+    float: left;
+    margin-left: 5px;
+    width: 100px;
+    height: 100px;
+    border: 1px solid #00A5E3;
+    font-size: 24px;
+    text-align: center;
+}
+#listWithHandle div:hover {
+    cursor: move;
+}
+#JINKEI {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    height: 350px;
+}
+.FreeFight div:nth-child(4) {
+    position: absolute;
+    top: 20px;
+    right: 120px;
+}
+.FreeFight div:nth-child(2) {
+    position: absolute;
+    top: 80px;
+    right: 100px;
+}
+.FreeFight div:nth-child(1) {
+    position: absolute;
+    top: 140px;
+    right: 100px;
+}
+.FreeFight div:nth-child(3) {
+    position: absolute;
+    top: 200px;
+    right: 100px;
+}
+.FreeFight div:nth-child(5) {
+    position: absolute;
+    top: 260px;
+    right: 120px;
+}
+.RapidStream div:nth-child(4) {
+    position: absolute;
+    top: 20px;
+    right: 100px;
+}
+.RapidStream div:nth-child(2) {
+    position: absolute;
+    top: 80px;
+    right: 100px;
+}
+.RapidStream div:nth-child(1) {
+    position: absolute;
+    top: 140px;
+    right: 120px;
+}
+.RapidStream div:nth-child(3) {
+    position: absolute;
+    top: 200px;
+    right: 100px;
+}
+.RapidStream div:nth-child(5) {
+    position: absolute;
+    top: 260px;
+    right: 100px;
+}
+.HunterShift div:nth-child(1) {
+    position: absolute;
+    top: 140px;
+    right: 40px;
+}
+.HunterShift div:nth-child(2) {
+    position: absolute;
+    top: 80px;
+    right: 180px;
+}
+.HunterShift div:nth-child(3) {
+    position: absolute;
+    top: 200px;
+    right: 180px;
+}
+.HunterShift div:nth-child(4) {
+    position: absolute;
+    top: 20px;
+    right: 100px;
+}
+.HunterShift div:nth-child(5) {
+    position: absolute;
+    top: 260px;
+    right: 100px;
+}
+.AmazonStrike div:nth-child(1) {
+    position: absolute;
+    top: 140px;
+    right: 150px;
+}
+.AmazonStrike div:nth-child(2) {
+    position: absolute;
+    top: 80px;
+    right: 120px;
+}
+.AmazonStrike div:nth-child(3) {
+    position: absolute;
+    top: 200px;
+    right: 120px;
+}
+.AmazonStrike div:nth-child(4) {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+.AmazonStrike div:nth-child(5) {
+    position: absolute;
+    top: 260px;
+    right: 20px;
+}
+.Speculation div:nth-child(1) {
+    position: absolute;
+    top: 140px;
+    right: 150px;
+}
+.Speculation div:nth-child(2) {
+    position: absolute;
+    top: 80px;
+    right: 100px;
+}
+.Speculation div:nth-child(3) {
+    position: absolute;
+    top: 200px;
+    right: 100px;
+}
+.Speculation div:nth-child(4) {
+    position: absolute;
+    top: 20px;
+    right: 50px;
+}
+.Speculation div:nth-child(5) {
+    position: absolute;
+    top: 260px;
+    right: 50px;
+}
+
+.ImperialCross div:nth-child(1) {
+    position: absolute;
+    top: 140px;
+    right: 130px;
+}
+.ImperialCross div:nth-child(2) {
+    position: absolute;
+    top: 140px;
+    right: 30px;
+}
+.ImperialCross div:nth-child(3) {
+    position: absolute;
+    top: 140px;
+    right: 230px;
+}
+.ImperialCross div:nth-child(4) {
+    position: absolute;
+    top: 20px;
+    right: 130px;
+}
+.ImperialCross div:nth-child(5) {
+    position: absolute;
+    top: 260px;
+    right: 130px;
+}
+.Hotenbu div:nth-child(1) {
+    position: absolute;
+    top: 140px;
+    right: 105px;
+}
+.Hotenbu div:nth-child(2) {
+    position: absolute;
+    top: 20px;
+    right: 180px;
+}
+.Hotenbu div:nth-child(3) {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+}
+.Hotenbu div:nth-child(4) {
+    position: absolute;
+    top: 260px;
+    right: 180px;
+}
+.Hotenbu div:nth-child(5) {
+    position: absolute;
+    top: 260px;
+    right: 30px;
+}
+.DesertLance div:nth-child(1) {
+    position: absolute;
+    top: 130px;
+    right: 150px;
+}
+.DesertLance div:nth-child(2) {
+    position: absolute;
+    top: 90px;
+    right: 30px;
+}
+.DesertLance div:nth-child(3) {
+    position: absolute;
+    top: 170px;
+    right: 30px;
+}
+.DesertLance div:nth-child(4) {
+    position: absolute;
+    top: 30px;
+    right: 60px;
+}
+.DesertLance div:nth-child(5) {
+    position: absolute;
+    top: 230px;
+    right: 60px;
+}
+.PowerRise div:nth-child(1) {
+    position: absolute;
+    top: 140px;
+    right: 30px;
+}
+.PowerRise div:nth-child(2) {
+    position: absolute;
+    top: 20px;
+    right: 180px;
+}
+.PowerRise div:nth-child(3) {
+    position: absolute;
+    top: 260px;
+    right: 180px;
+}
+.PowerRise div:nth-child(4) {
+    position: absolute;
+    top: 80px;
+    right: 80px;
+}
+.PowerRise div:nth-child(5) {
+    position: absolute;
+    top: 200px;
+    right: 80px;
+}
+.Ryujin div:nth-child(1) {
+    position: absolute;
+    top: 100px;
+    right: 200px;
+}
+.Ryujin div:nth-child(2) {
+    position: absolute;
+    top: 20px;
+    right: 150px;
+}
+.Ryujin div:nth-child(3) {
+    position: absolute;
+    top: 80px;
+    right: 110px;
+}
+.Ryujin div:nth-child(4) {
+    position: absolute;
+    top: 140px;
+    right: 70px;
+}
+.Ryujin div:nth-child(5) {
+    position: absolute;
+    top: 200px;
+    right: 30px;
+}
+.HolyWall div:nth-child(1) {
+    position: absolute;
+    top: 140px;
+    right: 150px;
+}
+.HolyWall div:nth-child(2) {
+    position: absolute;
+    top: 20px;
+    right: 150px;
+}
+.HolyWall div:nth-child(3) {
+    position: absolute;
+    top: 260px;
+    right: 150px;
+}
+.HolyWall div:nth-child(4) {
+    position: absolute;
+    top: 80px;
+    right: 50px;
+}
+.HolyWall div:nth-child(5) {
+    position: absolute;
+    top: 200px;
+    right: 50px;
+}
+.icon_jinkei {
+    width: 60px;
+    height:60px;
+}
+.jinkei_bottom{
+    margin-bottom: 0px;
+}
+input[type=radio] {
+
+    display: none; /*  ラジオボタンを非表示にする */
+}
+input[type="radio"]:checked + .roleType {
+    background: #31A9EE;/* マウス選択時の背景色を指定する */
+    color: #ffffff; /* マウス選択時のフォント色を指定する */
+}
+.roleType {
+    margin: 5px;	/* ボックス外側の余白を指定する */
+    width: 100px;	/* ボックスの横幅を指定する */
+    padding-left: 5px;	/* ボックス内左側の余白を指定する */
+    padding-right: 5px;	/* ボックス内御右側の余白を指定する */
+    color: #b20000;	/* フォントの色を指定 */
+    text-align: center;	/* テキストのセンタリングを指定する */
+    cursor: pointer;	/* マウスカーソルの形（リンクカーソル）を指定する */
+    border: 2px solid #006DD9;/* ボックスの境界線を実線で指定する */
+    border-radius: 5px;	/* 角丸を指定する */
+}
+.jinkei_eq{
+    width: 40px;
+    position: absolute;
+    right: 0px;
+    bottom: 20px;
+}
+
+.jinkei_list_bg tr:nth-child(even) {
+    background: #F9F9F9;
+}
+ 
+.jinkei_list_bg tr:nth-child(odd) {
+    background: #F0FAE2;
+}
