@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#" lang="ja">
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138966739-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', 'UA-138966739-1');
+        </script>
+        <meta charset="utf-8">
+        <title>【ロマサガRS】 周回攻略 おすすめパーティ編成</title>
+        <meta property="og:title" content="【ロマサガRS】 周回攻略 おすすめパーティ編成" />
+        <meta property="og:url" content="https://http://nao-romasaga.github.io/partylist.html" />
+        <meta property="og:description" content="ロマサガRSの周回におすすめなパーティ編成を投稿できます。攻略や育成の際にご利用ください。" />
+        <meta name="description" content="ロマサガRSの周回におすすめなパーティ編成を投稿できます。攻略や育成の際にご利用ください。【ロマンシングサガ リユニバース】" />
+        <meta property="og:image" content="https://nao-romasaga.github.io/img/twitter_card_partylist.png" />
+        <meta property="og:site_name" content="ロマサガRS便利ツール" />
+        <meta property="og:type" content="article">
+        <meta property="og:locale" content="ja_JP" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@nao_romasaga_rs" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+
+        <script type="text/javascript" src="./js/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="./js/jquery.ui.touch-punch.js"></script>
+        <link rel="stylesheet" type="text/css" href="./css/bootstrap/bootstrap.min.css">
+        <script src="./js/popper.min.js"></script>
+        <script src="./js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="./css/style.css">
+        <link rel="stylesheet" type="text/css" href="./css/party.css">
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/ui/3.5.2/firebase-ui-auth__ja.js"></script>
+        <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+        <script src="./js/Firebase.js"></script>
+        <script src="./js/utils.js" ></script>
+        <script src="./js/partylist.js" ></script>
+        <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+        <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+        <style>
+            .jinkei_pos {
+                width: 45px;
+                margin-bottom: -30px;
+                margin-left: -40px;
+                font-size: 9px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class ="haikei">
+            <div class="container">
+                <div class="text-center">
+                    <a href="https://www.jp.square-enix.com/saga_reuniverse/" target="new"><img src="./img/cmn_logo01_sp.png" class="col-sm-12 col-md-8 col-lg-6"></a>
+                </div>
+                <h3 class="text-center title-text">周回攻略 おすすめパーティ編成</h3>
+                <p class="text-right opacity"><small>バグ発見、ご要望は <a href="https://twitter.com/nao_romasaga_rs" target="new">nao_romasaga_rs</a>まで</small>
+                </p>
+                <div id="firebaseui-auth-container" style="margin-bottom:10px;"></div>
+                <!--
+                <h5 class="text-center opacity kadomaru" onclick="$('.movie').toggleClass('d-none')">つかいかた動画をみる</h5>
+                <div class="movie d-none">
+                    <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">[new] パーティ育成メモ<br>育成の際に各スタイルのステータス上限を確認を行える機能を作成しました<a href="https://t.co/T9hQHFJD1n">https://t.co/T9hQHFJD1n</a><br><br>スプシだとパーティ切り替えが面倒だったので作りました(๑′ᴗ‵๑)<br>ゆくゆくは複数パーティ設定を予定しています<br><br>お布施もお待ちしております😘<a href="https://t.co/3qFDqY1Kdx">https://t.co/3qFDqY1Kdx</a> <a href="https://t.co/Y1aVBPYZWu">pic.twitter.com/Y1aVBPYZWu</a></p>&mdash; (nAo)@ロマサガRS (@nao_romasaga_rs) <a href="https://twitter.com/nao_romasaga_rs/status/1122948484208910336?ref_src=twsrc%5Etfw">April 29, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+                -->
+
+                <div class="noLogin opacity kadomaru bg-danger text-white"><i class="fas fa-exclamation-triangle"></i>本機能はまだログイン必須です。そのうち一般公開します</div>
+
+
+                <div class="isLogin d-none">
+                    <label class="badge badge-pill badge-light">絞り込み</label>
+                    <div class="initialHide style-bgcolor text-center small row" style="width:100%; margin: 0px;">
+                        <ul class="nav text-center width-100">
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" href="#icon_ken"><span class="icon_mini icon_ken" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" href="#icon_dken"><span class="icon_mini icon_dken" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" href="#icon_ono"><span class="icon_mini icon_ono" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" href="#icon_kon"><span class="icon_mini icon_kon" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" href="#icon_tai"><span class="icon_mini icon_tai" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" href="#icon_ju"><span class="icon_mini icon_ju" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" href="#icon_sken"><span class="icon_mini icon_sken" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" href="#icon_yumi"><span class="icon_mini icon_yumi" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" href="#icon_yari"><span class="icon_mini icon_yari" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" href="#icon_tsue"><span class="icon_mini icon_tsue" onclick=""></span></a></li>
+                        </ul>
+                    </div>
+                    <div class="text-center opacity-char-back weaponList d-none" id="_icon_ken"><h5 class="game-banner"><span class="icon_mini icon_ken"></span></h5></div>
+                    <div class="text-center opacity-char-back weaponList d-none" id="_icon_dken"><h5 class="game-banner"><span class="icon_mini icon_dken"></span></h5></div>
+                    <div class="text-center opacity-char-back weaponList d-none" id="_icon_ono"><h5 class="game-banner"><span class="icon_mini icon_ono"></span></h5></div>
+                    <div class="text-center opacity-char-back weaponList d-none" id="_icon_sken"><h5 class="game-banner"><span class="icon_mini icon_sken"></span></h5></div>
+                    <div class="text-center opacity-char-back weaponList d-none" id="_icon_yumi"><h5 class="game-banner"><span class="icon_mini icon_yumi"></span></h5></div>
+                    <div class="text-center opacity-char-back weaponList d-none" id="_icon_yari"><h5 class="game-banner"><span class="icon_mini icon_yari"></span></h5></div>
+                    <div class="text-center opacity-char-back weaponList d-none" id="_icon_ju"><h5 class="game-banner"><span class="icon_mini icon_ju"></span></h5></div>
+                    <div class="text-center opacity-char-back weaponList d-none" id="_icon_tai"><h5 class="game-banner"><span class="icon_mini icon_tai"></span></h5></div>
+                    <div class="text-center opacity-char-back weaponList d-none" id="_icon_kon"><h5 class="game-banner"><span class="icon_mini icon_kon"></span></h5></div>
+                    <div class="text-center opacity-char-back weaponList d-none" id="_icon_tsue"><h5 class="game-banner"><span class="icon_mini icon_tsue"></span></h5></div>                    
+                    <ul class="nav nav-tabs SeriesChoise">
+                        <li class="nav-item text-center side-padding-zero">
+                            <a class="nav-link active bg-white" style="padding: 5px 5px;" data-toggle="tab" href="#RS1" class="">RS1</a>
+                        </li>
+                        <li class="nav-item text-center side-padding-zero">
+                            <a class="nav-link bg-white" style="padding: 5px 5px;" data-toggle="tab" href="#rs2" class="bg-white">RS2</a>
+                        </li>
+                        <li class="nav-item text-center side-padding-zero">
+                            <a class="nav-link bg-white" style="padding: 5px 5px;" data-toggle="tab" href="#RS3" class="bg-white">RS3</a>
+                        </li>
+                        <li class="nav-item text-center side-padding-zero">
+                            <a class="nav-link bg-white" style="padding: 5px 5px;" data-toggle="tab" href="#sf" class="bg-white">SF1+2</a>
+                        </li>
+                        <li class="nav-item text-center side-padding-zero">
+                            <a class="nav-link bg-white" style="padding: 5px 5px;" data-toggle="tab" href="#other" class="bg-white">US/SS/ES/RSR</a>
+                        </li>
+                    </ul>
+                    <div id="myTabContent" class="tab-content SeriesChoise">
+                        <div class="tab-pane fade show active text-center opacity-char-back" id="RS1"><h5 class="game-banner">ロマンシング・サガ</h5></div>
+                        <div class="tab-pane fade text-center opacity-char-back" id="rs2">
+                            <div class="" id="RS2"><h5 class="game-banner">ロマンシング・サガ2(1)</h5></div>
+                            <div class="" id="RS22"><h5 class="game-banner">ロマンシング・サガ2(2)</h5></div>
+                        </div>
+                        <div class="tab-pane fade text-center opacity-char-back" id="RS3"><h5 class="game-banner">ロマンシング・サガ3</h5></div>
+                        <div class="tab-pane fade text-center opacity-char-back" id="sf">
+                            <h5 class="game-banner">サガフロンティア1/2</h5>
+                            <span id="SF1"></span><br><span id="SF2"></span>
+                        </div>
+                        <div class="tab-pane fade text-center opacity-char-back" id="other">
+                            <h5 class="game-banner">
+                                アンリミテッド・サガ<span class="hidden pcBlock"> / </span><br class="hidden spBlock">
+                                エンペラーズ・サガ<span class="hidden pcBlock"> / </span><br class="hidden spBlock">サガ・スカーレットグレイス</h5>
+                            <span id="US"></span>　<span id="ES"></span>　<span id="SS"></span>
+                            <h5 class="game-banner">ロマンシング・サガRS</h5><span id="RSR"></span>
+                        </div>
+                    </div>
+                    <div class="" style="padding: 0px 5px;">
+                        <label class="badge badge-pill badge-light" >パーティ編成</label>
+                        <div class=" row dojohaikei" id="jinkeiData">
+                            <div class="col-12 opacity-char-back" style="width:100%;" id="charData">
+                                <div class="" id="PARTY"></div>
+                            </div>
+                            <br>
+                            <div class="col-12 d-md-none">
+                                <button id="DISP_CHANGE" class="icon_btn_on" style="width:100%; background-size: 100% 100%;" onclick="">陣形表示を切り替え</button>
+                            </div>
+                            <div id="DISP_LIST" class="col-md-6 d-none d-md-inline flex-column justify-content-center" style="background: url(./img/bg_window_wide.png); background-size: 100% 100%;">
+                                <div class="d-flex flex-column justify-content-center" style="height:380px;">
+                                    <div class="d-flex justify-content-center" id="JINKEI_VERTICAL"></div>
+                                </div>
+                            </div>
+                            <div id="DISP_DOT" class="col-12 col-md-6" style="margin-bottom: -30px;">
+                                <div class="FreeFight" id="JINKEI" style="height: 370px; background: url(./img/bg_carpet); background-size: 100%;"></div>
+                            </div>
+                            <div class="col-12">
+                                <label class="badge badge-pill badge-light" >陣形選択</label>
+                            </div>
+                            <div class="col-3 col-md-2 text-center jinkei_bottom"><img class="jinkei_eq" src="./img/icon/icon_e.png"><button class="icon_jinkei" data-id="FreeFight" style="background: url('./img/icon/icon_jinkei_FreeFight.png'); background-size: 100%"></button><br><label class="badge badge-pill badge-dark text-truncate width-100 jinkei_bottom" >フリーファイト</label></div>
+                            <div class="col-3 col-md-2 text-center jinkei_bottom"><img class="jinkei_eq d-none" src="./img/icon/icon_e.png"><button class="icon_jinkei" data-id="AmazonStrike" style="background: url('./img/icon/icon_jinkei_AmazonStrike.png'); background-size: 100%"></button><br><label class="badge badge-pill badge-dark text-truncate width-100 jinkei_bottom" >アマゾンストライク</label></div>
+                            <div class="col-3 col-md-2 text-center jinkei_bottom"><img class="jinkei_eq d-none" src="./img/icon/icon_e.png"><button class="icon_jinkei" data-id="Speculation" style="background: url('./img/icon/icon_jinkei_Speculation.png'); background-size: 100%"></button><br><label class="badge badge-pill badge-dark text-truncate width-100 jinkei_bottom" >スペキュレイション</label></div>
+                            <div class="col-3 col-md-2 text-center jinkei_bottom"><img class="jinkei_eq d-none" src="./img/icon/icon_e.png"><button class="icon_jinkei" data-id="HunterShift" style="background: url('./img/icon/icon_jinkei_HunterShift.png'); background-size: 100%"></button><br><label class="badge badge-pill badge-dark text-truncate width-100 jinkei_bottom" >ハンターシフト</label></div>
+                            <div class="col-3 col-md-2 text-center jinkei_bottom"><img class="jinkei_eq d-none" src="./img/icon/icon_e.png"><button class="icon_jinkei" data-id="ImperialCross" style="background: url('./img/icon/icon_jinkei_ImperialCross.png'); background-size: 100%"></button><br><label class="badge badge-pill badge-dark text-truncate width-100 jinkei_bottom" >インペリアルクロス</label></div>
+                            <div class="col-3 col-md-2 text-center jinkei_bottom"><img class="jinkei_eq d-none" src="./img/icon/icon_e.png"><button class="icon_jinkei" data-id="Hotenbu" style="background: url('./img/icon/icon_jinkei_Hotenbu.png'); background-size: 100%"></button><br><label class="badge badge-pill badge-dark text-truncate width-100 jinkei_bottom" >鳳天舞の陣</label></div>
+                            <div class="col-3 col-md-2 text-center jinkei_bottom"><img class="jinkei_eq d-none" src="./img/icon/icon_e.png"><button class="icon_jinkei" data-id="DesertLance" style="background: url('./img/icon/icon_jinkei_DesertLance.png'); background-size: 100%"></button><br><label class="badge badge-pill badge-dark text-truncate width-100 jinkei_bottom" >デザートランス</label></div>
+                            <div class="col-3 col-md-2 text-center jinkei_bottom"><img class="jinkei_eq d-none" src="./img/icon/icon_e.png"><button class="icon_jinkei" data-id="PowerRise" style="background: url('./img/icon/icon_jinkei_PowerRise.png'); background-size: 100%"></button><br><label class="badge badge-pill badge-dark text-truncate width-100 jinkei_bottom" >パワーレイズ</label></div>
+                            <div class="col-3 col-md-2 text-center jinkei_bottom"><img class="jinkei_eq d-none" src="./img/icon/icon_e.png"><button class="icon_jinkei" data-id="RapidStream" style="background: url('./img/icon/icon_jinkei_RapidStream.png'); background-size: 100%"></button><br><label class="badge badge-pill badge-dark text-truncate width-100 jinkei_bottom" >ラピッドストリーム</label></div>
+                            <div class="col-3 col-md-2 text-center jinkei_bottom"><img class="jinkei_eq d-none" src="./img/icon/icon_e.png"><button class="icon_jinkei" data-id="Ryujin" style="background: url('./img/icon/icon_jinkei_Ryujin.png'); background-size: 100%"></button><br><label class="badge badge-pill badge-dark text-truncate width-100 jinkei_bottom" >龍陣</label></div>
+                            <div class="col-3 col-md-2 text-center jinkei_bottom"><img class="jinkei_eq d-none" src="./img/icon/icon_e.png"><button class="icon_jinkei" data-id="HolyWall" style="background: url('./img/icon/icon_jinkei_HolyWall.png'); background-size: 100%"></button><br><label class="badge badge-pill badge-dark text-truncate width-100 jinkei_bottom" >ホーリーウォール</label></div>
+                            <div class="col-12 char-bottom"></div>
+                            <div class="col-12 col-lg-6">
+                                <div class="form-group">
+                                    <label class="badge badge-pill badge-light" >クエスト難易度</label>
+                                    <select class="form-control" id="QUEST">
+                                        <option value="0">難易度選択</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6">
+                                <div class="form-group">
+                                    <label class="badge badge-pill badge-light" >周回中のクエスト</label>
+                                    <select class="form-control" id="QUEST_CHOICE">
+                                        <option value="0">クエスト選択</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-12 char-bottom" style="margin: 0px 0px;">
+                                <label class="badge badge-pill badge-light" >フリーコメント <span id="nowtext">0</span>/50</label>
+                                <textarea id="FREE_TEXT" class="kadomaru" placeholder="フリーコメント(50文字以内)" maxlength=50 style="width:100%; height:80px"></textarea><br>
+                                <div class="opacity kadomaru">継承や覚醒、勝率、パーティのポイントなどご自由に入力ください。<font color="red">Twitter/Lineアカウントなど個人を特定できる情報や誹謗中傷を投稿された方は然るべき措置を取ります。</font></div>
+                            </div>
+                            <div class="col-12 char-bottom"></div>
+                            <div class="col-1 col-lg-3"></div>
+                            <div class="col-10 col-lg-6" style="margin: 10px 0px;">
+                                <button id="SAVE" class="icon_btn_off" style="width:100%; background-size: 100% 100%;" onclick="">周回パーティを共有する</button>
+                            </div>
+                            <div class="col-1 col-lg-3"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="label-text text-center initialShow">
+                    <div class="loading">
+                        <span>L</span><span>O</span><span>A</span><span>D</span><span>I</span><span>N</span><span>G</span><span>.</span><span>.</span><span>.</span>
+                    </div>
+                    <div class="">
+                        <span id="char1" class="char dot_mid dot char-hashiri-right" style="background: url(./img/dot/IDad82c.png);"></span>
+                        <span id="char2" class="char dot_mid dot char-hashiri-right" style="background: url(./img/dot/ID38400.png);"></span>
+                    </div>
+                </div>
+                <br>
+                <!--スクエア--><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5008373409434899" data-ad-slot="9303963278" data-ad-format="auto" data-full-width-responsive="true"></ins><script> (adsbygoogle = window.adsbygoogle || []).push({});</script>
+                <label class="badge badge-pill badge-light" >最近登録されてたデータ</label>
+                <div class="" id="PARTY_LIST">
+                    <table class="width-100 opacity-char-back" id="PARTY_TABLE"></table>
+                </div>                
+                <br>
+                <hr>
+                <!--スクエア--><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5008373409434899" data-ad-slot="9303963278" data-ad-format="auto" data-full-width-responsive="true"></ins><script> (adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+        </div> <!-- main -->
+
+        <!-- ============================= -->
+        <!-- ==  テンプレート             == -->
+        <!-- ============================= -->
+        <div class="d-none">
+            <table>
+                <tr class="d-md-none" id="TMPL_ROW1">
+                    <td class="label-text text-center TMPL_QUEST" colspan="8"></td>
+                </tr>
+                <tr style="zbackground: url(./img/bg_carpet); background-size: 100%;" id="TMPL_ROW2">
+                    <td class="label-text d-none d-md-table-cell text-center text-nowrap TMPL_QUEST"></td>
+                    <td class="text-center char1"></td>
+                    <td class="text-center char2"></td>
+                    <td class="text-center char3"></td>
+                    <td class="text-center char4"></td>
+                    <td class="text-center char5"></td>
+                    <td class="d-none d-md-table-cell label-text small TMPL_ADVICE" style="width:410px; padding:0px 15px 0px 15px !important"></td>
+                    <td class="d-none d-md-table-cell"><button class="icon_btn_on DELETE_BTN" style="width:100%; background-size: 100% 100%;" onclick="">削除</button></td>
+                <tr class="fukidashi small d-md-none" id="TMPL_ROW3">
+                    <td colspan="4" style="padding-left: 5px;" class="TMPL_ADVICE"></td>
+                    <td style=""><button class="d-md-none icon_btn_on DELETE_BTN" style="width:100%; background-size: 100% 100%;" onclick="">削除</button></td>
+                </tr>
+            </table>
+        </div>                    
+        <table class="width-100 text-center d-none charTable" id="CHAR_TEMPLATE">
+            <tr class="small text-center">
+                <td colspan="8">
+                    <p class="width-100 pad0 mar0 label-text charName"></p>
+                </td>
+                <td>
+                    <p class="width-100 pad0 mar0 charUnset" onclick=""><img src="./img/icon/icon_close.png" width="25" height="25"></p>
+                </td>
+                <td>
+                    <p class="width-100 pad0 mar0 openMenu" onclick=""><img src="./img/icon/icon_menu.png" width="25" height="25"></p>
+                </td>
+            </tr>
+            <tr class="small text-center">
+                <td rowspan="2" class="DISP_ICON">
+                    <div class="toggle">
+                        <img class="icn d-inline-block d-lg-none" src="./img/style_icon/ID36a44.png" width="50">
+                        <img class="cin d-none d-lg-inline-block d-xl-none" src="./img/style_icon/ID36a44.png" height="50">
+                        <img class="cin d-none d-xl-inline-block" src="./img/style_icon/ID36a44.png" height="50">
+                    </div>
+                </td>
+            </tr>
+            <tr class="text-center nowData" onclick="">
+                <td style="width:10%"><p style="margin-bottom:-5px">HP</p><span class="HP">0</span></td>
+                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">腕</p><span class="STR"></span></td>
+                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">体</p><span class="VIT"></span></td>
+                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">器</p><span class="DEX"></span></td>
+                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">速</p><span class="AGI"></span></td>
+                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">知</p><span class="INT"></span></td>
+                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">精</p><span class="MND"></span></td>
+                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">愛</p><span class="AI"></span></td>
+                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">魅</p><span class="MI"></span></td>
+            </tr>
+            <tr>
+                <td colspan="10" class="">
+                    <div class="fukidashiInput">
+                        <table class="fukidashi width-100 inputArea">
+                            <tr class="char-bottom text-nowrap">
+                                <td class="text-center" colspan="4">▼スタイル選択▼</td>
+                            </tr>
+                            <tr style=""><td colspan="4" class="STYLE_ICON"></td></tr>
+                            <tr class="char-bottom text-nowrap">
+                                <td class="text-center" colspan="2">
+                                    <button class="icon_btn_red charUnset" style="background-size: 150px 40px; width:150px; height: 40px;">編成から外す</button>
+                                </td>
+                                <td class="text-center" colspan="2">
+                                    <button class="icon_btn_on btn_close" style="background-size: 150px 40px; width:150px; height: 40px;">閉じる</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+            <tr class="text-center d-none inputArea">
+                <td style="width:20%" colspan="2">スタイル</td>
+                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">腕</p></td>
+                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">体</p></td>
+                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">器</p></td>
+                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">速</p></td>
+                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">知</p></td>
+                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">精</p></td>
+                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">愛</p></td>
+                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">魅</p></td>
+            </tr>
+        </table>
+    </body>
+</html>
