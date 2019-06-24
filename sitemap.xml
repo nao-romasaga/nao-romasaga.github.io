@@ -9,7 +9,7 @@
     </url>
     <url>
         <loc>https://nao-romasaga.github.io/ability.html</loc>
-        <lastmod>2019-05-10</lastmod>
+        <lastmod>2019-06-24</lastmod>
         <changefreq>daily</changefreq>
     </url>
     <url>
@@ -19,7 +19,7 @@
     </url>
     <url>
         <loc>https://nao-romasaga.github.io/damage.html</loc>
-        <lastmod>2019-05-09</lastmod>
+        <lastmod>2019-06-24</lastmod>
         <changefreq>daily</changefreq>
     </url>
     <url>
@@ -29,12 +29,12 @@
     </url>
     <url>
         <loc>https://nao-romasaga.github.io/ourstyle.html</loc>
-        <lastmod>2019-05-09</lastmod>
+        <lastmod>2019-06-24</lastmod>
         <changefreq>daily</changefreq>
     </url>
     <url>
         <loc>https://nao-romasaga.github.io/party.html</loc>
-        <lastmod>2019-05-12</lastmod>
+        <lastmod>2019-06-24</lastmod>
         <changefreq>daily</changefreq>
     </url>
     <url>
@@ -44,7 +44,7 @@
     </url>
     <url>
         <loc>https://nao-romasaga.github.io/skill.html</loc>
-        <lastmod>2019-05-10</lastmod>
+        <lastmod>2019-06-24</lastmod>
         <changefreq>daily</changefreq>
     </url>
     <url>
@@ -69,7 +69,7 @@
     </url>
     <url>
         <loc>https://nao-romasaga.github.io/ourchar.html</loc>
-        <lastmod>2019-05-30</lastmod>
+        <lastmod>2019-06-24</lastmod>
         <changefreq>daily</changefreq>
     </url>
     <url>
@@ -80,6 +80,11 @@
     <url>
         <loc>https://nao-romasaga.github.io/calendar.html</loc>
         <lastmod>2019-06-03</lastmod>
+        <changefreq>daily</changefreq>
+    </url>
+    <url>
+        <loc>https://nao-romasaga.github.io/partylist.html</loc>
+        <lastmod>2019-06-24</lastmod>
         <changefreq>daily</changefreq>
     </url>
 </urlset>
