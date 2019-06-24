@@ -1,1 +1,197 @@
-var _0x143e=['all','database','goOffline','Rarity','StyleBonus','全能力値','indexOf','CharacterId','CharId','Name','<small>','<br>','AnotherName','</small>','./img/icon/icon_','.png','style_icon','IllustId','Series','WeaponType','./img/icon/','RareFilter','SeriesFilter','WeaponTypeFilter','StyleBonusLv50','org','Limit','push','click','.baseValue','each','removeClass','icon_btn_off','icon_btn_on','addClass','attr','data-id','getSorters','setSort','.filterList','toggleClass','filterActive','event','clickFilter','limitdata','substr','data-type','href','hasClass','length','setFilter','#example-table','remove','#example-table-display','append','<div\x20id=\x22example-table\x22\x20style=\x22width:100%\x22></div>','number','left','630px','fitData','local','40px','rare_icon','image','30px','UserId','rank','html','assign','LimitVIT','LimitAGI','LimitINT','LimitMND','LimitAI','腕%\x20(Lv50)','StyleBonusLv50STR','体%\x20(Lv50)','器%\x20(Lv50)','StyleBonusLv50DEX','速%\x20(Lv50)','StyleBonusLv50AGI','知%\x20(Lv50)','StyleBonusLv50INT','精%\x20(Lv50)','StyleBonusLv50MND','愛%\x20(Lv50)','StyleBonusLv50AI','魅%\x20(Lv50)','Style','Char'];(function(_0x3f5249,_0x90fbd1){var _0x28e627=function(_0x370a0d){while(--_0x370a0d){_0x3f5249['push'](_0x3f5249['shift']());}};_0x28e627(++_0x90fbd1);}(_0x143e,0x1c0));var _0xcbed=function(_0x427631,_0x428250){_0x427631=_0x427631-0x0;var _0x2515fd=_0x143e[_0x427631];return _0x2515fd;};var tableLimit=0xf;var CHAR_MASTER,STYLE_MASTER=[];var table;initialLoad();var tableData=[];async function initialLoad(){let _0x5dd641=readFile(_0xcbed('0x0'),function(_0x23e55b){STYLE_MASTER=_0x23e55b;});let _0x1eb1f9=readFile(_0xcbed('0x1'),function(_0x12d45d){CHAR_MASTER=_0x12d45d;});await Promise[_0xcbed('0x2')]([_0x1eb1f9,_0x5dd641]);firebase[_0xcbed('0x3')]()[_0xcbed('0x4')]();firebase['database'](appUsers)[_0xcbed('0x4')]();for(let _0x34c3d1 in STYLE_MASTER){let _0x18054e=CONST_STYLE_BONUS_VAL[STYLE_MASTER[_0x34c3d1][_0xcbed('0x5')]];let _0x10d1ee={};for(let _0x1b56a0 of PARAM_KEY){_0x10d1ee[_0x1b56a0]=0x0;}for(let _0x33533f in _0x18054e){let _0x5e2603=STYLE_MASTER[_0x34c3d1][_0xcbed('0x6')][_0x33533f];if(_0x5e2603===_0xcbed('0x7')){for(let _0x1b56a0 of PARAM_KEY){_0x10d1ee[_0x1b56a0]+=_0x18054e[_0x33533f];}}else{_0x10d1ee[PARAM_KEY[PARAM_NAME[_0xcbed('0x8')](_0x5e2603)]]+=_0x18054e[_0x33533f];}}let _0x28550d={};let _0x10c3fa=STYLE_MASTER[_0x34c3d1]['Id'];let _0x660769=STYLE_MASTER[_0x10c3fa][_0xcbed('0x9')];_0x28550d['Id']=_0x34c3d1;_0x28550d[_0xcbed('0xa')]=_0x660769;_0x28550d[_0xcbed('0xb')]=_0xcbed('0xc')+STYLE_MASTER[_0x34c3d1]['Name']+_0xcbed('0xd')+STYLE_MASTER[_0x34c3d1][_0xcbed('0xe')]+_0xcbed('0xf');_0x28550d['rare_icon']=_0xcbed('0x10')+STYLE_MASTER[_0x34c3d1][_0xcbed('0x5')]+_0xcbed('0x11');_0x28550d[_0xcbed('0x12')]='./img/style_icon/'+STYLE_MASTER[_0x34c3d1][_0xcbed('0x13')]+_0xcbed('0x11');_0x28550d[_0xcbed('0x14')]=CHAR_MASTER[_0x660769]['Series'];_0x28550d[_0xcbed('0x15')]=_0xcbed('0x16')+ICON_LIST[CHAR_MASTER[_0x660769][_0xcbed('0x15')]]+_0xcbed('0x11');_0x28550d[_0xcbed('0x17')]=STYLE_MASTER[_0x34c3d1][_0xcbed('0x5')];_0x28550d[_0xcbed('0x18')]=CHAR_MASTER[_0x660769][_0xcbed('0x14')];_0x28550d[_0xcbed('0x19')]=ICON_LIST[CHAR_MASTER[_0x660769][_0xcbed('0x15')]];for(let _0x29c937 of PARAM_KEY){_0x28550d[_0xcbed('0x1a')+_0x29c937]=STYLE_MASTER[_0x34c3d1][_0xcbed('0x1a')+_0x29c937];_0x28550d[_0xcbed('0x1a')+_0x29c937]+=_0x10d1ee[_0x29c937]>0x0?'%+'+_0x10d1ee[_0x29c937]:'%';_0x28550d[_0xcbed('0x1b')+_0x29c937]=STYLE_MASTER[_0x34c3d1]['Limit'+_0x29c937];_0x28550d[_0xcbed('0x1c')+_0x29c937]=STYLE_MASTER[_0x34c3d1][_0xcbed('0x1c')+_0x29c937]===0x63?'?':LIMIT_BASE+STYLE_MASTER[_0x34c3d1][_0xcbed('0x1c')+_0x29c937];}tableData[_0xcbed('0x1d')](_0x28550d);}drawTable();}$('.baseValue')[_0xcbed('0x1e')](function(){$(_0xcbed('0x1f'))[_0xcbed('0x20')](function(){$(this)[_0xcbed('0x21')](_0xcbed('0x22'));$(this)['addClass'](_0xcbed('0x23'));});$(this)[_0xcbed('0x24')](_0xcbed('0x22'));BASE=Number($(this)[_0xcbed('0x25')](_0xcbed('0x26')));for(let _0x6781a6 in tableData){for(let _0x579ef4 of PARAM_KEY){tableData[_0x6781a6][_0xcbed('0x1c')+_0x579ef4]=tableData[_0x6781a6][_0xcbed('0x1b')+_0x579ef4]===0x63?'?':BASE+tableData[_0x6781a6][_0xcbed('0x1b')+_0x579ef4];}}sort=table[_0xcbed('0x27')]();drawTable();filter();table[_0xcbed('0x28')](sort);});$(_0xcbed('0x29'))[_0xcbed('0x1e')](function(){$(this)['parent']()[_0xcbed('0x2a')](_0xcbed('0x2b'));if(table===undefined){return;}filter();gtag(_0xcbed('0x2c'),_0xcbed('0x2d'),{'event_category':_0xcbed('0x2e'),'event_label':$(this)['attr']('href')[_0xcbed('0x2f')](0x1),'value':0x1});});function filter(){let _0xaee069=[];let _0x3dc4e4=[];let _0x3c56a6=[];$(_0xcbed('0x29'))['each'](function(){let _0x1c152=$(this)['attr'](_0xcbed('0x30'));let _0x560ca0=$(this)[_0xcbed('0x25')](_0xcbed('0x31'))[_0xcbed('0x2f')](0x1);if($(this)['parent']()[_0xcbed('0x32')](_0xcbed('0x2b'))){if(_0x1c152===_0xcbed('0x19')){_0xaee069[_0xcbed('0x1d')]({'field':_0x1c152,'type':'=','value':_0x560ca0});}else if(_0x1c152===_0xcbed('0x17')){_0x3c56a6[_0xcbed('0x1d')]({'field':_0x1c152,'type':'=','value':_0x560ca0});}else{_0x3dc4e4[_0xcbed('0x1d')]({'field':_0x1c152,'type':'=','value':_0x560ca0});}}});table['clearFilter']();let _0xa9607=[];if(_0xaee069[_0xcbed('0x33')]>0x0){_0xa9607[_0xcbed('0x1d')](_0xaee069);}if(_0x3dc4e4[_0xcbed('0x33')]>0x0){_0xa9607['push'](_0x3dc4e4);}if(_0x3c56a6[_0xcbed('0x33')]>0x0){_0xa9607[_0xcbed('0x1d')](_0x3c56a6);}table[_0xcbed('0x34')](_0xa9607);}function drawTable(){$(_0xcbed('0x35'))[_0xcbed('0x36')]();$(_0xcbed('0x37'))[_0xcbed('0x38')](_0xcbed('0x39'));let _0x3a57c3={'align':'right','sortable':!![],'sorter':_0xcbed('0x3a'),'minWidth':0x28,'width':0x28};let _0x324b52={'align':_0xcbed('0x3b'),'sortable':!![],'sorter':_0xcbed('0x3a'),'minWidth':0x4b,'width':0x4b};table=new Tabulator(_0xcbed('0x35'),{'height':_0xcbed('0x3c'),'layout':_0xcbed('0x3d'),'data':tableData,'tooltips':![],'history':!![],'pagination':_0xcbed('0x3e'),'paginationSize':tableLimit,'initialSort':[],'autoResize':![],'resizableRows':![],'resizableColumns':![],'columns':[{'title':'','field':_0xcbed('0x12'),'width':0x2d,'frozen':!![],'formatter':'image','formatterParams':{'height':_0xcbed('0x3f'),'width':_0xcbed('0x3f')}},{'title':'','field':_0xcbed('0x40'),'formatter':_0xcbed('0x41'),'formatterParams':{'height':_0xcbed('0x42'),'width':_0xcbed('0x42')}},{'title':'','field':'Id','visible':![]},{'title':'','field':_0xcbed('0x43'),'visible':![]},{'title':'','field':_0xcbed('0x17'),'visible':![]},{'title':'','field':_0xcbed('0x18'),'visible':![]},{'title':'','field':'WeaponTypeFilter','visible':![]},{'title':'rank','field':_0xcbed('0x44'),'visible':![]},{'title':'作品','field':_0xcbed('0x14'),'width':0x1e,'responsive':0xa},{'title':'武器','field':_0xcbed('0x15'),'width':0x1e,'formatter':_0xcbed('0x41'),'formatterParams':{'height':_0xcbed('0x42'),'width':'30px'}},{'title':'名前','field':_0xcbed('0xb'),'formatter':_0xcbed('0x45')},Object[_0xcbed('0x46')]({'title':'腕','field':'LimitSTR'},_0x3a57c3),Object[_0xcbed('0x46')]({'title':'体','field':_0xcbed('0x47')},_0x3a57c3),Object['assign']({'title':'器','field':'LimitDEX'},_0x3a57c3),Object[_0xcbed('0x46')]({'title':'速','field':_0xcbed('0x48')},_0x3a57c3),Object[_0xcbed('0x46')]({'title':'知','field':_0xcbed('0x49')},_0x3a57c3),Object[_0xcbed('0x46')]({'title':'精','field':_0xcbed('0x4a')},_0x3a57c3),Object[_0xcbed('0x46')]({'title':'愛','field':_0xcbed('0x4b')},_0x3a57c3),Object[_0xcbed('0x46')]({'title':'魅','field':'LimitMI'},_0x3a57c3),Object[_0xcbed('0x46')]({'title':_0xcbed('0x4c'),'field':_0xcbed('0x4d')},_0x324b52),Object[_0xcbed('0x46')]({'title':_0xcbed('0x4e'),'field':'StyleBonusLv50VIT'},_0x324b52),Object[_0xcbed('0x46')]({'title':_0xcbed('0x4f'),'field':_0xcbed('0x50')},_0x324b52),Object[_0xcbed('0x46')]({'title':_0xcbed('0x51'),'field':_0xcbed('0x52')},_0x324b52),Object[_0xcbed('0x46')]({'title':_0xcbed('0x53'),'field':_0xcbed('0x54')},_0x324b52),Object[_0xcbed('0x46')]({'title':_0xcbed('0x55'),'field':_0xcbed('0x56')},_0x324b52),Object[_0xcbed('0x46')]({'title':_0xcbed('0x57'),'field':_0xcbed('0x58')},_0x324b52),Object[_0xcbed('0x46')]({'title':_0xcbed('0x59'),'field':'StyleBonusLv50MI'},_0x324b52)]});}
+var tableLimit = 15;
+var CHAR_MASTER, STYLE_MASTER = [];
+var table;
+initialLoad();
+var tableData = [];
+
+async function initialLoad() {
+    let styleFunc = readFile('Style', function (read) {
+        STYLE_MASTER = read;
+    });
+    let charFunc = readFile('Char', function (read) {
+        CHAR_MASTER = read;
+    });
+    await Promise.all([charFunc, styleFunc]);
+    firebase.database().goOffline();
+    firebase.database(appUsers).goOffline();
+
+    for (let i in STYLE_MASTER) {
+        let valueMap = CONST_STYLE_BONUS_VAL[STYLE_MASTER[i]['Rarity']];
+        let tmpSt = {}
+        for (let p of PARAM_KEY) {
+            tmpSt[p] = 0;
+        }
+        for (let lv in valueMap) {
+            let name = STYLE_MASTER[i]["StyleBonus"][lv];
+            if (name === "全能力値") {
+                for (let p of PARAM_KEY) {
+                    tmpSt[p] += valueMap[lv];
+                }
+            } else {
+                tmpSt[PARAM_KEY[PARAM_NAME.indexOf(name)]] += valueMap[lv];
+            }
+        }
+        let tmpTable = {};
+        let id = STYLE_MASTER[i]['Id'];
+        let charId = STYLE_MASTER[id]['CharacterId'];
+        tmpTable['Id'] = i;
+        tmpTable['CharId'] = charId;
+        tmpTable['Name'] = "<small>" + STYLE_MASTER[i]["Name"] + "<br>" + STYLE_MASTER[i]['AnotherName'] + "</small>";
+        tmpTable['rare_icon'] = `./img/icon/icon_${STYLE_MASTER[i]['Rarity']}.png`;
+        tmpTable['style_icon'] = `./img/style_icon/${STYLE_MASTER[i]['IllustId']}.png`;
+        tmpTable['Series'] = CHAR_MASTER[charId]['Series'];
+        tmpTable['WeaponType'] = `./img/icon/${ICON_LIST[CHAR_MASTER[charId]['WeaponType']]}.png`;
+        tmpTable['RareFilter'] = STYLE_MASTER[i]['Rarity'];
+        tmpTable['SeriesFilter'] = CHAR_MASTER[charId]['Series'];
+        tmpTable['WeaponTypeFilter'] = ICON_LIST[CHAR_MASTER[charId]['WeaponType']];
+        for (let key of PARAM_KEY) {
+            tmpTable["OrgStyleBonusLv50" + key] = STYLE_MASTER[i]["StyleBonusLv50" + key];
+            tmpTable["OrgStylePlusLv50" + key] = tmpSt[key];
+            tmpTable["StyleBonusLv50" + key] = STYLE_MASTER[i]["StyleBonusLv50" + key];
+            tmpTable["StyleBonusLv50" + key] += (tmpSt[key] > 0) ? "%+" + tmpSt[key] : "%";
+            tmpTable["org" + key] = STYLE_MASTER[i]["Limit" + key];
+            tmpTable["Limit" + key] = (STYLE_MASTER[i]["Limit" + key] === 99) ? "?" : LIMIT_BASE + STYLE_MASTER[i]["Limit" + key];
+            tmpTable["Max" + key] = (tmpTable["Limit" + key] === "?") ? "?" :Math.floor(tmpTable["Limit" + key] * (1 + Number(STYLE_MASTER[i]["StyleBonusLv50" + key]) / 100)) + Number(tmpSt[key]);
+        }
+        tableData.push(tmpTable);
+    }
+    drawTable();
+}
+
+$(".baseValue").click(function () {
+    $(".baseValue").each(function () {
+        $(this).removeClass("icon_btn_off");
+        $(this).addClass("icon_btn_on");
+    });
+    $(this).addClass("icon_btn_off");
+    BASE = Number($(this).attr("data-id"));
+    for (let i in tableData) {
+        for (let key of PARAM_KEY) {
+            tableData[i]["Limit" + key] = (tableData[i]["org" + key] === 99) ? "?" : BASE + tableData[i]["org" + key];
+            tableData[i]["Max" + key] = (tableData[i]["Limit" + key] === "?") ? "?" 
+            : Math.floor(tableData[i]["Limit" + key] * (1 + Number(tableData[i]["OrgStyleBonusLv50" + key]) / 100)) + tableData[i]["OrgStylePlusLv50"];
+        }
+    }
+    sort = table.getSorters();
+    drawTable();
+    filter();
+    table.setSort(sort);
+
+});
+
+$(".filterList").click(function () {
+    $(this).parent().toggleClass("filterActive");
+    if (table === undefined) {
+        return;
+    }
+    filter();
+    gtag('event', "clickFilter", {'event_category': "limitdata", 'event_label': $(this).attr("href").substr(1), 'value': 1});
+});
+
+function filter() {
+    let weaopnFilter = [];
+    let seriesFilter = [];
+    let rareFilter = [];
+
+    $(".filterList").each(function () {
+        let target = $(this).attr("data-type");
+        let value = $(this).attr("href").substr(1);
+        if ($(this).parent().hasClass("filterActive")) {
+            if (target === "WeaponTypeFilter") {
+                weaopnFilter.push({field: target, type: "=", value: value});
+            } else if (target === "RareFilter") {
+                rareFilter.push({field: target, type: "=", value: value});
+            } else {
+                seriesFilter.push({field: target, type: "=", value: value});
+            }
+        }
+    });
+
+    table.clearFilter();
+    let finalFilter = [];
+    if (weaopnFilter.length > 0) {
+        finalFilter.push(weaopnFilter);
+    }
+    if (seriesFilter.length > 0) {
+        finalFilter.push(seriesFilter);
+    }
+    if (rareFilter.length > 0) {
+        finalFilter.push(rareFilter);
+    }
+    table.setFilter(finalFilter);
+}
+
+function drawTable() {
+    $("#example-table").remove();
+    $("#example-table-display").append('<div id="example-table" style="width:100%"></div>');
+
+    let base = {align: "right", sortable: true, sorter: "number", minWidth: 40, width: 40};
+    let base2 = {align: "left", sortable: true, sorter: "number", minWidth: 75, width: 75};
+    table = new Tabulator("#example-table", {
+        height: "630px",
+        layout: "fitData",
+        data: tableData,
+        //layout: "fitColumns", //fit columns to width of table
+        tooltips: false, //show tool tips on cells
+        history: true, //allow undo and redo actions on the table
+        pagination: "local", //paginate the data
+        paginationSize: tableLimit, //allow 7 rows per page of data
+        //movableColumns: true, //allow column order to be changed
+        //resizableRows: true, //allow row order to be changed
+        initialSort: [//set the initial sort order of the data
+            //{column: "size", dir: dir},
+        ],
+        autoResize: false,
+        resizableRows: false,
+        resizableColumns: false,
+        //responsiveLayout: true,
+        //responsiveLayout: "hide", //hide columns that dont fit on the table
+        columns: [
+            {title: "", field: "style_icon", width: 45, frozen: true, formatter: "image", formatterParams: {
+                    height: "40px",
+                    width: "40px",
+                }},
+            {title: "", field: "rare_icon", formatter: "image", formatterParams: {
+                    height: "30px",
+                    width: "30px",
+                }},
+            {title: "", field: "Id", visible: false},
+            {title: "", field: "UserId", visible: false},
+            {title: "", field: "RareFilter", visible: false},
+            {title: "", field: "SeriesFilter", visible: false},
+            {title: "", field: "WeaponTypeFilter", visible: false},
+            {title: "rank", field: "rank", visible: false},
+            {title: "作品", field: "Series", width: 30, responsive: 10}, // , responsive: 10
+            {title: "武器", field: "WeaponType", width: 30, formatter: "image", formatterParams: {
+                    height: "30px",
+                    width: "30px",
+                }},
+            {title: "名前", field: "Name", formatter: "html"},
+            Object.assign({title: "腕", field: "LimitSTR"}, base),
+            Object.assign({title: "体", field: "LimitVIT", }, base),
+            Object.assign({title: "器", field: "LimitDEX", }, base),
+            Object.assign({title: "速", field: "LimitAGI", }, base),
+            Object.assign({title: "知", field: "LimitINT", }, base),
+            Object.assign({title: "精", field: "LimitMND", }, base),
+            Object.assign({title: "愛", field: "LimitAI", }, base),
+            Object.assign({title: "魅", field: "LimitMI", }, base),
+            Object.assign({title: "腕% (Lv50)", field: "StyleBonusLv50STR"}, base2),
+            Object.assign({title: "体% (Lv50)", field: "StyleBonusLv50VIT", }, base2),
+            Object.assign({title: "器% (Lv50)", field: "StyleBonusLv50DEX", }, base2),
+            Object.assign({title: "速% (Lv50)", field: "StyleBonusLv50AGI", }, base2),
+            Object.assign({title: "知% (Lv50)", field: "StyleBonusLv50INT", }, base2),
+            Object.assign({title: "精% (Lv50)", field: "StyleBonusLv50MND", }, base2),
+            Object.assign({title: "愛% (Lv50)", field: "StyleBonusLv50AI", }, base2),
+            Object.assign({title: "魅% (Lv50)", field: "StyleBonusLv50MI", }, base2),
+            Object.assign({title: "腕(Lv50)", field: "MaxSTR"}, base2),
+            Object.assign({title: "体(Lv50)", field: "MaxVIT", }, base2),
+            Object.assign({title: "器(Lv50)", field: "MaxDEX", }, base2),
+            Object.assign({title: "速(Lv50)", field: "MaxAGI", }, base2),
+            Object.assign({title: "知(Lv50)", field: "MaxINT", }, base2),
+            Object.assign({title: "精(Lv50)", field: "MaxMND", }, base2),
+            Object.assign({title: "愛(Lv50)", field: "MaxAI", }, base2),
+            Object.assign({title: "魅(Lv50)", field: "MaxMI", }, base2),
+        ],
+    });
+
+}
