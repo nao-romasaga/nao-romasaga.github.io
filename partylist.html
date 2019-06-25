@@ -67,7 +67,7 @@
                 <div class="text-center">
                     <a href="https://www.jp.square-enix.com/saga_reuniverse/" target="new"><img src="./img/cmn_logo01_sp.png" class="col-sm-12 col-md-8 col-lg-6"></a>
                 </div>
-                <h3 class="text-center title-text">周回攻略 おすすめパーティ編成</h3>
+                <h3 class="text-center title-text">周回攻略<br class="hidden spBlock"><span class="hidden pcBlock"> </span>おすすめパーティ編成</h3>
                 <p class="text-right opacity"><small>バグ発見、ご要望は <a href="https://twitter.com/nao_romasaga_rs" target="new">nao_romasaga_rs</a>まで</small>
                 </p>
                 <div id="firebaseui-auth-container" style="margin-bottom:10px;"></div>
@@ -181,7 +181,7 @@
                             <div class="col-12 char-bottom"></div>
                             <div class="col-12 col-lg-6">
                                 <div class="form-group">
-                                    <label class="badge badge-pill badge-light" >クエスト難易度</label>
+                                    <label class="badge badge-pill badge-light">難易度 / 種類</label>
                                     <select class="form-control" id="QUEST">
                                         <option value="0">難易度選択</option>
                                     </select>
@@ -196,8 +196,8 @@
                                 </div>
                             </div>
                             <div class="col-12 char-bottom" style="margin: 0px 0px;">
-                                <label class="badge badge-pill badge-light" >フリーコメント <span id="nowtext">0</span>/50</label>
-                                <textarea id="FREE_TEXT" class="kadomaru" placeholder="フリーコメント(50文字以内)" maxlength=50 style="width:100%; height:80px"></textarea><br>
+                                <label class="badge badge-pill badge-light" >フリーコメント <span id="nowtext">0</span>/55</label>
+                                <textarea id="FREE_TEXT" class="kadomaru" placeholder="フリーコメント(55文字以内)" maxlength=55 style="width:100%; height:80px"></textarea><br>
                                 <div class="opacity kadomaru">継承や覚醒、勝率、パーティのポイントなどご自由に入力ください。<font color="red">Twitter/Lineアカウントなど個人を特定できる情報や誹謗中傷を投稿された方は然るべき措置を取ります。</font></div>
                             </div>
                             <div class="col-12 char-bottom"></div>
@@ -248,15 +248,14 @@
                     <td class="d-none d-md-table-cell label-text small TMPL_ADVICE" style="width:410px; padding:0px 15px 0px 15px !important"></td>
                     <td class="d-none d-md-table-cell"><button class="icon_btn_on DELETE_BTN" style="width:100%; background-size: 100% 100%;" onclick="">削除</button></td>
                 <tr class="fukidashi small d-md-none" id="TMPL_ROW3">
-                    <td colspan="4" style="padding-left: 5px;" class="TMPL_ADVICE"></td>
-                    <td style=""><button class="d-md-none icon_btn_on DELETE_BTN" style="width:100%; background-size: 100% 100%;" onclick="">削除</button></td>
+                    <td colspan="5" style="padding-left: 5px;"><span class="TMPL_ADVICE"></span><br><button class="d-md-none icon_btn_on DELETE_BTN" style="width:50%; background-size: 100% 100%;" onclick="">削除</button></td>
                 </tr>
             </table>
         </div>                    
         <table class="width-100 text-center d-none charTable" id="CHAR_TEMPLATE">
             <tr class="small text-center">
                 <td colspan="8">
-                    <p class="width-100 pad0 mar0 label-text charName"></p>
+                    <p class="width-100 pad0 mar0 label-text"><span class="charName"></span><span class="battlePower"></span></p>
                 </td>
                 <td>
                     <p class="width-100 pad0 mar0 charUnset" onclick=""><img src="./img/icon/icon_close.png" width="25" height="25"></p>
@@ -289,6 +288,13 @@
                 <td colspan="10" class="">
                     <div class="fukidashiInput">
                         <table class="fukidashi width-100 inputArea">
+                            <tr class="text-nowrap">
+                                <td class="text-center" colspan="4"><img src="./img/icon/icon_power.png" width="20">編成画面の表示戦闘力<img src="./img/icon/icon_power.png" width="20"><br>
+                                    <small style="color:gray">スタイル補正、装備込みの戦闘力です</small></td>
+                            </tr>
+                            <tr class="char-bottom text-nowrap">
+                                <td class="text-center" colspan="4"><input type="number" class="input kadomaru battle"></td>
+                            </tr>
                             <tr class="char-bottom text-nowrap">
                                 <td class="text-center" colspan="4">▼スタイル選択▼</td>
                             </tr>
