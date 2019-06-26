@@ -295,6 +295,31 @@
     top: 200px;
     right: 50px;
 }
+.MagicalShower div:nth-child(1) {
+    position: absolute;
+    top: 140px;
+    right: 110px;
+}
+.MagicalShower div:nth-child(2) {
+    position: absolute;
+    top: 20px;
+    right: 150px;
+}
+.MagicalShower div:nth-child(3) {
+    position: absolute;
+    top: 260px;
+    right: 150px;
+}
+.MagicalShower div:nth-child(4) {
+    position: absolute;
+    top: 80px;
+    right: 50px;
+}
+.MagicalShower div:nth-child(5) {
+    position: absolute;
+    top: 200px;
+    right: 50px;
+}
 .icon_jinkei {
     width: 60px;
     height:60px;
