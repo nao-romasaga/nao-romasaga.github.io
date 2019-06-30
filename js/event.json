@@ -1,286 +1,107 @@
 {
     "year": 2019,
-    "month": 6,
+    "month": 7,
     "event": [
         {
-            "startDay": "6",
-            "endDay": "6",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>武道会 スタ半",
-            "startPrefix": "4:00 開始<br>",
-            "endSuffix": "<br>7日4:00 終了",
-            "type": "blue"
-        },
-        {
-            "startDay": "6",
-            "endDay": "10",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>洞窟修練 挑戦2倍",
-            "startPrefix": "4:00 開始<br>",
-            "endSuffix": "<br>4:00 終了",
-            "type": "blue"
-        },
-        {
-            "startDay": "6",
-            "endDay": "10",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>財宝収集 オーラム2倍",
-            "startPrefix": "4:00 開始<br>",
-            "endSuffix": "<br>4:00 終了",
-            "type": "blue"
-        },
-        {
-            "startDay": "6",
-            "endDay": "10",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>密林調査 卵のから2倍",
-            "startPrefix": "4:00 開始<br>",
-            "endSuffix": "<br>4:00 終了",
-            "type": "blue"
-        },
-        {
-            "day": "6",
-            "title": "[交換所] <br class='hidden pcBlock'>卵のから防具追加",
-            "startPrefix": "4:00 開始<br>",
-            "type": "yellow"
-        },
-        {
-            "startDay": "7",
-            "endDay": "20",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>メイン スタ半",
-            "startPrefix": "4:00 開始<br>",
-            "endSuffix": "<br>4:00 終了",
-            "type": "blue"
-        },
-        {
             "startDay": "1",
-            "endDay": "15",
-            "title": "[ガチャ] <br class='hidden pcBlock'>半周年祭 エミリア編",
-            "startPrefix": "4:00 開始<br>",
-            "endSuffix": "<br>4:00 終了",
-            "type": "green"
-        },
-        {
-            "startDay": "1",
-            "endDay": "15",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>エミリア・ハリード・ファティーマ・ヴァルドー・レン育成 2倍・3倍",
-            "startPrefix": "4:00 開始<br>",
-            "endSuffix": "<br>4:00 終了",
-            "type": "blue"
-        },
-        {
-            "startDay": "1",
-            "endDay": "15",
-            "title": "[ガチャ] <br class='hidden pcBlock'>半周年祭 復刻 カタリナ編",
-            "startPrefix": "4:00 開始<br>",
-            "endSuffix": "<br>4:00 終了",
-            "type": "green"
-        },
-        {
-            "startDay": "1",
-            "endDay": "15",
-            "title": "[イベント] <br class='hidden pcBlock'>夢魔との戦い",
-            "startPrefix": "12:00 開始<br>",
-            "endSuffix": "<br>4:00 終了",
-            "type": "orange"
-        },
-        {
-            "startDay": "6",
-            "endDay": "6",
-            "title": "[イベント] <br class='hidden pcBlock'>カウントダウンクエスト3日前",
-            "startPrefix": "4:00 開始<br>",
-            "endSuffix": "",
-            "type": "orange"
-        },
-        {
-            "startDay": "7",
-            "endDay": "7",
-            "title": "[イベント] <br class='hidden pcBlock'>カウントダウンクエスト2日前",
-            "startPrefix": "4:00 開始<br>",
-            "endSuffix": "",
-            "type": "orange"
-        },
-        {
-            "startDay": "8",
-            "endDay": "8",
-            "title": "[イベント] <br class='hidden pcBlock'>カウントダウンクエスト1日前",
-            "startPrefix": "4:00 開始<br>",
-            "endSuffix": "",
-            "type": "orange"
-        },
-        {
-            "startDay": "1",
-            "endDay": "15",
-            "title": "[イベント] <br class='hidden pcBlock'>忘れられた礼拝堂へ",
-            "startPrefix": "",
-            "endSuffix": "<br>4:00 終了",
-            "type": "orange"
-        },
-        {
-            "startDay": "1",
-            "endDay": "31",
-            "title": "[イベント] <br class='hidden pcBlock'>武闘会 (〜7/1)",
-            "type": "orange"
-        },
-        {
-            "startDay": "1",
-            "endDay": "14",
-            "title": "[交換所] <br class='hidden pcBlock'>竜印の金塊 交換終了",
-            "type": "red",
-            "startNone": true
-        },
-        {
-            "startDay": "1",
-            "endDay": "28",
-            "title": "[交換所] <br class='hidden pcBlock'><span class='hidden pcBlock'>忘れられた</span>礼拝堂ブーケ 交換終了",
-            "type": "red",
-            "startNone": true
-        },
-        {
-            "startDay": "1",
-            "endDay": "28",
-            "title": "[交換所] <br class='hidden pcBlock'>メダル(祭 カタリナ編) 交換終了",
-            "type": "red",
-            "startNone": true
-        },
-        {
-            "startDay": "1",
-            "endDay": "28",
-            "title": "[交換所] <br class='hidden pcBlock'>メダル(祭 エミリア編) 交換終了",
-            "type": "red",
-            "startNone": true
-        },
-        {
-            "startDay": "1",
-            "endDay": "14",
-            "title": "[交換所] <br class='hidden pcBlock'>メダル(クローディア<span class='hidden pcBlock'>/ハリード</span>) 交換終了",
-            "type": "red",
-            "startNone": true
-        },
-        {
-            "startDay": "1",
-            "endDay": "14",
-            "title": "[交換所] <br class='hidden pcBlock'>メダル(ワグナス<span class='hidden pcBlock'>/タチアナ</span>) 交換終了",
-            "type": "red",
-            "startNone": true
-        },
-        {
-            "startDay": "9",
-            "endDay": "21",
-            "title": "[ガチャ] <br class='hidden pcBlock'>半周年祭 アセルス編",
-            "startPrefix": "12:00 開始<br>",
-            "endSuffix": "<br>4:00 終了",
-            "type": "green"
-        },
-         {
-            "startDay": "9",
-            "endDay": "21",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>アセルス・白薔薇・T260G・特殊工作車育成 2倍・3倍",
-            "startPrefix": "12:00 開始<br>",
-            "endSuffix": "<br>4:00 終了",
-            "type": "blue"
-        },
-        {
-            "startDay": "9",
-            "endDay": "21",
-            "title": "[期間限定ミッション] <br class='hidden pcBlock'>聖塔アセルス",
-            "startPrefix": "12:00 開始<br>",
-            "endSuffix": "<br>4:00 終了",
-            "type": "orange"
-        },
-        {
-            "startDay": "12",
-            "endDay": "14",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>斬SS 2倍",
-            "startPrefix": "4:00 開始<br>",
-            "endSuffix": "<br>4:00 終了",
-            "type": "blue"
-        },
-        {
-            "startDay": "14",
-            "endDay": "16",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>打SS 2倍",
-            "startPrefix": "4:00 開始<br>",
-            "endSuffix": "<br>4:00 終了",
-            "type": "blue"
-        },
-        {
-            "startDay": "16",
-            "endDay": "18",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>突SS 2倍",
-            "startPrefix": "4:00 開始<br>",
-            "endSuffix": "<br>4:00 終了",
-            "type": "blue"
-        },
-        {
-            "startDay": "18",
-            "endDay": "20",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>杖SS 2倍",
-            "startPrefix": "4:00 開始<br>",
-            "endSuffix": "<br>4:00 終了",
-            "type": "blue"
-        },
-        {
-            "startDay": "21",
-            "endDay": "30",
-            "title": "[ガチャ] <br class='hidden pcBlock'>半周年祭 ようせい編",
-            "startPrefix": "12:00(?)開始<br>",
-            "endSuffix": "<br>4:00 終了",
-            "type": "green"
-        },
-        {
-            "startDay": "21",
-            "endDay": "30",
-            "title": "[ガチャ] <br class='hidden pcBlock'>半周年祭 ジニー編",
-            "startPrefix": "12:00(?)開始<br>",
-            "endSuffix": "<br>4:00 終了",
-            "type": "green"
-        },
-        {
-            "startDay": "21",
-            "endDay": "30",
+            "endDay": "13",
             "title": "[イベント] <br class='hidden pcBlock'>ペット捕獲大作戦",
-            "startPrefix": "12:00(?)開始<br>",
-            "endSuffix": "<br>4:00 終了",
-            "type": "orange"
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "orange",
+            "startNone": true
         },
         {
-            "startDay": "21",
-            "endDay": "30",
+            "startDay": "1",
+            "endDay": "13",
             "title": "[キャンペーン] <br class='hidden pcBlock'>ようせい・教授・ノーラ・ファティーマ・バーニィ 2倍",
-            "startPrefix": "12:00(?)開始<br>",
-            "endSuffix": "<br>4:00 終了",
-            "type": "blue"
+            "startPrefix": "6/21 12:00開始<br>",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue",
+            "startNone": true
         },
         {
-            "day": "26",
-            "title": "[メイン] <br class='hidden pcBlock'>12話 解放",
-            "startPrefix": "メンテ後 開始<br>",
-            "type": "yellow"
+            "startDay": "1",
+            "endDay": "13",
+            "title": "[イベント] <br class='hidden pcBlock'>南国の楽園グレートアート",
+            "startPrefix": "6/30 12:00開始<br>",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "orange",
+            "startNone": true
         },
         {
-            "day": "26",
-            "title": "[新機能] <br class='hidden pcBlock'>着せ替え 実装",
-            "startPrefix": "メンテ後 開始<br>",
-            "type": "yellow"
+            "startDay": "1",
+            "endDay": "13",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>リズ・アザミ・ディアナ・ミカエル・ポルカ 2倍",
+            "startPrefix": "6/21 12:00開始<br>",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue",
+            "startNone": true
         },
         {
-            "day": "26",
-            "title": "[メイン] <br class='hidden pcBlock'>銃ドロップ 解放",
-            "startPrefix": "メンテ後 開始<br>",
-            "type": "yellow"
+            "startDay": "1",
+            "endDay": "13",
+            "title": "[交換所] <br class='hidden pcBlock'>虎印の金塊 交換終了",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "red",
+            "startNone": true
         },
         {
-            "day": "26",
-            "title": "[イベント] <br class='hidden pcBlock'>虎印の金塊収集",
-            "startPrefix": "メンテ後 開始<br>",
-            "type": "orange"
+            "startDay": "1",
+            "endDay": "27",
+            "title": "[交換所] <br class='hidden pcBlock'>南国ガチャメダル 交換終了",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "red",
+            "startNone": true
         },
         {
-            "startDay": "26",
-            "endDay": "29",
-            "title": "[イベント] <br class='hidden pcBlock'>R杯(プレオープン)",
-            "startPrefix": "メンテ後 開始<br>",
-            "endSuffix": "<br>4:00 終了",
-            "type": "orange"
+            "startDay": "1",
+            "endDay": "13",
+            "title": "[交換所] <br class='hidden pcBlock'>半周年記念 ようせいガチャメダル 交換終了",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "red",
+            "startNone": true
+        },
+        {
+            "startDay": "1",
+            "endDay": "13",
+            "title": "[交換所] <br class='hidden pcBlock'>半周年記念 復刻ジニーガチャメダル 交換終了",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "red",
+            "startNone": true
+        },
+        {
+            "startDay": "1",
+            "endDay": "3",
+            "title": "[交換所] <br class='hidden pcBlock'>半周年記念 アセルスガチャメダル 交換終了",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "red",
+            "startNone": true
+        },
+        {
+            "startDay": "1",
+            "endDay": "3",
+            "title": "[交換所] <br class='hidden pcBlock'>半周年記念 復刻モニカガチャメダル 交換終了",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "red",
+            "startNone": true
+        },
+        {
+            "startDay": "1",
+            "endDay": "27",
+            "title": "[交換所] <br class='hidden pcBlock'>ペット捕獲大作戦 交換終了",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "red",
+            "startNone": true
+        },
+        {
+            "startDay": "1",
+            "endDay": "27",
+            "title": "[交換所] <br class='hidden pcBlock'>南国の楽園 ココナッツ 交換終了",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "red",
+            "startNone": true
         }
-   ],
+    ],
     "holiday": [
     ]
 }
