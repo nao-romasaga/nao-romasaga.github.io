@@ -156,8 +156,9 @@
                             ・キャラを編成から外した時(Xボタン、編成から外すボタンのどちらでも)<br>
                             <span class="hidden spBlock">・ステータス入力ウィンドウの閉じるボタンを押した時<br></span>
                             <span class="hidden spBlock">・ステータス入力ウィンドウを<img src="./img/icon/icon_menu.png" width="25" height="25">を押して閉じた時<br></span>
-                            <span class="hidden spBlock">・現在のステータス部分を押してステータス入力ウィンドウを閉じた時<br></span>
+                            <span class="hidden pcBlock">・保存ボタンを押した場合<br></span>
                             <span class="hidden pcBlock">・キャラAのステを修正後、キャラA以外のステを修正した場合にキャラAのステータスを保存<br></span>
+                            <span class="">・現在のステータス部分を押して表示されたステータス入力ウィンドウを閉じた時<br></span>
                             <br>
                             うまく保存できていない等バグを発見された場合は、発生時の手順と再現性することをご確認の上ご連絡ください<br>
                         </div>
@@ -193,11 +194,8 @@
         <!-- ============================= -->
         <table class="width-100 text-center d-none charTable" id="CHAR_TEMPLATE">
             <tr class="small text-center ">
-                <td rowspan="4">
-                    <span class="char-winner char dot_mid dot"></span>
-                </td>
-                <td colspan="7">
-                    <p class="width-100 pad0 mar0 label-text charName" style=" position: relative; left: -60px; width:110%"></p>
+                <td colspan="8">
+                    <p class="width-100 pad0 mar0 label-text charName" style=" position: relative;"></p>
                 </td>
                 <td>
                     <p class="width-100 pad0 mar0 charUnset" onclick=""><img src="./img/icon/icon_close.png" width="25" height="25"></p>
@@ -207,7 +205,10 @@
                 </td>
             </tr>
             <tr class="small text-center ">
-                <td colspan="10">
+                <td rowspan="2">
+                    <span class="char-winner char dot_mid dot"></span>
+                </td>
+                <td colspan="9">
                     <p class="width-100 pad0 mar0 fukidashi">合計:<span class="SUM"></span><span class="d-none d-lg-inline">(AVG:<span class="AVG"></span>)</span> おすすめ:<span class="RECO"></span></p>
                 </td>
             </tr>
@@ -223,6 +224,7 @@
                 <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">魅</p><span class="MI"></span></td>
             </tr>
             <tr class="text-center">
+                <td class=" d-none d-lg-table-cell"><button class="icon_btn_on CHAR_SAVE" style="width:100%; background-size: 100% 100%;">保存</button></td>
                 <td class=" d-none d-lg-table-cell"><img src="./img/icon/icon_minus.png" class="paramButton" width="20" height="30" data-param="HP" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charHP" style="width: 50px" value="3" data-param="HP"><img src="./img/icon/icon_plus.png" class="paramButton" width="20" height="30" data-param="HP" data-pm="plus" onclick=""></td>
                 <td class=" d-none d-lg-table-cell" style="border-left: 1px solid #faf0b4"><img src="./img/icon/icon_minus.png" class="paramButton" width="20" height="30" data-param="STR" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charSTR" data-param="STR" style="width: 45px" value="3"><img src="./img/icon/icon_plus.png" class="paramButton" width="20" height="30" data-param="STR" data-pm="plus" onclick=""></td>
                 <td class=" d-none d-lg-table-cell" style="border-left: 1px solid #faf0b4"><img src="./img/icon/icon_minus.png" class="paramButton" width="20" height="30" data-param="VIT" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charVIT" data-param="VIT" style="width: 45px" value="3"><img src="./img/icon/icon_plus.png" class="paramButton" width="20" height="30" data-param="VIT" data-pm="plus" onclick=""></td>
