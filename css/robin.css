@@ -1,0 +1,128 @@
+@media only screen and (min-width: 768px) and (max-width: 1024px) { .xs-show { display:none; } .xs-hide { display:block; } }
+@media only screen and (min-width: 568px) and (max-width: 768px) { .sp-button { width: 25px; height: 18px; } }
+
+#listWithHandle div {
+    float: left;
+    margin-left: 5px;
+    width: 100px;
+    height: 100px;
+    border: 1px solid #00A5E3;
+    font-size: 24px;
+    text-align: center;
+}
+#listWithHandle div:hover {
+    cursor: move;
+}
+#JINKEI {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    height: 350px;
+}
+.FreeFight div:nth-child(1) {
+    position: absolute;
+    top: 140px;
+    right: 100px;
+}
+.FreeFight div:nth-child(2) {
+    position: absolute;
+    top: 80px;
+    right: 110px;
+}
+.FreeFight div:nth-child(3) {
+    position: absolute;
+    top: 200px;
+    right: 110px;
+}
+.OpenDelta div:nth-child(1) {
+    position: absolute;
+    top: 140px;
+    right: 100px;
+}
+.OpenDelta div:nth-child(2) {
+    position: absolute;
+    top: 80px;
+    right: 200px;
+}
+.OpenDelta div:nth-child(3) {
+    position: absolute;
+    top: 200px;
+    right: 200px;
+}
+.CloseDelta div:nth-child(1) {
+    position: absolute;
+    top: 140px;
+    right: 200px;
+}
+.CloseDelta div:nth-child(2) {
+    position: absolute;
+    top: 80px;
+    right: 100px;
+}
+.CloseDelta div:nth-child(3) {
+    position: absolute;
+    top: 200px;
+    right: 100px;
+}
+.SingleLine div:nth-child(1) {
+    position: absolute;
+    top: 140px;
+    right: 220px;
+}
+.SingleLine div:nth-child(2) {
+    position: absolute;
+    top: 140px;
+    right: 160px;
+}
+.SingleLine div:nth-child(3) {
+    position: absolute;
+    top: 140px;
+    right: 100px;
+}
+
+.icon_jinkei {
+    width: 60px;
+    height:60px;
+}
+.jinkei_bottom{
+    margin-bottom: 0px;
+}
+input[type=radio] {
+
+    display: none; /*  ラジオボタンを非表示にする */
+}
+input[type="radio"]:checked + .roleType {
+    background: #31A9EE;/* マウス選択時の背景色を指定する */
+    color: #ffffff; /* マウス選択時のフォント色を指定する */
+}
+.roleType {
+    margin: 5px;	/* ボックス外側の余白を指定する */
+    width: 100px;	/* ボックスの横幅を指定する */
+    padding-left: 5px;	/* ボックス内左側の余白を指定する */
+    padding-right: 5px;	/* ボックス内御右側の余白を指定する */
+    color: #b20000;	/* フォントの色を指定 */
+    text-align: center;	/* テキストのセンタリングを指定する */
+    cursor: pointer;	/* マウスカーソルの形（リンクカーソル）を指定する */
+    border: 2px solid #006DD9;/* ボックスの境界線を実線で指定する */
+    border-radius: 5px;	/* 角丸を指定する */
+}
+.jinkei_eq{
+    width: 40px;
+    position: absolute;
+    right: 0px;
+    bottom: 20px;
+}
+
+.jinkei_list_bg tr:nth-child(even) {
+    background: #F9F9F9;
+}
+
+.jinkei_list_bg tr:nth-child(odd) {
+    background: #F0FAE2;
+}
+.jinkei_pos {
+    width: 45px;
+    margin-bottom: 0px;
+    margin-left: -40px;
+    font-size: 9px;
+}
