@@ -19,12 +19,12 @@
     margin-right: auto;
     height: 350px;
 }
-.FreeFight div:nth-child(1) {
+.FreeFight div:nth-child(2) {
     position: absolute;
     top: 140px;
     right: 100px;
 }
-.FreeFight div:nth-child(2) {
+.FreeFight div:nth-child(1) {
     position: absolute;
     top: 80px;
     right: 110px;
@@ -34,12 +34,12 @@
     top: 200px;
     right: 110px;
 }
-.OpenDelta div:nth-child(1) {
+.OpenDelta div:nth-child(2) {
     position: absolute;
     top: 140px;
     right: 100px;
 }
-.OpenDelta div:nth-child(2) {
+.OpenDelta div:nth-child(1) {
     position: absolute;
     top: 80px;
     right: 200px;
@@ -49,12 +49,12 @@
     top: 200px;
     right: 200px;
 }
-.CloseDelta div:nth-child(1) {
+.CloseDelta div:nth-child(2) {
     position: absolute;
     top: 140px;
     right: 200px;
 }
-.CloseDelta div:nth-child(2) {
+.CloseDelta div:nth-child(1) {
     position: absolute;
     top: 80px;
     right: 100px;
