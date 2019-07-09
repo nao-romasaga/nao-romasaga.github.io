@@ -13,8 +13,8 @@
             gtag('config', 'UA-138966739-1');
         </script>
         <meta charset="utf-8">
-        <title>ロマサガRS ステータス上限チェック</title>
-        <meta property="og:title" content="ロマサガRS ステータス上限チェック" />
+        <title>【ロマサガRS】ステータス上限チェック</title>
+        <meta property="og:title" content="【ロマサガRS】ステータス上限チェック" />
         <meta property="og:url" content="https://http://nao-romasaga.github.io/party.html" />
         <meta property="og:description" content="ロマサガRSのスタイルごとのステータス上限をチェックできます。最大５キャラまでの編成でき周回クエストを設定しそこでどこまでステータスが挙げられるかを確認できます。攻略や育成の際にご利用ください。" />
         <meta name="description" content="ロマサガRSのスタイルごとのステータス上限をチェックできます。最大５キャラまでの編成でき周回クエストを設定しそこでどこまでステータスが挙げられるかを確認できます。攻略や育成の際にご利用ください。【ロマンシングサガ リユニバース】" />
@@ -27,42 +27,24 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
-        <!--
         <script type="text/javascript" src="./js/jquery-ui.min.js"></script>
         <script type="text/javascript" src="./js/jquery.ui.touch-punch.js"></script>
-        -->
         <link rel="stylesheet" type="text/css" href="./css/bootstrap/bootstrap.min.css">
         <script src="./js/popper.min.js"></script>
         <script src="./js/bootstrap.min.js"></script>
-        <!--
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-        -->
         <link rel="stylesheet" type="text/css" href="./css/style.css">
-        <link rel="stylesheet" type="text/css" href="./css/accordion.css">
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
         <script src="https://www.gstatic.com/firebasejs/ui/3.5.2/firebase-ui-auth__ja.js"></script>
         <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
-        <script src="./js/Firebase.js"></script>
+        <script src="./js/Firebase2.js"></script>
         <script src="./js/utils.js" ></script>
-        <script src="./js/party2.js" ></script>
-        <script type="text/javascript" src="js/jquery.sliderPro.js"></script>
+        <script src="./js/party.js" ></script>
         <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="css/slider-pro.min.css">
         <style>
-            /* スライド下のページャーの設定 */
-            .sp-buttons { padding-top: 40px; }
-            .sp-button { width: 30px; height: 10px; border: none; margin: 7px; background: white; }
-            .sp-selected-button { background: #000; }
             @media only screen and (min-width: 768px) and (max-width: 1024px) { .xs-show { display:none; } .xs-hide { display:block; } }
             @media only screen and (min-width: 568px) and (max-width: 768px) { .sp-button { width: 25px; height: 18px; } }
-            #jinkeiData ul li{ 	
-                display: inline;
-            } 
         </style>
         <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -75,334 +57,8 @@
     <body>
         <div class ="haikei">
             <div class="container">
-                <style>
-                    body {
-                        margin: 10px;
-                    }
-                    #listWithHandle div {
-                        float: left;
-                        margin-left: 5px;
-                        width: 100px;
-                        height: 100px;
-                        border: 1px solid #00A5E3;
-                        font-size: 24px;
-                        text-align: center;
-                    }
-                    #listWithHandle div:hover {
-                        cursor: move;
-                    }
-                    #JINKEI {
-                        position: relative;
-                        margin-left: auto;
-                        margin-right: auto;
-                        height: 350px;
-                    }
-                    .FreeFight div:nth-child(4) {
-                        position: absolute;
-                        top: 0px;
-                        right: 120px;
-                    }
-                    .FreeFight div:nth-child(2) {
-                        position: absolute;
-                        top: 60px;
-                        right: 100px;
-                    }
-                    .FreeFight div:nth-child(1) {
-                        position: absolute;
-                        top: 120px;
-                        right: 100px;
-                    }
-                    .FreeFight div:nth-child(3) {
-                        position: absolute;
-                        top: 180px;
-                        right: 100px;
-                    }
-                    .FreeFight div:nth-child(5) {
-                        position: absolute;
-                        top: 240px;
-                        right: 120px;
-                    }
-                    .RapidStream div:nth-child(4) {
-                        position: absolute;
-                        top: 0px;
-                        right: 100px;
-                    }
-                    .RapidStream div:nth-child(2) {
-                        position: absolute;
-                        top: 60px;
-                        right: 100px;
-                    }
-                    .RapidStream div:nth-child(1) {
-                        position: absolute;
-                        top: 120px;
-                        right: 120px;
-                    }
-                    .RapidStream div:nth-child(3) {
-                        position: absolute;
-                        top: 180px;
-                        right: 100px;
-                    }
-                    .RapidStream div:nth-child(5) {
-                        position: absolute;
-                        top: 240px;
-                        right: 100px;
-                    }
-                    .HunterShift div:nth-child(1) {
-                        position: absolute;
-                        top: 120px;
-                        right: 10px;
-                    }
-                    .HunterShift div:nth-child(2) {
-                        position: absolute;
-                        top: 60px;
-                        right: 150px;
-                    }
-                    .HunterShift div:nth-child(3) {
-                        position: absolute;
-                        top: 180px;
-                        right: 150px;
-                    }
-                    .HunterShift div:nth-child(4) {
-                        position: absolute;
-                        top: 0px;
-                        right: 70px;
-                    }
-                    .HunterShift div:nth-child(5) {
-                        position: absolute;
-                        top: 240px;
-                        right: 70px;
-                    }
-                    .AmazonStrike div:nth-child(1) {
-                        position: absolute;
-                        top: 120px;
-                        right: 150px;
-                    }
-                    .AmazonStrike div:nth-child(2) {
-                        position: absolute;
-                        top: 60px;
-                        right: 120px;
-                    }
-                    .AmazonStrike div:nth-child(3) {
-                        position: absolute;
-                        top: 180px;
-                        right: 120px;
-                    }
-                    .AmazonStrike div:nth-child(4) {
-                        position: absolute;
-                        top: 0px;
-                        right: 20px;
-                    }
-                    .AmazonStrike div:nth-child(5) {
-                        position: absolute;
-                        top: 240px;
-                        right: 20px;
-                    }
-                    .Speculation div:nth-child(1) {
-                        position: absolute;
-                        top: 120px;
-                        right: 150px;
-                    }
-                    .Speculation div:nth-child(2) {
-                        position: absolute;
-                        top: 60px;
-                        right: 100px;
-                    }
-                    .Speculation div:nth-child(3) {
-                        position: absolute;
-                        top: 180px;
-                        right: 100px;
-                    }
-                    .Speculation div:nth-child(4) {
-                        position: absolute;
-                        top: 0px;
-                        right: 50px;
-                    }
-                    .Speculation div:nth-child(5) {
-                        position: absolute;
-                        top: 240px;
-                        right: 50px;
-                    }
-
-                    .ImperialCross div:nth-child(1) {
-                        position: absolute;
-                        top: 120px;
-                        right: 75px;
-                    }
-                    .ImperialCross div:nth-child(2) {
-                        position: absolute;
-                        top: 120px;
-                        right: 0px;
-                    }
-                    .ImperialCross div:nth-child(3) {
-                        position: absolute;
-                        top: 120px;
-                        right: 150px;
-                    }
-                    .ImperialCross div:nth-child(4) {
-                        position: absolute;
-                        top: 0px;
-                        right: 75px;
-                    }
-                    .ImperialCross div:nth-child(5) {
-                        position: absolute;
-                        top: 240px;
-                        right: 75px;
-                    }
-                    .Hotenbu div:nth-child(1) {
-                        position: absolute;
-                        top: 120px;
-                        right: 75px;
-                    }
-                    .Hotenbu div:nth-child(2) {
-                        position: absolute;
-                        top: 0px;
-                        right: 150px;
-                    }
-                    .Hotenbu div:nth-child(3) {
-                        position: absolute;
-                        top: 0px;
-                        right: 0px;
-                    }
-                    .Hotenbu div:nth-child(4) {
-                        position: absolute;
-                        top: 240px;
-                        right: 150px;
-                    }
-                    .Hotenbu div:nth-child(5) {
-                        position: absolute;
-                        top: 240px;
-                        right: 0px;
-                    }
-                    .DesertLance div:nth-child(1) {
-                        position: absolute;
-                        top: 120px;
-                        right: 120px;
-                    }
-                    .DesertLance div:nth-child(2) {
-                        position: absolute;
-                        top: 90px;
-                        right: 0px;
-                    }
-                    .DesertLance div:nth-child(3) {
-                        position: absolute;
-                        top: 150px;
-                        right: 0px;
-                    }
-                    .DesertLance div:nth-child(4) {
-                        position: absolute;
-                        top: 30px;
-                        right: 30px;
-                    }
-                    .DesertLance div:nth-child(5) {
-                        position: absolute;
-                        top: 210px;
-                        right: 30px;
-                    }
-                    .PowerRise div:nth-child(1) {
-                        position: absolute;
-                        top: 120px;
-                        right: 0px;
-                    }
-                    .PowerRise div:nth-child(2) {
-                        position: absolute;
-                        top: 0px;
-                        right: 150px;
-                    }
-                    .PowerRise div:nth-child(3) {
-                        position: absolute;
-                        top: 240px;
-                        right: 150px;
-                    }
-                    .PowerRise div:nth-child(4) {
-                        position: absolute;
-                        top: 60px;
-                        right: 50px;
-                    }
-                    .PowerRise div:nth-child(5) {
-                        position: absolute;
-                        top: 180px;
-                        right: 50px;
-                    }
-                    .Ryujin div:nth-child(1) {
-                        position: absolute;
-                        top: 85px;
-                        right: 150px;
-                    }
-                    .Ryujin div:nth-child(2) {
-                        position: absolute;
-                        top: 0px;
-                        right: 120px;
-                    }
-                    .Ryujin div:nth-child(3) {
-                        position: absolute;
-                        top: 60px;
-                        right: 80px;
-                    }
-                    .Ryujin div:nth-child(4) {
-                        position: absolute;
-                        top: 120px;
-                        right: 40px;
-                    }
-                    .Ryujin div:nth-child(5) {
-                        position: absolute;
-                        top: 180px;
-                        right: 0px;
-                    }
-                    .HolyWall div:nth-child(1) {
-                        position: absolute;
-                        top: 120px;
-                        right: 150px;
-                    }
-                    .HolyWall div:nth-child(2) {
-                        position: absolute;
-                        top: 0px;
-                        right: 150px;
-                    }
-                    .HolyWall div:nth-child(3) {
-                        position: absolute;
-                        top: 240px;
-                        right: 150px;
-                    }
-                    .HolyWall div:nth-child(4) {
-                        position: absolute;
-                        top: 60px;
-                        right: 50px;
-                    }
-                    .HolyWall div:nth-child(5) {
-                        position: absolute;
-                        top: 180px;
-                        right: 50px;
-                    }
-                    .icon_jinkei {
-                        width: 60px;
-                        height:60px;
-                    }
-                    .jinkei_bottom{
-                        margin-bottom: 0px;
-                    }
-                    input[type=radio] {
-
-                        display: none; /*  ラジオボタンを非表示にする */
-                    }
-                    input[type="radio"]:checked + .roleType {
-                        background: #31A9EE;/* マウス選択時の背景色を指定する */
-                        color: #ffffff; /* マウス選択時のフォント色を指定する */
-                    }
-                    .roleType {
-                        margin: 5px;	/* ボックス外側の余白を指定する */
-                        width: 100px;	/* ボックスの横幅を指定する */
-                        padding-left: 5px;	/* ボックス内左側の余白を指定する */
-                        padding-right: 5px;	/* ボックス内御右側の余白を指定する */
-                        color: #b20000;	/* フォントの色を指定 */
-                        text-align: center;	/* テキストのセンタリングを指定する */
-                        cursor: pointer;	/* マウスカーソルの形（リンクカーソル）を指定する */
-                        border: 2px solid #006DD9;/* ボックスの境界線を実線で指定する */
-                        border-radius: 5px;	/* 角丸を指定する */
-                    }
-
-                </style>
                 <div class="text-center">
-                    <a href="https://www.jp.square-enix.com/saga_reuniverse/" target="new"><img src="https://www.jp.square-enix.com/saga_reuniverse/assets/img/cmn_logo01_sp.png" class="col-sm-12 col-md-8 col-lg-6"></a>
+                    <a href="https://www.jp.square-enix.com/saga_reuniverse/" target="new"><img src="./img/cmn_logo01_sp.png" class="col-sm-12 col-md-8 col-lg-6"></a>
                 </div>
                 <h3 class="text-center title-text">ステータス上限チェック</h3>
                 <p class="text-right opacity"><small>バグ発見、ご要望は <a href="https://twitter.com/nao_romasaga_rs" target="new">nao_romasaga_rs</a>まで</small>
@@ -415,12 +71,43 @@
                 <div class="opacity kadomaru">侯国学園以降にでたスタイル、キャラクターは上限値がわかっていません。<br>みなさんが入力してくださった値を元に暫定的に「ここまでは上がる」というのを補完していく予定です</div>
                 <br>
                 <div class="noLogin opacity kadomaru bg-danger text-white"><i class="fas fa-exclamation-triangle"></i>本機能はログイン必須です</div>
+
+                <div class="label-text text-center initialShow">
+                    <div class="loading">
+                        <span>L</span><span>O</span><span>A</span><span>D</span><span>I</span><span>N</span><span>G</span><span>.</span><span>.</span><span>.</span>
+                    </div>
+                    <div class="">
+                        <span id="char1" class="char dot_mid dot char-hashiri-right" style="background: url(./img/dot/IDad82c.png);"></span>
+                        <span id="char2" class="char dot_mid dot char-hashiri-right" style="background: url(./img/dot/ID38400.png);"></span>
+                    </div>
+                </div>                
                 <div class="isLogin d-none">
-                    <!--
-                    <p class="slide1 loading"><i class="dot_yuki dot_mid dot char-hashiri"></i></p>
-                    <p class="slide2 loading"><i class="dot_monika dot_mid dot char-hashiri"></i></p>
-                    -->
-                    <ul class="nav nav-tabs ">
+                    <label class="badge badge-pill badge-light">絞り込み</label>
+                    <div class="initialHide d-none style-bgcolor text-center small row" style="width:100%; margin: 0px;">
+                        <ul class="nav text-center width-100">
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" href="#icon_ken"><span class="icon_mini icon_ken" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" href="#icon_dken"><span class="icon_mini icon_dken" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" href="#icon_ono"><span class="icon_mini icon_ono" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" href="#icon_kon"><span class="icon_mini icon_kon" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" href="#icon_tai"><span class="icon_mini icon_tai" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" href="#icon_ju"><span class="icon_mini icon_ju" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" href="#icon_sken"><span class="icon_mini icon_sken" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" href="#icon_yumi"><span class="icon_mini icon_yumi" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" href="#icon_yari"><span class="icon_mini icon_yari" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" href="#icon_tsue"><span class="icon_mini icon_tsue" onclick=""></span></a></li>
+                        </ul>
+                    </div>
+                    <div class="text-center opacity-char-back weaponList d-none" id="_icon_ken"><h5 class="game-banner"><span class="icon_mini icon_ken"></span></h5></div>
+                    <div class="text-center opacity-char-back weaponList d-none" id="_icon_dken"><h5 class="game-banner"><span class="icon_mini icon_dken"></span></h5></div>
+                    <div class="text-center opacity-char-back weaponList d-none" id="_icon_ono"><h5 class="game-banner"><span class="icon_mini icon_ono"></span></h5></div>
+                    <div class="text-center opacity-char-back weaponList d-none" id="_icon_sken"><h5 class="game-banner"><span class="icon_mini icon_sken"></span></h5></div>
+                    <div class="text-center opacity-char-back weaponList d-none" id="_icon_yumi"><h5 class="game-banner"><span class="icon_mini icon_yumi"></span></h5></div>
+                    <div class="text-center opacity-char-back weaponList d-none" id="_icon_yari"><h5 class="game-banner"><span class="icon_mini icon_yari"></span></h5></div>
+                    <div class="text-center opacity-char-back weaponList d-none" id="_icon_ju"><h5 class="game-banner"><span class="icon_mini icon_ju"></span></h5></div>
+                    <div class="text-center opacity-char-back weaponList d-none" id="_icon_tai"><h5 class="game-banner"><span class="icon_mini icon_tai"></span></h5></div>
+                    <div class="text-center opacity-char-back weaponList d-none" id="_icon_kon"><h5 class="game-banner"><span class="icon_mini icon_kon"></span></h5></div>
+                    <div class="text-center opacity-char-back weaponList d-none" id="_icon_tsue"><h5 class="game-banner"><span class="icon_mini icon_tsue"></span></h5></div>                    
+                    <ul class="nav nav-tabs SeriesChoise">
                         <li class="nav-item text-center side-padding-zero">
                             <a class="nav-link active bg-white" style="padding: 5px 5px;" data-toggle="tab" href="#RS1" class="">RS1</a>
                         </li>
@@ -428,7 +115,7 @@
                             <a class="nav-link bg-white" style="padding: 5px 5px;" data-toggle="tab" href="#rs2" class="bg-white">RS2</a>
                         </li>
                         <li class="nav-item text-center side-padding-zero">
-                            <a class="nav-link bg-white" style="padding: 5px 5px;" data-toggle="tab" href="#RS3" class="bg-white">RS3</a>
+                            <a class="nav-link bg-white" style="padding: 5px 5px;" data-toggle="tab" href="#rs3" class="bg-white">RS3</a>
                         </li>
                         <li class="nav-item text-center side-padding-zero">
                             <a class="nav-link bg-white" style="padding: 5px 5px;" data-toggle="tab" href="#sf" class="bg-white">SF1+2</a>
@@ -437,13 +124,16 @@
                             <a class="nav-link bg-white" style="padding: 5px 5px;" data-toggle="tab" href="#other" class="bg-white">US/SS/ES/RSR</a>
                         </li>
                     </ul>
-                    <div id="myTabContent" class="tab-content">
+                    <div id="myTabContent" class="tab-content SeriesChoise">
                         <div class="tab-pane fade show active text-center opacity-char-back" id="RS1"><h5 class="game-banner">ロマンシング・サガ</h5></div>
                         <div class="tab-pane fade text-center opacity-char-back" id="rs2">
                             <div class="" id="RS2"><h5 class="game-banner">ロマンシング・サガ2(1)</h5></div>
                             <div class="" id="RS22"><h5 class="game-banner">ロマンシング・サガ2(2)</h5></div>
                         </div>
-                        <div class="tab-pane fade text-center opacity-char-back" id="RS3"><h5 class="game-banner">ロマンシング・サガ3</h5></div>
+                        <div class="tab-pane fade text-center opacity-char-back" id="rs3">
+                            <div class="" id="RS3"><h5 class="game-banner">ロマンシング・サガ3(1)</h5></div>
+                            <div class="" id="RS32"><h5 class="game-banner">ロマンシング・サガ3(2)</h5></div>
+                        </div>
                         <div class="tab-pane fade text-center opacity-char-back" id="sf">
                             <h5 class="game-banner">サガフロンティア1/2</h5>
                             <span id="SF1"></span><br><span id="SF2"></span>
@@ -457,259 +147,260 @@
                         </div>
                     </div>
                     <br>
+                    <!-- ディスプレイ横長 --><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5008373409434899" data-ad-slot="1589124781" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                    <br>
+                    <div class="card">
+                        <div class="card-header bg-primary" style="color:white">保存タイミングの変更について</div>
+                        <div class="card-body">
+                            負荷軽減のためにステータスの保存タイミングを下記のパターンに変更しました<br>
+                            ・キャラを編成から外した時(Xボタン、編成から外すボタンのどちらでも)<br>
+                            <span class="hidden spBlock">・ステータス入力ウィンドウの閉じるボタンを押した時<br></span>
+                            <span class="hidden spBlock">・ステータス入力ウィンドウを<img src="./img/icon/icon_menu.png" width="25" height="25">を押して閉じた時<br></span>
+                            <span class="hidden pcBlock">・保存ボタンを押した場合<br></span>
+                            <span class="hidden pcBlock">・キャラAのステを修正後、キャラA以外のステを修正した場合にキャラAのステータスを保存<br></span>
+                            <span class="">・現在のステータス部分を押して表示されたステータス入力ウィンドウを閉じた時<br></span>
+                            <br>
+                            うまく保存できていない等バグを発見された場合は、発生時の手順と再現性することをご確認の上ご連絡ください<br>
+                        </div>
+                    </div>
+                    <br>
+                    
                     <label class="badge badge-pill badge-light" id="styleLabel">周回クエスト</label>
-                    <div class="style-bgcolor text-center small row" style="width:100%; margin: 0px;">
+                    <div class="initialHide d-none style-bgcolor text-center small row" style="width:100%; margin: 0px;">
                         <div class="col-4 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_on baseValue" data-id="42" style="width:100%; background-size: 100% 100%;">H712</button></div>
                         <div class="col-4 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_on baseValue" data-id="45" style="width:100%; background-size: 100% 100%;">VH415</button></div>
                         <div class="col-4 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_on baseValue" data-id="48" style="width:100%; background-size: 100% 100%;">VH7</button><br></div>
                         <div class="col-4 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_on baseValue" data-id="51" style="width:100%; background-size: 100% 100%;">VH8</button></div>
                         <div class="col-4 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_on baseValue" data-id="54" style="width:100%; background-size: 100% 100%;">VH9</button></div>
                         <div class="col-4 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_on baseValue" data-id="56" style="width:100%; background-size: 100% 100%;">VH10</button></div>
-                        <div class="col-4 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_off baseValue" data-id="58" style="width:100%; background-size: 100% 100%;">VH11</button></div>
+                        <div class="col-4 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_on baseValue" data-id="58" style="width:100%; background-size: 100% 100%;">VH11</button></div>
+                        <div class="col-4 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_off baseValue" data-id="60" style="width:100%; background-size: 100% 100%;">VH12</button></div>
                     </div>
 
-                    <!--
-                    <div id="slider-pro-party" class="slider-pro">
-                        <div class="sp-slides">
-                            <div class="sp-slide text-center opacity-char-back">パーティ1</div>
-                            <div class="sp-slide text-center opacity-char-back">パーティ2</div>
-                        </div>
-                    </div>
-                    -->
-                    <label class="badge badge-pill badge-light" >陣形編成</label>
-                    <div class="style-bgcolor">
-                        <div class=" row" id="jinkeiData">
-                            <div class="col-md-6 d-none d-md-inline">
-                                七英雄
-                            </div>
-                            <div class="col-12 col-md-6">
-                                <div class="HolyWall" id="JINKEI"></div>
-                            </div>
-                            <div class="col-3 col-md-2 text-center jinkei_bottom"><button class="icon_jinkei" data-id="FreeFight" style="background: url('./img/icon/icon_jinkei_FreeFight.png'); background-size: 100%"></button><br><label class="badge badge-pill badge-dark text-truncate width-100 jinkei_bottom" >フリーファイト</label></div>
-                            <div class="col-3 col-md-2 text-center jinkei_bottom"><button class="icon_jinkei" data-id="AmazonStrike" style="background: url('./img/icon/icon_jinkei_AmazonStrike.png'); background-size: 100%"></button><br><label class="badge badge-pill badge-dark text-truncate width-100 jinkei_bottom" >アマゾンストライク</label></div>
-                            <div class="col-3 col-md-2 text-center jinkei_bottom"><button class="icon_jinkei" data-id="Speculation" style="background: url('./img/icon/icon_jinkei_Speculation.png'); background-size: 100%"></button><br><label class="badge badge-pill badge-dark text-truncate width-100 jinkei_bottom" >スペキュレイション</label></div>
-                            <div class="col-3 col-md-2 text-center jinkei_bottom"><button class="icon_jinkei" data-id="HunterShift" style="background: url('./img/icon/icon_jinkei_HunterShift.png'); background-size: 100%"></button><br><label class="badge badge-pill badge-dark text-truncate width-100 jinkei_bottom" >ハンターシフト</label></div>
-                            <div class="col-3 col-md-2 text-center jinkei_bottom"><button class="icon_jinkei" data-id="ImperialCross" style="background: url('./img/icon/icon_jinkei_ImperialCross.png'); background-size: 100%"></button><br><label class="badge badge-pill badge-dark text-truncate width-100 jinkei_bottom" >インペリアルクロス</label></div>
-                            <div class="col-3 col-md-2 text-center jinkei_bottom"><button class="icon_jinkei" data-id="Hotenbu" style="background: url('./img/icon/icon_jinkei_Hotenbu.png'); background-size: 100%"></button><br><label class="badge badge-pill badge-dark text-truncate width-100 jinkei_bottom" >鳳天舞の陣</label></div>
-                            <div class="col-3 col-md-2 text-center jinkei_bottom"><button class="icon_jinkei" data-id="DesertLance" style="background: url('./img/icon/icon_jinkei_DesertLance.png'); background-size: 100%"></button><br><label class="badge badge-pill badge-dark text-truncate width-100 jinkei_bottom" >デザートランス</label></div>
-                            <div class="col-3 col-md-2 text-center jinkei_bottom"><button class="icon_jinkei" data-id="PowerRise" style="background: url('./img/icon/icon_jinkei_PowerRise.png'); background-size: 100%"></button><br><label class="badge badge-pill badge-dark text-truncate width-100 jinkei_bottom" >パワーレイズ</label></div>
-                            <div class="col-3 col-md-2 text-center jinkei_bottom"><button class="icon_jinkei" data-id="RapidStream" style="background: url('./img/icon/icon_jinkei_RapidStream.png'); background-size: 100%"></button><br><label class="badge badge-pill badge-dark text-truncate width-100 jinkei_bottom" >ラピッドストリーム</label></div>
-                            <div class="col-3 col-md-2 text-center jinkei_bottom"><button class="icon_jinkei" data-id="Ryujin" style="background: url('./img/icon/icon_jinkei_Ryujin.png'); background-size: 100%"></button><br><label class="badge badge-pill badge-dark text-truncate width-100 jinkei_bottom" >龍陣</label></div>
-                            <div class="col-3 col-md-2 text-center jinkei_bottom"><button class="icon_jinkei" data-id="HolyWall" style="background: url('./img/icon/icon_jinkei_HolyWall.png'); background-size: 100%"></button><br><label class="badge badge-pill badge-dark text-truncate width-100 jinkei_bottom" >ホーリーウォール</label></div>
-                        </div>
-                    </div>
                     <label class="badge badge-pill badge-light" >パーティ編成</label>
                     <div class="opacity-char-back" style="width:100%;" id="charData">
-                        <div class="" id="PARTY"><div>
-                            </div>
-                        </div>
-                        <br>
+                        <div class="" id="PARTY"></div>
                     </div>
-                </div> <!-- main -->
-
-                <!-- ============================= -->
-                <!-- ==  テンプレート             == -->
-                <!-- ============================= -->
-                <table class="width-100 text-center d-none charTable" id="CHAR_TEMPLATE">
-                    <tr class="small text-center ">
-                        <td rowspan="2">
-                            <span class="char-winner char dot_mid dot"></span>
-                        </td>
-                        <td colspan="8">
-                            <p class="width-100 pad0 mar0 fukidashi" style=" position: relative; left: -30px;">
-                                <span class="role"></span>
-                                <span class="charName"></span>
-                            </p>
-                        </td>
-                        <td>
-                            <p class="width-100 pad0 mar0 openMenu" onclick=""><img src="./img/icon/icon_menu.png" width="25" height="25"></p>
-                        </td>
-                    </tr>
-                    <tr class="text-center nowData" onclick="">
-                        <td style="width:10%">
-                            <p style="margin-bottom:-5px">HP</p><span class="HP">0</span>
-                        </td>
-                        <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">腕</p><span class="STR"></span></td>
-                        <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">体</p><span class="VIT"></span></td>
-                        <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">器</p><span class="DEX"></span></td>
-                        <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">速</p><span class="AGI"></span></td>
-                        <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">知</p><span class="INT"></span></td>
-                        <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">精</p><span class="MND"></span></td>
-                        <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">愛</p><span class="AI"></span></td>
-                        <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">魅</p><span class="MI"></span></td>
-                    </tr>            
-                    <tr>
-                        <td colspan="10" class="inputArea">
-                            <table class="fukidashi width-100">
-                                <tr class="text-nowrap">
-                                    <td class="text-center" colspan="4">▼役割選択▼</td>
-                                </tr>
-                                <tr class="text-nowrap char-bottom">
-                                    <td class="text-center" colspan="4">
-                                        <input type="radio" class="roleClass" name="roleType" value="user-shield" id='insotsu'>
-                                        <label for="insotsu" class='roleType insotsuLabel'>
-                                            <i class="fas fa-user-shield"></i> 引率
-                                        </label>
-                                        <input type="radio" class="roleClass" name="roleType" value="child" id='baby'>
-                                        <label for="baby" class='roleType babyLabel'>
-                                            <i class="fas fa-child"></i> 育成
-                                        </label>
-                                    </td>
-                                </tr>
-                                <tr class="text-nowrap">
-                                    <td class="text-center" colspan="4">▼ステータス入力▼</td>
-                                </tr>
-                                <tr class="text-nowrap">
-                                    <td colspan="4">
-                                        ＨＰ　<img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="HP" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charHP" style="width: 100px" value="3"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="HP" data-pm="plus" onclick="">
-                                    </td>
-                                </tr>
-                                <tr class="text-nowrap">
-                                    <td >腕力</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="STR" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charSTR" style="width: 50px" value="3"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="STR" data-pm="plus" onclick=""></td>
-                                    <td >体力</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="VIT" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charVIT" style="width: 50px" value="3"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="VIT" data-pm="plus" onclick=""></td>
-                                </tr>
-                                <tr class="text-nowrap">
-                                    <td class="small">器用さ</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="DEX" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charDEX" style="width: 50px" value="6"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="DEX" data-pm="plus" onclick=""></td>
-                                    <td class="small">素早さ</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="AGI" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charAGI" style="width: 50px" value="7"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="AGI" data-pm="plus" onclick=""></td>
-                                </tr>
-                                <tr class="text-nowrap">
-                                    <td >知力</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="INT" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charINT" style="width: 50px" value="9"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="INT" data-pm="plus" onclick=""></td>
-                                    <td >精神</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="MND" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charMND" style="width: 50px" value="6"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="MND" data-pm="plus" onclick=""></td>
-                                </tr>
-                                <tr class="text-nowrap">
-                                    <td >愛</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="AI" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charAI" style="width: 50px" value="7"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="AI" data-pm="plus" onclick=""></td>
-                                    <td >魅力</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="MI" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charMI" style="width: 50px" value="6"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="MI" data-pm="plus" onclick=""></td>
-                                </tr>
-                                <tr class="char-bottom">
-                                    <td colspan="9">
-                                        <span data-toggle="tooltip" data-placement="top" data-html="true" style="margin-left:10px" title="" 
-                                              data-original-title="
-                                              腕.体.器.速.知.精.愛.魅の順に入力出来ます<br>
-                                              区切り文字は,.スペースタブが利用可能です<br>
-                                              区切り文字なしで16桁の数字でも入力可能です<br>
-                                              ステータス1桁の場合は先頭に0をつけてください">
-                                            まとめて入力<button class="icon_info_md"></button>
-                                        </span>
-                                        <div class="text-center width-100">
-                                            <input type="tel" class="input allparams" placeholder="50.41.01.20.30.40.50.99">
-                                            <button class="icon_btn_on hanei" style="width:100px; height:40px; background-size: 100px 40px;">反映</button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr class="char-bottom text-nowrap">
-                                    <td class="text-center" colspan="4">▼周回目安▼</td>
-                                </tr>
-                                <tr class="char-bottom">
-                                    <td class="text-right" colspan="2">
-                                        合計ステータス:　<br>
-                                        旧上限合計369から:　<br>
-                                        おすすめ周回場所:　
-                                    </td>
-                                    <td class="text-left" colspan="2">
-                                        <span class="SUM"></span><br>
-                                        平均<span class="AVG"></span><br>
-                                        <span class="RECO"></span>
-                                    </td>
-                                </tr>
-                                <tr class="char-bottom text-nowrap">
-                                    <td class="text-center" colspan="4">▼スタイル選択▼</td>
-                                </tr>
-                                <tr style=""><td colspan="4" class="STYLE_ICON"></td></tr>
-                                <tr style=""><td colspan="4">
-                                        <button class="icon_btn_red charUnset" style="background-size: 150px 40px; width:150px; height: 40px;">編成から外す</button>
-                                        <button class="icon_btn_on btn_close" style="background-size: 150px 40px; width:150px; height: 40px;">閉じる</button>
-                                    </td></tr>
-                            </table>
-                        </td>
-                    </tr>
-                    <tr class="text-center d-none inputArea">
-                        <td style="width:20%" colspan="2">スタイル</td>
-                        <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">腕</p></td>
-                        <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">体</p></td>
-                        <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">器</p></td>
-                        <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">速</p></td>
-                        <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">知</p></td>
-                        <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">精</p></td>
-                        <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">愛</p></td>
-                        <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">魅</p></td>
-                    </tr>
-                </table>
-                <!-- テンプレート(スタイル別上限) -->
-                <table>
-                    <tr class="text-center d-none inputArea" id="LIMIT_TEMPLATE">
-                        <td style="width:20%" colspan="2">
-                            <img class="rare" src="./img/icon/icon_SS.png" width="25">
-                            <img class="icn" src="./img/style_icon/ID36a44.png" width="30">
-                        </td>
-                        <td class="STR" style="width:10%; border-left: 1px solid #faf0b4"></td>
-                        <td class="VIT" style="width:10%; border-left: 1px solid #faf0b4;"></td>
-                        <td class="DEX" style="width:10%; border-left: 1px solid #faf0b4;"></td>
-                        <td class="AGI" style="width:10%; border-left: 1px solid #faf0b4;"></td>
-                        <td class="INT" style="width:10%; border-left: 1px solid #faf0b4;"></td>
-                        <td class="MND" style="width:10%; border-left: 1px solid #faf0b4;"></td>
-                        <td class="AI" style="width:10%; border-left: 1px solid #faf0b4;"></td>
-                        <td class="MI" style="width:10%; border-left: 1px solid #faf0b4;"></td>
-                    </tr>
-                </table>
-
-                <!-- モーダルウィンドウ -->
-                <div class="modal" id="modal01"> 
-                    <!-- モーダルウィンドウが開いている時のオーバーレイ -->
-                    <div class="overLay modalClose"></div>
-                    <!-- モーダルウィンドウの中身 -->
-                    <div class="inner text-center width-100" id="allParamConfirmInner">
-                        <div id="allParamConfirm">
-
-                        </div>
-                        <div class="">
-                            <button data-id="ng" class="icon_btn_off modalClose" style="background-size: 150px 40px; width:150px;">やり直し</button>
-                            <button data-id="ok" data-input="" id="allSubmit" class="icon_btn_on modalClose" style="background-size: 150px 40px; width:150px;">決定</button>
-                        </div>
-                    </div> 
                 </div>
-                <style>
-                    /* モーダルウィンドウのスタイル */
-                    .modal {
-                        /* 
-                        position:absolute;
-                        */
-                        width:100%;
-                        height:100%;
-                        top:0;
-                        left:0;
-                        display:none;
-                    }
+                <br>
+                <hr>
+                <!--スクエア--><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5008373409434899" data-ad-slot="9303963278" data-ad-format="auto" data-full-width-responsive="true"></ins><script> (adsbygoogle = window.adsbygoogle || []).push({});</script>
 
-                    /* オーバーレイのスタイル */
-                    .overLay {
-                        /* 
-                        position:absolute;
-                        */
-                        top:0;
-                        left:0;
-                        background:rgba(200,200,200,0.9);
-                        width:100%;
-                        height:100%;
-                        z-index:10;
-                    }
+            </div>
+        </div> <!-- main -->
 
-                    /* モーダルウィンドウの中身のスタイル */
-                    .modal .inner {
-                        position:absolute;
-                        z-index:11;
-                        top:50%;
-                    }
-                    @keyframes modal{
-                        0% {top:-100%}
-                        100% {top:50%}
-                    }
-                    @keyframes modalClose {
-                        0% {top:50%}
-                        100% {top:100%}
-                    }
-                </style>        
-                <!-- Twitter universal website tag code -->
-                <script>
+        <!-- ============================= -->
+        <!-- ==  テンプレート             == -->
+        <!-- ============================= -->
+        <table class="width-100 text-center d-none charTable" id="CHAR_TEMPLATE">
+            <tr class="small text-center ">
+                <td colspan="8">
+                    <p class="width-100 pad0 mar0 label-text charName" style=" position: relative;"></p>
+                </td>
+                <td>
+                    <p class="width-100 pad0 mar0 charUnset" onclick=""><img src="./img/icon/icon_close.png" width="25" height="25"></p>
+                </td>
+                <td>
+                    <p class="width-100 pad0 mar0 openMenu" onclick=""><img src="./img/icon/icon_menu.png" width="25" height="25"></p>
+                </td>
+            </tr>
+            <tr class="small text-center ">
+                <td rowspan="2">
+                    <span class="char-winner char dot_mid dot"></span>
+                </td>
+                <td colspan="9">
+                    <p class="width-100 pad0 mar0 fukidashi">合計:<span class="SUM"></span><span class="d-none d-lg-inline">(AVG:<span class="AVG"></span>)</span> おすすめ:<span class="RECO"></span></p>
+                </td>
+            </tr>
+            <tr class="text-center nowData" onclick="">
+                <td style="width:10%"><p style="margin-bottom:-5px">HP</p><span class="HP">0</span></td>
+                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">腕</p><span class="STR"></span></td>
+                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">体</p><span class="VIT"></span></td>
+                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">器</p><span class="DEX"></span></td>
+                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">速</p><span class="AGI"></span></td>
+                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">知</p><span class="INT"></span></td>
+                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">精</p><span class="MND"></span></td>
+                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">愛</p><span class="AI"></span></td>
+                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">魅</p><span class="MI"></span></td>
+            </tr>
+            <tr class="text-center">
+                <td class=" d-none d-lg-table-cell"><button class="icon_btn_on CHAR_SAVE" style="width:100%; background-size: 100% 100%;">保存</button></td>
+                <td class=" d-none d-lg-table-cell"><img src="./img/icon/icon_minus.png" class="paramButton" width="20" height="30" data-param="HP" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charHP" style="width: 50px" value="3" data-param="HP"><img src="./img/icon/icon_plus.png" class="paramButton" width="20" height="30" data-param="HP" data-pm="plus" onclick=""></td>
+                <td class=" d-none d-lg-table-cell" style="border-left: 1px solid #faf0b4"><img src="./img/icon/icon_minus.png" class="paramButton" width="20" height="30" data-param="STR" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charSTR" data-param="STR" style="width: 45px" value="3"><img src="./img/icon/icon_plus.png" class="paramButton" width="20" height="30" data-param="STR" data-pm="plus" onclick=""></td>
+                <td class=" d-none d-lg-table-cell" style="border-left: 1px solid #faf0b4"><img src="./img/icon/icon_minus.png" class="paramButton" width="20" height="30" data-param="VIT" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charVIT" data-param="VIT" style="width: 45px" value="3"><img src="./img/icon/icon_plus.png" class="paramButton" width="20" height="30" data-param="VIT" data-pm="plus" onclick=""></td>
+                <td class=" d-none d-lg-table-cell" style="border-left: 1px solid #faf0b4"><img src="./img/icon/icon_minus.png" class="paramButton" width="20" height="30" data-param="DEX" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charDEX" data-param="DEX" style="width: 45px" value="6"><img src="./img/icon/icon_plus.png" class="paramButton" width="20" height="30" data-param="DEX" data-pm="plus" onclick=""></td>
+                <td class=" d-none d-lg-table-cell" style="border-left: 1px solid #faf0b4"><img src="./img/icon/icon_minus.png" class="paramButton" width="20" height="30" data-param="AGI" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charAGI" data-param="AGI" style="width: 45px" value="7"><img src="./img/icon/icon_plus.png" class="paramButton" width="20" height="30" data-param="AGI" data-pm="plus" onclick=""></td>
+                <td class=" d-none d-lg-table-cell" style="border-left: 1px solid #faf0b4"><img src="./img/icon/icon_minus.png" class="paramButton" width="20" height="30" data-param="INT" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charINT" data-param="INT" style="width: 45px" value="9"><img src="./img/icon/icon_plus.png" class="paramButton" width="20" height="30" data-param="INT" data-pm="plus" onclick=""></td>
+                <td class=" d-none d-lg-table-cell" style="border-left: 1px solid #faf0b4"><img src="./img/icon/icon_minus.png" class="paramButton" width="20" height="30" data-param="MND" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charMND" data-param="MND" style="width: 45px" value="6"><img src="./img/icon/icon_plus.png" class="paramButton" width="20" height="30" data-param="MND" data-pm="plus" onclick=""></td>
+                <td class=" d-none d-lg-table-cell" style="border-left: 1px solid #faf0b4"><img src="./img/icon/icon_minus.png" class="paramButton" width="20" height="30" data-param="AI"  data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charAI"  data-param="AI"  style="width: 45px" value="7"><img src="./img/icon/icon_plus.png" class="paramButton" width="20" height="30" data-param="AI" data-pm="plus" onclick=""></td>
+                <td class=" d-none d-lg-table-cell" style="border-left: 1px solid #faf0b4"><img src="./img/icon/icon_minus.png" class="paramButton" width="20" height="30" data-param="MI"  data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charMI"  data-param="MI"  style="width: 45px" value="6"><img src="./img/icon/icon_plus.png" class="paramButton" width="20" height="30" data-param="MI" data-pm="plus" onclick=""></td>
+            </tr>
+            <tr>
+                <td colspan="10" class="">
+                    <div class="fukidashiInput">
+                        <table class="fukidashi width-100 inputArea">
+                            <tr style="">
+                                <td colspan="4">
+                                    <button class="icon_btn_on btn_close" style="background-size: 150px 40px; width:150px; height: 40px;">閉じる</button>
+                                </td>
+                            </tr>
+                            <tr class="text-nowrap d-table-row d-lg-none">
+                                <td class="text-center" colspan="2">▼ステータス入力▼</td>
+                                <td class="text-center" colspan="2">▼周回目安▼</td>
+                            </tr>
+                            <tr class="text-nowrap d-table-row d-lg-none">
+                                <td >ＨＰ</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="HP" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charHP" data-param="HP" style="width: 50px" value="3"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="HP" data-pm="plus" onclick=""></td>
+                                <td>ステータス合計</td>
+                            </tr>
+                            <tr class="text-nowrap d-table-row d-lg-none">
+                                <td >腕力</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="STR" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charSTR" data-param="STR" style="width: 50px" value="3"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="STR" data-pm="plus" onclick=""></td>
+                                <td><span class="SUM"></span></td>
+                            </tr>
+                            <tr class="text-nowrap d-table-row d-lg-none">
+                                <td >体力</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="VIT" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charVIT" data-param="VIT" style="width: 50px" value="3"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="VIT" data-pm="plus" onclick=""></td>
+                            </tr>
+                            <tr class="text-nowrap d-table-row d-lg-none">
+                                <td class="small">器用さ</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="DEX" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charDEX" data-param="DEX" style="width: 50px" value="6"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="DEX" data-pm="plus" onclick=""></td>
+                                <td>旧上限合計369から</td>
+                            </tr>
+                            <tr class="text-nowrap d-table-row d-lg-none">
+                                <td class="small">素早さ</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="AGI" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charAGI" data-param="AGI" style="width: 50px" value="7"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="AGI" data-pm="plus" onclick=""></td>
+                                <td>平均 <span class="AVG"></span></td>
+                            </tr>
+                            <tr class="text-nowrap d-table-row d-lg-none">
+                                <td >知力</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="INT" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charINT" data-param="INT" style="width: 50px" value="9"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="INT" data-pm="plus" onclick=""></td>
+                            </tr>
+                            <tr class="text-nowrap d-table-row d-lg-none">
+                                <td >精神</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="MND" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charMND" data-param="MND" style="width: 50px" value="6"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="MND" data-pm="plus" onclick=""></td>
+                                <td>おすすめ周回場所</td>
+                            </tr>
+                            <tr class="text-nowrap d-table-row d-lg-none">
+                                <td >愛</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="AI" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charAI" data-param="AI" style="width: 50px" value="7"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="AI" data-pm="plus" onclick=""></td>
+                                <td><span class="RECO"></span></td>
+                            </tr>
+                            <tr class="text-nowrap d-table-row d-lg-none">
+                                <td >魅力</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="MI" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charMI" data-param="MI" style="width: 50px" value="6"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="MI" data-pm="plus" onclick=""></td>
+                            </tr>
+                            <tr class="char-bottom">
+                                <td colspan="9">
+                                    <span data-toggle="tooltip" data-placement="top" data-html="true" style="margin-left:10px" title="" 
+                                          data-original-title="
+                                          腕.体.器.速.知.精.愛.魅の順に入力出来ます<br>
+                                          区切り文字は,.スペースタブが利用可能です<br>
+                                          区切り文字なしで16桁の数字でも入力可能です<br>
+                                          ステータス1桁の場合は先頭に0をつけてください">
+                                        まとめて入力<button class="icon_info_md"></button>
+                                    </span>
+                                    <div class="text-center width-100">
+                                        <input type="tel" class="input allparams" placeholder="500.50.41.01.20.30.40.50.99">
+                                        <button class="icon_btn_on hanei" style="width:100px; height:40px; background-size: 100px 40px;">反映</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="char-bottom text-nowrap">
+                                <td class="text-center" colspan="4">▼スタイル選択▼</td>
+                            </tr>
+                            <tr style=""><td colspan="4" class="STYLE_ICON"></td></tr>
+                            <tr style=""><td colspan="4">
+                                    <button class="icon_btn_red charUnset" style="background-size: 150px 40px; width:150px; height: 40px;">編成から外す</button>
+                                    <button class="icon_btn_on btn_close" style="background-size: 150px 40px; width:150px; height: 40px;">閉じる</button>
+                                </td></tr>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+            <tr class="text-center d-none inputArea">
+                <td style="width:20%" colspan="2">スタイル</td>
+                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">腕</p></td>
+                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">体</p></td>
+                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">器</p></td>
+                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">速</p></td>
+                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">知</p></td>
+                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">精</p></td>
+                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">愛</p></td>
+                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">魅</p></td>
+            </tr>
+        </table>
+        <!-- テンプレート(スタイル別上限) -->
+        <table>
+            <tr class="text-center d-none inputArea" id="LIMIT_TEMPLATE">
+                <td style="width:20%" colspan="2">
+                    <img class="rare d-inline-block d-lg-none" src="./img/icon/icon_SS.png" width="25">
+                    <img class="rare d-none d-lg-inline-block" src="./img/icon/icon_SS.png" width="35">
+                    <img class="icn d-inline-block d-lg-none" src="./img/style_icon/ID36a44.png" width="30">
+                    <img class="cin d-none d-lg-inline-block d-xl-none" src="./img/style_icon/ID36a44.png" width="100">
+                    <img class="cin d-none d-xl-inline-block" src="./img/style_icon/ID36a44.png" width="120">
+                </td>
+                <td class="STR" style="width:10%; border-left: 1px solid #faf0b4"></td>
+                <td class="VIT" style="width:10%; border-left: 1px solid #faf0b4;"></td>
+                <td class="DEX" style="width:10%; border-left: 1px solid #faf0b4;"></td>
+                <td class="AGI" style="width:10%; border-left: 1px solid #faf0b4;"></td>
+                <td class="INT" style="width:10%; border-left: 1px solid #faf0b4;"></td>
+                <td class="MND" style="width:10%; border-left: 1px solid #faf0b4;"></td>
+                <td class="AI" style="width:10%; border-left: 1px solid #faf0b4;"></td>
+                <td class="MI" style="width:10%; border-left: 1px solid #faf0b4;"></td>
+            </tr>
+        </table>
+
+        <!-- モーダルウィンドウ -->
+        <div class="modal" id="modal01"> 
+            <!-- モーダルウィンドウが開いている時のオーバーレイ -->
+            <div class="overLay modalClose"></div>
+            <!-- モーダルウィンドウの中身 -->
+            <div class="inner text-center width-100" id="allParamConfirmInner">
+                <div id="allParamConfirm">
+
+                </div>
+                <div class="">
+                    <button data-id="ng" class="icon_btn_off modalClose" style="background-size: 150px 40px; width:150px;">やり直し</button>
+                    <button data-id="ok" data-input="" id="allSubmit" class="icon_btn_on modalClose" style="background-size: 150px 40px; width:150px;">決定</button>
+                </div>
+            </div> 
+        </div>
+
+        <style>
+            /* モーダルウィンドウのスタイル */
+            .modal {
+                /* 
+                position:absolute;
+                */
+                width:100%;
+                height:100%;
+                top:0;
+                left:0;
+                display:none;
+            }
+
+            /* オーバーレイのスタイル */
+            .overLay {
+                /* 
+                position:absolute;
+                */
+                top:0;
+                left:0;
+                background:rgba(200,200,200,0.9);
+                width:100%;
+                height:100%;
+                z-index:10;
+            }
+
+            /* モーダルウィンドウの中身のスタイル */
+            .modal .inner {
+                position:absolute;
+                z-index:11;
+                top:50%;
+            }
+            @keyframes modal{
+                0% {top:-100%}
+                100% {top:50%}
+            }
+            @keyframes modalClose {
+                0% {top:50%}
+                100% {top:100%}
+            }
+        </style>        
+        <!-- Twitter universal website tag code -->
+        <script>
             !function (e, t, n, s, u, a) {
                 e.twq || (s = e.twq = function () {
                     s.exe ? s.exe.apply(s, arguments) : s.queue.push(arguments);
@@ -719,7 +410,7 @@
             // Insert Twitter Pixel ID and Standard Event data below
             twq('init', 'o1u7p');
             twq('track', 'PageView');
-                </script>
-                <!-- End Twitter universal website tag code -->
-                </body>
-                </html>
+        </script>
+        <!-- End Twitter universal website tag code -->
+    </body>
+</html>
