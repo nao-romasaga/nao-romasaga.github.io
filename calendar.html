@@ -59,7 +59,7 @@
                 color: #faf0b4;
                 padding: 5px;
             }
-            #mini-calendar table {
+            .mini-calendarClass table table {
                 width: 100%;
                 border-spacing: 0;
                 border-left: 1px solid #ccc;
@@ -68,14 +68,14 @@
                 line-height: 1.5;
                 border-collapse: separate;
             }
-            #mini-calendar th,
-            #mini-calendar td {
+            .mini-calendarClass th,
+            .mini-calendarClass td {
                 background: #fff;
                 padding: 7px;
                 border-bottom: 1px solid #ccc;
                 border-right: 1px solid #ccc;
             }
-            #mini-calendar th {
+            .mini-calendarClass th {
                 color: #fff;
                 background: #4F616B;
                 vertical-align: top;
@@ -86,35 +86,35 @@
 
 
             /*
-            #mini-calendar th.calendar-sun {
+            .mini-calendarClass th.calendar-sun {
                     color: #DF0D2D;
                     background: #F8E4E4;
             }
-            #mini-calendar th.calendar-sat {
+            .mini-calendarClass th.calendar-sat {
                     color: #2574D3;
                     background: #E2F3FC;
             }
             */
-            #mini-calendar td {
+            .mini-calendarClass td {
                 width: 14.3%;
                 height: 100px;
                 vertical-align: top;
             }
-            #mini-calendar td.calendar-day-off {
+            .mini-calendarClass td.calendar-day-off {
                 background: #F4F3F2;
                 color: #555;
             }
-            #mini-calendar td.calendar-holiday,
-            #mini-calendar td.calendar-sun {
+            .mini-calendarClass td.calendar-holiday,
+            .mini-calendarClass td.calendar-sun {
                 color: #CE2727;
                 background: #FCF3F3;
             }
-            #mini-calendar td.calendar-sat {
+            .mini-calendarClass td.calendar-sat {
                 color: #54AFC8;
                 background: #F5FBFE;
             }
 
-            #mini-calendar .calendar-day-number {
+            .mini-calendarClass .calendar-day-number {
                 font-style: normal;
                 font-family: "Helvetica Neue", Arial, sans-serif;
                 font-weight: bold;
@@ -123,19 +123,19 @@
                 padding: 0 3px;
                 line-height: 1.2;
             }
-            #mini-calendar td.calendar-holiday .day,
-            #mini-calendar td.calendar-sun .day {
+            .mini-calendarClass td.calendar-holiday .day,
+            .mini-calendarClass td.calendar-sun .day {
                 color: #DF0D2D;
             }
-            #mini-calendar td.calendar-sat .day {
+            .mini-calendarClass td.calendar-sat .day {
                 color: #2574D3;
             }
-            #mini-calendar td span {
+            .mini-calendarClass td span {
                 font-size: 11px;
                 line-height: 1.3;
                 /*display: block;*/
             }
-            #mini-calendar [class*=calender-label] {
+            .mini-calendarClass [class*=calender-label] {
                 font-size: 11px;
                 line-height: 1.3;
                 color: #000;
@@ -150,57 +150,57 @@
                 -o-border-radius: 4px;
                 -ms-border-radius: 4px;
             }
-            #mini-calendar td span.calender-label-red {
+            .mini-calendarClass td span.calender-label-red {
                 background-color: #FCCFD1;
                 border-color: #D28EA6;
             }
-            #mini-calendar td span.calender-label-blue {
+            .mini-calendarClass td span.calender-label-blue {
                 background-color: #CFE4FC;
                 border-color: #8E9BD2;
             }
-            #mini-calendar td span.calender-label-green {
+            .mini-calendarClass td span.calender-label-green {
                 background-color: #E5FCCF;
                 border-color: #99C170;
             }
-            #mini-calendar td span.calender-label-yellow {
+            .mini-calendarClass td span.calender-label-yellow {
                 background-color: yellow;
                 border-color: yellowgreen;
             }
-            #mini-calendar td span.calender-label-orange {
+            .mini-calendarClass td span.calender-label-orange {
                 background-color: orange;
                 border-color: orangered;
             }
             /* 何もない日 */
-            #mini-calendar td.calendar-none {
+            .mini-calendarClass td.calendar-none {
                 background: #FBFAF7;
             }
-            #mini-calendar td.calendar-today {
+            .mini-calendarClass td.calendar-today {
                 background: #FEFBDA;
             }
 
             @media screen and (max-width: 600px) {
-                #mini-calendar thead {
+                .mini-calendarClass thead {
                     display: none;
                 }
-                #mini-calendar th,
-                #mini-calendar td {
+                .mini-calendarClass th,
+                .mini-calendarClass td {
                     display: block;
                     width: 100%;
                     padding: 0;
                 }
-                #mini-calendar td {
+                .mini-calendarClass td {
                     height: auto;
                     display: -webkit-flex;
                     display: flex;
                 }
-                #mini-calendar .calendar-none {
+                .mini-calendarClass .calendar-none {
                     display: none
                 }
 
-                #mini-calendar .calendar-labels {
+                .mini-calendarClass .calendar-labels {
                     padding: 5px;
                 }
-                #mini-calendar [class*=calender-label] {
+                .mini-calendarClass [class*=calender-label] {
                     display: inline-block;
                     padding: 5px;
                     margin-top: 0;
@@ -209,7 +209,7 @@
                 }
 
                 /* 日付 */
-                #mini-calendar td .calendar-day-number {
+                .mini-calendarClass td .calendar-day-number {
                     font-weight: normal;
                     padding: 7px;
                     font-size: 18px;
@@ -219,40 +219,40 @@
                     width: 55px;
                     height: auto;
                 }
-                #mini-calendar td.calendar-holiday .calendar-day-number,
-                #mini-calendar td.calendar-sun .calendar-day-number {
+                .mini-calendarClass td.calendar-holiday .calendar-day-number,
+                .mini-calendarClass td.calendar-sun .calendar-day-number {
                     background: #f8c7c7;
                 }
 
-                #mini-calendar td.calendar-sat .calendar-day-number {
+                .mini-calendarClass td.calendar-sat .calendar-day-number {
                     background: #c8ebfe;
                 }
 
                 /* モバイル用曜日を追加 */
-                #mini-calendar td i:after {
+                .mini-calendarClass td i:after {
                     font-size: 12px;
                     position: relative;
                     left: -5px;
                 }
-                #mini-calendar td:nth-child(1) i:after {
+                .mini-calendarClass td:nth-child(1) i:after {
                     content: "（日）";
                 }
-                #mini-calendar td:nth-child(2) i:after {
+                .mini-calendarClass td:nth-child(2) i:after {
                     content: "（月）";
                 }
-                #mini-calendar td:nth-child(3) i:after {
+                .mini-calendarClass td:nth-child(3) i:after {
                     content: "（火）";
                 }
-                #mini-calendar td:nth-child(4) i:after {
+                .mini-calendarClass td:nth-child(4) i:after {
                     content: "（水）";
                 }
-                #mini-calendar td:nth-child(5) i:after {
+                .mini-calendarClass td:nth-child(5) i:after {
                     content: "（木）";
                 }
-                #mini-calendar td:nth-child(6) i:after {
+                .mini-calendarClass td:nth-child(6) i:after {
                     content: "（金）";
                 }
-                #mini-calendar td:nth-child(7) i:after {
+                .mini-calendarClass td:nth-child(7) i:after {
                     content: "（土）";
                 }
             }
@@ -267,14 +267,17 @@
         <div class ="" style="background: url(http://nao-romasaga.github.io/img/bg_repeat.png); background-size: contain;">
             <div class="container" style="">
                 <h1 class="text-center title-text" style="font-size:28px;">イベントカレンダー</h1>
+                <!--
                 <br>
                 <p class="calendar-year-month"><span id="thisMonth"></span>の<br class="hidden spBlock">イベントまとめ</p>
                 <div id="event_summary" class="fukidashi" style="padding:10px"></div>
                 <br>
+                -->
                 <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5008373409434899" data-ad-slot="3051702111"></ins><script> (adsbygoogle = window.adsbygoogle || []).push({});</script>
                 <br>
-                <div id="mini-calendar"></div>
+                <div id="mini-calendar1" class="mini-calendarClass"></div>
                 <br>
+                <div id="mini-calendar2" class="mini-calendarClass"></div>
                 <br>
                 <!--スクエア--><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5008373409434899" data-ad-slot="9303963278" data-ad-format="auto" data-full-width-responsive="true"></ins><script> (adsbygoogle = window.adsbygoogle || []).push({});</script>
             </div>
@@ -283,7 +286,16 @@
         <script>
                     (function ($) {
                         $(function () {
-                            $('#mini-calendar').miniCalendar();
+                            thisMonth = {
+                                jsonData: './js/event1.json',
+                                monthClass: 'calendar-year-month1'
+                            };
+                            nextMonth = {
+                                jsonData: './js/event2.json',
+                                monthClass: 'calendar-year-month2'
+                            };
+                            $('#mini-calendar1').miniCalendar(thisMonth);
+                            $('#mini-calendar2').miniCalendar(nextMonth);
                         });
                     })(jQuery);
         </script>
