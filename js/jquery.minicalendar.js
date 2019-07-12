@@ -42,7 +42,7 @@
          * 枠を作成
          */
         createFrame: function () {
-            this.ele.append('<div class="calendar-head"><p class="calendar-year-month"></p></div>');
+            this.ele.append(`<div class="calendar-head"><p class="calendar-year-month ${this.opts.monthClass}"></p></div>`);
 
             var outText = '<table><thead><tr>';
             for (var i = 0; i < this.opts.weekType.length; i++) {
@@ -65,7 +65,7 @@
          */
         printType: function (thisYear, thisMonth) {
 
-            $(this.ele).find('.calendar-year-month').html(thisYear + '年' + thisMonth　 + '月の<br class="hidden spBlock">イベントカレンダー');
+            $(this.ele).find('.' + this.opts.monthClass).html(thisYear + '年' + thisMonth　 + '月の<br class="hidden spBlock">イベントカレンダー');
             $("#thisMonth").text(thisYear + '年' + thisMonth　 + '月')
 
             var thisDate = new Date(thisYear, thisMonth - 1, 1);
@@ -135,7 +135,7 @@
                 var date = this.events[i].day;
                 var startDate = this.events[i].startDay;
                 var endDate = this.events[i].endDay;
-                var startNone = (this.events[i].startNone === undefined) ? false : true ;
+                var startNone = (this.events[i].startNone === undefined) ? false : true;
                 if (startDate === undefined) {
                     startDate = date;
                     endDate = date;
@@ -211,16 +211,16 @@
                 }
             }
             if (nowList.length > 0) {
-                $("#event_summary").append("<p class='calendar-year-month' style='font-size:14px;'>開催中のイベント</p>");
-                $("#event_summary").append(nowList.join(""));
+                //$("#event_summary").append("<p class='calendar-year-month' style='font-size:14px;'>開催中のイベント</p>");
+                //$("#event_summary").append(nowList.join(""));
             }
             if (startList.length > 0) {
-                $("#event_summary").append("<p class='calendar-year-month' style='font-size:14px;'>開催前のイベント</p>");
-                $("#event_summary").append(startList.join(""));
+                //$("#event_summary").append("<p class='calendar-year-month' style='font-size:14px;'>開催前のイベント</p>");
+                //$("#event_summary").append(startList.join(""));
             }
             if (endList.length > 0) {
-                $("#event_summary").append("<p class='calendar-year-month' style='font-size:14px;'>終了したイベント</p>");
-                $("#event_summary").append(endList.join(""));
+                //$("#event_summary").append("<p class='calendar-year-month' style='font-size:14px;'>終了したイベント</p>");
+                //$("#event_summary").append(endList.join(""));
             }
 
         },

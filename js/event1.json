@@ -1,0 +1,81 @@
+{
+    "year": 2019,
+    "month": 7,
+    "event": [
+        {
+            "startDay": "1",
+            "endDay": "13",
+            "title": "[イベント] <br class='hidden pcBlock'>ペット捕獲大作戦",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "orange",
+            "startNone": true
+        },
+        {
+            "startDay": "1",
+            "endDay": "13",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>七英雄 2倍",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue",
+            "startNone": true
+        },
+        {
+            "startDay": "1",
+            "endDay": "14",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>ようせい・教授・ノーラ・ファティーマ・バーニィ 2倍",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue",
+            "startNone": true
+        },
+        {
+            "startDay": "1",
+            "endDay": "14",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>リズ、アザミ、ディアナ、ミカエル 2倍",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue",
+            "startNone": true
+        },
+        {
+            "startDay": "1",
+            "endDay": "14",
+            "title": "[イベント] <br class='hidden pcBlock'>南国の楽園グレートアート",
+            "startPrefix": "6/30 12:00開始<br>",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "orange",
+            "startNone": true
+        },
+        {
+            "startDay": "1",
+            "endDay": "27",
+            "title": "[交換所] <br class='hidden pcBlock'>南国ガチャメダル 交換終了",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "red",
+            "startNone": true
+        },
+        {
+            "startDay": "1",
+            "endDay": "17",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>サガフロ1 2倍",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue",
+            "startNone": true
+        },
+        {
+            "startDay": "1",
+            "endDay": "14",
+            "title": "[イベント] <br class='hidden pcBlock'>玄竜との戦い",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "orange",
+            "startNone": true
+        },
+        {
+            "startDay": "1",
+            "endDay": "25",
+            "title": "[イベント] <br class='hidden pcBlock'>修業者の間",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "orange",
+            "startNone": true
+        }
+    ],
+    "holiday": [
+    ]
+}
