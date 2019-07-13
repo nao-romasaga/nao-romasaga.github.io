@@ -153,72 +153,173 @@
                 <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5008373409434899" data-ad-slot="3051702111"></ins><script> (adsbygoogle = window.adsbygoogle || []).push({});</script>
                 <br>
                 <div class="row">
+                    <div class="col-12 d-none d-lg-block">
+                        <div class="style-bgcolor styleInfoArea">
+                            <div class=" text-center label-text" style="margin-bottom: 10px">表示ステータスを変更する</div>
+                            <div class="width-100 text-center">
+                                スタイルレベル：<input type="number" class="input charParam charParam2 kadomaru MY_STYLE_LV" style="width: 50px" value="50" min="1" max="50"><br>
+                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                    <label class="btn btn-primary active" id="MAX_STATUS">
+                                        <input type="radio" name="options" autocomplete="off" checked>最大<span class="d-none d-lg-inline">ステータス</span>値
+                                    </label>
+                                    <label class="btn btn-primary" id="MY_STATUS" >
+                                        <input type="radio" name="options" autocomplete="off">自分のキャラの<span class="d-none d-lg-inline">ステータス</span>値
+                                    </label>
+                                </div>
+                            </div>
+                            <table class="width-100 text-center">
+                                <tbody>
+                                    <tr class="text-center">
+                                        <td class="paramHead paramCell2">腕</td>
+                                        <td class="paramHead paramCell2">体</td>
+                                        <td class="paramHead paramCell2">器</td>
+                                        <td class="paramHead paramCell2">速</td>
+                                        <td class="paramHead paramCell2">知</td>
+                                        <td class="paramHead paramCell2">精</td>
+                                        <td class="paramHead paramCell2">愛</td>
+                                        <td class="paramHead paramCell2">魅</td>
+                                    </tr>
+                                    <tr class="text-center">
+                                        <td class=" paramCell2"><input type="number" class="input charParam charParam2 myst kadomaru charSTR" data-param="STR" style="width: 45px" value="3"></td>
+                                        <td class=" paramCell2"><input type="number" class="input charParam charParam2 myst kadomaru charVIT" data-param="VIT" style="width: 45px" value="3"></td>
+                                        <td class=" paramCell2"><input type="number" class="input charParam charParam2 myst kadomaru charDEX" data-param="DEX" style="width: 45px" value="3"></td>
+                                        <td class=" paramCell2"><input type="number" class="input charParam charParam2 myst kadomaru charAGI" data-param="AGI" style="width: 45px" value="3"></td>
+                                        <td class=" paramCell2"><input type="number" class="input charParam charParam2 myst kadomaru charINT" data-param="INT" style="width: 45px" value="3"></td>
+                                        <td class=" paramCell2"><input type="number" class="input charParam charParam2 myst kadomaru charMND" data-param="MND" style="width: 45px" value="3"></td>
+                                        <td class=" paramCell2"><input type="number" class="input charParam charParam2 myst kadomaru charAI"  data-param="AI"  style="width: 45px" value="3"></td>
+                                        <td class=" paramCell2"><input type="number" class="input charParam charParam2 myst kadomaru charMI"  data-param="MI"  style="width: 45px" value="3"></td>
+                                    </tr>                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
                     <div class="col-12 col-lg-6">
-                        <table class="width-100 text-center style-bgcolor" id="CHAR_DATA">
-                            <tbody>
-                                <tr class="text-center">
-                                    <td colspan="11">
-                                        <p class="width-100 pad0 mar0 darkButton" id="charName">キャラ名</p>
-                                    </td>
-                                </tr>
-                                <tr class="">
-                                    <td class="dotBackground" rowspan="3">
-                                        <span id="charDot" class="char-hashiri char dot_mid dot"></span>
-                                    </td>
-                                    <td colspan="11"><span class="hidden pcBlock">キャラクター</span>ステータス最大値(base <span id="PLUS_LIMIT"></span>)</td>
-                                </tr>
-                                <tr class="text-center">
-                                    <td class="paramHead paramCell2">腕</td>
-                                    <td class="paramHead paramCell2">体</td>
-                                    <td class="paramHead paramCell2">器</td>
-                                    <td class="paramHead paramCell2">速</td>
-                                    <td class="paramHead paramCell2">知</td>
-                                    <td class="paramHead paramCell2">精</td>
-                                    <td class="paramHead paramCell2">愛</td>
-                                    <td class="paramHead paramCell2">魅</td>
-                                    <td class="paramHead paramCell2"><span class="hidden pcBlock">合</span>計</td>
-                                </tr>
-                                <tr class="text-center">
-                                    <td class="paramCell2"><span class="MAXSTR">99</span></td>
-                                    <td class="paramCell2"><span class="MAXVIT">99</span></td>
-                                    <td class="paramCell2"><span class="MAXDEX">99</span></td>
-                                    <td class="paramCell2"><span class="MAXAGI">99</span></td>
-                                    <td class="paramCell2"><span class="MAXINT">99</span></td>
-                                    <td class="paramCell2"><span class="MAXMND">99</span></td>
-                                    <td class="paramCell2"><span class="MAXAI">99</span></td>
-                                    <td class="paramCell2"><span class="MAXMI">99</span></td>
-                                    <td class="paramCell2"><span class="MAXSUM">999</span></td>
-                                </tr>
-                                <tr id="styleLabelRow">
-                                    <td class="paramHead small">種別<br>ランキング</td>
-                                    <td class="paramHead paramCell2">腕</td>
-                                    <td class="paramHead paramCell2">体</td>
-                                    <td class="paramHead paramCell2">器</td>
-                                    <td class="paramHead paramCell2">速</td>
-                                    <td class="paramHead paramCell2">知</td>
-                                    <td class="paramHead paramCell2">精</td>
-                                    <td class="paramHead paramCell2">愛</td>
-                                    <td class="paramHead paramCell2">魅</td>
-                                    <td class="paramHead paramCell2"><span class="hidden pcBlock">合</span>計</td>
-                                </tr>
-                                <tr class="text-center d-none" id="RANK_TEMPLATE">
-                                    <td class="IMG small" style="width:10%"></td>
-                                    <td class="paramCell2 STR">99</td>
-                                    <td class="paramCell2 VIT">99</td>
-                                    <td class="paramCell2 DEX">99</td>
-                                    <td class="paramCell2 AGI">99</td>
-                                    <td class="paramCell2 INT">99</td>
-                                    <td class="paramCell2 MND">99</td>
-                                    <td class="paramCell2 AI">99</td>
-                                    <td class="paramCell2 MI">99</td>
-                                    <td class="paramCell2 SUM">999</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="style-bgcolor styleInfoArea">
+                            <table class="width-100 text-center" id="CHAR_DATA">
+                                <tbody>
+                                    <tr class="text-center">
+                                        <td colspan="11">
+                                            <p class="width-100 pad0 mar0 darkButton" id="charName">キャラ名</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="">
+                                        <td class="dotBackground" rowspan="3">
+                                            <span id="charDot" class="char-hashiri char dot_mid dot"></span>
+                                        </td>
+                                        <td colspan="11"><span class="hidden pcBlock">キャラクター</span>ステータス最大値(base <span id="PLUS_LIMIT"></span>)</td>
+                                    </tr>
+                                    <tr class="text-center">
+                                        <td class="paramHead paramCell2">腕</td>
+                                        <td class="paramHead paramCell2">体</td>
+                                        <td class="paramHead paramCell2">器</td>
+                                        <td class="paramHead paramCell2">速</td>
+                                        <td class="paramHead paramCell2">知</td>
+                                        <td class="paramHead paramCell2">精</td>
+                                        <td class="paramHead paramCell2">愛</td>
+                                        <td class="paramHead paramCell2">魅</td>
+                                        <td class="paramHead paramCell2"><span class="hidden pcBlock">合</span>計</td>
+                                    </tr>
+                                    <tr class="text-center">
+                                        <td class="paramCell2"><span class="MAXSTR">99</span><input type="hidden" class="INPUTSTR" value="0" /></td>
+                                        <td class="paramCell2"><span class="MAXVIT">99</span><input type="hidden" class="INPUTVIT" value="0" /></td>
+                                        <td class="paramCell2"><span class="MAXDEX">99</span><input type="hidden" class="INPUTDEX" value="0" /></td>
+                                        <td class="paramCell2"><span class="MAXAGI">99</span><input type="hidden" class="INPUTAGI" value="0" /></td>
+                                        <td class="paramCell2"><span class="MAXINT">99</span><input type="hidden" class="INPUTINT" value="0" /></td>
+                                        <td class="paramCell2"><span class="MAXMND">99</span><input type="hidden" class="INPUTMND" value="0" /></td>
+                                        <td class="paramCell2"><span class="MAXAI">99</span><input type="hidden" class="INPUTAI" value="0" /></td>
+                                        <td class="paramCell2"><span class="MAXMI">99</span><input type="hidden" class="INPUTMI" value="0" /></td>
+                                        <td class="paramCell2"><span class="MAXSUM">999</span></td>
+                                    </tr>
+                                    <tr id="styleLabelRow">
+                                        <td class="paramHead small">種別<br>ランキング</td>
+                                        <td class="paramHead paramCell2">腕</td>
+                                        <td class="paramHead paramCell2">体</td>
+                                        <td class="paramHead paramCell2">器</td>
+                                        <td class="paramHead paramCell2">速</td>
+                                        <td class="paramHead paramCell2">知</td>
+                                        <td class="paramHead paramCell2">精</td>
+                                        <td class="paramHead paramCell2">愛</td>
+                                        <td class="paramHead paramCell2">魅</td>
+                                        <td class="paramHead paramCell2"><span class="hidden pcBlock">合</span>計</td>
+                                    </tr>
+                                    <tr class="text-center d-none" id="RANK_TEMPLATE">
+                                        <td class="IMG small" style="width:10%"></td>
+                                        <td class="paramCell2 STR">99</td>
+                                        <td class="paramCell2 VIT">99</td>
+                                        <td class="paramCell2 DEX">99</td>
+                                        <td class="paramCell2 AGI">99</td>
+                                        <td class="paramCell2 INT">99</td>
+                                        <td class="paramCell2 MND">99</td>
+                                        <td class="paramCell2 AI">99</td>
+                                        <td class="paramCell2 MI">99</td>
+                                        <td class="paramCell2 SUM">999</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class=" text-center darkButton chartLabel" style="margin-bottom: 10px">スタイル別 素ステータス上限</div>
+                            <table class="width-100 text-center">
+                                <tbody>
+                                    <tr class="text-center" id="STYLE_ST_ROW">
+                                        <td class="paramHead small">スタイル</td>
+                                        <td class="paramHead paramCell2">腕</td>
+                                        <td class="paramHead paramCell2">体</td>
+                                        <td class="paramHead paramCell2">器</td>
+                                        <td class="paramHead paramCell2">速</td>
+                                        <td class="paramHead paramCell2">知</td>
+                                        <td class="paramHead paramCell2">精</td>
+                                        <td class="paramHead paramCell2">愛</td>
+                                        <td class="paramHead paramCell2">魅</td>
+                                    </tr>
+                                </tbody>
+                            </table>                                        
+
+                            <div class="pad0 d-lg-none">
+                                <div class=" text-center label-text" style="margin-bottom: 10px">表示ステータスを変更する</div>
+                                <div class="width-100 text-center">
+                                    スタイルレベル：<input type="number" class="input charParam1 kadomaru MY_STYLE_LV" style="width: 50px" value="50" min="1" max="50">
+                                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                        <label class="btn btn-primary active" id="MAX_STATUS">
+                                            <input type="radio" name="options" autocomplete="off" checked>最大<span class="d-none d-lg-inline">ステータス</span>値
+                                        </label>
+                                        <label class="btn btn-primary" id="MY_STATUS" >
+                                            <input type="radio" name="options" autocomplete="off">自分のキャラの<span class="d-none d-lg-inline">ステータス</span>値
+                                        </label>
+                                    </div>
+                                </div>
+                                <table class="width-100 text-center">
+                                    <tbody>
+                                        <tr class="text-center">
+                                            <td class="paramHead paramCell2">腕</td>
+                                            <td class="paramHead paramCell2">体</td>
+                                            <td class="paramHead paramCell2">器</td>
+                                            <td class="paramHead paramCell2">速</td>
+                                        </tr>
+                                        <tr class="text-center">
+                                            <td class=" paramCell2"><input type="number" class="input charParam charParam1 myst kadomaru charSTR" data-param="STR" style="width: 45px" value="3"></td>
+                                            <td class=" paramCell2"><input type="number" class="input charParam charParam1 myst kadomaru charVIT" data-param="VIT" style="width: 45px" value="3"></td>
+                                            <td class=" paramCell2"><input type="number" class="input charParam charParam1 myst kadomaru charDEX" data-param="DEX" style="width: 45px" value="3"></td>
+                                            <td class=" paramCell2"><input type="number" class="input charParam charParam1 myst kadomaru charAGI" data-param="AGI" style="width: 45px" value="3"></td>
+                                        </tr>
+                                        <tr class="text-center">
+                                            <td class="paramHead paramCell2">知</td>
+                                            <td class="paramHead paramCell2">精</td>
+                                            <td class="paramHead paramCell2">愛</td>
+                                            <td class="paramHead paramCell2">魅</td>
+                                        <tr class="text-center">
+                                            <td class=" paramCell2"><input type="number" class="input charParam charParam1 myst kadomaru charINT" data-param="INT" style="width: 45px" value="3"></td>
+                                            <td class=" paramCell2"><input type="number" class="input charParam charParam1 myst kadomaru charMND" data-param="MND" style="width: 45px" value="3"></td>
+                                            <td class=" paramCell2"><input type="number" class="input charParam charParam1 myst kadomaru charAI"  data-param="AI"  style="width: 45px" value="3"></td>
+                                            <td class=" paramCell2"><input type="number" class="input charParam charParam1 myst kadomaru charMI"  data-param="MI"  style="width: 45px" value="3"></td>
+                                        </tr>                                    
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>                        
                     </div>
                     <div class="col-12 col-lg-6">
                         <div class="style-bgcolor pad0" id="STYLE_DATA">
-                            <div class=" text-center darkButton chartLabel" style="margin-bottom: 10px">スタイル別 ステータス最大値<br><span class="small">(スタイルレベル50+素ステータス最大)</span></div>
+                            <div class=" text-center darkButton chartLabel" style="margin-bottom: 10px; line-height:15px">スタイル別 ステータス<span class="ISMAX">最大</span>値<br><span class="small">(スタイルレベル<span class="DISP_LV">50</span>+<span class="DISP_ST">素ステータス最大</span>)</span></div>
                             <table class="width-100 text-center">
                                 <tbody>
                                     <tr class="text-center" id="STYLE_VAL_ROW">
@@ -259,8 +360,24 @@
                                         <td class="paramCell2 AI">99</td>
                                         <td class="paramCell2 MI">99</td>
                                     </tr>
+                                    <tr class="text-center d-none" id="STYLE_TABLE_PER_TEMPLATE">
+                                        <td class="IMG" style="width:10%"></td>
+                                        <td class="paramCell2 STR"><span class="per"></span>% <br><span class="bonus" style='color:gray'></span></td>
+                                        <td class="paramCell2 VIT"><span class="per"></span>% <br><span class="bonus" style='color:gray'></span></td>
+                                        <td class="paramCell2 DEX"><span class="per"></span>% <br><span class="bonus" style='color:gray'></span></td>
+                                        <td class="paramCell2 AGI"><span class="per"></span>% <br><span class="bonus" style='color:gray'></span></td>
+                                        <td class="paramCell2 INT"><span class="per"></span>% <br><span class="bonus" style='color:gray'></span></td>
+                                        <td class="paramCell2 MND"><span class="per"></span>% <br><span class="bonus" style='color:gray'></span></td>
+                                        <td class="paramCell2 AI"><span class="per"></span>% <br><span class="bonus" style='color:gray'></span></td>
+                                        <td class="paramCell2 MI"><span class="per"></span>% <br><span class="bonus" style='color:gray'></span></td>
+                                    </tr>
                                 </tbody>
                             </table>
+                            <br>
+                            <div class="opacity kadomaru d-sm-none bg-warning" style="font-size:10px;">
+                                <i class="fas fa-exclamation-triangle"></i>注：ご使用の環境では横幅が足りないため補正値は四捨五入されています。
+                                スマートフォンの横向きにしたりPCなど幅のある端末で確認すると少数以下も表示されます
+                            </div>
                         </div>
                     </div>
                 </div>
