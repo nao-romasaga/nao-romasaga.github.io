@@ -686,3 +686,11 @@ input[type=range]::-ms-tooltip {
     border: 1px solid #0000FF !important;
     border-radius: 3px;
 }
+
+.blueLink{
+    background-color: rgba(42,169,239,1);
+    color:white;
+    margin: 0px 10px;
+    padding: 2px 5px;
+}
+
