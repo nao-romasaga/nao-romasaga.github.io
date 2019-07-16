@@ -68,6 +68,42 @@
                 </div>
 
                 <div class="row">
+                    <div class="form-group col-12">
+                        <div class="card">
+                            <div class="card-header bg-primary" style="color:white">ダメージ計算式 詳細</div>
+                            <div class="card-body">
+                                ダメージ ＝ 【武器＋技】 × 【ステータス】 × 【敵耐性 × 倍率係数 ÷ 10】
+                                <hr>
+                                <div class="row">
+                                    <div class="col-4 bg-primary text-center h5 text-white">武器+技<br><span id="D1">0.00</span></div>
+                                    <div class="col-4 bg-primary text-center h5 text-white">ステータス<br><span id="D2">0.00</span></div>
+                                    <div class="col-4 bg-primary text-center h5 text-white">係数<br><span id="D3">0.00</span></div>
+                                    <div class="col-4">
+                                        武器係数: <span id="WP_VAL"></span><br>
+                                        <small style="color:gray">　武器威力 × <span id="WP_CONST">1.5</span></small><br>
+                                        技係数: <span id="SK_VAL"></span><br>
+                                        <small style="color:gray">　技威力 + Rank係数</small><br>                                
+                                        Rank係数: <span id="RK_VAL"></span><br>
+                                        <small style="color:gray">　(技威力 - 5) * ( (<span id="RNK_CONST">100+rank</span>) /100 )</small><br>
+                                    </div>
+                                    <div class="col-4">
+                                        ステータス係数: <span id="ST_VAL"></span><br>
+                                        <small style="color:gray">　1 + <span id="ST_CONST">4 × 腕力 - 1.5</span> × 敵体力</small><br>
+                                        <small style="color:gray">　1 + <span id="W_VAL">0</span> - <span id="V_VAL">0</span></small><br>
+                                    </div>
+                                    <div class="col-4">
+                                        敵耐性: <span id="RE_VAL"></span>%<br>
+                                        <small style="color:gray">　1 / (1 + 0.008 × 耐性値)</small><br>
+                                        <small style="color:gray">　1 / (1 + 0.008 × <span id="RE_CONST"></span>)</small><br>
+                                        倍率係数: <span id="KEI_VAL"></span>% (乱数=6)<br>
+                                        <small style="color:gray">　1 + (Mレベル + アビリティ + 乱数 - 6) / 100</small><br>
+                                        <small style="color:gray">　マスターレベル: <span id="ML_VAL"></span>%</small><br>
+                                        <small style="color:gray">　アビリティ: <span id="AB_VAL"></span>%</small><br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-group col-xs-12 col-md-6 col-lg-4">
                         <label for="type" class="badge badge-pill badge-light">武器種類
                             <img src="./img/icon/icon_ken.png" width="24">
