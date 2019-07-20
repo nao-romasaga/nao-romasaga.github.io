@@ -87,11 +87,6 @@
     <body>
         <div class ="haikei">
             <div class="container">
-                <!--
-                <div class="text-center">
-                    <a href="https://www.jp.square-enix.com/saga_reuniverse/" target="new"><img src="./img/cmn_logo01_sp.png" class="col-sm-12 col-md-8 col-lg-6"></a>
-                </div>
-                -->
                 <h3 class="text-center title-text changeBase" data-base=0>
                     HOME</h3>
                 <p class="text-right opacity"><small>バグ発見、ご要望は <a href="https://peing.net/ja/nao_romasaga_rs" target="new">質問箱</a>まで</small>
@@ -99,7 +94,7 @@
                 <div id="firebaseui-auth-container" style="margin-bottom:10px;"></div>
                 <br>
                 <div class="noLogin opacity kadomaru bg-danger text-white"><i class="fas fa-exclamation-triangle"></i>本機能はログイン必須です<br>Twitterログインを行い、<a href="./style.html" style="color:lightskyblue">キャラ+スタイル詳細</a>あるいは<a href="./party.html" style="color:lightskyblue">ステータス上限チェック</a>で所持しているキャラクターのステータスを入力した後からご利用できます。</div>
-                <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5008373409434899" data-ad-slot="3051702111"></ins><script> (adsbygoogle = window.adsbygoogle || []).push({});</script>
+                <!--スクエア--><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5008373409434899" data-ad-slot="9303963278" data-ad-format="auto" data-full-width-responsive="false"></ins><script> (adsbygoogle = window.adsbygoogle || []).push({});</script>
                 <div class="isLogin d-none">
                     <div class="style-bgcolor text-center small" style="width:100%; margin: 0px;">
                         <div class="row no-gutters">
@@ -168,6 +163,9 @@
                                     <a onclick='$("html,body").animate({scrollTop: $("#JEWEL_CHART").offset().top}, 500, "swing");' style="padding:2px 5px;border: 1px solid #0000FF; border-radius: 10px;">推移をみる <i class="fas fa-arrow-circle-down"></i></a>
                                 </div>
                             </div>
+                            <div class="col-12" style='margin-bottom: 0px;'>
+                                <span class="opacity kadomaru">キャラクターをタップすると<br class="d-md-none">そのキャラの<i class="fas fa-crown"></i>育成ランキング遷移できます</span>
+                            </div>
                             <div class="col-12">
                                 <div class="label-text h6  d-md-none"><i class="fas fa-crown"></i>  マイキャラクターランキング <i class="fas fa-crown"></i> </div>
                                 <div class="label-text h4 d-none d-md-block"><i class="fas fa-crown"></i>  マイキャラクターランキング <i class="fas fa-crown"></i> </div>
@@ -225,13 +223,13 @@
                                     <a href="./mydata.html" class="h6" style="background-size: 340px 40px; width:340px" id="inputStyleLogined">他のキャラのステータスを確認 <i class="fas fa-search"></i></a>
                                 </div>
                                 <div class="text-center kadomaru" style="background-color: rgba(42,169,239,1); color:white; margin: 0px 10px; padding: 2px 5px;">
-                                    <a href="./inputchar.html" class="h4 " style="background-size: 340px 40px; width:340px" id="inputStyleLogined">キャラステータス更新 <i class="fas fa-pencil-alt"></i></a>
+                                    <a href="./inputchar.html" class="h4" style="background-size: 340px 40px; width:340px" id="inputStyleLogined">キャラステータス更新 <i class="fas fa-pencil-alt"></i></a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- ディスプレイ横長 --><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5008373409434899" data-ad-slot="1589124781" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                <!--スクエア--><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5008373409434899" data-ad-slot="9303963278" data-ad-format="auto" data-full-width-responsive="false"></ins><script> (adsbygoogle = window.adsbygoogle || []).push({});</script>
                 <div class="isLogin d-none">
                     <div class="style-bgcolor text-center small" style="width:100%; margin: 0px;">
                         <div class="row no-gutters">
@@ -257,10 +255,6 @@
                                 </div>
                                 <canvas id="jewelHistoryChart" style="height:300px;"></canvas>
                             </div>
-
-
-
-
 
                             <div class="col-12" id="STYLE_CHART">
                                 <div class="label-text h5 d-md-none"><i class="fas fa-users"></i> 全ユーザスタイル所持分布 <i class="fas fa-chart-line"></i></div>
@@ -316,8 +310,6 @@
                         </div>
                     </div>
                 </div><!-- isLogin -->
-                <hr>
-                <!--スクエア--><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5008373409434899" data-ad-slot="9303963278" data-ad-format="auto" data-full-width-responsive="true"></ins><script> (adsbygoogle = window.adsbygoogle || []).push({});</script>
             </div>
         </div>
         <script>
@@ -329,6 +321,7 @@
                 }
             }
         </script>
+        <script src="/js/data_CHARMASTER.js" ></script>
         <script src="/js/home.js"></script>
         <script src="/js/Chart.min.js"></script>
     </body>
