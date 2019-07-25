@@ -278,9 +278,19 @@
                     </div>
                 </button>
                 <div class="selectJoken">
+                    <label class="badge badge-pill badge-light">技・術の表示順</label>
+                    <div class="row justify-content-md-center">
+                        <div class="col-6 col-lg-3">
+                            <button id="SORT_BP" class="icon_btn_on sortButton desc" data-id="bp" style="width:100%; background-size: 100% 100%;">BP順 <span class="d-none d-md-inline">に並び替える</span> <i class="fas fa-sort-up d-none" id="BP_SORT_ASC"></i><i class="fas fa-sort-down" id="BP_SORT_DESC"></i></button>
+                        </div>
+                        <div class="col-6 col-lg-3">                            
+                            <button id="SORT_IRYOKU" class="icon_btn_off sortButton asc" data-id="iryoku" style="width:100%; background-size: 100% 100%;">威力順 <span class="d-none d-md-inline">に並び替える</span> <i class="fas fa-sort-up" id="IRYOKU_SORT_ASC"></i><i class="fas fa-sort-down d-none" id="IRYOKU_SORT_DESC"></i></button>
+                        </div>
+                    </div>
                     <label class="badge badge-pill badge-light"><span id="skill_name_label">剣</span>の技・術選択</label>
 
-                    <div id="skillList" class="row"></div>
+                    <div id="skillList" class="row" style="margin-bottom: 30px;"></div>
+
                     <div class="label-text text-center" id="SKILL_NAME"></div>
                     <div class="label-text text-center" id="SKILL_TEXT" style="padding: 15px 10px;"></div>
 
