@@ -320,6 +320,35 @@
     top: 200px;
     right: 50px;
 }
+
+.DragoonStrike div:nth-child(1) {
+    position: absolute;
+    top: 80px;
+    right: 180px;
+}
+.DragoonStrike div:nth-child(2) {
+    position: absolute;
+    top: 200px;
+    right: 180px;
+}
+.DragoonStrike div:nth-child(3) {
+    position: absolute;
+    top: 45px;
+    right: 100px;
+}
+
+.DragoonStrike div:nth-child(4) {
+    position: absolute;
+    top: 235px;
+    right: 100px;
+}
+
+.DragoonStrike div:nth-child(5) {
+    position: absolute;
+    top: 140px;
+    right: 40px;
+}
+
 .icon_jinkei {
     width: 60px;
     height:60px;
