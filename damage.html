@@ -76,9 +76,9 @@
                                 <hr>
                                 <div class="row">
                                     <div class="col-4 bg-primary text-center h5 text-white">武器+技<br><span id="D1">0.00</span></div>
-                                    <div class="col-4 bg-primary text-center h5 text-white">ステータス<br><span id="D2">0.00</span></div>
+                                    <div class="col-4 bg-primary text-center h5 text-white">ステ<span class="d-md-none"><br>係数</span><span class="d-none d-md-inline">ータス</span><br><span id="D2">1.00</span></div>
                                     <div class="col-4 bg-primary text-center h5 text-white">係数<br><span id="D3">0.00</span></div>
-                                    <div class="col-4">
+                                    <div class="col-4 d-none d-md-block">
                                         武器係数: <span id="WP_VAL"></span><br>
                                         <small style="color:gray">　武器威力 × <span id="WP_CONST">1.5</span></small><br>
                                         技係数: <span id="SK_VAL"></span><br>
@@ -86,12 +86,12 @@
                                         Rank係数: <span id="RK_VAL"></span><br>
                                         <small style="color:gray">　(技威力 - 5) * ( (<span id="RNK_CONST">100+rank</span>) /100 )</small><br>
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-4 d-none d-md-block">
                                         ステータス係数: <span id="ST_VAL"></span><br>
                                         <small style="color:gray">　1 + <span id="ST_CONST">4 × 腕力 - 1.5</span> × 敵体力</small><br>
                                         <small style="color:gray">　1 + <span id="W_VAL">0</span> - <span id="V_VAL">0</span></small><br>
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-4 d-none d-md-block">
                                         敵耐性: <span id="RE_VAL"></span>%<br>
                                         <small style="color:gray">　1 / (1 + 0.008 × 耐性値)</small><br>
                                         <small style="color:gray">　1 / (1 + 0.008 × <span id="RE_CONST"></span>)</small><br>
@@ -167,6 +167,8 @@
                             <option value="as2">アマゾンストライク 前列</option>
                             <option value="dr1">デザートランス 最前列</option>
                             <option value="rj1">龍陣 最前列</option>
+                            <option value="ds1">ドラグーンストライク 前列</option>
+                            <option value="ds2">ドラグーンストライク 中列</option>
                         </select>
                         <div class="form-group row">
                             <div class="col-xs-6 col-md-6 col-lg-6" id="jinkei_w">
