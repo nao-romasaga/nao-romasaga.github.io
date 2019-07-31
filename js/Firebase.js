@@ -463,6 +463,7 @@ function readFile(target, callback) {
         return callback(snapshot.val());
     });
 }
+
 async function readFileWithId(target, id, callback) {
     if (myStorage === null) {
         return useLocalStrage(target, function (result) {
