@@ -38,7 +38,7 @@
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
         <script src="./js/Firebase.js"></script>
         <script src="./js/utils.js" ></script>
-        
+
         <script src="./js/data_CHARMASTER.js" ></script>
         <script src="./js/data_STYLEMASTER_auto.js" ></script>
         <script src="./js/data_SKILLMASTER_auto.js" ></script>
@@ -71,7 +71,7 @@
                     <a href="https://www.jp.square-enix.com/saga_reuniverse/" target="new"><img src="./img/cmn_logo01_sp.png" class="col-sm-12 col-md-8 col-lg-6"></a>
                 </div>
                 <h3 class="text-center title-text">全力AUTOシミュレーター</h3>
-                <p class="text-right opacity"><small>バグ発見、ご要望は <a href="https://peing.net/ja/nao_romasaga_rs" target="new">質問箱</a>まで</small>
+                <p class="text-right opacity"><small>バグ発見、ご要望は <a href="https://twitter.com/nao_romasaga_rs" target="new">nao_romasaga_rs</a>まで</small></p>
                 <h5 class="text-center opacity kadomaru" onclick="$('.movie').toggleClass('d-none')">つかいかた動画をみる</h5>
                 <div class="movie d-none">
                     <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">[new] 全力オートシミュレータを作成しました<a href="https://t.co/wlT0E1mLzJ">https://t.co/wlT0E1mLzJ</a><br><br>覚醒パターンによる技威力の効率化や回復発動チャンスなども調べられます(･∀･) <a href="https://t.co/SchEaJbh0E">pic.twitter.com/SchEaJbh0E</a></p>&mdash; (nAo)@ロマサガRS (@nao_romasaga_rs) <a href="https://twitter.com/nao_romasaga_rs/status/1116035893498863616?ref_src=twsrc%5Etfw">April 10, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -122,40 +122,8 @@
                     </div>
                 </div>
 
-                <div class="opacity-char-back" style="width:100%;" id="charData">
-                    <p class="text-center fukidashi width-100 pad0 mar0" id="CHAR_NAME"></p>
-                    <table class="table table-sm width-100 small table-borderless">
-                        <tbody>
-                            <tr class="text-nowrap">
-                                <td></td>
-                                <td>腕力</td><td id="tdStr" class="text-right"><input id="charSTR" type="number" class="input charParam" style="width: 60px" value="3"></td>
-                                <td>体力</td><td id="tdVit" class="text-right"><input id="charVIT" type="number" class="input charParam" style="width: 60px" value="3"></td>
-                            </tr>
-                            <tr class="text-nowrap">
-                                <td rowspan="2" class="bg1">
-                                    <div class="text-center m-auto" id="CHAR_DOT"></div>
-                                </td>
-                                <td>器用さ</td><td id="tdDex" class="text-right"><input id="charDEX" type="number" class="input charParam" style="width: 60px" value="6"></td>
-                                <td>素早さ</td><td id="tdAgi" class="text-right"><input id="charAGI" type="number" class="input charParam" style="width: 60px" value="7"></td>
-                            </tr>
-                            <tr class="text-nowrap">
-                                <td>知力</td><td id="tdInt" class="text-right"><input id="charINT" type="number" class="input charParam" style="width: 60px" value="9"></td>
-                                <td>精神</td><td id="tdMnd" class="text-right"><input id="charMND" type="number" class="input charParam" style="width: 60px" value="6"></td>
-                            </tr>
-                            <tr class="text-nowrap">
-                                <td></td>
-                                <td>愛</td><td id="tdAi" class="text-right"><input id="charAI" type="number" class="input charParam" style="width: 60px" value="7"></td>
-                                <td>魅力</td><td id="tdMi" class="text-right"><input id="charMI" type="number" class="input charParam" style="width: 60px" value="6"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <p style="padding:10px; margin-bottom:5px">
-                        ここで入力した値は保存されません。<br>
-                        装備、スタイル、裏能力込みの値を入力すると正確なダメージが表示されます
-                    </p>
-                </div>
-                <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5008373409434899" data-ad-slot="3051702111"></ins><script> (adsbygoogle = window.adsbygoogle || []).push({});</script>
                 <label class="badge badge-pill badge-light styleChoiceArea" id="styleLabel">スタイル選択</label>
+                <p class="text-center fukidashi width-100 pad0 mar0" id="CHAR_NAME"></p>
                 <div class="opacity-char-back styleChoiceArea" style="width:100%;" id="styleChoice"></div>
                 <br>
                 <label class="badge badge-pill badge-light skillChoiceArea">技・術継承 / 覚醒選択<br>
@@ -189,82 +157,67 @@
                 </div>
                 <div id="keisyoArea"></div>
                 <br>
-                <label class="badge badge-pill badge-light auto-start zenryokuAuto" id="culcStart">全力AUTO 開始</label>
-                <br>
-                <!--
-                <div class="acdList skillListSP switch ">
-                    <ul>
-                        <li>
-                            <a class="toggle menu parent accordionActive" id="showJoken">オプション設定</a>
-                            <ul class="inner child child01" style="display: none;">
-                                <li class="abilityName">
-                                    <p style="text-align:left; float: left;">ターン設定</p>
-                                    <p style="text-align:right;"><input type="number" value="20" style="width:120px; text-align:right">ターン</p>
-                                </li>
-                                <li class="abilityName">
-                                    <p style="text-align:left; float: left;">練気高揚発生回数</p>                                    
-                                    <p style="text-align:right;" class="cb">
-                                        <input type="checkbox" id="tokkouCheck" name="cb" value="1" />
-                                        <label for="tokkouCheck" style="margin:0px">固定</label>
-                                        <input type="number" value="20" style="width:50px; text-align:right">回</p>
-                                </li>
-                                <li class="abilityName">
-                                    <p style="text-align:left;float: left;">仮想敵</p>
-                                    <p style="text-align:right;">
-                                        <select class="form-control" id="enemy_vit" name="type">
-                                            <option value="x">敵を選択</option>
-                                        </select>
-                                    </p>
-                                </li>
-                                <li class="abilityName">
-                                    <table class="width-100 text-center table-dark kadomaru">
-                                        <tr class="char-bottom">
-                                            <th><span class="icon_xs_zokusei icon_zan"></span></th>
-                                            <td id="taisei_zan">0</td>
-                                            <th><span class="icon_xs_zokusei icon_da"></span></th>
-                                            <td id="taisei_da">0</td>
-                                            <th><span class="icon_xs_zokusei icon_totsu"></span></th>
-                                            <td id="taisei_totsu">0</td>
-                                            <th><span class="icon_xs_zokusei icon_netsu"></span></th>
-                                            <td id="taisei_netsu">0</td>
-                                        </tr>
-                                        <tr>
-                                            <th><span class="icon_xs_zokusei icon_rei"></span></th>
-                                            <td id="taisei_rei">0</td>
-                                            <th><span class="icon_xs_zokusei icon_rai"></span></th>
-                                            <td id="taisei_rai">0</td>
-                                            <th><span class="icon_xs_zokusei icon_yo"></span></th>
-                                            <td id="taisei_you">0</td>
-                                            <th><span class="icon_xs_zokusei icon_in"></span></th>
-                                            <td id="taisei_in">0</td>
-                                    </table>                                        
-                                </li>
-                                <li class="abilityName">
-                                    <p style="text-align:left;float: left;" id='culcAGI'></p>
-                                    <p style="text-align:right;"><small id='culcAGIDtl'></small></p>
-                                </li>
-                                <li class="abilityName">
-                                    <p style="text-align:left;float: left;" id='culcINT'></p>
-                                    <p style="text-align:right;"><small id='culcINTDtl'></small></p>
-                                </li>
-                                <li class="abilityName">
-                                    <p style="text-align:left;" id='culcWepon'></p>
-                                </li>
-                                <li class="abilityName">
-                                    <p style="text-align:left;" id='culcAbility'></p>
-                                </li>
-                                <li class="abilityName">
-                                    <p style="text-align:left;float: left;" id='culcMaster'></p>
-                                    <p style="text-align:right;"><small id='culcMasterDtl'></small></p>
-                                </li>
-                                <li class="abilityName">
-                                    <p style="text-align:left;" id='culcEnemy'></p>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
+                <div class="card skillChoiceArea">
+                    <div class="card-header bg-primary" style="color:white">オプション設定<button class="icon_btn_on" ID="OPTION_BUTTON" style="position: absolute; width:100px; top:5px; right:5px; background-size: 100px 50px;">開 / 閉</button></div>
+                    <div class="card-body style-bgcolor row" style="margin: 0px" id="OPTION_BODY">
+                        <div class="col-12 col-md-4">
+                            <div class="text-center">
+                                ▼ステータス▼<br>
+                                装備、スタイル補正、裏能力込みの値を入力。ダメージ計算に使います
+                            </div>
+                            <div class="row">
+                                <div class="col-4">腕力</div><div class="col-8"><input id="charSTR" type="number" class="input charParam kadomaru" style="width: 100%" value="3"></div> 
+                                <div class="col-4 text-nowrap">器用さ</div><div class="col-8"><input id="charDEX" type="number" class="input charParam kadomaru" style="width: 100%" value="3"></div> 
+                                <div class="col-4 text-nowrap">素早さ</div><div class="col-8"><input id="charAGI" type="number" class="input charParam kadomaru" style="width: 100%" value="3"></div> 
+                                <div class="col-4">知力</div><div class="col-8"><input id="charINT" type="number" class="input charParam kadomaru" style="width: 100%" value="3"></div> 
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4 text-center">
+                            ▼ターン設定▼<br>
+                            シミュレーションターン数を設定<span class="d-none d-md-inline">できます</span><br>
+                            <input type="number" id="SET_TURN" value="20" style="width:50px; text-align:right" class="kadomaru"> ターン
+                        </div>
+                        <!--
+                        <div class="col-6 col-md-4">
+                            <div class="text-center">▼練気 発生回数▼</div>
+                            練気高揚/練気呼吸の発生回数を設定できます<br>
+                            <p style="text-align:right;" class="cb">
+                                <input type="checkbox" id="tokkouCheck" name="cb" value="1" />
+                                <label for="tokkouCheck" style="margin:0px">固定</label>
+                                <input type="number" value="20" style="width:50px; text-align:right">回</p>
+                        </div>
+                        -->
+                        <div class="col-12 col-md-4 text-center">
+                            ▼仮想敵▼<br>
+                            <select class="form-control" id="enemy_vit" name="type">
+                                <option value="x">敵を選択</option>
+                            </select>
+                            <table class="width-100 text-center table-dark kadomaru">
+                                <tr class="char-bottom">
+                                    <th><span class="icon_xs_zokusei icon_zan"></span></th>
+                                    <td id="taisei_zan">0</td>
+                                    <th><span class="icon_xs_zokusei icon_da"></span></th>
+                                    <td id="taisei_da">0</td>
+                                    <th><span class="icon_xs_zokusei icon_totsu"></span></th>
+                                    <td id="taisei_totsu">0</td>
+                                    <th><span class="icon_xs_zokusei icon_netsu"></span></th>
+                                    <td id="taisei_netsu">0</td>
+                                </tr>
+                                <tr>
+                                    <th><span class="icon_xs_zokusei icon_rei"></span></th>
+                                    <td id="taisei_rei">0</td>
+                                    <th><span class="icon_xs_zokusei icon_rai"></span></th>
+                                    <td id="taisei_rai">0</td>
+                                    <th><span class="icon_xs_zokusei icon_yo"></span></th>
+                                    <td id="taisei_you">0</td>
+                                    <th><span class="icon_xs_zokusei icon_in"></span></th>
+                                    <td id="taisei_in">0</td>
+                            </table>                                        
+                        </div>
+                    </div>
                 </div>
-                -->
+                <br>
+                <label class="badge badge-pill badge-light auto-start zenryokuAuto" id="culcStart">全力AUTO 開始</label>
 
                 <div class="opacity-char-back text-center culcAfter" id="culcSummaryArea">
                     <label class="badge badge-pill badge-light" style="width:90%"><p style='border-bottom:1px solid; margin-bottom: 2px;'>シミュレーションサマリ</p>生命の水など全力AUTOで使われないものは<br>使えるタイミングが使用回数に表示されます</label>
@@ -275,8 +228,9 @@
                             <tr>
                                 <th>名称</th>
                                 <th>BP</th>
-                                <th>使用回数</th>
-                                <th>合計威力</th>
+                                <th><span class="d-none d-md-inline">使用</span>回数</th>
+                                <th class="d-none d-md-table-cell">威力</th>
+                                <th class="text-nowrap">ダメージ</th>
                             </tr>
                         </thead>
                         <tbody></tbody>
@@ -287,39 +241,7 @@
                     <ul>
                         <li>
                             <a class="toggle menu parent accordionActive" id="showJoken">ダメージ計算条件</a>
-                            <ul class="inner child child01" style="display: none;">
-                                <li class="abilityName">
-                                    <p style="text-align:left;" id='styleRank'></p>
-                                </li>
-                                <li class="abilityName">
-                                    <p style="text-align:left;float: left;" id='culcSTR'></p>
-                                    <p style="text-align:right;"><small id='culcSTRDtl'></small></p>
-                                </li>
-                                <li class="abilityName">
-                                    <p style="text-align:left;float: left;" id='culcDEX'></p>
-                                    <p style="text-align:right;"><small id='culcDEXDtl'></small></p>
-                                </li>
-                                <li class="abilityName">
-                                    <p style="text-align:left;float: left;" id='culcAGI'></p>
-                                    <p style="text-align:right;"><small id='culcAGIDtl'></small></p>
-                                </li>
-                                <li class="abilityName">
-                                    <p style="text-align:left;float: left;" id='culcINT'></p>
-                                    <p style="text-align:right;"><small id='culcINTDtl'></small></p>
-                                </li>
-                                <li class="abilityName">
-                                    <p style="text-align:left;" id='culcWepon'></p>
-                                </li>
-                                <li class="abilityName">
-                                    <p style="text-align:left;" id='culcAbility'></p>
-                                </li>
-                                <li class="abilityName">
-                                    <p style="text-align:left;float: left;" id='culcMaster'></p>
-                                    <p style="text-align:right;"><small id='culcMasterDtl'></small></p>
-                                </li>
-                                <li class="abilityName">
-                                    <p style="text-align:left;" id='culcEnemy'></p>
-                                </li>
+                            <ul class="inner child child01" style="display: none;" id="JOKEN_LIST">
                             </ul>
                         </li>
                     </ul>
@@ -341,19 +263,7 @@
                     </div></div>
 
 
-            </div></div> <!-- main -->
-        <!-- Twitter universal website tag code -->
-        <script>
-            !function (e, t, n, s, u, a) {
-                e.twq || (s = e.twq = function () {
-                    s.exe ? s.exe.apply(s, arguments) : s.queue.push(arguments);
-                }, s.version = '1.1', s.queue = [], u = t.createElement(n), u.async = !0, u.src = '//static.ads-twitter.com/uwt.js',
-                        a = t.getElementsByTagName(n)[0], a.parentNode.insertBefore(u, a))
-            }(window, document, 'script');
-            // Insert Twitter Pixel ID and Standard Event data below
-            twq('init', 'o1u7p');
-            twq('track', 'PageView');
-        </script>
-        <!-- End Twitter universal website tag code -->
+            </div> <!-- container -->
+        </div> <!-- main -->
     </body>
 </html>
