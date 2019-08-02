@@ -76,12 +76,35 @@
                 <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5008373409434899" data-ad-slot="3051702111"></ins><script> (adsbygoogle = window.adsbygoogle || []).push({});</script>
                 <div class="isLogin d-none">
                     <div class="card">
-                        <div class="card-header bg-primary" style="color:white">仕様変更 </div>
-                        <div class="card-body">
+                        <div class="card-header bg-primary text-white"><i class="fas fa-info-circle"></i> 機能説明</div>
+                        <div class="card-body style-bgcolor" style="padding:10px">
                             この機能は「手持ちのスタイルで周回する際にどのクエストをどのスタイルで回るのが良いか」を調べる機能です<br>
-                            したがって、未所持のスタイルをこの機能で表示するのは不適切であるため<a href="./stylecheck.html">スタイル所持チェッカー</a>と連動して未所持のスタイルは表示しないようにしました<br>
+                            したがって、未所持のスタイルをこの機能で表示するのは不適切であるため<a href="./stylecheck.html">スタイル所持チェッカー</a>と連動して未所持のスタイルは表示ていません<br>
+                            <hr>
+                            ==凡例==<br>
+                            <table border="1">
+                                <tr>
+                                    <td style="text-align: center; background-color: lightslategray; color: white">x</td><td>選択中のクエストではもう成長しない<span class="d-none d-md-inline">ステータス。より高難度クエストに行くことを推奨します</span></td>
+                                </tr>
+                                <tr>
+                                    <td style="background-color: pink; border: solid black 1px">　</td><td>選択中のクエストでは成長しにくい<span class="d-none d-md-inline">ステータス。より高難度クエストに行くことを推奨します</span></td>
+                                </tr>
+                                <tr>
+                                    <td style="background-color: palegreen; border: solid black 1px">　</td><td>選択中のクエストで成長しやすい<span class="d-none d-md-inline">ステータス。選択中のクエストを周回することを推奨します</span></td>
+                                </tr>
+                                <tr>
+                                    <td style="background-color: white; border: solid black 1px">　</td><td>選択中のクエストより低難度クエストでも成長しやすい<span class="d-none d-md-inline">ステータス。無理に高難度で周回する必要はありません</span></td>
+                                </tr>
+                                <tr>
+                                    <td style="background-color: white; border: solid black 1px">??</td><td>対象のステータスの上限値が不明です</td>
+                                </tr>
+                                <tr>
+                                    <td style=""></td><td>Q. キャラが表示されない<br>A. 合計が1未満<span class="d-none d-md-inline">のキャラ</span>は表示されません</td>
+                                </tr>
+                            </table>
                         </div>
-                    </div>
+                    </div>                    
+
                     <br>
                     <div class="text-center kadomaru" style="background-color: rgba(42,169,239,1); color:white; margin: 0px 10px; padding: 2px 5px;">
                         <a href="./stylecheck.html" class="h4 " style="background-size: 340px 40px; width:340px" id="inputStyleLogined"><span class="hidden pcBlock">自分の</span>所持スタイルを登録<span class="hidden pcBlock">する</span><i class="fas fa-pencil-alt"></i></a>
