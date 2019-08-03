@@ -42,9 +42,10 @@
         <script src="./js/data_CHARMASTER.js" ></script>
         <script src="./js/data_STYLEMASTER_auto.js" ></script>
         <script src="./js/data_SKILLMASTER_auto.js" ></script>
-        <script src="./js/auto.js" ></script>
         <script src="./js/culcStyleBonus.js" ></script>
         <script src="./js/damage.js" ></script>
+
+        <script src="./js/auto.js" ></script>
         <script type="text/javascript" src="js/jquery.sliderPro.js"></script>
         <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="css/slider-pro.min.css">
@@ -122,10 +123,22 @@
                     </div>
                 </div>
 
+                <label class="badge badge-pill badge-light styleChoiceArea" id="styleLabel">リンク</label>
+                <div class="text-center kadomaru blueLink" style="margin-bottom: 5px;">
+                    <a href="./style.html" id="STYLE_LINK" target="_blank" class="h6"><i class="fas fa-address-card"></i> <span class="CHAR_NAME">このキャラ</span>のスタイル詳細<span class="d-none d-sm-inline">を調べる <i class="fas fa-search"></i></span><br><small>(最大素ステやスタイル補正)</small></a>
+                </div>
+                <div class="text-center kadomaru blueLink" style="margin-bottom: 5px;">
+                    <a href="./ourchar.html" id="RANK_LINK" target="_blank" class="h6"><i class="fas fa-crown"></i> <span class="CHAR_NAME">このキャラ</span>の育成ランキング<span class="d-none d-sm-inline">を調べる <i class="fas fa-search"></i></span><br><small>(ユーザが登録しているステータスランキング)</small></a>
+                </div>
+                <div class="text-center kadomaru blueLink" >
+                    <a href="./skill.html" target="_blank" class="h6"><i class="fas fa-search"></i> 技・術 一覧を調べる</a>
+                </div>
+
                 <label class="badge badge-pill badge-light styleChoiceArea" id="styleLabel">スタイル選択</label>
-                <p class="text-center fukidashi width-100 pad0 mar0" id="CHAR_NAME"></p>
+                <p class="text-center fukidashi width-100 pad0 mar0 CHAR_NAME"></p>
                 <div class="opacity-char-back styleChoiceArea" style="width:100%;" id="styleChoice"></div>
                 <br>
+
                 <label class="badge badge-pill badge-light skillChoiceArea">技・術継承 / 覚醒選択<br>
                     ◇を選択すると覚醒できます<br>
                     ◆を選択すると取り消せます</label>
