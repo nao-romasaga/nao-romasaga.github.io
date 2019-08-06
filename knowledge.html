@@ -140,6 +140,7 @@
                                     <ol class="childs">
                                         <li class="child"><a href='#3-1'>基本計算式(簡易) <i class="fas fa-calculator"></i></a></li>
                                         <li class="child"><a href='#3-2'>武器威力1でどれぐらいダメージ違う？</a></li>
+                                        <li class="child"><a href='#3-5'>腕力1でどれぐらいダメージ違う？</a></li>
                                         <li class="child"><a href='#3-3'>技Rankで威力はどれぐらい変わる？</a></li>
                                         <li class="child"><a href='#3-4'>乱数 <i class="fas fa-dice"></i>のダメージ変化は結構大きい</a></li>
                                     </ol>
@@ -301,7 +302,7 @@
                         <div class="content-bg kadomaru">
                             <a name='2-1'></a>
                             <div class="style-skill-list">ステが低いほど上がりやすいの？</div>
-                            上限に近くほどステータスは上がりにくくなります<br>
+                            上限に近いほどステータスは上がりにくくなります<br>
                             ではステータスが低いほど（上限から遠いほど）上がりやすいのか。に関しては<br>
                             「上限まで残り5」と「上限まで残り20」では上昇率が同じであることが武闘会の周回により検証されています<br>
                             ＜参考資料:<a href='https://docs.google.com/spreadsheets/d/1PYABXd-gBNXqFQWJTL-ZXZxpv7Bn5GANNtKRbg78ZKk/edit#gid=0' target="_blank">武闘会760周の周回データ</a>＞
@@ -392,9 +393,22 @@
                             <br>
                             <div class="bg-warning text-center"><i class="fas fa-exclamation-triangle"></i> 注意</div>
                             実際は武器種により武器威力に係数がかかります。<br>
-                            <img src="./img/icon/icon_tai.png" height=20>体術 ＝ 武器威力 ＋ 技威力<br>
-                            <img src="./img/icon/icon_ju.png" height=20>銃 ＝ 武器威力 × 1.9 ＋ 技威力<br>
-                            <img src="./img/icon/icon_ken.png" height=20>その他 ＝ 武器威力 × 1.5 ＋ 技威力<br>
+                            <table>
+                                <tr>
+                                    <td><img src="./img/icon/icon_tai.png" height=20>体術</td>
+                                    <td>＝ 武器威力 ＋ 技威力</td>
+                                </tr>
+                                <tr>
+                                    <td><img src="./img/icon/icon_ju.png" height=20>銃</td>
+                                    <td>＝ 武器威力 × 1.9 ＋ 技威力</td>
+                                </tr>
+                                <tr>
+                                    <td><img src="./img/icon/icon_ken.png" height=20>その他</td>
+                                    <td>＝ 武器威力 × 1.5 ＋ 技威力</td>
+                                </tr>
+                            </table><br>
+                            <span style="color:blue"><i class="fas fa-check-circle"></i>武器威力を１あげる事によるダメージ増加は、銃は大きく体術は少ないと言えます<br></span>
+                            武器を更新する際の目安にしてください<br>
 
                             <a name="3-3"></a>
                             <div class="style-skill-list">技Rankで威力はどれぐらい変わる？</div>
@@ -426,6 +440,162 @@
                             <i class="fas fa-check-circle"></i>武器威力の係数が大きい<img src="./img/icon/icon_ju.png" height=20>銃は技ランクをあげることによるダメージ増加が小さい<br>
                             をいえます
 
+                            <a name="3-5"></a>
+                            <div class="style-skill-list">腕力が１上がるとどれぐらいダメージ違うの？</div>
+                            ステータスはダメージ計算のステータス項に入ります<br>
+                            ステータス項は武器種別によって異なり下記の通りです
+                            <table>
+                                <tr>
+                                    <td class="text-nowrap"><i class="fas fa-check-circle"></i><img src="./img/icon/icon_tai.png" height=20>体術</td>
+                                    <td>1 ＋ (腕力 × 2 + 素早さ × 2.5) - 敵体力 × 1.2</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-nowrap"><i class="fas fa-check-circle"></i><img src="./img/icon/icon_ju.png" height=20>銃</td>
+                                    <td>1 ＋ 器用さ × 3.6 - 敵体力 × 1.25</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-nowrap"><i class="fas fa-check-circle"></i><img src="./img/icon/icon_ken.png" height=20>その他</td>
+                                    <td>1 ＋ 依存ステ × 4 - 敵体力 × 1.5</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-nowrap"><i class="fas fa-check-circle"></i><img src="./img/icon/icon_hi.png" height=20><img src="./img/icon/icon_mizu.png" height=20>術</td>
+                                    <td>1 ＋ 知力 × 4 - 敵精神 × 1.5</td>
+                                </tr>
+                                </table>
+                            依存ステ：小剣、弓＝器用さ。その他＝腕力<br>
+                            <br>
+                            このように、武器種別によってステータス影響は大きく異なります。<br>
+                            <table class="style-skill-list" border="1">
+                                    <tr>
+                                        <td>武器</td>
+                                        <td>敵ステ<span class="d-none d-sm-inline">ータス</span>影響</td>
+                                        <td>自分のステ<span class="d-none d-sm-inline">ータス</span>影響</td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fas fa-check-circle"></i><img src="./img/icon/icon_tai.png" height=20>体術</td>
+                                    <td>小</td>
+                                    <td>大</td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fas fa-check-circle"></i><img src="./img/icon/icon_ju.png" height=20>銃</td>
+                                    <td>中</td>
+                                    <td>小</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-nowrap"><i class="fas fa-check-circle"></i><img src="./img/icon/icon_ken.png" height=20>その他</td>
+                                    <td>大</td>
+                                    <td>中</td>
+                                </tr>
+                            </table>
+                            <hr>
+                            <div class="fukidashi text-center">例：各武器種別の印武器と印+武器の差</div>
+                            どの程度影響が出るか下記のケースで計算してみましょう<br>
+                            ・腕/器/速/知ステータス：100<br>
+                            ・敵体/精：80<br>
+                            <table class="style-skill-list" border="1">
+                                <tr class="text-center">
+                                    <td></td>
+                                    <td>印</td>
+                                    <td>ステータス項</td>
+                                    <td>計算結果</td>
+                                    <td class="d-none d-md-table-cell">倍率</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan=2><img src="./img/icon/icon_tai.png" width=20></td>
+                                    <td>速</td>
+                                    <td>1 ＋ (100 × 2 + 103 × 2.5) - 80 × 1.2</td>
+                                    <td>362.5</td>
+                                    <td class="d-none d-md-table-cell"></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-nowrap">速+</td>
+                                    <td>1 ＋ (100 × 2 + 104 × 2.5) - 80 × 1.2</td>
+                                    <td>365<div class="d-md-none" style="color:skyblue">+0.69%</div></td>
+                                    <td class="d-none d-md-table-cell">+0.69%</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan=2><img src="./img/icon/icon_ju.png" width=20></td>
+                                    <td>器</td>
+                                    <td>1 ＋ (103 × 3.6) - 80 × 1.25</td>
+                                    <td>271.8</td>
+                                    <td class="d-none d-md-table-cell"></td>
+                                </tr>
+                                <tr>
+                                    <td>器+</td>
+                                    <td>1 ＋ (104 × 3.6) - 80 × 1.25</td>
+                                    <td>275.4<div class="d-md-none" style="color:skyblue">+1.32%</div></td>
+                                    <td class="d-none d-md-table-cell">+1.32%</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan=2><img src="./img/icon/icon_ken.png" width=20></td>
+                                    <td>力</td>
+                                    <td>1 ＋ (103 × 4) - 80 × 1.5</td>
+                                    <td>293</td>
+                                    <td class="d-none d-md-table-cell"></td>
+                                </tr>
+                                <tr>
+                                    <td>力+</td>
+                                    <td>1 ＋ (104 × 4) - 80 × 1.5</td>
+                                    <td>297<div class="d-md-none" style="color:skyblue">+1.36%</div></td>
+                                    <td class="d-none d-md-table-cell">+1.36%</td>
+                                </tr>
+                            </table>
+                            武器威力の時と同様でステータスが小さいほど１増加時の影響は大きく<br>
+                            ステータスが大きいほど１増加時の影響は小さいはずです<hr>
+                            ステータスを変えてもう一度<br>
+                            ・腕/器/速/知ステータス：120<br>
+                            ・敵体/精：80<br>
+                            <table class="style-skill-list" border="1">
+                                <tr class="text-center">
+                                    <td></td>
+                                    <td>武器印</td>
+                                    <td>ステータス項</td>
+                                    <td>計算結果</td>
+                                    <td class="d-none d-md-table-cell">倍率</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan=2><img src="./img/icon/icon_tai.png" width=20></td>
+                                    <td>速</td>
+                                    <td>1 ＋ (120 × 2 + 123 × 2.5) - 80 × 1.2</td>
+                                    <td>452.5</td>
+                                    <td class="d-none d-md-table-cell"></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-nowrap">速+</td>
+                                    <td>1 ＋ (120 × 2 + 124 × 2.5) - 80 × 1.2</td>
+                                    <td>455<div class="d-md-none" style="color:skyblue">+0.55%</div></td>
+                                    <td class="d-none d-md-table-cell">+0.55%</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan=2><img src="./img/icon/icon_ju.png" width=20></td>
+                                    <td>器</td>
+                                    <td>1 ＋ (123 × 3.6) - 80 × 1.25</td>
+                                    <td>342.8</td>
+                                    <td class="d-none d-md-table-cell"></td>
+                                </tr>
+                                <tr>
+                                    <td>器+</td>
+                                    <td>1 ＋ (124 × 3.6) - 80 × 1.25</td>
+                                    <td>346.4<div class="d-md-none" style="color:skyblue">+1.05%</div></td>
+                                    <td class="d-none d-md-table-cell">+1.05%</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan=2><img src="./img/icon/icon_ken.png" width=20></td>
+                                    <td>力</td>
+                                    <td>1 ＋ (123 × 4) - 80 × 1.5</td>
+                                    <td>372</td>
+                                    <td class="d-none d-md-table-cell"></td>
+                                </tr>
+                                <tr>
+                                    <td>力+</td>
+                                    <td>1 ＋ (124 × 4) - 80 × 1.5</td>
+                                    <td>376<div class="d-md-none" style="color:skyblue">+1.07%</div></td>
+                                    <td class="d-none d-md-table-cell">+1.07%</td>
+                                </tr>
+                            </table>
+                            <br>
+                            <i class="fas fa-check-circle"></i>武器威力よりもステータスの方が影響が小さいケースが多い<br>
+                            <i class="fas fa-check-circle"></i><img src="./img/icon/icon_tai.png" height=20>体術は腕力と素早さの両方に影響されるため、速だけ上がる速+武器では増加量が少ない<br>
 
                             <a name="3-4"></a>
                             <div class="style-skill-list"><i class="fas fa-dice"></i> 乱数によるダメージ変化は結構大きい</div>
