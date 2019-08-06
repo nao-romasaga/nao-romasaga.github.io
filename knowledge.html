@@ -63,10 +63,23 @@
             .MENU ul li:not(.child):before  {
                 font-family: "Font Awesome 5 Free";
                 content: "\f075";/*アイコン種類*/
+                font-weight: bold;
                 position: absolute;
                 left : 0.5em; /*左端からのアイコンまで*/
                 color: brown; /*アイコン色*/
             }
+            .MENU ul li.waiting:not(.child):before  {
+                font-family: "Font Awesome 5 Free";
+                font-weight: bold;
+                content: "\f023";/*アイコン種類*/
+                position: absolute;
+                left : 0.5em; /*左端からのアイコンまで*/
+                color: gray; /*アイコン色*/
+            }
+            .MENU .waiting {
+                color: gray;
+            }
+            
             .MENU .childs {
                 padding-left:0px;
             }
@@ -91,10 +104,14 @@
                 .viewImg {
                     width: 100%;
                 }
+                .waiting {
+                    display: none;
+                }
             }
             .MENU a {
                 color: brown;
             }
+            
         </style>
     </head>
     <body>
@@ -127,8 +144,39 @@
                                         <li class="child"><a href='#3-4'>乱数 <i class="fas fa-dice"></i>のダメージ変化は結構大きい</a></li>
                                     </ol>
                                 </li>
-                                <li>新武器性能の見方</li>
-                            </ul>
+                                <li class="parent waiting">この新武器って必要？
+                                        <ol class="childs">
+                                                <li class="child">強化時の威力の上がりかた</li>
+                                        </ol>
+                                </li>
+                                <li class="parent waiting"><img src="./img/icon/icon_jinkei_PowerRise.png" height=15 >陣形効果について
+                                    <ol class="childs">
+                                        <li class="child">50%上がるってどういうこと？</li>
+                                    </ol>
+                                </li>
+                                <li class="parent waiting"><img src="./img/icon/icon_hi.png" height=15 >火+などの術威力武器
+                                    <ol class="childs">
+                                        <li class="child">術と属性は異なる</a></li>
+                                        <li class="child">術威力は何の威力が上がる？</a></li>
+                                    </ol>
+                                </li>
+                                <li class="parent waiting">聖石の効果
+                                        <ol class="childs">
+                                                <li class="child">効果は係数項に乗る</a></li>
+                                                <li class="child">杖+セット時に杖ポコも上がる？</a></li>
+                                        </ol>
+                                </li>
+                                <li class="parent waiting">オーラムが足りない...<i class="fas fa-comments-dollar"></i>
+                                        <ol class="childs">
+                                                <li class="child">周回クエスト 効率</a></li>
+                                        </ol>
+                                </li>
+                                <li class="parent waiting">三光石が足りない...<i class="fas fa-comments-dollar"></i>
+                                    <ol class="childs">
+                                            <li class="child">周回クエスト 効率</a></li>
+                                    </ol>
+                            </li>
+                        </ul>
                         </div>
                         <!--スクエア--><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5008373409434899" data-ad-slot="9303963278" data-ad-format="auto" data-full-width-responsive="true"></ins><script> (adsbygoogle = window.adsbygoogle || []).push({});</script>
                     </div>
