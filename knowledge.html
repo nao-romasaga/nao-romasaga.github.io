@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#" lang="ja">
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138966739-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', 'UA-138966739-1');
+        </script>
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <meta charset="utf-8">
+        <title>【ロマサガRS】ロマサガRSの知っておきたい知識</title>
+        <meta property="og:title" content="【ロマサガRS】ロマサガRSの知っておきたい知識" />
+        <meta property="og:url" content="https://http://nao-romasaga.github.io/index.html" />
+        <meta property="og:description" content="ロマサガRSの攻略や育成などに活用できる便利ツールです。全力オートシミュレーターやステータス上限チェック、技検索などがあります。" />
+        <meta name="description" content="ロマサガRSの攻略や育成などに活用できる便利ツールです。全力オートシミュレーターやステータス上限チェック、技検索などがあります。【ロマンシングサガ リユニバース】" />
+        <meta property="og:image" content="https://nao-romasaga.github.io/img/twitter_card.png" />
+        <meta property="og:site_name" content="ロマサガRS便利ツール" />
+        <meta property="og:type" content="website">
+        <meta property="og:locale" content="ja_JP" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@nao_romasaga_rs" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="./css/style.css">
+        <link rel="stylesheet" type="text/css" href="./css/char_anime.css">
+        <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
+        <script src="./js/utils.js" ></script>
+        <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+        <style>
+            .MENU ul {
+                border: solid 0px #ffb03f;
+                padding: 0 0.5em;
+                position: relative;
+            }
+
+            .MENU ul li {
+                line-height: 1.5;
+                padding: 0.5em 0 0.5em 1.4em;
+                border-bottom: dashed 1px silver;
+                list-style-type: none!important;
+            }
+
+            .MENU ul li:not(.child):before  {
+                font-family: "Font Awesome 5 Free";
+                content: "\f075";/*アイコン種類*/
+                position: absolute;
+                left : 0.5em; /*左端からのアイコンまで*/
+                color: brown; /*アイコン色*/
+            }
+            .MENU .childs {
+                padding-left:0px;
+            }
+            .MENU .child {
+                padding-left:0px;
+            }
+            .MENU .child:before {
+                font-family: "Font Awesome 5 Free";
+                content: "\f059";
+                color: brown;
+                margin-right: 5px;
+            }
+
+            .MENU ul li:last-of-type {
+                border-bottom: none;
+            }
+            .content-bg {
+                background-color: rgba(230, 225, 207, 0.8);
+            }
+            /* スマホ　767px以下 */
+            @media only screen and (max-width: 767px){
+                .viewImg {
+                    width: 100%;
+                }
+            }
+            .MENU a {
+                color: brown;
+            }
+        </style>
+    </head>
+    <body>
+        <div class ="" style="background: url(/img/bg_repeat.png); background-size: contain;">
+            <div class="">
+                <div class="row no-gutters">
+                    <div class="col-12 col-md-3" style="padding:0px 10px;">
+                        <div class="text-center label-text width-100">目次</div>
+                        <div class="MENU style-bgcolor" style="padding-left: 10px">
+                            <ul>
+                                <li class="parent"><a href='#1'>ステータス上限について</a>
+                                    <ol class="childs">
+                                        <li class="child"><a href='#1-1'>素ステとは</a></li>
+                                        <li class="child"><a href='#1-2'>ステータス上限とは</a></li>
+                                        <li class="child"><a href='#1-3'>スタイルにある<img src='./img/icon/icon_ind_3.png' height="15"><img src='./img/icon/icon_ind_2.png' height="15"><img src='./img/icon/icon_ind_1.png' height="15">ってなに？</a></li>
+                                        <li class="child"><a href='#1-4'>Baseってなに？+10ってなに？</a></li>
+                                    </ol>
+                                </li>
+                                <li class="parent"><a href='#2'>ステータス上昇について</a>
+                                    <ol class="childs">
+                                        <li class="child"><a href='#2-1'>ステが低いほど上がりやすいの？</a></li>
+                                        <li class="child"><a href='#2-2'>どこを周回すればいいの？</a></li>
+                                    </ol>
+                                </li>
+                                <li class="parent"><a href='#3'>ダメージ計算について</a>
+                                    <ol class="childs">
+                                        <li class="child"><a href='#3-1'>基本計算式(簡易) <i class="fas fa-calculator"></i></a></li>
+                                        <li class="child"><a href='#3-2'>武器威力1でどれぐらいダメージ違う？</a></li>
+                                        <li class="child"><a href='#3-3'>技Rankで威力はどれぐらい変わる？</a></li>
+                                        <li class="child"><a href='#3-4'>乱数 <i class="fas fa-dice"></i>のダメージ変化は結構大きい</a></li>
+                                    </ol>
+                                </li>
+                                <li>新武器性能の見方</li>
+                            </ul>
+                        </div>
+                        <!--スクエア--><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5008373409434899" data-ad-slot="9303963278" data-ad-format="auto" data-full-width-responsive="true"></ins><script> (adsbygoogle = window.adsbygoogle || []).push({});</script>
+                    </div>
+                    <div class="col-12 col-md-8">
+                        <a name='1'></a>
+                        <h4 class="text-center label-text">ステータス上限について</h4>
+                        <div class="content-bg kadomaru">
+                            <a name='1-1'></a>
+                            <div class="style-skill-list">素ステとは</div>
+                            <i class="fas fa-check-circle"></i>スタイルや装備に影響されないキャラクターの素のステータス<br>
+                            戦闘終了時に上がる【キャラクター固有】のものを指します<br>
+                            スタイルや装備、裏能力によって上がるステータスとは別物です<br>
+
+                            <a name='1-2'></a>
+                            <div class="style-skill-list">ステータス上限とは</div>
+                            ステータス上限は以下の３つの合計によって決定しています<br>
+                            <span style="font-size:1.2em;">【キャラクター基礎値】<span id="dotID33518" class="dot_mid dot char-winner" style="background:url(./img/dot/ID36a38.png) no-repeat;"></span> +<br>
+                                【スタイル上限値】<img src="./img/style_icon/ID36a43.png" width="30">
+                                <img src="./img/style_icon/ID36a44.png" width="30">
+                                <img src="./img/style_icon/ID36a45.png" width="30">
+                                <img src="./img/style_icon/ID36a46.png" width="30">
+                                +<br>
+                                【クエスト設定値】5話,6話,7話,Normal/Hard/VeryHardなど</span><hr>
+                            【キャラクター基礎値】：キャラクターに設定された値<br>
+                            　キャラクターが持つ値のため、スタイルを変更してもこの値は変わりません<br>
+                            【スタイル上限値】：スタイルに設定された値<br>
+                            　スタイルを切り替えることで変更されます<br>
+                            【クエスト設定値】：クエストごとに設定された値<br>
+                            　VH5は45、VH7は48などクエストの難易度により設定が異なります
+                            <div class="fukidashi text-center">例：キャットの場合</div>
+                            ・キャットのキャラクター基礎値
+                            <table class="style-skill-list text-center" border="1">
+                                <tr><td>項目</td><td>腕</td><td>体</td><td>器</td><td>速</td><td>知</td><td>精</td><td>愛</td><td>魅</td></tr>
+                                <tr><td>キャラ値</td><td>2</td><td>1</td><td>1</td><td>4</td><td>2</td><td>-1</td><td>-1</td><td>1</td></tr>
+                            </table>
+                            ・キャット[猫の爪は痛いわよ]のスタイル上限値
+                            <table class="style-skill-list text-center" border="1">
+                                <tr><td>項目</td><td>腕</td><td>体</td><td>器</td><td>速</td><td>知</td><td>精</td><td>愛</td><td>魅</td></tr>
+                                <tr><td><img src="./img/style_icon/ID36a44.png" width="30">[猫の爪は痛いわよ]</td><td>-1</td><td>-2</td><td>3</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>0</td></tr>
+                            </table>
+                            ・VH6のクエスト設定値：45
+                            <br>
+                            これらを足し合わせると
+                            <table class="style-skill-list text-center" border="1">
+                                <tr><td>項目</td><td>腕</td><td>体</td><td>器</td><td>速</td><td>知</td><td>精</td><td>愛</td><td>魅</td></tr>
+                                <tr><td>キャラクター値</td><td>2</td><td>1</td><td>1</td><td>4</td><td>2</td><td>-1</td><td>-1</td><td>1</td></tr>
+                                <tr><td><img src="./img/style_icon/ID36a44.png" width="30">[猫の爪は痛いわよ]</td><td>-1</td><td>-2</td><td>3</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>0</td></tr>
+                                <tr><td>VH6クエスト設定値</td><td>45</td><td>45</td><td>45</td><td>45</td><td>45</td><td>45</td><td>45</td><td>45</td></tr>
+                                <tr><td>VH6<span class='d-none d-md-inline'>における</span><img src="./img/style_icon/ID36a44.png" width="30">の上限</td><td>46</td><td>44</td><td>49</td><td>49</td><td>47</td><td>43</td><td>44</td><td>46</td></tr>
+                            </table>
+                            これがVH6におけるSSキャットのステータス上限値です。
+
+
+                            <a name='1-3'></a>
+                            <div class="style-skill-list">スタイルにある<img src='./img/icon/icon_ind_3.png' height="15"><img src='./img/icon/icon_ind_2.png' height="15"><img src='./img/icon/icon_ind_1.png' height="15">ってなに？</div>
+                            前述の【スタイル上限値】が取りうる値を示しています。具体的には<br>
+                            <img src='./img/icon/icon_ind_3.png' height="15">：4〜9 / 
+                            <img src='./img/icon/icon_ind_2.png' height="15">：1〜3 / 
+                            <img src='./img/icon/icon_ind_1.png' height="15">：-9〜0<br>
+                            となります
+                            <div class="fukidashi text-center">例：キャットの場合</div>
+                            <img src='./img/knowledge/styleind.jpg'><br>
+                            キャットはこのようにスタイルでマークのつき方が異なっています<br>
+                            実際のステータス値と比べてみましょう（<a href="/style.html?s=ID36a44" target="_blank">キャットのスタイル詳細より引用</a>）<br>
+                            この画像のステータスは、外伝2のクエスト設定値63が設定されています<br>
+                            <img src='./img/knowledge/styletable.png' class='viewImg'><br>
+                            ここから、キャラクター固有値とクエスト設定値の63を引くとこのようになります
+                            <table class="style-skill-list text-center" border="1">
+                                <tr><td>スタイル</td><td>腕</td><td>体</td><td>器</td><td>速</td><td>知</td><td>精</td><td>愛</td><td>魅</td></tr>
+                                <tr><td><img src="./img/style_icon/ID36a46.png" width="30"></td><td>2<img src='./img/icon/icon_ind_2.png' height="15"></td><td>??</td><td>??</td><td>??<img src='./img/icon/icon_ind_2.png' height="15"></td><td>??</td><td>??</td><td>0</td><td>??</td></tr>
+                                <tr><td><img src="./img/style_icon/ID36a45.png" width="30"></td><td>0</td><td>-1</td><td>0</td><td>4<img src='./img/icon/icon_ind_3.png' height="15"></td><td>0</td><td>-1</td><td>0</td><td>-2</td></tr>
+                                <tr><td><img src="./img/style_icon/ID36a44.png" width="30"></td><td>-1</td><td>-2</td><td>3<img src='./img/icon/icon_ind_2.png' height="15"></td><td>0</td><td>0</td><td>-1</td><td>0</td><td>0</td></tr>
+                                <tr><td><img src="./img/style_icon/ID36a43.png" width="30"></td><td>-1</td><td>-7</td><td>3<img src='./img/icon/icon_ind_2.png' height="15"></td><td>6<img src='./img/icon/icon_ind_3.png' height="15"></td><td>0</td><td>-1</td><td>0</td><td>0</td></tr>
+                            </table>
+                            <img src='./img/icon/icon_ind_3.png' height="15">：4〜9 / 
+                            <img src='./img/icon/icon_ind_2.png' height="15">：1〜3 / 
+                            <img src='./img/icon/icon_ind_1.png' height="15">：-9〜0 の範囲で設定されてるのがわかります<br>
+                            <img src="./img/style_icon/ID36a46.png" width="30">のスタイル上限値がまだ上限不明ですが、速は<img src='./img/icon/icon_ind_2.png' height="15">がついていることから1〜3であることがわかっているため、外伝2での上限は68〜70であることが推測できます<br>
+
+
+
+                            <a name='1-4'></a>
+                            <div class="style-skill-list">Baseってなに？+10や+15ってなに？</div>
+                            Baseとは？<br>
+                            <i class="fas fa-check-circle"></i>前述の【クエスト設定値】と同じです<br>
+                            ステータスの基底となるためBaseと表現しています<br>
+                            クエスト設定値45はBase45、クエスト設定値48はBase48と言えます<br>
+                            <br>
+                            +Xとは？<br>
+                            <i class="fas fa-check-circle"></i>Base45からの差分を+で表現していています<br>
+                            これはBase45がリリース当初の最大値であったためです。VH7はBase48なので+3です<br>
+                            ちなみに19/8/4時点の最新クエストVH外伝2ではBase63なので+18です<br>
+                            
+                            <div class="fukidashi text-center">クエスト/Base/+X 対応表</div>
+                            <table class="style-skill-list text-center" border="1">
+                                <tr><td>　難易度　</td><td>　Base　</td><td>　+X　</td>
+                                </tr>
+                                <tr><td>VH6</td><td>45</td><td>+0</td></tr>
+                                <tr><td>VH7</td><td>48</td><td>+3</td></tr>
+                                <tr><td>VH8</td><td>51</td><td>+6</td></tr>
+                                <tr><td>VH9</td><td>54</td><td>+9</td></tr>
+                                <tr><td>VH10</td><td>56</td><td>+11</td></tr>
+                                <tr><td>VH11</td><td>58</td><td>+13</td></tr>
+                                <tr><td>VH12</td><td>60</td><td>+15</td></tr>
+                                <tr><td>VH外2</td><td>63</td><td>+18</td></tr>
+                            </table>
+                        </div>
+
+                        <div class="text-center" style="margin:20px 0px; background: url('./img/bg_run_1.png'); background-size: cover;">
+                            <span class="label-text loading" style='width:400px;'>
+                                　　<span>S</span><span>T</span><span>U</span><span>D</span><span>I</span><span>Y</span><span>N</span><span>G</span><span>.</span><span>.</span>                                　　
+                            </span>
+                            <div class="">
+                                <span class="char1 char dot_mid dot char-hashiri-right" style="background: url(./img/dot/ID335e0.png);"></span>
+                                <span class="char2 char dot_mid dot char-hashiri-right" style="background: url(./img/dot/ID33a2c.png);"></span>
+                            </div>
+                        </div>
+                        <!--スクエア--><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5008373409434899" data-ad-slot="9303963278" data-ad-format="auto" data-full-width-responsive="true"></ins><script> (adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+                        <a name='2'></a>
+                        <h4 class="text-center label-text">ステータス上昇について</h4>
+                        <div class="content-bg kadomaru">
+                            <a name='2-1'></a>
+                            <div class="style-skill-list">ステが低いほど上がりやすいの？</div>
+                            上限に近くほどステータスは上がりにくくなります<br>
+                            ではステータスが低いほど（上限から遠いほど）上がりやすいのか。に関しては<br>
+                            「上限まで残り5」と「上限まで残り20」では上昇率が同じであることが武闘会の周回により検証されています<br>
+                            ＜参考資料:<a href='https://docs.google.com/spreadsheets/d/1PYABXd-gBNXqFQWJTL-ZXZxpv7Bn5GANNtKRbg78ZKk/edit#gid=0' target="_blank">武闘会760周の周回データ</a>＞
+                            <hr>
+                            つまりステータス上昇は
+                            <h5 style='color:blue'><i class="fas fa-check-circle"></i>上限から5以上離れている場合、上限-5でも上限-20でも同じ確率で上がる</h5>と言ってよいでしょう<br>
+                            ちんさんが詳しいまとめを発信しておられます > <a href='https://peing.net/ja/q/1576c874-3e82-4f38-a788-0057c219b5d4' target="_blank">参考</a>
+
+
+                            <a name='2-2'></a>
+                            <div class="style-skill-list">どこを周回すればいいの？</div>
+                            前述の通り、ステータスは上限から5以上離れていればどこを周回しても上がる確率は同じです<br>
+                            これを踏まえると<br>
+                            1. スタミナ消費が少ないクエスト<br>
+                            2. 全滅せず無理なく周回できるクエスト<br>
+                            3. ついでにドロップアイテムが狙えるクエスト<br>
+                            を基準にすると良いと思います<br>
+                            <hr>
+                            ▼オススメ▼<br>
+                            便利ツールの<a href='party.html' target='_blank'>育成パーティ上限チェック</a>を使うと、どのクエストであとどれぐらいステータスが伸びるか調べることができます<br>
+                            <img src='./img/knowledge/party1.png' class='viewImg'><br>
+                            表示されている数字は上限まであとどれぐらい伸びるかを表しています<br>
+                            <span style="background-color:skyblue">青表示</span>は成長するステータス、
+                            <span style="background-color:salmon">赤表示</span>は上限を超えているためもう成長しないステータスです<br><br>
+                            画像は外伝1で水着アザミ利用時です<br>
+                            水着アザミは外伝1での速上限は66であるため、もう成長しないことがわかります<br>
+                            速を成長させるためにはSSアザミにスタイル変更する必要があります<br>
+                            あるいは、周回するクエストを変えてみても良いでしょう<br>
+                            <hr>
+                            周回クエストを外伝1(+16)から外伝2(+18)に変更した場合<br>
+                            <img src='./img/knowledge/party2.png' class='viewImg'><br>
+                            +16から+18に変わったので、ステータスも全体的に2伸び代ができました<br>
+                            水着アザミは速上限まで2なので、成長する確率は低いですがSSアザミなら速上限まで4なので比較的上がりやすいことがわかります<br>
+                            速をあげるつもりならSSアザミに切り替えると良いでしょう<br>
+                            <br><br>
+                            ステータスの入力はスタミナが切れたタイミングなど適宜行うと良いでしょう<br>
+                            <a href='party.html' target='_blank'>育成パーティ上限チェック</a>を使えば、スタイルを切り替えたり育成キャラを切り替えを行い効率よく行うことができるでしょう<br>
+                            
+
+                            
+                        </div>
+                        <div class="text-center" style="margin:20px 0px; background: url('./img/bg_run_3.png'); background-size: cover;">
+                            <span class="label-text loading" style='width:400px;'>
+                                　　<span>S</span><span>T</span><span>U</span><span>D</span><span>I</span><span>Y</span><span>N</span><span>G</span><span>.</span><span>.</span>                                　　
+                            </span>
+                            <div class="">
+                                <span class="char1 char dot_mid dot char-hashiri-right" style="background: url(./img/dot/ID335e0.png);"></span>
+                                <span class="char2 char dot_mid dot char-hashiri-right" style="background: url(./img/dot/ID33a2c.png);"></span>
+                            </div>
+                        </div>
+                        <!--スクエア--><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5008373409434899" data-ad-slot="9303963278" data-ad-format="auto" data-full-width-responsive="true"></ins><script> (adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+                        <a name="3"></a>
+                        <h4 class="text-center label-text">ダメージ計算について</h4>
+                        <div class="content-bg kadomaru">
+                            <a name="3-1"></a>
+                            <div class="style-skill-list">基本計算式(簡易) <i class="fas fa-calculator"></i></div>
+                            ダメージの計算式は大雑把に説明すると下記の通りです<br>
+                            <span style="font-size:22px; color:red;">威力項</span> × 
+                            <span style="font-size:22px; color:blue;">ステータス項</span> × 
+                            <span style="font-size:22px; color:darkgreen;">倍率項</span> = 
+                            ダメージ<br>
+                            <hr>
+                            各項目の内訳は下記の通り<br>
+                            <i class="fas fa-check-circle"></i>威力項：武器威力、技威力項<br>
+                            <i class="fas fa-check-circle"></i>ステータス項：腕力・素早さ・器用さ・知力、敵の体力・精神<br>
+                            <i class="fas fa-check-circle"></i>倍率項：アビリティ（テンションIVなど）、耐性、乱数<br>
+
+                            <a name="3-2"></a>
+                            <div class="style-skill-list">武器威力が１上がるとどれぐらいダメージ違うの？</div>
+                            武器威力は威力項に入ります<br>
+                            <i class="fas fa-check-circle"></i><span style="font-size:22px; color:red;">威力項</span>　＝　武器威力 ＋ 技威力項<br>
+                            このため、<span style="color:red;">現在の武器威力が大きいほど。技威力項が大きいほど</span>武器威力1上昇によるダメージ増加は少なくなります<br>
+                            <br>
+
+                            通常攻撃（技威力項を７に仮置き）で計算すると<br>
+                            <div class="fukidashi text-center">例：武器威力が１０から１１に変わる場合</div>
+                            威力項は10+7から11+7に増加。17/18=1.058なので<br>
+                            <i class="fas fa-check-circle"></i>武器威力１増加でダメージは<span style="color:blue">5.8%増加</span>します<br>
+                            <br>
+                            <div class="fukidashi text-center">例：武器威力が２９から３０に変わる場合</div>
+                            威力項は29+7から30+7に増加。37 / 36=1.027なので<br>
+                            <i class="fas fa-check-circle"></i>武器威力１増加でダメージは<span style="color:blue">2.7%増加</span>します<br>
+                            <br>
+                            <div class="fukidashi text-center">例：武器威力が２９から３０に変わる＋無明剣：威力69の場合</div>
+                            威力項は29 + 69 から 30 + 69に増加。98 / 97=1.0102なので<br>
+                            <i class="fas fa-check-circle"></i>武器威力１増加でダメージは<span style="color:blue">1.02%しか</span>増加しません<br>
+                            <br>
+                            <div class="bg-warning text-center"><i class="fas fa-exclamation-triangle"></i> 注意</div>
+                            実際は武器種により武器威力に係数がかかります。<br>
+                            <img src="./img/icon/icon_tai.png" height=20>体術 ＝ 武器威力 ＋ 技威力<br>
+                            <img src="./img/icon/icon_ju.png" height=20>銃 ＝ 武器威力 × 1.9 ＋ 技威力<br>
+                            <img src="./img/icon/icon_ken.png" height=20>その他 ＝ 武器威力 × 1.5 ＋ 技威力<br>
+
+                            <a name="3-3"></a>
+                            <div class="style-skill-list">技Rankで威力はどれぐらい変わる？</div>
+                            前述の武器威力では技威力はrank無視の簡易計算しましたが実際にはrankより威力が変化します<br>
+                            計算式は下記の通りです<br>
+                            <i class="fas fa-check-circle"></i>技威力 = 技威力 + (技威力 - 5) + (技威力 - 5) × (ランク/100)<br>
+                            <div class="fukidashi text-center">例：サブミッション（威力27）の場合</div>
+                            技威力 = 27 + 22 + (22 * ランク/100)<br>
+                            Rank1 = 49.22<br>
+                            Rank99 = 70.78<br>
+                            <i class="fas fa-check-circle"></i>Rank1から99にすることで<span style="color:blue">技威力が1.43倍に増加</span>
+                            <div class="fukidashi text-center">例：無明剣（威力69）の場合</div>
+                            技威力 = 69 + 64 + (64 * ランク/100)<br>
+                            Rank1 = 133.64<br>
+                            Rank99 = 196.36<br>
+                            <i class="fas fa-check-circle"></i>Rank1から99にすることで<span style="color:blue">技威力が1.47倍に増加</span>
+                            <div class="bg-warning text-center"><i class="fas fa-exclamation-triangle"></i> 注意</div>
+                            あくまで増加するのは技威力です<br>
+                            ダメージ計算の威力項は<span style="font-size:22px; color:red">武器威力 + 技威力</span>であるため、ダメージ増加は武器威力を考慮する必要があります<br>
+                            また武器威力も武器種別により係数が異なる点に注意してください
+                            <div class="fukidashi text-center">例：武器威力３０、無明剣（威力69）の場合</div>
+                            Rank1 = 30 × 1.5 + 133.64 = 178.64<br>
+                            Rank99 = 30 × 1.5 + 196.36 = 241.36<br>
+                            <i class="fas fa-check-circle"></i>Rank1から99にすることで<span style="color:blue">ダメージが1.35倍に増加</span><br>
+                            となります。<br>
+                            <br>
+                            また、武器種別により武器威力にかかる係数も異なりますので<br>
+                            <i class="fas fa-check-circle"></i>武器威力の係数が小さい<img src="./img/icon/icon_tai.png" height=20>体術は技ランクをあげることによるダメージ増加が多く<br>
+                            <i class="fas fa-check-circle"></i>武器威力の係数が大きい<img src="./img/icon/icon_ju.png" height=20>銃は技ランクをあげることによるダメージ増加が小さい<br>
+                            をいえます
+
+
+                            <a name="3-4"></a>
+                            <div class="style-skill-list"><i class="fas fa-dice"></i> 乱数によるダメージ変化は結構大きい</div>
+                            ダメージ計算の時に発生する乱数は全部で１０パターンです<br>
+                            <table class="style-skill-list text-center" border="1">
+                                    <tr><td>乱数</td><td>割合</td></tr>
+                                    <tr><td>1</td><td>-5%</td></tr>
+                                    <tr><td>2</td><td>-4%</td></tr>
+                                    <tr><td>3</td><td>-3%</td></tr>
+                                    <tr><td>4</td><td>-2%</td></tr>
+                                    <tr><td>5</td><td>-1%</td></tr>
+                                    <tr><td>6</td><td>0%</td></tr>
+                                    <tr><td>7</td><td>+1%</td></tr>
+                                    <tr><td>8</td><td>+2%</td></tr>
+                                    <tr><td>9</td><td>+3%</td></tr>
+                                    <tr><td>10</td><td>+4%</td></tr>
+                            </table>
+                            最大で9%のダメージが変動します<br>
+                            SSS技などダメージが大きいものほど影響が大きく<br>
+                            武器威力30 腕力140 Rank99 最終皇帝で雑に計算するとこのようになります<br>
+                            <img src='./img/knowledge/damage.png' class='viewImg'><br>
+                            最低と最大でダメージが1200違うのがわかります。<br>
+                            気になる方は<a href="./damage.html" target="_blank">ダメージ計算機</a>をご利用ください<br>
+                            <div class="fukidashi text-center">例：セルマの崩れ銀花のモラルアップ</div>
+                            崩れ銀花のモラルアップは+15%の効果があるのですが、上記の乱数の出方で効果が全然違って見えます<br>
+                            ・最終皇帝（倍率項:テンション4:15%、勇健3:15%、マスターレベル28:7% = 37%)<br>
+                            モラルアップ前に最大。モラルアップ後に最小の場合
+                            <table class="style-skill-list text-center" border="1">
+                                <tr>
+                                    <td></td><td>乱数</td><td>割合</td><td>合計</td><td>ダメージ</td>
+                                </tr>
+                                <tr>
+                                    <td>モラルアップ前</td><td>10</td><td>37% +4%</td><td>41%</td><td>19,108</td>
+                                </tr>
+                                <tr>
+                                    <td>モラルアップ後</td><td>１</td><td>37% -5% + 15%</td><td>47%</td><td>19,921</td>
+                                </tr>
+                            </table>
+                            モラルアップ前に最小。モラルアップ後に最大の場合
+                            <table class="style-skill-list text-center" border="1">
+                                <tr>
+                                    <td></td><td>乱数</td><td>割合</td><td>合計</td><td>ダメージ</td>
+                                </tr>
+                                <tr>
+                                    <td>モラルアップ前</td><td>1</td><td>37% -5%</td><td>32%</td><td>17,889</td>
+                                </tr>
+                                <tr>
+                                    <td>モラルアップ後</td><td>10</td><td>37% +4% + 15%</td><td>56%</td><td>21,141</td>
+                                </tr>
+                            </table>
+                            どうでしょう、この二つの変化では大きく印象が異なるのではないでしょうか<br>
+                            乱数による変動は大きいので、効果が気になった場合は是非複数回試してみることをおすすめします
+                            
+
+                        </div>
+                        <div class="text-center" style="margin:20px 0px; background: url('./img/bg_run_2.png'); background-size: cover;">
+                            <span class="label-text loading" style='width:400px;'>
+                                　　<span>S</span><span>T</span><span>U</span><span>D</span><span>I</span><span>Y</span><span>N</span><span>G</span><span>.</span><span>.</span>                                　　
+                            </span>
+                            <div class="">
+                                <span class="char1 char dot_mid dot char-hashiri-right" style="background: url(./img/dot/ID335e0.png);"></span>
+                                <span class="char2 char dot_mid dot char-hashiri-right" style="background: url(./img/dot/ID33a2c.png);"></span>
+                            </div>
+                        </div>
+                        <!--スクエア--><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5008373409434899" data-ad-slot="9303963278" data-ad-format="auto" data-full-width-responsive="true"></ins><script> (adsbygoogle = window.adsbygoogle || []).push({});</script>
+                        <h4 class="text-center label-text">新武器性能の見方</h4>
+                        <div class="content-bg kadomaru">
+                            coming soon.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- main -->
+        <script>
+            $(document).ready(function ($) {
+                var rand = charRand.slice(0, charRand.length);
+                var list = [];
+                $(".char1").each(function () {
+                    var random = Math.floor(Math.random() * rand.length);
+                    list.push(rand[random]);
+                    rand.splice(random, 1);
+                });
+                $(".char1").each(function (i) {
+                    $(this).attr("style", `background: url(./img/dot/${list[i][0]}.png);`);
+                });
+                $(".char2").each(function (i) {
+                    $(this).attr("style", `background: url(./img/dot/${list[i][1]}.png);`);
+                });
+            });
+        </script>
+    </body>
+</html>
