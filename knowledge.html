@@ -125,6 +125,21 @@
                                         <li class="child"><a href='#3-4'>乱数 <i class="fas fa-dice"></i>のダメージ変化は結構大きい</a></li>
                                     </ol>
                                 </li>
+                                <li class="parent"><a href='#5'>聖石の効果について</a>
+                                        <ol class="childs">
+                                                <li class="child"><a href='#5-1'>当たりの聖石ってどれ？</a></li>
+                                                <li class="child"><a href='#5-2'>+X%分ダメージ増えないよ？</a></li>
+                                                <li class="child"><a href='#5-3'>杖+セット時に杖ポコも上がる？</a></li>
+                                        </ol>
+                                </li>
+<!--
+                                <li class="parent"><a href='#4'>状態異常<img src="./img/icon/icon_mahi.png" height=18>について</a>
+                                    <ol class="childs">
+                                        <li class="child"><a href='#4-1'>成功率はどうやってあげる？</a></li>
+                                        <li class="child"><a href='#4-2'>武器威力は成功率に関係する？</a></li>
+                                    </ol>
+                                </li>
+-->                                
                                 <li class="parent waiting">この新武器って必要？
                                         <ol class="childs">
                                                 <li class="child">強化時の威力の上がりかた</li>
@@ -141,12 +156,7 @@
                                         <li class="child">術威力は何の威力が上がる？</a></li>
                                     </ol>
                                 </li>
-                                <li class="parent waiting">聖石の効果
-                                        <ol class="childs">
-                                                <li class="child">効果は係数項に乗る</a></li>
-                                                <li class="child">杖+セット時に杖ポコも上がる？</a></li>
-                                        </ol>
-                                </li>
+        
                                 <li class="parent waiting">オーラムが足りない...<i class="fas fa-comments-dollar"></i>
                                         <ol class="childs">
                                                 <li class="child">周回クエスト 効率</a></li>
@@ -628,10 +638,10 @@
                                     <td></td><td>乱数</td><td>割合</td><td>合計</td><td>ダメージ</td>
                                 </tr>
                                 <tr>
-                                    <td>モラルアップ前</td><td>10</td><td>37% +4%</td><td>41%</td><td>19,108</td>
+                                    <td>モラル<br class="d-sm-none">アップ前</td><td>10</td><td>37% +4%</td><td>41%</td><td>19,108</td>
                                 </tr>
                                 <tr>
-                                    <td>モラルアップ後</td><td>１</td><td>37% -5% + 15%</td><td>47%</td><td>19,921</td>
+                                    <td>モラル<br class="d-sm-none">アップ後</td><td>１</td><td>37% -5% + 15%</td><td>47%</td><td>19,921</td>
                                 </tr>
                             </table>
                             モラルアップ前に最小。モラルアップ後に最大の場合
@@ -640,16 +650,14 @@
                                     <td></td><td>乱数</td><td>割合</td><td>合計</td><td>ダメージ</td>
                                 </tr>
                                 <tr>
-                                    <td>モラルアップ前</td><td>1</td><td>37% -5%</td><td>32%</td><td>17,889</td>
+                                    <td>モラル<br class="d-sm-none">アップ前</td><td>1</td><td>37% -5%</td><td>32%</td><td>17,889</td>
                                 </tr>
                                 <tr>
-                                    <td>モラルアップ後</td><td>10</td><td>37% +4% + 15%</td><td>56%</td><td>21,141</td>
+                                    <td>モラル<br class="d-sm-none">アップ後</td><td>10</td><td>37% +4% + 15%</td><td>56%</td><td>21,141</td>
                                 </tr>
                             </table>
                             どうでしょう、この二つの変化では大きく印象が異なるのではないでしょうか<br>
                             乱数による変動は大きいので、効果が気になった場合は是非複数回試してみることをおすすめします
-                            
-
                         </div>
                         <div class="text-center" style="margin:20px 0px; background: url('./img/bg_run_2.png'); background-size: cover;">
                             <span class="label-text loading" style='width:400px;'>
@@ -660,11 +668,96 @@
                                 <span class="char2 char dot_mid dot char-hashiri-right" style="background: url(./img/dot/ID33a2c.png);"></span>
                             </div>
                         </div>
-                        <!--スクエア--><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5008373409434899" data-ad-slot="9303963278" data-ad-format="auto" data-full-width-responsive="true"></ins><script> (adsbygoogle = window.adsbygoogle || []).push({});</script>
-                        <h4 class="text-center label-text">新武器性能の見方</h4>
+                        <!--
+                        <a name="4"></a>
+                        <h4 class="text-center label-text">状態異常<img src="./img/icon/icon_mahi.png" height=18>について</h4>
                         <div class="content-bg kadomaru">
-                            coming soon.
+                                <a name="4-1"></a>
+                            <div class="style-skill-list">状態異常成功率の計算式</div>
+                            <div class="bg-warning text-center"><i class="fas fa-exclamation-triangle"></i> 注意</div>
+                            この計算式は確定式ではありません。<br>
+                            式は後日修正される可能性があります<hr>
+                            <i class="fas fa-check-circle"></i>成功率＝術者知力-敵精神-状態異常耐性+補正<br>
+                            <br>
+                            知力：パワーレイズなど陣形補正も込みの数字<br>
+                            精神：敵精神はちんさんの<a href="https://docs.google.com/spreadsheets/d/1UAEiTSIC_jweWz0aNYYkrqRhVQTB1jy3rLQ3bUFI60Y/edit#gid=421308608">敵データ</a>を参照ください<br>
+                            耐性：
+
+                            <i class="fas fa-check-circle"></i>状態異常成功率は知力によって変動しています<br>
+                            (出典:<a href="https://twitter.com/HarMakeIt/status/1086310315640254464" target="_blank">春巻さん 1/19検証ツイート</a>)<br>
+                            <i class="fas fa-check-circle"></i>状態異常成功率は敵精神によって変動しています<br>
+                            (出典:<a href="https://twitter.com/HarMakeIt/status/1147757298376331265" target="_blank">春巻さん 7/7検証ツイート</a>)<br>
+                            <i class="fas fa-check-circle"></i>状態異常成功率は技Rankによって変動しています<br>
+                            (出典:<a href="https://twitter.com/HarMakeIt/status/1147757298376331265" target="_blank">春巻さん 7/7検証ツイート</a>)<br>
+                            以上より「知力をあげ、技Rankをあげ、敵精神を下げれば状態異常成功率は上がる」と言えます
+
+                            <a name="4-2"></a>
+                            <div class="style-skill-list">武器威力は成功率に関係する？</div>
+                            <i class="fas fa-check-circle"></i>武器威力は状態異常の成功率に影響しないと考えて良いでしょう<br>
+                            (出典:<a href="https://twitter.com/chin_ohnck/status/1086416880212922368" target="_blank">ちんさん 検証ツイート</a>)
                         </div>
+                        -->
+                        <a name="5"></a>
+                        <h4 class="text-center label-text">聖石の効果について</h4>
+                        <div class="content-bg kadomaru">
+                            <a name="5-1"></a>
+                            <div class="style-skill-list">当たりの聖石ってどれ？</div>
+                            結論<br>
+                            <i class="fas fa-check-circle"></i>1位：HP満タン+(2%)<br>
+                            <i class="fas fa-check-circle"></i>2位：1.5%+の石 or 状態異常ダウン<br>
+                            <br>
+                            聖石の倍率は1%、1.5%、2%と3種類がありまます<br>
+                            ランクアップごとに初期値分増えていき、最大ランクの10になると10%、15%、20%になります<br>
+
+                            やはり倍率の高い石が当りと言えるのではないでしょうか<br>
+                            2%増の石は下記の3種類です<br>
+                            ・特攻+<br>
+                            ・瀕死時+<br>
+                            ・HP満タン+<br>
+                            上二つは使いづらいので、HP満タン+が良さそうです<br>
+                            次が1.5%増ですが、こちらはどれも似たようなものです<br>
+                            ・武器+(杖以外)<br>
+                            ・属性+(熱冷雷陰陽)<br>
+                            ・弱点+<br>
+                            武器+だと使い回すことができず、弱点+だとクエストによっては安定しません<br>
+                            ウンディーネやエメラルドなどの単一属性術師は杖+ではなくて属性+の方が威力が上がるので良いでしょう
+                            （そもそも複数属性でも杖をどちらかの属性に合わせるため、杖+が生きる機会はそんなにない）<br>
+                            <br>
+                            というわけで、あたりはHP満タン+としておきます<br>
+                            (個人的には使い分けるものなのであたりもハズレもないと思ってます)
+
+                            <a name="5-2"></a>
+                            <div class="style-skill-list">+X%表記だけど、そんなにダメージ増えない</div>
+                            聖石のダメージ増加は、最終ダメージではなくダメージ計算の<span style="color:green">倍率項</span>にかかってきます<br>
+                            (詳細：<a href="#3-1">ダメージ計算式</a>)<br>
+                            係数項は<br>
+                            ・アビリティ(テンション4など)<br>
+                            ・マスターレベル<br>
+                            が含まれています。<br>
+                            ここに+X%が加算されるため、増加量が少なく見えてしまいます
+                            <div class="fukidashi text-center">例：+5%の石、テン4、勇健3、MLv28の場合</div>
+                            テン4(+15%)、勇健3(+15%)、MLv28(+7%) = 37%<br>
+                            ここに聖石の5%が加算された42%が最終的な倍率項になります（乱数覗く）<br>
+                            <i class="fas fa-check-circle"></i>137%から142%への増加では、<span style="color: blue">ダメージ計算上は+3.64%増加</span>したことになります<br>
+                            <div class="fukidashi text-center">例：+5%の石、テン4、MLv28の場合</div>
+                            テン4(+15%)、MLv28(+7%) = 22%<br>
+                            ここに聖石の5%が加算された27%が最終的な倍率項になります（乱数覗く）<br>
+                            <i class="fas fa-check-circle"></i>122%から127%への増加では、<span style="color: blue">ダメージ計算上は+4.09%増加</span>したことになります<br>
+
+                            <a name="5-3"></a>
+                            <div class="style-skill-list">杖+セットしてれば、杖ポコのダメージも上がる？</div>
+                            <i class="fas fa-check-circle"></i>上がります<br>
+                            前述の通り、倍率項が増えることでダメージの増加しています<br>
+                            腕力や知力が上がるわけではないので、どの攻撃でもダメージが上がります<br>
+                            ・体術+をセットしていれば、伯爵のウィークネスは威力が上がる<br>
+                            ・杖+をセットしていれば、通常攻撃と全ての術の威力が上がる<br>
+                            <br>
+                            <div class="bg-warning text-center"><i class="fas fa-exclamation-triangle"></i> 未検証</div>
+                            ・杖+装備のセルフバーニングカウンターのダメージ増加<br>
+                            おそらく増加するとは思いますが未検証です
+                        </div>
+
+                        <!--スクエア--><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5008373409434899" data-ad-slot="9303963278" data-ad-format="auto" data-full-width-responsive="true"></ins><script> (adsbygoogle = window.adsbygoogle || []).push({});</script>
                     </div>
                 </div>
             </div>
