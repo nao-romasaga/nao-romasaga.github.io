@@ -1,37 +1,13 @@
 {
     "year": 2019,
-    "month": 8,
+    "month": 9,
     "event": [
         {
             "startDay": "1",
             "endDay": "4",
-            "title": "[ガチャ] <br class='hidden pcBlock'>コッペリアピックアップ",
-            "endSuffix": "<br>4:00 終了",
-            "type": "green",
-            "startNone": true
-        },
-        {
-            "startDay": "1",
-            "endDay": "4",
-            "title": "[ガチャ] <br class='hidden pcBlock'>サガスカ ピックアップ",
-            "endSuffix": "<br>4:00 終了",
-            "type": "green",
-            "startNone": true
-        },
-        {
-            "startDay": "1",
-            "endDay": "4",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>サガスカ  2倍",
+            "title": "[ガチャ] <br class='hidden pcBlock'>SF2スペシャルピックアップ",
             "endSuffix": "<br>翌4:00 終了",
-            "type": "blue",
-            "startNone": true
-        },        
-        {
-            "startDay": "1",
-            "endDay": "18",
-            "title": "[交換所] <br class='hidden pcBlock'>コッペリアピックアップメダル 交換終了",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "red",
+            "type": "green",
             "startNone": true
         }
     ],
