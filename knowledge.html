@@ -125,9 +125,12 @@
                                         <li class="child"><a href='#3-4'>乱数 <i class="fas fa-dice"></i>のダメージ変化は結構大きい</a></li>
                                     </ol>
                                 </li>
-                                <li class="parent"><a href='#5'>聖石の効果について</a>
+                                <li class="parent"><a href='#5'>聖石について</a>
                                         <ol class="childs">
+                                                <li class="child"><a href='#5-4'>ランクをあげるのに必要なかけら数は？</a></li>
+                                                <li class="child"><a href='#5-5'>高ランクから強化するとお得？</a></li>
                                                 <li class="child"><a href='#5-1'>当たりの聖石ってどれ？</a></li>
+                                                <li class="child"><a href='#5-6'>売っていい聖石ってどれ？</a></li>
                                                 <li class="child"><a href='#5-2'>+X%分ダメージ増えないよ？</a></li>
                                                 <li class="child"><a href='#5-3'>杖+セット時に杖ポコも上がる？</a></li>
                                         </ol>
@@ -198,6 +201,7 @@
                             【クエスト設定値】：クエストごとに設定された値<br>
                             　VH5は45、VH7は48などクエストの難易度により設定が異なります
                             <div class="fukidashi text-center">例：キャットの場合</div>
+
                             ・キャットのキャラクター基礎値
                             <table class="style-skill-list text-center" border="1">
                                 <tr><td>項目</td><td>腕</td><td>体</td><td>器</td><td>速</td><td>知</td><td>精</td><td>愛</td><td>魅</td></tr>
@@ -219,6 +223,9 @@
                                 <tr><td>VH6<span class='d-none d-md-inline'>における</span><img src="./img/style_icon/ID36a44.png" width="30">の上限</td><td>46</td><td>44</td><td>49</td><td>49</td><td>47</td><td>43</td><td>44</td><td>46</td></tr>
                             </table>
                             これがVH6におけるSSキャットのステータス上限値です。
+                            <div class="bg-warning text-center"><i class="fas fa-exclamation-triangle"></i> 注意</div>
+                            ここに出てくるキャラクター基礎値とスタイル上限値はゲーム中どこにも表示されません<br>
+                            こういうものが内部的には設定されている。という程度でご理解頂ければと思います
 
 
                             <a name='1-3'></a>
@@ -700,6 +707,41 @@
                         <a name="5"></a>
                         <h4 class="text-center label-text">聖石の効果について</h4>
                         <div class="content-bg kadomaru">
+                            <a name="5-4"></a>
+                            <div class="style-skill-list">ランクをあげるのに必要なかけらってどれぐらい？</div>
+                            <i class="fas fa-check-circle"></i>100EXPでランクが上がります<br>
+                            <i class="fas fa-check-circle"></i>1回の強化で入るEXPはおよそ1.69EXPです(注:調査中、下記参照)<br>
+                            <i class="fas fa-check-circle"></i>1ランクあげるのに必要な強化回数は平均60.64回<br>
+                            <br>
+                            強化時発生EXPの調査結果(487回)
+                            <table class="style-skill-list text-center" border="1">
+                                <tr>
+                                    <td>EXP</td><td>発生回数</td><td>割合</td>
+                                </tr>
+                                <tr>
+                                    <td>1EXP</td><td>428</td><td>87.89%</td>
+                                </tr>
+                                <tr>
+                                    <td>5EXP</td><td>43</td><td>8.83%</td>
+                                </tr>
+                                <tr>
+                                    <td>10EXP</td><td>16</td><td>3.29%</td>
+                                </tr>
+                            </table>
+                            これにより、ランクをあげるには60.64回の強化が必要です<br>
+                            平均61回として計算し、次項のテーブルにまとめます<br>
+                            <a name="5-5"></a>
+                            <div class="style-skill-list">高ランクの石から強化するとどれぐらいお得なの？</div>
+                            
+                            <table class="style-skill-list text-center" border="1" id="HS_TABLE">
+                                <tr><td>ランク</td><td>1回強化に<br>必要数</td><td>ランクアップ<br>必要数</td><td>累計</td><td>ランク10までの<br>必要数</td></tr>
+                            </table>
+                            ランク8>9、9>10が異常にコストが高いため、高ランクの石から強化し始めてもほとんど節約にはなりません
+                            <div class="bg-warning text-center"><i class="fas fa-exclamation-triangle"></i> 注意</div>
+                            あくまでも調査段階の値であることをご留意ください<br>
+                            実際にはRank10までの強化で11万〜12万で済んだという報告もあります<br>
+                            高いランクでの強化時に高EXPが出るかにより大きく結果は変わります<br>
+                                
                             <a name="5-1"></a>
                             <div class="style-skill-list">当たりの聖石ってどれ？</div>
                             結論<br>
@@ -725,6 +767,15 @@
                             <br>
                             というわけで、あたりはHP満タン+としておきます<br>
                             (個人的には使い分けるものなのであたりもハズレもないと思ってます)
+
+                            <a name="5-6"></a>
+                            <div class="style-skill-list">売っていい聖石ってどれ？</div>
+                            <i class="fas fa-check-circle"></i>暗闇耐性ダウン：暗闇の効果が薄いため<br>
+                            <i class="fas fa-check-circle"></i>OD威力+：+1%なら常時発動する威力+で良い<br>
+                            <i class="fas fa-check-circle"></i>連携+：+1%なら常時発動する威力+で良い<br>
+                            <i class="fas fa-check-circle"></i>杖+：+1%なら常時発動する威力+で良い<br>
+                            <i class="fas fa-check-circle"></i>斬、打、突+：+1%なら常時発動する威力+で良い<br>
+                            威力+の数が少ない場合は斬、打、突、杖+は使う機会もありそう<br>
 
                             <a name="5-2"></a>
                             <div class="style-skill-list">+X%表記だけど、そんなにダメージ増えない</div>
@@ -756,6 +807,129 @@
                             ・杖+装備のセルフバーニングカウンターのダメージ増加<br>
                             おそらく増加するとは思いますが未検証です
                         </div>
+                        <a name="5"></a>
+                        <h4 class="text-center label-text">この新武器って必要？ [執筆中...]</h4>
+                        <div class="content-bg kadomaru">
+                            <a name="5-1"></a>
+                            <div class="style-skill-list">+X%表記だけど、そんなにダメージ増えない</div>
+                            新章が始まると、新しい武器が手に入りますよね<br>
+                            新しい武器の性能はどんなものか知りたい。でもフル強化するには素材が勿体無い<br>
+                            そんな悩みを解決する項です。
+                            <div class="style-skill-list">強化時の威力の上がりかた</div>
+                            こちらの武器の改造前
+                            改造後
+                            どちらも同じだけ武器威力が上がっています
+                            これは防具にも言えます
+                            つまり、成長は同じなら強化前の状態を比較すれば強化後の差もわかるわけです
+                            小剣
+                            デュアルソード　青の華 炎のロッド
+                            武器を進化させる前に詳細を比較して、この装備が必要かどうか見極めましょう
+                        </div>
+
+
+                        <a name="5"></a>
+                        <h4 class="text-center label-text"><img src="./img/icon/icon_jinkei_PowerRise.png" height=15 >陣形効果について [執筆中...]</h4>
+                        <div class="content-bg kadomaru">
+                            <a name="5-1"></a>
+                            <div class="style-skill-list">ステータスがX%上がるってどういうこと？</div>
+                            陣形には、ステータスが上がる配置があります<br>
+                            アマゾンストライクの前列：腕力+50%や中列：腕力25%<br>
+                            ラピッドストリームの素早さ50%<br>
+                            などなど、これは素のステータスにかかってきます<br>
+                            表示ステータスは以下の合計です<br>
+                            素ステ＋素ステ×スタイル補正＋スタイルボーナス＋裏能力＋装備<br>
+                            この中の素ステの部分にのみかかってきますので<br>
+                            という感じになります<br>
+                            <a name="5-1"></a>
+                            <div class="style-skill-list">ポジションによる被弾率</div>
+                            ハンターシフトの後列が被弾率４％で一番低いです<br>
+                            ちんさんが被弾率を実測しまとめてくださっていますのでそちらをご参照ください<br>
+                            出典：
+                        </div>
+                        <a name="5"></a>
+                        <h4 class="text-center label-text"><img src="./img/icon/icon_hi.png" height=20 >火+などの術威力武器[執筆中...]</h4>
+                        <div class="content-bg kadomaru">
+                            <a name="5-1"></a>
+                            <div class="style-skill-list">術と属性は異なる</div>
+                            がついている武器を属性武器というのは誤りです<br>
+                            術は火術、水術、土術、風術、光術、闇術の６種類<br>
+                            属性は斬、打、突、熱、冷、雷、陽、陰の８種類<br>
+                            対応表
+                            <table class="style-skill-list text-center" border="1">
+                                    <tr>
+                                        <td>属性</td><td>武器・術</td>
+                                        <tr><td><img src="./img/icon/icon_zan.png" height=30 ></td>
+                                            <td>
+                                                <img src="./img/icon/icon_ken.png" height=30 >
+                                                <img src="./img/icon/icon_dken.png" height=30 >
+                                                <img src="./img/icon/icon_ono.png" height=30 >
+                                                <img src="./img/icon/icon_kaze.png" height=30 >
+                                            </td>
+                                        </tr>
+                                        <tr><td><img src="./img/icon/icon_da.png" height=30 ></td>
+                                            <td>
+                                                <img src="./img/icon/icon_kon.png" height=30 >
+                                                <img src="./img/icon/icon_tai.png" height=30 >
+                                                <img src="./img/icon/icon_ju.png" height=30 >
+                                                <img src="./img/icon/icon_tsuchi.png" height=30 >
+                                            </td>
+                                        </tr>
+                                        <tr><td><img src="./img/icon/icon_totsu.png" height=30 ></td>
+                                            <td>
+                                                    <img src="./img/icon/icon_sken.png" height=30 >
+                                                    <img src="./img/icon/icon_yari.png" height=30 >
+                                                    <img src="./img/icon/icon_yumi.png" height=30 >
+                                            </td>
+                                        </tr>
+                                        <tr><td><img src="./img/icon/icon_netsu.png" height=30 ></td>
+                                            <td>
+                                                    <img src="./img/icon/icon_hi.png" height=30 >
+                                                    <img src="./img/icon/icon_tai.png" height=30 >
+                                            </td>
+                                        </tr>
+                                        <tr><td><img src="./img/icon/icon_rei.png" height=30 ></td>
+                                            <td>
+                                                    <img src="./img/icon/icon_mizu.png" height=30 >
+                                                    <img src="./img/icon/icon_kon.png" height=30 >
+                                                    <img src="./img/icon/icon_tai.png" height=30 >
+                                                    <img src="./img/icon/icon_sken.png" height=30 >
+                                                    <img src="./img/icon/icon_yari.png" height=30 >
+                                            </td>
+                                        </tr>
+                                        <tr><td><img src="./img/icon/icon_rai.png" height=30 ></td>
+                                            <td>
+                                                    <img src="./img/icon/icon_mizu.png" height=30 >
+                                                    <img src="./img/icon/icon_dken.png" height=30 >
+                                                    <img src="./img/icon/icon_tai.png" height=30 >
+                                            </td>
+                                        </tr>
+                                        <tr><td><img src="./img/icon/icon_yo.png" height=30 ></td>
+                                            <td>
+                                                    <img src="./img/icon/icon_hikari.png" height=30 >
+                                            </td>
+                                        </tr>
+                                        <tr><td><img src="./img/icon/icon_in.png" height=30 ></td>
+                                            <td>
+                                                    <img src="./img/icon/icon_yami.png" height=30 >
+                                            </td>
+                                        </tr>
+                                    </tr>
+                            </table>
+                            <a name="5-1"></a>
+                            <div class="style-skill-list">術威力は何の威力が上がる？</div>
+                            術武器は術威力が上がります<br>
+                            したがって水武器を装備してもアルダーストライクの威力は上がらず<br>
+                            火武器を装備してアルフェニックスの威力は上がりません<br>
+                            術と属性は別であると覚えておきましょう
+                        </div>
+
+                        <li class="parent waiting">
+                            <ol class="childs">
+                                <li class="child"></a></li>
+                                <li class="child"></a></li>
+                            </ol>
+                        </li>
+
 
                         <!--スクエア--><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5008373409434899" data-ad-slot="9303963278" data-ad-format="auto" data-full-width-responsive="true"></ins><script> (adsbygoogle = window.adsbygoogle || []).push({});</script>
                     </div>
@@ -797,6 +971,22 @@
                 $(".char2").each(function (i) {
                     $(this).attr("style", `background: url(./img/dot/${list[i][1]}.png);`);
                 });
+                var holy = [20,30,50,100,150,200,250,500,1000];
+                var rank = 1;
+                var avg = 61;
+                var sum = 0;
+                var total = 0;
+                for(var i of holy){
+                    total += i * avg;
+                }
+                for(var i of holy){
+                    var cost = i * avg;
+                    sum+=cost;
+                    var diff = total - sum + cost;
+                    $tr = $(`<tr><td><img src="./img/knowledge/hs_rank${rank}.png" width=30>${rank}</td><td>${i}</td><td>${cost.toLocaleString()}</td><td>${sum.toLocaleString()}</td><td>${diff.toLocaleString()}</td></tr>`)
+                    $("#HS_TABLE").append($tr);
+                    rank++;
+                }
             });
         </script>
     </body>
