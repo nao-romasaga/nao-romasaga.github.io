@@ -30,7 +30,7 @@
             "startDay": "1",
             "endDay": "14",
             "title": "[ガチャ] <br class='hidden pcBlock'>水着ガチャ",
-            "endSuffix": "<br>4:00 終了",
+            "endSuffix": "<br>翌4:00 終了",
             "type": "green",
             "startNone": true
         },
@@ -41,7 +41,32 @@
             "endSuffix": "<br>翌4:00 終了",
             "type": "blue",
             "startNone": true
-        },        
+        },
+        {
+            "startDay": "1",
+            "endDay": "14",
+            "title": "[イベント] <br class='hidden pcBlock'>海の主の娘と人魚薬",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "orange",
+            "startNone": true
+        },
+        {
+            "startDay": "1",
+            "endDay": "14",
+            "title": "[イベント] <br class='hidden pcBlock'>水竜との戦い",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "orange",
+            "startNone": true
+        },
+        {
+            "startDay": "1",
+            "endDay": "18",
+            "title": "[イベント] <br class='hidden pcBlock'>武器聖石の洞窟",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "orange",
+            "startNone": true
+        },
+
         {
             "startDay": "1",
             "endDay": "18",
