@@ -694,3 +694,10 @@ input[type=range]::-ms-tooltip {
     padding: 2px 5px;
 }
 
+.content-bg {
+    background-color: rgba(230, 225, 207, 0.8);
+}
+.row-eq-height {
+    display: flex;
+    flex-wrap: wrap;
+}
