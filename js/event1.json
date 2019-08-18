@@ -66,7 +66,14 @@
             "type": "orange",
             "startNone": true
         },
-
+        {
+            "startDay": "1",
+            "endDay": "26",
+            "title": "[イベント] <br class='hidden pcBlock'>修行者の間",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "orange",
+            "startNone": true
+        },
         {
             "startDay": "1",
             "endDay": "18",
