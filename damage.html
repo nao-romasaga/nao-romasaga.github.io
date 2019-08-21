@@ -264,23 +264,41 @@
                         <small class="form-text text-muted  opacity kadomaru">対象武器種類のマスターレベルを入力して下さい</small>
                     </div>
                     <div class="form-group col-xs-12 col-md-6 col-lg-4">
-                        <label for="ability" class="badge badge-pill badge-light">アビリティ＋特攻
+                        <label for="ability" class="badge badge-pill badge-light">アビリティ＋特攻＋聖石
                             <img src="https://www.silhouette-illust.com/wp-content/uploads/2017/03/idea_hirameki_28161-300x300.jpg" width="16" height="16">
                         </label>
                         <div class="cb kadomaru bg-white">
                             <input type="checkbox" id="tokkouCheck" name="cb" value="1" />
                             <label for="tokkouCheck" style="width:90%; margin:10px">特攻あり</label>
                         </div>
-                        <select class="form-control" id="ability_list" name="type">
+                        <div class="cb kadomaru bg-white">
+                            <input type="checkbox" id="kuzureCheck" name="cb2" value="1" />
+                            <label for="kuzureCheck" style="width:90%; margin:10px">崩れ銀花</label>
+                        </div>
+                        <select class="form-control" id="ability_list1" name="type">
                             <option value="0">アビリティなし</option>
                             <option value="5">勇健強撃I (小)</option>
                             <option value="10">勇健強撃II (中)</option>
                             <option value="15">勇健強撃III (大)</option>
+                        </select>
+                        <select class="form-control" id="ability_list2" name="type">
+                            <option value="0">アビリティなし</option>
                             <option value="2">テンションアップI (極小)</option>
                             <option value="5">テンションアップII (小)</option>
                             <option value="10">テンションアップIII (中)</option>
                             <option value="15">テンションアップIV (大)</option>
                         </select>
+                        <div class="form-group">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text small">聖石</span>
+                                </div>
+                                <input type="number" class="form-control damage" id="holystone"  placeholder="聖石+X%">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">%</span>
+                                </div>
+                            </div>
+                        </div>                        
                         <div class="form-group">
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
@@ -292,9 +310,7 @@
                                 </div>
                             </div>
                         </div>
-                        <small class="form-text text-muted  opacity kadomaru">極小:2% 小:5% 中:10% 大:15% 特大:30% 極大:50%<br>
-                            複数のアビリティを持つ場合は合計値%を入力してください<br>
-                            例:勇健強撃III＋テンションアップIV = 30%</small>
+                        <small class="form-text text-muted  opacity kadomaru">極小:2% 小:5% 中:10% 大:15% 特大:30% 極大:50%</small>
                     </div>
                     <div class="form-group damageCulc col-xs-12 col-md-6 col-lg-4">
                         <label for="vit" class="badge badge-pill badge-light">敵
