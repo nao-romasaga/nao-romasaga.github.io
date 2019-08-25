@@ -701,3 +701,41 @@ input[type=range]::-ms-tooltip {
     display: flex;
     flex-wrap: wrap;
 }
+
+.trianglelist
+,.trianglelist li{
+	padding:0px;
+	margin:0px;
+}
+ 
+.trianglelist li{
+	list-style-type:none !important;
+	list-style-image:none !important;
+	margin: 5px 0px 5px 0px !important;
+}
+ 
+.list5 li{
+	position:relative;
+	padding-left:20px;
+}
+.list5 li:before{
+	content:''; 
+	height:0px; 
+	width: 100%;
+	display:block; 
+	position:absolute; 
+	bottom:0px; 
+	left:0px; 
+	border-bottom: 1px dashed #aaa;
+}
+.list5 li:after{
+	content:'';
+	display:block; 
+	position:absolute; 
+	background:#aaa;
+	width:5px;
+	height:5px; 
+	top:7px; 
+	left:5px; 
+	border-radius: 5px;
+}
