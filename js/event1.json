@@ -1,94 +1,106 @@
 {
     "year": 2019,
-    "month": 8,
+    "month": 9,
     "event": [
         {
             "startDay": "1",
             "endDay": "4",
-            "title": "[ガチャ] <br class='hidden pcBlock'>コッペリアピックアップ",
-            "endSuffix": "<br>4:00 終了",
+            "title": "[ガチャ] <br class='hidden pcBlock'>・SF2スペシャルPU<br>・海賊スペシャルPU",
+            "endSuffix": "<br>翌4:00 終了",
             "type": "green",
+            "startNone": true
+        },
+        {
+            "startDay": "1",
+            "endDay": "14",
+            "title": "[ガチャ] <br class='hidden pcBlock'>・Award祭<br>・杖プラチナPU<br>・突プラチナPU",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "green",
+            "startNone": true
+        },
+        {
+            "startDay": "1",
+            "endDay": "14",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>最終皇帝女/モニカ/ミカエル 2倍",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue",
+            "startNone": true
+        },
+        {
+            "startDay": "1",
+            "endDay": "14",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>ロックブーケ/ブルー/コウメイ/エメラルド/ミリアム 2倍",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue",
+            "startNone": true
+        },
+        {
+            "startDay": "1",
+            "endDay": "14",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>コーデリア/クローディア/ワグナス/バーバラ/ジャミル 2倍",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue",
             "startNone": true
         },
         {
             "startDay": "1",
             "endDay": "4",
-            "title": "[ガチャ] <br class='hidden pcBlock'>サガスカ ピックアップ",
-            "endSuffix": "<br>4:00 終了",
-            "type": "green",
-            "startNone": true
-        },
-        {
-            "startDay": "1",
-            "endDay": "12",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>サガスカ  2倍",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "blue",
-            "startNone": true
-        },        
-        {
-            "startDay": "1",
-            "endDay": "14",
-            "title": "[ガチャ] <br class='hidden pcBlock'>水着ガチャ",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "green",
-            "startNone": true
-        },
-        {
-            "startDay": "1",
-            "endDay": "14",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>ジャミル・セルマ・ブラウニー・シフ・ブッチャー  2倍",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>シルバー/ブラック/アルベルト/ゲラ＝ハ 2倍",
             "endSuffix": "<br>翌4:00 終了",
             "type": "blue",
             "startNone": true
         },
         {
             "startDay": "1",
-            "endDay": "14",
-            "title": "[イベント] <br class='hidden pcBlock'>海の主の娘と人魚薬",
+            "endDay": "30",
+            "title": "[イベント] <br class='hidden pcBlock'>見参!ヤーマスのヒーロー!",
             "endSuffix": "<br>翌4:00 終了",
             "type": "orange",
             "startNone": true
         },
         {
             "startDay": "1",
-            "endDay": "14",
-            "title": "[イベント] <br class='hidden pcBlock'>水竜との戦い",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "orange",
-            "startNone": true
-        },
-        {
-            "startDay": "1",
-            "endDay": "18",
-            "title": "[イベント] <br class='hidden pcBlock'>武器聖石の洞窟",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "orange",
-            "startNone": true
-        },
-        {
-            "startDay": "1",
-            "endDay": "26",
+            "endDay": "30",
             "title": "[イベント] <br class='hidden pcBlock'>修行者の間",
             "endSuffix": "<br>翌4:00 終了",
             "type": "orange",
             "startNone": true
         },
         {
-            "startDay": "1",
-            "endDay": "18",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>ギュスターヴ・ラベール・フリン・ヨハン  2倍",
+            "endDay": "30",
+            "title": "[イベント] <br class='hidden pcBlock'>Romaning Award クエスト",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "orange",
+            "startNone": true
+        },
+        {
+            "endDay": "30",
+            "title": "[イベント] <br class='hidden pcBlock'>王家からの贈り物",
             "endSuffix": "<br>翌4:00 終了",
             "type": "blue",
             "startNone": true
-        },        
+        },
         {
-            "startDay": "1",
-            "endDay": "18",
-            "title": "[交換所] <br class='hidden pcBlock'>コッペリアピックアップメダル 交換終了",
+            "startDay": "2",
+            "endDay": "30",
+            "title": "[イベント] <br class='hidden pcBlock'>リザードロードとの戦い",
+            "startPrefix": "04:00 開始<br>",
             "endSuffix": "<br>翌4:00 終了",
-            "type": "red",
-            "startNone": true
+            "type": "orange"
+        },
+        {
+            "day": "6",
+            "title": "[メイン] <br class='hidden pcBlock'>13話 解放",
+            "startPrefix": "04:00 開始<br>",
+            "type": "yellow"
+        },
+        {
+            "startDay": "6",
+            "endDay": "9",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>メイン スタ半",
+            "startPrefix": "4:00 開始<br>",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue"
         }
     ],
     "holiday": [
