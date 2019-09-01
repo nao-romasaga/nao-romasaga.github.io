@@ -726,7 +726,7 @@ input[type=range]::-ms-tooltip {
 	position:absolute; 
 	bottom:0px; 
 	left:0px; 
-	border-bottom: 1px dashed #aaa;
+	border-bottom: 2px dashed #aaa;
 }
 .list5 li:after{
 	content:'';
