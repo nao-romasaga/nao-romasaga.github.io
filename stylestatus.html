@@ -14,11 +14,11 @@
         </script>
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <meta charset="utf-8">
-        <title>【ロマサガRS】スタイル補正 / 補正込みステータス最大値 一覧</title>
-        <meta property="og:title" content="【ロマサガRS】スタイル補正 / 補正込みステータス最大値 一覧" />
-        <meta property="og:url" content="https://http://nao-romasaga.github.io/limitdata.html" />
-        <meta property="og:description" content="ロマサガRSのスタイルごとのステータス上限(最大値)一覧です。素ステを最大＋スタイルレベル50まで鍛えた場合にどこまでステータスが伸びるかの参考にご利用ください。攻略や育成の際にご利用ください。" />
-        <meta name="description" content="ロマサガRSのスタイルごとのステータス上限(最大値)一覧です。素ステを最大＋スタイルレベル50まで鍛えた場合にどこまでステータスが伸びるかの参考にご利用ください。攻略や育成の際にご利用ください。【ロマンシングサガ リユニバース】" />
+        <title>【ロマサガRS】スタイル別 素ステータス一覧 (素ステ一覧)</title>
+        <meta property="og:title" content="【ロマサガRS】スタイル別 素ステータス一覧 (素ステ一覧)" />
+        <meta property="og:url" content="https://http://nao-romasaga.github.io/stylestatus.html" />
+        <meta property="og:description" content="ロマサガRSのスタイルごとのステータス上限(最大値)一覧です。攻略や育成の際にご利用ください。" />
+        <meta name="description" content="ロマサガRSのスタイルごとのステータス上限(最大値)一覧です。攻略や育成の際にご利用ください。【ロマンシングサガ リユニバース】" />
         <meta property="og:image" content="https://nao-romasaga.github.io/img/twitter_card_limitdata.png" />
         <meta property="og:site_name" content="ロマサガRS便利ツール" />
         <meta property="og:type" content="article">
@@ -41,7 +41,6 @@
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
         <script src="https://www.gstatic.com/firebasejs/ui/3.5.2/firebase-ui-auth__ja.js"></script>
         <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
-        <script src="./js/Firebase.js"></script>
         <script src="./js/utils.js" ></script>
         <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
         <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
@@ -55,10 +54,11 @@
     <body>
         <div class ="haikei">
             <div class="container">
+
                 <div class="text-center">
                     <a href="https://www.jp.square-enix.com/saga_reuniverse/" target="new"><img src="./img/cmn_logo01_sp.png" class="col-sm-12 col-md-8 col-lg-6"></a>
                 </div>
-                <h3 class="text-center title-text">スタイル補正 / 補正込みステータス最大値 一覧</h3>
+                <h3 class="text-center title-text">素ステータス一覧</h3>
                 <p class="text-right opacity"><small>バグ発見、ご要望は <a href="https://peing.net/ja/nao_romasaga_rs" target="new">質問箱</a>まで</small></p>
                 <div id="firebaseui-auth-container" style="margin-bottom:10px;"></div>
                 <br>
@@ -111,24 +111,15 @@
                 </div>
                 <br>
                 <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5008373409434899" data-ad-slot="3051702111"></ins><script> (adsbygoogle = window.adsbygoogle || []).push({});</script>
-
-                <label class="badge badge-pill badge-light" id="styleLabel">表示切り替え</label>
-                <div class="style-bgcolor text-center small row" style="width:100%; margin: 0px;">
-                    <div class="col-6 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_on dispCol" data-id="base" style="width:100%; background-size: 100% 100%;">素ステ</button></div>
-                    <div class="col-6 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_on dispCol" data-id="val" style="width:100%; background-size: 100% 100%;">最大ステ</button><br></div>
-                    <div class="col-6 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_on dispCol" data-id="per" style="width:100%; background-size: 100% 100%;">SLv50補正</button></div>
+                <div id="example-table-display" class="text-center">
+                    <div id="example-table" style="width:402px"></div>
                 </div>
+                <hr>
+                <!--スクエア--><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5008373409434899" data-ad-slot="9303963278" data-ad-format="auto" data-full-width-responsive="true"></ins><script> (adsbygoogle = window.adsbygoogle || []).push({});</script>
             </div>
-            <label class="badge badge-pill badge-light">%で表示されているのはスタイルレベル50時の補正値です</label>
-            <div id="example-table-display" class="text-center">
-                <div id="example-table" style="width:402px"></div>
-            </div>
-            <hr>
-            <!--スクエア--><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5008373409434899" data-ad-slot="9303963278" data-ad-format="auto" data-full-width-responsive="true"></ins><script> (adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
         <script src="./js/data_STYLELIMIT.js" ></script>
-        <script src="./js/data_CHARMASTER.js" ></script>
-        <script src="./js/limitdata.js" ></script>
+        <script src="./js/stylestatus.js" ></script>
         <script type="text/javascript" src="https://romasagatool.com/blog/get_the_archives.php?limit=5&callback=rssCallback"></script>
 
     </body>
