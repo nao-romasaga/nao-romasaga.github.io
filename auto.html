@@ -183,10 +183,24 @@
                 <div class="card skillChoiceArea">
                     <div class="card-header bg-primary" style="color:white">オプション設定<button class="icon_btn_on" ID="OPTION_BUTTON" style="position: absolute; width:100px; top:5px; right:5px; background-size: 100px 50px;">開 / 閉</button></div>
                     <div class="card-body style-bgcolor row" style="margin: 0px" id="OPTION_BODY">
-                        <div class="col-12 col-md-4">
+                        <div class="col-12 col-md-6 text-center">
+                            ▼限定アビリティ▼<br>
+                            勇健強撃、弱点特攻をダメージ計算に入れます
+                            <div class="cb kadomaru opacity">
+                                    <input type="checkbox" id="limitAbilityCheck" name="cb" value="1" class="culcCheck" />
+                                    <label for="limitAbilityCheck" style="width:90%; margin:10px">特定アビリティ発動有り</label>
+                            </div>                            
+                            ▼クリティカル▼<br>
+                            技が特攻ダメージになります<br>
+                            必殺の一撃を持っている場合、ダメージ計算に入れます
+                            <div class="cb kadomaru opacity">
+                                    <input type="checkbox" id="tokkouCheck" name="cb" value="1" class="culcCheck" />
+                                    <label for="tokkouCheck" style="width:90%; margin:10px">クリティカル発動有り</label>
+                            </div>                            
+                        </div>
+                        <div class="col-12 col-md-6">
                             <div class="text-center">
                                 ▼ステータス▼<br>
-                                装備、スタイル補正、裏能力込みの値を入力。ダメージ計算に使います
                             </div>
                             <div class="row">
                                 <div class="col-4">腕力</div><div class="col-8"><input id="charSTR" type="number" class="input charParam kadomaru" style="width: 100%" value="3"></div> 
@@ -194,8 +208,9 @@
                                 <div class="col-4 text-nowrap">素早さ</div><div class="col-8"><input id="charAGI" type="number" class="input charParam kadomaru" style="width: 100%" value="3"></div> 
                                 <div class="col-4">知力</div><div class="col-8"><input id="charINT" type="number" class="input charParam kadomaru" style="width: 100%" value="3"></div> 
                             </div>
+                            装備、スタイル補正、裏能力込みの値を入力。ダメージ計算に使います
                         </div>
-                        <div class="col-12 col-md-4 text-center">
+                        <div class="col-12 col-md-6 text-center">
                             ▼ターン設定▼<br>
                             シミュレーションターン数を設定<span class="d-none d-md-inline">できます</span><br>
                             <input type="number" id="SET_TURN" value="20" style="width:50px; text-align:right" class="kadomaru"> ターン
@@ -210,7 +225,7 @@
                                 <input type="number" value="20" style="width:50px; text-align:right">回</p>
                         </div>
                         -->
-                        <div class="col-12 col-md-4 text-center">
+                        <div class="col-12 col-md-6 text-center">
                             ▼仮想敵▼<br>
                             <select class="form-control" id="enemy_vit" name="type">
                                 <option value="x">敵を選択</option>
