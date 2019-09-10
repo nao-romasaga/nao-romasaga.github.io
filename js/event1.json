@@ -12,6 +12,14 @@
         },
         {
             "startDay": "1",
+            "endDay": "19",
+            "title": "[ガチャ] <br class='hidden pcBlock'>・アワード第二弾",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "green",
+            "startNone": true
+        },
+        {
+            "startDay": "1",
             "endDay": "14",
             "title": "[ガチャ] <br class='hidden pcBlock'>・Award祭<br>・杖プラチナPU<br>・突プラチナPU",
             "endSuffix": "<br>翌4:00 終了",
@@ -28,6 +36,14 @@
         },
         {
             "startDay": "1",
+            "endDay": "19",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>クローディア/シルバー/ナイトハルト 2倍",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue",
+            "startNone": true
+        },
+        {
+            "startDay": "1",
             "endDay": "14",
             "title": "[キャンペーン] <br class='hidden pcBlock'>ロックブーケ/ブルー/コウメイ/エメラルド/ミリアム 2倍",
             "endSuffix": "<br>翌4:00 終了",
@@ -37,7 +53,7 @@
         {
             "startDay": "1",
             "endDay": "14",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>コーデリア/クローディア/ワグナス/バーバラ/ジャミル 2倍",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>コーデリア/ワグナス/バーバラ/ジャミル 2倍",
             "endSuffix": "<br>翌4:00 終了",
             "type": "blue",
             "startNone": true
