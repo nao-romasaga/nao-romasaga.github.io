@@ -348,6 +348,32 @@
     top: 140px;
     right: 40px;
 }
+.DeadlyPs div:nth-child(4) {
+    position: absolute;
+    top: 140px;
+    right: 130px;
+}
+.DeadlyPs div:nth-child(5) {
+    position: absolute;
+    top: 140px;
+    right: 30px;
+}
+.DeadlyPs div:nth-child(1) {
+    position: absolute;
+    top: 140px;
+    right: 230px;
+}
+.DeadlyPs div:nth-child(2) {
+    position: absolute;
+    top: 50px;
+    right: 170px;
+}
+.DeadlyPs div:nth-child(3) {
+    position: absolute;
+    top: 230px;
+    right: 170px;
+}
+
 
 .icon_jinkei {
     width: 60px;
