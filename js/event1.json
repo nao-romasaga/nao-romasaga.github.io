@@ -28,6 +28,14 @@
         },
         {
             "startDay": "1",
+            "endDay": "19",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>ヴァンパイアレディ/カタリナ/最終皇帝(男)/ギュスターヴ/エレン 2倍",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue",
+            "startNone": true
+        },
+        {
+            "startDay": "1",
             "endDay": "14",
             "title": "[キャンペーン] <br class='hidden pcBlock'>最終皇帝女/モニカ/ミカエル/ロビン 2倍",
             "endSuffix": "<br>翌4:00 終了",
