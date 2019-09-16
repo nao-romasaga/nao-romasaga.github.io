@@ -39,6 +39,7 @@
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
         <script src="./js/Firebase.js"></script>
         <script src="./js/utils.js" ></script>
+        <script src="./js/data_RENKEI.js" ></script>
 
         <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -61,40 +62,9 @@
                 </p>
                 <script>
             $(document).ready(function () {
-                $("#renkeiStart").hide();
-                $("#renkeiName").hide();
-                let SKILL_LIST = [];
                 let rand = Math.floor(Math.random() * 9);
                 $("#haikei").attr("style", `background: url(./img/bg_renkei_${rand + 1}.png); height:640px;`);
 
-                let skillFlag = false, styleFlag = false;
-                readFile('Skill', function (result) {
-                    $("#renkeiStart").hide();
-                    $("#renkeiName").hide();
-                    SKILL_MASTER = result;
-                    console.log(SKILL_MASTER);
-                    SKILL_LIST = [];
-                    for (let i in SKILL_MASTER) {
-                        SKILL_LIST.push(SKILL_MASTER[i]);
-                    }
-                    skillFlag = true;
-                    if (skillFlag && styleFlag) {
-                        show();
-                    }
-                });
-                readFile('Style', function (result) {
-                    STYLE_MASTER = result;
-                    styleFlag = true;
-                    if (skillFlag && styleFlag) {
-                        show();
-                    }
-                });
-                function show() {
-                    console.log("show");
-                    $("#renkeiStart").show();
-                    $("#renkeiName").show();
-
-                }
                 let RENKEI_CHAR_LIST = [];
                 $("#renkeiStart").click(function () {
                     gtag('event', "start", {'event_category': "renkei", 'event_label': "5", 'value': 1});
