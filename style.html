@@ -5,6 +5,8 @@
         <!-- Global site tag (gtag.js) - Google Analytics         -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138966739-1"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="./js/data_TYPE_RANK_CHAR.js" ></script>
+        <script src="./js/data_TYPE_RANK_STYLE.js" ></script>
         <script src="./js/data_CHARMASTER.js" ></script>
         <script src="./js/data_ABILITY.js" ></script>
         <script src="./js/data_STYLEMASTER_style.js" ></script>
@@ -482,8 +484,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="style-bgcolor styleChoiceArea">
                     <div class="label-text text-center width-100 h5">所持している 技・術 </div>
                     <div id="styleSkill1" class='row no-gutters style-skill-list' style="padding:0px;"></div>
                     <div class="label-text text-center width-100 h5">継承可能な 技・術</div>
@@ -491,6 +491,43 @@
                     <div class="text-center kadomaru blueLink" >
                         <a href="./skill.html" target="_blank" class="h4"><i class="fas fa-search"></i> 技・術 一覧を調べる</a>
                     </div>
+                    <div class="label-text text-center width-100 h5">ステータスランキング</div>
+                    <table class="width-100 text-center table-bordered">
+                        <tbody>
+                            <tr colspan=15 class="text-center">
+                                <img id="RANK_HEAD_IMG" src="" style="width:350px">
+                            </tr>
+                            <tr class="" id="RANK_HEAD">
+                                <td class="paramHead paramCell2">-</td>
+                                <td class="paramHead paramCell2">値</td>
+                            </tr>
+                            <tr class="" id="RANK_HEAD2"><td class="paramHead paramCell2" colspan=2>スタイル数</td></tr>
+                            <tr class="" id="RANK_STR"><td class="paramHead paramCell2">腕</td></tr>
+                            <tr class="opacity" id="RANK_VIT"><td class="paramHead paramCell2">体</td></tr>
+                            <tr class="" id="RANK_DEX"><td class="paramHead paramCell2">器</td></tr>
+                            <tr class="opacity" id="RANK_AGI"><td class="paramHead paramCell2">速</td></tr>
+                            <tr class="" id="RANK_INT"><td class="paramHead paramCell2">知</td></tr>
+                            <tr class="opacity" id="RANK_MND"><td class="paramHead paramCell2">精</td></tr>
+                            <tr class="" id="RANK_AI"><td class="paramHead paramCell2">愛</td></tr>
+                            <tr class="opacity" id="RANK_MI"><td class="paramHead paramCell2">魅</td></tr>
+                            <tr class="" id="RANK_SUM"><td class="paramHead paramCell2">合計</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="label-text text-center width-100 h5">近いステータス</div>
+                    <table class="width-100 table-bordered">
+                        <tbody>
+                            <tr><td class="paramHead paramCell2 text-center">腕</td><td class="style_near" id="RANK_STR_NEAR"></td></tr>
+                            <tr class="opacity"><td class=" text-center paramCell2">体</td><td class="style_near" id="RANK_VIT_NEAR"></td></tr>
+                            <tr class=""><td class="paramHead paramCell2 text-center">器</td><td class="style_near" id="RANK_DEX_NEAR"></td></tr>
+                            <tr class="opacity"><td class=" text-center paramCell2">速</td><td class="style_near" id="RANK_AGI_NEAR"></td></tr>
+                            <tr class=""><td class="paramHead paramCell2 text-center">知</td><td class="style_near" id="RANK_INT_NEAR"></td></tr>
+                            <tr class="opacity"><td class=" text-center paramCell2">精</td><td class="style_near" id="RANK_MND_NEAR"></td></tr>
+                            <tr class=""><td class="paramHead paramCell2 text-center">愛</td><td class="style_near" id="RANK_AI_NEAR"></td></tr>
+                            <tr class="opacity"><td class=" text-center paramCell2">魅</td><td class="style_near" id="RANK_MI_NEAR"></td></tr>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
                 <br>
 
