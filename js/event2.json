@@ -4,28 +4,28 @@
     "event": [
         {
             "startDay": "1",
-            "endDay": "4",
-            "title": "[ガチャ] <br class='hidden pcBlock'>SF2スペシャルピックアップ",
+            "endDay": "14",
+            "title": "[ガチャ] <br class='hidden pcBlock'>祭 ハロウィンガチャ",
             "endSuffix": "<br>翌4:00 終了",
             "type": "green",
             "startNone": true
         },
         {
             "startDay": "1",
-            "endDay": "4",
-            "title": "[ガチャ] <br class='hidden pcBlock'>海賊スペシャルピックアップ",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "green",
-            "startNone": true
-        },
-        {
-            "startDay": "1",
-            "endDay": "4",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>シルバー/ブラック/アルベルト/バーバラ/ゲラ＝ハ 2倍",
+            "endDay": "14",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>ヴァンパイアレディ/バーニィ/ようせい/ミリアム/セフィラス 2倍",
             "endSuffix": "<br>翌4:00 終了",
             "type": "blue",
             "startNone": true
-        }        
+        },
+        {
+            "startDay": "1",
+            "endDay": "14",
+            "title": "[イベント] <br class='hidden pcBlock'>・ピドナの夜の夢",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "orange",
+            "startNone": true
+        },
     ],
     "holiday": [
     ]
