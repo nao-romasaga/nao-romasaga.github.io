@@ -739,3 +739,33 @@ input[type=range]::-ms-tooltip {
 	left:5px; 
 	border-radius: 5px;
 }
+
+.fuchidori{
+    font-size: 18px;
+    color: gold;
+    text-shadow: 1px 1px 2px black,
+        -1px 1px 2px black,
+        1px -1px 2px black,
+        -1px -1px 2px black;    
+}
+.fuchidoriWhite {
+    font-size: 18px;
+    color:white;
+    text-shadow: 1px 1px 2px black,
+        -1px 1px 2px black,
+        1px -1px 2px black,
+        -1px -1px 2px black;    
+}
+.damageNumber {
+    font-family: 'Merriweather', cursive;
+    font-size:23px;
+}
+
+.fuchidoriJewel{
+    font-size: 18px;
+    color: white;
+    text-shadow: 1px 1px 2px blue,
+        -1px 1px 2px blue,
+        1px -1px 2px blue,
+        -1px -1px 2px blue;    
+}
