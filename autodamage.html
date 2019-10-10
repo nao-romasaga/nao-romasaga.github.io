@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
     <head>
-        <link rel="canonical" href="/ourchar.html">
+        <link rel="canonical" href="/autodamage.html">
         <!-- Global site tag (gtag.js) - Google Analytics         -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138966739-1"></script>
         <script>
@@ -15,30 +15,23 @@
         </script>
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <meta charset="utf-8">
-        <title>【ロマサガRS】ステータス上限(最大値)と育成ランキング</title>
-        <meta property="og:title" content="【ロマサガRS】ステータス上限(最大値) + ランキング" />
-        <meta property="og:url" content="https://http://nao-romasaga.github.io/ourchar.html" />
-        <meta property="og:description" content="ロマサガRSのスタイル毎のステータス上限(最大値)とキャラクター育成ランキングです。ユーザが登録したデータからキャラ+スタイル毎に上限(最大値)をランキングで調べるツールです。攻略や育成の際にご利用ください。" />
-        <meta name="description" content="ロマサガRSのキャラクターのステータスランキングです。ユーザが登録したデータからキャラクター毎に最大値をランキングで調べるツールです。攻略や育成の際にご利用ください。【ロマンシングサガ リユニバース】" />
-        <meta property="og:image" content="https://nao-romasaga.github.io/img/twitter_card_ourchar.png" />
+        <title>【ロマサガRS】全力オート ダメージランキング</title>
+        <meta property="og:title" content="【ロマサガRS】全力オート ダメージランキング" />
+        <meta property="og:url" content="https://http://nao-romasaga.github.io/autodamage.html" />
+        <meta property="og:description" content="ロマサガRSの全力オートでの平均ダメージのランキングです。覚醒パターンの研究などに攻略の際にご利用ください。" />
+        <meta name="description" content="ロマサガRSの全力オートでの平均ダメージのランキングです。覚醒パターンの研究などに攻略の際にご利用ください。【ロマンシングサガ リユニバース】" />
+        <meta property="og:image" content="https://nao-romasaga.github.io/img/twitter_card_autodamage.png" />
         <meta property="og:site_name" content="ロマサガRS便利ツール" />
         <meta property="og:type" content="article">
         <meta property="og:locale" content="ja_JP" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@nao_romasaga_rs" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-            <!--
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-            -->
         <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
         <script type="text/javascript" src="./js/jquery-ui.min.js"></script>
         <script type="text/javascript" src="./js/jquery.ui.touch-punch.js"></script>
 
         <link rel="stylesheet" type="text/css" href="./css/bootstrap/bootstrap.min.css">
-        <!--
-        <script src="./js/popper.min.js"></script>
-        -->
         <script src="./js/bootstrap.min.js"></script>
         <link rel="stylesheet" type="text/css" href="./css/style.css">
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
@@ -58,41 +51,6 @@
           <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
-        <style>
-            .paramLabel{
-                background-color: papayawhip;
-            }
-            .paramHead{
-                background-color: lightyellow;
-            }
-            .paramCell2{
-                width:8%;
-                border-left: 1px solid #faf0b4                            
-            }
-            .dotBackground{
-                width: 10%;
-                border-radius: 15px;                            
-            }
-.example {
-  position: relative;
-  }
-
-.example p {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%,-50%);
-  -webkit-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-  margin:0;
-  padding:0;
-  /*文字の装飾は省略*/
-  }
-
-.example img {
-  width: 100%;
-  }            
-        </style>
     </head>
     <body>
         <div class ="dojohaikei">
@@ -144,6 +102,7 @@
                         </ul>
                     </div>
                 </div>
+                <!--スクエア--><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5008373409434899" data-ad-slot="9303963278" data-ad-format="auto" data-full-width-responsive="true"></ins><script> (adsbygoogle = window.adsbygoogle || []).push({});</script>
                 <div class="row">
                     <div class="col-12 style-bgcolor text-center">
                         <div class="text-center label-text">アビリティ発動選択</div>
@@ -189,8 +148,6 @@
                         <div id="RANK_AREA2" class="row"></div>
                 </div>
             </div><!-- isLogin -->
-            <hr>
-                <!--スクエア--><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5008373409434899" data-ad-slot="9303963278" data-ad-format="auto" data-full-width-responsive="true"></ins><script> (adsbygoogle = window.adsbygoogle || []).push({});</script>
             </div>
         </div>
         <script src="./js/data_CHARMASTER.js" ></script>
