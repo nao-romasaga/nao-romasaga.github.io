@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <link rel="canonical" href="/ourchar.html">
+        <!-- Global site tag (gtag.js) - Google Analytics         -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138966739-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', 'UA-138966739-1');
+        </script>
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <meta charset="utf-8">
+        <title>【ロマサガRS】ステータス上限(最大値)と育成ランキング</title>
+        <meta property="og:title" content="【ロマサガRS】ステータス上限(最大値) + ランキング" />
+        <meta property="og:url" content="https://http://nao-romasaga.github.io/ourchar.html" />
+        <meta property="og:description" content="ロマサガRSのスタイル毎のステータス上限(最大値)とキャラクター育成ランキングです。ユーザが登録したデータからキャラ+スタイル毎に上限(最大値)をランキングで調べるツールです。攻略や育成の際にご利用ください。" />
+        <meta name="description" content="ロマサガRSのキャラクターのステータスランキングです。ユーザが登録したデータからキャラクター毎に最大値をランキングで調べるツールです。攻略や育成の際にご利用ください。【ロマンシングサガ リユニバース】" />
+        <meta property="og:image" content="https://nao-romasaga.github.io/img/twitter_card_ourchar.png" />
+        <meta property="og:site_name" content="ロマサガRS便利ツール" />
+        <meta property="og:type" content="article">
+        <meta property="og:locale" content="ja_JP" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@nao_romasaga_rs" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+            <!--
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+            -->
+        <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="./js/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="./js/jquery.ui.touch-punch.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="./css/bootstrap/bootstrap.min.css">
+        <!--
+        <script src="./js/popper.min.js"></script>
+        -->
+        <script src="./js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="./css/style.css">
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/ui/3.5.2/firebase-ui-auth__ja.js"></script>
+        <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+        <script src="./js/Firebase.js"></script>
+        <script src="./js/utils.js" ></script>
+        <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+        
+        <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+        <style>
+            .paramLabel{
+                background-color: papayawhip;
+            }
+            .paramHead{
+                background-color: lightyellow;
+            }
+            .paramCell2{
+                width:8%;
+                border-left: 1px solid #faf0b4                            
+            }
+            .dotBackground{
+                width: 10%;
+                border-radius: 15px;                            
+            }
+.example {
+  position: relative;
+  }
+
+.example p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  margin:0;
+  padding:0;
+  /*文字の装飾は省略*/
+  }
+
+.example img {
+  width: 100%;
+  }            
+        </style>
+    </head>
+    <body>
+        <div class ="dojohaikei">
+            <div class="container">
+
+                <div class="text-center">
+                    <a href="https://www.jp.square-enix.com/saga_reuniverse/" target="new"><img src="./img/cmn_logo01_sp.png" class="col-sm-12 col-md-8 col-lg-6"></a>
+                </div>
+                <h3 class="text-center label-text">全力オート <br class="hidden spBlock">平均ダメージランキング</h3>
+                <span class="title-text d-none"></span>
+                <p class="text-right opacity"><small>バグ発見、ご要望は <a href="https://peing.net/ja/nao_romasaga_rs" target="new">質問箱</a>まで</small></p>
+                <div id="firebaseui-auth-container" style="margin-bottom:10px;"></div>
+                <br>
+                <div class="width-100 card">
+                        <div id="howtohead"  onclick="" class="card-header bg-primary" style="color:white">表示内容の読み方(タップで展開)</div>
+                        <div id="howtobody" class="card-body" style="padding:0px 5px;"><img src="/img/howto.png" style="width:100%">
+                            <br>
+                            スマートフォン、ipad、パソコンなど画面の大きさによって表示される内容は異なります
+                        </div>
+                </div>
+
+                <div class="width-100 card">
+                    <div id="jokenhead" onclick="" class="card-header bg-warning" style="color:black">ダメージ計測条件(タップで展開)</div>
+                    <div id="jokenbody" class="card-body" style="padding:0px 5px;">
+                        <ul class="trianglelist list5">
+                            <li>計測ターン数；9ターン。そのため通常攻撃に置き換わる技が採用されて平均ダメージが高くなっている構成があります</li>
+                            <li>計測ステータス：キャラ最大素ステ、スタイルレベル最大で装備、裏なしです</li>
+                            <li>敵ステータス：体/精=100で耐性0です</li>
+                            <li>アビリティ発動：錬気は1T、4Tの固定2回発動です。ステータスアップや通常攻撃(杖)のバフは加味していません</li>
+                            <li>武器威力：10/10時点の最大値を採用。
+                                剣=30、大剣=31、斧=31、
+                                    小剣=30、弓=28、槍=30、
+                                    棍棒=30、体術=30、銃=29、
+                                    杖=29
+                            </li>
+                            <li>マスターレベル：10/10時点の最大値を採用。
+                                剣=36、大剣=32、斧=28、
+                                    小剣=32、弓=32、槍=33、
+                                    棍棒=26、体術=32、銃=17、
+                                    杖=30
+                            </li>
+                            <li>技ランク：全て99</li>
+                            <li>技の特攻：特攻は非発動で計算しています</li>
+                            <li>聖石：なしの状態で計算しています</li>
+                            <li>覚醒パターンや継承パターンが異なるが技使用回数が同じ場合は「覚醒数が少ないケース」の表示されます</li>
+                            <li>オートで使わない技は継承パターンに入っていません</li>
+                            <li>ダブルクラッシュ、ラビットトリックは2回攻撃分。稲妻/氷結スラッシャーは3回攻撃分のダメージを表示しています</li>
+                            <li>全体攻撃の考慮がないため評価が低くなりがちです</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 style-bgcolor text-center">
+                        <div class="text-center label-text">アビリティ発動選択</div>
+                        <div style="font-size:20px;">
+                            勇健強撃：HP満タン時ダメージ+X%<br>弱点特攻：Weak発生時ダメージ+X%<br>上記アビリティの常時発動<br>
+                            <button class="icon_btn_off" id="LIMIT_BUTTON" data-lim="0" style="background-size: 100% 100%;">ON / OFF</button>
+                        </div>
+                        <br>
+                        <div class="text-center label-text">武器種選択</div>
+                        <ul class="nav text-center width-100">
+                            <li class="col-2 col-sm-1 offset-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="剣" href="#icon_ken" onclick=""><span class="icon_mini icon_ken" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="大剣" href="#icon_dken"><span class="icon_mini icon_dken" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="斧" href="#icon_ono"><span class="icon_mini icon_ono" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="棍棒" href="#icon_kon"><span class="icon_mini icon_kon" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="体術" href="#icon_tai"><span class="icon_mini icon_tai" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="銃" href="#icon_ju"><span class="icon_mini icon_ju" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="小剣" href="#icon_sken"><span class="icon_mini icon_sken" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="弓" href="#icon_yumi"><span class="icon_mini icon_yumi" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="槍" href="#icon_yari"><span class="icon_mini icon_yari" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="杖" href="#icon_tsue"><span class="icon_mini icon_tsue" onclick=""></span></a></li>
+                        </ul>
+                        <div class="text-center label-text" id="CHAR_HEADER">キャラ選択</div>
+                        <div class="opacity-char-back weaponList d-none" id="_icon_ken"><h5 class="game-banner"><span class="icon_mini icon_ken"></span></h5></div>
+                        <div class="opacity-char-back weaponList d-none" id="_icon_dken"><h5 class="game-banner"><span class="icon_mini icon_dken"></span></h5></div>
+                        <div class="opacity-char-back weaponList d-none" id="_icon_ono"><h5 class="game-banner"><span class="icon_mini icon_ono"></span></h5></div>
+                        <div class="opacity-char-back weaponList d-none" id="_icon_sken"><h5 class="game-banner"><span class="icon_mini icon_sken"></span></h5></div>
+                        <div class="opacity-char-back weaponList d-none" id="_icon_yumi"><h5 class="game-banner"><span class="icon_mini icon_yumi"></span></h5></div>
+                        <div class="opacity-char-back weaponList d-none" id="_icon_yari"><h5 class="game-banner"><span class="icon_mini icon_yari"></span></h5></div>
+                        <div class="opacity-char-back weaponList d-none" id="_icon_ju"><h5 class="game-banner"><span class="icon_mini icon_ju"></span></h5></div>
+                        <div class="opacity-char-back weaponList d-none" id="_icon_tai"><h5 class="game-banner"><span class="icon_mini icon_tai"></span></h5></div>
+                        <div class="opacity-char-back weaponList d-none" id="_icon_kon"><h5 class="game-banner"><span class="icon_mini icon_kon"></span></h5></div>
+                        <div class="opacity-char-back weaponList d-none" id="_icon_tsue"><h5 class="game-banner"><span class="icon_mini icon_tsue"></span></h5></div>                    
+                        <div class="opacity-char-back weaponList d-none" id="_icon_toku"><h5 class="game-banner"><img src="/img/icon/icon_toku.png"></h5></div>                    
+                        <div class="text-center label-text" id="STYLE_HEADER">スタイル選択</div>
+                        <div id="styleChoice"></div>
+                </div>
+                <div class="col-12">
+                    <h3 class="text-center label-text" style="padding-top:10px;padding-bottom:10px;"><span id="TARGET">全スタイル</span><br class="hidden spBlock"> 平均ダメージランキング</span></h3>
+                    <label class="badge badge-pill badge-light" id="LIMIT_LABEL">勇健/弱特 発動中</label>
+                </div>
+                <div class="col-12">
+                        <div id="RANK_AREA" class="row"></div>
+                </div>
+            </div><!-- isLogin -->
+            <hr>
+                <!--スクエア--><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5008373409434899" data-ad-slot="9303963278" data-ad-format="auto" data-full-width-responsive="true"></ins><script> (adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+        </div>
+        <script src="./js/data_CHARMASTER.js" ></script>
+        <script src="./js/data_STYLEMASTER_style.js" ></script>
+        <script src="./js/data_SKILLMASTER_list.js" ></script>
+        <script src="./js/autodamage.js" ></script>
+
+        <script type="text/javascript" src="https://romasagatool.com/blog/get_the_archives.php?limit=5&callback=rssCallback"></script>
+    </body>
+</html>
