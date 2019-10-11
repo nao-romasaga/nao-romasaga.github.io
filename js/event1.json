@@ -33,6 +33,38 @@
             "startPrefix": "12:00 開始<br>",
             "endSuffix": "<br>翌4:00 終了",
             "type": "blue"
+        },
+        {
+            "startDay": "1",
+            "endDay": "21",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>ブルー/ルージュ/零姫/メイレン 2倍",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue",
+            "startNone": true
+        },
+        {
+            "startDay": "1",
+            "endDay": "17",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>杖キャラ(ブルー/ルージュ/零姫を除く) 2倍",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue",
+            "startNone": true
+        },
+        {
+            "startDay": "1",
+            "endDay": "15",
+            "title": "[イベント] <br class='hidden pcBlock'>・赤の試練/青の試練",
+            "endSuffix": "<br>翌00:00 終了",
+            "type": "orange",
+            "startNone": true
+        },
+        {
+            "startDay": "1",
+            "endDay": "17",
+            "title": "[イベント] <br class='hidden pcBlock'>・聖石洞窟",
+            "endSuffix": "<br>翌00:00 終了",
+            "type": "orange",
+            "startNone": true
         }
     ],
     "holiday": [
