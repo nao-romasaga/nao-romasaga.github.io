@@ -114,6 +114,62 @@
                             <button class="icon_btn_off" id="LIMIT_BUTTON" data-lim="0" style="background-size: 100% 100%;">ON / OFF</button>
                         </div>
                         <br>
+                        <div class="text-center label-text">敵種族選択</div>
+                        <ul class="nav text-center width-100">
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="enemyfilterList pad0" data-type="EnemyClassFilter" data-label="無し" href="#enemy_0" onclick=""><img src="http://romasagatool.com/img/e_others_495.png"><br>無し</a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="enemyfilterList pad0" data-type="EnemyClassFilter" data-label="人間" href="#enemy_1" onclick=""><img src="http://romasagatool.com/img/e_others_495.png"><br>人間</a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="enemyfilterList pad0" data-type="EnemyClassFilter" data-label="獣人" href="#enemy_2" onclick=""><img src="http://romasagatool.com/img/e_others_495.png"><br>獣人</a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="enemyfilterList pad0" data-type="EnemyClassFilter" data-label="獣" href="#enemy_3" onclick=""><img src="http://romasagatool.com/img/e_others_495.png"><br>獣</a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="enemyfilterList pad0" data-type="EnemyClassFilter" data-label="有翼" href="#enemy_4" onclick=""><img src="http://romasagatool.com/img/e_others_495.png"><br>有翼</a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="enemyfilterList pad0" data-type="EnemyClassFilter" data-label="植物" href="#enemy_5" onclick=""><img src="http://romasagatool.com/img/e_others_495.png"><br>植物</a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="enemyfilterList pad0" data-type="EnemyClassFilter" data-label="虫" href="#enemy_6" onclick=""><img src="http://romasagatool.com/img/e_others_495.png"><br>虫</a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="enemyfilterList pad0" data-type="EnemyClassFilter" data-label="水棲" href="#enemy_7" onclick=""><img src="http://romasagatool.com/img/e_others_495.png"><br>水棲</a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="enemyfilterList pad0" data-type="EnemyClassFilter" data-label="魚" href="#enemy_8" onclick=""><img src="http://romasagatool.com/img/e_others_495.png"><br>魚</a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="enemyfilterList pad0" data-type="EnemyClassFilter" data-label="蛇" href="#enemy_9" onclick=""><img src="http://romasagatool.com/img/e_others_495.png"><br>蛇</a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="enemyfilterList pad0" data-type="EnemyClassFilter" data-label="爬虫類・両生類" href="#enemy_10" onclick=""><img src="http://romasagatool.com/img/e_others_495.png"><br>爬虫類<br>両生類</a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="enemyfilterList pad0" data-type="EnemyClassFilter" data-label="魔族" href="#enemy_11" onclick=""><img src="http://romasagatool.com/img/e_others_495.png"><br>魔族</a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="enemyfilterList pad0" data-type="EnemyClassFilter" data-label="不死" href="#enemy_12" onclick=""><img src="http://romasagatool.com/img/e_others_495.png"><br>不死</a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="enemyfilterList pad0" data-type="EnemyClassFilter" data-label="骸骨" href="#enemy_13" onclick=""><img src="http://romasagatool.com/img/e_others_495.png"><br>骸骨</a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="enemyfilterList pad0" data-type="EnemyClassFilter" data-label="精霊" href="#enemy_14" onclick=""><img src="http://romasagatool.com/img/e_others_495.png"><br>精霊</a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="enemyfilterList pad0" data-type="EnemyClassFilter" data-label="無機質" href="#enemy_15" onclick=""><img src="http://romasagatool.com/img/e_others_495.png"><br>無機質</a></li>
+                        </ul>
+                        <br>
+                        <div class=" table-dark">
+                        <table class="width-100 text-center table-dark">
+                            <tr class="char-bottom">
+                                <td colspan=8 class="text-center label-text">敵情報</td>
+                            </tr>
+                            <tr class="char-bottom">
+                                <td colspan=2>名称</td>
+                                <td colspan=2 id="enemy_name"></td>
+                                <td colspan=2>特攻</td>
+                                <td colspan=2 id="enemy_crit"></td>
+                            </tr>
+                        </table>
+                        <table class="width-100 text-center table-dark pad0">
+                                    <tr class="char-bottom">
+                                <th><span class="icon_xs_zokusei icon_zan"></span></th>
+                                <th><span class="icon_xs_zokusei icon_da"></span></th>
+                                <th><span class="icon_xs_zokusei icon_totsu"></span></th>
+                                <th><span class="icon_xs_zokusei icon_netsu"></span></th>
+                                <th><span class="icon_xs_zokusei icon_rei"></span></th>
+                                <th><span class="icon_xs_zokusei icon_rai"></span></th>
+                                <th><span class="icon_xs_zokusei icon_yo"></span></th>
+                                <th><span class="icon_xs_zokusei icon_in"></span></th>
+                            </tr>
+                            <tr>
+                                <td id="resist_zan">0</td>
+                                <td id="resist_da">0</td>
+                                <td id="resist_totsu">0</td>
+                                <td id="resist_netsu">0</td>
+                                <td id="resist_rei">0</td>
+                                <td id="resist_rai">0</td>
+                                <td id="resist_in">0</td>
+                                <td id="resist_yo">0</td>
+                            </tr>
+                        </table>
+                    </div>
+                        
                         <div class="text-center label-text">武器種選択</div>
                         <ul class="nav text-center width-100">
                             <li class="col-2 col-sm-1 offset-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="剣" href="#icon_ken" onclick=""><span class="icon_mini icon_ken" onclick=""></span></a></li>
@@ -143,7 +199,7 @@
                         <div id="styleChoice"></div>
                 </div>
                 <div class="col-12">
-                    <h3 class="text-center label-text" style="padding-top:10px;padding-bottom:10px;"><span id="TARGET">全スタイル</span><br class="hidden spBlock"> 平均ダメージランキング</span></h3>
+                    <h3 class="text-center label-text" style="padding-top:10px;padding-bottom:10px;"><span id="ENEMY"></span><span id="TARGET">全スタイル</span><br class="hidden spBlock"> 平均ダメージランキング</span></h3>
                     <label class="badge badge-pill badge-light" id="LIMIT_LABEL">勇健/弱特 発動中</label>
                 </div>
                 <div class="col-12">
