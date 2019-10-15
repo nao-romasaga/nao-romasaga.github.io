@@ -52,9 +52,17 @@
         },
         {
             "startDay": "1",
-            "endDay": "15",
+            "endDay": "17",
+            "title": "[イベント] <br class='hidden pcBlock'>・赤の試練/青の試練 鍵ドロップ",
+            "endSuffix": "<br>翌04:00 終了",
+            "type": "orange",
+            "startNone": true
+        },
+        {
+            "startDay": "1",
+            "endDay": "30",
             "title": "[イベント] <br class='hidden pcBlock'>・赤の試練/青の試練",
-            "endSuffix": "<br>翌00:00 終了",
+            "endSuffix": "<br>翌04:00 終了",
             "type": "orange",
             "startNone": true
         },
