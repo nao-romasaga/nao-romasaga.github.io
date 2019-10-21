@@ -73,7 +73,24 @@
             "endSuffix": "<br>翌00:00 終了",
             "type": "orange",
             "startNone": true
-        }
+        },
+        {
+            "startDay": "1",
+            "endDay": "30",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>アルカイザー/エミリア/ロビン(偽)/アニー/メタルブラック 2倍",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue",
+            "startNone": true
+        },
+        {
+            "startDay": "1",
+            "endDay": "30",
+            "title": "[ガチャ] <br class='hidden pcBlock'>アルカイザー/エミリア Specialピックアップガチャ",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "green",
+            "startNone": true
+        },
+
     ],
     "holiday": [
     ]
