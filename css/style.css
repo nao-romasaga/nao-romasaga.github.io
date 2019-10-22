@@ -6,6 +6,12 @@
 html {
     touch-action: manipulation;
 }
+.status_question{
+    font-size: 20px;
+    background-color: rgba(224 , 224,100, 1);
+    color: black;
+}
+
 .status_plus{
     font-size: 20px;
     background-color: rgba(108 , 188,224, 1);
