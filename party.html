@@ -257,10 +257,11 @@
                 <td class=" d-none d-lg-table-cell" style="border-left: 1px solid #faf0b4"><img src="./img/icon/icon_minus.png" class="paramButton" width="20" height="30" data-param="AI"  data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charAI"  data-param="AI"  style="width: 45px" value="45"><img src="./img/icon/icon_plus.png" class="paramButton" width="20" height="30" data-param="AI" data-pm="plus" onclick=""></td>
                 <td class=" d-none d-lg-table-cell" style="border-left: 1px solid #faf0b4"><img src="./img/icon/icon_minus.png" class="paramButton" width="20" height="30" data-param="MI"  data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charMI"  data-param="MI"  style="width: 45px" value="45"><img src="./img/icon/icon_plus.png" class="paramButton" width="20" height="30" data-param="MI" data-pm="plus" onclick=""></td>
             </tr>
+            <!-- ウィンドウエリア -->
             <tr>
                 <td colspan="10" class="">
-                    <div class="fukidashiInput">
-                        <table class="fukidashi width-100 inputArea">
+                    <div class="fukidashiInput fukidashi">
+                        <table class="width-100 inputArea">
                             <tr style="">
                                 <td colspan="4">
                                     <button class="icon_btn_on btn_close" style="background-size: 150px 40px; width:150px; height: 40px;">閉じる</button>
@@ -303,16 +304,35 @@
                             <tr class="text-nowrap d-table-row d-lg-none">
                                 <td >魅力</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="MI" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charMI" data-param="MI" style="width: 50px" value="6"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="MI" data-pm="plus" onclick=""></td>
                             </tr>
+                        </table>
+                        <table class="width-100 inputArea">
                             <tr class="char-bottom text-nowrap">
-                                <td class="text-center" colspan="4">▼スタイル選択▼</td>
+                                <td class="text-center" colspan="12">▼スタイル選択▼</td>
                             </tr>
-                            <tr style=""><td colspan="4" class="STYLE_ICON"></td></tr>
-                            <tr style=""><td colspan="4">
+                            <tr><td colspan="12" class="STYLE_ICON"></td></tr>
+                            <tr class="label-text">
+                                <td colspan="2">スタイル成長傾向</td>
+                                <td>腕</td>
+                                <td>体</td>
+                                <td>器</td>
+                                <td>速</td>
+                                <td>知</td>
+                                <td>精</td>
+                                <td>愛</td>
+                                <td>魅</td>
+                            </tr>
+                            <tr id="STYLE_SEICHO"></tr>
+                            <tr>
+                                <td colspan="12">()の中の数字はスタイル成長傾向です。<img src="./img/icon/icon_ind_1.png" height="15">は-10〜0、<img src="./img/icon/icon_ind_2.png" height="15">は1〜3、<img src="./img/icon/icon_ind_3.png" height="15">は4〜10が設定されます。(<a href="./knowledge.html" target="_new"><i class="far fa-question-circle"></i> スタイル成長傾向とは</a>)<br>
+                                <span class="fuchidoriBlue">白抜き青文字</span>は上限が確定しています。それ以外の箇所は上限が上がる可能性があります。</td>
+                            </tr>
+                            <tr><td colspan="12">
                                     <button class="icon_btn_red charUnset" style="background-size: 150px 40px; width:150px; height: 40px;">編成から外す</button>
                                     <button class="icon_btn_on btn_close" style="background-size: 150px 40px; width:150px; height: 40px;">閉じる</button>
-                                </td></tr>
+                                </td>
+                            </tr>
                             <tr class="char-bottom">
-                                <td colspan="9"><br>
+                                <td colspan="12"><br>
                                     <span data-toggle="tooltip" data-placement="top" data-html="true" style="margin-left:10px" title="" 
                                           data-original-title="
                                           腕.体.器.速.知.精.愛.魅の順に入力出来ます<br>
@@ -327,7 +347,6 @@
                                     </div>
                                 </td>
                             </tr>
-
                         </table>
                     </div>
                 </td>
@@ -422,19 +441,6 @@
                 100% {top:100%}
             }
         </style>        
-        <!-- Twitter universal website tag code -->
-        <script>
-            !function (e, t, n, s, u, a) {
-                e.twq || (s = e.twq = function () {
-                    s.exe ? s.exe.apply(s, arguments) : s.queue.push(arguments);
-                }, s.version = '1.1', s.queue = [], u = t.createElement(n), u.async = !0, u.src = '//static.ads-twitter.com/uwt.js',
-                        a = t.getElementsByTagName(n)[0], a.parentNode.insertBefore(u, a))
-            }(window, document, 'script');
-            // Insert Twitter Pixel ID and Standard Event data below
-            twq('init', 'o1u7p');
-            twq('track', 'PageView');
-        </script>
-        <!-- End Twitter universal website tag code -->
         <script type="text/javascript" src="https://romasagatool.com/blog/get_the_archives.php?limit=5&callback=rssCallback"></script>
         <script type="text/javascript" src="https://romasagatool.com/blog/get_the_archives.php?cat=22&callback=rssCallbackCat"></script>
     </body>
