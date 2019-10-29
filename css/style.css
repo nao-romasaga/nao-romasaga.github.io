@@ -777,11 +777,17 @@ input[type=range]::-ms-tooltip {
         -1px -1px 2px blue;    
 }
 .fuchidoriYellow{
-    color: darkslategray;
-    text-shadow: 1px 1px 2px yellow,
-        -1px 1px 2px yellow,
-        1px -1px 2px yellow,
-        -1px -1px 2px yellow;    
+    color: yellow;
+    text-shadow: 1px 1px 2px red,
+        -1px 1px 2px red,
+        1px -1px 2px red,
+        -1px -1px 2px red;    
+}
+.fix-bgcolor {
+    background-color: darkblue;
+}
+.kari-bgcolor {
+    background-color: darkorchid;
 }
 .status-bgcolor {
     background-color: rgb(71,56,36);
