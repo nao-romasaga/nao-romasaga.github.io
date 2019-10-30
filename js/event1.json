@@ -60,7 +60,7 @@
         },
         {
             "startDay": "1",
-            "endDay": "30",
+            "endDay": "31",
             "title": "[イベント] <br class='hidden pcBlock'>・赤の試練/青の試練",
             "endSuffix": "<br>翌04:00 終了",
             "type": "orange",
@@ -76,7 +76,7 @@
         },
         {
             "startDay": "1",
-            "endDay": "30",
+            "endDay": "31",
             "title": "[キャンペーン] <br class='hidden pcBlock'>アルカイザー/エミリア/ロビン(偽)/アニー/メタルブラック 2倍",
             "endSuffix": "<br>翌4:00 終了",
             "type": "blue",
@@ -84,7 +84,7 @@
         },
         {
             "startDay": "1",
-            "endDay": "30",
+            "endDay": "31",
             "title": "[ガチャ] <br class='hidden pcBlock'>アルカイザー/エミリア Specialピックアップガチャ",
             "endSuffix": "<br>翌4:00 終了",
             "type": "green",
