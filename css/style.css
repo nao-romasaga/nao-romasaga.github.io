@@ -11,16 +11,51 @@ html {
     background-color: rgba(224 , 224,100, 1);
     color: black;
 }
-
-.status_plus{
-    font-size: 20px;
-    background-color: rgba(108 , 188,224, 1);
-    color: white;
+@media screen and (max-width:340px) {
+    .title-text{
+        font-size: 15px;
+        background:url(../img/bg_window_large.png);
+        background-size:100% 100%;
+        color:#faf0b4;
+        padding:5px;    
+    }
+    .small {
+        font-size: 12px !important;
+    }
+    .status_plus{
+        font-size: 15px;
+        background-color: rgba(108 , 188,224, 1);
+        color: white;
+    }
+    .status_minus{
+        font-size: 15px;
+        background-color: rgba(215 , 100,100, 1);
+        color: white;
+    }
+    .rareIconSize {
+        width: 15px;
+    }
 }
-.status_minus{
-    font-size: 20px;
-    background-color: rgba(215 , 100,100, 1);
-    color: white;
+@media screen and (min-width:340px) {
+    .title-text{
+        background:url(../img/bg_window_large.png);
+        background-size:100% 100%;
+        color:#faf0b4;
+        padding:5px;    
+    }
+    .status_plus{
+        font-size: 20px;
+        background-color: rgba(108 , 188,224, 1);
+        color: white;
+    }
+    .status_minus{
+        font-size: 20px;
+        background-color: rgba(215 , 100,100, 1);
+        color: white;
+    }
+    .rareIconSize {
+        width: 35px;
+    }
 }
 
 .resist_plus{
@@ -43,12 +78,6 @@ html {
     text-align: center !important;
 }
 
-.title-text{
-    background:url(../img/bg_window_large.png);
-    background-size:100% 100%;
-    color:#faf0b4;
-    padding:5px;    
-}
 .label-text{
     background:url(../img/bg_window_large.png);
     background-size:100% 100%;

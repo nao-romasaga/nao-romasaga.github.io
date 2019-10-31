@@ -1,3 +1,97 @@
+@media screen and (max-width:340px) {
+    .style_icon_a {
+        width: 45px;
+        height: 45px;
+        background-size: 45px !important;
+        border: 2px ridge rgb(247,170,150);
+        border-radius: 10px;    
+        background-position: -5px -5px !important;    
+    }
+    .style_icon_s {
+        width: 45px;
+        height: 45px;
+        background-size: 45px !important;
+        border: 2px ridge rgb(200,224,234);
+        border-radius: 10px;    
+        background-position: -5px -5px !important;    
+    }
+    .style_icon_ss {
+        width: 45px;
+        height: 45px;
+        background-size: 45px !important;
+        border: 2px ridge rgb(246,236,100);
+        border-radius: 10px;    
+        background-position: -5px -5px !important;
+    }
+    .icon_bg_ss{
+        background:url(../img/bg_ss.png);
+        background-size:  10px !important;
+        display: inline-block;
+        border-radius: 10px;
+        height: 45px;
+    }
+    .icon_bg_s{
+        background:url(../img/bg_s.png);
+        background-size:  10px !important;
+        display: inline-block;
+        border-radius: 10px;
+        height: 45px;
+    }
+    .icon_bg_a{
+        background:url(../img/bg_a.png);
+        background-size:  10px !important;
+        display: inline-block;
+        border-radius: 10px;
+        height: 45px;
+    }
+}
+@media screen and (min-width:340px) {
+    .style_icon_a {
+        width: 80px;
+        height: 80px;
+        border: 5px ridge rgb(247,170,150);
+        border-radius: 10px;    
+        background-size: 80px !important;
+        background-position: -5px -5px !important;    
+    }
+    .style_icon_s {
+        width: 80px;
+        height: 80px;
+        border: 5px ridge rgb(200,224,234);
+        border-radius: 10px;    
+        background-size: 80px !important;
+        background-position: -5px -5px !important;    
+    }
+    .style_icon_ss {
+        width: 80px;
+        height: 80px;
+        border: 5px ridge rgb(246,236,100);
+        border-radius: 10px;    
+        background-size: 80px !important;
+        background-position: -5px -5px !important;
+    }
+    .icon_bg_ss{
+        background:url(../img/bg_ss.png);
+        background-size:  10px !important;
+        display: inline-block;
+        border-radius: 10px;
+        height: 75px;
+    }
+    .icon_bg_s{
+        background:url(../img/bg_s.png);
+        background-size:  10px !important;
+        display: inline-block;
+        border-radius: 10px;
+        height: 75px;
+    }
+    .icon_bg_a{
+        background:url(../img/bg_a.png);
+        background-size:  10px !important;
+        display: inline-block;
+        border-radius: 10px;
+        height: 75px;
+    }
+}
 
 .icon_mini { 
     display: inline-block;
@@ -21,14 +115,6 @@
     background-size: cover !important;
     margin: 0 0 0 0px;
 }
-.style_icon_a {
-    width: 80px;
-    height: 80px;
-    border: 5px ridge rgb(247,170,150);
-    border-radius: 10px;    
-    background-size: 80px !important;
-    background-position: -5px -5px !important;    
-}
 .style_icon_a_middle {
     width: 50px;
     height: 50px;
@@ -47,14 +133,6 @@
 }
 .bg_a{
     background-color: rgb(247,170,150);
-}
-.style_icon_s {
-    width: 80px;
-    height: 80px;
-    border: 5px ridge rgb(200,224,234);
-    border-radius: 10px;    
-    background-size: 80px !important;
-    background-position: -5px -5px !important;    
 }
 .style_icon_s_middle {
     width: 50px;
@@ -76,27 +154,6 @@
     background-color: rgb(200,224,234);;
 }
 
-.icon_bg_ss{
-    background:url(../img/bg_ss.png);
-    background-size:  10px !important;
-    display: inline-block;
-    border-radius: 10px;
-    height: 75px;
-}
-.icon_bg_s{
-    background:url(../img/bg_s.png);
-    background-size:  10px !important;
-    display: inline-block;
-    border-radius: 10px;
-    height: 75px;
-}
-.icon_bg_a{
-    background:url(../img/bg_a.png);
-    background-size:  10px !important;
-    display: inline-block;
-    border-radius: 10px;
-    height: 75px;
-}
 .icon_bg_ss_middle{
     background:url(../img/bg_ss.png);
     background-size:  10px !important;
@@ -119,14 +176,6 @@
     height: 45px;
 }
 
-.style_icon_ss {
-    width: 80px;
-    height: 80px;
-    border: 5px ridge rgb(246,236,100);
-    border-radius: 10px;    
-    background-size: 80px !important;
-    background-position: -5px -5px !important;
-}
 .style_icon_ss_middle {
     width: 50px;
     height: 50px;

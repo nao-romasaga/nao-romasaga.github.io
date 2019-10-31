@@ -111,14 +111,42 @@
     100% { background-position: -175px -255px;}
 }
 
-.char-winner {
-    display: inline-block;
-    width: 60px;
-    height: 60px;
-    background-position: -330px -170px !important;
-    margin: 0 0 0 0px;
-    animation: winner 1s steps(1);
-}            
+@media screen and (max-width:340px) {
+    .char-winner {
+        display: inline-block;
+        width: 45px;
+        height: 45px;
+        background-position: -335px -175px !important;
+        margin: 0 0 0 0px;
+        animation: winner 1s steps(1);
+    }
+    .char-loser {
+        display: inline-block;
+        width: 45px;
+        height: 45px;
+        background-position: -335px -265px !important;
+        margin: 0 0 0 0px;
+        animation: loser 1s steps(1);
+    }        
+}
+@media screen and (min-width:340px) {
+    .char-winner {
+        display: inline-block;
+        width: 60px;
+        height: 60px;
+        background-position: -330px -170px !important;
+        margin: 0 0 0 0px;
+        animation: winner 1s steps(1);
+    }
+    .char-loser {
+        display: inline-block;
+        width: 60px;
+        height: 60px;
+        background-position: -330px -250px !important;
+        margin: 0 0 0 0px;
+        animation: loser 1s steps(1);
+    }            
+}
 @keyframes winner {
     0% { background-position: -10px -10px;} /* 1.1 */
     5% { background-position: -10px -10px;} /* 1.1 */
@@ -135,14 +163,6 @@
     60% { background-position: -330px -10px;} /* 5.1 */
     61% { background-position: -330px -170px} /* 1.1 */
 }
-.char-loser {
-    display: inline-block;
-    width: 60px;
-    height: 60px;
-    background-position: -330px -250px !important;
-    margin: 0 0 0 0px;
-    animation: loser 1s steps(1);
-}            
 @keyframes loser {
     0% { background-position: -10px -10px;} /* 1.1 */
     5% { background-position: -10px -10px;} /* 1.1 */
@@ -363,4 +383,45 @@
     25% { background-position: -248px -250px;}
     75% { background-position: -250px -250px;}
     100% { background-position: -250px -250px;}
+}
+
+.char-dot-front {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    margin: 0 0 0 0px;
+    animation: front 0.4s steps(1) infinite alternate;
+}
+@keyframes front {
+    0% { background-position: -10px -10px;}
+}
+.char-dot-kamae {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    margin: 0 0 0 0px;
+    animation: kamae 0.4s steps(1) infinite alternate;
+}
+@keyframes kamae {
+    0% { background-position: -320px -90px;}
+}
+.char-dot-kime {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    margin: 0 0 0 0px;
+    animation: kime 0.4s steps(1) infinite alternate;
+}
+@keyframes kime {
+    0% { background-position: -330px -170px;}
+}
+.char-dot-down {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    margin: 0 0 0 0px;
+    animation: down 0.4s steps(1) infinite alternate;
+}
+@keyframes down {
+    0% { background-position: -10px -330px;}
 }
