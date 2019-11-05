@@ -1,11 +1,19 @@
 {
     "year": 2019,
-    "month": 10,
+    "month": 11,
     "event": [
         {
             "startDay": "1",
             "endDay": "14",
-            "title": "[ガチャ] <br class='hidden pcBlock'>祭 ハロウィンガチャ",
+            "title": "[イベント] <br class='hidden pcBlock'>・バーバリアンとの戦い<br>・リブロフの秘湯と大商人",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "orange",
+            "startNone": true
+        },
+        {
+            "startDay": "1",
+            "endDay": "14",
+            "title": "[ガチャ] <br class='hidden pcBlock'>祭 温泉ガチャ",
             "endSuffix": "<br>翌4:00 終了",
             "type": "green",
             "startNone": true
@@ -13,81 +21,9 @@
         {
             "startDay": "1",
             "endDay": "14",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>ヴァンパイアレディ/バーニィ/ようせい/ミリアム/セフィラス 2倍",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>アイシャ/ジニー/クローディア/ウィル/ブラウ 2倍",
             "endSuffix": "<br>翌4:00 終了",
             "type": "blue",
-            "startNone": true
-        },
-        {
-            "startDay": "1",
-            "endDay": "14",
-            "title": "[イベント] <br class='hidden pcBlock'>・ピドナの夜の夢",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "orange",
-            "startNone": true
-        },
-        {
-            "startDay": "7",
-            "endDay": "10",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>メイン、遺跡 スタ半",
-            "startPrefix": "12:00 開始<br>",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "blue"
-        },
-        {
-            "startDay": "1",
-            "endDay": "20",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>ブルー/ルージュ/零姫/メイレン 2倍",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "blue",
-            "startNone": true
-        },
-        {
-            "startDay": "1",
-            "endDay": "17",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>杖キャラ(ブルー/ルージュ/零姫を除く) 2倍",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "blue",
-            "startNone": true
-        },
-        {
-            "startDay": "1",
-            "endDay": "17",
-            "title": "[イベント] <br class='hidden pcBlock'>・赤の試練/青の試練 鍵ドロップ",
-            "endSuffix": "<br>翌04:00 終了",
-            "type": "orange",
-            "startNone": true
-        },
-        {
-            "startDay": "1",
-            "endDay": "31",
-            "title": "[イベント] <br class='hidden pcBlock'>・赤の試練/青の試練",
-            "endSuffix": "<br>翌04:00 終了",
-            "type": "orange",
-            "startNone": true
-        },
-        {
-            "startDay": "1",
-            "endDay": "17",
-            "title": "[イベント] <br class='hidden pcBlock'>・聖石洞窟",
-            "endSuffix": "<br>翌00:00 終了",
-            "type": "orange",
-            "startNone": true
-        },
-        {
-            "startDay": "1",
-            "endDay": "31",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>アルカイザー/エミリア/ロビン(偽)/アニー/メタルブラック 2倍",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "blue",
-            "startNone": true
-        },
-        {
-            "startDay": "1",
-            "endDay": "31",
-            "title": "[ガチャ] <br class='hidden pcBlock'>アルカイザー/エミリア Specialピックアップガチャ",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "green",
             "startNone": true
         }
     ],
