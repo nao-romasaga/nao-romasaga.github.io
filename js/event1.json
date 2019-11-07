@@ -41,7 +41,47 @@
             "endSuffix": "<br>翌4:00 終了",
             "type": "blue",
             "startNone": true
-        }        
+        },
+        {
+            "startDay": "11",
+            "endDay": "19",
+            "title": "[ガチャ] <br class='hidden pcBlock'>RS3スペシャルピックアップ ガチャ<br>・RS3復刻復刻 ガチャ<br>・RS3 プラチナ5体ピックアップガチャ",
+            "startSuffix": "<br>12:00 開始",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "green"
+        },
+        {
+            "startDay": "11",
+            "endDay": "19",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>RS3キャラ 2倍",
+            "startSuffix": "<br>12:00 開始",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue"
+        },
+        {
+            "startDay": "11",
+            "endDay": "29",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>財宝収集 オーラム3倍<br>",
+            "startPrefix": "4:00 開始<br>",
+            "endSuffix": "<br>4:00 終了",
+            "type": "blue"
+        },
+        {
+            "startDay": "11",
+            "endDay": "17",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>裏道場報酬 2倍<br>卵のからドロップ2倍",
+            "startPrefix": "4:00 開始<br>",
+            "endSuffix": "<br>4:00 終了",
+            "type": "blue"
+        },
+        {
+            "startDay": "11",
+            "endDay": "18",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>洞窟修練 EXP2倍",
+            "startPrefix": "4:00 開始<br>",
+            "endSuffix": "<br>4:00 終了",
+            "type": "blue"
+        }
     ],
     "holiday": [
     ]
