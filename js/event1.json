@@ -81,6 +81,14 @@
             "startPrefix": "4:00 開始<br>",
             "endSuffix": "<br>4:00 終了",
             "type": "blue"
+        },
+        {
+            "startDay": "11",
+            "endDay": "29",
+            "title": "[イベント] <br class='hidden pcBlock'>・追憶の伏魔殿<br>・激闘！大伏魔殿！",
+            "endSuffix": "<br>12:00 終了",
+            "startPrefix": "4:00 開始<br>",
+            "type": "orange"
         }
     ],
     "holiday": [
