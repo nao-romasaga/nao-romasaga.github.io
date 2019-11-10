@@ -28,15 +28,15 @@
         },
         {
             "startDay": "1",
-            "endDay": "11",
-            "title": "[イベント] <br class='hidden pcBlock'>・聖石洞窟",
+            "endDay": "10",
+            "title": "[イベント] <br class='hidden pcBlock'>聖石洞窟",
             "endSuffix": "<br>翌4:00 終了",
             "type": "orange",
             "startNone": true
         },
         {
             "startDay": "1",
-            "endDay": "11",
+            "endDay": "10",
             "title": "[キャンペーン] <br class='hidden pcBlock'>メインスタ半",
             "endSuffix": "<br>翌4:00 終了",
             "type": "blue",
@@ -45,7 +45,7 @@
         {
             "startDay": "11",
             "endDay": "19",
-            "title": "[ガチャ] <br class='hidden pcBlock'>RS3スペシャルピックアップ ガチャ<br>・RS3復刻復刻 ガチャ<br>・RS3 プラチナ5体ピックアップガチャ",
+            "title": "[ガチャ] <br class='hidden pcBlock'>・RS3スペシャルピックアップ ガチャ<br>・RS3復刻 ガチャ<br>・RS3 プラチナ5体ピックアップガチャ",
             "startSuffix": "<br>12:00 開始",
             "endSuffix": "<br>翌4:00 終了",
             "type": "green"
@@ -69,7 +69,7 @@
         {
             "startDay": "11",
             "endDay": "17",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>裏道場報酬 2倍<br>卵のからドロップ2倍",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>・裏道場報酬 2倍<br>・卵のからドロップ2倍",
             "startPrefix": "4:00 開始<br>",
             "endSuffix": "<br>4:00 終了",
             "type": "blue"
