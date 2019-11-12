@@ -76,7 +76,7 @@
                 <div class="style-bgcolor">
                     <div class="row">
                         <div class="col-6 h3 text-center">武器種別</div>
-                        <div class="col-6"><button class="icon_btn_on allType" style="background-size: 150px 40px; width:150px;">全て表示</button></div>
+                        <div class="col-6"><button class="icon_btn_on allType">全て表示</button></div>
                         <div class="col-2 col-sm-1 xs-pad0 offset-1"><button class="filterButton icon_mini icon_ken" data-id="剣"></button></div>
                         <div class="col-2 col-sm-1 xs-pad0"><button class="filterButton icon_mini icon_dken" data-id="大剣"></button></div>
                         <div class="col-2 col-sm-1 xs-pad0"><button class="filterButton icon_mini icon_ono" data-id="斧"></button></div>
@@ -94,17 +94,17 @@
                     </div>
                 </div>
                 <div class="style-bgcolor" id="styleAreaRare">
-                    <img src="./img/icon/icon_SS.png">
-                    <button class="icon_btn_on allOn" data-rare="SS" style="background-size: 150px 40px; width:150px;">全てチェック</button>
-                    <button class="icon_btn_off allOff" data-rare="SS" style="background-size: 110px 40px; width:110px;">全て外す</button>
+                    <img src="./img/icon/icon_SS.png"><br class="hidden xsBlock">
+                    <button class="icon_btn_on allOn" data-rare="SS">全てチェック</button>
+                    <button class="icon_btn_off allOff" data-rare="SS">全て外す</button>
                     <div id="SSArea"></div>
-                    <img src="./img/icon/icon_S.png">
-                    <button class="icon_btn_on allOn" data-rare="S" style="background-size: 150px 40px; width:150px;">全てチェック</button>
-                    <button class="icon_btn_off allOff" data-rare="S" style="background-size: 110px 40px; width:110px;">全て外す</button>
+                    <img src="./img/icon/icon_S.png"><br class="hidden xsBlock">
+                    <button class="icon_btn_on allOn" data-rare="S">全てチェック</button>
+                    <button class="icon_btn_off allOff" data-rare="S">全て外す</button>
                     <div id="SArea"></div>
-                    <img src="./img/icon/icon_A.png">
-                    <button class="icon_btn_on allOn" data-rare="A" style="background-size: 150px 40px; width:150px;">全てチェック</button>
-                    <button class="icon_btn_off allOff" data-rare="A" style="background-size: 110px 40px; width:110px;">全て外す</button>
+                    <img src="./img/icon/icon_A.png"><br class="hidden xsBlock">
+                    <button class="icon_btn_on allOn" data-rare="A">全てチェック</button>
+                    <button class="icon_btn_off allOff" data-rare="A">全て外す</button>
                     <div id="AArea"></div>
                 </div>
                 <div class="style-bgcolor d-none">
@@ -117,25 +117,25 @@
             <br><br><br>
             <br><br><br>
         </div>
-        <div id="footer" style="bottom:20px; left:15px;">
-            <h5 class="kadomaru bg-white text-center">スタイル所持数 <button class="icon_btn_on" id="displaySummary" style="background-size: 150px 40px; width:150px !important;">サマリ表示</button></h5>
-            <div class="table-responsive bg-white">
+        <div id="checker-footer" class="smallFont" style="left:15px; right:15px; width:90%">
+            <div class="kadomaru bg-white text-center">スタイル所持数 <button class="icon_btn_on" id="displaySummary" style="background-size: 150px 40px; width:150px !important; font-size:14px;">サマリ表示</button></div>
+            <div class="bg-white">
                 <table class="table table-hover table-bordered table-sm " id="damageRangeTable">
-                    <tr>
+                    <tr class=" text-center">
                         <td></td>
                         <td class="text-center">全体</td>
-                        <td><img src="./img/icon/icon_SS.png" width="30"></td>
-                        <td><img src="./img/icon/icon_S.png" width="30"></td>
-                        <td><img src="./img/icon/icon_A.png" width="30"></td>
+                        <td><img class="rare-icon" src="./img/icon/icon_SS.png"></td>
+                        <td><img class="rare-icon" src="./img/icon/icon_S.png"></td>
+                        <td><img class="rare-icon" src="./img/icon/icon_A.png"></td>
                     </tr>
-                    <tr>
-                        <td>所持</td>
+                    <tr class=" text-right">
+                            <td>所持数</td>
                         <td><span class="myAll"></span>/<span class="all"></span></td>
                         <td><span class="mySS"></span>/<span class="allSS"></span></td>
                         <td><span class="myS"></span>/<span class="allS"></span></td>
                         <td><span class="myA"></span>/<span class="allA"></span></td>
                     </tr>
-                    <tr>
+                    <tr class=" text-right">
                         <td>割合</td>
                         <td><span class="allPer"></span>%</td>
                         <td><span class="SSPer"></span>%</td>
@@ -144,45 +144,81 @@
                     </tr>
                 </table>
             </div>
-            <br><br><br>
         </div>
+        <br><br><br>
 
         <!-- モーダルウィンドウ -->
         <div class="modal" id="modal01">
             <!-- モーダルウィンドウの中身 -->
-            <div class="inner text-center width-100" id="modalInner">
+            <div class="inner text-center width-100 smallFont" id="modalInner">
                 <a href="" class="twitter-share-button width-100" rel=”nofollow” onClick="window.open(encodeURI(decodeURI(this.href)), 'twwindow', 'width=550, height=450, personalbar=0, toolbar=0, scrollbars=1'); return false;" style="background-color: rgba(41,163,239,1); color:white; padding:5px 10px; border-radius:10px;"><i class="fab fa-twitter"></i>　結果をツイートする</a>
-                <div class="row modalClose" id="allParamConfirm" onclick="">
-                    <div class="col-2 char-bottom">Rare</div><div class="col-5 char-bottom">所持数</div><div class="col-5 char-bottom">所持率</div>
-                    <div class="col-2">全体</div><div class="col-5"><span class="myAll h4">0</span>/<span class="all small">0</span></div><div class="col-5"><span class="allPer"></span>%</div>
-                    <div class="col-2"><img src="./img/icon/icon_SS.png" width="30"></div><div class="col-5"><span class="mySS h4">0</span>/<span class="allSS small">0</span></div><div class="col-5"><span class="SSPer"></span>%</div>
-                    <div class="col-2"><img src="./img/icon/icon_S.png" width="30"></div><div class="col-5"><span class="myS h4">0</span>/<span class="allS small">0</span></div><div class="col-5"><span class="SPer"></span>%</div>
-                    <div class="col-2"><img src="./img/icon/icon_A.png" width="30"></div><div class="col-5"><span class="myA h4">0</span>/<span class="allA small">0</span></div><div class="col-5"><span class="APer"></span>%</div>
-                    <div class="col-2 char-bottom">種別</div>
-                    <div class="col-2 char-bottom text-nowrap">所持数</div>
-                    <div class="col-2 char-bottom text-nowrap">所持率</div>
-                    <div class="col-3 char-bottom text-nowrap">限界MLv</div>
-                    <div class="col-3 char-bottom text-nowrap">次のMLv</div>
-                    <div class="col-2"><a class="pad0" data-toggle="tab" href="#skill_ken"><span class="icon_mini_zokusei icon_ken"></span></a></div>
-                    <div class="col-2 text-nowrap"><span class="my剣 h4">0</span>/<span class="all剣 small">0</span></div><div class="col-2"><span class="myPer剣">0</span>%</div><div class="col-3">Lv.<span class="myMlv剣">0</span></div><div class="col-3"><span class="myNext剣">0</span>体</div>
-                    <div class="col-2"><a class="pad0" data-toggle="tab" href="#skill_ken"><span class="icon_mini_zokusei icon_dken"></span></a></div>
-                    <div class="col-2 text-nowrap"><span class="my大剣 h4">0</span>/<span class="all大剣 small">0</span></div><div class="col-2"><span class="myPer大剣">0</span>%</div><div class="col-3">Lv.<span class="myMlv大剣">0</span></div><div class="col-3"><span class="myNext大剣">0</span>体</div>
-                    <div class="col-2"><a class="pad0" data-toggle="tab" href="#skill_ken"><span class="icon_mini_zokusei icon_ono"></span></a></div>
-                    <div class="col-2 text-nowrap"><span class="my斧 h4">0</span>/<span class="all斧 small">0</span></div><div class="col-2"><span class="myPer斧">0</span>%</div><div class="col-3">Lv.<span class="myMlv斧">0</span></div><div class="col-3"><span class="myNext斧">0</span>体</div>
-                    <div class="col-2"><a class="pad0" data-toggle="tab" href="#skill_ken"><span class="icon_mini_zokusei icon_kon"></span></a></div>
-                    <div class="col-2 text-nowrap"><span class="my棍棒 h4">0</span>/<span class="all棍棒 small">0</span></div><div class="col-2"><span class="myPer棍棒">0</span>%</div><div class="col-3">Lv.<span class="myMlv棍棒">0</span></div><div class="col-3"><span class="myNext棍棒">0</span>体</div>
-                    <div class="col-2"><a class="pad0" data-toggle="tab" href="#skill_ken"><span class="icon_mini_zokusei icon_tai"></span></a></div>
-                    <div class="col-2 text-nowrap"><span class="my体術 h4">0</span>/<span class="all体術 small">0</span></div><div class="col-2"><span class="myPer体術">0</span>%</div><div class="col-3">Lv.<span class="myMlv体術">0</span></div><div class="col-3"><span class="myNext体術">0</span>体</div>
-                    <div class="col-2"><a class="pad0" data-toggle="tab" href="#skill_ken"><span class="icon_mini_zokusei icon_ju"></span></a></div>
-                    <div class="col-2 text-nowrap"><span class="my銃 h4">0</span>/<span class="all銃 small">0</span></div><div class="col-2"><span class="myPer銃">0</span>%</div><div class="col-3">Lv.<span class="myMlv銃">0</span></div><div class="col-3"><span class="myNext銃">0</span>体</div>
-                    <div class="col-2"><a class="pad0" data-toggle="tab" href="#skill_ken"><span class="icon_mini_zokusei icon_sken"></span></a></div>
-                    <div class="col-2 text-nowrap"><span class="my小剣 h4">0</span>/<span class="all小剣 small">0</span></div><div class="col-2"><span class="myPer小剣">0</span>%</div><div class="col-3">Lv.<span class="myMlv小剣">0</span></div><div class="col-3"><span class="myNext小剣">0</span>体</div>
-                    <div class="col-2"><a class="pad0" data-toggle="tab" href="#skill_ken"><span class="icon_mini_zokusei icon_yumi"></span></a></div>
-                    <div class="col-2 text-nowrap"><span class="my弓 h4">0</span>/<span class="all弓 small">0</span></div><div class="col-2"><span class="myPer弓">0</span>%</div><div class="col-3">Lv.<span class="myMlv弓">0</span></div><div class="col-3"><span class="myNext弓">0</span>体</div>
-                    <div class="col-2"><a class="pad0" data-toggle="tab" href="#skill_ken"><span class="icon_mini_zokusei icon_yari"></span></a></div>
-                    <div class="col-2 text-nowrap"><span class="my槍 h4">0</span>/<span class="all槍 small">0</span></div><div class="col-2"><span class="myPer槍">0</span>%</div><div class="col-3">Lv.<span class="myMlv槍">0</span></div><div class="col-3"><span class="myNext槍">0</span>体</div>
-                    <div class="col-2"><a class="pad0" data-toggle="tab" href="#skill_ken"><span class="icon_mini_zokusei icon_tsue"></span></a></div>
-                    <div class="col-2 text-nowrap"><span class="my杖 h4">0</span>/<span class="all杖 small">0</span></div><div class="col-2"><span class="myPer杖">0</span>%</div><div class="col-3">Lv.<span class="myMlv杖">0</span></div><div class="col-3"><span class="myNext杖">0</span>体</div>
+                <div class=" modalClose" id="allParamConfirm" onclick="">
+                    <table class="width-100">
+                        <tr class="char-bottom  label-text">
+                            <td></td>
+                            <td class="text-nowrap">全体</td>
+                            <td><img class="icon_mini_zokusei" src="./img/icon/icon_SS.png"></td>
+                            <td><img class="icon_mini_zokusei" src="./img/icon/icon_S.png"></td>
+                            <td><img class="icon_mini_zokusei" src="./img/icon/icon_A.png"></td>
+                        </tr>
+                        <tr class="char-bottom">
+                            <td class="text-left">全体</td>
+                            <td><span class="myAll">0</span>/<span class="all">0</span></td>
+                            <td><span class="mySS">0</span>/<span class="allSS">0</span></td>
+                            <td><span class="myS">0</span>/<span class="allS">0</span></td>
+                            <td><span class="myA">0</span>/<span class="allA">0</span></td>
+                        </tr>
+                        <tr class="char-bottom">
+                            <td>所持率</td>
+                            <td><span class="allPer"></span>%</td>
+                            <td><span class="SSPer"></span>%</td>
+                            <td><span class="SPer"></span>%</td>
+                            <td><span class="APer"></span>%</td>
+                        </tr>                        
+                        <tr class="char-bottom">
+                            <td class="text-left">┣プラチナ</td>
+                            <td><span class="mypAll">0</span>/<span class="pAll">0</span></td>
+                            <td><span class="mypSS">0</span>/<span class="pAllSS">0</span></td>
+                            <td><span class="mypS">0</span>/<span class="pAllS">0</span></td>
+                            <td><span class="mypA">0</span>/<span class="pAllA">0</span></td>
+                        </tr>
+                        <tr class="char-bottom">
+                            <td class="text-left">┣限定</td>
+                            <td><span class="mylimAll">0</span>/<span class="limAll">0</span></td>
+                            <td><span class="mylimSS">0</span>/<span class="limAllSS">0</span></td>
+                            <td><span class="mylimS">0</span>/<span class="limAllS">0</span></td>
+                            <td><span class="mylimA">0</span>/<span class="limAllA">0</span></td>
+                        </tr>
+                        <tr class="char-bottom">
+                                <td class="text-left">┗その他</td>
+                                <td><span class="myoAll">0</span>/<span class="oAll">0</span></td>
+                                <td><span class="myoSS">0</span>/<span class="oAllSS">0</span></td>
+                                <td><span class="myoS">0</span>/<span class="oAllS">0</span></td>
+                                <td><span class="myoA">0</span>/<span class="oAllA">0</span></td>
+                        </tr>
+                    </table>
+                    <table class="width-100 text-nowrap" id="MASTER_TABLE">
+                        <tr class="char-bottom label-text">
+                            <td>種別</td>
+                            <td>所持数</td>
+                            <td>所持率</td>
+                            <td><img class="icon_mini_zokusei" src="./img/icon/icon_SS.png"></td>
+                            <td><img class="icon_mini_zokusei" src="./img/icon/icon_S.png"></td>
+                            <td><img class="icon_mini_zokusei" src="./img/icon/icon_A.png"></td>
+                            <td>限界MLv</td>
+                            <td>次のMLv</td>
+                        </tr>
+                        <tr class="char-bottom d-none" id="masterTableTmpl">
+                            <td><span class="icon_mini_zokusei icon_ken"></span></td>
+                            <td><span class="my剣">0</span>/<span class="all剣">0</span></td>
+                            <td><span class="myPer剣">0</span>%</td>
+                            <td class=""><span class="mySS剣">0</span>/<span class="allSS剣">0</span></td>
+                            <td class=""><span class="myS剣">0</span>/<span class="allS剣">0</span></td>
+                            <td class=""><span class="myA剣">0</span>/<span class="allA剣">0</span></td>
+                            <td>Lv.<span class="myMlv剣">0</span></td>
+                            <td><span class="myNext剣">0</span>体</td>
+                        </tr>
+                    </table>
                 </div>
             </div> 
             <!-- モーダルウィンドウが開いている時のオーバーレイ -->

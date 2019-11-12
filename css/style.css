@@ -12,6 +12,18 @@ html {
     color: black;
 }
 @media screen and (max-width:340px) {
+    .rare-icon {
+        width:20px;
+    }
+    .smallFont {
+        font-size: 10px !important;
+    }
+    .middleFont {
+        font-size: 18px !important;
+    }
+    .hidden.xsBlock {
+        display: inline;
+    }    
     .title-text{
         font-size: 15px;
         background:url(../img/bg_window_large.png);
@@ -37,6 +49,15 @@ html {
     }
 }
 @media screen and (min-width:340px) {
+    .rare-icon {
+        width:30px;
+    }
+    .smallFont {
+        font-size: 12px !important;
+    }
+    .middleFont {
+        font-size: 20px !important;
+    }
     .title-text{
         background:url(../img/bg_window_large.png);
         background-size:100% 100%;
@@ -216,6 +237,11 @@ body {
     bottom: 5px;
     right: 5px;
     height: 150px;
+    z-index: 3;
+}
+#checker-footer {
+    position: fixed;
+    bottom: 0px;
     z-index: 3;
 }
 
