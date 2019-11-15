@@ -47,6 +47,9 @@ html {
     .rareIconSize {
         width: 15px;
     }
+    .icon_ind {
+        width: 12px;
+    }
 }
 @media screen and (min-width:340px) {
     .rare-icon {
@@ -76,6 +79,9 @@ html {
     }
     .rareIconSize {
         width: 35px;
+    }
+    .icon_ind {
+        width: 15px;
     }
 }
 
