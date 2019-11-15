@@ -1,17 +1,32 @@
 <!DOCTYPE html>
 <html prefix="og: http://ogp.me/ns#" lang="ja">
     <head>
+        <script src="./js/jquery-3.3.1.min.js"></script>
+        <script src="./js/data_STYLEMASTER_style.js" ></script>
+        <script>
+            if (location.search !== "") {
+                var styleId = (location.search).substr(3);
+                var styleInfo = STYLE_MASTER[styleId];
+                if (styleInfo !== undefined) {
+                    //Title変更
+                    document.title = `【ロマサガRS】${styleInfo['Rarity']} ${styleInfo['Name']} ${styleInfo['AnotherName']}の素ステ。ステータス最大値、技・アビリティ・耐性一覧`;
+                    //Description変更
+                    var desc = `${styleInfo['Name']} ${styleInfo['Rarity']} ${styleInfo['AnotherName']} の最新クエストでの素ステ上限、スタイル補正込み最大ステータス値、別スタイルとの比較を掲載しています`;
+                    $("meta[name='description']").attr("content", desc);
+                }
+            }
+        </script>
+        <!--
         <link rel="canonical" href="/style.html">
+        -->
         <!-- Global site tag (gtag.js) - Google Analytics         -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138966739-1"></script>
         <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
-        <script src="./js/jquery-3.3.1.min.js"></script>
         <script src="./js/asyncFunc.js"></script>
         <script src="./js/data_TYPE_RANK_CHAR.js" ></script>
         <script src="./js/data_TYPE_RANK_STYLE.js" ></script>
         <script src="./js/data_CHARMASTER.js" ></script>
         <script src="./js/data_ABILITY.js" ></script>
-        <script src="./js/data_STYLEMASTER_style.js" ></script>
         <script src="./js/data_SKILLMASTER_style.js" ></script>
         <script>
             window.dataLayer = window.dataLayer || [];
