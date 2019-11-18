@@ -206,7 +206,11 @@
                         <div class="col-12 col-md-6 text-center">
                             ▼ターン設定▼<br>
                             シミュレーションターン数を設定<span class="d-none d-md-inline">できます</span><br>
-                            <input type="number" id="SET_TURN" value="20" style="width:50px; text-align:right" class="kadomaru"> ターン
+                            <input type="text" pattern="[0-9]*"  id="SET_TURN" value="20" style="width:50px; text-align:right" class="kadomaru"> ターン
+                            <br>
+                            ▼初期BP設定▼<br>
+                            BP <input type="text" pattern="[0-9]*"  id="SET_BP" value="10" style="width:50px; text-align:right" class="kadomaru"><br>
+                            ループダメージ計測などにご利用ください
                         </div>
                         <!--
                         <div class="col-6 col-md-4">
