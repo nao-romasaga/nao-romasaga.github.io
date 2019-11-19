@@ -118,24 +118,27 @@
             <br><br><br>
         </div>
         <div id="checker-footer" class="smallFont" style="left:15px; right:15px; width:90%">
-            <div class="kadomaru bg-white text-center">スタイル所持数 <button class="icon_btn_on" id="displaySummary" style="background-size: 150px 40px; width:150px !important; font-size:14px;">サマリ表示</button></div>
-            <div class="bg-white">
+            <div class="kadomaru text-center">
+                <button class="icon_btn_on gachaButtonSum d-none" id="displaySummary">サマリ表示</button>
+                <button class="icon_btn_on gachaButtonSim d-none" id="displaySimulator">プラガチャシミュレータ</button>
+            </div>
+            <div class="">
                 <table class="table table-hover table-bordered table-sm " id="damageRangeTable">
-                    <tr class=" text-center">
-                        <td></td>
+                    <tr class=" text-center label-text">
+                        <td>スタイル所持数</td>
                         <td class="text-center">全体</td>
                         <td><img class="rare-icon" src="./img/icon/icon_SS.png"></td>
                         <td><img class="rare-icon" src="./img/icon/icon_S.png"></td>
                         <td><img class="rare-icon" src="./img/icon/icon_A.png"></td>
                     </tr>
-                    <tr class=" text-right">
+                    <tr class=" text-center label-text">
                             <td>所持数</td>
                         <td><span class="myAll"></span>/<span class="all"></span></td>
                         <td><span class="mySS"></span>/<span class="allSS"></span></td>
                         <td><span class="myS"></span>/<span class="allS"></span></td>
                         <td><span class="myA"></span>/<span class="allA"></span></td>
                     </tr>
-                    <tr class=" text-right">
+                    <tr class=" text-center label-text">
                         <td>割合</td>
                         <td><span class="allPer"></span>%</td>
                         <td><span class="SSPer"></span>%</td>
@@ -220,6 +223,107 @@
                         </tr>
                     </table>
                 </div>
+            </div> 
+            <!-- モーダルウィンドウが開いている時のオーバーレイ -->
+            <div class="overLay modalClose"></div>
+        </div>
+        <!-- モーダルウィンドウ -->
+        <div class="modal" id="modal02">
+            <!-- モーダルウィンドウの中身 -->
+            <div class="inner text-center width-100 smallFont" id="modalInner2">
+                <div class="modalClose" onclick="">
+                    <div class="width-100 label-text" style="font-size:18px;">プラチナガチャシミュレーター</div>
+                    <img src="http://romasagatool.com/blog/wp-content/uploads/2019/11/news_banner_gacha_1000095.png" class="smallWidth100">
+                    <table class="width-100">
+                        <tr class="char-bottom label-text">
+                            <td>プラガチャ内容</td>
+                            <td class="text-nowrap">全体</td>
+                            <td><img class="icon_mini_zokusei" src="./img/icon/icon_SS.png"></td>
+                            <td><img class="icon_mini_zokusei" src="./img/icon/icon_S.png"></td>
+                            <td><img class="icon_mini_zokusei" src="./img/icon/icon_A.png"></td>
+                        </tr>
+                        <tr class="char-bottom">
+                            <td>所持数</td>
+                            <td><span class="mypAll">0</span>/<span class="pAll">0</span></td>
+                            <td><span class="mypSS">0</span>/<span class="pAllSS">0</span></td>
+                            <td><span class="mypS">0</span>/<span class="pAllS">0</span></td>
+                            <td><span class="mypA">0</span>/<span class="pAllA">0</span></td>                            
+                        </tr>
+                        <tr class="char-bottom">
+                            <td>所持率</td>
+                            <td><span class="mypAllPer">0</span>%</td>
+                            <td><span class="mypSSPer">0</span>%</td>
+                            <td><span class="mypSPer">0</span>%</td>
+                            <td><span class="mypAPer">0</span>%</td>
+                        </tr>
+                        <tr class="char-bottom">
+                            <td>未所持<br>排出率</td>
+                            <td style="font-size:15px;"><span class="mypAllGetPer">0</span>%<br>(1/<span class="mypAllGetBunsu">0</span>)</td>
+                            <td style="font-size:15px;"><span class="mypSSGetPer">0</span>%<br>(1/<span class="mypSSGetBunsu">0</span>)</td>
+                            <td style="font-size:15px;"><span class="mypSGetPer">0</span>%<br>(1/<span class="mypSGetBunsu">0</span>)</td>
+                            <td style="font-size:15px;"><span class="mypAGetPer">0</span>%<br>(1/<span class="mypAAGetBunsu">0</span>)</td>
+                        </tr>
+                        <tr class="char-bottom label-text">
+                            <td colspan=10 class="text-center">新規スタイル獲得確率　(1つ以上newスタイルがでる確率)</td>
+                        </tr>    
+                        <tr class="char-bottom">
+                            <td>5連(チケ25枚)</td>
+                            <td><span class="mypAll5RenPer">0</span>%</td>
+                            <td><span class="mypSS5RenPer">0</span>%</td>
+                            <td><span class="mypS5RenPer">0</span>%</td>
+                            <td><span class="mypA5RenPer">0</span>%</td>
+                        </tr>
+                        <tr class="char-bottom">
+                            <td>20連(チケ100枚)</td>
+                            <td><span class="mypAll20RenPer">0</span>%</td>
+                            <td><span class="mypSS20RenPer">0</span>%</td>
+                            <td><span class="mypS20RenPer">0</span>%</td>
+                            <td><span class="mypA20RenPer">0</span>%</td>
+                        </tr>
+                        <tr class="char-bottom">
+                            <td>50連(チケ250枚)</td>
+                            <td><span class="mypAll50RenPer">0</span>%</td>
+                            <td><span class="mypSS50RenPer">0</span>%</td>
+                            <td><span class="mypS50RenPer">0</span>%</td>
+                            <td><span class="mypA50RenPer">0</span>%</td>
+                        </tr>
+                        <tr class="char-bottom label-text">
+                            <td colspan=10 class="text-center">シミュレート結果 (チケット使用数<span id="USE_TICKET" class=" simTarget">0</span>枚)</td>
+                        </tr>
+                        <tr class="char-bottom">
+                            <td>獲得数</td>
+                            <td><span class="simAllSum simTarget">0</span></td>
+                            <td><span class="simSSSum simTarget">0</span></td>
+                            <td><span class="simSSum simTarget">0</span></td>
+                            <td><span class="simASum simTarget">0</span></td>
+                        </tr>
+                        <tr class="char-bottom">
+                            <td>new数</td>
+                            <td><span class="simAllNewSum simTarget">0</span></td>
+                            <td><span class="simSSNewSum simTarget">0</span></td>
+                            <td><span class="simSNewSum simTarget">0</span></td>
+                            <td><span class="simANewSum simTarget">0</span></td>
+                        </tr>
+                        <tr class="char-bottom">
+                            <td>白結晶</td>
+                            <td><span class="simAllWhiteSum simTarget" data-num=0>0</span></td>
+                            <td><span class="simSSWhiteSum simTarget" data-num=0>0</span></td>
+                            <td><span class="simSWhiteSum simTarget" data-num=0>0</span></td>
+                            <td><span class="simAWhiteSum simTarget" data-num=0>0</span></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="row">
+                        <div class="col-5">
+                            <button class="icon_btn_on START_GACHA">Click to Start</button><br>
+                            <img class="START_GACHA" src="http://romasagatool.com/blog/wp-content/uploads/2019/11/gachaImg2.jpg">
+                        </div>
+                        <div class="col-7">
+                            <div class="label-text">ガチャ結果 <span id=IS_NEW></span></div>
+                            <div id="GACHA_SPACE">
+                            </div>
+                        </div>
+                    </div>
             </div> 
             <!-- モーダルウィンドウが開いている時のオーバーレイ -->
             <div class="overLay modalClose"></div>
