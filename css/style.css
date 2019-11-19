@@ -51,10 +51,33 @@ html {
         width: 12px;
     }
 }
-@media screen and (min-width:340px) {
+@media screen and (max-width:400px) {
+    .rare-icon {
+        width:20px;
+    }
+    .gachaButtonSum {
+        background-size: 100px 40px; width:100px !important;        
+    }
+    .gachaButtonSim {
+        background-size: 180px 40px; width:180px !important;
+    }
+    .smallWidth100 {
+        width: 100%;
+    }
+}
+@media screen and (min-width:400px) {
     .rare-icon {
         width:30px;
     }
+    .gachaButtonSum {
+        background-size: 200px 40px; width:200px !important;        
+    }
+    .gachaButtonSim {
+        background-size: 275px 40px; width:275px !important;
+    }
+
+}
+@media screen and (min-width:340px) {
     .smallFont {
         font-size: 12px !important;
     }
