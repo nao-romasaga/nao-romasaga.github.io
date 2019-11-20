@@ -36,7 +36,7 @@ var EVENT_ABILITY = {
     'dotID39274','dotID3a14c','dotID3a214','dotID38400','dotID3933c','dotID38cfc',
     'dotID3a2dc',"dotID38464"
     ], // 9/30 RS3リマスター (1574190000)
-    1575140400: ["dotID35cf0","dotID4c450", "dotID38cfc","dotID35c28"], // クジンシー
+    1575140400: ["dotID35cf0","dotID4c450", "dotID38cfc","dotID35bc4"], // クジンシー
 };
 
 const ICON_LIST = {
