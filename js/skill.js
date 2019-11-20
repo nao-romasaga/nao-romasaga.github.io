@@ -29,7 +29,7 @@ var optionList = {
     "知力": "skill_deb_chi", "精神": "skill_deb_sei",
     "E": "skill_iryoku_e", "D": "skill_iryoku_d", "C": "skill_iryoku_c",
     "B": "skill_iryoku_b", "A": "skill_iryoku_a", "S": "skill_iryoku_s",
-    "SS": "skill_iryoku_ss", "SSS": "skill_iryoku_sss", "-": "skill_iryoku_none",
+    "SS": "skill_iryoku_ss", "SSS": "skill_iryoku_sss", "-": "skill_iryoku_-",
     "浮遊": "skill_crit_fuyu", "不死": "skill_crit_fushi", "水棲": "skill_crit_suise", "植物": "skill_crit_shoku",
     "虫": "skill_crit_mushi", "骨": "skill_crit_hone", "岩石": "skill_crit_gan", "人間": "skill_crit_nin", "女性": "skill_crit_jo",
     "カエル": "skill_crit_kaeru", "獣": "skill_crit_kemo", "火精": "skill_crit_fire", "魚": "skill_crit_fish", "悪魔": "skill_crit_devil","巨人": "skill_crit_giant", 
@@ -46,7 +46,7 @@ var SKILL_NAME_LABEL = {
     , "zentai": "全体攻撃", "tate": "縦一列攻撃", "yoko": "横一列攻撃", "mikata": "味方単体対象", "kin": "近接攻撃", "en": "遠距離攻撃",
     "jishin": "自身が対象", "fast": "ファスト効果", "delay": "ディレイ効果",
     "iryoku_e": "技威力[E]", "iryoku_d": "技威力[D]", "iryoku_c": "技威力[C]", "iryoku_b": "技威力[B]", "iryoku_a": "技威力[A]",
-    "iryoku_s": "技威力[S]", "iryoku_ss": "技威力[SS]", "iryoku_sss": "技威力[SSS]",
+    "iryoku_s": "技威力[S]", "iryoku_ss": "技威力[SS]", "iryoku_sss": "技威力[SSS]","iryoku_-": "技威力無し",
     "kan": "間接攻撃", "cyoku": "直接攻撃"
     , "crit_fuyu": "浮遊特効", "crit_fushi": "不死特効", "crit_suise": "水棲特効", "crit_shoku": "植物特効", "crit_mushi": "虫特効"
     , "crit_hone": "骨特効", "crit_gan": "岩石特効", "crit_nin": "人間特効", "crit_jo": "女性特効", "crit_kaeru": "カエル特効"
@@ -61,7 +61,7 @@ var SKILL_NAME_SEARCH = {
     "deb_wan": "腕力", "deb_tai": "体力", "deb_kiyo": "器用さ", "deb_suba": "素早さ", "deb_chi": "知力", "deb_sei": "精神",
     "zentai": "敵全体", "tate": "敵縦一列", "yoko": "敵横一列", "mikata": "味方単体", "kin": "近", "en": "遠",
     "jishin": "自身",
-    "iryoku_e": "E", "iryoku_d": "D", "iryoku_c": "C", "iryoku_b": "B", "iryoku_a": "A", "iryoku_s": "S", "iryoku_ss": "SS", "iryoku_sss": "SSS"
+    "iryoku_-": "-", "iryoku_e": "E", "iryoku_d": "D", "iryoku_c": "C", "iryoku_b": "B", "iryoku_a": "A", "iryoku_s": "S", "iryoku_ss": "SS", "iryoku_sss": "SSS"
     , "crit_fuyu": "浮遊", "crit_fushi": "不死", "crit_suise": "水棲", "crit_shoku": "植物", "crit_mushi": "虫"
     , "crit_hone": "骨", "crit_gan": "岩石", "crit_nin": "人間", "crit_jo": "女性", "crit_kaeru": "カエル"
     , "crit_kemo": "獣", "crit_fire": "火精", "crit_fish": "魚", "crit_devil": "悪魔", "crit_giant": "巨人"
@@ -437,6 +437,7 @@ function countSkill(targetList) {
     }
     for (let name in optionList) {
         let key = optionList[name];
+        console.log(name, key);
         $("#count_" + key).text(("  " + tmpList[key].length).slice(-3));
     }
 }
