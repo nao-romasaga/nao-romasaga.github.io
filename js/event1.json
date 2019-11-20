@@ -45,7 +45,7 @@
         {
             "startDay": "11",
             "endDay": "30",
-            "title": "[ガチャ] <br class='hidden pcBlock'>・RS3スペシャルピックアップ ガチャ<br>・RS3復刻 ガチャ<br>・RS3 プラチナ5体ピックアップガチャ",
+            "title": "[ガチャ] <br class='hidden pcBlock'>・RS3スペシャルピックアップ ガチャ<br>・RS3復刻 ガチャ<br>・RS3 プラチナ5体ピックアップガチャ<br>・前夜祭ピックアップガチャ",
             "startSuffix": "<br>12:00 開始",
             "endSuffix": "<br>翌4:00 終了",
             "type": "green"
@@ -101,12 +101,20 @@
         {
             "startDay": "11",
             "endDay": "29",
-            "title": "[イベント] <br class='hidden pcBlock'>・追憶の伏魔殿<br>・激闘！大伏魔殿！<br>・RS3武闘会<br>・修行者の間",
+            "title": "[イベント] <br class='hidden pcBlock'>・追憶の伏魔殿<br>・激闘！大伏魔殿！<br>・RS3武闘会<br>・修行者の間<br>・皇帝の決意！クジンシーとの戦い",
             "endSuffix": "<br>翌04:00 終了",
             "type": "orange",
             "startNone": true
+        },
+        {
+            "startDay": "11",
+            "endDay": "30",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>最終皇帝女/ゲン/ようせい/レオン 2倍",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue",
+            "startNone": true
         }
-    ],
+   ],
     "holiday": [
     ]
 }
