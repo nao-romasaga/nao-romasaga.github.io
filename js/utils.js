@@ -86,8 +86,8 @@ const IRYOKU_LIST = {
     "B": "21〜27",
     "A": "28〜35",
     "S": "36〜44",
-    "SS": "45〜54",
-    "SSS": "55〜69",
+    "SS": "45〜55",
+    "SSS": "56〜73",
 };
 
 function masterLevel(lv) {
