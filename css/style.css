@@ -890,3 +890,10 @@ input[type=range]::-ms-tooltip {
         1px -1px 2px blue,
         -1px -1px 2px blue;    
 }
+
+.partyNowStyle {
+    border: 2px solid #faf0b4;    
+}
+.partyOtherStyle {
+    border: 2px dashed #faf0b4;    
+}
