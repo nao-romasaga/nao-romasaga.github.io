@@ -34,14 +34,24 @@ html {
     .small {
         font-size: 12px !important;
     }
-    .status_plus{
+    .partyNowStyle .status_plus{
         font-size: 15px;
         background-color: rgba(108 , 188,224, 1);
         color: white;
     }
-    .status_minus{
+    .status_plus{
+        font-size: 15px;
+        background-color: rgba(108 , 188,224, 0.7);
+        color: white;
+    }
+    .partyNowStyle .status_minus{
         font-size: 15px;
         background-color: rgba(215 , 100,100, 1);
+        color: white;
+    }
+    .status_minus{
+        font-size: 15px;
+        background-color: rgba(215 , 100,100, 0.7);
         color: white;
     }
     .rareIconSize {
