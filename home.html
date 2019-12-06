@@ -107,6 +107,49 @@
                                     </span>
                                 </p>
                             </div>
+                            <div class="col-6 col-md-3 shadow rounded" style="margin-bottom: 10px;">
+                                <div class="label-text">Rank履歴</div>
+                                <div id="rankHistory">
+                                </div>
+                                <br>
+                                <div style="position: absolute; bottom:0;width:100%">
+                                    <a onclick='$("html,body").animate({scrollTop: $("#RANK_CHART").offset().top}, 500, "swing");' style="padding:2px 5px;border: 1px solid #0000FF; border-radius: 10px;">分布図と推移をみる <i class="fas fa-arrow-circle-down"></i></a>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3 shadow rounded" style="margin-bottom: 10px;">
+                                <div class="label-text"><img src="./img/icon/icon_jewel.png" width="25" height="25">履歴</div>
+                                <div id="jewelHistory">
+                                </div>
+                                <br>
+                                <div style="position: absolute; bottom:0;width:100%">
+                                    <a onclick='$("html,body").animate({scrollTop: $("#JEWEL_CHART").offset().top}, 500, "swing");' style="padding:2px 5px;border: 1px solid #0000FF; border-radius: 10px;">推移をみる <i class="fas fa-arrow-circle-down"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="col-6 col-md-3 shadow rounded" style="position: relative; margin-bottom: 10px;">
+                                <div class="label-text"><i class="fas fa-address-card"></i> ステータス登録数</div>
+                                <div class="text-center kadomaru" style="background-color: rgba(42,169,239,1); color:white; margin:0 10px; padding: 2px 5px;">
+                                    <a href="./inputchar.html" style="color:white" id="inputStyleLogined">ステータス更新 <i class="fas fa-pencil-alt"></i></a>
+                                </div>
+                                登録キャラ数<span class="MY_CHAR_CNT"></span> / <span class="MY_CHAR_RANK"></span>位<br>
+                                HP合計<span id="MY_HP_SUM"></span> / <span id="MY_HP_RANK"></span>位<br>
+                                ST合計<span id="MY_ST_SUM"></span> / <span id="MY_ST_RANK"></span>位<br>
+                                <div style="position: absolute; bottom:0;width:100%">
+                                    <a onclick='$("html,body").animate({scrollTop: $("#CHAR_CHART").offset().top}, 500, "swing");' style="padding:2px 5px;border: 1px solid #0000FF; border-radius: 10px;">分布図をみる <i class="fas fa-arrow-circle-down"></i></a>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3 shadow rounded" style="margin-bottom: 10px;">
+                                <div class="label-text"><i class="fas fa-users"></i> スタイル登録数</div>
+                                <div class="text-center kadomaru" style="background-color: rgba(42,169,239,1); color:white; margin:0 10px;  padding: 2px 5px;">
+                                    <a href="./stylecheck.html" style="color:white" id="inputStyleLogined">所持スタイル更新 <i class="fas fa-pencil-alt"></i></a>
+                                </div>
+                                <img src="./img/icon/icon_ss.png" height="30"> <span class="MY_SSSTYLE_CNT"></span>体 / <span class="MY_SSSTYLE_RANK"></span>位<br>
+                                <img src="./img/icon/icon_s.png" height="30"> <span class="MY_SSTYLE_CNT"></span>体 / <span class="MY_SSTYLE_RANK"></span>位<br>
+                                <img src="./img/icon/icon_a.png" height="30"> <span class="MY_ASTYLE_CNT"></span>体 / <span class="MY_ASTYLE_RANK"></span>位<br>
+                                <span style="line-height: 30px;">合計 <span class="MY_STYLE_CNT"></span>体 / <span class="MY_STYLE_RANK"></span>位</span><br>
+                                <a onclick='$("html,body").animate({scrollTop: $("#STYLE_CHART").offset().top}, 500, "swing");' style="padding:2px 5px;border: 1px solid #0000FF; border-radius: 10px;">分布図をみる <i class="fas fa-arrow-circle-down"></i></a>
+                            </div>
+
                             <div class="col-12">
                                 <div class="label-text m-auto" style="width:95%">マスターレベル</div>
                                 <div class="text-left">
@@ -155,47 +198,6 @@
                                     <input type="number" id="m_tsue" class="MASTER_LV" style="width:30%">
                                     <img src="./img/icon/icon_plus.png" class="paramButton" width="20" height="30" data-param="tsue" data-pm="plus" onclick=""></div>
                             <!-- ////////マスターレベル////////// -->
-                            <div class="col-6 col-md-3 shadow rounded" style="position: relative; margin-bottom: 10px;">
-                                <div class="label-text"><i class="fas fa-address-card"></i> ステータス登録数</div>
-                                <div class="text-center kadomaru" style="background-color: rgba(42,169,239,1); color:white; margin:0 10px; padding: 2px 5px;">
-                                    <a href="./inputchar.html" style="color:white" id="inputStyleLogined">ステータス更新 <i class="fas fa-pencil-alt"></i></a>
-                                </div>
-                                登録キャラ数<span class="MY_CHAR_CNT"></span> / <span class="MY_CHAR_RANK"></span>位<br>
-                                HP合計<span id="MY_HP_SUM"></span> / <span id="MY_HP_RANK"></span>位<br>
-                                ST合計<span id="MY_ST_SUM"></span> / <span id="MY_ST_RANK"></span>位<br>
-                                <div style="position: absolute; bottom:0;width:100%">
-                                    <a onclick='$("html,body").animate({scrollTop: $("#CHAR_CHART").offset().top}, 500, "swing");' style="padding:2px 5px;border: 1px solid #0000FF; border-radius: 10px;">分布図をみる <i class="fas fa-arrow-circle-down"></i></a>
-                                </div>
-                            </div>
-                            <div class="col-6 col-md-3 shadow rounded" style="margin-bottom: 10px;">
-                                <div class="label-text"><i class="fas fa-users"></i> スタイル登録数</div>
-                                <div class="text-center kadomaru" style="background-color: rgba(42,169,239,1); color:white; margin:0 10px;  padding: 2px 5px;">
-                                    <a href="./stylecheck.html" style="color:white" id="inputStyleLogined">所持スタイル更新 <i class="fas fa-pencil-alt"></i></a>
-                                </div>
-                                <img src="./img/icon/icon_ss.png" height="30"> <span class="MY_SSSTYLE_CNT"></span>体 / <span class="MY_SSSTYLE_RANK"></span>位<br>
-                                <img src="./img/icon/icon_s.png" height="30"> <span class="MY_SSTYLE_CNT"></span>体 / <span class="MY_SSTYLE_RANK"></span>位<br>
-                                <img src="./img/icon/icon_a.png" height="30"> <span class="MY_ASTYLE_CNT"></span>体 / <span class="MY_ASTYLE_RANK"></span>位<br>
-                                <span style="line-height: 30px;">合計 <span class="MY_STYLE_CNT"></span>体 / <span class="MY_STYLE_RANK"></span>位</span><br>
-                                <a onclick='$("html,body").animate({scrollTop: $("#STYLE_CHART").offset().top}, 500, "swing");' style="padding:2px 5px;border: 1px solid #0000FF; border-radius: 10px;">分布図をみる <i class="fas fa-arrow-circle-down"></i></a>
-                            </div>
-                            <div class="col-6 col-md-3 shadow rounded" style="margin-bottom: 10px;">
-                                <div class="label-text">Rank履歴</div>
-                                <div id="rankHistory">
-                                </div>
-                                <br>
-                                <div style="position: absolute; bottom:0;width:100%">
-                                    <a onclick='$("html,body").animate({scrollTop: $("#RANK_CHART").offset().top}, 500, "swing");' style="padding:2px 5px;border: 1px solid #0000FF; border-radius: 10px;">分布図と推移をみる <i class="fas fa-arrow-circle-down"></i></a>
-                                </div>
-                            </div>
-                            <div class="col-6 col-md-3 shadow rounded" style="margin-bottom: 10px;">
-                                <div class="label-text"><img src="./img/icon/icon_jewel.png" width="25" height="25">履歴</div>
-                                <div id="jewelHistory">
-                                </div>
-                                <br>
-                                <div style="position: absolute; bottom:0;width:100%">
-                                    <a onclick='$("html,body").animate({scrollTop: $("#JEWEL_CHART").offset().top}, 500, "swing");' style="padding:2px 5px;border: 1px solid #0000FF; border-radius: 10px;">推移をみる <i class="fas fa-arrow-circle-down"></i></a>
-                                </div>
-                            </div>
                             <div class="col-12" style='margin-bottom: 0px;'>
                                 <span class="opacity kadomaru">キャラクターをタップすると<br class="d-md-none">そのキャラの<i class="fas fa-crown"></i>育成ランキング遷移できます</span>
                             </div>
