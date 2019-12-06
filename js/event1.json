@@ -4,7 +4,7 @@
     "event": [
         {
             "startDay": "1",
-            "endDay": "14",
+            "endDay": "31",
             "title": "[ガチャ] <br class='hidden pcBlock'>・1周年記念 Romancing祭 エレン編<br>・1周年記念 Romancing祭 アセルス編",
             "endSuffix": "<br>翌4:00 終了",
             "type": "green",
@@ -52,7 +52,7 @@
         },
         {
             "startDay": "1",
-            "endDay": "10",
+            "endDay": "31",
             "title": "[キャンペーン] <br class='hidden pcBlock'>財宝収集 オーラム2倍<br>洞窟修練 挑戦回数2倍",
             "startSuffix": "<br>04:00 開始",
             "endSuffix": "<br>翌4:00 終了",
