@@ -1,1 +1,536 @@
-var _0x3cf9=['#UPDATE','UPDATE','#CHAR_COUNT','length','DotId','Dot','Name','Series','WeaponType','SeriesFilter','WeaponTypeFilter','size','d-none','.initialShow','slideUp','search','substr','split','html,body','animate','#RANKKING_TABLE','offset','.filterList','click','parent','toggleClass','filterActive','clickFilter','ourchar','href','floor','.dotBackground','each','data-type','hasClass','push','data-label','clearFilter','MAXSUM','join','\x20&\x20','<br>','html','setFilter','.tabulator-header,\x20.tabulator-footer,\x20.tabulator-page','.tabulator-cell','tabulator-field','indexOf','event','clickChar','#badge','top','#STYLE_LINK','./style.html?s=','#initialHide','MAX','text','MAXHP','.MAXSUM','#RANK_COUNT','#INPUT_COUNT','%0D%0A','.STYLE_ROW','remove','.charName','log','Holders','#STYLE_TEMPLATE','clone','removeAttr','find','.rare','./img/icon/icon_','Rarity','.png','.icn','./img/style_icon/','Limit','Ind','<img\x20src=\x22./img/icon/icon_ind_','.png\x22\x20width=15>','\x20<span\x20class=\x22d-none\x20d-md-inline\x22>',')</span>','\x20<span\x20class=\x22d-none\x20d-md-inline\x22>(','#styleLabelRow','after','css','background-color','lightgreen','rgba(0,0,0,\x200.2)','.IMG','.SUM','CHAR','all','no\x20login','MATCH','NONE','.YOUR','.LIMIT','.YOURSUM','.USER_RANK_DISP','list','UID','RANK','sort','kyogiList','#USER_RANK','before','協議中','KYOGI','計算中','.rankingTweet','pt)<br>入力内容を再確認するか画像付きで報告お願い致します','pt)','#MY_RANK','#charDotAruku','char-utau','char-aruku','char-hashiri','#charDot','<span\x20class=\x22char\x20dot_mid\x20dot\x20char-winner\x22\x20style=\x22background:\x20url(./img/dot/','style','background:\x20url(./img/dot/','.png)\x20no-repeat;\x20margin:\x200\x2010px;','でランキング','slice','STR','VIT','DEX','AGI','INT','MND','ロマサガRS便利ツール,ロマサガRS育成ランキング','育成ランキング\x20[ロマサガRS便利ツール]\x20','https://twitter.com/intent/tweet?text=','&url=https://nao-romasaga.github.io/ourchar.html?c=','&hashtags=','@nao_romasaga_rs\x20育成ランキング\x20協議解除申請\x20','.kaijoTweet','small','<tr>','bg-white','append','<td\x20class=\x27paramCell2\x27>','\x20</td>','<i\x20class=\x22fas\x20fa-crown\x20small\x22>','</i>','<td\x20class=\x27paramCell2\x20small\x27>','</td>','\x20background-color:darkorchid;\x20color:yellow;','<td\x20class=\x27paramCell2\x27\x20style=\x27','.STYLE_MAX','<td\x20class=\x27paramCell2\x27\x20style=\x27background-color:lightgreen;\x27>','<td\x20class=\x27paramCell2\x27\x20style=\x27background-color:red;\x20color:white;\x27>','#example-table','<img\x20src=\x22./img/dot/','.png\x22\x20style=\x22object-position:\x20-10px\x20-10px\x22>','icon','<span\x20class=\x22icon_mini_zokusei\x20','\x22></span>','desc','#example-table-display','number','fitColumns','rank','right','assign','MAXVIT','MAXAGI','MAXINT','MAXMND','MAXAI','<span\x20class=\x22hidden\x20pcBlock\x22>合</span>計','AVG','登録数','undefined','https://nao-romasaga.github.io/ourchar.html','auth','TwitterAuthProvider','PROVIDER_ID','start','#firebaseui-auth-container','.isLogin','removeClass','hide','<img>','attr','src','photoURL','width:40px;\x20heidht:40px;\x20\x20\x20\x20border-radius:\x2050%;','displayName','\x20さん:ログイン中','addClass','bg-white\x20kadomaru','LIST'];(function(_0x3ac58a,_0x43560a){var _0x3490eb=function(_0x4e88b7){while(--_0x4e88b7){_0x3ac58a['push'](_0x3ac58a['shift']());}};_0x3490eb(++_0x43560a);}(_0x3cf9,0x172));var _0x3cc6=function(_0x385ad0,_0x12053e){_0x385ad0=_0x385ad0-0x0;var _0x2d527f=_0x3cf9[_0x385ad0];return _0x2d527f;};if(typeof firebase===_0x3cc6('0x0')){initialLoad();}var tableLimit=0xf;var MY_DATA_LIST=[];var CHAR_RANK;var table;var totalThreathold=0xd;var OVER_LIMIT=0x2;var login=![];function _noLoginInitial(){var _0x189cb2={'signInSuccessUrl':_0x3cc6('0x1'),'signInOptions':[firebase[_0x3cc6('0x2')][_0x3cc6('0x3')][_0x3cc6('0x4')]]};var _0x1e6041=new firebaseui[(_0x3cc6('0x2'))]['AuthUI'](firebase[_0x3cc6('0x2')](appUsers));_0x1e6041[_0x3cc6('0x5')](_0x3cc6('0x6'),_0x189cb2);initialLoad();}function _initial(){login=!![];$('.noLogin')['hide']();$(_0x3cc6('0x7'))[_0x3cc6('0x8')]('d-none');$('#loginInfo')[_0x3cc6('0x9')]();let _0x9ef2d2=$(_0x3cc6('0xa'))[_0x3cc6('0xb')](_0x3cc6('0xc'),USER[_0x3cc6('0xd')])[_0x3cc6('0xb')]('style',_0x3cc6('0xe'));let _0x5b9195=USER[_0x3cc6('0xf')]+_0x3cc6('0x10');$(_0x3cc6('0x6'))[_0x3cc6('0x11')](_0x3cc6('0x12'))['append'](_0x9ef2d2)['append'](_0x5b9195);initialLoad();}async function initialLoad(){CHAR_RANK=RANK_LIST[_0x3cc6('0x13')];$(_0x3cc6('0x14'))['text'](RANK_LIST[_0x3cc6('0x15')]);$(_0x3cc6('0x16'))['text'](CHAR_RANK[_0x3cc6('0x17')]);let _0x312faa=0x1869f;let _0x463863=0x1;for(let _0x2f787a in CHAR_RANK){let _0x6ea20f=CHAR_RANK[_0x2f787a]['Id'];if(CHAR_MASTER[_0x6ea20f]===undefined){continue;}CHAR_RANK[_0x2f787a][_0x3cc6('0x18')]=_0x3cc6('0x19')+CHAR_MASTER[_0x6ea20f]['DotId'];CHAR_RANK[_0x2f787a][_0x3cc6('0x1a')]=CHAR_MASTER[_0x6ea20f]['Name'];CHAR_RANK[_0x2f787a][_0x3cc6('0x1b')]=CHAR_MASTER[_0x6ea20f]['Series'];CHAR_RANK[_0x2f787a]['WeaponType']=ICON_LIST[CHAR_MASTER[_0x6ea20f][_0x3cc6('0x1c')]];CHAR_RANK[_0x2f787a][_0x3cc6('0x1d')]=CHAR_MASTER[_0x6ea20f][_0x3cc6('0x1b')];CHAR_RANK[_0x2f787a][_0x3cc6('0x1e')]=ICON_LIST[CHAR_MASTER[_0x6ea20f][_0x3cc6('0x1c')]];if(_0x312faa>Number(CHAR_RANK[_0x2f787a][_0x3cc6('0x1f')])){_0x312faa=Number(CHAR_RANK[_0x2f787a]['size']);_0x463863=Number(_0x2f787a)+0x1;}CHAR_RANK[_0x2f787a]['rank']=_0x463863;}drawTable(CHAR_RANK);$('.initialHide')[_0x3cc6('0x8')](_0x3cc6('0x20'));$(_0x3cc6('0x21'))[_0x3cc6('0x22')]();if(location[_0x3cc6('0x23')]!==''){let _0xd2a36e=location[_0x3cc6('0x23')][_0x3cc6('0x24')](0x3);let _0xacd5b3=_0xd2a36e[_0x3cc6('0x25')]('&');if(CHAR_MASTER[_0xacd5b3[0x0]]!==undefined){dispRanking(_0xacd5b3[0x0]);$(_0x3cc6('0x26'))[_0x3cc6('0x27')]({'scrollTop':$(_0x3cc6('0x28'))[_0x3cc6('0x29')]()['top']},0x1f4,'swing');}}}$(_0x3cc6('0x2a'))[_0x3cc6('0x2b')](function(){$(this)[_0x3cc6('0x2c')]()[_0x3cc6('0x2d')](_0x3cc6('0x2e'));if(table===undefined){return;}filter();gtag('event',_0x3cc6('0x2f'),{'event_category':_0x3cc6('0x30'),'event_label':$(this)[_0x3cc6('0xb')](_0x3cc6('0x31'))[_0x3cc6('0x24')](0x1),'value':0x1});});let rand=Math[_0x3cc6('0x32')](Math['random']()*0x5);$(_0x3cc6('0x33'))[_0x3cc6('0x11')]('bg'+(rand+0x1));function filter(){let _0x5a3874=[];let _0x183d9d=[];let _0x3ffa68=[];let _0xee09c6=[];$(_0x3cc6('0x2a'))[_0x3cc6('0x34')](function(){let _0x5bd09e=$(this)['attr'](_0x3cc6('0x35'));let _0x56436f=$(this)[_0x3cc6('0xb')](_0x3cc6('0x31'))[_0x3cc6('0x24')](0x1);if($(this)[_0x3cc6('0x2c')]()[_0x3cc6('0x36')](_0x3cc6('0x2e'))){if(_0x5bd09e==='WeaponTypeFilter'){_0x5a3874[_0x3cc6('0x37')]({'field':_0x5bd09e,'type':'=','value':_0x56436f});_0x3ffa68['push']($(this)[_0x3cc6('0xb')](_0x3cc6('0x38')));}else{_0x183d9d[_0x3cc6('0x37')]({'field':_0x5bd09e,'type':'=','value':_0x56436f});_0xee09c6['push'](_0x56436f);}}});let _0x310569='';table[_0x3cc6('0x39')]();let _0x18504d=[{'field':_0x3cc6('0x3a'),'type':'>','value':0x0}];if(_0x5a3874[_0x3cc6('0x17')]>0x0){_0x18504d['push'](_0x5a3874);_0x310569+='武器種:'+_0x3ffa68[_0x3cc6('0x3b')](',');}if(_0x183d9d['length']>0x0){_0x18504d[_0x3cc6('0x37')](_0x183d9d);if(_0x310569!==''){_0x310569+=_0x3cc6('0x3c');}_0x310569+=_0xee09c6[_0x3cc6('0x3b')](',');}if(_0x310569!==''){_0x310569+=_0x3cc6('0x3d');}$('#label1')[_0x3cc6('0x3e')](_0x310569);table[_0x3cc6('0x3f')](_0x18504d);changeId2Dot();}$(document)['on']('click',_0x3cc6('0x40'),function(){changeId2Dot();});$(document)['on'](_0x3cc6('0x2b'),'.tabulator-cell',function(){$(this)[_0x3cc6('0x2c')]()['find'](_0x3cc6('0x41'))['each'](async function(){let _0x4080fc=$(this)['text']();let _0x36b08e=$(this)[_0x3cc6('0xb')](_0x3cc6('0x42'));if(_0x4080fc[_0x3cc6('0x43')]('ID')>-0x1){dispRanking(_0x4080fc);}else if(_0x36b08e===_0x3cc6('0x1a')){gtag(_0x3cc6('0x44'),_0x3cc6('0x45'),{'event_category':_0x3cc6('0x30'),'event_label':_0x4080fc,'value':0x1});}});$(_0x3cc6('0x26'))[_0x3cc6('0x27')]({'scrollTop':$(_0x3cc6('0x46'))[_0x3cc6('0x29')]()[_0x3cc6('0x47')]},0x1f4,'swing');});async function dispRanking(_0xb94bd9){$(_0x3cc6('0x48'))['attr']('href',_0x3cc6('0x49')+CHAR_MASTER[_0xb94bd9]['Holders'][0x0]);$(_0x3cc6('0x4a'))[_0x3cc6('0x8')](_0x3cc6('0x20'));let _0x4a49e4={'STR':0x0,'VIT':0x0,'DEX':0x0,'AGI':0x0,'INT':0x0,'MND':0x0,'AI':0x0,'MI':0x0,'SUM':0x0};for(let _0xa6fdf of PARAM_KEY){_0x4a49e4[_0xa6fdf]=CHAR_MASTER[_0xb94bd9][_0x3cc6('0x4b')+_0xa6fdf]===-0x63?'?':LIMIT_BASE+Number(CHAR_MASTER[_0xb94bd9][_0x3cc6('0x4b')+_0xa6fdf]);}var _0x562c36=0x0;for(let _0x47e20d in CHAR_RANK){if(CHAR_RANK[_0x47e20d]['Id']===_0xb94bd9){for(let _0xa6fdf of PARAM_KEY){$('.MAX'+_0xa6fdf)[_0x3cc6('0x4c')](CHAR_RANK[_0x47e20d]['MAX'+_0xa6fdf]);}_0x562c36=CHAR_RANK[_0x47e20d][_0x3cc6('0x4d')];$(_0x3cc6('0x4e'))[_0x3cc6('0x4c')](CHAR_RANK[_0x47e20d][_0x3cc6('0x3a')]);$(_0x3cc6('0x4f'))[_0x3cc6('0x4c')](CHAR_RANK[_0x47e20d]['rank']);$(_0x3cc6('0x50'))[_0x3cc6('0x4c')](CHAR_RANK[_0x47e20d][_0x3cc6('0x1f')]);break;}}let _0x90d283='';let _0x5267fe='';let _0x4fd30f=_0x3cc6('0x51');$(_0x3cc6('0x52'))[_0x3cc6('0x53')]();_0x90d283=CHAR_MASTER[_0xb94bd9][_0x3cc6('0x1a')];$(_0x3cc6('0x54'))[_0x3cc6('0x4c')](_0x90d283);console[_0x3cc6('0x55')](CHAR_MASTER[_0xb94bd9]);for(let _0x2a6b9c of CHAR_MASTER[_0xb94bd9][_0x3cc6('0x56')]){let _0x19287f=STYLE_MASTER[_0x2a6b9c];console[_0x3cc6('0x55')](_0x19287f);let _0x2e8867=$(_0x3cc6('0x57'))[_0x3cc6('0x58')]();_0x2e8867[_0x3cc6('0x59')]('id');_0x2e8867[_0x3cc6('0x11')]('STYLE_ROW');_0x2e8867[_0x3cc6('0x8')](_0x3cc6('0x20'));_0x2e8867[_0x3cc6('0x5a')](_0x3cc6('0x5b'))[_0x3cc6('0xb')](_0x3cc6('0xc'),_0x3cc6('0x5c')+_0x19287f[_0x3cc6('0x5d')]+_0x3cc6('0x5e'));_0x2e8867[_0x3cc6('0x5a')](_0x3cc6('0x5f'))[_0x3cc6('0xb')](_0x3cc6('0xc'),_0x3cc6('0x60')+_0x2a6b9c+_0x3cc6('0x5e'));let _0x5da5c5=0x0;let _0x226cf0=0x0;for(let _0xa6fdf of PARAM_KEY){let _0x12849d=LIMIT_BASE+Number(_0x19287f[_0x3cc6('0x61')+_0xa6fdf]);var _0x3c5840=_0x19287f[_0x3cc6('0x62')+_0xa6fdf]!==undefined?_0x19287f[_0x3cc6('0x62')+_0xa6fdf]:0x1;var _0x1224ba=_0x3cc6('0x63')+_0x3c5840+_0x3cc6('0x64');var _0x20cf10=_0x19287f['Limit'+_0xa6fdf]-CHAR_MASTER[_0xb94bd9][_0xa6fdf];_0x226cf0+=_0x20cf10;if(_0x19287f[_0x3cc6('0x61')+_0xa6fdf]<0x63){_0x5da5c5+=_0x12849d;}else{_0x12849d='?';}_0x2e8867[_0x3cc6('0x5a')]('.'+_0xa6fdf)['html'](_0x12849d+_0x3cc6('0x65')+_0x1224ba+'('+_0x20cf10+_0x3cc6('0x66'));}_0x2e8867[_0x3cc6('0x5a')]('.SUM')[_0x3cc6('0x3e')](_0x5da5c5+_0x3cc6('0x67')+_0x226cf0+_0x3cc6('0x66'));$(_0x3cc6('0x68'))[_0x3cc6('0x69')](_0x2e8867);}$(_0x3cc6('0x52'))[_0x3cc6('0x34')](function(){for(let _0x667255 of PARAM_KEY){let _0x5883ab=$(this)[_0x3cc6('0x5a')]('.'+_0x667255);var _0x145e3c=_0x5883ab[_0x3cc6('0x4c')]()['split']('\x20');if(_0x145e3c[0x0]==_0x4a49e4[_0x667255]){_0x5883ab[_0x3cc6('0x6a')](_0x3cc6('0x6b'),_0x3cc6('0x6c'));}}});let _0x598707=$(_0x3cc6('0x57'))[_0x3cc6('0x58')]();_0x598707[_0x3cc6('0x59')]('id')[_0x3cc6('0x11')]('STYLE_ROW')['removeClass'](_0x3cc6('0x20'))[_0x3cc6('0x6a')](_0x3cc6('0x6b'),_0x3cc6('0x6d'));_0x598707['find'](_0x3cc6('0x6e'))[_0x3cc6('0x3e')]('最大値');let _0xac25b2=0x0;for(let _0x56ec56 of PARAM_KEY){_0xac25b2+=_0x4a49e4[_0x56ec56]!=='?'?_0x4a49e4[_0x56ec56]:0x0;_0x598707[_0x3cc6('0x5a')]('.'+_0x56ec56)[_0x3cc6('0x4c')](_0x4a49e4[_0x56ec56]);}_0x598707[_0x3cc6('0x5a')]('.SUM')[_0x3cc6('0x4c')](_0xac25b2);_0x598707[_0x3cc6('0x5a')](_0x3cc6('0x6f'))['addClass']('STYLE_MAX');$(_0x3cc6('0x68'))[_0x3cc6('0x69')](_0x598707);let _0x319863=null;if(login){console['log']('isLogin');let _0x3a7005=[];var _0xf362b5=asyncReadUserDataWithId(_0x3cc6('0x70'),_0xb94bd9,function(_0x109445){_0x319863=_0x109445;console[_0x3cc6('0x55')](_0x109445);});_0x3a7005[_0x3cc6('0x37')](_0xf362b5);await Promise[_0x3cc6('0x71')](_0x3a7005);}else{console[_0x3cc6('0x55')](_0x3cc6('0x72'));}let _0x213f86=_0x3cc6('0x73');if(_0x319863===null){_0x213f86=_0x3cc6('0x74');_0x319863={'STR':0x0,'VIT':0x0,'DEX':0x0,'AGI':0x0,'INT':0x0,'MND':0x0,'AI':0x0,'MI':0x0};}let _0x3c6056=0x0;let _0x1b0c11=_0x319863['HP'];for(let _0x1ddc39 of PARAM_KEY){_0x3c6056+=Number(_0x319863[_0x1ddc39]);$(_0x3cc6('0x75')+_0x1ddc39)['text'](_0x319863[_0x1ddc39]);let _0x1c270b=_0x4a49e4[_0x1ddc39]==='?'?'?':_0x4a49e4[_0x1ddc39]-_0x319863[_0x1ddc39];$(_0x3cc6('0x76')+_0x1ddc39)[_0x3cc6('0x4c')](_0x1c270b);}$(_0x3cc6('0x77'))[_0x3cc6('0x4c')](_0x3c6056);$('.LIMITSUM')[_0x3cc6('0x4c')](_0xac25b2===0x0?'?':_0xac25b2-_0x3c6056);let _0x514d82=_0x3c6056;let _0x2abf75=RANK_DETAIL[_0xb94bd9];let _0x5b47e0='';let _0x236d2f=0x1;let _0x58946=0x3e7;var _0x2a35a9=0x0;$(_0x3cc6('0x78'))[_0x3cc6('0x53')]();var _0x5f0151=![];var _0x48f68e=0x0;var _0x3d7616=0x0;for(let _0x2d8b77 in _0x2abf75[_0x3cc6('0x79')]){let _0x8ff0dd=0x0;let _0x2d67b1=_0x2abf75['list'][_0x2d8b77]['HP'];for(let _0x1ddc39 in PARAM_KEY){_0x8ff0dd+=Number(_0x2abf75['list'][_0x2d8b77][_0x1ddc39]);}if(_0x48f68e<_0x8ff0dd){_0x48f68e=_0x8ff0dd;}if(_0x58946>_0x8ff0dd||_0x58946==_0x8ff0dd&&_0x3d7616>_0x2d67b1){_0x58946=_0x8ff0dd;_0x2a35a9=Number(_0x2d8b77)+0x1;}_0x3d7616=_0x2d67b1;if(_0x58946>_0x514d82){_0x236d2f=_0x2a35a9+0x1;}if(!_0x5f0151&&_0x514d82>0x0){if(_0x514d82>_0x8ff0dd||_0x514d82==_0x8ff0dd&&_0x1b0c11>=_0x3d7616){_0x5f0151=!![];_0x236d2f=_0x2a35a9;addRankRow(_0x2a35a9,_0x319863,_0x562c36,_0x4a49e4,_0x514d82,!![]);_0x2a35a9++;}}if(_0x2d8b77<OURSTYLE_LIMIT){if(UID!==undefined&&UID[_0x3cc6('0x24')](0x0,0x4)===_0x2abf75['list'][_0x2d8b77][_0x3cc6('0x7a')]&&_0x5f0151){}else{addRankRow(_0x2a35a9,_0x2abf75['list'][_0x2d8b77],_0x562c36,_0x4a49e4,_0x8ff0dd,![]);}}}if(!_0x5f0151&&_0x213f86!=='NONE'&&_0x514d82>0x0){var _0x4b9928=[];for(let _0x117441 in _0x2abf75[_0x3cc6('0x7b')]){_0x4b9928['push']({'p':_0x117441,'s':_0x2abf75[_0x3cc6('0x7b')][_0x117441]});}_0x4b9928[_0x3cc6('0x7c')]((_0x194592,_0x5070f9)=>{if(_0x194592['p']<_0x5070f9['p']){return-0x1;}else{return-0x1;}});var _0x2c1230=0x1;var _0x212de5=![];for(var _0x217a97 of _0x4b9928){if(_0x514d82>=_0x217a97['p']){_0x236d2f=_0x2c1230;_0x212de5=!![];break;}else{_0x2c1230+=Number(_0x217a97['s']);}}if(!_0x212de5){_0x236d2f=_0x2c1230;}addRankRow(_0x236d2f,_0x319863,_0x562c36,_0x4a49e4,_0x514d82,!![]);}if(_0x2abf75[_0x3cc6('0x7d')]!==undefined){$(_0x3cc6('0x7e'))[_0x3cc6('0x7f')]('<tr\x20class=\x27USER_RANK_DISP\x27\x20style=\x27background-color:red;\x20color:white;\x27><td\x20colspan=11>協議中</td></tr>');}_0x2a35a9=_0x3cc6('0x80');for(let _0x225526 in _0x2abf75[_0x3cc6('0x7d')]){let _0x39e5b5=0x0;let _0x3ab86a=![];for(let _0x1ddc39 in PARAM_KEY){_0x39e5b5+=Number(_0x2abf75[_0x3cc6('0x7d')][_0x225526][_0x1ddc39]);}if(UID!==undefined&&UID[_0x3cc6('0x24')](0x0,0x4)===_0x2abf75['kyogiList'][_0x225526][_0x3cc6('0x7a')]){_0x213f86=_0x3cc6('0x81');_0x3ab86a=!![];}if(_0x225526<0xa){if(_0x3ab86a){addRankRow(_0x2a35a9,_0x2abf75[_0x3cc6('0x7d')][_0x225526],_0x562c36,_0x4a49e4,_0x39e5b5,!![]);}else{addRankRow(_0x2a35a9,_0x2abf75[_0x3cc6('0x7d')][_0x225526],_0x562c36,_0x4a49e4,_0x39e5b5,![]);}}}_0x236d2f=_0x236d2f==0x1&&_0x48f68e>_0x514d82?_0x3cc6('0x82'):_0x236d2f+'位';$(_0x3cc6('0x83'))['parent']()['removeClass'](_0x3cc6('0x20'));if(_0x213f86===_0x3cc6('0x81')){_0x5267fe='暫定'+_0x236d2f+'位';_0x5b47e0=_0x236d2f+'('+_0x514d82+_0x3cc6('0x84');}else if(_0x213f86===_0x3cc6('0x73')){_0x5267fe=_0x236d2f;_0x5b47e0=_0x236d2f+'('+_0x514d82+_0x3cc6('0x85');}else{$(_0x3cc6('0x83'))['parent']()[_0x3cc6('0x11')](_0x3cc6('0x20'));_0x5b47e0='登録がありません';}$(_0x3cc6('0x86'))[_0x3cc6('0x3e')](_0x5b47e0);$(_0x3cc6('0x87'))[_0x3cc6('0x8')](_0x3cc6('0x88'))[_0x3cc6('0x8')](_0x3cc6('0x89'))[_0x3cc6('0x8')](_0x3cc6('0x8a'));if(Number(_0x236d2f)===0x1){$(_0x3cc6('0x87'))['addClass'](_0x3cc6('0x88'));}else if(Number(_0x236d2f)<=0xa){$(_0x3cc6('0x87'))['addClass'](_0x3cc6('0x8a'));}else{$(_0x3cc6('0x87'))['addClass'](_0x3cc6('0x89'));}$(_0x3cc6('0x8b'))[_0x3cc6('0x3e')](_0x3cc6('0x8c')+CHAR_MASTER[_0xb94bd9][_0x3cc6('0x18')]+'.png)\x20no-repeat;\x20margin:\x200\x2010px;\x22></span>');$(_0x3cc6('0x87'))[_0x3cc6('0xb')](_0x3cc6('0x8d'),_0x3cc6('0x8e')+CHAR_MASTER[_0xb94bd9][_0x3cc6('0x18')]+_0x3cc6('0x8f'));let _0x4199a7=_0x90d283+_0x3cc6('0x90')+_0x5267fe+'!!'+_0x4fd30f;_0x4199a7+='HP/腕/体/器/速/知/精/愛/魅/合計'+_0x4fd30f;_0x4199a7+=('0'+_0x319863['HP'])[_0x3cc6('0x91')](-0x3)+'/';_0x4199a7+=('0'+_0x319863[_0x3cc6('0x92')])[_0x3cc6('0x91')](-0x2)+'/';_0x4199a7+=('0'+_0x319863[_0x3cc6('0x93')])[_0x3cc6('0x91')](-0x2)+'/';_0x4199a7+=('0'+_0x319863[_0x3cc6('0x94')])[_0x3cc6('0x91')](-0x2)+'/';_0x4199a7+=('0'+_0x319863[_0x3cc6('0x95')])[_0x3cc6('0x91')](-0x2)+'/';_0x4199a7+=('0'+_0x319863[_0x3cc6('0x96')])['slice'](-0x2)+'/';_0x4199a7+=('0'+_0x319863[_0x3cc6('0x97')])['slice'](-0x2)+'/';_0x4199a7+=('0'+_0x319863['AI'])[_0x3cc6('0x91')](-0x2)+'/';_0x4199a7+=('0'+_0x319863['MI'])[_0x3cc6('0x91')](-0x2)+'/';_0x4199a7+=('0'+_0x3c6056)[_0x3cc6('0x91')](-0x3)+_0x4fd30f;let _0x2bc158=_0x3cc6('0x98');let _0x3d1d37=_0x3cc6('0x99')+_0x4fd30f+_0x4199a7;let _0x3745d5=_0x3cc6('0x9a')+_0x3d1d37+_0x3cc6('0x9b')+_0xb94bd9+_0x3cc6('0x9c')+_0x2bc158;$(_0x3cc6('0x83'))[_0x3cc6('0xb')](_0x3cc6('0x31'),_0x3745d5);let _0x3948aa=_0x3cc6('0x9d')+_0x4fd30f+_0x4199a7;let _0x4c426a=_0x3cc6('0x9a')+_0x3948aa+'&url=https://nao-romasaga.github.io/ourchar.html?c='+_0xb94bd9+_0x3cc6('0x9c')+_0x2bc158;$(_0x3cc6('0x9e'))[_0x3cc6('0xb')](_0x3cc6('0x31'),_0x4c426a);}function addRankRow(_0xb028b3,_0x350b73,_0x494710,_0x3cf58c,_0xed002,_0x154741){let _0x58c55c=_0xb028b3===_0x3cc6('0x80')?_0x3cc6('0x9f'):'';let _0x552c62=$(_0x3cc6('0xa0'))['addClass']('text-center\x20USER_RANK_DISP\x20'+_0x58c55c);if(_0x154741){_0x552c62[_0x3cc6('0x11')](_0x3cc6('0xa1'));}_0x552c62[_0x3cc6('0xa2')](_0x3cc6('0xa3')+_0xb028b3+_0x3cc6('0xa4'));let _0x434d04=_0x350b73['HP']===undefined?'-':_0x350b73['HP'];if(_0x494710===_0x434d04){_0x434d04=_0x3cc6('0xa5')+_0x434d04+_0x3cc6('0xa6');}_0x552c62[_0x3cc6('0xa2')](_0x3cc6('0xa7')+_0x434d04+_0x3cc6('0xa8'));for(let _0x446c22 in PARAM_KEY){let _0x14231a=PARAM_KEY[_0x446c22];let _0x17398f=_0x350b73[_0x446c22]===undefined?_0x350b73[_0x14231a]:_0x350b73[_0x446c22];let _0x486687='';if(_0x3cf58c[_0x14231a]>0x0){if(_0x17398f<_0x3cf58c[_0x14231a]){_0x486687='';}else if(_0x17398f===_0x3cf58c[_0x14231a]){_0x486687='\x20background-color:lightgreen;';}else if(_0x17398f<_0x3cf58c[_0x14231a]+OVER_LIMIT){_0x486687='\x20background-color:yellow;';}else if(_0x17398f==_0x3cf58c[_0x14231a]+OVER_LIMIT){_0x486687=_0x3cc6('0xa9');}else{_0x486687='\x20background-color:red;\x20color:white;';}}_0x552c62[_0x3cc6('0xa2')](_0x3cc6('0xaa')+_0x486687+'\x27>'+_0x17398f+_0x3cc6('0xa8'));}if(Number($(_0x3cc6('0xab'))[_0x3cc6('0x4c')]())>_0xed002){_0x552c62[_0x3cc6('0xa2')](_0x3cc6('0xa7')+_0xed002+_0x3cc6('0xa8'));}else if(Number($(_0x3cc6('0xab'))[_0x3cc6('0x4c')]())==_0xed002){_0x552c62[_0x3cc6('0xa2')](_0x3cc6('0xac')+_0xed002+'</td>');}else if(Number($(_0x3cc6('0xab'))['text']()+totalThreathold)<_0xed002){_0x552c62[_0x3cc6('0xa2')](_0x3cc6('0xad')+_0xed002+_0x3cc6('0xa8'));}else{_0x552c62[_0x3cc6('0xa2')]('<td\x20class=\x27paramCell2\x27\x20style=\x27background-color:yellow;\x27>'+_0xed002+_0x3cc6('0xa8'));}$(_0x3cc6('0x7e'))[_0x3cc6('0x7f')](_0x552c62);}function changeId2Dot(){$(_0x3cc6('0xae'))[_0x3cc6('0x5a')](_0x3cc6('0x41'))[_0x3cc6('0x34')](function(){let _0x259ab5=$(this)['text']();if(_0x259ab5[_0x3cc6('0x43')](_0x3cc6('0x19'))>-0x1){let _0x12e367=_0x3cc6('0xaf')+_0x259ab5['substr'](0x3)+_0x3cc6('0xb0');$(this)[_0x3cc6('0x3e')](_0x12e367);}else if(_0x259ab5['indexOf'](_0x3cc6('0xb1'))>-0x1){let _0x110801=_0x3cc6('0xb2')+_0x259ab5+_0x3cc6('0xb3');$(this)[_0x3cc6('0x3e')](_0x110801);}});}function drawTable(_0x48d2a3,_0x34d7a6){let _0x42fd80=_0x34d7a6===undefined?_0x3cc6('0xb4'):_0x34d7a6;$(_0x3cc6('0xae'))[_0x3cc6('0x53')]();$(_0x3cc6('0xb5'))[_0x3cc6('0xa2')]('<div\x20id=\x22example-table\x22\x20style=\x22width:100%\x22></div>');let _0x1f9925={'align':'right','sortable':!![],'sorter':_0x3cc6('0xb6'),'minWidth':0x1e,'width':0x1e,'responsive':0xd};table=new Tabulator(_0x3cc6('0xae'),{'layout':_0x3cc6('0xb7'),'data':_0x48d2a3,'tooltips':![],'history':!![],'pagination':'local','paginationSize':tableLimit,'initialSort':[{'column':_0x3cc6('0x3a'),'dir':_0x42fd80}],'autoResize':![],'resizableRows':![],'resizableColumns':![],'responsiveLayout':!![],'columns':[{'title':'','field':'DotId','width':0x1e,'frozen':!![]},{'title':'','field':'Id','visible':![]},{'title':'','field':'UserId','visible':![]},{'title':'','field':_0x3cc6('0x1d'),'visible':![]},{'title':'','field':_0x3cc6('0x1e'),'visible':![]},{'title':'rank','field':_0x3cc6('0xb8'),'visible':![]},{'title':'名前','field':_0x3cc6('0x1a'),'width':0x64},{'title':'作品','field':_0x3cc6('0x1b'),'width':0x1e,'responsive':0xe},{'title':'武器','field':_0x3cc6('0x1c'),'width':0x1e,'responsive':0xe},{'title':'HP','field':_0x3cc6('0x4d'),'align':_0x3cc6('0xb9'),'sortable':!![],'sorter':'number','minWidth':0x37,'width':0x37,'responsive':0xc},Object[_0x3cc6('0xba')]({'title':'腕','field':'MAXSTR'},_0x1f9925),Object[_0x3cc6('0xba')]({'title':'体','field':_0x3cc6('0xbb')},_0x1f9925),Object[_0x3cc6('0xba')]({'title':'器','field':'MAXDEX'},_0x1f9925),Object[_0x3cc6('0xba')]({'title':'速','field':_0x3cc6('0xbc')},_0x1f9925),Object['assign']({'title':'知','field':_0x3cc6('0xbd')},_0x1f9925),Object['assign']({'title':'精','field':_0x3cc6('0xbe')},_0x1f9925),Object[_0x3cc6('0xba')]({'title':'愛','field':_0x3cc6('0xbf')},_0x1f9925),Object[_0x3cc6('0xba')]({'title':'魅','field':'MAXMI'},_0x1f9925),{'title':_0x3cc6('0xc0'),'field':'MAXSUM','sortable':!![],'sorter':_0x3cc6('0xb6')},{'title':'平均','field':_0x3cc6('0xc1'),'sortable':!![],'sorter':_0x3cc6('0xb6'),'responsive':0xb},{'title':_0x3cc6('0xc2'),'field':_0x3cc6('0x1f'),'responsive':0xc}]});table[_0x3cc6('0x3f')](_0x3cc6('0x3a'),'>',0x0);changeId2Dot();}
+if(typeof firebase === 'undefined'){
+    // 接続がない場合は即実行。そうでない場合はログイン処理待ち
+    initialLoad();
+}
+
+var tableLimit = 15;
+var MY_DATA_LIST = [];
+var CHAR_RANK;
+var table;
+// 合計の外れ範囲通常7、3倍
+var totalThreathold = 13;
+var OVER_LIMIT = 2; // 通常はオーバーして良いのは1。3倍中は2
+var login = false;
+
+function _noLoginInitial() {
+    var uiConfig = {
+        // ログイン完了時のリダイレクト先
+        signInSuccessUrl: 'https://nao-romasaga.github.io/ourchar.html',
+        // 利用する認証機能
+        signInOptions: [
+            firebase.auth.TwitterAuthProvider.PROVIDER_ID
+        ],
+    };
+    var ui = new firebaseui.auth.AuthUI(firebase.auth(appUsers));
+    ui.start('#firebaseui-auth-container', uiConfig);
+    initialLoad();
+}
+function _initial() {
+    login = true;
+    $(".noLogin").hide();
+    $(".isLogin").removeClass("d-none");
+    $("#loginInfo").hide();
+    let icon = $("<img>").attr("src", USER.photoURL)
+            .attr("style", "width:40px; heidht:40px;    border-radius: 50%;");
+    let name = `${USER.displayName} さん:ログイン中`;
+    $("#firebaseui-auth-container").addClass("bg-white kadomaru")
+            .append(icon).append(name);
+    initialLoad();
+}
+
+async function initialLoad() {
+    CHAR_RANK = RANK_LIST['LIST'];
+    $("#UPDATE").text(RANK_LIST['UPDATE']);
+
+    $("#CHAR_COUNT").text(CHAR_RANK.length);
+    let nowSize = 99999;
+    let nowRank = 1;
+    for (let i in CHAR_RANK) {
+        let id = CHAR_RANK[i]['Id'];
+        if (CHAR_MASTER[id] === undefined) {
+            continue;
+        }
+        CHAR_RANK[i]['DotId'] = "Dot" + CHAR_MASTER[id]['DotId'];
+        CHAR_RANK[i]['Name'] = CHAR_MASTER[id]['Name'];
+        CHAR_RANK[i]['Series'] = CHAR_MASTER[id]['Series'];
+        CHAR_RANK[i]['WeaponType'] = ICON_LIST[CHAR_MASTER[id]['WeaponType']];
+        CHAR_RANK[i]['SeriesFilter'] = CHAR_MASTER[id]['Series'];
+        CHAR_RANK[i]['WeaponTypeFilter'] = ICON_LIST[CHAR_MASTER[id]['WeaponType']];
+        if (nowSize > Number(CHAR_RANK[i]['size'])) {
+            nowSize = Number(CHAR_RANK[i]['size']);
+            nowRank = Number(i) + 1;
+        }
+        CHAR_RANK[i]['rank'] = nowRank;
+    }
+    drawTable(CHAR_RANK);
+    $(".initialHide").removeClass("d-none");
+    $(".initialShow").slideUp();
+    if (location.search !== "") {
+        let tmp = (location.search).substr(3)
+        let input = tmp.split("&");
+        if (CHAR_MASTER[input[0]] !== undefined) {
+            dispRanking(input[0]);
+            $("html,body").animate({scrollTop: $('#RANKKING_TABLE').offset().top}, 500, 'swing');
+        }
+    }
+}
+
+
+$(".filterList").click(function () {
+    $(this).parent().toggleClass("filterActive");
+    if (table === undefined) {
+        return;
+    }
+    filter();
+    gtag('event', "clickFilter", {'event_category': "ourchar", 'event_label': $(this).attr("href").substr(1), 'value': 1});
+});
+
+let rand = Math.floor(Math.random() * 5);
+$(".dotBackground").addClass("bg" + (rand + 1));
+
+function filter() {
+    let weaopnFilter = [];
+    let seriesFilter = [];
+    let weaopnLabel = [];
+    let seriesLabel = [];
+    $(".filterList").each(function () {
+        let target = $(this).attr("data-type");
+        let value = $(this).attr("href").substr(1);
+        if ($(this).parent().hasClass("filterActive")) {
+            if (target === "WeaponTypeFilter") {
+                weaopnFilter.push({field: target, type: "=", value: value});
+                weaopnLabel.push($(this).attr("data-label"));
+            } else {
+                seriesFilter.push({field: target, type: "=", value: value});
+                seriesLabel.push(value);
+            }
+        }
+    });
+
+    let labels = "";
+    table.clearFilter();
+    let finalFilter = [{field: "MAXSUM", type: ">", value: 0}];
+    if (weaopnFilter.length > 0) {
+        finalFilter.push(weaopnFilter);
+        labels += "武器種:" + weaopnLabel.join(",");
+    }
+    if (seriesFilter.length > 0) {
+        finalFilter.push(seriesFilter);
+        if (labels !== "") {
+            labels += " & "
+        }
+        labels += seriesLabel.join(",");
+    }
+    if (labels !== "") {
+        labels += "<br>";
+    }
+    $("#label1").html(labels);
+    table.setFilter(finalFilter);
+    changeId2Dot();
+}
+
+$(document).on('click', ".tabulator-header, .tabulator-footer, .tabulator-page", function () {
+    changeId2Dot();
+});
+$(document).on('click', ".tabulator-cell", function () {
+    $(this).parent().find(".tabulator-cell").each(async function () {
+        let id = $(this).text();
+        let field = $(this).attr("tabulator-field");
+        if (id.indexOf("ID") > -1) {
+            dispRanking(id);
+        } else if (field === "Name") {
+            gtag('event', "clickChar", {'event_category': "ourchar", 'event_label': id, 'value': 1});
+        }
+    });
+    $("html,body").animate({scrollTop: $('#badge').offset().top}, 500, 'swing');
+});
+
+async function dispRanking(id) {
+    //firebase.database().goOnline();
+    //firebase.database(appUsers).goOnline();
+    $("#STYLE_LINK").attr('href', `./style.html?s=${CHAR_MASTER[id]['Holders'][0]}`);
+
+    $("#initialHide").removeClass("d-none");
+    let styleMax = {"STR": 0, "VIT": 0, "DEX": 0, "AGI": 0, "INT": 0, "MND": 0, "AI": 0, "MI": 0, "SUM": 0};
+    for (let key of PARAM_KEY) {
+        styleMax[key] = (CHAR_MASTER[id]["MAX" + key] === -99) ? "?" : LIMIT_BASE + Number(CHAR_MASTER[id]["MAX" + key]);
+    }
+    var MAX_HP = 0;
+    for (let idx in CHAR_RANK) {
+        if (CHAR_RANK[idx]['Id'] === id) {
+            for (let key of PARAM_KEY) {
+                $(".MAX" + key).text(CHAR_RANK[idx]["MAX" + key]);
+            }
+            MAX_HP = CHAR_RANK[idx]["MAXHP"];
+            $(".MAXSUM").text(CHAR_RANK[idx]["MAXSUM"]);
+            $("#RANK_COUNT").text(CHAR_RANK[idx]['rank']);
+            $("#INPUT_COUNT").text(CHAR_RANK[idx]['size']);
+            break;
+        }
+    }
+    let charName = "";
+    let dispRank = "";
+    let br = "%0D%0A";
+
+
+    $(".STYLE_ROW").remove();
+    charName = CHAR_MASTER[id]['Name'];
+    $(".charName").text(charName);
+
+    for (let styleId of CHAR_MASTER[id]['Holders']) {
+        let styleInfo  = STYLE_MASTER[styleId];
+
+        let styleRow = $("#STYLE_TEMPLATE").clone();
+        styleRow.removeAttr("id");
+        styleRow.addClass("STYLE_ROW");
+        styleRow.removeClass("d-none");
+        styleRow.find(".rare").attr("src", `./img/icon/icon_${styleInfo['Rarity']}.png`);
+        styleRow.find(".icn").attr("src", `./img/style_icon/${styleId}.png`);
+        let sum = 0;
+        let styleLimitSum = 0;
+        for (let key of PARAM_KEY) {
+            let val = LIMIT_BASE + Number(styleInfo['Limit' + key]);
+            var ind = (styleInfo["Ind"+key] !== undefined) ? styleInfo["Ind"+key] : 1;
+            var indicator = `<img src="./img/icon/icon_ind_${ind}.png" width=15>`
+            var lim = styleInfo["Limit" + key] - CHAR_MASTER[id][key];
+            styleLimitSum += lim;
+            if (styleInfo['Limit' + key] < 99) {
+                sum += val;
+            } else {
+                val = "?";
+            }
+            styleRow.find("." + key).html(`${val} <span class="d-none d-md-inline">${indicator}(${lim})</span>`);
+        }
+        styleRow.find(".SUM").html(`${sum} <span class="d-none d-md-inline">(${styleLimitSum})</span>`);
+        $("#styleLabelRow").after(styleRow);
+    }
+    $(".STYLE_ROW").each(function () {
+        for (let key of PARAM_KEY) {
+            let td = $(this).find("." + key);
+            var x = td.text().split(" "); // スタイル成長傾向を入れるようにしたので対応
+            if (x[0] == styleMax[key]) {
+                td.css("background-color", "lightgreen");
+            }
+        }
+    });
+    // スタイル複合最大値
+    let styleRowMax = $("#STYLE_TEMPLATE").clone();
+    styleRowMax.removeAttr("id").addClass("STYLE_ROW").removeClass("d-none")
+            .css("background-color", "rgba(0,0,0, 0.2)");
+    styleRowMax.find(".IMG").html("最大値");
+    let styleSum = 0;
+    for (let key of PARAM_KEY) {
+        styleSum += (styleMax[key] !== "?") ? styleMax[key] : 0;
+        styleRowMax.find("." + key).text(styleMax[key]);
+    }
+    styleRowMax.find(".SUM").text(styleSum);
+    styleRowMax.find(".SUM").addClass("STYLE_MAX");
+    $("#styleLabelRow").after(styleRowMax);
+
+    // 自分の入力値
+    let myUserData = null;
+    if (login) {
+        console.log("isLogin");
+        let funcList = [];
+        var func = asyncReadUserDataWithId('CHAR', id, function (result) {
+            myUserData = result;
+        });
+        funcList.push(func);
+        await Promise.all(funcList);
+    } else {
+        console.log("no login");
+    }
+    
+    let myDataFlg = "MATCH";
+    if (myUserData === null) {
+        myDataFlg = "NONE";
+        myUserData = {"STR": 0, "VIT": 0, "DEX": 0, "AGI": 0, "INT": 0, "MND": 0, "AI": 0, "MI": 0};
+    }
+    let sum = 0;
+    let myHp = myUserData["HP"];
+    for (let key of PARAM_KEY) {
+        sum += Number(myUserData[key]);
+        $(".YOUR" + key).text(myUserData[key]);
+        let limit = (styleMax[key] === "?") ? "?" : styleMax[key] - myUserData[key];
+        $(".LIMIT" + key).text(limit);
+    }
+
+    $(".YOURSUM").text(sum);
+    $(".LIMITSUM").text((styleSum === 0) ? "?" : styleSum - sum);
+    let mySum = sum;
+
+
+    // ランキング表示
+    let userData = RANK_DETAIL[id];
+    let myRank = "";
+    let myTmpRank = 1;
+    let nowsum = 999;
+    var nowrank = 0;
+    $(".USER_RANK_DISP").remove();
+    var myRowInsert = false;
+    var maxSum = 0;
+    var nowHp = 0;
+    for (let idx in userData['list']) {
+        let rowSum = 0;
+        let hp = userData['list'][idx]["HP"];
+        for (let key in PARAM_KEY) {
+            rowSum += Number(userData['list'][idx][key]);
+        }
+        if(maxSum < rowSum){
+            maxSum = rowSum;
+        }
+        // 合計値が変わった or 同じだけどHPが違う場合はランクも変える。
+        if (nowsum > rowSum || (nowsum == rowSum && nowHp > hp) ) {
+            nowsum = rowSum;
+            nowrank = Number(idx) + 1;
+        }
+        nowHp = hp;
+
+        if (nowsum > mySum) {
+            // 自分より大きい場合は自分のランクを落とす
+            myTmpRank = nowrank + 1;
+        }
+        if (!myRowInsert && mySum > 0) {
+            // 合計が高いか、合計が同じでHPが高い場合自分を差し込む
+            if(mySum > rowSum || (mySum == rowSum && myHp >= nowHp) ){
+                myRowInsert = true;
+                myTmpRank = nowrank;
+                addRankRow(nowrank, myUserData, MAX_HP, styleMax, mySum, true);
+                nowrank++;
+            }
+        }
+
+        // 表示行数を超えてない
+        // 自分の行は入れない（すでに入れているので）
+        // すでに入れている場合も入れない
+        if (idx < OURSTYLE_LIMIT) {
+                if (UID !== undefined && UID.substr(0,4) === userData['list'][idx]['UID'] && myRowInsert) {
+            } else {
+                addRankRow(nowrank, userData['list'][idx], MAX_HP, styleMax, rowSum, false);
+            }
+        }
+    }
+    // 最後まで自分が入らなかった場合は最後に入れる
+    if (!myRowInsert && myDataFlg !== "NONE" && mySum > 0) {
+        var sortList = [];
+        for(let i in userData["RANK"]){
+            sortList.push({"p":i, "s":userData["RANK"][i]});
+        }
+        sortList.sort((a, b) => {
+            if (a.p < b.p){
+                return -1
+            }else{
+                return -1
+            }
+        });
+        var countRank = 1;
+        var cntFlg = false;
+        for(var sortRow of sortList){
+            if(mySum >= sortRow["p"]){
+                myTmpRank = countRank;
+                cntFlg = true;
+                break;
+            } else {
+                countRank += Number(sortRow["s"]);
+            }
+        }
+        if(!cntFlg){
+            myTmpRank = countRank;
+        }
+        addRankRow(myTmpRank, myUserData, MAX_HP, styleMax, mySum, true);
+    }
+
+    if (userData['kyogiList'] !== undefined) {
+        $("#USER_RANK").before("<tr class='USER_RANK_DISP' style='background-color:red; color:white;'><td colspan=11>協議中</td></tr>");
+    }
+    nowrank = "協議中";
+    for (let idx in userData['kyogiList']) {
+        let rowSum = 0;
+        let myRow = false;
+        for (let key in PARAM_KEY) {
+            rowSum += Number(userData['kyogiList'][idx][key]);
+        }
+        
+        if (UID !== undefined && UID.substr(0,4) === userData['kyogiList'][idx]['UID']) {
+            myDataFlg = "KYOGI";
+            myRow = true;
+        }
+        // 表示行数を超えてない
+        //if (idx < 10) {
+            if (myRow) {
+                addRankRow(nowrank, userData['kyogiList'][idx], MAX_HP, styleMax, rowSum, true);
+            } else {
+                addRankRow(nowrank, userData['kyogiList'][idx], MAX_HP, styleMax, rowSum, false);
+            }
+        //}
+    }
+
+    // myDataFlg = KYOGI : 競技に入ってる
+    // myDataFlg = NONE : 登録なし
+    myTmpRank = (myTmpRank == 1 && maxSum > mySum) ? "計算中" : myTmpRank+"位";
+    $(".rankingTweet").parent().removeClass("d-none");
+    if (myDataFlg === "KYOGI") {
+        dispRank = `暫定${myTmpRank}位`;
+        myRank = `${myTmpRank}(${mySum}pt)<br>入力内容を再確認するか画像付きで報告お願い致します`;
+    } else if(myDataFlg === "MATCH"){
+        dispRank = myTmpRank;
+        myRank = `${myTmpRank}(${mySum}pt)`;
+    } else {
+        $(".rankingTweet").parent().addClass("d-none");
+        myRank = "登録がありません";
+    }
+    $("#MY_RANK").html(myRank);
+
+    $("#charDotAruku").removeClass("char-utau").removeClass("char-aruku").removeClass("char-hashiri");
+    if (Number(myTmpRank) === 1) {
+        $("#charDotAruku").addClass("char-utau");
+    } else if (Number(myTmpRank) <= 10) {
+        $("#charDotAruku").addClass("char-hashiri");
+    } else {
+        $("#charDotAruku").addClass("char-aruku");
+    }
+
+    $("#charDot").html(`<span class="char dot_mid dot char-winner" style="background: url(./img/dot/${CHAR_MASTER[id]['DotId']}.png) no-repeat; margin: 0 10px;"></span>`);
+    $("#charDotAruku").attr("style", `background: url(./img/dot/${CHAR_MASTER[id]['DotId']}.png) no-repeat; margin: 0 10px;`);
+
+    let textBase = `${charName}でランキング${dispRank}!!${br}`;
+    textBase += `HP/腕/体/器/速/知/精/愛/魅/合計${br}`;
+    textBase += ('0' + myUserData['HP']).slice(-3) + "/";
+    textBase += ('0' + myUserData['STR']).slice(-2) + "/";
+    textBase += ('0' + myUserData['VIT']).slice(-2) + "/";
+    textBase += ('0' + myUserData['DEX']).slice(-2) + "/";
+    textBase += ('0' + myUserData['AGI']).slice(-2) + "/";
+    textBase += ('0' + myUserData['INT']).slice(-2) + "/";
+    textBase += ('0' + myUserData['MND']).slice(-2) + "/";
+    textBase += ('0' + myUserData['AI']).slice(-2) + "/";
+    textBase += ('0' + myUserData['MI']).slice(-2) + "/";
+    textBase += ('0' + sum).slice(-3) + br;
+    let hash = "ロマサガRS便利ツール,ロマサガRS育成ランキング";
+
+    let textRanking = `育成ランキング [ロマサガRS便利ツール] ${br}` + textBase;
+    let href1 = `https://twitter.com/intent/tweet?text=${textRanking}&url=https://nao-romasaga.github.io/ourchar.html?c=${id}&hashtags=${hash}`;
+    $(".rankingTweet").attr("href", href1);
+
+    let textImage = `@nao_romasaga_rs 育成ランキング 協議解除申請 ${br}` + textBase;
+    let href2 = `https://twitter.com/intent/tweet?text=${textImage}&url=https://nao-romasaga.github.io/ourchar.html?c=${id}&hashtags=${hash}`;
+    $(".kaijoTweet").attr("href", href2);
+
+    //firebase.database().goOffline();
+    //firebase.database(appUsers).goOffline();
+
+}
+function addRankRow(nowrank, data, MAX_HP, styleMax, sum, myFlg) {
+    let sizeClass = (nowrank === "協議中") ? "small" : "";
+    let tr = $("<tr>").addClass(`text-center USER_RANK_DISP ${sizeClass}`);
+    if (myFlg) {
+        tr.addClass("bg-white");
+    }
+    tr.append(`<td class='paramCell2'>${nowrank} </td>`)
+    let hp = (data["HP"] === undefined) ? "-" : data["HP"];
+    if (MAX_HP === hp && nowrank !== "協議中") {
+        hp = `<i class="fas fa-crown small">${hp}</i>`;
+    }
+    var hpStyle = "";
+    if(hp > 999){
+        hpStyle = "  background-color:red; color:white;";
+        hp += '<i class="fas fa-question"></i>';
+    }
+    tr.append(`<td class='paramCell2 small' style='${hpStyle}'>${hp}</td>`)
+    for (let idx in PARAM_KEY) {
+        let key = PARAM_KEY[idx];
+        let myVal = (data[idx] === undefined) ? data[key]: data[idx];
+        let style = "";
+        if(styleMax[key] > 0){
+            if (myVal < styleMax[key]) {
+                style = "";
+            } else if (myVal === styleMax[key]) {
+                style = " background-color:lightgreen;";
+            } else if(myVal < styleMax[key] + OVER_LIMIT) {
+                style = " background-color:yellow;";
+            } else if(myVal == styleMax[key] + OVER_LIMIT) {
+                style = " background-color:darkorchid; color:yellow;";
+            } else {
+                style = " background-color:red; color:white;";
+            }
+        }
+        tr.append(`<td class='paramCell2' style='${style}'>${myVal}</td>`)
+    }
+    if (Number($(".STYLE_MAX").text()) > sum) {
+        tr.append(`<td class='paramCell2 small'>${sum}</td>`)
+    } else if (Number($(".STYLE_MAX").text()) == sum) {
+        tr.append(`<td class='paramCell2' style='background-color:lightgreen;'>${sum}</td>`)
+    } else if (Number($(".STYLE_MAX").text() + totalThreathold) < sum ) {
+        tr.append(`<td class='paramCell2' style='background-color:red; color:white;'>${sum}</td>`)
+    } else {
+        tr.append(`<td class='paramCell2' style='background-color:yellow;'>${sum}</td>`)
+    }
+    $("#USER_RANK").before(tr);
+}
+
+
+
+function changeId2Dot() {
+    $("#example-table").find(".tabulator-cell").each(function () {
+        let id = $(this).text();
+        if (id.indexOf("Dot") > -1) {
+            let src = `<img src="./img/dot/${id.substr(3)}.png" style="object-position: -10px -10px">`;
+            $(this).html(src);
+        } else if (id.indexOf("icon") > -1) {
+            let src = `<span class="icon_mini_zokusei ${id}"></span>`;
+            $(this).html(src);
+        }
+    });
+}
+
+function drawTable(result, sort) {
+    let dir = (sort === undefined) ? "desc" : sort;
+    $("#example-table").remove();
+    $("#example-table-display").append('<div id="example-table" style="width:100%"></div>');
+
+    let base = {align: "right", sortable: true, sorter: "number", minWidth: 30, width: 30, responsive: 13};
+    table = new Tabulator("#example-table", {
+        layout: "fitColumns",
+        data: result,
+        //layout: "fitColumns", //fit columns to width of table
+        //responsiveLayout: "hide", //hide columns that dont fit on the table
+        tooltips: false, //show tool tips on cells
+        history: true, //allow undo and redo actions on the table
+        pagination: "local", //paginate the data
+        paginationSize: tableLimit, //allow 7 rows per page of data
+        //movableColumns: true, //allow column order to be changed
+        //resizableRows: true, //allow row order to be changed
+        initialSort: [//set the initial sort order of the data
+            {column: "MAXSUM", dir: dir},
+        ],
+        autoResize: false,
+        resizableRows: false,
+        resizableColumns: false,
+        responsiveLayout: true,
+        columns: [
+            {title: "", field: "DotId", width: 30, frozen: true},
+            {title: "", field: "Id", visible: false},
+            {title: "", field: "UserId", visible: false},
+            {title: "", field: "SeriesFilter", visible: false},
+            {title: "", field: "WeaponTypeFilter", visible: false},
+            {title: "rank", field: "rank", visible: false},
+            {title: "名前", field: "Name", width: 100},
+            {title: "作品", field: "Series", width: 30, responsive: 14},
+            {title: "武器", field: "WeaponType", width: 30, responsive: 14},
+            {title: "HP", field: "MAXHP", align: "right", sortable: true, sorter: "number", minWidth: 55, width: 55, responsive: 12},
+            Object.assign({title: "腕", field: "MAXSTR"}, base),
+            Object.assign({title: "体", field: "MAXVIT", }, base),
+            Object.assign({title: "器", field: "MAXDEX", }, base),
+            Object.assign({title: "速", field: "MAXAGI", }, base),
+            Object.assign({title: "知", field: "MAXINT", }, base),
+            Object.assign({title: "精", field: "MAXMND", }, base),
+            Object.assign({title: "愛", field: "MAXAI", }, base),
+            Object.assign({title: "魅", field: "MAXMI", }, base),
+            {title: '<span class="hidden pcBlock">合</span>計', field: "MAXSUM", sortable: true, sorter: "number"},
+            {title: '平均', field: "AVG", sortable: true, sorter: "number", responsive: 11},
+            {title: "登録数", field: "size", responsive: 12},
+        ],
+    });
+
+    table.setFilter("MAXSUM", ">", 0);
+    changeId2Dot();
+}
