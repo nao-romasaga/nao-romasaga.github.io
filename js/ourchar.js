@@ -358,6 +358,7 @@ async function dispRanking(id) {
         // 表示行数を超えてない
         //if (idx < 10) {
             if (myRow) {
+
                 addRankRow(nowrank, userData['kyogiList'][idx], MAX_HP, styleMax, rowSum, true);
             } else {
                 addRankRow(nowrank, userData['kyogiList'][idx], MAX_HP, styleMax, rowSum, false);
@@ -420,6 +421,7 @@ async function dispRanking(id) {
 
 }
 function addRankRow(nowrank, data, MAX_HP, styleMax, sum, myFlg) {
+
     let sizeClass = (nowrank === "協議中") ? "small" : "";
     let tr = $("<tr>").addClass(`text-center USER_RANK_DISP ${sizeClass}`);
     if (myFlg) {
@@ -432,8 +434,8 @@ function addRankRow(nowrank, data, MAX_HP, styleMax, sum, myFlg) {
     }
     var hpStyle = "";
     if(hp > 999){
-        hpStyle = "  background-color:red; color:white;";
-        hp += '<i class="fas fa-question"></i>';
+        //hpStyle = "  background-color:red; color:white;";
+        //hp += '<i class="fas fa-question"></i>';
     }
     tr.append(`<td class='paramCell2 small' style='${hpStyle}'>${hp}</td>`)
     for (let idx in PARAM_KEY) {
