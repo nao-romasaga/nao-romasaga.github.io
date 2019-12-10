@@ -905,5 +905,6 @@ input[type=range]::-ms-tooltip {
     border: 2px solid #faf0b4;    
 }
 .partyOtherStyle {
-    border: 2px dashed #faf0b4;    
+    border: 2px dashed #faf0b4;
+    opacity: 0.7;
 }
