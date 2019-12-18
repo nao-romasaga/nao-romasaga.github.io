@@ -26,7 +26,7 @@ html {
     }    
     .title-text{
         font-size: 15px;
-        background:url(../img/bg_window_large.png);
+        background:url(http://romasagatool.com/img/bg_window_large.png);
         background-size:100% 100%;
         color:#faf0b4;
         padding:5px;    
@@ -95,7 +95,7 @@ html {
         font-size: 20px !important;
     }
     .title-text{
-        background:url(../img/bg_window_large.png);
+        background:url(http://romasagatool.com/img/bg_window_large.png);
         background-size:100% 100%;
         color:#faf0b4;
         padding:5px;    
@@ -139,7 +139,7 @@ html {
 }
 
 .label-text{
-    background:url(../img/bg_window_large.png);
+    background:url(http://romasagatool.com/img/bg_window_large.png);
     background-size:100% 100%;
     color:#faf0b4;
     padding:5px;    
@@ -258,7 +258,7 @@ html {
     opacity: 0.9;
 }
 .haikei {
-    background: url(../img/bg.jpg) no-repeat;
+    background: url(http://romasagatool.com/img/bg.jpg) no-repeat;
     width:100%;
     background-size: cover;
 }
@@ -406,7 +406,7 @@ body {
 }
 
 .sorry_cat {
-    background: url(../img/dot/ID36a44.png) no-repeat; /* riz */
+    background: url(http://romasagatool.com/img/dot/ID36a44.png) no-repeat; /* riz */
     background-size: 400px 400px
 }
 .sorry_center{
@@ -428,7 +428,7 @@ body {
     animation: nemuri 2s steps(1);
 }        
 .icon-zzz {
-    background: url(../img/icon/icon_zzz.png) no-repeat;
+    background: url(http://romasagatool.com/img/icon/icon_zzz.png) no-repeat;
     display: inline-block;
     width: 60px;
     height: 60px;
@@ -503,7 +503,7 @@ body {
     font-size: 8px;
 }
 .dojohaikei {
-    background: url(../img/bg_dojo.png);
+    background: url(http://romasagatool.com/img/bg_dojo.png);
 }
 .style-param-window {
     background-color: rgba(160, 40, 40, 0.6);
@@ -522,7 +522,7 @@ body {
 .style-skill-window {
     color: white;
     margin: 0 20px 0 20px;
-    background: url(../img/bg_window.png) no-repeat;
+    background: url(http://romasagatool.com/img/bg_window.png) no-repeat;
     background-size: 100% 100%;
     opacity: 0.8;    
 }
@@ -538,14 +538,14 @@ body {
     padding-top: 5px;
     display: inline-block; 
     height:40px; 
-    background:url(../img/icon/icon_tab_active.png) no-repeat; 
+    background:url(http://romasagatool.com/img/icon/icon_tab_active.png) no-repeat; 
     background-size: 100%;    
 }
 .style-tab-disabled{
     padding-top: 5px;
     display: inline-block;
     height:40px;
-    background:url(../img/icon/icon_tab_disable.png) no-repeat;
+    background:url(http://romasagatool.com/img/icon/icon_tab_disable.png) no-repeat;
     background-size: 100%;
 }
 
@@ -554,7 +554,7 @@ body {
     margin-left:60px;
     width:60px;
     height:60px;
-    background: url(../img/icon/icon_kakashi.png);
+    background: url(http://romasagatool.com/img/icon/icon_kakashi.png);
     background-size: cover;    
 }
 .arrow_box {
@@ -754,27 +754,27 @@ input[type=range]::-ms-tooltip {
     color: black;    
 }
 .bg1{
-    background: url(../img/bg_renkei_1.png);
+    background: url(http://romasagatool.com/img/bg_renkei_1.png);
     background-size: contain;
 }
 .bg2{
-    background: url(../img/bg_renkei_2.png);
+    background: url(http://romasagatool.com/img/bg_renkei_2.png);
     background-size: contain;
 }
 .bg3{
-    background: url(../img/bg_renkei_3.png);
+    background: url(http://romasagatool.com/img/bg_renkei_3.png);
     background-size: contain;
 }
 .bg4{
-    background: url(../img/bg_renkei_4.png);
+    background: url(http://romasagatool.com/img/bg_renkei_4.png);
     background-size: contain;
 }
 .bg5{
-    background: url(../img/bg_renkei_5.png);
+    background: url(http://romasagatool.com/img/bg_renkei_5.png);
     background-size: contain;
 }
 .updatePanel{
-    background:url("../img/bg_window_large.png");
+    background:url(http://romasagatool.com/img/bg_window_large.png);
     background-size: contain;
     width: 330px;
     height: 33px;

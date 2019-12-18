@@ -24,21 +24,21 @@
         background-position: -5px -5px !important;
     }
     .icon_bg_ss{
-        background:url(../img/bg_ss.png);
+        background:url(http://romasagatool.com/img/bg_ss.png);
         background-size:  10px !important;
         display: inline-block;
         border-radius: 10px;
         height: 45px;
     }
     .icon_bg_s{
-        background:url(../img/bg_s.png);
+        background:url(http://romasagatool.com/img/bg_s.png);
         background-size:  10px !important;
         display: inline-block;
         border-radius: 10px;
         height: 45px;
     }
     .icon_bg_a{
-        background:url(../img/bg_a.png);
+        background:url(http://romasagatool.com/img/bg_a.png);
         background-size:  10px !important;
         display: inline-block;
         border-radius: 10px;
@@ -69,21 +69,21 @@
         border: 21x ridge rgb(246,236,100);
     }
     .icon_bg_a_middle{
-        background:url(../img/bg_a.png);
+        background:url(http://romasagatool.com/img/bg_a.png);
         background-size:  10px !important;
         display: inline-block;
         border-radius: 10px;
         height: 25px;
     }
     .icon_bg_ss_middle{
-        background:url(../img/bg_ss.png);
+        background:url(http://romasagatool.com/img/bg_ss.png);
         background-size:  10px !important;
         display: inline-block;
         border-radius: 10px;
         height: 25px;
     }
     .icon_bg_s_middle{
-        background:url(../img/bg_s.png);
+        background:url(http://romasagatool.com/img/bg_s.png);
         background-size:  10px !important;
         display: inline-block;
         border-radius: 10px;
@@ -130,21 +130,21 @@
         background-position: -5px -5px !important;
     }
     .icon_bg_ss{
-        background:url(../img/bg_ss.png);
+        background:url(http://romasagatool.com/img/bg_ss.png);
         background-size:  10px !important;
         display: inline-block;
         border-radius: 10px;
         height: 75px;
     }
     .icon_bg_s{
-        background:url(../img/bg_s.png);
+        background:url(http://romasagatool.com/img/bg_s.png);
         background-size:  10px !important;
         display: inline-block;
         border-radius: 10px;
         height: 75px;
     }
     .icon_bg_a{
-        background:url(../img/bg_a.png);
+        background:url(http://romasagatool.com/img/bg_a.png);
         background-size:  10px !important;
         display: inline-block;
         border-radius: 10px;
@@ -175,21 +175,21 @@
         border: 2px ridge rgb(246,236,100);
     }
     .icon_bg_a_middle{
-        background:url(../img/bg_a.png);
+        background:url(http://romasagatool.com/img/bg_a.png);
         background-size:  10px !important;
         display: inline-block;
         border-radius: 10px;
         height: 45px;
     }
     .icon_bg_ss_middle{
-        background:url(../img/bg_ss.png);
+        background:url(http://romasagatool.com/img/bg_ss.png);
         background-size:  10px !important;
         display: inline-block;
         border-radius: 10px;
         height: 45px;
     }
     .icon_bg_s_middle{
-        background:url(../img/bg_s.png);
+        background:url(http://romasagatool.com/img/bg_s.png);
         background-size:  10px !important;
         display: inline-block;
         border-radius: 10px;
@@ -301,7 +301,7 @@
         color: #faf0b4;
         -webkit-appearance: none;
         border: 0px;
-        background:url(../img/icon/icon_button_on.png) no-repeat;
+        background:url(http://romasagatool.com/img/icon/icon_button_on.png) no-repeat;
     }
     .icon_btn_off {
         padding-top: 5px;
@@ -312,7 +312,7 @@
         color: #faf0b4;
         -webkit-appearance: none;
         border: 0px;
-        background:url(../img/icon/icon_button_off.png) no-repeat;
+        background:url(http://romasagatool.com/img/icon/icon_button_off.png) no-repeat;
     }
     .icon_btn_red {
         padding-top: 5px;
@@ -323,7 +323,7 @@
         color: #faf0b4;
         -webkit-appearance: none;
         border: 0px;
-        background:url(../img/icon/icon_button_red.png) no-repeat;
+        background:url(http://romasagatool.com/img/icon/icon_button_red.png) no-repeat;
     }
 }
 @media screen and (min-width: 576px) { 
@@ -356,7 +356,7 @@
         margin: 0 0 0 0px;
     }
     .icon_btn_on {
-        background:url(../img/icon/icon_button_on.png) no-repeat;
+        background:url(http://romasagatool.com/img/icon/icon_button_on.png) no-repeat;
         padding-top: 5px;
         display: inline-block;
         height:40px;
@@ -367,7 +367,7 @@
         border: 0px;
     }
     .icon_btn_off {
-        background:url(../img/icon/icon_button_off.png) no-repeat;
+        background:url(http://romasagatool.com/img/icon/icon_button_off.png) no-repeat;
         padding-top: 5px;
         display: inline-block;
         height:40px;
@@ -378,7 +378,7 @@
         border: 0px;
     }
     .icon_btn_red {
-        background:url(../img/icon/icon_button_red.png) no-repeat;
+        background:url(http://romasagatool.com/img/icon/icon_button_red.png) no-repeat;
         padding-top: 5px;
         display: inline-block;
         height:40px;
@@ -390,7 +390,7 @@
     }
 }
 .icon_info {
-    background:url(../img/icon/icon_info.png) no-repeat;
+    background:url(http://romasagatool.com/img/icon/icon_info.png) no-repeat;
     background-size: 15px;
     display: inline-block;
     width: 15px;
@@ -399,7 +399,7 @@
     border: 0px;
 }
 .icon_info_md {
-    background:url(../img/icon/icon_info.png) no-repeat;
+    background:url(http://romasagatool.com/img/icon/icon_info.png) no-repeat;
     background-size: 20px;
     width: 20px;
     height: 20px;
@@ -410,90 +410,90 @@
 
 
 
-.icon_buff_str{        background:url(../img/icon/icon_buf_str.png) no-repeat;}
-.icon_debuff_str{        background:url(../img/icon/icon_debuf_str.png) no-repeat;}
-.icon_buff_vit{        background:url(../img/icon/icon_buf_vit.png) no-repeat;}
-.icon_debuff_vit{        background:url(../img/icon/icon_debuf_vit.png) no-repeat;}
-.icon_buff_dex{        background:url(../img/icon/icon_buf_dex.png) no-repeat;}
-.icon_debuff_dex{        background:url(../img/icon/icon_debuf_dex.png) no-repeat;}
-.icon_buff_agi{        background:url(../img/icon/icon_buf_agi.png) no-repeat;}
-.icon_debuff_agi{        background:url(../img/icon/icon_debuf_agi.png) no-repeat;}
-.icon_buff_int{        background:url(../img/icon/icon_buf_int.png) no-repeat;}
-.icon_debuff_int{        background:url(../img/icon/icon_debuf_int.png) no-repeat;}
-.icon_buff_mnd{        background:url(../img/icon/icon_buf_mnd.png) no-repeat;}
-.icon_debuff_mnd{        background:url(../img/icon/icon_debuf_mnd.png) no-repeat;}
-.icon_buff_ai{        background:url(../img/icon/icon_buf_ai.png) no-repeat;}
-.icon_debuff_ai{        background:url(../img/icon/icon_debuf_ai.png) no-repeat;}
-.icon_buff_mi{        background:url(../img/icon/icon_buf_mi.png) no-repeat;}
-.icon_debuff_mi{        background:url(../img/icon/icon_debuf_mi.png) no-repeat;}
+.icon_buff_str{        background:url(http://romasagatool.com/img/icon/icon_buf_str.png) no-repeat;}
+.icon_debuff_str{        background:url(http://romasagatool.com/img/icon/icon_debuf_str.png) no-repeat;}
+.icon_buff_vit{        background:url(http://romasagatool.com/img/icon/icon_buf_vit.png) no-repeat;}
+.icon_debuff_vit{        background:url(http://romasagatool.com/img/icon/icon_debuf_vit.png) no-repeat;}
+.icon_buff_dex{        background:url(http://romasagatool.com/img/icon/icon_buf_dex.png) no-repeat;}
+.icon_debuff_dex{        background:url(http://romasagatool.com/img/icon/icon_debuf_dex.png) no-repeat;}
+.icon_buff_agi{        background:url(http://romasagatool.com/img/icon/icon_buf_agi.png) no-repeat;}
+.icon_debuff_agi{        background:url(http://romasagatool.com/img/icon/icon_debuf_agi.png) no-repeat;}
+.icon_buff_int{        background:url(http://romasagatool.com/img/icon/icon_buf_int.png) no-repeat;}
+.icon_debuff_int{        background:url(http://romasagatool.com/img/icon/icon_debuf_int.png) no-repeat;}
+.icon_buff_mnd{        background:url(http://romasagatool.com/img/icon/icon_buf_mnd.png) no-repeat;}
+.icon_debuff_mnd{        background:url(http://romasagatool.com/img/icon/icon_debuf_mnd.png) no-repeat;}
+.icon_buff_ai{        background:url(http://romasagatool.com/img/icon/icon_buf_ai.png) no-repeat;}
+.icon_debuff_ai{        background:url(http://romasagatool.com/img/icon/icon_debuf_ai.png) no-repeat;}
+.icon_buff_mi{        background:url(http://romasagatool.com/img/icon/icon_buf_mi.png) no-repeat;}
+.icon_debuff_mi{        background:url(http://romasagatool.com/img/icon/icon_debuf_mi.png) no-repeat;}
 
-.icon_ken {    background:url(../img/icon/icon_ken.png) no-repeat; }
-.icon_dken {    background:url(../img/icon/icon_dken.png) no-repeat; }
-.icon_sken {    background:url(../img/icon/icon_sken.png) no-repeat; }
-.icon_ono {    background:url(../img/icon/icon_ono.png) no-repeat; }
-.icon_yari {    background:url(../img/icon/icon_yari.png) no-repeat; }
-.icon_yumi {    background:url(../img/icon/icon_yumi.png) no-repeat; }
-.icon_kon {    background:url(../img/icon/icon_kon.png) no-repeat; }
-.icon_tai {    background:url(../img/icon/icon_tai.png) no-repeat; }
-.icon_ju {    background:url(../img/icon/icon_ju.png) no-repeat; }
-.icon_tsue {    background:url(../img/icon/icon_tsue.png) no-repeat; }
-.icon_hi {    background:url(../img/icon/icon_hi.png) no-repeat; }
-.icon_mizu {    background:url(../img/icon/icon_mizu.png) no-repeat; }
-.icon_tsuchi {    background:url(../img/icon/icon_tsuchi.png) no-repeat; }
-.icon_kaze {    background:url(../img/icon/icon_kaze.png) no-repeat; }
-.icon_hikari {    background:url(../img/icon/icon_hikari.png) no-repeat; }
-.icon_yami {    background:url(../img/icon/icon_yami.png) no-repeat; }
-.icon_b {    background:url(../img/icon/icon_b.png) no-repeat; }
-.icon_a {    background:url(../img/icon/icon_a.png) no-repeat; }
-.icon_s {    background:url(../img/icon/icon_s.png) no-repeat; }
-.icon_ss {    background:url(../img/icon/icon_ss.png) no-repeat; }
-.icon_zan {    background:url(../img/icon/icon_zan.png) no-repeat; }
-.icon_da {    background:url(../img/icon/icon_da.png) no-repeat; }
-.icon_totsu {    background:url(../img/icon/icon_totsu.png) no-repeat; }
-.icon_netsu {    background:url(../img/icon/icon_netsu.png) no-repeat; }
-.icon_rei {    background:url(../img/icon/icon_rei.png) no-repeat; }
-.icon_rai {    background:url(../img/icon/icon_rai.png) no-repeat; }
-.icon_in {    background:url(../img/icon/icon_in.png) no-repeat; }
-.icon_yo {    background:url(../img/icon/icon_yo.png) no-repeat; }
-.icon_doku {    background:url(../img/icon/icon_doku.png) no-repeat; }
-.icon_mahi {    background:url(../img/icon/icon_mahi.png) no-repeat; }
-.icon_konran {    background:url(../img/icon/icon_konran.png) no-repeat; }
-.icon_stan {    background:url(../img/icon/icon_stan.png) no-repeat; }
-.icon_miryo {    background:url(../img/icon/icon_miryo.png) no-repeat; }
-.icon_kizetsu {    background:url(../img/icon/icon_kizetsu.png) no-repeat; }
-.icon_kyosenshi {    background:url(../img/icon/icon_kyosenshi.png) no-repeat; }
-.icon_kurayami {    background:url(../img/icon/icon_kurayami.png) no-repeat; }
-.icon_sekika {    background:url(../img/icon/icon_sekika.png) no-repeat; }
-.icon_zzz {    background:url(../img/icon/icon_zzz.png) no-repeat; }
+.icon_ken {    background:url(http://romasagatool.com/img/icon/icon_ken.png) no-repeat; }
+.icon_dken {    background:url(http://romasagatool.com/img/icon/icon_dken.png) no-repeat; }
+.icon_sken {    background:url(http://romasagatool.com/img/icon/icon_sken.png) no-repeat; }
+.icon_ono {    background:url(http://romasagatool.com/img/icon/icon_ono.png) no-repeat; }
+.icon_yari {    background:url(http://romasagatool.com/img/icon/icon_yari.png) no-repeat; }
+.icon_yumi {    background:url(http://romasagatool.com/img/icon/icon_yumi.png) no-repeat; }
+.icon_kon {    background:url(http://romasagatool.com/img/icon/icon_kon.png) no-repeat; }
+.icon_tai {    background:url(http://romasagatool.com/img/icon/icon_tai.png) no-repeat; }
+.icon_ju {    background:url(http://romasagatool.com/img/icon/icon_ju.png) no-repeat; }
+.icon_tsue {    background:url(http://romasagatool.com/img/icon/icon_tsue.png) no-repeat; }
+.icon_hi {    background:url(http://romasagatool.com/img/icon/icon_hi.png) no-repeat; }
+.icon_mizu {    background:url(http://romasagatool.com/img/icon/icon_mizu.png) no-repeat; }
+.icon_tsuchi {    background:url(http://romasagatool.com/img/icon/icon_tsuchi.png) no-repeat; }
+.icon_kaze {    background:url(http://romasagatool.com/img/icon/icon_kaze.png) no-repeat; }
+.icon_hikari {    background:url(http://romasagatool.com/img/icon/icon_hikari.png) no-repeat; }
+.icon_yami {    background:url(http://romasagatool.com/img/icon/icon_yami.png) no-repeat; }
+.icon_b {    background:url(http://romasagatool.com/img/icon/icon_b.png) no-repeat; }
+.icon_a {    background:url(http://romasagatool.com/img/icon/icon_a.png) no-repeat; }
+.icon_s {    background:url(http://romasagatool.com/img/icon/icon_s.png) no-repeat; }
+.icon_ss {    background:url(http://romasagatool.com/img/icon/icon_ss.png) no-repeat; }
+.icon_zan {    background:url(http://romasagatool.com/img/icon/icon_zan.png) no-repeat; }
+.icon_da {    background:url(http://romasagatool.com/img/icon/icon_da.png) no-repeat; }
+.icon_totsu {    background:url(http://romasagatool.com/img/icon/icon_totsu.png) no-repeat; }
+.icon_netsu {    background:url(http://romasagatool.com/img/icon/icon_netsu.png) no-repeat; }
+.icon_rei {    background:url(http://romasagatool.com/img/icon/icon_rei.png) no-repeat; }
+.icon_rai {    background:url(http://romasagatool.com/img/icon/icon_rai.png) no-repeat; }
+.icon_in {    background:url(http://romasagatool.com/img/icon/icon_in.png) no-repeat; }
+.icon_yo {    background:url(http://romasagatool.com/img/icon/icon_yo.png) no-repeat; }
+.icon_doku {    background:url(http://romasagatool.com/img/icon/icon_doku.png) no-repeat; }
+.icon_mahi {    background:url(http://romasagatool.com/img/icon/icon_mahi.png) no-repeat; }
+.icon_konran {    background:url(http://romasagatool.com/img/icon/icon_konran.png) no-repeat; }
+.icon_stan {    background:url(http://romasagatool.com/img/icon/icon_stan.png) no-repeat; }
+.icon_miryo {    background:url(http://romasagatool.com/img/icon/icon_miryo.png) no-repeat; }
+.icon_kizetsu {    background:url(http://romasagatool.com/img/icon/icon_kizetsu.png) no-repeat; }
+.icon_kyosenshi {    background:url(http://romasagatool.com/img/icon/icon_kyosenshi.png) no-repeat; }
+.icon_kurayami {    background:url(http://romasagatool.com/img/icon/icon_kurayami.png) no-repeat; }
+.icon_sekika {    background:url(http://romasagatool.com/img/icon/icon_sekika.png) no-repeat; }
+.icon_zzz {    background:url(http://romasagatool.com/img/icon/icon_zzz.png) no-repeat; }
 
-.icon_bsand {   background:url(../img/icon/icon_kakusei_bsand.png) no-repeat; }
-.icon_gsand {   background:url(../img/icon/icon_kakusei_gsand.png) no-repeat; }
-.icon_ksand {   background:url(../img/icon/icon_kakusei_ksand.png) no-repeat; }
-.icon_osand {   background:url(../img/icon/icon_kakusei_osand.png) no-repeat; }
-.icon_psand {   background:url(../img/icon/icon_kakusei_psand.png) no-repeat; }
-.icon_rsand {   background:url(../img/icon/icon_kakusei_rsand.png) no-repeat; }
-.icon_wsand {   background:url(../img/icon/icon_kakusei_wsand.png) no-repeat; }
-.icon_ysand {   background:url(../img/icon/icon_kakusei_ysand.png) no-repeat; }
-.icon_bstone {   background:url(../img/icon/icon_kakusei_bstone.png) no-repeat; }
-.icon_gstone {   background:url(../img/icon/icon_kakusei_gstone.png) no-repeat; }
-.icon_kstone {   background:url(../img/icon/icon_kakusei_kstone.png) no-repeat; }
-.icon_ostone {   background:url(../img/icon/icon_kakusei_ostone.png) no-repeat; }
-.icon_pstone {   background:url(../img/icon/icon_kakusei_pstone.png) no-repeat; }
-.icon_rstone {   background:url(../img/icon/icon_kakusei_rstone.png) no-repeat; }
-.icon_wstone {   background:url(../img/icon/icon_kakusei_wstone.png) no-repeat; }
-.icon_ystone {   background:url(../img/icon/icon_kakusei_ystone.png) no-repeat; }
-.icon_bjewel {   background:url(../img/icon/icon_kakusei_bjewel.png) no-repeat; }
-.icon_gjewel {   background:url(../img/icon/icon_kakusei_gjewel.png) no-repeat; }
-.icon_kjewel {   background:url(../img/icon/icon_kakusei_kjewel.png) no-repeat; }
-.icon_ojewel {   background:url(../img/icon/icon_kakusei_ojewel.png) no-repeat; }
-.icon_pjewel {   background:url(../img/icon/icon_kakusei_pjewel.png) no-repeat; }
-.icon_rjewel {   background:url(../img/icon/icon_kakusei_rjewel.png) no-repeat; }
-.icon_wjewel {   background:url(../img/icon/icon_kakusei_wjewel.png) no-repeat; }
-.icon_yjewel {   background:url(../img/icon/icon_kakusei_yjewel.png) no-repeat; }
+.icon_bsand {   background:url(http://romasagatool.com/img/icon/icon_kakusei_bsand.png) no-repeat; }
+.icon_gsand {   background:url(http://romasagatool.com/img/icon/icon_kakusei_gsand.png) no-repeat; }
+.icon_ksand {   background:url(http://romasagatool.com/img/icon/icon_kakusei_ksand.png) no-repeat; }
+.icon_osand {   background:url(http://romasagatool.com/img/icon/icon_kakusei_osand.png) no-repeat; }
+.icon_psand {   background:url(http://romasagatool.com/img/icon/icon_kakusei_psand.png) no-repeat; }
+.icon_rsand {   background:url(http://romasagatool.com/img/icon/icon_kakusei_rsand.png) no-repeat; }
+.icon_wsand {   background:url(http://romasagatool.com/img/icon/icon_kakusei_wsand.png) no-repeat; }
+.icon_ysand {   background:url(http://romasagatool.com/img/icon/icon_kakusei_ysand.png) no-repeat; }
+.icon_bstone {   background:url(http://romasagatool.com/img/icon/icon_kakusei_bstone.png) no-repeat; }
+.icon_gstone {   background:url(http://romasagatool.com/img/icon/icon_kakusei_gstone.png) no-repeat; }
+.icon_kstone {   background:url(http://romasagatool.com/img/icon/icon_kakusei_kstone.png) no-repeat; }
+.icon_ostone {   background:url(http://romasagatool.com/img/icon/icon_kakusei_ostone.png) no-repeat; }
+.icon_pstone {   background:url(http://romasagatool.com/img/icon/icon_kakusei_pstone.png) no-repeat; }
+.icon_rstone {   background:url(http://romasagatool.com/img/icon/icon_kakusei_rstone.png) no-repeat; }
+.icon_wstone {   background:url(http://romasagatool.com/img/icon/icon_kakusei_wstone.png) no-repeat; }
+.icon_ystone {   background:url(http://romasagatool.com/img/icon/icon_kakusei_ystone.png) no-repeat; }
+.icon_bjewel {   background:url(http://romasagatool.com/img/icon/icon_kakusei_bjewel.png) no-repeat; }
+.icon_gjewel {   background:url(http://romasagatool.com/img/icon/icon_kakusei_gjewel.png) no-repeat; }
+.icon_kjewel {   background:url(http://romasagatool.com/img/icon/icon_kakusei_kjewel.png) no-repeat; }
+.icon_ojewel {   background:url(http://romasagatool.com/img/icon/icon_kakusei_ojewel.png) no-repeat; }
+.icon_pjewel {   background:url(http://romasagatool.com/img/icon/icon_kakusei_pjewel.png) no-repeat; }
+.icon_rjewel {   background:url(http://romasagatool.com/img/icon/icon_kakusei_rjewel.png) no-repeat; }
+.icon_wjewel {   background:url(http://romasagatool.com/img/icon/icon_kakusei_wjewel.png) no-repeat; }
+.icon_yjewel {   background:url(http://romasagatool.com/img/icon/icon_kakusei_yjewel.png) no-repeat; }
 
 .icon_keisho_e { 
     display: inline-block;
-    background:url(../img/icon/icon_keisho_e.png) no-repeat;
+    background:url(http://romasagatool.com/img/icon/icon_keisho_e.png) no-repeat;
     width: 28px;
     height: 14px;
     background-size: cover !important;
