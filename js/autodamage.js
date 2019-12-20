@@ -1,1 +1,345 @@
-var _0x1798=['</span></div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22col-12\x20d-none\x20d-lg-block\x22\x20style=\x22border-top:\x202px\x20solid\x20ivory;\x22>','キラーマシン','オーガロード','竜\x20浮遊','ワンダーラスト','ラッフルツリー','アレフ','首長竜','死海魚','爬虫類','ザッハーク','両生類\x20カエル','巨人\x20不死','ポイゾンギアン','竜\x20不死\x20骨','チャリオット','火精,土精,岩石','マグマ','ゴールデンバウム','.opacity-char-back','slideUp','#_icon_ken','slideDown','#CHAR_HEADER','hide','#STYLE_HEADER','#howtobody','click','event','autodamage','open','slideToggle','#jokenhead','clickJoken','#jokenbody','.optionButton','toggleClass','icon_btn_off','icon_btn_on','attr','data-on','clickLimitAbility','lim','勇健発動\x20','true','範囲攻撃ON','#LIMIT_LABEL','text','log','limit','.enemyfilterList','#styleChoice','html','parent','hasClass','filterActive','each','removeClass','clickEnemy','enemy','VS\x20','#ENEMY','#resist_zan','#resist_da','#resist_totsu','#resist_netsu','#resist_rei','#resist_rai','#resist_yo','#enemy_crit','#enemy_name','.filterList','href','substr','data-type','dup','cid','sid','btype','clickFilter','#TARGET','show','d-none','\x22></span>','.char','data-id','Name','Holders','<button>','addClass','Rarity','style','.png)\x20no-repeat;','<span>','append','.style','clickStyle','AnotherName','<br\x20class=\x22hidden\x20pcBlock\x22>','ready','&cid=','&sid=','&enemy=','&btype=','atype','&atype=','&order=','&range=','#RANK_AREA','getJSON','https://romasagatool.com/api/auto_ranking.php?limit=','&callback=?','inArray','split','通常攻撃','damage','count','anydamage','Range','normal','SkillIds','push','fuchidoriWhite','fuchidoriRed','Kakusei','ConsumeBp','style=\x22border-top:\x202px\x20ivory\x20solid;\x22','BP:','<div\x20class=\x22col-2\x20text-center\x20d-none\x20d-lg-block\x22>','name','<br>','\x20damageNumber\x22>','toLocaleString','</div>','<tr\x20','\x20><td>',')</td><td><span\x20class=\x22','\x20</span></td><td>','回</td></tr>','join','</table></div>','length','\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22col-12\x20col-md-12\x20style-skill-list\x22\x20style=\x22padding:\x200px\x205px;\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22row\x20no-gutters\x22\x20onclick=\x22$(&quot;.flvID68ffe21&quot;).slideToggle();\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22char\x20dot_mid\x20dot\x20char-hashiri\x22\x20style=\x22top:5px;\x20position:\x20absolute;\x20background:\x20url(./img/dot/','DotId','.png);\x22></div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22d-none\x20d-md-block\x22\x20style=\x22width:100%;height:100%;position:\x20absolute;background:\x20url(./img/style_cutin/','.png)\x20no-repeat;\x20background-size:\x20contain;\x20background-position:\x20center;\x20opacity:\x200.3;\x22></div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22col-md-3\x20col-lg-2\x20\x20d-none\x20d-sm-block\x20text-nowrap\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20style=\x22padding-left:50px;\x22>','<br><span\x20class=\x22fuchidoriJewel\x20damageNumber\x22\x20style=\x22font-size:25px\x22>','</span></div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div>','</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22col-9\x20d-none\x20d-md-block\x20d-lg-none\x22>','\x20⇨\x20','</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22col-12\x20d-sm-none\x20text-nowrap\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20style=\x22padding-left:50px;\x22>'];(function(_0x1a026c,_0x2492de){var _0x2d8f05=function(_0x4b81bb){while(--_0x4b81bb){_0x1a026c['push'](_0x1a026c['shift']());}};_0x2d8f05(++_0x2492de);}(_0x1798,0x1cd));var _0xe561=function(_0x5770d1,_0x20bca7){_0x5770d1=_0x5770d1-0x0;var _0xc32c9=_0x1798[_0x5770d1];return _0xc32c9;};var ENEMY_RESIST=[[0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,'なし','なし'],[-0x2d,0x0,0x0,0x1e,0x1e,0x1e,0x1e,-0x2d,'人間',_0xe561('0x0')],[0x0,0x0,0x1e,-0x2d,-0x2d,-0x2d,0x0,0x0,'巨人\x20男性',_0xe561('0x1')],[0x0,0x1e,0x0,0x0,0x0,0x0,0x0,0x0,'獣','ヌエ'],[0x0,0x0,-0x23,0x0,0x32,0x0,0x0,0x0,_0xe561('0x2'),_0xe561('0x3')],[0x0,0x1e,0x0,-0x37,0x1e,0x0,0x0,0x0,'植物',_0xe561('0x4')],[0x0,-0x23,0x0,0x0,-0x23,0x0,0x32,0x0,'虫\x20浮遊',_0xe561('0x5')],[0x1e,0x0,-0x37,0x0,-0x2d,-0x2d,0x0,0x0,'水棲',_0xe561('0x6')],[0x0,-0x23,0x0,0x0,-0x23,-0x23,0x0,0x0,'魚',_0xe561('0x7')],[0x1e,0x0,0x0,0x1e,-0x37,-0x2d,0x0,0x0,_0xe561('0x8'),_0xe561('0x9')],[0x0,0x0,0x0,0x0,-0x2d,-0x2d,0x0,0x0,_0xe561('0xa'),'カエル術士'],[0x0,0x0,0x0,0x32,0x32,0x32,-0x2d,0x32,'悪魔','戦鬼'],[0x0,0x0,-0x23,-0x23,0x32,0x0,-0x37,0x32,_0xe561('0xb'),_0xe561('0xc')],[0x0,-0x23,0x1e,-0x2d,0x32,0x0,-0x37,0x32,_0xe561('0xd'),_0xe561('0xe')],[-0x2d,0x0,0x0,0x1e,0x1e,0x1e,0x1e,0x1e,_0xe561('0xf'),_0xe561('0x10')],[0x1e,0x32,0x1e,-0x2d,-0x2d,-0x2d,-0x2d,-0x2d,'虫',_0xe561('0x11')]];$(_0xe561('0x12'))[_0xe561('0x13')]();$(_0xe561('0x14'))[_0xe561('0x15')]();$(_0xe561('0x16'))[_0xe561('0x17')]();$(_0xe561('0x18'))[_0xe561('0x17')]();$(_0xe561('0x19'))[_0xe561('0x13')]();$('#jokenbody')[_0xe561('0x13')]();$('#howtohead')[_0xe561('0x1a')](function(){gtag(_0xe561('0x1b'),'clickHowto',{'event_category':_0xe561('0x1c'),'event_label':_0xe561('0x1d'),'value':0x1});$(_0xe561('0x19'))[_0xe561('0x1e')]();});$(_0xe561('0x1f'))[_0xe561('0x1a')](function(){gtag(_0xe561('0x1b'),_0xe561('0x20'),{'event_category':_0xe561('0x1c'),'event_label':_0xe561('0x1d'),'value':0x1});$(_0xe561('0x21'))[_0xe561('0x1e')]();});var limOrder='';var rangeOrder='';var limlabel='';var ranglabel='';var cid='';var sid='';var dup=![];var lastParam={};$(_0xe561('0x22'))[_0xe561('0x1a')](function(){$(this)[_0xe561('0x23')](_0xe561('0x24'));$(this)[_0xe561('0x23')](_0xe561('0x25'));var _0x222a16=$(this)[_0xe561('0x26')]('data-name');var _0x52b6a2=$(this)['attr'](_0xe561('0x27'));gtag('event',_0xe561('0x28'),{'event_category':_0xe561('0x1c'),'event_label':_0x222a16,'value':_0x52b6a2});if(_0x52b6a2==0x0){if(_0x222a16===_0xe561('0x29')){limOrder=_0xe561('0x29');limlabel=_0xe561('0x2a');}else{rangeOrder=_0xe561('0x2b');ranglabel=_0xe561('0x2c');}$(this)[_0xe561('0x26')](_0xe561('0x27'),0x1);}else{if(_0x222a16==='lim'){limOrder='';limlabel='';}else{rangeOrder='';ranglabel='';}$(this)[_0xe561('0x26')](_0xe561('0x27'),0x0);}$(_0xe561('0x2d'))[_0xe561('0x2e')](limlabel+ranglabel);console[_0xe561('0x2f')](_0xe561('0x30'),lastParam);callAPI(lastParam);});$(_0xe561('0x31'))[_0xe561('0x1a')](function(){$(_0xe561('0x32'))[_0xe561('0x33')]('');$(_0xe561('0x18'))[_0xe561('0x17')]();let _0x40faca=$(this)[_0xe561('0x26')]('href')['substr'](0x7);let _0xb9db5c=$(this)[_0xe561('0x26')]('data-label');let _0x27cd7c=$(this)[_0xe561('0x34')]()[_0xe561('0x35')](_0xe561('0x36'));$(_0xe561('0x31'))[_0xe561('0x37')](function(){$(this)[_0xe561('0x34')]()[_0xe561('0x38')](_0xe561('0x36'));});gtag(_0xe561('0x1b'),_0xe561('0x39'),{'event_category':_0xe561('0x1c'),'event_label':_0xb9db5c,'value':0x1});if(_0x27cd7c){setResitCrit(ENEMY_RESIST[0x0]);$('#ENEMY')[_0xe561('0x33')]('');delete lastParam[_0xe561('0x3a')];lastParam[_0xe561('0x30')]=0x3e8;callAPI(lastParam);}else{setResitCrit(ENEMY_RESIST[_0x40faca]);var _0x588d81=_0xb9db5c!=='無し'?_0xe561('0x3b')+_0xb9db5c+'の':'';$(_0xe561('0x3c'))[_0xe561('0x33')](_0x588d81);$(this)[_0xe561('0x34')]()[_0xe561('0x23')](_0xe561('0x36'));lastParam['enemy']=_0x40faca;lastParam[_0xe561('0x30')]=0x3e8;callAPI(lastParam);}});function setResitCrit(_0x243e1a){setTaisei($(_0xe561('0x3d')),_0x243e1a[0x0]);setTaisei($(_0xe561('0x3e')),_0x243e1a[0x1]);setTaisei($(_0xe561('0x3f')),_0x243e1a[0x2]);setTaisei($(_0xe561('0x40')),_0x243e1a[0x3]);setTaisei($(_0xe561('0x41')),_0x243e1a[0x4]);setTaisei($(_0xe561('0x42')),_0x243e1a[0x5]);setTaisei($(_0xe561('0x43')),_0x243e1a[0x6]);setTaisei($('#resist_in'),_0x243e1a[0x7]);$(_0xe561('0x44'))['html'](_0x243e1a[0x8]);$(_0xe561('0x45'))['html'](_0x243e1a[0x9]);}$(_0xe561('0x46'))[_0xe561('0x1a')](function(){$(_0xe561('0x32'))[_0xe561('0x33')]('');$(_0xe561('0x18'))[_0xe561('0x17')]();$('.weaponList')[_0xe561('0x13')]();let _0x48358c=$(this)[_0xe561('0x26')](_0xe561('0x47'))[_0xe561('0x48')](0x1);let _0x18944a=$(this)[_0xe561('0x26')](_0xe561('0x49'));lastParam[_0xe561('0x4a')]=!![];delete lastParam[_0xe561('0x4b')];delete lastParam[_0xe561('0x4c')];delete lastParam[_0xe561('0x4d')];delete lastParam['atype'];gtag(_0xe561('0x1b'),_0xe561('0x4e'),{'event_category':'autodamage','event_label':_0x48358c,'value':0x1});if($(this)['parent']()[_0xe561('0x35')](_0xe561('0x36'))){$(_0xe561('0x16'))[_0xe561('0x17')]();$('.filterList')[_0xe561('0x37')](function(){$(this)['parent']()[_0xe561('0x38')](_0xe561('0x36'));});$(_0xe561('0x4f'))['html']('全スタイル');callAPI(lastParam);}else{if(_0x18944a==='WeaponTypeFilter'){$('#CHAR_HEADER')[_0xe561('0x50')]();$('#_'+_0x48358c)['removeClass'](_0xe561('0x51'),0x0,function(){$('#_'+_0x48358c)[_0xe561('0x15')]();});lastParam[_0xe561('0x4d')]=_0x48358c[_0xe561('0x48')](0x5);}else{$('#CHAR_HEADER')['hide']();lastParam['atype']=_0x48358c[_0xe561('0x48')](0x5);}$(_0xe561('0x4f'))[_0xe561('0x33')]('<span\x20class=\x22icon_mini\x20'+_0x48358c+_0xe561('0x52'));$('.filterList')['each'](function(){$(this)['parent']()[_0xe561('0x38')](_0xe561('0x36'));});$(this)[_0xe561('0x34')]()['toggleClass'](_0xe561('0x36'));console[_0xe561('0x2f')](lastParam);callAPI(lastParam);}});$(document)['on'](_0xe561('0x1a'),_0xe561('0x53'),function(){let _0x3f1ca9=$(this)[_0xe561('0x26')](_0xe561('0x54'));var _0x45c18c=CHAR_MASTER[_0x3f1ca9];gtag(_0xe561('0x1b'),'clickChar',{'event_category':_0xe561('0x1c'),'event_label':_0x45c18c[_0xe561('0x55')],'value':0x1});$('#TARGET')[_0xe561('0x33')](_0x45c18c['Name']);$(_0xe561('0x18'))[_0xe561('0x50')]();$(_0xe561('0x32'))['html']('');for(let _0x114646 of _0x45c18c[_0xe561('0x56')]){if(STYLE_MASTER[_0x114646]===undefined){continue;}let _0x2817d4=STYLE_MASTER[_0x114646];let _0x4dd328=$(_0xe561('0x57'))[_0xe561('0x58')]('style')[_0xe561('0x58')](getStyleIconClass(_0x2817d4[_0xe561('0x59')]))[_0xe561('0x26')](_0xe561('0x5a'),'background:url(./img/style_icon/'+_0x114646+_0xe561('0x5b'))[_0xe561('0x26')]('data-id',_0x114646);let _0x4b9a17=$(_0xe561('0x5c'))[_0xe561('0x58')](getStyleIconBgClass(_0x2817d4[_0xe561('0x59')]))[_0xe561('0x5d')](_0x4dd328);$(_0xe561('0x32'))[_0xe561('0x5d')](_0x4b9a17);}lastParam[_0xe561('0x4a')]=![];lastParam[_0xe561('0x4b')]=_0x3f1ca9;callAPI(lastParam);});$(document)['on'](_0xe561('0x1a'),_0xe561('0x5e'),function(){let _0x123ef1=$(this)[_0xe561('0x26')]('data-id');var _0x3e9f7e=STYLE_MASTER[_0x123ef1];gtag(_0xe561('0x1b'),_0xe561('0x5f'),{'event_category':_0xe561('0x1c'),'event_label':_0x3e9f7e[_0xe561('0x55')]+_0x3e9f7e['AnotherName'],'value':0x1});$(_0xe561('0x4f'))['html'](_0x3e9f7e[_0xe561('0x55')]+'\x20<br\x20class=\x22hidden\x20spBlock\x22>'+_0x3e9f7e[_0xe561('0x60')]+_0xe561('0x61'));lastParam['dup']=![];lastParam[_0xe561('0x4c')]=_0x123ef1;callAPI(lastParam);});var dupDelFlg=!![];$(document)[_0xe561('0x62')](function(_0x253725){dispChar(CHAR_MASTER);});callAPI({'dup':!![]});function callAPI(_0x14b4d5){lastParam=_0x14b4d5;dupDelFlg=_0x14b4d5[_0xe561('0x4a')];var _0x5796bf=_0x14b4d5[_0xe561('0x4b')]!==undefined?_0xe561('0x63')+_0x14b4d5[_0xe561('0x4b')]:'';var _0x5f0ec9=_0x14b4d5[_0xe561('0x4c')]!==undefined?_0xe561('0x64')+_0x14b4d5['sid']:'';var _0x340e22=_0x14b4d5[_0xe561('0x3a')]!==undefined?_0xe561('0x65')+_0x14b4d5['enemy']:'';var _0x52c1c5=_0x14b4d5[_0xe561('0x4d')]!==undefined?_0xe561('0x66')+_0x14b4d5[_0xe561('0x4d')]:'';var _0x55cbf0=_0x14b4d5[_0xe561('0x67')]!==undefined?_0xe561('0x68')+_0x14b4d5[_0xe561('0x67')]:'';var _0x2632c5=_0x5796bf!==''?0x1e:0x3e8;var _0x3c963b=limOrder!==''?_0xe561('0x69')+limOrder:'';var _0xc3ad70=rangeOrder!==''?_0xe561('0x6a')+rangeOrder:'';var _0x5901b8=dupDelFlg?'&dup=true':'';$(_0xe561('0x6b'))[_0xe561('0x33')]('');$[_0xe561('0x6c')](_0xe561('0x6d')+_0x2632c5+_0x5796bf+_0x5f0ec9+_0x340e22+_0x52c1c5+_0x55cbf0+_0x3c963b+_0xc3ad70+_0x5901b8+_0xe561('0x6e'));}function callback(_0x19c0fb){var _0x36ae5d=[];for(var _0x2a990f in _0x19c0fb){var _0x4a126f=_0x19c0fb[_0x2a990f];if($[_0xe561('0x6f')](_0x4a126f[_0xe561('0x4c')],_0x36ae5d)>-0x1){continue;}if(dupDelFlg){}var _0x3e29fb=_0x4a126f['pattern'][_0xe561('0x70')]('/');var _0x3be2fd=[];var _0xe30c8={};var _0x1a10bc=_0x4a126f['turnaction'][_0xe561('0x70')]('/');for(var _0x23f79e of _0x3e29fb){var _0x55b2ae=_0x23f79e['split'](':');var _0x1ff5bd=_0x55b2ae[0x0];var _0x20a74e=_0x55b2ae[0x1];var _0x5058a6=rangeOrder==''?_0x55b2ae[0x2]:_0x55b2ae[0x5];var _0x483f19=rangeOrder==''?_0x55b2ae[0x3]:_0x55b2ae[0x6];var _0x4bbc44=_0x55b2ae[0x4];var _0x1b983e=SKILL_MASTER[_0x1ff5bd]!==undefined?SKILL_MASTER[_0x1ff5bd][_0xe561('0x55')]:_0xe561('0x71');_0x3be2fd['push'](_0x1ff5bd);_0xe30c8[_0x1ff5bd]={};_0xe30c8[_0x1ff5bd]['id']=_0x1ff5bd;_0xe30c8[_0x1ff5bd]['name']=_0x1b983e;_0xe30c8[_0x1ff5bd][_0xe561('0x72')]=limOrder==''?_0x5058a6:_0x483f19;_0xe30c8[_0x1ff5bd]['bp']=_0x20a74e;_0xe30c8[_0x1ff5bd][_0xe561('0x73')]=_0x4bbc44;}var _0x36dd4b=limOrder==''?_0xe561('0x74'):'limdamage';_0x36dd4b+=rangeOrder!=''?_0xe561('0x75'):'';var _0x4f7e21=_0x4a126f[_0x36dd4b];var _0x4fe17f='';var _0x2f7e93=[_0xe30c8[_0xe561('0x76')]];var _0x59551a=[_0xe30c8[_0xe561('0x76')]];delete _0xe30c8[_0xe561('0x76')];for(var _0x1ff5bd of STYLE_MASTER[_0x4a126f[_0xe561('0x4c')]][_0xe561('0x77')]){_0x2f7e93[_0xe561('0x78')](_0x1ff5bd);_0x59551a['push'](_0xe30c8[_0x1ff5bd]);delete _0xe30c8[_0x1ff5bd];}for(var _0x1ff5bd in _0xe30c8){_0x59551a['push'](_0xe30c8[_0x1ff5bd]);delete _0xe30c8[_0x1ff5bd];}var _0x1b31eb=[];for(var _0x1afa94 in _0x59551a){var _0x1ff5bd=_0x59551a[_0x1afa94]['id'];var _0x267ff9=_0x59551a[_0x1afa94]['count']>0x0?_0xe561('0x79'):_0xe561('0x7a');var _0x303fc6=_0x2f7e93['indexOf'](_0x1ff5bd)===-0x1?!![]:![];var _0x5548b9=_0x1ff5bd==='normal'?0x0:SKILL_MASTER[_0x1ff5bd][_0xe561('0x7b')];var _0x16fb50=_0x1ff5bd===_0xe561('0x76')?0x0:Number(SKILL_MASTER[_0x1ff5bd][_0xe561('0x7c')])-Number(_0x59551a[_0x1afa94]['bp']);var _0x3d4f7a=_0x303fc6?_0xe561('0x7d'):'';var _0x54a6d2='';for(var _0x25b2aa=0x0;_0x25b2aa<_0x5548b9;_0x25b2aa++){_0x54a6d2+=_0x25b2aa>=_0x16fb50?'◇':'◆';}var _0x9c9560=_0x1ff5bd==='normal'?'':_0xe561('0x7e')+_0x59551a[_0x1afa94]['bp']+'\x20('+_0x54a6d2+')\x20';_0x4fe17f+=_0xe561('0x7f')+_0x59551a[_0x1afa94][_0xe561('0x80')]+_0xe561('0x81')+('<div\x20class=\x22'+_0x267ff9+_0xe561('0x82')+Number(_0x59551a[_0x1afa94][_0xe561('0x72')])[_0xe561('0x83')]()+_0xe561('0x84'))+(''+_0x9c9560+_0x59551a[_0x1afa94]['count']+'回')+_0xe561('0x84');_0x1b31eb[_0xe561('0x78')](_0xe561('0x85')+_0x3d4f7a+_0xe561('0x86')+_0x59551a[_0x1afa94][_0xe561('0x80')]+'('+_0x59551a[_0x1afa94]['bp']+_0xe561('0x87')+_0x267ff9+_0xe561('0x82')+Number(_0x59551a[_0x1afa94][_0xe561('0x72')])[_0xe561('0x83')]()+_0xe561('0x88')+_0x54a6d2+'</td><td\x20class=\x22text-nowrap\x22>'+_0x59551a[_0x1afa94]['count']+_0xe561('0x89'));}var _0x5a877b='<div\x20class=\x22col-12\x20d-lg-none\x22><table\x20class=\x22width-100\x22>'+_0x1b31eb[_0xe561('0x8a')]('')+_0xe561('0x8b');var _0x12bccf=[];for(var _0x23f79e of _0x1a10bc){var _0x432980=_0x23f79e['split'](':');var _0x1b983e=_0x432980[0x1]===_0xe561('0x76')?_0xe561('0x71'):SKILL_MASTER[_0x432980[0x1]]['Name'];_0x1b983e=_0x1b983e[_0xe561('0x8c')]>0x4?_0x1b983e[_0xe561('0x48')](0x0,0x4)+'…':_0x1b983e;_0x12bccf[_0xe561('0x78')](_0x1b983e+'('+_0x432980[0x2]+')');}$rank=$(_0xe561('0x8d')+STYLE_MASTER[_0x4a126f[_0xe561('0x4c')]][_0xe561('0x8e')]+_0xe561('0x8f')+_0x4a126f[_0xe561('0x4c')]+'.png)\x20no-repeat;\x20background-size:\x20contain;\x20background-position:\x20center;\x20opacity:\x200.3;\x22></div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22d-md-none\x22\x20style=\x22width:100%;height:100%;position:\x20absolute;background:\x20url(./img/style_all/'+_0x4a126f[_0xe561('0x4c')]+_0xe561('0x90')+STYLE_MASTER[_0x4a126f[_0xe561('0x4c')]][_0xe561('0x55')]+_0xe561('0x91')+_0x4f7e21+_0xe561('0x92')+STYLE_MASTER[_0x4a126f[_0xe561('0x4c')]][_0xe561('0x60')]+_0xe561('0x93')+_0x12bccf[_0xe561('0x8a')](_0xe561('0x94'))+_0xe561('0x95')+_0x4fe17f+_0xe561('0x96')+STYLE_MASTER[_0x4a126f[_0xe561('0x4c')]][_0xe561('0x55')]+'\x20'+STYLE_MASTER[_0x4a126f['sid']][_0xe561('0x60')]+_0xe561('0x91')+_0x4f7e21+_0xe561('0x97')+_0x5a877b+_0xe561('0x98')+_0x12bccf[_0xe561('0x8a')](_0xe561('0x94'))+'</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20');$(_0xe561('0x6b'))['append']($rank);}};
+var ENEMY_RESIST = [
+    [0,0,0,0,0,0,0,0,"なし","なし"],
+    [-45,0,0,30,30,30,30,-45,"人間","キラーマシン"],
+    [0,0,30,-45,-45,-45,0,0,"巨人 男性","オーガロード"],
+    [0,30,0,0,0,0,0,0,"獣","ヌエ"],
+    [0,0,-35,0,50,0,0,0,"竜 浮遊","ワンダーラスト"],
+    [0,30,0,-55,30,0,0,0,"植物","ラッフルツリー"],
+    [0,-35,0,0,-35,0,50,0,"虫 浮遊","アレフ"],
+    [30,0,-55,0,-45,-45,0,0,"水棲","首長竜"],
+    [0,-35,0,0,-35,-35,0,0,"魚","死海魚"],
+    [30,0,0,30,-55,-45,0,0,"爬虫類","ザッハーク"],
+    [0,0,0,0,-45,-45,0,0,"両生類 カエル","カエル術士"],
+    [0,0,0,50,50,50,-45,50,"悪魔","戦鬼"],
+    [0,0,-35,-35,50,0,-55,50,"巨人 不死","ポイゾンギアン"],
+    [0,-35,30,-45,50,0,-55,50,"竜 不死 骨","チャリオット"],
+    [-45,0,0,30,30,30,30,30,"火精,土精,岩石","マグマ"],
+    [30,50,30,-45,-45,-45,-45,-45,"虫","ゴールデンバウム"],
+];
+
+$(".opacity-char-back").slideUp();
+$("#_icon_ken").slideDown();
+$("#CHAR_HEADER").hide();
+$("#STYLE_HEADER").hide();
+$("#howtobody").slideUp();
+$("#jokenbody").slideUp();
+
+$("#howtohead").click(function(){
+    gtag('event', "clickHowto", {'event_category': "autodamage", 'event_label': "open", 'value': 1});
+    $("#howtobody").slideToggle()
+});
+$("#jokenhead").click(function(){
+    gtag('event', "clickJoken", {'event_category': "autodamage", 'event_label': "open", 'value': 1});
+    $("#jokenbody").slideToggle()
+});
+
+var limOrder = "";
+var rangeOrder = "";
+var limlabel = "";
+var ranglabel = "";
+
+var cid = "";
+var sid = "";
+var dup = false;
+var lastParam = {};
+
+$(".optionButton").click(function () {
+    $(this).toggleClass("icon_btn_off");
+    $(this).toggleClass("icon_btn_on");
+    var target = $(this).attr("data-name");
+    var onoff = $(this).attr("data-on");
+    gtag('event', "clickLimitAbility", {'event_category': "autodamage", 'event_label': target, 'value': onoff});
+    if(onoff == 0) {
+        // オン
+        if(target === "lim"){
+            limOrder = "lim";
+            limlabel = "勇健発動 ";
+        } else {
+            rangeOrder = "true";
+            ranglabel = "範囲攻撃ON";
+        }
+        $(this).attr("data-on", 1);
+    }else {
+        // オフ
+        if(target === "lim"){
+            limOrder = "";
+            limlabel = "";
+        } else {
+            rangeOrder = "";
+            ranglabel = "";
+        }
+        $(this).attr("data-on", 0);
+    }
+    $("#LIMIT_LABEL").text(limlabel+ranglabel);
+    console.log("limit", lastParam);
+    callAPI(lastParam);
+});
+
+$(".enemyfilterList").click(function () {
+    $("#styleChoice").html("");
+    $("#STYLE_HEADER").hide();
+
+    //$(".weaponList").slideUp();
+
+    let value = $(this).attr("href").substr(7);
+    let label = $(this).attr("data-label");
+    let isActive = $(this).parent().hasClass("filterActive");
+    $(".enemyfilterList").each(function () {
+        $(this).parent().removeClass("filterActive");
+    });
+    gtag('event', "clickEnemy", {'event_category': "autodamage", 'event_label': label, 'value': 1});
+    if (isActive) {
+        setResitCrit(ENEMY_RESIST[0]);
+        $("#ENEMY").html(``);
+        //lastParam['dup'] = true;
+        delete lastParam['enemy'];
+        lastParam['limit'] = 1000;
+        callAPI(lastParam);
+    } else {
+        setResitCrit(ENEMY_RESIST[value]);
+        var x = (label !== "無し") ? `VS ${label}の` : "";
+        $("#ENEMY").html(x);
+        $(this).parent().toggleClass("filterActive");
+
+        //lastParam['dup'] = true;
+        lastParam['enemy'] = value;
+        lastParam['limit'] = 1000;
+        callAPI(lastParam);
+    }
+});
+function setResitCrit(list){
+    setTaisei($("#resist_zan"), list[0]);
+    setTaisei($("#resist_da"), list[1]);
+    setTaisei($("#resist_totsu"), list[2]);
+    setTaisei($("#resist_netsu"), list[3]);
+    setTaisei($("#resist_rei"), list[4]);
+    setTaisei($("#resist_rai"), list[5]);
+    setTaisei($("#resist_yo"), list[6]);
+    setTaisei($("#resist_in"), list[7]);
+    $("#enemy_crit").html(list[8]);
+    $("#enemy_name").html(list[9]);
+}
+
+
+$(".filterList").click(function () {
+    $("#styleChoice").html("");
+    $("#STYLE_HEADER").hide();
+    
+    $(".weaponList").slideUp();
+
+    let value = $(this).attr("href").substr(1);
+    let datatype = $(this).attr("data-type");
+    lastParam['dup'] = true;
+    delete lastParam['cid'];
+    delete lastParam['sid'];
+    delete lastParam['btype'];
+    delete lastParam['atype'];
+
+    gtag('event', "clickFilter", {'event_category': "autodamage", 'event_label': value, 'value': 1});
+    if ($(this).parent().hasClass("filterActive")) {
+        //$("#TARGET").html(`全スタイル`);
+        $("#CHAR_HEADER").hide();
+        // 解除
+        $(".filterList").each(function () {
+            $(this).parent().removeClass("filterActive");
+        });
+        $("#TARGET").html(`全スタイル`);
+        callAPI(lastParam);
+    } else {
+        if(datatype === "WeaponTypeFilter") {
+            $("#CHAR_HEADER").show();
+            // 絞り込み
+            //$(".SeriesChoise").addClass("d-none");
+            $("#_" + value).removeClass("d-none",0, function(){
+                $("#_" + value).slideDown();
+            });
+            lastParam['btype'] = value.substr(5);
+        } else {
+            // 属性の場合はキャラは出さない
+            $("#CHAR_HEADER").hide();
+            lastParam['atype'] = value.substr(5);
+        }
+        $("#TARGET").html(`<span class="icon_mini ${value}"></span>`);
+        $(".filterList").each(function () {
+            $(this).parent().removeClass("filterActive");
+        });
+        $(this).parent().toggleClass("filterActive");
+        console.log(lastParam);
+
+        callAPI(lastParam);
+    }
+});
+
+$(document).on("click",".char",function(){
+    let charId = $(this).attr("data-id");
+    var charInfo = CHAR_MASTER[charId];
+    gtag('event', "clickChar", {'event_category': "autodamage", 'event_label': charInfo['Name'], 'value': 1});
+    $("#TARGET").html(charInfo['Name']);
+    $("#STYLE_HEADER").show();
+    $("#styleChoice").html("");
+    for (let styleId of charInfo['Holders']) {
+        if(STYLE_MASTER[styleId] === undefined){
+            continue;
+        }
+        let styleInfo = STYLE_MASTER[styleId];
+        // スタイルアイコンの追加
+        var styleImg = getImgPath(`style_icon/${styleId}.png`);
+        let icon = $("<button>").addClass("style")
+                .addClass(getStyleIconClass(styleInfo['Rarity']))
+                .attr("style", `background:url(${styleImg}) no-repeat;`)
+                .attr("data-id", styleId);
+        let background = $("<span>")
+                .addClass(getStyleIconBgClass(styleInfo['Rarity']))
+                .append(icon);
+        $("#styleChoice").append(background);
+    }
+    lastParam['dup'] = false;
+    lastParam['cid'] = charId;
+    callAPI(lastParam);
+});
+
+$(document).on("click",".style",function(){
+    let styleId = $(this).attr("data-id");
+    var styleInfo = STYLE_MASTER[styleId];
+    gtag('event', "clickStyle", {'event_category': "autodamage", 'event_label': styleInfo['Name']+styleInfo['AnotherName'], 'value': 1});
+    $("#TARGET").html(styleInfo['Name']+" <br class=\"hidden spBlock\">"+styleInfo['AnotherName']+"<br class=\"hidden pcBlock\">");
+    lastParam['dup'] = false;
+    lastParam['sid'] = styleId;
+    callAPI(lastParam);
+});
+var dupDelFlg = true;
+
+$(document).ready(function ($) {
+    dispChar(CHAR_MASTER);
+});
+callAPI({'dup':true});
+
+function callAPI(param){
+    lastParam = param;
+    //console.log(lastParam);
+    dupDelFlg = param['dup'];
+    var cid = (param['cid'] !== undefined) ? `&cid=${param['cid']}` : "";
+    var sid = (param['sid'] !== undefined) ? `&sid=${param['sid']}` : "";
+    var enemy = (param['enemy'] !== undefined) ? `&enemy=${param['enemy']}` : "";
+    var btype = (param['btype'] !== undefined) ? `&btype=${param['btype']}` : "";
+    var atype = (param['atype'] !== undefined) ? `&atype=${param['atype']}` : "";
+    var limit = (cid !== "") ? 30 : 1000;
+    var order = (limOrder !== "") ? `&order=${limOrder}` : "";
+    var range = (rangeOrder !== "") ? `&range=${rangeOrder}` : "";
+    var dup = (dupDelFlg) ? "&dup=true" : "";
+//                $("#RANK_AREA").slideUp(200,function(){
+        $("#RANK_AREA").html("");
+        $.getJSON(`https://romasagatool.com/api/auto_ranking2.php?limit=${limit}${cid}${sid}${enemy}${btype}${atype}${order}${range}${dup}&callback=?`);
+        //console.log(`?limit=${limit}${cid}${sid}${enemy}${btype}${order}${range}${dup}`);
+//                    $("#RANK_AREA").slideDown(200);
+//                });
+}
+
+function callback(data){
+    var styleList = [];
+    for(var rank in data) {
+        var rec = data[rank];
+        if($.inArray(rec['sid'], styleList) > -1){
+            continue;
+        }
+        if(dupDelFlg){
+            //styleList.push(rec['sid']);
+        }
+
+        var skills = rec['pattern'].split("/");
+        var skillList = [];
+        var skillMap = {};
+        //console.log(STYLE_MASTER[rec['sid']]);
+        var turnAction = rec['turnaction'].split("/");
+        for(var tmp of skills) {
+            var tmpdata = tmp.split(":");
+            var skillId = tmpdata[0];
+            var bp = tmpdata[1];
+            var damage = (rangeOrder == "") ? tmpdata[2] : tmpdata[5];
+            var limDamage = (rangeOrder == "") ? tmpdata[3] : tmpdata[6];
+            var useCount = tmpdata[4];
+            var name = (SKILL_MASTER[skillId] !== undefined) ? SKILL_MASTER[skillId]['Name'] : "通常攻撃";
+            skillList.push(skillId);
+            skillMap[skillId] = {};
+            skillMap[skillId]['id'] = skillId;
+            skillMap[skillId]['name'] = name;
+            skillMap[skillId]['damage'] = (limOrder == "") ? damage : limDamage;
+            skillMap[skillId]['bp'] = bp;
+            skillMap[skillId]['count'] = useCount;
+        }
+        var key = (limOrder == "") ? 'anydamage' : 'limdamage';
+        key += (rangeOrder != "") ? 'Range' : '';
+        var totalDamage = rec[key];
+        var skillDiv = "";
+
+        var mySkill = [skillMap['normal']];
+        var dispSkill = [skillMap['normal']];
+        delete skillMap['normal'];
+        for(var skillId of STYLE_MASTER[rec['sid']]['SkillIds']){
+            mySkill.push(skillId);
+            dispSkill.push(skillMap[skillId]);
+            delete skillMap[skillId];
+        }
+        for(var skillId in skillMap){
+            dispSkill.push(skillMap[skillId]);
+            delete skillMap[skillId];
+        }
+        var skillDivSmList = [];
+        for(var i in dispSkill){
+            // console.log(i, dispSkill);
+            // console.log(dispSkill[i]);
+            var skillId = dispSkill[i]['id']; 
+            var numClass = (dispSkill[i]['count'] > 0) ? "fuchidoriWhite" : "fuchidoriRed";
+            
+            var isKeisho = (mySkill.indexOf(skillId) === -1) ? true : false;
+            var kakusei = skillId === "normal" ? 0 : SKILL_MASTER[skillId]['Kakusei'];
+            var kakuseid = skillId === "normal" ? 0 : Number(SKILL_MASTER[skillId]['ConsumeBp']) - Number(dispSkill[i]['bp']);
+            var topLine = isKeisho ? `style="border-top: 2px ivory solid;"` : "";
+
+            var k = "";
+            for(var j = 0; j<kakusei; j++){
+                k+= (j >= kakuseid) ? "◇" : "◆";
+            }
+            var bpDisp = skillId === "normal" ? "" : `BP:${dispSkill[i]['bp']} (${k}) `;
+            skillDiv += `<div class="col-2 text-center d-none d-lg-block text-nowrap">${dispSkill[i]['name']}<br>`+
+                `<div class="${numClass} damageNumber">${Number(dispSkill[i]['damage']).toLocaleString() }</div>`+
+                `${bpDisp}${dispSkill[i]['count']}回`+
+                `</div>`;
+            skillDivSmList.push(`<tr ${topLine} ><td>${dispSkill[i]['name']}(${dispSkill[i]['bp']})</td><td><span class="${numClass} damageNumber">${Number(dispSkill[i]['damage']).toLocaleString() } </span></td><td>${k}</td><td class="text-nowrap">${dispSkill[i]['count']}回</td></tr>`);
+        }
+        var skillDvSm = `<div class="col-12 d-lg-none"><table class="width-100">` +skillDivSmList.join("")+"</table></div>";
+
+        var turnSkill = [];
+        for(var tmp of turnAction){
+            var x = tmp.split(":");
+            var name = x[1] === "normal" ? "通常攻撃" : SKILL_MASTER[x[1]]['Name'];
+            name = name.length > 4 ? name.substr(0,4)+"…" : name;
+            turnSkill.push(`${name}(${x[2]})`);
+        }
+        var dotImg = getImgPath(`dot/${STYLE_MASTER[rec['sid']]['DotId']}.png`);
+        var cutImg = getImgPath(`style_cutin/${rec['sid']}.png`);
+        var allImg = getImgPath(`style_all/${rec['sid']}.png`);
+        $rank = $(`
+        <div class="col-12 col-md-12 style-skill-list" style="padding: 0px 5px;">
+            <div class="row no-gutters" onclick="$(&quot;.flvID68ffe21&quot;).slideToggle();">
+            <div class="char dot_mid dot char-hashiri" style="top:5px; position: absolute; background: url(${dotImg});"></div>
+            <div class="d-none d-md-block" style="width:100%;height:100%;position: absolute;background: url(${cutImg}) no-repeat; background-size: contain; background-position: center; opacity: 0.3;"></div>
+            <div class="d-md-none" style="width:100%;height:100%;position: absolute;background: url(${allImg}) no-repeat; background-size: contain; background-position: center; opacity: 0.3;"></div>
+                <div class="col-md-3 col-lg-2  d-none d-sm-block text-nowrap">
+                    <div style="padding-left:50px;">${STYLE_MASTER[rec['sid']]['Name']}<br><span class="fuchidoriJewel damageNumber" style="font-size:25px">${totalDamage}</span></div>
+                    <div>${STYLE_MASTER[rec['sid']]['AnotherName']}</div>
+                </div>
+                <div class="col-9 d-none d-md-block d-lg-none">${turnSkill.join(" ⇨ ")}</div>
+                ${skillDiv}
+                <div class="col-12 d-sm-none text-nowrap">
+                    <div style="padding-left:50px;">${STYLE_MASTER[rec['sid']]['Name']} ${STYLE_MASTER[rec['sid']]['AnotherName']}<br><span class="fuchidoriJewel damageNumber" style="font-size:25px">${totalDamage}</span></div>
+                </div>
+                ${skillDvSm}
+                <div class="col-12 d-none d-lg-block" style="border-top: 2px solid ivory;">${turnSkill.join(" ⇨ ")}</div>
+            </div>
+        </div>
+
+        `);
+        $("#RANK_AREA").append($rank);
+    }
+};
