@@ -13,7 +13,7 @@
         {
             "startDay": "20",
             "endDay": "31",
-            "title": "[ガチャ] <br class='hidden pcBlock'>・1周年記念 Romancing祭 コーデリア編<br>・1周年記念 Romancing祭 モニカ変",
+            "title": "[ガチャ] <br class='hidden pcBlock'>・1周年記念 Romancing祭 コーデリア編<br>・1周年記念 Romancing祭 モニカ編",
             "endSuffix": "<br>翌4:00 終了",
             "type": "green",
             "startNone": true
@@ -92,7 +92,7 @@
         },
         {
             "startDay": "27",
-            "endDay": "30",
+            "endDay": "31",
             "title": "[イベント] <br class='hidden pcBlock'>武器・主防具 聖石洞窟",
             "startPrefix": "12:00 開始<br>",
             "endSuffix": "<br>翌4:00 終了",
@@ -108,7 +108,7 @@
         },
         {
             "startDay": "24",
-            "endDay": "32",
+            "endDay": "31",
             "title": "[イベント] <br class='hidden pcBlock'>・クリスマスの奇跡<br>・モニカのクリスマス大作戦",
             "startPrefix": "12:00 開始<br>",
             "endSuffix": "<br>翌4:00 終了",
