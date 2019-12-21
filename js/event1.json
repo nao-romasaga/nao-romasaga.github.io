@@ -21,7 +21,7 @@
         {
             "startDay": "24",
             "endDay": "31",
-            "title": "[ガチャ] <br class='hidden pcBlock'>・1周年記念 Romancing祭 ？？？編<br>・1周年記念 Romancing祭 ジニー変",
+            "title": "[ガチャ] <br class='hidden pcBlock'>・1周年記念 Romancing祭 ？？？編<br>・1周年記念 Romancing祭 ジニー編",
             "startSuffix": "<br>12:00 開始",
             "endSuffix": "<br>翌4:00 終了",
             "type": "green"
@@ -85,7 +85,7 @@
         {
             "startDay": "23",
             "endDay": "29",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>・密林調査 卵のから2倍<br>・裏道場報酬2倍",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>・密林調査 卵のから3倍<br>・裏道場報酬3倍",
             "startPrefix": "4:00 開始<br>",
             "endSuffix": "<br>4:00 終了",
             "type": "blue"
