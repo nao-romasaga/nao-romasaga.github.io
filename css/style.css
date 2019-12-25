@@ -257,8 +257,14 @@ html {
     background-color: rgba(245, 245, 245, 1);
     opacity: 0.9;
 }
-.haikei {
+
+.haikei_old {
     background: url(http://romasagatool.com/img/bg.jpg) no-repeat;
+    width:100%;
+    background-size: cover;
+}
+.haikei {
+    background: url(http://romasagatool.com/img/bg_xmas.jpeg) no-repeat;
     width:100%;
     background-size: cover;
 }
