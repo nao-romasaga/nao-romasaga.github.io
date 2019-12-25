@@ -74,6 +74,13 @@ html {
     .smallWidth100 {
         width: 100%;
     }
+    .haikei {
+        background: url(http://romasagatool.com/img/bg_xmas.jpeg) no-repeat;
+        width:100%;
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: center;        
+    }
 }
 @media screen and (min-width:400px) {
     .rare-icon {
@@ -85,7 +92,12 @@ html {
     .gachaButtonSim {
         background-size: 275px 40px; width:275px !important;
     }
-
+    .haikei {
+        background: url(http://romasagatool.com/img/bg_xmas.jpeg) no-repeat;
+        width:100%;
+        background-size: cover;
+        background-position: center;
+    }
 }
 @media screen and (min-width:340px) {
     .smallFont {
@@ -263,11 +275,7 @@ html {
     width:100%;
     background-size: cover;
 }
-.haikei {
-    background: url(http://romasagatool.com/img/bg_xmas.jpeg) no-repeat;
-    width:100%;
-    background-size: cover;
-}
+
 body {
     color: #333;
     font-family: 'M PLUS Rounded 1c', sans-serif;
