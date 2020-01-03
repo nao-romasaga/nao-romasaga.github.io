@@ -1,120 +1,56 @@
 {
-    "year": 2019,
-    "month": 12,
+    "year": 2020,
+    "month": 1,
     "event": [
         {
             "startDay": "1",
-            "endDay": "31",
-            "title": "[ガチャ] <br class='hidden pcBlock'>・1周年記念 Romancing祭 エレン編<br>・1周年記念 Romancing祭 アセルス編",
+            "endDay": "14",
+            "title": "[ガチャ] <br class='hidden pcBlock'>謹賀新年2020 Romancing祭",
             "endSuffix": "<br>翌4:00 終了",
             "type": "green",
             "startNone": true
-        },
-        {
-            "startDay": "20",
-            "endDay": "31",
-            "title": "[ガチャ] <br class='hidden pcBlock'>・1周年記念 Romancing祭 コーデリア編<br>・1周年記念 Romancing祭 モニカ編",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "green",
-            "startNone": true
-        },
-        {
-            "startDay": "24",
-            "endDay": "31",
-            "title": "[ガチャ] <br class='hidden pcBlock'>・1周年記念 Romancing祭 ？？？編<br>・1周年記念 Romancing祭 ジニー編",
-            "startSuffix": "<br>12:00 開始",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "green"
         },
         {
             "startDay": "1",
-            "endDay": "2",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>VH 斬スタイル3倍",
+            "endDay": "5",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>メイン 全スタイル2倍",
             "endSuffix": "<br>翌4:00 終了",
             "type": "blue",
             "startNone": true
         },
+        {
+            "startDay": "1",
+            "endDay": "14",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>海の主の娘、スービエ、最終皇帝男、ロックブーケ 2倍",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue",
+            "startNone": true
+        },
+        {
+            "startDay": "1",
+            "endDay": "7",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>遺跡潜り ドロップ2倍",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue",
+            "startNone": true
+        },
+
         {
             "startDay": "3",
-            "endDay": "5",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>VH 打スタイル3倍",
-            "startSuffix": "<br>04:00 開始",
+            "endDay": "14",
+            "title": "[イベント] <br class='hidden pcBlock'>金龍との戦い",
             "endSuffix": "<br>翌4:00 終了",
-            "type": "blue"
-        },
-        {
-            "startDay": "6",
-            "endDay": "8",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>VH 突スタイル3倍",
-            "startSuffix": "<br>04:00 開始",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "blue"
-        },
-        {
-            "startDay": "9",
-            "endDay": "10",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>VH 杖スタイル3倍",
-            "startSuffix": "<br>04:00 開始",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "blue"
+            "type": "orange"
         },
         {
             "startDay": "1",
-            "endDay": "10",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>・メインスタ半<br>・遺跡スタ半<br>・財宝の地図ドロップ<br>・SSヴァルドー VHでドロップ",
+            "endDay": "14",
+            "title": "[イベント] <br class='hidden pcBlock'>・幸福の謹賀新年クエスト<br>・幸運の白い猫と最終皇帝<br>・聖夜のサンタ合戦<br>・クリスマスの奇跡<br>・モニカのクリスマス大作戦",
             "endSuffix": "<br>翌4:00 終了",
-            "type": "blue",
+            "type": "orange",
             "startNone": true
-        },
-        {
-            "startDay": "1",
-            "endDay": "31",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>財宝収集 オーラム2倍<br>洞窟修練 挑戦回数2倍",
-            "startSuffix": "<br>04:00 開始",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "blue"
-        },
-        {
-            "startDay": "2",
-            "endDay": "8",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>・裏道場報酬2倍<br>・卵のからドロップ2倍",
-            "startSuffix": "<br>04:00 開始",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "blue"
-        },
-        {
-            "startDay": "23",
-            "endDay": "29",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>・密林調査 卵のから3倍<br>・裏道場報酬3倍",
-            "startPrefix": "4:00 開始<br>",
-            "endSuffix": "<br>4:00 終了",
-            "type": "blue"
-        },
-        {
-            "startDay": "27",
-            "endDay": "31",
-            "title": "[イベント] <br class='hidden pcBlock'>武器・主防具 聖石洞窟",
-            "startPrefix": "12:00 開始<br>",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "orange"
-        },
-        {
-            "startDay": "27",
-            "endDay": "31",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>メイン全話、聖石能力2倍",
-            "startPrefix": "12:00 開始<br>",
-            "endSuffix": "<br>4:00 終了",
-            "type": "blue"
-        },
-        {
-            "startDay": "24",
-            "endDay": "31",
-            "title": "[イベント] <br class='hidden pcBlock'>・クリスマスの奇跡<br>・モニカのクリスマス大作戦",
-            "startPrefix": "12:00 開始<br>",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "orange"
-        }
-  ],
+        }        
+ ],
     "holiday": [
     ]
 }
