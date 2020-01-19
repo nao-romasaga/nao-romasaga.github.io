@@ -118,22 +118,44 @@
                 <div class="row">
                     <div class="col-sm-12 col-12 style-bgcolor text-center">
                         <div class="row">
-                        <div class="col-12 col-md-6">
+                        <div class="col-12">
                             <div class="text-center label-text">アビリティ発動選択</div>
-                            <div style="font-size:20px;">
+                            <div style="font-size:20px; margin-bottom: 10px;">
                                 勇健強撃：HP満タン時ダメージ+X%<br>上記アビリティの常時発動<br>
                                 <button class="icon_btn_off optionButton" data-on="0" data-name="lim" style="background-size: 100% 100%;">ON / OFF</button>
                             </div>
                         </div>
                         <div class="col-12 col-md-6">
-                                <div class="text-center label-text">範囲攻撃技評価</div>
-                                <div style="font-size:20px;">
-                                    範囲攻撃のダメージを下記の通り評価します<br>
-                                    縦範囲/横範囲：敵3体分、全体：敵5体分<br>
-                                    <button class="icon_btn_off optionButton" data-on="0" data-name="range" style="background-size: 100% 100%;">ON / OFF</button>
-                                </div>
-                            </div>
+                                <div class="text-center label-text">範囲攻撃 評価</div>
+                                    範囲攻撃ダメージを下記の敵数分で再計算<br>
+                                    <table class="width-100">
+                                        <tr>
+                                            <td>縦範囲:敵3体</td><td><button class="icon_btn_off optionButton" data-on="0" data-name="range" data-label="tate" style="background-size: 100% 100%;">縦 ON</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>縦範囲:敵3体</td><td><button class="icon_btn_off optionButton" data-on="0" data-name="range" data-label="yoko" style="background-size: 100% 100%;">横 ON</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>全体:敵4体 & <br class="hidden spBlock">縦横:敵2体</td><td><button class="icon_btn_off optionButton" data-on="0" data-name="range" data-label="all" style="background-size: 100% 100%;">全体 ON</button></td>
+                                        </tr>
+                                    </table>
                         </div>
+                        <div class="col-12 col-md-6">
+                            <div class="text-center label-text">初期BP 選択</div>
+                                シミュレーションの初期BPを変更します
+                                <table class="width-100">
+                                    <tr>
+                                        <td>通常</td><td><button class="icon_btn_on optionButton" data-on="1" data-name="initBP" data-label="10" style="background-size: 100% 100%;">BP 10</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>R杯</td><td><button class="icon_btn_off optionButton" data-on="0" data-name="initBP" data-label="15" style="background-size: 100% 100%;">BP 15</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>ループダメージ用</td><td><button class="icon_btn_off optionButton" data-on="0" data-name="initBP" data-label="3" style="background-size: 100% 100%;">BP 3</button></td>
+                                    </tr>
+                                </table>
+                        </div>
+                    </div>
                         <div class="text-center label-text">敵種族選択</div>
                         <ul class="nav text-center width-100">
                             <li class="col-3 col-sm-1 xs-pad0"><a class="enemyfilterList pad0" data-type="EnemyClassFilter" data-label="無し" href="#enemy_0" onclick=""><img src="http://romasagatool.com/img/e_others_495.png"><br>無し</a></li>
