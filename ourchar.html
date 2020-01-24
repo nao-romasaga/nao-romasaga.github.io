@@ -108,6 +108,9 @@
                 <div id="firebaseui-auth-container" style="margin-bottom:10px;"></div>
                 <br>
                 <h5 class="text-center label-text">人気のキャラクター ランキング</h5>
+                <div id="article">
+                </div>              
+
                 <div class="style-bgcolor small" style="width:100%; margin: 0px;">
                     <ul class="nav row">
                         
@@ -444,6 +447,7 @@
                                 </tr>        
                             </tbody>
                         </table>
+
                         <div class="text-center">
                             <br>
                             <a href="" class="kaijoTweet twitter-share-button kadomaru h5" rel=”nofollow” onClick="window.open(encodeURI(decodeURI(this.href)), 'twwindow', 'width=550, height=450, personalbar=0, toolbar=0, scrollbars=1'); return false;" style="background-color: rgba(41,163,239,1); color:white; padding:5px 10px; border-radius:10px;"><i class="fab fa-twitter"></i> 画像を送って協議解除申請 <i class="fas fa-image"></i></a>
@@ -461,7 +465,8 @@
 
                         </div>
                     </div>
-                    スポンサードリンク<br>
+
+                    <div id="article_hozon"></div>
                     <!-- ツール_ランキング_footer -->
                     <ins class="adsbygoogle"
                          style="display:block"
@@ -471,7 +476,8 @@
                          data-full-width-responsive="true"></ins>
                     <script>
                          (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>                    
+                    </script>
+                    
                     <div class="card">
                             <div class="card-header bg-warning">補足説明</div>
                             <div class="card-body">
@@ -485,16 +491,15 @@
                                 このデータはユーザが入力した値を表示しています。上限を超える値も入力できてしまうため、おかしなデータが表示されてしまうケースもあります。正しいデータ入力のご協力をお願いいたします。
                             </div>
                         </div>
+                    </div>>
 
                 </div><!-- isLogin -->
             </div>
-            スポンサードリンク<br>
             <!--スクエア--><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5008373409434899" data-ad-slot="9303963278" data-ad-format="auto" data-full-width-responsive="true"></ins>
             <script>
                     (adsbygoogle = window.adsbygoogle || []).push({});
                </script>
-               
-        </div>        
+        </div>
         <script src="./js/ourchar_LIST.js" ></script>
         <script src="./js/ourchar_DETAIL.js" ></script>
         <script src="./js/data_CHARMASTER.js" ></script>
@@ -516,7 +521,33 @@
                     twq('track', 'PageView');
         </script>
         <!-- End Twitter universal website tag code -->
-        <script type="text/javascript" src="https://romasagatool.com/blog/get_the_archives.php?limit=5&callback=rssCallback"></script>
-        <script type="text/javascript" src="https://romasagatool.com/blog/get_the_archives.php?cat=22&callback=rssCallbackCat"></script>
+        <script>
+function rssCallbackCat3(results) {
+    var div = $("<div>").addClass("row");
+    for (var i = 0; i < results.length; i++) {
+        var entry = results[i];
+        var clazz = (i>=4) ? " d-none d-md-block" : '';
+        var article = $(`<div class="col-12 col-md-3 opacity kadomaru ${clazz}" style="padding:5px 5px 20px 5px; margin-bottom:10px; font-size:0.9rem;"><a href="${entry.link}" target="_new"><img class="kadomaru d-md-none" src="${entry.thumb}" width="100px" align="left"> <img class="kadomaru d-none d-md-block" src="${entry.thumb}" width="100%" alt="">${entry.title}<div style="position:absolute; bottom:0;font-size:0.8rem">最終更新:${entry.pubdate}</div></a></div>`);
+        div.append(article);
+    }
+    $("#article").append(div);
+}
+function rssCallbackCat2(results) {
+    var div = $("<div>").addClass("row");
+    let $articleCard = $(`<div class="card" style="margin:10px 0px;"><div class="card-header bg-primary" style='color:white'><i class="fas fa-file-archive"></i> 永久保存版の記事</div></div>`);
+    var $body = $(`<div class="card-body" style="padding:0px 5px;"></div>`);
+    var ul = $("<ul class='trianglelist list5'>");
+    for (var i = 0; i < results.length; i++) {
+        var entry = results[i];
+        var li = $(`<li><a href="${entry.link}" target="_blank">${entry.title}</a></li>`)
+        ul.append(li);
+    }
+    $body.append(ul);
+    $articleCard.append($body);
+    $("#article_hozon").after($articleCard);
+}
+        </script>
+        <script type="text/javascript" src="https://romasagatool.com/blog/get_the_archives2.php?cat=7&limit=8&callback=rssCallbackCat3"></script>
+        <script type="text/javascript" src="https://romasagatool.com/blog/get_the_archives.php?cat=22&callback=rssCallbackCat2"></script>
     </body>
 </html>
