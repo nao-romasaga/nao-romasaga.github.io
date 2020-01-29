@@ -68,6 +68,13 @@
             "startNone": true
         },
         {
+            "startDay": "10",
+            "endDay": "31",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>ローラ/ジュディ/リズ/ロビン/アーミック 2倍",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue"
+        },
+        {
             "startDay": "20",
             "endDay": "31",
             "title": "[キャンペーン] <br class='hidden pcBlock'>メイン RS1キャラ2倍",
