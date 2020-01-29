@@ -11,12 +11,68 @@
             "startNone": true
         },
         {
+            "startDay": "20",
+            "endDay": "31",
+            "title": "[ガチャ] <br class='hidden pcBlock'>RS1発売記念ピックアップ",
+            "startSuffix": "12:00 開始<br>",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "green"
+        },
+        {
+            "startDay": "10",
+            "endDay": "31",
+            "title": "[ガチャ] <br class='hidden pcBlock'>US Specialピックアップ",
+            "startSuffix": "12:00 開始<br>",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "green"
+        },
+        {
+            "startDay": "25",
+            "endDay": "31",
+            "title": "[イベント] <br class='hidden pcBlock'>武器・主防具 聖石洞窟",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "orange"
+        },
+        {
+            "startDay": "10",
+            "endDay": "31",
+            "title": "[イベント] <br class='hidden pcBlock'>村を守れ!ねずみの群れ退治",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "orange"
+        },
+        {
+            "startDay": "9",
+            "endDay": "31",
+            "title": "[イベント] <br class='hidden pcBlock'>アーミックメダルドロップ",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "orange"
+        },
+        {
+            "startDay": "1",
+            "endDay": "31",
+            "title": "[イベント] <br class='hidden pcBlock'>超巨大!鏡餅の塔[再]<br>スービエ襲来[再]<br>ボクオーン襲来[再]<br>ダンダーグ襲来[再]<br>クジンシー襲来[再]<br>ワグナス襲来[再]<br>",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "orange"
+        },
+        {
+            "date": "20",
+            "title": "[イベント] <br class='hidden pcBlock'>炎を司るものフレイムタイラント 〜2/15",
+            "type": "orange"
+        },
+        {
             "startDay": "1",
             "endDay": "5",
             "title": "[キャンペーン] <br class='hidden pcBlock'>メイン 全スタイル2倍",
             "endSuffix": "<br>翌4:00 終了",
             "type": "blue",
             "startNone": true
+        },
+        {
+            "startDay": "20",
+            "endDay": "31",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>メイン RS1キャラ2倍",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue"
         },
         {
             "startDay": "1",
