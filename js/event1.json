@@ -1,118 +1,53 @@
 {
     "year": 2020,
-    "month": 1,
+    "month": 2,
     "event": [
         {
             "startDay": "1",
-            "endDay": "14",
-            "title": "[ガチャ] <br class='hidden pcBlock'>謹賀新年2020 Romancing祭",
+            "endDay": "20",
+            "title": "[ガチャ] <br class='hidden pcBlock'>オーケストラ祭記念 Happy Romancing祭",
             "endSuffix": "<br>翌4:00 終了",
             "type": "green",
             "startNone": true
         },
         {
-            "startDay": "20",
-            "endDay": "31",
-            "title": "[ガチャ] <br class='hidden pcBlock'>RS1発売記念ピックアップ",
-            "startSuffix": "12:00 開始<br>",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "green"
-        },
-        {
-            "startDay": "10",
-            "endDay": "31",
-            "title": "[ガチャ] <br class='hidden pcBlock'>US Specialピックアップ",
-            "startSuffix": "12:00 開始<br>",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "green"
-        },
-        {
-            "startDay": "25",
-            "endDay": "30",
-            "title": "[イベント] <br class='hidden pcBlock'>武器・主防具 聖石洞窟",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "orange"
-        },
-        {
-            "startDay": "10",
-            "endDay": "31",
-            "title": "[イベント] <br class='hidden pcBlock'>村を守れ!ねずみの群れ退治",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "orange"
-        },
-        {
-            "startDay": "9",
-            "endDay": "31",
-            "title": "[イベント] <br class='hidden pcBlock'>アーミックメダルドロップ",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "orange"
-        },
-        {
             "startDay": "1",
-            "endDay": "31",
-            "title": "[イベント] <br class='hidden pcBlock'>超巨大!鏡餅の塔[再]<br>スービエ襲来[再]<br>ボクオーン襲来[再]<br>ダンダーグ襲来[再]<br>クジンシー襲来[再]<br>ワグナス襲来[再]<br>",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "orange"
-        },
-        {
-            "date": "20",
-            "title": "[イベント] <br class='hidden pcBlock'>炎を司るものフレイムタイラント 〜2/15",
-            "type": "orange"
-        },
-        {
-            "startDay": "1",
-            "endDay": "5",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>メイン 全スタイル2倍",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "blue",
-            "startNone": true
-        },
-        {
-            "startDay": "10",
-            "endDay": "31",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>ローラ/ジュディ/リズ/ロビン/アーミック 2倍",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "blue"
-        },
-        {
-            "startDay": "20",
-            "endDay": "31",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>メイン RS1キャラ2倍",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "blue"
-        },
-        {
-            "startDay": "1",
-            "endDay": "14",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>海の主の娘、スービエ、最終皇帝男、ロックブーケ 2倍",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "blue",
-            "startNone": true
-        },
-        {
-            "startDay": "1",
-            "endDay": "7",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>遺跡潜り ドロップ2倍",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "blue",
-            "startNone": true
-        },
-
-        {
-            "startDay": "3",
-            "endDay": "14",
-            "title": "[イベント] <br class='hidden pcBlock'>金龍との戦い",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "orange"
-        },
-        {
-            "startDay": "1",
-            "endDay": "14",
-            "title": "[イベント] <br class='hidden pcBlock'>・幸福の謹賀新年クエスト<br>・幸運の白い猫と最終皇帝<br>・聖夜のサンタ合戦<br>・クリスマスの奇跡<br>・モニカのクリスマス大作戦",
+            "endDay": "20",
+            "title": "[イベント] <br class='hidden pcBlock'>詩人の楽器とバレンタイン<br>アルジャーノンにスイーツを[再]",
             "endSuffix": "<br>翌4:00 終了",
             "type": "orange",
             "startNone": true
-        }        
+        },
+        {
+            "startDay": "3",
+            "endDay": "31",
+            "title": "[イベント] <br class='hidden pcBlock'>デュラハンとの戦い",
+            "startSuffix": "12:00 開始<br>",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "orange"
+        },
+        {
+            "endDay": "14",
+            "title": "[イベント] <br class='hidden pcBlock'>炎を司るものフレイムタイラント",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "orange",
+            "startNone": true
+        },
+        {
+            "endDay": "27",
+            "title": "[イベント] <br class='hidden pcBlock'>聖戦士ガラハドとアイスソード",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "orange",
+            "startNone": true
+        },
+        {
+            "startDay": "7",
+            "endDay": "9",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>女性・性別不明 スタイル2倍",
+            "startSuffix": "12:00 開始<br>",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue"
+        }
  ],
     "holiday": [
     ]
