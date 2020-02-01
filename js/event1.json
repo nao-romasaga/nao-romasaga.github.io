@@ -34,7 +34,8 @@
             "startNone": true
         },
         {
-            "endDay": "27",
+            "startDay": "1",
+            "endDay": "28",
             "title": "[イベント] <br class='hidden pcBlock'>聖戦士ガラハドとアイスソード",
             "endSuffix": "<br>翌4:00 終了",
             "type": "orange",
