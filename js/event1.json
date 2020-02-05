@@ -22,7 +22,7 @@
             "startDay": "3",
             "endDay": "19",
             "title": "[イベント] <br class='hidden pcBlock'>デュラハンとの戦い",
-            "startSuffix": "12:00 開始<br>",
+            "startSuffix": "<br>12:00 開始",
             "endSuffix": "<br>翌4:00 終了",
             "type": "orange"
         },
@@ -46,6 +46,14 @@
             "endDay": "9",
             "title": "[キャンペーン] <br class='hidden pcBlock'>女性・性別不明 スタイル2倍",
             "startSuffix": "12:00 開始<br>",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue"
+        },
+        {
+            "startDay": "17",
+            "endDay": "19",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>メインスタ半",
+            "startSuffix": "<br>18:00 開始",
             "endSuffix": "<br>翌4:00 終了",
             "type": "blue"
         }
