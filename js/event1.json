@@ -66,6 +66,14 @@
             "type": "blue"
         },
         {
+            "startDay": "10",
+            "endDay": "29",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>クーン/メイレン/サンダー/リュート/フェイオン スタイル2倍",
+            "startSuffix": "12:00 開始<br>",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue"
+        },
+        {
             "startDay": "17",
             "endDay": "19",
             "title": "[キャンペーン] <br class='hidden pcBlock'>メインスタ半",
