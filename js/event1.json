@@ -58,6 +58,14 @@
             "startNone": true
         },        
         {
+            "startDay": "1",
+            "endDay": "14",
+            "title": "[イベント] <br class='hidden pcBlock'>フレイムタイラントとの戦い",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "orange",
+            "startNone": true
+        },        
+        {
             "startDay": "7",
             "endDay": "9",
             "title": "[キャンペーン] <br class='hidden pcBlock'>女性・性別不明 スタイル2倍",
