@@ -12,6 +12,14 @@
         },
         {
             "startDay": "1",
+            "endDay": "29",
+            "title": "[ガチャ] <br class='hidden pcBlock'>SF1 Specialピックアップ",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "green",
+            "startNone": true
+        },
+        {
+            "startDay": "1",
             "endDay": "20",
             "title": "[イベント] <br class='hidden pcBlock'>詩人の楽器とバレンタイン<br>アルジャーノンにスイーツを[再]",
             "endSuffix": "<br>翌4:00 終了",
@@ -41,6 +49,14 @@
             "type": "orange",
             "startNone": true
         },
+        {
+            "startDay": "1",
+            "endDay": "29",
+            "title": "[イベント] <br class='hidden pcBlock'>タンザーとの戦い",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "orange",
+            "startNone": true
+        },        
         {
             "startDay": "7",
             "endDay": "9",
