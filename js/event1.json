@@ -4,10 +4,19 @@
     "event": [
         {
             "startDay": "1",
-            "endDay": "20",
+            "endDay": "19",
             "title": "[ガチャ] <br class='hidden pcBlock'>オーケストラ祭記念 Happy Romancing祭",
             "endSuffix": "<br>翌4:00 終了",
             "type": "green",
+            "startNone": true
+        },
+        {
+            "startDay": "10",
+            "endDay": "19",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>コッペリア/ブラウニー/サラ/バーニィ/フリーファイター女 スタイル2倍",
+            "startSuffix": "12:00 開始<br>",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue",
             "startNone": true
         },
         {
@@ -20,7 +29,7 @@
         },
         {
             "startDay": "1",
-            "endDay": "20",
+            "endDay": "19",
             "title": "[イベント] <br class='hidden pcBlock'>詩人の楽器とバレンタイン<br>アルジャーノンにスイーツを[再]",
             "endSuffix": "<br>翌4:00 終了",
             "type": "orange",
