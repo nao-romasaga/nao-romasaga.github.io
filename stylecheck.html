@@ -35,14 +35,14 @@
         -->
         <link rel="stylesheet" type="text/css" href="./css/bootstrap/bootstrap.min.css">
         <script src="./js/bootstrap.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="./css/style.css">
+        <link rel="stylesheet" type="text/css" href="./css/style2.css">
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
         <script src="https://www.gstatic.com/firebasejs/ui/3.5.2/firebase-ui-auth__ja.js"></script>
         <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
         <script src="./js/Firebase.js"></script>
-        <script src="./js/utils.js" ></script>
+        <script src="./js/utils2.js" ></script>
         
         <script src="./js/data_CHARMASTER.js" ></script>
         <script src="./js/data_STYLEMASTER_checker.js" ></script>
@@ -80,43 +80,49 @@
                 <script>
                 (adsbygoogle = window.adsbygoogle || []).push({});
                 </script>
-                <div style="color: rgb(250, 240, 180);">
-                    <div class="text-center m-auto styleTab style-tab-active" id="tabRare" style="width: 33%" onclick="">レア表示</div>
-                    <div class="text-center m-auto styleTab style-tab-disabled" id="tabChar" style="width: 30%" onclick="">キャラ表示</div>
-                    <div class="text-center m-auto styleTab style-tab-disabled" id="tabGacha" style="width: 30%" onclick="">ガチャ表示</div>
-                </div>
-                <div class="style-bgcolor">
+                <div class="filter-bgcolor ">
                     <div class="row">
-                        <div class="col-6 h3 text-center">武器種別</div>
-                        <div class="col-6"><button class="icon_btn_on allType">全て表示</button></div>
-                        <div class="col-2 col-sm-1 xs-pad0 offset-1"><button class="filterButton icon_mini icon_ken" data-id="剣"></button></div>
-                        <div class="col-2 col-sm-1 xs-pad0"><button class="filterButton icon_mini icon_dken" data-id="大剣"></button></div>
-                        <div class="col-2 col-sm-1 xs-pad0"><button class="filterButton icon_mini icon_ono" data-id="斧"></button></div>
-                        <div class="col-2 col-sm-1 xs-pad0"><button class="filterButton icon_mini icon_kon" data-id="棍棒"></button></div>
-                        <div class="col-2 col-sm-1 xs-pad0"><button class="filterButton icon_mini icon_tai" data-id="体術"></button></div>
-                        <div class="col-2 col-sm-1 xs-pad0 offset-1 offset-sm-0"><button class="filterButton icon_mini icon_ju" data-id="銃"></button></div>
-                        <div class="col-2 col-sm-1 xs-pad0"><button class="filterButton icon_mini icon_sken" data-id="小剣"></button></div>
-                        <div class="col-2 col-sm-1 xs-pad0"><button class="filterButton icon_mini icon_yumi" data-id="弓"></button></div>
-                        <div class="col-2 col-sm-1 xs-pad0"><button class="filterButton icon_mini icon_yari" data-id="槍"></button></div>
-                        <div class="col-2 col-sm-1 xs-pad0"><button class="filterButton icon_mini icon_tsue" data-id="杖"></button></div>
-                        <div class="col-12 text-center"><button class="icon_btn_on onlyDisable" style="background-size: 200px 40px; width:200px;">未所持のみ表示</button></div>
+                        <div class="col-12 subtitle fuchidoriWhite smallFont" style="left: 15px; padding-left: 30px; margin-bottom: 10px;">武器種別 絞り込み</div>
+                        <div class="col-2 col-sm-1 xs-pad0 offset-1"><button class="filterButton icon_mini icon_ken weapon-icon-button" data-id="剣"></button></div>
+                        <div class="col-2 col-sm-1 xs-pad0"><button class="filterButton icon_mini icon_dken weapon-icon-button" data-id="大剣"></button></div>
+                        <div class="col-2 col-sm-1 xs-pad0"><button class="filterButton icon_mini icon_ono weapon-icon-button" data-id="斧"></button></div>
+                        <div class="col-2 col-sm-1 xs-pad0"><button class="filterButton icon_mini icon_kon weapon-icon-button" data-id="棍棒"></button></div>
+                        <div class="col-2 col-sm-1 xs-pad0"><button class="filterButton icon_mini icon_tai weapon-icon-button" data-id="体術"></button></div>
+                        <div class="col-2 col-sm-1 xs-pad0 offset-1 offset-sm-0"><button class="filterButton icon_mini icon_ju weapon-icon-button" data-id="銃"></button></div>
+                        <div class="col-2 col-sm-1 xs-pad0"><button class="filterButton icon_mini icon_sken weapon-icon-button" data-id="小剣"></button></div>
+                        <div class="col-2 col-sm-1 xs-pad0"><button class="filterButton icon_mini icon_yumi weapon-icon-button" data-id="弓"></button></div>
+                        <div class="col-2 col-sm-1 xs-pad0"><button class="filterButton icon_mini icon_yari weapon-icon-button" data-id="槍"></button></div>
+                        <div class="col-2 col-sm-1 xs-pad0" style="margin-bottom:10px"><button class="filterButton icon_mini icon_tsue weapon-icon-button" data-id="杖"></button></div>
+
+                        <div class="col-12 subtitle fuchidoriWhite smallFont" style="left: 15px; padding-left: 30px; margin-bottom: 10px;">表示内容 切り替え</div>
+                        <div class="col-5 col-md-6 text-center" style="margin-bottom:10px"><button class="icon_btn_on allType fuchidoriWhite smallFont text-nowrap">全て表示</button></div>
+                        <div class="col-7 col-md-6 text-center"><button class="icon_btn_on onlyDisable fuchidoriWhite smallFont text-nowrap">未所持のみ表示</button></div>
+
+                        <div class="col-12 subtitle fuchidoriWhite smallFont" style="left: 15px; padding-left: 30px; margin-bottom: 10px;">表示種別 切り替え</div>
+                        <div class="col-6 col-md-4 text-center" style="margin-bottom:10px">
+                            <button id="tabRare" class="width-100 icon_btn_positive fuchidoriWhite smallFont text-nowrap">レア表示</button></div>
+                        <div class="col-6 col-md-4 text-center">
+                            <button id="tabChar" class="width-100 icon_btn_negative fuchidoriWhite smallFont text-nowrap">キャラ表示</button></div>
+                        <div class="col-6 col-md-4 text-center">
+                            <button id="tabGacha" class="width-100 icon_btn_negative fuchidoriWhite smallFont text-nowrap">ガチャ表示</button></div>
+
                         <div class="col-12 text-center myinput d-none" style="margin-top: 20px; ">
                             <a href="./stylecheck.html" class="width-100 h5" style="background-color: rgba(41,163,239,1); color:white; padding:5px 10px; border-radius:10px;"><i class="fas fa-edit"></i> 自分の所持スタイルを入力する</a>
                         </div>
                     </div>
                 </div>
-                <div class="style-bgcolor" id="styleAreaRare">
-                    <img src="./img/icon/icon_SS.png"><br class="hidden xsBlock">
-                    <button class="icon_btn_on allOn" data-rare="SS">全てチェック</button>
-                    <button class="icon_btn_off allOff" data-rare="SS">全て外す</button>
+                <div class="style-bgcolor smallFont" id="styleAreaRare">
+                    <img src="http://romasagatool.com//img/icon/icon_SS.png" class="rare-icon-big">
+                    <button class="icon_btn_positive allOn" data-rare="SS">全てチェック</button>
+                    <button class="icon_btn_negative allOff" data-rare="SS">全て外す</button>
                     <div id="SSArea"></div>
-                    <img src="./img/icon/icon_S.png"><br class="hidden xsBlock">
-                    <button class="icon_btn_on allOn" data-rare="S">全てチェック</button>
-                    <button class="icon_btn_off allOff" data-rare="S">全て外す</button>
+                    <img src="http://romasagatool.com//img/icon/icon_S.png" class="rare-icon-big">
+                    <button class="icon_btn_positive allOn" data-rare="S">全てチェック</button>
+                    <button class="icon_btn_negative allOff" data-rare="S">全て外す</button>
                     <div id="SArea"></div>
-                    <img src="./img/icon/icon_A.png"><br class="hidden xsBlock">
-                    <button class="icon_btn_on allOn" data-rare="A">全てチェック</button>
-                    <button class="icon_btn_off allOff" data-rare="A">全て外す</button>
+                    <img src="http://romasagatool.com//img/icon/icon_A.png" class="rare-icon-big">
+                    <button class="icon_btn_positive allOn" data-rare="A">全てチェック</button>
+                    <button class="icon_btn_negative allOff" data-rare="A">全て外す</button>
                     <div id="AArea"></div>
                 </div>
                 <div class="style-bgcolor d-none">
@@ -125,32 +131,56 @@
                 <div class="style-bgcolor d-none">
                     <div id="styleAreaGacha"></div>
                 </div>
+                <div class="text-center width-100 smallFont bg-black-window">
+                        <table class="width-100 text-nowrap" id="MASTER_TABLE">
+                            <tr class="char-bottom">
+                                <td></td>
+                                <td>所持数</td>
+                                <td>所持率</td>
+                                <td><img class="icon_mini_zokusei" src="./img/icon/icon_SS.png"></td>
+                                <td><img class="icon_mini_zokusei" src="./img/icon/icon_S.png"></td>
+                                <td><img class="icon_mini_zokusei" src="./img/icon/icon_A.png"></td>
+                                <td>限界MLv</td>
+                            </tr>
+                            <tr class=" d-none" id="masterTableTmpl" style="border-bottom:1px solid #faf0b4;">
+                                <td><span class="icon_mini_zokusei_checker icon_ken"></span></td>
+                                <td><span class="my剣">0</span>/<span class="all剣">0</span></td>
+                                <td><span class="myPer剣">0</span>%</td>
+                                <td class=""><span class="mySS剣">0</span>/<span class="allSS剣">0</span></td>
+                                <td class=""><span class="myS剣">0</span>/<span class="allS剣">0</span></td>
+                                <td class=""><span class="myA剣">0</span>/<span class="allA剣">0</span></td>
+                                <td>Lv.<span class="myMlv剣">0</span></td>
+                            </tr>
+                        </table>
+                </div>    
             </div>
+            
             <br><br><br>
             <br><br><br>
         </div>
-        <div id="checker-footer" class="smallFont" style="left:15px; right:15px; width:90%">
+        <div id="checker-footer" class="smallFont width-max width-100">
             <div class="kadomaru text-center">
-                <button class="icon_btn_on gachaButtonSum" id="displaySummary">サマリ表示</button>
-                <button class="icon_btn_on gachaButtonSim d-none" id="displaySimulator">プラガチャシミュレータ</button>
+                <button class="icon_btn_on gachaButtonSum" id="displaySummary" style="vertical-align: bottom;">サマリ<span class="hidden pcBlock">表示</span></button>
+                <button class="icon_btn_on gachaButtonSim d-none" id="displaySimulator">プラチナガチャシミュレータ</button>
+                <a class="twitter-share-button icon_btn_positive d-none d-sm-inline-block" rel=”nofollow” onClick="window.open(encodeURI(decodeURI(this.href)), 'twwindow', 'width=550, height=450, personalbar=0, toolbar=0, scrollbars=1'); return false;" href="" ><i class="fab fa-twitter"></i> 結果をツイートする</a>
             </div>
-            <div class="">
-                <table class="table table-hover table-bordered table-sm " id="damageRangeTable">
-                    <tr class=" text-center label-text">
-                        <td>スタイル所持数</td>
+            <div class="bg-black-window text-center" style="padding: 5px 15px">
+                <table class="width-100" id="damageRangeTable">
+                    <tr class="" style="border-bottom:1px solid #faf0b4;">
+                        <td class=""><span class="d-none d-md-inlne">スタイル所持数</span></td>
                         <td class="text-center">全体</td>
                         <td><img class="rare-icon" src="./img/icon/icon_SS.png"></td>
                         <td><img class="rare-icon" src="./img/icon/icon_S.png"></td>
                         <td><img class="rare-icon" src="./img/icon/icon_A.png"></td>
                     </tr>
-                    <tr class=" text-center label-text">
-                            <td>所持数</td>
+                    <tr class="" style="border-bottom:1px solid #faf0b4;">
+                        <td>所持数</td>
                         <td><span class="myAll"></span>/<span class="all"></span></td>
                         <td><span class="mySS"></span>/<span class="allSS"></span></td>
                         <td><span class="myS"></span>/<span class="allS"></span></td>
                         <td><span class="myA"></span>/<span class="allA"></span></td>
                     </tr>
-                    <tr class=" text-center label-text">
+                    <tr class="">
                         <td>割合</td>
                         <td><span class="allPer"></span>%</td>
                         <td><span class="SSPer"></span>%</td>
@@ -159,17 +189,16 @@
                     </tr>
                 </table>
             </div>
+            <a class="twitter-share-button icon_btn_positive d-sm-none width-100 text-center" rel=”nofollow” onClick="calcMyStyle(); window.open(encodeURI(decodeURI(this.href)), 'twwindow', 'width=550, height=450, personalbar=0, toolbar=0, scrollbars=1'); return false;" href="" ><i class="fab fa-twitter"></i> 結果をツイートする</a>
         </div>
         <br><br><br>
-
         <!-- モーダルウィンドウ -->
         <div class="modal" id="modal01">
             <!-- モーダルウィンドウの中身 -->
             <div class="inner text-center width-100 smallFont" id="modalInner">
-                <a href="" class="twitter-share-button width-100" rel=”nofollow” onClick="window.open(encodeURI(decodeURI(this.href)), 'twwindow', 'width=550, height=450, personalbar=0, toolbar=0, scrollbars=1'); return false;" style="background-color: rgba(41,163,239,1); color:white; padding:5px 10px; border-radius:10px;"><i class="fab fa-twitter"></i>　結果をツイートする</a>
-                <div class=" modalClose" id="allParamConfirm" onclick="">
+                <div class=" modalClose" id="allParamConfirm" onclick="" style="padding:15px;">
                     <table class="width-100">
-                        <tr class="char-bottom  label-text">
+                        <tr class="char-bottom label-text-header">
                             <td></td>
                             <td class="text-nowrap">全体</td>
                             <td><img class="icon_mini_zokusei" src="./img/icon/icon_SS.png"></td>
@@ -213,7 +242,7 @@
                         </tr>
                     </table>
                     <table class="width-100 text-nowrap" id="MASTER_TABLE">
-                        <tr class="char-bottom label-text">
+                        <tr class="char-bottom label-text-header">
                             <td>種別</td>
                             <td>所持数</td>
                             <td>所持率</td>
@@ -221,7 +250,6 @@
                             <td><img class="icon_mini_zokusei" src="./img/icon/icon_S.png"></td>
                             <td><img class="icon_mini_zokusei" src="./img/icon/icon_A.png"></td>
                             <td>限界MLv</td>
-                            <td>次のMLv</td>
                         </tr>
                         <tr class="char-bottom d-none" id="masterTableTmpl">
                             <td><span class="icon_mini_zokusei_checker icon_ken"></span></td>
@@ -231,23 +259,21 @@
                             <td class=""><span class="myS剣">0</span>/<span class="allS剣">0</span></td>
                             <td class=""><span class="myA剣">0</span>/<span class="allA剣">0</span></td>
                             <td>Lv.<span class="myMlv剣">0</span></td>
-                            <td><span class="myNext剣">0</span>体</td>
                         </tr>
                     </table>
                 </div>
             </div> 
             <!-- モーダルウィンドウが開いている時のオーバーレイ -->
-            <div class="overLay modalClose"></div>
+            <div class="overLay bg-common-frame modalClose"></div>
         </div>
         <!-- モーダルウィンドウ -->
         <div class="modal" id="modal02">
             <!-- モーダルウィンドウの中身 -->
             <div class="inner text-center width-100 smallFont" id="modalInner2">
                 <div class="modalClose" onclick="">
-                    <div class="width-100 label-text" style="font-size:18px;">プラチナガチャシミュレーター</div>
-                    <img src="http://romasagatool.com/blog/wp-content/uploads/2019/11/news_banner_gacha_1000095.png" class="smallWidth100">
+                    <div class="width-100 label-text-header" style="font-size:18px;">プラチナガチャシミュレーター</div>
                     <table class="width-100">
-                        <tr class="char-bottom label-text">
+                        <tr class="char-bottom label-text-header">
                             <td>プラガチャ内容</td>
                             <td class="text-nowrap">全体</td>
                             <td><img class="icon_mini_zokusei" src="./img/icon/icon_SS.png"></td>
@@ -275,7 +301,7 @@
                             <td style="font-size:15px;"><span class="mypSGetPer">0</span>%<!--<br>(<span class="mypSGetBunsu">0</span>)--></td>
                             <td style="font-size:15px;"><span class="mypAGetPer">0</span>%<!--<br>(<span class="mypAGetBunsu">0</span>)--></td>
                         </tr>
-                        <tr class="char-bottom label-text">
+                        <tr class="char-bottom label-text-header">
                             <td colspan=10 class="text-center">新規スタイル獲得確率　(1つ以上newスタイルがでる確率)</td>
                         </tr>    
                         <tr class="char-bottom">
@@ -299,7 +325,7 @@
                             <td><span class="mypS50RenPer">0</span>%</td>
                             <td><span class="mypA50RenPer">0</span>%</td>
                         </tr>
-                        <tr class="char-bottom label-text">
+                        <tr class="char-bottom label-text-header">
                             <td colspan=10 class="text-center">シミュレート結果 (チケット使用数<span id="USE_TICKET" class=" simTarget">0</span>枚)</td>
                         </tr>
                         <tr class="char-bottom">
@@ -331,23 +357,16 @@
                             <img class="START_GACHA" src="http://romasagatool.com/blog/wp-content/uploads/2019/11/gachaImg2.jpg">
                         </div>
                         <div class="col-7">
-                            <div class="label-text">ガチャ結果 <span id=IS_NEW></span></div>
+                            <div class="label-text-header">ガチャ結果 <span id=IS_NEW></span></div>
                             <div id="GACHA_SPACE">
                             </div>
                         </div>
                     </div>
             </div> 
             <!-- モーダルウィンドウが開いている時のオーバーレイ -->
-            <div class="overLay modalClose"></div>
-        </div>        
+            <div class="overLay style-bgcolor modalClose"></div>
+        </div>
         <style>
-            .nocheck{
-                background: initial;
-                background-color: rgba(0,0,0,0.9);
-                display: inline-block;
-                border-radius: 10px;
-                opacity: 0.4;
-            }
             /* モーダルウィンドウのスタイル */
             .modal {
                 /* 
@@ -367,7 +386,6 @@
                 */
                 top:0;
                 left:0;
-                background: rgba(230, 225, 207, 0.9);
                 width:100%;
                 height:100%;
                 z-index:10;
