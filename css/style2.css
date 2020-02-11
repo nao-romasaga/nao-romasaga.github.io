@@ -18,10 +18,7 @@ html {
     background-color: rgba(224 , 224,100, 1);
     color: black;
 }
-.width-max {
-    margin-left: calc(((100vw - 100%) / 2) * -1);
-    margin-right: calc(((100vw - 100%) / 2) * -1);    
-}
+
 
 .filter-bgcolor {
     background-color: rgb(50,50,50,1);
@@ -1099,6 +1096,13 @@ input[type=range]::-ms-tooltip {
     opacity: 0.6;
 }
 
+/* 画面サイズが768まではこれ */
+@media screen and ( max-width:768px) {
+    .width-max {
+        margin-left: calc(((100vw - 100%) / 2) * -1);
+        margin-right: calc(((100vw - 100%) / 2) * -1);    
+    }
+}
 
 /* 画面サイズが330まではこれ */
 @media screen and ( max-width:329px) {

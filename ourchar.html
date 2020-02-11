@@ -397,7 +397,7 @@
 
                         <div class="text-center icon_btn_positive">
                             <a href="" target="_blank" class="" id="STYLE_LINK" style="color:inherit;">
-                                <i class="fas fa-address-card"></i> <span class="charName"></span>のスタイル詳細を調べる
+                                <i class="fas fa-address-card"></i> <span class="charName"></span>の<br class="d-md-none">スタイル詳細を調べる
                             </a>
                         </div>
                         <div class="bg-black-window LIMIT_TABLE">
@@ -508,20 +508,13 @@
                         </div>
                     </div>
 
-                    <br>
-                    <div class="text-center">
-                        <a href="" class="rankingTweet twitter-share-button kadomaru h5" rel=”nofollow”
-                            onClick="window.open(encodeURI(decodeURI(this.href)), 'twwindow', 'width=550, height=450, personalbar=0, toolbar=0, scrollbars=1'); return false;"
-                            style="background-color: rgba(41,163,239,1); color:white; padding:5px 10px; border-radius:10px;"><i
-                                class="fab fa-twitter"></i> ランキングをツイートする<i class="fas fa-crown"></i></a>
-                    </div>
                     <div id="RANKKING_TABLE"></div>
 
 
 
                     <br>
 
-                    <div class="text-center info-modal LIMIT_PAD0">
+                    <div class="text-center info-modal width-max LIMIT_PAD0">
                         <div class="info-modal-header">
                             <span class="d-none d-md-inline"><i class="fas fa-crown"></i><span class='charName'></span>
                                 育成ランキング TOP20<i class="fas fa-crown"></i></span>
@@ -544,7 +537,7 @@
                             <table class="width-100 text-center table-striped">
                                 <tbody>
                                     <tr class="text-center">
-                                        <td class=" text-nowrap">Rank</td>
+                                        <td class="small">Rank</td>
                                         <td class=" paramCell2">HP</td>
                                         <td class=" paramCell2">腕</td>
                                         <td class=" paramCell2">体</td>
@@ -561,8 +554,14 @@
                                 </tbody>
                             </table>
                         </div>
-                        <br>
                         <div class="row">
+                            <div class="col-12">
+                                <div class="text-center icon_btn_positive text-nowrap">
+                                    <a href="" class="rankingTweet twitter-share-button fuchidoriWhite" rel=”nofollow”
+                                        onClick="window.open(encodeURI(decodeURI(this.href)), 'twwindow', 'width=550, height=450, personalbar=0, toolbar=0, scrollbars=1'); return false;"
+                                        ><i class="fas fa-crown"></i> ランキング結果をツイート <i class="fab fa-twitter"></i></a>
+                                </div>
+                            </div>
                             <div class="col-6 text-right">
                                 <a href="javascript:scrollChar();" style="color:inherit;">
                                     <div class="icon_btn_negative text-center">
