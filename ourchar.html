@@ -104,6 +104,33 @@
         .LIMIT_TABLE2 {
             padding: 20px 15px 20px 15px;
         }
+        .kaku {
+            position: absolute;
+            bottom: 3px;
+            right: 3px;
+            font-size: 0.7rem;
+        }
+        .limitFont {
+            font-size:20px;
+        }
+        .limitTableWidth {
+            width: calc(100% - 10px);             
+        }
+        .maxCol {
+            background-color:darkblue;
+        }
+        .pcInd {
+            position: absolute;
+            left: 9%;
+            top: calc(50% - 7px);
+            width:14px;
+        }
+        /* 画面サイズ340まで */
+        @media screen and (max-width:330px) {
+            .limitTableWidth {
+                width: calc(100% - 30px);             
+            }
+        }
 
         /* 画面サイズ340まで */
         @media screen and (max-width:340px) {
@@ -118,6 +145,13 @@
                 margin-right: -15px;
             }
         }
+        /* 画面サイズ450まで */
+        @media screen and (max-width:450px) {
+            .limitFont {
+                font-size:15px;
+            }
+        }
+
     </style>
 </head>
 
@@ -390,7 +424,7 @@
 
                 <div id="initialHide" class="d-none">
                     <label class="badge badge-pill badge-light" id="badge">スタイル別上限の確認</label>
-                    <div class="text-center info-modal LIMIT_PAD0">
+                    <div class="text-center info-modal LIMIT_PAD0 width-max">
                         <span class="info-modal-header"><span class="charName">キャラ名称</span>のステータス上限</span>
                         VH15(Base <span id="PLUS_LIMIT"></span>)での最大値です
                         <br>
@@ -400,8 +434,8 @@
                                 <i class="fas fa-address-card"></i> <span class="charName"></span>の<br class="d-md-none">スタイル詳細を調べる
                             </a>
                         </div>
-                        <div class="bg-black-window LIMIT_TABLE">
-                            <table align="center" style="width: calc(100% - 20px); table-layout: fixed;">
+                        <div class="bg-black-window LIMIT_TABLE  width-max limitFont">
+                            <table align="center" class="limitTableWidth" style="table-layout: fixed;">
                                 <tbody>
                                     <tr id="styleLabelRow" style="border-bottom: 1px solid;">
                                         <td class="icon-td-width"></td>
@@ -556,7 +590,7 @@
                         </div>
                         <div class="row">
                             <div class="col-12">
-                                <div class="text-center icon_btn_positive text-nowrap">
+                                <div class="text-center icon_btn_positive text-nowrap" style="margin-bottom:10px;">
                                     <a href="" class="rankingTweet twitter-share-button fuchidoriWhite" rel=”nofollow”
                                         onClick="window.open(encodeURI(decodeURI(this.href)), 'twwindow', 'width=550, height=450, personalbar=0, toolbar=0, scrollbars=1'); return false;"
                                         ><i class="fas fa-crown"></i> ランキング結果をツイート <i class="fab fa-twitter"></i></a>
