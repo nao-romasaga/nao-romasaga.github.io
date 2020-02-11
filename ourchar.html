@@ -1,137 +1,217 @@
 <!DOCTYPE html>
 <html lang="ja">
-    <head>
-        <link rel="canonical" href="/ourchar.html">
-        <!-- Global site tag (gtag.js) - Google Analytics         -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138966739-1"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-            gtag('js', new Date());
 
-            gtag('config', 'UA-138966739-1');
-        </script>
-        <!--
-        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        -->
-        <meta charset="utf-8">
-        <title>【ロマサガRS】ステータス上限(最大値)と育成ランキング</title>
-        <meta property="og:title" content="【ロマサガRS】ステータス上限(最大値) + ランキング" />
-        <meta property="og:url" content="https://http://nao-romasaga.github.io/ourchar.html" />
-        <meta property="og:description" content="ロマサガRSのスタイル毎のステータス上限(最大値)とキャラクター育成ランキングです。ユーザが登録したデータからキャラ+スタイル毎に上限(最大値)をランキングで調べるツールです。攻略や育成の際にご利用ください。" />
-        <meta name="description" content="ロマサガRSのキャラクターのステータスランキングです。ユーザが登録したデータからキャラクター毎に最大値をランキングで調べるツールです。攻略や育成の際にご利用ください。【ロマンシングサガ リユニバース】" />
-        <meta property="og:image" content="https://nao-romasaga.github.io/img/twitter_card_ourchar.png" />
-        <meta property="og:site_name" content="ロマサガRS便利ツール" />
-        <meta property="og:type" content="article">
-        <meta property="og:locale" content="ja_JP" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@nao_romasaga_rs" />
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <link rel="canonical" href="/ourchar.html">
+    <!-- Global site tag (gtag.js) - Google Analytics         -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138966739-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
 
-            <!--
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-            -->
-        <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
-        <script type="text/javascript" src="./js/jquery-ui.min.js"></script>
-        <script type="text/javascript" src="./js/jquery.ui.touch-punch.js"></script>
-        <link rel="stylesheet" href="./css/tabulator.css">
-        <script type="text/javascript" src="./js/tabulator.js"></script>
+        gtag('config', 'UA-138966739-1');
+    </script>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <meta charset="utf-8">
+    <title>【ロマサガRS】ステータス上限(最大値)と育成ランキング</title>
+    <meta property="og:title" content="【ロマサガRS】ステータス上限(最大値) + ランキング" />
+    <meta property="og:url" content="https://http://nao-romasaga.github.io/ourchar.html" />
+    <meta property="og:description"
+        content="ロマサガRSのスタイル毎のステータス上限(最大値)とキャラクター育成ランキングです。ユーザが登録したデータからキャラ+スタイル毎に上限(最大値)をランキングで調べるツールです。攻略や育成の際にご利用ください。" />
+    <meta name="description"
+        content="ロマサガRSのキャラクターのステータスランキングです。ユーザが登録したデータからキャラクター毎に最大値をランキングで調べるツールです。攻略や育成の際にご利用ください。【ロマンシングサガ リユニバース】" />
+    <meta property="og:image" content="https://nao-romasaga.github.io/img/twitter_card_ourchar.png" />
+    <meta property="og:site_name" content="ロマサガRS便利ツール" />
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="ja_JP" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@nao_romasaga_rs" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="./js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="./js/jquery.ui.touch-punch.js"></script>
+    <link rel="stylesheet" href="./css/tabulator.css">
+    <script type="text/javascript" src="./js/tabulator.js"></script>
 
-        <link rel="stylesheet" type="text/css" href="./css/bootstrap/bootstrap.min.css">
-        <!--
-        <script src="./js/popper.min.js"></script>
-        -->
-        <script src="./js/bootstrap.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="./css/style.css">
-        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/ui/3.5.2/firebase-ui-auth__ja.js"></script>
-        <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
-        <script src="./js/Firebase.js"></script>
-        <script src="./js/utils.js" ></script>
-        <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
-        <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
-        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap/bootstrap.min.css">
+    <script src="./js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/style2.css">
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/3.5.2/firebase-ui-auth__ja.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+    <script src="./js/Firebase.js"></script>
+    <script src="./js/utils2.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+    <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
-        <style>
-            .paramLabel{
-                background-color: papayawhip;
+    <style>
+        .paramLabel {
+            background-color: papayawhip;
+        }
+
+        .paramCell2 {
+            width: 8%;
+            border-left: 1px solid #faf0b4
+        }
+
+        .dotBackground {
+            width: 10%;
+            border-radius: 15px;
+        }
+
+        .STYLE_ROW:nth-child(2n-1) {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .RANKING_ROW:nth-child(2n-1) {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .example {
+            position: relative;
+        }
+
+        .example p {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            margin: 0;
+            padding: 0;
+            /*文字の装飾は省略*/
+        }
+
+        .example img {
+            width: 100%;
+        }
+
+        .LIMIT_TABLE {
+            padding: 20px 15px 20px 15px;
+        }
+
+        .LIMIT_TABLE2 {
+            padding: 20px 15px 20px 15px;
+        }
+
+        /* 画面サイズ340まで */
+        @media screen and (max-width:340px) {
+            .LIMIT_TABLE {
+                font-size: 12px;
+                padding: 20px 0px 20px 0px;
             }
-            .paramHead{
-                background-color: lightyellow;
+
+            .LIMIT_PAD0 {
+                padding: 0px;
+                margin-left: -15px;
+                margin-right: -15px;
             }
-            .paramCell2{
-                width:8%;
-                border-left: 1px solid #faf0b4                            
-            }
-            .dotBackground{
-                width: 10%;
-                border-radius: 15px;                            
-            }
-.example {
-  position: relative;
-  }
+        }
+    </style>
+</head>
 
-.example p {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%,-50%);
-  -webkit-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-  margin:0;
-  padding:0;
-  /*文字の装飾は省略*/
-  }
+<body>
+    <div class="haikei">
+        <div class="container">
 
-.example img {
-  width: 100%;
-  }            
-        </style>
-    </head>
-    <body>
-        <div class ="haikei">
-            <div class="container">
+            <div class="text-center">
+                <a href="https://www.jp.square-enix.com/saga_reuniverse/" target="new"><img
+                        src="./img/cmn_logo01_sp.png" class="col-sm-12 col-md-8 col-lg-6"></a>
+            </div>
+            <h3 class="text-center label-text">キャラクター<br class="hidden spBlock">育成ランキング<span
+                    class="hidden pcBlock"><br>みんなの育成状況</span></h3>
+            <h5 class="text-center label-text-small width-100">最終更新日: <span id="UPDATE">2020/1/2</span></h5>
+            <span class="title-text d-none"></span>
+            <p class="text-right opacity"><small>バグ発見、ご要望は <a href="https://peing.net/ja/nao_romasaga_rs"
+                        target="new">質問箱</a>まで</small></p>
+            <div id="firebaseui-auth-container" style="margin-bottom:10px;"></div>
+            <br>
+            <div id="article"></div>
+            <div class="info-modal" id="_icon_ken">
+                <h5 class="info-modal-header">人気のキャラクター ランキング</h5>
+                <ul class="nav row">
+                    <li class="col-12 col-lg-6"><a href="./ourchar.html?c=ID1bc1"><img class="icn"
+                                src="http://romasagatool.com/img/style_icon/IDad768.png" width="30" alt="ようせい(ブラウニー)"><i
+                                class="fas fa-crown">1</i> ようせい(ブラウニー)のステ<span class="hidden pcBlock">ータス</span>上限(最大値)
+                            + ランキング</a></li>
+                    <li class="col-12 col-lg-6"><a href="./ourchar.html?c=ID8aa"><img class="icn"
+                                src="http://romasagatool.com/img/style_icon/ID362a6.png" width="30" alt="フリーファイター(女)"><i
+                                class="fas fa-crown">2</i> フリーファイター(女)のステ<span class="hidden pcBlock">ータス</span>上限(最大値)
+                            + ランキング</a></li>
+                    <li class="col-12 col-lg-6"><a href="./ourchar.html?c=ID89d"><img class="icn"
+                                src="http://romasagatool.com/img/style_icon/ID35d55.png" width="30" alt="コッペリア"><i
+                                class="fas fa-crown">3</i>
+                            コッペリアのステ<span class="hidden pcBlock">ータス</span>上限(最大値) + ランキング</a></li>
 
-                <div class="text-center">
-                    <a href="https://www.jp.square-enix.com/saga_reuniverse/" target="new"><img src="./img/cmn_logo01_sp.png" class="col-sm-12 col-md-8 col-lg-6"></a>
-                </div>
-                <h3 class="text-center label-text">キャラクター<br class="hidden spBlock">育成ランキング<span class="hidden pcBlock"><br>みんなの育成状況</span></h3>
-                <h5 class="text-center label-text">最終更新日: <span id="UPDATE">2020/1/2</span></h5>
-                <span class="title-text d-none"></span>
-                <p class="text-right opacity"><small>バグ発見、ご要望は <a href="https://peing.net/ja/nao_romasaga_rs" target="new">質問箱</a>まで</small></p>
-                <div id="firebaseui-auth-container" style="margin-bottom:10px;"></div>
-                <br>
-                <h5 class="text-center label-text">人気のキャラクター ランキング</h5>
-                <div id="article">
-                </div>              
+                    <li class="col-12 col-lg-6"><a href="./ourchar.html?c=ID841"><img class="icn"
+                                src="http://romasagatool.com/img/style_icon/ID33965.png" width="30" alt="ガラハド"><i
+                                class="fas fa-crown">4</i> ガラハドのステ<span class="hidden pcBlock">ータス</span>上限(最大値) +
+                            ランキング</a></li>
+                    <li class="col-12 col-lg-6"><a href="./ourchar.html?c=ID901"><img class="icn"
+                                src="http://romasagatool.com/img/style_icon/ID38467.png" width="30" alt="サラ"><i
+                                class="fas fa-crown">5</i> サラのステ<span class="hidden pcBlock">ータス</span>上限(最大値) +
+                            ランキング</a></li>
+                    <li class="col-12 col-lg-6 d-none d-lg-inline"><a href="./ourchar.html?c=ID94f"><img class="icn"
+                                src="./img/style_icon/ID3a2de.png" width="30" alt="バーニィ"><i class="fas fa-crown">6</i>
+                            バーニィのステ<span class="hidden pcBlock">ータス</span>上限(最大値) + ランキング</a></li>
+                    <li class="col-12 col-lg-6 d-none d-lg-inline"><a href="./ourchar.html?c=ID842"><img class="icn"
+                                src="http://romasagatool.com/img/style_icon/ID339cc.png" width="30" alt="ミリアム"><i
+                                class="fas fa-crown">7</i> ミリアムのステ<span class="hidden pcBlock">ータス</span>上限(最大値) +
+                            ランキング</a></li>
+                    <li class="col-12 col-lg-6 d-none d-lg-inline"><a href="./ourchar.html?c=ID837"><img class="icn"
+                                src="http://romasagatool.com/img/style_icon/ID33581.png" width="30" alt="グレイ"><i
+                                class="fas fa-crown">8</i> グレイのステ<span class="hidden pcBlock">ータス</span>上限(最大値) +
+                            ランキング</a></li>
 
-                <div class="style-bgcolor small" style="width:100%; margin: 0px;">
-                    <ul class="nav row">
-                        
-                        <li class="col-12 col-lg-6"><a href="./ourchar.html?c=ID841"><img class="icn" src="http://romasagatool.com/img/style_icon/ID33965.png" width="30" alt="ガラハド"><i class="fas fa-crown">1</i> ガラハドのステ<span class="hidden pcBlock">ータス</span>上限(最大値) + ランキング</a></li>
-                        <li class="col-12 col-lg-6"><a href="./ourchar.html?c=ID842"><img class="icn" src="http://romasagatool.com/img/style_icon/ID339cc.png" width="30" alt="ミリアム"><i class="fas fa-crown">2</i> ミリアムのステ<span class="hidden pcBlock">ータス</span>上限(最大値) + ランキング</a></li>
-                        <li class="col-12 col-lg-6"><a href="./ourchar.html?c=ID83b"><img class="icn" src="http://romasagatool.com/img/style_icon/ID33711.png" width="30" alt="バーバラ"><i class="fas fa-crown">3</i> バーバラのステ<span class="hidden pcBlock">ータス</span>上限(最大値) + ランキング</a></li>
-                        <li class="col-12 col-lg-6"><a href="./ourchar.html?c=ID837"><img class="icn" src="http://romasagatool.com/img/style_icon/ID33581.png" width="30" alt="グレイ"><i class="fas fa-crown">4</i> グレイのステ<span class="hidden pcBlock">ータス</span>上限(最大値) + ランキング</a></li>
-                        <li class="col-12 col-lg-6"><a href="./ourchar.html?c=ID8f2"><img class="icn" src="http://romasagatool.com/img/style_icon/ID37e8c.png" width="30" alt="海の主の娘"><i class="fas fa-crown">5</i> 海の主の娘のステ<span class="hidden pcBlock">ータス</span>上限(最大値) + ランキング</a></li>
+                    <li class="col-12 col-lg-6 d-none d-lg-inline"><a href="./ourchar.html?c=ID83b"><img class="icn"
+                                src="http://romasagatool.com/img/style_icon/ID33711.png" width="30" alt="バーバラ"><i
+                                class="fas fa-crown">9</i> バーバラのステ<span class="hidden pcBlock">ータス</span>上限(最大値) +
+                            ランキング</a></li>
+                    <li class="col-12 col-lg-6 d-none d-lg-inline"><a href="./ourchar.html?c=ID1bbe"><img class="icn"
+                                src="http://romasagatool.com/img/style_icon/IDad63c.png" width="30" alt="リズ・リン・ウッド"><i
+                                class="fas fa-crown">10</i> リズ・リン・ウッドのステ<span class="hidden pcBlock">ータス</span>上限(最大値) +
+                            ランキング</a></li>
+                    <!--
 
-                        <li class="col-12 col-lg-6 d-none d-lg-inline"><a href="./ourchar.html?c=ID8f6"><img class="icn" src="http://romasagatool.com/img/style_icon/ID3801b.png" width="30" alt="スービエ"><i class="fas fa-crown">6</i> スービエのステ<span class="hidden pcBlock">ータス</span>上限(最大値) + ランキング</a></li>
-                        <li class="col-12 col-lg-6 d-none d-lg-inline"><a href="./ourchar.html?c=ID8f5"><img class="icn" src="http://romasagatool.com/img/style_icon/ID37fbb.png" width="30" alt="ロックブーケ"><i class="fas fa-crown">7</i> ロックブーケのステ<span class="hidden pcBlock">ータス</span>上限(最大値) + ランキング</a></li>
-                        <li class="col-12 col-lg-6 d-none d-lg-inline"><a href="./ourchar.html?c=ID89b"><img class="icn" src="http://romasagatool.com/img/style_icon/ID35c90.png" width="30" alt="最終皇帝(男)"><i class="fas fa-crown">8</i> 最終皇帝(男)のステ<span class="hidden pcBlock">ータス</span>上限(最大値) + ランキング</a></li>
-                        <li class="col-12 col-lg-6 d-none d-lg-inline"><a href="./ourchar.html?c=ID1bf1"><img class="icn" src="http://romasagatool.com/img/style_icon/IDaea26.png" width="30" alt="バルテルミー"><i class="fas fa-crown">9</i> バルテルミーのステ<span class="hidden pcBlock">ータス</span>上限(最大値) + ランキング</a></li>
-                        <li class="col-12 col-lg-6 d-none d-lg-inline"><a href="./ourchar.html?c=ID91a"><img class="icn" src="http://romasagatool.com/img/style_icon/ID38e2c.png" width="30" alt="ウンディーネ"><i class="fas fa-crown">10</i> ウンディーネのステ<span class="hidden pcBlock">ータス</span>上限(最大値) + ランキング</a></li>
-                        <!--
+                    <li class="col-12 col-lg-6"><a href="./ourchar.html?c=ID8f2"><img class="icn"
+                                src="http://romasagatool.com/img/style_icon/ID37e8c.png" width="30" alt="海の主の娘"><i
+                                class="fas fa-crown">5</i> 海の主の娘のステ<span class="hidden pcBlock">ータス</span>上限(最大値) +
+                            ランキング</a></li>
+
+                    <li class="col-12 col-lg-6 d-none d-lg-inline"><a href="./ourchar.html?c=ID8f6"><img class="icn"
+                                src="http://romasagatool.com/img/style_icon/ID3801b.png" width="30" alt="スービエ"><i
+                                class="fas fa-crown">6</i> スービエのステ<span class="hidden pcBlock">ータス</span>上限(最大値) +
+                            ランキング</a></li>
+                    <li class="col-12 col-lg-6 d-none d-lg-inline"><a href="./ourchar.html?c=ID8f5"><img class="icn"
+                                src="http://romasagatool.com/img/style_icon/ID37fbb.png" width="30" alt="ロックブーケ"><i
+                                class="fas fa-crown">7</i> ロックブーケのステ<span class="hidden pcBlock">ータス</span>上限(最大値) +
+                            ランキング</a></li>
+                    <li class="col-12 col-lg-6 d-none d-lg-inline"><a href="./ourchar.html?c=ID89b"><img class="icn"
+                                src="http://romasagatool.com/img/style_icon/ID35c90.png" width="30" alt="最終皇帝(男)"><i
+                                class="fas fa-crown">8</i> 最終皇帝(男)のステ<span class="hidden pcBlock">ータス</span>上限(最大値) +
+                            ランキング</a></li>
+                    <li class="col-12 col-lg-6 d-none d-lg-inline"><a href="./ourchar.html?c=ID1bf1"><img class="icn"
+                                src="http://romasagatool.com/img/style_icon/IDaea26.png" width="30" alt="バルテルミー"><i
+                                class="fas fa-crown">9</i> バルテルミーのステ<span class="hidden pcBlock">ータス</span>上限(最大値) +
+                            ランキング</a></li>
+                    <li class="col-12 col-lg-6 d-none d-lg-inline"><a href="./ourchar.html?c=ID91a"><img class="icn"
+                                src="http://romasagatool.com/img/style_icon/ID38e2c.png" width="30" alt="ウンディーネ"><i
+                                class="fas fa-crown">10</i> ウンディーネのステ<span class="hidden pcBlock">ータス</span>上限(最大値) +
+                            ランキング</a></li>
                         <li class="col-12 col-lg-6 d-none d-lg-inline"><a href="./ourchar.html?c=ID902"><img class="icn" src="http://romasagatool.com/img/style_icon/ID384cf.png" width="30" alt="エレン"><i class="fas fa-crown">7</i> エレンのステ<span class="hidden pcBlock">ータス</span>上限(最大値) + ランキング</a></li>
                         <li class="col-12 col-lg-6 d-none d-lg-inline"><a href="./ourchar.html?c=IDc95"><img class="icn" src="http://romasagatool.com/img/style_icon/ID4ea38.png" width="30" alt="コーデリア"><i class="fas fa-crown">8</i> コーデリアのステ<span class="hidden pcBlock">ータス</span>上限(最大値) + ランキング</a></li>
                         <li class="col-12 col-lg-6 d-none d-lg-inline"><a href="./ourchar.html?c=ID8fd"><img class="icn" src="http://romasagatool.com/img/style_icon/ID382d9.png" width="30" alt="ユリアン"><i class="fas fa-crown">9</i> ユリアンのステ<span class="hidden pcBlock">ータス</span>上限(最大値) + ランキング</a></li>
-                        <li class="col-12 col-lg-6 d-none d-lg-inline"><a href="./ourchar.html?c=ID1bbe"><img class="icn" src="http://romasagatool.com/img/style_icon/IDad63c.png" width="30" alt="リズ・リン・ウッド"><i class="fas fa-crown">10</i> リズ・リン・ウッドのステ<span class="hidden pcBlock">ータス</span>上限(最大値) + ランキング</a></li>
                         
                         <li class="col-12 col-lg-6"><a href="./ourchar.html?c=IDc1d"><img class="icn" src="./img/style_icon/ID4bb59.png" width="30" alt="ブルー"><i class="fas fa-crown">1</i> ブルーのステ<span class="hidden pcBlock">ータス</span>上限(最大値) + ランキング</a></li>
                         <li class="col-12 col-lg-6"><a href="./ourchar.html?c=IDc3d"><img class="icn" src="./img/style_icon/ID4c7d8.png" width="30" alt="白薔薇"><i class="fas fa-crown">3</i> 白薔薇のステ<span class="hidden pcBlock">ータス</span>上限(最大値) + ランキング</a></li>
@@ -152,7 +232,6 @@
                         <li class="col-12 col-lg-6 d-none d-lg-inline"><a href="./ourchar.html?c=ID900"><img class="icn" src="./img/style_icon/ID38402.png" width="30" alt="ハリード"><i class="fas fa-crown">8</i> ハリードのステ<span class="hidden pcBlock">ータス</span>上限(最大値) + ランキング</a></li>
                         <li class="col-12 col-lg-6 d-none d-lg-inline"><a href="./ourchar.html?c=ID907"><img class="icn" src="./img/style_icon/ID386bf.png" width="30" alt="タチアナ"><i class="fas fa-crown">9</i> タチアナのステ<span class="hidden pcBlock">ータス</span>上限(最大値) + ランキング</a></li>
                         <li class="col-12 col-lg-6 d-none d-lg-inline"><a href="./ourchar.html?c=ID91c"><img class="icn" src="./img/style_icon/ID38ef4.png" width="30" alt="レオニード"><i class="fas fa-crown">10</i> レオニードのステ<span class="hidden pcBlock">ータス</span>上限(最大値) + ランキング</a></li>
-                        <li class="col-12 col-lg-6 d-none d-lg-inline"><a href="./ourchar.html?c=ID94f"><img class="icn" src="./img/style_icon/ID3a2de.png" width="30" alt="バーニィ"><i class="fas fa-crown">9</i> バーニィのステ<span class="hidden pcBlock">ータス</span>上限(最大値) + ランキング</a></li>
                         <li class="col-12 col-lg-6"><a href="./ourchar.html?c=IDc84"><img class="icn" src="./img/style_icon/ID4e395.png" width="30" alt="ジニー"><i class="fas fa-crown">1</i> ジニーのステ<span class="hidden pcBlock">ータス</span>上限(最大値) + ランキング</a></li>
                         <li class="col-12 col-lg-6"><a href="./ourchar.html?c=ID839"><img class="icn" src="./img/style_icon/ID33648.png" width="30" alt="アイシャ"><i class="fas fa-crown">2</i> アイシャのステ<span class="hidden pcBlock">ータス</span>上限(最大値) + ランキング</a></li>
                         <li class="col-12 col-lg-6"><a href="./ourchar.html?c=ID83a"><img class="icn" src="./img/style_icon/ID336ae.png" width="30" alt="クローディア"><i class="fas fa-crown">3</i> クローディアのステ<span class="hidden pcBlock">ータス</span>上限(最大値) + ランキング</a></li>
@@ -186,411 +265,475 @@
                         <li class="col-12 col-lg-6"><a href="./ourchar.html?c=ID17d8"><img class="icn" src="./img/style_icon/ID95061.png" width="30" alt="バルマンテ"><i class="fas fa-crown">4</i> バルマンテのステ<span class="hidden pcBlock">ータス</span>上限(最大値) + ランキング</a></li>
                         <li class="col-12 col-lg-6"><a href="./ourchar.html?c=IDc22"><img class="icn" src="./img/style_icon/ID4bd4b.png" width="30" alt="アセルス"><i class="fas fa-crown">5</i> アセルスのステ<span class="hidden pcBlock">ータス</span>上限(最大値) + ランキング</a></li>
                         <li class="col-12 col-lg-6 d-none d-lg-inline"><a href="./ourchar.html?c=ID925"><img class="icn" src="./img/style_icon/ID39276.png" width="30" alt="教授"><i class="fas fa-crown">6</i> 教授のステ<span class="hidden pcBlock">ータス</span>上限(最大値) + ランキング</a></li>
-                        <li class="col-12 col-lg-6 d-none d-lg-inline"><a href="./ourchar.html?c=ID89d"><img class="icn" src="./img/style_icon/ID35d55.png" width="30" alt="コッペリア"><i class="fas fa-crown">7</i> コッペリアのステ<span class="hidden pcBlock">ータス</span>上限(最大値) + ランキング</a></li>
                         -->
-                    </ul>
-                </div>                
-                <div class="label-text text-center initialShow">
-                    <div class="loading">
-                        <span>L</span><span>O</span><span>A</span><span>D</span><span>I</span><span>N</span><span>G</span><span>.</span><span>.</span><span>.</span>
-                    </div>
-                    <div class="">
-                        <span id="char1" class="char dot_mid dot char-hashiri-right" style="background: url(./img/dot/IDad82c.png);"></span>
-                        <span id="char2" class="char dot_mid dot char-hashiri-right" style="background: url(./img/dot/ID38400.png);"></span>
-                    </div>
-                </div>
-                <!-- ツール_ランキング_ランク下 -->
-                <script type="text/javascript">
-                    var microadCompass = microadCompass || {};
-                    microadCompass.queue = microadCompass.queue || [];
-                    </script>
-                    <script type="text/javascript" charset="UTF-8" src="//j.microad.net/js/compass.js" onload="new microadCompass.AdInitializer().initialize();" async></script>
-                    <div id="bd331884d328f86088e4f07c66186a2d" >
-                        <script type="text/javascript">
-                            microadCompass.queue.push({
-                                "spot": "bd331884d328f86088e4f07c66186a2d"
-                            });
-                        </script>
-                </div>
-                <!--
-                <ins class="adsbygoogle"
-                style="display:block"
-                data-ad-client="ca-pub-5008373409434899"
-                data-ad-slot="4532490772"
-                data-ad-format="auto"
-                data-full-width-responsive="true"></ins>
-                -->
-                <br>
-                <div class="">
-                    <label class="badge badge-pill badge-light">絞り込み</label>
-                    <div class="initialHide d-none style-bgcolor text-center small row" style="width:100%; margin: 0px;">
-                        <ul class="nav text-center width-100">
-                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="剣" href="#icon_ken"><span class="icon_mini icon_ken" onclick=""></span></a></li>
-                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="大剣" href="#icon_dken"><span class="icon_mini icon_dken" onclick=""></span></a></li>
-                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="斧" href="#icon_ono"><span class="icon_mini icon_ono" onclick=""></span></a></li>
-                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="棍棒" href="#icon_kon"><span class="icon_mini icon_kon" onclick=""></span></a></li>
-                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="体術" href="#icon_tai"><span class="icon_mini icon_tai" onclick=""></span></a></li>
-                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="銃" href="#icon_ju"><span class="icon_mini icon_ju" onclick=""></span></a></li>
-                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="小剣" href="#icon_sken"><span class="icon_mini icon_sken" onclick=""></span></a></li>
-                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="弓" href="#icon_yumi"><span class="icon_mini icon_yumi" onclick=""></span></a></li>
-                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="槍" href="#icon_yari"><span class="icon_mini icon_yari" onclick=""></span></a></li>
-                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="杖" href="#icon_tsue"><span class="icon_mini icon_tsue" onclick=""></span></a></li>
-                        </ul>
-                        <ul class="nav text-center width-100">
-                            <li class="col-2 col-sm-1 blockquote text-center"><a class="filterList pad0" data-type="SeriesFilter" href="#RS1">RS1</a></li>
-                            <li class="col-2 col-sm-1 blockquote text-center"><a class="filterList pad0" data-type="SeriesFilter" href="#RS2">RS2</a></li>
-                            <li class="col-2 col-sm-1 blockquote text-center"><a class="filterList pad0" data-type="SeriesFilter" href="#RS3">RS3</a></li>
-                            <li class="col-2 col-sm-1 blockquote text-center"><a class="filterList pad0" data-type="SeriesFilter" href="#SF1">SF1</a></li>
-                            <li class="col-2 col-sm-1 blockquote text-center"><a class="filterList pad0" data-type="SeriesFilter" href="#SF2">SF2</a></li>
-                            <li class="col-2 col-sm-1 blockquote text-center"><a class="filterList pad0" data-type="SeriesFilter" href="#US">US</a></li>
-                            <li class="col-2 col-sm-1 blockquote text-center"><a class="filterList pad0" data-type="SeriesFilter" href="#SS">SS</a></li>
-                            <li class="col-2 col-sm-1 blockquote text-center"><a class="filterList pad0" data-type="SeriesFilter" href="#ES">ES</a></li>
-                            <li class="col-2 col-sm-1 blockquote text-center"><a class="filterList pad0" data-type="SeriesFilter" href="#RSR">RSR</a></li>
-                        </ul>
-                    </div>
-
-                    <br>
-                    <h6 id="listLabel" style="background: url(./img/bg_window_large.png);background-size: 100% 100%;color: #faf0b4;padding: 10px 30px;"><span id="label1"></span><span id="label2">みんなが登録した<br>ステータス最高値一覧</span></h6>
-
-                    <label class="badge badge-pill badge-light">キャラクターをクリックすると詳細表示されます</label>
-                    <div id="example-table-display" class="text-center">
-                        <div id="example-table" style="width:402px"></div>
-                    </div>
-                    <br>
-                    <div class="text-center kadomaru" style="background-color: rgba(42,169,239,1); color:white; margin: 0px 10px; padding: 2px 5px;">
-                        <a href="./inputchar.html" class="h4 " style="background-size: 340px 40px; width:340px" id="inputStyleLogined">自分のキャラを登録<i class="fas fa-pencil-alt"></i></a>
-                    </div>
-
-                    <br>
-                    <br>
-                    <!-- ツール_ランキング_テーブル下 -->
-                    <script type="text/javascript">
-                        var microadCompass = microadCompass || {};
-                        microadCompass.queue = microadCompass.queue || [];
-                        </script>
-                        <script type="text/javascript" charset="UTF-8" src="//j.microad.net/js/compass.js" onload="new microadCompass.AdInitializer().initialize();" async></script>
-                        <div id="83107345a98c1e158dcb6e0bc4ac28c5" >
-                            <script type="text/javascript">
-                                microadCompass.queue.push({
-                                    "spot": "83107345a98c1e158dcb6e0bc4ac28c5"
-                                });
-                            </script>
-                    </div>
-                    <!--
-                    <ins class="adsbygoogle"
-                        style="display:block"
-                        data-ad-client="ca-pub-5008373409434899"
-                        data-ad-slot="2453122348"
-                        data-ad-format="auto"
-                        data-full-width-responsive="true"></ins>                    
-                    <script> (adsbygoogle = window.adsbygoogle || []).push({});</script>
-                    -->
-                    <div id="initialHide" class="d-none">
-                        <div class="card"><div class="card-header bg-primary text-white"><i class="fas fa-info-circle"></i> スタイル上限 凡例</div>
-                            <div class="card-body style-bgcolor" style="padding:10px">
-                                <table>
-                                    <tr>
-                                        <td style="background-color: lightgreen; border: solid black 1px">　</td><td>このキャラの中<span class="d-none d-md-inline">で最大値までステータスを上げられるスタイル</span><span class="d-md-none">の最大ステータス</span></td>
-                                    </tr>
-                                    <tr class="d-none d-md-table-row">
-                                        <td class="d-none d-md-table-cell"><img src="./img/icon/icon_ind_3.png" width="15"></td>
-                                        <td class="d-none d-md-table-cell">よく成長するステータス(+4 〜 +9)</td>
-                                    </tr>
-                                    <tr class="d-none d-md-table-row">
-                                        <td class="d-none d-md-table-cell"><img src="./img/icon/icon_ind_2.png" width="15"></td>
-                                        <td class="d-none d-md-table-cell">成長するステータス(+1 〜 +3)</td>
-                                    </tr>
-                                    <tr class="d-none d-md-table-row">
-                                        <td class="d-none d-md-table-cell"><img src="./img/icon/icon_ind_1.png" width="15"></td>
-                                        <td class="d-none d-md-table-cell">成長しないステータス(-9 〜 0)</td>
-                                    </tr>
-                                    
-                                </table>
-                            </div>
-                        </div>
-                        
-                        <label class="badge badge-pill badge-light" id="badge">スタイル別上限の確認</label>
-                        <div class="text-center kadomaru blueLink" >
-                            <a href="" target="_blank" class="h4" id="STYLE_LINK"><i class="fas fa-address-card"></i> <span class="charName"></span>の<br class="d-md-none">スタイル詳細を調べる</a>
-                        </div>
-                        <table class="width-100 text-center style-bgcolor">
-                            <tbody>
-                                <tr class="text-center">
-                                    <td colspan="11">
-                                        <p class="width-100 pad0 mar0 darkButton charName">キャラ名</p>
-                                    </td>
-                                </tr>
-                                <tr class="">
-                                    <td class="dotBackground" rowspan="3" id="charDot">
-                                    </td>
-                                    <td colspan="11">ユーザ登録最大値</td>
-                                </tr>
-                                <tr class="text-center">
-                                    <td class="paramHead paramCell2">腕</td>
-                                    <td class="paramHead paramCell2">体</td>
-                                    <td class="paramHead paramCell2">器</td>
-                                    <td class="paramHead paramCell2">速</td>
-                                    <td class="paramHead paramCell2">知</td>
-                                    <td class="paramHead paramCell2">精</td>
-                                    <td class="paramHead paramCell2">愛</td>
-                                    <td class="paramHead paramCell2">魅</td>
-                                    <td class="paramHead paramCell2"><span class="hidden pcBlock">合</span>計</td>
-                                </tr>
-                                <tr class="text-center">
-                                    <td class="paramCell2"><span class="MAXSTR">99</span></td>
-                                    <td class="paramCell2"><span class="MAXVIT">99</span></td>
-                                    <td class="paramCell2"><span class="MAXDEX">99</span></td>
-                                    <td class="paramCell2"><span class="MAXAGI">99</span></td>
-                                    <td class="paramCell2"><span class="MAXINT">99</span></td>
-                                    <td class="paramCell2"><span class="MAXMND">99</span></td>
-                                    <td class="paramCell2"><span class="MAXAI">99</span></td>
-                                    <td class="paramCell2"><span class="MAXMI">99</span></td>
-                                    <td class="paramCell2"><span class="MAXSUM">999</span></td>
-                                </tr>
-                                <tr id="styleLabelRow">
-                                    <td class="small">スタイル別<br>限界値(+<span id="PLUS_LIMIT"></span>)</td>
-                                    <td class="paramHead paramCell2">腕</td>
-                                    <td class="paramHead paramCell2">体</td>
-                                    <td class="paramHead paramCell2">器</td>
-                                    <td class="paramHead paramCell2">速</td>
-                                    <td class="paramHead paramCell2">知</td>
-                                    <td class="paramHead paramCell2">精</td>
-                                    <td class="paramHead paramCell2">愛</td>
-                                    <td class="paramHead paramCell2">魅</td>
-                                    <td class="paramHead paramCell2"><span class="hidden pcBlock">合</span>計</td>
-                                </tr>
-                                <tr class="text-center d-none" id="STYLE_TEMPLATE">
-                                    <td class="IMG" style="width:10%">
-                                        <img class="rare" src="./img/icon/icon_SS.png" width="25">
-                                        <img class="icn" src="./img/style_icon/ID4c7d6.png" width="30">
-                                    </td>
-                                    <td class="paramCell2 STR">99</td>
-                                    <td class="paramCell2 VIT">99</td>
-                                    <td class="paramCell2 DEX">99</td>
-                                    <td class="paramCell2 AGI">99</td>
-                                    <td class="paramCell2 INT">99</td>
-                                    <td class="paramCell2 MND">99</td>
-                                    <td class="paramCell2 AI">99</td>
-                                    <td class="paramCell2 MI">99</td>
-                                    <td class="paramCell2 SUM">999</td>
-                                </tr>
-                                <tr class="text-center isLogin d-none" style="background-color: white;">
-                                    <td class="text-right small">
-                                        あなたの<span><br>キャラ</span>
-                                    </td>
-                                    <td class="paramCell1"><span class="YOURSTR">0</span></td>
-                                    <td class="paramCell2"><span class="YOURVIT">0</span></td>
-                                    <td class="paramCell2"><span class="YOURDEX">0</span></td>
-                                    <td class="paramCell2"><span class="YOURAGI">0</span></td>
-                                    <td class="paramCell2"><span class="YOURINT">0</span></td>
-                                    <td class="paramCell2"><span class="YOURMND">0</span></td>
-                                    <td class="paramCell2"><span class="YOURAI">0</span></td>
-                                    <td class="paramCell2"><span class="YOURMI">0</span></td>
-                                    <td class="paramCell2"><span class="YOURSUM">000</span></td>
-                                </tr>
-                                <tr class="text-center isLogin d-none" style="background-color: white;    border-top: 1px solid darkgray;">
-                                    <td class="text-right small">
-                                        限界まで</span>
-                                    </td>
-                                    <td class="paramCell1"><span class="LIMITSTR">0</span></td>
-                                    <td class="paramCell2"><span class="LIMITVIT">0</span></td>
-                                    <td class="paramCell2"><span class="LIMITDEX">0</span></td>
-                                    <td class="paramCell2"><span class="LIMITAGI">0</span></td>
-                                    <td class="paramCell2"><span class="LIMITINT">0</span></td>
-                                    <td class="paramCell2"><span class="LIMITMND">0</span></td>
-                                    <td class="paramCell2"><span class="LIMITAI">0</span></td>
-                                    <td class="paramCell2"><span class="LIMITMI">0</span></td>
-                                    <td class="paramCell2"><span class="LIMITSUM">000</span></td>
-                                </tr>                            </tbody>
-                        </table>
-                        <div class="text-center kadomaru" style="background-color: rgba(42,169,239,1); color:white; margin: 0px 10px; padding: 2px 5px;">
-                            <a href="./inputchar.html" class="h4 " style="background-size: 340px 40px; width:340px" id="inputStyleLogined">自分のキャラを登録<i class="fas fa-pencil-alt"></i></a>
-                        </div>
-                        <br>
-                        <div class="text-center">
-                            <a href="" class="rankingTweet twitter-share-button kadomaru h5" rel=”nofollow” onClick="window.open(encodeURI(decodeURI(this.href)), 'twwindow', 'width=550, height=450, personalbar=0, toolbar=0, scrollbars=1'); return false;" style="background-color: rgba(41,163,239,1); color:white; padding:5px 10px; border-radius:10px;"><i class="fab fa-twitter"></i> ランキングをツイートする<i class="fas fa-crown"></i></a>
-                        </div>
-
-
-
-                        <br>
-                        <div class="card"><div class="card-header bg-primary text-white"><i class="fas fa-info-circle"></i> 育成ランキング 凡例</div>
-                            <div class="card-body style-bgcolor" style="padding:10px">
-                                <table class="table-bordered">
-                                    <tr>
-                                        <td style="background-color: lightgreen; border: solid black 1px">　</td><td><span class="d-none d-md-inline">このキャラの</span>最大ステータスと一致</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="background-color: yellow; border: solid black 1px">　</td><td><span class="d-none d-md-inline">このキャラの</span>最大ステータス+1 <span style="color:red">上限更新対象</span><br class="d-md-none">(<span style="color:red">2倍期間<b>でない</b>場合はご連絡下さい</span>)</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="background-color: darkorchid; border: solid black 1px">　</td><td><span class="d-none d-md-inline">このキャラの</span>最大ステータス+2 <span style="color:red">ステ3倍成長時のみ発生します</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td style="background-color: red; border: solid black 1px">　</td><td><span class="d-none d-md-inline">このキャラの</span>最大ステータス+3以上 <span style="color:red">審議対象です</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td style="background-color: white; border: solid black 1px">　</td><td>あなた<span class="d-none d-md-inline">が登録しているキャラクター</span>のステータス</td>
-                                    </tr>
-                                    <tr>
-                                        <td><i class="fas fa-crown"></i></td><td>ランキング内の最大HP</td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>                    
-
-                        <table class="width-100 text-center style-bgcolor table-striped" id="RANKKING_TABLE">
-                            <tbody><tr class="small text-center ">
-                                    <td colspan="11">
-                                        <p class="width-100 pad0 mar0 darkButton">
-                                            <i class="fas fa-crown"></i>
-                                            <span class='charName'></span> 育成ランキング TOP20
-                                            <i class="fas fa-crown"></i>
-                                        </p>
-                                    </td>
-                                </tr>
-                                <tr class="">
-                                    <td class="dotBackground">
-                                        <span id="charDotAruku" class="char dot_mid dot char-aruku"></span>
-                                    </td>
-                                    <td colspan="11" class="fukidashi">
-                                        データ登録数 : <span id="INPUT_COUNT"></span>件<br>
-                                        愛され度 : <span id="RANK_COUNT"></span>位 (<span id="CHAR_COUNT"></span>キャラ中)<br>
-                                        あなたの順位 : <span id="MY_RANK">登録していません</span><br>
-                                    </td>
-                                </tr>
-                                <tr class="text-center">
-                                    <td class="paramHead paramCell2">Rank</td>
-                                    <td class="paramHead paramCell2">HP</td>
-                                    <td class="paramHead paramCell2">腕</td>
-                                    <td class="paramHead paramCell2">体</td>
-                                    <td class="paramHead paramCell2">器</td>
-                                    <td class="paramHead paramCell2">速</td>
-                                    <td class="paramHead paramCell2">知</td>
-                                    <td class="paramHead paramCell2">精</td>
-                                    <td class="paramHead paramCell2">愛</td>
-                                    <td class="paramHead paramCell2">魅</td>
-                                    <td class="paramHead paramCell2"><span class="hidden pcBlock">合</span>計</td>
-                                </tr>
-                                <tr class="text-center" id="USER_RANK">
-                                </tr>        
-                            </tbody>
-                        </table>
-
-                        <div class="text-center">
-                            <br>
-                            <a href="" class="kaijoTweet twitter-share-button kadomaru h5" rel=”nofollow” onClick="window.open(encodeURI(decodeURI(this.href)), 'twwindow', 'width=550, height=450, personalbar=0, toolbar=0, scrollbars=1'); return false;" style="background-color: rgba(41,163,239,1); color:white; padding:5px 10px; border-radius:10px;"><i class="fab fa-twitter"></i> 画像を送って協議解除申請 <i class="fas fa-image"></i></a>
-                            <br><br>
-                            <div class="card"><div class="card-header bg-danger text-white"><i class="fas fa-exclamation-triangle"></i> 協議解除(HP)について</div>
-                                <div class="card-body style-bgcolor" style="padding:10px">
-                                    12/9現在 HPに裏能力ボーナスの+20込みで入力されておられる方が散見されます<br>
-                                    そのため現在HP1000超えは承認制としております<br>
-                                    HPが1000を超えた場合はスクリーンショットを<a href="https://twitter.com/nao_romasaga_rs" target="_new">@nao_romasaga_rs</a>までDMでお送りください。<br>
-                                    その際、<a href="./home.html"><i class="fas fa-home"></i> HOME画面</a>からユーザIDをコピーされると進行がスムーズです<br>
-                                    <br>
-                                    HPは裏能力ボーナスの+20、ステータスも裏能力の+4を除いた状態のものを登録して下さい
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div id="article_hozon"></div>
-                    <!-- ツール_ランキング_footer -->
-                    <!--
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-5008373409434899"
-                         data-ad-slot="4672091575"
-                         data-ad-format="auto"
-                         data-full-width-responsive="true"></ins>
-                    <script>
-                         (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
-                    -->
-<script type="text/javascript">
-var microadCompass = microadCompass || {};
-microadCompass.queue = microadCompass.queue || [];
-</script>
-<script type="text/javascript" charset="UTF-8" src="//j.microad.net/js/compass.js" onload="new microadCompass.AdInitializer().initialize();" async></script>
-<div id="1614aae8658203f7bcec3e2c8dc7c359" >
-	<script type="text/javascript">
-		microadCompass.queue.push({
-			"spot": "1614aae8658203f7bcec3e2c8dc7c359"
-		});
-	</script>
-</div>
-
-                    <div class="card">
-                            <div class="card-header bg-warning">補足説明</div>
-                            <div class="card-body">
-                                ・協議中に入った場合に画像で報告する方法<br>
-                                <a href="https://twitter.com/nao_romasaga_rs">@nao_romasaga_rs</a>に画像つきのツイートを送ってください。内容確認次第反映いたします。<br><br>
-                                ・更新タイミングについて<br>
-                                更新は手動で行っています(๑′ᴗ‵๑)💦そのためタイミングは不定期です。気長にお待ちくださいmm<br><br>
-                                ・最大値がランキングのトップ20に表示されない件について<br>
-                                ランキングは総ステータスの降順です。そのため最大値を持つ場合でも総ステータスが低い場合はランキングから外れます。<br><br>
-                                ・上限突破しているステータスについて<br>
-                                このデータはユーザが入力した値を表示しています。上限を超える値も入力できてしまうため、おかしなデータが表示されてしまうケースもあります。正しいデータ入力のご協力をお願いいたします。
-                            </div>
-                        </div>
-                    </div>>
-
-                </div><!-- isLogin -->
+                </ul>
             </div>
-            <!--スクエア--><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5008373409434899" data-ad-slot="9303963278" data-ad-format="auto" data-full-width-responsive="true"></ins>
-            <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-               </script>
-        </div>
-        <script src="./js/ourchar_LIST.js" ></script>
-        <script src="./js/ourchar_DETAIL.js" ></script>
-        <script src="./js/data_CHARMASTER.js" ></script>
-        <script src="./js/data_STYLEMASTER.js" ></script>
-        <script src="./js/asyncFunc.js"></script>
-        <script src="./js/ourchar.js" ></script>
 
-        <!-- Twitter universal website tag code -->
-        <script>
-                    $("#PLUS_LIMIT").text(LIMIT_BASE - 45);
-                    !function (e, t, n, s, u, a) {
-                        e.twq || (s = e.twq = function () {
-                            s.exe ? s.exe.apply(s, arguments) : s.queue.push(arguments);
-                        }, s.version = '1.1', s.queue = [], u = t.createElement(n), u.async = !0, u.src = '//static.ads-twitter.com/uwt.js',
-                                a = t.getElementsByTagName(n)[0], a.parentNode.insertBefore(u, a))
-                    }(window, document, 'script');
-                    // Insert Twitter Pixel ID and Standard Event data below
-                    twq('init', 'o1u7p');
-                    twq('track', 'PageView');
-        </script>
-        <!-- End Twitter universal website tag code -->
-        <script>
-function rssCallbackCat3(results) {
-    var div = $("<div>").addClass("row");
-    for (var i = 0; i < results.length; i++) {
-        var entry = results[i];
-        var clazz = (i>=4) ? " d-none d-md-block" : '';
-        var article = $(`<div class="col-12 col-md-3 opacity kadomaru ${clazz}" style="padding:5px 5px 20px 5px; margin-bottom:10px; font-size:0.9rem;"><a href="${entry.link}" target="_new"><img class="kadomaru d-md-none" src="${entry.thumb}" width="100px" align="left"> <img class="kadomaru d-none d-md-block" src="${entry.thumb}" width="100%" alt="">${entry.title}<div style="position:absolute; bottom:0;font-size:0.8rem">最終更新:${entry.pubdate}</div></a></div>`);
-        div.append(article);
-    }
-    $("#article").append(div);
-}
-function rssCallbackCat2(results) {
-    var div = $("<div>").addClass("row");
-    let $articleCard = $(`<div class="card" style="margin:10px 0px;"><div class="card-header bg-primary" style='color:white'><i class="fas fa-file-archive"></i> 永久保存版の記事</div></div>`);
-    var $body = $(`<div class="card-body" style="padding:0px 5px;"></div>`);
-    var ul = $("<ul class='trianglelist list5'>");
-    for (var i = 0; i < results.length; i++) {
-        var entry = results[i];
-        var li = $(`<li><a href="${entry.link}" target="_blank">${entry.title}</a></li>`)
-        ul.append(li);
-    }
-    $body.append(ul);
-    $articleCard.append($body);
-    $("#article_hozon").after($articleCard);
-}
-        </script>
-        <script type="text/javascript" src="https://romasagatool.com/blog/get_the_archives2.php?cat=7&limit=8&callback=rssCallbackCat3"></script>
-        <script type="text/javascript" src="https://romasagatool.com/blog/get_the_archives.php?cat=22&callback=rssCallbackCat2"></script>
-    </body>
+            <div class="label-text text-center initialShow">
+                <div class="loading">
+                    <span>L</span><span>O</span><span>A</span><span>D</span><span>I</span><span>N</span><span>G</span><span>.</span><span>.</span><span>.</span>
+                </div>
+                <div class="">
+                    <span id="char1" class="char dot_mid dot char-hashiri-right"
+                        style="background: url(./img/dot/IDad82c.png);"></span>
+                    <span id="char2" class="char dot_mid dot char-hashiri-right"
+                        style="background: url(./img/dot/ID38400.png);"></span>
+                </div>
+            </div>
+            <!-- ツール_ランキング_ランク下 -->
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5008373409434899"
+                data-ad-slot="4532490772" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <br>
+            <div class="">
+                <label class="badge badge-pill badge-light">絞り込み</label>
+                <div class="initialHide d-none filter-bgcolor text-center small row" style="width:100%; margin: 0px;">
+                    <ul class="nav text-center width-100" style="margin-bottom: 5px;">
+                        <li class="subtitle fuchidoriWhite smallFont">武器種別</li>
+                    </ul>
+                    <ul class="nav text-center width-100">
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter"
+                                data-label="剣" href="#icon_ken"><span class="icon_mini icon_ken weapon-icon-button"
+                                    onclick=""></span></a>
+                        </li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter"
+                                data-label="大剣" href="#icon_dken"><span class="icon_mini icon_dken weapon-icon-button"
+                                    onclick=""></span></a>
+                        </li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter"
+                                data-label="斧" href="#icon_ono"><span class="icon_mini icon_ono weapon-icon-button"
+                                    onclick=""></span></a>
+                        </li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter"
+                                data-label="棍棒" href="#icon_kon"><span class="icon_mini icon_kon weapon-icon-button"
+                                    onclick=""></span></a>
+                        </li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter"
+                                data-label="体術" href="#icon_tai"><span class="icon_mini icon_tai weapon-icon-button"
+                                    onclick=""></span></a>
+                        </li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter"
+                                data-label="銃" href="#icon_ju"><span class="icon_mini icon_ju weapon-icon-button"
+                                    onclick=""></span></a>
+                        </li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter"
+                                data-label="小剣" href="#icon_sken"><span class="icon_mini icon_sken weapon-icon-button"
+                                    onclick=""></span></a>
+                        </li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter"
+                                data-label="弓" href="#icon_yumi"><span class="icon_mini icon_yumi weapon-icon-button"
+                                    onclick=""></span></a>
+                        </li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter"
+                                data-label="槍" href="#icon_yari"><span class="icon_mini icon_yari weapon-icon-button"
+                                    onclick=""></span></a>
+                        </li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter"
+                                data-label="杖" href="#icon_tsue"><span class="icon_mini icon_tsue weapon-icon-button"
+                                    onclick=""></span></a>
+                        </li>
+                    </ul>
+                    <ul class="nav text-center width-100" style="margin-bottom: 5px;">
+                        <li class="subtitle fuchidoriWhite smallFont">シリーズ</li>
+                    </ul>
+                    <ul class="nav text-center width-100">
+                        <li class="col-4 col-sm-2 text-center" style="margin-bottom: 5px;"><a class="filterList pad0"
+                                href="#RS1" data-type="SeriesFilter"><img
+                                    src="http://romasagatool.com/img/icon/icon_rs1.png" class="width-100"></a></li>
+                        <li class="col-4 col-sm-2 text-center"><a class="filterList pad0" href="#RS2"
+                                data-type="SeriesFilter"><img src="http://romasagatool.com/img/icon/icon_rs2.png"
+                                    class="width-100"></a></li>
+                        <li class="col-4 col-sm-2 text-center"><a class="filterList pad0" href="#RS3"
+                                data-type="SeriesFilter"><img src="http://romasagatool.com/img/icon/icon_rs3.png"
+                                    class="width-100"></a></li>
+                        <li class="col-4 col-sm-2 text-center" style="margin-bottom: 5px;"><a class="filterList pad0"
+                                href="#SF1" data-type="SeriesFilter"><img
+                                    src="http://romasagatool.com/img/icon/icon_sf1.png" class="width-100"></a></li>
+                        <li class="col-4 col-sm-2 text-center"><a class="filterList pad0" href="#SF2"
+                                data-type="SeriesFilter"><img src="http://romasagatool.com/img/icon/icon_sf2.png"
+                                    class="width-100"></a></li>
+                        <li class="col-4 col-sm-2 text-center"><a class="filterList pad0" href="#US"
+                                data-type="SeriesFilter"><img src="http://romasagatool.com/img/icon/icon_us.png"
+                                    class="width-100"></a></li>
+                        <li class="col-4 col-sm-2 text-center"><a class="filterList pad0" href="#SS"
+                                data-type="SeriesFilter"><img src="http://romasagatool.com/img/icon/icon_ss.png"
+                                    class="width-100"></a></li>
+                        <li class="col-4 col-sm-2 text-center"><a class="filterList pad0" href="#ES"
+                                data-type="SeriesFilter"><img src="http://romasagatool.com/img/icon/icon_es.png"
+                                    class="width-100"></a></li>
+                        <li class="col-4 col-sm-2 text-center"><a class="filterList pad0" href="#RSR"
+                                data-type="SeriesFilter"><img src="http://romasagatool.com/img/icon/icon_rsr.png"
+                                    class="width-100"></a></li>
+                    </ul>
+                </div>
+
+                <br>
+                <h6 id="listLabel" class="label-text-small width-100">
+                    <span id="label1"></span><span id="label2">みんなが登録した<br>ステータス最高値一覧</span></h6>
+
+                <label class="badge badge-pill badge-light">キャラクターをクリックすると詳細表示されます</label>
+                <div id="example-table-display" class="text-center">
+                    <div id="example-table" style="width:402px"></div>
+                </div>
+                <br>
+                <div class="text-center kadomaru"
+                    style="background-color: rgba(42,169,239,1); color:white; margin: 0px 10px; padding: 2px 5px;">
+                    <a href="./inputchar.html" class="h4 " style="background-size: 340px 40px; width:340px"
+                        id="inputStyleLogined">自分のキャラを登録<i class="fas fa-pencil-alt"></i></a>
+                </div>
+
+                <br>
+                <br>
+                <!-- ツール_ランキング_テーブル下 -->
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5008373409434899"
+                    data-ad-slot="2453122348" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                <script> (adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+                <div id="initialHide" class="d-none">
+                    <label class="badge badge-pill badge-light" id="badge">スタイル別上限の確認</label>
+                    <div class="text-center info-modal LIMIT_PAD0">
+                        <span class="info-modal-header"><span class="charName">キャラ名称</span>のステータス上限</span>
+                        VH15(Base <span id="PLUS_LIMIT"></span>)での最大値です
+                        <br>
+
+                        <div class="text-center icon_btn_positive">
+                            <a href="" target="_blank" class="" id="STYLE_LINK" style="color:inherit;">
+                                <i class="fas fa-address-card"></i> <span class="charName"></span>のスタイル詳細を調べる
+                            </a>
+                        </div>
+                        <div class="bg-black-window LIMIT_TABLE">
+                            <table align="center" style="width: calc(100% - 20px); table-layout: fixed;">
+                                <tbody>
+                                    <tr id="styleLabelRow" style="border-bottom: 1px solid;">
+                                        <td class="icon-td-width"></td>
+                                        <td class=" paramCell2">腕</td>
+                                        <td class=" paramCell2">体</td>
+                                        <td class=" paramCell2">器</td>
+                                        <td class=" paramCell2">速</td>
+                                        <td class=" paramCell2">知</td>
+                                        <td class=" paramCell2">精</td>
+                                        <td class=" paramCell2">愛</td>
+                                        <td class=" paramCell2">魅</td>
+                                        <td class=" paramCell2"><span class="hidden pcBlock">合</span>計</td>
+                                    </tr>
+                                    <tr class="text-center d-none" id="STYLE_TEMPLATE">
+                                        <td class="IMG icon-td-width"></td>
+                                        <td class="paramCell2 STR carousel">99</td>
+                                        <td class="paramCell2 VIT carousel">99</td>
+                                        <td class="paramCell2 DEX carousel">99</td>
+                                        <td class="paramCell2 AGI carousel">99</td>
+                                        <td class="paramCell2 INT carousel">99</td>
+                                        <td class="paramCell2 MND carousel">99</td>
+                                        <td class="paramCell2 AI carousel">99</td>
+                                        <td class="paramCell2 MI carousel">99</td>
+                                        <td class="paramCell2 SUM">999</td>
+                                    </tr>
+                                    <tr class="text-center isLogin d-none" style="border-top: 3px solid darkgray;">
+                                        <td class="text-right small">
+                                            あなたの<br class="hidden spBlock">キャラ
+                                        </td>
+                                        <td class="paramCell2"><span class="YOURSTR">0</span></td>
+                                        <td class="paramCell2"><span class="YOURVIT">0</span></td>
+                                        <td class="paramCell2"><span class="YOURDEX">0</span></td>
+                                        <td class="paramCell2"><span class="YOURAGI">0</span></td>
+                                        <td class="paramCell2"><span class="YOURINT">0</span></td>
+                                        <td class="paramCell2"><span class="YOURMND">0</span></td>
+                                        <td class="paramCell2"><span class="YOURAI">0</span></td>
+                                        <td class="paramCell2"><span class="YOURMI">0</span></td>
+                                        <td class="paramCell2"><span class="YOURSUM">000</span></td>
+                                    </tr>
+                                    <tr class="text-center isLogin d-none" style="border-top: 1px solid darkgray;">
+                                        <td class="text-right small">
+                                            限界まで</span>
+                                        </td>
+                                        <td class="paramCell2"><span class="LIMITSTR">0</span></td>
+                                        <td class="paramCell2"><span class="LIMITVIT">0</span></td>
+                                        <td class="paramCell2"><span class="LIMITDEX">0</span></td>
+                                        <td class="paramCell2"><span class="LIMITAGI">0</span></td>
+                                        <td class="paramCell2"><span class="LIMITINT">0</span></td>
+                                        <td class="paramCell2"><span class="LIMITMND">0</span></td>
+                                        <td class="paramCell2"><span class="LIMITAI">0</span></td>
+                                        <td class="paramCell2"><span class="LIMITMI">0</span></td>
+                                        <td class="paramCell2"><span class="LIMITSUM">000</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 text-right">
+                                <a href="javascript:scrollChar();" style="color:inherit;">
+                                    <div class="icon_btn_negative text-center">
+                                        キャラ選択に戻る<i class="fas fa-arrow-up"></i>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-6 text-left">
+                                <a href="./inputchar.html" id="inputStyleLogined" style="color:inherit;">
+                                    <div class="icon_btn_positive text-center">
+                                        自分のキャラを登録<i class="fas fa-pencil-alt"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <br><br>
+                        <i class="fas fa-info-circle"></i> スタイル別ステータス上限 凡例
+                        <div class="bgcolor-brawn" style="    border-radius: 10px;
+                    margin:10px;
+                    padding: 10px;
+                    color: ivory;
+                    text-align: left;">
+                            <table>
+                                <tr>
+                                    <td class="fuchidoriBlue">99</td>
+                                    <td>このキャラの中<span class="d-none d-md-inline">で最大値までステータスを上げられるスタイル</span><span
+                                            class="d-md-none">の最大ステータス</span></td>
+                                </tr>
+                                <tr>
+                                    <td><img src="http://romasagatool.com/img/icon/icon_ind_3.png" width="15"></td>
+                                    <td class="text-nowrap">よく成長するステータス(+4 〜 +9)</td>
+                                </tr>
+                                <tr>
+                                    <td><img src="http://romasagatool.com/img/icon/icon_ind_2.png" width="15"></td>
+                                    <td class="text-nowrap">成長するステータス(+1 〜 +3)</td>
+                                </tr>
+                                <tr>
+                                    <td><img src="http://romasagatool.com/img/icon/icon_ind_1.png" width="15"></td>
+                                    <td class="text-nowrap">成長しないステータス(-9 〜 0)</td>
+                                </tr>
+                                <tr >
+                                    <td style="font-size:0.7rem"><span class="d-md-none">確</span><span class="d-none d-md-inline">[確]</span></td>
+                                    <td>上限が確定している項目</td>
+                                </tr>
+
+                            </table>
+                        </div>
+                    </div>
+
+                    <br>
+                    <div class="text-center">
+                        <a href="" class="rankingTweet twitter-share-button kadomaru h5" rel=”nofollow”
+                            onClick="window.open(encodeURI(decodeURI(this.href)), 'twwindow', 'width=550, height=450, personalbar=0, toolbar=0, scrollbars=1'); return false;"
+                            style="background-color: rgba(41,163,239,1); color:white; padding:5px 10px; border-radius:10px;"><i
+                                class="fab fa-twitter"></i> ランキングをツイートする<i class="fas fa-crown"></i></a>
+                    </div>
+                    <div id="RANKKING_TABLE"></div>
+
+
+
+                    <br>
+
+                    <div class="text-center info-modal LIMIT_PAD0">
+                        <div class="info-modal-header">
+                            <span class="d-none d-md-inline"><i class="fas fa-crown"></i><span class='charName'></span>
+                                育成ランキング TOP20<i class="fas fa-crown"></i></span>
+                            <span class="d-md-none" style="font-size:12px">
+                                <p class='charName' style="margin-bottom: -5px;"></p><i class="fas fa-crown"></i>育成ランキング
+                                TOP20<i class="fas fa-crown"></i>
+                            </span>
+                        </div>
+                        <div class="row">
+                            <div class="col-1 text-left" id="charDotAruku" style="margin-top: 10px"></div>
+                            <div class="col-9 fukidashi-left text-left" style="margin-left: 40px">
+                                データ登録数 : <span id="INPUT_COUNT"></span>件<br>
+                                愛され度 : <span id="RANK_COUNT"></span>位<span class="d-none d-md-inline"> (<span
+                                        id="CHAR_COUNT"></span>キャラ中)</span>
+                                </span><br>
+                                あなたの順位 : <span id="MY_RANK">登録していません</span><br>
+                            </div>
+                        </div>
+                        <div class="bg-common-frame LIMIT_TABLE2">
+                            <table class="width-100 text-center table-striped">
+                                <tbody>
+                                    <tr class="text-center">
+                                        <td class=" text-nowrap">Rank</td>
+                                        <td class=" paramCell2">HP</td>
+                                        <td class=" paramCell2">腕</td>
+                                        <td class=" paramCell2">体</td>
+                                        <td class=" paramCell2">器</td>
+                                        <td class=" paramCell2">速</td>
+                                        <td class=" paramCell2">知</td>
+                                        <td class=" paramCell2">精</td>
+                                        <td class=" paramCell2">愛</td>
+                                        <td class=" paramCell2">魅</td>
+                                        <td class=" paramCell2"><span class="hidden pcBlock">合</span>計</td>
+                                    </tr>
+                                    <tr class="text-center" id="USER_RANK">
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-6 text-right">
+                                <a href="javascript:scrollChar();" style="color:inherit;">
+                                    <div class="icon_btn_negative text-center">
+                                        キャラ選択に戻る<i class="fas fa-arrow-up"></i>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-6 text-left">
+                                <a href="./inputchar.html" id="inputStyleLogined" style="color:inherit;">
+                                    <div class="icon_btn_positive text-center">
+                                        自分のキャラを登録<i class="fas fa-pencil-alt"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <br><br>
+                        <a href="" class="kaijoTweet twitter-share-button" rel=”nofollow”
+                            onClick="window.open(encodeURI(decodeURI(this.href)), 'twwindow', 'width=550, height=450, personalbar=0, toolbar=0, scrollbars=1'); return false;">
+                            <div class="text-center icon_btn_positive">
+                                <i class="fab fa-twitter"></i> 画像を送って協議解除申請 <i class="fas fa-image"></i>
+                            </div>
+                        </a>
+                        <br>
+
+                        <i class="fas fa-info-circle"></i> 育成ランキング 凡例
+                        <div class="bgcolor-brawn" style="    border-radius: 10px;
+                        font-size:small;
+                margin: 0px 10px;
+                padding: 10px;
+                color: ivory;
+                text-align: left;">
+                            <table class="">
+                                <tr>
+                                    <td style="background-color: lightgreen; border: solid black 1px">　</td>
+                                    <td><span class="d-none d-md-inline">このキャラの</span>最大ステータスと一致</td>
+                                </tr>
+                                <tr>
+                                    <td style="background-color: yellow; border: solid black 1px">　</td>
+                                    <td><span class="d-none d-md-inline">このキャラの</span>最大ステータス+1 <span
+                                            style="color:lightcoral">上限更新対象</span><br class="d-md-none">(<span
+                                            style="color:lightcoral">2倍期間<b>でない</b>場合はご連絡下さい</span>)</td>
+                                </tr>
+                                <tr>
+                                    <td style="background-color: darkorchid; border: solid black 1px">　</td>
+                                    <td><span class="d-none d-md-inline">このキャラの</span>最大ステータス+2 <span
+                                            style="color:lightcoral">ステ3倍成長時のみ発生します</span></td>
+                                </tr>
+                                <tr>
+                                    <td style="background-color: lightcoral; border: solid black 1px">　</td>
+                                    <td><span class="d-none d-md-inline">このキャラの</span>最大ステータス+3以上 <span
+                                            style="color:lightcoral">審議対象です</span></td>
+                                </tr>
+                                <tr>
+                                    <td style="background-color: white; border: solid black 1px">　</td>
+                                    <td>あなた<span class="d-none d-md-inline">が登録しているキャラクター</span>のステータス</td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fas fa-crown"></i></td>
+                                    <td>ランキング内の最大HP</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div style="margin-bottom:20px;">　</div>
+                    </div>
+
+                    <div class="text-center">
+                        <br><br>
+                        <div class="card">
+                            <div class="card-header bg-danger text-white"><i class="fas fa-exclamation-triangle"></i>
+                                協議解除(HP)について</div>
+                            <div class="card-body style-bgcolor" style="padding:10px">
+                                12/9現在 HPに裏能力ボーナスの+20込みで入力されておられる方が散見されます<br>
+                                そのため現在HP1000超えは承認制としております<br>
+                                HPが1000を超えた場合はスクリーンショットを<a href="https://twitter.com/nao_romasaga_rs"
+                                    target="_new">@nao_romasaga_rs</a>までDMでお送りください。<br>
+                                その際、<a href="./home.html"><i class="fas fa-home"></i>
+                                    HOME画面</a>からユーザIDをコピーされると進行がスムーズです<br>
+                                <br>
+                                HPは裏能力ボーナスの+20、ステータスも裏能力の+4を除いた状態のものを登録して下さい
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div id="article_hozon"></div>
+                <!-- ツール_ランキング_footer -->
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5008373409434899"
+                    data-ad-slot="4672091575" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+
+                <div class="card">
+                    <div class="card-header bg-warning">補足説明</div>
+                    <div class="card-body">
+                        ・協議中に入った場合に画像で報告する方法<br>
+                        <a
+                            href="https://twitter.com/nao_romasaga_rs">@nao_romasaga_rs</a>に画像つきのツイートを送ってください。内容確認次第反映いたします。<br><br>
+                        ・更新タイミングについて<br>
+                        更新は手動で行っています(๑′ᴗ‵๑)💦そのためタイミングは不定期です。気長にお待ちくださいmm<br><br>
+                        ・最大値がランキングのトップ20に表示されない件について<br>
+                        ランキングは総ステータスの降順です。そのため最大値を持つ場合でも総ステータスが低い場合はランキングから外れます。<br><br>
+                        ・上限突破しているステータスについて<br>
+                        このデータはユーザが入力した値を表示しています。上限を超える値も入力できてしまうため、おかしなデータが表示されてしまうケースもあります。正しいデータ入力のご協力をお願いいたします。
+                    </div>
+                </div>
+            </div>>
+
+        </div><!-- isLogin -->
+    </div>
+    <!--スクエア--><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5008373409434899"
+        data-ad-slot="9303963278" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    </div>
+    <script src="./js/ourchar_LIST.js"></script>
+    <script src="./js/ourchar_DETAIL.js"></script>
+    <script src="./js/data_CHARMASTER.js"></script>
+    <script src="./js/data_STYLEMASTER.js"></script>
+    <script src="./js/asyncFunc.js"></script>
+    <script src="./js/ourchar.js"></script>
+
+    <!-- Twitter universal website tag code -->
+    <script>
+        $("#PLUS_LIMIT").text(LIMIT_BASE);
+        !function (e, t, n, s, u, a) {
+            e.twq || (s = e.twq = function () {
+                s.exe ? s.exe.apply(s, arguments) : s.queue.push(arguments);
+            }, s.version = '1.1', s.queue = [], u = t.createElement(n), u.async = !0, u.src = '//static.ads-twitter.com/uwt.js',
+                a = t.getElementsByTagName(n)[0], a.parentNode.insertBefore(u, a))
+        }(window, document, 'script');
+        // Insert Twitter Pixel ID and Standard Event data below
+        twq('init', 'o1u7p');
+        twq('track', 'PageView');
+    </script>
+    <!-- End Twitter universal website tag code -->
+    <script>
+        function scrollChar() {
+            $("html,body").animate({ scrollTop: $('#listLabel').offset().top }, 500, 'swing');
+        }
+        function rssCallbackCat3(results) {
+            var div = $("<div>").addClass("row");
+            for (var i = 0; i < results.length; i++) {
+                var entry = results[i];
+                var clazz = (i >= 4) ? " d-none d-md-block" : '';
+                var article = $(`<div class="col-12 col-md-3 opacity kadomaru ${clazz}" style="padding:5px 5px 20px 5px; margin-bottom:10px; font-size:0.9rem;"><a href="${entry.link}" target="_new"><img class="kadomaru d-md-none" src="${entry.thumb}" width="100px" align="left"> <img class="kadomaru d-none d-md-block" src="${entry.thumb}" width="100%" alt="">${entry.title}<div style="position:absolute; bottom:0;font-size:0.8rem">最終更新:${entry.pubdate}</div></a></div>`);
+                div.append(article);
+            }
+            $("#article").append(div);
+        }
+        function rssCallbackCat2(results) {
+            var div = $("<div>").addClass("row");
+            let $articleCard = $(`<div class="card" style="margin:10px 0px;"><div class="card-header bg-primary" style='color:white'><i class="fas fa-file-archive"></i> 永久保存版の記事</div></div>`);
+            var $body = $(`<div class="card-body" style="padding:0px 5px;"></div>`);
+            var ul = $("<ul class='trianglelist list5'>");
+            for (var i = 0; i < results.length; i++) {
+                var entry = results[i];
+                var li = $(`<li><a href="${entry.link}" target="_blank">${entry.title}</a></li>`)
+                ul.append(li);
+            }
+            $body.append(ul);
+            $articleCard.append($body);
+            $("#article_hozon").after($articleCard);
+        }
+    </script>
+    <script type="text/javascript"
+        src="https://romasagatool.com/blog/get_the_archives2.php?cat=7&limit=8&callback=rssCallbackCat3"></script>
+    <script type="text/javascript"
+        src="https://romasagatool.com/blog/get_the_archives.php?cat=22&callback=rssCallbackCat2"></script>
+</body>
+
 </html>
