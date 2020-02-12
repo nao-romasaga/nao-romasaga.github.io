@@ -1,483 +1,777 @@
 <!DOCTYPE html>
 <html prefix="og: http://ogp.me/ns#" lang="ja">
-    <head>
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138966739-1"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-            gtag('js', new Date());
 
-            gtag('config', 'UA-138966739-1');
-        </script>
-        <meta charset="utf-8">
-        <title>【ロマサガRS】ステータス上限チェック</title>
-        <meta property="og:title" content="【ロマサガRS】ステータス上限チェック" />
-        <meta property="og:url" content="https://http://nao-romasaga.github.io/party.html" />
-        <meta property="og:description" content="ロマサガRSのスタイルごとのステータス上限をチェックできます。最大５キャラまでの編成でき周回クエストを設定しそこでどこまでステータスが挙げられるかを確認できます。攻略や育成の際にご利用ください。" />
-        <meta name="description" content="ロマサガRSのスタイルごとのステータス上限をチェックできます。最大５キャラまでの編成でき周回クエストを設定しそこでどこまでステータスが挙げられるかを確認できます。攻略や育成の際にご利用ください。【ロマンシングサガ リユニバース】" />
-        <meta property="og:image" content="https://nao-romasaga.github.io/img/twitter_card_party.png" />
-        <meta property="og:site_name" content="ロマサガRS便利ツール" />
-        <meta property="og:type" content="article">
-        <meta property="og:locale" content="ja_JP" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@nao_romasaga_rs" />
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script type="text/javascript" src="./js/jquery-ui.min.js"></script>
-        <script type="text/javascript" src="./js/jquery.ui.touch-punch.js"></script>
-        <link rel="stylesheet" type="text/css" href="./css/bootstrap/bootstrap.min.css">
-        <script src="./js/popper.min.js"></script>
-        <script src="./js/bootstrap.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="./css/style.css">
-        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/ui/3.5.2/firebase-ui-auth__ja.js"></script>
-        <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
-        <script src="./js/Firebase.js"></script>
-        <script src="./js/asyncFunc.js"></script>
-        <script src="./js/utils.js" ></script>
-        <script src="./js/data_CHARMASTER.js" ></script>
-        <script src="./js/data_STYLEMASTER.js" ></script>
-        <script src="./js/party.js" ></script>
-        <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
-        <style>
-            @media only screen and (min-width: 768px) and (max-width: 1024px) { .xs-show { display:none; } .xs-hide { display:block; } }
-            @media only screen and (min-width: 568px) and (max-width: 768px) { .sp-button { width: 25px; height: 18px; } }
-        </style>
-        <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
-        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138966739-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-138966739-1');
+    </script>
+    <meta charset="utf-8">
+    <title>【ロマサガRS】ステータス上限チェック</title>
+    <meta property="og:title" content="【ロマサガRS】ステータス上限チェック" />
+    <meta property="og:url" content="https://http://nao-romasaga.github.io/party.html" />
+    <meta property="og:description"
+        content="ロマサガRSのスタイルごとのステータス上限をチェックできます。最大５キャラまでの編成でき周回クエストを設定しそこでどこまでステータスが挙げられるかを確認できます。攻略や育成の際にご利用ください。" />
+    <meta name="description"
+        content="ロマサガRSのスタイルごとのステータス上限をチェックできます。最大５キャラまでの編成でき周回クエストを設定しそこでどこまでステータスが挙げられるかを確認できます。攻略や育成の際にご利用ください。【ロマンシングサガ リユニバース】" />
+    <meta property="og:image" content="https://nao-romasaga.github.io/img/twitter_card_party.png" />
+    <meta property="og:site_name" content="ロマサガRS便利ツール" />
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="ja_JP" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@nao_romasaga_rs" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="./js/jquery.ui.touch-punch.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap/bootstrap.min.css">
+    <script src="./js/popper.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/3.5.2/firebase-ui-auth__ja.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+    <script src="./js/Firebase.js"></script>
+    <script src="./js/asyncFunc.js"></script>
+    <script src="./js/utils2.js"></script>
+    <script src="./js/data_CHARMASTER.js"></script>
+    <script src="./js/data_STYLEMASTER.js"></script>
+    <script src="./js/party.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+    <style>
+        .limitFont {
+            font-size:12px;
+        }
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {
+            .xs-show {
+                display: none;
+            }
+
+            .xs-hide {
+                display: block;
+            }
+        }
+        .footer-info {
+            background: black;
+            font-size: 8px;
+            border-radius: 5px;
+            padding: 0px 10px;
+        }
+        @media only screen and (min-width: 568px) and (max-width: 768px) {
+            .sp-button {
+                width: 25px;
+                height: 18px;
+            }
+        }
+        /* ipad以下の場合 */
+        @media only screen and (min-width: 768px) {
+            .limitFont {
+                font-size:15px;
+            }
+        }
+        /* ipad以下の場合 */
+        @media only screen and (max-width: 769px) {
+            .footer-font {
+                font-size:13px;
+            }
+        }
+        /* iphone5以下の場合 */
+        @media only screen and (max-width: 330px) {
+            .footer-font {
+                font-size:12px;
+            }
+        }
+
+        .questpad {
+            margin-bottom: 8px;
+        }
+    </style>
+    <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
-    </head>
-    <body>
-        <div class ="haikei">
-            <div class="container">
-                <div class="text-center">
-                    <a href="https://www.jp.square-enix.com/saga_reuniverse/" target="new"><img src="./img/cmn_logo01_sp.png" class="col-sm-12 col-md-8 col-lg-6"></a>
-                </div>
-                <h3 class="text-center title-text">ステータス上限チェック</h3>
-                <p class="text-right opacity"><small>バグ発見、ご要望は <a href="https://peing.net/ja/nao_romasaga_rs" target="new">質問箱</a>まで</small>
-                </p>
-                <h5 class="text-center opacity kadomaru" onclick="$('.movie').toggleClass('d-none')">つかいかた動画をみる</h5>
-                <div class="movie d-none">
-                    <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">[new] パーティ育成メモ<br>育成の際に各スタイルのステータス上限を確認を行える機能を作成しました<a href="https://t.co/T9hQHFJD1n">https://t.co/T9hQHFJD1n</a><br><br>スプシだとパーティ切り替えが面倒だったので作りました(๑′ᴗ‵๑)<br>ゆくゆくは複数パーティ設定を予定しています<br><br>お布施もお待ちしております😘<a href="https://t.co/3qFDqY1Kdx">https://t.co/3qFDqY1Kdx</a> <a href="https://t.co/Y1aVBPYZWu">pic.twitter.com/Y1aVBPYZWu</a></p>&mdash; (nAo)@ロマサガRS (@nao_romasaga_rs) <a href="https://twitter.com/nao_romasaga_rs/status/1122948484208910336?ref_src=twsrc%5Etfw">April 29, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                </div>
-                <div class="opacity kadomaru">侯国学園以降にでたスタイル、キャラクターは上限値がわかっていません。<br>みなさんが入力してくださった値を元に暫定的に「ここまでは上がる」というのを補完していく予定です</div>
-                <br>
-                <div class="noLogin card">
-                    <div class="card-header bg-danger" style="color:white"><i class="fas fa-exclamation-triangle"></i>本機能はログイン必須です</div>
-                    <div id="firebaseui-auth-container" style="margin-bottom:10px; width:100%;"></div>
-                </div>
-                <div class="label-text text-center initialShow">
-                    <div class="loading">
-                        <span>L</span><span>O</span><span>A</span><span>D</span><span>I</span><span>N</span><span>G</span><span>.</span><span>.</span><span>.</span>
-                    </div>
-                    <div class="">
-                        <span id="char1" class="char dot_mid dot char-hashiri-right" style="background: url(./img/dot/IDad82c.png);"></span>
-                        <span id="char2" class="char dot_mid dot char-hashiri-right" style="background: url(./img/dot/ID38400.png);"></span>
-                    </div>
-                </div>
-                <div class="isLogin d-none">
-                    <label class="badge badge-pill badge-light">絞り込み</label>
-                    <div class="initialHide d-none style-bgcolor text-center small row" style="width:100%; margin: 0px;">
-                        <ul class="nav text-center width-100">
-                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="#_icon_ken"><span class="icon_mini icon_ken" onclick=""></span></a></li>
-                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="#_icon_dken"><span class="icon_mini icon_dken" onclick=""></span></a></li>
-                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="#_icon_ono"><span class="icon_mini icon_ono" onclick=""></span></a></li>
-                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="#_icon_kon"><span class="icon_mini icon_kon" onclick=""></span></a></li>
-                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="#_icon_tai"><span class="icon_mini icon_tai" onclick=""></span></a></li>
-                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="#_icon_ju"><span class="icon_mini icon_ju" onclick=""></span></a></li>
-                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="#_icon_sken"><span class="icon_mini icon_sken" onclick=""></span></a></li>
-                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="#_icon_yumi"><span class="icon_mini icon_yumi" onclick=""></span></a></li>
-                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="#_icon_yari"><span class="icon_mini icon_yari" onclick=""></span></a></li>
-                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="#_icon_tsue"><span class="icon_mini icon_tsue" onclick=""></span></a></li>
-                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="#_icon_toku"><img src="/img/icon/icon_toku.png" onclick=""></a></li>
-                        </ul>
-                        <ul class="nav text-center width-100">
-                            <li class="col-2 col-sm-1 blockquote text-center"><a class="filterList pad0" data-type="SeriesFilter" data-href="#RS1">RS1</a></li>
-                            <li class="col-2 col-sm-1 blockquote text-center"><a class="filterList pad0" data-type="SeriesFilter" data-href="#_RS2">RS2</a></li>
-                            <li class="col-2 col-sm-1 blockquote text-center"><a class="filterList pad0" data-type="SeriesFilter" data-href="#_RS3">RS3</a></li>
-                            <li class="col-2 col-sm-1 blockquote text-center"><a class="filterList pad0" data-type="SeriesFilter" data-href="#SF1">SF1</a></li>
-                            <li class="col-2 col-sm-1 blockquote text-center"><a class="filterList pad0" data-type="SeriesFilter" data-href="#SF2">SF2</a></li>
-                            <li class="col-2 col-sm-1 blockquote text-center"><a class="filterList pad0" data-type="SeriesFilter" data-href="#US">US</a></li>
-                            <li class="col-2 col-sm-1 blockquote text-center"><a class="filterList pad0" data-type="SeriesFilter" data-href="#SS">SS</a></li>
-                            <li class="col-2 col-sm-1 blockquote text-center"><a class="filterList pad0" data-type="SeriesFilter" data-href="#ES">ES</a></li>
-                            <li class="col-2 col-sm-1 blockquote text-center"><a class="filterList pad0" data-type="SeriesFilter" data-href="#RSR">RSR</a></li>
-                        </ul>
-                    </div>
-                    <div class="text-center opacity-char-back weaponList d-none" id="_icon_ken"><h5 class="game-banner"><span class="icon_mini icon_ken"></span></h5></div>
-                    <div class="text-center opacity-char-back weaponList d-none" id="_icon_dken"><h5 class="game-banner"><span class="icon_mini icon_dken"></span></h5></div>
-                    <div class="text-center opacity-char-back weaponList d-none" id="_icon_ono"><h5 class="game-banner"><span class="icon_mini icon_ono"></span></h5></div>
-                    <div class="text-center opacity-char-back weaponList d-none" id="_icon_sken"><h5 class="game-banner"><span class="icon_mini icon_sken"></span></h5></div>
-                    <div class="text-center opacity-char-back weaponList d-none" id="_icon_yumi"><h5 class="game-banner"><span class="icon_mini icon_yumi"></span></h5></div>
-                    <div class="text-center opacity-char-back weaponList d-none" id="_icon_yari"><h5 class="game-banner"><span class="icon_mini icon_yari"></span></h5></div>
-                    <div class="text-center opacity-char-back weaponList d-none" id="_icon_ju"><h5 class="game-banner"><span class="icon_mini icon_ju"></span></h5></div>
-                    <div class="text-center opacity-char-back weaponList d-none" id="_icon_tai"><h5 class="game-banner"><span class="icon_mini icon_tai"></span></h5></div>
-                    <div class="text-center opacity-char-back weaponList d-none" id="_icon_kon"><h5 class="game-banner"><span class="icon_mini icon_kon"></span></h5></div>
-                    <div class="text-center opacity-char-back weaponList d-none" id="_icon_tsue"><h5 class="game-banner"><span class="icon_mini icon_tsue"></span></h5></div>                    
-                    <div class="text-center opacity-char-back weaponList d-none" id="_icon_toku"><h5 class="game-banner"><img src="/img/icon/icon_toku.png"></h5></div>
-                    <div class="text-center opacity-char-back weaponList" id="RS1"><h5 class="game-banner">ロマンシング・サガ</h5></div>
-                    <div class="text-center opacity-char-back weaponList d-none" id="_RS2"><h5 class="game-banner">ロマンシング・サガ2</h5>
-                        <span id="RS2"></span>
-                        <span id="RS22"></span>
-                    </div>
-                    <div class="text-center opacity-char-back weaponList d-none" id="_RS3"><h5 class="game-banner">ロマンシング・サガ3</h5>
-                        <span id="RS3"></span>
-                        <span id="RS32"></span>
-                    </div>
-                    <div class="text-center opacity-char-back weaponList d-none" id="SF1"><h5 class="game-banner">サガフロンティア1</h5></div>
-                    <div class="text-center opacity-char-back weaponList d-none" id="SF2"><h5 class="game-banner">サガフロンティア2</h5></div>
-                    <div class="text-center opacity-char-back weaponList d-none" id="US"><h5 class="game-banner">アンリミテッド・サガ</h5></div>
-                    <div class="text-center opacity-char-back weaponList d-none" id="ES"><h5 class="game-banner">エンペラーズ・サガ</h5></div>
-                    <div class="text-center opacity-char-back weaponList d-none" id="SS"><h5 class="game-banner">サガ・スカーレットグレイス</h5></div>
-                    <div class="text-center opacity-char-back weaponList d-none" id="RSR"><h5 class="game-banner">ロマンシング・サガRS</h5></div>
-                </div>
-                <!-- ツール_育成チェック_キャラ下 -->
-                <ins class="adsbygoogle"
-                    style="display:block"
-                    data-ad-client="ca-pub-5008373409434899"
-                    data-ad-slot="3738283852"
-                    data-ad-format="auto"
-                    data-full-width-responsive="true"></ins>
-                <div class="label-text text-center initialShow">
-                    <div class="loading">
-                        <span>L</span><span>O</span><span>A</span><span>D</span><span>I</span><span>N</span><span>G</span><span>.</span><span>.</span><span>.</span>
-                    </div>
-                    <div class="">
-                        <span id="char1" class="char dot_mid dot char-hashiri-right" style="background: url(./img/dot/IDad82c.png);"></span>
-                        <span id="char2" class="char dot_mid dot char-hashiri-right" style="background: url(./img/dot/ID38400.png);"></span>
-                    </div>
-                </div>
-        
-                <div class="isLogin d-none">
-                    <div class="card">
-                        <div class="card-header bg-warning"><i class="fas fa-paper-plane"></i> 上限更新報告 募集中</div>
-                        <div class="card-body">
-                            スタイルは上限は仮設定のものも存在します。<br>
-                            上限を超えた場合は<a href='https://twitter.com/intent/tweet?text=キャラ/スタイル:XXXXの[腕力]がクエスト:XXXXで上限を超えました&screen_name=nao_romasaga_rs&hashtags=ロマサガRSステ上限報告'><i class="fab fa-twitter"></i> @nao_romasaga_rsのメンションをつけて画像付きツイート</a>で報告いただけますと助かります。<br>
-                        </div>
-                    </div>   
+</head>
 
-                    <label class="badge badge-pill badge-light initialHide">　　周回クエスト範囲の選択　　</label>
-                    <div class="initialHide d-none style-bgcolor text-center small row" style="width:100%; margin: 0px;">
-                        <div class="col-6 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_on baseDispChange" data-id="3" style="width:100%; background-size: 100% 100%;">VH15〜</button></div>
-                        <div class="col-6 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_off baseDispChange" data-id="2" style="width:100%; background-size: 100% 100%;">外伝1〜VH14</button></div>
-                        <div class="col-6 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_off baseDispChange" data-id="1" style="width:100%; background-size: 100% 100%;">VH6〜VH12</button><br></div>
-                    </div>
-                    <label class="badge badge-pill badge-light initialHide">　　周回クエストの選択　　</label>
-                    <div class="initialHide d-none opacity-char-back text-center small row" style="width:100%; margin: 0px;">
-                        <div id="quest1" class="questList initialHide d-none text-center small row" style="width:100%; margin: 0px;">
-                            <div class="col-6 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_off baseValue" data-id="42" style="width:110%; background-size: 100% 100%;">H712(-3)</button></div>
-                            <div class="col-6 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_off baseValue" data-id="45" style="width:110%; background-size: 100% 100%;">VH6以前(0)</button></div>
-                            <div class="col-6 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_off baseValue" data-id="48" style="width:110%; background-size: 100% 100%;">VH7(+3)</button><br></div>
-                            <div class="col-6 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_off baseValue" data-id="51" style="width:110%; background-size: 100% 100%;">VH8(+6)</button></div>
-                            <div class="col-6 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_off baseValue" data-id="54" style="width:110%; background-size: 100% 100%;">VH9(+9)</button></div>
-                            <div class="col-6 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_off baseValue" data-id="56" style="width:110%; background-size: 100% 100%;">VH10(+11)</button></div>
-                            <div class="col-6 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_off baseValue" data-id="58" style="width:110%; background-size: 100% 100%;">VH11(+13)</button></div>
-                            <div class="col-6 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_off baseValue" data-id="58" style="width:110%; background-size: 100% 100%;">聖石10(+13)</button></div>
-                            <div class="col-6 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_off baseValue" data-id="60" style="width:110%; background-size: 100% 100%;">VH12(+15)</button></div>
-                        </div>
-                        <div id="quest2" class="questList initialHide d-none text-center small row" style="width:100%; margin: 0px;">
-                            <div class="col-6 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_off baseValue" data-id="61" style="width:110%; background-size: 100% 100%;">外11-14(+16)</button></div>
-                            <div class="col-6 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_off baseValue" data-id="62" style="width:110%; background-size: 100% 100%;">外15-22(+17)</button></div>
-                            <div class="col-6 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_off baseValue" data-id="63" style="width:110%; background-size: 100% 100%;">外23-25(+18)</button></div>
-                            <div class="col-6 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_off baseValue" data-id="64" style="width:110%; background-size: 100% 100%;">VH1311-(+19)</button></div>
-                            <div class="col-6 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_off baseValue" data-id="65" style="width:110%; background-size: 100% 100%;">VH1315-(+20)</button></div>
-                            <div class="col-6 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_off baseValue" data-id="66" style="width:110%; background-size: 100% 100%;">VH1323-(+21)</button></div>
-                            <div class="col-6 col-sm-4 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_off baseValue" data-id="67" style="width:110%; background-size: 100% 100%;">VH1411-(+22)</button></div>
-                            <div class="col-6 col-sm-4 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_off baseValue" data-id="69" style="width:110%; background-size: 100% 100%;">VH1415-(+24)</button></div>
-                            <div class="col-6 col-sm-4 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_off baseValue" data-id="70" style="width:110%; background-size: 100% 100%;">VH1423-(+25)</button></div>
-                        </div>
-                        <div id="quest3" class="questList questListNow initialHide d-none text-center small row" style="width:100%; margin: 0px;">
-                            <div class="col-6 col-sm-4 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_off baseValue" data-id="71" style="width:110%; background-size: 100% 100%;">VH1511-(+26)</button></div>
-                            <div class="col-6 col-sm-4 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_off baseValue" data-id="72" style="width:110%; background-size: 100% 100%;">VH1515-(+27)</button></div>
-                            <div class="col-6 col-sm-4 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_on baseValue" data-id="73" style="width:110%; background-size: 100% 100%;">VH1523(+28)</button></div>
-                            <div class="col-6 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_off baseValue" data-id="65" style="width:110%; background-size: 100% 100%;">総力戦!(+20)</button></div>
-                        </div>
-                    </div>
-
-                    <label class="badge badge-pill badge-light" >　　パーティ編成　　</label><br>
-                    <div class="initialHide d-none style-bgcolor text-center row" style="width:100%; margin: 0px;">
-                        <div class="col-12 col-sm-6 col-lg-4" style="margin-bottom:10px;"><button id="PARTY_RESET" class="icon_btn_red" style="width:100%; background-size: 100% 100%;">パーティ全解除</button></div>
-                        <div class="col-12 col-sm-6 col-lg-4" style="margin-bottom:10px;"><button id="STYLE_DISP" data-hide=false class="icon_btn_off" style="width:100%; background-size: 100% 100%;">未選択スタイルを非表示</button></div>
-                    </div>
-                    <div class="opacity-char-back" style="width:100%;" id="charData">
-                        <div class="" id="PARTY"></div>
-                    </div>
+<body>
+    <li class="haikei">
+        <div class="container">
+            <div class="text-center">
+                <a href="https://www.jp.square-enix.com/saga_reuniverse/" target="new"><img
+                        src="./img/cmn_logo01_sp.png" class="col-sm-12 col-md-8 col-lg-6"></a>
+            </div>
+            <h3 class="text-center title-text">ステータス上限チェック</h3>
+            <p class="text-right opacity"><small>バグ発見、ご要望は <a href="https://peing.net/ja/nao_romasaga_rs"
+                        target="new">質問箱</a>まで</small>
+            </p>
+            <h5 class="text-center opacity kadomaru" onclick="$('.movie').toggleClass('d-none')">つかいかた動画をみる</h5>
+            <div class="movie d-none">
+                <blockquote class="twitter-tweet">
+                    <p lang="ja" dir="ltr">[new] パーティ育成メモ<br>育成の際に各スタイルのステータス上限を確認を行える機能を作成しました<a
+                            href="https://t.co/T9hQHFJD1n">https://t.co/T9hQHFJD1n</a><br><br>スプシだとパーティ切り替えが面倒だったので作りました(๑′ᴗ‵๑)<br>ゆくゆくは複数パーティ設定を予定しています<br><br>お布施もお待ちしております😘<a
+                            href="https://t.co/3qFDqY1Kdx">https://t.co/3qFDqY1Kdx</a> <a
+                            href="https://t.co/Y1aVBPYZWu">pic.twitter.com/Y1aVBPYZWu</a></p>&mdash; (nAo)@ロマサガRS
+                    (@nao_romasaga_rs) <a
+                        href="https://twitter.com/nao_romasaga_rs/status/1122948484208910336?ref_src=twsrc%5Etfw">April
+                        29, 2019</a>
+                </blockquote>
+                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div>
+            <div class="opacity kadomaru">
+                侯国学園以降にでたスタイル、キャラクターは上限値がわかっていません。<br>みなさんが入力してくださった値を元に暫定的に「ここまでは上がる」というのを補完していく予定です</div>
+            <br>
+            <div class="noLogin card">
+                <div class="card-header bg-danger" style="color:white"><i
+                        class="fas fa-exclamation-triangle"></i>本機能はログイン必須です</div>
+                <div id="firebaseui-auth-container" style="margin-bottom:10px; width:100%;"></div>
+            </div>
+            <div class="label-text text-center initialShow">
+                <div class="loading">
+                    <span>L</span><span>O</span><span>A</span><span>D</span><span>I</span><span>N</span><span>G</span><span>.</span><span>.</span><span>.</span>
                 </div>
-                <br>
-
- 
-                <!-- ツール_育成チェック_footer -->
-                <ins class="adsbygoogle"
-                    style="display:block"
-                    data-ad-client="ca-pub-5008373409434899"
-                    data-ad-slot="1393006323"
-                    data-ad-format="auto"
-                    data-full-width-responsive="true"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-                <div class="card">
-                        <div class="card-header bg-primary" style="color:white">保存タイミングの変更について</div>
-                        <div class="card-body">
-                            負荷軽減のためにステータスの保存タイミングを下記のパターンに変更しました<br>
-                            ・キャラを編成から外した時(Xボタン、編成から外すボタンのどちらでも)<br>
-                            <span class="hidden spBlock">・ステータス入力ウィンドウの閉じるボタンを押した時<br></span>
-                            <span class="hidden spBlock">・ステータス入力ウィンドウを<img src="./img/icon/icon_menu.png" width="25" height="25">を押して閉じた時<br></span>
-                            <span class="hidden pcBlock">・保存ボタンを押した場合<br></span>
-                            <span class="hidden pcBlock">・キャラAのステを修正後、キャラA以外のステを修正した場合にキャラAのステータスを保存<br></span>
-                            <span class="">・現在のステータス部分を押して表示されたステータス入力ウィンドウを閉じた時<br></span>
-                            <br>
-                            うまく保存できていない等バグを発見された場合は、発生時の手順と再現性することをご確認の上ご連絡ください<br>
-                        </div>
+                <div class="">
+                    <span id="char1" class="char dot_mid dot char-hashiri-right"
+                        style="background: url(./img/dot/IDad82c.png);"></span>
+                    <span id="char2" class="char dot_mid dot char-hashiri-right"
+                        style="background: url(./img/dot/ID38400.png);"></span>
                 </div>
             </div>
-        </div> <!-- main -->
+            <div class="isLogin d-none">
+                <label class="badge badge-pill badge-light">絞り込み</label>
+                <div class="filter-bgcolor text-center small row" style="width:100%; margin: 0px;" id="CHAR_CHOISE">
+                    <ul class="nav text-center width-100" style="margin-bottom: 5px;">
+                        <li class="subtitle fuchidoriWhite smallFont">武器種別</li>
+                    </ul>
+                    <ul class="nav text-center width-100">
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_ken"><span
+                                    class="icon_mini icon_ken weapon-icon-button fButton" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_dken"><span
+                                    class="icon_mini icon_dken weapon-icon-button fButton" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_ono"><span
+                                    class="icon_mini icon_ono weapon-icon-button fButton" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_kon"><span
+                                    class="icon_mini icon_kon weapon-icon-button fButton" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_tai"><span
+                                    class="icon_mini icon_tai weapon-icon-button fButton" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_ju"><span
+                                    class="icon_mini icon_ju weapon-icon-button fButton" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_sken"><span
+                                    class="icon_mini icon_sken weapon-icon-button fButton" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_yumi"><span
+                                    class="icon_mini icon_yumi weapon-icon-button fButton" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_yari"><span
+                                    class="icon_mini icon_yari weapon-icon-button fButton" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_tsue"><span
+                                    class="icon_mini icon_tsue weapon-icon-button fButton" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_toku">
+                                <img class="icon_mini weapon-icon-button fButton" src="http://romasagatool.com/img/icon/icon_toku.png"
+                                    onclick=""></a></li>
+                    </ul>
+                    <ul class="nav text-center width-100" style="margin-bottom: 5px;">
+                        <li class="fuchidoriWhite subtitle smallFont">シリーズ</li>
+                    </ul>
+                    <ul class="nav text-center width-100">
+                        <li class="col-4 col-sm-2 text-center" style="margin-bottom: 5px;"><a class="filterList pad0"
+                                data-href="RS1"><img src="http://romasagatool.com/img/icon/icon_rs1.png"
+                                    class="width-100 fButton"></a></li>
+                        <li class="col-4 col-sm-2 text-center"><a class="filterList pad0" data-href="RS2"><img
+                                    src="http://romasagatool.com/img/icon/icon_rs2.png" class="width-100 fButton"></a>
+                        </li>
+                        <li class="col-4 col-sm-2 text-center"><a class="filterList pad0" data-href="RS3"><img
+                                    src="http://romasagatool.com/img/icon/icon_rs3.png" class="width-100 fButton"></a>
+                        </li>
+                        <li class="col-4 col-sm-2 text-center" style="margin-bottom: 5px;"><a class="filterList pad0"
+                                data-href="SF1"><img src="http://romasagatool.com/img/icon/icon_sf1.png"
+                                    class="width-100 fButton"></a></li>
+                        <li class="col-4 col-sm-2 text-center"><a class="filterList pad0" data-href="SF2"><img
+                                    src="http://romasagatool.com/img/icon/icon_sf2.png" class="width-100 fButton"></a>
+                        </li>
+                        <li class="col-4 col-sm-2 text-center"><a class="filterList pad0" data-href="OTR"><img
+                                    src="http://romasagatool.com/img/icon/icon_otr.png" class="width-100 fButton"></a>
+                        </li>
+                        <li class="col-4 col-sm-2 text-center"><a class="filterList pad0" data-href="RSR"><img
+                                    src="http://romasagatool.com/img/icon/icon_rsr.png" class="width-100 fButton"></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="info-modal dotList" id="_icon_ken">
+                    <div class="text-center info-modal-header"><span class="icon_mini icon_ken"></span></div>
+                </div>
+                <div class="info-modal dotList d-none" id="_icon_dken">
+                    <div class="text-center info-modal-header"><span class="icon_mini icon_dken"></span></div>
+                </div>
+                <div class="info-modal dotList d-none" id="_icon_ono">
+                    <div class="text-center info-modal-header"><span class="icon_mini icon_ono"></span></div>
+                </div>
+                <div class="info-modal dotList d-none" id="_icon_sken">
+                    <div class="text-center info-modal-header"><span class="icon_mini icon_sken"></span></div>
+                </div>
+                <div class="info-modal dotList d-none" id="_icon_yumi">
+                    <div class="text-center info-modal-header"><span class="icon_mini icon_yumi"></span></div>
+                </div>
+                <div class="info-modal dotList d-none" id="_icon_yari">
+                    <div class="text-center info-modal-header"><span class="icon_mini icon_yari"></span></div>
+                </div>
+                <div class="info-modal dotList d-none" id="_icon_ju">
+                    <div class="text-center info-modal-header"><span class="icon_mini icon_ju"></span></div>
+                </div>
+                <div class="info-modal dotList d-none" id="_icon_tai">
+                    <div class="text-center info-modal-header"><span class="icon_mini icon_tai"></span></div>
+                </div>
+                <div class="info-modal dotList d-none" id="_icon_kon">
+                    <div class="text-center info-modal-header"><span class="icon_mini icon_kon"></span></div>
+                </div>
+                <div class="info-modal dotList d-none" id="_icon_tsue">
+                    <div class="text-center info-modal-header"><span class="icon_mini icon_tsue"></span></div>
+                </div>
+                <div class="info-modal dotList d-none" id="_icon_toku">
+                    <div class="text-center info-modal-header"><img class="icon_mini " src="http://romasagatool.com/img/icon/icon_toku.png"
+                            onclick=""></div>
+                </div>
 
-        <!-- ============================= -->
-        <!-- ==  テンプレート             == -->
-        <!-- ============================= -->
-        <table class="width-100 text-center d-none charTable" id="CHAR_TEMPLATE">
-            <tr class="small text-center ">
-                <td colspan="8">
-                    <p class="width-100 pad0 mar0 label-text charName" style=" position: relative;"></p>
-                </td>
-                <td>
-                    <p class="width-100 pad0 mar0 charUnset" onclick=""><img src="./img/icon/icon_close.png" width="25" height="25"></p>
-                </td>
-                <td>
-                    <p class="width-100 pad0 mar0 openMenu" onclick=""><img src="./img/icon/icon_menu.png" width="25" height="25"></p>
-                </td>
-            </tr>
-            <tr class="small text-center ">
-                <td rowspan="2">
-                    <span class="char-winner char dot_mid dot"></span>
-                </td>
-                <td colspan="9">
-                    <p class="width-100 pad0 mar0 fukidashi">合計:<span class="SUM"></span><span class="d-none d-lg-inline">(AVG:<span class="AVG"></span>)</span> おすすめ:<span class="RECO"></span></p>
-                </td>
-            </tr>
-            <tr class="text-center nowData" onclick="">
-                <td style="width:10%"><p style="margin-bottom:-5px">HP</p><span class="HP">0</span></td>
-                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">腕</p><span class="STR"></span></td>
-                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">体</p><span class="VIT"></span></td>
-                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">器</p><span class="DEX"></span></td>
-                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">速</p><span class="AGI"></span></td>
-                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">知</p><span class="INT"></span></td>
-                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">精</p><span class="MND"></span></td>
-                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">愛</p><span class="AI"></span></td>
-                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">魅</p><span class="MI"></span></td>
-            </tr>
-            <tr class="text-center">
-                <td class=" d-none d-lg-table-cell"><button class="icon_btn_on CHAR_SAVE" style="width:100%; background-size: 100% 100%;">保存</button></td>
-                <td class=" d-none d-lg-table-cell"><img src="./img/icon/icon_minus.png" class="paramButton" width="20" height="30" data-param="HP" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charHP" style="width: 50px" value="3" data-param="HP"><img src="./img/icon/icon_plus.png" class="paramButton" width="20" height="30" data-param="HP" data-pm="plus" onclick=""></td>
-                <td class=" d-none d-lg-table-cell" style="border-left: 1px solid #faf0b4"><img src="./img/icon/icon_minus.png" class="paramButton" width="20" height="30" data-param="STR" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charSTR" data-param="STR" style="width: 45px" value="45"><img src="./img/icon/icon_plus.png" class="paramButton" width="20" height="30" data-param="STR" data-pm="plus" onclick=""></td>
-                <td class=" d-none d-lg-table-cell" style="border-left: 1px solid #faf0b4"><img src="./img/icon/icon_minus.png" class="paramButton" width="20" height="30" data-param="VIT" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charVIT" data-param="VIT" style="width: 45px" value="45"><img src="./img/icon/icon_plus.png" class="paramButton" width="20" height="30" data-param="VIT" data-pm="plus" onclick=""></td>
-                <td class=" d-none d-lg-table-cell" style="border-left: 1px solid #faf0b4"><img src="./img/icon/icon_minus.png" class="paramButton" width="20" height="30" data-param="DEX" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charDEX" data-param="DEX" style="width: 45px" value="45"><img src="./img/icon/icon_plus.png" class="paramButton" width="20" height="30" data-param="DEX" data-pm="plus" onclick=""></td>
-                <td class=" d-none d-lg-table-cell" style="border-left: 1px solid #faf0b4"><img src="./img/icon/icon_minus.png" class="paramButton" width="20" height="30" data-param="AGI" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charAGI" data-param="AGI" style="width: 45px" value="45"><img src="./img/icon/icon_plus.png" class="paramButton" width="20" height="30" data-param="AGI" data-pm="plus" onclick=""></td>
-                <td class=" d-none d-lg-table-cell" style="border-left: 1px solid #faf0b4"><img src="./img/icon/icon_minus.png" class="paramButton" width="20" height="30" data-param="INT" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charINT" data-param="INT" style="width: 45px" value="45"><img src="./img/icon/icon_plus.png" class="paramButton" width="20" height="30" data-param="INT" data-pm="plus" onclick=""></td>
-                <td class=" d-none d-lg-table-cell" style="border-left: 1px solid #faf0b4"><img src="./img/icon/icon_minus.png" class="paramButton" width="20" height="30" data-param="MND" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charMND" data-param="MND" style="width: 45px" value="45"><img src="./img/icon/icon_plus.png" class="paramButton" width="20" height="30" data-param="MND" data-pm="plus" onclick=""></td>
-                <td class=" d-none d-lg-table-cell" style="border-left: 1px solid #faf0b4"><img src="./img/icon/icon_minus.png" class="paramButton" width="20" height="30" data-param="AI"  data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charAI"  data-param="AI"  style="width: 45px" value="45"><img src="./img/icon/icon_plus.png" class="paramButton" width="20" height="30" data-param="AI" data-pm="plus" onclick=""></td>
-                <td class=" d-none d-lg-table-cell" style="border-left: 1px solid #faf0b4"><img src="./img/icon/icon_minus.png" class="paramButton" width="20" height="30" data-param="MI"  data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charMI"  data-param="MI"  style="width: 45px" value="45"><img src="./img/icon/icon_plus.png" class="paramButton" width="20" height="30" data-param="MI" data-pm="plus" onclick=""></td>
-            </tr>
-            <!-- ウィンドウエリア -->
-            <tr>
-                <td colspan="10" class="">
-                    <div class="fukidashiInput fukidashi">
-                        <table class="width-100 inputArea small">
-                            <tr style="">
-                                <td colspan="4">
-                                    <button class="icon_btn_on btn_close" style="background-size: 150px 40px; width:150px; height: 40px;">閉じる</button>
-                                </td>
-                            </tr>
-                            <tr class="text-nowrap d-table-row d-lg-none">
-                                <td class="text-center" colspan="2">▼ステータス入力▼</td>
-                                <td class="text-center" colspan="2">▼周回目安▼</td>
-                            </tr>
-                            <tr class="text-nowrap d-table-row d-lg-none">
-                                <td >ＨＰ</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="HP" data-pm="minus" onclick=""><input type="text" pattern="[0-9]*" class="input charParam kadomaru charHP" data-param="HP" style="width: 50px" value="3"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="HP" data-pm="plus" onclick=""></td>
-                                <td>ステータス合計</td>
-                            </tr>
-                            <tr class="text-nowrap d-table-row d-lg-none">
-                                <td >腕力</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="STR" data-pm="minus" onclick=""><input type="text" pattern="[0-9]*" class="input charParam kadomaru charSTR" data-param="STR" style="width: 50px" value="3"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="STR" data-pm="plus" onclick=""></td>
-                                <td><span class="SUM"></span></td>
-                            </tr>
-                            <tr class="text-nowrap d-table-row d-lg-none">
-                                <td >体力</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="VIT" data-pm="minus" onclick=""><input type="text" pattern="[0-9]*" class="input charParam kadomaru charVIT" data-param="VIT" style="width: 50px" value="3"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="VIT" data-pm="plus" onclick=""></td>
-                            </tr>
-                            <tr class="text-nowrap d-table-row d-lg-none">
-                                <td class="small">器用さ</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="DEX" data-pm="minus" onclick=""><input type="text" pattern="[0-9]*" class="input charParam kadomaru charDEX" data-param="DEX" style="width: 50px" value="6"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="DEX" data-pm="plus" onclick=""></td>
-                                <td>旧上限合計369から</td>
-                            </tr>
-                            <tr class="text-nowrap d-table-row d-lg-none">
-                                <td class="small">素早さ</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="AGI" data-pm="minus" onclick=""><input type="text" pattern="[0-9]*" class="input charParam kadomaru charAGI" data-param="AGI" style="width: 50px" value="7"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="AGI" data-pm="plus" onclick=""></td>
-                                <td>平均 <span class="AVG"></span></td>
-                            </tr>
-                            <tr class="text-nowrap d-table-row d-lg-none">
-                                <td >知力</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="INT" data-pm="minus" onclick=""><input type="text" pattern="[0-9]*" class="input charParam kadomaru charINT" data-param="INT" style="width: 50px" value="9"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="INT" data-pm="plus" onclick=""></td>
-                            </tr>
-                            <tr class="text-nowrap d-table-row d-lg-none">
-                                <td >精神</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="MND" data-pm="minus" onclick=""><input type="text" pattern="[0-9]*" class="input charParam kadomaru charMND" data-param="MND" style="width: 50px" value="6"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="MND" data-pm="plus" onclick=""></td>
-                                <td>おすすめ周回場所</td>
-                            </tr>
-                            <tr class="text-nowrap d-table-row d-lg-none">
-                                <td >愛</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="AI" data-pm="minus" onclick=""><input type="text" pattern="[0-9]*" class="input charParam kadomaru charAI" data-param="AI" style="width: 50px" value="7"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="AI" data-pm="plus" onclick=""></td>
-                                <td><span class="RECO"></span></td>
-                            </tr>
-                            <tr class="text-nowrap d-table-row d-lg-none">
-                                <td >魅力</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="MI" data-pm="minus" onclick=""><input type="text" pattern="[0-9]*" class="input charParam kadomaru charMI" data-param="MI" style="width: 50px" value="6"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="MI" data-pm="plus" onclick=""></td>
-                            </tr>
-                        </table>
-                        <table class="width-100 inputArea">
-                            <tr class="char-bottom text-nowrap">
-                                <td class="text-center" colspan="12">▼スタイル選択▼</td>
-                            </tr>
-                            <tr><td colspan="12" class="STYLE_ICON"></td></tr>
-                        </table>
-                        <table class="width-100 inputArea small">
-                            <tr class="d-sm-none"><td colspan="12">▼スタイル成長傾向▼</td></tr>
-                            <tr class="label-text">
-                                <td colspan="2"><span class="d-none d-sm-inline">スタイル成長傾向</span></td>
-                                <td>腕</td>
-                                <td>体</td>
-                                <td>器</td>
-                                <td>速</td>
-                                <td>知</td>
-                                <td>精</td>
-                                <td>愛</td>
-                                <td>魅</td>
-                            </tr>
-                            <tr id="STYLE_SEICHO"></tr>
-                            <tr>
-                                <td colspan="12">()の中の数字はスタイル成長傾向です。<img src="./img/icon/icon_ind_1.png" height="15">は-10〜0、<img src="./img/icon/icon_ind_2.png" height="15">は1〜3、<img src="./img/icon/icon_ind_3.png" height="15">は4〜10が設定されます。(<a href="./knowledge.html" target="_new"><i class="far fa-question-circle"></i> スタイル成長傾向とは</a>)<br>
+                <div class="info-modal dotList d-none" id="RS1">
+                    <div class="text-center info-modal-header"><span class="hidden pcBlock">ロマンシング・サガ1</span><span
+                            class="hidden spBlock">ロマサガ1</span></div>
+                    <section id="SECRS1" class="char-choise-section"></section>
+                </div>
+                <div class="info-modal dotList d-none" id="RS2">
+                    <div class="text-center info-modal-header"><span class="hidden pcBlock">ロマンシング・サガ2</span><span
+                            class="hidden spBlock">ロマサガ2</span></div>
+                    <section id="SECRS2" class="char-choise-section"></section>
+                </div>
+                <div class="info-modal dotList d-none" id="RS3">
+                    <div class="text-center info-modal-header"><span class="hidden pcBlock">ロマンシング・サガ3</span><span
+                            class="hidden spBlock">ロマサガ3</span></div>
+                    <section id="SECRS3" class="char-choise-section"></section>
+                </div>
+                <div class="info-modal dotList d-none" id="SF1">
+                    <div class="text-center info-modal-header"><span class="hidden pcBlock">サガフロンティア1</span><span
+                            class="hidden spBlock">サガフロ1</span></div>
+                    <section id="SECSF1" class="char-choise-section"></section>
+                </div>
+                <div class="info-modal dotList d-none" id="SF2">
+                    <div class="text-center info-modal-header"><span class="hidden pcBlock">サガフロンティア2</span><span
+                            class="hidden spBlock">サガフロ2</span></div>
+                    <section id="SECSF2" class="char-choise-section"></section>
+                </div>
+                <div class="info-modal dotList d-none" id="OTR">
+                    <div class="text-center info-modal-header text-nowrap">
+                        <span class="hidden pcBlock">アンリミテッド・サガ / サガ・スカーレットグレイス / エンペラーズ・サガ</span>
+                        <span class="hidden spBlock">アンサガ/サガスカ/エンサガ</span></div>
+                    <section class="char-choise-section">
+                        <span id="SECUS"></span>
+                        <span id="SECSS"></span>
+                        <span id="SECES"></span>
+                    </section>
+                </div>
+                <div class="info-modal dotList d-none" id="RSR">
+                    <div class="text-center info-modal-header">ロマサガ リ・ユニバース</div>
+                    <section id="SECRSR" class="char-choise-section"></section>
+                </div>
+            </div>
+            <!-- ツール_育成チェック_キャラ下 -->
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5008373409434899"
+                data-ad-slot="3738283852" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <div class="label-text text-center initialShow">
+                <div class="loading">
+                    <span>L</span><span>O</span><span>A</span><span>D</span><span>I</span><span>N</span><span>G</span><span>.</span><span>.</span><span>.</span>
+                </div>
+                <div class="">
+                    <span id="char1" class="char dot_mid dot char-hashiri-right"
+                        style="background: url(./img/dot/IDad82c.png);"></span>
+                    <span id="char2" class="char dot_mid dot char-hashiri-right"
+                        style="background: url(./img/dot/ID38400.png);"></span>
+                </div>
+            </div>
+
+            <div class="isLogin d-none">
+                <div class="card">
+                    <div class="card-header bg-warning"><i class="fas fa-paper-plane"></i> 上限更新報告 募集中</div>
+                    <div class="card-body">
+                        スタイルは上限は仮設定のものも存在します。<br>
+                        上限を超えた場合は<a
+                            href='https://twitter.com/intent/tweet?text=キャラ/スタイル:XXXXの[腕力]がクエスト:XXXXで上限を超えました&screen_name=nao_romasaga_rs&hashtags=ロマサガRSステ上限報告'><i
+                                class="fab fa-twitter"></i> @nao_romasaga_rsのメンションをつけて画像付きツイート</a>で報告いただけますと助かります。<br>
+                    </div>
+                </div>
+            </div>
+<!------------------------------------------>
+<div class="initialHide d-none filter-bgcolor text-center small row" style="width:100%; margin: 0px;" id="QUEST_CHOISE">
+    <ul class="nav text-center width-100" style="margin-bottom: 5px;">
+        <li class="subtitle fuchidoriWhite smallFont">周回クエスト範囲の選択</li>
+    </ul>
+    <ul class="nav text-center width-100" style="margin-bottom: 20px;">
+        <li class="col-6 col-sm-3 col-lg-3" style="margin-bottom: 10px;"><button class="icon_btn_on baseDispChange text-nowrap width-100" data-id="3">VH14〜VH15</button></li>
+        <li class="col-6 col-sm-3 col-lg-3"><button class="icon_btn_off baseDispChange text-nowrap width-100" data-id="2">VHG1〜VH13</button></li>
+        <li class="col-6 col-sm-3 col-lg-3"><button class="icon_btn_off baseDispChange text-nowrap width-100" data-id="1">VH10〜VH12</button></li>
+        <li class="col-6 col-sm-3 col-lg-3"><button class="icon_btn_off baseDispChange text-nowrap width-100" data-id="0">VH6〜VH9</button></li>
+    </ul>
+    <ul class="nav text-center width-100" style="margin-bottom: 5px;">
+        <li class="fuchidoriWhite subtitle smallFont">周回クエスト選択</li>
+    </ul>
+    <ul id="quest0"  class="questList initialHide d-none nav text-center width-100">
+        <li class="col-6 col-sm-3 col-lg-2"><button class="icon_btn_off baseValue text-nowrap questpad" data-id="54">VH922-(54)</button></li>
+        <li class="col-6 col-sm-3 col-lg-2"><button class="icon_btn_off baseValue text-nowrap questpad" data-id="53">VH914-(53)</button></li>
+        <li class="col-6 col-sm-3 col-lg-2"><button class="icon_btn_off baseValue text-nowrap questpad" data-id="52">VH911-(52)</button></li>
+        <li class="col-6 col-sm-3 col-lg-2"><button class="icon_btn_off baseValue text-nowrap questpad" data-id="51">VH822-(51)</button></li>
+        <li class="col-6 col-sm-3 col-lg-2"><button class="icon_btn_off baseValue text-nowrap questpad" data-id="50">VH814-(50)</button></li>
+        <li class="col-6 col-sm-3 col-lg-2"><button class="icon_btn_off baseValue text-nowrap questpad" data-id="49">VH72X(49)</button></li>
+        <li class="col-6 col-sm-3 col-lg-2"><button class="icon_btn_off baseValue text-nowrap questpad" data-id="48">VH71X(48)</button></li>
+        <li class="col-6 col-sm-3 col-lg-2"><button class="icon_btn_off baseValue text-nowrap questpad" data-id="47">VH62X(47)</button></li>
+        <li class="col-6 col-sm-3 col-lg-2"><button class="icon_btn_off baseValue text-nowrap questpad" data-id="46">VH61X(46)</button></li>
+        <li class="col-6 col-sm-3 col-lg-2"><button class="icon_btn_off baseValue text-nowrap questpad" data-id="45">VH411-(45)</button></li>
+    </ul>
+    <ul id="quest1"  class="questList initialHide d-none nav text-center width-100">
+        <li class="col-6 col-sm-3 col-lg-2"><button class="icon_btn_off baseValue text-nowrap questpad" data-id="60">VH122X(60)</button></li>
+        <li class="col-6 col-sm-3 col-lg-2"><button class="icon_btn_off baseValue text-nowrap questpad" data-id="59">VH121X(59)</button></li>
+        <li class="col-6 col-sm-3 col-lg-2"><button class="icon_btn_off baseValue text-nowrap questpad" data-id="58">聖石10(58)</button></li>
+        <li class="col-6 col-sm-3 col-lg-2"><button class="icon_btn_off baseValue text-nowrap questpad" data-id="58">VH112X(58)</button></li>
+        <li class="col-6 col-sm-3 col-lg-2"><button class="icon_btn_off baseValue text-nowrap questpad" data-id="57">VH111X(57)</button></li>
+        <li class="col-6 col-sm-3 col-lg-2"><button class="icon_btn_off baseValue text-nowrap questpad" data-id="56">VH102X(56)</button></li>
+        <li class="col-6 col-sm-3 col-lg-2"><button class="icon_btn_off baseValue text-nowrap questpad" data-id="55">VH101X(55)</button></li>
+    </ul>
+    <ul id="quest2"  class="questList initialHide d-none nav text-center width-100">
+        <li class="col-6 col-sm-3 col-lg-2"><button class="icon_btn_off baseValue text-nowrap questpad" data-id="66">VH1323-(66)</button></li>
+        <li class="col-6 col-sm-3 col-lg-2"><button class="icon_btn_off baseValue text-nowrap questpad" data-id="65">VH1315-(65)</button></li>
+        <li class="col-6 col-sm-3 col-lg-2"><button class="icon_btn_off baseValue text-nowrap questpad" data-id="64">VH1311-(64)</button></li>
+        <li class="col-6 col-sm-3 col-lg-2"><button class="icon_btn_off baseValue text-nowrap questpad" data-id="63">外23-25(63)</button></li>
+        <li class="col-6 col-sm-3 col-lg-2"><button class="icon_btn_off baseValue text-nowrap questpad" data-id="62">外15-22(62)</button></li>
+        <li class="col-6 col-sm-3 col-lg-2"><button class="icon_btn_off baseValue text-nowrap questpad" data-id="61">外11-14(61)</button></li>
+    </ul>
+    <ul id="quest3" class="questList questListNow initialHide d-none nav text-center width-100">
+        <li class="col-6 col-sm-3 col-lg-2"><button class="icon_btn_on baseValue text-nowrap questpad" data-id="73">VH1523(73)</button></li>
+        <li class="col-6 col-sm-3 col-lg-2"><button class="icon_btn_off baseValue text-nowrap questpad" data-id="72">VH1515-(72)</button></li>
+        <li class="col-6 col-sm-3 col-lg-2"><button class="icon_btn_off baseValue text-nowrap questpad" data-id="71">VH1511-(71)</button></li>
+        <li class="col-6 col-sm-3 col-lg-2"><button class="icon_btn_off baseValue text-nowrap questpad" data-id="70">VH1423-(70)</button></li>
+        <li class="col-6 col-sm-3 col-lg-2"><button class="icon_btn_off baseValue text-nowrap questpad" data-id="69">VH1415-(69)</button></li>
+        <li class="col-6 col-sm-3 col-lg-2"><button class="icon_btn_off baseValue text-nowrap questpad" data-id="67">VH1411-(67)</button></li>
+    </ul>
+</div>
+                <label class="badge badge-pill badge-light">　　パーティ編成　　</label><br>
+                <div class="row info-modal" style="padding:0px;">
+                    <div class="text-center info-modal-header">パーティ編成</div>
+                    <div class="col-12 col-sm-6 text-center" style="margin-bottom:10px;">
+                        <button id="PARTY_RESET" class="icon_btn_red">　パーティ全解除　</button>
+                    </div>
+                    <div class="col-12 col-sm-6 text-center" style="margin-bottom:10px;">
+                        <button id="STYLE_DISP" data-hide=false class="icon_btn_off">未選択スタイルを非表示</button>
+                    </div>
+                    <div class="col-12" style="border-bottom: 1px dashed gray"></div>
+                    <span id="PARTY" class="width-100"></span>
+                </div>
+            </div>
+
+            <!-- ツール_育成チェック_footer -->
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5008373409434899"
+                data-ad-slot="1393006323" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+            <div class="card">
+                <div class="card-header bg-primary" style="color:white">保存タイミングの変更について</div>
+                <div class="card-body">
+                    負荷軽減のためにステータスの保存タイミングを下記のパターンに変更しました<br>
+                    ・キャラを編成から外した時(Xボタン、編成から外すボタンのどちらでも)<br>
+                    <span class="hidden spBlock">・ステータス入力ウィンドウの閉じるボタンを押した時<br></span>
+                    <span class="hidden spBlock">・ステータス入力ウィンドウを<img src="./img/icon/icon_menu.png" width="25"
+                            height="25">を押して閉じた時<br></span>
+                    <span class="hidden pcBlock">・保存ボタンを押した場合<br></span>
+                    <span class="hidden pcBlock">・キャラAのステを修正後、キャラA以外のステを修正した場合にキャラAのステータスを保存<br></span>
+                    <span class="">・現在のステータス部分を押して表示されたステータス入力ウィンドウを閉じた時<br></span>
+                    <br>
+                    うまく保存できていない等バグを発見された場合は、発生時の手順と再現性することをご確認の上ご連絡ください<br>
+                </div>
+            </div>
+            <div style="position:fixed; bottom:0px;" class="width-100">
+                <div style="" class="row no-gutters text-center text-nowrap">
+                    <div class="col-2"><button id="FOOTER_CLOSE" class="icon_btn_negative width-100 fuchidoriWhite footer-font" style="padding:5px 0px;"><span class="FOOTER_CLOSE_ARROW">▼</span><span class="FOOTER_CLOSE_ARROW d-none">▲</span><span class="d-none d-sm-inline"> 表示切替</span></button></div>
+                    <div class="col-5"><button id="FOOTER_QUEST"  class="icon_btn_positive width-100 width-max fuchidoriWhite footer-font " style="padding:5px 0px;"><i class="fas fa-arrow-up d-none d-md-inline"></i> クエスト選択 <i class="fas fa-arrow-up"></i><br class="d-md-none"><span class="d-none d-md-inline">　</span><span class="footer-info text-nowrap d-none d-md-inline" id="NOW_QUEST">VH1523(73) (HP990) </span></button></div>
+                    <div class="col-5"><button id="FOOTER_CHAR"  class="icon_btn_positive width-100 width-max fuchidoriWhite footer-font " style="padding:5px 0px;"><i class="fas fa-arrow-up d-none d-md-inline"></i> キャラ選択 <i class="fas fa-arrow-up"></i><br class="d-md-none"><span class="d-none d-md-inline">　</span><span class="footer-info text-nowrap d-none d-md-inline"><span id="NOW_PARTYNUM">0</span>体 編成中</span></button></div>
+                </div>
+                <div class="width-100 bg-simple small text-center" style="height:80px;" id="FOOTER_PARTY">
+                    <div style="position: relative; top:0px;">▼編成中のパーティ▼ (タップで移動)</div>
+                    <div id="float-footer" style="position: relative; bottom:10px; height: 60px; overflow-y: scroll;"></div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- main -->
+
+    <!-- ============================= -->
+    <!-- ==  テンプレート             == -->
+    <!-- ============================= -->
+    <div class="d-none charTableParent row" id="CHAR_TEMPLATE_PARENT" style="margin:0px; padding: 10px;">
+        <div class="col-2 CHAR_DOT text-right" style="margin-bottom:0px"></div>
+        <div class="col-10 row small">
+            <div class="col-12 fukidashi-left text-left ">
+                合計ステータス:<span class="SUM"></span>
+                <span class="d-none d-lg-inline">(AVG:<span class="AVG"></span>)</span>
+                <div class="text-nowrap">おすすめ:<span class="RECO"></span></div>
+            </div>
+            <div class="col-6 text-center"><div class="text-nowrap charUnset icon_btn_negative" onclick="">編成から外す</div></div>
+            <div class="col-6 text-center"><div class="text-nowrap openMenu icon_btn_positive" onclick=""><span class="d-none d-lg-inline">スタイル変更</span><span class="d-lg-none">ステータス編集</span></div></div>
+        </div>
+        <div class="col-12 bg-simple CHAR_STATUS partyStatusTableFont" style="padding:10px;"></div>
+    </div>
+    <table class="width-100 text-center d-none charTable" id="CHAR_TEMPLATE">
+        <tr class="text-center nowData" onclick="">
+            <td colspan="2">
+                <p style="margin-bottom:-5px">HP</p><span class="HP d-lg-none limitFont">0</span>
+            </td>
+            <td class="stCol">
+                <p style="margin-bottom:-5px">腕</p><span class="STR d-lg-none limitFont"></span>
+            </td>
+            <td class="stCol">
+                <p style="margin-bottom:-5px">体</p><span class="VIT d-lg-none limitFont"></span>
+            </td>
+            <td class="stCol">
+                <p style="margin-bottom:-5px">器</p><span class="DEX d-lg-none limitFont"></span>
+            </td>
+            <td class="stCol">
+                <p style="margin-bottom:-5px">速</p><span class="AGI d-lg-none limitFont"></span>
+            </td>
+            <td class="stCol">
+                <p style="margin-bottom:-5px">知</p><span class="INT d-lg-none limitFont"></span>
+            </td>
+            <td class="stCol">
+                <p style="margin-bottom:-5px">精</p><span class="MND d-lg-none limitFont"></span>
+            </td>
+            <td class="stCol">
+                <p style="margin-bottom:-5px">愛</p><span class="AI d-lg-none limitFont"></span>
+            </td>
+            <td class="stCol">
+                <p style="margin-bottom:-5px">魅</p><span class="MI d-lg-none limitFont"></span>
+            </td>
+        </tr>
+        <tr class="text-center  d-none d-lg-table-row">
+            <td class=""><button class="icon_btn_off CHAR_SAVE">保存</button></td>
+            <td class=""><img src="http://romasagatool.com/img/icon/icon_minus.png" class="paramButton" width="20"
+                    height="30" data-param="HP" data-pm="minus" onclick=""><input type="number"
+                    class="input charParam kadomaru charHP" style="width: 50px" value="3" data-param="HP"><img
+                    src="http://romasagatool.com/img/icon/icon_plus.png" class="paramButton" width="20" height="30" data-param="HP"
+                    data-pm="plus" onclick=""></td>
+            <td class="" style="border-left: 1px solid #faf0b4"><img
+                    src="http://romasagatool.com/img/icon/icon_minus.png" class="paramButton" width="20" height="30" data-param="STR"
+                    data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charSTR"
+                    data-param="STR" style="width: 45px" value="45"><img src="http://romasagatool.com/img/icon/icon_plus.png"
+                    class="paramButton" width="20" height="30" data-param="STR" data-pm="plus" onclick=""></td>
+            <td class="" style="border-left: 1px solid #faf0b4"><img
+                    src="http://romasagatool.com/img/icon/icon_minus.png" class="paramButton" width="20" height="30" data-param="VIT"
+                    data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charVIT"
+                    data-param="VIT" style="width: 45px" value="45"><img src="http://romasagatool.com/img/icon/icon_plus.png"
+                    class="paramButton" width="20" height="30" data-param="VIT" data-pm="plus" onclick=""></td>
+            <td class="" style="border-left: 1px solid #faf0b4"><img
+                    src="http://romasagatool.com/img/icon/icon_minus.png" class="paramButton" width="20" height="30" data-param="DEX"
+                    data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charDEX"
+                    data-param="DEX" style="width: 45px" value="45"><img src="http://romasagatool.com/img/icon/icon_plus.png"
+                    class="paramButton" width="20" height="30" data-param="DEX" data-pm="plus" onclick=""></td>
+            <td class="" style="border-left: 1px solid #faf0b4"><img
+                    src="http://romasagatool.com/img/icon/icon_minus.png" class="paramButton" width="20" height="30" data-param="AGI"
+                    data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charAGI"
+                    data-param="AGI" style="width: 45px" value="45"><img src="http://romasagatool.com/img/icon/icon_plus.png"
+                    class="paramButton" width="20" height="30" data-param="AGI" data-pm="plus" onclick=""></td>
+            <td class="" style="border-left: 1px solid #faf0b4"><img
+                    src="http://romasagatool.com/img/icon/icon_minus.png" class="paramButton" width="20" height="30" data-param="INT"
+                    data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charINT"
+                    data-param="INT" style="width: 45px" value="45"><img src="http://romasagatool.com/img/icon/icon_plus.png"
+                    class="paramButton" width="20" height="30" data-param="INT" data-pm="plus" onclick=""></td>
+            <td class="" style="border-left: 1px solid #faf0b4"><img
+                    src="http://romasagatool.com/img/icon/icon_minus.png" class="paramButton" width="20" height="30" data-param="MND"
+                    data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charMND"
+                    data-param="MND" style="width: 45px" value="45"><img src="http://romasagatool.com/img/icon/icon_plus.png"
+                    class="paramButton" width="20" height="30" data-param="MND" data-pm="plus" onclick=""></td>
+            <td class="" style="border-left: 1px solid #faf0b4"><img
+                    src="http://romasagatool.com/img/icon/icon_minus.png" class="paramButton" width="20" height="30" data-param="AI"
+                    data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charAI"
+                    data-param="AI" style="width: 45px" value="45"><img src="http://romasagatool.com/img/icon/icon_plus.png"
+                    class="paramButton" width="20" height="30" data-param="AI" data-pm="plus" onclick=""></td>
+            <td class="" style="border-left: 1px solid #faf0b4"><img
+                    src="http://romasagatool.com/img/icon/icon_minus.png" class="paramButton" width="20" height="30" data-param="MI"
+                    data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charMI"
+                    data-param="MI" style="width: 45px" value="45"><img src="http://romasagatool.com/img/icon/icon_plus.png"
+                    class="paramButton" width="20" height="30" data-param="MI" data-pm="plus" onclick=""></td>
+        </tr>
+        <!-- ウィンドウエリア -->
+        <tr>
+            <td colspan="10" class="">
+                <div class="fukidashiInput fukidashi">
+                    <table class="width-100 inputArea small">
+                        <tr style="">
+                            <td colspan="4">
+                                <button class="icon_btn_negative btn_close ">閉じる</button>
+                            </td>
+                        </tr>
+                        <tr class="text-nowrap d-table-row d-lg-none">
+                            <td class="text-center" colspan="2">▼ステータス入力▼</td>
+                            <td class="text-center" colspan="2">▼周回目安▼</td>
+                        </tr>
+                        <tr class="text-nowrap d-table-row d-lg-none">
+                            <td>ＨＰ</td>
+                            <td><img src="http://romasagatool.com/img/icon/icon_minus.png" class="paramButton" width="30" data-param="HP"
+                                    data-pm="minus" onclick=""><input type="text" pattern="[0-9]*"
+                                    class="input charParam kadomaru charHP" data-param="HP" style="width: 50px"
+                                    value="3"><img src="http://romasagatool.com/img/icon/icon_plus.png" class="paramButton" width="30"
+                                    data-param="HP" data-pm="plus" onclick=""></td>
+                            <td>ステータス合計</td>
+                        </tr>
+                        <tr class="text-nowrap d-table-row d-lg-none">
+                            <td>腕力</td>
+                            <td><img src="http://romasagatool.com/img/icon/icon_minus.png" class="paramButton" width="30" data-param="STR"
+                                    data-pm="minus" onclick=""><input type="text" pattern="[0-9]*"
+                                    class="input charParam kadomaru charSTR" data-param="STR" style="width: 50px"
+                                    value="3"><img src="http://romasagatool.com/img/icon/icon_plus.png" class="paramButton" width="30"
+                                    data-param="STR" data-pm="plus" onclick=""></td>
+                            <td><span class="SUM"></span></td>
+                        </tr>
+                        <tr class="text-nowrap d-table-row d-lg-none">
+                            <td>体力</td>
+                            <td><img src="http://romasagatool.com/img/icon/icon_minus.png" class="paramButton" width="30" data-param="VIT"
+                                    data-pm="minus" onclick=""><input type="text" pattern="[0-9]*"
+                                    class="input charParam kadomaru charVIT" data-param="VIT" style="width: 50px"
+                                    value="3"><img src="http://romasagatool.com/img/icon/icon_plus.png" class="paramButton" width="30"
+                                    data-param="VIT" data-pm="plus" onclick=""></td>
+                        </tr>
+                        <tr class="text-nowrap d-table-row d-lg-none">
+                            <td class="small">器用さ</td>
+                            <td><img src="http://romasagatool.com/img/icon/icon_minus.png" class="paramButton" width="30" data-param="DEX"
+                                    data-pm="minus" onclick=""><input type="text" pattern="[0-9]*"
+                                    class="input charParam kadomaru charDEX" data-param="DEX" style="width: 50px"
+                                    value="6"><img src="http://romasagatool.com/img/icon/icon_plus.png" class="paramButton" width="30"
+                                    data-param="DEX" data-pm="plus" onclick=""></td>
+                            <td>旧上限合計369から</td>
+                        </tr>
+                        <tr class="text-nowrap d-table-row d-lg-none">
+                            <td class="small">素早さ</td>
+                            <td><img src="http://romasagatool.com/img/icon/icon_minus.png" class="paramButton" width="30" data-param="AGI"
+                                    data-pm="minus" onclick=""><input type="text" pattern="[0-9]*"
+                                    class="input charParam kadomaru charAGI" data-param="AGI" style="width: 50px"
+                                    value="7"><img src="http://romasagatool.com/img/icon/icon_plus.png" class="paramButton" width="30"
+                                    data-param="AGI" data-pm="plus" onclick=""></td>
+                            <td>平均 <span class="AVG"></span></td>
+                        </tr>
+                        <tr class="text-nowrap d-table-row d-lg-none">
+                            <td>知力</td>
+                            <td><img src="http://romasagatool.com/img/icon/icon_minus.png" class="paramButton" width="30" data-param="INT"
+                                    data-pm="minus" onclick=""><input type="text" pattern="[0-9]*"
+                                    class="input charParam kadomaru charINT" data-param="INT" style="width: 50px"
+                                    value="9"><img src="http://romasagatool.com/img/icon/icon_plus.png" class="paramButton" width="30"
+                                    data-param="INT" data-pm="plus" onclick=""></td>
+                        </tr>
+                        <tr class="text-nowrap d-table-row d-lg-none">
+                            <td>精神</td>
+                            <td><img src="http://romasagatool.com/img/icon/icon_minus.png" class="paramButton" width="30" data-param="MND"
+                                    data-pm="minus" onclick=""><input type="text" pattern="[0-9]*"
+                                    class="input charParam kadomaru charMND" data-param="MND" style="width: 50px"
+                                    value="6"><img src="http://romasagatool.com/img/icon/icon_plus.png" class="paramButton" width="30"
+                                    data-param="MND" data-pm="plus" onclick=""></td>
+                            <td>おすすめ周回場所</td>
+                        </tr>
+                        <tr class="text-nowrap d-table-row d-lg-none">
+                            <td>愛</td>
+                            <td><img src="http://romasagatool.com/img/icon/icon_minus.png" class="paramButton" width="30" data-param="AI"
+                                    data-pm="minus" onclick=""><input type="text" pattern="[0-9]*"
+                                    class="input charParam kadomaru charAI" data-param="AI" style="width: 50px"
+                                    value="7"><img src="http://romasagatool.com/img/icon/icon_plus.png" class="paramButton" width="30"
+                                    data-param="AI" data-pm="plus" onclick=""></td>
+                            <td><span class="RECO"></span></td>
+                        </tr>
+                        <tr class="text-nowrap d-table-row d-lg-none">
+                            <td>魅力</td>
+                            <td><img src="http://romasagatool.com/img/icon/icon_minus.png" class="paramButton" width="30" data-param="MI"
+                                    data-pm="minus" onclick=""><input type="text" pattern="[0-9]*"
+                                    class="input charParam kadomaru charMI" data-param="MI" style="width: 50px"
+                                    value="6"><img src="http://romasagatool.com/img/icon/icon_plus.png" class="paramButton" width="30"
+                                    data-param="MI" data-pm="plus" onclick=""></td>
+                        </tr>
+                    </table>
+                    <table class="width-100 inputArea">
+                        <tr class="char-bottom text-nowrap">
+                            <td class="text-center" colspan="12">▼スタイル選択▼</td>
+                        </tr>
+                        <tr>
+                            <td colspan="12" class="STYLE_ICON"></td>
+                        </tr>
+                    </table>
+                    <table class="width-100 inputArea small">
+                        <tr class="d-sm-none">
+                            <td colspan="12">▼スタイル成長傾向▼</td>
+                        </tr>
+                        <tr class="">
+                            <td colspan="2"><span class="d-none d-sm-inline">スタイル成長傾向</span></td>
+                            <td>腕</td>
+                            <td>体</td>
+                            <td>器</td>
+                            <td>速</td>
+                            <td>知</td>
+                            <td>精</td>
+                            <td>愛</td>
+                            <td>魅</td>
+                        </tr>
+                        <tr id="STYLE_SEICHO"></tr>
+                        <tr>
+                            <td colspan="12">()の中の数字はスタイル成長傾向です。<img src="http://romasagatool.com/img/icon/icon_ind_1.png"
+                                    height="15">は-10〜0、<img src="http://romasagatool.com/img/icon/icon_ind_2.png" height="15">は1〜3、<img
+                                    src="http://romasagatool.com/img/icon/icon_ind_3.png" height="15">は4〜10が設定されます。(<a href="./knowledge.html"
+                                    target="_new"><i class="far fa-question-circle"></i> スタイル成長傾向とは</a>)<br>
                                 <span class="fuchidoriBlue fix-bgcolor">白抜き青文字</span>は上限が確定しています。
                                 <span class="fuchidoriYellow kari-bgcolor">黄抜き赤文字</span>はまだ上限が上がる可能性があります。</td>
-                            </tr>
-                            <tr><td colspan="12">
-                                    <button class="icon_btn_red charUnset" style="background-size: 150px 40px; width:150px; height: 40px;">編成から外す</button>
-                                    <button class="icon_btn_on btn_close" style="background-size: 150px 40px; width:150px; height: 40px;">閉じる</button>
-                                </td>
-                            </tr>
-                            <tr class="char-bottom">
-                                <td colspan="12"><br>
-                                    <span data-toggle="tooltip" data-placement="top" data-html="true" style="margin-left:10px" title="" 
-                                          data-original-title="
+                        </tr>
+                        <tr>
+                            <td colspan="12">
+                                <button class="icon_btn_red charUnset">編成から外す</button>
+                                <button class="icon_btn_negative btn_close">閉じる</button>
+                            </td>
+                        </tr>
+                        <tr class="char-bottom d-none">
+                            <td colspan="12"><br>
+                                <span data-toggle="tooltip" data-placement="top" data-html="true"
+                                    style="margin-left:10px" title="" data-original-title="
                                           腕.体.器.速.知.精.愛.魅の順に入力出来ます<br>
                                           区切り文字は,.スペースタブが利用可能です<br>
                                           区切り文字なしで16桁の数字でも入力可能です<br>
                                           ステータス1桁の場合は先頭に0をつけてください">
-                                        ステータス一括入力<button class="icon_info_md"></button>
-                                    </span>
-                                    <div class="text-center width-100">
-                                        <input type="tel" class="input allparams" placeholder="500.50.41.01.20.30.40.50.99">
-                                        <button class="icon_btn_on hanei" style="width:100px; height:40px; background-size: 100px 40px;">反映</button>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </td>
-            </tr>
-            <tr class="text-center d-none inputArea">
-                <td style="width:20%" colspan="2">スタイル</td>
-                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">腕</p></td>
-                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">体</p></td>
-                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">器</p></td>
-                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">速</p></td>
-                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">知</p></td>
-                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">精</p></td>
-                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">愛</p></td>
-                <td style="width:10%; border-left: 1px solid #faf0b4"><p style="margin-bottom:-5px">魅</p></td>
-            </tr>
-        </table>
-        <!-- テンプレート(スタイル別上限) -->
-        <table>
-            <tr class="text-center d-none inputArea" id="LIMIT_TEMPLATE">
-                <td class="ICON_TD" colspan="2">
-                    <img class="rare rareIconSize" src="./img/icon/icon_SS.png">
-                    <img class="icn d-inline-block d-lg-none" src="" width="30">
-                    <img class="cin d-none d-lg-inline-block d-xl-none" src="" width="100">
-                    <img class="cin d-none d-xl-inline-block" src="" width="120">
-                </td>
-                <td class="STR" style="width:10%; border-left: 1px solid #faf0b4"></td>
-                <td class="VIT" style="width:10%; border-left: 1px solid #faf0b4;"></td>
-                <td class="DEX" style="width:10%; border-left: 1px solid #faf0b4;"></td>
-                <td class="AGI" style="width:10%; border-left: 1px solid #faf0b4;"></td>
-                <td class="INT" style="width:10%; border-left: 1px solid #faf0b4;"></td>
-                <td class="MND" style="width:10%; border-left: 1px solid #faf0b4;"></td>
-                <td class="AI" style="width:10%; border-left: 1px solid #faf0b4;"></td>
-                <td class="MI" style="width:10%; border-left: 1px solid #faf0b4;"></td>
-            </tr>
-        </table>
-
-        <!-- モーダルウィンドウ -->
-        <div class="modal" id="modal01"> 
-            <!-- モーダルウィンドウが開いている時のオーバーレイ -->
-            <div class="overLay modalClose"></div>
-            <!-- モーダルウィンドウの中身 -->
-            <div class="inner text-center width-100" id="allParamConfirmInner">
-                <div id="allParamConfirm">
-
+                                    ステータス一括入力<button class="icon_info_md"></button>
+                                </span>
+                                <div class="text-center width-100">
+                                    <input type="tel" class="input allparams" placeholder="500.50.41.01.20.30.40.50.99">
+                                    <button class="icon_btn_on hanei" >反映</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
-                <div class="">
-                    <button data-id="ng" class="icon_btn_off modalClose" style="background-size: 150px 40px; width:150px;">やり直し</button>
-                    <button data-id="ok" data-input="" id="allSubmit" class="icon_btn_on modalClose" style="background-size: 150px 40px; width:150px;">決定</button>
-                </div>
-            </div> 
+            </td>
+        </tr>
+    </table>
+    <!-- テンプレート(スタイル別上限) -->
+    <table>
+        <tr class="text-center d-none inputArea limitFont" id="LIMIT_TEMPLATE">
+            <td class="ICON_TD carousel" colspan="2"></td>
+            <td class="STR stCol"></td>
+            <td class="VIT stCol"></td>
+            <td class="DEX stCol"></td>
+            <td class="AGI stCol"></td>
+            <td class="INT stCol"></td>
+            <td class="MND stCol"></td>
+            <td class="AI stCol"></td>
+            <td class="MI stCol"></td>
+        </tr>
+    </table>
+
+    <!-- モーダルウィンドウ -->
+    <div class="modal" id="modal01">
+        <!-- モーダルウィンドウが開いている時のオーバーレイ -->
+        <div class="overLay modalClose"></div>
+        <!-- モーダルウィンドウの中身 -->
+        <div class="inner text-center width-100" id="allParamConfirmInner">
+            <div id="allParamConfirm">
+
+            </div>
+            <div class="">
+                <button data-id="ng" class="icon_btn_off modalClose"
+                    style="background-size: 150px 40px; width:150px;">やり直し</button>
+                <button data-id="ok" data-input="" id="allSubmit" class="icon_btn_on modalClose"
+                    style="background-size: 150px 40px; width:150px;">決定</button>
+            </div>
         </div>
+    </div>
 
-        <style>
-            /* モーダルウィンドウのスタイル */
-            .modal {
-                /* 
+    <style>
+        /* モーダルウィンドウのスタイル */
+        .modal {
+            /* 
                 position:absolute;
                 */
-                width:100%;
-                height:100%;
-                top:0;
-                left:0;
-                display:none;
-            }
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            display: none;
+        }
 
-            /* オーバーレイのスタイル */
-            .overLay {
-                /* 
+        /* オーバーレイのスタイル */
+        .overLay {
+            /* 
                 position:absolute;
                 */
-                top:0;
-                left:0;
-                background:rgba(200,200,200,0.9);
-                width:100%;
-                height:100%;
-                z-index:10;
+            top: 0;
+            left: 0;
+            background: rgba(200, 200, 200, 0.9);
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+        }
+
+        /* モーダルウィンドウの中身のスタイル */
+        .modal .inner {
+            position: absolute;
+            z-index: 11;
+            top: 50%;
+        }
+
+        @keyframes modal {
+            0% {
+                top: -100%
             }
 
-            /* モーダルウィンドウの中身のスタイル */
-            .modal .inner {
-                position:absolute;
-                z-index:11;
-                top:50%;
+            100% {
+                top: 50%
             }
-            @keyframes modal{
-                0% {top:-100%}
-                100% {top:50%}
+        }
+
+        @keyframes modalClose {
+            0% {
+                top: 50%
             }
-            @keyframes modalClose {
-                0% {top:50%}
-                100% {top:100%}
+
+            100% {
+                top: 100%
             }
-        </style>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-        <script type="text/javascript" src="https://romasagatool.com/blog/get_the_archives.php?limit=5&callback=rssCallback"></script>
-        <script type="text/javascript" src="https://romasagatool.com/blog/get_the_archives.php?cat=22&callback=rssCallbackCat"></script>
-    </body>
+        }
+        .partyStatusTableFont{
+            font-size:12px;
+        }
+/* 画面サイズが330まではこれ */
+@media screen and ( max-width:329px) {
+    .partyStatusTableFont{
+            font-size:8px;
+    }
+}
+/* 画面サイズが330〜400はこれ */
+@media screen and (min-width:330px) and ( max-width:400px) {
+    .partyStatusTableFont{
+            font-size:10px;
+    }
+}
+/* 画面サイズが400〜767はこれ(ipadは768なので入れない) */
+@media screen and (min-width:400px) and ( max-width:767px) {
+    .partyStatusTableFont{
+            font-size:11px;
+    }
+
+}
+.stCol {
+    width:10%;
+    border-left: 1px solid #faf0b4;
+}
+
+    </style>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <script type="text/javascript"
+        src="https://romasagatool.com/blog/get_the_archives.php?limit=5&callback=rssCallback"></script>
+    <script type="text/javascript"
+        src="https://romasagatool.com/blog/get_the_archives.php?cat=22&callback=rssCallbackCat"></script>
+</body>
+
 </html>
