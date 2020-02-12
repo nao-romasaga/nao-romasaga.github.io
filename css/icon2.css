@@ -4,6 +4,7 @@
     width: 60px;
     height: 60px;
     margin-left:2px;
+    cursor: pointer;
 }
 .style_icon_bg_ss {
     background: url(http://romasagatool.com/img/icon/icon_back_ss.png);
