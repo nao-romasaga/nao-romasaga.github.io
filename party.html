@@ -50,9 +50,54 @@
     <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
     <style>
         .limitFont {
-            font-size:12px;
+            font-size:15px;
         }
-        @media only screen and (min-width: 768px) and (max-width: 1024px) {
+        .footer-info {
+            background: black;
+            font-size: 8px;
+            border-radius: 5px;
+            padding: 0px 10px;
+        }
+        .questpad {
+            margin-bottom: 8px;
+        }
+        .stCol {
+            width:10%;
+            border-left: 1px solid #faf0b4;
+        }
+        .fuchidoriNormal {
+            font-size: 12px;
+        }
+        .partyStatusTableFont{
+            font-size:15px;
+        }
+
+        /* iphone5以下 画面サイズが330まではこれ */
+        @media screen and ( max-width:329px) {
+            .fukidashiInput .limitFont {
+                font-size:8px;
+            }
+            .footer-font {
+                font-size:12px;
+            }
+        }
+        /* 画面サイズが330〜400はこれ */
+        @media screen and (min-width:330px) and ( max-width:400px) {
+        }
+        /* 画面サイズが400〜767はこれ(ipadは768なので入れない) */
+        @media screen and (min-width:400px) and ( max-width:767px) {
+        }        
+        /* ipad以下の場合 */
+        @media only screen and (max-width: 769px) {
+            .fukidashiInput .limitFont {
+                font-size:12px;
+            }
+            .footer-font {
+                font-size:18px;
+            }
+        }
+        /* 画面サイズが768(ipad）より大きい */
+        @media only screen and (min-width: 769px) {
             .xs-show {
                 display: none;
             }
@@ -61,40 +106,7 @@
                 display: block;
             }
         }
-        .footer-info {
-            background: black;
-            font-size: 8px;
-            border-radius: 5px;
-            padding: 0px 10px;
-        }
-        @media only screen and (min-width: 568px) and (max-width: 768px) {
-            .sp-button {
-                width: 25px;
-                height: 18px;
-            }
-        }
-        /* ipad以下の場合 */
-        @media only screen and (min-width: 768px) {
-            .limitFont {
-                font-size:15px;
-            }
-        }
-        /* ipad以下の場合 */
-        @media only screen and (max-width: 769px) {
-            .footer-font {
-                font-size:13px;
-            }
-        }
-        /* iphone5以下の場合 */
-        @media only screen and (max-width: 330px) {
-            .footer-font {
-                font-size:12px;
-            }
-        }
 
-        .questpad {
-            margin-bottom: 8px;
-        }
     </style>
     <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -513,8 +525,8 @@
                             </td>
                         </tr>
                         <tr class="text-nowrap d-table-row d-lg-none">
-                            <td class="text-center" colspan="2">▼ステータス入力▼</td>
-                            <td class="text-center" colspan="2">▼周回目安▼</td>
+                            <td  class="bg-item fuchidoriWhite fuchidoriNormal text-center" colspan="2">▼ステータス入力▼</td>
+                            <td  class="bg-item fuchidoriWhite fuchidoriNormal text-center" colspan="2">▼周回目安▼</td>
                         </tr>
                         <tr class="text-nowrap d-table-row d-lg-none">
                             <td>ＨＰ</td>
@@ -597,7 +609,7 @@
                     </table>
                     <table class="width-100 inputArea">
                         <tr class="char-bottom text-nowrap">
-                            <td class="text-center" colspan="12">▼スタイル選択▼</td>
+                            <td class="bg-item fuchidoriWhite fuchidoriNormal text-center" colspan="12">▼スタイル選択▼</td>
                         </tr>
                         <tr>
                             <td colspan="12" class="STYLE_ICON"></td>
@@ -605,7 +617,7 @@
                     </table>
                     <table class="width-100 inputArea small">
                         <tr class="d-sm-none">
-                            <td colspan="12">▼スタイル成長傾向▼</td>
+                            <td colspan="12" class="bg-item fuchidoriWhite fuchidoriNormal text-center" >▼スタイル成長傾向▼</td>
                         </tr>
                         <tr class="">
                             <td colspan="2"><span class="d-none d-sm-inline">スタイル成長傾向</span></td>
@@ -739,33 +751,6 @@
                 top: 100%
             }
         }
-        .partyStatusTableFont{
-            font-size:12px;
-        }
-/* 画面サイズが330まではこれ */
-@media screen and ( max-width:329px) {
-    .partyStatusTableFont{
-            font-size:8px;
-    }
-}
-/* 画面サイズが330〜400はこれ */
-@media screen and (min-width:330px) and ( max-width:400px) {
-    .partyStatusTableFont{
-            font-size:10px;
-    }
-}
-/* 画面サイズが400〜767はこれ(ipadは768なので入れない) */
-@media screen and (min-width:400px) and ( max-width:767px) {
-    .partyStatusTableFont{
-            font-size:11px;
-    }
-
-}
-.stCol {
-    width:10%;
-    border-left: 1px solid #faf0b4;
-}
-
     </style>
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     <script type="text/javascript"
