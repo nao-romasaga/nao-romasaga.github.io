@@ -340,9 +340,9 @@ html {
 }
 .bg-item {
     background:
-    url(./img/bg_item_left.png) left / 70px 100% no-repeat,
-    url(./img/bg_item_right.png) right / 70px 100% no-repeat,
-    url(./img/bg_item_center.png) center / calc(100% - 138px) 100% no-repeat;
+    url(http://romasagatool.com/img/bg_item_left.png) left / 70px 100% no-repeat,
+    url(http://romasagatool.com/img/bg_item_right.png) right / 70px 100% no-repeat,
+    url(http://romasagatool.com/img/bg_item_center.png) center / calc(100% - 138px) 100% no-repeat;
     color: #faf0b4;
     padding: 6px 0px;
 }
