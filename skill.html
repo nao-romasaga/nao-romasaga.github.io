@@ -75,6 +75,15 @@
             .weaponIconTd {
                 width: 40px;
                 position:relative
+            }
+            .skill-name {
+                margin: 10px 0px; font-size: 20px;                
+            }
+            /* 画面サイズ330より小さい場合 */
+            @media screen and (max-width:330px) {
+                .skill-name {
+                    font-size: 15px;
+                }
             }            
             /* 440pxより大きい画面の場合 */
             @media (min-width: 440px) {
@@ -327,10 +336,11 @@
                                     <div class="ICON_AREA_IMG1 width-100" style="position: absolute; left: -5px; bottom: 0px;"></div>
                                 </td>
                                 <td style="text-align: left;line-height: 10px;position: relative;">
-                                    <p class="text-left SKILL_NAME_CLASS" style="margin: 10px 0px; font-size: 20px;"></p>
+                                    <p class="text-left skill-name"></p>
                                     <span class="IRYOKU_AREA" style="background: black;font-size: 8px; padding: 0px 10px; border-radius: 5px;"></span>
                                 </td>
-                                <td class="text-right small skillKakuseiArea" style="position: relative;">
+                                <td class="IRYOKU_TD d-none d-sm-table-cell text-right" style="width:150px; padding-right:5px"></td>
+                                <td class="text-right small skillKakuseiArea" style="position: relative; width:40px">
                                     <span class="icon_back_default" style="position: absolute; top: 5px; right: 0; background-size: 40px;">
                                         <span class="KAKUSEI_CLASS" style="width:40px;height:40px; display: inline-block; background-size: contain;">　</span>
                                     </span>
@@ -343,7 +353,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan=2>
+                                <td colspan=3>
                                     <div class="text-left" style="font-size: 13px; position: relative;">
                                         <span class="ICON_AREA_IMG2"></span>
                                         <span class="ICON_AREA_TEXT"></span>　</div>
