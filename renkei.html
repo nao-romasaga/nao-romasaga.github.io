@@ -126,7 +126,8 @@
                     let name = SKILL_LIST[random]['Name'];
                     let renkei = (i < 5) ? SKILL_LIST[random]['RushPrefix'] : SKILL_LIST[random]['RushSuffix'];
                     $(`#name${i}`).html(name);
-                    $(`#img${i}`).attr("style", `background : url(./img/style_cutin/${illustId}.png) no-repeat; background-size: contain; background-position:right; height: 55px;`);
+                    var imgPath = getImgPath(`style_cutin/${illustId}.png`);
+                    $(`#img${i}`).attr("style", `background : url(${imgPath}) no-repeat; background-size: contain; background-position:right; height: 55px;`);
                     $("#renkeiName").append(renkei);
                     return true;
                 }
