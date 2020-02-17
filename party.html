@@ -311,17 +311,7 @@
                 </div>
             </div>
 
-            <div class="isLogin d-none">
-                <div class="card">
-                    <div class="card-header bg-warning"><i class="fas fa-paper-plane"></i> 上限更新報告 募集中</div>
-                    <div class="card-body">
-                        スタイルは上限は仮設定のものも存在します。<br>
-                        上限を超えた場合は<a
-                            href='https://twitter.com/intent/tweet?text=キャラ/スタイル:XXXXの[腕力]がクエスト:XXXXで上限を超えました&screen_name=nao_romasaga_rs&hashtags=ロマサガRSステ上限報告'><i
-                                class="fab fa-twitter"></i> @nao_romasaga_rsのメンションをつけて画像付きツイート</a>で報告いただけますと助かります。<br>
-                    </div>
-                </div>
-            </div>
+
 <!------------------------------------------>
 <div class="initialHide d-none filter-bgcolor text-center small row" style="width:100%; margin: 0px;" id="QUEST_CHOISE">
     <ul class="nav text-center width-100" style="margin-bottom: 5px;">
@@ -329,9 +319,9 @@
     </ul>
     <ul class="nav text-center width-100" style="margin-bottom: 20px;">
         <li class="col-6 col-sm-4 col-lg-3" style="margin-bottom: 10px;"><button class="icon_btn_on baseDispChange text-nowrap width-100" data-id="4">G1〜G2</button></li>
-        <li class="col-6 col-sm-4 col-lg-3"><button class="icon_btn_off baseDispChange text-nowrap width-100" data-id="3">VH14〜VH15</button></li>
-        <li class="col-6 col-sm-4 col-lg-3"><button class="icon_btn_off baseDispChange text-nowrap width-100" data-id="2">VHG1〜VH13</button></li>
-        <li class="col-6 col-sm-4 col-lg-3"><button class="icon_btn_off baseDispChange text-nowrap width-100" data-id="1">VH10〜VH12</button></li>
+        <li class="col-6 col-sm-4 col-lg-3" style="margin-bottom: 10px;"><button class="icon_btn_off baseDispChange text-nowrap width-100" data-id="3">VH14〜VH15</button></li>
+        <li class="col-6 col-sm-4 col-lg-3" style="margin-bottom: 10px;"><button class="icon_btn_off baseDispChange text-nowrap width-100" data-id="2">VHG1〜VH13</button></li>
+        <li class="col-6 col-sm-4 col-lg-3" style="margin-bottom: 10px;"><button class="icon_btn_off baseDispChange text-nowrap width-100" data-id="1">VH10〜VH12</button></li>
         <li class="col-6 col-sm-4 col-lg-3"><button class="icon_btn_off baseDispChange text-nowrap width-100" data-id="0">VH6〜VH9</button></li>
     </ul>
     <ul class="nav text-center width-100" style="margin-bottom: 5px;">
@@ -379,15 +369,27 @@
         <li class="col-6 col-sm-3 col-lg-2"><button class="icon_btn_off baseValue text-nowrap questpad" data-id="69">VH1415-(69)</button></li>
         <li class="col-6 col-sm-3 col-lg-2"><button class="icon_btn_off baseValue text-nowrap questpad" data-id="67">VH1411-(67)</button></li>
     </ul>
+    <ul class="nav text-center width-100" style="margin-bottom: 5px;">
+        <li class="fuchidoriWhite subtitle-long smallFont">表示オプション</li>
+    </ul>
+    <div class="col-12 col-sm-6 text-center" style="margin-bottom:10px;">
+        <button id="SHOW_ONLY_MYSTYLE" class="width-100 icon_btn_off ONLY_MYSTYLE">未所持スタイルも表示</button>
+    </div>
+    <div class="col-12 bg-common-window" id="SHOW_ONLY_MYSTYLE_INFO" style="padding: 5px; color:white; margin-bottom:10px;">
+        <a href="./stylecheck.html" class="fuchidoriBlue">スタイル所持チェッカー</a>で所持スタイルを登録すると<br>「所持スタイルのみの表示」に切り替えることができます
+    </div>
+
+    <!--
+    <div class="col-12 col-sm-6 text-center" style="margin-bottom:10px;">
+        <button id="STYLE_DISP" data-hide=false class="icon_btn_off">未選択スタイルを非表示</button>
+    </div>
+    -->
 </div>
                 <label class="badge badge-pill badge-light">　　パーティ編成　　</label><br>
                 <div class="row info-modal" style="padding:0px;">
                     <div class="text-center info-modal-header">パーティ編成</div>
                     <div class="col-12 col-sm-6 text-center" style="margin-bottom:10px;">
                         <button id="PARTY_RESET" class="icon_btn_red">　パーティ全解除　</button>
-                    </div>
-                    <div class="col-12 col-sm-6 text-center" style="margin-bottom:10px;">
-                        <button id="STYLE_DISP" data-hide=false class="icon_btn_off">未選択スタイルを非表示</button>
                     </div>
                     <div class="col-12" style="border-bottom: 1px dashed gray"></div>
                     <span id="PARTY" class="width-100"></span>
@@ -400,6 +402,17 @@
             <script>
                 (adsbygoogle = window.adsbygoogle || []).push({});
             </script>
+            <div class="isLogin d-none">
+                <div class="card">
+                    <div class="card-header bg-warning"><i class="fas fa-paper-plane"></i> 上限更新報告 募集中</div>
+                    <div class="card-body">
+                        スタイルは上限は仮設定のものも存在します。<br>
+                        上限を超えた場合は<a
+                            href='https://twitter.com/intent/tweet?text=キャラ/スタイル:XXXXの[腕力]がクエスト:XXXXで上限を超えました&screen_name=nao_romasaga_rs&hashtags=ロマサガRSステ上限報告'><i
+                                class="fab fa-twitter"></i> @nao_romasaga_rsのメンションをつけて画像付きツイート</a>で報告いただけますと助かります。<br>
+                    </div>
+                </div>
+            </div>            
             <div class="card">
                 <div class="card-header bg-primary" style="color:white">保存タイミングの変更について</div>
                 <div class="card-body">
@@ -418,7 +431,7 @@
             <div style="position:fixed; bottom:0px;" class="width-100">
                 <div style="" class="row no-gutters text-center text-nowrap">
                     <div class="col-2"><button id="FOOTER_CLOSE" class="icon_btn_negative width-100 fuchidoriWhite footer-font" style="padding:5px 0px;"><span class="FOOTER_CLOSE_ARROW">▼</span><span class="FOOTER_CLOSE_ARROW d-none">▲</span><span class="d-none d-sm-inline"> 表示切替</span></button></div>
-                    <div class="col-5"><button id="FOOTER_QUEST"  class="icon_btn_positive width-100 width-max fuchidoriWhite footer-font " style="padding:5px 0px;"><i class="fas fa-arrow-up d-none d-md-inline"></i> クエスト選択 <i class="fas fa-arrow-up"></i><br class="d-md-none"><span class="d-none d-md-inline">　</span><span class="footer-info text-nowrap d-none d-md-inline" id="NOW_QUEST">VH1523(73) (HP990) </span></button></div>
+                    <div class="col-5"><button id="FOOTER_QUEST"  class="icon_btn_positive width-100 width-max fuchidoriWhite footer-font " style="padding:5px 0px;"><i class="fas fa-arrow-up d-none d-md-inline"></i> クエスト選択 <i class="fas fa-arrow-up"></i><br class="d-md-none"><span class="d-none d-md-inline">　</span><span class="footer-info text-nowrap d-none d-md-inline" id="NOW_QUEST">G23-25(76) (HP1020) </span></button></div>
                     <div class="col-5"><button id="FOOTER_CHAR"  class="icon_btn_positive width-100 width-max fuchidoriWhite footer-font " style="padding:5px 0px;"><i class="fas fa-arrow-up d-none d-md-inline"></i> キャラ選択 <i class="fas fa-arrow-up"></i><br class="d-md-none"><span class="d-none d-md-inline">　</span><span class="footer-info text-nowrap d-none d-md-inline"><span id="NOW_PARTYNUM">0</span>体 編成中</span></button></div>
                 </div>
                 <div class="width-100 bg-simple small text-center" style="height:80px;" id="FOOTER_PARTY">
@@ -678,7 +691,7 @@
     </table>
     <!-- テンプレート(スタイル別上限) -->
     <table>
-        <tr class="text-center d-none inputArea limitFont" id="LIMIT_TEMPLATE">
+        <tr class="text-center d-none limitFont" id="LIMIT_TEMPLATE">
             <td class="ICON_TD carousel" colspan="2"></td>
             <td class="STR stCol"></td>
             <td class="VIT stCol"></td>
