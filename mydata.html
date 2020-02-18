@@ -46,7 +46,7 @@
         <script src="./js/data_CHARMASTER.js"></script>
         <script src="./js/data_STYLEMASTER_style.js"></script>
         <script src="./js/Firebase.js"></script>
-        <script src="./js/utils.js" ></script>
+        <script src="./js/utils2.js" ></script>
         <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
 
         <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
@@ -64,7 +64,7 @@
                 <div class="text-center">
                     <a href="https://www.jp.square-enix.com/saga_reuniverse/" target="new"><img src="./img/cmn_logo01_sp.png" class="col-sm-12 col-md-8 col-lg-6"></a>
                 </div>
-                <h3 class="text-center title-text changeBase" data-base=0>周回適正キャラチェック</h3>
+                <h3 class="text-center title-text">周回適正キャラチェック</h3>
                 <p class="text-right opacity"><small>バグ発見、ご要望は <a href="https://peing.net/ja/nao_romasaga_rs" target="new">質問箱</a>まで</small>
                 </p>
                 <div id="firebaseui-auth-container" style="margin-bottom:10px;"></div>
@@ -75,35 +75,36 @@
                 </div>
                 <br>
                 <div class="noLogin opacity kadomaru bg-danger text-white"><i class="fas fa-exclamation-triangle"></i>本機能はログイン必須です<br>Twitterログインを行い、<a href="./style.html" style="color:lightskyblue">キャラ+スタイル詳細</a>あるいは<a href="./party.html" style="color:lightskyblue">ステータス上限チェック</a>で所持しているキャラクターのステータスを入力した後からご利用できます。</div>
-                <div class="card">
-                        <div class="card-header bg-primary text-white"><i class="fas fa-info-circle"></i> 機能説明</div>
-                        <div class="card-body style-bgcolor" style="padding:10px">
-                            この機能は「手持ちのスタイルで周回する際にどのクエストをどのスタイルで回るのが良いか」を調べる機能です<br>
-                            したがって、未所持のスタイルをこの機能で表示するのは不適切であるため<a href="./stylecheck.html">スタイル所持チェッカー</a>と連動して未所持のスタイルは表示ていません<br>
-                            <hr>
-                            ==凡例==<br>
-                            <table border="1">
-                                <tr>
-                                    <td style="text-align: center; background-color: lightslategray; color: white">x</td><td>選択中のクエストではもう成長しない<span class="d-none d-md-inline">ステータス。より高難度クエストに行くことを推奨します</span></td>
-                                </tr>
-                                <tr>
-                                    <td style="background-color: pink; border: solid black 1px">　</td><td>選択中のクエストでは成長しにくい<span class="d-none d-md-inline">ステータス。より高難度クエストに行くことを推奨します</span></td>
-                                </tr>
-                                <tr>
-                                    <td style="background-color: palegreen; border: solid black 1px">　</td><td>選択中のクエストで成長しやすい<span class="d-none d-md-inline">ステータス。選択中のクエストを周回することを推奨します</span></td>
-                                </tr>
-                                <tr>
-                                    <td style="background-color: white; border: solid black 1px">　</td><td>選択中のクエストより低難度クエストでも成長しやすい<span class="d-none d-md-inline">ステータス。無理に高難度で周回する必要はありません</span></td>
-                                </tr>
-                                <tr>
-                                    <td style="background-color: white; border: solid black 1px">??</td><td>対象のステータスの上限値が不明です</td>
-                                </tr>
-                                <tr>
-                                    <td style=""></td><td>Q. キャラが表示されない<br>A. 合計が1未満<span class="d-none d-md-inline">のキャラ</span>は表示されません</td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>                
+
+                <div class="info-modal">
+                    <div class="text-center info-modal-header"><i class="fas fa-info-circle"></i> 機能説明</div>
+                    この機能は「手持ちのスタイルで周回する際にどのクエストをどのスタイルで回るのが良いか」を調べる機能です<br>
+                    したがって、未所持のスタイルをこの機能で表示するのは不適切であるため<a href="./stylecheck.html">スタイル所持チェッカー</a>と連動して未所持のスタイルは表示ていません<br>
+                    <hr>
+                    ==凡例==<br>
+                    <table border="1">
+                        <tr>
+                            <td style="text-align: center; background-color: lightslategray; color: white">x</td><td>選択中のクエストではもう成長しない<span class="d-none d-md-inline">ステータス。より高難度クエストに行くことを推奨します</span></td>
+                        </tr>
+                        <tr>
+                            <td style="background-color: pink; border: solid black 1px">　</td><td>選択中のクエストでは成長しにくい<span class="d-none d-md-inline">ステータス。より高難度クエストに行くことを推奨します</span></td>
+                        </tr>
+                        <tr>
+                            <td style="background-color: palegreen; border: solid black 1px">　</td><td>選択中のクエストで成長しやすい<span class="d-none d-md-inline">ステータス。選択中のクエストを周回することを推奨します</span></td>
+                        </tr>
+                        <tr>
+                            <td style="background-color: white; border: solid black 1px">　</td><td>選択中のクエストより低難度クエストでも成長しやすい<span class="d-none d-md-inline">ステータス。無理に高難度で周回する必要はありません</span></td>
+                        </tr>
+                        <tr>
+                            <td style="background-color: white; border: solid black 1px">??</td><td>対象のステータスの上限値が不明です</td>
+                        </tr>
+                        <tr>
+                            <td style=""></td><td>Q. キャラが表示されない<br>A. 合計が1未満<span class="d-none d-md-inline">のキャラ</span>は表示されません</td>
+                        </tr>
+                    </table>
+                </div>
+
+
                 <!-- ツール_周回適正_top -->
                 <ins class="adsbygoogle"
                     style="display:block"
