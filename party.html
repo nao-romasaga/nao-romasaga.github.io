@@ -373,25 +373,31 @@
         <li class="fuchidoriWhite subtitle-long smallFont">表示オプション</li>
     </ul>
     <div class="col-12 col-sm-6 text-center" style="margin-bottom:10px;">
-        <button id="SHOW_ONLY_MYSTYLE" class="width-100 icon_btn_off ONLY_MYSTYLE">未所持スタイルも表示</button>
+        <button id="SHOW_ONLY_MYSTYLE" class="width-100 icon_btn_off ONLY_MYSTYLE">スタイル所持チェッカー連動OFF</button>
+    </div>
+    <div class="col-12 col-sm-6 text-center" style="margin-bottom:10px;">
+        <button id="SHOW_SIMPLE_DISPLAY" class="width-100 icon_btn_off ">シンプル表示<span class='d-none d-sm-inline'>に切り替え</span></button>
+    </div>
+    <div class="col-12 col-sm-6 text-center" style="margin-bottom:10px;">
+        <button id="SHOW_ONLY_CHOISE" class="width-100 icon_btn_off ">選択中スタイルのみ表示<span class='d-none d-sm-inline'>に切り替え</span></button>
+    </div>
+    <div class="col-12 text-center" style="margin-bottom:10px;">
+        <a href="./stylecheck.html" class="icon_btn_positive fuchidoriWhite"><span class="d-none d-sm-inline">スタイル所持チェッカーで</span>所持スタイルを登録する</a>
     </div>
     <div class="col-12 bg-common-window" id="SHOW_ONLY_MYSTYLE_INFO" style="padding: 5px; color:white; margin-bottom:10px;">
         <a href="./stylecheck.html" class="fuchidoriBlue">スタイル所持チェッカー</a>で所持スタイルを登録すると<br>「所持スタイルのみの表示」に切り替えることができます
     </div>
 
-    <!--
-    <div class="col-12 col-sm-6 text-center" style="margin-bottom:10px;">
-        <button id="STYLE_DISP" data-hide=false class="icon_btn_off">未選択スタイルを非表示</button>
-    </div>
-    -->
 </div>
                 <label class="badge badge-pill badge-light">　　パーティ編成　　</label><br>
                 <div class="row info-modal" style="padding:0px;">
-                    <div class="text-center info-modal-header">パーティ編成</div>
-                    <div class="col-12 col-sm-6 text-center" style="margin-bottom:10px;">
+                    <div class="text-center info-modal-header" style="position:relative;">
+                        パーティ編成
+                        <button id="PARTY_RESET" class="icon_btn_red d-none d-sm-inline" style="position: absolute; right:0px; top:0px;">　パーティ全解除　</button>
+                    </div>
+                    <div class="col-12 text-center d-sm-none" style="margin-bottom:10px; border-bottom: 1px dashed gray">
                         <button id="PARTY_RESET" class="icon_btn_red">　パーティ全解除　</button>
                     </div>
-                    <div class="col-12" style="border-bottom: 1px dashed gray"></div>
                     <span id="PARTY" class="width-100"></span>
                 </div>
             </div>
@@ -445,9 +451,9 @@
     <!-- ============================= -->
     <!-- ==  テンプレート             == -->
     <!-- ============================= -->
-    <div class="d-none charTableParent row" id="CHAR_TEMPLATE_PARENT" style="margin:0px; padding: 10px;">
-        <div class="col-2 CHAR_DOT text-right" style="margin-bottom:0px"></div>
-        <div class="col-10 row small">
+    <div class="d-none charTableParent row" id="CHAR_TEMPLATE_PARENT" style="margin:0px; padding: 0px 10px;">
+        <div class="col-2 CHAR_DOT text-right SIMPLE_HIDE" style="margin-bottom:0px"></div>
+        <div class="col-10 row small SIMPLE_HIDE">
             <div class="col-12 fukidashi-left text-left ">
                 合計ステータス:<span class="SUM"></span>
                 <span class="d-none d-lg-inline">(AVG:<span class="AVG"></span>)</span>
