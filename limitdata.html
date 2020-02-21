@@ -42,7 +42,7 @@
         <script src="https://www.gstatic.com/firebasejs/ui/3.5.2/firebase-ui-auth__ja.js"></script>
         <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
         <script src="./js/Firebase.js"></script>
-        <script src="./js/utils.js" ></script>
+        <script src="./js/utils2.js" ></script>
         <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
         <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -71,75 +71,90 @@
                 data-full-width-responsive="true"></ins>
                 <script>
                 (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>                
-                <label class="badge badge-pill badge-light">絞り込み</label>
-                <div class="style-bgcolor text-center small row" style="width:100%; margin: 0px;">
-                    <ul class="nav text-center width-100">
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="剣" href="#icon_ken"><span class="icon_mini icon_ken" onclick=""></span></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="大剣" href="#icon_dken"><span class="icon_mini icon_dken" onclick=""></span></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="斧" href="#icon_ono"><span class="icon_mini icon_ono" onclick=""></span></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="棍棒" href="#icon_kon"><span class="icon_mini icon_kon" onclick=""></span></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="体術" href="#icon_tai"><span class="icon_mini icon_tai" onclick=""></span></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="銃" href="#icon_ju"><span class="icon_mini icon_ju" onclick=""></span></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="小剣" href="#icon_sken"><span class="icon_mini icon_sken" onclick=""></span></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="弓" href="#icon_yumi"><span class="icon_mini icon_yumi" onclick=""></span></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="槍" href="#icon_yari"><span class="icon_mini icon_yari" onclick=""></span></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="杖" href="#icon_tsue"><span class="icon_mini icon_tsue" onclick=""></span></a></li>
+                </script>
+                
+                <div class="filter-bgcolor text-center small row" style="width:100%; margin: 0px;">
+                    <ul class="nav text-center width-100" style="margin-bottom: 5px;">
+                        <li class="subtitle fuchidoriWhite smallFont">武器種別</li>
                     </ul>
                     <ul class="nav text-center width-100">
-                        <li class="col-2 col-sm-1 blockquote text-center"><a class="filterList pad0" data-type="SeriesFilter" href="#RS1">RS1</a></li>
-                        <li class="col-2 col-sm-1 blockquote text-center"><a class="filterList pad0" data-type="SeriesFilter" href="#RS2">RS2</a></li>
-                        <li class="col-2 col-sm-1 blockquote text-center"><a class="filterList pad0" data-type="SeriesFilter" href="#RS3">RS3</a></li>
-                        <li class="col-2 col-sm-1 blockquote text-center"><a class="filterList pad0" data-type="SeriesFilter" href="#SF1">SF1</a></li>
-                        <li class="col-2 col-sm-1 blockquote text-center"><a class="filterList pad0" data-type="SeriesFilter" href="#SF2">SF2</a></li>
-                        <li class="col-2 col-sm-1 blockquote text-center"><a class="filterList pad0" data-type="SeriesFilter" href="#US">US</a></li>
-                        <li class="col-2 col-sm-1 blockquote text-center"><a class="filterList pad0" data-type="SeriesFilter" href="#SS">SS</a></li>
-                        <li class="col-2 col-sm-1 blockquote text-center"><a class="filterList pad0" data-type="SeriesFilter" href="#ES">ES</a></li>
-                        <li class="col-2 col-sm-1 blockquote text-center"><a class="filterList pad0" data-type="SeriesFilter" href="#RSR">RSR</a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="剣" data-href="icon_ken"><span class="icon_mini fButton icon_ken" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="大剣" data-href="icon_dken"><span class="icon_mini fButton icon_dken" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="斧" data-href="icon_ono"><span class="icon_mini fButton icon_ono" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="棍棒" data-href="icon_kon"><span class="icon_mini fButton icon_kon" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="体術" data-href="icon_tai"><span class="icon_mini fButton icon_tai" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="銃" data-href="icon_ju"><span class="icon_mini fButton icon_ju" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="小剣" data-href="icon_sken"><span class="icon_mini fButton icon_sken" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="弓" data-href="icon_yumi"><span class="icon_mini fButton icon_yumi" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="槍" data-href="icon_yari"><span class="icon_mini fButton icon_yari" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="杖" data-href="icon_tsue"><span class="icon_mini fButton icon_tsue" onclick=""></span></a></li>
+                    </ul>
+                    <ul class="nav text-center width-100" style="margin-bottom: 5px;">
+                        <li class="fuchidoriWhite subtitle smallFont">シリーズ</li>
                     </ul>
                     <ul class="nav text-center width-100">
-                        <li class="col-2 col-sm-1 blockquote text-center"><a class="filterList pad0" data-type="RareFilter" href="#SS"><img src="./img/icon/icon_SS.png" width="40"></a></li>
-                        <li class="col-2 col-sm-1 blockquote text-center"><a class="filterList pad0" data-type="RareFilter" href="#S"><img src="./img/icon/icon_S.png" width="40"></a></li>
-                        <li class="col-2 col-sm-1 blockquote text-center"><a class="filterList pad0" data-type="RareFilter" href="#A"><img src="./img/icon/icon_A.png" width="40"></a></li>
-                    </ul>                        
+                        <li class="col-4 col-sm-2 margin-bottom5 text-center"><a class="filterList pad0" data-type="SeriesFilter" data-href="RS1"><img src="http://romasagatool.com/img/icon/icon_rs1.png" class="width-100 fButton"></a></li>
+                        <li class="col-4 col-sm-2 margin-bottom5 text-center"><a class="filterList pad0" data-type="SeriesFilter" data-href="RS2"><img src="http://romasagatool.com/img/icon/icon_rs2.png" class="width-100 fButton"></a></li>
+                        <li class="col-4 col-sm-2 margin-bottom5 text-center"><a class="filterList pad0" data-type="SeriesFilter" data-href="RS3"><img src="http://romasagatool.com/img/icon/icon_rs3.png" class="width-100 fButton"></a></li>
+                        <li class="col-4 col-sm-2 margin-bottom5 text-center"><a class="filterList pad0" data-type="SeriesFilter" data-href="SF1"><img src="http://romasagatool.com/img/icon/icon_sf1.png" class="width-100 fButton"></a></li>
+                        <li class="col-4 col-sm-2 margin-bottom5 text-center"><a class="filterList pad0" data-type="SeriesFilter" data-href="SF2"><img src="http://romasagatool.com/img/icon/icon_sf2.png" class="width-100 fButton"></a></li>
+                        <li class="col-4 col-sm-2 margin-bottom5 text-center"><a class="filterList pad0" data-type="SeriesFilter" data-href="US"><img src="http://romasagatool.com/img/icon/icon_us.png" class="width-100 fButton"></a></li>
+                        <li class="col-4 col-sm-2 margin-bottom5 text-center"><a class="filterList pad0" data-type="SeriesFilter" data-href="SS"><img src="http://romasagatool.com/img/icon/icon_ss.png" class="width-100 fButton"></a></li>
+                        <li class="col-4 col-sm-2 margin-bottom5 text-center"><a class="filterList pad0" data-type="SeriesFilter" data-href="ES"><img src="http://romasagatool.com/img/icon/icon_es.png" class="width-100 fButton"></a></li>
+                        <li class="col-4 col-sm-2 margin-bottom5 text-center"><a class="filterList pad0" data-type="SeriesFilter" data-href="RSR"><img src="http://romasagatool.com/img/icon/icon_rsr.png" class="width-100 fButton"></a></li>
+                    </ul>
+                    <ul class="nav text-center width-100" style="margin-bottom: 5px;">
+                        <li class="fuchidoriWhite subtitle smallFont">レアリティ</li>
+                    </ul>
+                    <ul class="nav text-center width-100">
+                        <li class="col-2 col-sm-1 margin-bottom5 text-center"><a class="filterList pad0" data-type="RareFilter" data-href="SS"><img src="http://romasagatool.com/img/icon/icon_SS.png" width="40" class="fButton"></a></li>
+                        <li class="col-2 col-sm-1 margin-bottom5 text-center"><a class="filterList pad0" data-type="RareFilter" data-href="S"><img src="http://romasagatool.com/img/icon/icon_S.png" width="40" class="fButton"></a></li>
+                        <li class="col-2 col-sm-1 margin-bottom5 text-center"><a class="filterList pad0" data-type="RareFilter" data-href="A"><img src="http://romasagatool.com/img/icon/icon_A.png" width="40" class="fButton"></a></li>
+                    </ul>                    
+                    <ul class="nav text-center width-100" style="margin-bottom: 5px;">
+                        <li class="fuchidoriWhite subtitle smallFont">表示切り替え</li>
+                    </ul>
+                    <ul class="nav text-center width-100">
+                        <li class="col-6 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="width-100 icon_btn_on dispCol" data-id="base">素ステ</button></li>
+                        <li class="col-6 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="width-100 icon_btn_on dispCol" data-id="val">最大ステ</button></li>
+                        <li class="col-6 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="width-100 icon_btn_on dispCol" data-id="per">SLv50補正</button></li>
+    
+                    </ul>                    
                 </div>
-                <br>
+                <!--
                 <label class="badge badge-pill badge-light" id="styleLabel">ステータス上限切り替え</label>
                 <div class="style-bgcolor text-center small row" style="width:100%; margin: 0px;">
-                    <div class="col-6 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_on baseValue" data-id="45" style="width:100%; background-size: 100% 100%;">VH6以前(±0)</button></div>
-                    <div class="col-6 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_on baseValue" data-id="48" style="width:100%; background-size: 100% 100%;">VH7(+3)</button><br></div>
-                    <div class="col-6 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_on baseValue" data-id="51" style="width:100%; background-size: 100% 100%;">VH8(+6)</button></div>
-                    <div class="col-6 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_on baseValue" data-id="54" style="width:100%; background-size: 100% 100%;">VH9(+9)</button></div>
-                    <div class="col-6 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_on baseValue" data-id="56" style="width:100%; background-size: 100% 100%;">VH10(+11)</button></div>
-                    <div class="col-6 col-sm-6 col-lg-3" style="margin-bottom:10px;"><button class="icon_btn_on baseValue" data-id="58" style="width:100%; background-size: 100% 100%;">VH11,聖石10(+13)</button></div>
-                    <div class="col-6 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_on baseValue" data-id="60" style="width:100%; background-size: 100% 100%;">VH12(+15)</button></div>
-                    <div class="col-6 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_on baseValue" data-id="63" style="width:100%; background-size: 100% 100%;">外伝2(+18)</button></div>
-                    <div class="col-6 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_on baseValue" data-id="66" style="width:100%; background-size: 100% 100%;">VH13(+21)</button></div>
-                    <div class="col-6 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_on baseValue" data-id="70" style="width:100%; background-size: 100% 100%;">VH14(+25)</button></div>
-                    <div class="col-6 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_off baseValue" data-id="73" style="width:100%; background-size: 100% 100%;">VH15(+28)</button></div>
+                    <div class="col-6 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_on baseValue" data-id="45">VH6以前(±0)</button></div>
+                    <div class="col-6 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_on baseValue" data-id="48">VH7(+3)</button><br></div>
+                    <div class="col-6 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_on baseValue" data-id="51">VH8(+6)</button></div>
+                    <div class="col-6 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_on baseValue" data-id="54">VH9(+9)</button></div>
+                    <div class="col-6 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_on baseValue" data-id="56">VH10(+11)</button></div>
+                    <div class="col-6 col-sm-6 col-lg-3" style="margin-bottom:10px;"><button class="icon_btn_on baseValue" data-id="58">VH11,聖石10(+13)</button></div>
+                    <div class="col-6 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_on baseValue" data-id="60">VH12(+15)</button></div>
+                    <div class="col-6 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_on baseValue" data-id="63">外伝2(+18)</button></div>
+                    <div class="col-6 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_on baseValue" data-id="66">VH13(+21)</button></div>
+                    <div class="col-6 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_on baseValue" data-id="70">VH14(+25)</button></div>
+                    <div class="col-6 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_off baseValue" data-id="73">VH15(+28)</button></div>
                 </div>
-                <br>
-                <label class="badge badge-pill badge-light" id="styleLabel">表示切り替え</label>
-                <div class="style-bgcolor text-center small row" style="width:100%; margin: 0px;">
-                    <div class="col-6 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_on dispCol" data-id="base" style="width:100%; background-size: 100% 100%;">素ステ</button></div>
-                    <div class="col-6 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_on dispCol" data-id="val" style="width:100%; background-size: 100% 100%;">最大ステ</button><br></div>
-                    <div class="col-6 col-sm-3 col-lg-2" style="margin-bottom:10px;"><button class="icon_btn_on dispCol" data-id="per" style="width:100%; background-size: 100% 100%;">SLv50補正</button></div>
-                </div>    
+                -->
+                <div class="width-max">
+                <label class="badge badge-pill badge-light">%で表示されているのはスタイルレベル50時の補正値です</label>
+                <div id="example-table-display" class="text-center">
+                    <div id="example-table" style="width:402px"></div>
+                </div>            
+                <!-- ツール_ステ上限_btm -->
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-5008373409434899"
+                    data-ad-slot="2543775190"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+                </div>
             </div>
-            <label class="badge badge-pill badge-light">%で表示されているのはスタイルレベル50時の補正値です</label>
-            <div id="example-table-display" class="text-center">
-                <div id="example-table" style="width:402px"></div>
-            </div>
-            <!-- ツール_ステ上限_btm -->
-            <ins class="adsbygoogle"
-                style="display:block"
-                data-ad-client="ca-pub-5008373409434899"
-                data-ad-slot="2543775190"
-                data-ad-format="auto"
-                data-full-width-responsive="true"></ins>
-            <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
+
         </div>
         <script src="./js/data_STYLEMASTER_style.js" ></script>
         <script src="./js/data_CHARMASTER.js" ></script>
