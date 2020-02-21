@@ -328,7 +328,7 @@
                 </script>
                 <br>
                 <button class="skill_select bg-simple row width-100 d-none" id="SKILL_TEMPLATE" style="margin-left:0px !important;">
-                    <div class="col-12 col-md-7">
+                    <div class="col-12 col-md-8">
                         <table class="width-100">
                             <tr>
                                 <td class="weaponIconTd" rowspan=2>
@@ -336,10 +336,12 @@
                                     <div class="ICON_AREA_IMG1 width-100" style="position: absolute; left: -5px; bottom: 0px;"></div>
                                 </td>
                                 <td style="text-align: left;line-height: 10px;position: relative;">
-                                    <p class="text-left skill-name"></p>
-                                    <span class="IRYOKU_AREA" style="background: black;font-size: 8px; padding: 0px 10px; border-radius: 5px;"></span>
+                                    <p class="text-nowrap text-left skill-name"></p>
+                                    <span class="IRYOKU_AREA d-sm-none" style="background: black;font-size: 8px; padding: 0px 10px; border-radius: 5px;"></span>
                                 </td>
-                                <td class="IRYOKU_TD d-none d-sm-table-cell text-right" style="width:150px; padding-right:5px"></td>
+                                <td class="d-none d-sm-table-cell text-right" style="width:120px; padding-right:5px">
+                                    <div class="IRYOKU_TD"></div>
+                                </td>
                                 <td class="text-right small skillKakuseiArea" style="position: relative; width:40px">
                                     <span class="icon_back_default" style="position: absolute; top: 5px; right: 0; background-size: 40px;">
                                         <span class="KAKUSEI_CLASS" style="width:40px;height:40px; display: inline-block; background-size: contain;">　</span>
@@ -353,16 +355,21 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan=3>
+                                <td>
                                     <div class="text-left" style="font-size: 13px; position: relative;">
                                         <span class="ICON_AREA_IMG2"></span>
                                         <span class="ICON_AREA_TEXT"></span>　</div>
+                                </td>
+                                <td class="d-none d-sm-table-cell text-right" style="padding-right: 5px;">
+                                    <span class="IRYOKU_AREA" style="background: black;font-size: 14px; padding: 0px 10px; border-radius: 10px; border: 1px solid;"></span>
                                 </td>
                             </tr>
                         </table>
                     </div>
                     <div class="col-12 d-md-none"><div style="width:100%; border: 1px solid rgba(152,137,106,1); margin-bottom:1px;"></div></div>
-                    <div class="col-12 col-md-5 iconClass holderStyleArea text-left" style="line-height: 0px; height:60px; overflow-y: scroll;"></div>
+                    <div class="col-12 col-md-4">
+                        <div class="iconClass holderStyleArea text-left" style="line-height: 0px; height:60px; overflow-x: scroll; overflow-y: hidden; white-space:nowrap;"></div>
+                    </div>
                 </button>
                 <div class="selectJoken">
                     <label id="SKILLTOP"  class="badge badge-pill badge-light">技・術の表示順</label>
