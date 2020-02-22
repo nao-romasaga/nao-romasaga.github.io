@@ -56,8 +56,7 @@
         <link rel="stylesheet" href="./css/bootstrap/bootstrap.min.css">
         <script src="./js/bootstrap/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <link rel="stylesheet" type="text/css" href="./css/style.css">
-        <link rel="stylesheet" type="text/css" href="./css/accordion.css">
+        <link rel="stylesheet" type="text/css" href="./css/style2.css">
         
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
@@ -66,29 +65,32 @@
         <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
 
         <script src="./js/Firebase.js"></script>
-        <script src="./js/utils.js" ></script>
-        
+        <script src="./js/utils2.js" ></script>
         <script src="./js/style.js" ></script>
         <script src="./js/culcStyleBonus.js" ></script>
         <script src="./js/damage.js" ></script>
         <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
-        <script type="text/javascript" src="js/jquery.sliderPro.js"></script>
-        <link rel="stylesheet" type="text/css" href="css/slider-pro.min.css">
-        <!--
-        <script src="./js/radarChart.js" charset="utf-8"></script>
-        -->
         <style>
-            /* スライド下のページャーの設定 */
-            .sp-buttons { padding-top: 40px; }
-            .sp-button { width: 30px; height: 10px; border: none; margin: 7px; background: white; }
-            .sp-selected-button { background: #000; }
-            @media only screen and (min-width: 768px) and (max-width: 1024px) { .xs-show { display:none; } .xs-hide { display:block; } }
-            @media only screen and (min-width: 568px) and (max-width: 768px) { .sp-button { width: 25px; height: 18px; } }
+            .auto-info {
+                position: absolute;
+                width: 20px;
+                top: calc(50% - 10px);
+                right: 20px;                
+            }
+            .weaponIconTd {
+                width:50px;
+            }
+            .headerCol {
+                font-size: 18px;
+            }
+            .headerMaxCol{
+                font-size: 17px;
+            }
             .paramLabel{
                 background-color: papayawhip;
             }
             .paramHead{
-                background-color: lightyellow;
+                /*background-color: lightyellow;*/
             }
             .paramCell2{
                 width:8%;
@@ -105,6 +107,205 @@
             .border-top {
                 border-top: 2px groove;
             }
+            .icon_ind1{
+                width:8px;
+            }
+            .icon_ind2, .icon_ind3{
+                width:12px;
+            }
+            .odd-row .val {
+                font-size:12px;
+            }
+            .odd-row .per {
+                font-size:10px;
+            }
+            .odd-row .bonus {
+                font-size:8px;
+                color:lightblue;
+            }
+            .status-row {
+                line-height: 20px;
+            }
+            .fukidashi-parent {
+                padding-left:  calc(50% + 25px);;
+            }
+            .gacha-fukidashi {
+                text-align: center;
+                background: url(https://romasagatool.com/img/icon/fukidashi_left_wide.png) no-repeat;
+                background-size: contain;
+                padding: 4px 2px 0px 10px;
+                width: 140px;
+                height: 60px;
+                display: table-cell;
+                vertical-align: middle;
+                font-size: 8px;
+                position: relative;
+                z-index: 3;
+                top: 55px;
+            }
+            .style-name-area {
+                position: absolute;
+                top: 10px;
+                width: calc(100% - 50px);         
+            }
+            .style-another-name {
+                font-size: 12px;
+            }
+            .style-name {
+                font-size: 17px;
+            }
+            .skill-text {
+                border-bottom: 1px solid #faf0b4;
+                margin: 0px 5px 0px 5px;
+                padding: 5px;
+                font-size: 8px;
+                color: white;
+            }
+            /* 画面サイズ340まで */
+            @media screen and (max-width:330px) {
+                .icon_ind2, .icon_ind3{
+                    width:10px;
+                }
+                .smallTableFont {
+                    font-size:10px
+                }
+                .odd-row .bonus {
+                    display: block;
+                }                
+            }
+            /* 画面サイズ767(ipadの768は含まない)まで */
+            @media screen and (max-width:767px) {
+                .status-row {
+                    line-height: 15px;
+                }
+                .icon_ind2, .icon_ind3{
+                    width:10px;
+                }
+                .smallTableFont {
+                    font-size:12px
+                }
+                .style-name-area {
+                    top: 20px;
+                }
+                .style-another-name {
+                    font-size: 15px;
+                }
+                .style-name {
+                    font-size: 20px;
+                }
+                .style-name-area {
+                    top: 10px;
+                }
+                .style-another-name {
+                    font-size: 12px;
+                }
+                .style-name {
+                    font-size: 17px;
+                }
+                .odd-row .bonus {
+                    display: block;
+                }   
+            }
+            /* 画面サイズ767(ipadの768を含む)より大きい場合 */
+            @media screen and (min-width:767px) {
+                .odd-row .val {
+                    font-size:15px;
+                }
+                .odd-row .per {
+                    font-size:12px;
+                }
+                .odd-row .bonus {
+                    font-size:12px;
+                }
+            }
+            /* ipad 横向きの場合*/
+            @media screen and (min-width:768px) and (max-width:1024px){
+                .odd-row .val {
+                    font-size:15px;
+                }
+                .odd-row .per {
+                    font-size:12px;
+                }
+                .odd-row .bonus {
+                    font-size:12px;
+                }
+                .style-name-area {
+                    top: 20px;
+                }
+                .style-another-name {
+                    font-size: 12px;
+                }
+                .style-name {
+                    font-size: 17px;
+                }                
+            }
+            /* PC(1024を超える)場合 */
+            @media screen and (min-width:1025px) {
+                .odd-row .val {
+                    font-size:15px;
+                }
+                .odd-row .per {
+                    font-size:10px;
+                }
+                .odd-row .bonus {
+                    display: block;
+                    font-size:10px;
+                }
+                .status-row {
+                    white-space: nowrap;
+                }
+                .style-name-area {
+                    top: 20px;
+                }
+                .style-another-name {
+                    font-size: 15px;
+                }
+                .style-name {
+                    font-size: 20px;
+                }
+            }
+            .status-window-row {
+                border-bottom: 1px solid gray;                
+            }
+            #styleImageBox {
+                position: absolute; z-index:1;
+                width:100%; height:100%;
+            }
+            .status-tab {
+                color: rgb(250, 240, 180);
+                width: 30%;
+                text-align: center;
+                font-size: 12px;
+            }
+            .ab-flover {
+                background: black;
+                border: 1px solid;
+                border-radius: 5px;
+                padding: 2px 10px;
+            }
+            .kakusei-bp {
+                position: absolute;
+                bottom: -15px;
+                right: 0;
+                width: 40px;
+                text-align: center;
+                font-size: 8px;                
+            }
+            .skill-bp {
+                background: black;
+                font-size: 8px;
+                padding: 0px 10px;
+                border-radius: 5px;
+                border:1px solid;
+            }
+            .skill-bp2 {
+                display: inline-block;
+                width: calc(100% - 70px);
+                vertical-align: middle;
+                color:white;
+                font-size:12px;
+            }
+
         </style>        
         <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -121,7 +322,7 @@
                     <a href="https://www.jp.square-enix.com/saga_reuniverse/" target="new"><img src="./img/cmn_logo01_sp.png" class="col-sm-12 col-md-8 col-lg-6"></a>
                 </div>
                 <h3 class="text-center title-text">全キャラ スタイル一覧</h3>
-                <h5 class="text-center label-text">最終更新日: <span id="UPDATE">2020/01/29</span></h5>
+                <h5 class="text-center label-text-small width-100">最終更新日: <span id="UPDATE">2020/02/20</span></h5>
                 <p class="text-right opacity"><small>バグ発見、ご要望は <a href="https://peing.net/ja/nao_romasaga_rs" target="new">質問箱</a>まで</small>
                 </p>
                 <div id="firebaseui-auth-container" style="margin-bottom:10px;"></div>
@@ -140,58 +341,131 @@
                     data-ad-format="auto"
                     data-full-width-responsive="true"></ins>   
 
-                <label class="badge badge-pill badge-light" id="FILTER">絞り込み</label>
-                <div class="style-bgcolor text-center small row" style="width:100%; margin: 0px;">
+                <label class="badge badge-pill badge-light">絞り込み</label>
+                <div class="filter-bgcolor text-center small row" style="width:100%; margin: 0px;">
+                    <ul class="nav text-center width-100" style="margin-bottom: 5px;">
+                        <li class="subtitle fuchidoriWhite smallFont">武器種別</li>
+                    </ul>
                     <ul class="nav text-center width-100">
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" href="#icon_ken"><span class="icon_mini icon_ken" onclick=""></span></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" href="#icon_dken"><span class="icon_mini icon_dken" onclick=""></span></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" href="#icon_ono"><span class="icon_mini icon_ono" onclick=""></span></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" href="#icon_kon"><span class="icon_mini icon_kon" onclick=""></span></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" href="#icon_tai"><span class="icon_mini icon_tai" onclick=""></span></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" href="#icon_ju"><span class="icon_mini icon_ju" onclick=""></span></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" href="#icon_sken"><span class="icon_mini icon_sken" onclick=""></span></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" href="#icon_yumi"><span class="icon_mini icon_yumi" onclick=""></span></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" href="#icon_yari"><span class="icon_mini icon_yari" onclick=""></span></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" href="#icon_tsue"><span class="icon_mini icon_tsue" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_ken"><span
+                                    class="icon_mini icon_ken weapon-icon-button fButton" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_dken"><span
+                                    class="icon_mini icon_dken weapon-icon-button fButton" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_ono"><span
+                                    class="icon_mini icon_ono weapon-icon-button fButton" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_kon"><span
+                                    class="icon_mini icon_kon weapon-icon-button fButton" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_tai"><span
+                                    class="icon_mini icon_tai weapon-icon-button fButton" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_ju"><span
+                                    class="icon_mini icon_ju weapon-icon-button fButton" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_sken"><span
+                                    class="icon_mini icon_sken weapon-icon-button fButton" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_yumi"><span
+                                    class="icon_mini icon_yumi weapon-icon-button fButton" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_yari"><span
+                                    class="icon_mini icon_yari weapon-icon-button fButton" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_tsue"><span
+                                    class="icon_mini icon_tsue weapon-icon-button fButton" onclick=""></span></a></li>
+                    </ul>
+                    <ul class="nav text-center width-100" style="margin-bottom: 5px;">
+                        <li class="fuchidoriWhite subtitle smallFont">シリーズ</li>
+                    </ul>
+                    <ul class="nav text-center width-100">
+                        <li class="col-4 col-sm-2 text-center" style="margin-bottom: 5px;"><a class="filterList pad0"
+                                data-href="RS1"><img src="http://romasagatool.com/img/icon/icon_rs1.png"
+                                    class="width-100 fButton"></a></li>
+                        <li class="col-4 col-sm-2 text-center"><a class="filterList pad0" data-href="RS2"><img
+                                    src="http://romasagatool.com/img/icon/icon_rs2.png" class="width-100 fButton"></a></li>
+                        <li class="col-4 col-sm-2 text-center"><a class="filterList pad0" data-href="RS3"><img
+                                    src="http://romasagatool.com/img/icon/icon_rs3.png" class="width-100 fButton"></a></li>
+                        <li class="col-4 col-sm-2 text-center" style="margin-bottom: 5px;"><a class="filterList pad0"
+                                data-href="SF1"><img src="http://romasagatool.com/img/icon/icon_sf1.png"
+                                    class="width-100 fButton"></a></li>
+                        <li class="col-4 col-sm-2 text-center"><a class="filterList pad0" data-href="SF2"><img
+                                    src="http://romasagatool.com/img/icon/icon_sf2.png" class="width-100 fButton"></a></li>
+                        <li class="col-4 col-sm-2 text-center"><a class="filterList pad0" data-href="OTR"><img
+                                    src="http://romasagatool.com/img/icon/icon_otr.png" class="width-100 fButton"></a></li>
+                        <li class="col-4 col-sm-2 text-center"><a class="filterList pad0" data-href="RSR"><img
+                                    src="http://romasagatool.com/img/icon/icon_rsr.png" class="width-100 fButton"></a></li>
                     </ul>
                 </div>
-                <div class="text-center opacity-char-back weaponList d-none" id="_icon_ken"><h5 class="game-banner"><span class="icon_mini icon_ken"></span></h5></div>
-                <div class="text-center opacity-char-back weaponList d-none" id="_icon_dken"><h5 class="game-banner"><span class="icon_mini icon_dken"></span></h5></div>
-                <div class="text-center opacity-char-back weaponList d-none" id="_icon_ono"><h5 class="game-banner"><span class="icon_mini icon_ono"></span></h5></div>
-                <div class="text-center opacity-char-back weaponList d-none" id="_icon_sken"><h5 class="game-banner"><span class="icon_mini icon_sken"></span></h5></div>
-                <div class="text-center opacity-char-back weaponList d-none" id="_icon_yumi"><h5 class="game-banner"><span class="icon_mini icon_yumi"></span></h5></div>
-                <div class="text-center opacity-char-back weaponList d-none" id="_icon_yari"><h5 class="game-banner"><span class="icon_mini icon_yari"></span></h5></div>
-                <div class="text-center opacity-char-back weaponList d-none" id="_icon_ju"><h5 class="game-banner"><span class="icon_mini icon_ju"></span></h5></div>
-                <div class="text-center opacity-char-back weaponList d-none" id="_icon_tai"><h5 class="game-banner"><span class="icon_mini icon_tai"></span></h5></div>
-                <div class="text-center opacity-char-back weaponList d-none" id="_icon_kon"><h5 class="game-banner"><span class="icon_mini icon_kon"></span></h5></div>
-                <div class="text-center opacity-char-back weaponList d-none" id="_icon_tsue"><h5 class="game-banner"><span class="icon_mini icon_tsue"></span></h5></div>
-
-
-                <div id="slider-pro" class="slider-pro">
-                    <div class="sp-slides">
-                        <div class="sp-slide text-center opacity-char-back" id="RS1"><h5 class="game-banner">ロマンシング・サガ</h5></div>
-                        <div class="sp-slide text-center opacity-char-back" id="RS2"><h5 class="game-banner">ロマンシング・サガ2(1)</h5></div>
-                        <div class="sp-slide text-center opacity-char-back" id="RS22"><h5 class="game-banner">ロマンシング・サガ2(2)</h5></div>
-                        <div class="sp-slide text-center opacity-char-back" id="RS3"><h5 class="game-banner">ロマンシング・サガ3</h5></div>
-                        <div class="sp-slide text-center opacity-char-back" id="RS32"><h5 class="game-banner">ロマンシング・サガ3(2)</h5></div>
-                        <div class="sp-slide text-center opacity-char-back" id="SF1"><h5 class="game-banner">サガフロンティア1</h5></div>
-                        <div class="sp-slide text-center opacity-char-back" id="SF2"><h5 class="game-banner">サガフロンティア2</h5></div>
-                        <div class="sp-slide text-center opacity-char-back">
-                            <h5 class="game-banner">
-                                サガ・スカーレットグレイス<span class="hidden pcBlock"> / </span><br class="hidden spBlock">
-                                アンリミテッド・サガ<span class="hidden pcBlock"> / </span><br class="hidden spBlock">
-                                エンペラーズ・サガ
-                                </h5>
-                            <span id="SS"></span>　<span id="US"></span>　<span id="ES"></span>　
-                            <h5 class="game-banner">ロマンシング・サガRS</h5><span id="RSR"></span>
-                        </div>
-                    </div>
+                <label class="badge badge-pill badge-light">キャラ一覧</label>
+                <div class="info-modal dotList d-none" id="_icon_ken">
+                    <div class="text-center info-modal-header"><span class="icon_mini icon_ken"></span></div>
                 </div>
-                <br>
+                <div class="info-modal dotList d-none" id="_icon_dken">
+                    <div class="text-center info-modal-header"><span class="icon_mini icon_dken"></span></div>
+                </div>
+                <div class="info-modal dotList d-none" id="_icon_ono">
+                    <div class="text-center info-modal-header"><span class="icon_mini icon_ono"></span></div>
+                </div>
+                <div class="info-modal dotList d-none" id="_icon_sken">
+                    <div class="text-center info-modal-header"><span class="icon_mini icon_sken"></span></div>
+                </div>
+                <div class="info-modal dotList d-none" id="_icon_yumi">
+                    <div class="text-center info-modal-header"><span class="icon_mini icon_yumi"></span></div>
+                </div>
+                <div class="info-modal dotList d-none" id="_icon_yari">
+                    <div class="text-center info-modal-header"><span class="icon_mini icon_yari"></span></div>
+                </div>
+                <div class="info-modal dotList d-none" id="_icon_ju">
+                    <div class="text-center info-modal-header"><span class="icon_mini icon_ju"></span></div>
+                </div>
+                <div class="info-modal dotList d-none" id="_icon_tai">
+                    <div class="text-center info-modal-header"><span class="icon_mini icon_tai"></span></div>
+                </div>
+                <div class="info-modal dotList d-none" id="_icon_kon">
+                    <div class="text-center info-modal-header"><span class="icon_mini icon_kon"></span></div>
+                </div>
+                <div class="info-modal dotList d-none" id="_icon_tsue">
+                    <div class="text-center info-modal-header"><span class="icon_mini icon_tsue"></span></div>
+                </div>
+    
+                <div class="info-modal dotList" id="RS1">
+                    <div class="text-center info-modal-header"><span class="hidden pcBlock">ロマンシング・サガ1</span><span
+                            class="hidden spBlock">ロマサガ1</span></div>
+                    <section id="SECRS1" class="char-choise-section"></section>
+                </div>
+                <div class="info-modal dotList d-none" id="RS2">
+                    <div class="text-center info-modal-header"><span class="hidden pcBlock">ロマンシング・サガ2</span><span
+                            class="hidden spBlock">ロマサガ2</span></div>
+                    <section id="SECRS2" class="char-choise-section"></section>
+                </div>
+                <div class="info-modal dotList d-none" id="RS3">
+                    <div class="text-center info-modal-header"><span class="hidden pcBlock">ロマンシング・サガ3</span><span
+                            class="hidden spBlock">ロマサガ3</span></div>
+                    <section id="SECRS3" class="char-choise-section"></section>
+                </div>
+                <div class="info-modal dotList d-none" id="SF1">
+                    <div class="text-center info-modal-header"><span class="hidden pcBlock">サガフロンティア1</span><span
+                            class="hidden spBlock">サガフロ1</span></div>
+                    <section id="SECSF1" class="char-choise-section"></section>
+                </div>
+                <div class="info-modal dotList d-none" id="SF2">
+                    <div class="text-center info-modal-header"><span class="hidden pcBlock">サガフロンティア2</span><span
+                            class="hidden spBlock">サガフロ2</span></div>
+                    <section id="SECSF2" class="char-choise-section"></section>
+                </div>
+                <div class="info-modal dotList d-none" id="OTR">
+                    <div class="text-center info-modal-header text-nowrap">
+                        <span class="hidden pcBlock">アンリミテッド・サガ / サガ・スカーレットグレイス / エンペラーズ・サガ</span>
+                        <span class="hidden spBlock">アンサガ/サガスカ/エンサガ</span></div>
+                    <section class="char-choise-section">
+                        <span id="SECUS"></span>
+                        <span id="SECSS"></span>
+                        <span id="SECES"></span>
+                    </section>
+                </div>
+                <div class="info-modal dotList d-none" id="RSR">
+                    <div class="text-center info-modal-header">ロマサガ リ・ユニバース</div>
+                    <section id="SECRSR" class="char-choise-section"></section>
+                </div>
+
                 <div class="row">
                     <div class="col-12 d-none d-lg-block">
-                        <div class="style-bgcolor styleInfoArea">
-                            <div class=" text-center label-text" style="margin-bottom: 10px">表示ステータスを変更する</div>
+                        <div class="info-modal styleInfoArea width-max text-center">
+                            <div class="info-modal-header">表示ステータスを変更する</div>
                             <div class="width-100 text-center">
                                 スタイルレベル：<input type="number" class="input charParam charParam2 kadomaru MY_STYLE_LV" style="width: 50px" value="50" min="1" max="50"><br>
                                 <div class="btn-group btn-group-toggle noLogin" data-toggle="buttons">
@@ -228,90 +502,131 @@
                                 </tbody>
                             </table>
                         </div>
-                    </div>
-
+                    </div>              
                     <div class="col-12 col-lg-6">
-                        <div class="style-bgcolor styleInfoArea">
-                            <table class="width-100 text-center" id="CHAR_DATA">
-                                <tbody>
-                                    <tr class="text-center">
-                                        <td colspan="11">
-                                            <p class="width-100 pad0 mar0 darkButton CHAR_NAME">キャラ名</p>
-                                        </td>
-                                    </tr>
-                                    <tr class="">
-                                        <td class="dotBackground" rowspan="3">
-                                            <span id="charDot" class="char-hashiri char dot_mid dot"></span>
-                                        </td>
-                                        <td colspan="11"><span class="hidden pcBlock">キャラクター</span>ステータス最大値(base <span id="PLUS_LIMIT"></span>)</td>
-                                    </tr>
-                                    <tr class="text-center">
-                                        <td class="paramHead paramCell2">腕</td>
-                                        <td class="paramHead paramCell2">体</td>
-                                        <td class="paramHead paramCell2">器</td>
-                                        <td class="paramHead paramCell2">速</td>
-                                        <td class="paramHead paramCell2">知</td>
-                                        <td class="paramHead paramCell2">精</td>
-                                        <td class="paramHead paramCell2">愛</td>
-                                        <td class="paramHead paramCell2">魅</td>
-                                        <td class="paramHead paramCell2"><span class="hidden pcBlock">合</span>計</td>
-                                    </tr>
-                                    <tr class="text-center">
-                                        <td class="paramCell2"><span class="MAXSTR">99</span><input type="hidden" class="INPUTSTR" value="0" /></td>
-                                        <td class="paramCell2"><span class="MAXVIT">99</span><input type="hidden" class="INPUTVIT" value="0" /></td>
-                                        <td class="paramCell2"><span class="MAXDEX">99</span><input type="hidden" class="INPUTDEX" value="0" /></td>
-                                        <td class="paramCell2"><span class="MAXAGI">99</span><input type="hidden" class="INPUTAGI" value="0" /></td>
-                                        <td class="paramCell2"><span class="MAXINT">99</span><input type="hidden" class="INPUTINT" value="0" /></td>
-                                        <td class="paramCell2"><span class="MAXMND">99</span><input type="hidden" class="INPUTMND" value="0" /></td>
-                                        <td class="paramCell2"><span class="MAXAI">99</span><input type="hidden" class="INPUTAI" value="0" /></td>
-                                        <td class="paramCell2"><span class="MAXMI">99</span><input type="hidden" class="INPUTMI" value="0" /></td>
-                                        <td class="paramCell2"><span class="MAXSUM">999</span></td>
-                                    </tr>
-                                    <tr id="styleLabelRow">
-                                        <td class="paramHead small">種別<br>ランキング</td>
-                                        <td class="paramHead paramCell2">腕</td>
-                                        <td class="paramHead paramCell2">体</td>
-                                        <td class="paramHead paramCell2">器</td>
-                                        <td class="paramHead paramCell2">速</td>
-                                        <td class="paramHead paramCell2">知</td>
-                                        <td class="paramHead paramCell2">精</td>
-                                        <td class="paramHead paramCell2">愛</td>
-                                        <td class="paramHead paramCell2">魅</td>
-                                        <td class="paramHead paramCell2"><span class="hidden pcBlock">合</span>計</td>
-                                    </tr>
-                                    <tr class="text-center d-none" id="RANK_TEMPLATE">
-                                        <td class="IMG small" style="width:10%"></td>
-                                        <td class="paramCell2 STR">99</td>
-                                        <td class="paramCell2 VIT">99</td>
-                                        <td class="paramCell2 DEX">99</td>
-                                        <td class="paramCell2 AGI">99</td>
-                                        <td class="paramCell2 INT">99</td>
-                                        <td class="paramCell2 MND">99</td>
-                                        <td class="paramCell2 AI">99</td>
-                                        <td class="paramCell2 MI">99</td>
-                                        <td class="paramCell2 SUM">999</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <div class=" text-center darkButton chartLabel" style="margin-bottom: 10px">スタイル別 素ステータス上限</div>
-                            <table class="width-100 text-center smallFont">
-                                <tbody>
-                                    <tr class="text-center" id="STYLE_ST_ROW">
-                                        <td class="paramHead small"><span class="d-none d-sm-table-row">スタイル</span></td>
-                                        <td class="paramHead paramCell2">腕</td>
-                                        <td class="paramHead paramCell2">体</td>
-                                        <td class="paramHead paramCell2">器</td>
-                                        <td class="paramHead paramCell2">速</td>
-                                        <td class="paramHead paramCell2">知</td>
-                                        <td class="paramHead paramCell2">精</td>
-                                        <td class="paramHead paramCell2">愛</td>
-                                        <td class="paramHead paramCell2">魅</td>
-                                    </tr>
-                                </tbody>
-                            </table>                                        
+                        <div class="info-modal styleInfoArea width-max text-center">
+                            <div class="info-modal-header"><span class="CHAR_NAME">キャラ名</span>のステータス</div>
+                            <span class="hidden pcBlock">キャラクター</span>ステータス最大値(base <span id="PLUS_LIMIT"></span>)
+                            <div class="bg-black-window width-max" style="padding:10px">
+                                <table class="text-center width-100 smallTableFont" id="CHAR_DATA">
+                                    <tbody>
+                                        <tr class="odd-row headerCol">
+                                            <td class="" id="charDot" style="position:relative;"></td>
+                                            <td class="paramHead paramCell2">腕</td>
+                                            <td class="paramHead paramCell2">体</td>
+                                            <td class="paramHead paramCell2">器</td>
+                                            <td class="paramHead paramCell2">速</td>
+                                            <td class="paramHead paramCell2">知</td>
+                                            <td class="paramHead paramCell2">精</td>
+                                            <td class="paramHead paramCell2">愛</td>
+                                            <td class="paramHead paramCell2">魅</td>
+                                            <td class="paramHead paramCell2"><span class="hidden pcBlock">合</span>計</td>
+                                        </tr>
+                                        <tr class="odd-row fuchidoriBlue" id="STYLE_ST_ROW" >
+                                            <td class="" style="font-size:13px;">最大値</td>
+                                            <td class="paramCell2 headerMaxCol"><span class="MAXSTR">99</span><input type="hidden" class="INPUTSTR" value="0" /></td>
+                                            <td class="paramCell2 headerMaxCol"><span class="MAXVIT">99</span><input type="hidden" class="INPUTVIT" value="0" /></td>
+                                            <td class="paramCell2 headerMaxCol"><span class="MAXDEX">99</span><input type="hidden" class="INPUTDEX" value="0" /></td>
+                                            <td class="paramCell2 headerMaxCol"><span class="MAXAGI">99</span><input type="hidden" class="INPUTAGI" value="0" /></td>
+                                            <td class="paramCell2 headerMaxCol"><span class="MAXINT">99</span><input type="hidden" class="INPUTINT" value="0" /></td>
+                                            <td class="paramCell2 headerMaxCol"><span class="MAXMND">99</span><input type="hidden" class="INPUTMND" value="0" /></td>
+                                            <td class="paramCell2 headerMaxCol"><span class="MAXAI">99</span><input type="hidden" class="INPUTAI" value="0" /></td>
+                                            <td class="paramCell2 headerMaxCol"><span class="MAXMI">99</span><input type="hidden" class="INPUTMI" value="0" /></td>
+                                            <td class="paramCell2 headerMaxCol"><span class="MAXSUM">999</span></td>
+                                        </tr>
+                                        <!--
+                                        <tr id="styleLabelRow">
+                                            <td class="paramHead small">種別<br>ランキング</td>
+                                            <td class="paramHead paramCell2">腕</td>
+                                            <td class="paramHead paramCell2">体</td>
+                                            <td class="paramHead paramCell2">器</td>
+                                            <td class="paramHead paramCell2">速</td>
+                                            <td class="paramHead paramCell2">知</td>
+                                            <td class="paramHead paramCell2">精</td>
+                                            <td class="paramHead paramCell2">愛</td>
+                                            <td class="paramHead paramCell2">魅</td>
+                                            <td class="paramHead paramCell2"><span class="hidden pcBlock">合</span>計</td>
+                                        </tr>
+                                        <tr class="text-center d-none" id="RANK_TEMPLATE">
+                                            <td class="IMG small" style="width:10%"></td>
+                                            <td class="paramCell2 STR">99</td>
+                                            <td class="paramCell2 VIT">99</td>
+                                            <td class="paramCell2 DEX">99</td>
+                                            <td class="paramCell2 AGI">99</td>
+                                            <td class="paramCell2 INT">99</td>
+                                            <td class="paramCell2 MND">99</td>
+                                            <td class="paramCell2 AI">99</td>
+                                            <td class="paramCell2 MI">99</td>
+                                            <td class="paramCell2 SUM">999</td>
+                                        </tr>
+                                        <tr class="text-center">
+                                            <td class="paramHead small"><span class="d-none d-sm-table-row">スタイル</span></td>
+                                            <td class="paramHead paramCell2">腕</td>
+                                            <td class="paramHead paramCell2">体</td>
+                                            <td class="paramHead paramCell2">器</td>
+                                            <td class="paramHead paramCell2">速</td>
+                                            <td class="paramHead paramCell2">知</td>
+                                            <td class="paramHead paramCell2">精</td>
+                                            <td class="paramHead paramCell2">愛</td>
+                                            <td class="paramHead paramCell2">魅</td>
+                                        </tr>
+                                        -->
 
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="" style="margin:10px">
+                                <a href="" id="RANK_LINK" target="_blank" class="width-100 icon_btn_positive"><i class="fas fa-crown"></i> <span class="CHAR_NAME"></span>の<br class="d-sm-none">育成ランキングを調べる <i class="fas fa-search"></i></a>
+                            </div>                            
+                        </div>                        
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <div class="info-modal styleInfoArea width-max text-center width-max" id="STYLE_DATA">
+                            <div class="info-modal-header">スタイル別 ステータス<span class="ISMAX">最大</span>値</div>
+                            <div style="color:black;">
+                                <span class="small">(スタイルレベル<span class="DISP_LV">50</span>+<span class="DISP_ST">素ステータス最大</span>)</span>
+                            </div>
+                            <div class="row text-nowrap d-none">
+                                <div class="col-4"><span class="width-max width-100 icon_btn_positive">最大値</span></div>
+                                <div class="col-4"><span class="width-max width-100 icon_btn_positive">補正値</span></div>
+                                <div class="col-4"><span class="width-max width-100 icon_btn_positive">ボーナス値</span></div>
+                            </div>
+                            <div class="bg-black-window width-max" style="padding:10px">
+                                <table class="text-center width-100 smallTableFont">
+                                    <tbody>
+                                        <tr class="" id="STYLE_VAL_ROW">
+                                            <td class="paramHead small">スタイル</td>
+                                            <td class="paramHead paramCell2 headerCol">腕</td>
+                                            <td class="paramHead paramCell2 headerCol">体</td>
+                                            <td class="paramHead paramCell2 headerCol">器</td>
+                                            <td class="paramHead paramCell2 headerCol">速</td>
+                                            <td class="paramHead paramCell2 headerCol">知</td>
+                                            <td class="paramHead paramCell2 headerCol">精</td>
+                                            <td class="paramHead paramCell2 headerCol">愛</td>
+                                            <td class="paramHead paramCell2 headerCol">魅</td>
+                                            <td class="paramHead paramCell2 headerCol">計</td>
+                                        </tr>
+                                        <tr class="odd-row status-row d-none" id="STYLE_TABLE_TEMPLATE">
+                                            <td class="IMG" style="width:10%"></td>
+                                            <td class="paramCell2 STR"><div class="val fuchidoriWhite">99</div><span class="per">99%</span><span class="bonus">+99</span></td>
+                                            <td class="paramCell2 VIT"><div class="val fuchidoriWhite">99</div><span class="per">99%</span><span class="bonus">+99</span></td>
+                                            <td class="paramCell2 DEX"><div class="val fuchidoriWhite">99</div><span class="per">99%</span><span class="bonus">+99</span></td>
+                                            <td class="paramCell2 AGI"><div class="val fuchidoriWhite">99</div><span class="per">99%</span><span class="bonus">+99</span></td>
+                                            <td class="paramCell2 INT"><div class="val fuchidoriWhite">99</div><span class="per">99%</span><span class="bonus">+99</span></td>
+                                            <td class="paramCell2 MND"><div class="val fuchidoriWhite">99</div><span class="per">99%</span><span class="bonus">+99</span></td>
+                                            <td class="paramCell2 AI"><div class="val fuchidoriWhite">99</div><span class="per">99%</span><span class="bonus">+99</span></td>
+                                            <td class="paramCell2 MI"><div class="val fuchidoriWhite">99</div><span class="per">99%</span><span class="bonus">+99</span></td>
+                                            <td class="paramCell2 SUM"><div class="val fuchidoriWhite">9,999</div><span class="per">999%</span></td>
+                                        </tr>    
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="opacity kadomaru d-sm-none bg-warning" style="font-size:10px;">
+                                <i class="fas fa-exclamation-triangle"></i>注：ご使用の環境では横幅が足りないため補正値は四捨五入されています。
+                                スマートフォンの横向きにしたりPCなど幅のある端末で確認すると少数以下も表示されます
+                            </div>
                             <div class="pad0 d-lg-none">
-                                <div class=" text-center label-text" style="margin-bottom: 10px">表示ステータスを変更する</div>
+                                <div class=" text-center label-text-small" style="margin-bottom: 10px">表示ステータスを変更する</div>
                                 <div class="width-100 text-center">
                                     スタイルレベル：<input type="number" class="input charParam1 kadomaru MY_STYLE_LV" style="width: 50px" value="50" min="1" max="50">
                                     <div class="btn-group btn-group-toggle" data-toggle="buttons">
@@ -351,193 +666,222 @@
                                     </tbody>
                                 </table>
                             </div>
-                        </div>                        
-                    </div>
-                    <div class="col-12 col-lg-6">
-                        <div class="style-bgcolor pad0" id="STYLE_DATA">
-                            <div class=" text-center darkButton chartLabel" style="margin-bottom: 10px; line-height:15px">スタイル別 ステータス<span class="ISMAX">最大</span>値<br><span class="small">(スタイルレベル<span class="DISP_LV">50</span>+<span class="DISP_ST">素ステータス最大</span>)</span></div>
-                            <table class="width-100 text-center">
-                                <tbody>
-                                    <tr class="text-center" id="STYLE_VAL_ROW">
-                                        <td class="paramHead small">スタイル</td>
-                                        <td class="paramHead paramCell2">腕</td>
-                                        <td class="paramHead paramCell2">体</td>
-                                        <td class="paramHead paramCell2">器</td>
-                                        <td class="paramHead paramCell2">速</td>
-                                        <td class="paramHead paramCell2">知</td>
-                                        <td class="paramHead paramCell2">精</td>
-                                        <td class="paramHead paramCell2">愛</td>
-                                        <td class="paramHead paramCell2">魅</td>
-                                    </tr>
-                                </tbody>
-                            </table>                                        
-                            <div class="text-center darkButton chartLabel" style="margin-bottom: 10px">スタイル別 補正+ボーナス値</div>
-                            <table class="width-100 text-center">
-                                <tbody>
-                                    <tr class="text-center" id="STYLE_PER_ROW">
-                                        <td class="paramHead small">スタイル</td>
-                                        <td class="paramHead paramCell2">腕</td>
-                                        <td class="paramHead paramCell2">体</td>
-                                        <td class="paramHead paramCell2">器</td>
-                                        <td class="paramHead paramCell2">速</td>
-                                        <td class="paramHead paramCell2">知</td>
-                                        <td class="paramHead paramCell2">精</td>
-                                        <td class="paramHead paramCell2">愛</td>
-                                        <td class="paramHead paramCell2">魅</td>
-                                    </tr>
-                                    <tr class="text-center d-none" id="STYLE_TABLE_TEMPLATE">
-                                        <td class="IMG" style="width:10%"></td>
-                                        <td class="paramCell2 STR">99</td>
-                                        <td class="paramCell2 VIT">99</td>
-                                        <td class="paramCell2 DEX">99</td>
-                                        <td class="paramCell2 AGI">99</td>
-                                        <td class="paramCell2 INT">99</td>
-                                        <td class="paramCell2 MND">99</td>
-                                        <td class="paramCell2 AI">99</td>
-                                        <td class="paramCell2 MI">99</td>
-                                    </tr>
-                                    <tr class="text-center d-none" id="STYLE_TABLE_PER_TEMPLATE">
-                                        <td class="IMG" style="width:10%"></td>
-                                        <td class="paramCell2 STR"><span class="per"></span>% <br><span class="bonus" style='color:gray'></span></td>
-                                        <td class="paramCell2 VIT"><span class="per"></span>% <br><span class="bonus" style='color:gray'></span></td>
-                                        <td class="paramCell2 DEX"><span class="per"></span>% <br><span class="bonus" style='color:gray'></span></td>
-                                        <td class="paramCell2 AGI"><span class="per"></span>% <br><span class="bonus" style='color:gray'></span></td>
-                                        <td class="paramCell2 INT"><span class="per"></span>% <br><span class="bonus" style='color:gray'></span></td>
-                                        <td class="paramCell2 MND"><span class="per"></span>% <br><span class="bonus" style='color:gray'></span></td>
-                                        <td class="paramCell2 AI"><span class="per"></span>% <br><span class="bonus" style='color:gray'></span></td>
-                                        <td class="paramCell2 MI"><span class="per"></span>% <br><span class="bonus" style='color:gray'></span></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <br>
-                            <div class="opacity kadomaru d-sm-none bg-warning" style="font-size:10px;">
-                                <i class="fas fa-exclamation-triangle"></i>注：ご使用の環境では横幅が足りないため補正値は四捨五入されています。
-                                スマートフォンの横向きにしたりPCなど幅のある端末で確認すると少数以下も表示されます
-                            </div>
                         </div>
-                    </div>
+                    </div>           
                 </div>
+            <div class="filter-bgcolor styleChoiceArea width-100" style="margin:10px 0px">
+                <div class="subtitle-long" style="margin-bottom:10px;">スタイル詳細</div><br>
+                <div id="styleChoice"></div><!-- スタイルアイコン表示 -->
+            </div>
 
-                <div class="style-bgcolor styleChoiceArea">
-                    <div class="text-center kadomaru blueLink" >
-                        <a href="" id="RANK_LINK" target="_blank" class="h4"><i class="fas fa-crown"></i> <span class="CHAR_NAME"></span>の<br class="d-sm-none">育成ランキングを調べる <i class="fas fa-search"></i></a>
-                    </div>
-                    <div class="label-text text-center width-100 h5">スタイル詳細</div>
-                    <div id="styleChoice"></div><!-- スタイルアイコン表示 -->
+                <div class="styleChoiceArea width-100">
                     <div>
-                        <div class="text-center darkButton" style="opacity: 0.8; padding-right:46px;" >
-                            <span id="styleNameLabel"></span>
-                        </div>
                         <div class="row no-gutters">
-                            <div class="col-7 col-md-6 position-relative" id="styleBgImg" onclick="">
-                                <div id="styleImageBox"></div>
-                                <div id="styleGachaMessage" class="d-none gachaText">あああああ</div>
-                            </div>
-                            <div class="col-5 col-md-6 row" style="margin:0px;">
-                                <div class="col-12 col-md-6 small text-nowrap style-taisei-window row no-gutters">
-                                    <div class="text-center char-bottom col-12"><span class="hidden pcBlock">スタイル</span>Lv50 ステータス</div>
-                                    <div id="labelSTR" class="col-2 col-md-3"></div><div id="styleSTR" class="col-4 col-md-3"></div><div id="styleBonusSTR" class="col-6 bonus"></div>
-                                    <div id="labelVIT" class="col-2 col-md-3"></div><div id="styleVIT" class="col-4 col-md-3"></div><div id="styleBonusVIT" class="col-6 bonus"></div>
-                                    <div id="labelDEX" class="col-2 col-md-3"></div><div id="styleDEX" class="col-4 col-md-3"></div><div id="styleBonusDEX" class="col-6 bonus"></div>
-                                    <div id="labelAGI" class="col-2 col-md-3"></div><div id="styleAGI" class="col-4 col-md-3"></div><div id="styleBonusAGI" class="col-6 bonus"></div>
-                                    <div id="labelINT" class="col-2 col-md-3"></div><div id="styleINT" class="col-4 col-md-3"></div><div id="styleBonusINT" class="col-6 bonus"></div>
-                                    <div id="labelMND" class="col-2 col-md-3"></div><div id="styleMND" class="col-4 col-md-3"></div><div id="styleBonusMND" class="col-6 bonus"></div>
-                                    <div id="labelAI"  class="col-2 col-md-3"></div><div id="styleAI"  class="col-4 col-md-3"></div><div id="styleBonusAI"  class="col-6 bonus"></div>
-                                    <div id="labelMI"  class="col-2 col-md-3"></div><div id="styleMI"  class="col-4 col-md-3"></div><div id="styleBonusMI"  class="col-6 bonus"></div>
-                                </div>
-                                <div class="col-12 col-md-6 small text-nowrap style-taisei-window">
-                                    <div class="text-center char-bottom">耐性</div>
-                                    <div class="row no-gutters">
-                                        <div class="col-2"><span class="icon_xs_zokusei icon_zan" style="width:23px; height:23px;">　</span></div>
-                                        <div class="col-4"><span class="taisei_Zan" style="font-size:100%;">999</span></div>
-                                        <div class="col-6"><span class="bairitsu_Zan" style="font-size:100%;"></span></div>
-                                        <div class="col-2"><span class="icon_xs_zokusei icon_da" style="width:23px; height:23px;">　</span></div>
-                                        <div class="col-4"><span class="taisei_Da" style="font-size:100%;">999</span></div>
-                                        <div class="col-6"><span class="bairitsu_Da" style="font-size:100%;"></span></div>
-                                        <div class="col-2"><span class="icon_xs_zokusei icon_totsu" style="width:23px; height:23px;">　</span></div>
-                                        <div class="col-4"><span class="taisei_Totsu" style="font-size:100%;">999</span></div>
-                                        <div class="col-6"><span class="bairitsu_Totsu" style="font-size:100%;"></span></div>
-                                        <div class="col-2"><span class="icon_xs_zokusei icon_netsu" style="width:23px; height:23px;">　</span></div>
-                                        <div class="col-4"><span class="taisei_Netsu" style="font-size:100%;">999</span></div>
-                                        <div class="col-6"><span class="bairitsu_Netsu" style="font-size:100%;"></span></div>
-                                        <div class="col-2"><span class="icon_xs_zokusei icon_rei" style="width:23px; height:23px;">　</span></div>
-                                        <div class="col-4"><span class="taisei_Rei" style="font-size:100%;">999</span></div>
-                                        <div class="col-6"><span class="bairitsu_Rei" style="font-size:100%;"></span></div>
-                                        <div class="col-2"><span class="icon_xs_zokusei icon_rai" style="width:23px; height:23px;">　</span></div>
-                                        <div class="col-4"><span class="taisei_Rai" style="font-size:100%;">999</span></div>
-                                        <div class="col-6"><span class="bairitsu_Rai" style="font-size:100%;"></span></div>
-                                        <div class="col-2"><span class="icon_xs_zokusei icon_yo" style="width:23px; height:23px;">　</span></div>
-                                        <div class="col-4"><span class="taisei_You" style="font-size:100%;">999</span></div>
-                                        <div class="col-6"><span class="bairitsu_You"></span></div>
-                                        <div class="col-2"><span class="icon_xs_zokusei icon_in" style="width:23px; height:23px;">　</span></div>
-                                        <div class="col-4"><span class="taisei_Inn" style="font-size:100%;">999</span></div>
-                                        <div class="col-6"><span class="bairitsu_Inn" style="font-size:100%;"></span></div>
+                            <div class="col-12 col-lg-6 position-relative" id="styleBgImg" onclick="">
+                                <div style="position:relative; min-height:667px;">
+                                    <div class="width-100 text-center" style="position: absolute; z-index:2;">
+                                        <img src="" class="width-100" id="styleRareTitle" style="max-width: 400px;">
+                                        <div class="style-name-area fuchidoriWhite width-100">
+                                            <div class="style-another-name"></div>
+                                            <span class="style-name"></span>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-12 d-none d-md-inline pad0" style="margin-top: 10px; "><div class="style-skill-list width-100" id="skillList2"></div></div>
-                                <div class="col-md-12 d-none d-md-inline  pad0" style="margin-top: 10px; "><div class="style-skill-list width-100" id="abilityList2"></div></div>
-                            </div>
+                                    <div id="styleImageBox"></div>
+                                    <div class="width-100 " style="position: absolute;z-index: 2; bottom: 0px; padding: 10px; line-height: 16px;">
+                                        <div class="width-100 fukidashi-parent">
+                                            <div class="text-nowrap gacha-fukidashi"><span id="styleGachaMessage"></span></div>
+                                        </div>
+                                        <div class="bg-simple row" style="position: absolute; left:25px; width:120px; height:60px;">
+                                            <div class="col-12 status-window-row game-font text-center" style="padding-top: 5px; font-size: 20px;">戦闘力</div>
+                                            <div class="col-4"><img src="http://romasagatool.com/img/icon/icon_combatpower.png" width=20></div>
+                                            <div class="col-8 game-font text-right" id="combatPower">9,999</div>
+                                        </div>
+                                        <div class="width-100 text-center" style="height:90px;" id="styleDot"></div>
+                                        <div class="bgcolor-brawn" style="border: 1px solid ivory;
+                                        border-radius: 10px;
+                                        font-size: 12px;
+                                        margin: -20px 0px 10px 0px;
+                                        padding: 5px;
+                                        color: ivory;
+                                        text-align: left;" id="styleFlavor"></div>
+                                        <div class="" style="padding: 5px; background: rgba(0,0,0,0.65); border: 1px solid rgba(250,250,240,1); border-radius: 10px; margin-bottom: 5px;">
+                                            <table class="width-100 text-right">
+                                                <tr class="fuchidoriWhite text-center char-bottom"><td colspan=10><span class="hidden pcBlock">スタイル</span>Lv50 ステータス</td></tr>
+                                                <tr class="fuchidoriWhite text-center" style="font-size:12px;"><td></td><td></td><td colspan=2>素ステ</td><td>ステータス</td><td>補正</td><td>ボーナス</td></tr>
+                                                <tr class="status-window-row" id="tableSTR"><td class="text-center IND"></td><td class="text-left game-font"></td><td class="ST fuchidoriBlue"></td><td class="STLIMIT fuchidoriBlue text-left"></td><td class=" fuchidoriWhite"></td><td class="bonus BNSPER"></td><td class="bonus BNSVAL"></td></tr>
+                                                <tr class="status-window-row" id="tableVIT"><td class="text-center IND"></td><td class="text-left game-font"></td><td class="ST fuchidoriBlue"></td><td class="STLIMIT fuchidoriBlue text-left"></td><td class=" fuchidoriWhite"></td><td class="bonus BNSPER"></td><td class="bonus BNSVAL"></td></tr>
+                                                <tr class="status-window-row" id="tableDEX"><td class="text-center IND"></td><td class="text-left game-font"></td><td class="ST fuchidoriBlue"></td><td class="STLIMIT fuchidoriBlue text-left"></td><td class=" fuchidoriWhite"></td><td class="bonus BNSPER"></td><td class="bonus BNSVAL"></td></tr>
+                                                <tr class="status-window-row" id="tableAGI"><td class="text-center IND"></td><td class="text-left game-font"></td><td class="ST fuchidoriBlue"></td><td class="STLIMIT fuchidoriBlue text-left"></td><td class=" fuchidoriWhite"></td><td class="bonus BNSPER"></td><td class="bonus BNSVAL"></td></tr>
+                                                <tr class="status-window-row" id="tableINT"><td class="text-center IND"></td><td class="text-left game-font"></td><td class="ST fuchidoriBlue"></td><td class="STLIMIT fuchidoriBlue text-left"></td><td class=" fuchidoriWhite"></td><td class="bonus BNSPER"></td><td class="bonus BNSVAL"></td></tr>
+                                                <tr class="status-window-row" id="tableMND"><td class="text-center IND"></td><td class="text-left game-font"></td><td class="ST fuchidoriBlue"></td><td class="STLIMIT fuchidoriBlue text-left"></td><td class=" fuchidoriWhite"></td><td class="bonus BNSPER"></td><td class="bonus BNSVAL"></td></tr>
+                                                <tr class="status-window-row" id="tableAI" ><td class="text-center IND"></td><td class="text-left game-font"></td><td class="ST fuchidoriBlue"></td><td class="STLIMIT fuchidoriBlue text-left"></td><td class=" fuchidoriWhite"></td><td class="bonus BNSPER"></td><td class="bonus BNSVAL"></td></tr>
+                                                <tr class=""                  id="tableMI" ><td class="text-center IND"></td><td class="text-left game-font"></td><td class="ST fuchidoriBlue"></td><td class="STLIMIT fuchidoriBlue text-left"></td><td class=" fuchidoriWhite"></td><td class="bonus BNSPER"></td><td class="bonus BNSVAL"></td></tr>
+                                            </table>
+                                        </div>        
+                                        <div class="bg-simple small text-nowrap text-center width-max" style="padding: 7px 20px; color: white;">
+                                            <table class="justify-content-around width-100" style="padding-left: 15px;">
+                                                <tr style="border-bottom: 1px solid lightblue; line-height: 10px;">
+                                                    <td style="width: calc(100% / 8);"><span class="icon_xs_zokusei icon_zan" style="width:23px; height:23px;"></span></td>
+                                                    <td style="width: calc(100% / 8);"><span class="icon_xs_zokusei icon_da" style="width:23px; height:23px;"></span></td>
+                                                    <td style="width: calc(100% / 8);"><span class="icon_xs_zokusei icon_totsu" style="width:23px; height:23px;"></span></td>
+                                                    <td style="width: calc(100% / 8);"><span class="icon_xs_zokusei icon_netsu" style="width:23px; height:23px;"></span></td>
+                                                    <td style="width: calc(100% / 8);"><span class="icon_xs_zokusei icon_rei" style="width:23px; height:23px;"></span></td>
+                                                    <td style="width: calc(100% / 8);"><span class="icon_xs_zokusei icon_rai" style="width:23px; height:23px;"></span></td>
+                                                    <td style="width: calc(100% / 8);"><span class="icon_xs_zokusei icon_yo" style="width:23px; height:23px;"></span></td>
+                                                    <td style="width: calc(100% / 8);"><span class="icon_xs_zokusei icon_in" style="width:23px; height:23px;"></span></td>
+                                                </tr>
+                                                <tr style="line-height: 15px;">
+                                                    <td><span class="taisei_Zan">0</span><br><span class="bairitsu_Zan">1倍</span></td>
+                                                    <td><span class="taisei_Da">0</span><br><span class="bairitsu_Da">1倍</span></td>
+                                                    <td><span class="taisei_Totsu">0</span><br><span class="bairitsu_Totsu">1倍</span></td>
+                                                    <td><span class="taisei_Netsu">0</span><br><span class="bairitsu_Netsu">1倍</span></td>
+                                                    <td><span class="taisei_Rei">0</span><br><span class="bairitsu_Rei">1倍</span></td>
+                                                    <td><span class="taisei_Rai">0</span><br><span class="bairitsu_Rai">1倍</span></td>
+                                                    <td><span class="taisei_You">0</span><br><span class="bairitsu_You">1倍</span></td>
+                                                    <td><span class="taisei_Inn">0</span><br><span class="bairitsu_Inn">1倍</span></td>
+                                                </tr>
+                                            </table>
+                                        </div>                                        
+                                    </div>  
 
-                            <div class="col-12 d-none">
-                                <table class="style-taisei-window width-100 text-center ">
-                                    <tr class="char-bottom">
-                                        <th><span class="icon_xs_zokusei icon_zan" style="width:23px; height:23px;"></span></th>
-                                        <th><span class="icon_xs_zokusei icon_da" style="width:23px; height:23px;"></span></th>
-                                        <th><span class="icon_xs_zokusei icon_totsu" style="width:23px; height:23px;"></span></th>
-                                        <th><span class="icon_xs_zokusei icon_netsu" style="width:23px; height:23px;"></span></th>
-                                        <th><span class="icon_xs_zokusei icon_rei" style="width:23px; height:23px;"></span></th>
-                                        <th><span class="icon_xs_zokusei icon_rai" style="width:23px; height:23px;"></span></th>
-                                        <th><span class="icon_xs_zokusei icon_yo" style="width:23px; height:23px;"></span></th>
-                                        <th><span class="icon_xs_zokusei icon_in" style="width:23px; height:23px;"></span></th>
-                                    </tr>
-                                    <tr>
-                                        <td class="taisei_Zan" style="font-size:100%;">999</td>
-                                        <td class="taisei_Da" style="font-size:100%;">999</td>
-                                        <td class="taisei_Totsu" style="font-size:100%;">999</td>
-                                        <td class="taisei_Netsu" style="font-size:100%;">999</td>
-                                        <td class="taisei_Rei" style="font-size:100%;">999</td>
-                                        <td class="taisei_Rai" style="font-size:100%;">999</td>
-                                        <td class="taisei_You" style="font-size:100%;">999</td>
-                                        <td class="taisei_Inn" style="font-size:100%;">999</td>
-                                </table>
+                                </div>
                             </div>
-                            <div class="row no-gutters d-md-none">
-                                <div class="col-12 label-text text-center small">技をタップで説明文を表示します</div>
-                                <div class="col-12"><div class="style-skill-list width-100" id="skillList1"></div></div>
-                                <div class="col-12"><div class="style-skill-list width-100" id="abilityList1"></div></div>
+                            <div class="col-12 col-lg-6 bg-black-frame width-max-nobackground" style="padding:20px 10px;">
+                                <section class="bg-simple width-max" style="margin-bottom:10px">
+                                    <div class="width-100" id="skillList"></div>
+                                    <table class="width-100 d-none" id="SKILL_TEMPLATE">
+                                        <tr>
+                                            <td class="weaponIconTd text-center">
+                                                <span class="icon_sm ">　</span>
+                                            </td>
+                                            <td style="text-align: left;line-height: 10px; position: relative;">
+                                                <p class="text-left skill-name" style="margin: 10px 0px; font-size: 20px;"></p>
+                                                <span class="skill-bp"></span>
+                                            </td>
+                                            <td class="text-right skill-iryoku d-none d-sm-table-cell"></td>
+                                            <td class="text-right small weaponIconTd skillKakuseiArea" style="padding-top:2px"></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="weaponIconTd text-center">
+                                                <div class="ICON_AREA_IMG text-nowrap"></div>
+                                            </td>
+                                            <td colspan="3">
+                                                <div class="SKILL_OPTION text-left small">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="4">
+                                                <div class="skill-text"></div>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </section>
+                                <section class="width-max bg-simple">
+                                    <div class="width-100" id="abilityList" style="padding: 5px 20px 30px 20px;">
+                                    </div>
+                                    <div class="d-none" id="AB_TEMPLATE">
+                                        <div class="ab-name"></div>
+                                        <div class="ab-flover small"></div>
+                                    </div>
+                                </section>
                             </div>
                         </div>
                     </div>
-                    <div class="label-text text-center width-100 h5">所持している 技・術 </div>
-                    <div id="styleSkill1" class='row no-gutters style-skill-list' style="padding:0px;"></div>
-                    <div class="label-text text-center width-100 h5">継承可能な 技・術</div>
-                    <div id="styleSkill2" class='row no-gutters style-skill-list' style="padding:0px;"></div>
-                    <div class="text-center kadomaru blueLink" >
-                        <a href="./skill.html" target="_blank" class="h4"><i class="fas fa-search"></i> 技・術 一覧を調べる</a>
+                    <br>
+                    <div class="info-modal">
+                        <div class="text-center info-modal-header">所持している 技・術</div>
+                        <div class="text-center fuchidoriWhite" style="color: rgb(250, 240, 180);">
+                            <div class="SKILL_TAB style-tab-active" data-target="styleSkillOrg" style="width: 33%; max-width: 130px;" onclick="">スタイル別</div>
+                            <div class="SKILL_TAB style-tab-disabled" data-target="styleSkillIryoku" style="width: 30%; max-width: 130px;" onclick="">威力別</div>
+                            <div class="SKILL_TAB style-tab-disabled" data-target="styleSkillRange" style="width: 30%; max-width: 130px;" onclick="">範囲別</div>
+                        </div>
+                        <div id="styleSkillOrg" class="STYLE_SKILL_TAB style-bgcolor" style="padding: 20px 5px;"></div>
+                        <div id="styleSkillIryoku" class="STYLE_SKILL_TAB style-bgcolor"" style="padding: 20px 5px;"></div>
+                        <div id="styleSkillRange" class="STYLE_SKILL_TAB style-bgcolor"" style="padding: 20px 5px;"></div>
+                        <div class="subtitle-long d-none width-100" id="RANGE_TITLE"></div>
+
+                        <div class="text-center" style="margin-top: 10px;">
+                            <a href="./skill.html" target="_blank" class="icon_btn_positive  width-100"><i class="fas fa-search"></i> 技・術 一覧を調べる</a>
+                        </div>
+                        <table class="width-100 d-none" id="SKILL_KEISHO_TEMPLATE" style="border-bottom: 1px solid gray">
+                            <tr>
+                                <td class="weaponIconTd text-center STYLE_ICON"></td>
+                                <td style="text-align: left; position: relative; width:230px;">
+                                    <div class="text-left">
+                                        <img class="BATTLE_ICON icon_xs" loading="lazy"></span>
+                                        <span class="skill-name"></span>
+                                    </div>
+                                    <div class="d-inline-block text-nowrap SKILL_ATTR" style="width:50px;"></div>
+                                    <div class="skill-bp skill-bp2 position-relative">
+                                        <span class="consume-bp"></span>
+                                        <span class="consume-lp"></span>
+                                        <span class="skill-iryoku d-lg-none" style="position:absolute; right:5px"></span>
+                                    </div>
+                                </td>
+                                <td class="text-right skill-iryoku d-none d-lg-table-cell"></td>
+                                <td class="text-right d-sm-none INFO_BTN" style="width:30px"><img src="https://romasagatool.com/img/icon/icon_info.png" class="width-100"></td>
+                                <td class="small d-none d-sm-table-cell SKILL_TEXT" style="width: 50%; padding-left: 10px;"></td>
+                            </tr>
+                            <tr class="d-sm-none">
+                                <td colspan="5">
+                                    <div class="SKILL_TEXT TOGGLE_FLAVOR bg-common-window" style="padding: 10px 5px;"></div>
+                                </td>
+                            </tr>
+                        </table>                        
                     </div>
-                    <div class="label-text text-center width-100 h5">ステータスランキング</div>
-                    <table class="width-100 text-center table-bordered">
-                        <tbody>
-                            <tr colspan=15 class="text-center">
-                                <img id="RANK_HEAD_IMG" src="" style="width:350px">
-                            </tr>
-                            <tr class="" id="RANK_HEAD">
-                                <td class="paramHead paramCell2">-</td>
-                                <td class="paramHead paramCell2">値</td>
-                            </tr>
-                            <tr class="" id="RANK_HEAD2"><td class="paramHead paramCell2" colspan=2>スタイル数</td></tr>
-                            <tr class="" id="RANK_STR"><td class="paramHead paramCell2">腕</td></tr>
-                            <tr class="opacity" id="RANK_VIT"><td class="paramHead paramCell2">体</td></tr>
-                            <tr class="" id="RANK_DEX"><td class="paramHead paramCell2">器</td></tr>
-                            <tr class="opacity" id="RANK_AGI"><td class="paramHead paramCell2">速</td></tr>
-                            <tr class="" id="RANK_INT"><td class="paramHead paramCell2">知</td></tr>
-                            <tr class="opacity" id="RANK_MND"><td class="paramHead paramCell2">精</td></tr>
-                            <tr class="" id="RANK_AI"><td class="paramHead paramCell2">愛</td></tr>
-                            <tr class="opacity" id="RANK_MI"><td class="paramHead paramCell2">魅</td></tr>
-                            <tr class="" id="RANK_SUM"><td class="paramHead paramCell2">合計</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <br>
+                    <div class="info-modal">
+                        <div class="text-center info-modal-header">おすすめ継承パターン</div>
+                        <div class="text-center fuchidoriWhite d-md-none" style="color: rgb(250, 240, 180);">
+                            <div class="AUTO_TAB style-tab-active" data-target="AUTO_PATTERN" style="width: 33%; max-width: 130px;" onclick="">単体攻撃</div>
+                            <div class="AUTO_TAB style-tab-disabled" data-target="AUTO_PATTERN_ALL" style="width: 30%; max-width: 130px;" onclick="">全体攻撃</div>
+                        </div>
+
+                        <div class="row">
+                            <div id="AUTO_PATTERN" class="col-12 col-md-6 AUTO_TAB_AREA" style="line-height: 22px;"></div>
+                            <div id="AUTO_PATTERN_ALL" class="col-12 col-md-6 d-none d-md-block AUTO_TAB_AREA" style="line-height: 22px;"></div>
+                        </div>
+                        <div class="width-100 bg-simple d-none" id="AUTO_TEMPLATE" style="padding: 2px 10px 10px 10px;">
+                            <table class="width-100 TEMPLATE_TABLE">
+                                <tr class="text-center"><td colspan=2>平均ダメージ</td>
+                                    <td colspan="3" class="damageNumber fuchidoriBlue position-relative text-right" style="padding-right: 41px;"><span class="totalDamage"></span><img class="auto-info" src="https://romasagatool.com/img/icon/icon_info.png"></td>
+                                </tr>
+                                <tr class="text-center" style="border-bottom: 1px solid"><td style="width:40px;">所持</td><td>名称</td><td style="width:35px;">BP</td><td style="width:35px;">覚醒</td><td style="width:75px;">ダメージ</td></tr>
+                                <tr class="skill0"><td colspan=2 class="name"></td><td class="bp text-right"></td><td class="kakusei"></td><td class="damage damageNumber fuchidoriBlue text-right"></td></tr>
+                                <tr class="skill1"><td colspan=2 class="name"></td><td class="bp text-right"></td><td class="kakusei"></td><td class="damage damageNumber fuchidoriBlue text-right"></td></tr>
+                                <tr class="skill2"><td colspan=2 class="name"></td><td class="bp text-right"></td><td class="kakusei"></td><td class="damage damageNumber fuchidoriBlue text-right"></td></tr>
+                                <tr class="skill3" style="border-top: 1px solid"><td class="holders"></td><td class="name"></td><td class="bp text-right"></td><td class="kakusei"></td><td class="damage damageNumber fuchidoriBlue text-right"></td></tr>
+                                <tr><td colspan="5"><div class="pattern" style="padding: 10px; border-top: 1px dashed; display: none;"></div></td></tr>
+                            </table>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="info-modal">
+                        <div class="text-center info-modal-header h5">ステータスランキング</div>    
+                        <table class="bg-simple width-100 text-center">
+                            <tbody>
+                                <tr colspan=15 class="text-center">
+                                    <img id="RANK_HEAD_IMG" src="" style="width:350px">
+                                </tr>
+                                <tr class="" id="RANK_HEAD" style="border-bottom: 1px solid;border-top: 1px solid;">
+                                    <td class="paramHead paramCell2">-</td>
+                                    <td class="paramHead paramCell2">値</td>
+                                </tr>
+                                <tr class="" id="RANK_HEAD2"><td class="paramHead paramCell2" colspan=2>スタイル数</td></tr>
+                                <tr class="" id="RANK_STR"><td class="paramHead paramCell2">腕</td></tr>
+                                <tr class="odd-row" id="RANK_VIT"><td class="paramHead paramCell2">体</td></tr>
+                                <tr class="odd-row" id="RANK_DEX"><td class="paramHead paramCell2">器</td></tr>
+                                <tr class="odd-row" id="RANK_AGI"><td class="paramHead paramCell2">速</td></tr>
+                                <tr class="odd-row" id="RANK_INT"><td class="paramHead paramCell2">知</td></tr>
+                                <tr class="odd-row" id="RANK_MND"><td class="paramHead paramCell2">精</td></tr>
+                                <tr class="odd-row" id="RANK_AI"><td class="paramHead paramCell2">愛</td></tr>
+                                <tr class="odd-row" id="RANK_MI"><td class="paramHead paramCell2">魅</td></tr>
+                                <tr class="odd-row" id="RANK_SUM"><td class="paramHead paramCell2">合計</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 <!-- ツール_スタイル中央 -->
                 <ins class="adsbygoogle"
@@ -547,8 +891,8 @@
                      data-ad-format="auto"
                      data-full-width-responsive="true"></ins>
                 <script> (adsbygoogle = window.adsbygoogle || []).push({});</script>            
-                <div class="style-bgcolor styleChoiceArea">
-                        <div class="label-text text-center width-100 h5">近いステータス</div>
+                <div class="info-modal styleChoiceArea">
+                    <div class="text-center info-modal-header h5">近いステータス</div>    
                     <table class="width-100 table-bordered">
                         <tbody>
                             <tr><td class="paramHead paramCell2 text-center">腕</td><td class="style_near" id="RANK_STR_NEAR"></td></tr>
