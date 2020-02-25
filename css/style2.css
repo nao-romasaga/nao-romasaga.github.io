@@ -9,7 +9,9 @@
         display: none !important;
     }
 }
-
+.login-card{
+    position:absolute; right:15px; font-size:10px;        
+}
 html {
     touch-action: manipulation;
 }
@@ -91,7 +93,7 @@ html {
 }
 
 #firebaseui-auth-container {
-    height: 40px;
+    height: 25px;
     display: table-cell;
     vertical-align: middle;
     padding: 0px 15px;
@@ -254,6 +256,9 @@ html {
     box-shadow: 0 0px 3px yellow;    
 }
 @media screen and (max-width:400px) {
+    .login-card{
+        position:absolute; right:0px; bottom:0px; font-size:10px;        
+    }    
     .styleTab {
         font-size: 15px;
     }
