@@ -13,6 +13,90 @@
 html {
     touch-action: manipulation;
 }
+
+.header-area {
+    background: url(https://nao-romasaga.github.io/img/bg.jpg);
+    background-size: cover;
+    background-position-y: -100px;
+    margin-bottom: 54px; 
+}
+.header-image {
+    width: 100%;
+    max-width: 1140px;
+    height: 130px;    
+    margin: auto;
+    position:relative;
+}
+.site-header {
+    position: absolute;
+    height: 54px;
+    width: 100%;
+    background-color: rgba(241,233,143,1);
+    border-bottom: 4px solid rgba(70,55,30,1);
+    padding: 0px;
+    z-index: 10;
+    overflow-x: scroll;
+}
+.menu-item > a:link,
+.menu-item > a:visited,
+.menu-item > a:hover,
+.menu-item > a:active {
+  color: inherit;
+}
+.site-header > ul {
+    display: flex;
+    width: 1100px;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+}
+
+.site-header.fixed{
+    position: fixed;
+    top: 0;
+}
+.site-header.hide{
+    top: -63px;
+}
+.user-menu-item {
+    margin-left: auto;
+}
+.menu-item {
+    font-size: 14px;
+    padding: 0px 8px;
+}
+
+.menu-item:not(:first-of-type) {
+    border-left: 1px solid darkgoldenrod;
+}
+.dropdown-item:not(:first-of-type) {
+    border-left: 1px solid darkgoldenrod;
+}
+.dropdown-item {
+    position: absolute;
+    z-index: 100;
+    background-color: rgba(241,233,143,1);
+    padding: 3px;
+    width: 160px;
+    left: 0px;
+}
+
+.dropdown > a:nth-of-type(1) { left:calc(160px * -0.5); }
+.dropdown > a:nth-of-type(2) { left:calc(160px * 0.5); }
+.dropdown > a:nth-of-type(3) { left:calc(160px * 1.5); }
+.dropdown > a:nth-of-type(3) { left:calc(160px * 1.5); }
+
+.yubi {
+    cursor : pointer;
+}
+
+#firebaseui-auth-container {
+    height: 40px;
+    display: table-cell;
+    vertical-align: middle;
+    padding: 0px 15px;
+}
+
 .bgcolor-brawn {
     background-color: rgba(70,55,30,1);
     color: #faf0b4;
@@ -183,6 +267,7 @@ html {
     .haikei {
         background: url(http://romasagatool.com/img/bg_xmas.jpeg) no-repeat;
         width:100%;
+        padding-top: 10px;
         background-attachment: fixed;
         background-size: cover;
         background-position: center;        
@@ -200,6 +285,7 @@ html {
     .haikei {
         background: url(http://romasagatool.com/img/bg_xmas.jpeg) no-repeat;
         width:100%;
+        padding-top: 10px;
         background-size: cover;
         background-position: center;
     }
@@ -383,10 +469,10 @@ html {
     border: 0px;
 }
 .bg-item {
-    background:
-    url(http://romasagatool.com/img/bg_item_left.png) left / 70px 100% no-repeat,
-    url(http://romasagatool.com/img/bg_item_right.png) right / 70px 100% no-repeat,
-    url(http://romasagatool.com/img/bg_item_center.png) center / calc(100% - 138px) 100% no-repeat;
+    background: 
+        url(http://romasagatool.com/img/bg_item_left.png) left / 48px 100% no-repeat, 
+        url(http://romasagatool.com/img/bg_item_right.png) right / 48px 100% no-repeat, 
+        url(http://romasagatool.com/img/bg_item_center.png) center / calc(100% - 96px) 100% no-repeat;
     color: #faf0b4;
     padding: 6px 0px;
 }
@@ -472,6 +558,10 @@ html {
     background: url(http://romasagatool.com/img/bg.jpg) no-repeat;
     width:100%;
     background-size: cover;
+}
+.dojohaikei {
+    background: url(http://romasagatool.com/img/bg_dojo.png);
+    padding-top: 10px;
 }
 
 body {
@@ -714,9 +804,6 @@ body {
     border: 1px solid lightcyan;    
     margin-left: 0px;
     font-size: 8px;
-}
-.dojohaikei {
-    background: url(http://romasagatool.com/img/bg_dojo.png);
 }
 .style-param-window {
     background-color: rgba(160, 40, 40, 0.6);

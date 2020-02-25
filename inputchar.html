@@ -37,14 +37,14 @@
         <link rel="stylesheet" type="text/css" href="./css/bootstrap/bootstrap.min.css">
         <script src="./js/popper.min.js"></script>
         <script src="./js/bootstrap.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="./css/style.css">
+        <link rel="stylesheet" type="text/css" href="./css/style2.css">
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
         <script src="https://www.gstatic.com/firebasejs/ui/3.5.2/firebase-ui-auth__ja.js"></script>
         <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
         <script src="./js/Firebase.js"></script>
-        <script src="./js/utils.js" ></script>
+        <script src="./js/utils2.js" ></script>
         <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
         <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -68,9 +68,6 @@
         <div class ="dojohaikei">
             <div class="container">
 
-                <div class="text-center">
-                    <a href="https://www.jp.square-enix.com/saga_reuniverse/" target="new"><img src="./img/cmn_logo01_sp.png" class="col-sm-12 col-md-8 col-lg-6"></a>
-                </div>
                 <h3 class="text-center title-text changeBase" data-base=0>キャラクター<br class="hidden spBlock">ステータス入力<span class="hidden pcBlock"></span></h3>
                 <p class="text-right opacity"><small>バグ発見、ご要望は <a href="https://peing.net/ja/nao_romasaga_rs" target="new">質問箱</a>まで</small>
                 </p>
@@ -111,7 +108,7 @@
                             <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="弓" href="#icon_yumi"><span class="icon_mini icon_yumi" onclick=""></span></a></li>
                             <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="槍" href="#icon_yari"><span class="icon_mini icon_yari" onclick=""></span></a></li>
                             <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="杖" href="#icon_tsue"><span class="icon_mini icon_tsue" onclick=""></span></a></li>
-                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="2baiFilter" data-label="特" href="#icon_2bai"><img src="/img/icon/icon_toku.png"></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="2baiFilter" data-label="特" href="#icon_2bai"><img src="./img/icon/icon_toku.png"></a></li>
                         <ul class="nav text-center width-100">
                             <li class="col-2 col-sm-1 blockquote text-center"><a class="filterList pad0" data-type="SeriesFilter" href="#RS1">RS1</a></li>
                             <li class="col-2 col-sm-1 blockquote text-center"><a class="filterList pad0" data-type="SeriesFilter" href="#RS2">RS2</a></li>
@@ -135,23 +132,6 @@
                     <label class="badge badge-pill badge-light">キャラクターをクリックすると<br class="hidden spBlock">ステータス入力が表示されます</label>
                     <div id="example-table-display" class="text-center">
                         <div id="example-table" style="width:402px"></div>
-                    </div>
-                    <br>
-                    <div class="card">
-                        <div class="card-header bg-primary" style="color:white">まとめて入力とは</div>
-                        <div class="card-body">
-                            ステータスをまとめて１回の作業で入力できます。<br>
-                            HP.腕.体.器.速.知.精.愛.魅の順に入力してください。<br>
-                            .+*#空白タブが区切り文字として使えます。
-                        </div>
-                    </div>
-                    <br>
-                    <div class="card">
-                        <div class="card-header bg-danger" style="color:white"><i class="fas fa-exclamation-triangle"></i>　注意　<i class="fas fa-exclamation-triangle"></i></div>
-                        <div class="card-body">
-                            入力するのはキャラクターの素のステータスです。<br>
-                            スタイル補正、装備、裏ステータスの値は含めないでください。<br>
-                        </div>
                     </div>
                     <br>
                     <div class="row" id="INPUT_LIST">
@@ -194,7 +174,6 @@
                                 <tr class="text-nowrap">
                                     <td >魅</td><td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="MI" data-pm="minus" onclick=""><input type="number" class="input charParam kadomaru charMI" style="width: 50px" value="6"><img src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="MI" data-pm="plus" onclick=""></td>
                                 </tr>
-
                                 <tr class=""><td colspan="2">＜まとめて入力＞</td></tr>
                                 <tr class="">
                                     <td colspan="2">
@@ -203,12 +182,12 @@
                                 </tr>
                                 <tr class="">
                                     <td colspan="2">
-                                        <button class="SAVE small icon_btn_on hanei" style="width:150px; height:30px; background-size: 150px 30px; padding:0px;">保存+閉じる</button>
+                                        <button class="SAVE small icon_btn_positive hanei">保存+閉じる</button>
                                     </td>
                                 </tr>
                                 <tr class="">
                                     <td colspan="2"><br>
-                                        <button class="CLOSE small icon_btn_red hanei" style="width:150px; height:30px; background-size: 150px 30px; padding:0px;">やっぱやめた</button>
+                                        <button class="CLOSE small icon_btn_negative hanei">やっぱやめた</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -217,6 +196,24 @@
 
                     </div>
                 </div><!-- isLogin -->
+                <br>
+                <div class="card">
+                    <div class="card-header bg-primary" style="color:white">まとめて入力とは</div>
+                    <div class="card-body">
+                        ステータスをまとめて１回の作業で入力できます。<br>
+                        HP.腕.体.器.速.知.精.愛.魅の順に入力してください。<br>
+                        .+*#空白タブが区切り文字として使えます。
+                    </div>
+                </div>
+                <br>
+                <div class="card">
+                    <div class="card-header bg-danger" style="color:white"><i class="fas fa-exclamation-triangle"></i>　注意　<i class="fas fa-exclamation-triangle"></i></div>
+                    <div class="card-body">
+                        入力するのはキャラクターの素のステータスです。<br>
+                        スタイル補正、装備、裏ステータスの値は含めないでください。<br>
+                    </div>
+                </div>
+
                 <hr>
                 <!-- ツール_まとめて入力_下部 -->
                 <ins class="adsbygoogle"
