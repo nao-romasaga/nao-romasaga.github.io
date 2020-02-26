@@ -654,6 +654,31 @@
                                     data-param="MI" data-pm="plus" onclick=""></td>
                         </tr>
                     </table>
+                    <table class="width-100 PARENT_TABLE">
+                        <tr class="text-nowrap">
+                            <td class="bg-item fuchidoriWhite fuchidoriNormal text-center">▼ステータス一括入力▼</td>
+                        </tr>
+                        <tr>
+                        <td><div class="yubi">一括入力とは <img src="http://romasagatool.com/img/icon/icon_info.png" height=20></div></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 0px 5px;"><input type="tel" class="input allparams width-100 kadomaru" placeholder="500.50.41.01.20.30.40.50.99"></td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">
+                                <button class="icon_btn_positive hanei" style="width:200px;">一括入力 反映</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="IKKATSU_INFO small" style="display: none;">
+                                [HP.腕.体.器.速.知.精.愛.魅]の順に入力して下さい<br>
+                                各パラーメタの区切り文字は, . スペース タブが利用可能です<br>
+                                ステータスが1桁の場合は先頭に0をつけてください
+                                </div>
+                            </td>
+                        </tr>                        
+                    </table>
                     <table class="width-100 inputArea">
                         <tr class="char-bottom text-nowrap">
                             <td class="bg-item fuchidoriWhite fuchidoriNormal text-center" colspan="12">▼スタイル選択▼</td>
@@ -692,22 +717,6 @@
                                 <button class="icon_btn_negative btn_close">閉じる</button>
                             </td>
                         </tr>
-                        <tr class="char-bottom d-none">
-                            <td colspan="12"><br>
-                                <span data-toggle="tooltip" data-placement="top" data-html="true"
-                                    style="margin-left:10px" title="" data-original-title="
-                                          腕.体.器.速.知.精.愛.魅の順に入力出来ます<br>
-                                          区切り文字は,.スペースタブが利用可能です<br>
-                                          区切り文字なしで16桁の数字でも入力可能です<br>
-                                          ステータス1桁の場合は先頭に0をつけてください">
-                                    ステータス一括入力<button class="icon_info_md"></button>
-                                </span>
-                                <div class="text-center width-100">
-                                    <input type="tel" class="input allparams" placeholder="500.50.41.01.20.30.40.50.99">
-                                    <button class="icon_btn_on hanei" >反映</button>
-                                </div>
-                            </td>
-                        </tr>
                     </table>
                 </div>
             </td>
@@ -738,10 +747,8 @@
 
             </div>
             <div class="">
-                <button data-id="ng" class="icon_btn_off modalClose"
-                    style="background-size: 150px 40px; width:150px;">やり直し</button>
-                <button data-id="ok" data-input="" id="allSubmit" class="icon_btn_on modalClose"
-                    style="background-size: 150px 40px; width:150px;">決定</button>
+                <button data-id="ng" class="icon_btn_negative modalClose">　やり直し　</button>
+                <button data-id="ok" data-input="" id="allSubmit" class="icon_btn_positive modalClose">　決定　</button>
             </div>
         </div>
     </div>
