@@ -13,6 +13,11 @@
         <changefreq>daily</changefreq>
     </url>
     <url>
+        <loc>https://nao-romasaga.github.io/quest.html</loc>
+        <lastmod>2020-02-28</lastmod>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
         <loc>https://nao-romasaga.github.io/auto.html</loc>
         <lastmod>2019-05-09</lastmod>
         <changefreq>daily</changefreq>

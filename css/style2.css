@@ -1174,6 +1174,18 @@ input[type=range]::-ms-tooltip {
         1px -1px 2px black,
         -1px -1px 2px black;    
 }
+.shadowRed {
+    text-shadow: 1px 1px 2px red,
+        -1px 1px 2px red,
+        1px -1px 2px red,
+        -1px -1px 2px red;    
+}
+.shadowBlue {
+    text-shadow: 1px 1px 2px blue,
+        -1px 1px 2px blue,
+        1px -1px 2px blue,
+        -1px -1px 2px blue;
+}
 .fuchidoriBlue{
     color: white;
     text-shadow: 1px 1px 2px blue,
