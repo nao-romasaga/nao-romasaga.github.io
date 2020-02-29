@@ -73,6 +73,9 @@
             width:20px;
             text-align:right
         }
+        .RESIST_TD {
+            width: 26px;
+        }
     </style>
     <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -91,30 +94,47 @@
                 <small>
                     現在、最新の外伝1,2のみ表示しています<br>
                     それより前のクエストは現在整備中です<br>
-    
                     バグ発見、ご要望は <a href="https://twitter.com/nao_romasaga_rs"
                         target="new">nao_romasaga_rs</a>まで</small></p>
-            <div id="DISP_ZONE">
-
+            <div class="bg-simple small" style="padding: 20px;">
+                <div class="subtitle-long">凡例</div><br>
+                <span class="taisei shadowRed text-white">-50</span>：耐性がマイナス。弱点です<br>
+                <span class="taisei shadowBlue text-white">50</span>：耐性がプラス。Resistされます<br>
+                ★:耐性が0。状態異常が通りやすいです<br>
+                ○:耐性が0〜50。状態異常はまだ通りやすいです<br>
+                △:耐性が51〜125。状態異常が通りにくくなってきます<br>
+                ×:耐性が126〜。状態異常はほぼ取りません<br>
+                無印:耐性が999です。状態異常は無効です<br>
             </div>
+            <div id="DISP_ZONE"></div>
             <div class="info-modal width-max d-none" style="min-width: 720px; padding: 0px 15px 40px 15px;" id="QUEST_BASE">
                 <div class="text-center info-modal-header fuchidoriWhite">外伝1.xxxxxx</div>
                 <table class="d-none" id="TABLE_TEMPLATE" style="line-height: 15px; margin-bottom:10px;">
                     <tr>
-                        <td class="QUEST_INFO bg-item text-center" style="width:100px;"></td>
+                        <td class="QUEST_INFO bg-item text-center" style="width:120px;"></td>
                         <td colspan=11 class="DROP_INFO small"></td>
                     </tr>
                     <tr class="text-center char-bottom">
                         <td></td>
-                        <td class="text-right"><img class="table-header-img" src="http://romasagatool.com/img/icon/icon_zan.png"></td>
-                        <td class="text-right"><img class="table-header-img" src="http://romasagatool.com/img/icon/icon_da.png"></td>
-                        <td class="text-right"><img class="table-header-img" src="http://romasagatool.com/img/icon/icon_totsu.png"></td>
-                        <td class="text-right"><img class="table-header-img" src="http://romasagatool.com/img/icon/icon_netsu.png"></td>
-                        <td class="text-right"><img class="table-header-img" src="http://romasagatool.com/img/icon/icon_rei.png"></td>
-                        <td class="text-right"><img class="table-header-img" src="http://romasagatool.com/img/icon/icon_rai.png"></td>
-                        <td class="text-right"><img class="table-header-img" src="http://romasagatool.com/img/icon/icon_yo.png"></td>
-                        <td class="text-right"><img class="table-header-img" src="http://romasagatool.com/img/icon/icon_in.png"></td>
+                        <td class="RESIST_TD text-right"><img class="table-header-img" src="http://romasagatool.com/img/icon/icon_zan.png"></td>
+                        <td class="RESIST_TD text-right"><img class="table-header-img" src="http://romasagatool.com/img/icon/icon_da.png"></td>
+                        <td class="RESIST_TD text-right"><img class="table-header-img" src="http://romasagatool.com/img/icon/icon_totsu.png"></td>
+                        <td class="RESIST_TD text-right"><img class="table-header-img" src="http://romasagatool.com/img/icon/icon_netsu.png"></td>
+                        <td class="RESIST_TD text-right"><img class="table-header-img" src="http://romasagatool.com/img/icon/icon_rei.png"></td>
+                        <td class="RESIST_TD text-right"><img class="table-header-img" src="http://romasagatool.com/img/icon/icon_rai.png"></td>
+                        <td class="RESIST_TD text-right"><img class="table-header-img" src="http://romasagatool.com/img/icon/icon_yo.png"></td>
+                        <td class="RESIST_TD text-right"><img class="table-header-img" src="http://romasagatool.com/img/icon/icon_in.png"></td>
+                        <!--
                         <td>有効状態異常</td>
+                        -->
+                        <td ><img class="DOKU table-header-img" src="http://romasagatool.com/img/icon/icon_doku.png"></td>
+                            <td ><img class="MAHI table-header-img" src="http://romasagatool.com/img/icon/icon_mahi.png"></td>
+                            <td ><img class="ZZZ table-header-img" src="http://romasagatool.com/img/icon/icon_zzz.png"></td>
+                            <td><img class="SEKIKA table-header-img" src="http://romasagatool.com/img/icon/icon_sekika.png"></td>
+                            <td ><img class="STAN table-header-img" src="http://romasagatool.com/img/icon/icon_stan.png"></td>
+                            <td ><img class="KONRAN table-header-img" src="http://romasagatool.com/img/icon/icon_konran.png"></td>
+                            <td ><img class="MIRYO table-header-img" src="http://romasagatool.com/img/icon/icon_miryo.png"></td>
+                            <td ><img class="KIZETSU table-header-img" src="http://romasagatool.com/img/icon/icon_kizetsu.png"></td>
                         <td>Round1</td>
                         <td>Round2</td>
                         <td>Round3</td>
@@ -129,16 +149,25 @@
                     <td class="RAI taisei">-55</td>
                     <td class="YO taisei">-55</td>
                     <td class="IN taisei">-55</td>
-                    <td >
-                        <img class="DOKU table-header-img" src="http://romasagatool.com/img/icon/icon_doku.png">
-                        <img class="MAHI table-header-img" src="http://romasagatool.com/img/icon/icon_mahi.png">
-                        <img class="ZZZ table-header-img" src="http://romasagatool.com/img/icon/icon_zzz.png">
-                        <img class="SEKIKA table-header-img" src="http://romasagatool.com/img/icon/icon_sekika.png">
-                        <img class="STAN table-header-img" src="http://romasagatool.com/img/icon/icon_stan.png">
-                        <img class="KONRAN table-header-img" src="http://romasagatool.com/img/icon/icon_konran.png">
-                        <img class="MIRYO table-header-img" src="http://romasagatool.com/img/icon/icon_miryo.png">
-                        <img class="KIZETSU table-header-img" src="http://romasagatool.com/img/icon/icon_kizetsu.png">
+                    <td class="DOKU text-center"></td>
+                    <td class="MAHI text-center"></td>
+                    <td class="ZZZ text-center"></td>
+                    <td class="SEKIKA text-center"></td>
+                    <td class="STAN text-center"></td>
+                    <td class="KONRAN text-center"></td>
+                    <td class="MIRYO text-center"></td>
+                    <td class="KIZETSU text-center"></td>
+                    <!--
+                    <td ><img class="DOKU table-header-img" src="http://romasagatool.com/img/icon/icon_doku.png"></td>
+                        <td><img class="MAHI table-header-img" src="http://romasagatool.com/img/icon/icon_mahi.png"></td>
+                        <td><img class="ZZZ table-header-img" src="http://romasagatool.com/img/icon/icon_zzz.png"></td>
+                        <td><img class="SEKIKA table-header-img" src="http://romasagatool.com/img/icon/icon_sekika.png"></td>
+                        <td><img class="STAN table-header-img" src="http://romasagatool.com/img/icon/icon_stan.png"></td>
+                        <td><img class="KONRAN table-header-img" src="http://romasagatool.com/img/icon/icon_konran.png"></td>
+                        <td><img class="MIRYO table-header-img" src="http://romasagatool.com/img/icon/icon_miryo.png"></td>
+                        <td><img class="KIZETSU table-header-img" src="http://romasagatool.com/img/icon/icon_kizetsu.png"></td>
                     </td>
+                    -->
                 </tr>
             </table>
             </div>
@@ -349,14 +378,22 @@
         }
         function setJyotaiOpacity(target , value){
             var style = "opacity : 1;"
+            var text = "★";
             if(value >= 300 || value === "") {
                 style = "opacity : 0;";
-            } else if(value >= 50) {
+                text = "";
+            } else if(value > 125) {
                 style = "opacity : 0.2;";
+                text = "×";
+            } else if(value > 50) {
+                style = "opacity : 0.2;";
+                text = "△";
             } else if (value > 0) {
                 style = "opacity : 0.8;";
+                text = "○";
             }
-            target.attr("style",style);
+            //target.attr("style",style);
+            target.html(text);
         }
     });
 </script>
