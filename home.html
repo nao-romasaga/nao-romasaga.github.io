@@ -93,7 +93,7 @@
                             <div class="label-text m-auto" style="width:95%;padding: 15px; ">
                                 <span id="NAME"></span><br>
                                 <input type="text" class="kadomaru" id="UID" style="width:80%"><button
-                                    class="icon_btn_on" onclick="copyToClipboard()">コピー</button>
+                                    class="icon_btn_on" onclick="copyToClipboard('UID')">コピー</button>
                             </div>
                         </div>
                         <div class="col-3 d-md-none" id="MYICON"></div>
@@ -449,18 +449,6 @@
             if (OFUSE_FLG) {
                 $(".premium").removeClass("d-none");
             }
-        }
-        function copyToClipboard() {
-            // コピー対象をJavaScript上で変数として定義する
-            var copyTarget = document.getElementById("UID");
-
-            // コピー対象のテキストを選択する
-            copyTarget.select();
-
-            // 選択しているテキストをクリップボードにコピーする
-            document.execCommand("Copy");
-            // コピーをお知らせする
-            alert("コピーしました : " + copyTarget.value);
         }
     </script>
     <script src="./js/data_CHARMASTER.js"></script>
