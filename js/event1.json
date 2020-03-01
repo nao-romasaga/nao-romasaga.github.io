@@ -1,19 +1,41 @@
 {
     "year": 2020,
-    "month": 2,
+    "month": 3,
     "event": [
         {
             "startDay": "1",
-            "endDay": "19",
-            "title": "[ガチャ] <br class='hidden pcBlock'>オーケストラ祭記念 Happy Romancing祭",
+            "endDay": "31",
+            "title": "[ガチャ] <br class='hidden pcBlock'>2000万DL Romancing祭 ビューネイ編/リズ編",
             "endSuffix": "<br>翌4:00 終了",
             "type": "green",
             "startNone": true
         },
         {
             "startDay": "10",
-            "endDay": "19",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>コッペリア/ブラウニー/サラ/バーニィ/フリーファイター女 スタイル2倍",
+            "endDay": "31",
+            "title": "[ガチャ予想] <br class='hidden pcBlock'>2000万DL Romancing祭 第二弾",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "green"
+        },
+        {
+            "startDay": "20",
+            "endDay": "31",
+            "title": "[ガチャ予想] <br class='hidden pcBlock'>2000万DL Romancing祭 第三弾",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "green"
+        },
+        {
+            "startDay": "1",
+            "endDay": "31",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>ジュエルセール",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue",
+            "startNone": true
+        },
+        {
+            "startDay": "1",
+            "endDay": "4",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>財宝の地図ドロップ",
             "startSuffix": "12:00 開始<br>",
             "endSuffix": "<br>翌4:00 終了",
             "type": "blue",
@@ -21,80 +43,79 @@
         },
         {
             "startDay": "1",
-            "endDay": "29",
-            "title": "[ガチャ] <br class='hidden pcBlock'>SF1 Specialピックアップ",
+            "endDay": "8",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>メインスタ半",
+            "startSuffix": "12:00 開始<br>",
             "endSuffix": "<br>翌4:00 終了",
-            "type": "green",
+            "type": "blue",
             "startNone": true
         },
         {
             "startDay": "1",
-            "endDay": "19",
-            "title": "[イベント] <br class='hidden pcBlock'>詩人の楽器とバレンタイン<br>アルジャーノンにスイーツを[再]",
+            "endDay": "1",
+            "title": "[1日限定 メイン3倍] <br class='hidden pcBlock'>RS3 スタイル",
+            "startSuffix": "",
+            "type": "blue"
+        },
+        {
+            "startDay": "2",
+            "endDay": "2",
+            "title": "[1日限定 メイン3倍] <br class='hidden pcBlock'>SF1 スタイル",
+            "startSuffix": "",
+            "type": "blue"
+        },
+        {
+            "startDay": "3",
+            "endDay": "3",
+            "title": "[1日限定 メイン3倍] <br class='hidden pcBlock'>SF2 スタイル",
+            "startSuffix": "",
+            "type": "blue"
+        },
+        {
+            "startDay": "4",
+            "endDay": "4",
+            "title": "[1日限定 メイン3倍] <br class='hidden pcBlock'>US/SS/ES/RSR スタイル",
+            "startSuffix": "",
+            "type": "blue"
+        },
+        {
+            "startDay": "1",
+            "endDay": "14",
+            "title": "[イベント] <br class='hidden pcBlock'>天下分け目のホワイトデー！[再]",
             "endSuffix": "<br>翌4:00 終了",
             "type": "orange",
             "startNone": true
         },
         {
-            "startDay": "3",
-            "endDay": "19",
-            "title": "[イベント] <br class='hidden pcBlock'>デュラハンとの戦い",
-            "startSuffix": "<br>12:00 開始",
+            "startDay": "1",
+            "endDay": "31",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>財宝収集 オーラム2倍<br>洞窟修練 挑戦4回",
+            "startPrefix": "4:00 開始<br>",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue",
+            "startNone": true
+        },
+        {
+            "startDay": "1",
+            "endDay": "8",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>卵のから ドロップ2倍",
+            "startPrefix": "4:00 開始<br>",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue"
+        },
+        {
+            "startDay": "5",
+            "endDay": "31",
+            "title": "[イベント] <br class='hidden pcBlock'>聖石洞窟 11〜15層(終了未定)",
+            "startPrefix": "12:00 開始(予)<br>",
             "endSuffix": "<br>翌4:00 終了",
             "type": "orange"
         },
         {
-            "endDay": "14",
-            "title": "[イベント] <br class='hidden pcBlock'>炎を司るものフレイムタイラント",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "orange",
-            "startNone": true
-        },
-        {
-            "startDay": "1",
-            "endDay": "28",
-            "title": "[イベント] <br class='hidden pcBlock'>聖戦士ガラハドとアイスソード",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "orange",
-            "startNone": true
-        },
-        {
-            "startDay": "1",
-            "endDay": "29",
-            "title": "[イベント] <br class='hidden pcBlock'>タンザーとの戦い",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "orange",
-            "startNone": true
-        },        
-        {
             "startDay": "1",
             "endDay": "14",
-            "title": "[イベント] <br class='hidden pcBlock'>フレイムタイラントとの戦い",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "orange",
-            "startNone": true
-        },        
-        {
-            "startDay": "7",
-            "endDay": "9",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>女性・性別不明 スタイル2倍",
-            "startSuffix": "12:00 開始<br>",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "blue"
-        },
-        {
-            "startDay": "10",
-            "endDay": "29",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>クーン/メイレン/サンダー/リュート/フェイオン スタイル2倍",
-            "startSuffix": "12:00 開始<br>",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "blue"
-        },
-        {
-            "startDay": "17",
-            "endDay": "19",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>メインスタ半",
-            "startSuffix": "<br>18:00 開始",
+            "title": "[メイン2倍] <br class='hidden pcBlock'>ビューネイ/ハリード/マドレーン/リズ/アイシャ/アセルス スタイル",
+            "startSuffix": "<br>12:00 開始",
             "endSuffix": "<br>翌4:00 終了",
             "type": "blue"
         }
