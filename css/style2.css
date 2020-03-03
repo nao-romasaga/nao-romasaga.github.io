@@ -109,6 +109,9 @@ html {
     background-color: rgba(70,55,30,1);
     color: #faf0b4;
 }
+.radius-small {
+    border-radius: 5px;
+}
 .margin-bottom5{
     margin-bottom: 5px;
 }
@@ -276,7 +279,7 @@ html {
     }
 
     .haikei {
-        background: url(http://romasagatool.com/img/bg_xmas.jpeg) no-repeat;
+        background: url(http://romasagatool.com/img/bg_carnival.jpeg) no-repeat;
         width:100%;
         padding-top: 10px;
         background-attachment: fixed;
@@ -483,7 +486,7 @@ html {
     background: 
         url(http://romasagatool.com/img/bg_item_left.png) left / 48px 100% no-repeat, 
         url(http://romasagatool.com/img/bg_item_right.png) right / 48px 100% no-repeat, 
-        url(http://romasagatool.com/img/bg_item_center.png) center / calc(100% - 96px) 100% no-repeat;
+        url(http://romasagatool.com/img/bg_item_center.png) center / calc(100% - 95px) 100% no-repeat;
     color: #faf0b4;
     padding: 6px 0px;
 }
@@ -495,14 +498,7 @@ html {
     padding:5px;    
 }
 
-.game-banner{
-    border: 4px solid #dcc8b4;
-    border-radius: 12px;
-    color:#faf0b4;
-    background: -moz-linear-gradient(to bottom,#d87242, #520c0b 50%,#d87242); 
-    background: -webkit-linear-gradient(to bottom,#d87242, #520c0b 50%,#d87242); 
-    background: linear-gradient(to bottom,#d87242, #520c0b 50%,#d87242); 
-}
+
 .darkButton{
     border: 2px solid #d0c0b0;
     border-radius: 12px;
@@ -533,20 +529,6 @@ html {
     background: -moz-linear-gradient(to bottom,#91aa64, #28140a 50%,#91aa64); 
     background: -webkit-linear-gradient(to bottom,#91aa64, #28140a 50%,#91aa64); 
     background: linear-gradient(to bottom,#91aa64, #28140a 50%,#91aa64); 
-}
-.zenryokuAuto{
-    color: white;
-    text-shadow: 2px 2px 1px #F00,
-        -2px 2px 1px #F00,
-        2px -2px 1px #F00,
-        -2px -2px 1px #F00;    
-    width: 100%;
-    background:    -moz-linear-gradient(to bottom,#ffff7d, #956400 50%,#ffff7d); 
-    background: -webkit-linear-gradient(to bottom,#ffff7d, #956400 50%,#ffff7d); 
-    background:         linear-gradient(to bottom,#ffff7d, #956400 50%,#ffff7d); 
-}
-.zenryokuAuto:active{
-    animation: anime 0.2s 0s;  /* アニメーション指定 */
 }
 
 @keyframes anime {
