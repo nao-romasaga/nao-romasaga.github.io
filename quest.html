@@ -98,8 +98,8 @@
                         target="new">nao_romasaga_rs</a>まで</small></p>
             <div class="bg-simple small" style="padding: 20px;">
                 <div class="subtitle-long">凡例</div><br>
-                <span class="taisei shadowRed text-white">-50</span>：耐性がマイナス。弱点です<br>
-                <span class="taisei shadowBlue text-white">50</span>：耐性がプラス。Resistされます<br>
+                <span class="taisei shadow-red text-white">-50</span>：耐性がマイナス。弱点です<br>
+                <span class="taisei shadow-blue text-white">50</span>：耐性がプラス。Resistされます<br>
                 ★:耐性が0。状態異常が通りやすいです<br>
                 ○:耐性が0〜50。状態異常はまだ通りやすいです<br>
                 △:耐性が51〜125。状態異常が通りにくくなってきます<br>
@@ -108,7 +108,7 @@
             </div>
             <div id="DISP_ZONE"></div>
             <div class="info-modal width-max d-none" style="min-width: 720px; padding: 0px 15px 40px 15px;" id="QUEST_BASE">
-                <div class="text-center info-modal-header fuchidoriWhite">外伝1.xxxxxx</div>
+                <div class="text-center info-modal-header fuchidori-white">外伝1.xxxxxx</div>
                 <table class="d-none" id="TABLE_TEMPLATE" style="line-height: 15px; margin-bottom:10px;">
                     <tr>
                         <td class="QUEST_INFO bg-item text-center" style="width:120px;"></td>
@@ -373,7 +373,7 @@
 
         function setReistValue(target , value){
             var v = value == "0" ? "" : value;
-            var clazz = (value >= 0) ? "shadowBlue text-white" : "shadowRed text-white";
+            var clazz = (value >= 0) ? "shadow-blue text-white" : "shadow-rlue text-white";
             target.addClass(clazz).html(v);
         }
         function setJyotaiOpacity(target , value){

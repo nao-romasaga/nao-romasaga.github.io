@@ -36,8 +36,8 @@
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./css/bootstrap/bootstrap.min.css">
     <script src="./js/bootstrap/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="./css/style2.css">
     <link rel="stylesheet" type="text/css" href="./css/accordion.css">
+    <link rel="stylesheet" type="text/css" href="./css/style2.css">
     <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
@@ -99,6 +99,7 @@
 
 <body>
     <div class="haikei">
+        <button class="icon_btn_positive width-100 culcStart shadow-black" style="position: fixed; bottom: 0px; z-index:2;">　全力AUTO 開始　</button>
         <div class="container">
             <h3 class="text-center title-text">全力AUTOシミュレーター</h3>
             <p class="text-right opacity"><small>バグ発見、ご要望は <a href="https://twitter.com/nao_romasaga_rs"
@@ -119,7 +120,7 @@
             <label class="badge badge-pill badge-light">絞り込み</label>
             <div class="filter-bgcolor text-center small row" style="width:100%; margin: 0px;">
                 <ul class="nav text-center width-100" style="margin-bottom: 5px;">
-                    <li class="subtitle fuchidoriWhite smallFont">武器種別</li>
+                    <li class="subtitle fuchidori-white smallFont">武器種別</li>
                 </ul>
                 <ul class="nav text-center width-100">
                     <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_ken"><span
@@ -144,7 +145,7 @@
                                 class="icon_mini icon_tsue weapon-icon-button fButton" onclick=""></span></a></li>
                 </ul>
                 <ul class="nav text-center width-100" style="margin-bottom: 5px;">
-                    <li class="fuchidoriWhite subtitle smallFont">シリーズ</li>
+                    <li class="fuchidori-white subtitle smallFont">シリーズ</li>
                 </ul>
                 <ul class="nav text-center width-100">
                     <li class="col-4 col-sm-2 text-center" style="margin-bottom: 5px;"><a class="filterList pad0"
@@ -250,72 +251,88 @@
                         <span class="CHAR_NAME">このキャラ</span>の育成ランキング<span class="d-none d-sm-inline">を調べる <i
                                 class="fas fa-search"></i></span><br><small>(ユーザが登録しているステータスランキング)</small></a>
                 </div>
-                <div class="text-center kadomaru blueLink">
-                    <a href="./skill.html" target="_blank" class="h6"><i class="fas fa-search"></i> 技・術 一覧を調べる</a>
-                </div>
             </div>
-            <div class="info-modal styleChoiceArea">
-                <div class="text-center info-modal-header">スタイル選択</div>
+            <div class="info-modal styleChoiceArea width-max">
+                <div class="text-center info-modal-header"><i class="fas fa-cog"></i> 条件設定</div>
+                <div class="bg-item text-center">スタイル選択</div>
                 <div id="styleChoice"></div>
-            </div>
-            <div class="info-modal styleChoiceArea">
-                <div class="text-center info-modal-header">技/術・覚醒 選択</div>
-                    ◇を選択すると覚醒できます<br>
-                    ◆を選択すると取り消せます</label>
-    
-                <div class="" id="skillAreaParent">
-                    <div class="row">
-                        <div class="col-12 small">
-                            <table class="table-sm filter-bgcolor" id="skillArea"
-                                style="width:100%; border-collapse:collapse; color:ivory">
-                                <thead class="game-banner">
-                                    <tr>
-                                        <th>種別</th>
-                                        <th>名称</th>
-                                        <th>覚醒</th>
-                                        <th class="d-none d-md-table-cell">BP</th>
-                                        <th class="d-none d-md-table-cell">威力</th>
-                                        <th class="d-md-none">BP<br>威力</th>
-                                    </tr>
-                                </thead>
-                                <tbody></tbody>
-                                <tfoot></tfoot>
-                            </table>
-                        </div>
-                    </div>
+                <div class="bg-item text-center">技/術・覚醒 選択</div>                
+                <div class="small">
+                    ◇タップで覚醒/◆タップで取消
                 </div>
-                <div style="background-color: #e6dcb4; border-radius: 8px;">
+    
+                <div class="filter-bgcolor small" id="skillAreaParent">
+                    <table class="table-sm" id="skillArea"
+                        style="width:100%; border-collapse:collapse; color:ivory">
+                        <thead style="border-bottom: 1px solid #faf0b4;">
+                            <tr>
+                                <th class="text-center">種別</th>
+                                <th class="text-center">名称</th>
+                                <th>覚醒</th>
+                                <th class="d-none d-md-table-cell">BP</th>
+                                <th class="d-none d-md-table-cell">威力</th>
+                                <th class="d-md-none text-nowrap">BP/威力</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="d-none" id="SKILL_TR_TEMPLATE">
+                                <td class="ICON"></td>
+                                <td class="skill"></td>
+                                <td class="KAKUSEI small" style="">
+                                    <span class="kakuseiCheck KAKUSEI1 d-none yubi" data-kakusei="1">◇ </span>　
+                                    <span class="kakuseiCheck KAKUSEI2 d-none yubi" data-kakusei="2">◇ </span>　
+                                    <span class="kakuseiCheck KAKUSEI3 d-none yubi" data-kakusei="3">◇</span>
+                                </td>
+                                <td class="d-none d-md-table-cell"><span class="SKILL_BP" ></span></td>
+                                <td class="d-none d-md-table-cell SKILL_IRYOKU"></td>
+                                <td class="d-md-none">BP:<span class="SKILL_BP"></span><br><span class="SKILL_IRYOKU"></span></td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr class='keishoSkillTr' id='noKeisho'><td colspan=5 class='text-center'>継承技未設定</td></tr>
+                        </tfoot>
+                    </table>
                     <button id="keishoKaijo" class="text-center icon_btn_cancel width-100">継承技をはずす</button>
                     <div id="keisyoSkill" class="keishoSkillArea"></div>
+                    <button class="skill bgcolor-brawn width-100 radius-small KEISHO_SKILL d-none" id="KEISHO_TEMPLATE"><p class="floatLeft"><span class="NAME"></span></p><p class="floatRight"></p></button>
                 </div>
-                <div id="keisyoArea"></div>
+                <br>
+                <a href="./skill.html" target="_blank" class="h6 shadow-black text-center icon_btn_positive width-100" style="padding: 5px 0px;"><i class="fas fa-search"></i> 技・術 一覧を調べる</a>
+                <div class="row">
+                    <button class="col-12 col-sm-6 text-nowrap text-center width-100 icon_btn_negative culcStart" data-type="loop" style="font-size:18px; display: inline-block; padding: 5px 0px; margin-top: 10px;">ループダメージ計測</button>
+                    <button class="col-12 col-sm-6 text-nowrap text-center width-100 icon_btn_positive culcStart shadow-black" style="font-size:18px; display: inline-block; padding: 5px 0px; margin-top: 10px;">全力AUTO 開始</button>    
+                </div>
             </div>
             <br>
 
             <div class="card skillChoiceArea">
-                <div class="card-header bg-primary" style="color:white">オプション設定<button class="icon_btn_on"
-                        ID="OPTION_BUTTON" style="position: absolute; top:5px; right:5px;">開 /
-                        閉</button></div>
-                <div class="card-body style-bgcolor row" style="margin: 0px" id="OPTION_BODY">
+                <div class="card-header bg-primary" ID="OPTION_BUTTON" style="color:white">
+                    <i class="fas fa-cog"></i> オプション設定 (<span class="hidden pcBlock">タップで展開 </span><i class="fas fa-sort"></i>)
+                </div>
+                <div class="card-body style-bgcolor row" style="display:none; margin: 0px; padding: 20px 0px;" id="OPTION_BODY">
                     <div class="col-12 col-md-6 text-center">
-                        ▼限定アビリティ▼<br>
-                        勇健強撃、弱点特攻をダメージ計算に入れます
-                        <div class="cb kadomaru opacity">
-                            <input type="checkbox" id="limitAbilityCheck" name="cb" value="1" class="culcCheck" />
-                            <label for="limitAbilityCheck" style="width:90%; margin:10px">限定アビリティ発動</label>
-                        </div>
-                        ▼クリティカル▼<br>
-                        技が特攻ダメージになります<br>
-                        必殺の一撃を持っている場合、ダメージ計算に入れます
-                        <div class="cb kadomaru opacity">
-                            <input type="checkbox" id="tokkouCheck" name="cb" value="1" class="culcCheck" />
-                            <label for="tokkouCheck" style="width:90%; margin:10px">クリティカル発動</label>
-                        </div>
+                        <div class="bg-item">▼アビリティ▼</div>
+                        <div class="ONOFF_BTN icon_btn_off" data-type="limitAb">　勇健強撃 発動　<i class="fas fa-toggle-off" style="vertical-align: middle; font-size: 20px;"></i></div><br>
+                        <div class="ONOFF_BTN icon_btn_off" data-type="crit">クリティカル 発動　<i class="fas fa-toggle-off" style="vertical-align: middle; font-size: 20px;"></i></div><br>
+                    </div>
+                    <div class="col-6 col-md-3 text-center">
+                        <div class="bg-item">▼ターン設定▼</div>
+                        <input type="text" pattern="[0-9]*" id="SET_TURN" value="10"
+                            style="width:50px; text-align:right" class="kadomaru"> ターン
+                        <div class="bg-item">▼武器威力▼</div>
+                        <input type="text" pattern="[0-9]*" id="SET_WEAPON" value="31"
+                            style="width:50px; text-align:right" class="kadomaru">
+                    </div>
+                    <div class="col-6 col-md-3 text-center">
+                        <div class="bg-item">▼初期BP設定▼</div>
+                        BP <input type="text" pattern="[0-9]*" id="SET_BP" value="10"
+                            style="width:50px; text-align:right" class="kadomaru"><br>
+                        <div class="bg-item">▼聖石▼</div>
+                        <input type="text" pattern="[0-9]*" id="SET_SEISEKI" value="15"
+                            style="width:50px; text-align:right" class="kadomaru">%
                     </div>
                     <div class="col-12 col-md-6">
-                        <div class="text-center">
-                            ▼ステータス▼<br>
-                        </div>
+                        <div class="bg-item text-center">▼ステータス▼</div>
                         <div class="row">
                             <div class="col-4">腕力</div>
                             <div class="col-8"><input id="charSTR" type="number" class="input charParam kadomaru"
@@ -330,19 +347,9 @@
                             <div class="col-8"><input id="charINT" type="number" class="input charParam kadomaru"
                                     style="width: 100%" value="3"></div>
                         </div>
-                        装備、スタイル補正、裏能力込みの値を入力。ダメージ計算に使います
-                    </div>
-                    <div class="col-12 col-md-6 text-center">
-                        ▼ターン設定▼<br>
-                        シミュレーションターン数を設定<span class="d-none d-md-inline">できます</span><br>
-                        <input type="text" pattern="[0-9]*" id="SET_TURN" value="20"
-                            style="width:50px; text-align:right" class="kadomaru"> ターン
-                        <br>
-                        ▼初期BP設定▼<br>
-                        BP <input type="text" pattern="[0-9]*" id="SET_BP" value="10"
-                            style="width:50px; text-align:right" class="kadomaru"><br>
-                        ループダメージ計測などにご利用ください
-                    </div>
+                        装備、スタイル補正、裏能力込みの値を入力。<br>
+                        ダメージ計算に使います
+                    </div>    
                     <!--
                         <div class="col-6 col-md-4">
                             <div class="text-center">▼練気 発生回数▼</div>
@@ -354,7 +361,7 @@
                         </div>
                         -->
                     <div class="col-12 col-md-6 text-center">
-                        ▼仮想敵▼<br>
+                        <div class="bg-item">▼仮想敵▼</div>
                         <select class="form-control" id="enemy_vit" name="type">
                             <option value="x">敵を選択</option>
                         </select>
@@ -382,33 +389,94 @@
                     </div>
                 </div>
             </div>
-            <br>
-            <label class="badge badge-pill badge-light auto-start zenryokuAuto" id="culcStart">全力AUTO 開始</label>
 
-            <div class="opacity-char-back text-center culcAfter" id="culcSummaryArea">
-                <label class="badge badge-pill badge-light" style="width:90%">
-                    <p style='border-bottom:1px solid; margin-bottom: 2px;'>シミュレーションサマリ</p>
-                    生命の水など全力AUTOで使われないものは<br>使えるタイミングが使用回数に表示されます
-                </label>
-                <br>
-                <a href="" class="my-twitter-share-button width-100" rel=”nofollow”
-                    onClick="window.open(encodeURI(decodeURI(this.href)), 'twwindow', 'width=550, height=450, personalbar=0, toolbar=0, scrollbars=1'); return false;"
-                    style="background-color: rgba(41,163,239,1); color:white; padding:5px 10px; border-radius:10px;"><i
-                        class="fab fa-twitter"></i>　結果をツイートする</a>
-                <table class="table-sm text-left" id="culcSummary" style="width:100%; border-collapse:collapse">
-                    <thead class="game-banner">
-                        <tr>
-                            <th>名称</th>
-                            <th>BP</th>
-                            <th><span class="d-none d-md-inline">使用</span>回数</th>
-                            <th class="d-none d-md-table-cell">威力</th>
-                            <th class="text-nowrap">ダメージ</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                    <tfoot></tfoot>
-                </table>
+            <div class="row">
+                <button class="col-12 col-sm-6 text-nowrap text-center width-100 icon_btn_negative culcStart" data-type="loop" style="font-size:18px; display: inline-block; padding: 5px 0px; margin-top: 10px;">ループダメージ計測</button>
+                <button class="col-12 col-sm-6 text-nowrap text-center width-100 icon_btn_positive culcStart shadow-black" style="font-size:18px; display: inline-block; padding: 5px 0px; margin-top: 10px;">全力AUTO 開始</button>
             </div>
+
+            <div class="info-modal width-max culcAfter"  id="SUMMARY" style="margin-top: 10px;">
+                <div class="text-center info-modal-header shadow-black">シミュレーション結果</div>
+                <div class="bg-item d-none">▼条件変更▼</div>
+                <div class="bg-item text-center">▼履歴▼</div>
+                <div class="row" id="culcSummaryArea"></div>
+                <div class="bg-item text-center">▼サマリー▼</div>
+                <div class="bg-simple text-center culcAfter position-relative" style="margin: 10px 0px;" id="culcSummary">
+                    <img class="CLOSE_BTN yubi d-none" src="./img/icon/icon_close.png" style="position: absolute;top: 5px;right: 5px;height: 15px;" onclick="">
+                    <table class="table-sm text-left" style="width:100%; border-collapse:collapse">
+                        <thead style="border-bottom: 1px solid #faf0b4;">
+                            <tr class="d-none d-lg-table-row" style="line-height: 30px;">
+                                <th class="text-center">
+                                    <img class="SUMMARY_CUTIN " src="" class="" style="height:50px">
+                                </th>
+                                <th colspan=5 class="text-center">
+                                    Average : <span class="AVG_DMG fuchidoriJewel damageNumber" style="font-size:30px">9,999</span><br>
+                                    武器:<span class="WEAPON"></span> 聖石:<span class="SEISEKI"></span>% <span class="STATUS"></span>
+                                </th>
+                            </tr>
+                            <tr class="d-lg-none" style="line-height: 30px;">
+                                <th colspan=6 class="text-center">
+                                    <div class="SUMMARY_ICON d-inline-block" style="vertical-align: bottom;"></div>
+                                    <div class="d-inline-block">
+                                        Average : <span class="AVG_DMG fuchidoriJewel damageNumber" style="font-size:30px">9,999</span><br>
+                                        武器:<span class="WEAPON"></span> 聖石:<span class="SEISEKI"></span>% <span class="STATUS"></span>
+                                    </div>
+                                </th>
+                            </tr>                            
+                            <tr style="line-height: 15px;">
+                                <th class="text-center" style="min-width:130px">名称</th>
+                                <th>覚醒</th>
+                                <th>BP</th>
+                                <th class="text-nowrap">回数</th>
+                                <th class="d-none d-md-table-cell">威力</th>
+                                <th class="text-nowrap">Damage</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="d-none TR_TEMPLATE" style="line-height: 25px;">
+                                <th class="NAME"></th>
+                                <th class="KAKUSEI"></th>
+                                <th class="BP"></th>
+                                <th class="USE"></th>
+                                <th class="IRYOKU d-none d-md-table-cell"></th>
+                                <th class="DAMAGE text-nowrap"></th>
+                            </tr>
+                        </tbody>
+                        <tfoot style="border-top: 1px solid #faf0b4;"></tfoot>
+                            <tr>
+                                <td colspan=5 class="OPTION"></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <label class="badge badge-pill badge-light">生命の水など全力AUTOで使われないものは<br>使えるタイミングが使用回数に表示されます</label>                
+
+                <div class="bg-item text-center">▼シミュレーション結果▼</div>
+                <small id="HAS_RENKI">練気発動時はBPに(+1)と表示されます</small>
+                <div id="culcDetail" class="bg-simple text-center width-max" style="padding: 15px;">
+                </div>
+                <div id="DETAIL_TEMPLATE" class="DETAIL_CARD small d-none" style="
+                    display:-webkit-box;
+                    display:-ms-flexbox;
+                    display:flex;
+                    -webkit-box-pack:justify;
+                    -ms-flex-pack:justify;
+                    justify-content:space-between;
+                    border-bottom: 1px solid #faf0b4;
+                ">
+                    <div>
+                        <span class="NOW_TURN">1</span><span class="d-md-none">T</span><span class="d-none d-md-inline">Turn</span>
+                        <span class="SKILL_ICON"></span>
+                        <span class="SKILL_NAME"></span>
+                        <span class='d-none d-md-inline'>消費BP:<span class="USEBP"></span></span>
+                    </div>
+                    <div>
+                            Dmg:<span class="DAMAGE">4,261</span> BP:<span class="NOW_BP">10</span> > <span class="LEFT_BP">10</span>
+                    </div>
+                </div>
+            </div>
+
+
             <div class="acdList skillListSP switch culcAfter">
                 <ul>
                     <li>
@@ -418,8 +486,6 @@
                     </li>
                 </ul>
             </div>
-            <br>
-            <div id="culcDetail" class="opacity-char-back text-center"></div>
             <br>
             <br>
             <br>
