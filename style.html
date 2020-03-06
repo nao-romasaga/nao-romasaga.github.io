@@ -28,6 +28,7 @@
         <script src="./js/data_CHARMASTER.js" ></script>
         <script src="./js/data_ABILITY.js" ></script>
         <script src="./js/data_SKILLMASTER_style.js" ></script>
+        <script src="./js/data_STYLESPEECH.js" ></script>
         <script>
             window.dataLayer = window.dataLayer || [];
             function gtag() {
@@ -160,6 +161,12 @@
                 padding: 5px;
                 font-size: 8px;
                 color: white;
+            }
+            .speech-icon {
+                position: absolute;
+                top: 0;
+                right: 0px;
+                height: 75px;
             }
             /* 画面サイズ340まで */
             @media screen and (max-width:330px) {
@@ -666,11 +673,18 @@
                         </div>
                     </div>           
                 </div>
-            <div class="filter-bgcolor styleChoiceArea width-100" style="margin:10px 0px">
-                <div class="subtitle-long" style="margin-bottom:10px;">スタイル詳細</div><br>
-                <div id="styleChoice"></div><!-- スタイルアイコン表示 -->
-            </div>
-
+                <div class="filter-bgcolor styleChoiceArea width-100" style="margin:10px 0px">
+                    <div class="subtitle-long" style="margin-bottom:10px;">スタイル詳細</div><br>
+                    <div id="styleChoice"></div><!-- スタイルアイコン表示 -->
+                </div>
+                <div class="info-modal styleChoiceArea " style="padding: 5px 20px 25px 20px; margin-bottom: 10px;">
+                    <div class="text-center info-modal-header">バンガード内 セリフ集</div>
+                    <div class="row small shadow-black" style="color:  #faf0b4;">
+                        <div class="col-12 col-lg-4 filter-bgcolor SPEECH0" style="padding: 5px 10px; height:80px;"><span></span><img src="" class="speech-icon"></div>
+                        <div class="col-12 col-lg-4 filter-bgcolor SPEECH1" style="padding: 5px 10px; height:80px;"><span></span><img src="" class="speech-icon"></div>
+                        <div class="col-12 col-lg-4 filter-bgcolor SPEECH2" style="padding: 5px 10px; height:80px;"><span></span><img src="" class="speech-icon"></div>                        
+                    </div>
+                </div>
                 <div class="styleChoiceArea width-100">
                     <div>
                         <div class="row no-gutters">
@@ -785,8 +799,7 @@
                             </div>
                         </div>
                     </div>
-                    <br>
-                    <div class="info-modal">
+                    <div class="info-modal d-none">
                         <div class="text-center info-modal-header">みんなの評価</div>
                         <table>
                             <tr>
@@ -812,8 +825,19 @@
                             </tr>
                         </table>
                     </div>
-                    <div class="info-modal" id="HEAL_AREA">
+                    <div class="info-modal width-max" id="HEAL_AREA" style="margin-bottom: 10px;">
                         <div class="text-center info-modal-header">HP回復 期待値</div>
+                        <div class="bg-simple width-max" style="padding: 10px;">
+                            <table class="width-100">
+                                <tr style="border-bottom: 1px solid;">
+                                    <td>技・アビリティ</td><td>威力</td><td>回復量</td><td>魅</td><td>アビ<span class="d-none d-sm-inline">リティ</span></td>
+                                </tr>
+                                <tr class="d-none ROW">
+                                    <td class="HEAL_NAME"></td><td class="HEAL_IRYOKU"></td><td class="HEAL_RANGE shadow-blue" style="color:rgba(133,220,88);"></td></td><td class="HEAL_MI"></td><td class="HEAL_ABILITY"></td>
+                                </tr>
+                            </table>
+                            共通設定：愛=<span class="HEAL_AI"></span>
+                        </div>
                     </div>
 
                     <div class="info-modal">
@@ -918,7 +942,7 @@
                      data-ad-format="auto"
                      data-full-width-responsive="true"></ins>
                 <script> (adsbygoogle = window.adsbygoogle || []).push({});</script>            
-                <div class="info-modal styleChoiceArea">
+                <div class="info-modal styleChoiceArea d-none">
                     <div class="text-center info-modal-header h5">近いステータス</div>    
                     <table class="width-100 table-bordered">
                         <tbody>
