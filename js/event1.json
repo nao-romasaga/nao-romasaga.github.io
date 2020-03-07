@@ -105,9 +105,9 @@
         },
         {
             "startDay": "5",
-            "endDay": "31",
-            "title": "[イベント] <br class='hidden pcBlock'>聖石洞窟 11〜15層(終了未定)",
-            "startPrefix": "12:00 開始(予)<br>",
+            "endDay": "8",
+            "title": "[イベント] <br class='hidden pcBlock'>聖石洞窟 11〜15層",
+            "startPrefix": "12:00 開始<br>",
             "endSuffix": "<br>翌4:00 終了",
             "type": "orange"
         },
