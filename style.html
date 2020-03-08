@@ -168,8 +168,25 @@
                 right: 0px;
                 height: 75px;
             }
+            .st-tab {
+                width: 11%;
+                max-width: 100px;                
+            }
+            .S_LABEL {
+                display:block;
+                width: 70%;
+            }
+            .icon_star {
+                width: 35px;
+            }
             /* 画面サイズ340まで */
             @media screen and (max-width:330px) {
+                .icon_star {
+                    width: 25px;
+                }
+                .S_LABEL {
+                    width: 230px;
+                }
                 .icon_ind2, .icon_ind3{
                     width:10px;
                 }
@@ -182,6 +199,12 @@
             }
             /* 画面サイズ767(ipadの768は含まない)まで */
             @media screen and (max-width:767px) {
+                .icon_star {
+                    width: 30px;
+                }
+                .S_LABEL {
+                    width: 280px;
+                }
                 .status-row {
                     line-height: 15px;
                 }
@@ -348,7 +371,7 @@
                 <label class="badge badge-pill badge-light">絞り込み</label>
                 <div class="filter-bgcolor text-center small row" style="width:100%; margin: 0px;">
                     <ul class="nav text-center width-100" style="margin-bottom: 5px;">
-                        <li class="subtitle fuchidori-white smallFont">武器種別</li>
+                        <li id="FILTER" class="subtitle fuchidori-white smallFont">武器種別</li>
                     </ul>
                     <ul class="nav text-center width-100">
                         <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_ken"><span
@@ -580,7 +603,7 @@
                                 </table>
                             </div>
                             <div class="" style="margin:10px">
-                                <a href="" id="RANK_LINK" target="_blank" class="width-100 icon_btn_positive"><i class="fas fa-crown"></i> <span class="CHAR_NAME"></span>の<br class="d-sm-none">育成ランキングを調べる <i class="fas fa-search"></i></a>
+                                <a href="" id="RANK_LINK" target="_blank" class="width-100 icon_btn_positive shadow-black"><i class="fas fa-crown"></i> <span class="CHAR_NAME"></span>の<br class="d-sm-none">育成ランキングを調べる <i class="fas fa-search"></i></a>
                             </div>                            
                         </div>                        
                     </div>
@@ -799,31 +822,96 @@
                             </div>
                         </div>
                     </div>
-                    <div class="info-modal d-none">
+                    <div class="info-modal width-max" style="padding: 0px 5px 15px 10px;">
                         <div class="text-center info-modal-header">みんなの評価</div>
-                        <table>
-                            <tr>
-                                <td><div class="bg-item width-100 text-center" style="padding: 5px 20px;">単体火力</div></td><td class="SINGLE_FIRE_IMG"></td><td class="SINGLE_FIRE fuchidori-white"></td>
-                            </tr>
-                            <tr>
-                                <td><div class="bg-item width-100 text-center" style="padding: 5px 20px;">全体火力</div></td><td class="MULTI_FIRE_IMG"></td><td class="MULTI_FIRE fuchidori-white"></td>
-                            </tr>
-                            <tr>
-                                <td><div class="bg-item width-100 text-center" style="padding: 5px 20px;">周回性能</div></td>
-                                <td class=""><img src="http://romasagatool.com/img/icon/icon_star10.png"><img src="http://romasagatool.com/img/icon/icon_star10.png"><img src="http://romasagatool.com/img/icon/icon_star10.png"><img src="http://romasagatool.com/img/icon/icon_star10.png"><img src="http://romasagatool.com/img/icon/icon_star07.png"></td>
-                                <td class="fuchidori-white">4.77</td>    
-                            </tr>
-                            <tr>
-                                <td><div class="bg-item width-100 text-center" style="padding: 5px 20px;">汎用性</div></td>
-                                <td class=""><img src="http://romasagatool.com/img/icon/icon_star10.png"><img src="http://romasagatool.com/img/icon/icon_star10.png"><img src="http://romasagatool.com/img/icon/icon_star10.png"><img src="http://romasagatool.com/img/icon/icon_star03.png"><img src="http://romasagatool.com/img/icon/icon_star00.png"></td>
-                                <td class="fuchidori-white">3.21</td>    
-                            </tr>
-                            <tr>
-                                <td><div class="bg-item width-100 text-center" style="padding: 5px 20px;">唯一性</div></td>
-                                <td class=""><img src="http://romasagatool.com/img/icon/icon_star10.png"><img src="http://romasagatool.com/img/icon/icon_star10.png"><img src="http://romasagatool.com/img/icon/icon_star05.png"><img src="http://romasagatool.com/img/icon/icon_star00.png"><img src="http://romasagatool.com/img/icon/icon_star00.png"></td>
-                                <td class="fuchidori-white">2.60</td>    
-                            </tr>
-                        </table>
+                        <div class="row">
+                                <div class="col-12 col-lg-6">
+                                    <table>
+                                    <tr>
+                                        <td><div class="bg-item width-100 text-center text-nowrap" style="padding: 5px 20px;">単体火力</div></td>
+                                        <td class="SINGLE_FIRE fuchidori-white"></td>
+                                        <td class="SINGLE_FIRE_IMG"></td>
+                                        <td class="SINGLE_FIRE_DTL fuchidori-white d-none d-sm-table-cell "></td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="bg-item width-100 text-center text-nowrap" style="padding: 5px 20px;">全体火力</div></td>
+                                        <td class="MULTI_FIRE fuchidori-white"></td>
+                                        <td class="MULTI_FIRE_IMG"></td>
+                                        <td class="MULTI_FIRE_DTL fuchidori-white d-none d-sm-table-cell "></td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="bg-item width-100 text-center text-nowrap" style="padding: 5px 20px;">周回性能</div></td>
+                                        <td class="SHUKAI fuchidori-white">0.00</td>    
+                                        <td class="SHUKAI_IMG"></td>
+                                        <td class="SHUKAI_DTL fuchidori-white d-none d-sm-table-cell "></td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="bg-item width-100 text-center text-nowrap" style="padding: 5px 20px;">汎用性</div></td>
+                                        <td class="HANYO fuchidori-white">0.00</td>    
+                                        <td class="HANYO_IMG"></td>
+                                        <td class="HANYO_DTL fuchidori-white d-none d-sm-table-cell "></td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="bg-item width-100 text-center text-nowrap " style="padding: 5px 20px;">唯一性</div></td>
+                                        <td class="ONLY fuchidori-white">0.00</td>    
+                                        <td class="ONLY_IMG"></td>
+                                        <td class="ONLY_DTL fuchidori-white d-none d-sm-table-cell "></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="col-12 col-lg-6">
+                                <span class="subtitle-long">あなたの評価<span class="ALREADY_VOTE d-none">(投票済)</span>　</span><br>
+                                ☆をタップして変更できます
+                                <table>
+                                    <tr>
+                                        <td><div class="bg-item width-100 text-center text-nowrap" style="padding: 5px 20px;">周回性能</div></td>
+                                        <td class="">
+                                            <img class="vote icon_star yubi" data-type="shukai" data-value="1" src="http://romasagatool.com/img/icon/icon_star10.png">
+                                            <img class="vote icon_star yubi" data-type="shukai" data-value="2" src="http://romasagatool.com/img/icon/icon_star10.png">
+                                            <img class="vote icon_star yubi" data-type="shukai" data-value="3" src="http://romasagatool.com/img/icon/icon_star10.png">
+                                            <img class="vote icon_star yubi" data-type="shukai" data-value="4" src="http://romasagatool.com/img/icon/icon_star00.png">
+                                            <img class="vote icon_star yubi" data-type="shukai" data-value="5" src="http://romasagatool.com/img/icon/icon_star00.png">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="bg-item width-100 text-center text-nowrap" style="padding: 5px 20px;">汎用性</div></td>
+                                        <td class="">
+                                            <img class="vote icon_star yubi" data-type="hanyo" data-value="1" src="http://romasagatool.com/img/icon/icon_star10.png">
+                                            <img class="vote icon_star yubi" data-type="hanyo" data-value="2" src="http://romasagatool.com/img/icon/icon_star10.png">
+                                            <img class="vote icon_star yubi" data-type="hanyo" data-value="3" src="http://romasagatool.com/img/icon/icon_star10.png">
+                                            <img class="vote icon_star yubi" data-type="hanyo" data-value="4" src="http://romasagatool.com/img/icon/icon_star00.png">
+                                            <img class="vote icon_star yubi" data-type="hanyo" data-value="5" src="http://romasagatool.com/img/icon/icon_star00.png">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="bg-item width-100 text-center text-nowrap" style="padding: 5px 20px;">唯一性</div></td>
+                                        <td class="">
+                                            <img class="vote icon_star yubi" data-type="only" data-value="1" src="http://romasagatool.com/img/icon/icon_star10.png">
+                                            <img class="vote icon_star yubi" data-type="only" data-value="2" src="http://romasagatool.com/img/icon/icon_star10.png">
+                                            <img class="vote icon_star yubi" data-type="only" data-value="3" src="http://romasagatool.com/img/icon/icon_star10.png">
+                                            <img class="vote icon_star yubi" data-type="only" data-value="4" src="http://romasagatool.com/img/icon/icon_star00.png">
+                                            <img class="vote icon_star yubi" data-type="only" data-value="5" src="http://romasagatool.com/img/icon/icon_star00.png">
+                                        </td>
+                                    </tr>
+                                </table>
+                                <button id="VOTE_STAR" class="icon_btn_positive width-100 shadow-blue" style="margin-top: 20px;"><span class="NO_VOTE">投票する</span><span class="ALREADY_VOTE d-none">投票を変更する</span></button>
+                                <div class="text-center small">
+                                    投票内容は何度でも変更できます<br>
+                                    「このぐらいかな？」の軽い気持ちで投票してください<br>
+                                    皆さんの投票お待ちしております( 'ω')و
+                                </div>
+                            </div>
+                        </div>  
+                        <hr>
+                        <span class="subtitle-long">判例　</span><br>
+                        <div class="bg-simple" style="padding:15px;">
+                            <span class="shadow-blue" style="color:white">単体火力/全体火力とは</span>　全力オート平均ダメージから自動算出。偏差値50を2.5として評価しています<br>
+                            <span class="shadow-blue" style="color:white">周回性能とは</span>　引率としての周回を効率よく回ることができるか。<br>
+                            継続して全体攻撃ができること、多属性でResistされにくいことが評価されます<br>
+                            <span class="shadow-blue" style="color:white">汎用性とは</span>　周回、ボス戦、ツヴァイク、R杯など様々なシーンに対応可能か<br>
+                            <span class="shadow-blue" style="color:white">唯一性とは</span>　他のスタイルでは代用が聞かない物を持っているか<br>
+                            例：全体即死の王者の剣、トーマスの高知力デルタペトラ、バルテルミーの強襲アバドンハンズなど
+                        </div>
                     </div>
                     <div class="info-modal width-max" id="HEAL_AREA" style="margin-bottom: 10px;">
                         <div class="text-center info-modal-header">HP回復 期待値</div>
@@ -840,10 +928,10 @@
                         </div>
                     </div>
 
-                    <div class="info-modal">
+                    <div class="info-modal width-max">
                         <div class="text-center info-modal-header">所持している 技・術</div>
                         <div class="text-center fuchidori-white" style="color: rgb(250, 240, 180);">
-                            <div class="SKILL_TAB style-tab-active" data-target="styleSkillOrg" style="width: 33%; max-width: 130px;" onclick="">スタイル別</div>
+                            <div class="SKILL_TAB style-tab-active text-nowrap" data-target="styleSkillOrg" style="width: 33%; max-width: 130px;" onclick="">スタイル別</div>
                             <div class="SKILL_TAB style-tab-disabled" data-target="styleSkillIryoku" style="width: 30%; max-width: 130px;" onclick="">威力別</div>
                             <div class="SKILL_TAB style-tab-disabled" data-target="styleSkillRange" style="width: 30%; max-width: 130px;" onclick="">範囲別</div>
                         </div>
@@ -853,7 +941,7 @@
                         <div class="subtitle-long d-none width-100" id="RANGE_TITLE"></div>
 
                         <div class="text-center" style="margin-top: 10px;">
-                            <a href="./skill.html" target="_blank" class="icon_btn_positive  width-100"><i class="fas fa-search"></i> 技・術 一覧を調べる</a>
+                            <a href="./skill.html" target="_blank" class="icon_btn_positive  width-100 shadow-black"><i class="fas fa-search"></i> 技・術 一覧を調べる</a>
                         </div>
                         <table class="width-100 d-none" id="SKILL_KEISHO_TEMPLATE" style="border-bottom: 1px solid gray">
                             <tr>
@@ -882,7 +970,7 @@
                         </table>                        
                     </div>
                     <br>
-                    <div class="info-modal">
+                    <div class="info-modal width-max">
                         <div class="text-center info-modal-header">おすすめ継承パターン</div>
                         <div class="text-center fuchidori-white d-md-none" style="color: rgb(250, 240, 180);">
                             <div class="AUTO_TAB style-tab-active" data-target="AUTO_PATTERN" style="width: 33%; max-width: 130px;" onclick="">単体攻撃</div>
@@ -912,8 +1000,12 @@
                         <div class="text-center info-modal-header h5">ステータスランキング</div>    
                         <table class="bg-simple width-100 text-center">
                             <tbody>
-                                <tr colspan=15 class="text-center">
-                                    <img id="RANK_HEAD_IMG" src="" style="width:350px">
+                                <tr colspan=15>
+                                    <div class="filter-bgcolor">
+                                        <div class="text-center" style="background: url(http://romasagatool.com/img/bg_cutin.png);">
+                                            <img id="RANK_HEAD_IMG" style="width: 100%; max-width:300px;">
+                                        </div>
+                                    </div>
                                 </tr>
                                 <tr class="" id="RANK_HEAD" style="border-bottom: 1px solid;border-top: 1px solid;">
                                     <td class="paramHead paramCell2">-</td>
@@ -942,21 +1034,24 @@
                      data-ad-format="auto"
                      data-full-width-responsive="true"></ins>
                 <script> (adsbygoogle = window.adsbygoogle || []).push({});</script>            
-                <div class="info-modal styleChoiceArea d-none">
-                    <div class="text-center info-modal-header h5">近いステータス</div>    
-                    <table class="width-100 table-bordered">
-                        <tbody>
-                            <tr><td class="paramHead paramCell2 text-center">腕</td><td class="style_near" id="RANK_STR_NEAR"></td></tr>
-                            <tr class="opacity"><td class=" text-center paramCell2">体</td><td class="style_near" id="RANK_VIT_NEAR"></td></tr>
-                            <tr class=""><td class="paramHead paramCell2 text-center">器</td><td class="style_near" id="RANK_DEX_NEAR"></td></tr>
-                            <tr class="opacity"><td class=" text-center paramCell2">速</td><td class="style_near" id="RANK_AGI_NEAR"></td></tr>
-                            <tr class=""><td class="paramHead paramCell2 text-center">知</td><td class="style_near" id="RANK_INT_NEAR"></td></tr>
-                            <tr class="opacity"><td class=" text-center paramCell2">精</td><td class="style_near" id="RANK_MND_NEAR"></td></tr>
-                            <tr class=""><td class="paramHead paramCell2 text-center">愛</td><td class="style_near" id="RANK_AI_NEAR"></td></tr>
-                            <tr class="opacity"><td class=" text-center paramCell2">魅</td><td class="style_near" id="RANK_MI_NEAR"></td></tr>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="info-modal styleChoiceArea width-max d-none" style="padding: 5px 5px 15px 5px;">
+                    <div class="text-center info-modal-header h5">近いステータス</div>
+                    <div id="ST_TAB" class="text-center fuchidori-white width-max" style="color: rgb(250, 240, 180);">
+                        <div class="ST_TAB st-tab style-tab-active" data-target="STR" onclick="">腕</div>
+                        <div class="ST_TAB st-tab style-tab-disabled" data-target="VIT" onclick="">体</div>
+                        <div class="ST_TAB st-tab style-tab-disabled" data-target="DEX" onclick="">器</div>
+                        <div class="ST_TAB st-tab style-tab-disabled" data-target="AGI" onclick="">速</div>
+                        <div class="ST_TAB st-tab style-tab-disabled" data-target="INT" onclick="">知</div>
+                        <div class="ST_TAB st-tab style-tab-disabled" data-target="MND" onclick="">精</div>
+                        <div class="ST_TAB st-tab style-tab-disabled" data-target="AI" onclick="">愛</div>
+                        <div class="ST_TAB st-tab style-tab-disabled" data-target="MI" onclick="">魅</div>
+                    </div>
+                    <div id="NEAR_TEMPLATE" class="style-bgcolor d-none" style="padding:15px 0px">
+                        <div class="RANK_NEAR row d-none">
+                            <div class="V_LABEL col-2 text-center shadow-black" style="width:40px; color:white;"></div>
+                            <div class="S_LABEL col-10 style-icon-scroll"></div>
+                        </div>
+                    </div>
                 </div>
                 <br>
                 <!-- ツール_スタイル下部 -->
