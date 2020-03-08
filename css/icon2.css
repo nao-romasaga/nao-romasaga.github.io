@@ -395,13 +395,16 @@
     100% {opacity:1;}
 }
 
-.icon_star {
+.icon-star {
     width: 35px;
+}
+.icon-star-small {
+    width: 20px;
 }
 
 /* 画面サイズ330まで iphone5対応　*/
 @media screen and (max-width:330px) {
-    .icon_star {
+    .icon-star {
         width: 25px;
     }
 }
@@ -761,7 +764,7 @@
 
 /* 画面サイズ767(ipadの768は含まない)まで */
 @media screen and (max-width:767px) {
-    .icon_star {
+    .icon-star {
         width: 30px;
     }
 }

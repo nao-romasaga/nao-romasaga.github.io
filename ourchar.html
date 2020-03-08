@@ -415,7 +415,7 @@
                 <br>
                 <div class="text-center kadomaru"
                     style="background-color: rgba(42,169,239,1); color:white; margin: 0px 10px; padding: 2px 5px;">
-                    <a href="./inputchar.html" class="h4 " style="background-size: 340px 40px; width:340px"
+                    <a href="./inputchar.html" class="h4 shadow-black" style="background-size: 340px 40px; width:340px"
                         id="inputStyleLogined">自分のキャラを登録<i class="fas fa-pencil-alt"></i></a>
                 </div>
 
@@ -446,11 +446,11 @@
                         <br>
 
                         <div class="text-center icon_btn_positive">
-                            <a href="" target="_blank" class="" id="STYLE_LINK" style="color:inherit;">
+                            <a href="" target="_blank" class="shadow-black" id="STYLE_LINK" style="color:inherit;">
                                 <i class="fas fa-address-card"></i> <span class="charName"></span>の<br class="d-md-none">スタイル詳細を調べる
                             </a>
                         </div>
-                        <div class="bg-black-window LIMIT_TABLE  width-max limitFont">
+                        <div class="bg-simple LIMIT_TABLE  width-max limitFont">
                             <table align="center" class="limitTableWidth" style="table-layout: fixed;">
                                 <tbody>
                                     <tr id="styleLabelRow" style="border-bottom: 1px solid;">
@@ -466,7 +466,10 @@
                                         <td class=" paramCell2"><span class="hidden pcBlock">合</span>計</td>
                                     </tr>
                                     <tr class="text-center d-none" id="STYLE_TEMPLATE">
-                                        <td class="IMG icon-td-width"></td>
+                                        <td class="IMG icon-td-width">
+                                            <img class="IMG_RARE d-none d-md-inline" src="" style="position:absolute; left:0; top: 5px; height:20px">
+                                            <img class="IMG_CUTIN icon-td-width d-none d-md-inline" src="" >
+                                        </td>
                                         <td class="paramCell2 STR carousel">99</td>
                                         <td class="paramCell2 VIT carousel">99</td>
                                         <td class="paramCell2 DEX carousel">99</td>
@@ -518,7 +521,7 @@
                             </div>
                             <div class="col-6 text-left">
                                 <a href="./inputchar.html" id="inputStyleLogined" style="color:inherit;">
-                                    <div class="icon_btn_positive text-center">
+                                    <div class="icon_btn_positive text-center shadow-black">
                                         自分のキャラを登録<i class="fas fa-pencil-alt"></i>
                                     </div>
                                 </a>
@@ -526,11 +529,7 @@
                         </div>
                         <br><br>
                         <i class="fas fa-info-circle"></i> スタイル別ステータス上限 凡例
-                        <div class="bgcolor-brawn" style="    border-radius: 10px;
-                    margin:10px;
-                    padding: 10px;
-                    color: ivory;
-                    text-align: left;">
+                        <div class="bgcolor-brawn" style="    border-radius: 10px;margin:10px;padding: 10px;color: ivory;text-align: left;">
                             <table>
                                 <tr>
                                     <td class="fuchidori-blue">99</td>
@@ -557,13 +556,56 @@
                             </table>
                         </div>
                     </div>
+                    <div class="info-modal width-max" style="padding:0px 10px 30px 10px; margin-top: 15px;">
+                        <span class="info-modal-header" style="padding: 5px 30px;line-height: 20px;"><span class="charName">アセルス</span>のスタイル評価<i class="fas fa-comments"></i></span>
+                        便利ツールユーザの投票によるスタイル評価です<br>
+                        <select id="VOTE_INPUT" class="d-none bg-white"><option value=0>-</option><option value=1>1</option><option value=2>2</option><option value=3>3</option><option value=4>4</option><option value=5>5</option></select>
+                        <table align="center" class="width-100 TABLE">
+                            <tr class="small text-center text-nowrap" style="border-bottom: 1px solid;" id="VOTE_ROW_HEADER">
+                                <td class="icon-td-width"></td>
+                                <td class="">単体火力</td>
+                                <td class="">全体火力</td>
+                                <td class="">周回性能</td>
+                                <td class="">汎用性</td>
+                                <td class="">唯一性</td>
+                                <td class="d-none d-md-inline">投票数</td>
+                            </tr>
+                            <tr class="text-center shadow-black d-none" id="VOTE_ROW_TEMPLATE" style="color:white;">
+                                <td class="IMG position-relative">
+                                    <img class="IMG_RARE d-none d-md-inline" src="" style="position:absolute; left:0; top: 5px; height:35px">
+                                    <img class="IMG_CUTIN d-none d-md-inline" src="" style="max-width: 150px">
+                                </td>
+                                <td class="SINGLE_FIRE"></td>
+                                <td class="MULTI_FIRE"></td>
+                                <td class="SHUKAI"></td>
+                                <td class="HANYO"></td>
+                                <td class="ONLY"></td>
+                                <td class="VOTE d-none d-md-inline"></td>
+                            </tr>
+                            <tr>
+                                <td colspan=12>
+                                    <button id="VOTE_BUTTON" class="icon_btn_positive text-nowrap width-100 shadow-blue">スタイル評価を入力<i class="fas fa-vote-yea"></i></button>
+                                    <button id="SEND_BUTTON" class="icon_btn_positive width-100 shadow-blue d-none">評価を送信する<i class="fas fa-paper-plane"></i><br>
+                                        (低)1〜5(高)の5段階評価です。</button>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="HANREI" style="">
+                            評価に-が含まれるスタイルは送信されません。
+                        </div>
+                        <span id="HANREI_OPEN" class="subtitle-long" style="margin-top: 10px;"> 評価の説明 (タップで展開)　</span><br>
+                        <div class="HANREI bg-simple" style="padding:15px;">
+                            <span class="shadow-blue" style="color:white">単体火力/全体火力とは</span>　全力オート平均ダメージから自動算出。偏差値50を2.5として評価しています<br>
+                            <span class="shadow-blue" style="color:white">周回性能とは</span>　引率としての周回を効率よく回ることができるか。<br>
+                            継続して全体攻撃ができること、多属性でResistされにくいことが評価されます<br>
+                            <span class="shadow-blue" style="color:white">汎用性とは</span>　周回、ボス戦、ツヴァイク、R杯など様々なシーンに対応可能か<br>
+                            <span class="shadow-blue" style="color:white">唯一性とは</span>　他のスタイルでは代用が聞かない物を持っているか<br>
+                            例：全体即死の王者の剣、トーマスの高知力デルタペトラ、バルテルミーの強襲アバドンハンズなど
+                        </div>                        
+                    </div>
 
                     <div id="RANKKING_TABLE"></div>
-
-
-
                     <br>
-
                     <div class="text-center info-modal width-max LIMIT_PAD0">
                         <div class="info-modal-header">
                             <span class="d-none d-md-inline"><i class="fas fa-crown"></i><span class='charName'></span>

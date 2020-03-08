@@ -1234,6 +1234,9 @@ input[type=range]::-ms-tooltip {
         -1px -1px 2px blue;    
 }
 
+.bg-cutin {
+    background: url(http://romasagatool.com/img/bg_cutin.png);
+}
 .partyNowStyle .ICON_TD {
     border-top: 2px solid rgba(120, 120, 245, 0.8);
     border-bottom: 2px solid rgba(120, 120, 245, 0.8);
