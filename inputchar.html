@@ -96,7 +96,7 @@
                 
                 <div class="isLogin d-none">
                     <label class="badge badge-pill badge-light">絞り込み</label>
-                    <div class="style-bgcolor text-center small row" style="width:100%; margin: 0px;">
+                    <div class="style-bgcolor text-center small row" style="width:100%; margin: 0px; padding: 15px 0px;">
                         <ul class="nav text-center width-100">
                             <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="剣" href="#icon_ken"><span class="icon_mini icon_ken" onclick=""></span></a></li>
                             <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter" data-label="大剣" href="#icon_dken"><span class="icon_mini icon_dken" onclick=""></span></a></li>
@@ -121,8 +121,8 @@
                             <li class="col-2 col-sm-1 blockquote text-center"><a class="filterList pad0" data-type="SeriesFilter" href="#RSR">RSR</a></li>
                         </ul>
                         <ul class="nav text-center width-100">
-                            <li class="col-6 blockquote text-center"><a class="filterList pad0" data-type="InputFilter" href="#SUM">未入力のみ</a></li>
-                            <li class="col-6 blockquote text-center"><a class="filterList pad0" data-type="InputFilter" href="#HP">HP未入力のみ</a></li>
+                            <li class="col-6 blockquote text-center text-nowrap"><a class="filterList pad0" data-type="InputFilter" href="#SUM">未入力のみ</a></li>
+                            <li class="col-6 blockquote text-center text-nowrap"><a class="filterList pad0" data-type="InputFilter" href="#HP">HP未入力のみ</a></li>
                         </ul>
                     </div>
 
@@ -130,8 +130,8 @@
                     <h6 id="listLabel" style="background: url(./img/bg_window_large.png);background-size: 100% 100%;color: #faf0b4;padding: 10px 30px;"><span id="label1"></span><span id="label2">あなたのステータス一覧</span></h6>
 
                     <label class="badge badge-pill badge-light">キャラクターをクリックすると<br class="hidden spBlock">ステータス入力が表示されます</label>
-                    <div id="example-table-display" class="text-center">
-                        <div id="example-table" style="width:402px"></div>
+                    <div id="example-table-display" class="text-center width-max">
+                        <div id="example-table"></div>
                     </div>
                     <br>
                     <div class="row" id="INPUT_LIST">
