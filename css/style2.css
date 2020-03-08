@@ -304,6 +304,14 @@ html {
         background-position: center;
     }
 }
+@media screen and (min-width:300px) {
+    .title-text{
+        background:url(http://romasagatool.com/img/bg_window_large.png);
+        background-size:100% 100%;
+        color:#faf0b4;
+        padding:5px;
+    }
+}
 @media screen and (min-width:340px) {
     .smallFont {
         font-size: 12px !important;
@@ -599,6 +607,13 @@ body {
     background-color: black;
     margin: -10px auto 10px auto; 
     border-radius: 5px;
+}
+.style-icon-scroll {
+    line-height: 0px;
+    height: 60px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;    
 }
 
 @media screen and (max-width: 768px) { 
@@ -1173,6 +1188,12 @@ input[type=range]::-ms-tooltip {
         -1px 1px 2px black,
         1px -1px 2px black,
         -1px -1px 2px black;    
+}
+.shadow-white {
+    text-shadow: 1px 1px 2px white,
+        -1px 1px 2px white,
+        1px -1px 2px white,
+        -1px -1px 2px white;    
 }
 
 .fuchidori-blue{
