@@ -176,8 +176,20 @@
                 display:block;
                 width: 70%;
             }
+            .near_td {
+                display: block;
+                width:550px;
+                line-height: 0px;
+                overflow-x: scroll;
+                overflow-y: hidden;
+                white-space: nowrap;
+            }
+
             /* 画面サイズ340まで */
             @media screen and (max-width:330px) {
+                .near_td {
+                    width:100px;
+                }
                 .S_LABEL {
                     width: 230px;
                 }
@@ -193,7 +205,9 @@
             }
             /* 画面サイズ767(ipadの768は含まない)まで */
             @media screen and (max-width:767px) {
-
+                .near_td {
+                    width:150px;
+                }
                 .S_LABEL {
                     width: 280px;
                 }
@@ -230,6 +244,9 @@
             }
             /* 画面サイズ767(ipadの768を含む)より大きい場合 */
             @media screen and (min-width:767px) {
+                .near_td {
+                    width:450px;
+                }
                 .odd-row .val {
                     font-size:15px;
                 }
@@ -242,6 +259,9 @@
             }
             /* ipad 横向きの場合*/
             @media screen and (min-width:768px) and (max-width:1024px){
+                .near_td {
+                    width:530px;
+                }
                 .odd-row .val {
                     font-size:15px;
                 }
@@ -263,6 +283,9 @@
             }
             /* PC(1024を超える)場合 */
             @media screen and (min-width:1025px) {
+                .near_td {
+                    width:590px;
+                }
                 .odd-row .val {
                     font-size:15px;
                 }
@@ -326,6 +349,13 @@
                 vertical-align: middle;
                 color:white;
                 font-size:12px;
+            }
+            .rank_head {
+                display: table-cell;
+                width: 54px;
+            }
+            .rank_head_param {
+                width: 35px;
             }
 
         </style>        
@@ -858,31 +888,31 @@
                                     <tr>
                                         <td><div class="bg-item width-100 text-center text-nowrap" style="padding: 5px 20px;">周回性能</div></td>
                                         <td class="">
-                                            <img class="vote icon_star yubi" data-type="shukai" data-value="1" src="http://romasagatool.com/img/icon/icon_star10.png">
-                                            <img class="vote icon_star yubi" data-type="shukai" data-value="2" src="http://romasagatool.com/img/icon/icon_star10.png">
-                                            <img class="vote icon_star yubi" data-type="shukai" data-value="3" src="http://romasagatool.com/img/icon/icon_star10.png">
-                                            <img class="vote icon_star yubi" data-type="shukai" data-value="4" src="http://romasagatool.com/img/icon/icon_star00.png">
-                                            <img class="vote icon_star yubi" data-type="shukai" data-value="5" src="http://romasagatool.com/img/icon/icon_star00.png">
+                                            <img class="vote icon-star yubi" data-type="shukai" data-value="1" src="http://romasagatool.com/img/icon/icon-star10.png">
+                                            <img class="vote icon-star yubi" data-type="shukai" data-value="2" src="http://romasagatool.com/img/icon/icon-star10.png">
+                                            <img class="vote icon-star yubi" data-type="shukai" data-value="3" src="http://romasagatool.com/img/icon/icon-star10.png">
+                                            <img class="vote icon-star yubi" data-type="shukai" data-value="4" src="http://romasagatool.com/img/icon/icon-star00.png">
+                                            <img class="vote icon-star yubi" data-type="shukai" data-value="5" src="http://romasagatool.com/img/icon/icon-star00.png">
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><div class="bg-item width-100 text-center text-nowrap" style="padding: 5px 20px;">汎用性</div></td>
                                         <td class="">
-                                            <img class="vote icon_star yubi" data-type="hanyo" data-value="1" src="http://romasagatool.com/img/icon/icon_star10.png">
-                                            <img class="vote icon_star yubi" data-type="hanyo" data-value="2" src="http://romasagatool.com/img/icon/icon_star10.png">
-                                            <img class="vote icon_star yubi" data-type="hanyo" data-value="3" src="http://romasagatool.com/img/icon/icon_star10.png">
-                                            <img class="vote icon_star yubi" data-type="hanyo" data-value="4" src="http://romasagatool.com/img/icon/icon_star00.png">
-                                            <img class="vote icon_star yubi" data-type="hanyo" data-value="5" src="http://romasagatool.com/img/icon/icon_star00.png">
+                                            <img class="vote icon-star yubi" data-type="hanyo" data-value="1" src="http://romasagatool.com/img/icon/icon-star10.png">
+                                            <img class="vote icon-star yubi" data-type="hanyo" data-value="2" src="http://romasagatool.com/img/icon/icon-star10.png">
+                                            <img class="vote icon-star yubi" data-type="hanyo" data-value="3" src="http://romasagatool.com/img/icon/icon-star10.png">
+                                            <img class="vote icon-star yubi" data-type="hanyo" data-value="4" src="http://romasagatool.com/img/icon/icon-star00.png">
+                                            <img class="vote icon-star yubi" data-type="hanyo" data-value="5" src="http://romasagatool.com/img/icon/icon-star00.png">
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><div class="bg-item width-100 text-center text-nowrap" style="padding: 5px 20px;">唯一性</div></td>
                                         <td class="">
-                                            <img class="vote icon_star yubi" data-type="only" data-value="1" src="http://romasagatool.com/img/icon/icon_star10.png">
-                                            <img class="vote icon_star yubi" data-type="only" data-value="2" src="http://romasagatool.com/img/icon/icon_star10.png">
-                                            <img class="vote icon_star yubi" data-type="only" data-value="3" src="http://romasagatool.com/img/icon/icon_star10.png">
-                                            <img class="vote icon_star yubi" data-type="only" data-value="4" src="http://romasagatool.com/img/icon/icon_star00.png">
-                                            <img class="vote icon_star yubi" data-type="only" data-value="5" src="http://romasagatool.com/img/icon/icon_star00.png">
+                                            <img class="vote icon-star yubi" data-type="only" data-value="1" src="http://romasagatool.com/img/icon/icon-star10.png">
+                                            <img class="vote icon-star yubi" data-type="only" data-value="2" src="http://romasagatool.com/img/icon/icon-star10.png">
+                                            <img class="vote icon-star yubi" data-type="only" data-value="3" src="http://romasagatool.com/img/icon/icon-star10.png">
+                                            <img class="vote icon-star yubi" data-type="only" data-value="4" src="http://romasagatool.com/img/icon/icon-star00.png">
+                                            <img class="vote icon-star yubi" data-type="only" data-value="5" src="http://romasagatool.com/img/icon/icon-star00.png">
                                         </td>
                                     </tr>
                                 </table>
@@ -988,9 +1018,9 @@
                         </div>
                     </div>
                     <br>
-                    <div class="info-modal">
+                    <div class="info-modal width-max" style="padding: 0px 5px 25px 5px;">
                         <div class="text-center info-modal-header h5">ステータスランキング</div>    
-                        <table class="bg-simple width-100 text-center">
+                        <table class="bg-simple width-100 text-center" style="border-left: 1px solid #faf0b4;">
                             <tbody>
                                 <tr colspan=15>
                                     <div class="filter-bgcolor">
@@ -1000,20 +1030,25 @@
                                     </div>
                                 </tr>
                                 <tr class="" id="RANK_HEAD" style="border-bottom: 1px solid;border-top: 1px solid;">
-                                    <td class="paramHead paramCell2">-</td>
-                                    <td class="paramHead paramCell2">値</td>
+                                    <td class="rank_head rank_head_param paramCell2" rowspan=2>-</td>
+                                    <td class="rank_head paramCell2" rowspan=2>値</td>
+                                    <td class="rank_head paramCell2">全</td>
+                                    <td class="rank_head paramCell2 WEAPON_ICON"></td>
+                                    <td class="rank_head paramCell2 ATTR_ICON"></td>
+                                    <td class="rank_head paramCell2 NEAR_ICON" rowspan="2">近い値の<br class="d-lg-none">スタイル</td>
                                 </tr>
-                                <tr class="" id="RANK_HEAD2"><td class="paramHead paramCell2" colspan=2>スタイル数</td></tr>
-                                <tr class="" id="RANK_STR"><td class="paramHead paramCell2">腕</td></tr>
-                                <tr class="odd-row" id="RANK_VIT"><td class="paramHead paramCell2">体</td></tr>
-                                <tr class="odd-row" id="RANK_DEX"><td class="paramHead paramCell2">器</td></tr>
-                                <tr class="odd-row" id="RANK_AGI"><td class="paramHead paramCell2">速</td></tr>
-                                <tr class="odd-row" id="RANK_INT"><td class="paramHead paramCell2">知</td></tr>
-                                <tr class="odd-row" id="RANK_MND"><td class="paramHead paramCell2">精</td></tr>
-                                <tr class="odd-row" id="RANK_AI"><td class="paramHead paramCell2">愛</td></tr>
-                                <tr class="odd-row" id="RANK_MI"><td class="paramHead paramCell2">魅</td></tr>
-                                <tr class="odd-row" id="RANK_SUM"><td class="paramHead paramCell2">合計</td>
+                                <tr class="text-nowrap" id="RANK_HEAD2" style="border-bottom: 1px solid;border-top: 1px solid;">
                                 </tr>
+                                <tr class=" text-nowrap" id="RANK_STR"><td class="paramHead paramCell2">腕</td></tr>
+                                <tr class="odd-row text-nowrap" id="RANK_VIT"><td class="paramHead paramCell2">体</td></tr>
+                                <tr class="odd-row text-nowrap" id="RANK_DEX"><td class="paramHead paramCell2">器</td></tr>
+                                <tr class="odd-row text-nowrap" id="RANK_AGI"><td class="paramHead paramCell2">速</td></tr>
+                                <tr class="odd-row text-nowrap" id="RANK_INT"><td class="paramHead paramCell2">知</td></tr>
+                                <tr class="odd-row text-nowrap" id="RANK_MND"><td class="paramHead paramCell2">精</td></tr>
+                                <tr class="odd-row text-nowrap" id="RANK_AI"><td class="paramHead paramCell2">愛</td></tr>
+                                <tr class="odd-row text-nowrap" id="RANK_MI"><td class="paramHead paramCell2">魅</td></tr>
+                                <tr class="odd-row text-nowrap" id="RANK_SUM"><td class="paramHead paramCell2">合計</td></tr>
+                                <tr class="odd-row text-nowrap"><td class=""> </td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -1028,7 +1063,7 @@
                 <script> (adsbygoogle = window.adsbygoogle || []).push({});</script>            
                 <div class="info-modal styleChoiceArea width-max d-none" style="padding: 5px 5px 15px 5px;">
                     <div class="text-center info-modal-header h5">近いステータス</div>
-                    <div id="ST_TAB" class="text-center fuchidori-white width-max" style="color: rgb(250, 240, 180);">
+                    <div id="ST_TAB" class="text-center fuchidori-white width-max d-none" style="color: rgb(250, 240, 180);">
                         <div class="ST_TAB st-tab style-tab-active" data-target="STR" onclick="">腕</div>
                         <div class="ST_TAB st-tab style-tab-disabled" data-target="VIT" onclick="">体</div>
                         <div class="ST_TAB st-tab style-tab-disabled" data-target="DEX" onclick="">器</div>
