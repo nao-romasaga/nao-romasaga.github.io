@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#" lang="ja">
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138966739-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-138966739-1');
+    </script>
+    <meta charset="utf-8">
+    <title>【ロマサガRS】ログインページ</title>
+    <meta property="og:site_name" content="ロマサガRS便利ツール" />
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="ja_JP" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@nao_romasaga_rs" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="./js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="./js/jquery.ui.touch-punch.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap/bootstrap.min.css">
+    <script src="./js/popper.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/style2.css">
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/3.5.2/firebase-ui-auth__ja.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+    <script src="./js/Firebase.js"></script>
+    <script src="./js/utils2.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+</head>
+
+<body>
+    <div class="haikei">
+        <div class="container">
+            <div class="info-modal">
+                <div class="info-modal-header">ログイン/ログアウト</div>
+                <div class="bg-simple" id="LOGIN_STATUS" style="padding:15px;">
+                    <img src="" id="img" style="width:40px; border-radius: 20px;">
+                    <span id="name">Now Loading...</span><br>
+                    <span id="info"></span>
+                </div>
+                <div class="text-center width-100" id="firebaseui-auth-container"></div>
+                <div class="text-center width-100" id="logout">
+                    <div id="logout_tw" class="shadow-black" onclick="logout()"
+                        style="margin: 20px; border-radius: 10px; background-color:#55acee; color:white"><i
+                            class="fab fa-twitter"></i> ログアウト</div>
+                    <div id="logout_g" onclick="logout()"
+                        style="margin: 20px; border-radius: 10px; background-color:white;"><img
+                            class="firebaseui-idp-icon" alt=""
+                            src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"> ログアウト</div>
+                </div>
+
+                ログインすることで下記の機能が利用可能になります<br>
+                <div class="subtitle-long">ステータス上限チェック　</div><br>
+                ステータスを入力しながら「<span class="shadow-blue text-white">今のスタイル</span>があと<span
+                    class="shadow-red text-white">どれぐらいステータスが上がるか</span>」をチェックできます<br>
+                <img src="http://romasagatool.com/img/party_pc.jpg" class="d-none d-sm-inline">
+                <img src="http://romasagatool.com/img/party_sp.jpg" class="d-sm-none width-100">
+                <hr>
+                <div class="subtitle-long">周回適性チェック　</div><br>
+                ステータス入力してあるキャラを並べて「<span class="shadow-blue text-white">このクエスト</span>ならあと<span
+                    class="shadow-red text-white">どれぐらいステータスが上がるか</span>」をまとめてチェックできます<br>
+                <img src="http://romasagatool.com/img/mydata_pc.jpg" style="max-width:100%">
+            </div>
+            <script type="text/javascript" src="./js/login.js"></script>
+
+        </div>
+    </div> <!-- main -->
+</body>
+
+</html>

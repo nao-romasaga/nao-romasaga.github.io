@@ -98,13 +98,6 @@ html {
     cursor : pointer;
 }
 
-#firebaseui-auth-container {
-    height: 25px;
-    display: table-cell;
-    vertical-align: middle;
-    padding: 0px 15px;
-}
-
 .bgcolor-brawn {
     background-color: rgba(70,55,30,1);
     color: #faf0b4;
@@ -266,7 +259,7 @@ html {
 }
 @media screen and (max-width:400px) {
     .login-card{
-        position:absolute; right:0px; bottom:0px; font-size:10px;        
+        position:absolute; right:0px; bottom:20px; font-size:12px;
     }    
     .styleTab {
         font-size: 15px;
