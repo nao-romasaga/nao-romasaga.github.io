@@ -1,1 +1,259 @@
-var _0x49a7=['</div></div>','ready','test','error','encode','sFzrChjCIuUjY1UEOCEuKQC3Z7j2','bmFvLXJvbWFzYWdhLXJzLWRldi5maXJlYmFzZWFwcC5jb20=','remove','length','.firebaseapp.com','SX4MWknpYvhCv3BYLELUyvm11J23','3wpP7HkA18M8v0mPsCwvcGHE0zO2','ZG9lqrKgB4gOF004JeukSLpi7XX2','goOffline','Zh5tXsUwGwRjS4nl5xs2p91JNwI3','once','BaORGBMRRKP3UROQyjwyO90fhPg2',')\x20no-repeat;','wM49Fkw1zKOHXfrfuAbDinYyxP32','hsjjJimUHVQ8pTPd1xMBuFYo2sD2','aHR0cHM6Ly9uYW8tcm9tYXNhZ2EtcnMtZGV2Mi5maXJlYmFzZWlvLmNvbQ==','aHR0cHM6Ly9uYW8tcm9tYXNhZ2EtcnMtdXNlcnMuZmlyZWJhc2Vpby5jb20=','sjjmp9cxjAaHERR1HV0uk31XUJw2','dGVzdC0xNGFhYg==','Wj2dHeJHoBduqQSe9484zzOSxVA3','database','zTfHJIfqKtVHdcjQFWqt8WEfl2A3','GO\x20OFFLINE','value','d-none','ServerValue','V55yz4hrYcOWAYU0x4OcL2Pfos02','auth','replace','gtal58C4knb4B7nND7pg3NTJQ3a2','TiQm3fWRZJaNgz0nGDgflt0Xw2e2','hoge','5zpFempXf6WNFKwSC3uwZvQssND2','UY9dWWRqUHOpdKT5fapBq81GqOm2','/CHAR/','6gt2DGNcfcMLRX22YKkSpJNZ4so1','FamhkT9WxnYwzR2wDDpmkvGxQSt1','cp9NiHTzwIMDz9cVFfqN3B8gDIk2','onAuthStateChanged','Ho2PizN4dVUJoi2uguMheCIvcR33','getDate','getHours','LQs9kIak7NQA3ahYTUyNG7rHyGo1','2JjRFQqABehWvPxz28iqWALfFO62','removeClass','floor','slice','split','no\x20error','9rkTKlwQRbYif4MOSt5xtWl6u143','dttvyUkYI9QPRxsM60kKus7dgmm2','<i\x20class=\x27fas\x20fa-medal\x27></i>プレミアム枠お知らせ','ncTVtjyH4qWQQLnMzpmdux39AoD3','update','background:url(http://romasagatool.com/img/','Ce5LZo1RLpVCwSBRjrFeKph1UnR2','ODI4NjkzNDcyNzI=','Connect\x20to\x20Login\x20','uid','BCdG25acazaUzVVB3KySTOYseKD3','dGVzdC0xNGFhYi5maXJlYmFzZWFwcC5jb20=','f7hHDaDQb1QJt3XnGdiB0q5RuHY2','bmFvLXJvbWFzYWdhLXJzLXVzZXJzLmZpcmViYXNlYXBwLmNvbQ==','zsQVOMj6sVeXomWYIRUFjUmSt8q1','OnJ6lmuwq3YhT65Z1MVHixVzb9m1','bmFvLXJvbWFzYWdhLXJzLWRldjIuZmlyZWJhc2VhcHAuY29t','z7ltF3uUDMPqRn2yjXLMQMRLJ0L2','iH3esRQD55RH0kDqy0sQMA0P3fy2','72DhaGiuFANfrXKq5FmJmcSvV6q1','GO\x20ONLINE','</div><div\x20class=\x22card-body\x22>','UtpnVrAsayTiSxtAdm9mOcjysKs1','TIMESTAMP','random','Xos8L81JDFSCfvVXfy5skiyUIzI2','val','displayName','.RequireLoginMenu','IxP7OXTJLUSh9oHpb90NfnNxaIf1','bycSiG491Ee2CCpvS1ADsHaGnUC3','QUl6YVN5RHZCNmVUNWh5VnJnWVF3dVBNUm9tdmVKbXdJM002T09R','WxqrVNFyb7Pgka781HF7hhP9Kog1','log','avkbqKOUwTgeDSqp3gnshwzdkpF3','tDmESwnnmzegyoeilr4II14V1Tj2','decode','then','addClass','goOnline','EEinX83HYeVEzs4n7z700nICB5n1','TigpbNlT75UuhmOQES5AlJYQSQg1','biOkW44rj6Q1ZuNcrVuBh0oXHID3','8Sdp7MJb9IV9IyNB4yMWGGH7Gzh2','l8IvLn5u8MZzAx6NVb3UXLz34mO2','W0e1Tbv4z0T9M6XjNpbCyl16jNp1','ETy3u8ef6kPsYqOJZLxBeAcg7m42','2YDgZiWokjVm6GMRQNB5LHbDRw43','getFullYear','FIRE','W0fdFOfGOhbBNQMC1Uqe1qAz4lo2','iTaqCAb0byW51MafVwCfFDNvw1g2','g22fyRTx0VgIGQwrB37sUyOiZvs1','getMonth','user_data/','7/15\x20[更新]\x20<a\x20href=\x27./ourstyle.html\x27>みんなの所持スタイル</a>\x20ランキング表示を20位までから<b>40位まで</b>に拡張しました<br>','qugcteBDGNTJA6lr9FXj1UObZAx2','.LoginHideMenu','dSqDjjpplUaK4mKqrpAjLhXs97d2','LKb3TOVJiOPrFAqYkrkfsZQBRxv2','ZluE9GNihzdnLaJXvwv2nAKBxGZ2','J2EIRan4ttXCJY20D0sNuUeJIk43','aHR0cHM6Ly9uYW8tcm9tYXNhZ2EtcnMtZGV2LmZpcmViYXNlaW8uY29t','V5YgB5Kg3beUf7GhBzgXiFKM9s32','Connect\x20to\x20NoLogin\x20','<div\x20class=\x22card\x22\x20id=\x22infoCard\x22><div\x20class=\x22card-header\x20bg-warning\x22\x20style=\x22color:black\x22>','indexOf','ref','RpieryJcaTNK0pzhTKoIyqP7eQ02','alHhWgSnt4RPvzoz3g7zr6VrVmt1'];(function(_0x112f6c,_0x49a7af){var _0x1fd4b0=function(_0x4952b2){while(--_0x4952b2){_0x112f6c['push'](_0x112f6c['shift']());}};_0x1fd4b0(++_0x49a7af);}(_0x49a7,0xac));var _0x1fd4=function(_0x112f6c,_0x49a7af){_0x112f6c=_0x112f6c-0x0;var _0x1fd4b0=_0x49a7[_0x112f6c];return _0x1fd4b0;};var UID;var configUsers={'YXBpS2V5':_0x1fd4('0x25'),'YXV0aERvbWFpbg==':_0x1fd4('0x13'),'ZGF0YWJhc2VVUkw=':_0x1fd4('0x61'),'bWVzc2FnaW5nU2VuZGVySWQ=':_0x1fd4('0xd')};var configDev={'YXBpS2V5':'QUl6YVN5RFF1X21pay1zdVI2TDRPelBNN2dicWM5UGltdDFOWjY4','YXV0aERvbWFpbg==':_0x1fd4('0x52'),'ZGF0YWJhc2VVUkw=':_0x1fd4('0x44')};var configDev2={'YXBpS2V5':'QUl6YVN5RDdGQ3dySGluQUYtSTNIcGpyX3FsWVpkT01nQkRnS2g0','YXV0aERvbWFpbg==':_0x1fd4('0x16'),'ZGF0YWJhc2VVUkw=':_0x1fd4('0x60')};var configTest={'YXBpS2V5':'QUl6YVN5Qk53UHhjczZPZGFOZTF4a2VTN1M3OFkyd3VzY3BKRk53','YXV0aERvbWFpbg==':_0x1fd4('0x11'),'ZGF0YWJhc2VVUkw=':'aHR0cHM6Ly90ZXN0LTE0YWFiLmZpcmViYXNlaW8uY29t','cHJvamVjdElk':_0x1fd4('0x63')};var Base64={'encode':function(_0x319a08){return btoa(unescape(encodeURIComponent(_0x319a08)));},'decode':function(_0x17e06a){return decodeURIComponent(escape(atob(_0x17e06a)));}};var ConnectConfigP=[configDev2];var randomP=Math[_0x1fd4('0x2')](Math[_0x1fd4('0x1e')]()*ConnectConfigP[_0x1fd4('0x54')]);var OFUSE_USER=[_0x1fd4('0x9'),_0x1fd4('0x66'),_0x1fd4('0x0'),'eyrvbonzhZQl0k3yM6GwwsZOfiC2',_0x1fd4('0x6f'),_0x1fd4('0x6b'),_0x1fd4('0x14'),_0x1fd4('0x17'),_0x1fd4('0x7b'),_0x1fd4('0x1f'),_0x1fd4('0x5a'),_0x1fd4('0x7'),_0x1fd4('0x6e'),_0x1fd4('0x39'),_0x1fd4('0x32'),_0x1fd4('0x33'),_0x1fd4('0x2f'),_0x1fd4('0x45'),_0x1fd4('0x40'),'7fnFW02fhXRiQBupFAtugwAPb822',_0x1fd4('0x18'),_0x1fd4('0x34'),_0x1fd4('0x3e'),_0x1fd4('0x19'),_0x1fd4('0x23'),_0x1fd4('0x51'),_0x1fd4('0x74'),_0x1fd4('0x29'),'ha1b9zWXybhtrnOH0xS2h4q1bAr1',_0x1fd4('0x10'),_0x1fd4('0x71'),'vpkffnasbmdZziT1fgGbKXO9BZf2',_0x1fd4('0x58'),_0x1fd4('0x4b'),_0x1fd4('0x38'),_0x1fd4('0x56'),_0x1fd4('0x42'),_0x1fd4('0x30'),_0x1fd4('0x4a'),_0x1fd4('0x6'),'Hw2xfKv7pqYJB8lYo5a5oqHaDx52',_0x1fd4('0x35'),_0x1fd4('0x75'),_0x1fd4('0x3a'),_0x1fd4('0x5f'),'ybNUYXjA9pQwSuOYxdNtG88Xuqw2','4IpcGaUPOSd0RCr6jn1wkDJ01Fi2',_0x1fd4('0x31'),_0x1fd4('0x62'),_0x1fd4('0x24'),'PmJwymVJRmbnaai9MWXPe9nkC9E3',_0x1fd4('0x5c'),_0x1fd4('0x2e'),_0x1fd4('0x1c'),_0x1fd4('0x72'),_0x1fd4('0xc'),_0x1fd4('0x57'),_0x1fd4('0x43'),_0x1fd4('0x41'),'46n1ud1bFzblhaUatSi1fgmHxQ22',_0x1fd4('0x15'),'wUyqDnc6coUh1Cf3Jl7kTK3fAre2',_0x1fd4('0x12'),_0x1fd4('0x5e'),_0x1fd4('0x64'),_0x1fd4('0x28'),_0x1fd4('0x76'),_0x1fd4('0x26'),_0x1fd4('0x78'),'RE68Xftv85bzcsys9Q10dmyu7CB3'];var OFUSE_FLG=![];var PARTY_LIMIT=0xa;var OURSTYLE_LIMIT=0x14;console[_0x1fd4('0x27')](_0x1fd4('0x37'));const appUsers=firebase['initializeApp'](decodeConfig(configUsers));var canStorage=![];try{localStorage[_0x1fd4('0x4e')]=_0x1fd4('0x70');canStorage=!![];OFUSE_FLG=OFUSE_USER[_0x1fd4('0x48')](localStorage[_0x1fd4('0xf')])>-0x1;}catch(_0x295590){console[_0x1fd4('0x4f')](_0x295590);}var CONNECT_DB='';if(localStorage!==undefined&&[_0x1fd4('0x9'),'zTfHJIfqKtVHdcjQFWqt8WEfl2A3'][_0x1fd4('0x48')](localStorage[_0x1fd4('0xf')])>-0x1){PARTY_LIMIT=0x64;OURSTYLE_LIMIT=0x64;conf=decodeConfig(configTest);x=conf['authDomain'][_0x1fd4('0x6d')](_0x1fd4('0x55'),'')[_0x1fd4('0x4')]('-');CONNECT_DB=x[x[_0x1fd4('0x54')]-0x1];}else if(OFUSE_FLG){PARTY_LIMIT=0xf;OURSTYLE_LIMIT=0x28;}else{if(localStorage['uid']===undefined){console['log'](_0x1fd4('0x46'));}else{console[_0x1fd4('0x27')](_0x1fd4('0xe')+localStorage[_0x1fd4('0xf')]);}}const databaseUser=firebase[_0x1fd4('0x65')](appUsers);var USER;var NO_LOGIN=!![];if(canStorage){NO_LOGIN=localStorage[_0x1fd4('0xf')]===undefined||localStorage['uid']===null;}firebase[_0x1fd4('0x6c')](appUsers)[_0x1fd4('0x77')](function(_0x5a3a84){if(!_0x5a3a84){_noLoginInitial();}else{NO_LOGIN=![];USER=_0x5a3a84;UID=_0x5a3a84[_0x1fd4('0xf')];if(canStorage){localStorage[_0x1fd4('0xf')]=UID;}OFUSE_FLG=OFUSE_USER['indexOf'](UID)>-0x1;updateData('',{'NAME':encodeURI(_0x5a3a84[_0x1fd4('0x21')]),'LAST_ACCESS':getNowYMDHM(),'timestamp':firebase[_0x1fd4('0x65')][_0x1fd4('0x6a')][_0x1fd4('0x1d')]});$(_0x1fd4('0x22'))[_0x1fd4('0x1')](_0x1fd4('0x69'));$(_0x1fd4('0x3f'))[_0x1fd4('0x2c')](_0x1fd4('0x69'));_initial();}});function _noLoginInitial(){}function _initial(){}function getNowYMDHM(){var _0xf34248=new Date();var _0x2ef5d2=_0xf34248[_0x1fd4('0x36')]();var _0x223d0f=('00'+(_0xf34248[_0x1fd4('0x3b')]()+0x1))[_0x1fd4('0x3')](-0x2);var _0x1a037f=('00'+_0xf34248[_0x1fd4('0x79')]())['slice'](-0x2);var _0x4f6772=('00'+_0xf34248[_0x1fd4('0x7a')]())[_0x1fd4('0x3')](-0x2);var _0x1a941c=('00'+_0xf34248['getMinutes']())[_0x1fd4('0x3')](-0x2);var _0x239403=_0x2ef5d2+'/'+_0x223d0f+'/'+_0x1a037f+'\x20'+_0x4f6772+':'+_0x1a941c;return _0x239403;}var myUpdate=null;var myStorage=null;function readStyleCheckData(_0x10b4d1,_0x2608d1,_0x5b6036){if(_0x5b6036){console['log']('GO\x20ONLINE');firebase['database'](appUsers)[_0x1fd4('0x2d')]();}return firebase[_0x1fd4('0x65')](appUsers)[_0x1fd4('0x49')](_0x1fd4('0x3c')+_0x10b4d1+'/STYLECHECK')[_0x1fd4('0x5b')](_0x1fd4('0x68'))['then'](function(_0x5275ef){if(_0x5b6036){console['log'](_0x1fd4('0x67'));firebase[_0x1fd4('0x65')](appUsers)[_0x1fd4('0x59')]();}return _0x2608d1(_0x5275ef[_0x1fd4('0x20')]());});}function readUserData(_0x134c3d,_0x34c8b9,_0x1e48a7){if(_0x1e48a7){console[_0x1fd4('0x27')](_0x1fd4('0x1a'));firebase[_0x1fd4('0x65')](appUsers)[_0x1fd4('0x2d')]();}return firebase[_0x1fd4('0x65')](appUsers)[_0x1fd4('0x49')](_0x1fd4('0x3c')+UID+'/'+_0x134c3d)[_0x1fd4('0x5b')](_0x1fd4('0x68'))[_0x1fd4('0x2b')](function(_0x3c91f1){if(_0x1e48a7){console[_0x1fd4('0x27')](_0x1fd4('0x67'));firebase[_0x1fd4('0x65')](appUsers)[_0x1fd4('0x59')]();}return _0x34c8b9(_0x3c91f1[_0x1fd4('0x20')]());});}function readUserDataWithId(_0x569450,_0x55590c,_0x28bf89,_0x3feed2){if(_0x3feed2){console[_0x1fd4('0x27')](_0x1fd4('0x1a'));firebase[_0x1fd4('0x65')](appUsers)[_0x1fd4('0x2d')]();}return firebase[_0x1fd4('0x65')](appUsers)['ref'](_0x1fd4('0x3c')+UID+'/'+_0x569450+'/'+_0x55590c)[_0x1fd4('0x5b')](_0x1fd4('0x68'))[_0x1fd4('0x2b')](function(_0x37c905){if(_0x3feed2){console[_0x1fd4('0x27')](_0x1fd4('0x67'));firebase[_0x1fd4('0x65')](appUsers)[_0x1fd4('0x59')]();}return _0x28bf89(_0x37c905['val']());});}function deleteCharData(_0xd09461){let _0x597cc9=firebase[_0x1fd4('0x65')](appUsers)[_0x1fd4('0x49')](_0x1fd4('0x3c')+UID+_0x1fd4('0x73')+_0xd09461)[_0x1fd4('0x53')]();}function updateData(_0x5cce34,_0x4e049f,_0x15b010){if(_0x15b010){console['log'](_0x1fd4('0x1a'));firebase[_0x1fd4('0x65')](appUsers)[_0x1fd4('0x2d')]();}let _0x4ca872=firebase[_0x1fd4('0x65')](appUsers)[_0x1fd4('0x49')](_0x1fd4('0x3c')+UID+'/'+_0x5cce34);_0x4ca872[_0x1fd4('0xa')](_0x4e049f,function(_0x1d4c35){if(_0x1d4c35){console[_0x1fd4('0x27')](_0x1d4c35);}else{console['log'](_0x1fd4('0x5'));}if(_0x15b010){console[_0x1fd4('0x27')](_0x1fd4('0x67'));firebase[_0x1fd4('0x65')](appUsers)['goOffline']();}});}function addData(_0x38a7df,_0x4ad3e9){let _0x4f5561=firebase[_0x1fd4('0x65')](appUsers)[_0x1fd4('0x49')](_0x38a7df);_0x4f5561['push'](_0x4ad3e9,function(_0xfdacb9){if(_0xfdacb9){console[_0x1fd4('0x27')](_0xfdacb9);}else{console[_0x1fd4('0x27')](_0x1fd4('0x5'));}});}function getImgUrl(_0x2ce600){return _0x1fd4('0xb')+_0x2ce600+_0x1fd4('0x5d');}function decodeConfig(_0x5cb05a){let _0x29186a={};for(let _0x347fae in _0x5cb05a){_0x29186a[Base64[_0x1fd4('0x2a')](_0x347fae)]=Base64[_0x1fd4('0x2a')](_0x5cb05a[_0x347fae]);}return _0x29186a;}function encodeConfig(_0x179362){let _0x5b85ff={};for(let _0x56aaf8 in _0x179362){_0x5b85ff[Base64[_0x1fd4('0x50')](_0x56aaf8)]=Base64['encode'](_0x179362[_0x56aaf8]);}return _0x5b85ff;}$(document)[_0x1fd4('0x4d')](function(){let _0x44f577=_0x1fd4('0x8');let _0x3f6d41=''+_0x1fd4('0x3d')+'6/9\x20[更新]\x20<a\x20href=\x27./party.html\x27>ステータス上限チェック</a>\x20登録キャラを5体から10体に拡張しました';let _0x4a535f=_0x1fd4('0x47')+_0x44f577+_0x1fd4('0x1b')+_0x3f6d41+_0x1fd4('0x4c');if(OFUSE_FLG){}});
+var UID;
+
+var configUsers = {
+    "YXBpS2V5": "QUl6YVN5RHZCNmVUNWh5VnJnWVF3dVBNUm9tdmVKbXdJM002T09R",
+    "YXV0aERvbWFpbg==": "bmFvLXJvbWFzYWdhLXJzLXVzZXJzLmZpcmViYXNlYXBwLmNvbQ==",
+    "ZGF0YWJhc2VVUkw=": "aHR0cHM6Ly9uYW8tcm9tYXNhZ2EtcnMtdXNlcnMuZmlyZWJhc2Vpby5jb20=",
+    "bWVzc2FnaW5nU2VuZGVySWQ=": "ODI4NjkzNDcyNzI="
+};
+
+var configDev = {
+    "YXBpS2V5": "QUl6YVN5RFF1X21pay1zdVI2TDRPelBNN2dicWM5UGltdDFOWjY4",
+    "YXV0aERvbWFpbg==": "bmFvLXJvbWFzYWdhLXJzLWRldi5maXJlYmFzZWFwcC5jb20=",
+    "ZGF0YWJhc2VVUkw=": "aHR0cHM6Ly9uYW8tcm9tYXNhZ2EtcnMtZGV2LmZpcmViYXNlaW8uY29t",
+};
+var configDev2 = {
+    "YXBpS2V5": "QUl6YVN5RDdGQ3dySGluQUYtSTNIcGpyX3FsWVpkT01nQkRnS2g0",
+    "YXV0aERvbWFpbg==": "bmFvLXJvbWFzYWdhLXJzLWRldjIuZmlyZWJhc2VhcHAuY29t",
+    "ZGF0YWJhc2VVUkw=": "aHR0cHM6Ly9uYW8tcm9tYXNhZ2EtcnMtZGV2Mi5maXJlYmFzZWlvLmNvbQ==",
+};
+var configTest = {
+    "YXBpS2V5": "QUl6YVN5Qk53UHhjczZPZGFOZTF4a2VTN1M3OFkyd3VzY3BKRk53",
+    "YXV0aERvbWFpbg==": "dGVzdC0xNGFhYi5maXJlYmFzZWFwcC5jb20=",
+    "ZGF0YWJhc2VVUkw=": "aHR0cHM6Ly90ZXN0LTE0YWFiLmZpcmViYXNlaW8uY29t",
+    "cHJvamVjdElk": "dGVzdC0xNGFhYg==",
+};
+
+var Base64 = {
+    encode: function (str) {
+        return btoa(unescape(encodeURIComponent(str)));
+    },
+    decode: function (str) {
+        return decodeURIComponent(escape(atob(str)));
+    }
+};
+
+var ConnectConfigP = [
+    //configDev, 
+    configDev2
+];
+var randomP = Math.floor(Math.random() * ConnectConfigP.length);
+
+var OFUSE_USER = [
+    "ncTVtjyH4qWQQLnMzpmdux39AoD3",
+    "zTfHJIfqKtVHdcjQFWqt8WEfl2A3", // test
+    "2JjRFQqABehWvPxz28iqWALfFO62", "eyrvbonzhZQl0k3yM6GwwsZOfiC2", "TiQm3fWRZJaNgz0nGDgflt0Xw2e2", "V55yz4hrYcOWAYU0x4OcL2Pfos02"
+            , "zsQVOMj6sVeXomWYIRUFjUmSt8q1", "z7ltF3uUDMPqRn2yjXLMQMRLJ0L2", "LQs9kIak7NQA3ahYTUyNG7rHyGo1", "Xos8L81JDFSCfvVXfy5skiyUIzI2"
+            , "Zh5tXsUwGwRjS4nl5xs2p91JNwI3", "dttvyUkYI9QPRxsM60kKus7dgmm2", "gtal58C4knb4B7nND7pg3NTJQ3a2", "iTaqCAb0byW51MafVwCfFDNvw1g2"
+            , "l8IvLn5u8MZzAx6NVb3UXLz34mO2", "W0e1Tbv4z0T9M6XjNpbCyl16jNp1", "TigpbNlT75UuhmOQES5AlJYQSQg1", "V5YgB5Kg3beUf7GhBzgXiFKM9s32"
+            , "dSqDjjpplUaK4mKqrpAjLhXs97d2", "7fnFW02fhXRiQBupFAtugwAPb822", "iH3esRQD55RH0kDqy0sQMA0P3fy2", "ETy3u8ef6kPsYqOJZLxBeAcg7m42"
+            , "qugcteBDGNTJA6lr9FXj1UObZAx2", "72DhaGiuFANfrXKq5FmJmcSvV6q1", "IxP7OXTJLUSh9oHpb90NfnNxaIf1", "sFzrChjCIuUjY1UEOCEuKQC3Z7j2"
+            , "6gt2DGNcfcMLRX22YKkSpJNZ4so1", "tDmESwnnmzegyoeilr4II14V1Tj2", "ha1b9zWXybhtrnOH0xS2h4q1bAr1", "BCdG25acazaUzVVB3KySTOYseKD3"
+            , "5zpFempXf6WNFKwSC3uwZvQssND2", "vpkffnasbmdZziT1fgGbKXO9BZf2", "ZG9lqrKgB4gOF004JeukSLpi7XX2", "alHhWgSnt4RPvzoz3g7zr6VrVmt1"
+            , "W0fdFOfGOhbBNQMC1Uqe1qAz4lo2", "SX4MWknpYvhCv3BYLELUyvm11J23", "ZluE9GNihzdnLaJXvwv2nAKBxGZ2", "biOkW44rj6Q1ZuNcrVuBh0oXHID3"
+            , "RpieryJcaTNK0pzhTKoIyqP7eQ02", "9rkTKlwQRbYif4MOSt5xtWl6u143", "Hw2xfKv7pqYJB8lYo5a5oqHaDx52", "2YDgZiWokjVm6GMRQNB5LHbDRw43"
+            , "FamhkT9WxnYwzR2wDDpmkvGxQSt1", "g22fyRTx0VgIGQwrB37sUyOiZvs1", "hsjjJimUHVQ8pTPd1xMBuFYo2sD2", "ybNUYXjA9pQwSuOYxdNtG88Xuqw2"
+            , "4IpcGaUPOSd0RCr6jn1wkDJ01Fi2", "8Sdp7MJb9IV9IyNB4yMWGGH7Gzh2", "sjjmp9cxjAaHERR1HV0uk31XUJw2", "bycSiG491Ee2CCpvS1ADsHaGnUC3"
+            , "PmJwymVJRmbnaai9MWXPe9nkC9E3", "BaORGBMRRKP3UROQyjwyO90fhPg2", "EEinX83HYeVEzs4n7z700nICB5n1", "UtpnVrAsayTiSxtAdm9mOcjysKs1"
+            , "UY9dWWRqUHOpdKT5fapBq81GqOm2", "Ce5LZo1RLpVCwSBRjrFeKph1UnR2", "3wpP7HkA18M8v0mPsCwvcGHE0zO2", "J2EIRan4ttXCJY20D0sNuUeJIk43"
+            , "LKb3TOVJiOPrFAqYkrkfsZQBRxv2", "46n1ud1bFzblhaUatSi1fgmHxQ22", "OnJ6lmuwq3YhT65Z1MVHixVzb9m1", "wUyqDnc6coUh1Cf3Jl7kTK3fAre2"
+            , "f7hHDaDQb1QJt3XnGdiB0q5RuHY2", "wM49Fkw1zKOHXfrfuAbDinYyxP32", "Wj2dHeJHoBduqQSe9484zzOSxVA3", "avkbqKOUwTgeDSqp3gnshwzdkpF3"
+            , "cp9NiHTzwIMDz9cVFfqN3B8gDIk2", "WxqrVNFyb7Pgka781HF7hhP9Kog1", "Ho2PizN4dVUJoi2uguMheCIvcR33", "RE68Xftv85bzcsys9Q10dmyu7CB3"
+];
+var OFUSE_FLG = false;
+var PARTY_LIMIT = 10; // 暫定的な周回チェック登録上限
+var OURSTYLE_LIMIT = 20; // みんなのスタイル所持数限界
+console.log("FIRE");
+
+//const appUsers = firebase.initializeApp(decodeConfig(configTest), "Users");
+const appUsers = firebase.initializeApp(decodeConfig(configUsers));
+
+//ローカルストレージ
+var canStorage = false;
+try {
+    localStorage.test = 'hoge';
+    canStorage = true;
+    OFUSE_FLG = (OFUSE_USER.indexOf(localStorage.uid) > -1);
+//    console.log(localStorage.uid);
+//    console.log('✅LocalStorage使えるよ');
+//localStorage.uid = JSON.stringify({a: 'test'});
+//JSON.parse(localStorage.test);
+} catch (e) {
+//    console.log('❌LocalStorage使えない');
+    console.error(e);
+}
+var CONNECT_DB = "";
+if (localStorage !== undefined && ["ncTVtjyH4qWQQLnMzpmdux39AoD3", "zTfHJIfqKtVHdcjQFWqt8WEfl2A3"].indexOf(localStorage.uid) > -1) {
+    PARTY_LIMIT = 100;
+    OURSTYLE_LIMIT = 100;
+    //conf = decodeConfig(ConnectConfigNoLogin[randomNoLogin]);
+    //conf = decodeConfig(ConnectConfigP[randomP]); 
+    conf = decodeConfig(configTest);
+
+    x = conf["authDomain"].replace(".firebaseapp.com", "").split("-");
+    CONNECT_DB = x[x.length - 1];
+} else if (OFUSE_FLG) {
+    PARTY_LIMIT = 15;
+    OURSTYLE_LIMIT = 40;
+} else {
+    if (localStorage.uid === undefined) {
+        console.log("Connect to NoLogin ");
+    } else {
+        console.log("Connect to Login " + localStorage.uid);
+    }
+}
+
+const databaseUser = firebase.database(appUsers);
+
+var USER;
+var NO_LOGIN = true;
+if (canStorage) {
+    NO_LOGIN = (localStorage.uid === undefined || localStorage.uid === null);
+}
+
+firebase.auth(appUsers).onAuthStateChanged(function (user) {
+    if (!user) {
+        _noLoginInitial();
+        //firebase.database(appUsers).goOffline();
+    } else {
+        NO_LOGIN = false;
+        USER = user;
+        UID = user.uid;
+        if (canStorage) {
+            localStorage.uid = UID;
+        }
+        OFUSE_FLG = (OFUSE_USER.indexOf(UID) > -1);
+        updateData("", {"NAME": encodeURI(user.displayName)
+            , "LAST_ACCESS": getNowYMDHM()
+            , "timestamp": firebase.database.ServerValue.TIMESTAMP});
+        $(".RequireLoginMenu").removeClass("d-none");
+        $(".LoginHideMenu").addClass("d-none");
+        _initial();
+    }
+});
+function _noLoginInitial() {}
+function _initial() {}
+
+function getNowYMDHM() {
+    var dt = new Date();
+    var y = dt.getFullYear();
+    var m = ("00" + (dt.getMonth() + 1)).slice(-2);
+    var d = ("00" + dt.getDate()).slice(-2);
+    var hh = ("00" + dt.getHours()).slice(-2);
+    var mi = ("00" + dt.getMinutes()).slice(-2);
+    var result = `${y}/${m}/${d} ${hh}:${mi}`;
+    return result;
+}
+
+var myUpdate = null;
+var myStorage = null;
+
+
+
+function readStyleCheckData(id, callback, goOffline) {
+    if (goOffline) {
+        console.log("GO ONLINE");
+        firebase.database(appUsers).goOnline();
+    }
+    return firebase.database(appUsers).ref(`user_data/${id}/STYLECHECK`).once("value").then(function (snapshot) {
+        if (goOffline) {
+            console.log("GO OFFLINE");
+            firebase.database(appUsers).goOffline();
+        }
+        return callback(snapshot.val());
+    });
+}
+
+function readUserData(key, callback, goOffline) {
+    if (goOffline) {
+        console.log("GO ONLINE");
+        firebase.database(appUsers).goOnline();
+    }
+    return firebase.database(appUsers).ref(`user_data/${UID}/${key}`).once("value").then(function (snapshot) {
+        if (goOffline) {
+            console.log("GO OFFLINE");
+            firebase.database(appUsers).goOffline();
+        }
+        return callback(snapshot.val());
+    });
+}
+function readUserDataWithId(target, id, callback, goOffline) {
+    if (goOffline) {
+        console.log("GO ONLINE");
+        firebase.database(appUsers).goOnline();
+    }
+    return firebase.database(appUsers).ref(`user_data/${UID}/${target}/${id}`).once("value").then(function (snapshot) {
+        if (goOffline) {
+            console.log("GO OFFLINE");
+            firebase.database(appUsers).goOffline();
+        }
+        return callback(snapshot.val());
+    });
+}
+
+
+function deleteCharData(charId) {
+    let REF = firebase.database(appUsers).ref(`user_data/${UID}/CHAR/${charId}`).remove();
+}
+function updateData(key, data, goOffline) {
+    if (goOffline) {
+        console.log("GO ONLINE");
+        firebase.database(appUsers).goOnline();
+    }
+    let REF = firebase.database(appUsers).ref(`user_data/${UID}/${key}`);
+    REF.update(data, function (error) {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log("no error");
+        }
+        if (goOffline) {
+            console.log("GO OFFLINE");
+            firebase.database(appUsers).goOffline();
+        }
+    });
+}
+
+function addData(key, data) {
+    let REF = firebase.database(appUsers).ref(key);
+    REF.push(data, function (error) {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log("no error");
+        }
+    });
+}
+
+function getImgUrl(target) {
+    return `background:url(http://romasagatool.com/img/${target}) no-repeat;`;
+}
+
+function decodeConfig(config) {
+    let target = {};
+    for (let k in config) {
+        target[Base64.decode(k)] = Base64.decode(config[k]);
+    }
+    return target;
+}
+
+function encodeConfig(config) {
+    let target = {};
+    for (let k in config) {
+        target[Base64.encode(k)] = Base64.encode(config[k]);
+    }
+    return target;
+}
+
+$(document).ready(function () {
+    let title = "<i class='fas fa-medal'></i>プレミアム枠お知らせ";
+    let word = ""
+            + "7/15 [更新] <a href='./ourstyle.html'>みんなの所持スタイル</a> ランキング表示を20位までから<b>40位まで</b>に拡張しました<br>"
+            + "6/9 [更新] <a href='./party.html'>ステータス上限チェック</a> 登録キャラを5体から10体に拡張しました"
+
+    let info = `<div class="card" id="infoCard"><div class="card-header bg-warning" style="color:black">${title}</div><div class="card-body">${word}</div></div>`;
+    // Firebase側で暫定的に削除してるのでそっちも修正すること
+    if (OFUSE_FLG) {
+        //$(".title-text").after(info);
+    }
+});
