@@ -57,7 +57,7 @@
                 <input type="button" id="btnSubscribe" value="通知を許可する">
                 <input type="button" id="btnUnSubscribe" value="トークン削除" style="display:none;">
             </p>
-            <p><input type="text" value="YOUR-INCETANCE-ID-TOKEN" id="textInstanceIdToken" style="width:100%;box-sizing:border-box;"></p>
+            <p>メッセージ：<input type="text" value="YOUR-INCETANCE-ID-TOKEN" id="textInstanceIdToken" style="width:100%;box-sizing:border-box;"></p>
             <div id="sendWebPushArea" style="">
                 <p>下記をコピーしてこのタブを閉じ、別ブラウザで見てください</p>
                 <input type="text" value="" id="sendWebPush" style="width:100%;box-sizing:border-box;">
@@ -77,6 +77,7 @@ messaging.usePublicVapidKey("BBVpNqebnrH97wB7oh0LVWId9oWgyqs8wA9ryiFsXRWrzI1Vdb_
 
 // 権限要求
 function requestPermission() {
+    textInstanceIdToken.value = "requestPermission";
     // 通知を受信する権限を要求する
     messaging.requestPermission().then(function() {
         // 現在の登録トークンの取得
@@ -115,6 +116,7 @@ function deleteToken() {
 
 // 初期化
 window.onload = function() {
+    textInstanceIdToken.value = "window.onload";
     // イベント登録
     btnSubscribe.onclick = requestPermission;
     btnUnSubscribe.onclick = deleteToken;
