@@ -166,7 +166,19 @@
                         target="new">質問箱</a>まで</small></p>
             <div id="firebaseui-auth-container" style="margin-bottom:10px;"></div>
             <br>
-            <div id="article"></div>
+            <div class="info-modal" style="margin-bottom: 20px;">
+                <div class="info-modal-header">最新の記事</div>
+                <div id="article" style="width: 100%; height: 250px; overflow-x: scroll; overflow-y: hidden; white-space:nowrap;">
+                    <div id="ARTICLE_CARD" class="d-none opacity kadomaru" style="position: relative; margin: 0px 5px; width: 220px; height:250px; padding:5px 5px 20px 5px; font-size:0.9rem; vertical-align: top;">
+                        <a href="" target="_new">
+                            <img class="sImg kadomaru d-none" src="" width="100px" align="left">
+                            <img class="lImg kadomaru" src="" width="100%" alt="">
+                            <div class="title" style="white-space: normal;"></div>
+                            <div style="position:absolute; bottom:0;font-size:0.8rem">最終更新:<span class="update"></span></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
             <div class="info-modal d-none" id="_icon_ken">
                 <h5 class="info-modal-header">人気のキャラクター ランキング</h5>
                 <ul class="nav row">
@@ -798,14 +810,16 @@
             $("html,body").animate({ scrollTop: $('#listLabel').offset().top }, 500, 'swing');
         }
         function rssCallbackCat3(results) {
-            var div = $("<div>").addClass("row");
             for (var i = 0; i < results.length; i++) {
                 var entry = results[i];
-                var clazz = (i >= 4) ? " d-none d-md-block" : '';
-                var article = $(`<div class="col-12 col-md-3 opacity kadomaru ${clazz}" style="padding:5px 5px 20px 5px; margin-bottom:10px; font-size:0.9rem;"><a href="${entry.link}" target="_new"><img class="kadomaru d-md-none" src="${entry.thumb}" width="100px" align="left"> <img class="kadomaru d-none d-md-block" src="${entry.thumb}" width="100%" alt="">${entry.title}<div style="position:absolute; bottom:0;font-size:0.8rem">最終更新:${entry.pubdate}</div></a></div>`);
-                div.append(article);
+                var $article = $("#ARTICLE_CARD").clone().removeClass("d-none").addClass("d-inline-block").attr("id","");
+                $article.find("a").attr("href", entry.link);
+                $article.find(".sImg").attr("src", entry.thumb);
+                $article.find(".lImg").attr("src", entry.thumb);
+                $article.find(".title").html(entry.title);
+                $article.find(".update").html(entry.pubdate);
+                $("#article").append($article);
             }
-            $("#article").append(div);
         }
         function rssCallbackCat2(results) {
             var div = $("<div>").addClass("row");
