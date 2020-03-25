@@ -11,6 +11,14 @@
             "startNone": true
         },
         {
+            "startDay": "27",
+            "endDay": "27",
+            "title": "[メンテナンス] 11:00〜18:00",
+            "endSuffix": "",
+            "type": "red",
+            "startNone": true
+        },
+        {
             "startDay": "9",
             "endDay": "31",
             "title": "[ガチャ] <br class='hidden pcBlock'>2000万DL Romancing祭 最終皇帝(男)編/セルマ編",
@@ -145,7 +153,7 @@
         },
         {
             "startDay": "27",
-            "endDay": "30",
+            "endDay": "29",
             "title": "[キャンペーン] <br class='hidden pcBlock'>ツヴァイクメダル 2倍",
             "startPrefix": "4:00 開始<br>",
             "endSuffix": "<br>翌4:00 終了",
@@ -203,7 +211,7 @@
         {
             "startDay": "20",
             "endDay": "31",
-            "title": "[メイン2倍] <br class='hidden pcBlock'>白薔薇/零姫/メサルティム/金獅子",
+            "title": "[メイン2倍] <br class='hidden pcBlock'>白薔薇/零姫/メサルティム/金獅子姫/バーニィ/ミカエル/アザミ",
             "startSuffix": "<br>12:00 開始",
             "endSuffix": "<br>翌4:00 終了",
             "type": "blue"
@@ -211,7 +219,7 @@
         {
             "startDay": "9",
             "endDay": "31",
-            "title": "[メイン2倍] <br class='hidden pcBlock'>最終皇帝(男)/インペリアルガード(男)/ホーリーオーダー(女)/モール族/セルマ/エミリア/ヴァンパイアレディ スタイル",
+            "title": "[メイン2倍] <br class='hidden pcBlock'>最終皇帝(男)/インペリアルガード(男)/ホーリーオーダー(女)/モール族/セルマ/エミリア/ヴァンパイアレディ",
             "startSuffix": "<br>12:00 開始",
             "endSuffix": "<br>翌4:00 終了",
             "type": "blue"
