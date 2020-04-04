@@ -1,258 +1,54 @@
 {
     "year": 2020,
-    "month": 3,
+    "month": 4,
     "event": [
         {
             "startDay": "1",
-            "endDay": "31",
-            "title": "[ガチャ] <br class='hidden pcBlock'>2000万DL Romancing祭 ビューネイ編/リズ編",
+            "endDay": "14",
+            "title": "[ガチャ] <br class='hidden pcBlock'>SF2 UDX<br>SS確定プラチナピックアップ",
             "endSuffix": "<br>翌4:00 終了",
             "type": "green",
             "startNone": true
         },
         {
-            "startDay": "27",
-            "endDay": "27",
-            "title": "[メンテナンス] 11:00〜18:00",
-            "endSuffix": "",
-            "type": "red",
-            "startNone": true
-        },
-        {
-            "startDay": "9",
-            "endDay": "31",
-            "title": "[ガチャ] <br class='hidden pcBlock'>2000万DL Romancing祭 最終皇帝(男)編/セルマ編",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "green"
-        },
-        {
-            "startDay": "20",
-            "endDay": "31",
-            "title": "[ガチャ] <br class='hidden pcBlock'>2000万DL Romancing祭 白薔薇編/アザミ編",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "green"
-        },
-        {
             "startDay": "1",
-            "endDay": "31",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>ジュエルセール",
-            "endSuffix": "<br>翌4:00 終了",
+            "endDay": "14",
+            "title": "[メイン2倍] <br class='hidden pcBlock'>サガフロ2キャラ",
+            "startSuffix": "",
             "type": "blue",
             "startNone": true
         },
         {
             "startDay": "1",
-            "endDay": "4",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>財宝の地図ドロップ",
-            "startSuffix": "12:00 開始<br>",
-            "endSuffix": "<br>翌4:00 終了",
+            "endDay": "14",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>スペシャルショップ着せ替え衣装",
+            "startSuffix": "",
             "type": "blue",
             "startNone": true
         },
         {
             "startDay": "1",
-            "endDay": "8",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>メインスタ半",
-            "startSuffix": "12:00 開始<br>",
-            "endSuffix": "<br>翌4:00 終了",
+            "endDay": "14",
+            "title": "[ミッション] <br class='hidden pcBlock'>SF2 発売記念ミッション",
+            "startSuffix": "",
             "type": "blue",
             "startNone": true
         },
         {
-            "startDay": "25",
-            "endDay": "31",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>メインスタ半",
+            "startDay": "6",
+            "endDay": "14",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>メインスタ半<br>SF2記念メダルドロップ<br>SF2 メイン挑戦ミッション",
             "startSuffix": "12:00 開始<br>",
             "endSuffix": "<br>翌4:00 終了",
-            "type": "blue"
-        },
-        {
-            "startDay": "1",
-            "endDay": "1",
-            "title": "[1日限定 メイン3倍] <br class='hidden pcBlock'>RS3 スタイル",
-            "startSuffix": "",
-            "type": "blue"
-        },
-        {
-            "startDay": "2",
-            "endDay": "2",
-            "title": "[1日限定 メイン3倍] <br class='hidden pcBlock'>SF1 スタイル",
-            "startSuffix": "",
-            "type": "blue"
-        },
-        {
-            "startDay": "3",
-            "endDay": "3",
-            "title": "[1日限定 メイン3倍] <br class='hidden pcBlock'>SF2 スタイル",
-            "startSuffix": "",
-            "type": "blue"
-        },
-        {
-            "startDay": "4",
-            "endDay": "4",
-            "title": "[1日限定 メイン3倍] <br class='hidden pcBlock'>US/SS/ES/RSR スタイル",
-            "startSuffix": "",
             "type": "blue"
         },
         {
             "startDay": "1",
             "endDay": "14",
-            "title": "[イベント] <br class='hidden pcBlock'>天下分け目のホワイトデー！[再]",
+            "title": "[イベント] <br class='hidden pcBlock'>炎の将魔との戦い",
             "endSuffix": "<br>翌4:00 終了",
             "type": "orange",
             "startNone": true
-        },
-        {
-            "startDay": "1",
-            "endDay": "31",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>財宝収集 オーラム2倍<br>洞窟修練 挑戦4回",
-            "startPrefix": "4:00 開始<br>",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "blue",
-            "startNone": true
-        },
-        {
-            "startDay": "20",
-            "endDay": "31",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>卵のから ドロップ2倍",
-            "startPrefix": "4:00 開始<br>",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "blue"
-        },
-        {
-            "startDay": "23",
-            "endDay": "29",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>裏道場 報酬2倍",
-            "startPrefix": "4:00 開始<br>",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "blue"
-        },
-        {
-            "startDay": "25",
-            "endDay": "99",
-            "title": "[新話オープン] <br class='hidden pcBlock'>2章 第1話",
-            "startPrefix": "12:00 開始<br>",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "yellow"
-        },
-        {
-            "startDay": "1",
-            "endDay": "8",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>卵のから ドロップ2倍",
-            "startPrefix": "4:00 開始<br>",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "blue"
-        },
-        {
-            "startDay": "20",
-            "endDay": "22",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>ツヴァイクメダル 2倍",
-            "startPrefix": "4:00 開始<br>",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "blue"
-        },
-        {
-            "startDay": "27",
-            "endDay": "29",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>ツヴァイクメダル 2倍",
-            "startPrefix": "4:00 開始<br>",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "blue"
-        },
-        {
-            "startDay": "5",
-            "endDay": "8",
-            "title": "[イベント] <br class='hidden pcBlock'>聖石洞窟 11〜15層",
-            "startPrefix": "12:00 開始<br>",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "orange"
-        },
-        {
-            "startDay": "25",
-            "endDay": "30",
-            "title": "[メイン3倍] <br class='hidden pcBlock'>RSR スタイル",
-            "startSuffix": "<br>12:00 開始",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "blue"
-        },
-        {
-            "startDay": "25",
-            "endDay": "26",
-            "title": "[メイン2倍] <br class='hidden pcBlock'>斬+杖 スタイル",
-            "startSuffix": "<br>12:00 開始",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "blue"
-        },
-        {
-            "startDay": "27",
-            "endDay": "28",
-            "title": "[メイン2倍] <br class='hidden pcBlock'>打+杖 スタイル",
-            "startSuffix": "<br>4:00 開始",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "blue"
-        },
-        {
-            "startDay": "29",
-            "endDay": "30",
-            "title": "[メイン2倍] <br class='hidden pcBlock'>突+杖 スタイル",
-            "startSuffix": "<br>4:00 開始",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "blue"
-        },
-
-        {
-            "startDay": "1",
-            "endDay": "14",
-            "title": "[メイン2倍] <br class='hidden pcBlock'>ビューネイ/ハリード/マドレーン/リズ/アイシャ/アセルス",
-            "startSuffix": "<br>12:00 開始",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "blue"
-        },
-        {
-            "startDay": "20",
-            "endDay": "31",
-            "title": "[メイン2倍] <br class='hidden pcBlock'>白薔薇/零姫/メサルティム/金獅子姫/バーニィ/ミカエル/アザミ",
-            "startSuffix": "<br>12:00 開始",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "blue"
-        },
-        {
-            "startDay": "9",
-            "endDay": "31",
-            "title": "[メイン2倍] <br class='hidden pcBlock'>最終皇帝(男)/インペリアルガード(男)/ホーリーオーダー(女)/モール族/セルマ/エミリア/ヴァンパイアレディ",
-            "startSuffix": "<br>12:00 開始",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "blue"
-        },
-        {
-            "startDay": "09",
-            "endDay": "31",
-            "title": "[イベント] <br class='hidden pcBlock'>総力戦！みんなで討滅！ターム族",
-            "startPrefix": "12:00 開始<br>",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "orange"
-        },
-        {
-            "startDay": "15",
-            "endDay": "32",
-            "title": "[イベント] <br class='hidden pcBlock'>・ドラゴンルーラーとの戦い",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "orange"
-        },
-        {
-            "startDay": "20",
-            "endDay": "31",
-            "title": "[イベント] <br class='hidden pcBlock'>・金獅子姫との戦い",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "orange"
-        },
-        {
-            "startDay": "16",
-            "endDay": "19",
-            "title": "[イベント] <br class='hidden pcBlock'>副防具・聖石洞窟",
-            "startPrefix": "12:00 開始<br>",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "orange"
         }
  ],
     "holiday": [
