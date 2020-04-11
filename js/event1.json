@@ -12,8 +12,24 @@
         },
         {
             "startDay": "1",
+            "endDay": "30",
+            "title": "[ガチャ] <br class='hidden pcBlock'>学園 祭ガチャ",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "green",
+            "startNone": true
+        },
+        {
+            "startDay": "1",
             "endDay": "14",
             "title": "[メイン2倍] <br class='hidden pcBlock'>サガフロ2キャラ",
+            "startSuffix": "",
+            "type": "blue",
+            "startNone": true
+        },
+        {
+            "startDay": "1",
+            "endDay": "30",
+            "title": "[メイン2倍] <br class='hidden pcBlock'>コーデリア/シフ/フリーファイター(男)/せんせい",
             "startSuffix": "",
             "type": "blue",
             "startNone": true
@@ -49,6 +65,35 @@
             "endSuffix": "<br>翌4:00 終了",
             "type": "orange",
             "startNone": true
+        },
+        {
+            "startDay": "10",
+            "endDay": "30",
+            "title": "[イベント] <br class='hidden pcBlock'>第2回 侯国大学 能力統一テスト",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "orange"
+        },
+        {
+            "startDay": "10",
+            "endDay": "14",
+            "title": "[イベント] <br class='hidden pcBlock'>武器・主防具 聖石洞窟",
+            "startPrefix": "12:00 開始<br>",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "orange"
+        },
+        {
+            "startDay": "10",
+            "endDay": "30",
+            "title": "[イベント:再] <br class='hidden pcBlock'>開校！侯国大学！",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "orange"
+        },
+        
+        {
+            "startDay": "10",
+            "endDay": "31",
+            "title": "[イベント] <br class='hidden pcBlock'>せんせいの集中特訓講座(〜5/15)",
+            "type": "orange"
         }
  ],
     "holiday": [
