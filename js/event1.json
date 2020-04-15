@@ -82,6 +82,14 @@
             "type": "orange"
         },
         {
+            "startDay": "15",
+            "endDay": "20",
+            "title": "[イベント] <br class='hidden pcBlock'>副防具 聖石洞窟<br>修業者の間",
+            "startPrefix": "12:00 開始<br>",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "orange"
+        },
+        {
             "startDay": "10",
             "endDay": "30",
             "title": "[イベント:再] <br class='hidden pcBlock'>開校！侯国大学！",
