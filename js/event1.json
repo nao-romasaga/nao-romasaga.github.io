@@ -40,7 +40,7 @@
             "title": "[メイン2倍] <br class='hidden pcBlock'>大剣/斧/槍 キャラ",
             "startSuffix": "04:00 開始<br>",
             "endSuffix": "<br>翌4:00 終了",
-            "type": "blue",
+            "type": "blue"
         },
         {
             "startDay": "1",
