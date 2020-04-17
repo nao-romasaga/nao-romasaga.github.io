@@ -35,6 +35,14 @@
             "startNone": true
         },
         {
+            "startDay": "18",
+            "endDay": "20",
+            "title": "[メイン2倍] <br class='hidden pcBlock'>大剣/斧/槍 キャラ",
+            "startSuffix": "04:00 開始<br>",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue",
+        },
+        {
             "startDay": "1",
             "endDay": "14",
             "title": "[キャンペーン] <br class='hidden pcBlock'>スペシャルショップ着せ替え衣装",
