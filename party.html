@@ -499,7 +499,11 @@
                 </div>
                 <div class="width-100 bg-simple small text-center" style="height:80px;" id="FOOTER_PARTY">
                     <div style="position: relative; top:0px;">▼編成中のパーティ▼ (タップで移動)</div>
-                    <div id="float-footer" style="position: relative; bottom:10px; height: 60px; overflow-y: scroll;"></div>
+                    <div id="PARTY_FOOTER" style="position: relative; bottom:10px; height: 60px; overflow-x: scroll;overflow-y: hidden;white-space: nowrap;">
+                        <img id="footer_left" class="d-sm-none blinking" src="https://romasagatool.com/img/icon/icon_arrow_left.png" style="position: fixed; left: 0px; height: 40px; z-index: 1;">
+                        <img id="footer_right" class="d-sm-none blinking" src="https://romasagatool.com/img/icon/icon_arrow_right.png" style="position: fixed; right: 0px; height: 40px; z-index: 1;">
+                        <div id="float-footer"></div>
+                    </div>
                 </div>
             </div>
         </div>
