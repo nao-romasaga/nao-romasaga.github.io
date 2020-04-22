@@ -19,6 +19,21 @@
             "startNone": true
         },
         {
+            "startDay": "21",
+            "endDay": "30",
+            "title": "[ガチャ] <br class='hidden pcBlock'>ミンサガ UDXガチャ",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "green"
+        },
+        {
+            "startDay": "21",
+            "endDay": "30",
+            "title": "[メイン2倍] <br class='hidden pcBlock'>ミンサガ&RS1 キャラ",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue"
+        },
+
+        {
             "startDay": "1",
             "endDay": "14",
             "title": "[メイン2倍] <br class='hidden pcBlock'>サガフロ2キャラ",
@@ -62,6 +77,14 @@
             "startDay": "6",
             "endDay": "14",
             "title": "[キャンペーン] <br class='hidden pcBlock'>メインスタ半<br>SF2記念メダルドロップ<br>SF2 メイン挑戦ミッション",
+            "startSuffix": "12:00 開始<br>",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue"
+        },
+        {
+            "startDay": "22",
+            "endDay": "26",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>メインスタ半",
             "startSuffix": "12:00 開始<br>",
             "endSuffix": "<br>翌4:00 終了",
             "type": "blue"
