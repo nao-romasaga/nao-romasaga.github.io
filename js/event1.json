@@ -113,10 +113,27 @@
             "type": "orange"
         },
         {
+            "startDay": "27",
+            "endDay": "50",
+            "title": "[イベント] <br class='hidden pcBlock'>制圧いくばい！ Romancing佐賀県 〜5/20",
+            "startPrefix": "12:00 開始<br>",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "orange"
+        },
+
+        {
             "startDay": "15",
             "endDay": "20",
             "title": "[イベント] <br class='hidden pcBlock'>副防具 聖石洞窟<br>修業者の間",
             "startPrefix": "12:00 開始<br>",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "orange"
+        },
+        {
+            "startDay": "28",
+            "endDay": "50",
+            "title": "[イベント] <br class='hidden pcBlock'>財宝オーラム2倍<br>魔物挑戦2倍<br>〜5/11",
+            "startPrefix": "4:00 開始<br>",
             "endSuffix": "<br>翌4:00 終了",
             "type": "orange"
         },
