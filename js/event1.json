@@ -11,6 +11,13 @@
             "startNone": true
         },
         {
+            "startDay": "8",
+            "endDay": "31",
+            "title": "[ガチャ] <br class='hidden pcBlock'>エンペラーズサガUDXガチャ",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "green"
+        },
+        {
             "startDay": "1",
             "endDay": "7",
             "title": "[メイン2倍] <br class='hidden pcBlock'>ガチャ以外のキャラ",
@@ -20,8 +27,15 @@
         },
         {
             "startDay": "1",
+            "endDay": "31",
+            "title": "[メイン2倍] <br class='hidden pcBlock'>白銀の皇帝/セルマ/ブッチャー/スライム/杖キャラ",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue"
+        },
+        {
+            "startDay": "1",
             "endDay": "19",
-            "title": "[メイン2倍] <br class='hidden pcBlock'>ロックブーケ/アセルス/タリア<br>T260G/ポルカ/エレン/モニカ/ウィル<br>ゲン/カタリナ/最終皇帝(女)/ブルー",
+            "title": "[メイン2倍] <br class='hidden pcBlock'>アセルス/T260G/ポルカ/エレン/モニカ/ウィル/ゲン/カタリナ/最終皇帝(女)",
             "endSuffix": "<br>翌4:00 終了",
             "type": "blue",
             "startNone": true
