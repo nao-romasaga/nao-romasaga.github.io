@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#" lang="ja">
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138966739-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', 'UA-138966739-1');
+        </script>
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+        <meta charset="utf-8">
+        <title>【ロマサガRS】デスくるりんジェネレーター</title>
+        <meta property="og:title" content="【ロマサガRS】伯爵くるりんジェネレーター" />
+        <meta property="og:url" content="https://http://nao-romasaga.github.io/kururin.html" />
+        <meta property="og:description" content="ロマサガRSの伯爵のステータスをひたすらアップします。攻略とは関係ありませんがお楽しみください。" />
+        <meta name="description" content="ロマサガRSの伯爵のステータスをひたすらアップします。攻略とは関係ありませんがお楽しみください。【ロマンシングサガ リユニバース】" />
+        <meta property="og:image" content="https://nao-romasaga.github.io/img/twitter_card_kururin.png" />
+        <meta property="og:site_name" content="ロマサガRS便利ツール" />
+        <meta property="og:type" content="article">
+        <meta property="og:locale" content="ja_JP" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@nao_romasaga_rs" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="./css/bootstrap/bootstrap.min.css">
+        <script src="./js/bootstrap/bootstrap.min.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="./css/style2.css">
+        <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
+        <script src="./js/Firebase.js"></script>
+        <script src="./js/utils2.js" ></script>
+
+        <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+    </head>
+    <body>
+        <div class="dojohaikei"><div class="container">
+                <h1 class="text-center title-text" style="font-size: 4vw;">デスくるりんジェネレーター</h1>
+                <script>
+            $(document).ready(function () {
+                $(".card").hide();
+                $(".fukidashi , .char").click(function () {
+                    next = $(".fukidashi").hasClass('fkd1') ? 'fkd2' : 'fkd1';
+                    $(".fukidashi").removeClass('fkd1').removeClass('fkd2').addClass(next);
+                    var rand = Math.floor(Math.random() * 30);
+                    var PARAM = ["HP", "腕力", "体力", "器用さ", "素早さ", "知力", "精神", "愛", "魅力"
+                                , "腕力", "体力", "器用さ", "素早さ", "知力", "精神", "愛", "魅力"
+                                , "腕力", "体力", "器用さ", "素早さ", "知力", "精神", "愛", "魅力"
+                                , "生命力", "今日の生贄"
+                    ];
+                    var rand2 = Math.floor(Math.random() * 6);
+                    if (rand2 === 0) {
+                        next = "char-stmiss";
+                        up = "がダウン";
+                    } else {
+                        next = $("#CHAR").hasClass('char-stup') ? 'char-stup2' : 'char-stup';
+                        up = "がアップ";
+                    }
+                    $("#CHAR").removeClass('char-stup').removeClass('char-stmiss').removeClass('char-stup2').addClass(next);
+
+                    let msg = PARAM[rand] + up;
+                    $(".fukidashi").text(msg);
+                });
+            });
+                </script>
+                <style>
+                    .fkd1 {
+                        animation: fk1 0.5s;
+                    }
+                    @keyframes fk1 {
+                        0% { transform:scale(0,0);} /* 1.1 */
+                        100% { transform:scale(1,1);} /* 1.1 */
+                    }
+                    .fkd2 {
+                        animation: fk2 0.5s;
+                    }
+                    @keyframes fk2 {
+                        0% { transform:scale(0,0);} /* 1.1 */
+                        100% { transform:scale(1,1);} /* 1.1 */
+                    }
+                </style>
+                <div class='text-center' style='position: relative;' onclick="">
+                    <img src='./img/bg_renkei_8.png' width='330' height='505'>
+                    <span class="fukidashi" style='padding: 10px; position: absolute;top:calc(50% - 45px); left:calc(50% - 110px);'>タップしてスタート</span>
+                    <span id="CHAR" class="char dot_mid dot char-winner char-selected" style="background:url(https://romasagatool.com/img/dot/ID35840.png) no-repeat;position: absolute;top:50%; left:50%;"></span>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5008373409434899" data-ad-slot="3051702111"></ins><script> (adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+        <div class="row renkeiHaikei slide1" id="TEMPLATE" style="display: none"><div class="col-4 text-center text-nowrap m-auto renkeiFont" id="name"></div><div class="col-8" id="img"></div></div>
+        <!-- Twitter universal website tag code -->
+        <script>
+            !function (e, t, n, s, u, a) {
+                e.twq || (s = e.twq = function () {
+                    s.exe ? s.exe.apply(s, arguments) : s.queue.push(arguments);
+                }, s.version = '1.1', s.queue = [], u = t.createElement(n), u.async = !0, u.src = '//static.ads-twitter.com/uwt.js',
+                        a = t.getElementsByTagName(n)[0], a.parentNode.insertBefore(u, a))
+            }(window, document, 'script');
+            // Insert Twitter Pixel ID and Standard Event data below
+            twq('init', 'o1u7p');
+            twq('track', 'PageView');
+        </script>
+        <!-- End Twitter universal website tag code -->
+    </body>
+</html>
