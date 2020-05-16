@@ -429,7 +429,7 @@
                 <div class="text-center kadomaru"
                     style="background-color: rgba(42,169,239,1); color:white; margin: 0px 10px; padding: 2px 5px;">
                     <a href="./inputchar.html" class="h4 shadow-black" style="background-size: 340px 40px; width:340px"
-                        id="inputStyleLogined">自分のキャラを登録<i class="fas fa-pencil-alt"></i></a>
+                        id="inputStyleLogined">自分のキャラを登録</a>
                 </div>
 
                 <br>
@@ -524,18 +524,18 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="row">
-                            <div class="col-6 text-right">
+                        <div class="row no-gutters">
+                            <div class="col-6 text-right small">
                                 <a href="javascript:scrollChar();" style="color:inherit;">
                                     <div class="icon_btn_negative text-center">
-                                        キャラ選択に戻る<i class="fas fa-arrow-up"></i>
+                                        キャラ選択に戻る
                                     </div>
                                 </a>
                             </div>
-                            <div class="col-6 text-left">
+                            <div class="col-6 text-left small">
                                 <a href="./inputchar.html" id="inputStyleLogined" style="color:inherit;">
                                     <div class="icon_btn_positive text-center shadow-black">
-                                        自分のキャラを登録<i class="fas fa-pencil-alt"></i>
+                                        自分のキャラを登録
                                     </div>
                                 </a>
                             </div>
@@ -585,7 +585,7 @@
                             </tr>
                             <tr class="text-center shadow-black d-none" id="VOTE_ROW_TEMPLATE" style="color:white;">
                                 <td class="IMG position-relative">
-                                    <div class="filter-bgcolor">
+                                    <div class="filter-bgcolor d-none d-md-block">
                                         <div class="text-center" style="background: url(https://romasagatool.com/img/bg_cutin.png);">
                                         <img class="IMG_RARE d-none d-md-inline" src="" style="position:absolute; left:0; top: 5px; height:35px">
                                         <img class="IMG_CUTIN d-none d-md-inline" style="max-width:200px;" src="">
@@ -642,11 +642,23 @@
                                 あなたの順位 : <span id="MY_RANK">登録していません</span><br>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-6 text-right small">
+                                <button class="icon_btn_positive text-center" id="ST_SORT">ステータス順</button>
+                            </div>
+                            <div class="col-6 text-left small">
+                                <button class="icon_btn_negative text-center" id="COM_SORT">　戦闘力順　</button>
+                            </div>
+                        </div>                        
                         <div class="bg-common-frame LIMIT_TABLE2">
                             <table class="width-100 text-center table-striped">
                                 <tbody>
                                     <tr class="text-center">
-                                        <td class="small">Rank</td>
+                                        <td class="small">
+                                            <i class="fas fa-crown d-sm-none"></i>
+                                            <span class="d-none d-sm-inline">Rank</span>
+                                        </td>
+                                        <td class=" paramCell2 D_COM"><img src="http://romasagatool.com/img/icon/icon_combatpower.png" width=25></td>
                                         <td class=" paramCell2">HP</td>
                                         <td class=" paramCell2">腕</td>
                                         <td class=" paramCell2">体</td>
@@ -656,14 +668,14 @@
                                         <td class=" paramCell2">精</td>
                                         <td class=" paramCell2">愛</td>
                                         <td class=" paramCell2">魅</td>
-                                        <td class=" paramCell2"><span class="hidden pcBlock">合</span>計</td>
+                                        <td class=" paramCell2 D_SUM"><span class="hidden pcBlock">合</span>計</td>
                                     </tr>
                                     <tr class="text-center" id="USER_RANK">
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
-                        <div class="row">
+                        <div class="row no-gutters">
                             <div class="col-12">
                                 <div class="text-center icon_btn_positive text-nowrap" style="margin-bottom:10px;">
                                     <a href="" class="rankingTweet twitter-share-button fuchidori-white" rel=”nofollow”
@@ -671,17 +683,17 @@
                                         ><i class="fas fa-crown"></i> ランキング結果をツイート <i class="fab fa-twitter"></i></a>
                                 </div>
                             </div>
-                            <div class="col-6 text-right">
+                            <div class="col-6 text-right small">
                                 <a href="javascript:scrollChar();" style="color:inherit;">
                                     <div class="icon_btn_negative text-center">
-                                        キャラ選択に戻る<i class="fas fa-arrow-up"></i>
+                                        キャラ選択に戻る
                                     </div>
                                 </a>
                             </div>
-                            <div class="col-6 text-left">
+                            <div class="col-6 text-left small">
                                 <a href="./inputchar.html" id="inputStyleLogined" style="color:inherit;">
                                     <div class="icon_btn_positive text-center">
-                                        自分のキャラを登録<i class="fas fa-pencil-alt"></i>
+                                        自分のキャラを登録
                                     </div>
                                 </a>
                             </div>
@@ -727,10 +739,12 @@
                                     <td style="background-color: white; border: solid black 1px">　</td>
                                     <td>あなた<span class="d-none d-md-inline">が登録しているキャラクター</span>のステータス</td>
                                 </tr>
+                                <!--
                                 <tr>
-                                    <td><i class="fas fa-crown"></i></td>
+                                    <td>★</td>
                                     <td>ランキング内の最大HP</td>
                                 </tr>
+                                -->
                             </table>
                         </div>
                         <div style="margin-bottom:20px;">　</div>
