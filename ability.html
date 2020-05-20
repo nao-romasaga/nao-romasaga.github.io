@@ -47,7 +47,7 @@
     </head>
     <body>
         <div class ="haikei"><div class="container">
-                最終更新日: <span id="UPDATE">2020/4/18</span>
+                最終更新日: <span id="UPDATE">2020/5/21</span>
                 <h4 class="text-center title-text">全アビリティ一覧 <br class="hidden spBlock">+ 所有スタイル検索</h4>
                 <p class="text-right opacity"><small>バグ発見、ご要望は <a href="https://peing.net/ja/nao_romasaga_rs" target="new">質問箱</a>まで</small>
                 </p>
@@ -90,7 +90,7 @@
                 </script>
                 <br>
 
-                <div class=" text-center" style="background: url(./img/bg_window_large.png); background-size: 100% 100%; color: #faf0b4; padding: 25px;">
+                <div class="bg-simple text-center">
                     <div id="ability_label" class="char-bottom" style="font-size:20px;"></div>
                     <span id="ability_flavor" style="font-size:10px;"></span>
                 </div>
@@ -98,12 +98,22 @@
                 <div class="style-bgcolor styleChoiceArea">
                     <div id="ability_holder_list"></div>
                 </div>
-
-                <label class="badge badge-pill badge-light">
-                    アビリティ保持者
-                    <span class="xs-show"><br>アビリティ名をタップで説明を表示します。</span>
-                </label>
+                <label class="badge badge-pill badge-light">アビリティ保持者<br>
+                アビリティ名をタップでフィルタ出来ます</label>
+                <div class="row">
+                    <div class="col-6 text-center"><button class="icon_btn_negative BTN_FILTER " style="min-width:80%"><i class="fas fa-filter"></i> 絞り込み</button></div>
+                    <div class="col-6 text-center"><button class="icon_btn_positive BTN_ALL " style="min-width:80%"><i class="fas fa-list"></i> 全表示</button></div>
+                </div>
                 <div id="ability_holder_table" class="row no-gutters"></div>
+
+                <div class="col-12 col-md-6 col-lg-4 bg-simple d-none" id="AB_CARD_TEMPLATE">
+                    <div class="" style="display:inline-block;padding: 10px 20px !important;width: 100%;margin:0px;">
+                        <div class="S_NAME text-center text-nowrap" style="line-height: 19px;"></div>
+                        <div class="S_AB" style=" line-height: 20px;display: inline-table;height: 100%;" class="fuchidori-blue"></div>
+                        <div class="S_ICON" style="float:right" ></div>
+                    </div>
+                </div>                
+
             </div></div> <!-- main -->
         <!-- Twitter universal website tag code -->
         <script>
