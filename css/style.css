@@ -1,99 +1,161 @@
-@import url("char_anime.css");
-@import url("icon.css");
+@import url("char_anime2.css");
+@import url("icon2.css");
 @import url("git.css");
 @import url("loading.css");
 @import url("https://use.fontawesome.com/releases/v5.8.1/css/all.css");
 html {
     touch-action: manipulation;
 }
+.bgcolor-brawn {
+    background-color: rgba(70,55,30,1);
+    color: #faf0b4;
+}
+.margin-bottom5{
+    margin-bottom: 5px;
+}
 .status_question{
     font-size: 20px;
     background-color: rgba(224 , 224,100, 1);
     color: black;
 }
-@media screen and (max-width:340px) {
-    .rare-icon {
-        width:20px;
-    }
-    .smallFont {
-        font-size: 10px !important;
-    }
-    .middleFont {
-        font-size: 18px !important;
-    }
-    .hidden.xsBlock {
-        display: inline;
-    }    
-    .title-text{
-        font-size: 15px;
-        background:url(http://romasagatool.com/img/bg_window_large.png);
-        background-size:100% 100%;
-        color:#faf0b4;
-        padding:5px;    
-    }
-    .small {
-        font-size: 12px !important;
-    }
-    .partyNowStyle .status_plus{
-        font-size: 15px;
-        background-color: rgba(108 , 188,224, 1);
-        color: white;
-    }
-    .status_plus{
-        font-size: 15px;
-        background-color: rgba(108 , 188,224, 0.7);
-        color: white;
-    }
-    .partyNowStyle .status_minus{
-        font-size: 15px;
-        background-color: rgba(215 , 100,100, 1);
-        color: white;
-    }
-    .status_minus{
-        font-size: 15px;
-        background-color: rgba(215 , 100,100, 0.7);
-        color: white;
-    }
-    .rareIconSize {
-        width: 15px;
-    }
-    .icon_ind {
-        width: 12px;
-    }
+.width-max {
+    margin-left: calc(((100vw - 100%) / 2) * -1);
+    margin-right: calc(((100vw - 100%) / 2) * -1);    
+}
+
+.filter-bgcolor {
+    background-color: rgb(50,50,50,1);
+    border: 3px solid rgb(197,187,147);
+    border-radius: 10px;
+    padding: 5px;
+}
+.info-modal {
+    padding: 5px 20px 50px 20px;
+    background: 
+    url(https://romasagatool.com/img/bg_modal_corner1.png) top left / 120px 90px no-repeat,
+    url(https://romasagatool.com/img/bg_modal_corner2.png) top right / 120px 90px no-repeat,
+    url(https://romasagatool.com/img/bg_modal_corner3.png) bottom left / 120px 90px no-repeat,
+    url(https://romasagatool.com/img/bg_modal_corner4.png) bottom right / 120px 90px no-repeat,
+    url(https://romasagatool.com/img/bg_modal_top.png) top / calc(100% - 80px) 90px no-repeat,
+    url(https://romasagatool.com/img/bg_modal_btm.png) bottom / calc(100% - 80px) 90px no-repeat,
+    url(https://romasagatool.com/img/bg_modal_left.png) left / 120px calc(100% - 80px)  no-repeat,
+    url(https://romasagatool.com/img/bg_modal_right.png) right / 120px calc(100% - 80px)  no-repeat,
+    url(https://romasagatool.com/img/bg_modal_center.png) center / calc(100% - 80px) calc(100% - 80px)  no-repeat;
+    /* color: #faf0b4; */
+}
+.bg-common-frame {
+    padding: 20px;
+    background: 
+    url(https://romasagatool.com/img/bg_common_frame_corner1.png) top left / 40px 40px no-repeat,
+    url(https://romasagatool.com/img/bg_common_frame_corner2.png) top right / 40px 40px no-repeat,
+    url(https://romasagatool.com/img/bg_common_frame_corner3.png) bottom left / 40px 40px no-repeat,
+    url(https://romasagatool.com/img/bg_common_frame_corner4.png) bottom right / 40px 40px no-repeat,
+    url(https://romasagatool.com/img/bg_common_frame_top.png) top / calc(100% - 40px) 40px no-repeat,
+    url(https://romasagatool.com/img/bg_common_frame_btm.png) bottom / calc(100% - 40px) 40px no-repeat,
+    url(https://romasagatool.com/img/bg_common_frame_left.png) left / 40px calc(100% - 40px)  no-repeat,
+    url(https://romasagatool.com/img/bg_common_frame_right.png) right / 40px calc(100% - 40px)  no-repeat,
+    url(https://romasagatool.com/img/bg_common_frame_center.png) center / calc(100% - 40px) calc(100% - 40px)  no-repeat;
+}
+.bg-common-window {
+    padding: 20px;
+    background: 
+    url(https://romasagatool.com/img/bg_common_window_corner1.png) top left / 50px 20px no-repeat,
+    url(https://romasagatool.com/img/bg_common_window_corner2.png) top right / 50px 20px no-repeat,
+    url(https://romasagatool.com/img/bg_common_window_corner3.png) bottom left / 50px 20px no-repeat,
+    url(https://romasagatool.com/img/bg_common_window_corner4.png) bottom right / 50px 20px no-repeat,
+    url(https://romasagatool.com/img/bg_common_window_top.png) top / calc(100% - 100px) 20px no-repeat,
+    url(https://romasagatool.com/img/bg_common_window_btm.png) bottom / calc(100% - 100px) 20px no-repeat,
+    url(https://romasagatool.com/img/bg_common_window_left.png) left / 40px calc(100% - 40px)  no-repeat,
+    url(https://romasagatool.com/img/bg_common_window_right.png) right / 40px calc(100% - 40px)  no-repeat,
+    url(https://romasagatool.com/img/bg_common_window_center.png) center / calc(100% - 40px) calc(100% - 40px)  no-repeat;
+}
+.info-modal-header {
+    color: beige;
+    height: 50px;
+    width: 100%;
+    padding: 5px;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: bolder;
+    text-align: center;
+}
+.name-label {
+    color: white;
+    border-top: 1px solid yellow;
+    border-bottom: 1px solid yellow;
+    background: 
+        url(https://romasagatool.com/img/icon/icon_label_left.png) top 50% left 10px  / 23px 15px no-repeat,
+        url(https://romasagatool.com/img/icon/icon_label_right.png) top 50% right 10px / 23px 15px no-repeat,
+        rgba(40,30,20, 0.7);    
+}
+
+.dot-base {
+    position:relative;
+    display: inline-block;
+    width:100px; height:100px;
+    text-align: center; 
+}
+.xdot-base-char {
+    left: 19px;
+}
+.dot-base-circle {
+    position:absolute;
+    bottom:22px;
+    left:10px;
+    width:80px;
+}
+.dot-name-label {
+    position:absolute;
+    bottom:0;
+    width: 95%;
+    background-color: rgba(100, 100, 80, 0.8);
+    color: white;
+    padding: 0px 3px;
+    border-radius: 6px;
+    font-size: 8px;
+}
+
+.char-choise-section {
+	overflow-x: hidden;
+	overflow-y: scroll;
+	width: 100%;
+	height: 220px;
+}
+.weapon-icon-button {
+    border: 2px solid rgb(190,185,160);
+    border-radius: 10px;
+    box-shadow: 0 0px 3px yellow;    
 }
 @media screen and (max-width:400px) {
+    .styleTab {
+        font-size: 15px;
+    }
     .rare-icon {
         width:20px;
     }
-    .gachaButtonSum {
-        background-size: 100px 40px; width:100px !important;        
+    .rare-icon-big {
+        width:30px;
     }
-    .gachaButtonSim {
-        background-size: 180px 40px; width:180px !important;
-    }
-    .smallWidth100 {
-        width: 100%;
-    }
+
     .haikei {
-        background: url(http://romasagatool.com/img/bg_xmas.jpeg) no-repeat;
+        background: url(https://romasagatool.com/img/bg_xmas.jpeg) no-repeat;
         width:100%;
         background-attachment: fixed;
         background-size: cover;
         background-position: center;        
     }
 }
+
 @media screen and (min-width:400px) {
     .rare-icon {
         width:30px;
     }
-    .gachaButtonSum {
-        background-size: 200px 40px; width:200px !important;        
+    .rare-icon-big {
+        width:40px;
     }
-    .gachaButtonSim {
-        background-size: 275px 40px; width:275px !important;
-    }
+
     .haikei {
-        background: url(http://romasagatool.com/img/bg_xmas.jpeg) no-repeat;
+        background: url(https://romasagatool.com/img/bg_xmas.jpeg) no-repeat;
         width:100%;
         background-size: cover;
         background-position: center;
@@ -107,20 +169,10 @@ html {
         font-size: 20px !important;
     }
     .title-text{
-        background:url(http://romasagatool.com/img/bg_window_large.png);
+        background:url(https://romasagatool.com/img/bg_window_large.png);
         background-size:100% 100%;
         color:#faf0b4;
         padding:5px;    
-    }
-    .status_plus{
-        font-size: 20px;
-        background-color: rgba(108 , 188,224, 1);
-        color: white;
-    }
-    .status_minus{
-        font-size: 20px;
-        background-color: rgba(215 , 100,100, 1);
-        color: white;
     }
     .rareIconSize {
         width: 35px;
@@ -129,7 +181,19 @@ html {
         width: 15px;
     }
 }
-
+@media screen and (min-width:310px) {
+    .smallFont {
+        font-size: 12px !important;
+    }
+}
+.status_plus{
+    background-color: rgba(108 , 188,224, 1);
+    color: white;
+}
+.status_minus{
+    background-color: rgba(215 , 100,100, 1);
+    color: white;
+}
 .resist_plus{
     font-size: 20px;
     color: rgba(108 , 188,224, 1);
@@ -150,12 +214,6 @@ html {
     text-align: center !important;
 }
 
-.label-text{
-    background:url(http://romasagatool.com/img/bg_window_large.png);
-    background-size:100% 100%;
-    color:#faf0b4;
-    padding:5px;    
-}
 .nav-link.active,
 .nav-item.show .nav-link {
     background-color: #93CBFF !important;
@@ -194,12 +252,102 @@ html {
     border: 3px solid #fff;
     border-radius: 8px;
 }
-.style-bgcolor {
+.style-bgcolor{
+    padding: 20px;
+    background: url(https://romasagatool.com/img/background_corner1.jpg),
+    url(https://romasagatool.com/img/background_corner2.jpg),
+    url(https://romasagatool.com/img/background_corner3.jpg),
+    url(https://romasagatool.com/img/background_corner4.jpg),
+    url(https://romasagatool.com/img/background_top.jpg),
+    url(https://romasagatool.com/img/background_btm.jpg),
+    url(https://romasagatool.com/img/background_left.jpg),
+    url(https://romasagatool.com/img/background_right.jpg), rgb(230,230,202)
+    ;
+    background-repeat: no-repeat,no-repeat,no-repeat,no-repeat,
+    repeat-x,repeat-x,repeat-y,repeat-y;
+    background-position: 
+        top left,top right,bottom left,bottom right,
+        top, bottom,left,right
+        ;    
+}
+.style-bgcolor_bk {
     background-color: rgba(230, 225, 207, 1);    
     border-top: 5px ridge rgb(246,236,100);
     border-bottom: 5px ridge rgb(246,236,100);
     padding: 10px 0 10px 0;
 }
+
+.label-text-header{
+    /* trで使う場合など */
+    background:url(https://romasagatool.com/img/bg_window_large.png);
+    background-size:100% 100%;
+    color:#faf0b4;
+    padding:5px;    
+}
+
+.label-text{
+    padding: 5px;
+    background: 
+    url(https://romasagatool.com/img/bg_window_corner1.png) top left no-repeat,
+    url(https://romasagatool.com/img/bg_window_corner2.png) top right no-repeat,
+    url(https://romasagatool.com/img/bg_window_corner3.png) bottom left no-repeat,
+    url(https://romasagatool.com/img/bg_window_corner4.png) bottom right no-repeat,
+    url(https://romasagatool.com/img/bg_window_top.png) top / calc(100% - 80px) 41px no-repeat,
+    url(https://romasagatool.com/img/bg_window_btm.png) bottom / calc(100% - 80px) 41px no-repeat,
+    url(https://romasagatool.com/img/bg_window_left.png) left / 41px calc(100% - 80px)  no-repeat,
+    url(https://romasagatool.com/img/bg_window_right.png) right / 41px calc(100% - 80px)  no-repeat,
+    url(https://romasagatool.com/img/bg_window_center.png) center / calc(100% - 80px) calc(100% - 80px)  no-repeat;
+    color: #faf0b4;
+}
+.bg-black-window{
+    padding: 5px;
+    background: 
+    url(https://romasagatool.com/img/bg_window_corner1.png) top left no-repeat,
+    url(https://romasagatool.com/img/bg_window_corner2.png) top right no-repeat,
+    url(https://romasagatool.com/img/bg_window_corner3.png) bottom left no-repeat,
+    url(https://romasagatool.com/img/bg_window_corner4.png) bottom right no-repeat,
+    url(https://romasagatool.com/img/bg_window_top.png) top / calc(100% - 80px) 41px no-repeat,
+    url(https://romasagatool.com/img/bg_window_btm.png) bottom / calc(100% - 80px) 41px no-repeat,
+    url(https://romasagatool.com/img/bg_window_left.png) left / 41px calc(100% - 80px)  no-repeat,
+    url(https://romasagatool.com/img/bg_window_right.png) right / 41px calc(100% - 80px)  no-repeat,
+    url(https://romasagatool.com/img/bg_window_center.png) center / calc(100% - 80px) calc(100% - 80px)  no-repeat;
+    color: #faf0b4;
+}
+.bg-simple {
+    padding: 5px;
+    background: 
+    url(https://romasagatool.com/img/bg_simple_corner1.png) top left / 29px 29px no-repeat,
+    url(https://romasagatool.com/img/bg_simple_corner2.png) top right / 29px 29px no-repeat,
+    url(https://romasagatool.com/img/bg_simple_corner3.png) bottom left / 29px 29px no-repeat,
+    url(https://romasagatool.com/img/bg_simple_corner4.png) bottom right / 29px 29px no-repeat,
+    url(https://romasagatool.com/img/bg_simple_top.png) top / calc(100% - 56px) 29px no-repeat,
+    url(https://romasagatool.com/img/bg_simple_btm.png) bottom / calc(100% - 56px) 29px no-repeat,
+    url(https://romasagatool.com/img/bg_simple_left.png) left / 29px calc(100% - 56px)  no-repeat,
+    url(https://romasagatool.com/img/bg_simple_right.png) right / 29px calc(100% - 56px)  no-repeat,
+    rgba(43,33,12,1);
+    color: #faf0b4;
+    border-radius: 10px;
+    border:none;
+
+}
+.label-text-small {
+    background: 
+    url(https://romasagatool.com/img/bg_window_small_left.png) left / 36px 100% no-repeat, 
+    url(https://romasagatool.com/img/bg_window_small_right.png) right / 36px 100% no-repeat, 
+    url(https://romasagatool.com/img/bg_window_small_center.png) center / calc(100% - 70px) 100% no-repeat;
+    padding: 3px 13px 3px 13px;
+    display: inline-block;
+    color: #faf0b4;
+    -webkit-appearance: none;
+    border: 0px;
+}
+.label-text_bk{
+    background:url(https://romasagatool.com/img/bg_window_large.png);
+    background-size:100% 100%;
+    color:#faf0b4;
+    padding:5px;    
+}
+
 .game-banner{
     border: 4px solid #dcc8b4;
     border-radius: 12px;
@@ -271,7 +419,7 @@ html {
 }
 
 .haikei_old {
-    background: url(http://romasagatool.com/img/bg.jpg) no-repeat;
+    background: url(https://romasagatool.com/img/bg.jpg) no-repeat;
     width:100%;
     background-size: cover;
 }
@@ -420,7 +568,7 @@ body {
 }
 
 .sorry_cat {
-    background: url(http://romasagatool.com/img/dot/ID36a44.png) no-repeat; /* riz */
+    background: url(https://romasagatool.com/img/dot/ID36a44.png) no-repeat; /* riz */
     background-size: 400px 400px
 }
 .sorry_center{
@@ -442,7 +590,7 @@ body {
     animation: nemuri 2s steps(1);
 }        
 .icon-zzz {
-    background: url(http://romasagatool.com/img/icon/icon_zzz.png) no-repeat;
+    background: url(https://romasagatool.com/img/icon/icon_zzz.png) no-repeat;
     display: inline-block;
     width: 60px;
     height: 60px;
@@ -466,7 +614,7 @@ body {
 #PageTopBtn {
     position: fixed; /*ボタンの配置場所を固定*/
     bottom: -10px; /*下からのボタンの配置場所を指定*/
-    right: 50px; /*右からのボタンの配置場所を指定*/
+    right: 10px; /*右からのボタンの配置場所を指定*/
     z-index: 100;
 }
 #PageTopBtn a {
@@ -489,9 +637,10 @@ body {
         font-size: 13px; /*文字のサイズ*/
     }
     #PageTopBtn a {
-        width: 100px; /*ボタンの幅*/
+        width: 50px; /*ボタンの幅*/
         height: 50px; /*ボタンの高さ*/
         padding: 0px 0; /*文字の配置場所の調整*/
+        border-radius: 70%; /*ボタンの角を少し丸くする*/
     }
 }
 
@@ -517,7 +666,7 @@ body {
     font-size: 8px;
 }
 .dojohaikei {
-    background: url(http://romasagatool.com/img/bg_dojo.png);
+    background: url(https://romasagatool.com/img/bg_dojo.png);
 }
 .style-param-window {
     background-color: rgba(160, 40, 40, 0.6);
@@ -536,7 +685,7 @@ body {
 .style-skill-window {
     color: white;
     margin: 0 20px 0 20px;
-    background: url(http://romasagatool.com/img/bg_window.png) no-repeat;
+    background: url(https://romasagatool.com/img/bg_window.png) no-repeat;
     background-size: 100% 100%;
     opacity: 0.8;    
 }
@@ -548,19 +697,19 @@ body {
     border-radius: 10px;
     border: 2px outset gold;    
 }
+
 .style-tab-active{
     padding-top: 5px;
     display: inline-block; 
-    height:40px; 
-    background:url(http://romasagatool.com/img/icon/icon_tab_active.png) no-repeat; 
-    background-size: 100%;    
+    background:url(https://romasagatool.com/img/icon/icon_tab_active.png) no-repeat; 
+    background-size: 100% 100%;
+    color: white;
 }
 .style-tab-disabled{
     padding-top: 5px;
     display: inline-block;
-    height:40px;
-    background:url(http://romasagatool.com/img/icon/icon_tab_disable.png) no-repeat;
-    background-size: 100%;
+    background:url(https://romasagatool.com/img/icon/icon_tab_disable.png) no-repeat;
+    background-size: 100% 100%;
 }
 
 .kakashi{
@@ -568,7 +717,7 @@ body {
     margin-left:60px;
     width:60px;
     height:60px;
-    background: url(http://romasagatool.com/img/icon/icon_kakashi.png);
+    background: url(https://romasagatool.com/img/icon/icon_kakashi.png);
     background-size: cover;    
 }
 .arrow_box {
@@ -768,27 +917,27 @@ input[type=range]::-ms-tooltip {
     color: black;    
 }
 .bg1{
-    background: url(http://romasagatool.com/img/bg_renkei_1.png);
+    background: url(https://romasagatool.com/img/bg_renkei_1.png);
     background-size: contain;
 }
 .bg2{
-    background: url(http://romasagatool.com/img/bg_renkei_2.png);
+    background: url(https://romasagatool.com/img/bg_renkei_2.png);
     background-size: contain;
 }
 .bg3{
-    background: url(http://romasagatool.com/img/bg_renkei_3.png);
+    background: url(https://romasagatool.com/img/bg_renkei_3.png);
     background-size: contain;
 }
 .bg4{
-    background: url(http://romasagatool.com/img/bg_renkei_4.png);
+    background: url(https://romasagatool.com/img/bg_renkei_4.png);
     background-size: contain;
 }
 .bg5{
-    background: url(http://romasagatool.com/img/bg_renkei_5.png);
+    background: url(https://romasagatool.com/img/bg_renkei_5.png);
     background-size: contain;
 }
 .updatePanel{
-    background:url(http://romasagatool.com/img/bg_window_large.png);
+    background:url(https://romasagatool.com/img/bg_window_large.png);
     background-size: contain;
     width: 330px;
     height: 33px;
@@ -884,7 +1033,7 @@ input[type=range]::-ms-tooltip {
         1px -1px 2px blue,
         -1px -1px 2px blue;    
 }
-.fuchidoriYellow{
+.fuchidori-yellow{
     color: yellow;
     text-shadow: 1px 1px 2px red,
         -1px 1px 2px red,
@@ -915,10 +1064,127 @@ input[type=range]::-ms-tooltip {
         -1px -1px 2px blue;    
 }
 
-.partyNowStyle {
-    border: 2px solid #faf0b4;    
+.partyNowStyle .ICON_TD {
+    border-top: 2px solid rgba(120, 120, 245, 0.8);
+    border-bottom: 2px solid rgba(120, 120, 245, 0.8);
+}
+.partyNowStyle .ICON_TD::after {
+    content: '';/*何も入れない*/
+    display: inline-block;/*忘れずに！*/
+    width: 36px;/*画像の幅*/
+    height: 16px;/*画像の幅*/
+    background: url(https://romasagatool.com/img/icon/icon_label_select.png) no-repeat;
+    background-size: contain;
+    position: absolute;
+}
+
+.partyNowStyle .STR,.partyNowStyle .MI {
+    border-top: 2px solid rgba(120, 120, 245, 0.8);
+    border-bottom: 2px solid rgba(120, 120, 245, 0.8);
+}
+.partyNowStyle .VIT,.partyNowStyle .AI {
+    border-top: 2px solid rgba(160, 160, 245, 0.8);
+    border-bottom: 2px solid rgba(160, 160, 245, 0.8);
+}
+.partyNowStyle .DEX,.partyNowStyle .MND {
+    border-top: 2px solid rgba(205, 205, 245, 0.8);
+    border-bottom: 2px solid rgba(205, 205, 245, 0.8);
+}
+.partyNowStyle .AGI,.partyNowStyle .INT {
+    border-top: 2px solid rgba(245, 245, 245, 0.8);
+    border-bottom: 2px solid rgba(245, 245, 245, 0.8);
 }
 .partyOtherStyle {
-    border: 2px dashed #faf0b4;
-    opacity: 0.7;
+    border-top: 1px dashed #faf0b4;
+    opacity: 0.6;
+}
+
+
+/* 画面サイズが330まではこれ */
+@media screen and ( max-width:329px) {
+    .info-modal {
+        padding: 0px 15px 25px 15px;
+    }
+    .info-modal-header {
+        height: 50px; padding: 5px; font-size: inherit;
+    }
+    .dot-base {
+        width:50px; height:70px;
+    }
+    .xdot-base-char {
+        left: -7px;
+    }
+    .dot-base-circle {
+        bottom: 6px; left: 2px; width: 48px;
+    }
+    .dot-name-label {
+        bottom: -6px; width: 98%; padding: 0px 3px; font-size: 8px;
+    }
+    .char-choise-section {
+        width: 100%; height: 290px;
+    }
+    .partyNowStyle .ICON_TD::after {
+        left: -5px;
+        top: -5px;
+    }    
+}
+/* 画面サイズが330〜400はこれ */
+@media screen and (min-width:330px) and ( max-width:400px) {
+    .info-modal {
+        padding: 0px 15px 30px 15px;
+    }
+    .info-modal-header {
+        height: 50px; padding: 5px; font-size: inherit;
+    }
+    .dot-base {
+        width:60px; height:80px;
+    }
+    .xdot-base-char {
+        left:0px;
+    }
+    .dot-base-circle {
+        bottom: 10px; left: 2px; width: 58px;
+    }
+    .dot-name-label {
+        bottom: -6px; width: 98%; padding: 0px 3px; font-size: 8px;
+    }
+    .char-choise-section {
+        width: 100%; height: 260px;
+    }
+    .partyNowStyle .ICON_TD::after {
+        left: -5px;
+        top: -5px;
+    }
+}
+/* 画面サイズが400〜767はこれ(ipadは768なので入れない) */
+@media screen and (min-width:400px) and ( max-width:767px) {
+    .info-modal {
+        padding: 0px 15px 15px 15px;
+    }
+    .info-modal-header {
+        height: 50px; padding: 5px; font-size: inherit;
+    }
+    .dot-base {
+        width:65px; height:80px;
+    }
+    .xdot-base-char {
+        left:0px;
+    }
+    .dot-base-circle {
+        bottom: 10px; left: 3px; width: 65px;
+    }
+    .dot-name-label {
+        bottom: -6px; width: 60px%; padding: 0px 3px; font-size: 8px;
+    }
+    .char-choise-section {
+        width: 100%; height: 340px;
+    }
+    .partyNowStyle .ICON_TD::after {
+        left: -5px;
+        top: -5px;
+    }
+}
+.partyNowStyle .ICON_TD::after {
+    right:0px;
+    bottom:0px;
 }

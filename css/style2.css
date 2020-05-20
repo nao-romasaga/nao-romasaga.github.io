@@ -272,7 +272,7 @@ html {
     }
 
     .haikei {
-        background: url(https://romasagatool.com/img/bg_saga.jpg) no-repeat;
+        background: url(https://romasagatool.com/img/bg.jpg) no-repeat;
         width:100%;
         padding-top: 10px;
         background-attachment: fixed;
@@ -290,7 +290,7 @@ html {
     }
 
     .haikei {
-        background: url(https://romasagatool.com/img/bg_saga.jpg) no-repeat;
+        background: url(https://romasagatool.com/img/bg.jpg) no-repeat;
         width:100%;
         padding-top: 10px;
         background-size: cover;
