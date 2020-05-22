@@ -95,6 +95,14 @@
             "endSuffix": "<br>翌4:00 終了",
             "type": "red",
             "startNone": true
+        },
+        {
+            "startDay": "22",
+            "endDay": "26",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>メインスタ半<br>メイン鯱印の金塊ドロップ",
+            "startSuffix": "12:00 開始<br>",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue"
         }
  ],
     "holiday": [
