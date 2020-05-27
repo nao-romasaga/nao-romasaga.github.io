@@ -11,6 +11,36 @@
             "startNone": true
         },
         {
+            "startDay": "27",
+            "endDay": "99",
+            "title": "[ガチャ] <br class='hidden pcBlock'>1.5周年 Romancing祭 聖王編/リズ編",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "green"
+        },
+        {
+            "startDay": "28",
+            "endDay": "99",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>財宝オーラム2倍<br>魔物挑戦2倍<br>〜7/1",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue"
+        },
+        {
+            "startDay": "29",
+            "endDay": "31",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>ツヴァイクメダル 2倍",
+            "startPrefix": "4:00 開始<br>",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue"
+        },
+        {
+            "startDay": "27",
+            "endDay": "99",
+            "title": "[イベント] <br class='hidden pcBlock'>塔の試練/忘れられた礼拝堂へ 〜7/15",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "orange"
+        },
+
+        {
             "startDay": "8",
             "endDay": "31",
             "title": "[ガチャ] <br class='hidden pcBlock'>エンペラーズサガUDXガチャ",
