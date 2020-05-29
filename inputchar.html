@@ -181,7 +181,14 @@
                     <table class="width-100 text-center style-bgcolor">
                         <tbody>
                             <tr class="text-center">
-                                <td colspan="2" class="fukidashi charNameTd">キャラ名</td>
+                                <td colspan="2" class="fukidashi">
+                                    <div class="charNameTd" style="overflow: hidden;
+                                    width: 160px;
+                                    line-height: 1.0;
+                                    white-space: nowrap;
+        text-overflow: ellipsis;
+        -webkit-text-overflow: ellipsis;
+        -o-text-overflow: ellipsis;">キャラ名</div></td>
                             </tr>
                             <tr class="text-center">
                                 <td colspan="2" class="dotTd">
@@ -193,7 +200,7 @@
                                 <td>HP</td>
                                 <td><img src="./img/icon/icon_minus.png" class="paramButton" width="30" data-param="HP"
                                         data-pm="minus" onclick=""><input type="number"
-                                        class="input charParam kadomaru charHP" style="width: 50px" value="3"><img
+                                        class="input charParam kadomaru charHP" style="width: 60px" value="3"><img
                                         src="./img/icon/icon_plus.png" class="paramButton" width="30" data-param="HP"
                                         data-pm="plus" onclick=""></td>
                             </tr>
