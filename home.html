@@ -28,7 +28,9 @@
     <meta name="twitter:site" content="@nao_romasaga_rs" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!--
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    -->
     <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="./js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="./js/jquery.ui.touch-punch.js"></script>
@@ -90,256 +92,259 @@
             <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5008373409434899"
                 data-ad-slot="6402269355" data-ad-format="auto" data-full-width-responsive="true"></ins>
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-            <div class="isLogin d-none">
-                <div class="style-bgcolor text-center small" style="width:100%; margin: 0px;">
-                    <div class="row no-gutters">
-                        <div class="col-12 text-center premium d-none" style="margin-bottom: 10px;">
-                            <i class="fas fa-medal"></i>プレミアムユーザ
+            <div class="isLogin d-none style-bgcolor text-center small" style="margin-bottom: 10px; padding: 10px 5px;">
+                <div class="row no-gutters">
+                    <div class="col-12 text-center premium d-none" style="margin-bottom: 10px;">
+                        <i class="fas fa-medal"></i>プレミアムユーザ
+                    </div>
+                    <div class="col-12 text-center" style="margin-bottom: 10px; width: 95%;">
+                        <div class="label-text m-auto" style="width:95%;padding: 15px; ">
+                            <span id="NAME"></span><br>
+                            <input type="text" class="kadomaru" id="UID" style="width:80%"><button
+                                class="icon_btn_on" onclick="copyToClipboard('UID')">コピー</button>
                         </div>
-                        <div class="col-12 text-center" style="margin-bottom: 10px; width: 95%;">
-                            <div class="label-text m-auto" style="width:95%;padding: 15px; ">
-                                <span id="NAME"></span><br>
-                                <input type="text" class="kadomaru" id="UID" style="width:80%"><button
-                                    class="icon_btn_on" onclick="copyToClipboard('UID')">コピー</button>
-                            </div>
+                    </div>
+                    <div class="col-3 d-md-none" id="MYICON"></div>
+                    <div class="col-3 d-none d-md-inline" id="MYICON2"></div>
+                    <div class="col-8 text-left">
+                        <p class="text-nowrap">
+                            今日のRank:
+                            <span id="TODAY_RANK">
+                                <input type="number" id="rank" class="kadomaru" style="width:45%">
+                                <button id="SAVE_RANK" class="icon_btn_on hanei">保存</button>
+                            </span>
+                        </p>
+                        <p class="text-nowrap">
+                            今日の<img src="https://nao-romasaga.github.io/img/icon/icon_jewel.png" width="30"
+                                height="30">:<span id="YESTERDAY_RANK"></span>
+                            <span id="TODAY_RANK">
+                                <input type="number" id="jewel" class="kadomaru" style="width:45%">
+                                <button id="SAVE_JEWEL" class="icon_btn_on hanei">保存</button>
+                            </span>
+                        </p>
+                    </div>
+                    <div class="col-6 col-md-3 shadow rounded" style="margin-bottom: 10px;">
+                        <div class="label-text-small width-100">Rank履歴</div>
+                        <div id="rankHistory">
                         </div>
-                        <div class="col-3 d-md-none" id="MYICON"></div>
-                        <div class="col-3 d-none d-md-inline" id="MYICON2"></div>
-                        <div class="col-8 text-left">
-                            <p class="text-nowrap">
-                                今日のRank:
-                                <span id="TODAY_RANK">
-                                    <input type="number" id="rank" class="kadomaru" style="width:45%">
-                                    <button id="SAVE_RANK" class="icon_btn_on hanei">保存</button>
-                                </span>
-                            </p>
-                            <p class="text-nowrap">
-                                今日の<img src="https://nao-romasaga.github.io/img/icon/icon_jewel.png" width="30"
-                                    height="30">:<span id="YESTERDAY_RANK"></span>
-                                <span id="TODAY_RANK">
-                                    <input type="number" id="jewel" class="kadomaru" style="width:45%">
-                                    <button id="SAVE_JEWEL" class="icon_btn_on hanei">保存</button>
-                                </span>
-                            </p>
+                        <br>
+                        <div style="position: absolute; bottom:0;width:100%">
+                            <a onclick='$("html,body").animate({scrollTop: $("#RANK_CHART").offset().top}, 500, "swing");'
+                                style="padding:2px 5px;border: 1px solid #0000FF; border-radius: 10px;">分布図と推移<span class="hidden pcBlock">をみる</span> <i
+                                    class="fas fa-arrow-circle-down"></i></a>
                         </div>
-                        <div class="col-6 col-md-3 shadow rounded" style="margin-bottom: 10px;">
-                            <div class="label-text-small width-100">Rank履歴</div>
-                            <div id="rankHistory">
-                            </div>
-                            <br>
-                            <div style="position: absolute; bottom:0;width:100%">
-                                <a onclick='$("html,body").animate({scrollTop: $("#RANK_CHART").offset().top}, 500, "swing");'
-                                    style="padding:2px 5px;border: 1px solid #0000FF; border-radius: 10px;">分布図と推移<span class="hidden pcBlock">をみる</span> <i
-                                        class="fas fa-arrow-circle-down"></i></a>
-                            </div>
+                    </div>
+                    <div class="col-6 col-md-3 shadow rounded" style="margin-bottom: 10px;">
+                        <div class="label-text-small width-100"><img
+                                src="https://nao-romasaga.github.io/img/icon/icon_jewel.png" width="25"
+                                height="25">履歴</div>
+                        <div id="jewelHistory">
                         </div>
-                        <div class="col-6 col-md-3 shadow rounded" style="margin-bottom: 10px;">
-                            <div class="label-text-small width-100"><img
-                                    src="https://nao-romasaga.github.io/img/icon/icon_jewel.png" width="25"
-                                    height="25">履歴</div>
-                            <div id="jewelHistory">
-                            </div>
-                            <br>
-                            <div style="position: absolute; bottom:0;width:100%">
-                                <a onclick='$("html,body").animate({scrollTop: $("#JEWEL_CHART").offset().top}, 500, "swing");'
-                                    style="padding:2px 5px;border: 1px solid #0000FF; border-radius: 10px;">推移をみる <i
-                                        class="fas fa-arrow-circle-down"></i></a>
-                            </div>
+                        <br>
+                        <div style="position: absolute; bottom:0;width:100%">
+                            <a onclick='$("html,body").animate({scrollTop: $("#JEWEL_CHART").offset().top}, 500, "swing");'
+                                style="padding:2px 5px;border: 1px solid #0000FF; border-radius: 10px;">推移をみる <i
+                                    class="fas fa-arrow-circle-down"></i></a>
                         </div>
+                    </div>
 
-                        <div class="col-6 col-md-3 shadow rounded" style="position: relative; margin-bottom: 10px;">
-                            <div class="label-text-small width-100"><i class="fas fa-address-card"></i> ステータス登録数</div>
-                            <div class="text-center kadomaru"
-                                style="background-color: rgba(42,169,239,1); color:white; margin:0 10px; padding: 2px 5px;">
-                                <a href="./inputchar.html" style="color:white" id="inputStyleLogined">ステータス更新 <i
-                                        class="fas fa-pencil-alt"></i></a>
-                            </div>
-                            登録キャラ数<span class="MY_CHAR_CNT"></span> / <span class="MY_CHAR_RANK"></span>位<br>
-                            HP合計<span id="MY_HP_SUM"></span> / <span id="MY_HP_RANK"></span>位<br>
-                            ST合計<span id="MY_ST_SUM"></span> / <span id="MY_ST_RANK"></span>位<br>
-                            <div style="position: absolute; bottom:0;width:100%">
-                                <a onclick='$("html,body").animate({scrollTop: $("#CHAR_CHART").offset().top}, 500, "swing");'
-                                    style="padding:2px 5px;border: 1px solid #0000FF; border-radius: 10px;">分布図をみる <i
-                                        class="fas fa-arrow-circle-down"></i></a>
-                            </div>
+                    <div class="col-6 col-md-3 shadow rounded" style="position: relative; margin-bottom: 10px;">
+                        <div class="label-text-small width-100 text-nowrap"><i class="fas fa-address-card"></i> ステータス登録数</div>
+                        <div class="text-center kadomaru"
+                            style="background-color: rgba(42,169,239,1); color:white; margin:0 10px; padding: 2px 5px;">
+                            <a href="./inputchar.html" style="color:white" id="inputStyleLogined">ステータス更新 <i
+                                    class="fas fa-pencil-alt"></i></a>
                         </div>
-                        <div class="col-6 col-md-3 shadow rounded" style="margin-bottom: 10px;">
-                            <div class="label-text-small width-100"><i class="fas fa-users"></i> スタイル登録数</div>
-                            <div class="text-center kadomaru"
-                                style="background-color: rgba(42,169,239,1); color:white; margin:0 10px;  padding: 2px 5px;">
-                                <a href="./stylecheck.html" style="color:white" id="inputStyleLogined">所持スタイル更新 <i
-                                        class="fas fa-pencil-alt"></i></a>
-                            </div>
-                            <img src="https://nao-romasaga.github.io/img/icon/icon_ss.png" height="30"> <span
-                                class="MY_SSSTYLE_CNT"></span>体 / <span class="MY_SSSTYLE_RANK"></span>位<br>
-                            <img src="https://nao-romasaga.github.io/img/icon/icon_s.png" height="30"> <span
-                                class="MY_SSTYLE_CNT"></span>体 / <span class="MY_SSTYLE_RANK"></span>位<br>
-                            <img src="https://nao-romasaga.github.io/img/icon/icon_a.png" height="30"> <span
-                                class="MY_ASTYLE_CNT"></span>体 / <span class="MY_ASTYLE_RANK"></span>位<br>
-                            <span style="line-height: 30px;">合計 <span class="MY_STYLE_CNT"></span>体 / <span
-                                    class="MY_STYLE_RANK"></span>位</span><br>
-                            <a onclick='$("html,body").animate({scrollTop: $("#STYLE_CHART").offset().top}, 500, "swing");'
+                        登録キャラ数<span class="MY_CHAR_CNT"></span> / <span class="MY_CHAR_RANK"></span>位<br>
+                        HP合計<span id="MY_HP_SUM"></span> / <span id="MY_HP_RANK"></span>位<br>
+                        ST合計<span id="MY_ST_SUM"></span> / <span id="MY_ST_RANK"></span>位<br>
+                        <div style="position: absolute; bottom:0;width:100%">
+                            <a onclick='$("html,body").animate({scrollTop: $("#CHAR_CHART").offset().top}, 500, "swing");'
                                 style="padding:2px 5px;border: 1px solid #0000FF; border-radius: 10px;">分布図をみる <i
                                     class="fas fa-arrow-circle-down"></i></a>
                         </div>
+                    </div>
+                    <div class="col-6 col-md-3 shadow rounded" style="margin-bottom: 10px;">
+                        <div class="label-text-small width-100"><i class="fas fa-users"></i> スタイル登録数</div>
+                        <div class="text-center kadomaru"
+                            style="background-color: rgba(42,169,239,1); color:white; margin:0 10px;  padding: 2px 5px;">
+                            <a href="./stylecheck.html" style="color:white" id="inputStyleLogined">所持スタイル更新 <i
+                                    class="fas fa-pencil-alt"></i></a>
+                        </div>
+                        <img src="https://nao-romasaga.github.io/img/icon/icon_ss.png" height="30"> <span
+                            class="MY_SSSTYLE_CNT"></span>体 / <span class="MY_SSSTYLE_RANK"></span>位<br>
+                        <img src="https://nao-romasaga.github.io/img/icon/icon_s.png" height="30"> <span
+                            class="MY_SSTYLE_CNT"></span>体 / <span class="MY_SSTYLE_RANK"></span>位<br>
+                        <img src="https://nao-romasaga.github.io/img/icon/icon_a.png" height="30"> <span
+                            class="MY_ASTYLE_CNT"></span>体 / <span class="MY_ASTYLE_RANK"></span>位<br>
+                        <span style="line-height: 30px;">合計 <span class="MY_STYLE_CNT"></span>体 / <span
+                                class="MY_STYLE_RANK"></span>位</span><br>
+                        <a onclick='$("html,body").animate({scrollTop: $("#STYLE_CHART").offset().top}, 500, "swing");'
+                            style="padding:2px 5px;border: 1px solid #0000FF; border-radius: 10px;">分布図をみる <i
+                                class="fas fa-arrow-circle-down"></i></a>
+                    </div>
 
-                        <div class="col-12">
-                            <div class="label-text-small m-auto" style="width:95%">マスターレベル</div>
-                            <div class="text-left">
-                                <a href="./damage.html">ダメージ計算機</a>と<a href="./auto.html">全力オートシミュレーター</a>に連動しています。<br>
-                                ここで入力したLvはダメージ計算機やシミュレーターの計算結果に反映されます。
-                            </div>
+                    <div class="col-12">
+                        <div class="label-text-small m-auto" style="width:95%">マスターレベル</div>
+                        <div class="text-left">
+                            <a href="./damage.html">ダメージ計算機</a>と<a href="./auto.html">全力オートシミュレーター</a>に連動しています。<br>
+                            ここで入力したLvはダメージ計算機やシミュレーターの計算結果に反映されます。
                         </div>
-                        <div class="col-2 text-center text-nowrap"><img
-                                src="https://nao-romasaga.github.io/img/icon/icon_ken.png" width=40></div>
-                        <div class="col-4 text-left text-nowrap">
-                            <img src="https://nao-romasaga.github.io/img/icon/icon_minus.png" class="paramButton"
-                                width="30" height="30" data-param="ken" data-pm="minus" onclick="">
-                            <input type="number" id="m_ken" class="MASTER_LV" style="width:30%">
-                            <img src="https://nao-romasaga.github.io/img/icon/icon_plus.png" class="paramButton"
-                                width="30" height="30" data-param="ken" data-pm="plus" onclick=""></div>
-                        <div class="col-2 text-center text-nowrap"><img
-                                src="https://nao-romasaga.github.io/img/icon/icon_dken.png" width=40></div>
-                        <div class="col-4 text-left text-nowrap">
-                            <img src="https://nao-romasaga.github.io/img/icon/icon_minus.png" class="paramButton"
-                                width="30" height="30" data-param="dken" data-pm="minus" onclick="">
-                            <input type="number" id="m_dken" class="MASTER_LV" style="width:30%">
-                            <img src="https://nao-romasaga.github.io/img/icon/icon_plus.png" class="paramButton"
-                                width="30" height="30" data-param="dken" data-pm="plus" onclick=""></div>
-                        <div class="col-2 text-center text-nowrap"><img
-                                src="https://nao-romasaga.github.io/img/icon/icon_ono.png" width=40></div>
-                        <div class="col-4 text-left text-nowrap">
-                            <img src="https://nao-romasaga.github.io/img/icon/icon_minus.png" class="paramButton"
-                                width="30" height="30" data-param="ono" data-pm="minus" onclick="">
-                            <input type="number" id="m_ono" class="MASTER_LV" style="width:30%">
-                            <img src="https://nao-romasaga.github.io/img/icon/icon_plus.png" class="paramButton"
-                                width="30" height="30" data-param="ono" data-pm="plus" onclick=""></div>
-                        <div class="col-2 text-center text-nowrap"><img
-                                src="https://nao-romasaga.github.io/img/icon/icon_sken.png" width=40></div>
-                        <div class="col-4 text-left text-nowrap">
-                            <img src="https://nao-romasaga.github.io/img/icon/icon_minus.png" class="paramButton"
-                                width="30" height="30" data-param="sken" data-pm="minus" onclick="">
-                            <input type="number" id="m_sken" class="MASTER_LV" style="width:30%">
-                            <img src="https://nao-romasaga.github.io/img/icon/icon_plus.png" class="paramButton"
-                                width="30" height="30" data-param="sken" data-pm="plus" onclick=""></div>
-                        <div class="col-2 text-center text-nowrap"><img
-                                src="https://nao-romasaga.github.io/img/icon/icon_yumi.png" width=40></div>
-                        <div class="col-4 text-left text-nowrap">
-                            <img src="https://nao-romasaga.github.io/img/icon/icon_minus.png" class="paramButton"
-                                width="30" height="30" data-param="yumi" data-pm="minus" onclick="">
-                            <input type="number" id="m_yumi" class="MASTER_LV" style="width:30%">
-                            <img src="https://nao-romasaga.github.io/img/icon/icon_plus.png" class="paramButton"
-                                width="30" height="30" data-param="yumi" data-pm="plus" onclick=""></div>
-                        <div class="col-2 text-center text-nowrap"><img
-                                src="https://nao-romasaga.github.io/img/icon/icon_yari.png" width=40></div>
-                        <div class="col-4 text-left text-nowrap">
-                            <img src="https://nao-romasaga.github.io/img/icon/icon_minus.png" class="paramButton"
-                                width="30" height="30" data-param="yari" data-pm="minus" onclick="">
-                            <input type="number" id="m_yari" class="MASTER_LV" style="width:30%">
-                            <img src="https://nao-romasaga.github.io/img/icon/icon_plus.png" class="paramButton"
-                                width="30" height="30" data-param="yari" data-pm="plus" onclick=""></div>
-                        <div class="col-2 text-center text-nowrap"><img
-                                src="https://nao-romasaga.github.io/img/icon/icon_ju.png" width=40></div>
-                        <div class="col-4 text-left text-nowrap">
-                            <img src="https://nao-romasaga.github.io/img/icon/icon_minus.png" class="paramButton"
-                                width="30" height="30" data-param="ju" data-pm="minus" onclick="">
-                            <input type="number" id="m_ju" class="MASTER_LV" style="width:30%">
-                            <img src="https://nao-romasaga.github.io/img/icon/icon_plus.png" class="paramButton"
-                                width="30" height="30" data-param="ju" data-pm="plus" onclick=""></div>
-                        <div class="col-2 text-center text-nowrap"><img
-                                src="https://nao-romasaga.github.io/img/icon/icon_kon.png" width=40></div>
-                        <div class="col-4 text-left text-nowrap">
-                            <img src="https://nao-romasaga.github.io/img/icon/icon_minus.png" class="paramButton"
-                                width="30" height="30" data-param="kon" data-pm="minus" onclick="">
-                            <input type="number" id="m_kon" class="MASTER_LV" style="width:30%">
-                            <img src="https://nao-romasaga.github.io/img/icon/icon_plus.png" class="paramButton"
-                                width="30" height="30" data-param="kon" data-pm="plus" onclick=""></div>
-                        <div class="col-2 text-center text-nowrap"><img
-                                src="https://nao-romasaga.github.io/img/icon/icon_tai.png" width=40></div>
-                        <div class="col-4 text-left text-nowrap">
-                            <img src="https://nao-romasaga.github.io/img/icon/icon_minus.png" class="paramButton"
-                                width="30" height="30" data-param="tai" data-pm="minus" onclick="">
-                            <input type="number" id="m_tai" class="MASTER_LV" style="width:30%">
-                            <img src="https://nao-romasaga.github.io/img/icon/icon_plus.png" class="paramButton"
-                                width="30" height="30" data-param="tai" data-pm="plus" onclick=""></div>
-                        <div class="col-2 text-center text-nowrap"><img
-                                src="https://nao-romasaga.github.io/img/icon/icon_tsue.png" width=40></div>
-                        <div class="col-4 text-left text-nowrap">
-                            <img src="https://nao-romasaga.github.io/img/icon/icon_minus.png" class="paramButton"
-                                width="30" height="30" data-param="tsue" data-pm="minus" onclick="">
-                            <input type="number" id="m_tsue" class="MASTER_LV" style="width:30%">
-                            <img src="https://nao-romasaga.github.io/img/icon/icon_plus.png" class="paramButton"
-                                width="30" height="30" data-param="tsue" data-pm="plus" onclick=""></div>
-                        <!-- ////////マスターレベル////////// -->
-                        <div class="col-12" style='margin-bottom: 0px;'>
-                            <span class="opacity kadomaru">キャラクターをタップすると<br class="d-md-none">そのキャラの<i
-                                    class="fas fa-crown"></i>育成ランキング遷移できます</span>
+                    </div>
+                    <div class="col-2 text-center text-nowrap"><img
+                            src="https://nao-romasaga.github.io/img/icon/icon_ken.png" width=40></div>
+                    <div class="col-4 text-left text-nowrap">
+                        <img src="https://nao-romasaga.github.io/img/icon/icon_minus.png" class="paramButton"
+                            width="30" height="30" data-param="ken" data-pm="minus" onclick="">
+                        <input type="number" id="m_ken" class="MASTER_LV" style="width:30%">
+                        <img src="https://nao-romasaga.github.io/img/icon/icon_plus.png" class="paramButton"
+                            width="30" height="30" data-param="ken" data-pm="plus" onclick=""></div>
+                    <div class="col-2 text-center text-nowrap"><img
+                            src="https://nao-romasaga.github.io/img/icon/icon_dken.png" width=40></div>
+                    <div class="col-4 text-left text-nowrap">
+                        <img src="https://nao-romasaga.github.io/img/icon/icon_minus.png" class="paramButton"
+                            width="30" height="30" data-param="dken" data-pm="minus" onclick="">
+                        <input type="number" id="m_dken" class="MASTER_LV" style="width:30%">
+                        <img src="https://nao-romasaga.github.io/img/icon/icon_plus.png" class="paramButton"
+                            width="30" height="30" data-param="dken" data-pm="plus" onclick=""></div>
+                    <div class="col-2 text-center text-nowrap"><img
+                            src="https://nao-romasaga.github.io/img/icon/icon_ono.png" width=40></div>
+                    <div class="col-4 text-left text-nowrap">
+                        <img src="https://nao-romasaga.github.io/img/icon/icon_minus.png" class="paramButton"
+                            width="30" height="30" data-param="ono" data-pm="minus" onclick="">
+                        <input type="number" id="m_ono" class="MASTER_LV" style="width:30%">
+                        <img src="https://nao-romasaga.github.io/img/icon/icon_plus.png" class="paramButton"
+                            width="30" height="30" data-param="ono" data-pm="plus" onclick=""></div>
+                    <div class="col-2 text-center text-nowrap"><img
+                            src="https://nao-romasaga.github.io/img/icon/icon_sken.png" width=40></div>
+                    <div class="col-4 text-left text-nowrap">
+                        <img src="https://nao-romasaga.github.io/img/icon/icon_minus.png" class="paramButton"
+                            width="30" height="30" data-param="sken" data-pm="minus" onclick="">
+                        <input type="number" id="m_sken" class="MASTER_LV" style="width:30%">
+                        <img src="https://nao-romasaga.github.io/img/icon/icon_plus.png" class="paramButton"
+                            width="30" height="30" data-param="sken" data-pm="plus" onclick=""></div>
+                    <div class="col-2 text-center text-nowrap"><img
+                            src="https://nao-romasaga.github.io/img/icon/icon_yumi.png" width=40></div>
+                    <div class="col-4 text-left text-nowrap">
+                        <img src="https://nao-romasaga.github.io/img/icon/icon_minus.png" class="paramButton"
+                            width="30" height="30" data-param="yumi" data-pm="minus" onclick="">
+                        <input type="number" id="m_yumi" class="MASTER_LV" style="width:30%">
+                        <img src="https://nao-romasaga.github.io/img/icon/icon_plus.png" class="paramButton"
+                            width="30" height="30" data-param="yumi" data-pm="plus" onclick=""></div>
+                    <div class="col-2 text-center text-nowrap"><img
+                            src="https://nao-romasaga.github.io/img/icon/icon_yari.png" width=40></div>
+                    <div class="col-4 text-left text-nowrap">
+                        <img src="https://nao-romasaga.github.io/img/icon/icon_minus.png" class="paramButton"
+                            width="30" height="30" data-param="yari" data-pm="minus" onclick="">
+                        <input type="number" id="m_yari" class="MASTER_LV" style="width:30%">
+                        <img src="https://nao-romasaga.github.io/img/icon/icon_plus.png" class="paramButton"
+                            width="30" height="30" data-param="yari" data-pm="plus" onclick=""></div>
+                    <div class="col-2 text-center text-nowrap"><img
+                            src="https://nao-romasaga.github.io/img/icon/icon_ju.png" width=40></div>
+                    <div class="col-4 text-left text-nowrap">
+                        <img src="https://nao-romasaga.github.io/img/icon/icon_minus.png" class="paramButton"
+                            width="30" height="30" data-param="ju" data-pm="minus" onclick="">
+                        <input type="number" id="m_ju" class="MASTER_LV" style="width:30%">
+                        <img src="https://nao-romasaga.github.io/img/icon/icon_plus.png" class="paramButton"
+                            width="30" height="30" data-param="ju" data-pm="plus" onclick=""></div>
+                    <div class="col-2 text-center text-nowrap"><img
+                            src="https://nao-romasaga.github.io/img/icon/icon_kon.png" width=40></div>
+                    <div class="col-4 text-left text-nowrap">
+                        <img src="https://nao-romasaga.github.io/img/icon/icon_minus.png" class="paramButton"
+                            width="30" height="30" data-param="kon" data-pm="minus" onclick="">
+                        <input type="number" id="m_kon" class="MASTER_LV" style="width:30%">
+                        <img src="https://nao-romasaga.github.io/img/icon/icon_plus.png" class="paramButton"
+                            width="30" height="30" data-param="kon" data-pm="plus" onclick=""></div>
+                    <div class="col-2 text-center text-nowrap"><img
+                            src="https://nao-romasaga.github.io/img/icon/icon_tai.png" width=40></div>
+                    <div class="col-4 text-left text-nowrap">
+                        <img src="https://nao-romasaga.github.io/img/icon/icon_minus.png" class="paramButton"
+                            width="30" height="30" data-param="tai" data-pm="minus" onclick="">
+                        <input type="number" id="m_tai" class="MASTER_LV" style="width:30%">
+                        <img src="https://nao-romasaga.github.io/img/icon/icon_plus.png" class="paramButton"
+                            width="30" height="30" data-param="tai" data-pm="plus" onclick=""></div>
+                    <div class="col-2 text-center text-nowrap"><img
+                            src="https://nao-romasaga.github.io/img/icon/icon_tsue.png" width=40></div>
+                    <div class="col-4 text-left text-nowrap">
+                        <img src="https://nao-romasaga.github.io/img/icon/icon_minus.png" class="paramButton"
+                            width="30" height="30" data-param="tsue" data-pm="minus" onclick="">
+                        <input type="number" id="m_tsue" class="MASTER_LV" style="width:30%">
+                        <img src="https://nao-romasaga.github.io/img/icon/icon_plus.png" class="paramButton"
+                            width="30" height="30" data-param="tsue" data-pm="plus" onclick=""></div>
+                    <!-- ////////マスターレベル////////// -->
+                    <div class="col-12" style='margin-bottom: 0px;'>
+                        <span class="opacity kadomaru">キャラクターをタップすると<br class="d-md-none">そのキャラの<i
+                                class="fas fa-crown"></i>育成ランキング遷移できます</span>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="isLogin d-none text-center small width-max" style="margin-bottom: 10px; padding: 10px 5px;">
+                <div class="label-text-small h6 width-100 d-md-none">
+                    <i class="fas fa-crown"></i> マイキャラ ランキング <i class="fas fa-crown"></i><br>属性別 トップ5</div>
+                <div class="label-text-small h4 width-100 d-none d-md-block">
+                    <i class="fas fa-crown"></i> マイキャラクターランキング 属性別 トップ10 <i class="fas fa-crown"></i> </div>
+                <div class="row no-gutters style-bgcolor" style="padding: 10px 5px;">
+                    <button id="RANK_ST" class="col-6 icon_btn_positive width-100 shadow-blue" style="margin: 15px 0px;">ステータスランキング</button>
+                    <button id="RANK_COM" class="col-6 icon_btn_negative width-100 shadow-blue" style="margin: 15px 0px;"><img src="https://romasagatool.com/img/icon/icon_combatpower.png" width=20>戦闘力ランキング</button>
+                    <div class="col-3 shadow rounded" style="margin-bottom: 10px;">
+                        <div class="label-text-small width-100">
+                            <img src="https://nao-romasaga.github.io/img/icon/icon_zan.png">
+                            <span class="d-none d-lg-inline">
+                                <img src="https://nao-romasaga.github.io/img/icon/icon_ken.png" width="30">
+                                <img src="https://nao-romasaga.github.io/img/icon/icon_dken.png" width="30">
+                                <img src="https://nao-romasaga.github.io/img/icon/icon_ono.png" width="30">
+                            </span>
                         </div>
-                        <div class="col-12">
-                            <div class="label-text-small h6 width-100 d-md-none"><i class="fas fa-crown"></i> マイキャラ ランキング <i
-                                    class="fas fa-crown"></i><br>属性別 トップ5</div>
-                            <div class="label-text-small h4  width-100 d-none d-md-block"><i class="fas fa-crown"></i> マイキャラクターランキング 属性別
-                                トップ10 <i class="fas fa-crown"></i> </div>
+                        <div id="DIV_RANK_斬_ST" class="row no-gutters text-left"></div>
+                        <div id="DIV_RANK_斬_COM" class="row no-gutters text-left"></div>
+                    </div>
+                    <div class="col-3 shadow rounded" style="margin-bottom: 10px;">
+                        <div class="label-text-small width-100">
+                            <img src="https://nao-romasaga.github.io/img/icon/icon_da.png">
+                            <span class="d-none d-lg-inline">
+                                <img src="https://nao-romasaga.github.io/img/icon/icon_tai.png" width="30">
+                                <img src="https://nao-romasaga.github.io/img/icon/icon_kon.png" width="30">
+                                <img src="https://nao-romasaga.github.io/img/icon/icon_ju.png" width="30">
+                            </span>
                         </div>
-
-                        <div class="col-3 shadow rounded" style="margin-bottom: 10px;">
-                            <div class="label-text-small width-100">
-                                <img src="https://nao-romasaga.github.io/img/icon/icon_zan.png">
-                                <span class="d-none d-lg-inline">
-                                    <img src="https://nao-romasaga.github.io/img/icon/icon_ken.png" width="30">
-                                    <img src="https://nao-romasaga.github.io/img/icon/icon_dken.png" width="30">
-                                    <img src="https://nao-romasaga.github.io/img/icon/icon_ono.png" width="30">
-                                </span>
-                            </div>
-                            <div id="DIV_RANK_斬" class="row"></div>
+                        <div id="DIV_RANK_打" class="row"></div>
+                    </div>
+                    <div class="col-3 shadow rounded" style="margin-bottom: 10px;">
+                        <div class="label-text-small width-100">
+                            <img src="https://nao-romasaga.github.io/img/icon/icon_totsu.png">
+                            <span class="d-none d-lg-inline">
+                                <img src="https://nao-romasaga.github.io/img/icon/icon_sken.png" width="30">
+                                <img src="https://nao-romasaga.github.io/img/icon/icon_yari.png" width="30">
+                                <img src="https://nao-romasaga.github.io/img/icon/icon_yumi.png" width="30">
+                            </span>
                         </div>
-                        <div class="col-3 shadow rounded" style="margin-bottom: 10px;">
-                            <div class="label-text-small width-100">
-                                <img src="https://nao-romasaga.github.io/img/icon/icon_da.png">
-                                <span class="d-none d-lg-inline">
-                                    <img src="https://nao-romasaga.github.io/img/icon/icon_tai.png" width="30">
-                                    <img src="https://nao-romasaga.github.io/img/icon/icon_kon.png" width="30">
-                                    <img src="https://nao-romasaga.github.io/img/icon/icon_ju.png" width="30">
-                                </span>
-                            </div>
-                            <div id="DIV_RANK_打" class="row"></div>
+                        <div id="DIV_RANK_突" class="row"></div>
+                    </div>
+                    <div class="col-3 shadow rounded" style="margin-bottom: 10px;">
+                        <div class="label-text-small width-100 text-nowrap">
+                            <img src="https://nao-romasaga.github.io/img/icon/icon_tsue.png" width="40">
+                            <span class="d-none d-lg-inline">
+                                <img src="https://nao-romasaga.github.io/img/icon/icon_hi.png" width="25">
+                                <img src="https://nao-romasaga.github.io/img/icon/icon_mizu.png" width="25">
+                                <img src="https://nao-romasaga.github.io/img/icon/icon_tsuchi.png" width="25">
+                                <img src="https://nao-romasaga.github.io/img/icon/icon_kaze.png" width="25">
+                                <img src="https://nao-romasaga.github.io/img/icon/icon_hikari.png" width="25">
+                                <img src="https://nao-romasaga.github.io/img/icon/icon_yami.png" width="25">
+                            </span>
                         </div>
-                        <div class="col-3 shadow rounded" style="margin-bottom: 10px;">
-                            <div class="label-text-small width-100">
-                                <img src="https://nao-romasaga.github.io/img/icon/icon_totsu.png">
-                                <span class="d-none d-lg-inline">
-                                    <img src="https://nao-romasaga.github.io/img/icon/icon_sken.png" width="30">
-                                    <img src="https://nao-romasaga.github.io/img/icon/icon_yari.png" width="30">
-                                    <img src="https://nao-romasaga.github.io/img/icon/icon_yumi.png" width="30">
-                                </span>
-                            </div>
-                            <div id="DIV_RANK_突" class="row"></div>
+                        <div id="DIV_RANK_杖" class="row"></div>
+                    </div>
+                    <div class="col-12" style='margin-bottom: 20px;'>
+                        <div class="text-center kadomaru"
+                            style="background-color: rgba(42,169,239,1); color:white; margin: 0px 10px; margin-bottom: 10px; padding: 2px 5px;">
+                            <a href="./mydata.html" class="h6" style="background-size: 340px 40px; width:340px"
+                                id="inputStyleLogined">他のキャラのステータスを確認 <i class="fas fa-search"></i></a>
                         </div>
-                        <div class="col-3 shadow rounded" style="margin-bottom: 10px;">
-                            <div class="label-text-small width-100 text-nowrap">
-                                <img src="https://nao-romasaga.github.io/img/icon/icon_tsue.png" width="40">
-                                <span class="d-none d-lg-inline">
-                                    <img src="https://nao-romasaga.github.io/img/icon/icon_hi.png" width="25">
-                                    <img src="https://nao-romasaga.github.io/img/icon/icon_mizu.png" width="25">
-                                    <img src="https://nao-romasaga.github.io/img/icon/icon_tsuchi.png" width="25">
-                                    <img src="https://nao-romasaga.github.io/img/icon/icon_kaze.png" width="25">
-                                    <img src="https://nao-romasaga.github.io/img/icon/icon_hikari.png" width="25">
-                                    <img src="https://nao-romasaga.github.io/img/icon/icon_yami.png" width="25">
-                                </span>
-                            </div>
-                            <div id="DIV_RANK_杖" class="row"></div>
-                        </div>
-                        <div class="col-12" style='margin-bottom: 20px;'>
-                            <div class="text-center kadomaru"
-                                style="background-color: rgba(42,169,239,1); color:white; margin: 0px 10px; margin-bottom: 10px; padding: 2px 5px;">
-                                <a href="./mydata.html" class="h6" style="background-size: 340px 40px; width:340px"
-                                    id="inputStyleLogined">他のキャラのステータスを確認 <i class="fas fa-search"></i></a>
-                            </div>
-                            <div class="text-center kadomaru"
-                                style="background-color: rgba(42,169,239,1); color:white; margin: 0px 10px; padding: 2px 5px;">
-                                <a href="./inputchar.html" class="h4" style="background-size: 340px 40px; width:340px"
-                                    id="inputStyleLogined">キャラステータス更新 <i class="fas fa-pencil-alt"></i></a>
-                            </div>
+                        <div class="text-center kadomaru text-nowrap"
+                            style="background-color: rgba(42,169,239,1); color:white; margin: 0px 10px; padding: 2px 5px;">
+                            <a href="./inputchar.html" class="h4" style="background-size: 340px 40px; width:340px"
+                                id="inputStyleLogined">キャラステータス更新 <i class="fas fa-pencil-alt"></i></a>
                         </div>
                     </div>
                 </div>
@@ -459,6 +464,7 @@
         }
     </script>
     <script src="./js/data_CHARMASTER.js"></script>
+    <script src="./js/ourchar_LIST.js"></script>
     <script src="./js/home_RANKDETAIL.js"></script>
     <script src="./js/home_DATA.js"></script>
     <script src="./js/home.js"></script>
