@@ -28,9 +28,33 @@
             "startNone": true
         },
         {
+            "startDay": "15",
+            "endDay": "99",
+            "title": "[イベント] <br class='hidden pcBlock'>かぶとの試練",
+            "startPrefix": "12:00 開始<br>",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "orange"
+        },
+        {
+            "startDay": "23",
+            "endDay": "99",
+            "title": "[イベント] <br class='hidden pcBlock'>ブーツの試練",
+            "startPrefix": "12:00 開始<br>",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "orange"
+        },
+        {
             "startDay": "1",
             "endDay": "30",
             "title": "[イベント] <br class='hidden pcBlock'>聖塔ランスの娘~聖王~前編",
+            "startPrefix": "12:00 開始<br>",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "orange"
+        },
+        {
+            "startDay": "1",
+            "endDay": "10",
+            "title": "[イベント] <br class='hidden pcBlock'>聖塔ランスの娘~聖王~後編",
             "startPrefix": "12:00 開始<br>",
             "endSuffix": "<br>翌4:00 終了",
             "type": "orange"
@@ -66,14 +90,43 @@
             "type": "orange"
         },
         {
+            "startDay": "18",
+            "endDay": "99",
+            "title": "[イベント] <br class='hidden pcBlock'>武器・主防具 聖石洞窟",
+            "startPrefix": "12:00 開始<br>",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "orange"
+        },
+        {
             "startDay": "5",
             "endDay": "22",
             "title": "[イベント] <br class='hidden pcBlock'>修行者の間",
             "startPrefix": "12:00 開始<br>",
             "endSuffix": "<br>翌4:00 終了",
             "type": "orange"
+        },
+        {
+            "startDay": "1",
+            "endDay": "30",
+            "title": "[メイン2倍] <br class='hidden pcBlock'>突キャラ",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue",
+            "startNone": true
+        },
+        {
+            "startDay": "10",
+            "endDay": "30",
+            "title": "[メイン2倍] <br class='hidden pcBlock'>斬打キャラ",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue"
+        },
+        {
+            "startDay": "23",
+            "endDay": "30",
+            "title": "[メイン3倍] <br class='hidden pcBlock'>杖キャラ【3倍】",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue"
         }
-
 
  ],
     "holiday": [
