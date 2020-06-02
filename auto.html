@@ -45,9 +45,9 @@
     <script src="./js/utils2.js"></script>
 
     <script src="./js/data_CHARMASTER.js"></script>
+    <script src="./js/data_ABILITY.js"></script>
     <script src="./js/data_STYLEMASTER_auto.js"></script>
     <script src="./js/data_SKILLMASTER_auto.js"></script>
-    <script src="./js/data_ENEMY.js"></script>
     <script src="./js/culcStyleBonus.js"></script>
     <script src="./js/damage.js"></script>
 
@@ -86,6 +86,20 @@
                 width: 25px;
                 height: 18px;
             }
+        }
+        @media only screen and (min-width: 568px) {
+            .d-xs-table-cell {
+                display: table-cell !important;
+            }
+        }
+
+        .enemy-icon {
+            width:30px;
+            height:30px;
+        }
+        .enemyfilterList {
+            border: 0px;
+            background: initial;            
         }
     </style>
     <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
@@ -261,7 +275,7 @@
                     ◇タップで覚醒/◆タップで取消
                 </div>
     
-                <div class="filter-bgcolor small" id="skillAreaParent">
+                <div class="filter-bgcolor small width-max" id="skillAreaParent">
                     <table class="table-sm" id="skillArea"
                         style="width:100%; border-collapse:collapse; color:ivory">
                         <thead style="border-bottom: 1px solid #faf0b4;">
@@ -276,9 +290,9 @@
                         </thead>
                         <tbody>
                             <tr class="d-none" id="SKILL_TR_TEMPLATE">
-                                <td class="ICON"></td>
-                                <td class="skill"></td>
-                                <td class="KAKUSEI small" style="">
+                                <td class="ICON text-nowrap"></td>
+                                <td class="skill small text-nowrap"></td>
+                                <td class="KAKUSEI small text-nowrap">
                                     <span class="kakuseiCheck KAKUSEI1 d-none yubi" data-kakusei="1">◇ </span>　
                                     <span class="kakuseiCheck KAKUSEI2 d-none yubi" data-kakusei="2">◇ </span>　
                                     <span class="kakuseiCheck KAKUSEI3 d-none yubi" data-kakusei="3">◇</span>
@@ -314,41 +328,62 @@
                         <div class="bg-item">▼アビリティ▼</div>
                         <div class="ONOFF_BTN icon_btn_off" data-type="limitAb">　勇健強撃 発動　<i class="fas fa-toggle-off" style="vertical-align: middle; font-size: 20px;"></i></div><br>
                         <div class="ONOFF_BTN icon_btn_off" data-type="crit">クリティカル 発動　<i class="fas fa-toggle-off" style="vertical-align: middle; font-size: 20px;"></i></div><br>
+                        <div class="ONOFF_BTN icon_btn_on" data-type="buf">バフ/デバフ 発動　<i class="fas fa-toggle-on" style="vertical-align: middle; font-size: 20px;"></i></div><br>
                     </div>
                     <div class="col-6 col-md-3 text-center">
-                        <div class="bg-item">▼ターン設定▼</div>
-                        <input type="text" pattern="[0-9]*" id="SET_TURN" value="10"
+                        <div class="bg-item">
+                            <span class="d-none d-lg-inline">▼ターン設定▼</span>
+                            <span class="d-lg-none">ターン設定</span>
+                        </div>
+                        <input type="number" pattern="[0-9]*" id="SET_TURN" value="10"
                             style="width:50px; text-align:right" class="kadomaru"> ターン
-                        <div class="bg-item">▼武器威力▼</div>
-                        <input type="text" pattern="[0-9]*" id="SET_WEAPON" value="31"
+                        <div class="bg-item">
+                            <span class="d-none d-lg-inline">▼武器威力▼</span>
+                            <span class="d-lg-none">武器威力</span>
+                        </div>
+                        <input type="number" pattern="[0-9]*" id="SET_WEAPON" value="31"
                             style="width:50px; text-align:right" class="kadomaru">
                     </div>
                     <div class="col-6 col-md-3 text-center">
-                        <div class="bg-item">▼初期BP設定▼</div>
-                        BP <input type="text" pattern="[0-9]*" id="SET_BP" value="10"
+                        <div class="bg-item">
+                            <span class="d-none d-lg-inline">▼初期BP▼</span>
+                            <span class="d-lg-none">初期BP</span>
+                        </div>
+                        BP <input type="number" pattern="[0-9]*" id="SET_BP" value="10"
                             style="width:50px; text-align:right" class="kadomaru"><br>
-                        <div class="bg-item">▼聖石▼</div>
-                        <input type="text" pattern="[0-9]*" id="SET_SEISEKI" value="15"
+                        <div class="bg-item">
+                            <span class="d-none d-lg-inline">▼聖石▼</span>
+                            <span class="d-lg-none">聖石</span>
+                        </div>
+                        <input type="number" pattern="[0-9]*" id="SET_SEISEKI" value="15"
                             style="width:50px; text-align:right" class="kadomaru">%
                     </div>
                     <div class="col-12 col-md-6">
                         <div class="bg-item text-center">▼ステータス▼</div>
-                        <div class="row">
-                            <div class="col-4">腕力</div>
-                            <div class="col-8"><input id="charSTR" type="number" class="input charParam kadomaru"
-                                    style="width: 100%" value="3"></div>
-                            <div class="col-4 text-nowrap">器用さ</div>
-                            <div class="col-8"><input id="charDEX" type="number" class="input charParam kadomaru"
-                                    style="width: 100%" value="3"></div>
-                            <div class="col-4 text-nowrap">素早さ</div>
-                            <div class="col-8"><input id="charAGI" type="number" class="input charParam kadomaru"
-                                    style="width: 100%" value="3"></div>
-                            <div class="col-4">知力</div>
-                            <div class="col-8"><input id="charINT" type="number" class="input charParam kadomaru"
-                                    style="width: 100%" value="3"></div>
+                        <div class="row no-gutters text-center">
+                            <div class="col-3 bg-item small">項目</div>
+                            <div class="col-3 bg-item small">素ステ</div>
+                            <div class="col-3 bg-item small">表示ステ</div>
+                            <div class="col-3 bg-item small">陣形補正</div>
+
+                            <div class="col-3">腕力</div>
+                            <div class="col-3"><input id="charSTR" type="number" class="input charParam kadomaru" value="99" style="width:60px"></div>
+                            <div class="col-3"><input id="styleSTR" type="number" class="input charParam kadomaru" value="200" style="width:60px"></div>
+                            <div class="col-3"><input id="jinkeiSTR" type="number" class="input charParam kadomaru" value="0" style="width:50px">%</div>
+                            <div class="col-3">器用さ</div>
+                            <div class="col-3"><input id="charDEX" type="number" class="input charParam kadomaru" value="99" style="width:60px"></div>
+                            <div class="col-3"><input id="styleDEX" type="number" class="input charParam kadomaru" value="200" style="width:60px"></div>
+                            <div class="col-3"><input id="jinkeiDEX" type="number" class="input charParam kadomaru" value="0" style="width:50px">%</div>
+                            <div class="col-3">素早さ</div>
+                            <div class="col-3"><input id="charAGI" type="number" class="input charParam kadomaru" value="99" style="width:60px"></div>
+                            <div class="col-3"><input id="styleAGI" type="number" class="input charParam kadomaru" value="200" style="width:60px"></div>
+                            <div class="col-3"><input id="jinkeiAGI" type="number" class="input charParam kadomaru" value="0" style="width:50px">%</div>
+                            <div class="col-3">知力</div>
+                            <div class="col-3"><input id="charINT" type="number" class="input charParam kadomaru" value="99" style="width:60px"></div>
+                            <div class="col-3"><input id="styleINT" type="number" class="input charParam kadomaru" value="200" style="width:60px"></div>
+                            <div class="col-3"><input id="jinkeiINT" type="number" class="input charParam kadomaru" value="0" style="width:50px">%</div>
                         </div>
-                        装備、スタイル補正、裏能力込みの値を入力。<br>
-                        ダメージ計算に使います
+                        表示ステ=装備、スタイル補正、裏能力込みの値を入力。<br>
                     </div>    
                     <!--
                         <div class="col-6 col-md-4">
@@ -361,10 +396,46 @@
                         </div>
                         -->
                     <div class="col-12 col-md-6 text-center">
-                        <div class="bg-item">▼仮想敵▼</div>
-                        <select class="form-control" id="enemy_vit" name="type">
-                            <option value="x">敵を選択</option>
-                        </select>
+                        <div class="bg-item">▼敵 体力/精神▼</div>
+                        体力=<input id="enemy_vit" type="number" class="input charParam kadomaru" value="100" style="width:60px">
+                        精神=<input id="enemy_mnd" type="number" class="input charParam kadomaru" value="100" style="width:60px">
+                        
+                        <div class="bg-item">▼敵種族選択▼</div>
+                        <ul class="nav text-center width-100 small text-nowrap">
+                            <li class="col-3 col-sm-1 xs-pad0"><button class="fuchidori-blue enemyfilterList pad0" data-type="EnemyClassFilter"
+                                    data-label="無し" data-id="0" onclick=""><img class="enemy-icon"
+                                        src="https://romasagatool.com/img/e_others_495.png"><br>無し</button></li>
+                            <li class="col-3 col-sm-1 xs-pad0"><button class="fuchidori-blue enemyfilterList pad0" data-type="EnemyClassFilter"
+                                    data-label="人間" data-id="1" onclick=""><img  class="enemy-icon" src="./img/enemy/type_1.png"><br>人間</button></li>
+                            <li class="col-3 col-sm-1 xs-pad0"><button class="fuchidori-blue enemyfilterList pad0" data-type="EnemyClassFilter"
+                                    data-label="獣人" data-id="2" onclick=""><img  class="enemy-icon" src="./img/enemy/type_2.png"><br>獣人</button></li>
+                            <li class="col-3 col-sm-1 xs-pad0"><button class="fuchidori-blue enemyfilterList pad0" data-type="EnemyClassFilter"
+                                    data-label="獣" data-id="3" onclick=""><img class="enemy-icon" src="./img/enemy/type_3.png"><br>獣</button></li>
+                            <li class="col-3 col-sm-1 xs-pad0"><button class="fuchidori-blue enemyfilterList pad0" data-type="EnemyClassFilter"
+                                    data-label="有翼" data-id="4" onclick=""><img class="enemy-icon" src="./img/enemy/type_4.png"><br>有翼</button></li>
+                            <li class="col-3 col-sm-1 xs-pad0"><button class="fuchidori-blue enemyfilterList pad0" data-type="EnemyClassFilter"
+                                    data-label="植物" data-id="5" onclick=""><img class="enemy-icon" src="./img/enemy/type_5.png"><br>植物</button></li>
+                            <li class="col-3 col-sm-1 xs-pad0"><button class="fuchidori-blue enemyfilterList pad0" data-type="EnemyClassFilter"
+                                    data-label="虫" data-id="6" onclick=""><img class="enemy-icon" src="./img/enemy/type_6.png"><br>虫</button></li>
+                            <li class="col-3 col-sm-1 xs-pad0"><button class="fuchidori-blue enemyfilterList pad0" data-type="EnemyClassFilter"
+                                    data-label="水棲" data-id="7" onclick=""><img class="enemy-icon" src="./img/enemy/type_7.png"><br>水棲</button></li>
+                            <li class="col-3 col-sm-1 xs-pad0"><button class="fuchidori-blue enemyfilterList pad0" data-type="EnemyClassFilter"
+                                    data-label="魚" data-id="8" onclick=""><img class="enemy-icon" src="./img/enemy/type_8.png"><br>魚</button></li>
+                            <li class="col-3 col-sm-1 xs-pad0"><button class="fuchidori-blue enemyfilterList pad0" data-type="EnemyClassFilter"
+                                    data-label="蛇" data-id="9" onclick=""><img class="enemy-icon" src="./img/enemy/type_9.png"><br>蛇</button></li>
+                            <li class="col-3 col-sm-1 xs-pad0"><button class="fuchidori-blue text-nowrap enemyfilterList pad0" data-type="EnemyClassFilter"
+                                    data-label="爬虫類・両生類" data-id="10" onclick=""><img class="enemy-icon" src="./img/enemy/type_10.png"><br>ｶｴﾙ</button></li>
+                            <li class="col-3 col-sm-1 xs-pad0"><button class="fuchidori-blue enemyfilterList pad0" data-type="EnemyClassFilter"
+                                    data-label="魔族" data-id="11" onclick=""><img class="enemy-icon" src="./img/enemy/type_11.png"><br>魔族</button></li>
+                            <li class="col-3 col-sm-1 xs-pad0"><button class="fuchidori-blue enemyfilterList pad0" data-type="EnemyClassFilter"
+                                    data-label="不死" data-id="12" onclick=""><img class="enemy-icon" src="./img/enemy/type_12.png"><br>不死</button></li>
+                            <li class="col-3 col-sm-1 xs-pad0"><button class="fuchidori-blue enemyfilterList pad0" data-type="EnemyClassFilter"
+                                    data-label="骸骨" data-id="13" onclick=""><img class="enemy-icon" src="./img/enemy/type_13.png"><br>骸骨</button></li>
+                            <li class="col-3 col-sm-1 xs-pad0"><button class="fuchidori-blue enemyfilterList pad0" data-type="EnemyClassFilter"
+                                    data-label="精霊" data-id="14" onclick=""><img class="enemy-icon" src="./img/enemy/type_14.png"><br>精霊</button></li>
+                                    <li class="col-3 col-sm-1 xs-pad0"><button class="fuchidori-blue text-nowrap enemyfilterList pad0" data-type="EnemyClassFilter"
+                                    data-label="無機質" data-id="15" onclick=""><img class="enemy-icon" src="./img/enemy/type_15.png"><br>無機質</button></li>
+                        </ul>                        
                         <table class="width-100 text-center table-dark kadomaru">
                             <tr class="char-bottom">
                                 <th><span class="icon_xs_zokusei icon_zan"></span></th>
@@ -401,13 +472,16 @@
                 <div class="bg-item text-center">▼履歴▼</div>
                 <div class="row" id="culcSummaryArea"></div>
                 <div class="bg-item text-center">▼サマリー▼</div>
-                <div class="bg-simple text-center culcAfter position-relative" style="margin: 10px 0px;" id="culcSummary">
+                <div class="bg-simple text-center culcAfter position-relative width-max" id="culcSummary">
                     <img class="CLOSE_BTN yubi d-none" src="./img/icon/icon_close.png" style="position: absolute;top: 5px;right: 5px;height: 15px;" onclick="">
                     <table class="table-sm text-left" style="width:100%; border-collapse:collapse">
                         <thead style="border-bottom: 1px solid #faf0b4;">
                             <tr class="d-none d-lg-table-row" style="line-height: 30px;">
                                 <th class="text-center">
-                                    <img class="SUMMARY_CUTIN " src="" class="" style="height:50px">
+                                    <div class="" style="border-top: 1px solid beige; border-bottom: 1px solid beige;">
+                                        <div class="text-center" style="background: url(https://romasagatool.com/img/bg_cutin.png);">
+                                        <img class="SUMMARY_CUTIN" style="height:50px" src="">
+                                    </div>
                                 </th>
                                 <th colspan=5 class="text-center">
                                     Average : <span class="AVG_DMG fuchidoriJewel damageNumber" style="font-size:30px">9,999</span><br>
@@ -427,19 +501,19 @@
                                 <th class="text-center" style="min-width:130px">名称</th>
                                 <th>覚醒</th>
                                 <th>BP</th>
-                                <th class="text-nowrap">回数</th>
                                 <th class="d-none d-md-table-cell">威力</th>
                                 <th class="text-nowrap">Damage</th>
+                                <th class="text-nowrap">回数</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="d-none TR_TEMPLATE" style="line-height: 25px;">
-                                <th class="NAME"></th>
+                            <tr class="d-none TR_TEMPLATE small" style="line-height: 25px;">
+                                <th class="NAME text-nowrap"></th>
                                 <th class="KAKUSEI"></th>
                                 <th class="BP"></th>
-                                <th class="USE"></th>
                                 <th class="IRYOKU d-none d-md-table-cell"></th>
                                 <th class="DAMAGE text-nowrap"></th>
+                                <th class="USE"></th>
                             </tr>
                         </tbody>
                         <tfoot style="border-top: 1px solid #faf0b4;"></tfoot>
@@ -453,26 +527,48 @@
 
                 <div class="bg-item text-center">▼シミュレーション結果▼</div>
                 <small id="HAS_RENKI">練気発動時はBPに(+1)と表示されます</small>
-                <div id="culcDetail" class="bg-simple text-center width-max" style="padding: 15px;">
-                </div>
-                <div id="DETAIL_TEMPLATE" class="DETAIL_CARD small d-none" style="
-                    display:-webkit-box;
-                    display:-ms-flexbox;
-                    display:flex;
-                    -webkit-box-pack:justify;
-                    -ms-flex-pack:justify;
-                    justify-content:space-between;
-                    border-bottom: 1px solid #faf0b4;
-                ">
-                    <div>
-                        <span class="NOW_TURN">1</span><span class="d-md-none">T</span><span class="d-none d-md-inline">Turn</span>
-                        <span class="SKILL_ICON"></span>
-                        <span class="SKILL_NAME"></span>
-                        <span class='d-none d-md-inline'>消費BP:<span class="USEBP"></span></span>
-                    </div>
-                    <div>
-                            Dmg:<span class="DAMAGE">4,261</span> BP:<span class="NOW_BP">10</span> > <span class="LEFT_BP">10</span>
-                    </div>
+                <div class="bg-simple width-max small" style="padding: 15px;">
+                    <table id="culcDetail" class="width-100">
+                        <thead style="border-bottom: 1px solid #faf0b4;">
+                            <tr class="text-center">
+                                <td class="" style="width:20px">T</td>
+                                
+                                <td class="d-none d-lg-inline" style="width:80px">属性</td>
+                                <td>名称</td>
+                                <td class="" style="width:52px">Damage</td>
+                                <td class="" style="width:52px">AVG</td>
+                                <td class="d-none d-lg-table-cell">BP</td>
+                                <td class="d-none d-lg-table-cell">消費</td>
+                                <td class="">残BP</td>
+                                <td class="d-none d-xs-table-cell">Status</td>
+                                <td class="d-none d-xs-table-cell">ﾊﾞﾌ</td>
+                                <td class="d-none d-lg-table-cell">敵ｽﾃ</td>
+                                <td class="d-none d-lg-table-cell">ﾃﾞﾊﾞﾌ</td>
+                                <td class="d-none d-lg-table-cell">耐性</td>
+                                <td class="d-none d-xs-table-cell" style="width:100px">Ability</td>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                    <table>
+                        <tr class="d-none" id="DETAIL_TEMPLATE" style="border-bottom: 1px solid #faf0b4;">
+                            <td class="NOW_TURN text-center" style="width:30px"></td>
+                            <td class="SKILL_ICON d-none d-lg-table-cell"></td>
+                            <td class="SKILL_NAME d-none d-lg-table-cell text-nowrap"></td>
+                            <td class="SKILL_NAME_SM d-lg-none text-nowrap"></td>
+                            <td class="DAMAGE text-right"></td>
+                            <td class="AVG text-right"></td>
+                            <td class="d-none d-lg-table-cell NOW_BP text-right"></td>
+                            <td class="d-none d-lg-table-cell text-right USEBP"></td>
+                            <td class="text-right LEFT_BP"></td>
+                            <td class="d-none d-xs-table-cell text-right ATTACK_PARAM"></td>
+                            <td class="d-none d-xs-table-cell text-right"><span class="BUFF"></span>%</td>
+                            <td class="d-none d-lg-table-cell text-right ENEMY_PARAM"></td>
+                            <td class="d-none d-lg-table-cell text-right"><span class="DEBUFF"></span>%</td>
+                            <td class="d-none d-lg-table-cell text-right ENEMY_RESIST"></td>
+                            <td class="d-none d-xs-table-cell text-right ABILITY fuchidori-blue text-nowrap" style="line-height: 20px;"></td>
+                        </tr>
+                    </table>
                 </div>
             </div>
 
@@ -496,7 +592,7 @@
                 (adsbygoogle = window.adsbygoogle || []).push({});
             </script>
             <br>
-            <div class="card">
+            <div class="card d-none">
                 <div class="card-header bg-info">要望メモ</div>
                 <div class="card-body">
                     ・計測ターン任意設定<br>
