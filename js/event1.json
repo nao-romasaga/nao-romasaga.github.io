@@ -19,6 +19,20 @@
             "startNone": true
         },        
         {
+            "startDay": "10",
+            "endDay": "30",
+            "title": "[ガチャ] <br class='hidden pcBlock'>1.5周年 Romancing祭 パウエル編",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "green"
+        },        
+        {
+            "startDay": "10",
+            "endDay": "19",
+            "title": "[ガチャ] <br class='hidden pcBlock'>1.5周年 Romancing祭 エレン編",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "green"
+        },        
+        {
             "startDay": "1",
             "endDay": "14",
             "title": "[イベント] <br class='hidden pcBlock'>槍の試練/忘れられた礼拝堂へ",
@@ -53,7 +67,7 @@
         },
         {
             "startDay": "10",
-            "endDay": "99",
+            "endDay": "31",
             "title": "[イベント] <br class='hidden pcBlock'>聖塔ランスの娘~聖王~後編",
             "startPrefix": "12:00 開始<br>",
             "endSuffix": "<br>翌4:00 終了",
@@ -75,9 +89,24 @@
             "type": "blue"
         },
         {
+            "startDay": "22",
+            "endDay": "99",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>裏道場の証 獲得量2倍<br>卵のから ドロップ量2倍",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue"
+        },
+        {
             "startDay": "5",
             "endDay": "9",
             "title": "[スタミナ0] <br class='hidden pcBlock'>メイン 1章第1話〜第5話",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue"
+        },
+        {
+            "startDay": "18",
+            "endDay": "22",
+            "title": "[スタミナ0] <br class='hidden pcBlock'>メイン 1章第1話〜第5話",
+            "startSuffix": "12:00 開始<br>",
             "endSuffix": "<br>翌4:00 終了",
             "type": "blue"
         },
