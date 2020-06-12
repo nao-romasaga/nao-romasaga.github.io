@@ -434,11 +434,11 @@ html {
     url(https://romasagatool.com/img/bg_window_corner2.png) top right no-repeat,
     url(https://romasagatool.com/img/bg_window_corner3.png) bottom left no-repeat,
     url(https://romasagatool.com/img/bg_window_corner4.png) bottom right no-repeat,
-    url(https://romasagatool.com/img/bg_window_top.png) top / calc(100% - 80px) 41px no-repeat,
-    url(https://romasagatool.com/img/bg_window_btm.png) bottom / calc(100% - 80px) 41px no-repeat,
-    url(https://romasagatool.com/img/bg_window_left.png) left / 41px calc(100% - 80px)  no-repeat,
-    url(https://romasagatool.com/img/bg_window_right.png) right / 41px calc(100% - 80px)  no-repeat,
-    url(https://romasagatool.com/img/bg_window_center.png) center / calc(100% - 80px) calc(100% - 80px)  no-repeat;
+    url(https://romasagatool.com/img/bg_window_top.png) top / calc(100% - 79px) 41px no-repeat,
+    url(https://romasagatool.com/img/bg_window_btm.png) bottom / calc(100% - 79px) 41px no-repeat,
+    url(https://romasagatool.com/img/bg_window_left.png) left / 41px calc(100% - 79px)  no-repeat,
+    url(https://romasagatool.com/img/bg_window_right.png) right / 41px calc(100% - 79px)  no-repeat,
+    url(https://romasagatool.com/img/bg_window_center.png) center / calc(100% - 79px) calc(100% - 79px)  no-repeat;
     color: #faf0b4;
 }
 .bg-black-window{
@@ -448,11 +448,11 @@ html {
     url(https://romasagatool.com/img/bg_window_corner2.png) top right no-repeat,
     url(https://romasagatool.com/img/bg_window_corner3.png) bottom left no-repeat,
     url(https://romasagatool.com/img/bg_window_corner4.png) bottom right no-repeat,
-    url(https://romasagatool.com/img/bg_window_top.png) top / calc(100% - 80px) 41px no-repeat,
-    url(https://romasagatool.com/img/bg_window_btm.png) bottom / calc(100% - 80px) 41px no-repeat,
-    url(https://romasagatool.com/img/bg_window_left.png) left / 41px calc(100% - 80px)  no-repeat,
-    url(https://romasagatool.com/img/bg_window_right.png) right / 41px calc(100% - 80px)  no-repeat,
-    url(https://romasagatool.com/img/bg_window_center.png) center / calc(100% - 80px) calc(100% - 80px)  no-repeat;
+    url(https://romasagatool.com/img/bg_window_top.png) top / calc(100% - 79px) 41px no-repeat,
+    url(https://romasagatool.com/img/bg_window_btm.png) bottom / calc(100% - 79px) 41px no-repeat,
+    url(https://romasagatool.com/img/bg_window_left.png) left / 41px calc(100% - 79px)  no-repeat,
+    url(https://romasagatool.com/img/bg_window_right.png) right / 41px calc(100% - 79px)  no-repeat,
+    url(https://romasagatool.com/img/bg_window_center.png) center / calc(100% - 79px) calc(100% - 79px)  no-repeat;
     color: #faf0b4;
 }
 .bg-simple {
