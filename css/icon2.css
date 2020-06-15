@@ -52,6 +52,16 @@
     width: 25px;
     height: 25px;
 }
+.style_icon_limit_base {
+    position: absolute;
+    top: 0;left: 0;
+    width: 40px;
+    height: 40px;
+}
+.icon_limit{
+    background:url(https://romasagatool.com/img/icon/icon_limit.png) no-repeat;
+    background-size: 100%;
+}
 .icon_rare_ss{
     background:url(https://romasagatool.com/img/icon/icon_SS.png);
     background-size: 100%;
@@ -171,9 +181,9 @@
 }
 .subtitle-long {
     background: 
-     url(https://romasagatool.com/img/icon/icon_subtitle_left.png) left / 35px 100% no-repeat,
+     url(https://romasagatool.com/img/icon/icon_subtitle_left.png) left / 36px 100% no-repeat,
      url(https://romasagatool.com/img/icon/icon_subtitle_right.png) right / 42px 100% no-repeat,
-     url(https://romasagatool.com/img/icon/icon_subtitle_center.png) calc(50% - 3px) / calc(100% - 74px) 100% no-repeat;
+     url(https://romasagatool.com/img/icon/icon_subtitle_center.png) calc(50% - 3px) / calc(100% - 68px) 100% no-repeat;
     padding: 5px 25px 5px 30px;
     display: inline-block;
     color: white;
@@ -437,6 +447,13 @@
         width: 22px;
         height: 22px;
     }
+    .style_icon_limit_base {
+        position: absolute;
+        top: 0;left: 0;
+        width: 33px;
+        height: 33px;
+    }
+
     .icon_weapon_frame {
         background:url(https://romasagatool.com/img/icon/icon_frame_weapon.png);
         position: absolute;
@@ -476,6 +493,12 @@
         top: 0;left: 0;
         width: 17px;
         height: 17px;
+    }
+    .style_icon_limit_base {
+        position: absolute;
+        top: 0;left: 0;
+        width: 26px;
+        height: 26px;
     }
     .icon_weapon_frame {
         background:url(https://romasagatool.com/img/icon/icon_frame_weapon.png);
