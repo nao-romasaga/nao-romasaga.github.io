@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics         -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138966739-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-138966739-1');
+    </script>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <meta charset="utf-8">
+    <title>【ロマサガRS】スタイル評価 ランキング</title>
+    <meta property="og:title" content="【ロマサガRS】スタイル評価 ランキング" />
+    <meta property="og:url" content="https://http://nao-romasaga.github.io/styleranking.html" />
+    <meta property="og:description" content="ロマサガRSのスタイル別評価のランキングです。便利ツールユーザの評価の投票によりランキングが作られています。" />
+    <meta name="description" content="ロマサガRSのスタイル別評価のランキングです。便利ツールユーザの評価の投票によりランキングが作られています。【ロマンシングサガ リユニバース】" />
+    <meta property="og:image" content="http://romasagatool.com/img/twitter_card_styleranking.png" />
+    <meta property="og:site_name" content="ロマサガRS便利ツール" />
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="ja_JP" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@nao_romasaga_rs" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="./js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="./js/jquery.ui.touch-punch.js"></script>
+    <script src="./js/lib/lazysizes.min.js"></script>
+    <script src="./js/lib/ls.unveilhooks.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap/bootstrap.min.css">
+    <script src="./js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/style2.css">
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/3.5.2/firebase-ui-auth__ja.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+    <script src="./js/Firebase.js"></script>
+    <script src="./js/utils2.js"></script>
+    <script src="./js/data_STYLESPEECH.js" ></script>
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+
+    <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    <style>
+        /* 画面サイズが768より大きい場合はこれ */
+        @media screen and ( min-width:768px) {
+            .width-max {
+                margin-left: calc(((100vw - 105%) / 2) * -1);
+                margin-right: calc(((100vw - 105%) / 2) * -1);    
+            }
+        }
+        .cover{
+            width: 100%;
+            position: fixed;
+            bottom: 100px;
+            z-index: 2;
+            /* ボタンを押す前は見えないようにメニューは画面外にずらす */
+            transform: translateY(500px);
+            transition: .5s;
+        }
+        /*ボタンをクリックするとactiveクラスが付与される*/
+        .active{
+            /* Y方向に要素を移動させる */
+            transform: translateY(0%);
+            transition: .5s;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="dojohaikei">
+        <div class="container">
+
+            <h3 class="text-center label-text-small width-100">スタイル評価ランキング</h3>
+            <span class="title-text d-none"></span>
+            <p class="text-right opacity"><small>バグ発見、ご要望は <a href="https://peing.net/ja/nao_romasaga_rs"
+                        target="new">質問箱</a>まで</small></p>
+            <div id="firebaseui-auth-container" style="margin-bottom:10px;"></div>
+            <br>
+
+            <!-- ツール_ダメージランキング_top -->
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5008373409434899"
+                data-ad-slot="8866814429" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+
+            <div class="info-modal width-max" style="padding: 0px 5px 15px 10px; margin-bottom:20px;">
+                <div class="text-center info-modal-header">ランキングについて</div>
+                このランキングは便利ツールユーザーの投票を集計したものです。<br>
+                平均値を取っているため、投票数が少ない場合に上位に上がってくる傾向がありますのでご了承ください<br>
+                <span class="subtitle-long">判例　</span><br>
+                <div class="bg-simple" style="padding:15px;">
+                    <!--
+                    <span class="shadow-blue" style="color:white">単体火力/全体火力とは</span>　全力オート平均ダメージから自動算出。偏差値50を2.5として評価しています<br>
+                    -->
+                    <span class="shadow-blue" style="color:white">周回性能とは</span>　引率としての周回を効率よく回ることができるか。<br>
+                    継続して全体攻撃ができること、多属性でResistされにくいことが評価されます<br>
+                    <span class="shadow-blue" style="color:white">汎用性とは</span>　周回、ボス戦、ツヴァイク、R杯など様々なシーンに対応可能か<br>
+                    <span class="shadow-blue" style="color:white">唯一性とは</span>　他のスタイルでは代用が聞かない物を持っているか<br>
+                    例：全体即死の王者の剣、トーマスの高知力デルタペトラ、バルテルミーの強襲アバドンハンズなど
+                </div>
+            </div>
+
+            <div class="row width-max">
+
+                <!--
+                <div class="info-modal col-12 col-md-6" style="padding:5px">
+                    <div class="text-center info-modal-header">単体攻撃ランキング</div>
+                    <div id="SINGLE_RANK"></div>
+                </div>
+                <div class="info-modal col-12 col-md-6" style="padding:5px">
+                    <div class="text-center info-modal-header">全体攻撃ランキング</div>
+                    <div id="MULTI_RANK"></div>
+                </div>
+                -->
+                <div class="info-modal col-12 col-lg-6 PARENT" style="padding:5px; margin-bottom:20px;" id="RANK_TEMPLATE">
+                    <div class="text-center info-modal-header TITLE">周回性能ランキング</div>
+                    <div class="bg-simple INFO" style="padding:15px;">引率としての周回を効率よく回ることができるかを評価したランキングです。<br>継続して全体攻撃ができること、多属性でResistされにくいことが評価ポイントです</div>
+                    <div style="padding:10px;">スタイルアイコンをタップして評価を入力できます</div>
+                    <div class="row no-gutters" id="V1_RANK" style="margin-bottom:30px;">
+                        <div class="col-12 col-sm-6"><button class="DISP_CHANGE icon_btn_positive width-100 shadow-blue" data-id="RANK" style="padding:15px 0px;"><img style="width:25px"src="https://romasagatool.com/img//icon/icon_star10.png">ランク 表示</button></div>
+                        <div class="d-none d-sm-block col-sm-6"><button class="DISP_CHANGE icon_btn_negative width-100 shadow-blue" data-id="ATTR" style="padding:15px 0px;">属性別 表示</button></div>
+                        <div class="col-3 d-sm-none"><button class="DISP_CHANGE icon_btn_negative width-100 shadow-blue" data-id="ZAN" style="padding-top:10px; padding-bottom:0px;"><span class="icon_mini icon_zan"></span></button></div>
+                        <div class="col-3 d-sm-none"><button class="DISP_CHANGE icon_btn_negative width-100 shadow-blue" data-id="DA" style="padding-top:10px; padding-bottom:0px;"><span class="icon_mini icon_da"></span></button></div>
+                        <div class="col-3 d-sm-none"><button class="DISP_CHANGE icon_btn_negative width-100 shadow-blue" data-id="TOTSU" style="padding-top:10px; padding-bottom:0px;"><span class="icon_mini icon_totsu"></span></button></div>
+                        <div class="col-3 d-sm-none"><button class="DISP_CHANGE icon_btn_negative width-100 shadow-blue" data-id="TSUE" style="padding-top:10px; padding-bottom:0px;"><span class="icon_mini icon_tsue"></span></button></div>
+                        <!-- /切り替えボタン -->
+        
+                        <div class="col-12 col-sm-1 text-center RANK" style="margin-bottom:5px;">
+                            <div class="bg-item d-sm-none">
+                                <img style="width:20px"src="https://romasagatool.com/img//icon/icon_star10.png">
+                                <img style="width:20px"src="https://romasagatool.com/img//icon/icon_star10.png">
+                                <img style="width:20px"src="https://romasagatool.com/img//icon/icon_star10.png">
+                            </div>
+                            <div class="filter-bgcolor d-none d-sm-block" style="height: 100%;"> 
+                                <div style="margin:auto; width: 90%; height: 100%; display: flex; align-items: center; justify-content: center;">
+                                <img style="width:20px"src="https://romasagatool.com/img//icon/icon_star10.png">
+                                <img style="width:20px"src="https://romasagatool.com/img//icon/icon_star10.png">
+                                <img style="width:20px"src="https://romasagatool.com/img//icon/icon_star10.png">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-11 LV3 RANK"></div>
+
+                        <div class="col-12 col-sm-1 text-center RANK" style="margin-bottom:5px;">
+                            <div class="bg-item d-sm-none">
+                                <img style="width:20px"src="https://romasagatool.com/img//icon/icon_star10.png">
+                                <img style="width:20px"src="https://romasagatool.com/img//icon/icon_star10.png">
+                            </div>
+                            <div class="filter-bgcolor d-none d-sm-block" style="height: 100%;"> 
+                                <div style="margin:auto; width: 90%; height: 100%; display: flex; align-items: center; justify-content: center;">
+                                <img style="width:20px"src="https://romasagatool.com/img//icon/icon_star10.png">
+                                <img style="width:20px"src="https://romasagatool.com/img//icon/icon_star10.png">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-11 LV2 RANK"></div>
+
+                        <div class="col-12 col-sm-1 text-center RANK" style="margin-bottom:5px;">
+                            <div class="bg-item d-sm-none">
+                                <img style="width:20px"src="https://romasagatool.com/img//icon/icon_star10.png">
+                            </div>
+                            <div class="filter-bgcolor d-none d-sm-block" style="height: 100%;"> 
+                                <div style="margin:auto; width: 90%; height: 100%; display: flex; align-items: center; justify-content: center;">
+                                <img style="width:20px"src="https://romasagatool.com/img//icon/icon_star10.png">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-11 LV1 RANK"></div>
+
+                        <div class="col-12 d-sm-none text-center bg-item ZAN"><span class="icon_mini icon_zan" onclick=""></span></div>
+                        <div class="col-1 d-none d-sm-block text-center ZAN" style="margin-bottom: 10px;">
+                            <div class="filter-bgcolor text-center ZAN" style="margin:auto; width: 90%; height: 100%; display: flex; align-items: center; justify-content: center;">
+                                <span class="icon_mini icon_zan"></span>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-11 斬 ZAN"></div>
+
+                        <div class="col-12 d-sm-none text-center bg-item DA"><span class="icon_mini icon_da"></span></div>
+                        <div class="col-1 d-none d-sm-block text-center DA" style="margin-bottom: 10px;">
+                            <div class="filter-bgcolor text-center DA" style="margin:auto; width: 90%; height: 100%; display: flex; align-items: center; justify-content: center;">
+                                <span class="icon_mini icon_da"></span>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-11 打 DA"></div>
+
+                        <div class="col-12 d-sm-none text-center bg-item TOTSU"><span class="icon_mini icon_totsu"></span></div>
+                        <div class="col-1 d-none d-sm-block text-center TOTSU" style="margin-bottom: 10px;">
+                            <div class="filter-bgcolor text-center TOTSU" style="margin:auto; width: 90%; height: 100%; display: flex; align-items: center; justify-content: center;">
+                                <span class="icon_mini icon_totsu"></span>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-11 突 TOTSU"></div>
+
+                        <div class="col-12 d-sm-none text-center bg-item TSUE"><span class="icon_mini icon_tsue"></span></div>
+                        <div class="col-1 d-none d-sm-block text-center TSUE" style="margin-bottom: 10px;">
+                            <div class="filter-bgcolor text-center TSUE" style="margin:auto; width: 90%; height: 100%; display: flex; align-items: center; justify-content: center;">
+                                <span class="icon_mini icon_tsue"></span>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-11 杖 TSUE"></div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="d-none d-inline-block text-center" id="TEMPLATE" style="line-height: 20px;">
+                <span class="ICON"></span><br>
+                <div class="VALUE fuchidori-blue text-nowrap filter-bgcolor"></div>
+                <span class="CNT"></span>票
+            </div>
+
+            <div class="bg-simple d-none" id="TEMPLATE2" style="padding: 8px 20px 8px 8px;">
+                <div class="ICON d-inline-block"></div>
+                <div class="d-inline-block">
+                    <div style="line-height: 20px;">
+                        <span class="NAME"></span><br>
+                        <span class="ANOTHER small"></span>
+                    </div>
+                </div>
+                <div class="float-right text-right">
+                    <span class="VALUE"></span><br>
+                    投票数:<span class="CNT"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="cover js-cover">
+            <div class="bg-simple text-center" style="width: 320px;margin: auto;">
+                ★投票ありがとうございます★
+                <div class="filter-bgcolor text-left" style="padding: 5px 10px;height:80px;width: 300px;margin: auto;position: relative;color: white;">
+                    <span id="SPEECH" style="display: block; line-height: 1.5;"></span>
+                    <img id="SPEECH_ICON" class="speech-icon" src="">
+                </div>
+                <div style="margin-top:10px;">
+                    <span id="SPEECH_DOT" class="char-eisho-mini dot dot_mini"></span>
+                </div>
+            </div>
+        </div>
+
+        <div id="VOTE_AREA" class="width-100"  style="position: fixed; bottom: 0px; z-index:1;">
+            <div class="bg-black-frame" style="margin:auto; padding: 10px; max-width:380px; color: #faf0b4;">
+                <div class="row no-gutters">
+                    <div class="col-3 d-sm-none text-center" id="VOTE_ICON" style="padding-top: 10px;"></div>
+                    <div class="col-9 col-sm-12">
+                        <div class="text-center info-modal-header">
+                            <div id="VOTE_NAME"></div>
+                            <div id="VOTE_ANOTHRNAME"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="filter-bgcolor d-none d-sm-block">
+                    <div class="text-center" style="background: url(https://romasagatool.com/img/bg_cutin.png);">
+                        <img id="RANK_HEAD_IMG" style="width: 100%; max-width:300px;" src="https://romasagatool.com/img/style_cutin/ID3351c.png">
+                    </div>
+                </div>
+                <div class="width-100 text-center">
+                    <a id="VOTE_HREF" href="" target="_new" class="icon_btn_positive width-100 shadow-blue">スタイル詳細を開く</a>
+                </div>
+
+                <table class="text-center width-100">
+                    <tbody>
+                        <tr>
+                            <td>項目</td>
+                            <td>平均</td>
+                            <td>★をタップで入力</td>
+                        </tr>
+                        <tr>
+                            <td><div class="bg-item width-100 text-center text-nowrap" style="padding: 5px 20px;">周回性能</div></td>
+                            <td id="VOTE_SHUKAI" class="fuchidori-white">3.16</td>
+                            <td class="text-nowrap">
+                                <img class="vote icon-star yubi" data-type="shukai" data-value="1" src="https://romasagatool.com/img//icon/icon_star10.png">
+                                <img class="vote icon-star yubi" data-type="shukai" data-value="2" src="https://romasagatool.com/img//icon/icon_star10.png">
+                                <img class="vote icon-star yubi" data-type="shukai" data-value="3" src="https://romasagatool.com/img//icon/icon_star10.png">
+                                <img class="vote icon-star yubi" data-type="shukai" data-value="4" src="https://romasagatool.com/img//icon/icon_star00.png">
+                                <img class="vote icon-star yubi" data-type="shukai" data-value="5" src="https://romasagatool.com/img//icon/icon_star00.png">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><div class="bg-item width-100 text-center text-nowrap" style="padding: 5px 20px;">汎用性</div></td>
+                            <td id="VOTE_HANYO" class="HANYO fuchidori-white">2.26</td>
+                            <td class="">
+                                <img class="vote icon-star yubi" data-type="hanyo" data-value="1" src="https://romasagatool.com/img//icon/icon_star10.png">
+                                <img class="vote icon-star yubi" data-type="hanyo" data-value="2" src="https://romasagatool.com/img//icon/icon_star10.png">
+                                <img class="vote icon-star yubi" data-type="hanyo" data-value="3" src="https://romasagatool.com/img//icon/icon_star10.png">
+                                <img class="vote icon-star yubi" data-type="hanyo" data-value="4" src="https://romasagatool.com/img//icon/icon_star00.png">
+                                <img class="vote icon-star yubi" data-type="hanyo" data-value="5" src="https://romasagatool.com/img//icon/icon_star00.png">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><div class="bg-item width-100 text-center text-nowrap " style="padding: 5px 20px;">唯一性</div></td>
+                            <td id="VOTE_ONLY" class="ONLY fuchidori-white">4.00</td>
+                            <td class="">
+                                <img class="vote icon-star yubi" data-type="only" data-value="1" src="https://romasagatool.com/img//icon/icon_star10.png">
+                                <img class="vote icon-star yubi" data-type="only" data-value="2" src="https://romasagatool.com/img//icon/icon_star10.png">
+                                <img class="vote icon-star yubi" data-type="only" data-value="3" src="https://romasagatool.com/img//icon/icon_star10.png">
+                                <img class="vote icon-star yubi" data-type="only" data-value="4" src="https://romasagatool.com/img//icon/icon_star00.png">
+                                <img class="vote icon-star yubi" data-type="only" data-value="5" src="https://romasagatool.com/img//icon/icon_star00.png">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-top: 10px;" colspan=2><button id="CLOSE" class="icon_btn_negative width-100 shadow-blue">閉じる</button></td>
+                            <td style="padding-top: 10px;" ><button id="VOTE_STAR" data-id="" class="icon_btn_positive width-100 shadow-blue">投票する</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="text-center small width-100" style="padding-top: 10px;" >
+                    投票内容は何度でも変更できます<br>
+                    「このぐらい？」の軽い気持ちで投票してください<br>
+                    皆さんの投票お待ちしております( 'ω')و
+                </div>
+            </div>
+        </div>
+    </div><!-- isLogin -->
+    <script src="./js/styleranking.js"></script>
+    <script src="./js/culcStyleBonus.js"></script>
+    <script src="./js/damage.js"></script>
+    <script src="./js/data_CHARMASTER.js"></script>
+    <script src="./js/data_STYLE_DAMAGE_HENSA.js"></script>
+    <script src="./js/data_STYLEMASTER_style.js"></script>
+    <script src="./js/data_SKILLMASTER_list.js"></script>
+
+    <script type="text/javascript"
+        src="https://romasagatool.com/blog/get_the_archives.php?limit=5&callback=rssCallback"></script>
+    <script type="text/javascript"
+        src="https://romasagatool.com/blog/get_the_archives.php?cat=22&callback=rssCallbackCat"></script>
+</body>
+
+</html>

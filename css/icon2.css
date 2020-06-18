@@ -418,7 +418,12 @@
         width: 25px;
     }
 }
-
+/* 画面サイズ767(ipadの768は含まない)まで */
+@media screen and (min-width:330px AND max-width:767px) {
+    .icon-star {
+        width: 30px;
+    }
+}
 
 /* 画面サイズ420まで */
 @media screen and (max-width:420px) {
@@ -785,9 +790,3 @@
     }
 }
 
-/* 画面サイズ767(ipadの768は含まない)まで */
-@media screen and (max-width:767px) {
-    .icon-star {
-        width: 30px;
-    }
-}

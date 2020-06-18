@@ -1364,3 +1364,9 @@ input[type=range]::-ms-tooltip {
     right:0px;
     bottom:0px;
 }
+.speech-icon {
+    position: absolute;
+    top: 0;
+    right: 0px;
+    height: 75px;
+}
