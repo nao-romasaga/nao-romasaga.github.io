@@ -78,6 +78,13 @@
         }
 
     </style>
+    <script>
+        var OPEN_GACHA = [
+            "2020.05.27.1.5周年Romancing祭(聖王編)",
+            "2020.06.10.1.5周年Romancing祭(パウルス編)",
+            "2020.06.10.1.5周年Romancing祭(エレン編)",
+        ];
+    </script>
 </head>
 
 <body>
@@ -102,6 +109,7 @@
                 <div class="text-center info-modal-header">ランキングについて</div>
                 このランキングは便利ツールユーザーの投票を集計したものです。<br>
                 平均値を取っているため、投票数が少ない場合に上位に上がってくる傾向がありますのでご了承ください<br>
+                また、負荷軽減のため<span class="fuchidori-blue">投票が一定数に満たないスタイルは非表示にしています</span><br>
                 <span class="subtitle-long">判例　</span><br>
                 <div class="bg-simple" style="padding:15px;">
                     <!--
@@ -110,11 +118,48 @@
                     <span class="shadow-blue" style="color:white">周回性能とは</span>　引率としての周回を効率よく回ることができるか。<br>
                     継続して全体攻撃ができること、多属性でResistされにくいことが評価されます<br>
                     <span class="shadow-blue" style="color:white">汎用性とは</span>　周回、ボス戦、ツヴァイク、R杯など様々なシーンに対応可能か<br>
-                    <span class="shadow-blue" style="color:white">唯一性とは</span>　他のスタイルでは代用が聞かない物を持っているか<br>
+                    <span class="shadow-blue" style="color:white">唯一性とは</span>　他のスタイルでは代用がきかない物を持っているか<br>
                     例：全体即死の王者の剣、トーマスの高知力デルタペトラ、バルテルミーの強襲アバドンハンズなど
+                </div>
+
+                <span class="subtitle-long">投票状況　</span>
+                <div style="padding-left:15px; padding-bottom:30px;">
+                総投票数：<span id="TOTAL_VOTE"></span>票<br>
+                総投票ユーザ：<span id="TOTAL_USER"></span>人<br>
+                有効投票スタイル数：<span id="VOTE_STYLE"></span>/<span id="TOTAL_STYLE"></span>スタイル<br>
+                あなたの投票：<span id="YOUR_VOTE"></span>票
                 </div>
             </div>
 
+            <div class="info-modal width-max" style="padding: 0px 5px 15px 10px; margin-bottom:20px;">
+                <div class="text-center info-modal-header">直近の投票</div>
+                <div style="padding:10px;">スタイルアイコンをタップして評価を入力できます</div>
+                <div class="bg-simple" style="padding:15px;">
+                    <table class="width-100">
+                        <tr style="border-bottom: 1px solid #faf0b4;">
+                            <td>スタイル</td>
+                            <td class="d-none d-sm-table-cell">名称</td>
+                            <td class="text-center ">周回</td>
+                            <td class="text-center ">汎用</td>
+                            <td class="text-center ">独自</td>
+                            <td class="d-none d-sm-table-cell">ガチャ初出</td>
+                            <td class="d-none d-sm-table-cell">スタイル詳細</td>
+                            <td>日時</td>
+                        </tr>
+                        <tr class="d-none" id="VOTE_ROW" style="border-bottom: 1px solid #faf0b4;">
+                            <td class="ICON"></td>
+                            <td class="NAME d-none d-sm-table-cell" style="line-height: 20px;"></td>
+                            <td class="V1 text-center fuchidori-blue" style="font-size:20px"></td>
+                            <td class="V2 text-center fuchidori-blue" style="font-size:20px"></td>
+                            <td class="V3 text-center fuchidori-blue" style="font-size:20px"></td>
+                            <td class="GACHA d-none d-sm-table-cell" style="line-height: 20px;"></td>
+                            <td class="d-none d-sm-table-cell"><a href="" target="_new" class="LINK icon_btn_positive shadow-blue">スタイル詳細へ</a></td>
+                            <td class="STIME d-sm-none"></td>
+                            <td class="LTIME d-none d-sm-table-cell"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
             <div class="row width-max">
 
                 <!--
@@ -217,7 +262,7 @@
                 </div>
 
             </div>
-            <div class="d-none d-inline-block text-center" id="TEMPLATE" style="line-height: 20px;">
+            <div class="d-none text-center" id="TEMPLATE" style="line-height: 20px;">
                 <span class="ICON"></span><br>
                 <div class="VALUE fuchidori-blue text-nowrap filter-bgcolor"></div>
                 <span class="CNT"></span>票
@@ -325,13 +370,13 @@
             </div>
         </div>
     </div><!-- isLogin -->
-    <script src="./js/styleranking.js"></script>
     <script src="./js/culcStyleBonus.js"></script>
     <script src="./js/damage.js"></script>
     <script src="./js/data_CHARMASTER.js"></script>
     <script src="./js/data_STYLE_DAMAGE_HENSA.js"></script>
     <script src="./js/data_STYLEMASTER_style.js"></script>
     <script src="./js/data_SKILLMASTER_list.js"></script>
+    <script src="./js/styleranking.js"></script>
 
     <script type="text/javascript"
         src="https://romasagatool.com/blog/get_the_archives.php?limit=5&callback=rssCallback"></script>
