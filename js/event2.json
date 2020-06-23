@@ -9,6 +9,14 @@
             "endSuffix": "<br>翌4:00 終了",
             "type": "blue",
             "startNone": true
+        },
+        {
+            "startDay": "15",
+            "endDay": "28",
+            "title": "[イベント] <br class='hidden pcBlock'>ブーツの試練",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "orange",
+            "startNone": true
         }
  ],
     "holiday": [

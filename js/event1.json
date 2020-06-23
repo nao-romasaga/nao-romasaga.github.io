@@ -17,11 +17,11 @@
             "endSuffix": "<br>翌4:00 終了",
             "type": "green",
             "startNone": true
-        },        
+        },
         {
             "startDay": "10",
             "endDay": "30",
-            "title": "[ガチャ] <br class='hidden pcBlock'>1.5周年 Romancing祭 パウエル編",
+            "title": "[ガチャ] <br class='hidden pcBlock'>1.5周年 Romancing祭 パウルス編",
             "endSuffix": "<br>翌4:00 終了",
             "type": "green"
         },        
@@ -32,6 +32,20 @@
             "endSuffix": "<br>翌4:00 終了",
             "type": "green"
         },        
+        {
+            "startDay": "23",
+            "endDay": "30",
+            "title": "[ガチャ] <br class='hidden pcBlock'>1.5周年 Romancing祭 ジョー編",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "green"
+        },        
+        {
+            "startDay": "23",
+            "endDay": "30",
+            "title": "[ガチャ] <br class='hidden pcBlock'>1.5周年 Romancing祭 バルテルミー編",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "green"
+        },                
         {
             "startDay": "1",
             "endDay": "14",
@@ -162,6 +176,34 @@
             "endDay": "30",
             "title": "[メイン3倍] <br class='hidden pcBlock'>杖キャラ【3倍】",
             "startPrefix": "12:00 開始<br>",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue"
+        }
+        ,{
+            "startDay": "24",
+            "endDay": "24",
+            "title": "[メイン3倍] <br class='hidden pcBlock'>斬キャラ【3倍】<br>12：00〜翌日4:00",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue"
+        }
+        ,{
+            "startDay": "27",
+            "endDay": "29",
+            "title": "[メイン3倍] <br class='hidden pcBlock'>斬キャラ(再)【3倍】",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue"
+        }
+        ,{
+            "startDay": "25",
+            "endDay": "26",
+            "title": "[メイン3倍] <br class='hidden pcBlock'>打キャラ【3倍】",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue"
+        }
+        ,{
+            "startDay": "27",
+            "endDay": "29",
+            "title": "[メイン3倍] <br class='hidden pcBlock'>突キャラ【3倍】",
             "endSuffix": "<br>翌4:00 終了",
             "type": "blue"
         }
