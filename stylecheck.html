@@ -100,6 +100,7 @@
                         <div class="DISP_CLASS col-12 subtitle fuchidori-white smallFont" style="left: 15px; padding-left: 30px; margin-bottom: 10px;">表示内容 切り替え</div>
                         <div class="DISP_CLASS col-5 col-md-4 text-center" style="margin-bottom:10px"><button class="width-100 icon_btn_on allType fuchidori-white smallFont text-nowrap">全て表示</button></div>
                         <div class="DISP_CLASS col-7 col-md-4 text-center"><button class="width-100 icon_btn_off onlyDisable fuchidori-white smallFont text-nowrap">未所持のみ表示</button></div>
+                        <div class="DISP_CLASS col-12 col-md-4 text-center"><button class="width-100 icon_btn_off simpleDisplay fuchidori-white smallFont text-nowrap">未所持のみ表示(シンプル)</button></div>
 
                         <div class="col-12 subtitle fuchidori-white smallFont" style="left: 15px; padding-left: 30px; margin-bottom: 10px;">表示種別 切り替え</div>
                         <div class="col-6 col-md-4 text-center" style="margin-bottom:10px">
@@ -119,14 +120,17 @@
                     <button class="icon_btn_positive allOn" data-rare="SS">全てチェック</button>
                     <button class="icon_btn_negative allOff" data-rare="SS">全て外す</button>
                     <div id="SSArea" class="row no-gutters"></div>
+                    <div id="OnlySSArea" class="row no-gutters"></div>
                     <img src="https://romasagatool.com//img/icon/icon_S.png" class="rare-icon-big">
                     <button class="icon_btn_positive allOn" data-rare="S">全てチェック</button>
                     <button class="icon_btn_negative allOff" data-rare="S">全て外す</button>
                     <div id="SArea" class="row no-gutters"></div>
+                    <div id="OnlySArea" class="row no-gutters"></div>
                     <img src="https://romasagatool.com//img/icon/icon_A.png" class="rare-icon-big">
                     <button class="icon_btn_positive allOn" data-rare="A">全てチェック</button>
                     <button class="icon_btn_negative allOff" data-rare="A">全て外す</button>
                     <div id="AArea" class="row no-gutters"></div>
+                    <div id="OnlyAArea" class="row no-gutters"></div>
                 </div>
                 <div class="style-bgcolor d-none">
                     <div id="styleAreaChar">
@@ -399,6 +403,11 @@
             <!-- モーダルウィンドウが開いている時のオーバーレイ -->
             <div class="overLay style-bgcolor modalClose"></div>
         </div>
+        <script>
+            $("#OnlySSArea").slideUp();
+            $("#OnlySArea").slideUp();
+            $("#OnlyAArea").slideUp();
+        </script>
         <style>
             /* モーダルウィンドウのスタイル */
             .modal {
