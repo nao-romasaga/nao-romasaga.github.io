@@ -42,7 +42,10 @@
         <script src="./js/damage.js" ></script>
         <script src="./js/utils2.js" ></script>
         <script src="./js/data_ENEMY.js" ></script>
+        <script src="./js/data_CHARMASTER.js" ></script>
+        <script src="./js/data_STYLEMASTER_style.js" ></script>
         <script src="./js/data_SKILLMASTER_list.js" ></script>
+        <script src="./js/culcStyleBonus.js" ></script>
         <script src="./js/damage_calc.js" ></script>
         <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -157,6 +160,10 @@
                                     <span class="input-group-text small">Rank</span>
                                 </div>
                                 <input type="number" class="form-control damage" id="skill_rank" value="1">
+                            </div>
+                            <label class="subtitle-long">使用可能スタイル　</label>
+                            <div class="bg-simple" id="HOLDERS_AREA">
+
                             </div>
                         </div>
                         <div class="form-group col-xs-12 col-md-6 col-lg-4">
@@ -285,7 +292,19 @@
                                 <option value="5">必殺の一撃I (小)</option>
                                 <option value="10">必殺の一撃II (中)</option>
                                 <option value="15">必殺の一撃III (大)</option>
+                                <option value="50">必殺の一撃IV (極大)</option>
                             </select>
+                            <div class="form-group" style="margin-bottom: 0px;">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text small">その他</span>
+                                    </div>
+                                    <input type="number" class="form-control damage" id="ability_other"  placeholder="その他アビリティ+X%">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">%</span>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
@@ -297,6 +316,8 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="bg-simple" id="ABILITY_AREA" style="padding-left: 25px;"></div>
+
                         </div>
                         <div class="form-group col-xs-12 col-md-6 col-lg-4">
                             <label for="ability" class="subtitle-long">その他 強化　</label>    
@@ -376,7 +397,84 @@
                                     <tbody class=""></tbody>
                                 </table>
                             </div>
+                            <div>
+                                <button id="SAVE" class="text-nowrap text-center width-100 icon_btn_positive shadow-black" style="font-size: 18px; display: block; padding: 5px 0px; margin-top: 10px;">計算結果を履歴に保存</button>
+                            </div>
                         </div>
+                        <style>
+                            .historyTable{
+                                    border-collapse: collapse;
+                                    border-style: hidden;
+                            }
+
+                            .historyTable td, table th {
+                                padding: 2px 8px;
+                                    border: 1px solid #faf0b4;
+                            }
+                        </style>
+                        <div class="col-12">
+                            <div class="width-100 bg-item text-center">▼履歴▼</div>
+                            <div id="HISTORY_AREA"></div>
+
+                            <div class="bg-simple d-none" id="HISTORY_TEMPLATE">
+                                <!-- SP用テンプレート -->
+                                <table class="historyTable width-100 d-sm-none">
+                                    <tr>
+                                        <td style="width: 80px; position: relative;">
+                                            <span class="ICON"></span>
+                                            <img class="CLOSE_BTN yubi" src="./img/icon/icon_close.png" style="position: absolute;top: 5px;left: 5px;height: 20px;" onclick="">
+                                        </td>
+                                        <td>武器<span class="WEAPON"></span></td>
+                                        <td>MLv<span class="MLV"></span> (<span class="MLV_PER"></span>%)</td>
+                                        <td>アビ <span class="AB"></span>%</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan=4 class="text-center">
+                                            <span class="SKILL_NAME"></span> 
+                                            威力<span class="GRADE"></span> 
+                                            <span class="IRYOKU"></span> 
+                                            Rank<span class="RANK"></span></td>
+                                    </tr>
+                                    <tr class="small">
+                                        <td colspan="2" class="text-center">表示:<span class="ST"></span></td>
+                                        <td colspan="2" class="text-center">計算:<span class="ST_CALC"></span></td>
+                                    </tr>
+                                    <tr class="small">
+                                        <td colspan="2" class=" text-center">敵ステ: <span class="ENEMY_ST"></span></td>
+                                        <td colspan="2" class=" text-center">耐性: <span class="RESIST"></span></td>
+                                    <tr>
+                                        <td colspan="4" class="fuchidori-blue text-center" style="font-size:22px; width: 200px;">
+                                            <span class="DAMAGE"></span>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <!-- PC用テンプレート -->
+                                <table class="historyTable width-100 d-none d-sm-table">
+                                    <tr>
+                                        <td class="ICON" rowspan="2" style="width: 80px;"></td>
+                                        <td>武器威力：<span class="WEAPON"></span></td>
+                                        <td>MLv<span class="MLV"></span> (<span class="MLV_PER"></span>%)</td>
+                                        <td>アビリティ <span class="AB"></span>%</td>
+                                        <td class="ST"></td>
+                                        <td>敵ステータス: <span class="ENEMY_ST"></span></td>
+                                        <td rowspan="2" class="fuchidori-blue" style="font-size:22px; position: relative; width: 200px;"">
+                                            <span class="DAMAGE"></span>
+                                            <img class="CLOSE_BTN yubi" src="./img/icon/icon_close.png" style="position: absolute;top: 5px;right: 5px;height: 20px;" onclick="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan=3 class="text-center">
+                                            <span class="SKILL_NAME"></span> 
+                                            威力<span class="GRADE"></span> 
+                                            <span class="IRYOKU"></span> 
+                                            Rank<span class="RANK"></span></td>
+                                        <td class="ST_CALC"></td>
+                                        <td>耐性: <span class="RESIST"></span></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
                     </div>
 
                 </div>
