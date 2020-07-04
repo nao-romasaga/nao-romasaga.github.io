@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#" lang="ja">
+    <head>
+        <script src="./js/jquery-3.3.1.min.js"></script>
+        <script src="./js/lib/lazysizes.min.js"></script>
+        <script src="./js/lib/ls.unveilhooks.min.js"></script>
+
+        <script src="./js/data_WEAPON.js" ></script>
+        <script src="./js/data_ARMOR.js" ></script>
+        <script src="./js/data_STYLEMASTER_style.js" ></script>
+        <!-- choose a theme file -->
+        <link rel="stylesheet" href="./js/tablesorter/theme.default.css">
+        <!-- load jQuery and tablesorter scripts -->
+        <script type="text/javascript" src="./js/tablesorter/jquery.tablesorter.js"></script>
+        <!--
+        <link rel="canonical" href="/style.html">
+        -->
+        <!-- Global site tag (gtag.js) - Google Analytics         -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138966739-1"></script>
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
+        <script src="./js/asyncFunc.js"></script>
+        <script src="./js/data_CHARMASTER.js" ></script>
+        <script src="./js/data_SKILLMASTER_style.js" ></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', 'UA-138966739-1');
+        </script>
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <meta charset="utf-8">
+        <title>【ロマサガRS】装備一覧</title>
+        <meta name="description" content="ロマサガRSの装備一覧です"/>
+        <meta property="og:title" content="【ロマサガRS】全キャラ 装備一覧" />
+        <meta property="og:url" content="https://http://nao-romasaga.github.io/weapon.html" />
+        <meta property="og:description" content="ロマサガRSの装備を調べるツールです。想定ダメージや戦闘力の高い武器などを調べるのに使えます。【ロマンシングサガ リユニバース】" />
+        <meta name="description" content="ロマサガRSの装備を調べるツールです。想定ダメージや戦闘力の高い武器などを調べるのに使えます。【ロマンシングサガ リユニバース】" />
+        <meta property="og:image" content="https://romasagatool.com/img/twitter_card_weapon.jpg" />
+        <meta property="og:site_name" content="ロマサガRS便利ツール" />
+        <meta property="og:type" content="article">
+        <meta property="og:locale" content="ja_JP" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@nao_romasaga_rs" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="./css/bootstrap/bootstrap.min.css">
+        <script src="./js/bootstrap/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="./css/style2.css">
+        
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/ui/3.5.2/firebase-ui-auth__ja.js"></script>
+        <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+
+        <script src="./js/Firebase.js"></script>
+        <script src="./js/utils2.js" ></script>
+        <script src="./js/culcStyleBonus.js" ></script>
+        <script src="./js/damage.js" ></script>
+        <script src="./js/weapon.js" ></script>
+        <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+        <style>
+            .PARAM {
+                font-size: 20px;
+                text-align: right;
+            }
+        </style>        
+        <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div class ="haikei">
+            <div class="container">
+                <h3 class="text-center title-text">装備 一覧</h3>
+                <!--
+                <h5 class="text-center label-text-small width-100">最終更新日: <span id="UPDATE">2020/05/01</span></h5>
+                -->
+                <p class="text-right opacity"><small>バグ発見、ご要望は <a href="https://peing.net/ja/nao_romasaga_rs" target="new">質問箱</a>まで</small>
+                </p>
+<!--
+                <h5 class="text-center opacity kadomaru" onclick="$('.movie').toggleClass('d-none')">つかいかた動画をみる</h5>
+                <div class="movie d-none">
+                    <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">[new] キャラクターとスタイル詳細機能を作成しました。<br>スタイルレベル50の性能や、所有技の比較などが簡単に出来ます<br><br>ガチャを引く判断や限界突破の判断にご活用下さい✨<a href="https://t.co/vsr2OMd3zG">https://t.co/vsr2OMd3zG</a><br><br>お布施もお待ちしております😘<a href="https://t.co/3qFDqY1Kdx">https://t.co/3qFDqY1Kdx</a> <a href="https://t.co/lka5BOKblU">pic.twitter.com/lka5BOKblU</a></p>&mdash; (nAo)@ロマサガRS (@nao_romasaga_rs) <a href="https://twitter.com/nao_romasaga_rs/status/1120049965747687424?ref_src=twsrc%5Etfw">April 21, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+-->
+                <!-- ツール_スタイル上部 -->
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-5008373409434899"
+                    data-ad-slot="5836482514"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"></ins>   
+
+                <label class="badge badge-pill badge-light">絞り込み</label>
+                <div class="filter-bgcolor text-center small row" style="width:100%; margin: 0px;">
+                    <ul class="nav text-center width-100" style="margin-bottom: 5px;">
+                        <li id="FILTER" class="subtitle fuchidori-white smallFont">武器種別</li>
+                    </ul>
+                    <ul class="nav text-center width-100">
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="ken"><span
+                                    class="icon_mini icon_ken weapon-icon-button fButton filterActive" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="dken"><span
+                                    class="icon_mini icon_dken weapon-icon-button fButton" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="ono"><span
+                                    class="icon_mini icon_ono weapon-icon-button fButton" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="kon"><span
+                                    class="icon_mini icon_kon weapon-icon-button fButton" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="tai"><span
+                                    class="icon_mini icon_tai weapon-icon-button fButton" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="ju"><span
+                                    class="icon_mini icon_ju weapon-icon-button fButton" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="sken"><span
+                                    class="icon_mini icon_sken weapon-icon-button fButton" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="yumi"><span
+                                    class="icon_mini icon_yumi weapon-icon-button fButton" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="yari"><span
+                                    class="icon_mini icon_yari weapon-icon-button fButton" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="tsue"><span
+                                    class="icon_mini icon_tsue weapon-icon-button fButton" onclick=""></span></a></li>
+                    </ul>
+                    <ul class="nav text-center width-100" style="margin-bottom: 5px;">
+                        <li id="FILTER" class="subtitle fuchidori-white smallFont">画面表示</li>
+                    </ul>
+                    <ul class="nav text-center width-100 text-nowrap">
+                        <li class="col-6 col-sm-4"><button class="width-100 tableFilter icon_btn_positive fuchidori-white" data-href="PARAM">パラメータ</button></li>
+                        <li class="col-6 col-sm-4"><button class="width-100 tableFilter icon_btn_negative fuchidori-white" data-href="DAMAGE">ダメージ想定</button></li>
+                        <li class="col-6 col-sm-4"><button class="width-100 tableFilter icon_btn_negative fuchidori-white" data-href="DROP">ドロップ場所</button></li>
+                    </ul>
+
+                </div>
+                <div class="style-bgcolor width-max" style="padding:10px 3px;">
+
+                <table id="myTable" class="tablesorter">
+                    <thead>
+                      <tr class="small">
+                        <th></th>
+                        <th>R</th>
+                        <th>Name</th>
+                        <th>戦闘力</th>
+                        <th>威力</th>
+                        <th>術威力</th>
+                        <th class="COL PARAM">腕</th>
+                        <th class="COL PARAM">体</th>
+                        <th class="COL PARAM">器</th>
+                        <th class="COL PARAM">速</th>
+                        <th class="COL PARAM">知</th>
+                        <th class="COL PARAM">精</th>
+                        <th class="COL PARAM">愛</th>
+                        <th class="COL PARAM">魅</th>
+                        <th class="COL DAMAGE">Status</th>
+                        <th class="COL DAMAGE">威力7</th>
+                        <th class="COL DAMAGE">威力15</th>
+                        <th class="COL DAMAGE">威力28</th>
+                        <th class="COL DAMAGE">威力50</th>
+                        <th class="COL DAMAGE">威力70</th>
+                        <th class="COL DROP">ドロップクエスト</th>
+                        <th class="d-none">印</th>
+                      </tr>
+                    </thead>
+                    <tbody id="TBODY" class="filter-bgcolor" style="color: #faf0b4;">
+                      <tr id="BODY_TEMPLATE" class="d-none">
+                        <td class="ICON"></td>
+                        <td class="RARE"></td>
+                        <td class="NAME"></td>
+                        <td class="Power"></td>                        
+                        <td class="WeaponPower"></td>
+                        <td class="JutsuPower"></td>
+                        <td class="COL STR PARAM"></td>
+                        <td class="COL VIT PARAM"></td>
+                        <td class="COL DEX PARAM"></td>
+                        <td class="COL AGI PARAM"></td>
+                        <td class="COL INT PARAM"></td>
+                        <td class="COL MND PARAM"></td>
+                        <td class="COL AI PARAM"></td>
+                        <td class="COL MI PARAM"></td>
+                        <td class="COL CALC_PARAM DAMAGE text-nowrap"></td>
+                        <td class="COL DAMAGE1 DAMAGE"></td>
+                        <td class="COL DAMAGE2 DAMAGE"></td>
+                        <td class="COL DAMAGE3 DAMAGE"></td>
+                        <td class="COL DAMAGE4 DAMAGE"></td>
+                        <td class="COL DAMAGE5 DAMAGE"></td>
+                        <td class="COL QUEST DROP"></td>
+                        <td class="COL IN d-none">
+                            <span class="力">力</span>
+                            <span class="体">体</span>
+                            <span class="器">器</span>
+                            <span class="速">速</span>
+                            <span class="知">知</span>
+                            <span class="火">火</span>
+                            <span class="水">水</span>
+                            <span class="土">土</span>
+                            <span class="風">風</span>
+                            <span class="光">光</span>
+                            <span class="闇">闇</span><br>
+                            <span class="力">力+</span>
+                            <span class="体">体+</span>
+                            <span class="器">器+</span>
+                            <span class="速">速+</span>
+                            <span class="知">知+</span>
+                            <span class="火">火+</span>
+                            <span class="水">水+</span>
+                            <span class="土">土+</span>
+                            <span class="風">風+</span>
+                            <span class="光">光+</span>
+                            <span class="闇">闇+</span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <table id="armorTable" class="tablesorter d-none">
+                    <thead>
+                      <tr class="small">
+                        <th></th>
+                        <th>R</th>
+                        <th>Name</th>
+                        <th>戦闘力</th>
+                        <th class="COL PARAM">腕</th>
+                        <th class="COL PARAM">体</th>
+                        <th class="COL PARAM">器</th>
+                        <th class="COL PARAM">速</th>
+                        <th class="COL PARAM">知</th>
+                        <th class="COL PARAM">精</th>
+                        <th class="COL PARAM">愛</th>
+                        <th class="COL PARAM">魅</th>
+
+                        <th class="COL RESIST">斬</th>
+                        <th class="COL RESIST">打</th>
+                        <th class="COL RESIST">突</th>
+                        <th class="COL RESIST">熱</th>
+                        <th class="COL RESIST">冷</th>
+                        <th class="COL RESIST">雷</th>
+                        <th class="COL RESIST">陽</th>
+                        <th class="COL RESIST">陰</th>
+
+                        <th class="COL POISON">毒</th>
+                        <th class="COL POISON">暗闇</th>
+                        <th class="COL POISON">スタン</th>
+                        <th class="COL POISON">麻痺</th>
+                        <th class="COL POISON">眠り</th>
+                        <th class="COL POISON">石化</th>
+                        <th class="COL POISON">混乱</th>
+                        <th class="COL POISON">魅了</th>
+                        <th class="COL POISON">狂戦士</th>
+                        <th class="COL POISON">気絶</th>
+                        <th class="COL QUEST">ドロップクエスト</th>
+                      </tr>
+                    </thead>
+                    <tbody id="ARM_TBODY">
+                      <tr id="ARM_BODY_TEMPLATE" class="d-none">
+                        <td class="ICON"></td>
+                        <td class="RARE"></td>
+                        <td class="NAME"></td>
+                        <td class="Power"></td>                        
+                        <td class="COL PARAM">腕</td>
+                        <td class="COL PARAM">体</td>
+                        <td class="COL PARAM">器</td>
+                        <td class="COL PARAM">速</td>
+                        <td class="COL PARAM">知</td>
+                        <td class="COL PARAM">精</td>
+                        <td class="COL PARAM">愛</td>
+                        <td class="COL PARAM">魅</td>
+
+                        <td class="COL RESIST">斬</td>
+                        <td class="COL RESIST">打</td>
+                        <td class="COL RESIST">突</td>
+                        <td class="COL RESIST">熱</td>
+                        <td class="COL RESIST">冷</td>
+                        <td class="COL RESIST">雷</td>
+                        <td class="COL RESIST">陽</td>
+                        <td class="COL RESIST">陰</td>
+
+                        <td class="COL POISON">毒</td>
+                        <td class="COL POISON">暗闇</td>
+                        <td class="COL POISON">スタン</td>
+                        <td class="COL POISON">麻痺</td>
+                        <td class="COL POISON">眠り</td>
+                        <td class="COL POISON">石化</td>
+                        <td class="COL POISON">混乱</td>
+                        <td class="COL POISON">魅了</td>
+                        <td class="COL POISON">狂戦士</td>
+                        <td class="COL POISON">気絶</td>
+                        <td class="COL QUEST"></td>
+                      </tr>
+                    </tbody>
+                  </table>                  
+                </div>
+                <br>
+                <!-- ツール_スタイル下部 -->
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-5008373409434899"
+                    data-ad-slot="6110964621"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"></ins>                
+                <script> (adsbygoogle = window.adsbygoogle || []).push({});</script>            
+            </div>
+            <script> (adsbygoogle = window.adsbygoogle || []).push({});</script>            
+            <p id="PageTopBtn" style="right:10px"><a href="#FILTER"><i class="fas fa-arrow-up"></i></a></p>
+        </div> <!-- main -->
+        <div>
+
+        </div>
+        <script>
+            $(function() {
+                $("#myTable").tablesorter();
+                //$("#armorTable").tablesorter();
+            });
+
+            strOrg = 220;
+            agiOrg = 200;
+            for(var name of Object.keys(WEAPON_DATA)){
+                var weaponTypeList = WEAPON_DATA[name];
+                for(var rare of Object.keys(weaponTypeList)){
+                    var weaponRareList = weaponTypeList[rare];
+                    console.log(MASTER_LV_KEY[name], name, rare, weaponRareList);
+                    for(var weaponInfo of weaponRareList){
+                        $tr = $("#BODY_TEMPLATE").clone();
+                        $tr.removeAttr("id").addClass(MASTER_LV_KEY[name] + " wpRow");
+                        $tr.find(".ICON").append(getWeaponIcon(rare, weaponInfo['Illust'], name));
+                        $tr.find(".RARE").html(rare);
+                        $tr.find(".NAME").html(weaponInfo['Name']);
+                        $tr.find(".WeaponPower").html(weaponInfo['WeaponPower']);
+                        $tr.find(".JutsuPower").html(weaponInfo['JutsuPower']);
+                        $tr.find(".JUTSUPower").html(weaponInfo['JutsuTypes']);
+                        $tr.find(".Power").html(weaponInfo['Power']);
+                        for(k of PARAM_KEY){
+                            $tr.find(`.${k}`).html(weaponInfo[k]);
+                            if(weaponInfo[k] < 0){
+                                $tr.find(`.${k}`).attr("style","color:red;");
+                            } else if(weaponInfo[k] > 0){
+                                $tr.find(`.${k}`).addClass("fuchidori-blue").attr("style","color:white;");
+                            } else if(weaponInfo[k] == 0){
+                                $tr.find(`.${k}`).attr("style","color:gray; font-size:12px;");
+                            }
+                        }
+                        for(k of ["無",
+                            "力","体","器","速","知","火","水","土","風","光","闇",
+                            "力＋","体＋","器＋","速＋","知＋","火＋","水＋","土＋","風＋","光＋","闇＋"]){
+                                if(weaponInfo[k] == 0){
+                                    //$tr.find(`.${k}`).attr("style", "opacity: 0.2;")
+                                }
+                            };
+                        if(weaponInfo['drop'] !== undefined){
+                            $tr.find(`.QUEST`).html(weaponInfo['drop'].replace(/,/g,"<br>"));
+                        }
+
+                        str = strOrg;
+                        agi = agiOrg;
+                        add = 0;
+                        plus = 4;
+                        if (name === "杖") {
+                            add = weaponInfo["INT"];
+                            target = "知＋";
+                        } else if ($.inArray(name, ["銃","小剣","弓"]) > -1) {
+                            add = weaponInfo["DEX"];
+                            target = "器＋";
+                        } else if (name === "体術") {
+                            plus = 0;
+                            target = "速＋";
+                        } else {
+                            add = weaponInfo["STR"];
+                            target = "力＋";
+                        }
+                        str += add;
+                        agi += weaponInfo["AGI"];
+                        
+                        $tr.find(`.DAMAGE1`).html(damage(MASTER_LV_KEY[name], str, agi , weaponInfo['WeaponPower'], 7, 99, 100, 1, 30, -35, 5).toLocaleString());
+                        $tr.find(`.DAMAGE2`).html(damage(MASTER_LV_KEY[name], str, agi , weaponInfo['WeaponPower'], 15, 99, 100, 1, 30, -35, 5).toLocaleString());
+                        $tr.find(`.DAMAGE3`).html(damage(MASTER_LV_KEY[name], str, agi , weaponInfo['WeaponPower'], 28, 99, 100, 1, 30, -35, 5).toLocaleString());
+                        $tr.find(`.DAMAGE4`).html(damage(MASTER_LV_KEY[name], str, agi , weaponInfo['WeaponPower'], 50, 99, 100, 1, 30, -35, 5).toLocaleString());
+                        $tr.find(`.DAMAGE5`).html(damage(MASTER_LV_KEY[name], str, agi , weaponInfo['WeaponPower'], 70, 99, 100, 1, 30, -35, 5).toLocaleString());
+                        $tr.find(`.CALC_PARAM`).append(str);
+                        if(weaponInfo[target] == 1){
+                            $tr.find(`.DAMAGE1`).append("<br>"+damage(MASTER_LV_KEY[name], str + plus, agi + 4, weaponInfo['WeaponPower'], 7, 99, 100, 1, 30, -35, 5).toLocaleString());
+                            $tr.find(`.DAMAGE2`).append("<br>"+damage(MASTER_LV_KEY[name], str + plus, agi + 4, weaponInfo['WeaponPower'], 15, 99, 100, 1, 30, -35, 5).toLocaleString());
+                            $tr.find(`.DAMAGE3`).append("<br>"+damage(MASTER_LV_KEY[name], str + plus, agi + 4, weaponInfo['WeaponPower'], 28, 99, 100, 1, 30, -35, 5).toLocaleString());
+                            $tr.find(`.DAMAGE4`).append("<br>"+damage(MASTER_LV_KEY[name], str + plus, agi + 4, weaponInfo['WeaponPower'], 50, 99, 100, 1, 30, -35, 5).toLocaleString());
+                            $tr.find(`.DAMAGE5`).append("<br>"+damage(MASTER_LV_KEY[name], str + plus, agi + 4, weaponInfo['WeaponPower'], 70, 99, 100, 1, 30, -35, 5).toLocaleString());
+                            $tr.find(`.CALC_PARAM`).append("<br>"+ (str + plus) + `(${target})`);
+                        }
+                        if(name === "体術" && weaponInfo["力＋"] == 1){
+                            $tr.find(`.DAMAGE1`).append("<br>"+damage(MASTER_LV_KEY[name], str + 4, agi, weaponInfo['WeaponPower'], 7, 99, 100, 1, 30, -35, 5).toLocaleString());
+                            $tr.find(`.DAMAGE2`).append("<br>"+damage(MASTER_LV_KEY[name], str + 4, agi, weaponInfo['WeaponPower'], 15, 99, 100, 1, 30, -35, 5).toLocaleString());
+                            $tr.find(`.DAMAGE3`).append("<br>"+damage(MASTER_LV_KEY[name], str + 4, agi, weaponInfo['WeaponPower'], 28, 99, 100, 1, 30, -35, 5).toLocaleString());
+                            $tr.find(`.DAMAGE4`).append("<br>"+damage(MASTER_LV_KEY[name], str + 4, agi, weaponInfo['WeaponPower'], 50, 99, 100, 1, 30, -35, 5).toLocaleString());
+                            $tr.find(`.DAMAGE5`).append("<br>"+damage(MASTER_LV_KEY[name], str + 4, agi, weaponInfo['WeaponPower'], 70, 99, 100, 1, 30, -35, 5).toLocaleString());
+                            $tr.find(`.CALC_PARAM`).append("<br>"+ (str + plus) + `(力＋)`);
+                        }
+                        $("#TBODY").append($tr);
+                    }
+                    //weaponInfo['STR']
+                }
+            }
+            weaponFilter();
+            columnFilter();
+
+            // for(var row of ARMOR_DATA){
+            //     $tr = $("#ARM_BODY_TEMPLATE").clone();
+            //     $tr.removeAttr("id").removeClass("d-none").addClass(MASTER_LV_KEY[name] + " wpRow");
+            //     var type = ["","fullam","heavyam","lightam","robe","fuku","helm","arm","leg","acc"][row['ArmorType']];
+            //     var rare = row['Rarity'].toLowerCase();
+            //     var img = getImgPath(`equipment/${type}_${rare}.png`);
+            //     $tr.find(".ICON").html(`<img src="${img}" width=40>`);
+            //     $tr.find(".RARE").html(rare);
+            //     $tr.find(".NAME").html(row['Name']);
+            //     //$tr.find(".Power").html(weaponInfo['Power']);
+            //     $tr.find(".PARAM").each(function(index){
+            //         $(this).html(row['status'][index]);
+            //     });
+            //     $tr.find(".RESIST").each(function(index){
+            //         $(this).html(row['resist'][index]);
+            //     });
+            //     $tr.find(".POISON").each(function(index){
+            //         $(this).html(row['poison'][index]);
+            //     });
+            //     $tr.find(`.QUEST`).html(row['drop'].replace(/,/g,"<br>"));
+                
+            //     $("#ARM_TBODY").append($tr);
+            // }
+
+
+            $(".filterList").click(function () {
+                // 一回全部消す
+                $(".wpRow").addClass("d-none");
+                $(this).find(".fButton").toggleClass("filterActive");
+                weaponFilter();
+            });
+
+            $(".tableFilter").click(function () {
+                $(this).toggleClass("icon_btn_negative").toggleClass("icon_btn_positive");
+                columnFilter();
+            });
+            function weaponFilter(){
+                var nowFiltering = false;
+                // 絞り込み
+                $(".filterList").each(function () {
+                    // 絞り込み中のみ表示
+                    if ($(this).find(".fButton").hasClass("filterActive")) {
+                        let value = $(this).attr("data-href");
+                        $("." + value).removeClass("d-none");
+                        nowFiltering = true;
+                    }
+                });
+                if(!nowFiltering){
+                    $(".wpRow").removeClass("d-none");
+                }                
+            }
+
+            function columnFilter(){
+                $(".tableFilter").each(function () {
+                    let value = $(this).attr("data-href");
+                    // 絞り込み中のみ表示
+                    if ($(this).hasClass("icon_btn_positive")) {
+                        $("." + value).removeClass("d-none");
+                    } else {
+                        $("." + value).addClass("d-none");
+                    }
+                });
+
+            }
+        </script>
+        <script type="text/javascript" src="https://romasagatool.com/blog/get_the_archives.php?cat=22&callback=rssCallbackCat"></script>
+        <script type="text/javascript" src="https://romasagatool.com/blog/get_the_archives.php?limit=5&callback=rssCallback"></script>
+    </body>
+</html>
