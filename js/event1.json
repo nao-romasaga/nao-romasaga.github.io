@@ -42,7 +42,24 @@
             "endSuffix": "<br>翌4:00 終了",
             "type": "orange",
             "startNone": true
+        },
+        {
+            "startDay": "7",
+            "endDay": "9",
+            "title": "[イベント] <br class='hidden pcBlock'>武器/主防具 聖石洞窟",
+            "startPrefix": "12:00 開始<br>",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "orange"
+        },
+        {
+            "startDay": "7",
+            "endDay": "20",
+            "title": "[イベント] <br class='hidden pcBlock'>修行者の間",
+            "startPrefix": "12:00 開始<br>",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "orange"
         }
+
 
  ],
     "holiday": [
