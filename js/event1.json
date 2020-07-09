@@ -58,7 +58,15 @@
             "startPrefix": "12:00 開始<br>",
             "endSuffix": "<br>翌4:00 終了",
             "type": "orange"
+        },
+        {
+            "startDay": "9",
+            "endDay": "19",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>財宝オーラム2倍<br>魔物挑戦2倍",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue"
         }
+
 
 
  ],
