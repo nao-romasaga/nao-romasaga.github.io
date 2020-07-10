@@ -36,6 +36,14 @@
         },
         {
             "startDay": "10",
+            "endDay": "31",
+            "title": "[ガチャ] <br class='hidden pcBlock'>SF1発売記念UDXガチャ",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "green",
+            "startNone": true
+        },
+        {
+            "startDay": "10",
             "endDay": "14",
             "title": "[イベント] <br class='hidden pcBlock'>キャプテンシルバーと玄竜の秘宝<br>ゲンちゃんと遊ぼう",
             "startPrefix": "12:00 開始<br>",
@@ -60,9 +68,32 @@
             "type": "orange"
         },
         {
+            "startDay": "10",
+            "endDay": "31",
+            "title": "[イベント] <br class='hidden pcBlock'>偽の塔と妖魔の君",
+            "startPrefix": "12:00 開始<br>",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "orange"
+        },
+        {
             "startDay": "9",
             "endDay": "19",
             "title": "[キャンペーン] <br class='hidden pcBlock'>財宝オーラム2倍<br>魔物挑戦2倍",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue"
+        },
+        {
+            "startDay": "1",
+            "endDay": "14",
+            "title": "[メイン2倍] <br class='hidden pcBlock'>最終皇帝女/シルバー/クローディア 大剣キャラ",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue",
+            "startNone": true
+        },
+        {
+            "startDay": "10",
+            "endDay": "31",
+            "title": "[メイン2倍] <br class='hidden pcBlock'>SF1キャラ、陰キャラ、ゼノン",
             "endSuffix": "<br>翌4:00 終了",
             "type": "blue"
         }
