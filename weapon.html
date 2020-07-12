@@ -64,10 +64,15 @@
         <script src="./js/weapon.js" ></script>
         <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
         <style>
+            #RANK_TBODY .PARAM {
+                font-size: 12px;
+                text-align: center;
+            }
             td.PARAM {
                 font-size: 20px;
                 text-align: right;
             }
+
             th.PARAM {
                 font-size: 12px;
                 text-align: center;
@@ -77,6 +82,10 @@
             }
             .RESIST, .POISON{
                 text-align: center;
+            }
+            .now-param {
+                border-radius: 10px;
+                box-shadow: 0px 3px 10px skyblue;
             }
         </style>        
         <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
@@ -110,7 +119,7 @@
                 <label class="badge badge-pill badge-light">絞り込み</label>
                 <div class="filter-bgcolor text-center small row" style="width:100%; margin: 0px;">
                     <ul class="nav text-center width-100" style="margin-bottom: 5px;">
-                        <li id="FILTER" class="subtitle fuchidori-white smallFont">種別</li>
+                        <li id="FILTER" class="subtitle-long fuchidori-white smallFont">種別</li>
                     </ul>
                     <ul class="nav text-center width-100 text-nowrap" style="margin-bottom: 5px;">
                         <li class="col-6"><button id="WPBTN" class="width-100 dispFilter icon_btn_positive fuchidori-white">武器一覧</button></li>
@@ -118,7 +127,7 @@
                     </ul>
 
                     <ul class="WEAPON nav text-center width-100" style="margin-bottom: 5px;">
-                        <li id="FILTER" class="subtitle fuchidori-white smallFont">武器種別</li>
+                        <li id="FILTER" class="subtitle-long fuchidori-white smallFont">武器種別</li>
                     </ul>
                     <ul class="WEAPON nav text-center width-100">
                         <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="ken"><span
@@ -143,7 +152,7 @@
                                     class="icon_mini icon_tsue weapon-icon-button fButton" onclick=""></span></a></li>
                     </ul>
                     <ul class="ARMOR nav text-center width-100" style="margin-bottom: 5px;">
-                        <li id="FILTER" class="subtitle fuchidori-white smallFont">防具種別</li>
+                        <li id="FILTER" class="subtitle-long fuchidori-white smallFont">防具種別</li>
                     </ul>
                     <ul class="ARMOR nav text-center width-100">
                         <li class="col-2 col-sm-1 xs-pad0"><a class="filterListA pad0" data-href="lightam"><span
@@ -166,8 +175,8 @@
                                     class="icon_mini icon_ac weapon-icon-button fButton " onclick=""></span></a></li>
                     </ul>
 
-                    <ul class="nav text-center width-100" style="margin-bottom: 5px;">
-                        <li id="FILTER" class="subtitle fuchidori-white smallFont">画面表示</li>
+                    <ul class="nav text-center width-100" style="margin-top: 10px; margin-bottom: 5px;">
+                        <li id="FILTER" class="subtitle-long fuchidori-white smallFont">画面表示</li>
                     </ul>
                     <ul class="WEAPON nav text-center width-100 text-nowrap">
                         <li class="col-6 col-sm-4"><button class="width-100 tableFilter icon_btn_positive fuchidori-white" data-href="PARAM">ステータス</button></li>
@@ -180,10 +189,119 @@
                         <li class="col-6 col-sm-3"><button class="width-100 tableFilterA icon_btn_negative fuchidori-white" data-href="POISON">状態異常</button></li>
                         <li class="col-6 col-sm-3"><button class="width-100 tableFilterA icon_btn_negative fuchidori-white" data-href="DROP">ドロップ場所</button></li>
                     </ul>
+                    <ul class="ARMOR nav text-center width-100" style="margin-top: 10px; margin-bottom: 5px;">
+                        <li id="FILTER" class="subtitle-long fuchidori-white smallFont">最高パラメータ装備</li>
+                    </ul>
+                    <ul class="ARMOR nav text-center width-100 text-nowrap no-gutters">
+                        <li class="col-3 col-sm" style="margin-bottom:5px;"><button class="width-100 rankFilter icon_btn_negative fuchidori-white" data-href="PARAM_RANK0">腕<span class="d-none d-sm-inline">力</span></button></li>
+                        <li class="col-3 col-sm"><button class="width-100 rankFilter icon_btn_negative fuchidori-white" data-href="PARAM_RANK1">体<span class="d-none d-sm-inline">力</span></button></li>
+                        <li class="col-3 col-sm"><button class="width-100 rankFilter icon_btn_negative fuchidori-white" data-href="PARAM_RANK2">器<span class="d-none d-sm-inline">用さ</span></button></li>
+                        <li class="col-3 col-sm"><button class="width-100 rankFilter icon_btn_negative fuchidori-white" data-href="PARAM_RANK3"><span class="d-sm-none">速</span><span class="d-none d-sm-inline">素早さ</span></button></li>
+                        <li class="col-3 col-sm"><button class="width-100 rankFilter icon_btn_negative fuchidori-white" data-href="PARAM_RANK4">知<span class="d-none d-sm-inline">力</span></button></li>
+                        <li class="col-3 col-sm"><button class="width-100 rankFilter icon_btn_negative fuchidori-white" data-href="PARAM_RANK5">精<span class="d-none d-sm-inline">神</span></button></li>
+                        <li class="col-3 col-sm"><button class="width-100 rankFilter icon_btn_negative fuchidori-white" data-href="PARAM_RANK6">愛</button></li>
+                        <li class="col-3 col-sm"><button class="width-100 rankFilter icon_btn_negative fuchidori-white" data-href="PARAM_RANK7">魅<span class="d-none d-sm-inline">力</span></button></li>
+                        <li class="col-12"  style="margin-bottom:5px;"></li>
+                        <li class="col-3 col-sm" style="margin-bottom:5px;"><button class="width-100 rankFilter icon_btn_negative fuchidori-white" data-href="RESIST_RANK0"><img class="header-icon" src="https://romasagatool.com/img/icon/icon_zan.png"></button></li>
+                        <li class="col-3 col-sm"><button class="width-100 rankFilter icon_btn_negative fuchidori-white" data-href="RESIST_RANK1"><img class="header-icon" src="https://romasagatool.com/img/icon/icon_da.png"></button></li>
+                        <li class="col-3 col-sm"><button class="width-100 rankFilter icon_btn_negative fuchidori-white" data-href="RESIST_RANK2"><img class="header-icon" src="https://romasagatool.com/img/icon/icon_totsu.png"></button></li>
+                        <li class="col-3 col-sm"><button class="width-100 rankFilter icon_btn_negative fuchidori-white" data-href="RESIST_RANK3"><img class="header-icon" src="https://romasagatool.com/img/icon/icon_netsu.png"></button></li>
+                        <li class="col-3 col-sm"><button class="width-100 rankFilter icon_btn_negative fuchidori-white" data-href="RESIST_RANK4"><img class="header-icon" src="https://romasagatool.com/img/icon/icon_rei.png"></button></li>
+                        <li class="col-3 col-sm"><button class="width-100 rankFilter icon_btn_negative fuchidori-white" data-href="RESIST_RANK5"><img class="header-icon" src="https://romasagatool.com/img/icon/icon_rai.png"></button></li>
+                        <li class="col-3 col-sm"><button class="width-100 rankFilter icon_btn_negative fuchidori-white" data-href="RESIST_RANK6"><img class="header-icon" src="https://romasagatool.com/img/icon/icon_yo.png"></button></li>
+                        <li class="col-3 col-sm"><button class="width-100 rankFilter icon_btn_negative fuchidori-white" data-href="RESIST_RANK7"><img class="header-icon" src="https://romasagatool.com/img/icon/icon_in.png"></button></li>
+                        <li class="col-12"  style="margin-bottom:5px;"></li>
+                        <li class="col-12"><button class="width-100 rankFilter icon_btn_positive fuchidori-white" data-href="NONE">非表示</button></li>
+                    </ul>
 
                 </div>
-                <div class="style-bgcolor width-max" style="padding:10px 3px;">
+                <div class="ARMOR style-bgcolor width-max" style="padding:10px 3px;">
+                    <table class="filter-bgcolor width-100" style="color: #faf0b4;">
+                        <thead>
+                            <tr>
+                                <th rowspan=2 style="border-bottom: 1px solid #faf0b4;"></th>
+                                <th>Rare</th>
+                                <th class="COL PARAM">腕</th>
+                                <th class="COL PARAM">体</th>
+                                <th class="COL PARAM">器</th>
+                                <th class="COL PARAM">速</th>
+                                <th class="COL PARAM">知</th>
+                                <th class="COL PARAM">精</th>
+                                <th class="COL PARAM">愛</th>
+                                <th class="COL PARAM">魅</th>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #faf0b4; ">
+                                <th>Name</th>
+                                <th class="COL RESIST"><img class="header-icon" src="https://romasagatool.com/img/icon/icon_zan.png"></th>
+                                <th class="COL RESIST"><img class="header-icon" src="https://romasagatool.com/img/icon/icon_da.png"></th>
+                                <th class="COL RESIST"><img class="header-icon" src="https://romasagatool.com/img/icon/icon_totsu.png"></th>
+                                <th class="COL RESIST"><img class="header-icon" src="https://romasagatool.com/img/icon/icon_netsu.png"></th>
+                                <th class="COL RESIST"><img class="header-icon" src="https://romasagatool.com/img/icon/icon_rei.png"></th>
+                                <th class="COL RESIST"><img class="header-icon" src="https://romasagatool.com/img/icon/icon_rai.png"></th>
+                                <th class="COL RESIST"><img class="header-icon" src="https://romasagatool.com/img/icon/icon_yo.png"></th>
+                                <th class="COL RESIST"><img class="header-icon" src="https://romasagatool.com/img/icon/icon_in.png"></th>                                
+                            </tr>
+                        </thead>
+                        <tbody id="RANK_TBODY" style="font-size: 12px !important;">
+                            <tr class="d-none" id="RANK_TMPL1">
+                                <td class="ICON" rowspan=2 style="border-bottom: 1px solid #faf0b4; "></td>
+                                <td class="RARE">Rare</td>
+                                <td class="COL PARAM">腕</td>
+                                <td class="COL PARAM">体</td>
+                                <td class="COL PARAM">器</td>
+                                <td class="COL PARAM">速</td>
+                                <td class="COL PARAM">知</td>
+                                <td class="COL PARAM">精</td>
+                                <td class="COL PARAM">愛</td>
+                                <td class="COL PARAM">魅</td>
+                            </tr>
+                            <tr class="d-none" id="RANK_TMPL2" style="border-bottom: 1px solid #faf0b4; ">
+                                <td class="NAME"></td>
+                                <td class="COL RESIST"></td>
+                                <td class="COL RESIST"></td>
+                                <td class="COL RESIST"></td>
+                                <td class="COL RESIST"></td>
+                                <td class="COL RESIST"></td>
+                                <td class="COL RESIST"></td>
+                                <td class="COL RESIST"></td>
+                                <td class="COL RESIST"></td>
+                                <td class="COL RESIST"></th>
+                            </tr>
+                        </tbody>
+                    </table>
 
+                    <div id="RESIST_AREA" style="margin-top: 20px;">
+                        <div class="text-center">装備による耐性変化でどれだけダメージが変わるかシミュレーションします</div>
+                        <div class="bg-item text-center">装備効果：合計耐性<span id="SUM_RESIST" class="fuchidori-blue"></span></div>
+                        <table id="RESIST_TABLE" class="filter-bgcolor width-100 text-right" style="color: #faf0b4;">
+                            <tr class="text-center" >
+                                <th colspan=3 style="border-right: 1px solid #faf0b4;">装備前</th>
+                                <th colspan=3 style="border-right: 1px solid #faf0b4;">装備後</th>
+                                <td>軽減</td>
+                            </tr>
+                            <tr class="text-center"  style="border-bottom: 1px solid #faf0b4;">
+                                <td>装備前耐性</td>
+                                <td>ダメージ倍率</td>
+                                <td style="border-right: 1px solid #faf0b4;">ダメージ</td>
+                                <td>装備後耐性</td>
+                                <td>ダメージ倍率</td>
+                                <td style="border-right: 1px solid #faf0b4;">ダメージ</td>
+                                <td>効果</td>
+                            </tr>
+                            <tr><td class="ORG_VAL resist_minus">-65</td><td>208.33%</td><td class="ORG_DAMAGE"></td><td class="ADD_VAL"></td><td class="ADD_PER"></td><td class="ADD_DAMAGE"></td><td class="CUT"></td></tr>
+                            <tr><td class="ORG_VAL resist_minus">-55</td><td>178.57%</td><td class="ORG_DAMAGE"></td><td class="ADD_VAL"></td><td class="ADD_PER"></td><td class="ADD_DAMAGE"></td><td class="CUT"></td></tr>
+                            <tr><td class="ORG_VAL resist_minus">-45</td><td>156.25%</td><td class="ORG_DAMAGE"></td><td class="ADD_VAL"></td><td class="ADD_PER"></td><td class="ADD_DAMAGE"></td><td class="CUT"></td></tr>
+                            <tr><td class="ORG_VAL resist_minus">-25</td><td>125%</td><td class="ORG_DAMAGE"></td><td class="ADD_VAL"></td><td class="ADD_PER"></td><td class="ADD_DAMAGE"></td><td class="CUT"></td></tr>
+                            <tr><td class="ORG_VAL ">0</td><td>100%</td><td class="ORG_DAMAGE"></td><td class="ADD_VAL"></td><td class="ADD_PER"></td><td class="ADD_DAMAGE"></td><td class="CUT"></td></tr>
+                            <tr><td class="ORG_VAL resist_plus">10</td><td>92.59%</td><td class="ORG_DAMAGE"></td><td class="ADD_VAL"></td><td class="ADD_PER"></td><td class="ADD_DAMAGE"></td><td class="CUT"></td></tr>
+                            <tr><td class="ORG_VAL resist_plus">25</td><td>83.33%</td><td class="ORG_DAMAGE"></td><td class="ADD_VAL"></td><td class="ADD_PER"></td><td class="ADD_DAMAGE"></td><td class="CUT"></td></tr>
+                            <tr><td class="ORG_VAL resist_plus">45</td><td>73.53%</td><td class="ORG_DAMAGE"></td><td class="ADD_VAL"></td><td class="ADD_PER"></td><td class="ADD_DAMAGE"></td><td class="CUT"></td></tr>
+                            <tr><td class="ORG_VAL resist_plus">65</td><td>65.79%</td><td class="ORG_DAMAGE"></td><td class="ADD_VAL"></td><td class="ADD_PER"></td><td class="ADD_DAMAGE"></td><td class="CUT"></td></tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="style-bgcolor width-max" style="padding:10px 3px;">
                     <table id="weaponTable" class="WEAPON tablesorter">
                         <thead>
                         <tr class="small">
@@ -363,7 +481,9 @@
 
         </div>
         <script>
+            RESIST_MAX = [];
             $(".ARMOR").slideUp();
+            $("#RESIST_AREA").slideUp();
             
             $(function() {
                 $("#weaponTable").tablesorter();
@@ -376,7 +496,6 @@
                 var weaponTypeList = WEAPON_DATA[name];
                 for(var rare of Object.keys(weaponTypeList)){
                     var weaponRareList = weaponTypeList[rare];
-                    console.log(MASTER_LV_KEY[name], name, rare, weaponRareList);
                     for(var weaponInfo of weaponRareList){
                         $tr = $("#BODY_TEMPLATE").clone();
                         $tr.removeAttr("id").addClass(MASTER_LV_KEY[name] + " wpRow");
@@ -451,11 +570,20 @@
                 }
             }
 
+            var PARAM_RANKING = [];
+            var TAISEI_RANKING = [];
+            for(i=0; i<8; i++){
+                PARAM_RANKING[i] = {"main":[], "sub":[], "acc":[], "mainMax":0, "subMax":0, "accMax": 0};
+                TAISEI_RANKING[i] = {"main":[], "sub":[], "acc":[], "mainMax":0, "subMax":0, "accMax": 0};
+            }
+
             for(var row of ARMOR_DATA){
                 var type = ["","fullam","heavyam","lightam","robe","fuku","helm","arm","leg","acc"][row['ArmorType']];
+                var rankType = ["","main","main","main","main","sub","sub","sub","sub","acc"][row['ArmorType']];
+
                 var rare = row['Rarity'].toLowerCase();
                 var img = getImgPath(`equipment/${type}_${rare}.png`);
-
+                row['icon'] = img;
                 $tr = $("#ARM_BODY_TEMPLATE").clone();
                 $tr.removeAttr("id").addClass(type+ " arRow");
                 $tr.find(".ICON").html(`<img src="${img}" width=40>`);
@@ -464,12 +592,28 @@
                 $tr.find(".Power").html(row['Power']);
                 $tr.find(".PARAM").each(function(index){
                     var v = row['status'][index];
+                    if(rankType != "" && PARAM_RANKING[index][rankType+"Max"] <= v){
+                        if(PARAM_RANKING[index][rankType+"Max"] == v){
+                            PARAM_RANKING[index][rankType].push(row);
+                        } else {
+                            PARAM_RANKING[index][rankType] = [row];
+                        }
+                        PARAM_RANKING[index][rankType+"Max"] = v;
+                    }
                     $(this).html(v);
                     addColor($(this), v);
                 });
 
                 $tr.find(".RESIST").each(function(index){
                     var v = row['resist'][index];
+                    if(rankType != "acc" && TAISEI_RANKING[index][rankType+"Max"] <= v){
+                        if(TAISEI_RANKING[index][rankType+"Max"] == v){
+                            TAISEI_RANKING[index][rankType].push(row);
+                        } else {
+                            TAISEI_RANKING[index][rankType] = [row];
+                        }
+                        TAISEI_RANKING[index][rankType+"Max"] = v;
+                    }
                     $(this).html(v);
                     addColor($(this), v);
                 });
@@ -482,6 +626,9 @@
                 
                 $("#ARM_TBODY").append($tr);
             }
+
+            createRankingTable(PARAM_RANKING, "PARAM_RANK");
+            createRankingTable(TAISEI_RANKING, "RESIST_RANK");
             weaponFilter();
             armorFilter();
             columnFilter("#weaponTable", ".tableFilter");
@@ -523,6 +670,88 @@
                 $(this).toggleClass("icon_btn_negative").toggleClass("icon_btn_positive");
                 columnFilter("#armorTable", ".tableFilterA");
             });
+            $(".rankFilter").click(function () {
+                var target = $(this).attr("data-href");
+                $(".rankFilter").each(function(){
+                    $(this).addClass("icon_btn_negative").removeClass("icon_btn_positive");
+                });
+                $(this).removeClass("icon_btn_negative").addClass("icon_btn_positive");
+
+                $(".RANK_TR").addClass("d-none");
+                if(target != "NONE"){
+                    $("."+target).removeClass("d-none");
+                }
+                if(target.indexOf("RESIST") > -1){
+                    $("#RESIST_AREA").slideDown();
+
+                    var $table = $("#RESIST_TABLE");
+                    var pos = Number(target.substr(11,1));
+                    var max =RESIST_MAX[pos];
+                    $("#SUM_RESIST").html("+"+max);
+                    var damage = 1000;
+                    $table.find(".ORG_VAL").each(function(){
+                        var val = Number($(this).html());
+                        var resist = 1 / (1 + 0.008 * val) * 100;
+                        var org_damage = damage * resist / 100;
+
+                        var add = val + max;
+                        var add_resist = 1 / (1 + 0.008 * add) * 100;
+                        var add_damage = damage * add_resist / 100;
+                        $(this).parent().find(".ORG_DAMAGE").html(Math.round(org_damage));
+                        $(this).parent().find(".ADD_VAL").html(add);
+                        $(this).parent().find(".ADD_PER").html(Math.round(add_resist * 100)/100 +"%");
+                        $(this).parent().find(".ADD_DAMAGE").html(Math.round(add_damage));
+                        $(this).parent().find(".CUT").html( Math.round(100 - (add_damage/org_damage * 100)) +"%");
+                    });
+                } else {
+                    $("#RESIST_AREA").slideUp();
+                }
+            });
+            
+            function createRankingTable(PARAM_RANKING, className){
+                var t = {"main":"主防具","sub":"副防具","acc":"アクセサリー"};
+                for(idx in PARAM_RANKING){
+                    var targetClass = className+idx;
+                    paramInfo = PARAM_RANKING[idx];
+                    max = 0;
+                    for(tag of ["main","sub","acc"]){
+                        $("#RANK_TBODY").append(`<tr class="text-center bg-item RANK_TR d-none ${targetClass}"><td colspan=12>${t[tag]}</td></tr>`);
+                        addFlag = false;
+                        for(armor of paramInfo[tag]){
+                            $rankTr1 = $("#RANK_TMPL1").clone().removeAttr("id").removeClass("").addClass("RANK_TR "+ targetClass);
+                            $rankTr1.find(".ICON").html(`<img src="${armor['icon']}" width=40>`);
+                            $rankTr1.find(".RARE").html("["+armor['Rarity']+"] "+t[tag]);
+                            $rankTr2 = $("#RANK_TMPL2").clone().removeAttr("id").removeClass("").addClass("RANK_TR "+ targetClass);
+                            $rankTr2.find(".NAME").html(armor['Name']);
+                            $rankTr1.find(".PARAM").each(function(index){
+                                var v = armor['status'][index];
+                                $(this).html(v);
+                                if(idx == index && className == "PARAM_RANK"){
+                                    $(this).addClass("now-param");
+                                }
+                                addColor($(this), v);
+                            });
+                            $rankTr2.find(".RESIST").each(function(index){
+                                var v = armor['resist'][index];
+                                $(this).html(v);
+                                if(idx == index && className == "RESIST_RANK"){
+                                    $(this).addClass("now-param");
+                                    if(!addFlag){
+                                        max += v;
+                                        addFlag = true;
+                                    }
+                                }
+                                addColor($(this), v);
+                            });
+                            $("#RANK_TBODY").append($rankTr1);
+                            $("#RANK_TBODY").append($rankTr2);
+                        }
+                    }
+                    if(className == "RESIST_RANK"){
+                        RESIST_MAX.push(max);
+                    }
+                }
+            }
 
             function weaponFilter(){
                 var nowFiltering = false;
