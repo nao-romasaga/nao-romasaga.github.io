@@ -12,6 +12,14 @@
         },
         {
             "startDay": "15",
+            "endDay": "19",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>「SF1発売日記念メダル」ドロップ",
+            "startPrefix": "12:00 開始<br>",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue"
+        },
+        {
+            "startDay": "15",
             "endDay": "28",
             "title": "[イベント] <br class='hidden pcBlock'>ブーツの試練",
             "endSuffix": "<br>翌4:00 終了",
@@ -26,14 +34,6 @@
             "type": "green",
             "startNone": true
         },        
-        {
-            "startDay": "1",
-            "endDay": "14",
-            "title": "[ガチャ] <br class='hidden pcBlock'>ブーツの試練のガチャチケ(1.5周年記念プラチナ)",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "green",
-            "startNone": true
-        },
         {
             "startDay": "10",
             "endDay": "31",
@@ -76,6 +76,13 @@
             "type": "orange"
         },
         {
+            "startDay": "13",
+            "endDay": "99",
+            "title": "[常設イベント] <br class='hidden pcBlock'>ロマンシング大激戦<br>オルロワージュとの戦い",
+            "startPrefix": "12:00 開始<br>",
+            "type": "orange"
+        },
+        {
             "startDay": "9",
             "endDay": "19",
             "title": "[キャンペーン] <br class='hidden pcBlock'>財宝オーラム2倍<br>魔物挑戦2倍",
@@ -96,6 +103,14 @@
             "title": "[メイン2倍] <br class='hidden pcBlock'>SF1キャラ、陰キャラ、ゼノン",
             "endSuffix": "<br>翌4:00 終了",
             "type": "blue"
+        },
+        {
+            "startDay": "15",
+            "endDay": "19",
+            "title": "[イベント] <br class='hidden pcBlock'>副防具 聖石洞窟",
+            "startPrefix": "12:00 開始<br>",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "orange"
         }
 
 
