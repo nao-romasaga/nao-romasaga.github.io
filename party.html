@@ -192,28 +192,27 @@
                     <ul class="nav text-center width-100" style="margin-bottom: 5px;">
                         <li class="fuchidori-white subtitle smallFont">シリーズ</li>
                     </ul>
-                    <ul class="nav text-center width-100">
-                        <li class="col-4 col-sm-2 text-center" style="margin-bottom: 5px;"><a class="filterList pad0"
-                                data-href="RS1"><img src="https://romasagatool.com/img/icon/icon_rs1.png"
-                                    class="width-100 fButton"></a></li>
-                        <li class="col-4 col-sm-2 text-center"><a class="filterList pad0" data-href="RS2"><img
-                                    src="https://romasagatool.com/img/icon/icon_rs2.png" class="width-100 fButton"></a>
-                        </li>
-                        <li class="col-4 col-sm-2 text-center"><a class="filterList pad0" data-href="RS3"><img
-                                    src="https://romasagatool.com/img/icon/icon_rs3.png" class="width-100 fButton"></a>
-                        </li>
-                        <li class="col-4 col-sm-2 text-center" style="margin-bottom: 5px;"><a class="filterList pad0"
-                                data-href="SF1"><img src="https://romasagatool.com/img/icon/icon_sf1.png"
-                                    class="width-100 fButton"></a></li>
-                        <li class="col-4 col-sm-2 text-center"><a class="filterList pad0" data-href="SF2"><img
-                                    src="https://romasagatool.com/img/icon/icon_sf2.png" class="width-100 fButton"></a>
-                        </li>
-                        <li class="col-4 col-sm-2 text-center"><a class="filterList pad0" data-href="OTR"><img
-                                    src="https://romasagatool.com/img/icon/icon_otr.png" class="width-100 fButton"></a>
-                        </li>
-                        <li class="col-4 col-sm-2 text-center"><a class="filterList pad0" data-href="RSR"><img
-                                    src="https://romasagatool.com/img/icon/icon_rsr.png" class="width-100 fButton"></a>
-                        </li>
+                    <ul class="nav text-center width-100" style="font-size:18px;">
+                        <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0"
+                                data-href="RS1"><div class="fButton width-100 filter-bgcolor">RS1</div></a></li>
+                        <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0"
+                                data-href="RS2"><div class="fButton width-100 filter-bgcolor">RS2</div></a></li>
+                        <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0"
+                                data-href="RS3"><div class="fButton width-100 filter-bgcolor">RS3</div></a></li>
+                        <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0"
+                                data-href="SF1"><div class="fButton width-100 filter-bgcolor">SF1</div></a></li>
+                        <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0"
+                                data-href="SF2"><div class="fButton width-100 filter-bgcolor">SF2</div></a></li>
+                        <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0"
+                                data-href="US"><div class="fButton width-100 filter-bgcolor">US</div></a></li>
+                        <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0"
+                                data-href="ES"><div class="fButton width-100 filter-bgcolor">SS</div></a></li>
+                        <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0"
+                                data-href="SS"><div class="fButton width-100 filter-bgcolor">SSG</div></a></li>
+                        <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0"
+                                data-href="RSR"><div class="fButton width-100 filter-bgcolor">SaGaRS</div></a></li>
+                        <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0"
+                                data-href="OTHER"><div class="fButton width-100 filter-bgcolor">その他</div></a></li>
                     </ul>
                 </div>
                 <div class="info-modal dotList" id="_icon_ken">
@@ -276,20 +275,31 @@
                             class="hidden spBlock">サガフロ2</span></div>
                     <section id="SECSF2" class="char-choise-section"></section>
                 </div>
-                <div class="info-modal dotList d-none" id="OTR">
-                    <div class="text-center info-modal-header text-nowrap">
-                        <span class="hidden pcBlock">アンリミテッド・サガ / サガ・スカーレットグレイス / エンペラーズ・サガ</span>
-                        <span class="hidden spBlock">アンサガ/サガスカ/エンサガ</span></div>
-                    <section class="char-choise-section">
-                        <span id="SECUS"></span>
-                        <span id="SECSS"></span>
-                        <span id="SECES"></span>
-                    </section>
+                <div class="info-modal dotList d-none" id="US">
+                    <div class="text-center info-modal-header"><span class="hidden pcBlock">アンリミテッド・サガ</span><span
+                            class="hidden spBlock">アンサガ</span></div>
+                    <section id="SECUS" class="char-choise-section"></section>
+                </div>
+                <div class="info-modal dotList d-none" id="SS">
+                    <div class="text-center info-modal-header"><span class="hidden pcBlock">サガ・スカーレットグレイス</span><span
+                            class="hidden spBlock">サガスカ</span></div>
+                    <section id="SECSS" class="char-choise-section"></section>
+                </div>
+                <div class="info-modal dotList d-none" id="ES">
+                    <div class="text-center info-modal-header"><span class="hidden pcBlock">エンペラーズ・サガ</span><span
+                            class="hidden spBlock">エンサガ</span></div>
+                    <section id="SECES" class="char-choise-section"></section>
                 </div>
                 <div class="info-modal dotList d-none" id="RSR">
-                    <div class="text-center info-modal-header">ロマサガ リ・ユニバース</div>
+                    <div class="text-center info-modal-header"><span class="hidden pcBlock">ロマサガ リ・ユニバース</span><span
+                        class="hidden spBlock">ロマサガRS</span></div>
                     <section id="SECRSR" class="char-choise-section"></section>
                 </div>
+                <div class="info-modal dotList d-none" id="OTHER">
+                    <div class="text-center info-modal-header">その他</div>
+                    <section id="SECGB2" class="char-choise-section"></section>
+                </div>
+                
             </div>
             <!-- ツール_育成チェック_キャラ下 -->
             <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5008373409434899"
