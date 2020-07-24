@@ -17,7 +17,16 @@
             "endSuffix": "<br>翌4:00 終了",
             "type": "blue",
             "startNone": true
+        },
+        {
+            "startDay": "1",
+            "endDay": "5",
+            "title": "[イベント] <br class='hidden pcBlock'>玄蟲との戦い",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "orange",
+            "startNone": true
         }
+
  ],
     "holiday": [
     ]
