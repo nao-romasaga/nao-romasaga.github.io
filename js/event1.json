@@ -111,10 +111,14 @@
             "startPrefix": "12:00 開始<br>",
             "endSuffix": "<br>翌4:00 終了",
             "type": "orange"
+        },
+        {
+            "startDay": "24",
+            "endDay": "29",
+            "title": "[スタ半] <br class='hidden pcBlock'>「メイン全話」「遺跡潜り全種」",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue"
         }
-
-
-
  ],
     "holiday": [
     ]

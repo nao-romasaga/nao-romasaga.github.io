@@ -9,6 +9,14 @@
             "endSuffix": "<br>翌4:00 終了",
             "type": "green",
             "startNone": true
+        },
+        {
+            "startDay": "1",
+            "endDay": "5",
+            "title": "[キャンペーン] サガスカ 緋色の野望発売日記念メダル ドロップ",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue",
+            "startNone": true
         }
  ],
     "holiday": [
