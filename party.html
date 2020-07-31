@@ -212,7 +212,7 @@
                         <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0"
                                 data-href="RSR"><div class="fButton width-100 filter-bgcolor">SaGaRS</div></a></li>
                         <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0"
-                                data-href="OTHER"><div class="fButton width-100 filter-bgcolor">その他</div></a></li>
+                                data-href="OTHER"><div class="fButton width-100 filter-bgcolor text-nowrap">その他</div></a></li>
                     </ul>
                 </div>
                 <div class="info-modal dotList" id="_icon_ken">
@@ -592,7 +592,12 @@
         <tr class="text-center nowData" onclick="">
             <td></td>
             <td>
-                <p style="margin-bottom:-5px"><img src="./img/icon/icon_menu.png" width="20" height="20"> HP</p><span class="HP d-lg-none limitFont">0</span>
+                <span class="text-nowrap" style="margin-bottom:-5px">
+                    <img src="./img/icon/icon_menu.png" width="20" height="20" style="position: absolute; top:5px; left:5px;"> HP / Max <span class="BASE_HP d-none d-sm-inline">0</span>
+                </span>
+                <div class="d-lg-none limitFont text-nowrap">
+                    <span class="HP">0</span> / <span class="BASE_HP small">0</span>
+                </div>
             </td>
             <td class="stCol">
                 <p style="margin-bottom:-5px">腕</p><span class="STR d-lg-none limitFont"></span>
