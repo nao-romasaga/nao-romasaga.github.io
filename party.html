@@ -49,6 +49,18 @@
     <script src="./js/party.js"></script>
     <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
     <style>
+        .party-footer{
+            position: relative;
+            bottom:10px; height: 60px;
+            overflow-x: scroll; overflow-y: hidden;
+            white-space: nowrap;                    
+            -ms-overflow-style: none;    /* IE, Edge 対応 */
+            scrollbar-width: none;       /* Firefox 対応 */
+        }
+        .party-footer::-webkit-scrollbar {  /* Chrome, Safari 対応 */
+            display:none;
+        }                    
+
         .limitFont {
             font-size:15px;
         }
@@ -562,7 +574,7 @@
                 </div>
                 <div class="width-100 bg-simple small text-center" style="height:80px;" id="FOOTER_PARTY">
                     <div style="position: relative; top:0px;">▼編成中のパーティ▼ (タップで移動)</div>
-                    <div id="PARTY_FOOTER" style="position: relative; bottom:10px; height: 60px; overflow-x: scroll;overflow-y: hidden;white-space: nowrap;">
+                    <div id="PARTY_FOOTER" class="party-footer">
                         <img id="footer_left" class="d-sm-none blinking" src="https://romasagatool.com/img/icon/icon_arrow_left.png" style="position: fixed; left: 0px; height: 40px; z-index: 1;">
                         <img id="footer_right" class="d-sm-none blinking" src="https://romasagatool.com/img/icon/icon_arrow_right.png" style="position: fixed; right: 0px; height: 40px; z-index: 1;">
                         <div id="float-footer"></div>
