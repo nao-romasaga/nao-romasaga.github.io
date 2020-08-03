@@ -1,31 +1,7 @@
 {
     "year": 2020,
-    "month": 8,
+    "month": 9,
     "event": [
-        {
-            "startDay": "1",
-            "endDay": "14",
-            "title": "[ガチャ] <br class='hidden pcBlock'>ブーツの試練のガチャチケ(1.5周年記念プラチナ)",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "green",
-            "startNone": true
-        },
-        {
-            "startDay": "1",
-            "endDay": "5",
-            "title": "[キャンペーン] サガスカ 緋色の野望発売日記念メダル ドロップ",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "blue",
-            "startNone": true
-        },
-        {
-            "startDay": "1",
-            "endDay": "5",
-            "title": "[イベント] <br class='hidden pcBlock'>玄蟲との戦い",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "orange",
-            "startNone": true
-        }
 
  ],
     "holiday": [
