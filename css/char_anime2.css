@@ -118,7 +118,7 @@
         display: inline-block;
         width: 45px;
         height: 45px;
-        background-position: -335px -175px !important;
+        background-position: -335px -175px;
         margin: 0 0 0 0px;
         animation: winner 1s steps(1);
     }
@@ -126,7 +126,7 @@
         display: inline-block;
         width: 45px;
         height: 45px;
-        background-position: -335px -265px !important;
+        background-position: -335px -265px;
         margin: 0 0 0 0px;
         animation: loser 1s steps(1);
     }        
@@ -136,35 +136,31 @@
         display: inline-block;
         width: 60px;
         height: 60px;
-        background-position: -330px -170px !important;
         margin: 0 0 0 0px;
+        background-position: -330px -170px;
         animation: winner 1s steps(1);
+        animation-fill-mode: forwards;
     }
     .char-loser {
         display: inline-block;
         width: 60px;
         height: 60px;
-        background-position: -330px -250px !important;
+        background-position: -330px -250px;
         margin: 0 0 0 0px;
         animation: loser 1s steps(1);
+        animation-fill-mode: forwards;
     }            
 }
 @keyframes winner {
-    0% { background-position: -10px -10px;} /* 1.1 */
-    5% { background-position: -10px -10px;} /* 1.1 */
-    10% { background-position: -330px -10px;} /* 5.1 */
-    15% { background-position: -90px -90px;} /* 2.2 */
-    20% { background-position: -330px -10px; transform: scale(-1, 1);} /* 5.1 */
-    25% { background-position: -10px -10px; transform: scale(1, 1);} /* 1.1 */
-    30% { background-position: -330px -10px;} /* 5.1 */
-    35% { background-position: -90px -90px;} /* 2.2 */
-    40% { background-position: -330px -10px; transform: scale(-1, 1);} /* 5.1 */
-    45% { background-position: -10px -10px; transform: scale(1, 1);} /* 1.1 */
-    50% { background-position: -330px -10px;} /* 5.1 */
-    55% { background-position: -90px -90px;} /* 2.2 */
-    60% { background-position: -330px -10px;} /* 5.1 */
-    61% { background-position: -330px -170px} /* 1.1 */
+    10% { background-position: -10px -90px;} /* 1.1 */
+    20% { background-position: -330px -90px;} /* 5,2 */
+    60% { background-position: -90px -90px;} /* 2.2 */
+    70% { background-position: -330px -10px; transform: scale(-1, 1);} /* 5.1 */
+    80% { background-position: -10px -10px; transform: scale(1, 1);} /* 1.1 */
+    90% { background-position: -330px -170px} /* 5.3 */
+    100% { background-position: -330px -170px} /* 5.3 */
 }
+
 @keyframes loser {
     0% { background-position: -10px -10px;} /* 1.1 */
     5% { background-position: -10px -10px;} /* 1.1 */
@@ -185,7 +181,7 @@
     display: inline-block;
     width: 30px;
     height: 30px;
-    background-position: -45px -85px !important;
+    background-position: -45px -85px;
     margin: 0 0 0 0px;
     animation: eisho-mini 2s steps(1) infinite;
 }
