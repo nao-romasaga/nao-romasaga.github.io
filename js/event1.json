@@ -80,7 +80,13 @@
             "type": "blue",
             "startNone": true
         },
-
+        {
+            "startDay": "11",
+            "endDay": "31",
+            "title": "[メイン2倍] <br class='hidden pcBlock'>詩人/アルベルト/アイシャ/ホーク/ダーク/棍棒キャラ/陽キャラ",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue"
+        },
         {
             "startDay": "1",
             "endDay": "5",
@@ -88,6 +94,13 @@
             "endSuffix": "<br>翌4:00 終了",
             "type": "green",
             "startNone": true
+        },
+        {
+            "startDay": "11",
+            "endDay": "31",
+            "title": "[ガチャ] <br class='hidden pcBlock'>SF1 UDXガチャ",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "green"
         },
         {
             "startDay": "1",
@@ -113,6 +126,14 @@
             "type": "orange",
             "startNone": true
         },
+        {
+            "startDay": "11",
+            "endDay": "31",
+            "title": "[イベント] <br class='hidden pcBlock'>シルバー親分との三番稽古",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "orange"
+        },
+        
         {
             "startDay": "5",
             "endDay": "8",
