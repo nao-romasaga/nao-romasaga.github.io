@@ -524,16 +524,31 @@
     background-position: 0px -320px;
 }
 
-@media screen and (max-width:340px) {
+/*　画面サイズ〜320pxはここを読み込む　*/
+@media screen and (min-width: 0px) and (max-width: 320px) {
     .char-dot-base {
         top: -15px;
         left: -15px;
     }
 }
-@media screen and (min-width:340px) {
+/*　画面サイズが321pxからはここを読み込む　*/
+@media screen and (min-width:321px) and ( max-width:767px) { 
+    .char-dot-base {
+        top: -10px;
+        left: -10px;
+    }
+}
+/*　画面サイズが768pxから1024pxまではここを読み込む　*/
+@media screen and (min-width:768px) and ( max-width:1024px) {
     .char-dot-base {
         top: -9px;
-        left: -10px;
+    }
+}
+
+/*　画面サイズが1024pxからはここを読み込む　*/
+@media screen and (min-width:1024px) {
+    .char-dot-base {
+        top: -9px;
     }
 }
 
