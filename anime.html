@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#" lang="ja">
+    <head>
+        <script src="./js/jquery-3.3.1.min.js"></script>
+        <script src="./js/lib/lazysizes.min.js"></script>
+        <script src="./js/lib/ls.unveilhooks.min.js"></script>
+
+        <script src="./js/data_STYLEMASTER_style.js" ></script>
+        <!-- Global site tag (gtag.js) - Google Analytics         -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138966739-1"></script>
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
+        <script src="./js/asyncFunc.js"></script>
+        <script src="./js/data_CHARMASTER.js" ></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', 'UA-138966739-1');
+        </script>
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <meta charset="utf-8">
+        <title>【ロマサガRS】ドット絵一覧</title>
+        <meta name="description" content="ロマサガRSのドット絵を眺めるツールです。"/>
+        <meta property="og:title" content="【ロマサガRS】ドット絵一覧" />
+        <meta property="og:url" content="https://http://nao-romasaga.github.io/anime.html" />
+        <meta property="og:description" content="ロマサガRSのドット絵を眺めるツールです。" />
+        <meta name="description" content="ロマサガRSのドット絵を眺めるツールです。【ロマンシングサガ リユニバース】" />
+        <meta property="og:site_name" content="ロマサガRS便利ツール" />
+        <meta property="og:type" content="article">
+        <meta property="og:locale" content="ja_JP" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@nao_romasaga_rs" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="./css/bootstrap/bootstrap.min.css">
+        <script src="./js/bootstrap/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="./css/style2.css">
+        
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/ui/3.5.2/firebase-ui-auth__ja.js"></script>
+        <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+
+        <script src="./js/Firebase.js"></script>
+        <script src="./js/utils2.js" ></script>
+        <script src="./js/anime.js" ></script>
+        <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+        <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div class ="haikei">
+            <div class="container">
+                <h3 class="text-center title-text">ドット絵 一覧</h3>
+                <p class="text-right opacity"><small>バグ発見、ご要望は <a href="https://peing.net/ja/nao_romasaga_rs" target="new">質問箱</a>まで</small>
+                </p>
+                <!-- ツール_スタイル上部 -->
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-5008373409434899"
+                    data-ad-slot="5836482514"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"></ins>
+                <label class="badge badge-pill badge-light">絞り込み</label>
+                <div class="filter-bgcolor text-center small row" style="width:100%; margin: 0px;">
+                    <ul class="nav text-center width-100" style="margin-bottom: 5px;">
+                        <li id="FILTER" class="subtitle fuchidori-white smallFont">武器種別</li>
+                    </ul>
+                    <ul class="nav text-center width-100">
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_ken"><span
+                                    class="icon_mini icon_ken weapon-icon-button fButton" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_dken"><span
+                                    class="icon_mini icon_dken weapon-icon-button fButton" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_ono"><span
+                                    class="icon_mini icon_ono weapon-icon-button fButton" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_kon"><span
+                                    class="icon_mini icon_kon weapon-icon-button fButton" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_tai"><span
+                                    class="icon_mini icon_tai weapon-icon-button fButton" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_ju"><span
+                                    class="icon_mini icon_ju weapon-icon-button fButton" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_sken"><span
+                                    class="icon_mini icon_sken weapon-icon-button fButton" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_yumi"><span
+                                    class="icon_mini icon_yumi weapon-icon-button fButton" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_yari"><span
+                                    class="icon_mini icon_yari weapon-icon-button fButton" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_tsue"><span
+                                    class="icon_mini icon_tsue weapon-icon-button fButton" onclick=""></span></a></li>
+                    </ul>
+                    <ul class="nav text-center width-100" style="margin-bottom: 5px;">
+                        <li class="fuchidori-white subtitle smallFont">シリーズ</li>
+                    </ul>
+                    <ul class="nav text-center width-100">
+                        <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0"
+                            data-href="RS1"><div class="fButton width-100 filter-bgcolor">RS1</div></a></li>
+                    <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0"
+                            data-href="RS2"><div class="fButton width-100 filter-bgcolor">RS2</div></a></li>
+                    <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0"
+                            data-href="RS3"><div class="fButton width-100 filter-bgcolor">RS3</div></a></li>
+                    <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0"
+                            data-href="SF1"><div class="fButton width-100 filter-bgcolor">SF1</div></a></li>
+                    <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0"
+                            data-href="SF2"><div class="fButton width-100 filter-bgcolor">SF2</div></a></li>
+                    <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0"
+                            data-href="US"><div class="fButton width-100 filter-bgcolor">US</div></a></li>
+                    <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0"
+                            data-href="ES"><div class="fButton width-100 filter-bgcolor">ES</div></a></li>
+                    <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0"
+                            data-href="SS"><div class="fButton width-100 filter-bgcolor">SSG</div></a></li>
+                    <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0"
+                            data-href="RSR"><div class="fButton width-100 filter-bgcolor">SaGaRS</div></a></li>
+                    <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0"
+                            data-href="OTHER"><div class="fButton width-100 filter-bgcolor text-nowrap">その他</div></a></li>
+                    </ul>
+                </div>
+                <label class="badge badge-pill badge-light">ドット絵</label>
+                <style>
+                    .m_fixed {
+                        position: fixed;
+                        top:0px;
+                        left:0px;
+                        z-index:2;
+                    }
+                </style>
+                <div class="filter-bgcolor text-center small row width-100" style="margin:auto;" id="MOTION_DIV">
+                    <ul class="nav text-center width-100" style="margin-bottom: 5px;">
+                        <li id="FILTER" class="subtitle fuchidori-white smallFont">ポーズ</li>
+                    </ul>
+                    <ul class="nav text-center width-100 text-nowrap" style="height: 180px; overflow-y: scroll;">
+                        <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;">
+                            <a class="pauseList pad0" data-href="front1"><div class="fButton width-100 filter-bgcolor">歩き(前):1</div></a></li>
+                        <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;">
+                            <a class="pauseList pad0" data-href="front2"><div class="fButton width-100 filter-bgcolor">歩き(前):2</div></a></li>
+                        <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;">
+                            <a class="pauseList pad0" data-href="front3"><div class="fButton width-100 filter-bgcolor">歩き(前):3</div></a></li>
+                        <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;">
+                            <a class="pauseList pad0" data-href="side1"><div class="fButton width-100 filter-bgcolor">歩き(横):1</div></a></li>
+                        <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;">
+                            <a class="pauseList pad0" data-href="side2"><div class="fButton width-100 filter-bgcolor">歩き(横):2</div></a></li>
+                        <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;">
+                            <a class="pauseList pad0" data-href="side3"><div class="fButton width-100 filter-bgcolor">歩き(横):3</div></a></li>
+                        <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;">
+                            <a class="pauseList pad0" data-href="back1"><div class="fButton width-100 filter-bgcolor">歩き(後):1</div></a></li>
+                        <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;">
+                            <a class="pauseList pad0" data-href="back2"><div class="fButton width-100 filter-bgcolor">歩き(後):2</div></a></li>
+                        <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;">
+                            <a class="pauseList pad0" data-href="back3"><div class="fButton width-100 filter-bgcolor">歩き(後):3</div></a></li>
+                        <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;">
+                            <a class="pauseList pad0" data-href="kamae1"><div class="fButton width-100 filter-bgcolor">構え:1</div></a></li>
+                        <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;">
+                            <a class="pauseList pad0" data-href="kamae2"><div class="fButton width-100 filter-bgcolor">構え:2</div></a></li>
+                        <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;">
+                            <a class="pauseList pad0" data-href="eisho1"><div class="fButton width-100 filter-bgcolor">詠唱:1</div></a></li>
+                        <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;">
+                            <a class="pauseList pad0" data-href="eisho2"><div class="fButton width-100 filter-bgcolor">詠唱:2</div></a></li>
+                        <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;">
+                            <a class="pauseList pad0" data-href="hatsudo"><div class="fButton width-100 filter-bgcolor">発動</div></a></li>
+                        <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;">
+                            <a class="pauseList pad0" data-href="sentaku"><div class="fButton width-100 filter-bgcolor">選択</div></a></li>
+                        <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;">
+                            <a class="pauseList pad0" data-href="hashiri1"><div class="fButton width-100 filter-bgcolor">走り:1</div></a></li>
+                        <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;">
+                            <a class="pauseList pad0" data-href="hashiri2"><div class="fButton width-100 filter-bgcolor">走り:2</div></a></li>
+                        <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;">
+                            <a class="pauseList pad0" data-href="hashiri3"><div class="fButton width-100 filter-bgcolor">走り:3</div></a></li>
+                        <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;">
+                            <a class="pauseList pad0" data-href="damage"><div class="fButton width-100 filter-bgcolor">ダメージ</div></a></li>
+                        <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;">
+                            <a class="pauseList pad0" data-href="hinshi"><div class="fButton width-100 filter-bgcolor">瀕死</div></a></li>
+                        <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;">
+                            <a class="pauseList pad0" data-href="kizetsu"><div class="fButton width-100 filter-bgcolor">気絶</div></a></li>
+                    </ul>
+                </div>
+
+                <div class="info-modal dotList width-max">
+                    <div class="text-center info-modal-header"><span class="hidden pcBlock">ドット 一覧</span><span
+                            class="hidden spBlock">ロマサガ1</span></div>
+                    <section id="DOT_AREA" class="char-choise-section2"></section>
+                    <div id="CHAR_HEAD_TMPL" class="d-none subtitle-long fuchidori-white smallFont" style="padding-left: 30px; padding-right: 40px; display:block;"></div>
+                </div>
+
+                <div class="filter-bgcolor styleChoiceArea width-100" style="margin:10px 0px">
+                    <div class="subtitle-long" style="margin-bottom:10px;">スタイル ドット選択</div><br>
+                    <div id="styleChoice"></div><!-- スタイルアイコン表示 -->
+                </div>
+                <!-- ツール_スタイル下部 -->
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-5008373409434899"
+                    data-ad-slot="6110964621"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"></ins>                
+                <script> (adsbygoogle = window.adsbygoogle || []).push({});</script>            
+            </div>
+            <script> (adsbygoogle = window.adsbygoogle || []).push({});</script>            
+            <p id="PageTopBtn" style="right:10px"><a href="#FILTER"><i class="fas fa-arrow-up"></i></a></p>
+        </div> <!-- main -->
+    </body>
+</html>

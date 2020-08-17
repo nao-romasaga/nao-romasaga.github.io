@@ -118,17 +118,17 @@
         display: inline-block;
         width: 45px;
         height: 45px;
-        background-position: -335px -175px;
         margin: 0 0 0 0px;
         animation: winner 1s steps(1);
+        animation-fill-mode: forwards;
     }
     .char-loser {
         display: inline-block;
         width: 45px;
         height: 45px;
-        background-position: -335px -265px;
         margin: 0 0 0 0px;
         animation: loser 1s steps(1);
+        animation-fill-mode: forwards;
     }        
 }
 @media screen and (min-width:340px) {
@@ -137,7 +137,6 @@
         width: 60px;
         height: 60px;
         margin: 0 0 0 0px;
-        background-position: -330px -170px;
         animation: winner 1s steps(1);
         animation-fill-mode: forwards;
     }
@@ -145,12 +144,12 @@
         display: inline-block;
         width: 60px;
         height: 60px;
-        background-position: -330px -250px;
         margin: 0 0 0 0px;
         animation: loser 1s steps(1);
         animation-fill-mode: forwards;
     }            
 }
+
 @keyframes winner {
     10% { background-position: -10px -90px;} /* 1.1 */
     20% { background-position: -330px -90px;} /* 5,2 */
@@ -446,4 +445,118 @@
 }
 @keyframes down {
     0% { background-position: -10px -330px;}
+}
+
+
+
+
+/****************************************
+ ** new 
+ ****************************************/
+ .char-dot-base {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin: 0 0 0 0px;
+}
+.char-pause-front1 {
+    background-position: 0px 0px;
+}
+.char-pause-front2 {
+    background-position: -80px 0px;
+}
+.char-pause-front3 {
+    background-position: -160px 0px;
+}
+.char-pause-side1 {
+    background-position: -240px 0px;
+}
+.char-pause-side2 {
+    background-position: -320px 0px;
+}
+.char-pause-side3 {
+    background-position: 0px -80px;
+}
+.char-pause-back1 {
+    background-position: -80px -80px;
+}
+.char-pause-back2 {
+    background-position: -160px -80px;
+}
+.char-pause-back3 {
+    background-position: -240px -80px;
+}
+.char-pause-kamae1 {
+    background-position: -320px -80px;
+}
+.char-pause-kamae2 {
+    background-position: 0px -160px;
+}
+.char-pause-eisho1 {
+    background-position: -80px -160px;
+}
+.char-pause-eisho2 {
+    background-position: -160px -160px;
+}
+.char-pause-hatsudo {
+    background-position: -240px -160px;
+}
+.char-pause-sentaku {
+    background-position: -320px -160px;
+}
+.char-pause-hashiri1 {
+    background-position: 0px -240px;
+}
+.char-pause-hashiri2 {
+    background-position: -80px -240px;
+}
+.char-pause-hashiri3 {
+    background-position: -160px -240px;
+}
+.char-pause-damage {
+    background-position: -240px -240px;
+}
+.char-pause-hinshi {
+    background-position: -320px -240px;
+}
+.char-pause-kizetsu {
+    background-position: 0px -320px;
+}
+
+@media screen and (max-width:340px) {
+    .char-dot-base {
+        top: -15px;
+        left: -15px;
+    }
+}
+@media screen and (min-width:340px) {
+    .char-dot-base {
+        top: -9px;
+        left: -10px;
+    }
+}
+
+.char-winner2 {
+    animation: winner2 1s steps(1);
+    animation-fill-mode: forwards;
+}
+@keyframes winner2 {
+    10% { background-position: 0px -80px;} /* 1.1 */
+    20% { background-position: -320px -80px;} /* 5,2 */
+    60% { background-position: -80px -80px;} /* 2.2 */
+    70% { background-position: -320px 0px; transform: scale(-1, 1);} /* 5.1 */
+    80% { background-position: 0px 0px; transform: scale(1, 1);} /* 1.1 */
+    90% { background-position: -320px -160px} /* 5.3 */
+    100% { background-position: -320px -160px} /* 5.3 */
+}
+
+.char-aruku-left2 {
+    animation: left-aruki2 0.6s steps(1) infinite alternate;
+}            
+@keyframes left-aruki2 {
+    0% { background-position: -240px 0px;}
+    25% { background-position: -320px 0px;}
+    75% { background-position: 0px -80px;}
+    100% { background-position: 0px -80px;}
 }
