@@ -556,6 +556,11 @@
     animation: winner2 1s steps(1);
     animation-fill-mode: forwards;
 }
+.char-loser2 {
+    animation: loser2 1s steps(1);
+    animation-fill-mode: forwards;
+}        
+
 @keyframes winner2 {
     10% { background-position: 0px -80px;} /* 1.1 */
     20% { background-position: -320px -80px;} /* 5,2 */
@@ -574,4 +579,21 @@
     25% { background-position: -320px 0px;}
     75% { background-position: 0px -80px;}
     100% { background-position: 0px -80px;}
+}
+@keyframes loser2 {
+    0% { background-position: 0px 0px;} /* 1.1 */
+    5% { background-position: 0px 0px;} /* 1.1 */
+    10% { background-position: -320px 0px;} /* 5.1 */
+    15% { background-position: -80px -80px;} /* 2.2 */
+    20% { background-position: -320px 0px; transform: scale(-1, 1);} /* 5.1 */
+    25% { background-position: 0px 0px; transform: scale(1, 1);} /* 1.1 */
+    30% { background-position: -320px 0px;} /* 5.1 */
+    35% { background-position: -80px -80px;} /* 2.2 */
+    40% { background-position: -320px 0px; transform: scale(-1, 1);} /* 5.1 */
+    45% { background-position: 0px 0px; transform: scale(1, 1);} /* 1.1 */
+    50% { background-position: -320px 0px;} /* 5.1 */
+    55% { background-position: -80px -80px;} /* 2.2 */
+    60% { background-position: -320px 0px;} /* 5.1 */
+    61% { background-position: -320px -240px} /* 1.1 */
+    100% { background-position: -320px -240px} /* 1.1 */
 }

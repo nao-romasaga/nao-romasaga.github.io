@@ -32,6 +32,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="./js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="./js/jquery.ui.touch-punch.js"></script>
+    <script src="./js/lib/lazysizes.min.js"></script>
+    <script src="./js/lib/ls.unveilhooks.min.js"></script>
+    
     <link rel="stylesheet" type="text/css" href="./css/bootstrap/bootstrap.min.css">
     <script src="./js/popper.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
@@ -51,7 +54,7 @@
     <style>
         .party-footer{
             position: relative;
-            bottom:10px; height: 60px;
+            bottom:10px; height: 70px;
             overflow-x: scroll; overflow-y: hidden;
             white-space: nowrap;                    
             -ms-overflow-style: none;    /* IE, Edge 対応 */
@@ -563,7 +566,7 @@
                     <div class="col-5"><button id="FOOTER_QUEST"  class="icon_btn_positive width-100 width-max fuchidori-white footer-font " style="padding:5px 0px;"><i class="fas fa-arrow-up d-none d-md-inline"></i> クエスト選択 <i class="fas fa-arrow-up"></i><br class="d-md-none"><span class="d-none d-md-inline">　</span><span class="footer-info text-nowrap d-none d-md-inline" id="NOW_QUEST">G23-25(76) (HP1020) </span></button></div>
                     <div class="col-5"><button id="FOOTER_CHAR"  class="icon_btn_positive width-100 width-max fuchidori-white footer-font " style="padding:5px 0px;"><i class="fas fa-arrow-up d-none d-md-inline"></i> キャラ選択 <i class="fas fa-arrow-up"></i><br class="d-md-none"><span class="d-none d-md-inline">　</span><span class="footer-info text-nowrap d-none d-md-inline"><span id="NOW_PARTYNUM">0</span>体 編成中</span></button></div>
                 </div>
-                <div class="width-100 bg-simple small text-center" style="height:80px;" id="FOOTER_PARTY">
+                <div class="width-100 bg-simple small text-center" style="height:95px;" id="FOOTER_PARTY">
                     <div style="position: relative; top:0px;">▼編成中のパーティ▼ (タップで移動)</div>
                     <div id="PARTY_FOOTER" class="party-footer">
                         <img id="footer_left" class="d-sm-none blinking" src="https://romasagatool.com/img/icon/icon_arrow_left.png" style="position: fixed; left: 0px; height: 40px; z-index: 1;">
@@ -579,8 +582,8 @@
     <!-- ==  テンプレート             == -->
     <!-- ============================= -->
     <div class="d-none charTableParent row" id="CHAR_TEMPLATE_PARENT" style="margin:0px; padding: 0px 10px;">
-        <div class="col-2 CHAR_DOT text-right SIMPLE_HIDE" style="margin-bottom:0px"></div>
-        <div class="col-10 row small SIMPLE_HIDE">
+        <div class="col-3 CHAR_DOT text-center SIMPLE_HIDE" style="margin-bottom:0px"></div>
+        <div class="col-9 row small SIMPLE_HIDE">
             <div class="col-12 fukidashi-left text-left ">
                 合計ステータス:<span class="SUM"></span>
                 <span class="d-none d-lg-inline">(AVG:<span class="AVG"></span>)</span>
