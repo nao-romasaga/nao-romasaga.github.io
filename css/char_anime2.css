@@ -346,52 +346,7 @@
     90% { transform:translateX(25%);}
     100% { transform:translateX(0%)}
 }
-.char-stup2 {
-    display: inline-block;
-    width: 60px;
-    height: 60px;
-    background-position: -330px -170px;
-    margin: 0 0 0 0px;
-    animation: stup2 1.3s steps(1);
-}
-.char-stup {
-    display: inline-block;
-    width: 60px;
-    height: 60px;
-    background-position: -330px -170px;
-    margin: 0 0 0 0px;
-    animation: stup 1.3s steps(1);
-}
-@keyframes stup {
-    5% { background-position: -10px -10px;} /* 1.1 */
-    10% { background-position: -330px -10px; transform: scale(-1, 1);} /* 5.1 */
-    15% { background-position: -90px -90px;} /* 2.2 */
-    20% { background-position: -330px -10px; transform: scale(1, 1);} /* 5.1 */
-    25% { background-position: -330px -170px} /* 1.1 */
-}         
-@keyframes stup2 {
-    5% { background-position: -10px -10px;} /* 1.1 */
-    10% { background-position: -330px -10px; transform: scale(-1, 1);} /* 5.1 */
-    15% { background-position: -90px -90px;} /* 2.2 */
-    20% { background-position: -330px -10px; transform: scale(1, 1);} /* 5.1 */
-    25% { background-position: -330px -170px} /* 1.1 */
-}
-.char-stmiss {
-    display: inline-block;
-    width: 60px;
-    height: 60px;
-    background-position: -330px -250px;
-    margin: 0 0 0 0px;
-    animation: stmiss 1.3s steps(1);
-}
 
-@keyframes stmiss {
-    0% { background-position: -10px -10px;} /* 1.1 */
-    5% { background-position: -330px -10px; transform: scale(-1, 1);} /* 5.1 */
-    10% { background-position: -90px -90px;} /* 2.2 */
-    15% { background-position: -330px -10px; transform: scale(1, 1);} /* 5.1 */
-    20% { background-position: -330px -250px} /* 1.1 */
-}
 .char-damage {
     display: inline-block;
     width: 60px;
@@ -550,6 +505,41 @@
     .char-dot-base {
         top: -9px;
     }
+}
+
+.char-stup {
+    animation: stup 1.3s steps(1);
+    animation-fill-mode: forwards;
+}
+.char-stup2 {
+    animation: stup2 1.3s steps(1);
+    animation-fill-mode: forwards;
+}
+@keyframes stup {
+    5% { background-position: 0px 0px;} /* 1.1 */
+    10% { background-position: -320px 0px; transform: scale(-1, 1);} /* 5.1 */
+    15% { background-position: -80px -80px;} /* 2.2 */
+    20% { background-position: -320px 0px; transform: scale(1, 1);} /* 5.1 */
+    25% { background-position: -320px -160px} /* 5.3 */
+}         
+@keyframes stup2 {
+    5% { background-position: 0px 0px;} /* 1.1 */
+    10% { background-position: -320px 0px; transform: scale(-1, 1);} /* 5.1 */
+    15% { background-position: -80px -80px;} /* 2.2 */
+    20% { background-position: -320px 0px; transform: scale(1, 1);} /* 5.1 */
+    25% { background-position: -320px -160px} /* 5.3 */
+}
+.char-stmiss {
+    animation: stmiss 1.3s steps(1);
+    animation-fill-mode: forwards;
+}
+
+@keyframes stmiss {
+    5% { background-position: 0px 0px;} /* 1.1 */
+    10% { background-position: -320px 0px; transform: scale(-1, 1);} /* 5.1 */
+    15% { background-position: -80px -80px;} /* 2.2 */
+    20% { background-position: -320px 0px; transform: scale(1, 1);} /* 5.1 */
+    25% { background-position: -320px -240px} /* 5.4 */
 }
 
 .char-winner2 {
