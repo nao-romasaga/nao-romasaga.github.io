@@ -90,7 +90,6 @@ function createSkillOption(list) {
             result[rows['Name'] + " BP:" + rows['ConsumeBp'] + " 威力[" + rows['PowerGrade'] + "]:" + iryoku] = rows['Id'];
         }
     });
-    console.log(result);
     return result;
 }
 async function initial() {
