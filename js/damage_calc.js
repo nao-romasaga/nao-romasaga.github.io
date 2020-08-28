@@ -223,9 +223,7 @@ $(function() {
     $('#type').change(function () {
         type = $("#type").val();
         // 技リストを更新する
-        type_tx = $('#type option:selected').text();
         $('#skill').children().remove();
-        // addOption(createSkillOption(SKILL_LIST[type_tx]), "skill");
         addOption(createSkillOption(SKILL_LIST[SKILL_MAP[type]]), "skill");
         setDefaultSkillIryoku();
 
