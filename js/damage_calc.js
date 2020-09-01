@@ -41,7 +41,7 @@ let SKILL_LIST = {
     'ju': '銃',
     'hi': '火術',
     'mizu': '水術',
-    'kaze': 'kaze',
+    'kaze': '風術',
     'tsuchi': '土術',
     'hikari': '光術',
     'yami': '闇術'
