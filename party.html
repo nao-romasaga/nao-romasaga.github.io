@@ -64,9 +64,6 @@
             display:none;
         }                    
 
-        .limitFont {
-            font-size:15px;
-        }
         .footer-info {
             background: black;
             font-size: 8px;
@@ -87,8 +84,14 @@
             font-size:15px;
         }
 
+        .limitFont {
+            font-size:15px;
+        }
         /* iphone5以下 画面サイズが330まではこれ */
         @media screen and ( max-width:329px) {
+            .limitFont {
+                font-size:11px;
+            }
             .fukidashiInput .limitFont {
                 font-size:8px;
             }
@@ -138,7 +141,7 @@
 <body>
     <div class="haikei">
         <div class="container">
-            <h3 class="text-center title-text">ステータス上限チェック</h3>
+            <h4 class="text-center title-text">ステータス上限チェック</h4>
             <p class="text-right opacity"><small>バグ発見、ご要望は <a href="https://peing.net/ja/nao_romasaga_rs"
                         target="new">質問箱</a>まで</small>
             </p>
@@ -431,7 +434,7 @@
         <li class="col-6 col-sm-3 col-lg-2"><button class="icon_btn_off baseValue text-nowrap questpad" data-id="79">UH3(79)</button></li>
         <li class="col-6 col-sm-3 col-lg-2"><button class="icon_btn_off baseValue text-nowrap questpad" data-id="76">UH2(76)</button></li>
         <li class="col-6 col-sm-3 col-lg-2"><button class="icon_btn_off baseValue text-nowrap questpad" data-id="73">UH1(73)</button></li>
-
+        <!--
         <li class="col-12"><p class="label-text-small">シルバー親分との三番稽古</p></li>
         <li class="col-6 col-sm-3 col-lg-2"><button class="icon_btn_off baseValue text-nowrap questpad" data-id="86">25(UH:86)</button></li>
         <li class="col-6 col-sm-3 col-lg-2"><button class="icon_btn_off baseValue text-nowrap questpad" data-id="83">24(UH:83)</button></li>
@@ -457,6 +460,7 @@
         <li class="col-6 col-sm-3 col-lg-2"><button class="icon_btn_off baseValue text-nowrap questpad" data-id="19">3-(N:19)</button></li>
         <li class="col-6 col-sm-3 col-lg-2"><button class="icon_btn_off baseValue text-nowrap questpad" data-id="15">2(N:15)</button></li>
         <li class="col-6 col-sm-3 col-lg-2"><button class="icon_btn_off baseValue text-nowrap questpad" data-id="12">1(N:12)</button></li>
+        -->
         <li class="col-12"><p class="label-text-small">　聖石洞窟　</p></li>
         <li class="col-6 col-sm-3 col-lg-2"><button class="icon_btn_off baseValue text-nowrap questpad" data-id="86">隠し通路(86)</button></li>
         <li class="col-6 col-sm-3 col-lg-2"><button class="icon_btn_off baseValue text-nowrap questpad" data-id="71">15層(71)</button></li>
