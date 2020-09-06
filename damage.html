@@ -45,6 +45,7 @@
         <script src="./js/data_CHARMASTER.js" ></script>
         <script src="./js/data_STYLEMASTER_style.js" ></script>
         <script src="./js/data_SKILLMASTER_list.js" ></script>
+        <script src="./js/data_ABILITY.js"></script>
         <script src="./js/culcStyleBonus.js" ></script>
         <script src="./js/damage_calc.js" ></script>
         <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
@@ -267,32 +268,32 @@
                                 </div>
                             </div>                        
                             <select class="form-control culcList" id="ability_list2" name="type">
-                                <option value="0">テンションアップなし</option>
-                                <option value="2">テンションアップI (極小)</option>
-                                <option value="5">テンションアップII (小)</option>
-                                <option value="10">テンションアップIII (中)</option>
-                                <option value="15">テンションアップIV (大)</option>
-                                <option value="20">テンションアップV (特大)</option>
+                                <option abId="0" value="0">テンションアップなし</option>
+                                <option abId="ID29d93224" value="2">テンションアップI (極小)</option>
+                                <option abId="ID29d93223" value="5">テンションアップII (小)</option>
+                                <option abId="ID29d93222" value="10">テンションアップIII (中)</option>
+                                <option abId="ID29d93221" value="15">テンションアップIV (大)</option>
+                                <option abId="ID29d93384" value="20">テンションアップV (特大)</option>
                             </select>
                             <select class="form-control culcList" id="ability_list1" name="type">
-                                <option value="0">勇健強撃なし</option>
-                                <option value="5">勇健強撃I (小)</option>
-                                <option value="10">勇健強撃II (中)</option>
-                                <option value="15">勇健強撃III (大)</option>
-                                <option value="20">勇健強撃IV (特大)</option>
+                                <option abId="0" value="0">勇健強撃なし</option>
+                                <option abId="ID29d93230" value="5">勇健強撃I (小)</option>
+                                <option abId="ID29d9322f" value="10">勇健強撃II (中)</option>
+                                <option abId="ID29d9322e" value="15">勇健強撃III (大)</option>
+                                <option abId="ID29d93380" value="20">勇健強撃IV (特大)</option>
                             </select>
                             <select class="form-control culcList" id="ability_list3" name="type">
-                                <option value="0">弱点集中なし</option>
-                                <option value="10">弱点集中II (中)</option>
-                                <option value="15">弱点集中III (大)</option>
-                                <option value="20">弱点集中IV (特大)</option>
+                                <option abId="0" value="0">弱点集中なし</option>
+                                <option abId="ID29d93225" value="10">弱点集中II (中)</option>
+                                <option abId="ID29d9335d" value="15">弱点集中III (大)</option>
+                                <option abId="ID29d93385" value="20">弱点集中IV (特大)</option>
                             </select>
                             <select class="form-control culcList" id="ability_list4" name="type">
-                                <option value="0">必殺の一撃なし</option>
-                                <option value="5">必殺の一撃I (小)</option>
-                                <option value="10">必殺の一撃II (中)</option>
-                                <option value="15">必殺の一撃III (大)</option>
-                                <option value="50">必殺の一撃IV (極大)</option>
+                                <option abId="0" value="0">必殺の一撃なし</option>
+                                <option abId="ID29d9322a" value="5">必殺の一撃I (小)</option>
+                                <option abId="ID29d93229" value="10">必殺の一撃II (中)</option>
+                                <option abId="ID29d93228" value="15">必殺の一撃III (大)</option>
+                                <option abId="ID29d93400" value="50">超必殺の一撃 (極大)</option>
                             </select>
                             <div class="form-group" style="margin-bottom: 0px;">
                                 <div class="input-group">
@@ -386,14 +387,51 @@
                                 </div>
                             </div>
                             <small class="form-text text-muted  opacity kadomaru">対応する耐性値を入力して下さい。弱点はマイナスの値を入力をして下さい</small>
+                            敵2
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text small"><span class="param_label_teki">体力</span></span>
+                                </div>
+                                <input type="number" class="form-control damage" id="vit2" placeholder="0">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text small">耐性</span>
+                                </div>
+                                <input type="number" class="form-control damage" id="resist2" placeholder="0">
+                            </div>
+                            敵3
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text small"><span class="param_label_teki">体力</span></span>
+                                </div>
+                                <input type="number" class="form-control damage" id="vit3" placeholder="0">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text small">耐性</span>
+                                </div>
+                                <input type="number" class="form-control damage" id="resist3" placeholder="0">
+                            </div>
+
 
                         </div>
                         <div class="form-group col-xs-12 col-md-6 col-lg-8">
-                            <h2 class="damageCulc kadomaru bg-white text-center">ダメージ計算結果
-                                <img src="https://www.silhouette-illust.com/wp-content/uploads/2017/10/icon_calculator_41158-101x101.jpg" width="32" height="32">
-                            </h2>
+                            <h3 class="damageCulc kadomaru bg-white text-center text-nowrap"><i class="fas fa-calculator"></i> ダメージ計算結果</h3>
                             <div class="table-responsive">
                                 <table class="damageCulc table table-hover table-bordered table-sm " id="damageRangeTable">
+                                    <thead class="table-primary text-nowrap">
+                                        <tr>
+                                            <th>ST</th>
+                                            <th>耐性</th>
+                                            <th>乱数1</th>
+                                            <th>乱数2</th>
+                                            <th>乱数3</th>
+                                            <th>乱数4</th>
+                                            <th>乱数5</th>
+                                            <th>乱数6</th>
+                                            <th>乱数7</th>
+                                            <th>乱数8</th>
+                                            <th>乱数9</th>
+                                            <th>乱数10</th>
+                                        </tr>
+                                    </thead>
                                     <tbody class=""></tbody>
                                 </table>
                             </div>
