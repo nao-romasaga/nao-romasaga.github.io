@@ -581,12 +581,16 @@
                 var type = ["","fullam","heavyam","lightam","robe","fuku","helm","arm","leg","acc"][row['ArmorType']];
                 var rankType = ["","main","main","main","main","sub","sub","sub","sub","acc"][row['ArmorType']];
 
-                var rare = row['Rarity'].toLowerCase();
-                var img = getImgPath(`equipment/${type}_${rare}.png`);
-                row['icon'] = img;
                 $tr = $("#ARM_BODY_TEMPLATE").clone();
                 $tr.removeAttr("id").addClass(type+ " arRow");
-                $tr.find(".ICON").html(`<img src="${img}" width=40>`);
+
+                var rare = row['Rarity'].toLowerCase();
+                if([306501204,308500904].indexOf(row['Id']) > -1){
+                    $tr.find(".ICON").append(getWeaponIcon(rare, `armor_${row['Id']}`, ""));
+                } else {
+                    var img = getImgPath(`equipment/${type}_${rare}.png`);
+                    $tr.find(".ICON").html(`<img src="${img}" width=40>`);
+                }
                 $tr.find(".RARE").html(rare);
                 $tr.find(".NAME").html(row['Name']);
                 $tr.find(".Power").html(row['Power']);
