@@ -19,6 +19,28 @@
             "startNone": true
         },
         {
+            "startDay": "8",
+            "endDay": "30",
+            "title": "[ガチャ] <br class='hidden pcBlock'>サガ30周年記念Sa・Ga祭Romancing祭 かみ編",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "green"
+        },
+        {
+            "startDay": "8",
+            "endDay": "17",
+            "title": "[ガチャ] <br class='hidden pcBlock'>サガ30周年記念Sa・Ga祭Romancing祭 ビューネイ編",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "green"
+        },
+        {
+            "startDay": "8",
+            "endDay": "17",
+            "title": "[ガチャ] <br class='hidden pcBlock'>サガ30周年記念Sa・Ga祭Ultra DXガチャ",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "green"
+        },
+        
+        {
             "startDay": "3",
             "endDay": "30",
             "title": "[イベント] <br class='hidden pcBlock'>修行者の間",
@@ -38,6 +60,14 @@
             "startDay": "3",
             "endDay": "7",
             "title": "[スタ半] <br class='hidden pcBlock'>「メイン 1章第1話〜第5話」",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue"
+        },
+        {
+            "startDay": "15",
+            "endDay": "17",
+            "title": "[スタ半] <br class='hidden pcBlock'>「メイン 1章第1話〜第5話」",
+            "startSuffix": "12:00 開始<br>",
             "endSuffix": "<br>翌4:00 終了",
             "type": "blue"
         },
@@ -66,6 +96,60 @@
             "startNone": true
         },
         {
+            "startDay": "8",
+            "endDay": "17",
+            "title": "[メイン2倍/イベント3倍] <br class='hidden pcBlock'>SF1/SF2キャラ",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue"
+        },
+        {
+            "startDay": "8",
+            "endDay": "30",
+            "title": "[メイン2倍/イベント3倍] <br class='hidden pcBlock'>かみ/アウナス/ビューネイ/ロックブーケ/メサルティム/最終皇帝(男)/スービエ/デス/ミルザ",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue"
+        },
+        {
+            "startDay": "8",
+            "endDay": "30",
+            "title": "[メイン/イベント2倍] <br class='hidden pcBlock'>突属性持ち キャラ",
+            "startSuffix": "17:00 開始<br>",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue"
+        },
+        {
+            "startDay": "9",
+            "endDay": "30",
+            "title": "[メイン/イベント2倍] <br class='hidden pcBlock'>斬属性持ち キャラ",
+            "startSuffix": "17:00 開始<br>",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue"
+        },
+        {
+            "startDay": "10",
+            "endDay": "30",
+            "title": "[メイン/イベント2倍] <br class='hidden pcBlock'>打属性持ち キャラ",
+            "startSuffix": "17:00 開始<br>",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue"
+        },
+        {
+            "startDay": "11",
+            "endDay": "30",
+            "title": "[メイン/イベント2倍] <br class='hidden pcBlock'>冷属性持ち キャラ",
+            "startSuffix": "17:00 開始<br>",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue"
+        },
+        {
+            "startDay": "12",
+            "endDay": "30",
+            "title": "[メイン/イベント2倍] <br class='hidden pcBlock'>陰属性持ち キャラ",
+            "startSuffix": "17:00 開始<br>",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue"
+        },
+        {
             "startDay": "1",
             "endDay": "30",
             "title": "[キャンペーン] <br class='hidden pcBlock'>財宝オーラム2倍<br>魔物挑戦2倍",
@@ -82,10 +166,31 @@
             "startNone": true
         },
         {
-            "startDay": "9",
-            "endDay": "99",
-            "title": "[イベント] <br class='hidden pcBlock'>かみ襲来",
+            "startDay": "14",
+            "endDay": "21",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>裏道場の証 獲得量2倍<br>卵のから ドロップ量2倍",
             "endSuffix": "<br>翌4:00 終了",
+            "type": "blue"
+        },
+        {
+            "startDay": "15",
+            "endDay": "17",
+            "title": "[イベント] <br class='hidden pcBlock'>武器/主防具 聖石洞窟",
+            "startPrefix": "12:00 開始<br>",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "orange"
+        },
+        {
+            "startDay": "8",
+            "endDay": "30",
+            "title": "[制圧戦] <br class='hidden pcBlock'>総力戦！かみのゲーム",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "orange"
+        },
+        {
+            "startDay": "14",
+            "endDay": "99",
+            "title": "[UPDATE] <br class='hidden pcBlock'>練達 技・術追加",
             "type": "orange"
         }
 
