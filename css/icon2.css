@@ -665,14 +665,14 @@
         display: inline-block;
         width: 25px;
         height: 25px;
-        background-size: cover !important;
+        background-size: contain !important;
         margin: 0 0 0 0px;
     }
     .icon_mini_zokusei_checker { 
         display: inline-block;
         width: 25px;
         height: 25px;
-        background-size: cover !important;
+        background-size: contain !important;
         margin: 0 0 0 0px;
     }
 }
@@ -771,14 +771,14 @@
         display: inline-block;
         width: 35px;
         height: 35px;
-        background-size: cover !important;
+        background-size: contain !important;
         margin: 0 0 0 0px;
     }    
     .icon_mini_zokusei_checker { 
         display: inline-block;
         width: 30px;
         height: 30px;
-        background-size: cover !important;
+        background-size: contain !important;
         margin: 0 0 0 0px;
     }    
 }

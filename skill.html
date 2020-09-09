@@ -72,6 +72,13 @@
                     height:35px;
                 }
             }
+            /* 330px未満の画面の場合 */
+            @media (max-width: 320px) {
+                .icon_mini {
+                    width:30px;
+                    height:30px;
+                }
+            }
             .weaponIconTd {
                 width: 40px;
                 position:relative
@@ -201,8 +208,8 @@
                         <li class="m-auto side-padding-zero"><a class="_FilterLink small" data-href="skill_ijo" data-col="Buff">状態異常回復 <span class="series-button" id="count_skill_ijo">...</span></a></li>
                         <li class="col-12 char-bottom"> </li>
                         <li class="col-12 col-sm-2 table-info">直接/間接</li>
-                        <li class="col-6 col-sm-5 m-auto side-padding-zero"><a class="_FilterLink small" data-href="skill_cyoku" data-col="AttackKansetsu">直接攻撃 <span class="series-button" id="count_skill_cyoku">...</span></a></li>
-                        <li class="col-6 col-sm-5 m-auto side-padding-zero"><a class="_FilterLink small" data-href="skill_kan" data-col="AttackKansetsu">間接攻撃 <span class="series-button" id="count_skill_kan">...</span></a><span class="smallFont"><br>(敵のカウンター/セルフバーニングで反撃を受けない攻撃)</span></li>
+                        <li class="col-12 col-sm-5 m-auto side-padding-zero"><a class="_FilterLink small" data-href="skill_cyoku" data-col="AttackKansetsu">直接攻撃 <span class="series-button" id="count_skill_cyoku">...</span></a></li>
+                        <li class="col-12 col-sm-5 m-auto side-padding-zero"><a class="_FilterLink small" data-href="skill_kan" data-col="AttackKansetsu">間接攻撃 <span class="series-button" id="count_skill_kan">...</span></a><span class="smallFont"><br>(敵のカウンター/セルフバーニングで反撃を受けない攻撃)</span></li>
                         <li class="col-12 char-bottom"> </li>
                         <li class="col-12 col-sm-2 table-success char-bottom">特効1</li>
                         <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom">
@@ -343,7 +350,7 @@
                                 </td>
                                 <td style="text-align: left;line-height: 10px;position: relative;">
                                     <p class="text-nowrap text-left skill-name"></p>
-                                    <span class="IRYOKU_AREA d-sm-none" style="background: black;font-size: 8px; padding: 0px 10px; border-radius: 5px;"></span>
+                                    <span class="IRYOKU_AREA d-sm-none" style="background: black;font-size: 12px; padding: 0px 10px; border-radius: 5px;"></span>
                                 </td>
                                 <td class="d-none d-sm-table-cell text-right" style="width:120px; padding-right:5px">
                                     <div class="IRYOKU_TD"></div>
@@ -373,7 +380,7 @@
                         </table>
                     </div>
                     <div class="col-12 d-md-none"><div style="width:100%; border: 1px solid rgba(152,137,106,1); margin-bottom:1px;"></div></div>
-                    <div class="col-12 col-md-4">
+                    <div class="col-12 col-md-4 HOLDER_DISP_AREA">
                         <div class="iconClass holderStyleArea text-left" style="line-height: 0px; height:60px; overflow-x: scroll; overflow-y: hidden; white-space:nowrap;"></div>
                     </div>
                 </button>
@@ -383,9 +390,13 @@
                         <div class="col-6 col-lg-3">
                             <button id="SORT_BP" class="width-100 icon_btn_on sortButton desc" data-id="bp">BP順 <span class="d-none d-md-inline">に並び替える</span> <i class="fas fa-sort-up d-none" id="BP_SORT_ASC"></i><i class="fas fa-sort-down" id="BP_SORT_DESC"></i></button>
                         </div>
-                        <div class="col-6 col-lg-3">                            
+                        <div class="col-6 col-lg-3" style="margin-bottom:5px;">                            
                             <button id="SORT_IRYOKU" class="width-100 icon_btn_off sortButton asc" data-id="iryoku">威力順 <span class="d-none d-md-inline">に並び替える</span> <i class="fas fa-sort-up" id="IRYOKU_SORT_ASC"></i><i class="fas fa-sort-down d-none" id="IRYOKU_SORT_DESC"></i></button>
                         </div>
+                        <div class="col-12 d-lg-none">
+                            <button id="DISP_HOLDER" class="width-100 icon_btn_positive fuchidori-white">技・術保持スタイルの表示/非表示</button>
+                        </div>
+                        
                     </div>
 
                     <label class="badge badge-pill badge-light">技・術をタップすると詳細を表示します</label>
@@ -430,7 +441,7 @@
                 <i class="fas fa-arrow-down"></i> 技・術一覧を見る <i class="fas fa-arrow-down"></i><br>
                 <span class="bgcolor-brawn" style="border-radius: 10px;">　　技・術数：<span id="SKILL_RESULT">99</span>　　</span>
         </div>
-        <p id="PageTopBtn"><a data-href="wrap"><i class="fas fa-arrow-up"></i></a></p>
+        <p id="PageTopBtn" style="right: 20px;"><a data-href="wrap"><i class="fas fa-arrow-up"></i></a></p>
         <script type="text/javascript" src="https://romasagatool.com/blog/get_the_archives.php?limit=30&callback=rssCallback"></script>
         <script type="text/javascript" src="https://romasagatool.com/blog/get_the_archives.php?cat=22&callback=rssCallbackCat"></script>
     </body>
