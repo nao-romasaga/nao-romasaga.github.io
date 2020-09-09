@@ -123,11 +123,8 @@
             top: calc(50% - 7px);
             width:14px;
         }
-        /* 画面サイズ340まで */
-        @media screen and (max-width:330px) {
-            .limitTableWidth {
-                width: calc(100% - 30px);             
-            }
+        /* 画面サイズ320まで */
+        @media screen and (max-width:320px) {
         }
 
         /* 画面サイズ340まで */
@@ -136,17 +133,24 @@
                 font-size: 12px;
                 padding: 20px 0px 20px 0px;
             }
-
             .LIMIT_PAD0 {
                 padding: 0px;
                 margin-left: -15px;
                 margin-right: -15px;
+            }
+            .LIMIT_TABLE2, .small {
+                font-size: 60%;
+                font-weight: 400;
             }
         }
         /* 画面サイズ450まで */
         @media screen and (max-width:450px) {
             .limitFont {
                 font-size:15px;
+            }
+            .LIMIT_TABLE2, .small {
+                font-size: 40%;
+                font-weight: 400;
             }
         }
 
