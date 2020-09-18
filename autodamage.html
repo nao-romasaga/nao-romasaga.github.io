@@ -87,11 +87,11 @@
                         <li>敵ステータス：体/精=100で耐性0です</li>
                         <li>アビリティ発動：錬気は1T、4Tの固定2回発動です。ステータスアップや通常攻撃(杖)のバフは加味していません</li>
                         <li>アビリティ発動：弱点特攻：Weak発生時ダメージ+X%は常に発動しています</li>
-                        <li>武器威力：7/25時点の最大値を採用。
-                            剣=32、大剣=31、斧=32、
+                        <li>武器威力：9/10時点の最大値を採用。
+                            剣=32、大剣=32、斧=32、
                             小剣=32、弓=31、槍=32、
-                            棍棒=32、体術=31、銃=32、
-                            杖=30
+                            棍棒=32、体術=32、銃=32、
+                            杖=31
                         </li>
                         <li>マスターレベル：5/1時点の最大値を採用。
                             剣=40、大剣=37、斧=30、
@@ -101,7 +101,7 @@
                         </li>
                         <li>技ランク：全て99</li>
                         <li>技の特攻：種族選択時は特攻(+20%)が発動します</li>
-                        <li>聖石：+10%を使用しています</li>
+                        <li>聖石：+15%を使用しています</li>
                         <li>乱数：パターン6を使用しています</li>
                         <li>覚醒パターンや継承パターンが異なるが技使用回数が同じ場合は「覚醒数が少ないケース」の表示されます</li>
                         <li>オートで使わない技は継承パターンに入っていません</li>
@@ -151,19 +151,24 @@
                             シミュレーションのターン数を変更します
                             <table class="width-100">
                                 <tr>
-                                    <td>長期戦</td>
-                                    <td><button class="icon_btn_on optionButton" data-on="1" data-name="turn"
-                                            data-label="9">9ターン</button></td>
-                                </tr>
-                                <tr>
-                                    <td>周回用</td>
-                                    <td><button class="icon_btn_off optionButton" data-on="0" data-name="turn"
-                                            data-label="3">3ターン</button></td>
-                                </tr>
-                                <tr>
                                     <td>開幕用</td>
                                     <td><button class="icon_btn_off optionButton" data-on="0" data-name="turn"
                                             data-label="1">1ターン</button></td>
+                                </tr>
+                                <tr>
+                                    <td>周回用(ボス戦)</td>
+                                    <td><button class="icon_btn_on optionButton" data-on="0" data-name="turn"
+                                            data-label="2">2ターン</button></td>
+                                </tr>
+                                <tr>
+                                    <td>周回用</td>
+                                    <td><button class="icon_btn_off optionButton" data-on="1" data-name="turn"
+                                            data-label="3">3ターン</button></td>
+                                </tr>
+                                <tr>
+                                    <td>長期戦(機能停止中)</td>
+                                    <td><button disabled class="icon_btn_off optionButton" data-on="0" data-name="turn"
+                                            data-label="9">9ターン</button></td>
                                 </tr>
                             </table>
                         </div>                        
@@ -189,11 +194,30 @@
                             </table>
                         </div>
                     </div>
-                    <div class="text-center label-text-small width-100">敵種族選択</div>
+                    <div class="text-center label-text-small width-100">敵弱点 選択</div>
                     <ul class="nav text-center width-100">
                         <li class="col-3 col-sm-1 xs-pad0"><a class="enemyfilterList pad0" data-type="EnemyClassFilter"
-                                data-label="無し" href="#enemy_0" onclick=""><img
-                                    src="https://romasagatool.com/img/e_others_495.png"><br>無し</a></li>
+                                data-label="無し" href="#enemy_0" onclick="">無し</a></li>
+                        <li class="col-3 col-sm-1 xs-pad0"><a class="enemyfilterList pad0" data-type="EnemyClassFilter"
+                                data-label="斬弱点" href="#enemy_1" onclick=""><img src="http://romasagatool.com/img/icon/icon_zan.png" ></a></li>
+                        <li class="col-3 col-sm-1 xs-pad0"><a class="enemyfilterList pad0" data-type="EnemyClassFilter"
+                                data-label="打弱点" href="#enemy_2" onclick=""><img src="http://romasagatool.com/img/icon/icon_da.png" ></a></li>
+                        <li class="col-3 col-sm-1 xs-pad0"><a class="enemyfilterList pad0" data-type="EnemyClassFilter"
+                                data-label="突弱点" href="#enemy_3" onclick=""><img src="http://romasagatool.com/img/icon/icon_totsu.png" ></a></li>
+                        <li class="col-3 col-sm-1 xs-pad0"><a class="enemyfilterList pad0" data-type="EnemyClassFilter"
+                                data-label="熱弱点" href="#enemy_4" onclick=""><img src="http://romasagatool.com/img/icon/icon_netsu.png" ></a></li>
+                        <li class="col-3 col-sm-1 xs-pad0"><a class="enemyfilterList pad0" data-type="EnemyClassFilter"
+                                data-label="冷弱点" href="#enemy_5" onclick=""><img src="http://romasagatool.com/img/icon/icon_rei.png" ></a></li>
+                        <li class="col-3 col-sm-1 xs-pad0"><a class="enemyfilterList pad0" data-type="EnemyClassFilter"
+                                data-label="雷弱点" href="#enemy_6" onclick=""><img src="http://romasagatool.com/img/icon/icon_rai.png" ></a></li>
+                        <li class="col-3 col-sm-1 xs-pad0"><a class="enemyfilterList pad0" data-type="EnemyClassFilter"
+                                data-label="陽弱点" href="#enemy_7" onclick=""><img src="http://romasagatool.com/img/icon/icon_yo.png" ></a></li>
+                        <li class="col-3 col-sm-1 xs-pad0"><a class="enemyfilterList pad0" data-type="EnemyClassFilter"
+                                data-label="陰弱点" href="#enemy_8" onclick=""><img src="http://romasagatool.com/img/icon/icon_in.png" ></a></li>
+                        <li class="col-3 col-sm-1 xs-pad0"><a class="enemyfilterList pad0" data-type="EnemyClassFilter"
+                                data-label="アポロン(打熱弱点)" href="#enemy_9" onclick="">アポロン</a></li>
+
+                        <!--
                         <li class="col-3 col-sm-1 xs-pad0"><a class="enemyfilterList pad0" data-type="EnemyClassFilter"
                                 data-label="人間" href="#enemy_1" onclick=""><img src="./img/enemy/type_1.png" width=69
                                     height=69><br>人間</a></li>
@@ -239,9 +263,10 @@
                         <li class="col-3 col-sm-1 xs-pad0"><a class="text-nowrap enemyfilterList pad0" data-type="EnemyClassFilter"
                                 data-label="無機質" href="#enemy_15" onclick=""><img src="./img/enemy/type_15.png" width=69
                                     height=69><br>無機質</a></li>
+                        -->
                     </ul>
                     <br>
-                    <div class=" table-dark">
+                    <div class=" table-dark d-none">
                         <table class="width-100 text-center table-dark">
                             <tr class="char-bottom">
                                 <td colspan=4 class="text-center label-text-small width-100"
