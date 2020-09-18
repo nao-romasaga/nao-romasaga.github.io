@@ -585,8 +585,8 @@
                 $tr.removeAttr("id").addClass(type+ " arRow");
 
                 var rare = row['Rarity'].toLowerCase();
-                if([306501204,308500904].indexOf(row['Id']) > -1){
-                    $tr.find(".ICON").append(getWeaponIcon(rare, `armor_${row['Id']}`, ""));
+                if(row['illust'] != undefined){
+                    $tr.find(".ICON").append(getWeaponIcon(rare, `armor_${row['illust']}`, ""));
                 } else {
                     var img = getImgPath(`equipment/${type}_${rare}.png`);
                     $tr.find(".ICON").html(`<img src="${img}" width=40>`);
