@@ -99,44 +99,16 @@
             <div class="">
                 <div class="row no-gutters">
                     <div class="col-12 col-md-3" style="padding:0px 10px;">
-                        <div class="text-center label-text-small width-100">目次</div>
+                        <div id="INDEX" class="text-center label-text-small width-100">目次</div>
                         <div class="MENU style-bgcolor" style="padding-left: 10px">
                             <ul>
-                                <li class="parent"><a href='#1'>ステータス上限について</a>
-                                    <ol class="childs">
-                                        <li class="child"><a href='#1-1'>素ステとは</a></li>
-                                        <li class="child"><a href='#1-2'>ステータス上限とは</a></li>
-                                        <li class="child"><a href='#1-3'>スタイルにある<img src='./img/icon/icon_ind_3.png' height="15"><img src='./img/icon/icon_ind_2.png' height="15"><img src='./img/icon/icon_ind_1.png' height="15">ってなに？</a></li>
-                                        <li class="child"><a href='#1-4'>Baseってなに？+10ってなに？</a></li>
-                                    </ol>
-                                </li>
-                                <li class="parent"><a href='#2'>ステータス上昇について</a>
-                                    <ol class="childs">
-                                        <li class="child"><a href='#2-1'>ステが低いほど上がりやすいの？</a></li>
-                                        <li class="child"><a href='#2-2'>どこを周回すればいいの？</a></li>
-                                    </ol>
-                                </li>
-                                <li class="parent"><a href='#3'>ダメージ計算について</a>
-                                    <ol class="childs">
-                                        <li class="child"><a href='#3-1'>基本計算式(簡易) <i class="fas fa-calculator"></i></a></li>
-                                        <li class="child"><a href='#3-2'>武器威力1でどれぐらいダメージ違う？</a></li>
-                                        <li class="child"><a href='#3-5'>腕力1でどれぐらいダメージ違う？</a></li>
-                                        <li class="child"><a href='#3-3'>技Rankで威力はどれぐらい変わる？</a></li>
-                                        <li class="child"><a href='#3-4'>乱数 <i class="fas fa-dice"></i>のダメージ変化は結構大きい</a></li>
-                                    </ol>
-                                </li>
-                                <li class="parent"><a href='#5'>聖石について</a>
-                                        <ol class="childs">
-                                                <li class="child"><a href='#5-4'>ランクをあげるのに必要なかけら数は？</a></li>
-                                                <li class="child"><a href='#5-5'>高ランクから強化するとお得？</a></li>
-                                                <li class="child"><a href='#5-1'>当たりの聖石ってどれ？</a></li>
-                                                <li class="child"><a href='#5-6'>売っていい聖石ってどれ？</a></li>
-                                                <li class="child"><a href='#5-7'>特攻+と弱点+ってどう違うの？</a></li>
-                                                <li class="child"><a href='#5-2'>+X%分ダメージ増えないよ？</a></li>
-                                                <li class="child"><a href='#5-3'>杖+セット時に杖ポコも上がる？</a></li>
-                                                <li class="child"><a href='#5-8'>ありがちなセット失敗例</a></li>
-                                        </ol>
-                                </li>
+                                <li class="parent"><a class='INDEX_LI yubi' data-id="0">ステータス上限について</a></li>
+                                <li class="parent"><a class='INDEX_LI yubi' data-id="1">ステータス上昇率について</a></li>
+                                <li class="parent"><a class='INDEX_LI yubi' data-id="2">ダメージ計算について</a></li>
+                                <li class="parent"><a class='INDEX_LI yubi' data-id="3">聖石について</a></li>
+                                <li class="parent"><a class='INDEX_LI yubi' data-id="4">技・術の命中率について</a></li>
+                                <li class="parent"><a class='INDEX_LI yubi' data-id="5">バフ・デバフについて</a></li>
+                                
 <!--
                                 <li class="parent"><a href='#4'>状態異常<img src="./img/icon/icon_mahi.png" height=18>について</a>
                                     <ol class="childs">
@@ -144,7 +116,6 @@
                                         <li class="child"><a href='#4-2'>武器威力は成功率に関係する？</a></li>
                                     </ol>
                                 </li>
--->                                
                                 <li class="parent waiting">この新武器って必要？
                                         <ol class="childs">
                                                 <li class="child">強化時の威力の上がりかた</li>
@@ -172,6 +143,7 @@
                                             <li class="child">周回クエスト 効率</a></li>
                                     </ol>
                             </li>
+                        -->
                         </ul>
                         </div>
                         <!-- サイドバー350x350 -->
@@ -184,767 +156,722 @@
                         </script>
                     </div>
                     <div class="col-12 col-md-8">
-                        <a name='1'></a>
-                        <h4 class="text-center label-text-small width-100">ステータス上限について</h4>
-                        <div class="content-bg kadomaru">
-                            <a name='1-5'></a>
-                            <div class="style-skill-list">用語説明</div>
-                            この項で出てくる用語の説明です<br>
-                            <i class="fas fa-check-circle"></i>キャラクター成長傾向：キャラクターごとに設定されているステータス上限補正<br>
-                            <i class="fas fa-check-circle"></i>スタイル成長傾向：スタイルごとに設定されているステータス上限補正<br>
-                            <i class="fas fa-check-circle"></i>クエスト設定値：クエストごとに設定されているステータス上限補正<br>
-                            <i class="fas fa-check-circle"></i>BaseXX：上述のクエスト設定値と同じ<br>
+                        <div class="ARTICLE">
+                            <h4 class="text-center label-text-small width-100">ステータス上限について</h4>
+                            <div class="content-bg kadomaru">
+                                <div class="style-skill-list">ステータス上限とは</div>
+                                ステータス上限は以下の３つの合計によって決定しています<br>
+                                <span style="font-size:1.2em;">【キャラクター成長傾向】<span id="dotID33518" class="dot_mid dot char-winner" style="background:url(./img/dot/ID36a38.png) no-repeat;"></span> +<br>
+                                    【スタイル成長傾向】<img src="./img/style_icon/ID36a43.png" width="30">
+                                    <img src="./img/style_icon/ID36a44.png" width="30">
+                                    <img src="./img/style_icon/ID36a45.png" width="30">
+                                    <img src="./img/style_icon/ID36a46.png" width="30">
+                                    +<br>
+                                    【クエスト設定値】5話,6話,7話,Normal/Hard/VeryHardなど</span><hr>
+                                【キャラクター成長傾向】：キャラクターに設定された値<br>
+                                　キャラクターが持つ値のため、スタイルを変更してもこの値は変わりません<br>
+                                【スタイル成長傾向】：スタイルに設定された値<br>
+                                　スタイルを切り替えることで変更されます<br>
+                                【クエスト設定値】：クエストごとに設定された値<br>
+                                　VH5は45、VH7は48などクエストの難易度により設定が異なります
+                                <div class="fukidashi text-center">例：キャットの場合</div>
 
-                            <a name='1-1'></a>
-                            <div class="style-skill-list">素ステとは</div>
-                            <i class="fas fa-check-circle"></i>スタイルや装備に影響されないキャラクターの素のステータス<br>
-                            戦闘終了時に上がる【キャラクター固有】のものを指します<br>
-                            スタイルや装備、裏能力によって上がるステータスとは別物です<br>
-
-                            <a name='1-3'></a>
-                            <div class="style-skill-list">スタイルにある<img src='./img/icon/icon_ind_3.png' height="15"><img src='./img/icon/icon_ind_2.png' height="15"><img src='./img/icon/icon_ind_1.png' height="15">ってなに？</div>
-                            【スタイル成長傾向】の具体的な数字によって表示が変わります<br>
-                            <img src='./img/icon/icon_ind_3.png' height="15">：4〜9 / 
-                            <img src='./img/icon/icon_ind_2.png' height="15">：1〜3 / 
-                            <img src='./img/icon/icon_ind_1.png' height="15">：-9〜0<br>
-                            となります
-                            <div class="fukidashi text-center">例：キャットの場合</div>
-                            <picture>
-                                    <source type="image/webp" srcset="./img/knowledge/styleind.webp" />
-                                    <img src='./img/knowledge/styleind.jpg'>
-                             </picture>
-                            <br>
-                            キャットはこのようにスタイルでマークのつき方が異なっています<br>
-                            実際のステータス値と比べてみましょう（<a href="/style.html?s=ID36a44" target="_blank">キャットのスタイル詳細より引用</a>）<br>
-                            この画像のステータスは、外伝2のクエスト設定値63が設定されています<br>
-                            <picture>
-                                    <source type="image/webp" srcset="./img/knowledge/styletable.webp" class='viewImg' />
-                                    <img src='./img/knowledge/styletable.png' class='viewImg'>
-                             </picture>
-                             <br>
-                            ここから、キャラクター成長傾向とクエスト設定値の63を引くとこのようになります
-                            <table class="style-skill-list text-center" border="1">
-                                <tr><td>スタイル</td><td>腕</td><td>体</td><td>器</td><td>速</td><td>知</td><td>精</td><td>愛</td><td>魅</td></tr>
-                                <tr><td><img src="./img/style_icon/ID36a46.png" width="30"></td><td>2<img src='./img/icon/icon_ind_2.png' height="15"></td><td>??</td><td>??</td><td>??<img src='./img/icon/icon_ind_2.png' height="15"></td><td>??</td><td>??</td><td>0</td><td>??</td></tr>
-                                <tr><td><img src="./img/style_icon/ID36a45.png" width="30"></td><td>0</td><td>-1</td><td>0</td><td>4<img src='./img/icon/icon_ind_3.png' height="15"></td><td>0</td><td>-1</td><td>0</td><td>-2</td></tr>
-                                <tr><td><img src="./img/style_icon/ID36a44.png" width="30"></td><td>-1</td><td>-2</td><td>3<img src='./img/icon/icon_ind_2.png' height="15"></td><td>0</td><td>0</td><td>-1</td><td>0</td><td>0</td></tr>
-                                <tr><td><img src="./img/style_icon/ID36a43.png" width="30"></td><td>-1</td><td>-7</td><td>3<img src='./img/icon/icon_ind_2.png' height="15"></td><td>6<img src='./img/icon/icon_ind_3.png' height="15"></td><td>0</td><td>-1</td><td>0</td><td>0</td></tr>
-                            </table>
-                            <img src='./img/icon/icon_ind_3.png' height="15">：4〜9 / 
-                            <img src='./img/icon/icon_ind_2.png' height="15">：1〜3 / 
-                            <img src='./img/icon/icon_ind_1.png' height="15">：-9〜0 の範囲で設定されてるのがわかります<br>
-                            <img src="./img/style_icon/ID36a46.png" width="30">のスタイル成長傾向がまだ上限不明ですが、速は<img src='./img/icon/icon_ind_2.png' height="15">がついていることから1〜3であることがわかっているため、外伝2での上限は68〜70であることが推測できます<br>
-
-
-
-                            <a name='1-2'></a>
-                            <div class="style-skill-list">ステータス上限とは</div>
-                            ステータス上限は以下の３つの合計によって決定しています<br>
-                            <span style="font-size:1.2em;">【キャラクター成長傾向】<span id="dotID33518" class="dot_mid dot char-winner" style="background:url(./img/dot/ID36a38.png) no-repeat;"></span> +<br>
-                                【スタイル成長傾向】<img src="./img/style_icon/ID36a43.png" width="30">
-                                <img src="./img/style_icon/ID36a44.png" width="30">
-                                <img src="./img/style_icon/ID36a45.png" width="30">
-                                <img src="./img/style_icon/ID36a46.png" width="30">
-                                +<br>
-                                【クエスト設定値】5話,6話,7話,Normal/Hard/VeryHardなど</span><hr>
-                            【キャラクター成長傾向】：キャラクターに設定された値<br>
-                            　キャラクターが持つ値のため、スタイルを変更してもこの値は変わりません<br>
-                            【スタイル成長傾向】：スタイルに設定された値<br>
-                            　スタイルを切り替えることで変更されます<br>
-                            【クエスト設定値】：クエストごとに設定された値<br>
-                            　VH5は45、VH7は48などクエストの難易度により設定が異なります
-                            <div class="fukidashi text-center">例：キャットの場合</div>
-
-                            ・キャットのキャラクター成長傾向
-                            <table class="style-skill-list text-center" border="1">
-                                <tr><td>項目</td><td>腕</td><td>体</td><td>器</td><td>速</td><td>知</td><td>精</td><td>愛</td><td>魅</td></tr>
-                                <tr><td>キャラ値</td><td>2</td><td>1</td><td>1</td><td>4</td><td>2</td><td>-1</td><td>-1</td><td>1</td></tr>
-                            </table>
-                            ・キャット[猫の爪は痛いわよ]のスタイル成長傾向
-                            <table class="style-skill-list text-center" border="1">
-                                <tr><td>項目</td><td>腕</td><td>体</td><td>器</td><td>速</td><td>知</td><td>精</td><td>愛</td><td>魅</td></tr>
-                                <tr><td><img src="./img/style_icon/ID36a44.png" width="30">[猫の爪は痛いわよ]</td><td>-1</td><td>-2</td><td>3</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>0</td></tr>
-                            </table>
-                            ・VH6のクエスト設定値：45
-                            <br>
-                            これらを足し合わせると
-                            <table class="style-skill-list text-center" border="1">
-                                <tr><td>項目</td><td>腕</td><td>体</td><td>器</td><td>速</td><td>知</td><td>精</td><td>愛</td><td>魅</td></tr>
-                                <tr><td>キャラクター値</td><td>2</td><td>1</td><td>1</td><td>4</td><td>2</td><td>-1</td><td>-1</td><td>1</td></tr>
-                                <tr><td><img src="./img/style_icon/ID36a44.png" width="30">[猫の爪は痛いわよ]</td><td>-1</td><td>-2</td><td>3</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>0</td></tr>
-                                <tr><td>VH6クエスト設定値</td><td>45</td><td>45</td><td>45</td><td>45</td><td>45</td><td>45</td><td>45</td><td>45</td></tr>
-                                <tr><td>VH6<span class='d-none d-md-inline'>における</span><img src="./img/style_icon/ID36a44.png" width="30">の上限</td><td>46</td><td>44</td><td>49</td><td>49</td><td>47</td><td>43</td><td>44</td><td>46</td></tr>
-                            </table>
-                            これがVH6におけるSSキャットのスタイル成長傾向です。
-                            <div class="bg-warning text-center"><i class="fas fa-exclamation-triangle"></i> 注意</div>
-                            ここに出てくるキャラクター成長傾向とスタイル成長傾向の具体的な数字はゲーム中どこにも表示されません<br>
-                            こういうものが内部的には設定されている。という程度でご理解頂ければと思います
-
-
-                            <ins class="adsbygoogle"
-                            style="display:block; text-align:center;"
-                            data-ad-layout="in-article"
-                            data-ad-format="fluid"
-                            data-ad-client="ca-pub-5008373409434899"
-                            data-ad-slot="1992251055"></ins>
-
-                            <a name='1-4'></a>
-                            <div class="style-skill-list">Baseってなに？+10や+15ってなに？</div>
-                            Baseとは？<br>
-                            <i class="fas fa-check-circle"></i>前述の【クエスト設定値】と同じです<br>
-                            ステータスの基底となるためBaseと表現しています<br>
-                            クエスト設定値45はBase45、クエスト設定値48はBase48と言えます<br>
-                            <br>
-                            +Xとは？<br>
-                            <i class="fas fa-check-circle"></i>Base45からの差分を+で表現していています<br>
-                            これはBase45がリリース当初の最大値であったためです。VH7はBase48なので+3です<br>
-                            ちなみに19/8/4時点の最新クエストVH外伝2ではBase63なので+18です<br>
-                            
-                            <div class="fukidashi text-center">クエスト/Base/+X 対応表</div>
-                            <table class="style-skill-list text-center" border="1">
-                                <tr><td>　難易度　</td><td>　Base　</td><td>　+X　</td><td>最大HP</td>
-                                </tr>
-                                <tr><td>遺跡7層<br>武闘会<br>修行者の間<br>VH6まで</td><td>45</td><td>+0</td><td>710</td></tr>
-                                <tr><td>遺跡11層</td><td>47</td><td>+2</td><td>730</td></tr>
-                                <tr><td>VH7</td><td>48</td><td>+3</td><td>740</td></tr>
-                                <tr><td>VH811-13</td><td>49</td><td>+4</td><td>750</td></tr>
-                                <tr><td>VH814-21<br>遺跡12層</td><td>50</td><td>+5</td><td>760</td></tr>
-                                <tr><td>VH822-25</td><td>51</td><td>+6</td><td>770</td></tr>
-                                <tr><td>VH911-913</td><td>52</td><td>+7</td><td>780</td></tr>
-                                <tr><td>VH914-921<br>遺跡13層</td><td>53</td><td>+8</td><td>790</td></tr>
-                                <tr><td>VH922-925</td><td>54</td><td>+9</td><td>800</td></tr>
-                                <tr><td>VH10-1</td><td>55</td><td>+10</td><td>810</td></tr>
-                                <tr><td>VH10-2</td><td>56</td><td>+11</td><td>820</td></tr>
-                                <tr><td>VH11-1</td><td>57</td><td>+12</td><td>830</td></tr>
-                                <tr><td>VH11-2<br>聖石洞窟10</td><td>58</td><td>+13</td><td>840</td></tr>
-                                <tr><td>VH12-1</td><td>59</td><td>+14</td><td>850</td></tr>
-                                <tr><td>VH12-2</td><td>60</td><td>+15</td><td>860</td></tr>
-                                <tr><td>VHG11-14</td><td>61</td><td>+16</td><td>870</td></tr>
-                                <tr><td>VHG15-22</td><td>62</td><td>+17</td><td>880</td></tr>
-                                <tr><td>VHG23-25</td><td>63</td><td>+18</td><td>890</td></tr>
-                                <tr><td>VH1311-14</td><td>64</td><td>+19</td><td>900</td></tr>
-                                <tr><td>VH1315-22<br>総力戦!フォルネウス</td><td>65</td><td>+20</td><td>910</td></tr>
-                                <tr><td>VH1323-25</td><td>66</td><td>+21</td><td>920</td></tr>
-                                <tr><td>VH1411-14</td><td>67</td><td>+22</td><td>930</td></tr>
-                                <tr><td>VH1415-22</td><td>69</td><td>+24</td><td>950</td></tr>
-                                <tr><td>VH1423-25</td><td>70</td><td>+25</td><td>960</td></tr>
-                                <tr><td>VH1511-14</td><td>71</td><td>+26</td><td>970</td></tr>
-                                <tr><td>VH1515-22</td><td>72</td><td>+27</td><td>980</td></tr>
-                                <tr><td>VH1523-25</td><td>73</td><td>+28</td><td>990</td></tr>
-                                <!--<tr><td>VH1524</td><td>74</td><td>+29</td><td>1000</td></tr>-->
-                            </table>
-                        </div>
-
-                        <div class="text-center" style="margin:20px 0px; background: url('./img/bg_run_1.png'); background-size: cover;">
-                            <span class="label-text-small loading" style='width:400px;'>
-                                　　<span>S</span><span>T</span><span>U</span><span>D</span><span>Y</span><span>I</span><span>N</span><span>G</span><span>.</span><span>.</span>                                　　
-                            </span>
-                            <div class="">
-                                <span class="CHAR_BACK char dot_mid dot char-hashiri-right" style="background: url(./img/dot/IDad82c.png);"></span>
-                                <span class="CHAR_FRONT char dot_mid dot char-hashiri-right" style="background: url(./img/dot/ID38400.png);"></span>
-                            </div>
-                        </div>
-                        <!-- ツール_豆知識_2 -->
-                        <ins class="adsbygoogle"
-                            style="display:block; text-align:center;"
-                            data-ad-layout="in-article"
-                            data-ad-format="fluid"
-                            data-ad-client="ca-pub-5008373409434899"
-                            data-ad-slot="5783703123"></ins>
-                        <script>
-                            (adsbygoogle = window.adsbygoogle || []).push({});
-                        </script>
-
-                        <a name='2'></a>
-                        <h4 class="text-center label-text-small width-100">ステータス上昇について</h4>
-                        <div class="content-bg kadomaru">
-                            <a name='2-1'></a>
-                            <div class="style-skill-list">ステが低いほど上がりやすいの？</div>
-                            上限に近いほどステータスは上がりにくくなります<br>
-                            ではステータスが低いほど（上限から遠いほど）上がりやすいのか。に関しては<br>
-                            「上限まで残り5」と「上限まで残り20」では上昇率が同じであることが武闘会の周回により検証されています<br>
-                            ＜参考資料:<a href='https://docs.google.com/spreadsheets/d/1PYABXd-gBNXqFQWJTL-ZXZxpv7Bn5GANNtKRbg78ZKk/edit#gid=0' target="_blank">武闘会760周の周回データ</a>＞
-                            <hr>
-                            つまりステータス上昇は
-                            <h5 style='color:blue'><i class="fas fa-check-circle"></i>上限から5以上離れている場合、上限-5でも上限-20でも同じ確率で上がる</h5>と言ってよいでしょう<br>
-                            ちんさんが詳しいまとめを発信しておられます > <a href='https://peing.net/ja/q/1576c874-3e82-4f38-a788-0057c219b5d4' target="_blank">参考</a>
-                            <br><br>
-                            <span style="color:red; font-size:20px">ver1.10.0以降</span><br>
-                            ステータスがかなり上がりやすくなっています。今まで上限達成はかなりの周回数が必要であまり現実的でなかったものが現実的に達成できるレベルまで緩和されています
-
-
-                            <a name='2-2'></a>
-                            <div class="style-skill-list">どこを周回すればいいの？</div>
-                            前述の通り、ステータスは上限から5以上離れていればどこを周回しても上がる確率は同じです<br>
-                            これを踏まえると<br>
-                            1. スタミナ消費が少ないクエスト<br>
-                            2. 全滅せず無理なく周回できるクエスト<br>
-                            3. ついでにドロップアイテムが狙えるクエスト<br>
-                            を基準にすると良いと思います<br>
-                            <hr>
-                            ▼オススメ▼<br>
-                            便利ツールの<a href='party.html' target='_blank'>育成パーティ上限チェック</a>を使うと、どのクエストであとどれぐらいステータスが伸びるか調べることができます<br>
-                            <picture>
-                                    <source type="image/webp" srcset="./img/knowledge/party1.webp"  class='viewImg' />
-                                    <img src='./img/knowledge/party1.png'  class='viewImg'>
-                             </picture>
-                             <br>
-
-                            表示されている数字は上限まであとどれぐらい伸びるかを表しています<br>
-                            <span style="background-color:skyblue">青表示</span>は成長するステータス、
-                            <span style="background-color:salmon">赤表示</span>は上限を超えているためもう成長しないステータスです<br><br>
-                            画像は外伝1で水着アザミ利用時です<br>
-                            水着アザミは外伝1での速上限は66であるため、もう成長しないことがわかります<br>
-                            速を成長させるためにはSSアザミにスタイル変更する必要があります<br>
-                            あるいは、周回するクエストを変えてみても良いでしょう<br>
-                            <hr>
-                            周回クエストを外伝1(+16)から外伝2(+18)に変更した場合<br>
-                            <picture>
-                                    <source type="image/webp" srcset="./img/knowledge/party2.webp"  class='viewImg' />
-                                    <img src='./img/knowledge/party2.png'  class='viewImg'>
-                             </picture>
-                             <br>
-
-                            +16から+18に変わったので、ステータスも全体的に2伸び代ができました<br>
-                            水着アザミは速上限まで2なので、成長する確率は低いですがSSアザミなら速上限まで4なので比較的上がりやすいことがわかります<br>
-                            速をあげるつもりならSSアザミに切り替えると良いでしょう<br>
-                            <br><br>
-                            ステータスの入力はスタミナが切れたタイミングなど適宜行うと良いでしょう<br>
-                            <a href='party.html' target='_blank'>育成パーティ上限チェック</a>を使えば、スタイルを切り替えたり育成キャラを切り替えを行い効率よく行うことができるでしょう<br>
-                        </div>
-                        <div class="text-center" style="margin:20px 0px; background: url('./img/bg_run_3.png'); background-size: cover;">
-                            <span class="label-text-small loading" style='width:400px;'>
-                                　　<span>S</span><span>T</span><span>U</span><span>D</span><span>Y</span><span>I</span><span>N</span><span>G</span><span>.</span><span>.</span>                                　　
-                            </span>
-                            <div class="">
-                                <span class="CHAR_BACK char dot_mid dot char-hashiri-right" style="background: url(./img/dot/IDad82c.png);"></span>
-                                <span class="CHAR_FRONT char dot_mid dot char-hashiri-right" style="background: url(./img/dot/ID38400.png);"></span>            
-                            </div>
-                        </div>
-                        <!-- ツール_豆知識_3-->
-                        <ins class="adsbygoogle"
-                        style="display:block; text-align:center;"
-                        data-ad-layout="in-article"
-                        data-ad-format="fluid"
-                        data-ad-client="ca-pub-5008373409434899"
-                        data-ad-slot="9155971928"></ins>
-                        <script>
-                                (adsbygoogle = window.adsbygoogle || []).push({});
-                        </script>
-
-                        <a name="3"></a>
-                        <h4 class="text-center label-text-small width-100">ダメージ計算について</h4>
-                        <div class="content-bg kadomaru">
-                            <a name="3-1"></a>
-                            <div class="style-skill-list">基本計算式(簡易) <i class="fas fa-calculator"></i></div>
-                            ダメージの計算式は大雑把に説明すると下記の通りです<br>
-                            <span style="font-size:22px; color:red;">威力項</span> × 
-                            <span style="font-size:22px; color:blue;">ステータス項</span> × 
-                            <span style="font-size:22px; color:darkgreen;">倍率項</span> = 
-                            ダメージ<br>
-                            <hr>
-                            各項目の内訳は下記の通り<br>
-                            <i class="fas fa-check-circle"></i>威力項：武器威力、技威力項<br>
-                            <i class="fas fa-check-circle"></i>ステータス項：腕力・素早さ・器用さ・知力、敵の体力・精神<br>
-                            <i class="fas fa-check-circle"></i>倍率項：アビリティ（テンションIVなど）、マスターレベル、聖石、敵耐性、乱数<br>
-
-                            <a name="3-2"></a>
-                            <div class="style-skill-list">武器威力が１上がるとどれぐらいダメージ違うの？</div>
-                            武器威力は威力項に入ります<br>
-                            <i class="fas fa-check-circle"></i><span style="font-size:22px; color:red;">威力項</span>　＝　武器威力 ＋ 技威力項<br>
-                            このため、<span style="color:red;">現在の武器威力が大きいほど。技威力項が大きいほど</span>武器威力1上昇によるダメージ増加は少なくなります<br>
-                            <br>
-
-                            通常攻撃（技威力項を７に仮置き）で計算すると<br>
-                            <div class="fukidashi text-center">例：武器威力が１０から１１に変わる場合</div>
-                            威力項は10+7から11+7に増加。18÷17=1.058なので<br>
-                            <i class="fas fa-check-circle"></i>武器威力１増加でダメージは<span style="color:blue">5.8%増加</span>します<br>
-                            <br>
-                            <div class="fukidashi text-center">例：武器威力が２９から３０に変わる場合</div>
-                            威力項は29+7から30+7に増加。37÷36=1.027なので<br>
-                            <i class="fas fa-check-circle"></i>武器威力１増加でダメージは<span style="color:blue">2.7%増加</span>します<br>
-                            <br>
-                            <div class="fukidashi text-center">例：武器威力が２９から３０に変わる＋無明剣：威力69の場合</div>
-                            威力項は29 + 69 から 30 + 69に増加。98÷97=1.0102なので<br>
-                            <i class="fas fa-check-circle"></i>武器威力１増加でダメージは<span style="color:blue">1.02%しか</span>増加しません<br>
-                            <br>
-                            <div class="bg-warning text-center"><i class="fas fa-exclamation-triangle"></i> 注意</div>
-                            実際は武器種により武器威力に係数がかかります。<br>
-                            <table>
-                                <tr>
-                                    <td><img src="./img/icon/icon_tai.png" height=20>体術</td>
-                                    <td>＝ 武器威力 ＋ 技威力</td>
-                                </tr>
-                                <tr>
-                                    <td><img src="./img/icon/icon_ju.png" height=20>銃</td>
-                                    <td>＝ 武器威力 × 1.9 ＋ 技威力</td>
-                                </tr>
-                                <tr>
-                                    <td><img src="./img/icon/icon_ken.png" height=20>その他</td>
-                                    <td>＝ 武器威力 × 1.5 ＋ 技威力</td>
-                                </tr>
-                            </table><br>
-                            <span style="color:blue"><i class="fas fa-check-circle"></i>武器威力を１あげる事によるダメージ増加は、銃は大きく体術は少ないと言えます<br></span>
-                            武器を更新する際の目安にしてください<br>
-
-                            <a name="3-3"></a>
-                            <div class="style-skill-list">技Rankで威力はどれぐらい変わる？</div>
-                            前述の武器威力では技威力はrank無視の簡易計算しましたが実際にはrankより威力が変化します<br>
-                            計算式は下記の通りです<br>
-                            <i class="fas fa-check-circle"></i>技威力 = 技威力 + (技威力 - 5) + (技威力 - 5) × (ランク/100)<br>
-                            <div class="fukidashi text-center">例：サブミッション（威力27）の場合</div>
-                            技威力 = 27 + 22 + (22 * ランク/100)<br>
-                            Rank1 = 49.22<br>
-                            Rank99 = 70.78<br>
-                            <i class="fas fa-check-circle"></i>Rank1から99にすることで<span style="color:blue">技威力が1.43倍に増加</span>
-                            <div class="fukidashi text-center">例：無明剣（威力69）の場合</div>
-                            技威力 = 69 + 64 + (64 * ランク/100)<br>
-                            Rank1 = 133.64<br>
-                            Rank99 = 196.36<br>
-                            <i class="fas fa-check-circle"></i>Rank1から99にすることで<span style="color:blue">技威力が1.47倍に増加</span>
-                            <div class="bg-warning text-center"><i class="fas fa-exclamation-triangle"></i> 注意</div>
-                            あくまで増加するのは技威力です<br>
-                            ダメージ計算の威力項は<span style="font-size:22px; color:red">武器威力 + 技威力</span>であるため、ダメージ増加は武器威力を考慮する必要があります<br>
-                            また武器威力も武器種別により係数が異なる点に注意してください
-                            <div class="fukidashi text-center">例：武器威力３０、無明剣（威力69）の場合</div>
-                            Rank1 = 30 × 1.5 + 133.64 = 178.64<br>
-                            Rank99 = 30 × 1.5 + 196.36 = 241.36<br>
-                            <i class="fas fa-check-circle"></i>Rank1から99にすることで<span style="color:blue">ダメージが1.35倍に増加</span><br>
-                            となります。<br>
-                            <br>
-                            また、武器種別により武器威力にかかる係数も異なりますので<br>
-                            <i class="fas fa-check-circle"></i>武器威力の係数が小さい<img src="./img/icon/icon_tai.png" height=20>体術は技ランクをあげることによるダメージ増加が多く<br>
-                            <i class="fas fa-check-circle"></i>武器威力の係数が大きい<img src="./img/icon/icon_ju.png" height=20>銃は技ランクをあげることによるダメージ増加が小さい<br>
-                            をいえます
-
-                            <a name="3-5"></a>
-                            <div class="style-skill-list">腕力が１上がるとどれぐらいダメージ違うの？</div>
-                            ステータスはダメージ計算のステータス項に入ります<br>
-                            ステータス項は武器種別によって異なり下記の通りです
-                            <table>
-                                <tr>
-                                    <td class="text-nowrap"><i class="fas fa-check-circle"></i><img src="./img/icon/icon_tai.png" height=20>体術</td>
-                                    <td>1 ＋ (腕力 × 2 + 素早さ × 2.5) - 敵体力 × 1.2</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-nowrap"><i class="fas fa-check-circle"></i><img src="./img/icon/icon_ju.png" height=20>銃</td>
-                                    <td>1 ＋ 器用さ × 3.6 - 敵体力 × 1.25</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-nowrap"><i class="fas fa-check-circle"></i><img src="./img/icon/icon_ken.png" height=20>その他</td>
-                                    <td>1 ＋ 依存ステ × 4 - 敵体力 × 1.5</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-nowrap"><i class="fas fa-check-circle"></i><img src="./img/icon/icon_hi.png" height=20><img src="./img/icon/icon_mizu.png" height=20>術</td>
-                                    <td>1 ＋ 知力 × 4 - 敵精神 × 1.5</td>
-                                </tr>
+                                ・キャットのキャラクター成長傾向
+                                <table class="style-skill-list text-center" border="1">
+                                    <tr><td>項目</td><td>腕</td><td>体</td><td>器</td><td>速</td><td>知</td><td>精</td><td>愛</td><td>魅</td></tr>
+                                    <tr><td>キャラ値</td><td>2</td><td>1</td><td>1</td><td>4</td><td>2</td><td>-1</td><td>-1</td><td>1</td></tr>
                                 </table>
-                            依存ステ：小剣、弓＝器用さ。その他＝腕力<br>
-                            <br>
-                            このように、武器種別によってステータス影響は大きく異なります。<br>
-                            <table class="style-skill-list" border="1">
-                                    <tr>
-                                        <td>武器</td>
-                                        <td>敵ステ<span class="d-none d-sm-inline">ータス</span>影響</td>
-                                        <td>自分のステ<span class="d-none d-sm-inline">ータス</span>影響</td>
-                                </tr>
-                                <tr>
-                                    <td><i class="fas fa-check-circle"></i><img src="./img/icon/icon_tai.png" height=20>体術</td>
-                                    <td>小</td>
-                                    <td>大</td>
-                                </tr>
-                                <tr>
-                                    <td><i class="fas fa-check-circle"></i><img src="./img/icon/icon_ju.png" height=20>銃</td>
-                                    <td>中</td>
-                                    <td>小</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-nowrap"><i class="fas fa-check-circle"></i><img src="./img/icon/icon_ken.png" height=20>その他</td>
-                                    <td>大</td>
-                                    <td>中</td>
-                                </tr>
-                            </table>
-                            <hr>
-                            <div class="fukidashi text-center">例：各武器種別の印武器と印+武器の差</div>
-                            どの程度影響が出るか下記のケースで計算してみましょう<br>
-                            ・腕/器/速/知ステータス：100<br>
-                            ・敵体/精：80<br>
-                            <table class="style-skill-list" border="1">
-                                <tr class="text-center">
-                                    <td></td>
-                                    <td>印</td>
-                                    <td>ステータス項</td>
-                                    <td>計算結果</td>
-                                    <td class="d-none d-md-table-cell">倍率</td>
-                                </tr>
-                                <tr>
-                                    <td rowspan=2><img src="./img/icon/icon_tai.png" width=20></td>
-                                    <td>速</td>
-                                    <td>1 ＋ (100 × 2 + 103 × 2.5) - 80 × 1.2</td>
-                                    <td>362.5</td>
-                                    <td class="d-none d-md-table-cell"></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-nowrap">速+</td>
-                                    <td>1 ＋ (100 × 2 + 104 × 2.5) - 80 × 1.2</td>
-                                    <td>365<div class="d-md-none" style="color:skyblue">+0.69%</div></td>
-                                    <td class="d-none d-md-table-cell">+0.69%</td>
-                                </tr>
-                                <tr>
-                                    <td rowspan=2><img src="./img/icon/icon_ju.png" width=20></td>
-                                    <td>器</td>
-                                    <td>1 ＋ (103 × 3.6) - 80 × 1.25</td>
-                                    <td>271.8</td>
-                                    <td class="d-none d-md-table-cell"></td>
-                                </tr>
-                                <tr>
-                                    <td>器+</td>
-                                    <td>1 ＋ (104 × 3.6) - 80 × 1.25</td>
-                                    <td>275.4<div class="d-md-none" style="color:skyblue">+1.32%</div></td>
-                                    <td class="d-none d-md-table-cell">+1.32%</td>
-                                </tr>
-                                <tr>
-                                    <td rowspan=2><img src="./img/icon/icon_ken.png" width=20></td>
-                                    <td>力</td>
-                                    <td>1 ＋ (103 × 4) - 80 × 1.5</td>
-                                    <td>293</td>
-                                    <td class="d-none d-md-table-cell"></td>
-                                </tr>
-                                <tr>
-                                    <td>力+</td>
-                                    <td>1 ＋ (104 × 4) - 80 × 1.5</td>
-                                    <td>297<div class="d-md-none" style="color:skyblue">+1.36%</div></td>
-                                    <td class="d-none d-md-table-cell">+1.36%</td>
-                                </tr>
-                            </table>
-                            武器威力の時と同様でステータスが小さいほど１増加時の影響は大きく<br>
-                            ステータスが大きいほど１増加時の影響は小さいはずです<hr>
-                            ステータスを変えてもう一度<br>
-                            ・腕/器/速/知ステータス：120<br>
-                            ・敵体/精：80<br>
-                            <table class="style-skill-list" border="1">
-                                <tr class="text-center">
-                                    <td></td>
-                                    <td>武器印</td>
-                                    <td>ステータス項</td>
-                                    <td>計算結果</td>
-                                    <td class="d-none d-md-table-cell">倍率</td>
-                                </tr>
-                                <tr>
-                                    <td rowspan=2><img src="./img/icon/icon_tai.png" width=20></td>
-                                    <td>速</td>
-                                    <td>1 ＋ (120 × 2 + 123 × 2.5) - 80 × 1.2</td>
-                                    <td>452.5</td>
-                                    <td class="d-none d-md-table-cell"></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-nowrap">速+</td>
-                                    <td>1 ＋ (120 × 2 + 124 × 2.5) - 80 × 1.2</td>
-                                    <td>455<div class="d-md-none" style="color:skyblue">+0.55%</div></td>
-                                    <td class="d-none d-md-table-cell">+0.55%</td>
-                                </tr>
-                                <tr>
-                                    <td rowspan=2><img src="./img/icon/icon_ju.png" width=20></td>
-                                    <td>器</td>
-                                    <td>1 ＋ (123 × 3.6) - 80 × 1.25</td>
-                                    <td>342.8</td>
-                                    <td class="d-none d-md-table-cell"></td>
-                                </tr>
-                                <tr>
-                                    <td>器+</td>
-                                    <td>1 ＋ (124 × 3.6) - 80 × 1.25</td>
-                                    <td>346.4<div class="d-md-none" style="color:skyblue">+1.05%</div></td>
-                                    <td class="d-none d-md-table-cell">+1.05%</td>
-                                </tr>
-                                <tr>
-                                    <td rowspan=2><img src="./img/icon/icon_ken.png" width=20></td>
-                                    <td>力</td>
-                                    <td>1 ＋ (123 × 4) - 80 × 1.5</td>
-                                    <td>372</td>
-                                    <td class="d-none d-md-table-cell"></td>
-                                </tr>
-                                <tr>
-                                    <td>力+</td>
-                                    <td>1 ＋ (124 × 4) - 80 × 1.5</td>
-                                    <td>376<div class="d-md-none" style="color:skyblue">+1.07%</div></td>
-                                    <td class="d-none d-md-table-cell">+1.07%</td>
-                                </tr>
-                            </table>
-                            <br>
-                            <i class="fas fa-check-circle"></i>武器威力よりもステータスの方が影響が小さいケースが多い<br>
-                            <i class="fas fa-check-circle"></i><img src="./img/icon/icon_tai.png" height=20>体術は腕力と素早さの両方に影響されるため、速だけ上がる速+武器では増加量が少ない<br>
+                                ・キャット[猫の爪は痛いわよ]のスタイル成長傾向
+                                <table class="style-skill-list text-center" border="1">
+                                    <tr><td>項目</td><td>腕</td><td>体</td><td>器</td><td>速</td><td>知</td><td>精</td><td>愛</td><td>魅</td></tr>
+                                    <tr><td><img src="./img/style_icon/ID36a44.png" width="30">[猫の爪は痛いわよ]</td><td>-1</td><td>-2</td><td>3</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>0</td></tr>
+                                </table>
+                                ・VH6のクエスト設定値：45
+                                <br>
+                                これらを足し合わせると
+                                <table class="style-skill-list text-center" border="1">
+                                    <tr><td>項目</td><td>腕</td><td>体</td><td>器</td><td>速</td><td>知</td><td>精</td><td>愛</td><td>魅</td></tr>
+                                    <tr><td>キャラクター値</td><td>2</td><td>1</td><td>1</td><td>4</td><td>2</td><td>-1</td><td>-1</td><td>1</td></tr>
+                                    <tr><td><img src="./img/style_icon/ID36a44.png" width="30">[猫の爪は痛いわよ]</td><td>-1</td><td>-2</td><td>3</td><td>0</td><td>0</td><td>-1</td><td>0</td><td>0</td></tr>
+                                    <tr><td>VH6クエスト設定値</td><td>45</td><td>45</td><td>45</td><td>45</td><td>45</td><td>45</td><td>45</td><td>45</td></tr>
+                                    <tr><td>VH6<span class='d-none d-md-inline'>における</span><img src="./img/style_icon/ID36a44.png" width="30">の上限</td><td>46</td><td>44</td><td>49</td><td>49</td><td>47</td><td>43</td><td>44</td><td>46</td></tr>
+                                </table>
+                                これがVH6におけるSSキャット[猫の爪は痛いわよ]のステータス上限です。
+                                <div class="bg-warning text-center"><i class="fas fa-exclamation-triangle"></i> 注意</div>
+                                ここに出てくるキャラクター成長傾向とスタイル成長傾向の具体的な数字はゲーム中どこにも表示されません<br>
+                                こういうものが内部的には設定されている。という程度でご理解頂ければと思います
 
-                            <a name="3-4"></a>
-                            <div class="style-skill-list"><i class="fas fa-dice"></i> 乱数によるダメージ変化は結構大きい</div>
-                            ダメージ計算の時に発生する乱数は全部で１０パターンです<br>
-                            <table class="style-skill-list text-center" border="1">
-                                    <tr><td>乱数</td><td>割合</td></tr>
-                                    <tr><td>1</td><td>-5%</td></tr>
-                                    <tr><td>2</td><td>-4%</td></tr>
-                                    <tr><td>3</td><td>-3%</td></tr>
-                                    <tr><td>4</td><td>-2%</td></tr>
-                                    <tr><td>5</td><td>-1%</td></tr>
-                                    <tr><td>6</td><td>0%</td></tr>
-                                    <tr><td>7</td><td>+1%</td></tr>
-                                    <tr><td>8</td><td>+2%</td></tr>
-                                    <tr><td>9</td><td>+3%</td></tr>
-                                    <tr><td>10</td><td>+4%</td></tr>
-                            </table>
-                            最大で9%のダメージが変動します<br>
-                            SSS技などダメージが大きいものほど影響が大きく<br>
-                            武器威力30 腕力140 Rank99 最終皇帝で雑に計算するとこのようになります<br>
-                            <picture>
-                                    <source type="image/webp" srcset="./img/knowledge/damage.webp"  class='viewImg' />
-                                    <img src='./img/knowledge/damage.png' class='viewImg'>
-                             </picture>
-                             <br>
+                                <div class="style-skill-list">Baseってなに？+10や+15ってなに？</div>
+                                Baseとは？<br>
+                                <i class="fas fa-check-circle"></i>前述の【クエスト設定値】と同じです<br>
+                                ステータスの基底となるためBaseと表現しています<br>
+                                クエスト設定値45はBase45、クエスト設定値48はBase48と言えます<br>
+                                <br>
+                                各クエストのbase設定は開発ブログの方の記事に纏まっていますので、そちらをご参照ください<br>
+                                <a href="https://romasagatool.com/blog/archives/1449" target="_new">【ロマサガRS】【永久保存版】全クエストの成長限界 調査結果報告</a>
+    
+                                <div class="style-skill-list">素ステとは</div>
+                                <i class="fas fa-check-circle"></i>スタイルや装備に影響されないキャラクターの素のステータス<br>
+                                戦闘終了時に上がる【キャラクター固有】のものを指します<br>
+                                スタイルや装備、裏能力によって上がるステータスとは別物です<br>
 
-                            最低と最大でダメージが1200違うのがわかります。<br>
-                            気になる方は<a href="./damage.html" target="_blank">ダメージ計算機</a>をご利用ください<br>
-                            <div class="fukidashi text-center">例：セルマの崩れ銀花のモラルアップ</div>
-                            崩れ銀花のモラルアップは+15%の効果があるのですが、上記の乱数の出方で効果が全然違って見えます<br>
-                            ・最終皇帝（倍率項:テンション4:15%、勇健3:15%、マスターレベル28:7% = 37%)<br>
-                            モラルアップ前に最大。モラルアップ後に最小の場合
-                            <table class="style-skill-list text-center" border="1">
-                                <tr>
-                                    <td></td><td>乱数</td><td>割合</td><td>合計</td><td>ダメージ</td>
-                                </tr>
-                                <tr>
-                                    <td>モラル<br class="d-sm-none">アップ前</td><td>10</td><td>37% +4%</td><td>41%</td><td>19,108</td>
-                                </tr>
-                                <tr>
-                                    <td>モラル<br class="d-sm-none">アップ後</td><td>１</td><td>37% -5% + 15%</td><td>47%</td><td>19,921</td>
-                                </tr>
-                            </table>
-                            モラルアップ前に最小。モラルアップ後に最大の場合
-                            <table class="style-skill-list text-center" border="1">
-                                <tr>
-                                    <td></td><td>乱数</td><td>割合</td><td>合計</td><td>ダメージ</td>
-                                </tr>
-                                <tr>
-                                    <td>モラル<br class="d-sm-none">アップ前</td><td>1</td><td>37% -5%</td><td>32%</td><td>17,889</td>
-                                </tr>
-                                <tr>
-                                    <td>モラル<br class="d-sm-none">アップ後</td><td>10</td><td>37% +4% + 15%</td><td>56%</td><td>21,141</td>
-                                </tr>
-                            </table>
-                            どうでしょう、この二つの変化では大きく印象が異なるのではないでしょうか<br>
-                            乱数による変動は大きいので、効果が気になった場合は是非複数回試してみることをおすすめします
-                            <br>
-                            <br>
-                            <i>出典：<a href="https://twitter.com/imonoki/status/1094721320888131584">https://twitter.com/imonoki/status/1094721320888131584</a></i>
-                        </div>
-                        <div class="text-center" style="margin:20px 0px; background: url('./img/bg_run_2.png'); background-size: cover;">
-                            <span class="label-text-small loading" style='width:400px;'>
-                                　　<span>S</span><span>T</span><span>U</span><span>D</span><span>Y</span><span>I</span><span>N</span><span>G</span><span>.</span><span>.</span>                                　　
-                            </span>
-                            <div class="">
-                                <span class="CHAR_BACK char dot_mid dot char-hashiri-right" style="background: url(./img/dot/IDad82c.png);"></span>
-                                <span class="CHAR_FRONT char dot_mid dot char-hashiri-right" style="background: url(./img/dot/ID38400.png);"></span>
+                                <div class="style-skill-list">スタイルにある<img src='./img/icon/icon_ind_3.png' height="15"><img src='./img/icon/icon_ind_2.png' height="15"><img src='./img/icon/icon_ind_1.png' height="15">ってなに？</div>
+                                【スタイル成長傾向】の具体的な数字によって表示が変わります<br>
+                                <img src='./img/icon/icon_ind_3.png' height="15">：4〜9 / 
+                                <img src='./img/icon/icon_ind_2.png' height="15">：1〜3 / 
+                                <img src='./img/icon/icon_ind_1.png' height="15">：-9〜0<br>
+                                となります
+                                <div class="fukidashi text-center">例：キャットの場合</div>
+                                <picture>
+                                        <source type="image/webp" srcset="./img/knowledge/styleind.webp" />
+                                        <img src='./img/knowledge/styleind.jpg'>
+                                </picture>
+                                <br>
+                                キャットはこのようにスタイルでマークのつき方が異なっています<br>
+                                実際のステータス値と比べてみましょう（<a href="/style.html?s=ID36a44" target="_blank">キャットのスタイル詳細より引用</a>）<br>
+                                この画像のステータスは、外伝2のクエスト設定値63が設定されています<br>
+                                <picture>
+                                        <source type="image/webp" srcset="./img/knowledge/styletable.webp" class='viewImg' />
+                                        <img src='./img/knowledge/styletable.png' class='viewImg'>
+                                </picture>
+                                <br>
+                                ここから、キャラクター成長傾向とクエスト設定値の63を引くとこのようになります
+                                <table class="style-skill-list text-center" border="1">
+                                    <tr><td>スタイル</td><td>腕</td><td>体</td><td>器</td><td>速</td><td>知</td><td>精</td><td>愛</td><td>魅</td></tr>
+                                    <tr><td><img src="./img/style_icon/ID36a46.png" width="30"></td><td>2<img src='./img/icon/icon_ind_2.png' height="15"></td><td>??</td><td>??</td><td>??<img src='./img/icon/icon_ind_2.png' height="15"></td><td>??</td><td>??</td><td>0</td><td>??</td></tr>
+                                    <tr><td><img src="./img/style_icon/ID36a45.png" width="30"></td><td>0</td><td>-1</td><td>0</td><td>4<img src='./img/icon/icon_ind_3.png' height="15"></td><td>0</td><td>-1</td><td>0</td><td>-2</td></tr>
+                                    <tr><td><img src="./img/style_icon/ID36a44.png" width="30"></td><td>-1</td><td>-2</td><td>3<img src='./img/icon/icon_ind_2.png' height="15"></td><td>0</td><td>0</td><td>-1</td><td>0</td><td>0</td></tr>
+                                    <tr><td><img src="./img/style_icon/ID36a43.png" width="30"></td><td>-1</td><td>-7</td><td>3<img src='./img/icon/icon_ind_2.png' height="15"></td><td>6<img src='./img/icon/icon_ind_3.png' height="15"></td><td>0</td><td>-1</td><td>0</td><td>0</td></tr>
+                                </table>
+                                <img src='./img/icon/icon_ind_3.png' height="15">：4〜9 / 
+                                <img src='./img/icon/icon_ind_2.png' height="15">：1〜3 / 
+                                <img src='./img/icon/icon_ind_1.png' height="15">：-9〜0 の範囲で設定されてるのがわかります<br>
+                                <img src="./img/style_icon/ID36a46.png" width="30">のスタイル成長傾向がまだ上限不明ですが、速は<img src='./img/icon/icon_ind_2.png' height="15">がついていることから1〜3であることがわかっているため、外伝2での上限は68〜70であることが推測できます<br>
+
+                                <ins class="adsbygoogle"　style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5008373409434899" data-ad-slot="1992251055"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                                <button class="icon_btn_positive UP_TOP width-100 width-max fuchidori-white footer-font " style="padding:5px 0px;"> <i class="fas fa-arrow-up d-none d-md-inline"></i> 目次に戻る <i class="fas fa-arrow-up"></i></button>
                             </div>
                         </div>
-                        <!-- ツール_豆知識_4 -->
-                        <ins class="adsbygoogle"
-                        style="display:block; text-align:center;"
-                        data-ad-layout="in-article"
-                        data-ad-format="fluid"
-                        data-ad-client="ca-pub-5008373409434899"
-                        data-ad-slot="4678505018"></ins>
-                        <script>
-                                (adsbygoogle = window.adsbygoogle || []).push({});
-                        </script>
-                        <!--
-                        <a name="4"></a>
-                        <h4 class="text-center label-text">状態異常<img src="./img/icon/icon_mahi.png" height=18>について</h4>
-                        <div class="content-bg kadomaru">
-                                <a name="4-1"></a>
-                            <div class="style-skill-list">状態異常成功率の計算式</div>
-                            <div class="bg-warning text-center"><i class="fas fa-exclamation-triangle"></i> 注意</div>
-                            この計算式は確定式ではありません。<br>
-                            式は後日修正される可能性があります<hr>
-                            <i class="fas fa-check-circle"></i>成功率＝術者知力-敵精神-状態異常耐性+補正<br>
-                            <br>
-                            知力：パワーレイズなど陣形補正も込みの数字<br>
-                            精神：敵精神はちんさんの<a href="https://docs.google.com/spreadsheets/d/1UAEiTSIC_jweWz0aNYYkrqRhVQTB1jy3rLQ3bUFI60Y/edit#gid=421308608">敵データ</a>を参照ください<br>
-                            耐性：
+                        <div class="ARTICLE">
+                            <h4 class="text-center label-text-small width-100">ステータス上昇率について</h4>
+                            <div class="content-bg kadomaru">
+                                <div class="style-skill-list">ステが低いほど上がりやすいの？</div>
+                                上限に近いほどステータスは上がりにくくなります<br>
+                                ではステータスが低いほど（上限から遠いほど）上がりやすいのか。に関しては<br>
+                                「上限まで残り5」と「上限まで残り20」では上昇率が同じであることが武闘会の周回により検証されています<br>
+                                ＜参考資料:<a href='https://docs.google.com/spreadsheets/d/1PYABXd-gBNXqFQWJTL-ZXZxpv7Bn5GANNtKRbg78ZKk/edit#gid=0' target="_blank">武闘会760周の周回データ</a>＞
+                                <hr>
+                                つまりステータス上昇は
+                                <h5 style='color:blue'><i class="fas fa-check-circle"></i>上限から5以上離れている場合、上限-5でも上限-20でも同じ確率で上がる</h5>と言ってよいでしょう<br>
+                                ちんさんが詳しいまとめを発信しておられます > <a href='https://peing.net/ja/q/1576c874-3e82-4f38-a788-0057c219b5d4' target="_blank">参考</a>
+                                <br><br>
+                                <span style="color:red; font-size:20px">ver1.10.0以降</span><br>
+                                ステータスがかなり上がりやすくなっています。今まで上限達成はかなりの周回数が必要であまり現実的でなかったものが現実的に達成できるレベルまで緩和されています
 
-                            <i class="fas fa-check-circle"></i>状態異常成功率は知力によって変動しています<br>
-                            (出典:<a href="https://twitter.com/HarMakeIt/status/1086310315640254464" target="_blank">春巻さん 1/19検証ツイート</a>)<br>
-                            <i class="fas fa-check-circle"></i>状態異常成功率は敵精神によって変動しています<br>
-                            (出典:<a href="https://twitter.com/HarMakeIt/status/1147757298376331265" target="_blank">春巻さん 7/7検証ツイート</a>)<br>
-                            <i class="fas fa-check-circle"></i>状態異常成功率は技Rankによって変動しています<br>
-                            (出典:<a href="https://twitter.com/HarMakeIt/status/1147757298376331265" target="_blank">春巻さん 7/7検証ツイート</a>)<br>
-                            以上より「知力をあげ、技Rankをあげ、敵精神を下げれば状態異常成功率は上がる」と言えます
 
-                            <a name="4-2"></a>
-                            <div class="style-skill-list">武器威力は成功率に関係する？</div>
-                            <i class="fas fa-check-circle"></i>武器威力は状態異常の成功率に影響しないと考えて良いでしょう<br>
-                            (出典:<a href="https://twitter.com/chin_ohnck/status/1086416880212922368" target="_blank">ちんさん 検証ツイート</a>)
+                                <a name='2-2'></a>
+                                <div class="style-skill-list">どこを周回すればいいの？</div>
+                                前述の通り、ステータスは上限から5以上離れていればどこを周回しても上がる確率は同じです<br>
+                                これを踏まえると<br>
+                                1. スタミナ消費が少ないクエスト<br>
+                                2. 全滅せず無理なく周回できるクエスト<br>
+                                3. ついでにドロップアイテムが狙えるクエスト<br>
+                                を基準にすると良いと思います<br>
+                                <hr>
+                                ▼オススメ▼<br>
+                                便利ツールの<a href='party.html' target='_blank'>育成パーティ上限チェック</a>を使うと、どのクエストであとどれぐらいステータスが伸びるか調べることができます<br>
+                                <picture>
+                                        <source type="image/webp" srcset="./img/knowledge/party1.webp"  class='viewImg' />
+                                        <img src='./img/knowledge/party1.png'  class='viewImg'>
+                                </picture>
+                                <br>
+
+                                表示されている数字は上限まであとどれぐらい伸びるかを表しています<br>
+                                <span style="background-color:skyblue">青表示</span>は成長するステータス、
+                                <span style="background-color:salmon">赤表示</span>は上限を超えているためもう成長しないステータスです<br><br>
+                                画像は外伝1で水着アザミ利用時です<br>
+                                水着アザミは外伝1での速上限は66であるため、もう成長しないことがわかります<br>
+                                速を成長させるためにはSSアザミにスタイル変更する必要があります<br>
+                                あるいは、周回するクエストを変えてみても良いでしょう<br>
+                                <hr>
+                                周回クエストを外伝1(+16)から外伝2(+18)に変更した場合<br>
+                                <picture>
+                                        <source type="image/webp" srcset="./img/knowledge/party2.webp"  class='viewImg' />
+                                        <img src='./img/knowledge/party2.png'  class='viewImg'>
+                                </picture>
+                                <br>
+
+                                +16から+18に変わったので、ステータスも全体的に2伸び代ができました<br>
+                                水着アザミは速上限まで2なので、成長する確率は低いですがSSアザミなら速上限まで4なので比較的上がりやすいことがわかります<br>
+                                速をあげるつもりならSSアザミに切り替えると良いでしょう<br>
+                                <br><br>
+                                ステータスの入力はスタミナが切れたタイミングなど適宜行うと良いでしょう<br>
+                                <a href='party.html' target='_blank'>育成パーティ上限チェック</a>を使えば、スタイルを切り替えたり育成キャラを切り替えを行い効率よく行うことができるでしょう<br>
+                            </div>
+                            <ins class="adsbygoogle"　style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5008373409434899" data-ad-slot="1992251055"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                            <button class="icon_btn_positive UP_TOP width-100 width-max fuchidori-white footer-font " style="padding:5px 0px;"> <i class="fas fa-arrow-up d-none d-md-inline"></i> 目次に戻る <i class="fas fa-arrow-up"></i></button>
                         </div>
-                        -->
-                        <a name="5"></a>
-                        <h4 class="text-center label-text-small width-100">聖石の効果について</h4>
-                        <div class="content-bg kadomaru">
-                            <a name="5-4"></a>
-                            <div class="style-skill-list">ランクをあげるのに必要なかけらってどれぐらい？</div>
-                            <i class="fas fa-check-circle"></i>100EXPでランクが上がります<br>
-                            <i class="fas fa-check-circle"></i>1回の強化で入るEXPはおよそ1.71EXPです(注:調査中、下記参照)<br>
-                            <i class="fas fa-check-circle"></i>1ランクあげるのに必要な強化回数は平均58.5回<br>
-                            <br>
-                            強化時発生EXPの調査結果(20,480回)
-                            <table class="style-skill-list text-center" border="1">
-                                <tr>
-                                    <td>EXP</td><td>発生回数</td><td>割合</td>
-                                </tr>
-                                <tr>
-                                    <td>1EXP</td><td>17,334</td><td>86.46%</td>
-                                </tr>
-                                <tr>
-                                    <td>5EXP</td><td>2,149</td><td>10.72%</td>
-                                </tr>
-                                <tr>
-                                    <td>10EXP</td><td>559</td><td>2.79%</td>
-                                </tr>
-                                <tr>
-                                    <td>100EXP</td><td>6</td><td>0.03%</td>
-                                </tr>
-                            </table><br>
-                            平均<span id="holy_avg"></span>回として計算し、次項のテーブルにまとめます<br>
-                            <a name="5-5"></a>
-                            <div class="style-skill-list">高ランクの石から強化するとどれぐらいお得なの？</div>
-                            
-                            <table class="style-skill-list text-center" border="1" id="HS_TABLE">
-                                <tr><td>ランク</td><td>1回強化に<br>必要数</td><td>ランクアップ<br>必要数</td><td>累計</td><td>ランク10までの<br>必要数</td></tr>
-                            </table>
-                            ランク8>9、9>10が異常にコストが高いため、高ランクの石から強化し始めてもほとんど節約にはなりません
-                            <div class="bg-warning text-center"><i class="fas fa-exclamation-triangle"></i> 注意</div>
-                            あくまでも調査段階の値であることをご留意ください<br>
-                            実際にはRank10までの強化で11万〜12万で済んだという報告もあります<br>
-                            高いランクでの強化時に高EXPが出るかにより大きく結果は変わります<br>
-                            <br>
+                        <div class="ARTICLE">
+                            <h4 class="text-center label-text-small width-100">ダメージ計算について</h4>
+                            <div class="content-bg kadomaru">
+                                <a name="3-1"></a>
+                                <div class="style-skill-list">基本計算式(簡易) <i class="fas fa-calculator"></i></div>
+                                ダメージの計算式は大雑把に説明すると下記の通りです<br>
+                                <span style="font-size:22px; color:red;">威力項</span> × 
+                                <span style="font-size:22px; color:blue;">ステータス項</span> × 
+                                <span style="font-size:22px; color:darkgreen;">倍率項</span> = 
+                                ダメージ<br>
+                                <hr>
+                                各項目の内訳は下記の通り<br>
+                                <i class="fas fa-check-circle"></i>威力項：武器威力、技威力項<br>
+                                <i class="fas fa-check-circle"></i>ステータス項：腕力・素早さ・器用さ・知力、敵の体力・精神<br>
+                                <i class="fas fa-check-circle"></i>倍率項：アビリティ（テンションIVなど）、マスターレベル、聖石、敵耐性、乱数<br>
+
+                                <a name="3-2"></a>
+                                <div class="style-skill-list">武器威力が１上がるとどれぐらいダメージ違うの？</div>
+                                武器威力は威力項に入ります<br>
+                                <i class="fas fa-check-circle"></i><span style="font-size:22px; color:red;">威力項</span>　＝　武器威力 ＋ 技威力項<br>
+                                このため、<span style="color:red;">現在の武器威力が大きいほど。技威力項が大きいほど</span>武器威力1上昇によるダメージ増加は少なくなります<br>
+                                <br>
+
+                                通常攻撃（技威力項を７に仮置き）で計算すると<br>
+                                <div class="fukidashi text-center">例：武器威力が１０から１１に変わる場合</div>
+                                威力項は10+7から11+7に増加。18÷17=1.058なので<br>
+                                <i class="fas fa-check-circle"></i>武器威力１増加でダメージは<span style="color:blue">5.8%増加</span>します<br>
+                                <br>
+                                <div class="fukidashi text-center">例：武器威力が２９から３０に変わる場合</div>
+                                威力項は29+7から30+7に増加。37÷36=1.027なので<br>
+                                <i class="fas fa-check-circle"></i>武器威力１増加でダメージは<span style="color:blue">2.7%増加</span>します<br>
+                                <br>
+                                <div class="fukidashi text-center">例：武器威力が２９から３０に変わる＋無明剣：威力69の場合</div>
+                                威力項は29 + 69 から 30 + 69に増加。98÷97=1.0102なので<br>
+                                <i class="fas fa-check-circle"></i>武器威力１増加でダメージは<span style="color:blue">1.02%しか</span>増加しません<br>
+                                <br>
+                                <div class="bg-warning text-center"><i class="fas fa-exclamation-triangle"></i> 注意</div>
+                                実際は武器種により武器威力に係数がかかります。<br>
+                                <table>
+                                    <tr>
+                                        <td><img src="./img/icon/icon_tai.png" height=20>体術</td>
+                                        <td>＝ 武器威力 ＋ 技威力</td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="./img/icon/icon_ju.png" height=20>銃</td>
+                                        <td>＝ 武器威力 × 1.9 ＋ 技威力</td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="./img/icon/icon_ken.png" height=20>その他</td>
+                                        <td>＝ 武器威力 × 1.5 ＋ 技威力</td>
+                                    </tr>
+                                </table><br>
+                                <span style="color:blue"><i class="fas fa-check-circle"></i>武器威力を１あげる事によるダメージ増加は、銃は大きく体術は少ないと言えます<br></span>
+                                武器を更新する際の目安にしてください<br>
+
+                                <a name="3-3"></a>
+                                <div class="style-skill-list">技Rankで威力はどれぐらい変わる？</div>
+                                前述の武器威力では技威力はrank無視の簡易計算しましたが実際にはrankより威力が変化します<br>
+                                計算式は下記の通りです<br>
+                                <i class="fas fa-check-circle"></i>技威力 = 技威力 + (技威力 - 5) + (技威力 - 5) × (ランク/100)<br>
+                                <div class="fukidashi text-center">例：サブミッション（威力27）の場合</div>
+                                技威力 = 27 + 22 + (22 * ランク/100)<br>
+                                Rank1 = 49.22<br>
+                                Rank99 = 70.78<br>
+                                <i class="fas fa-check-circle"></i>Rank1から99にすることで<span style="color:blue">技威力が1.43倍に増加</span>
+                                <div class="fukidashi text-center">例：無明剣（威力69）の場合</div>
+                                技威力 = 69 + 64 + (64 * ランク/100)<br>
+                                Rank1 = 133.64<br>
+                                Rank99 = 196.36<br>
+                                <i class="fas fa-check-circle"></i>Rank1から99にすることで<span style="color:blue">技威力が1.47倍に増加</span>
+                                <div class="bg-warning text-center"><i class="fas fa-exclamation-triangle"></i> 注意</div>
+                                あくまで増加するのは技威力です<br>
+                                ダメージ計算の威力項は<span style="font-size:22px; color:red">武器威力 + 技威力</span>であるため、ダメージ増加は武器威力を考慮する必要があります<br>
+                                また武器威力も武器種別により係数が異なる点に注意してください
+                                <div class="fukidashi text-center">例：武器威力３０、無明剣（威力69）の場合</div>
+                                Rank1 = 30 × 1.5 + 133.64 = 178.64<br>
+                                Rank99 = 30 × 1.5 + 196.36 = 241.36<br>
+                                <i class="fas fa-check-circle"></i>Rank1から99にすることで<span style="color:blue">ダメージが1.35倍に増加</span><br>
+                                となります。<br>
+                                <br>
+                                また、武器種別により武器威力にかかる係数も異なりますので<br>
+                                <i class="fas fa-check-circle"></i>武器威力の係数が小さい<img src="./img/icon/icon_tai.png" height=20>体術は技ランクをあげることによるダメージ増加が多く<br>
+                                <i class="fas fa-check-circle"></i>武器威力の係数が大きい<img src="./img/icon/icon_ju.png" height=20>銃は技ランクをあげることによるダメージ増加が小さい<br>
+                                をいえます
+
+                                <a name="3-5"></a>
+                                <div class="style-skill-list">腕力が１上がるとどれぐらいダメージ違うの？</div>
+                                ステータスはダメージ計算のステータス項に入ります<br>
+                                ステータス項は武器種別によって異なり下記の通りです
+                                <table>
+                                    <tr>
+                                        <td class="text-nowrap"><i class="fas fa-check-circle"></i><img src="./img/icon/icon_tai.png" height=20>体術</td>
+                                        <td>1 ＋ (腕力 × 2 + 素早さ × 2.5) - 敵体力 × 1.2</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-nowrap"><i class="fas fa-check-circle"></i><img src="./img/icon/icon_ju.png" height=20>銃</td>
+                                        <td>1 ＋ 器用さ × 3.6 - 敵体力 × 1.25</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-nowrap"><i class="fas fa-check-circle"></i><img src="./img/icon/icon_ken.png" height=20>その他</td>
+                                        <td>1 ＋ 依存ステ × 4 - 敵体力 × 1.5</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-nowrap"><i class="fas fa-check-circle"></i><img src="./img/icon/icon_hi.png" height=20><img src="./img/icon/icon_mizu.png" height=20>術</td>
+                                        <td>1 ＋ 知力 × 4 - 敵精神 × 1.5</td>
+                                    </tr>
+                                    </table>
+                                依存ステ：小剣、弓＝器用さ。その他＝腕力<br>
+                                <br>
+                                このように、武器種別によってステータス影響は大きく異なります。<br>
+                                <table class="style-skill-list" border="1">
+                                        <tr>
+                                            <td>武器</td>
+                                            <td>敵ステ<span class="d-none d-sm-inline">ータス</span>影響</td>
+                                            <td>自分のステ<span class="d-none d-sm-inline">ータス</span>影響</td>
+                                    </tr>
+                                    <tr>
+                                        <td><i class="fas fa-check-circle"></i><img src="./img/icon/icon_tai.png" height=20>体術</td>
+                                        <td>小</td>
+                                        <td>大</td>
+                                    </tr>
+                                    <tr>
+                                        <td><i class="fas fa-check-circle"></i><img src="./img/icon/icon_ju.png" height=20>銃</td>
+                                        <td>中</td>
+                                        <td>小</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-nowrap"><i class="fas fa-check-circle"></i><img src="./img/icon/icon_ken.png" height=20>その他</td>
+                                        <td>大</td>
+                                        <td>中</td>
+                                    </tr>
+                                </table>
+                                <hr>
+                                <div class="fukidashi text-center">例：各武器種別の印武器と印+武器の差</div>
+                                どの程度影響が出るか下記のケースで計算してみましょう<br>
+                                ・腕/器/速/知ステータス：100<br>
+                                ・敵体/精：80<br>
+                                <table class="style-skill-list" border="1">
+                                    <tr class="text-center">
+                                        <td></td>
+                                        <td>印</td>
+                                        <td>ステータス項</td>
+                                        <td>計算結果</td>
+                                        <td class="d-none d-md-table-cell">倍率</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan=2><img src="./img/icon/icon_tai.png" width=20></td>
+                                        <td>速</td>
+                                        <td>1 ＋ (100 × 2 + 103 × 2.5) - 80 × 1.2</td>
+                                        <td>362.5</td>
+                                        <td class="d-none d-md-table-cell"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-nowrap">速+</td>
+                                        <td>1 ＋ (100 × 2 + 104 × 2.5) - 80 × 1.2</td>
+                                        <td>365<div class="d-md-none" style="color:skyblue">+0.69%</div></td>
+                                        <td class="d-none d-md-table-cell">+0.69%</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan=2><img src="./img/icon/icon_ju.png" width=20></td>
+                                        <td>器</td>
+                                        <td>1 ＋ (103 × 3.6) - 80 × 1.25</td>
+                                        <td>271.8</td>
+                                        <td class="d-none d-md-table-cell"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>器+</td>
+                                        <td>1 ＋ (104 × 3.6) - 80 × 1.25</td>
+                                        <td>275.4<div class="d-md-none" style="color:skyblue">+1.32%</div></td>
+                                        <td class="d-none d-md-table-cell">+1.32%</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan=2><img src="./img/icon/icon_ken.png" width=20></td>
+                                        <td>力</td>
+                                        <td>1 ＋ (103 × 4) - 80 × 1.5</td>
+                                        <td>293</td>
+                                        <td class="d-none d-md-table-cell"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>力+</td>
+                                        <td>1 ＋ (104 × 4) - 80 × 1.5</td>
+                                        <td>297<div class="d-md-none" style="color:skyblue">+1.36%</div></td>
+                                        <td class="d-none d-md-table-cell">+1.36%</td>
+                                    </tr>
+                                </table>
+                                武器威力の時と同様でステータスが小さいほど１増加時の影響は大きく<br>
+                                ステータスが大きいほど１増加時の影響は小さいはずです<hr>
+                                ステータスを変えてもう一度<br>
+                                ・腕/器/速/知ステータス：120<br>
+                                ・敵体/精：80<br>
+                                <table class="style-skill-list" border="1">
+                                    <tr class="text-center">
+                                        <td></td>
+                                        <td>武器印</td>
+                                        <td>ステータス項</td>
+                                        <td>計算結果</td>
+                                        <td class="d-none d-md-table-cell">倍率</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan=2><img src="./img/icon/icon_tai.png" width=20></td>
+                                        <td>速</td>
+                                        <td>1 ＋ (120 × 2 + 123 × 2.5) - 80 × 1.2</td>
+                                        <td>452.5</td>
+                                        <td class="d-none d-md-table-cell"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-nowrap">速+</td>
+                                        <td>1 ＋ (120 × 2 + 124 × 2.5) - 80 × 1.2</td>
+                                        <td>455<div class="d-md-none" style="color:skyblue">+0.55%</div></td>
+                                        <td class="d-none d-md-table-cell">+0.55%</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan=2><img src="./img/icon/icon_ju.png" width=20></td>
+                                        <td>器</td>
+                                        <td>1 ＋ (123 × 3.6) - 80 × 1.25</td>
+                                        <td>342.8</td>
+                                        <td class="d-none d-md-table-cell"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>器+</td>
+                                        <td>1 ＋ (124 × 3.6) - 80 × 1.25</td>
+                                        <td>346.4<div class="d-md-none" style="color:skyblue">+1.05%</div></td>
+                                        <td class="d-none d-md-table-cell">+1.05%</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan=2><img src="./img/icon/icon_ken.png" width=20></td>
+                                        <td>力</td>
+                                        <td>1 ＋ (123 × 4) - 80 × 1.5</td>
+                                        <td>372</td>
+                                        <td class="d-none d-md-table-cell"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>力+</td>
+                                        <td>1 ＋ (124 × 4) - 80 × 1.5</td>
+                                        <td>376<div class="d-md-none" style="color:skyblue">+1.07%</div></td>
+                                        <td class="d-none d-md-table-cell">+1.07%</td>
+                                    </tr>
+                                </table>
+                                <br>
+                                <i class="fas fa-check-circle"></i>武器威力よりもステータスの方が影響が小さいケースが多い<br>
+                                <i class="fas fa-check-circle"></i><img src="./img/icon/icon_tai.png" height=20>体術は腕力と素早さの両方に影響されるため、速だけ上がる速+武器では増加量が少ない<br>
+
+                                <a name="3-4"></a>
+                                <div class="style-skill-list"><i class="fas fa-dice"></i> 乱数によるダメージ変化は結構大きい</div>
+                                ダメージ計算の時に発生する乱数は全部で１０パターンです<br>
+                                <table class="style-skill-list text-center" border="1">
+                                        <tr><td>乱数</td><td>割合</td></tr>
+                                        <tr><td>1</td><td>-5%</td></tr>
+                                        <tr><td>2</td><td>-4%</td></tr>
+                                        <tr><td>3</td><td>-3%</td></tr>
+                                        <tr><td>4</td><td>-2%</td></tr>
+                                        <tr><td>5</td><td>-1%</td></tr>
+                                        <tr><td>6</td><td>0%</td></tr>
+                                        <tr><td>7</td><td>+1%</td></tr>
+                                        <tr><td>8</td><td>+2%</td></tr>
+                                        <tr><td>9</td><td>+3%</td></tr>
+                                        <tr><td>10</td><td>+4%</td></tr>
+                                </table>
+                                最大で9%のダメージが変動します<br>
+                                SSS技などダメージが大きいものほど影響が大きく<br>
+                                武器威力30 腕力140 Rank99 最終皇帝で雑に計算するとこのようになります<br>
+                                <picture>
+                                        <source type="image/webp" srcset="./img/knowledge/damage.webp"  class='viewImg' />
+                                        <img src='./img/knowledge/damage.png' class='viewImg'>
+                                </picture>
+                                <br>
+
+                                最低と最大でダメージが1200違うのがわかります。<br>
+                                気になる方は<a href="./damage.html" target="_blank">ダメージ計算機</a>をご利用ください<br>
+                                <div class="fukidashi text-center">例：セルマの崩れ銀花のモラルアップ</div>
+                                崩れ銀花のモラルアップは+15%の効果があるのですが、上記の乱数の出方で効果が全然違って見えます<br>
+                                ・最終皇帝（倍率項:テンション4:15%、勇健3:15%、マスターレベル28:7% = 37%)<br>
+                                モラルアップ前に最大。モラルアップ後に最小の場合
+                                <table class="style-skill-list text-center" border="1">
+                                    <tr>
+                                        <td></td><td>乱数</td><td>割合</td><td>合計</td><td>ダメージ</td>
+                                    </tr>
+                                    <tr>
+                                        <td>モラル<br class="d-sm-none">アップ前</td><td>10</td><td>37% +4%</td><td>41%</td><td>19,108</td>
+                                    </tr>
+                                    <tr>
+                                        <td>モラル<br class="d-sm-none">アップ後</td><td>１</td><td>37% -5% + 15%</td><td>47%</td><td>19,921</td>
+                                    </tr>
+                                </table>
+                                モラルアップ前に最小。モラルアップ後に最大の場合
+                                <table class="style-skill-list text-center" border="1">
+                                    <tr>
+                                        <td></td><td>乱数</td><td>割合</td><td>合計</td><td>ダメージ</td>
+                                    </tr>
+                                    <tr>
+                                        <td>モラル<br class="d-sm-none">アップ前</td><td>1</td><td>37% -5%</td><td>32%</td><td>17,889</td>
+                                    </tr>
+                                    <tr>
+                                        <td>モラル<br class="d-sm-none">アップ後</td><td>10</td><td>37% +4% + 15%</td><td>56%</td><td>21,141</td>
+                                    </tr>
+                                </table>
+                                どうでしょう、この二つの変化では大きく印象が異なるのではないでしょうか<br>
+                                乱数による変動は大きいので、効果が気になった場合は是非複数回試してみることをおすすめします
+                                <br>
+                                <br>
+                                <i>出典：<a href="https://twitter.com/imonoki/status/1094721320888131584">Twitter(imonoki)</a></i>
+                            </div>
+                            <ins class="adsbygoogle"　style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5008373409434899" data-ad-slot="1992251055"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                            <button class="icon_btn_positive UP_TOP width-100 width-max fuchidori-white footer-font " style="padding:5px 0px;"> <i class="fas fa-arrow-up d-none d-md-inline"></i> 目次に戻る <i class="fas fa-arrow-up"></i></button>
+                        </div>
+
+                        <div class="ARTICLE">
+                            <h4 class="text-center label-text-small width-100">聖石の効果について</h4>
+                            <div class="content-bg kadomaru">
+                                <div class="style-skill-list">ランクをあげるのに必要なかけらってどれぐらい？</div>
+                                <i class="fas fa-check-circle"></i>100EXPでランクが上がります<br>
+                                <i class="fas fa-check-circle"></i>1回の強化で入るEXPはおよそ1.71EXPです(注:調査中、下記参照)<br>
+                                <i class="fas fa-check-circle"></i>1ランクあげるのに必要な強化回数は平均58.5回<br>
+                                <br>
+                                強化時発生EXPの調査結果(20,480回)
+                                <table class="style-skill-list text-center" border="1">
+                                    <tr>
+                                        <td>EXP</td><td>発生回数</td><td>割合</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1EXP</td><td>17,334</td><td>86.46%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5EXP</td><td>2,149</td><td>10.72%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>10EXP</td><td>559</td><td>2.79%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>100EXP</td><td>6</td><td>0.03%</td>
+                                    </tr>
+                                </table><br>
+                                平均<span id="holy_avg"></span>回として計算し、次項のテーブルにまとめます<br>
+                                <div class="style-skill-list">高ランクの石から強化するとどれぐらいお得なの？</div>
                                 
-                            <a name="5-1"></a>
-                            <div class="style-skill-list">当たりの聖石ってどれ？</div>
-                            結論<br>
-                            <i class="fas fa-check-circle"></i>1位：HP満タン+(2%)<br>
-                            <i class="fas fa-check-circle"></i>2位：1.5%+の石 or 状態異常ダウン<br>
-                            <br>
-                            聖石の倍率は1%、1.5%、2%と3種類がありまます<br>
-                            ランクアップごとに初期値分増えていき、最大ランクの10になると10%、15%、20%になります<br>
+                                <table class="style-skill-list text-center" border="1" id="HS_TABLE">
+                                    <tr><td>ランク</td><td>1回強化に<br>必要数</td><td>ランクアップ<br>必要数</td><td>累計</td><td>ランク10までの<br>必要数</td></tr>
+                                </table>
+                                ランク8>9、9>10が異常にコストが高いため、高ランクの石から強化し始めてもほとんど節約にはなりません
+                                <div class="bg-warning text-center"><i class="fas fa-exclamation-triangle"></i> 注意</div>
+                                あくまでも調査段階の値であることをご留意ください<br>
+                                実際にはRank10までの強化で11万〜12万で済んだという報告もあります<br>
+                                高いランクでの強化時に高EXPが出るかにより大きく結果は変わります<br>
+                                <br>
+                                    
+                                <div class="style-skill-list">当たりの武器聖石ってどれ？</div>
+                                結論<br>
+                                <i class="fas fa-check-circle"></i>1位：HP満タン+(2%)<br>
+                                <i class="fas fa-check-circle"></i>2位：1.5%+の石 or 状態異常ダウン<br>
+                                <br>
+                                聖石の倍率は1%、1.5%、2%と3種類がありまます<br>
+                                ランクアップごとに初期値分増えていき、最大ランクの10になると10%、15%、20%になります<br>
 
-                            やはり倍率の高い石が当りと言えるのではないでしょうか<br>
-                            2%増の石は下記の3種類です<br>
-                            ・特攻+<br>
-                            ・瀕死時+<br>
-                            ・HP満タン+<br>
-                            上二つは使いづらいので、HP満タン+が良さそうです<br>
-                            次が1.5%増ですが、こちらはどれも似たようなものです<br>
-                            ・武器+(杖以外)<br>
-                            ・属性+(熱冷雷陰陽)<br>
-                            ・弱点+<br>
-                            武器+だと使い回すことができず、弱点+だとクエストによっては安定しません<br>
-                            ウンディーネやエメラルドなどの単一属性術師は杖+ではなくて属性+の方が威力が上がるので良いでしょう
-                            （そもそも複数属性でも杖をどちらかの属性に合わせるため、杖+が生きる機会はそんなにない）<br>
-                            <br>
-                            というわけで、あたりはHP満タン+としておきます<br>
-                            (個人的には使い分けるものなのであたりもハズレもないと思ってます)<br>
-                            <br>
+                                やはり倍率の高い石が当りと言えるのではないでしょうか<br>
+                                2%増の石は下記の3種類です<br>
+                                ・特攻+<br>
+                                ・瀕死時+<br>
+                                ・HP満タン+<br>
+                                上二つは使いづらいので、HP満タン+が良さそうです<br>
+                                次が1.5%増ですが、こちらはどれも似たようなものです<br>
+                                ・武器+(杖以外)<br>
+                                ・属性+(熱冷雷陰陽)<br>
+                                ・弱点+<br>
+                                武器+だと使い回すことができず、弱点+だとクエストによっては安定しません<br>
+                                ウンディーネやエメラルドなどの単一属性術師は杖+ではなくて属性+の方が威力が上がるので良いでしょう
+                                （そもそも複数属性でも杖をどちらかの属性に合わせるため、杖+が生きる機会はそんなにない）<br>
+                                <br>
+                                というわけで、あたりはHP満タン+としておきます<br>
+                                (個人的には使い分けるものなのであたりもハズレもないと思ってます)<br>
+                                <br>
 
-                            <a name="5-6"></a>
-                            <div class="style-skill-list">売っていい聖石ってどれ？</div>
-                            <i class="fas fa-check-circle"></i>暗闇耐性ダウン：暗闇の効果が薄いため<br>
-                            <i class="fas fa-check-circle"></i>OD威力+：限定条件で+1%しか上がらないため、常時発動する威力+で良い<br>
-                            <i class="fas fa-check-circle"></i>連携+：限定条件で+1%しか上がらないため、常時発動する威力+で良い<br>
-                            <i class="fas fa-check-circle"></i>杖+：限定条件で+1%しか上がらないため、常時発動する威力+で良い<br>
-                            <i class="fas fa-check-circle"></i>斬、打、突+：限定条件で+1%しか上がらないため、常時発動する威力+で良い<br>
-                            威力+の数が少ない場合は斬、打、突、杖+は使う機会もありそうです<br>
-                            <br>
+                                <a name="5-6"></a>
+                                <div class="style-skill-list">売っていい聖石ってどれ？</div>
+                                <i class="fas fa-check-circle"></i>暗闇耐性ダウン：暗闇の効果が薄いため<br>
+                                <i class="fas fa-check-circle"></i>OD威力+：限定条件で+1%しか上がらないため、常時発動する威力+で良い<br>
+                                <i class="fas fa-check-circle"></i>連携+：限定条件で+1%しか上がらないため、常時発動する威力+で良い<br>
+                                <i class="fas fa-check-circle"></i>杖+：限定条件で+1%しか上がらないため、常時発動する威力+で良い<br>
+                                <i class="fas fa-check-circle"></i>斬、打、突+：限定条件で+1%しか上がらないため、常時発動する威力+で良い<br>
+                                威力+の数が少ない場合は斬、打、突、杖+は使う機会もありそうです<br>
+                                <br>
 
-                            <a name="5-7"></a>
-                            <div class="style-skill-list">特攻+と弱点+ってどう違うの？</div>
-                            <i class="fas fa-check-circle"></i>特攻+は特攻時にX%ダメージが上がります<br>
-                            特攻は、不死に対するサザンクロス、フラッシュファイアなどCriticalと表示されるものです<br>
-                            <i class="fas fa-check-circle"></i>弱点+はWeek時にX%ダメージが上がります<br>
-                            Weekは、耐性が-35以上ある場合に発生します。<br>
-                            <br>
+                                <a name="5-7"></a>
+                                <div class="style-skill-list">特攻+と弱点+ってどう違うの？</div>
+                                <i class="fas fa-check-circle"></i>特攻+は特攻時にX%ダメージが上がります<br>
+                                特攻は、不死に対するサザンクロス、フラッシュファイアなどCriticalと表示されるものです<br>
+                                <i class="fas fa-check-circle"></i>弱点+はWeek時にX%ダメージが上がります<br>
+                                Weekは、耐性が-35以上ある場合に発生します。<br>
+                                <br>
 
-                            <a name="5-2"></a>
-                            <div class="style-skill-list">+X%表記だけど、そんなにダメージ増えない</div>
-                            聖石のダメージ増加は、最終ダメージではなくダメージ計算の<span style="color:green">倍率項</span>にかかってきます<br>
-                            (詳細：<a href="#3-1">ダメージ計算式</a>)<br>
-                            係数項は<br>
-                            ・アビリティ(テンション4など)<br>
-                            ・マスターレベル<br>
-                            が含まれています。<br>
-                            ここに+X%が加算されるため、増加量が少なく見えてしまいます
-                            <div class="fukidashi text-center">例：+5%の石、テン4、勇健3、MLv28の場合</div>
-                            テン4(+15%)、勇健3(+15%)、MLv28(+7%) = 37%<br>
-                            ここに聖石の5%が加算された42%が最終的な倍率項になります（乱数覗く）<br>
-                            <i class="fas fa-check-circle"></i>137%から142%への増加では、<span style="color: blue">ダメージ計算上は+3.64%増加</span>したことになります<br>
-                            <div class="fukidashi text-center">例：+5%の石、テン4、MLv28の場合</div>
-                            テン4(+15%)、MLv28(+7%) = 22%<br>
-                            ここに聖石の5%が加算された27%が最終的な倍率項になります（乱数覗く）<br>
-                            <i class="fas fa-check-circle"></i>122%から127%への増加では、<span style="color: blue">ダメージ計算上は+4.09%増加</span>したことになります<br>
-                            <br>
+                                <a name="5-2"></a>
+                                <div class="style-skill-list">+X%表記だけど、そんなにダメージ増えない</div>
+                                聖石のダメージ増加は、最終ダメージではなくダメージ計算の<span style="color:green">倍率項</span>にかかってきます<br>
+                                (詳細：<a href="#3-1">ダメージ計算式</a>)<br>
+                                係数項は<br>
+                                ・アビリティ(テンション4など)<br>
+                                ・マスターレベル<br>
+                                が含まれています。<br>
+                                ここに+X%が加算されるため、増加量が少なく見えてしまいます
+                                <div class="fukidashi text-center">例：+5%の石、テン4、勇健3、MLv28の場合</div>
+                                テン4(+15%)、勇健3(+15%)、MLv28(+7%) = 37%<br>
+                                ここに聖石の5%が加算された42%が最終的な倍率項になります（乱数覗く）<br>
+                                <i class="fas fa-check-circle"></i>137%から142%への増加では、<span style="color: blue">ダメージ計算上は+3.64%増加</span>したことになります<br>
+                                <div class="fukidashi text-center">例：+5%の石、テン4、MLv28の場合</div>
+                                テン4(+15%)、MLv28(+7%) = 22%<br>
+                                ここに聖石の5%が加算された27%が最終的な倍率項になります（乱数覗く）<br>
+                                <i class="fas fa-check-circle"></i>122%から127%への増加では、<span style="color: blue">ダメージ計算上は+4.09%増加</span>したことになります<br>
+                                <br>
 
-                            <a name="5-3"></a>
-                            <div class="style-skill-list">杖+セットしてれば、杖ポコのダメージも上がる？</div>
-                            <i class="fas fa-check-circle"></i>上がります<br>
-                            前述の通り、倍率項が増えることでダメージの増加しています<br>
-                            腕力や知力が上がるわけではないので、どの攻撃でもダメージが上がります<br>
-                            ・体術+をセットしていれば、伯爵のウィークネスは威力が上がる<br>
-                            ・杖+をセットしていれば、通常攻撃と全ての術の威力が上がる<br>
-                            <br>
-                            <div class="bg-warning text-center"><i class="fas fa-exclamation-triangle"></i> 未検証</div>
-                            ・杖+装備のセルフバーニングカウンターのダメージ増加<br>
-                            おそらく増加するとは思いますが未検証です<br>
-                            <br>
+                                <a name="5-3"></a>
+                                <div class="style-skill-list">杖+セットしてれば、杖ポコのダメージも上がる？</div>
+                                <i class="fas fa-check-circle"></i>上がります<br>
+                                前述の通り、倍率項が増えることでダメージの増加しています<br>
+                                腕力や知力が上がるわけではないので、どの攻撃でもダメージが上がります<br>
+                                ・体術+をセットしていれば、伯爵のウィークネスは威力が上がる<br>
+                                ・杖+をセットしていれば、通常攻撃と全ての術の威力が上がる<br>
+                                <br>
+                                <div class="bg-warning text-center"><i class="fas fa-exclamation-triangle"></i> 未検証</div>
+                                ・杖+装備のセルフバーニングカウンターのダメージ増加<br>
+                                おそらく増加するとは思いますが未検証です<br>
+                                <br>
 
-                            <a name="5-8"></a>
-                            <div class="style-skill-list">ありがちなセット失敗例</div>
-                            <i class="fas fa-check-circle"></i>セルマやアザミなどの冷攻撃用に冷+をセット<br>
-                            ・特定技でしか+X%が発生しないため無駄が多い<br>
-                            ・小剣+や体術+でも落下と波打ちの威力は上がるのでそちらをつける方が良いです<br>
-                            <i class="fas fa-check-circle"></i>ジャミルのソーンバインド用に斬+をセット<br>
-                            ・上記同様、小剣+でソーンバインドの威力も上がるので限定技用にセットする必要はない<br>
-                            ・小剣+がないにしても、斬+より威力+の方が汎用性があるので強化する方が他で使いまわせて効率が良いです<br>
-                            <i class="fas fa-check-circle"></i>デルタ・ペトラ用に打+をセット<br>
-                            ・斧+か威力+をセットしましょう<br>
-                            <i class="fas fa-check-circle"></i>術者に杖+をセット<br>
-                            （失敗ではないが他に効率の良い方法があります）<br>
-                            ・術以外にも通常攻撃の威力が上がりますが、威力+でも同じ効果を発揮します<br>
-                            ・杖+を強化するなら汎用性の高い威力+を強化する方が他で使いまわせて効率が良いです<br>
-                            <i class="fas fa-check-circle"></i>ロックブーケに冷+をセット<br>
-                            ・ロックブーケは水杖を持たせて水術を使うことは多いですが、冷属性技は持っていません<br>
-                            ・雷+をつけましょう<br>
-                            <i class="fas fa-check-circle"></i>ロックブーケに水杖を装備、陰+をセット<br>
-                            ・発想は理解できますが武器威力が乗らないエナジーストームはダメージが小さいです<br>
-                            その小さいダメージに+15%を載せても大きなダメージ上昇は見込めません<br>
-                            ・+X%のダメージ上昇は元々のダメージが大きい技につけるのが効率的です<br>
-                            <i class="fas fa-check-circle"></i>コウメイに熱+をセット<br>
-                            ・火術のクリムゾンフレアをあげたい？陽+をつけましょう<br>
-                            <i class="fas fa-check-circle"></i>リズに冷+をセット<br>
-                            ・水術の威力をあげたい？弓+をつけましょう<br>
-                            <i class="fas fa-check-circle"></i>ボルカノにX+をセット<br>
-                            ・熱+をセット > エアスラッシュと通常攻撃が上がりません<br>
-                            ・斬+をセット > エアスラッシュしか上がりません<br>
-                            ・杖+をセット > 全攻撃上がりますが、威力+の方が汎用性があります<br>
-                            ・特攻+をセット > 飛行しかいないならアリかも<br>
-                            （結論：ボルカノはなかなか難しい。熱+か威力+が現実的かも）<br>
+                                <a name="5-8"></a>
+                                <div class="style-skill-list">ありがちなセット失敗例</div>
+                                <i class="fas fa-check-circle"></i>セルマやアザミなどの冷攻撃用に冷+をセット<br>
+                                ・特定技でしか+X%が発生しないため無駄が多い<br>
+                                ・小剣+や体術+でも落下と波打ちの威力は上がるのでそちらをつける方が良いです<br>
+                                <i class="fas fa-check-circle"></i>ジャミルのソーンバインド用に斬+をセット<br>
+                                ・上記同様、小剣+でソーンバインドの威力も上がるので限定技用にセットする必要はない<br>
+                                ・小剣+がないにしても、斬+より威力+の方が汎用性があるので強化する方が他で使いまわせて効率が良いです<br>
+                                <i class="fas fa-check-circle"></i>デルタ・ペトラ用に打+をセット<br>
+                                ・斧+か威力+をセットしましょう<br>
+                                <i class="fas fa-check-circle"></i>術者に杖+をセット<br>
+                                （失敗ではないが他に効率の良い方法があります）<br>
+                                ・術以外にも通常攻撃の威力が上がりますが、威力+でも同じ効果を発揮します<br>
+                                ・杖+を強化するなら汎用性の高い威力+を強化する方が他で使いまわせて効率が良いです<br>
+                                <i class="fas fa-check-circle"></i>ロックブーケに冷+をセット<br>
+                                ・ロックブーケは水杖を持たせて水術を使うことは多いですが、冷属性技は持っていません<br>
+                                ・雷+をつけましょう<br>
+                                <i class="fas fa-check-circle"></i>ロックブーケに水杖を装備、陰+をセット<br>
+                                ・発想は理解できますが武器威力が乗らないエナジーストームはダメージが小さいです<br>
+                                その小さいダメージに+15%を載せても大きなダメージ上昇は見込めません<br>
+                                ・+X%のダメージ上昇は元々のダメージが大きい技につけるのが効率的です<br>
+                                <i class="fas fa-check-circle"></i>コウメイに熱+をセット<br>
+                                ・火術のクリムゾンフレアをあげたい？陽+をつけましょう<br>
+                                <i class="fas fa-check-circle"></i>リズに冷+をセット<br>
+                                ・水術の威力をあげたい？弓+をつけましょう<br>
+                                <i class="fas fa-check-circle"></i>ボルカノにX+をセット<br>
+                                ・熱+をセット > エアスラッシュと通常攻撃が上がりません<br>
+                                ・斬+をセット > エアスラッシュしか上がりません<br>
+                                ・杖+をセット > 全攻撃上がりますが、威力+の方が汎用性があります<br>
+                                ・特攻+をセット > 飛行しかいないならアリかも<br>
+                                （結論：ボルカノはなかなか難しい。熱+か威力+が現実的かも）<br>
 
-                            <br>
+                                <br>
+                            </div>
+                            <ins class="adsbygoogle"　style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5008373409434899" data-ad-slot="1992251055"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                            <button class="icon_btn_positive UP_TOP width-100 width-max fuchidori-white footer-font " style="padding:5px 0px;"> <i class="fas fa-arrow-up d-none d-md-inline"></i> 目次に戻る <i class="fas fa-arrow-up"></i></button>
                         </div>
-                        <!-- ツール_豆知識_5  -->
-                        <ins class="adsbygoogle"
-                        style="display:block; text-align:center;"
-                        data-ad-layout="in-article"
-                        data-ad-format="fluid"
-                        data-ad-client="ca-pub-5008373409434899"
-                        data-ad-slot="4285066425"></ins>
-                   <script>
-                        (adsbygoogle = window.adsbygoogle || []).push({});
-                   </script>                        
-                        <a name="5"></a>
+
+                        <div class="ARTICLE">
+                            <h4 class="text-center label-text-small width-100">技・術の命中率について</h4>
+                            <div class="content-bg kadomaru">
+                                <div class="style-skill-list">命中率は何に影響される？</div>
+                                技・術の命中率はゲーム内ヘルプにも書かれている通り下記に影響されます
+                                <table class="style-skill-list text-center" border="1">
+                                    <tr>
+                                        <td>武器種別</td><td>与ダメージ</td><td>被ダメージ</td><td>命中率</td><td>回避率</td>
+                                    </tr>
+                                    <tr>
+                                        <td>術</td><td>知力</td><td>精神</td><td>知力・素早さ</td><td>精神、素早さ</td>
+                                    </tr>
+                                    <tr>
+                                        <td>体術</td><td>腕力・素早さ</td><td>体力</td><td>腕力・素早さ</td><td>素早さ</td>
+                                    </tr>
+                                    <tr>
+                                        <td>体術(知)</td><td>知力</td><td>体力</td><td>腕力・素早さ</td><td>素早さ</td>
+                                    </tr>
+                                    <tr>
+                                        <td>剣・大剣・斧・棍棒・槍・杖</td><td>腕力</td><td>体力</td><td>器用さ</td><td>素早さ</td>
+                                    </tr>
+                                    <tr>
+                                        <td>小剣・弓・銃</td><td>器用さ</td><td>体力</td><td>器用さ</td><td>素早さ</td>
+                                    </tr>
+                                </table>
+                                そのほかにも、技ランクも命中率に影響します<br>
+                                <br>
+                                この影響ステータスは敵の技でも同じため<br>
+                                ・術を使ってくる敵には知力デバフと素早さデバフをすることで命中率を下げることができます<br>
+                                ・体術を使ってくる敵には腕力デバフと素早さデバフをすることで命中率を下げることができます<br>
+                            </div>
+                            <ins class="adsbygoogle"　style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5008373409434899" data-ad-slot="1992251055"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                            <button class="icon_btn_positive UP_TOP width-100 width-max fuchidori-white footer-font " style="padding:5px 0px;"> <i class="fas fa-arrow-up d-none d-md-inline"></i> 目次に戻る <i class="fas fa-arrow-up"></i></button>
+                        </div>
+
+                        <div class="ARTICLE">
+                            <h4 class="text-center label-text-small width-100">バフ・デバフについて</h4>
+                            <div class="content-bg kadomaru">
+                                <div class="style-skill-list">技ランクでバフ・デバフ効果は変わるの？</div>
+                                <i class="fas fa-check-circle"></i>変わるものもあるし、変わらないものもあります<br>
+                                <br>
+                                サブミッションやヒロイズムなどは技ランクをあげることで、バフ効果、デバフ効果が上がります<br>
+                                しかし、水祭や勝利の歌、豊穣の大波などは技ランクが上がってもバフ量は変化しません<br>
+                                法則性がないので、実測調査するしかありません<br>
+
+                                <div class="style-skill-list">効果はどれぐらいなの？</div>
+                                <i class="fas fa-check-circle"></i>バフやデバフはそれぞれ上昇率や減少率が異なります<br>
+                                例えば、サブミッション：腕力デバフ(小)はRank1で10%、Rank99で15%です<br>
+                                詳しくは便利ツールの「<a href="./skill.html" target="_new">技・術一覧</a>」で調べてみてください
+
+                                <div class="style-skill-list">バフ・デバフの効果はいつ切れるの？</div>
+                                バフ・デバフの効果は下記のタイミングで切れます<br>
+                                ・最後にバフ・デバフをかけたターンから4ターン経過<br>
+                                ・気絶時<br>
+                                ・ラウンド終了時<br>
+                                <div class="style-skill-list">バフ・デバフの効果はずっと同じなの？</div>
+                                バフ・デバフの効果はターンごとに減衰していきます<br>
+                                計算式は<span style="font-size:20px">小数切り上げ(バフ量 / 4)</span> です<br>
+                                <br>
+                                <div class="fukidashi text-center">例：-15%デバフの場合</div>
+                                デバフをかけたターン:-15% （減衰量は15/4 = 3.7 = 4)<br>
+                                1T経過:-11%<br>
+                                2T経過:-7%<br>
+                                3T経過:-3%<br>
+                                4T経過:デバフ効果が切れる<br>
+                                <br>
+                                となります
+                                <div class="style-skill-list">バフ・デバフの効果の重ね掛け、追加はどうなるの？</div>
+                                <i class="fas fa-check-circle"></i>重ね掛けは、「現在のバフ・デバフ効果に累積」します<br>
+                                バフ+15%の後にバフ+15%をかければ、合計30%になります<br>
+                                腕力デバフ-10%の後に、腕力バフ+15%をかければ、合計5%になります<br>
+                                <br>
+                                <div class="fukidashi text-center">例：-15%デバフを追加でかける</div>
+                                最初のターンに15%デバフを2回重ね掛け<br>
+                                デバフをかけたターン:-30% （減衰量は30/4 = 7.5 = 8)<br>
+                                1T目(1T経過):-22%<br>
+                                2T目(2T経過):-14%<br>
+                                3T目(3T経過):-6% ←ここでデバフ-15%を追加<br>
+                                デバフ量再計算:-6% + -15% = -21%<br>
+                                減衰量も再計算:（21/4 = 5.25 = 6)<br>
+                                4T目(1T経過):-15%<br>
+                                5T目(2T経過):-9%<br>
+                                6T目(3T経過):-3%<br>
+                                7T目(4T経過):0<br>
+
+                                これの4ターンで0％まで減衰するという音は、バフ・デバフ共に共通です<br>
+                                <div class="style-skill-list">バフ・デバフの効果のはODで変化する？</div>
+                                <i class="fas fa-check-circle"></i>します<br>
+                                OverDriveでバフ、デバフは効果がアップします<br>
+                                具体的には20%の効果アップがあるため<br>
+                                -15%デバフ技 → -18%デバフ<br>
+                                +30%バフ技 → +36%バフ<br>
+                                のように変化します<br>
+                                <div class="style-skill-list">バフ・デバフの効果は無制限？</div>
+                                <i class="fas fa-check-circle"></i>上限があります<br>
+                                バフ・デバフは150%が上限です<br>
+                            </div>
+                            <ins class="adsbygoogle"　style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5008373409434899" data-ad-slot="1992251055"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                            <button class="icon_btn_positive UP_TOP width-100 width-max fuchidori-white footer-font " style="padding:5px 0px;"> <i class="fas fa-arrow-up d-none d-md-inline"></i> 目次に戻る <i class="fas fa-arrow-up"></i></button>
+                        </div>
+
+                        <div class="d-none">
                         <h4 class="text-center label-text-small width-100">この新武器って必要？ [執筆中...]</h4>
                         <div class="content-bg kadomaru">
                             <a name="5-1"></a>
@@ -963,8 +890,6 @@
                             武器を進化させる前に詳細を比較して、この装備が必要かどうか見極めましょう
                         </div>
 
-
-                        <a name="5"></a>
                         <h4 class="text-center label-text-small width-100"><img src="./img/icon/icon_jinkei_PowerRise.png" height=15 >陣形効果について [執筆中...]</h4>
                         <div class="content-bg kadomaru">
                             <a name="5-1"></a>
@@ -983,6 +908,7 @@
                             ちんさんが被弾率を実測しまとめてくださっていますのでそちらをご参照ください<br>
                             出典：
                         </div>
+
                         <a name="5"></a>
                         <h4 class="text-center label-text-small width-100"><img src="./img/icon/icon_hi.png" height=20 >火+などの術威力武器[執筆中...]</h4>
                         <div class="content-bg kadomaru">
@@ -1060,21 +986,14 @@
                             術と属性は別であると覚えておきましょう
                         </div>
 
+                        </div>
+
                         <li class="parent waiting">
                             <ol class="childs">
                                 <li class="child"></a></li>
                                 <li class="child"></a></li>
                             </ol>
                         </li>
-                        <!-- ツール_豆知識_footer -->
-                        <ins class="adsbygoogle"
-                        style="display:block"
-                        data-ad-format="autorelaxed"
-                        data-ad-client="ca-pub-5008373409434899"
-                        data-ad-slot="1844458117"></ins>
-                        <script>
-                                (adsbygoogle = window.adsbygoogle || []).push({});
-                        </script>
                     </div>
                 </div>
             </div>
@@ -1084,23 +1003,18 @@
         <link rel="stylesheet" type="text/css" href="./css/style2.css">
         <link rel="stylesheet" type="text/css" href="./css/char_anime.css">
         <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
-<!--
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
-        <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
-        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
     <script src="./js/utils2.js" ></script>
 
         <script>
             $(document).ready(function ($) {
+                $(".ARTICLE").hide();
+                $(".ARTICLE").first().toggle();
+                $(".INDEX_LI").click(function(){
+                    var pos = $(this).attr("data-id");
+                    $(".ARTICLE").slideUp();
+                    $(".ARTICLE").eq(pos).toggle();
+                })
+
                 var list = [];
                 var holy = [20,30,50,100,150,200,250,500,1000];
                 var rank = 1;
@@ -1119,6 +1033,11 @@
                     $("#HS_TABLE").append($tr);
                     rank++;
                 }
+
+                $(".UP_TOP").click(function(){
+                    var position = $("#INDEX").offset().top;
+                    $("html, body").animate({scrollTop:position}, 500, "swing");
+                });
             });
         </script>
     </body>
