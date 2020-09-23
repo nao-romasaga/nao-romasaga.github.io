@@ -186,58 +186,58 @@
         },
         {
             "startDay": "24",
-            "endDay": "29",
+            "endDay": "30",
             "title": "[メイン3倍] <br class='hidden pcBlock'>GB1/GB2 キャラ",
             "startSuffix": "12:00 開始<br>",
-            "endSuffix": "<br>翌4:00 終了",
+            "endSuffix": "<br>朝4:00 終了",
             "type": "blue"
         },
         {
             "startDay": "24",
-            "endDay": "24",
+            "endDay": "25",
             "title": "[メイン3倍] <br class='hidden pcBlock'>RS1・ミンサガ キャラ",
             "startSuffix": "12:00 開始<br>",
-            "endSuffix": "<br>翌4:00 終了",
+            "endSuffix": "<br>朝4:00 終了",
             "type": "blue"
         },
         {
             "startDay": "25",
-            "endDay": "25",
+            "endDay": "26",
             "title": "[メイン3倍] <br class='hidden pcBlock'>RS2キャラ",
             "startSuffix": "4:00 開始<br>",
-            "endSuffix": "<br>翌4:00 終了",
+            "endSuffix": "<br>朝4:00 終了",
             "type": "blue"
         },
         {
             "startDay": "26",
-            "endDay": "26",
+            "endDay": "27",
             "title": "[メイン3倍] <br class='hidden pcBlock'>RS3キャラ",
             "startSuffix": "4:00 開始<br>",
-            "endSuffix": "<br>翌4:00 終了",
+            "endSuffix": "<br>朝4:00 終了",
             "type": "blue"
         },
         {
             "startDay": "27",
-            "endDay": "27",
+            "endDay": "28",
             "title": "[メイン3倍] <br class='hidden pcBlock'>SF1キャラ",
             "startSuffix": "4:00 開始<br>",
-            "endSuffix": "<br>翌4:00 終了",
+            "endSuffix": "<br>朝4:00 終了",
             "type": "blue"
         },
         {
             "startDay": "28",
-            "endDay": "28",
+            "endDay": "29",
             "title": "[メイン3倍] <br class='hidden pcBlock'>SF2キャラ",
             "startSuffix": "4:00 開始<br>",
-            "endSuffix": "<br>翌4:00 終了",
+            "endSuffix": "<br>朝4:00 終了",
             "type": "blue"
         },
         {
             "startDay": "29",
-            "endDay": "29",
+            "endDay": "30",
             "title": "[メイン3倍] <br class='hidden pcBlock'>RSR/SSG/ES/USキャラ",
             "startSuffix": "4:00 開始<br>",
-            "endSuffix": "<br>翌4:00 終了",
+            "endSuffix": "<br>朝4:00 終了",
             "type": "blue"
         },
         {
