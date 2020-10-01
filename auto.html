@@ -48,6 +48,8 @@
     <script src="./js/data_ABILITY.js"></script>
     <script src="./js/data_STYLEMASTER_auto.js"></script>
     <script src="./js/data_SKILLMASTER_auto.js"></script>
+    <script src="./js/data_WEAPON.js"></script>
+    <script src="./js/data_ARMOR_RANK.js"></script>
     <script src="./js/culcStyleBonus.js"></script>
     <script src="./js/damage.js"></script>
 
@@ -401,29 +403,101 @@
                     <div class="col-12 col-md-6">
                         <div class="bg-item text-center">▼ステータス▼</div>
                         <div class="row no-gutters text-center">
-                            <div class="col-3 bg-item small">項目</div>
                             <div class="col-3 bg-item small">素ステ</div>
                             <div class="col-3 bg-item small">表示ステ</div>
+                            <div class="col-3 bg-item small">装備+裏</div>
                             <div class="col-3 bg-item small">陣形補正</div>
 
-                            <div class="col-3">腕力</div>
-                            <div class="col-3"><input id="charSTR" type="number" class="input charParam kadomaru" value="99" style="width:60px"></div>
+                            <div class="col-3 text-nowrap">腕 <input id="charSTR" type="number" class="input charParam kadomaru" value="99" style="width:60px"></div>
                             <div class="col-3"><input id="styleSTR" type="number" class="input charParam kadomaru" value="200" style="width:60px"></div>
+                            <div class="col-3"><input id="eqSTR" type="number" class="input charParam kadomaru" value="8" style="width:60px"></div>
                             <div class="col-3"><input id="jinkeiSTR" type="number" class="input charParam kadomaru" value="0" style="width:50px">%</div>
-                            <div class="col-3">器用さ</div>
-                            <div class="col-3"><input id="charDEX" type="number" class="input charParam kadomaru" value="99" style="width:60px"></div>
+                            <div class="col-3 text-nowrap">器 <input id="charDEX" type="number" class="input charParam kadomaru" value="99" style="width:60px"></div>
                             <div class="col-3"><input id="styleDEX" type="number" class="input charParam kadomaru" value="200" style="width:60px"></div>
+                            <div class="col-3"><input id="eqDEX" type="number" class="input charParam kadomaru" value="8" style="width:60px"></div>
                             <div class="col-3"><input id="jinkeiDEX" type="number" class="input charParam kadomaru" value="0" style="width:50px">%</div>
-                            <div class="col-3">素早さ</div>
-                            <div class="col-3"><input id="charAGI" type="number" class="input charParam kadomaru" value="99" style="width:60px"></div>
+                            <div class="col-3 text-nowrap">速 <input id="charAGI" type="number" class="input charParam kadomaru" value="99" style="width:60px"></div>
                             <div class="col-3"><input id="styleAGI" type="number" class="input charParam kadomaru" value="200" style="width:60px"></div>
+                            <div class="col-3"><input id="eqAGI" type="number" class="input charParam kadomaru" value="8" style="width:60px"></div>
                             <div class="col-3"><input id="jinkeiAGI" type="number" class="input charParam kadomaru" value="0" style="width:50px">%</div>
-                            <div class="col-3">知力</div>
-                            <div class="col-3"><input id="charINT" type="number" class="input charParam kadomaru" value="99" style="width:60px"></div>
+                            <div class="col-3 text-nowrap">知 <input id="charINT" type="number" class="input charParam kadomaru" value="99" style="width:60px"></div>
                             <div class="col-3"><input id="styleINT" type="number" class="input charParam kadomaru" value="200" style="width:60px"></div>
+                            <div class="col-3"><input id="eqINT" type="number" class="input charParam kadomaru" value="8" style="width:60px"></div>
                             <div class="col-3"><input id="jinkeiINT" type="number" class="input charParam kadomaru" value="0" style="width:50px">%</div>
                         </div>
-                        表示ステ=装備、スタイル補正、裏能力込みの値を入力。<br>
+                        表示ステ=スタイル補正込みの値を入力。<br>
+                        <div class="WEAPON_AREA">
+                            <div class="bg-item text-center">▼武器設定▼</div>
+                            <div class="d-none" id="SS-TEMPLATE">
+                                <span class="WEAPON_CHOISE yubi style_icon_bg_ss style_icon_bg_base" style="display:inline-block; vertical-align: middle;">
+                                    <button class="style_icon_illust" style="background-size: contain; background-color: rgba(0, 0, 0, 0);"></button>
+                                    <span class="style_icon_frame_base style_icon_frame_ss"></span>
+                                    <span class="weapon_icon_rare_base icon_rare_ss"></span>
+                                </span>
+                                <div class="small text-center WEAPON_NAME" style="max-width: 60px;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                white-space: nowrap;">SS武器</div>
+                            </div>
+                            <!-- background-image: url(&quot;https://romasagatool.com/img/equipment/101403200.png&quot;); -->
+                            <div class="d-inline-block STR-WEAPON">
+                                <span class="WEAPON_CHOISE yubi style_icon_bg_s style_icon_bg_base" style="display:inline-block; vertical-align: middle;">
+                                    <button class="style_icon_illust" style="background-size: contain; background-color: rgba(0, 0, 0, 0);"></button>
+                                    <span class="style_icon_frame_base style_icon_frame_s"></span>
+                                    <span class="weapon_icon_rare_base icon_rare_s"></span>
+                                </span>
+                                <div class="small text-center WEAPON_NAME" style="max-width: 60px;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                white-space: nowrap;">(力+)</div>
+                            </div>
+                            <div class="d-inline-block DEX-WEAPON">
+                                <span class="WEAPON_CHOISE style_icon_bg_s style_icon_bg_base" style="display:inline-block; vertical-align: middle;">
+                                    <button class="style_icon_illust" style="background-size: contain; background-color: rgba(0, 0, 0, 0);"></button>
+                                    <span class="style_icon_frame_base style_icon_frame_s"></span>
+                                    <span class="weapon_icon_rare_base icon_rare_s"></span>
+                                </span>
+                                <div class="small text-center WEAPON_NAME" style="max-width: 60px;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                white-space: nowrap;">(器+)</div>
+                            </div>
+                            <div class="d-inline-block AGI-WEAPON">
+                                <span class="WEAPON_CHOISE style_icon_bg_s style_icon_bg_base" style="display:inline-block; vertical-align: middle;">
+                                    <button class="style_icon_illust" style="background-size: contain; background-color: rgba(0, 0, 0, 0);"></button>
+                                    <span class="style_icon_frame_base style_icon_frame_s"></span>
+                                    <span class="weapon_icon_rare_base icon_rare_s"></span>
+                                </span>
+                                <div class="small text-center WEAPON_NAME" style="max-width: 60px;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                white-space: nowrap;">(速+)</div>
+                            </div>
+                            <div class="d-inline-block INT-WEAPON">
+                                <span class="WEAPON_CHOISE style_icon_bg_s style_icon_bg_base" style="display:inline-block; vertical-align: middle;">
+                                    <button class="style_icon_illust" style="background-size: contain; background-color: rgba(0, 0, 0, 0);"></button>
+                                    <span class="style_icon_frame_base style_icon_frame_s"></span>
+                                    <span class="weapon_icon_rare_base icon_rare_s"></span>
+                                </span>
+                                <div class="small text-center WEAPON_NAME" style="max-width: 60px;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                white-space: nowrap;">(術/知+)</div>
+                            </div>
+                        </div>
+                        <div class="row no-gutters">
+                            <div class="col-12 bg-item text-center">▼防具選択▼</div>
+                            <button data-type="STR" class="ARMOR_CHOISE col-3 text-nowrap text-center width-100 icon_btn_negative shadow-black" style="font-size: 18px; display: block; padding: 5px 0px;">腕 強化</button>
+                            <button data-type="DEX" class="ARMOR_CHOISE col-3 text-nowrap text-center width-100 icon_btn_negative shadow-black" style="font-size: 18px; display: block; padding: 5px 0px;">器 強化</button>
+                            <button data-type="AGI" class="ARMOR_CHOISE col-3 text-nowrap text-center width-100 icon_btn_negative shadow-black" style="font-size: 18px; display: block; padding: 5px 0px;">速 強化</button>
+                            <button data-type="INT" class="ARMOR_CHOISE col-3 text-nowrap text-center width-100 icon_btn_negative shadow-black" style="font-size: 18px; display: block; padding: 5px 0px;">知 強化</button>
+                            <div style="margin-left:10px; margin-bottom: 20px;">
+                                主防具：<span id="MAIN_NAME"></span>(腕:<span id="MAIN_STR"></span> 器:<span id="MAIN_DEX"></span> 速:<span id="MAIN_AGI"></span> 知:<span id="MAIN_INT"></span>)<br>
+                                副防具：<span id="SUB_NAME"></span>(腕:<span id="SUB_STR"></span> 器:<span id="SUB_DEX"></span> 速:<span id="SUB_AGI"></span> 知:<span id="SUB_INT"></span>)<br>
+                                アクセ：<span id="ACC_NAME"></span>(腕:<span id="ACC_STR"></span> 器:<span id="ACC_DEX"></span> 速:<span id="ACC_AGI"></span> 知:<span id="ACC_INT"></span>)<br>
+                            </div>
+                        </div>
+
                     </div>    
                     <!--
                         <div class="col-6 col-md-4">
@@ -437,8 +511,8 @@
                         -->
                     <div class="col-12 col-md-6 text-center">
                         <div class="bg-item">▼敵 体力/精神▼</div>
-                        体力=<input id="enemy_vit" type="number" class="input charParam kadomaru" value="100" style="width:60px">
-                        精神=<input id="enemy_mnd" type="number" class="input charParam kadomaru" value="100" style="width:60px">
+                        体力=<input id="enemy_vit" type="number" class="input charParam kadomaru" value="160" style="width:60px">
+                        精神=<input id="enemy_mnd" type="number" class="input charParam kadomaru" value="160" style="width:60px">
                         
                         <div class="bg-item">▼敵種族選択▼</div>
                         <ul class="nav text-center width-100 small text-nowrap">
@@ -475,28 +549,27 @@
                                     data-label="精霊" data-id="14" onclick=""><img class="enemy-icon" src="./img/enemy/type_14.png"><br>精霊</button></li>
                                     <li class="col-3 col-sm-1 xs-pad0"><button class="fuchidori-blue text-nowrap enemyfilterList pad0" data-type="EnemyClassFilter"
                                     data-label="無機質" data-id="15" onclick=""><img class="enemy-icon" src="./img/enemy/type_15.png"><br>無機質</button></li>
-                        </ul>                        
-                        <table class="width-100 text-center table-dark kadomaru">
-                            <tr class="char-bottom">
-                                <th><span class="icon_xs_zokusei icon_zan"></span></th>
-                                <td id="taisei_zan">0</td>
-                                <th><span class="icon_xs_zokusei icon_da"></span></th>
-                                <td id="taisei_da">0</td>
-                                <th><span class="icon_xs_zokusei icon_totsu"></span></th>
-                                <td id="taisei_totsu">0</td>
-                                <th><span class="icon_xs_zokusei icon_netsu"></span></th>
-                                <td id="taisei_netsu">0</td>
-                            </tr>
-                            <tr>
-                                <th><span class="icon_xs_zokusei icon_rei"></span></th>
-                                <td id="taisei_rei">0</td>
-                                <th><span class="icon_xs_zokusei icon_rai"></span></th>
-                                <td id="taisei_rai">0</td>
-                                <th><span class="icon_xs_zokusei icon_yo"></span></th>
-                                <td id="taisei_you">0</td>
-                                <th><span class="icon_xs_zokusei icon_in"></span></th>
-                                <td id="taisei_in">0</td>
-                        </table>
+                        </ul>
+                        <div class="bg-item">▼敵耐性入力▼</div>
+                        <div class="row no-gutters table-dark kadomaru align-items-center">
+                            <div class="col-3 col-md-1"><span class="icon_xs_zokusei icon_zan"></span></div>
+                            <div class="col-3 col-md-2"><input id="taisei_zan" type="number" class="input kadomaru" value="0" style="width:60px"></div>
+                            <div class="col-3 col-md-1"><span class="icon_xs_zokusei icon_da"></span></div>
+                            <div class="col-3 col-md-2"><input id="taisei_da" type="number" class="input kadomaru" value="0" style="width:60px"></div>
+                            <div class="col-3 col-md-1"><span class="icon_xs_zokusei icon_totsu"></span></div>
+                            <div class="col-3 col-md-2"><input id="taisei_totsu" type="number" class="input kadomaru" value="0" style="width:60px"></div>
+                            <div class="col-3 col-md-1"><span class="icon_xs_zokusei icon_netsu"></span></div>
+                            <div class="col-3 col-md-2"><input id="taisei_netsu" type="number" class="input kadomaru" value="0" style="width:60px"></div>
+                            <div class="col-d-none col-md-12" style="border-bottom: 1px solid skyblue;"></div>
+                            <div class="col-3 col-md-1"><span class="icon_xs_zokusei icon_rei"></span></div>
+                            <div class="col-3 col-md-2"><input id="taisei_rei" type="number" class="input kadomaru" value="0" style="width:60px"></div>
+                            <div class="col-3 col-md-1"><span class="icon_xs_zokusei icon_rai"></span></div>
+                            <div class="col-3 col-md-2"><input id="taisei_rai" type="number" class="input kadomaru" value="0" style="width:60px"></div>
+                            <div class="col-3 col-md-1"><span class="icon_xs_zokusei icon_yo"></span></div>
+                            <div class="col-3 col-md-2"><input id="taisei_you" type="number" class="input kadomaru" value="0" style="width:60px"></div>
+                            <div class="col-3 col-md-1"><span class="icon_xs_zokusei icon_in"></span></div>
+                            <div class="col-3 col-md-2"><input id="taisei_in" type="number" class="input kadomaru" value="0" style="width:60px"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -521,7 +594,7 @@
                     <img class="CLOSE_BTN yubi d-none" src="./img/icon/icon_close.png" style="position: absolute;top: 5px;right: 5px;height: 15px;" onclick="">
                     <table class="table-sm text-left" style="width:100%; border-collapse:collapse">
                         <thead style="border-bottom: 1px solid #faf0b4;">
-                            <tr class="d-none d-lg-table-row" style="line-height: 30px;">
+                            <tr class="d-none d-lg-table-row" style="line-height: 20px;">
                                 <th class="text-center">
                                     <div class="" style="border-top: 1px solid beige; border-bottom: 1px solid beige;">
                                         <div class="text-center" style="background: url(https://romasagatool.com/img/bg_cutin.png);">
@@ -530,7 +603,12 @@
                                 </th>
                                 <th colspan=5 class="text-center">
                                     Average : <span class="AVG_DMG fuchidoriJewel damageNumber" style="font-size:30px">9,999</span><br>
-                                    武器:<span class="WEAPON"></span> 聖石:<span class="SEISEKI"></span>% <span class="TURN"></span>ﾀｰﾝ <span class="STATUS"></span>
+                                    <span class="small">武器:<span class="WEAPON"></span> 聖石:<span class="SEISEKI"></span>% Mlv:<span class="Mlv"></span>(<span class="MlvPer"></span>%)</span>
+                                </th>
+                            </tr>
+                            <tr class="d-none d-lg-table-row small" style="color:white; line-height: 10px;">
+                                <th colspan=6 class="text-center">
+                                    <span class="STATUS"></span> / 敵:体<span class="E_VIT"></span>/精<span class="E_MND"></span>
                                 </th>
                             </tr>
                             <tr class="d-lg-none" style="line-height: 30px;">
