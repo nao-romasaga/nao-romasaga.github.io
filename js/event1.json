@@ -50,6 +50,14 @@
             "type": "orange"
         },
         {
+            "startDay": "9",
+            "endDay": "31",
+            "title": "[イベント] <br class='hidden pcBlock'>聖なる塔ダーク メダルドロップ",
+            "startPrefix": "12:00 開始<br>",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "orange"
+        },
+        {
             "startDay": "5",
             "endDay": "8",
             "title": "[メイン3倍] <br class='hidden pcBlock'>RS1・MSキャラ",
@@ -84,7 +92,23 @@
         {
             "startDay": "1",
             "endDay": "14",
-            "title": "[ガチャ] <br class='hidden pcBlock'>Ultra DXガチャ",
+            "title": "[ガチャ] <br class='hidden pcBlock'>クローディア Ultra DXガチャ",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "green",
+            "startNone": true
+        },
+        {
+            "startDay": "9",
+            "endDay": "31",
+            "title": "[ガチャ] <br class='hidden pcBlock'>ダーク Ultra DXガチャ",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "green",
+            "startNone": true
+        },
+        {
+            "startDay": "1",
+            "endDay": "31",
+            "title": "[メイン聖石2倍/聖塔3倍] <br class='hidden pcBlock'>ダーク/ミルザ/シフ 小剣キャラ",
             "endSuffix": "<br>翌4:00 終了",
             "type": "green",
             "startNone": true
