@@ -134,6 +134,14 @@
             "type": "green"
         },
         {
+            "startDay": "19",
+            "endDay": "31",
+            "title": "[イベント] <br class='hidden pcBlock'>ラバーウォームとの戦い",
+            "startSuffix": "12:00 開始<br>",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "green"
+        },
+        {
             "startDay": "9",
             "endDay": "31",
             "title": "[ガチャ] <br class='hidden pcBlock'>ダーク Ultra DXガチャ",
@@ -176,10 +184,18 @@
         {
             "startDay": "1",
             "endDay": "31",
-            "title": "[古城/ラバーウォームの戦い3倍/メイン2倍] <br class='hidden pcBlock'>忍者/シティシーフ女/アセルス/ジョー/ブラック/メサルティム/白薔薇姫/零姫",
+            "title": "[古城/ラバーウォームの戦い3倍/メイン2倍] <br class='hidden pcBlock'>忍者/シティシーフ女/アセルス/ジョー/ブラック",
             "endSuffix": "<br>翌4:00 終了",
             "type": "green",
             "startNone": true
+        },
+        {
+            "startDay": "22",
+            "endDay": "31",
+            "title": "[古城/ラバーウォームの戦い3倍/メイン2倍] <br class='hidden pcBlock'>メサルティム/白薔薇姫/零姫",
+            "startSuffix": "12:00 開始<br>",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "green"
         },
         {
             "startDay": "1",
