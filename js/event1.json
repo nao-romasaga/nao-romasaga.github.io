@@ -142,6 +142,14 @@
             "type": "green"
         },
         {
+            "startDay": "22",
+            "endDay": "25",
+            "title": "[イベント] <br class='hidden pcBlock'>馬印の金塊ドロップ(メイン全話)",
+            "startSuffix": "12:00 開始<br>",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "green"
+        },
+        {
             "startDay": "9",
             "endDay": "31",
             "title": "[ガチャ] <br class='hidden pcBlock'>ダーク Ultra DXガチャ",
@@ -191,8 +199,8 @@
         },
         {
             "startDay": "22",
-            "endDay": "31",
-            "title": "[古城/ラバーウォームの戦い3倍/メイン2倍] <br class='hidden pcBlock'>メサルティム/白薔薇姫/零姫",
+            "endDay": "25",
+            "title": "[古城/ラバーウォームの戦い/メイン3倍] <br class='hidden pcBlock'>メサルティム/白薔薇姫/零姫",
             "startSuffix": "12:00 開始<br>",
             "endSuffix": "<br>翌4:00 終了",
             "type": "green"
