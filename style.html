@@ -72,6 +72,9 @@
         <script src="./js/damage.js" ></script>
         <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
         <style>
+            .skill-lineheight {
+                line-height: 20px;
+            }
             .auto-info {
                 position: absolute;
                 width: 20px;
@@ -176,28 +179,6 @@
                 white-space: nowrap;
             }
 
-            /* 画面サイズ340まで */
-            @media screen and (max-width:330px) {
-                .gacha-fukidashi {
-                    height: 50px;
-                }
-
-                .near_td {
-                    width:100px;
-                }
-                .S_LABEL {
-                    width: 230px;
-                }
-                .icon_ind2, .icon_ind3{
-                    width:10px;
-                }
-                .smallTableFont {
-                    font-size:10px
-                }
-                .odd-row .bonus {
-                    display: block;
-                }                
-            }
             /* 画面サイズ767(ipadの768は含まない)まで */
             @media screen and (max-width:767px) {
                 .gacha-fukidashi {
@@ -314,6 +295,29 @@
                     font-size: 20px;
                 }
             }
+            /* 画面サイズ340まで */
+            @media screen and (max-width:350px) {
+                .gacha-fukidashi {
+                    height: 50px;
+                }
+
+                .near_td {
+                    width:100px;
+                }
+                .S_LABEL {
+                    width: 230px;
+                }
+                .icon_ind2, .icon_ind3{
+                    width:10px;
+                }
+                .smallTableFont {
+                    font-size:10px
+                }
+                .odd-row .bonus {
+                    display: block;
+                }                
+            }
+            
             .status-window-row {
                 border-bottom: 1px solid gray;                
             }
@@ -798,15 +802,15 @@
                                         <div class="" style="padding: 5px; background: rgba(0,0,0,0.65); border: 1px solid rgba(250,250,240,1); border-radius: 10px; margin-bottom: 5px;">
                                             <table class="width-100 text-right">
                                                 <tr class="fuchidori-white text-center char-bottom"><td colspan=10><span class="hidden pcBlock">スタイル</span>Lv50 ステータス</td></tr>
-                                                <tr class="fuchidori-white text-center" style="font-size:12px;"><td></td><td></td><td colspan=2>素ステ</td><td>ステータス</td><td>補正</td><td>ボーナス</td></tr>
-                                                <tr class="status-window-row" id="tableSTR"><td class="text-center IND"></td><td class="text-left game-font"></td><td class="ST fuchidori-blue"></td><td class="STLIMIT fuchidori-blue text-left"></td><td class=" fuchidori-white"></td><td class="bonus BNSPER"></td><td class="bonus BNSVAL"></td></tr>
-                                                <tr class="status-window-row" id="tableVIT"><td class="text-center IND"></td><td class="text-left game-font"></td><td class="ST fuchidori-blue"></td><td class="STLIMIT fuchidori-blue text-left"></td><td class=" fuchidori-white"></td><td class="bonus BNSPER"></td><td class="bonus BNSVAL"></td></tr>
-                                                <tr class="status-window-row" id="tableDEX"><td class="text-center IND"></td><td class="text-left game-font"></td><td class="ST fuchidori-blue"></td><td class="STLIMIT fuchidori-blue text-left"></td><td class=" fuchidori-white"></td><td class="bonus BNSPER"></td><td class="bonus BNSVAL"></td></tr>
-                                                <tr class="status-window-row" id="tableAGI"><td class="text-center IND"></td><td class="text-left game-font"></td><td class="ST fuchidori-blue"></td><td class="STLIMIT fuchidori-blue text-left"></td><td class=" fuchidori-white"></td><td class="bonus BNSPER"></td><td class="bonus BNSVAL"></td></tr>
-                                                <tr class="status-window-row" id="tableINT"><td class="text-center IND"></td><td class="text-left game-font"></td><td class="ST fuchidori-blue"></td><td class="STLIMIT fuchidori-blue text-left"></td><td class=" fuchidori-white"></td><td class="bonus BNSPER"></td><td class="bonus BNSVAL"></td></tr>
-                                                <tr class="status-window-row" id="tableMND"><td class="text-center IND"></td><td class="text-left game-font"></td><td class="ST fuchidori-blue"></td><td class="STLIMIT fuchidori-blue text-left"></td><td class=" fuchidori-white"></td><td class="bonus BNSPER"></td><td class="bonus BNSVAL"></td></tr>
-                                                <tr class="status-window-row" id="tableAI" ><td class="text-center IND"></td><td class="text-left game-font"></td><td class="ST fuchidori-blue"></td><td class="STLIMIT fuchidori-blue text-left"></td><td class=" fuchidori-white"></td><td class="bonus BNSPER"></td><td class="bonus BNSVAL"></td></tr>
-                                                <tr class=""                  id="tableMI" ><td class="text-center IND"></td><td class="text-left game-font"></td><td class="ST fuchidori-blue"></td><td class="STLIMIT fuchidori-blue text-left"></td><td class=" fuchidori-white"></td><td class="bonus BNSPER"></td><td class="bonus BNSVAL"></td></tr>
+                                                <tr class="fuchidori-white text-center" style="font-size:12px;"><td colspan="2" id="tableRole"></td><td colspan=2>素ステ</td><td>ステータス</td><td>補正</td><td>ボーナス</td></tr>
+                                                <tr class="status-window-row" id="tableSTR"><td class="text-center IND"></td><td class="text-left game-font"></td><td class="ST fuchidori-blue"></td><td class="STLIMIT fuchidori-blue text-left"></td><td class="STYLE_ST fuchidori-white"></td><td class="bonus BNSPER"></td><td class="bonus BNSVAL"></td></tr>
+                                                <tr class="status-window-row" id="tableVIT"><td class="text-center IND"></td><td class="text-left game-font"></td><td class="ST fuchidori-blue"></td><td class="STLIMIT fuchidori-blue text-left"></td><td class="STYLE_ST fuchidori-white"></td><td class="bonus BNSPER"></td><td class="bonus BNSVAL"></td></tr>
+                                                <tr class="status-window-row" id="tableDEX"><td class="text-center IND"></td><td class="text-left game-font"></td><td class="ST fuchidori-blue"></td><td class="STLIMIT fuchidori-blue text-left"></td><td class="STYLE_ST fuchidori-white"></td><td class="bonus BNSPER"></td><td class="bonus BNSVAL"></td></tr>
+                                                <tr class="status-window-row" id="tableAGI"><td class="text-center IND"></td><td class="text-left game-font"></td><td class="ST fuchidori-blue"></td><td class="STLIMIT fuchidori-blue text-left"></td><td class="STYLE_ST fuchidori-white"></td><td class="bonus BNSPER"></td><td class="bonus BNSVAL"></td></tr>
+                                                <tr class="status-window-row" id="tableINT"><td class="text-center IND"></td><td class="text-left game-font"></td><td class="ST fuchidori-blue"></td><td class="STLIMIT fuchidori-blue text-left"></td><td class="STYLE_ST fuchidori-white"></td><td class="bonus BNSPER"></td><td class="bonus BNSVAL"></td></tr>
+                                                <tr class="status-window-row" id="tableMND"><td class="text-center IND"></td><td class="text-left game-font"></td><td class="ST fuchidori-blue"></td><td class="STLIMIT fuchidori-blue text-left"></td><td class="STYLE_ST fuchidori-white"></td><td class="bonus BNSPER"></td><td class="bonus BNSVAL"></td></tr>
+                                                <tr class="status-window-row" id="tableAI" ><td class="text-center IND"></td><td class="text-left game-font"></td><td class="ST fuchidori-blue"></td><td class="STLIMIT fuchidori-blue text-left"></td><td class="STYLE_ST fuchidori-white"></td><td class="bonus BNSPER"></td><td class="bonus BNSVAL"></td></tr>
+                                                <tr class=""                  id="tableMI" ><td class="text-center IND"></td><td class="text-left game-font"></td><td class="ST fuchidori-blue"></td><td class="STLIMIT fuchidori-blue text-left"></td><td class="STYLE_ST fuchidori-white"></td><td class="bonus BNSPER"></td><td class="bonus BNSVAL"></td></tr>
                                             </table>
                                         </div>        
                                         <div class="bg-simple small text-nowrap text-center width-max" style="padding: 7px 20px; color: white;">
@@ -1023,7 +1027,7 @@
                         <div class="text-center" style="margin-top: 10px;">
                             <a href="./skill.html" target="_blank" class="icon_btn_positive  width-100 shadow-black"><i class="fas fa-search"></i> 技・術 一覧を調べる</a>
                         </div>
-                        <table class="width-100 d-none" id="SKILL_KEISHO_TEMPLATE" style="border-bottom: 1px solid gray">
+                        <table class="width-100 skill-lineheight d-none" id="SKILL_KEISHO_TEMPLATE" style="border-bottom: 1px solid gray">
                             <tr>
                                 <td class="weaponIconTd text-center STYLE_ICON"></td>
                                 <td style="text-align: left; position: relative; width:230px;">
@@ -1120,9 +1124,18 @@
                                 <li class="subtitle-long fuchidori-white">レアリティフィルタ　</li>
                             </ul>
                             <ul class="nav text-center width-100" style="height:40px;">
-                                <li class="col-2 col-sm-1 xs-pad0"><a class="statusFilter pad0" data-href="style_icon_bg_ss"><span class="icon_mini weapon-icon-button style_icon_rare_base icon_rare_ss filterActive" onclick=""></span></a></li>
-                                <li class="col-2 col-sm-1 xs-pad0"><a class="statusFilter pad0" data-href="style_icon_bg_s"><span class="icon_mini weapon-icon-button style_icon_rare_base icon_rare_s" onclick=""></span></a></li>
-                                <li class="col-2 col-sm-1 xs-pad0"><a class="statusFilter pad0" data-href="style_icon_bg_a"><span class="icon_mini weapon-icon-button style_icon_rare_base icon_rare_a" onclick=""></span></a></li>
+                                <li class="col-2 col-sm-1 xs-pad0"><a class="nearFilter statusFilter pad0" data-href="SS"><span class="icon_mini weapon-icon-button style_icon_rare_base icon_rare_ss filterActive" onclick=""></span></a></li>
+                                <li class="col-2 col-sm-1 xs-pad0"><a class="nearFilter statusFilter pad0" data-href="S"><span class="icon_mini weapon-icon-button style_icon_rare_base icon_rare_s" onclick=""></span></a></li>
+                                <li class="col-2 col-sm-1 xs-pad0"><a class="nearFilter statusFilter pad0" data-href="A"><span class="icon_mini weapon-icon-button style_icon_rare_base icon_rare_a" onclick=""></span></a></li>
+                            </ul>
+                            <ul class="nav text-center width-100" style="margin-bottom: 5px;">
+                                <li class="subtitle-long fuchidori-white">ロールフィルタ　</li>
+                            </ul>
+                            <ul class="nav text-center width-100" style="height:40px; color:white">
+                                <li class="col xs-pad0"><a class="nearFilter roleFilter pad0 filterActive" data-href="0">アタッカー</a></li>
+                                <li class="col xs-pad0"><a class="nearFilter roleFilter pad0 filterActive" data-href="1">ディフェンダー</a></li>
+                                <li class="col xs-pad0"><a class="nearFilter roleFilter pad0 filterActive" data-href="2">サポーター</a></li>
+                                <li class="col xs-pad0"><a class="nearFilter roleFilter pad0 filterActive" data-href="3">ジャマー</a></li>
                             </ul>
                         </div>
                     </div>
