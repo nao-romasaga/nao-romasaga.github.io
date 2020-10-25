@@ -28,7 +28,7 @@
         {
             "startDay": "9",
             "endDay": "31",
-            "title": "[イベント] <br class='hidden pcBlock'>聖石 ダーク(11/6 04:00再開)",
+            "title": "[イベント] <br class='hidden pcBlock'>聖塔ダーク(11/6 04:00再開)",
             "endSuffix": "<br>翌4:00 終了",
             "type": "orange"
         },
@@ -66,7 +66,7 @@
         {
             "startDay": "9",
             "endDay": "31",
-            "title": "[イベント] <br class='hidden pcBlock'>聖なる塔ダーク メダルドロップ",
+            "title": "[イベント] <br class='hidden pcBlock'>聖塔ダーク メダルドロップ",
             "startPrefix": "12:00 開始<br>",
             "endSuffix": "<br>翌4:00 終了",
             "type": "orange"
@@ -131,7 +131,7 @@
             "endDay": "31",
             "title": "[イベント] <br class='hidden pcBlock'>古城の祝祭と最終試練<br>ピドナの夜の夢",
             "endSuffix": "<br>翌4:00 終了",
-            "type": "green"
+            "type": "orange"
         },
         {
             "startDay": "19",
@@ -139,7 +139,7 @@
             "title": "[イベント] <br class='hidden pcBlock'>ラバーウォームとの戦い",
             "startSuffix": "12:00 開始<br>",
             "endSuffix": "<br>翌4:00 終了",
-            "type": "green"
+            "type": "orange"
         },
         {
             "startDay": "22",
@@ -147,7 +147,7 @@
             "title": "[イベント] <br class='hidden pcBlock'>馬印の金塊ドロップ(メイン全話)",
             "startSuffix": "12:00 開始<br>",
             "endSuffix": "<br>翌4:00 終了",
-            "type": "green"
+            "type": "orange"
         },
         {
             "startDay": "9",
@@ -162,7 +162,7 @@
             "endDay": "31",
             "title": "[メイン2倍/聖塔3倍] <br class='hidden pcBlock'>ダーク/ミルザ/シフ",
             "endSuffix": "<br>翌4:00 終了",
-            "type": "green",
+            "type": "blue",
             "startNone": true
         },
         {
@@ -170,7 +170,7 @@
             "endDay": "31",
             "title": "[メイン2倍/ピドナの夜3倍] <br class='hidden pcBlock'>ヴァンパイアレディ/セフィラス/バーニィ/ミリアム/ようせい",
             "endSuffix": "<br>翌4:00 終了",
-            "type": "green",
+            "type": "blue",
             "startNone": true
         },
         {
@@ -178,7 +178,7 @@
             "endDay": "31",
             "title": "[メイン/聖塔2倍] <br class='hidden pcBlock'>小剣キャラ",
             "endSuffix": "<br>翌4:00 終了",
-            "type": "green",
+            "type": "blue",
             "startNone": true
         },
         {
@@ -186,7 +186,7 @@
             "endDay": "31",
             "title": "[古城/ラバーウォームの戦い/メイン2倍] <br class='hidden pcBlock'>体術キャラ",
             "endSuffix": "<br>翌4:00 終了",
-            "type": "green",
+            "type": "blue",
             "startNone": true
         },
         {
@@ -194,7 +194,7 @@
             "endDay": "31",
             "title": "[古城/ラバーウォームの戦い3倍/メイン2倍] <br class='hidden pcBlock'>忍者/シティシーフ女/アセルス/ジョー/ブラック",
             "endSuffix": "<br>翌4:00 終了",
-            "type": "green",
+            "type": "blue",
             "startNone": true
         },
         {
@@ -203,18 +203,50 @@
             "title": "[古城/ラバーウォームの戦い/メイン3倍] <br class='hidden pcBlock'>メサルティム/白薔薇姫/零姫",
             "startSuffix": "12:00 開始<br>",
             "endSuffix": "<br>翌4:00 終了",
-            "type": "green"
+            "type": "blue"
         },
         {
             "startDay": "1",
             "endDay": "14",
             "title": "[メイン聖石2倍/イベント3倍] <br class='hidden pcBlock'>クローディア/ジャミル/バーバラ/グレイ RS1・MSキャラ",
             "endSuffix": "<br>翌4:00 終了",
-            "type": "green",
+            "type": "blue",
             "startNone": true
+        },
+        {
+            "startDay": "26",
+            "endDay": "99",
+            "title": "[ガチャ] <br class='hidden pcBlock'>サガ30周年！ロマンシング サガ３発売日記念 Romancing祭",
+            "type": "green"
+        },
+        {
+            "startDay": "26",
+            "endDay": "99",
+            "title": "[イベント] <br class='hidden pcBlock'>ボストンの遠征特訓",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "orange"
+        },
+        {
+            "startDay": "26",
+            "endDay": "99",
+            "title": "[メイン2倍/イベント3倍] <br class='hidden pcBlock'>RS3発売記念",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue"
+        },
+        {
+            "startDay": "27",
+            "endDay": "99",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>財宝オーラム2倍<br>魔物挑戦2倍",
+            "type": "blue"
+        },
+        {
+            "startDay": "29",
+            "endDay": "99",
+            "title": "[恒常イベント] <br class='hidden pcBlock'>フォルネウスとの戦い",
+            "startSuffix": "12:00 開始<br>",
+            "type": "orange"
         }
-
- ],
+],
     "holiday": [
     ]
 }

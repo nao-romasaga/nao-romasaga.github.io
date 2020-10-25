@@ -1,0 +1,44 @@
+{
+    "year": 2020,
+    "month": 11,
+    "event": [
+        {
+            "startDay": "1",
+            "endDay": "5",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>財宝オーラム2倍<br>魔物挑戦2倍",
+            "type": "blue",
+            "startNone": true
+        },
+        {
+            "startDay": "2",
+            "endDay": "8",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>裏道場の証 獲得量2倍<br>卵のから ドロップ量2倍",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue",
+            "startNone": true
+        },
+        {
+            "startDay": "2",
+            "endDay": "8",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>「最果ての決戦島」合計スコア報酬獲得量2倍",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue"
+        },
+        {
+            "startDay": "2",
+            "endDay": "99",
+            "title": "[イベント] <br class='hidden pcBlock'>修行者の間 リニューアル",
+            "startSuffix": "<br>12:00 開始<br>",
+            "type": "orange"
+        },
+        {
+            "startDay": "6",
+            "endDay": "99",
+            "title": "[恒常イベント] <br class='hidden pcBlock'>聖塔ダーク 再開",
+            "type": "orange"
+        }
+        
+ ],
+    "holiday": [
+    ]
+}
