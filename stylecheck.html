@@ -48,8 +48,9 @@
         
         <script src="./js/data_CHARMASTER.js" ></script>
         <script src="./js/data_STYLEMASTER_checker.js" ></script>
+        <script src="./js/data_STYLECLASS.js" ></script>
         <script>
-            HEAD_DISP = 4;
+            HEAD_DISP = 6;
             var kotei = ["クエストドロップ","宝箱・決戦島ピース交換","螺旋回廊ガチャ限定",
                 "ストーリー","常設イベント","ピース交換",
                 "プラチナガチャ限定",
@@ -115,6 +116,34 @@
                         </div>
                     </div>
                 </div>
+                <div class="d-none style-bgcolor smallFont" id="styleAreaClass" style="padding: 20px 5px;
+                    margin-left: calc(((100vw - 100%) / 2) * -1);
+                    margin-right: calc(((100vw - 100%) / 2) * -1);">
+                    <div id="CLASS_TEMPLATE" class="row no-gutters d-none">
+                        <div class="col-12 col-sm-1">
+                            <div class="filter-bgcolor width-100 text-center" style="height: 100%; display: flex; align-items: center; justify-content: center;">
+                                <span class="ICON icon_mini_zokusei"></span>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="width-100 subtitle-long fuchidori-white smallFont" style="padding-left: 30px;">単体火力 </div>
+                            <div class="o"></div>
+                        </div>
+                        <div class="col">
+                            <div class="width-100 subtitle-long fuchidori-white smallFont" style="padding-left: 30px;">全体火力 </div>
+                            <div class="a"></div>
+                        </div>
+                        <div class="col">
+                            <div class="width-100 subtitle-long fuchidori-white smallFont text-nowrap" style="padding-left: 30px;">クエスト攻略 </div>
+                            <div class="q"></div>
+                        </div>
+                        <div class="col">
+                            <div class="width-100 subtitle-long fuchidori-white smallFont text-nowrap" style="padding-left: 30px;">Romancing戦 </div>
+                            <div class="r"></div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="style-bgcolor smallFont" id="styleAreaRare">
                     <img src="https://romasagatool.com//img/icon/icon_SS.png" class="rare-icon-big">
                     <button class="icon_btn_positive allOn" data-rare="SS">全てチェック</button>
