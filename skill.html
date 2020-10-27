@@ -57,6 +57,9 @@
             .withLabel{
                 padding-top: 30px;
             }
+            .noneCount{
+                background-color:black !important;
+            }
             ._FilterLink{}
             .pari{
                 display: inline-block;
@@ -204,6 +207,7 @@
                         </li>
                         
                         <li class="col-12 col-sm-2 table-info">攻撃範囲</li>
+                        <li class="m-auto side-padding-zero"><a class="_FilterLink small d-inline-block" data-href="skill_tantai" data-col="AttackArea"><span class="char-eisho-mini dot_last dot dot_mini" id="icon_oneSkill"></span><br>　単体<span class="series-button" id="count_skill_tantai">...</span></a></li>
                         <li class="m-auto side-padding-zero"><a class="_FilterLink small d-inline-block" data-href="skill_zentai" data-col="AttackArea"><span class="char-eisho-mini dot_leon dot dot_mini" id="icon_allSkill"></span><br>　全体<span class="series-button" id="count_skill_zentai">...</span></a></li>
                         <li class="m-auto side-padding-zero"><a class="_FilterLink small d-inline-block" data-href="skill_tate" data-col="AttackArea"><span class="char-tate-mini dot_hector dot dot_mini" id="icon_tateSkill"></span><br>縦一列<span class="series-button" id="count_skill_tate">...</span></a></li>
                         <li class="m-auto side-padding-zero"><a class="_FilterLink small d-inline-block" data-href="skill_yoko" data-col="AttackArea"><span class="char-tsuki-mini dot_roza dot dot_mini" id="icon_yokoSkill"></span><br>横一列<span class="series-button" id="count_skill_yoko">...</span></a></li>
@@ -253,18 +257,23 @@
                             <a class="_FilterLink  small" data-href="skill_crit_jujin" data-col="CriticalTargets"><img src="https://romasagatool.com/img/enemy/type_2.png" width="50" height="50"><br>獣人 <span class="series-button" id="count_skill_crit_jujin">...</span></a>
                         </li>
 
-                        <li class="col-12 col-sm-2 table-info char-bottom">その他</li>
-                        <li class="col-12 col-sm-4 d-flex justify-content-around char-bottom">
+                        <li class="col-12 col-sm-2 table-info char-bottom">その他1</li>
+                        <li class="col-12 col-sm-5 d-flex justify-content-around char-bottom">
                             <a class="_FilterLink  small" data-href="skill_kin" data-col="AttackDistance">近距離 <span class="series-button" id="count_skill_kin">...</span></a>
                             <a class="_FilterLink  small" data-href="skill_en" data-col="AttackDistance">遠距離 <span class="series-button" id="count_skill_en">...</span></a>
                         </li>
-                        <li class="col-12 col-sm-3 d-flex justify-content-around char-bottom">
+                        <li class="col-12 col-sm-5 d-flex justify-content-around char-bottom">
+                            <a class="_FilterLink  small" data-href="skill_rentatsu" data-col="Rentatsu">練達 <span class="series-button" id="count_skill_rentatsu">...</span></a>
+                            <a class="_FilterLink  small" data-href="skill_can_rentatsu" data-col="Rentatsu">練達可能 <span class="series-button" id="count_skill_can_rentatsu">...</span></a>
+                        </li>
+                        <li class="d-none d-sm-block col-sm-2 table-info char-bottom">その他2</li>
+                        <li class="col-12 col-sm-5 d-flex justify-content-around char-bottom">
                             <a class="_FilterLink  small" data-href="skill_fast" data-col="FastDelay">ファスト <span class="series-button" id="count_skill_fast">...</span></a>
                             <a class="_FilterLink  small" data-href="skill_delay" data-col="FastDelay">ディレイ <span class="series-button" id="count_skill_delay">...</span></a>
                         </li>
-                        <li class="col-12 col-sm-3 d-flex justify-content-around char-bottom">
-                            <a class="_FilterLink  small" data-href="skill_rentatsu" data-col="Rentatsu">練達 <span class="series-button" id="count_skill_rentatsu">...</span></a>
-                            <a class="_FilterLink  small" data-href="skill_can_rentatsu" data-col="Rentatsu">練達可能 <span class="series-button" id="count_skill_can_rentatsu">...</span></a>
+                        <li class="col-12 col-sm-5 d-flex justify-content-around char-bottom">
+                            <a class="_FilterLink  small" data-href="skill_moral" data-col="MoralUp">モラルアップ <span class="series-button" id="count_skill_moral">...</span></a>
+                            <a class="_FilterLink  small" data-href="skill_guard" data-col="GuardUp">ガードアップ <span class="series-button" id="count_skill_guard">...</span></a>
                         </li>
                         <li class="col-12 col-sm-2 table-success">消費BP</li>
                         <li class="col-12 col-sm-5 d-flex justify-content-around char-bottom">
