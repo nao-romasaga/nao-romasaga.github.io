@@ -84,9 +84,19 @@
                 <script>
                 (adsbygoogle = window.adsbygoogle || []).push({});
                 </script>
-                <div class="filter-bgcolor ">
+                <div class="filter-bgcolor " style="margin-bottom: 10px">
                     <div class="row">
-                        <div class="col-12 subtitle fuchidori-white smallFont" style="left: 15px; padding-left: 30px; margin-bottom: 10px;">武器種別 絞り込み</div>
+                        <div class="col-12 subtitle fuchidori-white smallFont" style="left: 15px; padding-left: 30px; margin: 10px 0px;">機能 切り替え</div>
+                        <div class="col-12 col-md-6 text-center" style="margin-bottom:10px">
+                            <button id="tabChecker" class="width-100 icon_btn_positive fuchidori-white smallFont text-nowrap">スタイル所持チェッカー</button></div>
+                        <div class="col-12 col-md-6 text-center">
+                            <button id="tabBattle" class="width-100 icon_btn_negative fuchidori-white smallFont text-nowrap">属性別 戦力所持チェッカー <img src="http://romasagatool.com/img/icon/qe15.gif"></button></div>
+                    </div>
+                </div>
+
+                <div class="filter-bgcolor " id="filterArea">
+                    <div class="row">
+                        <div class="col-12 subtitle fuchidori-white smallFont" style="left: 15px; padding-left: 30px; margin: 10px 0px;">武器種別 絞り込み</div>
                         <div class="col-2 col-sm-1 xs-pad0 offset-1"><button class="filterButton icon_mini icon_ken weapon-icon-button" data-id="剣"></button></div>
                         <div class="col-2 col-sm-1 xs-pad0"><button class="filterButton icon_mini icon_dken weapon-icon-button" data-id="大剣"></button></div>
                         <div class="col-2 col-sm-1 xs-pad0"><button class="filterButton icon_mini icon_ono weapon-icon-button" data-id="斧"></button></div>
@@ -96,9 +106,9 @@
                         <div class="col-2 col-sm-1 xs-pad0"><button class="filterButton icon_mini icon_sken weapon-icon-button" data-id="小剣"></button></div>
                         <div class="col-2 col-sm-1 xs-pad0"><button class="filterButton icon_mini icon_yumi weapon-icon-button" data-id="弓"></button></div>
                         <div class="col-2 col-sm-1 xs-pad0"><button class="filterButton icon_mini icon_yari weapon-icon-button" data-id="槍"></button></div>
-                        <div class="col-2 col-sm-1 xs-pad0" style="margin-bottom:10px"><button class="filterButton icon_mini icon_tsue weapon-icon-button" data-id="杖"></button></div>
+                        <div class="col-2 col-sm-1 xs-pad0"><button class="filterButton icon_mini icon_tsue weapon-icon-button" data-id="杖"></button></div>
 
-                        <div class="col-12 subtitle fuchidori-white smallFont" style="left: 15px; padding-left: 30px; margin-bottom: 10px;">表示種別 切り替え</div>
+                        <div class="col-12 subtitle fuchidori-white smallFont" style="left: 15px; padding-left: 30px; margin: 10px 0px;">表示種別 切り替え</div>
                         <div class="col-6 col-md-4 text-center" style="margin-bottom:10px">
                             <button id="tabRare" class="width-100 icon_btn_positive fuchidori-white smallFont text-nowrap">レア表示</button></div>
                         <div class="col-6 col-md-4 text-center">
@@ -106,61 +116,130 @@
                         <div class="col-6 col-md-4 text-center">
                             <button id="tabGacha" class="width-100 icon_btn_negative fuchidori-white smallFont text-nowrap">ガチャ表示</button></div>
 
-                        <div class="DISP_CLASS col-12 subtitle fuchidori-white smallFont" style="left: 15px; padding-left: 30px; margin-bottom: 10px;">表示内容 切り替え</div>
+                        <div class="DISP_CLASS col-12 subtitle fuchidori-white smallFont" style="left: 15px; padding-left: 30px; margin: 10px 0px;">表示内容 切り替え</div>
                         <div class="DISP_CLASS col-5 col-md-4 text-center" style="margin-bottom:10px"><button class="width-100 icon_btn_on allType fuchidori-white smallFont text-nowrap">全て表示</button></div>
                         <div class="DISP_CLASS col-7 col-md-4 text-center"><button class="width-100 icon_btn_off onlyDisable fuchidori-white smallFont text-nowrap">未所持のみ表示</button></div>
-                        <div class="DISP_CLASS col-12 col-md-4 text-center"><button class="width-100 icon_btn_off simpleDisplay fuchidori-white smallFont text-nowrap">未所持のみ表示(シンプル)</button></div>
+                        <div class="DISP_CLASS col-12 col-md-4 text-center" style="margin-bottom:10px"><button class="width-100 icon_btn_off simpleDisplay fuchidori-white smallFont text-nowrap">未所持のみ表示(シンプル)</button></div>
 
                         <div class="col-12 text-center myinput d-none" style="margin-top: 20px; ">
                             <a href="./stylecheck.html" class="width-100 h5" style="background-color: rgba(41,163,239,1); color:white; padding:5px 10px; border-radius:10px;"><i class="fas fa-edit"></i> 自分の所持スタイルを入力する</a>
                         </div>
                     </div>
                 </div>
-                <div class="d-none style-bgcolor smallFont" id="styleAreaClass" style="padding: 20px 5px;
+
+
+                <div class="style-bgcolor smallFont" id="styleAreaRare">
+                    <img src="https://romasagatool.com//img/icon/icon_SS.png" class="rare-icon-big">
+                    <button class="d-none d-none icon_btn_positive allOn" data-rare="SS">全てチェック</button>
+                    <button class="d-none icon_btn_negative allOff" data-rare="SS">全て外す</button>
+                    <div id="SSArea" class="row no-gutters"></div>
+                    <div id="OnlySSArea" class="row no-gutters"></div>
+                    <img src="https://romasagatool.com//img/icon/icon_S.png" class="rare-icon-big">
+                    <button class="d-none icon_btn_positive allOn" data-rare="S">全てチェック</button>
+                    <button class="d-none icon_btn_negative allOff" data-rare="S">全て外す</button>
+                    <div id="SArea" class="row no-gutters"></div>
+                    <div id="OnlySArea" class="row no-gutters"></div>
+                    <img src="https://romasagatool.com//img/icon/icon_A.png" class="rare-icon-big">
+                    <button class="d-none icon_btn_positive allOn" data-rare="A">全てチェック</button>
+                    <button class="d-none icon_btn_negative allOff" data-rare="A">全て外す</button>
+                    <div id="AArea" class="row no-gutters"></div>
+                    <div id="OnlyAArea" class="row no-gutters"></div>
+                </div>
+
+                <div class="" id="styleAreaClass" >
+                    <div class="info-modal width-max" style="padding: 0px 15px 30px 20px;">
+                        <div class="text-center info-modal-header">属性別 戦力所持チェッカーとは</div>
+                        各種属性ごとに、どの程度スタイル数を所持しているかをチェックできます<br>
+                        ガチャを引く際に新スタイルと所持状況を見比べてガチャを引く参考にご利用ください<br><br>
+                        例1：「ガチャの新スタイルは打単体が強力」→「打 単体火力」に分類される所持スタイルがスタイルが少なければ新スタイルを引いた方がいいかも<br>
+                        例2：「ガチャの新スタイルは知力デバフ持ち」→「知デバフ」に分類される所持スタイルがスタイルが少なければ新スタイルを引いた方がいいかも<br>
+                        <br>
+                        注：この分類は管理人の独断によるものです<br>
+                    </div>
+                    <div class="style-bgcolor smallFont" id="styleAreaClass" style="padding: 20px 5px;
+                    margin-top: 10px; margin-bottom: 10px;
                     margin-left: calc(((100vw - 100%) / 2) * -1);
                     margin-right: calc(((100vw - 100%) / 2) * -1);">
-                    <div id="CLASS_TEMPLATE" class="row no-gutters d-none">
-                        <div class="col-12 col-sm-1">
-                            <div class="filter-bgcolor width-100 text-center" style="height: 100%; display: flex; align-items: center; justify-content: center;">
-                                <span class="ICON icon_mini_zokusei"></span>
+                        <div class="yubi OPEN-HELP filter-bgcolor width-100 text-center" data-target="ATTR_HELP" style="display: flex; align-items: center; justify-content: center; color:white">
+                            <i class="fas fa-question-circle"></i>　属性別 スタイル用途について　<i class="fas fa-question-circle"></i>
+                        </div>
+                        <div class="text-center small">(▲タップで開閉▲)</div>
+                        <div id="ATTR_HELP" class="INIT-CLOSE bg-simple" style="padding: 10px">
+                            <div class="width-100 subtitle-long fuchidori-white smallFont" style="padding-left: 30px;">継承について </div>
+                            基本的に、<span style="color:hotpink">継承は考えないもの</span>とします<br>
+                            例：知力デバフの欄にミラステを継承した佐賀アセルスは入らない<br>
+                            ただし、配布スタイルの継承はあるものと考えます<br>
+                            例：Sミルザから流星剣を継承したUDXミルザは斬全体に入る<br>
+                            <div class="width-100 subtitle-long fuchidori-white smallFont" style="padding-left: 30px;">単体火力とは </div>
+                            単体火力に優れたスタイルです。具体的には<br>
+                            BP6A技持ち、1T目or2T目に打てる威力SSS相当以上の技持ちのスタイルが該当します
+                            <div class="width-100 subtitle-long fuchidori-white smallFont" style="padding-left: 30px;">全体火力とは </div>
+                            全体火力に優れたスタイルです。具体的には<br>
+                            周回中2回以上打てる全体持ち、開幕から打てる威力A以上の全体持ちのスタイルが該当します
+                            <div class="width-100 subtitle-long fuchidori-white smallFont" style="padding-left: 30px;">クエスト攻略とは </div>
+                            初見のメインクエスト、螺旋、ツヴァイクなどのクエスト攻略に優れたスタイルです。具体的には<br>
+                            全体状態異常持ち、2属性全体攻撃持ち、壁役、HP回復持ちなどが該当します
+                            <div class="width-100 subtitle-long fuchidori-white smallFont" style="padding-left: 30px;">Romancing戦とは </div>
+                            Romancing戦攻略に優れたスタイルです。具体的には<br>
+                            継続火力の高さ、防御アビや回復アビなどの生存力の高さ、継続デバフが可能などが該当します
+                        </div>
+                        <div id="CLASS_TEMPLATE" class="row no-gutters d-none">
+                            <div class="col-12 col-sm-1">
+                                <div class="filter-bgcolor width-100 text-center" style="height: 100%; display: flex; align-items: center; justify-content: center;">
+                                    <span class="ICON icon_mini_zokusei"></span>
+                                </div>
+                            </div>
+                            <div class="col-6 col-sm">
+                                <div class="width-100 subtitle-long fuchidori-white smallFont" style="padding-left: 30px;">単体火力 </div>
+                                <div class="o"></div>
+                            </div>
+                            <div class="col">
+                                <div class="width-100 subtitle-long fuchidori-white smallFont" style="padding-left: 30px;">全体火力 </div>
+                                <div class="a"></div>
+                            </div>
+                            <div class="col">
+                                <div class="width-100 subtitle-long fuchidori-white smallFont text-nowrap" style="padding-left: 30px;">クエスト攻略 </div>
+                                <div class="q"></div>
+                            </div>
+                            <div class="col">
+                                <div class="width-100 subtitle-long fuchidori-white smallFont text-nowrap" style="padding-left: 30px;">Romancing戦 </div>
+                                <div class="r"></div>
                             </div>
                         </div>
-                        <div class="col">
-                            <div class="width-100 subtitle-long fuchidori-white smallFont" style="padding-left: 30px;">単体火力 </div>
-                            <div class="o"></div>
+
+                        <div class="yubi OPEN-HELP filter-bgcolor width-100 text-center" data-target="DEBUF_HELP"  style="display: flex; align-items: center; justify-content: center; color:white">
+                            <i class="fas fa-question-circle"></i>　デバフ分類について　<i class="fas fa-question-circle"></i>
                         </div>
-                        <div class="col">
-                            <div class="width-100 subtitle-long fuchidori-white smallFont" style="padding-left: 30px;">全体火力 </div>
-                            <div class="a"></div>
+                        <div class="text-center small">(▲タップで開閉▲)</div>
+                        <div id="DEBUF_HELP" class="INIT-CLOSE bg-simple" style="padding: 10px">
+                            <span style="color:red">継承は考えないもの</span>とします<br>
+                            例：クリスマスSからサブミを継承するアザミは腕力デバフに入れない<br>
+                            <span style="color:red">BP消費が大きく1度しか打てないものは考えないもの</span>とします<br>
+                            例：活殺獣神衝は器用さデバフに入れない<br>
+                            <span style="color:red">利用頻度の低いものは考えないもの</span>とします<br>
+                            例：レオニードのウィークネスは体力デバフに入れない<br>
                         </div>
-                        <div class="col">
-                            <div class="width-100 subtitle-long fuchidori-white smallFont text-nowrap" style="padding-left: 30px;">クエスト攻略 </div>
-                            <div class="q"></div>
+                        <div id="DEBUF_PARENT" class="row no-gutters"></div>
+
+                        <div class="yubi OPEN-HELP filter-bgcolor width-100 text-center" data-target="JOTAI_HELP"  style="display: flex; align-items: center; justify-content: center; color:white">
+                            <i class="fas fa-question-circle"></i>　状態異常分類について　<i class="fas fa-question-circle"></i>
                         </div>
-                        <div class="col">
-                            <div class="width-100 subtitle-long fuchidori-white smallFont text-nowrap" style="padding-left: 30px;">Romancing戦 </div>
-                            <div class="r"></div>
+                        <div class="text-center small">(▲タップで開閉▲)</div>
+                        <div id="JOTAI_HELP" class="INIT-CLOSE bg-simple" style="padding: 10px">
+                            基本的に、<span style="color:hotpink">継承は考えないもの</span>とします<br>
+                            例：しびれ突きを継承したSSダークは器用さデバフに入れない<br>
+                        </div>
+                        <div id="JHOTAI_PARENT" class="row no-gutters"></div>
+
+                        <div id="JHOTAI_DEBUF_TEMPLATE" class="col d-none">
+                            <div class="filter-bgcolor width-100 text-center" style="display: flex; align-items: center; justify-content: center;">
+                                <span class="ICON icon_mini_zokusei"></span>
+                            </div>
+                            <div class="icon_area"></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="style-bgcolor smallFont" id="styleAreaRare">
-                    <img src="https://romasagatool.com//img/icon/icon_SS.png" class="rare-icon-big">
-                    <button class="icon_btn_positive allOn" data-rare="SS">全てチェック</button>
-                    <button class="icon_btn_negative allOff" data-rare="SS">全て外す</button>
-                    <div id="SSArea" class="row no-gutters"></div>
-                    <div id="OnlySSArea" class="row no-gutters"></div>
-                    <img src="https://romasagatool.com//img/icon/icon_S.png" class="rare-icon-big">
-                    <button class="icon_btn_positive allOn" data-rare="S">全てチェック</button>
-                    <button class="icon_btn_negative allOff" data-rare="S">全て外す</button>
-                    <div id="SArea" class="row no-gutters"></div>
-                    <div id="OnlySArea" class="row no-gutters"></div>
-                    <img src="https://romasagatool.com//img/icon/icon_A.png" class="rare-icon-big">
-                    <button class="icon_btn_positive allOn" data-rare="A">全てチェック</button>
-                    <button class="icon_btn_negative allOff" data-rare="A">全て外す</button>
-                    <div id="AArea" class="row no-gutters"></div>
-                    <div id="OnlyAArea" class="row no-gutters"></div>
-                </div>
                 <div class="style-bgcolor d-none">
                     <div id="styleAreaChar">
                         <div class="RS1">
