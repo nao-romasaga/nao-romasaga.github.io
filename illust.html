@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#" lang="ja">
+    <head>
+        <script src="./js/jquery-3.3.1.min.js"></script>
+        <script src="./js/lib/lazysizes.min.js"></script>
+        <script src="./js/lib/ls.unveilhooks.min.js"></script>
+
+        <script src="./js/data_STYLEILLUST.js" ></script>
+        <!-- Global site tag (gtag.js) - Google Analytics         -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138966739-1"></script>
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
+        <script src="./js/asyncFunc.js"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', 'UA-138966739-1');
+        </script>
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <meta charset="utf-8">
+        <title>【ロマサガRS】Artist イラスト一覧</title>
+        <meta name="description" content="ロマサガRSのArtist イラストを眺めるツールです。"/>
+        <meta property="og:title" content="【ロマサガRS】Artist イラスト一覧" />
+        <meta property="og:url" content="https://http://nao-romasaga.github.io/anime.html" />
+        <meta property="og:description" content="ロマサガRSのArtist イラストを眺めるツールです。" />
+        <meta name="description" content="ロマサガRSのArtist イラストを眺めるツールです。【ロマンシングサガ リユニバース】" />
+        <meta property="og:site_name" content="ロマサガRS便利ツール" />
+        <meta property="og:type" content="article">
+        <meta property="og:locale" content="ja_JP" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@nao_romasaga_rs" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="./css/bootstrap/bootstrap.min.css">
+        <script src="./js/bootstrap/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="./css/style2.css">
+        
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/ui/3.5.2/firebase-ui-auth__ja.js"></script>
+        <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+
+        <script src="./js/Firebase.js"></script>
+        <script src="./js/utils2.js" ></script>
+        <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+        <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div class ="haikei">
+            <div class="container">
+                <h3 class="text-center title-text">Artist イラスト一覧</h3>
+                <p class="text-right opacity"><small>バグ発見、ご要望は <a href="https://peing.net/ja/nao_romasaga_rs" target="new">質問箱</a>まで</small>
+                </p>
+                <!-- ツール_スタイル上部 -->
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-5008373409434899"
+                    data-ad-slot="5836482514"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"></ins>
+
+                <div class="info-modal dotList width-max" style="margin-top:10px;">
+                    <div class="text-center info-modal-header">敬称略 順不同</div>
+                    <section id="ILLUST_AREA" class="char-choise-section2 row no-gutters"></section>
+                    <section id="UNKNOWN_AREA" class="char-choise-section2 row no-gutters"></section>
+                    <div id="VERTICAL_TEMPLATE" class="col-3 col-sm-1 d-none">
+                        <div class="filter-bgcolor" style="padding: 0px !important; border: 1px solid yellow;">
+                            <div class="text-center" style="background: url(https://romasagatool.com/img/bg_cutin.png);">
+                                <img class="VERTICAL_IMG lazyload" style="max-width:100%;">
+                            </div>
+                        </div>
+                    </div>                    
+                </div>
+
+                <!-- ツール_スタイル下部 -->
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-5008373409434899"
+                    data-ad-slot="6110964621"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"></ins>                
+                <script> (adsbygoogle = window.adsbygoogle || []).push({});</script>            
+            </div>
+            <script> (adsbygoogle = window.adsbygoogle || []).push({});</script>            
+            <p id="PageTopBtn" style="right:10px"><a href="#FILTER"><i class="fas fa-arrow-up"></i></a></p>
+        </div> <!-- main -->
+    </body>
+    <script>
+        var result = {};
+        for(var sId in ILLUST_DATA){
+            if(result[ILLUST_DATA[sId]] == undefined){
+                result[ILLUST_DATA[sId]] = {
+                    "artist" : ILLUST_DATA[sId],
+                    "sIds" : [],
+                    "size" : 0
+                };
+            }
+            result[ILLUST_DATA[sId]]['sIds'].push(sId);
+            result[ILLUST_DATA[sId]]['size']++;
+        }
+        var result2 = [];
+        for(var i in result){
+            result2.push(result[i]);
+        }
+        result2.sort(function(a,b){
+            if(a.size > b.size){
+                return -1;
+            } else if(a.size < b.size){
+                return 1;
+            } else {
+                return 0;
+            }
+        });
+        var braekFlag = false;
+        for(var tmp of result2){
+            var target = (tmp['artist'] == "情報募集中") ? "#UNKNOWN_AREA": "#ILLUST_AREA";
+
+            if(tmp['sIds'].length > 2){
+                $(target).append(`<div class="col-12 bg-item fuchidori-white fuchidoriNormal text-center">${tmp['artist']}</div>`);
+            } else if (!braekFlag) {
+                $("#ILLUST_AREA").append(`<div class="col-12"></div>`);
+                braekFlag = true;
+            }
+            for(var sId of tmp['sIds']){
+                var png = getImgPath(`style_vertical/${sId}.png`);
+                var tmpl = $("#VERTICAL_TEMPLATE").clone().removeClass("d-none").attr("id","");
+                tmpl.find(".VERTICAL_IMG").attr('data-src', png);
+
+                if(tmp['sIds'].length <= 2){
+                    tmpl.prepend(`<div class="width-100 bg-item fuchidori-white text-nowrap text-center" style="font-size:10px !important;">${tmp['artist']}</div>`);
+                }
+                $(target).append(tmpl);
+            }
+        }
+    </script>
+</html>
