@@ -290,11 +290,11 @@ html {
     }
 
     .haikei {
-        background: url(https://romasagatool.com/img/bg.jpg) no-repeat;
-        width:100%;
+        background: url(http://romasagatool.com/img/bg_pc2.jpg) no-repeat;
+        width: 100%;
         padding-top: 10px;
         background-size: cover;
-        background-position: center;
+        background-attachment: fixed;  
     }
 }
 @media screen and (min-width:300px) {
@@ -1323,7 +1323,7 @@ input[type=range]::-ms-tooltip {
     }
 }
 /* 画面サイズが400〜767はこれ(ipadは768なので入れない) */
-@media screen and (min-width:400px) and ( max-width:767px) {
+@media screen and (min-width:400px) and ( max-width:768px) {
     .info-modal {
         padding: 0px 15px 15px 15px;
     }
@@ -1359,4 +1359,14 @@ input[type=range]::-ms-tooltip {
     top: 0;
     right: 0px;
     height: 75px;
+}
+
+.FADEIN {
+    opacity : 0;
+    transform : translate(0, 45px);
+    transition : all 1000ms;
+}
+.FADEIN.FADEIN-SCROLL {
+    opacity : 1;
+    transform : translate(0, 0);
 }
