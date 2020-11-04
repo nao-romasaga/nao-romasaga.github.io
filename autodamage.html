@@ -174,33 +174,35 @@
                             <table class="width-100">
                                 <tr>
                                     <td>開幕用</td>
-                                    <td><button class="width-100 icon_btn_off optionButton" data-on="0" data-name="turn" data-label="1" data-bp=10>1ターン</button></td>
+                                    <td><button class="width-100 icon_btn_off optionButton text-nowrap" data-on="0" data-name="turn" data-label="1" data-bp=10>1ターン</button></td>
                                 </tr>
                                 <tr>
                                     <td>周回用(ボス戦)</td>
-                                    <td><button class="width-100 icon_btn_on optionButton" data-on="1" data-name="turn" data-label="2" data-bp=10>2ターン</button></td>
+                                    <td><button class="width-100 icon_btn_on optionButton text-nowrap" data-on="1" data-name="turn" data-label="2" data-bp=10>2ターン</button></td>
                                 </tr>
                                 <tr>
                                     <td>周回用</td>
-                                    <td><button class="width-100 icon_btn_off optionButton" data-on="0" data-name="turn" data-label="3" data-bp=10>3ターン</button></td>
+                                    <td><button class="width-100 icon_btn_off optionButton text-nowrap" data-on="0" data-name="turn" data-label="3" data-bp=10>3ターン</button></td>
                                 </tr>
                                 <tr>
                                     <td>ターン↔︎ラウンド<br class="hidden spBlock">切り替え</td>
-                                    <td><button class="width-100 icon_btn_off optionButton" data-on="0" data-name="round">ラウンド <i class="TOGGLE fas fa-toggle-off"></i></button></td>
+                                    <td><button class="width-100 icon_btn_off optionButton text-nowrap" data-on="0" data-name="round">ラウンド <i class="TOGGLE fas fa-toggle-off"></i></button></td>
                                 </tr>
-                                <tr><td colspan="2" class="small">ターンごとの計算からラウンドごとの計算に切り替わります<br>
+                                <tr><td colspan="2" class="small text-left">ターンごとの計算からラウンドごとの計算に切り替わります<br>
                                     ・「常時勇健発動」「バフ持ち越しなし」が適応されます</td>
                                 </tr>
                                 <tr>
-                                    <td><button class="width-100 icon_btn_off optionButton" data-on="0" data-name="turn" data-label="1" data-bp=13>BP13 1ターン</button></td>
-                                    <td><button class="width-100 icon_btn_off optionButton" data-on="0" data-name="turn" data-label="1" data-bp=16>BP16 1ターン</button></td>
+                                    <td><button class="width-100 icon_btn_off optionButton text-nowrap" data-on="0" data-name="turn" data-label="1" data-bp=13>BP13 1ターン</button></td>
+                                    <td><button class="width-100 icon_btn_off optionButton text-nowrap" data-on="0" data-name="turn" data-label="1" data-bp=16>BP16 1ターン</button></td>
                                 </tr>
+                                <!--
                                 <tr>
                                     <td><button class="width-100 icon_btn_off optionButton" data-on="0" data-name="turn" data-label="1" data-bp=4>BP4 1ターン</button></td>
                                     <td><button class="width-100 icon_btn_off optionButton" data-on="0" data-name="turn" data-label="1" data-bp=6>BP6 1ターン</button></td>
                                     <td><button class="width-100 icon_btn_off optionButton" data-on="0" data-name="turn" data-label="1" data-bp=8>BP8 1ターン</button></td>
                                 </tr>
-                                <tr><td colspan="2" class="small">1-2ラウンド目で動かない場合などの調査にご利用ください</td></tr>
+                                -->
+                                <tr><td colspan="2" class="small  text-left">1-2ラウンド目で動かない場合などの調査にご利用ください</td></tr>
 
                                 <!--
                                 <tr>
@@ -251,8 +253,6 @@
                                 data-label="陽弱点" href="#enemy_7" onclick=""><img src="http://romasagatool.com/img/icon/icon_yo.png" ></a></li>
                         <li class="col-3 col-sm xs-pad0"><a class="enemyfilterList pad0" data-type="EnemyClassFilter"
                                 data-label="陰弱点" href="#enemy_8" onclick=""><img src="http://romasagatool.com/img/icon/icon_in.png" ></a></li>
-                        <li class="col-3 col-sm xs-pad0"><a class="enemyfilterList pad0" data-type="EnemyClassFilter"
-                                data-label="ラバーウォーム" href="#enemy_9" onclick=""><img src="http://romasagatool.com/img/enemy/rav.png" style="width: 40px;"><br>戦い<br>(UH15)</a></li>
                         <li class="col-3 col-sm xs-pad0"><a class="enemyfilterList pad0" data-type="EnemyClassFilter"
                                 data-label="フォルネウス" href="#enemy_10" onclick=""><img src="http://romasagatool.com/img/enemy/fol.png" style="width: 40px;"><br>遠征訓練<br>(UH15)</a></li>
                         <li class="col-3 col-sm xs-pad0"><a class="enemyfilterList pad0" data-type="EnemyClassFilter"
@@ -467,8 +467,8 @@
                 </div>
                 <div id="CARD_TEMPLATE" class="d-none style-skill-list position-relative" style="padding: 0px 5px;">
                     <div class="row no-gutters">
-                        <div class="char dot_mid dot char-hashiri DETAIL_DISP" style="top:5px; position: absolute; "></div>
-                        <div class="CUTIN bg-center d-none d-md-block" style="width:100%;height:100%;position: absolute; background-size: contain;opacity: 0.3;"></div>
+                        <div class="char dot_mid dot char-hashiri DETAIL_DISP lazyload" style="top:5px; position: absolute; "></div>
+                        <div class="CUTIN lazyload bg-center d-none d-md-block" style="width:100%;height:100%;position: absolute; background-repeat: no-repeat; background-size: contain;opacity: 0.3;"></div>
                         <div class="STYLE_ICON SMART_DISP text-center" style="margin: auto 0;"></div>
                         <div class="col-6 col-md-3 col-lg-2 text-nowrap NAME_AREA" style="overflow-x: scroll;">
                             <div class="icon-left-margin NAME_AREA_INNER" style="line-height: 25px;;">
