@@ -84,9 +84,11 @@
             <div id="firebaseui-auth-container" style="margin-bottom:10px;"></div>
             <br>
             <div class="width-100 card">
+                <!--
                 <div id="howtohead" onclick="" class="card-header bg-primary" style="color:white; font-size:20px;"><i
                         class="fas fa-question-circle"></i> 表示内容の読み方 (<span class="hidden pcBlock">タップで展開 </span><i
                         class="fas fa-sort"></i>)</div>
+                -->
                 <div id="howtobody" class="card-body" style="padding:0px 5px;">
                     <div class="d-md-none"><img src="/img/howto_sp.png" style="width:100%"></div>
                     <div class="d-none d-md-block d-lg-none"><img src="/img/howto_ipad.png" style="width:100%"></div>
@@ -353,41 +355,47 @@
                     </div>
                     <div class="text-center label-text-small width-100">武器種選択</div>
                     <ul class="nav text-center width-100">
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter"
+                        <li class="col xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter"
                                 data-label="剣" href="#icon_ken" onclick=""><span class="icon_mini icon_ken"
                                     onclick=""></span></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter"
+                        <li class="col xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter"
                                 data-label="大剣" href="#icon_dken"><span class="icon_mini icon_dken"
                                     onclick=""></span></a>
                         </li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter"
+                        <li class="col xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter"
                                 data-label="斧" href="#icon_ono"><span class="icon_mini icon_ono" onclick=""></span></a>
                         </li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter"
+                        <li class="col xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter"
                                 data-label="棍棒" href="#icon_kon"><span class="icon_mini icon_kon" onclick=""></span></a>
                         </li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter"
+                        <li class="col xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter"
                                 data-label="体術" href="#icon_tai"><span class="icon_mini icon_tai" onclick=""></span></a>
                         </li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter"
+                        <li class="col xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter"
                                 data-label="銃" href="#icon_ju"><span class="icon_mini icon_ju" onclick=""></span></a>
                         </li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter"
+                        <li class="col-12 d-sm-none"></li>
+                        <li class="col xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter"
                                 data-label="小剣" href="#icon_sken"><span class="icon_mini icon_sken"
                                     onclick=""></span></a>
                         </li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter"
+                        <li class="col xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter"
                                 data-label="弓" href="#icon_yumi"><span class="icon_mini icon_yumi"
                                     onclick=""></span></a>
                         </li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter"
+                        <li class="col xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter"
                                 data-label="槍" href="#icon_yari"><span class="icon_mini icon_yari"
                                     onclick=""></span></a>
                         </li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter"
+                        <li class="col xs-pad0"><a class="filterList pad0" data-type="WeaponTypeFilter"
                                 data-label="杖" href="#icon_tsue"><span class="icon_mini icon_tsue"
                                     onclick=""></span></a>
                         </li>
+                        <li class="col xs-pad0" id="TOKU_LI"><a class="filterList pad0" data-type="WeaponTypeFilter"
+                            data-label="イベントアビリティ" href="#icon_toku"><img class="icon_mini weapon-icon-button fButton" src="https://romasagatool.com/img/icon/icon_toku.png"
+                                onclick=""></a></li>
+                        <li class="col d-sm-none xs-pad0">　</li>
+
                     </ul>
                     <!--
                     <ul class="nav text-center width-100">
@@ -403,39 +411,39 @@
                     </ul>
                     -->
                     <div class="text-center label-text-small width-100" id="CHAR_HEADER">キャラ選択</div>
-
-                    <div class="info-modal weaponList d-none" id="_icon_ken">
+                    <div class="text-left info-modal weaponList d-none" id="_icon_ken">
                         <h5 class="info-modal-header"><span class="icon_mini icon_ken"></span></h5>
                     </div>
-                    <div class="info-modal weaponList d-none" id="_icon_dken">
+                    <div class="text-left info-modal weaponList d-none" id="_icon_dken">
                         <h5 class="info-modal-header"><span class="icon_mini icon_dken"></span></h5>
                     </div>
-                    <div class="info-modal weaponList d-none" id="_icon_ono">
+                    <div class="text-left info-modal weaponList d-none" id="_icon_ono">
                         <h5 class="info-modal-header"><span class="icon_mini icon_ono"></span></h5>
                     </div>
-                    <div class="info-modal weaponList d-none" id="_icon_sken">
+                    <div class="text-left info-modal weaponList d-none" id="_icon_sken">
                         <h5 class="info-modal-header"><span class="icon_mini icon_sken"></span></h5>
                     </div>
-                    <div class="info-modal weaponList d-none" id="_icon_yumi">
+                    <div class="text-left info-modal weaponList d-none" id="_icon_yumi">
                         <h5 class="info-modal-header"><span class="icon_mini icon_yumi"></span></h5>
                     </div>
-                    <div class="info-modal weaponList d-none" id="_icon_yari">
+                    <div class="text-left info-modal weaponList d-none" id="_icon_yari">
                         <h5 class="info-modal-header"><span class="icon_mini icon_yari"></span></h5>
                     </div>
-                    <div class="info-modal weaponList d-none" id="_icon_ju">
+                    <div class="text-left info-modal weaponList d-none" id="_icon_ju">
                         <h5 class="info-modal-header"><span class="icon_mini icon_ju"></span></h5>
                     </div>
-                    <div class="info-modal weaponList d-none" id="_icon_tai">
+                    <div class="text-left info-modal weaponList d-none" id="_icon_tai">
                         <h5 class="info-modal-header"><span class="icon_mini icon_tai"></span></h5>
                     </div>
-                    <div class="info-modal weaponList d-none" id="_icon_kon">
+                    <div class="text-left info-modal weaponList d-none" id="_icon_kon">
                         <h5 class="info-modal-header"><span class="icon_mini icon_kon"></span></h5>
                     </div>
-                    <div class="info-modal weaponList d-none" id="_icon_tsue">
+                    <div class="text-left info-modal weaponList d-none" id="_icon_tsue">
                         <h5 class="info-modal-header"><span class="icon_mini icon_tsue"></span></h5>
                     </div>
-                    <div class="info-modal weaponList d-none" id="_icon_toku">
-                        <h5 class="info-modal-header"><img src="/img/icon/icon_toku.png"></h5>
+                    <div class="text-left info-modal weaponList d-none" id="_icon_toku">
+                        <h5 class="info-modal-header"><img src="https://romasagatool.com/img/icon/icon_toku.png"></h5>
+                        <div id="toku_area" style="height:300px; overflow-y: scroll;"></div>
                     </div>
                     <div class="text-center label-text-small width-100" id="STYLE_HEADER">スタイル選択</div>
                     <div id="styleChoice"></div>
@@ -469,6 +477,8 @@
                 <div class="col-12">
                     <div id="RANK_AREA" class="row"></div>
                 </div>
+                <button id="MORE_BUTTON" class="col-12 text-nowrap text-center width-100 icon_btn_positive shadow-black" style="font-size: 18px; display: block; padding: 10px 0px; margin-top: 10px;">もっと表示する</button>
+
                 <div id="CARD_TEMPLATE" class="d-none style-skill-list position-relative" style="padding: 0px 5px;">
                     <div class="row no-gutters">
                         <div class="char dot_mid dot char-hashiri DETAIL_DISP lazyload" style="top:5px; position: absolute; "></div>
