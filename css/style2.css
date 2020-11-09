@@ -4,6 +4,19 @@
 @import url("loading.css");
 @import url("https://use.fontawesome.com/releases/v5.8.1/css/all.css");
 
+.card {
+    backdrop-filter: blur(5px);
+    background-color: rgba(255,255,255,0.7);
+}
+.overflow-x-scroll {
+    overflow-x: scroll;
+    -ms-overflow-style: none;    /* IE, Edge 対応 */
+    scrollbar-width: none;       /* Firefox 対応 */
+}
+.overflow-x-scroll::-webkit-scrollbar {  /* Chrome, Safari 対応 */
+    display:none;
+}
+
 @media screen and (max-width:330px) {
     .d-320-none {
         display: none !important;
@@ -62,9 +75,11 @@ html {
 .site-header.fixed{
     position: fixed;
     top: 0;
+    opacity: 0.8;
 }
 .site-header.hide{
-    top: -63px;
+    /*top: -63px;*/
+    opacity: 0.8;
 }
 .user-menu-item {
     margin-left: auto;
@@ -128,7 +143,8 @@ html {
 
 
 .filter-bgcolor {
-    background-color: rgb(50,50,50,1);
+    background-color: rgb(50,50,50,0.8);
+    backdrop-filter: blur(5px);
     border: 3px solid rgb(197,187,147);
     border-radius: 10px;
     padding: 5px;
