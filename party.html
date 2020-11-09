@@ -96,16 +96,13 @@
             font-size:15px;
         }
 
-        .limitFont {
-            font-size:15px;
-        }
         /* iphone5以下 画面サイズが330まではこれ */
         @media screen and ( max-width:329px) {
             .limitFont {
-                font-size:11px;
+                font-size: 12px;
             }
             .fukidashiInput .limitFont {
-                font-size:8px;
+                font-size: 8px;
             }
             .footer-font {
                 font-size:12px;
@@ -113,25 +110,35 @@
         }
         /* 画面サイズが330〜400はこれ */
         @media screen and (min-width:330px) and ( max-width:400px) {
+            .fukidashiInput .limitFont {
+                font-size: 12px;
+            }
+            .footer-font {
+                font-size:12px;
         }
         /* 画面サイズが400〜767はこれ(ipadは768なので入れない) */
         @media screen and (min-width:400px) and ( max-width:767px) {
         }        
         /* ipad以下の場合 */
-        @media only screen and (max-width: 769px) {
+        @media only screen and (min-width:767px) and ( max-width:768px) {
             .fukidashiInput .limitFont {
-                font-size:12px;
+                font-size: 12px;
+            }
+            .limitFont {
+                font-size: 12px;
             }
             .footer-font {
-                font-size:18px;
+                font-size: 18px;
             }
         }
         /* 画面サイズが768(ipad）より大きい */
         @media only screen and (min-width: 769px) {
+            .limitFont {
+                font-size:15px;
+            }
             .xs-show {
                 display: none;
             }
-
             .xs-hide {
                 display: block;
             }
