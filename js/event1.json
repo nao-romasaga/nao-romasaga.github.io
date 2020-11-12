@@ -64,6 +64,21 @@
             "startNone": true
         },
         {
+            "startDay": "12",
+            "endDay": "16",
+            "title": "[イベント] <br class='hidden pcBlock'>武器/主防具/副防具 聖石洞窟",
+            "startPrefix": "12:00 開始<br>",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "orange"
+        },
+        {
+            "startDay": "16",
+            "endDay": "22",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>裏道場の証 獲得量2倍",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue"
+        },
+        {
             "startDay": "0",
             "endDay": "16",
             "title": "[イベント] <br class='hidden pcBlock'>ボストンの遠征特訓",
