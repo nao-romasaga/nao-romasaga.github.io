@@ -57,9 +57,25 @@
         },
         {
             "startDay": "0",
+            "endDay": "16",
+            "title": "★★データ更新★★",
+            "endSuffix": "<br>14:00-15:00",
+            "type": "yellow",
+            "startNone": true
+        },
+        {
+            "startDay": "0",
             "endDay": "5",
             "title": "★★公式生放送★★",
             "endSuffix": "<br>20:00-",
+            "type": "yellow",
+            "startNone": true
+        },
+        {
+            "startDay": "0",
+            "endDay": "28",
+            "title": "★★公式生放送 & ミニライブ★★",
+            "endSuffix": "<br>19:00-(予)",
             "type": "yellow",
             "startNone": true
         },
@@ -85,8 +101,46 @@
             "endSuffix": "<br>翌4:00 終了",
             "type": "orange",
             "startNone": true
+        },
+        {
+            "startDay": "17",
+            "endDay": "27",
+            "title": "[ガチャ] <br class='hidden pcBlock'>2周年前夜祭 Ultra DXガチャ",
+            "startSuffix": "12:00〜",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "green"
+        },
+        {
+            "startDay": "17",
+            "endDay": "23",
+            "title": "[イベント] <br class='hidden pcBlock'>財宝の穴",
+            "startPrefix": "12:00 開始<br>",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "orange"
+        },
+        {
+            "startDay": "17",
+            "endDay": "23",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>メイン SSぞう,ブラウニー,ヴァルドードロップ",
+            "startPrefix": "12:00 開始<br>",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue"
+        },
+        {
+            "startDay": "17",
+            "endDay": "27",
+            "title": "[スタ半] <br class='hidden pcBlock'>「メイン 全話」",
+            "startPrefix": "12:00 開始<br>",
+            "endSuffix": "<br>翌4:00 終了",
+            "type": "blue"
+        },
+        {
+            "startDay": "24",
+            "endDay": "99",
+            "title": "[恒常イベント] <br class='hidden pcBlock'>聖塔ランスの娘 リニューアル",
+            "startPrefix": "4:00 開始〜2/1まで<br>",
+            "type": "orange"
         }
-       
  ],
     "holiday": [
     ]
