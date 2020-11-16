@@ -115,6 +115,7 @@
             }
             .footer-font {
                 font-size:12px;
+            }
         }
         /* 画面サイズが400〜767はこれ(ipadは768なので入れない) */
         @media screen and (min-width:400px) and ( max-width:767px) {
@@ -364,6 +365,7 @@
         <li class="subtitle fuchidori-white smallFont">周回クエスト範囲の選択</li>
     </ul>
     <ul class="nav text-center width-100" style="margin-bottom: 20px;">
+        <li class="col-6 col-sm-4 col-lg-3" style="margin-bottom: 10px;"><button class="icon_btn_off baseDispChange text-nowrap width-100" data-id="7">2/VH7</button></li>
         <li class="col-6 col-sm-4 col-lg-3" style="margin-bottom: 10px;"><button class="icon_btn_off baseDispChange text-nowrap width-100" data-id="6">2/VH4〜VH6</button></li>
         <li class="col-6 col-sm-4 col-lg-3" style="margin-bottom: 10px;"><button class="icon_btn_off baseDispChange text-nowrap width-100" data-id="5">2/VH1〜VH3</button></li>
         <li class="col-6 col-sm-4 col-lg-3" style="margin-bottom: 10px;"><button class="icon_btn_off baseDispChange text-nowrap width-100" data-id="4">G1〜G2</button></li>
@@ -376,8 +378,13 @@
     <ul class="nav text-center width-100" style="margin-bottom: 5px;">
         <li class="fuchidori-white subtitle smallFont">周回クエスト選択</li>
     </ul>
+    <ul id="quest7"  class="questList questListNow initialHide d-none nav text-center width-100">
+        <li class="col-6 col-sm-4 col-lg-2"><button class="icon_btn_on baseValue text-nowrap questpad" data-id="104">2VH725(104)</button></li>
+        <li class="col-6 col-sm-4 col-lg-2"><button class="icon_btn_off baseValue text-nowrap questpad" data-id="103">2VH72?(103)</button></li>
+        <li class="col-6 col-sm-4 col-lg-2"><button class="icon_btn_off baseValue text-nowrap questpad" data-id="102">2VH71?(102)</button></li>
+    </ul>
     <ul id="quest6"  class="questList questListNow initialHide d-none nav text-center width-100">
-        <li class="col-6 col-sm-4 col-lg-2"><button class="icon_btn_on baseValue text-nowrap questpad" data-id="101">2VH625(101)</button></li>
+        <li class="col-6 col-sm-4 col-lg-2"><button class="icon_btn_off baseValue text-nowrap questpad" data-id="101">2VH625(101)</button></li>
         <li class="col-6 col-sm-4 col-lg-2"><button class="icon_btn_off baseValue text-nowrap questpad" data-id="100">2VH623(100)</button></li>
         <li class="col-6 col-sm-4 col-lg-2"><button class="icon_btn_off baseValue text-nowrap questpad" data-id="99">2VH621(99)</button></li>
         <li class="col-6 col-sm-4 col-lg-2"><button class="icon_btn_off baseValue text-nowrap questpad" data-id="98">2VH614(98)</button></li>
@@ -490,7 +497,7 @@
         <li class="col-6 col-sm-3 col-lg-2"><button class="icon_btn_off baseValue text-nowrap questpad" data-id="30">3(30)</button></li>
         <li class="col-6 col-sm-3 col-lg-2"><button class="icon_btn_off baseValue text-nowrap questpad" data-id="30">2(30)</button></li>
         <li class="col-6 col-sm-3 col-lg-2"><button class="icon_btn_off baseValue text-nowrap questpad" data-id="24">1(24)</button></li>
-        
+
 
         <li class="col-12"><p class="label-text-small">　聖石洞窟　</p></li>
         <li class="col-6 col-sm-3 col-lg-2"><button class="icon_btn_off baseValue text-nowrap questpad" data-id="87">隠し通路(87)</button></li>
