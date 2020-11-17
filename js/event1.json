@@ -103,17 +103,18 @@
             "startNone": true
         },
         {
-            "startDay": "17",
-            "endDay": "27",
+            "startDay": "0",
+            "endDay": "17",
             "title": "[ガチャ] <br class='hidden pcBlock'>2周年前夜祭 Ultra DXガチャ",
             "startSuffix": "12:00〜",
-            "endSuffix": "<br>翌4:00 終了",
-            "type": "green"
+            "endSuffix": "<br>2021/1/1 4:00 終了",
+            "type": "green",
+            "startNone": true
         },
         {
             "startDay": "17",
             "endDay": "23",
-            "title": "[イベント] <br class='hidden pcBlock'>財宝の穴",
+            "title": "[イベント] <br class='hidden pcBlock'>財宝の穴 地図ドロップ",
             "startPrefix": "12:00 開始<br>",
             "endSuffix": "<br>翌4:00 終了",
             "type": "orange"
