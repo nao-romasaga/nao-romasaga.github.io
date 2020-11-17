@@ -61,7 +61,6 @@
         <script src="./js/utils2.js" ></script>
         <script src="./js/culcStyleBonus.js" ></script>
         <script src="./js/damage.js" ></script>
-        <script src="./js/weapon.js" ></script>
         <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
         <style>
             #RANK_TBODY .PARAM {
@@ -216,7 +215,7 @@
 
                 </div>
                 <div class="ARMOR style-bgcolor width-max" style="padding:10px 3px;">
-                    <table class="filter-bgcolor width-100" style="color: #faf0b4;">
+                    <table class="weapon-bgcolor width-100">
                         <thead>
                             <tr>
                                 <th rowspan=2 style="border-bottom: 1px solid #faf0b4;"></th>
@@ -273,7 +272,7 @@
                     <div id="RESIST_AREA" style="margin-top: 20px;">
                         <div class="text-center">装備による耐性変化でどれだけダメージが変わるかシミュレーションします</div>
                         <div class="bg-item text-center">装備効果：合計耐性<span id="SUM_RESIST" class="fuchidori-blue"></span></div>
-                        <table id="RESIST_TABLE" class="filter-bgcolor width-100 text-right" style="color: #faf0b4;">
+                        <table id="RESIST_TABLE" class="weapon-bgcolor width-100 text-right">
                             <tr class="text-center" >
                                 <th colspan=3 style="border-right: 1px solid #faf0b4;">装備前</th>
                                 <th colspan=3 style="border-right: 1px solid #faf0b4;">装備後</th>
@@ -329,7 +328,7 @@
                             <th class="d-none">印</th>
                         </tr>
                         </thead>
-                        <tbody id="TBODY" class="filter-bgcolor" style="color: #faf0b4;">
+                        <tbody id="TBODY" class="weapon-bgcolor">
                         <tr id="BODY_TEMPLATE" class="d-none">
                             <td class="ICON"></td>
                             <td class="RARE"></td>
@@ -423,7 +422,7 @@
                         <th class="COL POISON"><img class="header-icon" src="https://romasagatool.com/img/icon/icon_kizetsu.png"></th>
                         </tr>
                     </thead>
-                    <tbody id="ARM_TBODY" class="filter-bgcolor" style="color: #faf0b4;">
+                    <tbody id="ARM_TBODY" class="weapon-bgcolor">
                         <tr id="ARM_BODY_TEMPLATE" class="d-none">
                         <td class="ICON"></td>
                         <td class="RARE"></td>
@@ -641,6 +640,9 @@
             $(".filterList").click(function () {
                 // 一回全部消す
                 $(".wpRow").addClass("d-none");
+                $(".filterList").each(function(){
+                    $(this).find(".fButton").removeClass("filterActive");
+                });                
                 $(this).find(".fButton").toggleClass("filterActive");
                 weaponFilter();
             });
@@ -662,6 +664,9 @@
             $(".filterListA").click(function () {
                 // 一回全部消す
                 $(".arRow").addClass("d-none");
+                $(".filterListA").each(function(){
+                    $(this).find(".fButton").removeClass("filterActive");
+                });
                 $(this).find(".fButton").toggleClass("filterActive");
                 armorFilter();
             });
@@ -722,8 +727,14 @@
                         $("#RANK_TBODY").append(`<tr class="text-center bg-item RANK_TR d-none ${targetClass}"><td colspan=12>${t[tag]}</td></tr>`);
                         addFlag = false;
                         for(armor of paramInfo[tag]){
+                            var type = ["","fullam","heavyam","lightam","robe","fuku","helm","arm","leg","acc"][armor['ArmorType']];
                             $rankTr1 = $("#RANK_TMPL1").clone().removeAttr("id").removeClass("").addClass("RANK_TR "+ targetClass);
-                            $rankTr1.find(".ICON").html(`<img src="${armor['icon']}" width=40>`);
+                            rare = armor['Rarity'].toLowerCase();
+                            if(armor['illust'] != undefined){
+                                $rankTr1.find(".ICON").append(getWeaponIcon(rare, `armor_${armor['illust']}`, ""));
+                            } else {
+                                $rankTr1.find(".ICON").append(getWeaponIcon(rare, `${type}_${rare}`, ""));
+                            }
                             $rankTr1.find(".RARE").html("["+armor['Rarity']+"] "+t[tag]);
                             $rankTr2 = $("#RANK_TMPL2").clone().removeAttr("id").removeClass("").addClass("RANK_TR "+ targetClass);
                             $rankTr2.find(".NAME").html(armor['Name']);

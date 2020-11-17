@@ -149,6 +149,16 @@ html {
     border-radius: 10px;
     padding: 5px;
 }
+.weapon-bgcolor {
+    background-color: rgb(0,0,0,0.8);
+    border: 3px solid rgb(197,187,147);
+    color: #faf0b4;
+    border-radius: 10px;
+    padding: 5px;
+}
+.weapon-bgcolor td {
+    vertical-align: middle;
+}
 .info-modal {
     padding: 5px 20px 50px 20px;
     background: 
