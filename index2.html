@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#" lang="ja">
+
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138966739-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', 'UA-138966739-1');
+        </script>
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <meta charset="utf-8">
+        <title>【ロマサガRS】ロマサガRS便利ツール</title>
+        <meta property="og:title" content="【ロマサガRS】ロマサガRS便利ツール" />
+        <meta property="og:url" content="https://http://nao-romasaga.github.io/index.html" />
+        <meta property="og:description" content="ロマサガRSの攻略や育成などに活用できる便利ツールです。全力オートシミュレーターやステータス上限チェック、技検索などがあります。" />
+        <meta name="description" content="ロマサガRSの攻略や育成などに活用できる便利ツールです。全力オートシミュレーターやステータス上限チェック、技検索などがあります。【ロマンシングサガ リユニバース】" />
+        <meta property="og:image" content="https://nao-romasaga.github.io/img/twitter_card.png" />
+        <meta property="og:site_name" content="ロマサガRS便利ツール" />
+        <meta property="og:type" content="website">
+        <meta property="og:locale" content="ja_JP" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@nao_romasaga_rs" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+        <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
+        <link rel="stylesheet" href="./css/bootstrap/bootstrap.min.css">
+        <script src="./js/bootstrap/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="./css/style2.css">
+        <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
+        <script src="./js/Firebase.js"></script>
+        <script src="./js/utils2.js"></script>
+
+        <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+              <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+              <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+        <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+        <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+    </head>
+
+    <body>
+        <div class="haikei">
+            <h1 class="text-center label-text">ロマサガRS <br class="hidden spBlock">便利ツール</h1>
+            <div class="width-100 text-center">
+                <img src="./img/cmn_logo01_sp.png" style="max-height: 200px; max-width: 100%; backdrop-filter: blur(3px); border-radius: 50px;">
+            </div>
+            <style>
+                .next-arrow {
+                    position: absolute;
+                    right: 15px;
+                }
+                .menu-button {
+                    padding: 10px;
+                    width: 100%;
+                    text-align: center !important;
+                    white-space: nowrap !important;
+                    position: relative !important;
+                }
+                .modal-bottom {
+                    margin-bottom: 200px;
+                }
+                .blur-background {
+                    height: 160px;
+                    width: 80%;
+                    position: absolute;
+                    opacity: 0.8;
+                }
+                .blur-background-text {
+                    height: 160px;
+                    width: 100%;
+                    backdrop-filter: blur(3px);
+                    font-size: 30px;
+                }
+                .dot-area {
+                    position: absolute;
+                    bottom: 0px;
+                    width: 100%;
+                }
+                /* 画面サイズが1024はこれ 1025からは入らない */
+                @media screen and (max-width:1025px) {
+                    .blur-background {
+                        width: 100%;
+                    }
+
+                }
+                /* 画面サイズが330はこれ 331からは入らない */
+                @media screen and (max-width:330px) {
+                    .blur-background-text {
+                        font-size: 25px;
+                    }
+                    .main-carousel img {
+                        display: block;
+                        height: 350px;
+                    }
+                }
+                .fuchidori-gold{
+                    color: orange;
+                    -webkit-background-clip: text;
+                    font-weight: bold;
+                    font-size: 30px;
+                    text-shadow:0 0 3px #000,0 0 3px #000,0 0 3px #000,0 0 3px #000,0 0 3px #000,0 0 3px #000,0 0 3px #000,0 0 3px #000,0 0 3px #000,0 0 3px #000,0 0 3px #000,0 0 3px #000,0 0 3px #000,0 0 3px #000,0 0 3px #000,0 0 3px #000;
+                }
+
+            </style>
+            <div style="margin: 0px 100px;">
+                <div id="MENU" class="row row-eq-height info-modal FADEIN modal-bottom">
+                    <h3 class="text-center info-modal-header" style="font-size: initial;">このサイトの使い方</h3>
+                        <div class="col-12 col-sm-6 pt-2 FADEIN">
+                            <button id="what" class="menu-button icon_btn_negative shadow-black">
+                                ロマサガRS便利ツールとは
+                                <span class="next-arrow"><i class="fas fa-chevron-circle-down"></i></span>
+                            </button>
+                        </div>
+                        <div class="col-12 col-sm-6 pt-2 FADEIN">
+                            <button class="menu-button icon_btn_negative shadow-black">
+                                ステータス上限を調べる
+                                <span class="next-arrow"><i class="fas fa-chevron-circle-down"></i></span>
+                            </button>
+                        </div>
+                        <div class="col-12 col-sm-6 pt-2 FADEIN">
+                            <button class="menu-button icon_btn_negative shadow-black">
+                                効率の良い育成方法は？
+                                <span class="next-arrow"><i class="fas fa-chevron-circle-down"></i></span>
+                            </button>
+                        </div>
+                        <div class="col-12 col-sm-6 pt-2 FADEIN">
+                            <button class="menu-button icon_btn_negative shadow-black">
+                                人気のスタイルは？
+                                <span class="next-arrow"><i class="fas fa-chevron-circle-down"></i></span>
+                            </button>
+                        </div>
+                        <div class="col-12 col-sm-6 pt-2 FADEIN">
+                            <button class="menu-button icon_btn_negative shadow-black">
+                                最強のスタイルは？
+                                <span class="next-arrow"><i class="fas fa-chevron-circle-down"></i></span>
+                            </button>
+                        </div>
+                        <div class="col-12 col-sm-6 pt-2 FADEIN">
+                            <button class="menu-button icon_btn_negative shadow-black">
+                                スタイル情報を調べる
+                                <span class="next-arrow"><i class="fas fa-chevron-circle-down"></i></span>
+                            </button>
+                        </div>
+                        <div class="col-12 col-sm-6 pt-2 FADEIN">
+                            <button class="menu-button icon_btn_negative shadow-black">
+                                技・アビリティを調べる
+                                <span class="next-arrow"><i class="fas fa-chevron-circle-down"></i></span>
+                            </button>
+                        </div>
+                        <div class="col-12 col-sm-6 pt-2 FADEIN">
+                            <button class="menu-button icon_btn_negative shadow-black">
+                                イベント日程を調べる
+                                <span class="next-arrow"><i class="fas fa-chevron-circle-down"></i></span>
+                            </button>
+                        </div>
+                </div>
+            </div>
+            <div class="FADEIN modal-bottom" id="WHAT_INF">
+                <div class="info-modal">
+                    <div class="text-center info-modal-header" style="font-size: initial;">ロマサガRS便利ツールとは</div>
+                    <div class="row no-gutters" style="font-size:20px;">
+                        <div class="col-12 col-sm-10">
+                            SQUARE ENIX様より好評配信中の<a href="https://www.jp.square-enix.com/saga_reuniverse/" target="_new">Romancing SaGa Re:UniverSe</a>
+                            を
+                            <span class="fuchidori-gold">100倍</span>
+                            楽しむためのツールです。
+                            <div class="d-none d-sm-block bg-black-frame kadomaru FADEIN small" style="color:beige; padding:25px;">
+                                当サイトは趣味で運営してる非公式のゲーム攻略サイトです。<br>
+                                各社の協力や要請の元作成されたものではありません。<br>
+                                また、当サイトを利用したことにより発生する全ての損害を管理人はいかなる場合でも責任を負いません。<br>
+                                詳しくは<a class="fuchidori-blue" href="site.html">利用規約・免責事項</a>をご覧ください
+                            </div>                            
+                        </div>
+                        <div class="col-12 col-sm-2 text-center">
+                            <div style="margin-bottom: 15px;">
+                                <img src="https://romasagatool.com/img/menu/cmn_icoGame01_sp.png" style="width:200px;; max-width: 50%;">
+                            </div>
+                            <a href="https://itunes.apple.com/jp/app/id1397702917?mt=8" target="_blank" rel="noopener">
+                                <img src="https://romasagatool.com/img/menu/cmn_btn01_sp.png" alt="App Storeからダウンロード" style="width:150px; max-width: 45%;">
+                            </a>
+                            <a href="https://play.google.com/store/apps/details?id=com.square_enix.android_googleplay.RSRS" target="_blank" rel="noopener">
+                                <img src="https://romasagatool.com/img/menu/cmn_btn02_sp.png" alt="Google Playで手に入れよう" style="width:150px; max-width: 45%;">
+                            </a>
+                        </div>
+                        <div class="col-12 d-sm-none">
+                            <div class="bg-black-frame kadomaru FADEIN small" style="color:beige; padding:25px;">
+                                当サイトは趣味で運営してる非公式のゲーム攻略サイトです。<br>
+                                各社の協力や要請の元作成されたものではありません。<br>
+                                また、当サイトを利用したことにより発生する全ての損害を管理人はいかなる場合でも責任を負いません。<br>
+                                詳しくは<a class="fuchidori-blue" href="site.html">利用規約・免責事項</a>をご覧ください
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                    <br>
+                    <div class="FADEIN">
+                        <div class="blur-background" style="background: url(http://romasagatool.com/img/menu/menu1.png) no-repeat;"></div>
+                        <div class="blur-background-text fuchidori-blue">
+                            <div style="margin: 10px"><i class="fas fa-check-circle"></i> 効率の良い育成をしたり</div>
+                        </div>
+                    </div>
+
+                    <div class="FADEIN">
+                        <div class="blur-background" style="background: url(http://romasagatool.com/img/menu/menu2.png) no-repeat;"></div>
+                        <div class="blur-background-text fuchidori-blue">
+                            <div style="margin: 10px"><i class="fas fa-check-circle"></i> 最強のスタイルを調べたり</div>
+                        </div>
+                    </div>
+                    <div class="FADEIN">
+                        <div class="blur-background" style="background: url(http://romasagatool.com/img/menu/menu3.png) no-repeat;"></div>
+                        <div class="blur-background-text fuchidori-blue">
+                            <div style="margin: 10px"><i class="fas fa-check-circle"></i> ゲーム内の様々な情報を調たり</div>
+                        </div>
+                    </div>
+                    様々な機能がありますので、攻略のお供としてご利用ください
+                </div>
+            </div>
+            <div class="modal-bottom" id="STATUS_MAX">
+                <div class="FADEIN text-center label-text-small width-100" style="margin-bottom: 10px;">ステータス上限を調べる</div>
+                <div class="FADEIN row row-eq-height" style="margin: 20px 0px;">
+                    <div class="col-12 col-sm">
+                        <div class="text-center filter-bgcolor" style="height:100%; padding: 10px; color: #faf0b4;">
+                            <i class="fas fa-search" style="font-size:50px; margin-bottom:20px;"></i><br>
+                            <a href="./ourchar.html?c=ID92f" target="_blank" class="width-100 icon_btn_positive shadow-black">スタイル詳細から調べる</a>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm">
+                        <div class="text-center filter-bgcolor" style="height:100%; padding: 10px; color: #faf0b4;">
+                            <i class="fas fa-crown" style="font-size:50px; margin-bottom:20px;"></i><br>
+                            <a href="./ourchar.html?c=ID92f" target="_blank" class="width-100 icon_btn_positive shadow-black">素ステ上限一覧から調べる</a>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm">
+                        <div class="text-center filter-bgcolor" style="height:100%; padding: 10px; color: #faf0b4;">
+                            <i class="fas fa-check-circle" style="font-size:50px; margin-bottom:20px;"></i><br>
+                            <a href="./ourchar.html?c=ID92f" target="_blank" class="width-100 icon_btn_positive shadow-black">ステータス上限チェックから調べる</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="FADEIN info-modal h-100">
+                    <div class="text-center info-modal-header" style="font-size: initial;">スタイル詳細</div>
+                    <div class="main-carousel filter-bgcolor" style="margin-bottom: 25px;">
+                        <div class="carousel-cell"><img data-flickity-lazyload="http://romasagatool.com/img/menu/menu2_2.png" alt="メニューからスタイル一覧を選択、ステータス上限を調べたいキャラをタップ"></div>
+                        <div class="carousel-cell"><img data-flickity-lazyload="http://romasagatool.com/img/menu/menu2_3.png" alt="最新クエストでのステータス上限を表示。ステータス上限はスタイル毎に異なる"></div>
+                        <div class="carousel-cell"><img data-flickity-lazyload="http://romasagatool.com/img/menu/menu2_4.png" alt="スタイル成長傾向がついていると上限が高い"></div>
+                    </div>
+                    「<i class="fas fa-search"></i>ゲームデータ検索」→「<a href="./style.html" target="_black"><i class="fas fa-user"></i>スタイル検索</a>」からスタイル情報を調べることができます
+                </div>
+            </div>
+
+            <div class="modal-bottom" id="STATUS_MAX">
+                <div class="FADEIN text-center label-text-small width-100" style="margin-bottom: 10px;">ステータス上限を調べる</div>
+                <div class="FADEIN row row-eq-height" style="margin: 20px 0px;">
+                    <div class="col-12 col-sm">
+                        <div class="text-center filter-bgcolor" style="height:100%; padding: 10px; color: #faf0b4;">
+                            <i class="fas fa-search" style="font-size:50px; margin-bottom:20px;"></i><br>
+                            <a href="./ourchar.html?c=ID92f" target="_blank" class="width-100 icon_btn_positive shadow-black">スタイル詳細から調べる</a>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm">
+                        <div class="text-center filter-bgcolor" style="height:100%; padding: 10px; color: #faf0b4;">
+                            <i class="fas fa-crown" style="font-size:50px; margin-bottom:20px;"></i><br>
+                            <a href="./ourchar.html?c=ID92f" target="_blank" class="width-100 icon_btn_positive shadow-black">素ステ上限一覧から調べる</a>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm">
+                        <div class="text-center filter-bgcolor" style="height:100%; padding: 10px; color: #faf0b4;">
+                            <i class="fas fa-check-circle" style="font-size:50px; margin-bottom:20px;"></i><br>
+                            <a href="./ourchar.html?c=ID92f" target="_blank" class="width-100 icon_btn_positive shadow-black">ステータス上限チェックから調べる</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="FADEIN info-modal h-100">
+                    <div class="text-center info-modal-header" style="font-size: initial;">スタイル詳細</div>
+                    <div class="main-carousel filter-bgcolor" style="margin-bottom: 25px;">
+                        <div class="carousel-cell"><img data-flickity-lazyload="http://romasagatool.com/img/menu/menu3_1.png" alt="メニューからスタイル一覧を選択、ステータス上限を調べたいキャラをタップ"></div>
+                        <div class="carousel-cell"><img data-flickity-lazyload="http://romasagatool.com/img/menu/menu3_2.png" alt="最新クエストでのステータス上限を表示。ステータス上限はスタイル毎に異なる"></div>
+                        <div class="carousel-cell"><img data-flickity-lazyload="http://romasagatool.com/img/menu/menu3_3.png" alt="スタイル成長傾向がついていると上限が高い"></div>
+                    </div>
+                    「<i class="fas fa-search"></i>ゲームデータ検索」→「<a href="./style.html" target="_black"><i class="fas fa-user"></i>スタイル検索</a>」からスタイル情報を調べることができます
+                </div>
+            </div>
+
+            <div class="FADEIN modal-bottom">
+                <div class="info-modal h-100">
+                    <div class="text-center info-modal-header" style="font-size: initial;">効率の良い育成</div>
+                    素ステ<br>
+                    <i class="fas fa-check-circle"></i><a href="./ourchar.html">キャラクター育成ランキングから調べる</a><br>
+                    他のプレイヤーの育成具合を参考に<br>
+                    <i class="fas fa-check-circle"></i><a href="./style.html">スタイル検索から調べる</a><br>
+                    スタイル詳細画面からも確認できます<br>
+                    <br>
+                    補正込み<br>
+                    <i class="fas fa-check-circle"></i><a href="./limitdata.html">スタイル補正値+補正込み最大値一覧から調べる</a><br>
+                </div>
+            </div>
+            <div class="FADEIN modal-bottom">
+                <div class="info-modal h-100">
+                    <div class="text-center info-modal-header" style="font-size: initial;">最強のスタイルを知りたい</div>
+                    <i class="fas fa-check-circle"></i><a href="./limitdata.html">スタイル補正値+補正込み最大値一覧から調べる</a><br>
+                    最強の腕力、最強の知力を持つスタイルは...?<br>
+                    <i class="fas fa-check-circle"></i><a href="./autodamage.html">全力AUTOダメージランキングから調べる</a><br>
+                    もっとも強力なダメージを出すスタイルは...？<br>
+                </div>
+            </div>
+            <div class="FADEIN modal-bottom">
+                <div class="info-modal h-100">
+                    <div class="text-center info-modal-header" style="font-size: initial;">技覚醒を効率的に行いたい</div>
+                    <i class="fas fa-check-circle"></i><a href="./auto.html">全力AUTOシミュレーターで調べる</a><br>
+                    オートでどのように動くかを見て覚醒を失敗しないようにしましょう
+                </div>
+            </div>
+            <!-- ツールindex1 -->
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-5008373409434899"
+                data-ad-slot="2063090166"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <div class="pt-1 FADEIN">
+                <div class="info-modal h-100">
+                    <div class="text-center info-modal-header" style="font-size: initial;">技や術について知りたい</div>
+                    <i class="fas fa-check-circle"></i><a href="./skill.html">技/術検索から調べる</a><br>
+                    全体攻撃は何がある？マヒ技は何がある？不死特攻は何がある？など、威力毎や覚醒素材毎に調べることもできます
+                </div>
+            </div>
+            <div class="pt-1 FADEIN">
+                <div class="info-modal h-100">
+                    <div class="text-center info-modal-header" style="font-size: initial;">ステ２倍やガチャの終了日を知りたい</div>
+                    <i class="fas fa-check-circle"></i><a href="./calendar.html">イベントカレンダーで確認する</a><br>
+                    ゲーム内では確認しづらいガチャやイベントアビリティの終了時刻をカレンダーにまとめました
+                </div>
+            </div>
+            <div class="pt-3">
+                <div class="info-modal h-100">
+                    <div class="text-center info-modal-header" style="font-size: initial;">技がダメージいくら出せるか知りたい</div>
+                    <i class="fas fa-check-circle"></i><a href="./damage.html">・ダメージ計算機</a><br>
+                    武器を変えると、技のRankを変えると、聖石を装備すると、どれぐらいダメージが変わるか計算できます
+                    <br>
+                </div>
+            </div>
+            <div class="pt-1 FADEIN">
+                <!-- ツールindex2 -->
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-5008373409434899"
+                    data-ad-slot="8436926825"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+            </div>
+            <div class="pt-3">
+                <div class="info-modal h-100">
+                    <div class="text-center info-modal-header" style="font-size: initial;">特訓を効率よく行いたい</div>
+                    <i class="fas fa-check-circle"></i><a href="./dojo.html">特訓タイマー</a><br>
+                    特訓に必要な時間を調べることができます
+                    <br>
+                </div>
+            </div>
+            <div class="pt-3">
+                <div class="info-modal h-100">
+                    <div class="text-center info-modal-header" style="font-size: initial;">アビリティ所持スタイルを知りたい</div>
+                    <i class="fas fa-check-circle"></i><a href="./ability.html">アビリティ検索</a><br>
+                    どんなアビリティがあるか。アビリティの所持スタイル一覧を見れます<br>
+                    「まれに」は何パーセントなのかなど調べることができます<br>
+                    <br>
+                </div>
+            </div>
+            <!-- ツールindex_footer -->
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-5008373409434899"
+                data-ad-slot="8243670928"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+            <br>
+            <!--
+                            <h3 class="text-center opacity kadomaru">開発者 Tweet</h3>
+                            <a class="twitter-timeline" data-lang="ja" data-width="320" data-height="400" data-chrome="noheader" data-dnt="true" data-theme="light" href="https://twitter.com/nao_romasaga_rs?ref_src=twsrc%5Etfw">Tweets by nao_romasaga_rs</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                            <h3 class="text-center opacity kadomaru">開発者メモ</h3>
+                            <div class="card" id="infoCard">
+                                <div class="card-header bg-warning" style="color:black">
+                                    検討中
+                                </div>
+                                <div class="card-body">
+                                    06/10 [新規] 技覚醒をメモして、全体共有やパターン分析公開<br>
+                                    06/10 [改善] 育成ランキングの合計がわかりにくい「最大の合計」「合計の最大」<br>
+                                    06/08 [新規/追加] スタイル補正込み最大ステ一覧、キャラ選択しつつ成長記録、ランキング、スタイル詳細と移動<br>
+                                    05/11 [改善] ダメージ計算に入力スタイルからの補完<br>
+                                </div>
+                            </div>
+                            <div class="card" id="infoCard">
+                                <div class="card-header bg-success" style="color:black">
+                                    実施済み
+                                </div>
+                                <div class="card-body">
+                                    06/09 [追加] 周回キャラチェックでスタイル別表示 > 6/10 done<br>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-4">
+                                <h2 class="text-center opacity kadomaru">更新情報 > <a href="./history.html">履歴</a></h2>
+                                <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">[update] ランキング更新＋ステータス上限更新<br>・外伝1 +17、外伝2 +18に設定しました<br>・育成ランキングにスタイルの上昇補正を追加しました<br>・SS二刀ウルピナ 腕更新、SSヴァンパイアレディ 器追加、SS白ハリード 魅追加<a href="https://t.co/Ww8VL63CHf">https://t.co/Ww8VL63CHf</a> <a href="https://t.co/4sgewMKg9f">pic.twitter.com/4sgewMKg9f</a></p>&mdash; nao@ロマサガRS便利ツール (@nao_romasaga_rs) <a href="https://twitter.com/nao_romasaga_rs/status/1156252239305908225?ref_src=twsrc%5Etfw">July 30, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                                <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">[update] ステータス上限の外伝1,2対応<br>・外伝ボタンの追加<br>最大ステ一覧<a href="https://t.co/z04XPsJ7Sx">https://t.co/z04XPsJ7Sx</a><br>周回適正チェック<a href="https://t.co/BFRBEJ4rmA">https://t.co/BFRBEJ4rmA</a><br>周回パーティチェック<a href="https://t.co/T9hQHFJD1n">https://t.co/T9hQHFJD1n</a><br><br>・最大ステの変更<br>スタイル検索<a href="https://t.co/vsr2OMd3zG">https://t.co/vsr2OMd3zG</a><br>育成ランキング<a href="https://t.co/G8ff1nVRZO">https://t.co/G8ff1nVRZO</a></p>&mdash; nao@ロマサガRS便利ツール (@nao_romasaga_rs) <a href="https://twitter.com/nao_romasaga_rs/status/1154637322693955584?ref_src=twsrc%5Etfw">July 26, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                                <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">[update] 技・術検索<br>BP順並び替え<br>威力順並び替え<br>を追加しました<br><br>あれ・・・？削岩撃、打威力No3だったの・・・？<a href="https://t.co/ZPnw0YWweX">https://t.co/ZPnw0YWweX</a><a href="https://twitter.com/hashtag/%E3%83%AD%E3%83%9E%E3%82%B5%E3%82%ACRS%E4%BE%BF%E5%88%A9%E3%83%84%E3%83%BC%E3%83%AB?src=hash&amp;ref_src=twsrc%5Etfw">#ロマサガRS便利ツール</a> <a href="https://t.co/CQwFhURzp5">pic.twitter.com/CQwFhURzp5</a></p>&mdash; nao@ロマサガRS便利ツール (@nao_romasaga_rs) <a href="https://twitter.com/nao_romasaga_rs/status/1154446967411318784?ref_src=twsrc%5Etfw">July 25, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                                <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">[update] スタイル詳細<br>・スタイルごとのステータスの上がりやすさのインジケーターを表示するようにしました<br>・スタイル詳細のステータス上限の表示ロジックを育成ランキングと同期させました<a href="https://t.co/vdgcy0JTJI">https://t.co/vdgcy0JTJI</a><a href="https://twitter.com/hashtag/%E3%83%AD%E3%83%9E%E3%82%B5%E3%82%ACRS%E4%BE%BF%E5%88%A9%E3%83%84%E3%83%BC%E3%83%AB?src=hash&amp;ref_src=twsrc%5Etfw">#ロマサガRS便利ツール</a> <a href="https://t.co/WvS3xP99a0">pic.twitter.com/WvS3xP99a0</a></p>&mdash; nao@ロマサガRS便利ツール (@nao_romasaga_rs) <a href="https://twitter.com/nao_romasaga_rs/status/1152977451082891265?ref_src=twsrc%5Etfw">July 21, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                                <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">[bugfix/update] ホーム画面 / マイキャラクターランキング<br>新キャラがいた場合にマイキャラクターランキングが表示されないバグを修正しました。<br><br>マイキャラクターランキングのドット絵をタップすると育成ランキングに遷移するようにしました<a href="https://t.co/r6nmYyBMsm">https://t.co/r6nmYyBMsm</a> <a href="https://t.co/o92gki0vV5">pic.twitter.com/o92gki0vV5</a></p>&mdash; nao@ロマサガRS便利ツール (@nao_romasaga_rs) <a href="https://twitter.com/nao_romasaga_rs/status/1152478939224240130?ref_src=twsrc%5Etfw">July 20, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5008373409434899" data-ad-slot="9303963278" data-ad-format="auto" data-full-width-responsive="true"></ins><script> (adsbygoogle = window.adsbygoogle || []).push({});</script>
+                                <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">[update] ダメージ計算機<br>PC版のみ、ダメージ計算に使われる係数を表示するようにしました。<a href="https://t.co/6A4iAbriSm">https://t.co/6A4iAbriSm</a><a href="https://twitter.com/hashtag/%E3%83%AD%E3%83%9E%E3%82%B5%E3%82%ACRS%E4%BE%BF%E5%88%A9%E3%83%84%E3%83%BC%E3%83%AB?src=hash&amp;ref_src=twsrc%5Etfw">#ロマサガRS便利ツール</a> <a href="https://t.co/Bcbsej7PSU">pic.twitter.com/Bcbsej7PSU</a></p>&mdash; nao@ロマサガRS便利ツール (@nao_romasaga_rs) <a href="https://twitter.com/nao_romasaga_rs/status/1151127186457235456?ref_src=twsrc%5Etfw">July 16, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                                <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">[update] スタイル詳細<br>・機能落ちしていた、ステータスとスタイルレベルの変更機能を元に戻しました<br>入力しながらステータスの変更が確認できるようにPCは画面上部、スマホはステータス部分の直上に表示されます。<br><br>・スタイル別のステータス上限も表示するようにしました<a href="https://t.co/vsr2OMd3zG">https://t.co/vsr2OMd3zG</a> <a href="https://t.co/k17I31LBp2">pic.twitter.com/k17I31LBp2</a></p>&mdash; nao@ロマサガRS便利ツール (@nao_romasaga_rs) <a href="https://twitter.com/nao_romasaga_rs/status/1150151863167119361?ref_src=twsrc%5Etfw">July 13, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                                <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">[update] イベントカレンダー<br><br>ハーフアニバ終わってひと段落したし、もういらないかなー？ともおもいましたが<br><br>・ガチャ終了日程<br>・ステ２倍終了日程<br>これらを調べるのは結構面倒なことがわかったので今後もカレンダー運用していこうと思います。<a href="https://t.co/yjIY1EVtoo">https://t.co/yjIY1EVtoo</a><a href="https://twitter.com/hashtag/%E3%83%AD%E3%83%9E%E3%82%B5%E3%82%ACRS%E4%BE%BF%E5%88%A9%E3%83%84%E3%83%BC%E3%83%AB?src=hash&amp;ref_src=twsrc%5Etfw">#ロマサガRS便利ツール</a></p>&mdash; nao@ロマサガRS便利ツール (@nao_romasaga_rs) <a href="https://twitter.com/nao_romasaga_rs/status/1149721546182627329?ref_src=twsrc%5Etfw">July 12, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                                <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">[update] スタイル詳細リニューアル<br>情報が見辛かったのでリニューアルしました<br><br>・キャラの素ステのランキング<br>・スタイル別最大ステータス<br>・技・術アイコンの充実化、タップで説明文の表示<a href="https://t.co/RMA8gTOQ5W">https://t.co/RMA8gTOQ5W</a><a href="https://twitter.com/hashtag/%E3%83%AD%E3%83%9E%E3%82%B5%E3%82%ACRS%E4%BE%BF%E5%88%A9%E3%83%84%E3%83%BC%E3%83%AB?src=hash&amp;ref_src=twsrc%5Etfw">#ロマサガRS便利ツール</a> <a href="https://t.co/kvIL9fAIAL">pic.twitter.com/kvIL9fAIAL</a></p>&mdash; nao@ロマサガRS便利ツール (@nao_romasaga_rs) <a href="https://twitter.com/nao_romasaga_rs/status/1149690892007047169?ref_src=twsrc%5Etfw">July 12, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                                <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">[update] 育成パーティ上限チェック<br>・スマホ版でのステータス入力欄にある「まとめて入力」の位置を最下部に移動しました。<br><br>反映ボタンが保存と誤解しやすいため切り分けることにしました。<a href="https://t.co/LOXBo6Tyh8">https://t.co/LOXBo6Tyh8</a><a href="https://twitter.com/hashtag/%E3%83%AD%E3%83%9E%E3%82%B5%E3%82%ACRS%E4%BE%BF%E5%88%A9%E3%83%84%E3%83%BC%E3%83%AB?src=hash&amp;ref_src=twsrc%5Etfw">#ロマサガRS便利ツール</a> <a href="https://t.co/Y51krqhk07">pic.twitter.com/Y51krqhk07</a></p>&mdash; nao@ロマサガRS便利ツール (@nao_romasaga_rs) <a href="https://twitter.com/nao_romasaga_rs/status/1149256413748666368?ref_src=twsrc%5Etfw">July 11, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                                <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">[update] 育成ランキング<br>上限と同じステータスの場合、緑表示にするようにしました<br>現在の色分けは下記の通りです<br>緑：上限<br>黄：上限+1<br>赤：上限+2以上<a href="https://t.co/G8ff1nVRZO">https://t.co/G8ff1nVRZO</a><a href="https://twitter.com/hashtag/%E3%83%AD%E3%83%9E%E3%82%B5%E3%82%ACRS%E4%BE%BF%E5%88%A9%E3%83%84%E3%83%BC%E3%83%AB?src=hash&amp;ref_src=twsrc%5Etfw">#ロマサガRS便利ツール</a> <a href="https://t.co/pVOvQGeWof">pic.twitter.com/pVOvQGeWof</a></p>&mdash; nao@ロマサガRS便利ツール (@nao_romasaga_rs) <a href="https://twitter.com/nao_romasaga_rs/status/1149470046390906880?ref_src=twsrc%5Etfw">July 12, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                                <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">[update] 全力オートシミュレーター<br>回復術の挙動を変更しました<br><br>・回復術はBPが足りている場合発動回数にカウントする<a href="https://t.co/wlT0E1mLzJ">https://t.co/wlT0E1mLzJ</a><a href="https://twitter.com/hashtag/%E3%83%AD%E3%83%9E%E3%82%B5%E3%82%ACRS%E4%BE%BF%E5%88%A9%E3%83%84%E3%83%BC%E3%83%AB?src=hash&amp;ref_src=twsrc%5Etfw">#ロマサガRS便利ツール</a></p>&mdash; nao@ロマサガRS便利ツール (@nao_romasaga_rs) <a href="https://twitter.com/nao_romasaga_rs/status/1147540057932222464?ref_src=twsrc%5Etfw">July 6, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                                <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">[update] R杯 攻略パーティ共有機能<br><br>屈指の高難度R杯をみんなで攻略しましょう！(･∀･)<br>攻略した際のパーティやポイントを登録して、迷える子羊を救ってあげましょう！<br><br>というか、私を救ってください(ºωº)💦💦💦<a href="https://t.co/hk79JValj3">https://t.co/hk79JValj3</a><a href="https://twitter.com/hashtag/%E3%83%AD%E3%83%9E%E3%82%B5%E3%82%ACRS%E4%BE%BF%E5%88%A9%E3%83%84%E3%83%BC%E3%83%AB?src=hash&amp;ref_src=twsrc%5Etfw">#ロマサガRS便利ツール</a></p>&mdash; nao@ロマサガRS便利ツール (@nao_romasaga_rs) <a href="https://twitter.com/nao_romasaga_rs/status/1147186692731752448?ref_src=twsrc%5Etfw">July 5, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                                <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">[update] おすすめ周回パーティ<br>検索機能を追加しました<br>・全スタイル or 所持スタイルのみ<br>・クエスト<br>・陣形<br>で絞り込むことができます<a href="https://t.co/tUvHl2JSxe">https://t.co/tUvHl2JSxe</a><a href="https://twitter.com/hashtag/%E3%83%AD%E3%83%9E%E3%82%B5%E3%82%ACRS%E4%BE%BF%E5%88%A9%E3%83%84%E3%83%BC%E3%83%AB?src=hash&amp;ref_src=twsrc%5Etfw">#ロマサガRS便利ツール</a> <a href="https://t.co/thizZrlEm6">pic.twitter.com/thizZrlEm6</a></p>&mdash; nao@ロマサガRS便利ツール (@nao_romasaga_rs) <a href="https://twitter.com/nao_romasaga_rs/status/1147142524336607232?ref_src=twsrc%5Etfw">July 5, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                                <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">[update] アビリティ検索<br>巷で噂のヘイトコントロールでR杯を勝ち抜く！というを見かけましたので、アビリティを所有しているスタイルをクリックなしでも見れるように一覧に表示しました<br><br>こうしてみると静寂の化身IIIだけおかしい性能ですね...w<a href="https://t.co/ESK0C5gHcC">https://t.co/ESK0C5gHcC</a><a href="https://twitter.com/hashtag/%E3%83%AD%E3%83%9E%E3%82%B5%E3%82%ACRS%E4%BE%BF%E5%88%A9%E3%83%84%E3%83%BC%E3%83%AB?src=hash&amp;ref_src=twsrc%5Etfw">#ロマサガRS便利ツール</a> <a href="https://t.co/ftr1EPKwER">pic.twitter.com/ftr1EPKwER</a></p>&mdash; nao@ロマサガRS便利ツール (@nao_romasaga_rs) <a href="https://twitter.com/nao_romasaga_rs/status/1146089488231231494?ref_src=twsrc%5Etfw">July 2, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                            </div>
+            -->
+        </div> <!-- main -->
+        <div id="archives">
+        </div>
+        <!-- Twitter universal website tag code -->
+        <script type="text/javascript" src="https://romasagatool.com/blog/get_the_archives.php?limit=30&callback=rssCallback"></script>
+        <script type="text/javascript" src="https://romasagatool.com/blog/get_the_archives.php?cat=22&callback=rssCallbackCat"></script>
+        <script>
+            $(document).ready(function(){
+                $("#what").click(function(){
+                    console.log("aa");
+                    $("#MENU").toggleClass("FADEIN FADEOUT");
+                    $("#WHAT_INF").toggleClass("FADEIN FADEOUT");
+                });
+                $(".icon_btn_positive").mouseleave(function(){
+                    $(this).removeClass("icon_btn_positive").addClass("icon_btn_negative");
+                });
+                $('.main-carousel').flickity({
+                    // options
+                    freeScroll: true,
+                    cellAlign: 'center',
+                    contain: true,
+                    lazyLoad: 1
+                });
+            });
+        </script>
+
+    </body>
+
+</html>
