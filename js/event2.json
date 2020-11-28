@@ -1,0 +1,97 @@
+{
+    "year": 2020,
+    "month": 12,
+    "event": [
+        {
+            "startDay": "0",
+            "endDay": "31",
+            "title": "[ガチャ] <br class='hidden pcBlock'>2周年前夜祭 Ultra DXガチャ",
+            "endSuffix": "<br>翌 4:00 終了",
+            "type": "green",
+            "startNone": true
+        },
+        {
+            "startDay": "1",
+            "endDay": "3",
+            "title": "[スタ半] <br class='hidden pcBlock'>「メイン 全話」",
+            "startPrefix": "開催中<br>",
+            "endSuffix": "<br>翌 4:00 終了",
+            "type": "blue"
+        },
+        {
+            "startDay": "1",
+            "endDay": "99",
+            "title": "[恒常イベント] <br class='hidden pcBlock'>聖塔ランスの娘 リニューアル",
+            "startPrefix": "開催中<br>",
+            "endPrefix": "<br>2/1 04:00まで",
+            "type": "orange"
+        },
+        {
+            "startDay": "1",
+            "endDay": "31",
+            "title": "[ガチャ] <br class='hidden pcBlock'>2周年記念！Romancing祭 ジョー編/聖王編/最終皇帝(女)編",
+            "startPrefix": "開催中<br>",
+            "endSuffix": "<br>翌 4:00 終了",
+            "type": "green"
+        },
+        {
+            "startDay": "1",
+            "endDay": "3",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>財宝の大穴 地図ドロップ",
+            "startPrefix": "開催中<br>",
+            "endSuffix": "<br>翌 4:00 終了",
+            "type": "blue"
+        },
+        {
+            "startDay": "1",
+            "endDay": "31",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>メイン 2周年記念コインドロップ",
+            "startPrefix": "開催中<br>",
+            "endSuffix": "<br>翌 4:00 終了",
+            "type": "blue"
+        },
+        {
+            "startDay": "1",
+            "endDay": "31",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>魔物 獲得経験値5倍",
+            "startPrefix": "開催中<br>",
+            "endSuffix": "<br>翌 4:00 終了",
+            "type": "blue"
+        },
+        {
+            "startDay": "1",
+            "endDay": "99",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>ザクザク財宝収集 オーラム5倍",
+            "startPrefix": "開催中<br>",
+            "endSuffix": "<br>1/8 4:00 終了",
+            "type": "blue"
+        },
+        {
+            "startDay": "1",
+            "endDay": "6",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>裏道場の証 獲得量2倍<br>卵のから ドロップ量2倍",
+            "startPrefix": "開催中<br>",
+            "endSuffix": "<br>翌 4:00 終了",
+            "type": "blue"
+        },
+        {
+            "startDay": "1",
+            "endDay": "99",
+            "title": "[イベント] <br class='hidden pcBlock'>第1回 迷いの世界塔",
+            "startPrefix": "12:00(予)<br>",
+            "endPrefix": "",
+            "type": "orange"
+        },
+        {
+            "startDay": "4",
+            "endDay": "99",
+            "title": "[イベント] <br class='hidden pcBlock'>指輪の試練",
+            "startPrefix": "12:00(予)<br>",
+            "endPrefix": "",
+            "type": "orange"
+        }
+
+ ],
+    "holiday": [
+    ]
+}
