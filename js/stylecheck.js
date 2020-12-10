@@ -1,1 +1,792 @@
-var _0x4dbc=['first','.myS','.mypAll5RenPer','.allSS','keys','PROVIDER_ID','%0D%0A','.allType','#JHOTAI_DEBUF_TEMPLATE','filter','zan','.myPer','all剣','NewSum','.mypS20RenPer','.mypA50RenPer','<div\x20class=\x22ICON_PARENT\x22></div>','.ICON','.mypAll','indexOf','toggleClass','ready','kizetsu','スタートダッシュミッション','.OPEN-HELP','random','addClass','nocheck','.allA剣','.allS','.oAllSS','#styleAreaClass','#Only','.oAllS','.mypAll50RenPer','.allOn\x20,\x20.allOff\x20,\x20.twitter-share-button','.allOff','.mylimAll','.myPer剣','Series','.myoA','allSS','filterActive','concat','.pAll','#SSArea','.pAllS','style_icon_ss_middle','&hashtags=ロマサガRS便利ツール,スタイル所持チェッカー','myS剣','#modal01','click','#styleAreaRare','.mypAGetBunsu','start','#OnlyAArea','#styleAreaGacha','#modalInner2','myMlv','.myoAll','class','TIMESTAMP','Rarity','.onlyDisable','.myA','.all剣','</span>','allA','my剣','.oAll','.style','#masterTableTmpl','STYLECHECK','.mypAGetPer','#tabRare','toLowerCase','totsu','#firebaseui-auth-container','#displaySummary','substr','.limAllSS','mySS剣','data-type','.myoSS','.allS剣','before','myA','animation','#GACHA_SPACE','.all','css','.simAllSum','ALL','stylecheck','.mypSGetPer','#DEBUF_PARENT','.mypAPer','gacha','体\x20(','parent','ServerValue','data-num','SS\x20','.simAllWhiteSum','\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22col-12\x20col-sm-1\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22filter-bgcolor\x20width-100\x20text-center\x22\x20style=\x22height:\x20100%;\x20display:\x20flex;\x20align-items:\x20center;\x20justify-content:\x20center;\x22><img\x20class=\x22width-100\x22\x20src=\x22https://romasagatool.com/img/icon/icon_','.sim','icon_btn_positive','data-target','#tabChecker','lim','キャンペーン配布','.myS剣','.simSSWhiteSum','.mypSPer','.allPer','.twitter-share-button','#tabChar','.limAll','#OnlySSArea','myPer剣','WeaponType','myS','#CLASS_TEMPLATE','data-id','.icon_ken','.limAllS','data-rare','.mypSSGetPer','SIMPLE_DISP','netsu','.myMlv剣','#SArea','icon_btn_off','.png\x22\x20style=\x22max-width:\x2040px\x22></div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22col-12\x20col-sm-11\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22ICON_PARENT\x20pra','d-none','.mypAllGetPer','.mypSSGetBunsu','.mySS','each','floor','event','.simAllNewSum','.my剣','.SSPer','.SPer','.mypSSPer','#USE_TICKET','.pAllA','icon_nocheck','#AArea','.START_GACHA','miryo','.icon_area','Char','sekika','href','fadeIn','#IS_NEW','.myA剣','rei','.mylimS','<span\x20class=\x22subtitle-long\x20fuchidori-white\x20smallFont\x22>','pra','.myinput','Name','その他','allSS剣','<span\x20style=\x22position:\x20absolute;\x20top:0px;\x20left:0px;\x20font-size:8px;\x20line-height:10px;\x20color:\x20transparent;\x22>','myMlv剣','.mypSS50RenPer','.mypAllGetBunsu','常設イベント','icon_','#class','.simpleDisplay','attr','allA剣','mySS','.oAllA','.mypA5RenPer','ピース交換','myPer','#styleAreaChar','slideDown','text','Sum','#SArea\x20.style','.mypS','#modal02','#filterArea','icon_btn_negative','#tabBattle','\x20ICON_PARENT\x22></div>','.allSS剣','.mypAllPer','hide','append','#displaySimulator','round','modalClose\x200.5s\x20forwards','排出無','rai','find','TwitterAuthProvider','ロマサガRS\x20スタイル所持チェッカー','\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22subtitle-long\x20fuchidori-white\x20smallFont\x22\x20style=\x22padding-left:\x2030px;\x20padding-right:\x2040px;\x22>限定ガチャ\x20/\x20限定配布</div><br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>','.INIT-CLOSE','プラチナガチャ限定','d-none\x20NONE','.allA','\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22subtitle-long\x20fuchidori-white\x20smallFont\x22\x20style=\x22padding-left:\x2030px;\x20padding-right:\x2040px;\x22>プラチナ\x20/\x20恒常\x20</div><br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22ICON_PARENT\x20lim','.simSWhiteSum','ストーリー','auth','toFixed','.mypA','fadeOut','AuthUI','modal\x200.5s\x20forwards','stan','#AArea\x20.style','.ICON_PARENT','#modalInner','.pAllSS','show','.DISP_CLASS','.allOn','.APer','removeClass','database','.simAWhiteSum','プラチナ','search','.mypSS','clone','Gacha','allS剣','html','length','#OnlySArea','#JHOTAI_PARENT','icon_btn_on','.mypSS5RenPer','Area','sort','初期配布','#MASTER_TABLE\x20tbody','【復刻】','konran','mahi','OnlyDisable','.myAll','#SSArea\x20.style','.filterButton','.limAllA','#loginInfo','ceil','#tabGacha','tab','allS','push','hasClass','.mypSS20RenPer','&url=https://nao-romasaga.github.io/stylecheck.html','slideUp','.CHECK_COVER','WhiteSum'];(function(_0x28bea6,_0x581415){var _0x4dbcaa=function(_0x2e7a72){while(--_0x2e7a72){_0x28bea6['push'](_0x28bea6['shift']());}};_0x4dbcaa(++_0x581415);}(_0x4dbc,0x6e));var _0x2e7a=function(_0x28bea6,_0x581415){_0x28bea6=_0x28bea6-0x116;var _0x4dbcaa=_0x4dbc[_0x28bea6];return _0x4dbcaa;};var _0x1518bd=_0x2e7a;function initialMasterTable(){var _0x154936=_0x2e7a;for(var _0x25e2d7 in MASTER_LV_KEY){var _0x61363b=MASTER_LV_KEY[_0x25e2d7],_0x31f4ea=$(_0x154936(0x1fa))[_0x154936(0x192)]();_0x31f4ea[_0x154936(0x157)]('id','')['removeClass']('d-none'),_0x31f4ea[_0x154936(0x172)](_0x154936(0x124))[_0x154936(0x18c)]('icon_ken')[_0x154936(0x1cd)](_0x154936(0x154)+_0x61363b),_0x31f4ea[_0x154936(0x172)](_0x154936(0x136))[_0x154936(0x18c)](_0x154936(0x1f7))[_0x154936(0x1cd)]('my'+_0x25e2d7),_0x31f4ea[_0x154936(0x172)]('.mySS剣')[_0x154936(0x18c)](_0x154936(0x204))['addClass'](_0x154936(0x159)+_0x25e2d7),_0x31f4ea[_0x154936(0x172)](_0x154936(0x117))['removeClass'](_0x154936(0x1e4))[_0x154936(0x1cd)](_0x154936(0x121)+_0x25e2d7),_0x31f4ea['find'](_0x154936(0x146))[_0x154936(0x18c)]('myA剣')[_0x154936(0x1cd)](_0x154936(0x209)+_0x25e2d7),_0x31f4ea[_0x154936(0x172)](_0x154936(0x1f4))[_0x154936(0x18c)](_0x154936(0x1bf))[_0x154936(0x1cd)]('all'+_0x25e2d7),_0x31f4ea[_0x154936(0x172)](_0x154936(0x169))['removeClass'](_0x154936(0x14e))['addClass'](_0x154936(0x1dc)+_0x25e2d7),_0x31f4ea[_0x154936(0x172)](_0x154936(0x207))[_0x154936(0x18c)](_0x154936(0x194))[_0x154936(0x1cd)](_0x154936(0x1ab)+_0x25e2d7),_0x31f4ea['find'](_0x154936(0x1cf))[_0x154936(0x18c)](_0x154936(0x158))['addClass'](_0x154936(0x1f6)+_0x25e2d7),_0x31f4ea['find'](_0x154936(0x1d9))[_0x154936(0x18c)](_0x154936(0x11f))[_0x154936(0x1cd)](_0x154936(0x15d)+_0x25e2d7),_0x31f4ea['find'](_0x154936(0x12a))[_0x154936(0x18c)](_0x154936(0x150))[_0x154936(0x1cd)](_0x154936(0x1ed)+_0x25e2d7),$(_0x154936(0x19e))[_0x154936(0x16c)](_0x31f4ea);}for(let _0x4637b2 of Object[_0x154936(0x1b7)](MASTER_LV_KEY)){$attrDiv=$(_0x154936(0x21b)+MASTER_LV_KEY[_0x4637b2]+_0x154936(0x12d)+MASTER_LV_KEY[_0x4637b2]+_0x154936(0x17a)+MASTER_LV_KEY[_0x4637b2]+_0x154936(0x175)),$(_0x154936(0x1e0))[_0x154936(0x16c)]($attrDiv[_0x154936(0x192)]()),$('#SArea')[_0x154936(0x16c)]($attrDiv[_0x154936(0x192)]()),$(_0x154936(0x13d))[_0x154936(0x16c)]($attrDiv['clone']());}}var allCount={'ALL':[],'SS':[],'S':[],'A':[]};for(let key in WEAPON_ATTR){allCount['ALL'][key]=0x0,allCount['SS'][key]=0x0,allCount['S'][key]=0x0,allCount['A'][key]=0x0;}allCount[_0x1518bd(0x20f)][_0x1518bd(0x20f)]=0x0,allCount['SS'][_0x1518bd(0x20f)]=0x0,allCount['S'][_0x1518bd(0x20f)]=0x0,allCount['A'][_0x1518bd(0x20f)]=0x0;let myCount={'SS':0x0,'S':0x0,'A':0x0};var sslist=[],slist=[],alist=[],listDtl={'プラチナ':{'SS':0x0,'S':0x0,'A':0x0},'限定':{'SS':0x0,'S':0x0,'A':0x0},'その他':{'SS':0x0,'S':0x0,'A':0x0}},listDtlAll={'プラチナ':{'SS':0x0,'S':0x0,'A':0x0},'限定':{'SS':0x0,'S':0x0,'A':0x0},'その他':{'SS':0x0,'S':0x0,'A':0x0}},weaponType={'ALL':[],'SS':[],'S':[],'A':[]};for(let key in WEAPON_ATTR){weaponType[_0x1518bd(0x20f)][key]=[],weaponType['SS'][key]=[],weaponType['S'][key]=[],weaponType['A'][key]=[];}$(_0x1518bd(0x189))[_0x1518bd(0x16b)]();function _noLoginInitial(){var _0x1be5de=_0x1518bd;$(_0x1be5de(0x201))[_0x1be5de(0x18c)](_0x1be5de(0x12e)),$('#displaySimulator')[_0x1be5de(0x18c)](_0x1be5de(0x12e));var _0x20d435={'signInSuccessUrl':'https://nao-romasaga.github.io/stylecheck.html','signInOptions':[firebase[_0x1be5de(0x17d)][_0x1be5de(0x173)][_0x1be5de(0x1b8)]]},_0x254c33=new firebaseui[(_0x1be5de(0x17d))][(_0x1be5de(0x181))](firebase[_0x1be5de(0x17d)](appUsers));_0x254c33[_0x1be5de(0x1e9)](_0x1be5de(0x200),_0x20d435),$(_0x1be5de(0x189))[_0x1be5de(0x188)](),dispClassData('');}function _initial(){var _0xf8afe=_0x1518bd;$(_0xf8afe(0x1a7))['hide'](),loginCard(_0xf8afe(0x200)),intialMyStyle();}var targetId;$(document)[_0x1518bd(0x1c8)](function(_0x23fa2d){var _0x3fe0cb=_0x1518bd;_0x23fa2d(_0x3fe0cb(0x176))[_0x3fe0cb(0x1b0)](),_0x23fa2d('.DISP_CLASS')[_0x3fe0cb(0x16b)](),_0x23fa2d(_0x3fe0cb(0x1d2))['hide'](),initialMasterTable(),display(),location[_0x3fe0cb(0x190)]!==''&&(targetId=location['search'][_0x3fe0cb(0x202)](0x1),_0x23fa2d(_0x3fe0cb(0x1d6))[_0x3fe0cb(0x16b)](),_0x23fa2d(_0x3fe0cb(0x14b))[_0x3fe0cb(0x18c)]('d-none'));}),$(document)['on'](_0x1518bd(0x1e6),_0x1518bd(0x1cb),function(){var _0x58cfac=_0x1518bd,_0x46fade=$(this)[_0x58cfac(0x157)](_0x58cfac(0x21e));$('#'+_0x46fade)['slideToggle']();});function dispClassData(_0x3f6c4d){var _0x576492=_0x1518bd,_0x34d69c=[_0x576492(0x1bd),'da',_0x576492(0x1ff),_0x576492(0x129),_0x576492(0x147),_0x576492(0x171),'yo','in'];for(var _0x17f40d of _0x34d69c){var _0x29ad8e=$(_0x576492(0x122))[_0x576492(0x192)]()['attr']('id',_0x576492(0x1ef)+_0x17f40d)[_0x576492(0x18c)](_0x576492(0x12e));_0x29ad8e[_0x576492(0x172)](_0x576492(0x1c4))[_0x576492(0x1cd)](_0x576492(0x154)+_0x17f40d),$(_0x576492(0x122))[_0x576492(0x208)](_0x29ad8e);}for(var _0x17f40d of PARAM_KEY){if(_0x17f40d=='AI'||_0x17f40d=='MI')continue;var _0x29ad8e=$('#JHOTAI_DEBUF_TEMPLATE')[_0x576492(0x192)]()[_0x576492(0x157)]('id',_0x576492(0x1ef)+_0x17f40d)['removeClass'](_0x576492(0x12e));_0x29ad8e[_0x576492(0x172)]('.ICON')['addClass']('icon_debuff_'+_0x17f40d[_0x576492(0x1fe)]()),_0x29ad8e[_0x576492(0x172)](_0x576492(0x140))['addClass']('d'),$(_0x576492(0x212))[_0x576492(0x16c)](_0x29ad8e);}var _0x333364=[_0x576492(0x183),_0x576492(0x1a1),'zzz',_0x576492(0x142),_0x576492(0x1a0),_0x576492(0x13f),_0x576492(0x1c9)];for(var _0x17f40d of _0x333364){var _0x29ad8e=$(_0x576492(0x1bb))[_0x576492(0x192)]()['attr']('id',_0x576492(0x1ef)+_0x17f40d)[_0x576492(0x18c)](_0x576492(0x12e));_0x29ad8e[_0x576492(0x172)](_0x576492(0x1c4))[_0x576492(0x1cd)](_0x576492(0x154)+_0x17f40d),_0x29ad8e[_0x576492(0x172)](_0x576492(0x140))[_0x576492(0x1cd)]('j'),$(_0x576492(0x198))[_0x576492(0x16c)](_0x29ad8e);}var _0xe18b37=[];if(_0x3f6c4d['SS']!==undefined){var _0x4ea049=_0x3f6c4d['SS']!==undefined?_0x3f6c4d['SS']:[],_0x3c7041=_0x3f6c4d['S']!==undefined?_0x3f6c4d['S']:[],_0xbe2ffa=_0x3f6c4d['A']!==undefined?_0x3f6c4d['A']:[];_0xe18b37=_0x4ea049[_0x576492(0x1de)](_0x3c7041)[_0x576492(0x1de)](_0xbe2ffa);}else for(styleId in STYLE_MASTER){_0xe18b37[_0x576492(0x1ac)](styleId);}for(styleId of _0xe18b37){if(STYLE_CLASS[styleId]===undefined)continue;for(var _0x38b2de of['o','a','q','r','d','j']){if(STYLE_CLASS[styleId][_0x38b2de]==undefined)continue;var _0x4f7955=STYLE_MASTER[styleId],_0x1dcc4c=getStyleIcon(_0x4f7955['Rarity'],styleId,_0x4f7955[_0x576492(0x120)],!![],!![]),_0x31ff3f=STYLE_CLASS[styleId][_0x38b2de];for(attr of _0x31ff3f){$(_0x576492(0x155)+attr)[_0x576492(0x172)]('.'+_0x38b2de)[_0x576492(0x16c)](_0x1dcc4c['clone']());}}}}$(document)['on'](_0x1518bd(0x1e6),'.onlyDisable',function(){var _0xd125a1=_0x1518bd;gtag('event','filter',{'event_category':_0xd125a1(0x210),'event_label':_0xd125a1(0x1a2),'value':0x1}),$(_0xd125a1(0x1ba))[_0xd125a1(0x18c)](_0xd125a1(0x199))[_0xd125a1(0x1cd)](_0xd125a1(0x12c)),$(_0xd125a1(0x1f2))['removeClass'](_0xd125a1(0x12c))[_0xd125a1(0x1cd)](_0xd125a1(0x199)),$(_0xd125a1(0x156))['removeClass'](_0xd125a1(0x199))[_0xd125a1(0x1cd)]('icon_btn_off'),$(_0xd125a1(0x1f9))[_0xd125a1(0x132)](function(){var _0x2f90e4=_0xd125a1;!$(this)[_0x2f90e4(0x172)](_0x2f90e4(0x1b1))[_0x2f90e4(0x1ad)](_0x2f90e4(0x13c))&&$(this)[_0x2f90e4(0x1cd)](_0x2f90e4(0x178));}),parentCheck(),$(_0xd125a1(0x1e0))[_0xd125a1(0x15f)](),$(_0xd125a1(0x12b))[_0xd125a1(0x15f)](),$(_0xd125a1(0x13d))[_0xd125a1(0x15f)](),$(_0xd125a1(0x11e))[_0xd125a1(0x1b0)](),$(_0xd125a1(0x197))['slideUp'](),$('#OnlyAArea')[_0xd125a1(0x1b0)]();}),$(document)['on'](_0x1518bd(0x1e6),_0x1518bd(0x1ba),function(){var _0x5d09a1=_0x1518bd;gtag(_0x5d09a1(0x134),'filter',{'event_category':'stylecheck','event_label':'ALL','value':0x1}),$('.onlyDisable')[_0x5d09a1(0x18c)](_0x5d09a1(0x199))[_0x5d09a1(0x1cd)](_0x5d09a1(0x12c)),$(_0x5d09a1(0x1ba))['removeClass'](_0x5d09a1(0x12c))[_0x5d09a1(0x1cd)](_0x5d09a1(0x199)),$(_0x5d09a1(0x156))['removeClass'](_0x5d09a1(0x199))['addClass'](_0x5d09a1(0x12c)),$('.style')[_0x5d09a1(0x132)](function(){var _0x489207=_0x5d09a1;$(this)[_0x489207(0x18c)](_0x489207(0x178));}),parentCheck(),$(_0x5d09a1(0x1e0))[_0x5d09a1(0x15f)](),$(_0x5d09a1(0x12b))['slideDown'](),$(_0x5d09a1(0x13d))[_0x5d09a1(0x15f)](),$(_0x5d09a1(0x11e))[_0x5d09a1(0x1b0)](),$(_0x5d09a1(0x197))[_0x5d09a1(0x1b0)](),$(_0x5d09a1(0x1ea))[_0x5d09a1(0x1b0)]();});function changeSimpleDisplayToAllDisplay(){var _0x32482b=_0x1518bd;$(_0x32482b(0x1f2))[_0x32482b(0x18c)](_0x32482b(0x199))['addClass'](_0x32482b(0x12c)),$('.allType')[_0x32482b(0x18c)](_0x32482b(0x12c))[_0x32482b(0x1cd)]('icon_btn_on'),$(_0x32482b(0x156))[_0x32482b(0x18c)](_0x32482b(0x199))[_0x32482b(0x1cd)](_0x32482b(0x12c)),$(_0x32482b(0x1f9))[_0x32482b(0x132)](function(){var _0x24f397=_0x32482b;$(this)[_0x24f397(0x18c)](_0x24f397(0x178));});}$(document)['on'](_0x1518bd(0x1e6),_0x1518bd(0x156),function(){var _0x3f5e9b=_0x1518bd;gtag(_0x3f5e9b(0x134),'filter',{'event_category':_0x3f5e9b(0x210),'event_label':_0x3f5e9b(0x128),'value':0x1}),clickRareTab(),$(_0x3f5e9b(0x1f2))[_0x3f5e9b(0x18c)](_0x3f5e9b(0x199))['addClass'](_0x3f5e9b(0x12c)),$(_0x3f5e9b(0x1ba))['removeClass'](_0x3f5e9b(0x199))[_0x3f5e9b(0x1cd)](_0x3f5e9b(0x12c)),$(_0x3f5e9b(0x156))[_0x3f5e9b(0x18c)](_0x3f5e9b(0x12c))[_0x3f5e9b(0x1cd)](_0x3f5e9b(0x199)),$(_0x3f5e9b(0x11e))[_0x3f5e9b(0x195)](''),$('#OnlySArea')[_0x3f5e9b(0x195)](''),$(_0x3f5e9b(0x1ea))[_0x3f5e9b(0x195)](''),$(_0x3f5e9b(0x1a4))['each'](function(){var _0x2747f2=_0x3f5e9b;$(this)[_0x2747f2(0x172)](_0x2747f2(0x1b1))[_0x2747f2(0x1ad)](_0x2747f2(0x13c))&&(rare=$(this)['attr']('data-rare'),$(_0x2747f2(0x1d3)+rare+'Area')[_0x2747f2(0x16c)]($(this)[_0x2747f2(0x192)]()));}),$(_0x3f5e9b(0x162))['each'](function(){var _0x55e872=_0x3f5e9b;$(this)[_0x55e872(0x172)](_0x55e872(0x1b1))['hasClass'](_0x55e872(0x13c))&&(rare=$(this)[_0x55e872(0x157)]('data-rare'),$(_0x55e872(0x1d3)+rare+_0x55e872(0x19b))['append']($(this)[_0x55e872(0x192)]()));}),$(_0x3f5e9b(0x184))[_0x3f5e9b(0x132)](function(){var _0x4e04eb=_0x3f5e9b;$(this)[_0x4e04eb(0x172)](_0x4e04eb(0x1b1))[_0x4e04eb(0x1ad)](_0x4e04eb(0x13c))&&(rare=$(this)[_0x4e04eb(0x157)](_0x4e04eb(0x126)),$(_0x4e04eb(0x1d3)+rare+_0x4e04eb(0x19b))[_0x4e04eb(0x16c)]($(this)['clone']()));}),$(_0x3f5e9b(0x1e0))[_0x3f5e9b(0x1b0)](),$(_0x3f5e9b(0x12b))[_0x3f5e9b(0x1b0)](),$(_0x3f5e9b(0x13d))[_0x3f5e9b(0x1b0)](),$(_0x3f5e9b(0x11e))[_0x3f5e9b(0x15f)](),$('#OnlySArea')[_0x3f5e9b(0x15f)](),$('#OnlyAArea')[_0x3f5e9b(0x15f)]();});function parentCheck(){var _0x27e937=_0x1518bd;$(_0x27e937(0x185))[_0x27e937(0x132)](function(){var _0x362195=_0x27e937,_0x44c7b2=$(this)['find']('.CHECK_COVER')[_0x362195(0x196)],_0x253820=$(this)[_0x362195(0x172)]('.NONE')['length'];_0x44c7b2==_0x253820?$(this)['addClass'](_0x362195(0x12e)):$(this)['removeClass'](_0x362195(0x12e));});}$(document)['on'](_0x1518bd(0x1e6),_0x1518bd(0x1a5),function(){var _0x14e541=_0x1518bd;let _0x473758=$(this)[_0x14e541(0x157)]('data-id');gtag(_0x14e541(0x134),_0x14e541(0x1bc),{'event_category':_0x14e541(0x210),'event_label':_0x473758,'value':0x1}),!$(this)['hasClass'](_0x14e541(0x1dd))&&($(_0x14e541(0x1a5))[_0x14e541(0x132)](function(){var _0x50eafe=_0x14e541;$(this)[_0x50eafe(0x18c)](_0x50eafe(0x1dd));}),$(this)[_0x14e541(0x1c7)](_0x14e541(0x1dd))),$(_0x14e541(0x1f9))[_0x14e541(0x132)](function(){var _0xd973af=_0x14e541;$(this)[_0xd973af(0x1cd)](_0xd973af(0x12e)),$(this)[_0xd973af(0x157)](_0xd973af(0x205))===_0x473758&&$(this)['removeClass'](_0xd973af(0x12e));});});function updateMyStyle(){var _0x499d37=_0x1518bd;UID!==undefined&&targetId===undefined&&updateData(_0x499d37(0x1fb),{'SS':sslist,'S':slist,'A':alist,'timestamp':firebase[_0x499d37(0x18d)][_0x499d37(0x217)][_0x499d37(0x1f0)]},!![]);}$(document)['on']('click',_0x1518bd(0x1f9),function(){var _0x4c9fcb=_0x1518bd;if(targetId!==undefined)return;let _0xd44f16=$(this)[_0x4c9fcb(0x172)](_0x4c9fcb(0x1b1))[_0x4c9fcb(0x1ad)]('icon_nocheck'),_0xa7c9a9=$(this)[_0x4c9fcb(0x157)](_0x4c9fcb(0x126)),_0x16196c=$(this)['attr'](_0x4c9fcb(0x123));styleClick(_0x16196c,_0xa7c9a9,_0xd44f16),calcStyleList(),updateMyStyle(),setTwitterURL();}),$(document)['on']('click',_0x1518bd(0x18a),function(){var _0x4d1998=_0x1518bd;let _0x53197a=$(this)['attr'](_0x4d1998(0x126));$(_0x4d1998(0x1f9))[_0x4d1998(0x132)](function(){var _0x30cf66=_0x4d1998;if($(this)[_0x30cf66(0x157)](_0x30cf66(0x126))===_0x53197a&&!$(this)[_0x30cf66(0x1ad)](_0x30cf66(0x12e))){let _0x28adb4=$(this)[_0x30cf66(0x157)]('data-rare'),_0x55bcfb=$(this)[_0x30cf66(0x157)]('data-id');styleClick(_0x55bcfb,_0x28adb4,!![]);}}),calcStyleList(),updateMyStyle(),setTwitterURL();}),$(document)['on'](_0x1518bd(0x1e6),_0x1518bd(0x1d7),function(){var _0x47c0ce=_0x1518bd;let _0x121630=$(this)['attr'](_0x47c0ce(0x126));$(_0x47c0ce(0x1f9))[_0x47c0ce(0x132)](function(){var _0x143de3=_0x47c0ce;if($(this)[_0x143de3(0x157)](_0x143de3(0x126))===_0x121630&&!$(this)[_0x143de3(0x1ad)](_0x143de3(0x12e))){let _0x506678=$(this)[_0x143de3(0x157)](_0x143de3(0x126)),_0x91bf14=$(this)[_0x143de3(0x157)](_0x143de3(0x123));styleClick(_0x91bf14,_0x506678,![]);}}),calcStyleList(),updateMyStyle(),setTwitterURL();}),$(document)['on'](_0x1518bd(0x1e6),'#tabRare',function(){var _0x53b6b8=_0x1518bd;gtag(_0x53b6b8(0x134),_0x53b6b8(0x1aa),{'event_category':'stylecheck','event_label':_0x53b6b8(0x1f1),'value':0x1}),clickRareTab();});function clickRareTab(){var _0x27cd7d=_0x1518bd;$(_0x27cd7d(0x1fd))[_0x27cd7d(0x18c)](_0x27cd7d(0x166))[_0x27cd7d(0x1cd)](_0x27cd7d(0x21d)),$(_0x27cd7d(0x11c))[_0x27cd7d(0x1cd)]('icon_btn_negative')[_0x27cd7d(0x18c)](_0x27cd7d(0x21d)),$('#tabGacha')[_0x27cd7d(0x1cd)](_0x27cd7d(0x166))[_0x27cd7d(0x18c)](_0x27cd7d(0x21d)),$(_0x27cd7d(0x1e7))[_0x27cd7d(0x18c)](_0x27cd7d(0x12e)),$(_0x27cd7d(0x15e))[_0x27cd7d(0x216)]()[_0x27cd7d(0x1cd)](_0x27cd7d(0x12e)),$(_0x27cd7d(0x1eb))[_0x27cd7d(0x216)]()[_0x27cd7d(0x1cd)](_0x27cd7d(0x12e));}$(document)['on'](_0x1518bd(0x1e6),_0x1518bd(0x21f),function(){var _0x4fe500=_0x1518bd;$(_0x4fe500(0x21f))[_0x4fe500(0x18c)](_0x4fe500(0x166))[_0x4fe500(0x1cd)](_0x4fe500(0x21d)),$(_0x4fe500(0x167))[_0x4fe500(0x1cd)](_0x4fe500(0x166))['removeClass'](_0x4fe500(0x21d)),$(_0x4fe500(0x165))[_0x4fe500(0x15f)](),$(_0x4fe500(0x1e7))[_0x4fe500(0x188)](),$(_0x4fe500(0x1d2))[_0x4fe500(0x16b)]();}),$(document)['on'](_0x1518bd(0x1e6),_0x1518bd(0x167),function(){var _0x4a4784=_0x1518bd;$(_0x4a4784(0x167))[_0x4a4784(0x18c)](_0x4a4784(0x166))[_0x4a4784(0x1cd)](_0x4a4784(0x21d)),$(_0x4a4784(0x21f))[_0x4a4784(0x1cd)](_0x4a4784(0x166))[_0x4a4784(0x18c)](_0x4a4784(0x21d)),$(_0x4a4784(0x165))[_0x4a4784(0x1b0)](),$(_0x4a4784(0x1d2))['show'](),$(_0x4a4784(0x1e7))[_0x4a4784(0x16b)]();}),$(document)['on'](_0x1518bd(0x1e6),_0x1518bd(0x11c),function(){var _0x406116=_0x1518bd;gtag('event',_0x406116(0x1aa),{'event_category':_0x406116(0x210),'event_label':_0x406116(0x141),'value':0x1}),changeSimpleDisplayToAllDisplay(),$(_0x406116(0x11c))[_0x406116(0x18c)](_0x406116(0x166))[_0x406116(0x1cd)](_0x406116(0x21d)),$(_0x406116(0x1fd))[_0x406116(0x1cd)]('icon_btn_negative')[_0x406116(0x18c)](_0x406116(0x21d)),$(_0x406116(0x1a9))[_0x406116(0x1cd)](_0x406116(0x166))[_0x406116(0x18c)](_0x406116(0x21d)),$('#styleAreaRare')['addClass'](_0x406116(0x12e)),$(_0x406116(0x15e))[_0x406116(0x216)]()[_0x406116(0x18c)](_0x406116(0x12e)),$(_0x406116(0x1eb))[_0x406116(0x216)]()[_0x406116(0x1cd)](_0x406116(0x12e));}),$(document)['on']('click',_0x1518bd(0x1a9),function(){var _0x35f31c=_0x1518bd;gtag(_0x35f31c(0x134),_0x35f31c(0x1aa),{'event_category':_0x35f31c(0x210),'event_label':_0x35f31c(0x193),'value':0x1}),changeSimpleDisplayToAllDisplay(),$(_0x35f31c(0x11c))[_0x35f31c(0x1cd)](_0x35f31c(0x166))[_0x35f31c(0x18c)](_0x35f31c(0x21d)),$(_0x35f31c(0x1fd))[_0x35f31c(0x1cd)](_0x35f31c(0x166))[_0x35f31c(0x18c)](_0x35f31c(0x21d)),$(_0x35f31c(0x1a9))['removeClass']('icon_btn_negative')[_0x35f31c(0x1cd)](_0x35f31c(0x21d)),$(_0x35f31c(0x1e7))[_0x35f31c(0x1cd)](_0x35f31c(0x12e)),$(_0x35f31c(0x15e))[_0x35f31c(0x216)]()[_0x35f31c(0x1cd)]('d-none'),$(_0x35f31c(0x1eb))[_0x35f31c(0x216)]()[_0x35f31c(0x18c)](_0x35f31c(0x12e));}),$(document)['on']('click',_0x1518bd(0x13e),function(){var _0x4ff137=_0x1518bd;$(_0x4ff137(0x20b))['html'](''),$(_0x4ff137(0x145))[_0x4ff137(0x195)]('');for(var _0x264a27=0x0;_0x264a27<0x5;_0x264a27++){var _0x1fcef1=Math[_0x4ff137(0x1a8)](Math[_0x4ff137(0x1cc)]()*0x64);if(_0x1fcef1<=0x53)target='A',targetList=alist,cName='style_icon_a_middle',white=0x28*0x14;else _0x1fcef1<=0x5f?(target='S',targetList=slist,cName='style_icon_s_middle',white=0x3c*0x1e):(target='SS',targetList=sslist,cName=_0x4ff137(0x1e2),white=0x64*0x28);var _0x2907dc=Math[_0x4ff137(0x133)](Math[_0x4ff137(0x1cc)]()*puraGachaList[target]['length']),_0x223963=puraGachaList[target][_0x2907dc],_0x2fa2f4=STYLE_MASTER[_0x223963],_0x401a0f=targetList['indexOf'](_0x223963)==-0x1,_0x328809=_0x401a0f?'':_0x4ff137(0x1ce);let _0x49499b=getStyleIcon(target,_0x223963,_0x2fa2f4[_0x4ff137(0x120)],![],!![]);_0x401a0f&&_0x49499b[_0x4ff137(0x172)]('.CHECK_COVER')[_0x4ff137(0x18c)](_0x4ff137(0x13c));$(_0x4ff137(0x20b))[_0x4ff137(0x16c)](_0x49499b),$(_0x4ff137(0x13a))[_0x4ff137(0x160)](Number($(_0x4ff137(0x13a))[_0x4ff137(0x160)]())+0x5),$('.simAllSum')[_0x4ff137(0x160)](Number($(_0x4ff137(0x20e))[_0x4ff137(0x160)]())+0x1),$(_0x4ff137(0x21c)+target+_0x4ff137(0x161))[_0x4ff137(0x160)](Number($(_0x4ff137(0x21c)+target+_0x4ff137(0x161))[_0x4ff137(0x160)]())+0x1);if(_0x401a0f)$(_0x4ff137(0x145))[_0x4ff137(0x195)]('\x20new!!'),$(_0x4ff137(0x135))[_0x4ff137(0x160)](Number($(_0x4ff137(0x135))[_0x4ff137(0x160)]())+0x1),$(_0x4ff137(0x21c)+target+_0x4ff137(0x1c0))[_0x4ff137(0x160)](Number($(_0x4ff137(0x21c)+target+_0x4ff137(0x1c0))[_0x4ff137(0x160)]())+0x1);else{var _0x57b225=Number($(_0x4ff137(0x21a))[_0x4ff137(0x157)](_0x4ff137(0x218)))+white,_0x56b320=Number($('.sim'+target+'WhiteSum')[_0x4ff137(0x157)](_0x4ff137(0x218)))+white;$(_0x4ff137(0x21a))['attr'](_0x4ff137(0x218),_0x57b225),$(_0x4ff137(0x21c)+target+_0x4ff137(0x1b2))[_0x4ff137(0x157)]('data-num',_0x56b320),$(_0x4ff137(0x21a))['text'](_0x57b225['toLocaleString']()),$(_0x4ff137(0x21c)+target+_0x4ff137(0x1b2))[_0x4ff137(0x160)](_0x56b320['toLocaleString']());}}}),$(document)['on'](_0x1518bd(0x1e6),_0x1518bd(0x16d),function(){var _0x3737e9=_0x1518bd;$(_0x3737e9(0x20b))[_0x3737e9(0x195)](''),$(_0x3737e9(0x145))['html'](''),$(_0x3737e9(0x21a))[_0x3737e9(0x157)](_0x3737e9(0x218),0x0),$(_0x3737e9(0x118))[_0x3737e9(0x157)](_0x3737e9(0x218),0x0),$(_0x3737e9(0x17b))[_0x3737e9(0x157)](_0x3737e9(0x218),0x0),$(_0x3737e9(0x18e))[_0x3737e9(0x157)](_0x3737e9(0x218),0x0),$('.simTarget')[_0x3737e9(0x160)](0x0),calcMyStyle(),$(_0x3737e9(0x164))[_0x3737e9(0x144)](),$(_0x3737e9(0x1ec))['css'](_0x3737e9(0x20a),_0x3737e9(0x182));}),$(document)['on'](_0x1518bd(0x1e6),_0x1518bd(0x201),function(){var _0x3e0006=_0x1518bd;return calcMyStyle(),$(_0x3e0006(0x1e5))[_0x3e0006(0x144)](),$(_0x3e0006(0x186))[_0x3e0006(0x20d)](_0x3e0006(0x20a),_0x3e0006(0x182)),![];});function setTwitterURL(){var _0x23eb84=_0x1518bd;let _0x2c5f94=allCount[_0x23eb84(0x20f)][_0x23eb84(0x20f)],_0x49b022=sslist[_0x23eb84(0x196)]+slist[_0x23eb84(0x196)]+alist['length'],_0x2f9bde=_0x23eb84(0x1b9),_0x2e4473=_0x23eb84(0x174)+_0x2f9bde;_0x2e4473+='全\x20'+_0x49b022+'体/'+_0x2c5f94+_0x23eb84(0x215)+$(_0x23eb84(0x11a))[_0x23eb84(0x1b3)]()[_0x23eb84(0x160)]()+'％）'+_0x2f9bde,_0x2e4473+=_0x23eb84(0x219)+sslist[_0x23eb84(0x196)]+'体/'+allCount['SS'][_0x23eb84(0x20f)]+'体\x20('+$(_0x23eb84(0x137))[_0x23eb84(0x1b3)]()[_0x23eb84(0x160)]()+'％）'+_0x2f9bde,_0x2e4473+='S\x20'+slist[_0x23eb84(0x196)]+'体/'+allCount['S'][_0x23eb84(0x20f)]+_0x23eb84(0x215)+$(_0x23eb84(0x138))[_0x23eb84(0x1b3)]()[_0x23eb84(0x160)]()+'％）'+_0x2f9bde,_0x2e4473+='A\x20'+alist[_0x23eb84(0x196)]+'体/'+allCount['A'][_0x23eb84(0x20f)]+_0x23eb84(0x215)+$(_0x23eb84(0x18b))[_0x23eb84(0x1b3)]()[_0x23eb84(0x160)]()+'％）'+_0x2f9bde;let _0x395be6=UID!==undefined?'?'+UID:'',_0x500a75='https://twitter.com/intent/tweet?text='+_0x2e4473+_0x23eb84(0x1af)+_0x395be6+_0x23eb84(0x1e3);$(_0x23eb84(0x11b))[_0x23eb84(0x157)](_0x23eb84(0x143),_0x500a75);}function calcMyStyle(){var _0x2e30cb=_0x1518bd;setTwitterURL();var _0x293723={'プラチナ':{'SS':0x0,'S':0x0,'A':0x0},'限定':{'SS':0x0,'S':0x0,'A':0x0},'その他':{'SS':0x0,'S':0x0,'A':0x0}};for(styleId of sslist[_0x2e30cb(0x1de)](slist)[_0x2e30cb(0x1de)](alist)){bunrui=STYLE_MASTER[styleId]['gachaBunrui'],rare=STYLE_MASTER[styleId][_0x2e30cb(0x1f1)],_0x293723[bunrui][rare]++;}$(_0x2e30cb(0x1c5))[_0x2e30cb(0x160)](_0x293723[_0x2e30cb(0x18f)]['SS']+_0x293723['プラチナ']['S']+_0x293723[_0x2e30cb(0x18f)]['A']),$(_0x2e30cb(0x1d8))[_0x2e30cb(0x160)](_0x293723['限定']['SS']+_0x293723['限定']['S']+_0x293723['限定']['A']),$(_0x2e30cb(0x1ee))['text'](_0x293723[_0x2e30cb(0x14d)]['SS']+_0x293723[_0x2e30cb(0x14d)]['S']+_0x293723[_0x2e30cb(0x14d)]['A']),$(_0x2e30cb(0x191))[_0x2e30cb(0x160)](_0x293723[_0x2e30cb(0x18f)]['SS']),$(_0x2e30cb(0x163))[_0x2e30cb(0x160)](_0x293723[_0x2e30cb(0x18f)]['S']),$(_0x2e30cb(0x17f))[_0x2e30cb(0x160)](_0x293723[_0x2e30cb(0x18f)]['A']),$('.mylimSS')['text'](_0x293723['限定']['SS']),$(_0x2e30cb(0x148))['text'](_0x293723['限定']['S']),$('.mylimA')[_0x2e30cb(0x160)](_0x293723['限定']['A']),$(_0x2e30cb(0x206))['text'](_0x293723[_0x2e30cb(0x14d)]['SS']),$('.myoS')[_0x2e30cb(0x160)](_0x293723[_0x2e30cb(0x14d)]['S']),$(_0x2e30cb(0x1db))[_0x2e30cb(0x160)](_0x293723[_0x2e30cb(0x14d)]['A']);var _0x3e3995=$(_0x2e30cb(0x1c5))['first']()[_0x2e30cb(0x160)]()/$(_0x2e30cb(0x1df))[_0x2e30cb(0x1b3)]()['text']()*0x64,_0x44c6fd=_0x293723[_0x2e30cb(0x18f)]['SS']/$(_0x2e30cb(0x187))[_0x2e30cb(0x1b3)]()[_0x2e30cb(0x160)]()*0x64,_0x221140=_0x293723[_0x2e30cb(0x18f)]['S']/$('.pAllS')[_0x2e30cb(0x1b3)]()['text']()*0x64,_0x1e959f=_0x293723[_0x2e30cb(0x18f)]['A']/$(_0x2e30cb(0x13b))[_0x2e30cb(0x1b3)]()[_0x2e30cb(0x160)]()*0x64;$(_0x2e30cb(0x16a))[_0x2e30cb(0x160)](Math['round'](_0x3e3995*0x64)/0x64),$(_0x2e30cb(0x139))[_0x2e30cb(0x160)](Math[_0x2e30cb(0x16e)](_0x44c6fd*0x64)/0x64),$(_0x2e30cb(0x119))[_0x2e30cb(0x160)](Math[_0x2e30cb(0x16e)](_0x221140*0x64)/0x64),$(_0x2e30cb(0x213))[_0x2e30cb(0x160)](Math[_0x2e30cb(0x16e)](_0x1e959f*0x64)/0x64);var _0x5d11f8=(0x64-_0x44c6fd)*0.05,_0x28b4b7=(0x64-_0x221140)*0.12,_0x47c41e=(0x64-_0x1e959f)*0.83,_0x2679fc=_0x5d11f8+_0x28b4b7+_0x47c41e;$(_0x2e30cb(0x12f))[_0x2e30cb(0x160)](Math[_0x2e30cb(0x16e)](_0x2679fc*0x64)/0x64),$(_0x2e30cb(0x127))[_0x2e30cb(0x160)](Math[_0x2e30cb(0x16e)](_0x5d11f8*0x64)/0x64),$(_0x2e30cb(0x211))[_0x2e30cb(0x160)](Math[_0x2e30cb(0x16e)](_0x28b4b7*0x64)/0x64),$(_0x2e30cb(0x1fc))[_0x2e30cb(0x160)](Math[_0x2e30cb(0x16e)](_0x47c41e*0x64)/0x64),$(_0x2e30cb(0x152))['text'](_0x5d11f8+_0x28b4b7+_0x47c41e===0x0?_0x2e30cb(0x170):Math[_0x2e30cb(0x16e)](0x64/(_0x5d11f8+_0x28b4b7+_0x47c41e))),$(_0x2e30cb(0x130))[_0x2e30cb(0x160)](_0x5d11f8===0x0?_0x2e30cb(0x170):'1/'+Math[_0x2e30cb(0x16e)](0x64/_0x5d11f8)),$('.mypSGetBunsu')[_0x2e30cb(0x160)](_0x28b4b7===0x0?'排出無':'1/'+Math['round'](0x64/_0x28b4b7)),$(_0x2e30cb(0x1e8))['text'](_0x47c41e===0x0?'排出無':'1/'+Math[_0x2e30cb(0x16e)](0x64/_0x47c41e)),$(_0x2e30cb(0x1b5))['text'](Math[_0x2e30cb(0x16e)]((0x1-((0x64-_0x2679fc)/0x64)**0x5)*0x2710)/0x64),$(_0x2e30cb(0x19a))[_0x2e30cb(0x160)](Math['round']((0x1-((0x64-_0x5d11f8)/0x64)**0x5)*0x2710)/0x64),$('.mypS5RenPer')['text'](Math[_0x2e30cb(0x16e)]((0x1-((0x64-_0x28b4b7)/0x64)**0x5)*0x2710)/0x64),$(_0x2e30cb(0x15b))[_0x2e30cb(0x160)](Math[_0x2e30cb(0x16e)]((0x1-((0x64-_0x47c41e)/0x64)**0x5)*0x2710)/0x64),$('.mypAll20RenPer')[_0x2e30cb(0x160)](Math[_0x2e30cb(0x16e)]((0x1-((0x64-_0x2679fc)/0x64)**0x14)*0x2710)/0x64),$(_0x2e30cb(0x1ae))[_0x2e30cb(0x160)](Math[_0x2e30cb(0x16e)]((0x1-((0x64-_0x5d11f8)/0x64)**0x14)*0x2710)/0x64),$(_0x2e30cb(0x1c1))['text'](Math[_0x2e30cb(0x16e)]((0x1-((0x64-_0x28b4b7)/0x64)**0x14)*0x2710)/0x64),$('.mypA20RenPer')[_0x2e30cb(0x160)](Math[_0x2e30cb(0x16e)]((0x1-((0x64-_0x47c41e)/0x64)**0x14)*0x2710)/0x64),$(_0x2e30cb(0x1d5))[_0x2e30cb(0x160)](Math[_0x2e30cb(0x16e)]((0x1-((0x64-_0x2679fc)/0x64)**0x32)*0x2710)/0x64),$(_0x2e30cb(0x151))[_0x2e30cb(0x160)](Math[_0x2e30cb(0x16e)]((0x1-((0x64-_0x5d11f8)/0x64)**0x32)*0x2710)/0x64),$('.mypS50RenPer')[_0x2e30cb(0x160)](Math[_0x2e30cb(0x16e)]((0x1-((0x64-_0x28b4b7)/0x64)**0x32)*0x2710)/0x64),$(_0x2e30cb(0x1c2))[_0x2e30cb(0x160)](Math[_0x2e30cb(0x16e)]((0x1-((0x64-_0x47c41e)/0x64)**0x32)*0x2710)/0x64);}$(document)['on'](_0x1518bd(0x1e6),'.modalClose',function(){var _0x6273da=_0x1518bd;return $(_0x6273da(0x1e5))[_0x6273da(0x180)](),$('#modalInner')[_0x6273da(0x20d)]('animation',_0x6273da(0x16f)),$(_0x6273da(0x164))[_0x6273da(0x180)](),$('#modalInner2')['css'](_0x6273da(0x20a),_0x6273da(0x16f)),![];});let MASTER_LEVEL=[0x0,0x2,0x4,0x6,0x8,0xa,0xc,0xe,0x10,0x13,0x16,0x19,0x1c,0x1f,0x23,0x27,0x2b,0x30,0x35,0x3a,0x40,0x46,0x4c,0x53,0x5a,0x62,0x6a,0x73,0x7c,0x86,0x90,0x9b,0xa7,0xb3,0xc0,0xce,0xdc,0xeb,0xfb,0x10b,0x11c,0x12e,0x141,0x155,0x169,0x17e,0x194,0x1ab,0x1c3,0x1dc];function getMasterLevel(_0x3507b7){let _0x53a178=Number(_0x3507b7)*0x5,_0x44b5ba=0x1;for(let _0x334a32 in MASTER_LEVEL){let _0x434dbc=MASTER_LEVEL[_0x334a32];if(_0x53a178<_0x434dbc)break;_0x44b5ba=_0x334a32;}return Number(_0x44b5ba)+0x1;}function calcPer(_0x173fee){var _0x363203=_0x1518bd;return Math[_0x363203(0x16e)](_0x173fee*0x2710)/0x64;}function styleClick(_0x2a0978,_0x5c45b3,_0x182545){var _0x5df9e4=_0x1518bd;let _0x2aa494=STYLE_MASTER[_0x2a0978][_0x5df9e4(0x120)],_0x437baa=alist;if(_0x5c45b3==='SS')_0x437baa=sslist;else _0x5c45b3==='S'&&(_0x437baa=slist);$('.'+_0x2a0978)[_0x5df9e4(0x132)](function(){var _0x26dd7f=_0x5df9e4;_0x182545?$(this)[_0x26dd7f(0x172)](_0x26dd7f(0x1b1))[_0x26dd7f(0x18c)](_0x26dd7f(0x13c)):$(this)['find'](_0x26dd7f(0x1b1))[_0x26dd7f(0x1cd)](_0x26dd7f(0x13c));});if(_0x182545)_0x437baa[_0x5df9e4(0x1c6)](_0x2a0978)===-0x1&&_0x437baa[_0x5df9e4(0x1ac)](_0x2a0978),weaponType[_0x5df9e4(0x20f)][_0x2aa494][_0x5df9e4(0x1c6)](_0x2a0978)===-0x1&&weaponType[_0x5df9e4(0x20f)][_0x2aa494][_0x5df9e4(0x1ac)](_0x2a0978),weaponType[_0x5c45b3][_0x2aa494][_0x5df9e4(0x1c6)](_0x2a0978)===-0x1&&weaponType[_0x5c45b3][_0x2aa494][_0x5df9e4(0x1ac)](_0x2a0978);else{weaponType['ALL'][_0x2aa494][_0x5df9e4(0x1c6)](_0x2a0978)>-0x1&&(weaponType['ALL'][_0x2aa494]=weaponType[_0x5df9e4(0x20f)][_0x2aa494]['filter'](_0x564ede=>_0x564ede!==_0x2a0978));weaponType[_0x5c45b3][_0x2aa494][_0x5df9e4(0x1c6)](_0x2a0978)>-0x1&&(weaponType[_0x5c45b3][_0x2aa494]=weaponType[_0x5c45b3][_0x2aa494][_0x5df9e4(0x1bc)](_0x3705bc=>_0x3705bc!==_0x2a0978));if(_0x5c45b3==='SS')sslist=_0x437baa['filter'](_0x254c4e=>_0x254c4e!==_0x2a0978);else _0x5c45b3==='S'?slist=_0x437baa[_0x5df9e4(0x1bc)](_0xfda5bf=>_0xfda5bf!==_0x2a0978):alist=_0x437baa[_0x5df9e4(0x1bc)](_0x464621=>_0x464621!==_0x2a0978);}}function calcStyleList(){var _0x530473=_0x1518bd;$(_0x530473(0x1a3))[_0x530473(0x160)](sslist['length']+slist[_0x530473(0x196)]+alist[_0x530473(0x196)]),$(_0x530473(0x131))['text'](sslist[_0x530473(0x196)]),$('.myS')['text'](slist[_0x530473(0x196)]),$(_0x530473(0x1f3))[_0x530473(0x160)](alist['length']);let _0x4dcaa6=sslist[_0x530473(0x196)]+slist[_0x530473(0x196)]+alist['length'],_0x163ac0=allCount[_0x530473(0x20f)][_0x530473(0x20f)];$(_0x530473(0x11a))[_0x530473(0x160)](calcPer(_0x4dcaa6/_0x163ac0)[_0x530473(0x17e)](0x2)),$(_0x530473(0x137))[_0x530473(0x160)](calcPer(sslist[_0x530473(0x196)]/allCount['SS'][_0x530473(0x20f)])['toFixed'](0x2)),$(_0x530473(0x138))[_0x530473(0x160)](calcPer(slist[_0x530473(0x196)]/allCount['S'][_0x530473(0x20f)])['toFixed'](0x2)),$(_0x530473(0x18b))['text'](calcPer(alist[_0x530473(0x196)]/allCount['A'][_0x530473(0x20f)])[_0x530473(0x17e)](0x2));for(let _0x5c6721 in WEAPON_ATTR){let _0x542057=Number(weaponType[_0x530473(0x20f)][_0x5c6721][_0x530473(0x196)]);$('.my'+_0x5c6721)[_0x530473(0x160)](_0x542057),$(_0x530473(0x131)+_0x5c6721)[_0x530473(0x160)](Number(weaponType['SS'][_0x5c6721][_0x530473(0x196)])),$(_0x530473(0x1b4)+_0x5c6721)[_0x530473(0x160)](Number(weaponType['S'][_0x5c6721][_0x530473(0x196)])),$(_0x530473(0x1f3)+_0x5c6721)[_0x530473(0x160)](Number(weaponType['A'][_0x5c6721][_0x530473(0x196)]));let _0x3047fc=getMasterLevel(_0x542057),_0x3ddd32=getMasterLevel(allCount[_0x530473(0x20f)][_0x5c6721]);$('.myMlv'+_0x5c6721)[_0x530473(0x160)](_0x3047fc+'/'+_0x3ddd32),$(_0x530473(0x1be)+_0x5c6721)[_0x530473(0x160)](calcPer(_0x542057/allCount['ALL'][_0x5c6721])[_0x530473(0x17e)](0x1));}}var puraGachaList={'SS':[],'S':[],'A':[]};function display(){var _0x142a39=_0x1518bd;let _0x1d1fea=[],_0x5485fa=[];for(let _0x4622a8 in CHAR_MASTER){let _0x4076e5=CHAR_MASTER[_0x4622a8];var _0x10e47b=$('<div\x20class=\x22charArea'+_0x4622a8+_0x142a39(0x168));_0x10e47b['append'](_0x4076e5[_0x142a39(0x14c)]+'<br>'),$(_0x142a39(0x15e))['find']('.'+_0x4076e5[_0x142a39(0x1da)])[_0x142a39(0x16c)](_0x10e47b);for(let _0x3bdbc0 of _0x4076e5['Holders']){let _0xb50726=STYLE_MASTER[_0x3bdbc0],_0x2380d7=_0xb50726[_0x142a39(0x1f1)];var _0x1bb876=_0xb50726['gacha']===''?_0x142a39(0x177):_0xb50726[_0x142a39(0x214)],_0x51c33c=_0x1bb876['split']('/');if(_0x1bb876[_0x142a39(0x1c6)](_0x142a39(0x177))>-0x1||_0x1bb876[_0x142a39(0x1c6)]('汎用')>-0x1)bunrui=_0x142a39(0x18f),puraGachaList[_0x2380d7][_0x142a39(0x1c6)](_0x3bdbc0)===-0x1&&puraGachaList[_0x2380d7][_0x142a39(0x1ac)](_0x3bdbc0);else _0x1bb876['indexOf'](_0x142a39(0x1ca))>-0x1||_0x1bb876[_0x142a39(0x1c6)](_0x142a39(0x116))>-0x1||_0x1bb876[_0x142a39(0x1c6)](_0x142a39(0x15c))>-0x1||_0x1bb876[_0x142a39(0x1c6)](_0x142a39(0x19d))>-0x1||_0x1bb876[_0x142a39(0x1c6)]('クエストドロップ')>-0x1||_0x1bb876[_0x142a39(0x1c6)](_0x142a39(0x153))>-0x1||_0x1bb876[_0x142a39(0x1c6)](_0x142a39(0x17c))>-0x1?bunrui=_0x142a39(0x14d):bunrui='限定';STYLE_MASTER[_0x3bdbc0]['gachaBunrui']=bunrui,listDtlAll[bunrui][_0x2380d7]++;let _0x3270ab=STYLE_MASTER[_0x3bdbc0][_0x142a39(0x120)];allCount[_0x2380d7][_0x3270ab]++,allCount[_0x2380d7][_0x142a39(0x20f)]++,allCount[_0x142a39(0x20f)][_0x3270ab]++,allCount[_0x142a39(0x20f)][_0x142a39(0x20f)]++;let _0xc92c90=getStyleIcon(_0x2380d7,_0x3bdbc0,_0xb50726[_0x142a39(0x120)],![],!![]);_0x10e47b[_0x142a39(0x16c)](_0xc92c90['clone']());let _0x9008d4=bunrui=='限定'?_0x142a39(0x220):_0x142a39(0x14a);$('#'+_0x2380d7+_0x142a39(0x19b))[_0x142a39(0x172)]('.'+_0x9008d4+MASTER_LV_KEY[_0x3270ab])[_0x142a39(0x16c)](_0xc92c90['clone']()),_0xc92c90[_0x142a39(0x16c)](_0x142a39(0x14f)+_0x4076e5[_0x142a39(0x14c)]+_0x142a39(0x1f5));for(_0x370293 in _0x51c33c){var _0x1a304a=_0x51c33c[_0x370293];_0x1a304a+=_0x370293>0x0&&kotei[_0x142a39(0x1c6)](_0x1a304a)==-0x1&&_0x1a304a[_0x142a39(0x1c6)]('20')>-0x1?_0x142a39(0x19f):'',_0x1d1fea[_0x1a304a]===undefined&&(_0x1d1fea[_0x1a304a]={'SS':[],'S':[],'A':[]},_0x5485fa['push'](_0x1a304a)),_0x1d1fea[_0x1a304a][_0x2380d7][_0x142a39(0x1ac)](_0xc92c90[_0x142a39(0x192)]());}}}_0x5485fa[_0x142a39(0x19c)](function(_0x3fb7ff,_0x44333f){return _0x3fb7ff<_0x44333f?0x1:-0x1;});for(var _0x5e756c of kotei){var _0x370293=_0x5485fa[_0x142a39(0x1c6)](_0x5e756c);delete _0x5485fa[_0x370293];}for(var _0x5e756c of OPEN_GACHA){_0x5e756c=_0x1d1fea[_0x5e756c]!==undefined?_0x5e756c:_0x5e756c+_0x142a39(0x19f);var _0x370293=_0x5485fa[_0x142a39(0x1c6)](_0x5e756c);delete _0x5485fa[_0x370293];}gachaNameListOrg=_0x5485fa[_0x142a39(0x1bc)](_0x3ea82f=>_0x3ea82f),_0x5485fa=OPEN_GACHA[_0x142a39(0x1de)](kotei)[_0x142a39(0x1de)](gachaNameListOrg);for(let _0x1227d9 of _0x5485fa){_0x1227d9=_0x1d1fea[_0x1227d9]!==undefined?_0x1227d9:_0x1227d9+_0x142a39(0x19f);var _0x12acc7=$(_0x142a39(0x1c3)),_0x37f583=$(_0x142a39(0x149)+_0x1227d9+'</span><br>');_0x12acc7[_0x142a39(0x16c)](_0x37f583),_0x1d1fea[_0x1227d9]['SS']=_0x1d1fea[_0x1227d9]['SS']===undefined?[]:_0x1d1fea[_0x1227d9]['SS'],_0x1d1fea[_0x1227d9]['S']=_0x1d1fea[_0x1227d9]['S']===undefined?[]:_0x1d1fea[_0x1227d9]['S'],_0x1d1fea[_0x1227d9]['A']=_0x1d1fea[_0x1227d9]['A']===undefined?[]:_0x1d1fea[_0x1227d9]['A'];for(let _0x3db1dc of _0x1d1fea[_0x1227d9]['SS']){_0x12acc7['append'](_0x3db1dc);}for(let _0x2d3519 of _0x1d1fea[_0x1227d9]['S']){_0x12acc7[_0x142a39(0x16c)](_0x2d3519);}for(let _0x130d64 of _0x1d1fea[_0x1227d9]['A']){_0x12acc7[_0x142a39(0x16c)](_0x130d64);}$('#styleAreaGacha')[_0x142a39(0x16c)](_0x12acc7);}$(_0x142a39(0x20c))[_0x142a39(0x160)](allCount[_0x142a39(0x20f)][_0x142a39(0x20f)]),$(_0x142a39(0x1b6))[_0x142a39(0x160)](allCount['SS'][_0x142a39(0x20f)]),$(_0x142a39(0x1d0))[_0x142a39(0x160)](allCount['S'][_0x142a39(0x20f)]),$(_0x142a39(0x179))[_0x142a39(0x160)](allCount['A']['ALL']),$(_0x142a39(0x1df))['text'](listDtlAll[_0x142a39(0x18f)]['SS']+listDtlAll[_0x142a39(0x18f)]['S']+listDtlAll[_0x142a39(0x18f)]['A']),$(_0x142a39(0x187))[_0x142a39(0x160)](listDtlAll['プラチナ']['SS']),$(_0x142a39(0x1e1))['text'](listDtlAll['プラチナ']['S']),$(_0x142a39(0x13b))[_0x142a39(0x160)](listDtlAll[_0x142a39(0x18f)]['A']),$(_0x142a39(0x11d))[_0x142a39(0x160)](listDtlAll['限定']['SS']+listDtlAll['限定']['S']+listDtlAll['限定']['A']),$(_0x142a39(0x203))['text'](listDtlAll['限定']['SS']),$(_0x142a39(0x125))[_0x142a39(0x160)](listDtlAll['限定']['S']),$(_0x142a39(0x1a6))[_0x142a39(0x160)](listDtlAll['限定']['A']),$(_0x142a39(0x1f8))[_0x142a39(0x160)](listDtlAll[_0x142a39(0x14d)]['SS']+listDtlAll[_0x142a39(0x14d)]['S']+listDtlAll['その他']['A']),$(_0x142a39(0x1d1))[_0x142a39(0x160)](listDtlAll[_0x142a39(0x14d)]['SS']),$(_0x142a39(0x1d4))[_0x142a39(0x160)](listDtlAll[_0x142a39(0x14d)]['S']),$(_0x142a39(0x15a))[_0x142a39(0x160)](listDtlAll[_0x142a39(0x14d)]['A']);for(let _0x5b0f06 in WEAPON_ATTR){$(_0x142a39(0x20c)+_0x5b0f06)[_0x142a39(0x160)](allCount[_0x142a39(0x20f)][_0x5b0f06]),$(_0x142a39(0x1b6)+_0x5b0f06)[_0x142a39(0x160)](allCount['SS'][_0x5b0f06]),$(_0x142a39(0x1d0)+_0x5b0f06)[_0x142a39(0x160)](allCount['S'][_0x5b0f06]),$(_0x142a39(0x179)+_0x5b0f06)[_0x142a39(0x160)](allCount['A'][_0x5b0f06]);}}function intialMyStyle(){let _0x416ac0=targetId!==undefined?targetId:UID;readStyleCheckData(_0x416ac0,function(_0x35cf01){var _0x114ed9=_0x2e7a;if(_0x35cf01!==null){sslist=_0x35cf01['SS']!==undefined?_0x35cf01['SS']:[],slist=_0x35cf01['S']!==undefined?_0x35cf01['S']:[],alist=_0x35cf01['A']!==undefined?_0x35cf01['A']:[],sslist=sslist[_0x114ed9(0x1bc)](function(_0x186516,_0x20c8c1,_0x27871b){return _0x27871b['indexOf'](_0x186516)===_0x20c8c1;}),slist=slist[_0x114ed9(0x1bc)](function(_0x293ec3,_0x317fa7,_0x4e4ee1){var _0x478a56=_0x114ed9;return _0x4e4ee1[_0x478a56(0x1c6)](_0x293ec3)===_0x317fa7;}),alist=alist[_0x114ed9(0x1bc)](function(_0x4fd809,_0x307c7e,_0x5f5d7c){var _0xae4ea4=_0x114ed9;return _0x5f5d7c[_0xae4ea4(0x1c6)](_0x4fd809)===_0x307c7e;});for(let _0x198e30 of sslist){styleClick(_0x198e30,'SS',!![]);}for(let _0x21a0e3 of slist){styleClick(_0x21a0e3,'S',!![]);}for(let _0x2ecf85 of alist){styleClick(_0x2ecf85,'A',!![]);}}dispClassData(_0x35cf01),calcStyleList(),$(_0x114ed9(0x201))[_0x114ed9(0x18c)](_0x114ed9(0x12e)),$(_0x114ed9(0x16d))['removeClass'](_0x114ed9(0x12e)),$(_0x114ed9(0x189))[_0x114ed9(0x188)](),setTwitterURL();},![]);}
+function initialMasterTable(){
+    //初期処理
+    for(var nameJp in MASTER_LV_KEY) {
+        var nameEn = MASTER_LV_KEY[nameJp];
+        var masterTableTmpl = $("#masterTableTmpl").clone();
+        masterTableTmpl.attr("id","").removeClass("d-none");
+        masterTableTmpl.find(".icon_ken").removeClass("icon_ken").addClass("icon_"+nameEn);
+        masterTableTmpl.find(".my剣").removeClass("my剣").addClass("my"+nameJp);
+        masterTableTmpl.find(".mySS剣").removeClass("mySS剣").addClass("mySS"+nameJp);
+        masterTableTmpl.find(".myS剣").removeClass("myS剣").addClass("myS"+nameJp);
+        masterTableTmpl.find(".myA剣").removeClass("myA剣").addClass("myA"+nameJp);
+        masterTableTmpl.find(".all剣").removeClass("all剣").addClass("all"+nameJp);
+        masterTableTmpl.find(".allSS剣").removeClass("allSS剣").addClass("allSS"+nameJp);
+        masterTableTmpl.find(".allS剣").removeClass("allS剣").addClass("allS"+nameJp);
+        masterTableTmpl.find(".allA剣").removeClass("allA剣").addClass("allA"+nameJp);
+        masterTableTmpl.find(".myPer剣").removeClass("myPer剣").addClass("myPer"+nameJp);
+        masterTableTmpl.find(".myMlv剣").removeClass("myMlv剣").addClass("myMlv"+nameJp);
+        //masterTableTmpl.find(".myNext剣").removeClass("myNext剣").addClass("myNext"+nameJp);
+        $("#MASTER_TABLE tbody").append(masterTableTmpl);
+    }
+    for(let attr of Object.keys(MASTER_LV_KEY)){
+        $attrDiv = $(`
+        <div class="col-12 col-sm-1">
+            <div class="filter-bgcolor width-100 text-center" style="height: 100%; display: flex; align-items: center; justify-content: center;"><img class="width-100" src="https://romasagatool.com/img/icon/icon_${MASTER_LV_KEY[attr]}.png" style="max-width: 40px"></div>
+        </div>
+        <div class="col-12 col-sm-11">
+            <div class="ICON_PARENT pra${MASTER_LV_KEY[attr]}">
+                <div class="subtitle-long fuchidori-white smallFont" style="padding-left: 30px; padding-right: 40px;">プラチナ / 恒常 </div><br>
+            </div>
+            <div class="ICON_PARENT lim${MASTER_LV_KEY[attr]}">
+                <div class="subtitle-long fuchidori-white smallFont" style="padding-left: 30px; padding-right: 40px;">限定ガチャ / 限定配布</div><br>
+            </div>
+        </div>`);
+        $("#SSArea").append($attrDiv.clone());
+        $("#SArea").append($attrDiv.clone());
+        $("#AArea").append($attrDiv.clone());
+    }
+}
+
+var allCount = {"ALL":[], "SS": [], "S": [], "A": []};
+for (let key in WEAPON_ATTR) {
+    allCount['ALL'][key] = 0;
+    allCount['SS'][key] = 0;
+    allCount['S'][key] = 0;
+    allCount['A'][key] = 0;
+}
+allCount['ALL']['ALL'] = 0;
+allCount['SS']['ALL'] = 0;
+allCount['S']['ALL'] = 0;
+allCount['A']['ALL'] = 0;
+
+let myCount = {"SS": 0, "S": 0, "A": 0};
+var sslist = [];
+var slist = [];
+var alist = [];
+var listDtl = {"プラチナ":{"SS": 0, "S": 0, "A": 0}, "限定":{"SS": 0, "S": 0, "A": 0}, "その他":{"SS": 0, "S": 0, "A": 0}};
+var listDtlAll = {"プラチナ":{"SS": 0, "S": 0, "A": 0}, "限定":{"SS": 0, "S": 0, "A": 0}, "その他":{"SS": 0, "S": 0, "A": 0}};
+
+var weaponType = {"ALL":[], "SS": [], "S": [], "A": []};
+for (let key in WEAPON_ATTR) {
+    weaponType['ALL'][key] = [];
+    weaponType['SS'][key] = [];
+    weaponType['S'][key] = [];
+    weaponType['A'][key] = [];
+}
+$(".DISP_CLASS").hide();
+function _noLoginInitial() {
+    $("#displaySummary").removeClass("d-none");
+    $("#displaySimulator").removeClass("d-none");
+
+    var uiConfig = {
+        // ログイン完了時のリダイレクト先
+        signInSuccessUrl: 'https://nao-romasaga.github.io/stylecheck.html',
+        // 利用する認証機能
+        signInOptions: [
+            firebase.auth.TwitterAuthProvider.PROVIDER_ID
+        ],
+    };
+    var ui = new firebaseui.auth.AuthUI(firebase.auth(appUsers));
+    ui.start('#firebaseui-auth-container', uiConfig);
+    $(".DISP_CLASS").show();
+    dispClassData("");
+}
+function _initial() {
+    $("#loginInfo").hide();
+    loginCard("#firebaseui-auth-container");
+    intialMyStyle();
+}
+
+var targetId;
+$(document).ready(function ($) {
+    $(".INIT-CLOSE").slideUp();
+    $(".DISP_CLASS").hide();
+    $("#styleAreaClass").hide();
+    initialMasterTable();
+    display();
+    if (location.search !== "") {
+        targetId = (location.search).substr(1);
+        $(".allOn , .allOff , .twitter-share-button").hide();
+        $(".myinput").removeClass("d-none");
+    }
+});
+
+$(document).on('click', '.OPEN-HELP', function () {
+    var target = $(this).attr("data-target");
+    $("#"+target).slideToggle();
+});
+
+function dispClassData(result){
+    var ATTR = ["zan","da","totsu",'netsu','rei','rai','yo','in'];
+    for(var x of ATTR) {
+        var tmpl = $("#CLASS_TEMPLATE").clone().attr("id", 'class'+x).removeClass("d-none");
+        tmpl.find(".ICON").addClass("icon_"+x);
+        $("#CLASS_TEMPLATE").before(tmpl);
+    }
+    for(var x of PARAM_KEY) {
+        if(x == "AI" || x == "MI"){
+            continue;
+        }
+        var tmpl = $("#JHOTAI_DEBUF_TEMPLATE").clone().attr("id", 'class'+x).removeClass("d-none");
+        tmpl.find(".ICON").addClass("icon_debuff_"+x.toLowerCase());
+        tmpl.find(".icon_area").addClass("d");
+        $("#DEBUF_PARENT").append(tmpl);
+    }
+    var ATTR2 = ["stan","mahi",  "zzz","sekika", "konran","miryo", "kizetsu", ];
+    for(var x of ATTR2) {
+        var tmpl = $("#JHOTAI_DEBUF_TEMPLATE").clone().attr("id", 'class'+x).removeClass("d-none");
+        tmpl.find(".ICON").addClass("icon_"+x);
+        tmpl.find(".icon_area").addClass("j");
+        $("#JHOTAI_PARENT").append(tmpl);
+    }
+
+    var styleList = [];
+    if (result["SS"] !== undefined) {
+        var ss = (result["SS"] !== undefined) ? result["SS"] : [];
+        var s = (result["S"] !== undefined) ? result["S"] : [];
+        var a = (result["A"] !== undefined) ? result["A"] : [];
+        styleList = ss.concat(s).concat(a);
+    } else {
+        for(styleId in STYLE_MASTER){
+            //if(STYLE_MASTER[styleId]['Rarity'] == "SS"){
+                styleList.push(styleId);
+            //}
+        }
+    }
+
+    for(styleId of styleList){
+        if(STYLE_CLASS[styleId] === undefined){
+            continue;
+        }
+        // "単体火力" => "o",
+        // "全体火力" => "a",
+        // "クエスト攻略" => "q",
+        // "Romancing戦" => "r",
+        // "デバフ" => "d",
+        // "状態異常" => "j",
+        // "ファスト" => "f",        
+        for(var pattern of ["o","a","q","r","d","j"]){
+            if(STYLE_CLASS[styleId][pattern] == undefined){
+                continue;
+            }
+            var styleInfo = STYLE_MASTER[styleId];
+            var styleIcon = getStyleIcon(styleInfo['Rarity'], styleId, styleInfo['WeaponType'], true , true);
+            var attrs = STYLE_CLASS[styleId][pattern];
+            for(attr of attrs){
+                $("#class"+attr).find("."+pattern).append(styleIcon.clone());
+            }
+        }
+    }
+
+}
+
+$(document).on('click', '.onlyDisable', function () {
+    gtag('event', "filter", {'event_category': "stylecheck", 'event_label': "OnlyDisable", 'value': 1});
+    $(".allType").removeClass("icon_btn_on").addClass("icon_btn_off");
+    $(".onlyDisable").removeClass("icon_btn_off").addClass("icon_btn_on");
+    $(".simpleDisplay").removeClass("icon_btn_on").addClass("icon_btn_off");
+    $(".style").each(function () {
+        if (!$(this).find(".CHECK_COVER").hasClass("icon_nocheck")) {
+            $(this).addClass("d-none NONE");
+        }
+    });
+    parentCheck();
+    $("#SSArea").slideDown();
+    $("#SArea").slideDown();
+    $("#AArea").slideDown();
+    $("#OnlySSArea").slideUp();
+    $("#OnlySArea").slideUp();
+    $("#OnlyAArea").slideUp();
+});
+$(document).on('click', '.allType', function () {
+    gtag('event', "filter", {'event_category': "stylecheck", 'event_label': "ALL", 'value': 1});
+    $(".onlyDisable").removeClass("icon_btn_on").addClass("icon_btn_off");
+    $(".allType").removeClass("icon_btn_off").addClass("icon_btn_on");
+    $(".simpleDisplay").removeClass("icon_btn_on").addClass("icon_btn_off");
+
+    $(".style").each(function () {
+        $(this).removeClass("d-none NONE");
+    });
+    parentCheck();
+    $("#SSArea").slideDown();
+    $("#SArea").slideDown();
+    $("#AArea").slideDown();
+    $("#OnlySSArea").slideUp();
+    $("#OnlySArea").slideUp();
+    $("#OnlyAArea").slideUp();    
+});
+
+function changeSimpleDisplayToAllDisplay(){
+    $(".onlyDisable").removeClass("icon_btn_on").addClass("icon_btn_off");
+    $(".allType").removeClass("icon_btn_off").addClass("icon_btn_on");
+    $(".simpleDisplay").removeClass("icon_btn_on").addClass("icon_btn_off");
+
+    $(".style").each(function () {
+        $(this).removeClass("d-none NONE");
+    });
+}
+
+$(document).on('click', '.simpleDisplay', function () {
+    gtag('event', "filter", {'event_category': "stylecheck", 'event_label': "SIMPLE_DISP", 'value': 1});
+    clickRareTab();
+    $(".onlyDisable").removeClass("icon_btn_on").addClass("icon_btn_off");
+    $(".allType").removeClass("icon_btn_on").addClass("icon_btn_off");
+    $(".simpleDisplay").removeClass("icon_btn_off").addClass("icon_btn_on");
+    $("#OnlySSArea").html("");
+    $("#OnlySArea").html("");
+    $("#OnlyAArea").html("");
+
+    $("#SSArea .style").each(function () {
+        if ($(this).find(".CHECK_COVER").hasClass("icon_nocheck")) {
+            rare = $(this).attr('data-rare');
+            $(`#Only${rare}Area`).append($(this).clone());
+        }
+    });
+    $("#SArea .style").each(function () {
+        if ($(this).find(".CHECK_COVER").hasClass("icon_nocheck")) {
+            rare = $(this).attr('data-rare');
+            $(`#Only${rare}Area`).append($(this).clone());
+        }
+    });
+    $("#AArea .style").each(function () {
+        if ($(this).find(".CHECK_COVER").hasClass("icon_nocheck")) {
+            rare = $(this).attr('data-rare');
+            $(`#Only${rare}Area`).append($(this).clone());
+        }
+    });
+
+    $("#SSArea").slideUp();
+    $("#SArea").slideUp();
+    $("#AArea").slideUp();
+    $("#OnlySSArea").slideDown();
+    $("#OnlySArea").slideDown();
+    $("#OnlyAArea").slideDown();    
+});
+
+function parentCheck(){
+    $(".ICON_PARENT").each(function () {
+        var iconSize = $(this).find(".CHECK_COVER").length;
+        var hideSize = $(this).find(".NONE").length;
+        if (iconSize == hideSize) {
+            $(this).addClass("d-none");
+        } else {
+            $(this).removeClass("d-none");
+        }
+    });    
+}
+
+$(document).on('click', '.filterButton', function () {
+    let type = $(this).attr('data-id');
+    gtag('event', "filter", {'event_category': "stylecheck", 'event_label': type, 'value': 1});
+
+    if (!$(this).hasClass("filterActive")) {
+        // 絞り込み
+        $(".filterButton").each(function () {
+            $(this).removeClass("filterActive");
+        });
+        $(this).toggleClass("filterActive");
+    }    
+    $(".style").each(function () {
+        $(this).addClass("d-none");
+        if ($(this).attr("data-type") === type) {
+            $(this).removeClass("d-none");
+        }
+    });
+});
+function updateMyStyle() {
+    if (UID !== undefined && targetId === undefined) {
+        updateData("STYLECHECK", {"SS": sslist, "S": slist, "A": alist, "timestamp": firebase.database.ServerValue.TIMESTAMP}, true);
+    }
+}
+$(document).on('click', '.style', function () {
+    if (targetId !== undefined) {
+        return;
+    }
+    let on = $(this).find(".CHECK_COVER").hasClass("icon_nocheck");
+    let rare = $(this).attr('data-rare');
+    let styleId = $(this).attr('data-id');
+    styleClick(styleId, rare, on);
+    calcStyleList();
+    updateMyStyle();
+    setTwitterURL();
+});
+$(document).on('click', '.allOn', function () {
+    let r = $(this).attr("data-rare");
+    $(".style").each(function () {
+        if ($(this).attr("data-rare") === r && !$(this).hasClass("d-none")) {
+            let rare = $(this).attr('data-rare');
+            let styleId = $(this).attr('data-id');
+            styleClick(styleId, rare, true);
+        }
+    });
+    calcStyleList();
+    updateMyStyle();
+    setTwitterURL();
+});
+$(document).on('click', '.allOff', function () {
+    let r = $(this).attr("data-rare");
+    $(".style").each(function () {
+        if ($(this).attr("data-rare") === r && !$(this).hasClass("d-none")) {
+            let rare = $(this).attr('data-rare');
+            let styleId = $(this).attr('data-id');
+            styleClick(styleId, rare, false);
+        }
+    });
+    calcStyleList();
+    updateMyStyle();
+    setTwitterURL();
+});
+
+
+$(document).on('click', '#tabRare', function () {
+    gtag('event', "tab", {'event_category': "stylecheck", 'event_label': "Rarity", 'value': 1});
+    clickRareTab();
+});
+function clickRareTab(){
+    $("#tabRare").removeClass("icon_btn_negative").addClass("icon_btn_positive");
+    $("#tabChar").addClass("icon_btn_negative").removeClass("icon_btn_positive");
+    $("#tabGacha").addClass("icon_btn_negative").removeClass("icon_btn_positive");
+    $("#styleAreaRare").removeClass("d-none");
+    $("#styleAreaChar").parent().addClass("d-none");
+    $("#styleAreaGacha").parent().addClass("d-none");
+}
+
+$(document).on('click', '#tabChecker', function () {
+    $("#tabChecker").removeClass("icon_btn_negative").addClass("icon_btn_positive");
+    $("#tabBattle").addClass("icon_btn_negative").removeClass("icon_btn_positive");
+    $("#filterArea").slideDown();
+    $("#styleAreaRare").show();
+    $("#styleAreaClass").hide();
+});
+$(document).on('click', '#tabBattle', function () {
+    $("#tabBattle").removeClass("icon_btn_negative").addClass("icon_btn_positive");
+    $("#tabChecker").addClass("icon_btn_negative").removeClass("icon_btn_positive");
+    $("#filterArea").slideUp();
+    $("#styleAreaClass").show();
+    $("#styleAreaRare").hide();
+});
+
+$(document).on('click', '#tabChar', function () {
+    gtag('event', "tab", {'event_category': "stylecheck", 'event_label': "Char", 'value': 1});
+    changeSimpleDisplayToAllDisplay();
+    $("#tabChar").removeClass("icon_btn_negative").addClass("icon_btn_positive");
+    $("#tabRare").addClass("icon_btn_negative").removeClass("icon_btn_positive");
+    $("#tabGacha").addClass("icon_btn_negative").removeClass("icon_btn_positive");
+    $("#styleAreaRare").addClass("d-none");
+    $("#styleAreaChar").parent().removeClass("d-none");
+    $("#styleAreaGacha").parent().addClass("d-none");
+});
+
+$(document).on('click', '#tabGacha', function () {
+    gtag('event', "tab", {'event_category': "stylecheck", 'event_label': "Gacha", 'value': 1});
+    changeSimpleDisplayToAllDisplay();
+    $("#tabChar").addClass("icon_btn_negative").removeClass("icon_btn_positive");
+    $("#tabRare").addClass("icon_btn_negative").removeClass("icon_btn_positive");
+    $("#tabGacha").removeClass("icon_btn_negative").addClass("icon_btn_positive");
+    $("#styleAreaRare").addClass("d-none");
+    $("#styleAreaChar").parent().addClass("d-none");
+    $("#styleAreaGacha").parent().removeClass("d-none");
+});
+
+
+$(document).on('click', '.START_GACHA', function () {
+    $("#GACHA_SPACE").html("");
+    $("#IS_NEW").html("");
+    for(var i = 0; i < 5; i ++){
+        var random = Math.ceil( Math.random()*100 );
+        if(random <= 83){
+            target = "A";
+            targetList = alist;
+            cName="style_icon_a_middle";
+            white = 40 * 20;
+        } else if (random <= 95) {
+            target = "S";
+            targetList = slist;
+            cName="style_icon_s_middle";
+            white = 60 * 30;
+        } else {
+            target = "SS";
+            targetList = sslist;
+            cName="style_icon_ss_middle";
+            white = 100 * 40;
+        }
+        var rand = Math.floor(Math.random() * puraGachaList[target].length);
+        var sid = puraGachaList[target][rand];
+        var styleInfo = STYLE_MASTER[sid];
+        var isNew = (targetList.indexOf(sid) == -1);
+        var ckClass = (isNew) ? "" : "nocheck";
+        //var icon = `<span class="${ckClass}"><button class="style ${cName}" style="background:url(./img/style_icon/${sid}.png) no-repeat;"></button></span>`;
+        let styleIcon = getStyleIcon(target, sid, styleInfo['WeaponType'], false, true);        
+        if(isNew){
+            styleIcon.find(".CHECK_COVER").removeClass("icon_nocheck");
+        }
+        $("#GACHA_SPACE").append(styleIcon);
+        
+        $("#USE_TICKET").text(Number($("#USE_TICKET").text())+5);
+        $(".simAllSum").text(Number($(".simAllSum").text())+1);
+        $(`.sim${target}Sum`).text(Number($(`.sim${target}Sum`).text())+1);
+        if(isNew){
+            $("#IS_NEW").html(" new!!");
+            $(`.simAllNewSum`).text(Number($(`.simAllNewSum`).text())+1);
+            $(`.sim${target}NewSum`).text(Number($(`.sim${target}NewSum`).text())+1);
+        } else {
+            var numA =  Number($(`.simAllWhiteSum`).attr("data-num"))+white;
+            var numT =  Number($(`.sim${target}WhiteSum`).attr("data-num"))+white;
+            $(`.simAllWhiteSum`).attr("data-num" , numA);
+            $(`.sim${target}WhiteSum`).attr("data-num" , numT);
+            $(`.simAllWhiteSum`).text(numA.toLocaleString());
+            $(`.sim${target}WhiteSum`).text(numT.toLocaleString());
+        }
+    }
+
+});
+
+$(document).on('click', '#displaySimulator', function () {
+    $("#GACHA_SPACE").html("");
+    $("#IS_NEW").html("");
+    $(`.simAllWhiteSum`).attr("data-num" , 0);
+    $(`.simSSWhiteSum`).attr("data-num" , 0);
+    $(`.simSWhiteSum`).attr("data-num" , 0);
+    $(`.simAWhiteSum`).attr("data-num" , 0);
+    $(`.simTarget`).text(0);
+    calcMyStyle();
+    $("#modal02").fadeIn();
+    $("#modalInner2").css("animation", "modal 0.5s forwards");
+});
+
+$(document).on('click', '#displaySummary', function () {    
+    calcMyStyle();
+    $("#modal01").fadeIn();
+    $("#modalInner").css("animation", "modal 0.5s forwards");
+    return false;
+});
+function setTwitterURL(){
+    let all = allCount["ALL"]["ALL"];
+    let myAll = (sslist.length + slist.length + alist.length);
+    let br = "%0D%0A";
+    let text = `ロマサガRS スタイル所持チェッカー${br}`;
+    text += `全 ${myAll}体/${all}体 (${$(".allPer").first().text()}％）${br}`;
+    text += `SS ${sslist.length}体/${allCount["SS"]["ALL"]}体 (${$(".SSPer").first().text()}％）${br}`;
+    text += `S ${slist.length}体/${allCount["S"]["ALL"]}体 (${$(".SPer").first().text()}％）${br}`;
+    text += `A ${alist.length}体/${allCount["A"]["ALL"]}体 (${$(".APer").first().text()}％）${br}`;
+    let param = (UID !== undefined) ? "?" + UID : "";
+    let href = `https://twitter.com/intent/tweet?text=${text}&url=https://nao-romasaga.github.io/stylecheck.html${param}&hashtags=ロマサガRS便利ツール,スタイル所持チェッカー`;
+    $(".twitter-share-button").attr("href", href);    
+}
+
+function calcMyStyle(){
+    setTwitterURL();
+    // 初期化
+    var listDtl = {"プラチナ":{"SS": 0, "S": 0, "A": 0}, "限定":{"SS": 0, "S": 0, "A": 0}, "その他":{"SS": 0, "S": 0, "A": 0}};
+    for(styleId of sslist.concat(slist).concat(alist)){
+        bunrui = STYLE_MASTER[styleId]['gachaBunrui'];
+        rare = STYLE_MASTER[styleId]['Rarity'];
+        listDtl[bunrui][rare]++;
+    }
+    $(".mypAll").text(listDtl["プラチナ"]["SS"] + listDtl["プラチナ"]["S"] + listDtl["プラチナ"]["A"]);
+    $(".mylimAll").text(listDtl["限定"]["SS"] + listDtl["限定"]["S"] + listDtl["限定"]["A"]);
+    $(".myoAll").text(listDtl["その他"]["SS"] + listDtl["その他"]["S"] + listDtl["その他"]["A"]);
+    $(".mypSS").text(listDtl["プラチナ"]["SS"]);
+    $(".mypS").text(listDtl["プラチナ"]["S"]);
+    $(".mypA").text(listDtl["プラチナ"]["A"]);
+    $(".mylimSS").text(listDtl["限定"]["SS"]);
+    $(".mylimS").text(listDtl["限定"]["S"]);
+    $(".mylimA").text(listDtl["限定"]["A"]);
+    $(".myoSS").text(listDtl["その他"]["SS"]);
+    $(".myoS").text(listDtl["その他"]["S"]);
+    $(".myoA").text(listDtl["その他"]["A"]);
+
+    var allHave = $(".mypAll").first().text() / $(".pAll").first().text() * 100;
+    var ssHave = listDtl["プラチナ"]["SS"] / $(".pAllSS").first().text() * 100;
+    var sHave = listDtl["プラチナ"]["S"] / $(".pAllS").first().text() * 100;
+    var aHave = listDtl["プラチナ"]["A"] / $(".pAllA").first().text() * 100;
+
+    $(".mypAllPer").text(Math.round(allHave * 100) / 100);
+    $(".mypSSPer").text(Math.round(ssHave * 100) / 100);
+    $(".mypSPer").text(Math.round(sHave * 100) / 100);
+    $(".mypAPer").text(Math.round(aHave * 100) / 100);
+
+    var ssGet = (100 - ssHave) * 0.05;
+    var sGet = (100 - sHave) * 0.12;
+    var aGet = (100 - aHave) * 0.83;
+    var allGet = ssGet + sGet + aGet;
+    //console.log("獲得率", allGet, ssGet,sGet,aGet);
+
+    $(".mypAllGetPer").text(Math.round(allGet * 100) / 100);
+    $(".mypSSGetPer").text(Math.round(ssGet * 100) / 100);
+    $(".mypSGetPer").text(Math.round(sGet * 100) / 100);
+    $(".mypAGetPer").text(Math.round(aGet * 100) / 100);
+    //console.log("獲得率GetPer", Math.round(allGet * 100) / 100, Math.round(ssGet * 100) / 100,Math.round(sGet * 100) / 100,Math.round(aGet * 100) / 100);
+
+    $(".mypAllGetBunsu").text((ssGet + sGet + aGet === 0) ? "排出無" : Math.round(100 / (ssGet + sGet + aGet)));
+    $(".mypSSGetBunsu").text((ssGet === 0) ? "排出無" : "1/"+Math.round(100 / ssGet));
+    $(".mypSGetBunsu").text((sGet === 0) ? "排出無" : "1/"+Math.round(100 / sGet));
+    $(".mypAGetBunsu").text((aGet === 0) ? "排出無" : "1/"+Math.round(100 / aGet));
+    //console.log(Math.round(100 / ssGet),Math.round(100 / sGet),Math.round(100 / aGet));
+
+    $(".mypAll5RenPer").text(Math.round((1 - ((100-allGet)/100)**5)*10000)/100 );
+    $(".mypSS5RenPer").text(Math.round((1 - ((100-ssGet)/100)**5)*10000)/100 );
+    $(".mypS5RenPer").text(Math.round((1 - ((100-sGet)/100)**5)*10000)/100 );
+    $(".mypA5RenPer").text(Math.round((1 - ((100-aGet)/100)**5)*10000)/100 );
+    $(".mypAll20RenPer").text(Math.round((1 - ((100-allGet)/100)**20)*10000)/100 );
+    $(".mypSS20RenPer").text(Math.round((1 - ((100-ssGet)/100)**20)*10000)/100 );
+    $(".mypS20RenPer").text(Math.round((1 - ((100-sGet)/100)**20)*10000)/100 );
+    $(".mypA20RenPer").text(Math.round((1 - ((100-aGet)/100)**20)*10000)/100 );
+    $(".mypAll50RenPer").text(Math.round((1 - ((100-allGet)/100)**50)*10000)/100 );
+    $(".mypSS50RenPer").text(Math.round((1 - ((100-ssGet)/100)**50)*10000)/100 );
+    $(".mypS50RenPer").text(Math.round((1 - ((100-sGet)/100)**50)*10000)/100 );
+    $(".mypA50RenPer").text(Math.round((1 - ((100-aGet)/100)**50)*10000)/100 );
+}
+
+$(document).on('click', '.modalClose', function () {
+    $("#modal01").fadeOut();
+    $("#modalInner").css("animation", "modalClose 0.5s forwards");
+    $("#modal02").fadeOut();
+    $("#modalInner2").css("animation", "modalClose 0.5s forwards");
+    return false;
+});
+
+let MASTER_LEVEL = [
+    0, 2, 4, 6, 8, 10, 12, 14, 16, 19,
+    22, 25, 28, 31, 35, 39, 43, 48, 53, 58,
+    64, 70, 76, 83, 90, 98, 106, 115, 124, 134,
+    144, 155, 167, 179, 192, 206, 220, 235, 251, 267,
+    284,302,321,341,361,382,404,427,451,476
+];    
+
+function getMasterLevel(styleNum) {
+    let point = Number(styleNum) * 5;
+    let nowLv = 1;
+    for (let lv in MASTER_LEVEL) {
+        let total = MASTER_LEVEL[lv];
+        if (point < total) {
+            break;
+        }
+        nowLv = lv;
+    }
+    return Number(nowLv) + 1;
+}
+function calcPer(i) {
+    return Math.round(i * 10000) / 100;
+}
+function styleClick(styleId, rare, on) {
+
+    let weapon = STYLE_MASTER[styleId]['WeaponType'];
+    let target = alist;
+    if (rare === "SS") {
+        target = sslist;
+    } else if (rare === "S") {
+        target = slist;
+    }
+    $("." + styleId).each(function () {
+        if (on) {
+            $(this).find(".CHECK_COVER").removeClass("icon_nocheck");
+        } else {
+            $(this).find(".CHECK_COVER").addClass("icon_nocheck");
+        }
+    });
+
+    if (on) {
+        if (target.indexOf(styleId) === -1) {
+            target.push(styleId);
+        }
+        if (weaponType['ALL'][weapon].indexOf(styleId) === -1) {
+            weaponType['ALL'][weapon].push(styleId);
+        }
+        if (weaponType[rare][weapon].indexOf(styleId) === -1) {
+            weaponType[rare][weapon].push(styleId);
+        }
+    } else {
+        if (weaponType['ALL'][weapon].indexOf(styleId) > -1) {
+            weaponType['ALL'][weapon] = weaponType['ALL'][weapon].filter(n => n !== styleId);
+        }
+        if (weaponType[rare][weapon].indexOf(styleId) > -1) {
+            weaponType[rare][weapon] = weaponType[rare][weapon].filter(n => n !== styleId);
+        }
+        if (rare === "SS") {
+            sslist = target.filter(n => n !== styleId);
+        } else if (rare === "S") {
+            slist = target.filter(n => n !== styleId);
+        } else {
+            alist = target.filter(n => n !== styleId);
+        }
+    }
+}
+
+function calcStyleList(){
+    $(".myAll").text(sslist.length + slist.length + alist.length);
+    $(".mySS").text(sslist.length);
+    $(".myS").text(slist.length);
+    $(".myA").text(alist.length);
+
+    let all = sslist.length + slist.length + alist.length;
+    let all2 = allCount["ALL"]["ALL"];
+    $(".allPer").text(calcPer(all / all2).toFixed(2));
+    $(".SSPer").text(calcPer(sslist.length / allCount["SS"]["ALL"]).toFixed(2));
+    $(".SPer").text(calcPer(slist.length / allCount["S"]["ALL"]).toFixed(2));
+    $(".APer").text(calcPer(alist.length / allCount["A"]["ALL"]).toFixed(2));
+    for (let key in WEAPON_ATTR) {
+        let wpSize = Number(weaponType['ALL'][key].length);
+        $(".my" + key).text(wpSize);
+        $(".mySS" + key).text(Number(weaponType['SS'][key].length));
+        $(".myS" + key).text(Number(weaponType['S'][key].length));
+        $(".myA" + key).text(Number(weaponType['A'][key].length));
+        let nowLv = getMasterLevel(wpSize);
+        let maxLv = getMasterLevel(allCount["ALL"][key]);
+        $(".myMlv" + key).text(nowLv+"/"+maxLv);
+        //let next = MASTER_LEVEL[nowLv] - (wpSize * 5);
+        //let need = (next > 5) ? Math.floor(next / 5) + 1 : 1;
+        //$(".myNext" + key).text(need);
+        $(".myPer" + key).text(calcPer(wpSize / allCount["ALL"][key]).toFixed(1));
+        //console.log(key, "now",wpSize, (wpSize*5),"pt", "nowLv:", nowLv, "next", next, "need",need);
+    }
+    //console.log(on, rare, styleId, all, all2, target);    
+}
+
+var puraGachaList = {"SS":[], "S":[], "A":[]};
+function display() {
+    let gacha = [];
+    let gachaNameList = [];
+    for (let charId in CHAR_MASTER) {
+        let charInfo = CHAR_MASTER[charId];
+        var $charArea = $(`<div class="charArea${charId} ICON_PARENT"></div>`);
+        $charArea.append(`${charInfo['Name']}<br>`);
+        $("#styleAreaChar").find(`.${charInfo['Series']}`).append($charArea);
+        for (let styleId of charInfo['Holders']) {
+            let styleInfo = STYLE_MASTER[styleId];
+            let rare = styleInfo['Rarity'];
+            var gachaNameOrg = (styleInfo['gacha'] === "") ? "プラチナガチャ限定" : styleInfo['gacha'];
+            var gachaNames = gachaNameOrg.split("/");
+            if(gachaNameOrg.indexOf("プラチナガチャ限定") > -1 || gachaNameOrg.indexOf("汎用") > -1) {
+                bunrui = "プラチナ"
+                if(puraGachaList[rare].indexOf(styleId) === -1){
+                    puraGachaList[rare].push(styleId);
+                }
+            } else if(
+                gachaNameOrg.indexOf("スタートダッシュミッション") > -1 ||
+                gachaNameOrg.indexOf("キャンペーン配布") > -1 ||
+                gachaNameOrg.indexOf("ピース交換") > -1 ||
+                gachaNameOrg.indexOf("初期配布") > -1 || gachaNameOrg.indexOf("クエストドロップ") > -1 
+            || gachaNameOrg.indexOf("常設イベント") > -1 || gachaNameOrg.indexOf("ストーリー") > -1 ) {
+                bunrui = "その他";
+            } else {
+                bunrui = "限定"
+            }
+            STYLE_MASTER[styleId]['gachaBunrui'] = bunrui;
+            listDtlAll[bunrui][rare]++;
+    
+            let weapon = STYLE_MASTER[styleId]['WeaponType'];
+            allCount[rare][weapon]++;
+            allCount[rare]["ALL"]++;
+            allCount["ALL"][weapon]++;
+            allCount["ALL"]["ALL"]++;
+
+            let styleIcon = getStyleIcon(rare, styleId, styleInfo['WeaponType'], false , true);
+            $charArea.append(styleIcon.clone());
+            let lim = (bunrui == "限定") ? "lim" : "pra";
+            $("#" + rare + "Area").find("." + lim + MASTER_LV_KEY[weapon]).append(styleIcon.clone());
+
+            styleIcon.append(`<span style="position: absolute; top:0px; left:0px; font-size:8px; line-height:10px; color: transparent;">${charInfo['Name']}</span>`);
+            for ( idx in gachaNames) {
+                var gachaName = gachaNames[idx];
+                gachaName += (idx > 0 && kotei.indexOf(gachaName) == -1 && gachaName.indexOf("20") > -1 ) ? "【復刻】": "";
+                if (gacha[gachaName] === undefined) {
+                    gacha[gachaName] = {"SS": [], "S": [], "A": []};
+                    gachaNameList.push(gachaName);
+                }
+                gacha[gachaName][rare].push(styleIcon.clone());
+            }
+        }
+        //$("#styleAreaChar").append("<br>");
+    }
+    // 日付順に並び替える
+    gachaNameList.sort(function(a,b){
+        return (a < b ? 1 : -1);
+    });
+    // 固定表示のものはリストから除外する
+    for(var name of kotei){
+        var idx = gachaNameList.indexOf(name);
+        delete gachaNameList[idx];
+    }
+    // オープン中のガチャは除外する
+    for(var name of OPEN_GACHA){
+        name = (gacha[name] !== undefined) ? name : name + "【復刻】";
+        var idx = gachaNameList.indexOf(name);
+        delete gachaNameList[idx];
+    }
+    gachaNameListOrg = gachaNameList.filter(v => v);
+    // 固定を差し込む
+    gachaNameList = OPEN_GACHA.concat(kotei).concat(gachaNameListOrg);
+    // Array.prototype.splice.apply(gachaNameList,[HEAD_DISP,0].concat(kotei));
+    for (let name of gachaNameList) {
+        name = (gacha[name] !== undefined) ? name : name + "【復刻】";
+
+        var $gachaArea = $(`<div class="ICON_PARENT"></div>`);
+        var dispName = $(`<span class="subtitle-long fuchidori-white smallFont">${name}</span><br>`)
+        $gachaArea.append(dispName);
+        console.log(name, gacha);
+
+        gacha[name]["SS"] = (gacha[name]["SS"] === undefined) ? [] : gacha[name]["SS"];
+        gacha[name]["S"] = (gacha[name]["S"] === undefined) ? [] : gacha[name]["S"];
+        gacha[name]["A"] = (gacha[name]["A"] === undefined) ? [] : gacha[name]["A"];
+        for (let background of gacha[name]["SS"]) {
+            $gachaArea.append(background);
+        }
+        for (let background of gacha[name]["S"]) {
+            $gachaArea.append(background);
+        }
+        for (let background of gacha[name]["A"]) {
+            $gachaArea.append(background);
+        }
+        $("#styleAreaGacha").append($gachaArea);
+    }
+    $(".all").text(allCount["ALL"]["ALL"]);
+    $(".allSS").text(allCount["SS"]["ALL"]);
+    $(".allS").text(allCount["S"]["ALL"]);
+    $(".allA").text(allCount["A"]["ALL"]);
+    $(".pAll").text(listDtlAll["プラチナ"]["SS"] + listDtlAll["プラチナ"]["S"] + listDtlAll["プラチナ"]["A"]);
+    $(".pAllSS").text(listDtlAll["プラチナ"]["SS"]);
+    $(".pAllS").text(listDtlAll["プラチナ"]["S"]);
+    $(".pAllA").text(listDtlAll["プラチナ"]["A"]);
+    $(".limAll").text(listDtlAll["限定"]["SS"] + listDtlAll["限定"]["S"] + listDtlAll["限定"]["A"]);
+    $(".limAllSS").text(listDtlAll["限定"]["SS"]);
+    $(".limAllS").text(listDtlAll["限定"]["S"]);
+    $(".limAllA").text(listDtlAll["限定"]["A"]);
+    $(".oAll").text(listDtlAll["その他"]["SS"] + listDtlAll["その他"]["S"] + listDtlAll["その他"]["A"]);
+    $(".oAllSS").text(listDtlAll["その他"]["SS"]);
+    $(".oAllS").text(listDtlAll["その他"]["S"]);
+    $(".oAllA").text(listDtlAll["その他"]["A"]);
+
+    for (let key in WEAPON_ATTR) {
+        $(".all" + key).text(allCount["ALL"][key]);
+        $(".allSS" + key).text(allCount["SS"][key]);
+        $(".allS" + key).text(allCount["S"][key]);
+        $(".allA" + key).text(allCount["A"][key]);
+    }
+}
+
+function intialMyStyle(){
+    let i = (targetId !== undefined) ? targetId : UID;
+
+    readStyleCheckData(i, function (result) {
+        if (result !== null) {
+            sslist = (result['SS'] !== undefined) ? result['SS'] : [];
+            slist = (result['S'] !== undefined) ? result['S'] : [];
+            alist = (result['A'] !== undefined) ? result['A'] : [];
+            sslist = sslist.filter(function (x, i, self) {
+                return self.indexOf(x) === i;
+            });            
+            slist = slist.filter(function (x, i, self) {
+                return self.indexOf(x) === i;
+            });
+            alist = alist.filter(function (x, i, self) {
+                return self.indexOf(x) === i;
+            });            
+            for (let styleId of sslist) {
+                styleClick(styleId, "SS", true);
+            }
+            for (let styleId of slist) {
+                styleClick(styleId, "S", true);
+            }
+            for (let styleId of alist) {
+                styleClick(styleId, "A", true);
+            }
+        }
+        dispClassData(result);
+        calcStyleList();
+        $("#displaySummary").removeClass("d-none");
+        $("#displaySimulator").removeClass("d-none");
+        $(".DISP_CLASS").show();
+        setTwitterURL();        
+    }, false);    
+}
