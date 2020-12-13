@@ -105,6 +105,7 @@
                                 <li class="parent"><a class='INDEX_LI yubi' data-id="0">ステータス上限について</a></li>
                                 <li class="parent"><a class='INDEX_LI yubi' data-id="1">ステータス上昇率について</a></li>
                                 <li class="parent"><a class='INDEX_LI yubi' data-id="2">ダメージ計算について</a></li>
+                                <li class="parent"><a class='INDEX_LI yubi' data-id="6">技ランクについて</a></li>
                                 <li class="parent"><a class='INDEX_LI yubi' data-id="3">聖石について</a></li>
                                 <li class="parent"><a class='INDEX_LI yubi' data-id="4">技・術の命中率について</a></li>
                                 <li class="parent"><a class='INDEX_LI yubi' data-id="5">バフ・デバフについて</a></li>
@@ -847,6 +848,7 @@
                                 <br>
                                 <div class="fukidashi text-center">例：-15%デバフを追加でかける</div>
                                 最初のターンに15%デバフを2回重ね掛け<br>
+                                最初のターンに15%デバフを2回重ね掛け<br>
                                 デバフをかけたターン:-30% （減衰量は30/4 = 7.5 = 8)<br>
                                 1T目(1T経過):-22%<br>
                                 2T目(2T経過):-14%<br>
@@ -869,6 +871,79 @@
                                 <div class="style-skill-list">バフ・デバフの効果は無制限？</div>
                                 <i class="fas fa-check-circle"></i>上限があります<br>
                                 バフ・デバフは150%が上限です<br>
+                            </div>
+                            <ins class="adsbygoogle"　style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5008373409434899" data-ad-slot="1992251055"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                            <button class="icon_btn_positive UP_TOP width-100 width-max fuchidori-white footer-font " style="padding:5px 0px;"> <i class="fas fa-arrow-up d-none d-md-inline"></i> 目次に戻る <i class="fas fa-arrow-up"></i></button>
+                        </div>
+                        <div class="ARTICLE">
+                            <h4 class="text-center label-text-small width-100">技ランクについて</h4>
+                            <div class="content-bg kadomaru">
+                                <div class="style-skill-list">技ランクをあげると何に影響する？</div>
+                                技ランクをあげると以下の項目が上昇します<br>
+                                <i class="fas fa-check-circle"></i>ダメージ<br>
+                                <i class="fas fa-check-circle"></i>命中率<br>
+                                <i class="fas fa-check-circle"></i>状態異常 成功補正値<br>
+                                <i class="fas fa-check-circle"></i>バフ・デバフ量<br>
+                                <br>
+                                <div class="bg-item text-center">ダメージ</div>
+                                ダメージ計算式の項でも説明しています通り、技の威力は<br>
+                                技威力 ＋ (技威力-5 ＊ (rank/100)<br>
+                                で計算されます<br>
+                                技ランクによる威力変動は下記の通りです<br>
+                                <table class="style-skill-list text-center" border="1">
+                                    <tr>
+                                        <td>技威力</td><td>技ランク</td><td>ランク込み威力</td><td>Rank1からの増加量</td>
+                                    </tr>
+                                    <tr><td>10</td><td>1</td><td>10.05</td><td></td></tr>
+                                    <tr><td>10</td><td>99</td><td>14.95</td><td>1.487倍</td></tr>
+                                    <tr><td>28</td><td>1</td><td>28.23</td><td></td></tr>
+                                    <tr><td>28</td><td>99</td><td>50.77</td><td>1.798倍</td></tr>
+                                    <tr><td>73</td><td>1</td><td>73.68</td><td></td></tr>
+                                    <tr><td>73</td><td>99</td><td>140.32</td><td>1.9倍</td></tr>
+                                </table>
+                                <br>
+                                <div class="bg-item text-center">命中率</div>
+                                技ランクが上がることで命中率も増加します<br>
+                                <br>
+                                <div class="bg-item text-center">状態異常 成功補正値</div>
+                                技ランクが上がると状態異常 成功補正値が上がります<br>
+                                状態異常成功率 = 知力 - 敵精神 + 成功補正値 - 状態異常耐性<br>
+                                で計算されるため、補正値も重要な値です
+                                <table class="style-skill-list text-center" border="1">
+                                    <tr>
+                                        <td>確率</td>
+                                        <td style="padding: 0px 10px;">技ランク1<br>変化量</td>
+                                        <td style="padding: 0px 10px;">技ランク99<br>変化量</td>
+                                    </tr>
+                                    <tr><td>小</td><td>15</td><td>22.5</td></tr>
+                                    <tr><td>中</td><td>30</td><td>45</td></tr>
+                                    <tr><td>大</td><td>45</td><td>67.5</td></tr>
+                                    <tr><td>(気絶)小</td><td>7.5</td><td>11.25</td></tr>
+                                    <tr><td>(気絶)中</td><td>15</td><td>22.5</td></tr>
+                                    <tr><td>(気絶)大</td><td>22.25</td><td>33.75</td></tr>
+                                </table>                                
+                                <br>
+                                <div class="bg-item text-center">バフ・デバフ量</div>
+                                技ランクをあげることで、バフ・デバフ量も増加します<br>
+                                バフ・デバフ量は極小〜極大で変わるだけでなく、単体、全体などでも量が代わります<br>
+                                <br>
+                                また、一部の技は技ランクが変わってもバフ・デバフ量が変わらないものもあります<br>
+                                技ランクで効果が変化するかどうかにルールはなく、検証で確認しています<br>
+                                <table class="style-skill-list text-center" border="1">
+                                    <tr>
+                                        <td></td><td>対象</td><td>効果</td>
+                                        <td style="padding: 0px 10px;">技ランク1<br>変化量</td>
+                                        <td style="padding: 0px 10px;">技ランク99<br>変化量</td>
+                                    </tr>
+                                    <tr><td>バフ</td><td>杖 通常攻撃</td><td>小</td><td>10</td><td>-</td></tr>
+                                    <tr><td>バフ</td><td>単体</td><td>小</td><td>15</td><td>25</td></tr>
+                                    <tr><td>バフ</td><td>単体</td><td>中</td><td>20</td><td>30</td></tr>
+                                    <tr><td>バフ</td><td>単体</td><td>大</td><td>30</td><td>40</td></tr>
+                                    <tr><td>バフ</td><td>全体</td><td>小</td><td>25</td><td>-</td></tr>
+                                    <tr><td>バフ</td><td>全体</td><td>中</td><td>30</td><td>-</td></tr>
+                                    <tr><td>デバフ</td><td>単体</td><td>小</td><td>10</td><td>15</td></tr>
+                                    <tr><td>デバフ</td><td>単体</td><td>中</td><td>15</td><td>20</td></tr>
+                                </table>
                             </div>
                             <ins class="adsbygoogle"　style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5008373409434899" data-ad-slot="1992251055"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
                             <button class="icon_btn_positive UP_TOP width-100 width-max fuchidori-white footer-font " style="padding:5px 0px;"> <i class="fas fa-arrow-up d-none d-md-inline"></i> 目次に戻る <i class="fas fa-arrow-up"></i></button>
