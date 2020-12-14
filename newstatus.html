@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#" lang="ja">
+
+<head>
+    <meta charset="utf-8" />
+    <title>【ロマサガRS】最新スタイル ステータス上限</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap/bootstrap.min.css" />
+    <script src="./js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/style2.css" />
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/3.5.2/firebase-ui-auth__ja.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+    <script src="./js/Firebase.js"></script>
+    <script src="./js/utils2.js"></script>
+
+    <script src="./js/data_CHARMASTER.js"></script>
+    <script src="./js/data_STYLEMASTER_style.js"></script>
+</head>
+
+<body>
+    <div class="haikei">
+        <div class="container">
+            <h3 class="text-center title-text">最新スタイル ステータス上限まとめ</h3>
+            <p class="text-right opacity">
+                <small>バグ発見、ご要望は
+                    <a href="https://peing.net/ja/nao_romasaga_rs" target="new">質問箱</a>まで</small>
+            </p>
+            <div class="info-modal">
+                <div class="text-center info-modal-header">データ更新日:<span id="UPDATE"></span></div>
+                <div id="GACHA_AREA" class="width-100"></div>
+            </div>
+            <div class="d-none" id="TEMPLATE">
+                <div class="bg-item head text-center"></div>
+                <table class="tbl width-100">
+                    <tr id="HEAD_ROW" style="border-bottom: 2px solid black;">
+                        <td class="name" style="width:200px">Name</td>
+                        <td class="icon" style="width:100px">Icon</td>
+                        <td class="STR">腕</td><td class="VIT">体</td><td class="DEX">器</td><td class="AGI">速</td>
+                        <td class="INT">知</td><td class="MND">精</td><td class="AI">愛</td><td class="MI">魅</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script>
+        $("#UPDATE").html(UPDATE);
+
+        var gachaStyle = {};
+        for (gacha of OPEN_GACHA) {
+            gachaStyle[gacha] = [];
+        }
+        for (styleId in STYLE_MASTER) {
+            var styleInfo = STYLE_MASTER[styleId];
+            for (gacha of OPEN_GACHA) {
+                if (styleInfo["gacha"].indexOf(gacha) > -1) {
+                    gachaStyle[gacha].push(styleInfo);
+                }
+            }
+        }
+        var gachaSort = [];
+        for (gacha in gachaStyle) {
+            $tmpl = $("#TEMPLATE").clone().attr("id",gacha).removeClass("d-none");
+            $tmpl.find(".head").html(gacha);
+            for (styleInfo of gachaStyle[gacha]) {
+                $row = $("#HEAD_ROW").clone().attr("id","");
+                var styleIcon = getStyleIcon(
+                    styleInfo["Rarity"],
+                    styleInfo["Id"],
+                    "",
+                    true
+                );
+                $row.find(".name").html(styleInfo['Name']);
+                $row.find(".icon").html("").append(styleIcon);
+                for(key of PARAM_KEY) {
+                    $row.find("."+key).html(styleInfo["Limit"+key] + LIMIT_BASE);
+                }
+                $tmpl.find(".tbl").append($row);
+            }
+            $("#GACHA_AREA").append($tmpl);
+        }
+    </script>
+</body>
+
+</html>
