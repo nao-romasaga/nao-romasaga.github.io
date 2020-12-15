@@ -57,7 +57,8 @@
         for (styleId in STYLE_MASTER) {
             var styleInfo = STYLE_MASTER[styleId];
             for (gacha of OPEN_GACHA) {
-                if (styleInfo["gacha"].indexOf(gacha) > -1) {
+                if (styleInfo["gacha"].split("/").length == 1 &&
+                    styleInfo["gacha"].indexOf(gacha) > -1) {
                     gachaStyle[gacha].push(styleInfo);
                 }
             }
