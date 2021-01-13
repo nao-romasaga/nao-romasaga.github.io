@@ -11,6 +11,32 @@
             "type": "green"
         },
         {
+            "startDay": "12",
+            "endDay": "31",
+            "title": "[ガチャ] <br class='hidden pcBlock'>どんどんあがれ！花正月の大合戦開催記念 Romancing祭",
+            "startPrefix": "12:00〜<br>",
+            "endSuffix": "<br>翌 04:00終了",
+            "type": "green"
+        },
+        {
+            "startDay": "1",
+            "endDay": "14",
+            "title": "[イベント] <br class='hidden pcBlock'>財宝の大穴 地図使用期限",
+            "endSuffix": "<br> 翌 04:00終了",
+            "type": "orange",
+            "startNone": true
+        },
+        {
+            "startDay": "12",
+            "endDay": "31",
+            "title": "[イベント] <br class='hidden pcBlock'>どんどんあがれ！花正月の大合戦",
+            "startPrefix": "12:00〜<br>",
+            "endSuffix": "<br> 翌 04:00終了",
+            "type": "orange"
+        },
+
+
+        {
             "startDay": "31",
             "endDay": "29",
             "title": "[イベント] <br class='hidden pcBlock'>十二支合戦と邪神の塔",
@@ -87,7 +113,7 @@
         {
             "startDay": "1",
             "endDay": "14",
-            "title": "[イベント] <br class='hidden pcBlock'>メリークリスマス！聖夜のサンタ合戦<br>モニカのクリスマス大作戦<br>クリスマスの奇跡",
+            "title": "[イベント] <br class='hidden pcBlock'>・メリークリスマス！星夜のサプライズプレゼント<br>・メリークリスマス！聖夜のサンタ合戦<br>・モニカのクリスマス大作戦<br>・クリスマスの奇跡",
             "startPrefix": "開催中<br>",
             "endSuffix": "<br>翌 4:00 終了",
             "type": "orange"
