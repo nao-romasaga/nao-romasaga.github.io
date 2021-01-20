@@ -585,7 +585,8 @@
 
                 var rare = row['Rarity'].toLowerCase();
                 if(row['illust'] != undefined){
-                    $tr.find(".ICON").append(getWeaponIcon(rare, `armor_${row['illust']}`, ""));
+                    prefix = (type == "acc") ? "accessory": "armor";
+                    $tr.find(".ICON").append(getWeaponIcon(rare, `${prefix}_${row['illust']}`, ""));
                 } else {
                     var img = getImgPath(`equipment/${type}_${rare}.png`);
                     $tr.find(".ICON").html(`<img src="${img}" width=40>`);
@@ -731,7 +732,8 @@
                             $rankTr1 = $("#RANK_TMPL1").clone().removeAttr("id").removeClass("").addClass("RANK_TR "+ targetClass);
                             rare = armor['Rarity'].toLowerCase();
                             if(armor['illust'] != undefined){
-                                $rankTr1.find(".ICON").append(getWeaponIcon(rare, `armor_${armor['illust']}`, ""));
+                                prefix = (type == "acc") ? "accessory": "armor";
+                                $rankTr1.find(".ICON").append(getWeaponIcon(rare, `${prefix}_${armor['illust']}`, ""));
                             } else {
                                 $rankTr1.find(".ICON").append(getWeaponIcon(rare, `${type}_${rare}`, ""));
                             }
