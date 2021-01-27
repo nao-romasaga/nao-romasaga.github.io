@@ -70,6 +70,10 @@
         .icon-left-margin {
             padding-left:50px;
         }
+        .TURN_ACTION_BLOCK {
+            /* height: 100px; */
+            overflow-y: scroll;
+        }
         body{
         user-select:inherit;
         -webkit-user-select:inherit;
@@ -113,12 +117,12 @@
                         class="fas fa-sort"></i>)</div>
                 <div id="jokenbody" class="card-body" style="padding:0px 5px;">
                     <ul class="trianglelist list5">
-                        <li>計測ステータス：キャラ最大素ステ、スタイルレベル最大で装備、裏なしです</li>
-                        <li>マスターレベル：11/30時点の最大値を採用。
-                            剣=44、大剣=41、斧=35、
-                            小剣=38、槍=39、弓=30、
+                        <li>計測ステータス：キャラ最大素ステ、スタイルレベル最大。装備あり、裏+8</li>
+                        <li>マスターレベル：1/23時点の最大値を採用。
+                            剣=45、大剣=41、斧=35、
+                            小剣=39、槍=40、弓=31、
                             棍棒=34、体術=42、銃=25、
-                            杖=44
+                            杖=45
                         </li>
                         <li>技ランク：全て99</li>
                         <li>聖石：+15%を使用しています</li>
@@ -254,7 +258,7 @@
                                 data-label="陰弱点" href="#enemy_8" onclick=""><img src="http://romasagatool.com/img/icon/icon_in.png" ></a></li>
 <!--
                         <li class="col-3 col-sm xs-pad0"><a class="enemyfilterList pad0" data-type="EnemyClassFilter"
-                                data-label="バルテルミー" href="#enemy_10" onclick=""><img src="http://romasagatool.com/img/enemy/val.png" style="width: 40px;"><br>感謝戦<br>最終戦</a></li>
+                                data-label="レイドボス" href="#enemy_9" onclick=""><img src="http://romasagatool.com/img/enemy/raidboss.jpg" style="width: 40px;"><br>制圧戦<br>ﾚｲﾄﾞﾎﾞｽ</a></li>
                         <li class="col-3 col-sm xs-pad0"><a class="enemyfilterList pad0" data-type="EnemyClassFilter"
                                 data-label="アビスナーガ" href="#enemy_12" onclick=""><img src="http://romasagatool.com/img/enemy/abyss.png" style="width: 40px;"><br>ｱﾋﾞｽﾅｰｶﾞ<br>(UH25)</a></li>
 -->                                
@@ -445,17 +449,37 @@
                     <div class="text-center label-text-small width-100" id="STYLE_HEADER">スタイル選択</div>
                     <div id="styleChoice"></div>
                     <div class="text-center label-text-small width-100">SS武器 絞り込み</div>
+                    SS武器の切り替えは負荷対策のため下記の「絞り込み」をタップしないと結果が反映されません<br>
+                    <button class="icon_btn_negative text-nowrap" id="SS_FILTER" style="margin-bottom: 10px;">　絞り込み　</button><br>
+                    
                     <div class="row no-gutters text-center" style="margin-bottom: 10px;">
-                        <div class="col-4 col-md ss-filter"><span class="icon_xs icon_ken"></span><div id="SS_icon_ken"></div></div>
-                        <div class="col-4 col-md ss-filter"><span class="icon_xs icon_dken"></span><div id="SS_icon_dken"></div></div>
-                        <div class="col-4 col-md ss-filter"><span class="icon_xs icon_ono"></span><div id="SS_icon_ono"></div></div>
-                        <div class="col-4 col-md ss-filter"><span class="icon_xs icon_kon"></span><div id="SS_icon_kon"></div></div>
-                        <div class="col-4 col-md ss-filter"><span class="icon_xs icon_tai"></span><div id="SS_icon_tai"></div></div>
-                        <div class="col-4 col-md ss-filter"><span class="icon_xs icon_ju"></span><div id="SS_icon_ju"></div></div>
-                        <div class="col-4 col-md ss-filter"><span class="icon_xs icon_sken"></span><div id="SS_icon_sken"></div></div>
-                        <div class="col-4 col-md ss-filter"><span class="icon_xs icon_yari"></span><div id="SS_icon_yari"></div></div>
-                        <div class="col-4 col-md ss-filter"><span class="icon_xs icon_yumi"></span><div id="SS_icon_yumi"></div></div>
-                        <div class="col-12 col-md ss-filter"><span class="icon_xs icon_tsue"></span><div id="SS_icon_tsue"></div></div>
+                        <div class="col-12 col-lg">
+                            SS武器 進化一括切り替え
+                        </div>
+                        <div class="col-6 col-lg">
+                            <button class="icon_btn_negative text-nowrap" id="SS_FIRST_TOGGLE">全1段目 ON/OFF</button>                            
+                        </div>
+                        <div class="col-6 col-lg">
+                            <button class="icon_btn_negative text-nowrap" id="SS_SECOND_TOGGLE">全2段目 ON/OFF</button>                            
+                        </div>
+                    </div>
+                    <div class="row no-gutters text-center" style="margin-bottom: 10px;">
+                        <div class="col-4 col-md-2 col-lg ss-filter"><span class="icon_xs icon_ken"></span><div id="SS_icon_ken"></div></div>
+                        <div class="col-4 col-md-2 col-lg ss-filter"><span class="icon_xs icon_dken"></span><div id="SS_icon_dken"></div></div>
+                        <div class="col-4 col-md-2 col-lg ss-filter"><span class="icon_xs icon_ono"></span><div id="SS_icon_ono"></div></div>
+                        <div class="col-4 col-md-2 col-lg ss-filter"><span class="icon_xs icon_kon"></span><div id="SS_icon_kon"></div></div>
+                        <div class="col-4 col-md-2 col-lg ss-filter"><span class="icon_xs icon_tai"></span><div id="SS_icon_tai"></div></div>
+                        <div class="col-4 col-md-2 col-lg ss-filter"><span class="icon_xs icon_ju"></span><div id="SS_icon_ju"></div></div>
+                        <div class="col-4 col-md-2 col-lg ss-filter"><span class="icon_xs icon_sken"></span><div id="SS_icon_sken"></div></div>
+                        <div class="col-4 col-md-2 col-lg ss-filter"><span class="icon_xs icon_yari"></span><div id="SS_icon_yari"></div></div>
+                        <div class="col-4 col-md-2 col-lg ss-filter"><span class="icon_xs icon_yumi"></span><div id="SS_icon_yumi"></div></div>
+                    </div>
+                    <div class="row no-gutters text-center" style="margin-bottom: 10px;">
+                        <div class="col-4 col-md-2 col-lg ss-filter"><span class="icon_xs icon_tsue"></span><span class="icon_xs icon_hi"></span><div id="SS_icon_tsue51"></div></div>
+                        <div class="col-4 col-md-2 col-lg ss-filter"><span class="icon_xs icon_tsue"></span><span class="icon_xs icon_hi"></span><span class="icon_xs icon_mizu"></span><div id="SS_icon_tsue5152"></div></div>
+                        <div class="col-4 col-md-2 col-lg ss-filter"><span class="icon_xs icon_tsue"></span><span class="icon_xs icon_kaze"></span><div id="SS_icon_tsue54"></div></div>
+                        <div class="col-4 col-md-2 col-lg ss-filter"><span class="icon_xs icon_tsue"></span><span class="icon_xs icon_hikari"></span><div id="SS_icon_tsue55"></div></div>
+                        <div class="col-4 col-md-2 col-lg ss-filter"><span class="icon_xs icon_tsue"></span><span class="icon_xs icon_yami"></span><div id="SS_icon_tsue56"></div></div>
                     </div>
                     <div class="text-center label-text-small width-100">多段攻撃ヒット数 絞り込み</div>
                     <div class="row no-gutters text-center" style="margin-bottom: 10px;">
