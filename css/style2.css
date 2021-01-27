@@ -1075,6 +1075,22 @@ input[type=range]::-ms-tooltip {
 .hidden.pcBlock {
     display: inline;
 }
+.icon-label {
+    border-radius: 5px;
+    font-size: 8px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 95%;
+    height: 10px;
+    display: table;
+    background-color: rgba(25,25,25,0.8);
+    color: white;    
+}
+.icon-label-inner {
+    display: table-cell;
+    vertical-align: middle;    
+}
 @media screen and (max-width: 640px) {
     .hidden.pcBlock {
         display: none;
