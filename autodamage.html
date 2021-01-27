@@ -174,7 +174,7 @@
                         <div class="col-12 col-md-6">
                             <div class="text-center label-text-small width-100">ターン数 選択</div>
                             シミュレーションの<br class="hidden spBlock">ターン数を変更します
-                            <table class="width-max width-100" style="margin:auto;">
+                            <table class="width-max width-100" >
                                 <tr>
                                     <td>開幕用</td>
                                     <td><button class="width-100 icon_btn_off optionButton text-nowrap" data-on="0" data-name="turn" data-label="1" data-bp=10>1ターン</button></td>
@@ -191,8 +191,8 @@
                                     <td>ターン↔︎ラウンド<br class="hidden spBlock">切り替え</td>
                                     <td><button class="width-100 icon_btn_off optionButton text-nowrap" data-on="0" data-name="round">ラウンド <i class="TOGGLE fas fa-toggle-off"></i></button></td>
                                 </tr>
-                                <tr><td colspan="2" class="small text-left text-nowrap">ターンごとの計算からラウンドごとの計算に切り替わります<br>
-                                    ・「常時勇健発動」「バフ持ち越しなし」が適応されます</td>
+                                <tr><td colspan="2" class="small text-left text-nowrap">ターン毎計算からラウンド毎計算に切り替わります<br>
+                                    ・勇健、強襲、バフ持ち越しなしが適応<span class="d-none d-sm-inline">されます</span></td>
                                 </tr>
                                 <tr>
                                     <td><button class="width-100 icon_btn_off optionButton text-nowrap" data-on="0" data-name="turn" data-label="1" data-bp=13>BP13 1ターン</button></td>
@@ -205,7 +205,7 @@
                                     <td><button class="width-100 icon_btn_off optionButton" data-on="0" data-name="turn" data-label="1" data-bp=8>BP8 1ターン</button></td>
                                 </tr>
                                 -->
-                                <tr><td colspan="2" class="small  text-left text-nowrap">1-2ラウンドで動かない場合などの調査にご利用ください</td></tr>
+                                <tr><td colspan="2" class="small  text-left text-nowrap">R1,R2で動かない場合などの調査にご利用ください</td></tr>
 
                                 <!--
                                 <tr>
@@ -452,7 +452,7 @@
                     SS武器の切り替えは負荷対策のため下記の「絞り込み」をタップしないと結果が反映されません<br>
                     <button class="icon_btn_negative text-nowrap" id="SS_FILTER" style="margin-bottom: 10px;">　絞り込み　</button><br>
                     
-                    <div class="row no-gutters text-center" style="margin-bottom: 10px;">
+                    <div class="row no-gutters text-center width-max " style="margin-bottom: 10px;">
                         <div class="col-12 col-lg">
                             SS武器 進化一括切り替え
                         </div>
