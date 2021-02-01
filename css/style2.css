@@ -310,20 +310,20 @@ html {
 /* 1024からはこっち */
 @media screen and (min-width:1024px) {
     .haikei::before {
-        /*background: url(http://romasagatool.com/img/bg_pc2.jpg) no-repeat;
-        background-position:50% 100%;*/
-        background: url(http://romasagatool.com/img/bg2nd.jpg) no-repeat;
-        background-position:50% 20%;
+        background: url(http://romasagatool.com/img/bg_pc2.jpg) no-repeat;
+        background-position:50% 100%;
+        /*background: url(http://romasagatool.com/img/bg2nd.jpg) no-repeat;
+        background-position:50% 20%;*/
         background-size:cover;
         }
 }
 /* 1023まではこっち */
 @media screen and (max-width:1023px) {
     .haikei::before {
-        /*background: url(http://romasagatool.com/img/bg.jpg) no-repeat;
-        background-position:50% 40%;*/
-        background: url(http://romasagatool.com/img/bg_2nd.jpg) no-repeat;
-        background-position:50% 20%;
+        background: url(http://romasagatool.com/img/bg.jpg) no-repeat;
+        background-position:50% 40%;
+        /*background: url(http://romasagatool.com/img/bg_2nd.jpg) no-repeat;
+        background-position:50% 20%;*/
         background-size:cover;
     }    
 }
