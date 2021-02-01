@@ -1,243 +1,62 @@
 {
     "year": 2021,
-    "month": 1,
+    "month": 2,
     "event": [
         {
             "startDay": "1",
-            "endDay": "28",
-            "title": "[ガチャ] <br class='hidden pcBlock'>迎春！オールスター謹賀新年祭 Romancing祭/迎春！オールスター謹賀新年祭 Ultra DXガチャ",
+            "endDay": "4",
+            "title": "[キャンペーン] <br class='hidden pcBlock'>魔物 挑戦回数2倍<br>ザクザク財宝収集 オーラム5倍",
             "startPrefix": "開催中<br>",
-            "endSuffix": "<br>翌 04:00終了",
-            "type": "green"
-        },
-        {
-            "startDay": "20",
-            "endDay": "31",
-            "title": "[ガチャ] <br class='hidden pcBlock'>ロマンシング サ・ガ 発売日記念 Ultra DXガチャ",
-            "startPrefix": "開催中<br>",
-            "endSuffix": "<br>翌 04:00終了",
-            "type": "green"
-        },
-        {
-            "startDay": "12",
-            "endDay": "31",
-            "title": "[ガチャ] <br class='hidden pcBlock'>どんどんあがれ！花正月の大合戦開催記念 Romancing祭",
-            "startPrefix": "12:00〜<br>",
-            "endSuffix": "<br>翌 04:00終了",
-            "type": "green"
+            "endSuffix": "<br>翌 4:00 終了",
+            "type": "blue"
         },
         {
             "startDay": "1",
-            "endDay": "14",
-            "title": "[イベント] <br class='hidden pcBlock'>財宝の大穴 地図使用期限",
-            "endSuffix": "<br> 翌 04:00終了",
-            "type": "orange",
+            "endDay": "1",
+            "title": "[育成CP] <br class='hidden pcBlock'>探索！宝物眠る洞窟4倍 メイン3倍 体術・銃・棍棒",
+            "endSuffix": "<br>翌 4:00 終了",
+            "type": "red",
             "startNone": true
         },
         {
-            "startDay": "12",
-            "endDay": "31",
-            "title": "[イベント] <br class='hidden pcBlock'>どんどんあがれ！花正月の大合戦",
-            "startPrefix": "12:00〜<br>",
-            "endSuffix": "<br> 翌 04:00終了",
-            "type": "orange"
-        },
-
-
-        {
-            "startDay": "31",
-            "endDay": "29",
-            "title": "[イベント] <br class='hidden pcBlock'>十二支合戦と邪神の塔",
-            "startPrefix": "開催中<br>",
-            "endSuffix": "<br>翌 04:00終了",
-            "type": "orange"
-        },
-        {
-            "startDay": "1",
-            "endDay": "28",
-            "title": "[育成CP] <br class='hidden pcBlock'>イベント4倍 メイン3倍 ガチャキャラ・剣",
-            "startPrefix": "開催中",
+            "startDay": "2",
+            "endDay": "3",
+            "title": "[育成CP] <br class='hidden pcBlock'>探索！宝物眠る洞窟4倍 メイン3倍 槍・弓・小剣",
+            "startPrefix": "04:00 開始<br>",
             "endSuffix": "<br>翌 4:00 終了",
             "type": "red"
-        },
-        {
-            "startDay": "4",
-            "endDay": "28",
-            "title": "[イベント] <br class='hidden pcBlock'>迎春！オールスター対抗制圧戦！",
-            "startPrefix": "12:00 開始<br>",
-            "endSuffix": "<br>翌 04:00終了",
-            "type": "orange"
         },
         {
             "startDay": "4",
             "endDay": "5",
-            "title": "[育成CP] <br class='hidden pcBlock'>制圧戦・メイン3倍 RS1/RS2/RS3/MS",
-            "startPrefix": "12:00 開始<br>",
-            "endSuffix": "<br>17:00終了",
-            "type": "red"
-        },
-        {
-            "startDay": "5",
-            "endDay": "6",
-            "title": "[育成CP] <br class='hidden pcBlock'>制圧戦・メイン3倍 SF1/SF2",
-            "startPrefix": "17:00 開始<br>",
-            "endSuffix": "<br>17:00終了",
-            "type": "red"
-        },
-        {
-            "startDay": "6",
-            "endDay": "7",
-            "title": "[育成CP] <br class='hidden pcBlock'>制圧戦・メイン3倍 GB1/GB2",
-            "startPrefix": "17:00 開始<br>",
-            "endSuffix": "<br>17:00終了",
-            "type": "red"
-        },
-        {
-            "startDay": "7",
-            "endDay": "8",
-            "title": "[育成CP] <br class='hidden pcBlock'>制圧戦・メイン3倍 SSG/ES/US",
-            "startPrefix": "17:00 開始<br>",
-            "endSuffix": "<br>17:00終了",
-            "type": "red"
-        },
-        {
-            "startDay": "8",
-            "endDay": "9",
-            "title": "[育成CP] <br class='hidden pcBlock'>制圧戦・メイン3倍 SagaRS",
-            "startPrefix": "17:00 開始<br>",
-            "endSuffix": "<br>17:00終了",
-            "type": "red"
-        },
-        {
-            "startDay": "9",
-            "endDay": "11",
-            "title": "[育成CP] <br class='hidden pcBlock'>制圧戦・メイン3倍 全キャラ",
-            "startPrefix": "17:00 開始<br>",
-            "endSuffix": "<br>17:00終了",
-            "type": "red"
-        },
-
-
-        {
-            "startDay": "1",
-            "endDay": "14",
-            "title": "[イベント] <br class='hidden pcBlock'>・メリークリスマス！星夜のサプライズプレゼント<br>・メリークリスマス！聖夜のサンタ合戦<br>・モニカのクリスマス大作戦<br>・クリスマスの奇跡",
-            "startPrefix": "開催中<br>",
-            "endSuffix": "<br>翌 4:00 終了",
-            "type": "orange"
-        },
-        {
-            "startDay": "1",
-            "endDay": "31",
-            "title": "[イベント] <br class='hidden pcBlock'>良いお年を！年越し108クエストラッシュ<br>良いお年を！限定20回財宝の穴",
-            "startPrefix": "開催中<br>",
-            "endSuffix": "<br>翌 4:00 終了",
-            "type": "orange"
-        },
-        {
-            "startDay": "1",
-            "endDay": "7",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>ザクザク財宝収集 オーラム5倍",
-            "startPrefix": "開催中<br>",
-            "endSuffix": "<br>翌 4:00 終了",
-            "type": "blue"
-        },
-        {
-            "startDay": "30",
-            "endDay": "99",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>魔物 挑戦回数2倍<br>ザクザク財宝収集 オーラム5倍",
-            "startPrefix": "04:00 開始<br>",
-            "endSuffix": "<br>2/5 4:00 終了",
-            "type": "blue"
-        },
-        {
-            "startDay": "29",
-            "endDay": "30",
-            "title": "[育成CP] <br class='hidden pcBlock'>探索！宝物眠る洞窟4倍 メイン3倍 剣・大剣・斧",
-            "startPrefix": "12:00〜<br>",
-            "endSuffix": "<br>翌 4:00 終了",
-            "type": "red"
-        },
-        {
-            "startDay": "31",
-            "endDay": "99",
-            "title": "[育成CP] <br class='hidden pcBlock'>探索！宝物眠る洞窟4倍 メイン3倍 体術・銃・棍棒",
-            "startPrefix": "4:00〜<br>",
-            "endSuffix": "<br>2/2 4:00 終了",
-            "type": "red"
-        },
-
-        {
-            "startDay": "21",
-            "endDay": "28",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>魔物 挑戦回数2倍<br>ザクザク財宝収集 オーラム2倍",
+            "title": "[育成CP] <br class='hidden pcBlock'>探索！宝物眠る洞窟4倍 メイン3倍 杖",
             "startPrefix": "04:00 開始<br>",
             "endSuffix": "<br>翌 4:00 終了",
-            "type": "blue"
-        },
-        {
-            "startDay": "25",
-            "endDay": "31",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>「メイン全話」<br>SS[炎の渦を！]ミリアム ドロップ<br>単改石・二改石 ドロップ",
-            "startPrefix": "18:00 開始<br>",
-            "endSuffix": "<br>翌 4:00 終了",
-            "type": "blue"
-        },
-        {
-            "startDay": "25",
-            "endDay": "31",
-            "title": "[スタ半] <br class='hidden pcBlock'>「メイン 全話」",
-            "startPrefix": "18:00 開始<br>",
-            "endSuffix": "<br>翌 4:00 終了",
-            "type": "blue"
-        },
-        {
-            "startDay": "25",
-            "endDay": "99",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>「RS1発売日記念メダル」ドロップ 〜2/10 04:00",
-            "startPrefix": "18:00 開始<br>",
-            "type": "blue"
-        },
-        {
-            "startDay": "25",
-            "endDay": "31",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>裏道場の証 獲得量2倍<br>卵のから ドロップ量2倍",
-            "startPrefix": "18:00 開始<br>",
-            "endSuffix": "<br>翌 4:00 終了",
-            "type": "blue"
+            "type": "red"
         },
         {
             "startDay": "0",
-            "endDay": "28",
-            "title": "★★公式生放送 #7 〜アンケート回答 回〜★★",
-            "endSuffix": "<br>20:00-",
-            "type": "yellow",
-            "startNone": true
-        },
-        {
-            "startDay": "0",
-            "endDay": "28",
+            "endDay": "5",
             "title": "★★ データ更新 ★★",
             "endSuffix": "",
             "type": "yellow",
             "startNone": true
         },
-
-        {
-            "startDay": "29",
-            "endDay": "99",
-            "title": "[育成CP] <br class='hidden pcBlock'>探索！宝物眠る洞窟・メイン3倍 SF1・2",
-            "startPrefix": "12:00 開始<br>",
-            "endSuffix": "<br>2/15 4:00 終了",
-            "type": "red"
-        },
         {
             "startDay": "1",
-            "endDay": "3",
-            "title": "[キャンペーン] <br class='hidden pcBlock'>裏道場の証 獲得量2倍<br>卵のから ドロップ量2倍",
+            "endDay": "14",
+            "title": "[育成CP] <br class='hidden pcBlock'>探索！宝物眠る洞窟・メイン3倍 SF1・2",
             "startPrefix": "開催中<br>",
             "endSuffix": "<br>翌 4:00 終了",
-            "type": "blue"
+            "type": "red"
+        },        
+        {
+            "startDay": "6",
+            "endDay": "7",
+            "title": "[育成CP] <br class='hidden pcBlock'>探索！宝物眠る洞窟4倍 メイン3倍 全キャラ",
+            "startPrefix": "04:00 開始<br>",
+            "endSuffix": "<br>翌 4:00 終了",
+            "type": "red"
         }
  ],
     "holiday": [
