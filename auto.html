@@ -305,6 +305,11 @@
                 <div class="text-center info-modal-header"><i class="fas fa-cog"></i> 条件設定</div>
                 <div class="bg-item text-center">スタイル選択</div>
                 <div id="styleChoice"></div>
+                <div id="styleAbility" class="bg-simple width-max small" style="padding: 8px 29px; line-height: 15px;">
+                    アビリティ1<br>
+                    アビリティ2<br>
+                    アビリティ3<br>
+                </div>                
                 <div class="bg-item text-center">技/術・覚醒 選択</div>                
                 <div class="small">
                     ◇タップで覚醒/◆タップで取消
@@ -336,7 +341,7 @@
                                     <button class="ON_OFF icon_btn_positive text-nowrap" style="padding: 0px 10px;"><span class="BTN_LABEL">ON</span> <i class="TOGGLE fas fa-toggle-on"></i></button>
                                     <button class="RENTATSU icon_btn_negative text-nowrap" style="margin-left:5px; padding: 5px 10px;"><span class="BTN_LABEL">練達</span> <i class="TOGGLE fas fa-toggle-off"></i></button>
                                 </td>
-                                <td class="KAKUSEI small text-nowrap">
+                                <td class="KAKUSEI small text-nowrap" style="letter-spacing: -6px; font-size: 20px;">
                                     <span class="kakuseiCheck KAKUSEI1 d-none yubi" data-kakusei="1">◇ </span>　
                                     <span class="kakuseiCheck KAKUSEI2 d-none yubi" data-kakusei="2">◇ </span>　
                                     <span class="kakuseiCheck KAKUSEI3 d-none yubi" data-kakusei="3">◇</span>
@@ -377,10 +382,6 @@
                             <div class="col-12 col-sm-6 ONOFF_BTN icon_btn_off optionButton" data-type="normal">1T目 通常攻撃固定 <i class="fas fa-toggle-off" style="vertical-align: middle; font-size: 20px;"></i></div><br>
                             <div class="col-12 col-sm-6 ONOFF_BTN icon_btn_off optionButton ADD100" data-type="add100" data-value="100">追撃 確定発動 <i class="fas fa-toggle-off" style="vertical-align: middle; font-size: 20px;"></i></div><br>
                             <div class="col-12 col-sm-6 ONOFF_BTN icon_btn_off optionButton ADD0" data-type="add0" data-value="0">追撃オフ <i class="fas fa-toggle-off" style="vertical-align: middle; font-size: 20px;"></i></div><br>
-                            <div class="col-12 col-sm-6 ONOFF_BTN icon_btn_off optionButton" data-type="showtime">ショウタイム 追加 <i class="fas fa-toggle-off" style="vertical-align: middle; font-size: 20px;"></i></div><br>
-                            <div class="col-12 col-sm-6 ONOFF_BTN icon_btn_off optionButton" data-type="kizuna">氷炎の絆 追加 <i class="fas fa-toggle-off" style="vertical-align: middle; font-size: 20px;"></i></div><br>
-                            <div class="col-12 col-sm-6 ONOFF_BTN icon_btn_off optionButton" data-type="dayou">戦士鼓舞(打陽) 追加 <i class="fas fa-toggle-off" style="vertical-align: middle; font-size: 20px;"></i></div><br>
-                            <div class="col-12 col-sm-6 ONOFF_BTN icon_btn_off optionButton" data-type="zanyou">戦士鼓舞(斬陽) 追加 <i class="fas fa-toggle-off" style="vertical-align: middle; font-size: 20px;"></i></div><br>
                         </div>
                     </div>
                     <div class="col-6 col-md-3 text-center">
@@ -680,8 +681,8 @@
                                 <td class="d-none d-lg-table-cell">消費</td>
                                 <td class="">残BP</td>
                                 <td class="d-none d-xs-table-cell">Status</td>
-                                <td class="d-none d-xs-table-cell">ｱﾋﾞ</td>
                                 <td class="d-none d-xs-table-cell">ﾊﾞﾌ</td>
+                                <td class="d-none d-xs-table-cell">ｱﾋﾞ</td>
                                 <td class="d-none d-lg-table-cell">敵ｽﾃ</td>
                                 <td class="d-none d-lg-table-cell">ﾃﾞﾊﾞﾌ</td>
                                 <td class="d-none d-lg-table-cell">耐性</td>
@@ -702,10 +703,10 @@
                             <td class="d-none d-lg-table-cell text-right USEBP"></td>
                             <td class="text-right LEFT_BP"></td>
                             <td class="d-none d-xs-table-cell text-right ATTACK_PARAM"></td>
-                            <td class="d-none d-xs-table-cell text-right"><span class="ABILITY_PER"></span>%</td>
-                            <td class="d-none d-xs-table-cell text-right"><span class="BUFF"></span>%</td>
+                            <td class="d-none d-xs-table-cell text-right"><span class="BUFF"></span></td>
+                            <td class="d-none d-xs-table-cell text-right"><span class="ABILITY_PER"></span></td>
                             <td class="d-none d-lg-table-cell text-right ENEMY_PARAM"></td>
-                            <td class="d-none d-lg-table-cell text-right"><span class="DEBUFF"></span>%</td>
+                            <td class="d-none d-lg-table-cell text-right"><span class="DEBUFF"></span></td>
                             <td class="d-none d-lg-table-cell text-right ENEMY_RESIST"></td>
                             <td class="d-none d-xs-table-cell text-right ABILITY fuchidori-blue text-nowrap" style="line-height: 20px;"></td>
                         </tr>
