@@ -271,6 +271,18 @@ html {
     border-radius: 6px;
     font-size: 8px;
 }
+.dot-nbai-label {
+    position:absolute;
+    top:0;
+    left: -10px;
+    height: 20px;
+    width: 30px;
+    background-color: rgba(100, 100, 80, 0.8);
+    color: white;
+    padding: 0px 3px;
+    border-radius: 6px;
+    font-size: 12px;
+}
 
 .char-choise-section {
 	overflow-x: hidden;
