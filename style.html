@@ -1110,10 +1110,37 @@
                                 </div>
                             </div>
                             <style>
+                                tr.damage-col td:nth-child(3) {
+                                    padding-right: 5px;
+                                    border-right: 1px dashed lightblue;
+                                }
+                                tr.damage-col td:nth-child(5) {
+                                    padding-right: 5px;
+                                    border-right: 1px dashed lightblue;
+                                }
+                                .damage-col-head {
+                                    border-bottom: 1px solid lightblue;
+                                }
+                                tr.damage-col-head td:nth-child(2) {
+                                    padding-right: 5px;
+                                    border-right: 1px dashed lightblue;
+                                }
+                                tr.damage-col-head td:nth-child(4) {
+                                    padding-right: 5px;
+                                    border-right: 1px dashed lightblue;
+                                }
                                 .damage-col {
                                     border-bottom: 1px solid lightblue;
                                     font-size: 20px;
                                 }
+                                /* 画面サイズ767(ipadの768は含まない)まで */
+                                @media screen and (max-width:767px) {
+                                    .damage-col {
+                                        border-bottom: 1px solid lightblue;
+                                        font-size: 16px;
+                                    }
+                                }
+
                             </style>
                             <div class="col-12 col-lg-6">
                                 <div class="bg-simple small text-nowrap text-center width-max" style="padding: 7px 20px; color: white;">
@@ -1124,7 +1151,7 @@
                                             <td colspan=2>威力24</td>
                                             <td colspan=2>威力36</td>
                                         </tr>
-                                        <tr style="border-bottom: 1px solid lightblue;">
+                                        <tr class="damage-col-head">
                                             <td>技<span class="d-none d-sm-inline">ﾀﾞﾒｰｼﾞ</span></td><td>術<span class="d-none d-sm-inline">ﾀﾞﾒｰｼﾞ</span></td>
                                             <td>技<span class="d-none d-sm-inline">ﾀﾞﾒｰｼﾞ</span></td><td>術<span class="d-none d-sm-inline">ﾀﾞﾒｰｼﾞ</span></td>
                                             <td>技<span class="d-none d-sm-inline">ﾀﾞﾒｰｼﾞ</span></td><td>術<span class="d-none d-sm-inline">ﾀﾞﾒｰｼﾞ</span></td>
