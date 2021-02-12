@@ -30,6 +30,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
         <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+
         <link rel="stylesheet" href="./css/bootstrap/bootstrap.min.css">
         <script src="./js/bootstrap/bootstrap.min.js"></script>
         <link rel="stylesheet" type="text/css" href="./css/style2.css">
@@ -38,7 +39,9 @@
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
         <script src="./js/Firebase.js"></script>
-        <script src="./js/jinkei.js" ></script>
+        <script src="./js/data_WEAPON.js"></script>
+        <script src="./js/data_ARMOR_RANK.js"></script>
+    
         <script src="./js/damage.js" ></script>
         <script src="./js/utils2.js" ></script>
         <script src="./js/data_ENEMY.js" ></script>
@@ -54,8 +57,18 @@
         <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-    </head>
+        <![endif]-->        
+        <style>
+            .historyTable{
+                    border-collapse: collapse;
+                    border-style: hidden;
+            }
+
+            .historyTable td, table th {
+                padding: 2px 8px;
+                    border: 1px solid #faf0b4;
+            }
+        </style>            </head>
     <body>
         <div class ="haikei"><div class="container">
 
@@ -70,90 +83,83 @@
                     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                 </div>
 
-                <div class="row">
-                    <div class="form-group col-12">
-                        <div class="card">
-                            <div class="card-header bg-primary" style="color:white">ダメージ計算式 詳細</div>
-                            <div class="card-body">
-                                ダメージ ＝ 【武器＋技】 × 【ステータス】 × 【敵耐性 × 倍率係数 ÷ 10】
-                                <hr>
-                                <div class="row">
-                                    <div class="col-4 bg-primary text-center h5 text-white">武器+技<br><span id="D1">0.00</span></div>
-                                    <div class="col-4 bg-primary text-center h5 text-white">ステ<span class="d-md-none"><br>係数</span><span class="d-none d-md-inline">ータス</span><br><span id="D2">1.00</span></div>
-                                    <div class="col-4 bg-primary text-center h5 text-white">係数<br><span id="D3">0.00</span></div>
-                                    <div class="col-4 d-none d-md-block">
-                                        武器係数: <span id="WP_VAL"></span><br>
-                                        <small style="color:gray">　武器威力 × <span id="WP_CONST">1.5</span></small><br>
-                                        技係数: <span id="SK_VAL"></span><br>
-                                        <small style="color:gray">　技威力 + Rank係数</small><br>                                
-                                        Rank係数: <span id="RK_VAL"></span><br>
-                                        <small style="color:gray">　(技威力 - 5) * ( (<span id="RNK_CONST">100+rank</span>) /100 )</small><br>
-                                    </div>
-                                    <div class="col-4 d-none d-md-block">
-                                        ステータス係数: <span id="ST_VAL"></span><br>
-                                        <small style="color:gray">　1 + <span id="ST_CONST">4 × 腕力 - 1.5</span> × 敵体力</small><br>
-                                        <small style="color:gray">　1 + <span id="W_VAL">0</span> - <span id="V_VAL">0</span></small><br>
-                                    </div>
-                                    <div class="col-4 d-none d-md-block">
-                                        敵耐性: <span id="RE_VAL"></span>%<br>
-                                        <small style="color:gray">　1 / (1 + 0.008 × 耐性値)</small><br>
-                                        <small style="color:gray">　1 / (1 + 0.008 × <span id="RE_CONST"></span>)</small><br>
-                                        倍率係数: <span id="KEI_VAL"></span>% (乱数=6)<br>
-                                        <small style="color:gray">　1 + (Mレベル + アビリティ + 乱数 - 6) / 100</small><br>
-                                        <small style="color:gray">　マスターレベル: <span id="ML_VAL"></span>%</small><br>
-                                        <small style="color:gray">　アビリティ: <span id="AB_VAL"></span>%</small><br>
-                                    </div>
+                <div class="form-group">
+                    <div class="card">
+                        <div class="card-header bg-primary" style="color:white">ダメージ計算式 詳細</div>
+                        <div class="card-body">
+                            ダメージ ＝ 【武器＋技】 × 【ステータス】 × 【敵耐性 × 倍率係数 ÷ 10】
+                            <hr>
+                            <div class="row">
+                                <div class="col-4 bg-primary text-center h5 text-white">武器+技<br><span id="D1">0.00</span></div>
+                                <div class="col-4 bg-primary text-center h5 text-white">ステ<span class="d-md-none"><br>係数</span><span class="d-none d-md-inline">ータス</span><br><span id="D2">1.00</span></div>
+                                <div class="col-4 bg-primary text-center h5 text-white">係数<br><span id="D3">0.00</span></div>
+                                <div class="col-4 d-none d-md-block">
+                                    武器係数: <span id="WP_VAL"></span><br>
+                                    <small style="color:gray">　武器威力 × <span id="WP_CONST">1.5</span></small><br>
+                                    技係数: <span id="SK_VAL"></span><br>
+                                    <small style="color:gray">　技威力 + Rank係数</small><br>                                
+                                    Rank係数: <span id="RK_VAL"></span><br>
+                                    <small style="color:gray">　(技威力 - 5) * ( (<span id="RNK_CONST">100+rank</span>) /100 )</small><br>
                                 </div>
-                                <br>
-                                <i>出典：<a href="https://twitter.com/imonoki/status/1094721320888131584">https://twitter.com/imonoki/status/1094721320888131584</a></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="info-modal width-100 row">
-                        <div class="info-modal-header">条件設定</div>
-
-                    <div class="form-group col-xs-12 col-md-6 col-lg-4">
-                        <label for="type" class="subtitle-long">武器種類　</label>
-                        <select class="form-control" id="type" name="type">
-                            <option value="ken">剣</option>
-                            <option value="dken">大剣</option>
-                            <option value="ono">斧</option>
-                            <option value="sken">小剣</option>
-                            <option value="yari">槍</option>
-                            <option value="yumi">弓</option>
-                            <option value="bou">棍棒</option>
-                            <option value="tai">体術</option>
-                            <option value="ju">銃</option>
-                            <option value="hi">火術</option>
-                            <option value="mizu">水術</option>
-                            <option value="kaze">風術</option>
-                            <option value="tsuchi">土術</option>
-                            <option value="hikari">光術</option>
-                            <option value="yami">闇術</option>
-                        </select>
-                        <br>
-                        <label for="master" class="subtitle-long">マスターレベル　</label>
-                        <input type="number" class="form-control damage" id="master">
-                        <div class="form-group">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text small">ダメージ変化量</span>
+                                <div class="col-4 d-none d-md-block">
+                                    ステータス係数: <span id="ST_VAL"></span><br>
+                                    <small style="color:gray">　1 + <span id="ST_CONST">4 × 腕力 - 1.5</span> × 敵体力</small><br>
+                                    <small style="color:gray">　1 + <span id="W_VAL">0</span> - <span id="V_VAL">0</span></small><br>
                                 </div>
-                                <input type="text" class="form-control" readonly="" id="masterDamage">
-                                <div class="input-group-append">
-                                    <span class="input-group-text">%</span>
+                                <div class="col-4 d-none d-md-block">
+                                    敵耐性: <span id="RE_VAL"></span>%<br>
+                                    <small style="color:gray">　1 / (1 + 0.008 × 耐性値)</small><br>
+                                    <small style="color:gray">　1 / (1 + 0.008 × <span id="RE_CONST"></span>)</small><br>
+                                    倍率係数: <span id="KEI_VAL"></span>% (乱数=6)<br>
+                                    <small style="color:gray">　1 + (Mレベル + アビリティ + 乱数 - 6) / 100</small><br>
+                                    <small style="color:gray">　マスターレベル: <span id="ML_VAL"></span>%</small><br>
+                                    <small style="color:gray">　アビリティ: <span id="AB_VAL"></span>%</small><br>
                                 </div>
                             </div>
+                            <br>
+                            <i>出典：<a href="https://twitter.com/imonoki/status/1094721320888131584">https://twitter.com/imonoki/status/1094721320888131584</a></i>
                         </div>
                     </div>
+                </div>
+                <div class="info-modal width-max">
+                    <div class="info-modal-header">条件設定</div>
+                    <div class="row">
                         <div class="form-group col-xs-12 col-md-6 col-lg-4">
-                            <label for="weapon" class="subtitle-long">武器威力＋使用技　</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text small">武器威力</span>
+                            <label for="type" class="subtitle-long">武器種類　</label>
+                            <select class="form-control" id="type" name="type">
+                                <option value="ken">剣</option>
+                                <option value="dken">大剣</option>
+                                <option value="ono">斧</option>
+                                <option value="sken">小剣</option>
+                                <option value="yari">槍</option>
+                                <option value="yumi">弓</option>
+                                <option value="bou">棍棒</option>
+                                <option value="tai">体術</option>
+                                <option value="ju">銃</option>
+                                <option value="hi">火術</option>
+                                <option value="mizu">水術</option>
+                                <option value="kaze">風術</option>
+                                <option value="tsuchi">土術</option>
+                                <option value="hikari">光術</option>
+                                <option value="yami">闇術</option>
+                            </select>
+                            <br>
+                            <label for="master" class="subtitle-long">マスターレベル　</label>
+                            <input type="number" class="form-control damage" id="master">
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text small">ダメージ変化量</span>
+                                    </div>
+                                    <input type="text" class="form-control" readonly="" id="masterDamage">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">%</span>
+                                    </div>
                                 </div>
-                                <input type="number" class="form-control damage" id="weapon">
                             </div>
+                        </div>
+                        <div class="form-group col-xs-12 col-md-6 col-lg-4">
+                            <label for="weapon" class="subtitle-long">使用技　</label>
                             <select class="form-control damage" id="skill" name="type"></select>
                             <input id="skill_val" type="hidden" value="0">
                             <div class="input-group" id="input_rank">
@@ -167,93 +173,6 @@
 
                             </div>
                         </div>
-                        <div class="form-group col-xs-12 col-md-6 col-lg-4">
-                            <label for="jinkei" class="subtitle-long">陣形　</label>
-                            <select class="form-control damage" id="jinkei" name="type">
-                                <option value="0">指定なし</option>
-                                <option value="sp1">スペキュレイション 最前＆前2列</option>
-                                <option value="as1">アマゾンストライク 最前列</option>
-                                <option value="as2">アマゾンストライク 前列</option>
-                                <option value="dr1">デザートランス 最前列</option>
-                                <option value="rj1">龍陣 最前列</option>
-                                <option value="ds1">ドラグーンストライク 前列</option>
-                                <option value="ds2">ドラグーンストライク 中列</option>
-                                <option value="dp1">デッドリーピアス 前列</option>
-                                <option value="dp3">デッドリーピアス 中央</option>
-                            </select>
-                            <div class="form-group row">
-                                <div class="col-xs-6 col-md-6 col-lg-6" id="jinkei_w">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text small jinkei_label">腕</span>
-                                        </div>
-                                        <input type="text" class="form-control" readonly="" id="jinkei_w_v">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text">%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-6 col-md-6 col-lg-6" id="jinkei_k">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text small">器</span>
-                                        </div>
-                                        <input type="text" class="form-control" readonly="" id="jinkei_k_v">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text">%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-6 col-md-6 col-lg-6" id="jinkei_s">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text small">速</span>
-                                        </div>
-                                        <input type="text" class="form-control" readonly="" id="jinkei_s_v">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text">%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>                    
-
-                        <div class="form-group col-xs-12 col-md-6 col-lg-4">
-                            <label for="str" id="param_label" class="subtitle-long">腕力　</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend charOnly">
-                                    <span class="input-group-text small">キャラのみ</span>
-                                </div>
-                                <input type="number" class="form-control damage charOnly" id="strOnlyChar">
-                            </div>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text small">スタイル装備有</span>
-                                </div>
-                                <input type="number" class="form-control damage" id="str">
-                            </div>
-                            <small class="form-text text-muted   opacity kadomaru">陣形を指定している場合はキャラのみの値も必要です<br>
-                                キャラのみはスタイルおよび装備抜きの値を入力してください</small>
-                            <br>
-                            <div class="form-group" id="taijyutsu">
-                                <label for="agi" id="param_label" class="subtitle-long">素早さ </label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text small charOnly">キャラのみ</span>
-                                    </div>
-                                    <input type="number" class="form-control damage charOnly" id="agiOnlyChar">
-                                </div>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text small">スタイル装備有</span>
-                                    </div>
-                                    <input type="number" class="form-control damage" id="agi">
-                                </div>
-                                <small class="form-text text-muted   opacity kadomaru">陣形を指定している場合はキャラのみの値も必要です<br>
-                                    キャラのみはスタイルおよび装備抜きの値を入力してください</small>
-                            </div>
-                        </div>
-
                         <div class="form-group col-xs-12 col-md-6 col-lg-4">
                             <label for="ability" class="subtitle-long">アビリティ＋特攻＋聖石　</label>
                             <div class="form-group">
@@ -274,7 +193,8 @@
                                 <option abId="ID29d93222" value="10">テンションアップIII (中)</option>
                                 <option abId="ID29d93221" value="15">テンションアップIV (大)</option>
                                 <option abId="ID29d93384" value="20">テンションアップV (特大)</option>
-                                <option abId="ID29d93421" value="15">オーバーテンション</option>
+                                <option abId="ID29d9342a" value="15">バトルテンション (大)</option>
+                                <option abId="ID29d93421" value="15">オーバーテンション (大)</option>
                             </select>
                             <select class="form-control culcList" id="ability_list1" name="type">
                                 <option abId="0" value="0">勇健強撃なし</option>
@@ -321,21 +241,115 @@
                             <div class="bg-simple" id="ABILITY_AREA" style="padding-left: 25px;"></div>
 
                         </div>
-                        <div class="form-group col-xs-12 col-md-6 col-lg-4">
-                            <label for="ability" class="subtitle-long">その他 強化　</label>    
-                            <div class="ONOFF_BTN icon_btn_off width-100" data-type="tk">特攻 <i class="fas fa-toggle-off" style="vertical-align: middle; font-size: 20px;"></i></div>
-                            <div class="ONOFF_BTN icon_btn_off width-100" data-type="gi">崩れ銀花 <i class="fas fa-toggle-off" style="vertical-align: middle; font-size: 20px;"></i></div>
-                            <div class="ONOFF_BTN icon_btn_off width-100" data-type="fu">フラメンコに誘われて <i class="fas fa-toggle-off" style="vertical-align: middle; font-size: 20px;"></i></div>
-                            <div class="ONOFF_BTN icon_btn_off width-100" data-type="ry">XXの号令 <i class="fas fa-toggle-off" style="vertical-align: middle; font-size: 20px;"></i></div>
-                            <div class="ONOFF_BTN icon_btn_off width-100" data-type="bf">先行バフ(※) <i class="fas fa-toggle-off" style="vertical-align: middle; font-size: 20px;"></i></div>
-                            <div class="kadomaru bg-white">
-                                闘志満々/心機鋭敏/魔力胎動などターン開始時能力上昇
+                        <div class="col-12 col-md-6">
+                            <div class="bg-item text-center">▼ステータス▼</div>
+                            <div class="row no-gutters text-center">
+                                <div class="col-3 bg-item small">素ステ</div>
+                                <div class="col-3 bg-item small">表示ステ</div>
+                                <div class="col-3 bg-item small">装備+裏</div>
+                                <div class="col-3 bg-item small">陣形補正</div>
+
+                                <div class="col-3 text-nowrap">腕 <input id="charSTR" type="number" class="input damage kadomaru" value="99" style="width:60px"></div>
+                                <div class="col-3"><input id="styleSTR" type="number" class="input damage kadomaru" value="200" style="width:60px"></div>
+                                <div class="col-3"><input id="eqSTR" type="number" class="input damage kadomaru" value="8" style="width:60px"></div>
+                                <div class="col-3"><input id="jinkeiSTR" type="number" class="input damage kadomaru" value="0" style="width:50px">%</div>
+                                <div class="col-3 text-nowrap">器 <input id="charDEX" type="number" class="input damage kadomaru" value="99" style="width:60px"></div>
+                                <div class="col-3"><input id="styleDEX" type="number" class="input damage kadomaru" value="200" style="width:60px"></div>
+                                <div class="col-3"><input id="eqDEX" type="number" class="input damage kadomaru" value="8" style="width:60px"></div>
+                                <div class="col-3"><input id="jinkeiDEX" type="number" class="input damage kadomaru" value="0" style="width:50px">%</div>
+                                <div class="col-3 text-nowrap">速 <input id="charAGI" type="number" class="input damage kadomaru" value="99" style="width:60px"></div>
+                                <div class="col-3"><input id="styleAGI" type="number" class="input damage kadomaru" value="200" style="width:60px"></div>
+                                <div class="col-3"><input id="eqAGI" type="number" class="input damage kadomaru" value="8" style="width:60px"></div>
+                                <div class="col-3"><input id="jinkeiAGI" type="number" class="input damage kadomaru" value="0" style="width:50px">%</div>
+                                <div class="col-3 text-nowrap">知 <input id="charINT" type="number" class="input damage kadomaru" value="99" style="width:60px"></div>
+                                <div class="col-3"><input id="styleINT" type="number" class="input damage kadomaru" value="200" style="width:60px"></div>
+                                <div class="col-3"><input id="eqINT" type="number" class="input damage kadomaru" value="8" style="width:60px"></div>
+                                <div class="col-3"><input id="jinkeiINT" type="number" class="input damage kadomaru" value="0" style="width:50px">%</div>
                             </div>
-                                <!--
-                            <small class="form-text text-muted  opacity kadomaru">極小:2% 小:5% 中:10% 大:15% 特大:30% 極大:50%</small>
-                            -->
+                            表示ステ=スタイル補正込みの値を入力。<br>    
+                            <div class="WEAPON_AREA">
+                                <div class="bg-item text-center">▼武器設定▼</div>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text small">武器威力</span>
+                                    </div>
+                                    <input type="number" class="form-control damage" id="weapon">
+                                </div>                                
+                                <div class="d-none" id="SS-TEMPLATE">
+                                    <span class="WEAPON_CHOISE yubi style_icon_bg_ss style_icon_bg_base" style="display:inline-block; vertical-align: middle;">
+                                        <button class="style_icon_illust" style="background-size: contain; background-color: rgba(0, 0, 0, 0);"></button>
+                                        <span class="style_icon_frame_base style_icon_frame_ss"></span>
+                                        <span class="weapon_icon_rare_base icon_rare_ss"></span>
+                                    </span>
+                                    <div class="small text-center WEAPON_NAME" style="max-width: 60px;
+                                    overflow: hidden;
+                                    text-overflow: ellipsis;
+                                    white-space: nowrap;">SS武器</div>
+                                </div>
+                                <!-- background-image: url(&quot;https://romasagatool.com/img/equipment/101403200.png&quot;); -->
+                                <div class="d-inline-block STR-WEAPON">
+                                    <span class="WEAPON_CHOISE yubi style_icon_bg_s style_icon_bg_base" style="display:inline-block; vertical-align: middle;">
+                                        <button class="style_icon_illust" style="background-size: contain; background-color: rgba(0, 0, 0, 0);"></button>
+                                        <span class="style_icon_frame_base style_icon_frame_s"></span>
+                                        <span class="weapon_icon_rare_base icon_rare_s"></span>
+                                    </span>
+                                    <div class="small text-center WEAPON_NAME" style="max-width: 60px;
+                                    overflow: hidden;
+                                    text-overflow: ellipsis;
+                                    white-space: nowrap;">(力+)</div>
+                                </div>
+                                <div class="d-inline-block DEX-WEAPON">
+                                    <span class="WEAPON_CHOISE style_icon_bg_s style_icon_bg_base" style="display:inline-block; vertical-align: middle;">
+                                        <button class="style_icon_illust" style="background-size: contain; background-color: rgba(0, 0, 0, 0);"></button>
+                                        <span class="style_icon_frame_base style_icon_frame_s"></span>
+                                        <span class="weapon_icon_rare_base icon_rare_s"></span>
+                                    </span>
+                                    <div class="small text-center WEAPON_NAME" style="max-width: 60px;
+                                    overflow: hidden;
+                                    text-overflow: ellipsis;
+                                    white-space: nowrap;">(器+)</div>
+                                </div>
+                                <div class="d-inline-block AGI-WEAPON">
+                                    <span class="WEAPON_CHOISE style_icon_bg_s style_icon_bg_base" style="display:inline-block; vertical-align: middle;">
+                                        <button class="style_icon_illust" style="background-size: contain; background-color: rgba(0, 0, 0, 0);"></button>
+                                        <span class="style_icon_frame_base style_icon_frame_s"></span>
+                                        <span class="weapon_icon_rare_base icon_rare_s"></span>
+                                    </span>
+                                    <div class="small text-center WEAPON_NAME" style="max-width: 60px;
+                                    overflow: hidden;
+                                    text-overflow: ellipsis;
+                                    white-space: nowrap;">(速+)</div>
+                                </div>
+                                <div class="d-inline-block INT-WEAPON">
+                                    <span class="WEAPON_CHOISE style_icon_bg_s style_icon_bg_base" style="display:inline-block; vertical-align: middle;">
+                                        <button class="style_icon_illust" style="background-size: contain; background-color: rgba(0, 0, 0, 0);"></button>
+                                        <span class="style_icon_frame_base style_icon_frame_s"></span>
+                                        <span class="weapon_icon_rare_base icon_rare_s"></span>
+                                    </span>
+                                    <div class="small text-center WEAPON_NAME" style="max-width: 60px;
+                                    overflow: hidden;
+                                    text-overflow: ellipsis;
+                                    white-space: nowrap;">(術/知+)</div>
+                                </div>
+                            </div>
+                            <div class="row no-gutters">
+                                <div class="col-12 bg-item text-center">▼防具選択▼</div>
+                                <button data-type="STR" class="ARMOR_CHOISE col-3 text-nowrap text-center width-100 icon_btn_negative shadow-black" style="font-size: 18px; display: block; padding: 5px 0px;">腕 強化</button>
+                                <button data-type="DEX" class="ARMOR_CHOISE col-3 text-nowrap text-center width-100 icon_btn_negative shadow-black" style="font-size: 18px; display: block; padding: 5px 0px;">器 強化</button>
+                                <button data-type="AGI" class="ARMOR_CHOISE col-3 text-nowrap text-center width-100 icon_btn_negative shadow-black" style="font-size: 18px; display: block; padding: 5px 0px;">速 強化</button>
+                                <button data-type="INT" class="ARMOR_CHOISE col-3 text-nowrap text-center width-100 icon_btn_negative shadow-black" style="font-size: 18px; display: block; padding: 5px 0px;">知 強化</button>
+                                <div style="margin-left:10px; margin-bottom: 20px;">
+                                    主防具：<span id="MAIN_NAME"></span><br>
+                                    副防具：<span id="SUB_NAME"></span><br>
+                                    アクセ：<span id="ACC_NAME"></span><br>
+                                    主 腕:<span id="MAIN_STR"></span> 器:<span id="MAIN_DEX"></span> 速:<span id="MAIN_AGI"></span> 知:<span id="MAIN_INT"></span><br>
+                                    副 腕:<span id="SUB_STR"></span> 器:<span id="SUB_DEX"></span> 速:<span id="SUB_AGI"></span> 知:<span id="SUB_INT"></span><br>
+                                    ア 腕:<span id="ACC_STR"></span> 器:<span id="ACC_DEX"></span> 速:<span id="ACC_AGI"></span> 知:<span id="ACC_INT"></span>
+                                </div>
+                            </div>
+
                         </div>
-                        <div class="form-group damageCulc col-xs-12 col-md-6 col-lg-4">
+                        <div class="form-group damageCulc col-xs-12 col-md-6">
                             <label for="vit" class="subtitle-long">敵
                                 <span class="param_label_teki">体力</span>
                                 /敵耐性　
@@ -350,7 +364,7 @@
                                     </div>
                                     <input type="number" class="form-control damage" id="vit" placeholder="直接入力可">
                                 </div>
-                                <table class="width-100 text-center table-dark">
+                                <table class="width-max text-center table-dark">
                                     <tr class="char-bottom">
                                         <th><span class="icon_xs_zokusei icon_zan"></span></th>
                                         <td id="taisei_zan">999</td>
@@ -410,10 +424,23 @@
                                 </div>
                                 <input type="number" class="form-control damage" id="resist3" placeholder="0">
                             </div>
-
-
                         </div>
-                        <div class="form-group col-xs-12 col-md-6 col-lg-8">
+
+                        <div class="d-none form-group col-xs-12 col-md-6 col-lg-4">
+                            <label for="ability" class="subtitle-long">その他 強化　</label>    
+                            <div class="ONOFF_BTN icon_btn_off width-100" data-type="tk">特攻 <i class="fas fa-toggle-off" style="vertical-align: middle; font-size: 20px;"></i></div>
+                            <div class="ONOFF_BTN icon_btn_off width-100" data-type="gi">崩れ銀花 <i class="fas fa-toggle-off" style="vertical-align: middle; font-size: 20px;"></i></div>
+                            <div class="ONOFF_BTN icon_btn_off width-100" data-type="fu">フラメンコに誘われて <i class="fas fa-toggle-off" style="vertical-align: middle; font-size: 20px;"></i></div>
+                            <div class="ONOFF_BTN icon_btn_off width-100" data-type="ry">XXの号令 <i class="fas fa-toggle-off" style="vertical-align: middle; font-size: 20px;"></i></div>
+                            <div class="ONOFF_BTN icon_btn_off width-100" data-type="bf">先行バフ(※) <i class="fas fa-toggle-off" style="vertical-align: middle; font-size: 20px;"></i></div>
+                            <div class="kadomaru bg-white">
+                                闘志満々/心機鋭敏/魔力胎動などターン開始時能力上昇
+                            </div>
+                                <!--
+                            <small class="form-text text-muted  opacity kadomaru">極小:2% 小:5% 中:10% 大:15% 特大:30% 極大:50%</small>
+                            -->
+                        </div>
+                        <div class="form-group col-12">
                             <h3 class="damageCulc kadomaru bg-white text-center text-nowrap"><i class="fas fa-calculator"></i> ダメージ計算結果</h3>
                             <div class="table-responsive">
                                 <table class="damageCulc table table-hover table-bordered table-sm " id="damageRangeTable">
@@ -440,17 +467,6 @@
                                 <button id="SAVE" class="text-nowrap text-center width-100 icon_btn_positive shadow-black" style="font-size: 18px; display: block; padding: 5px 0px; margin-top: 10px;">計算結果を履歴に保存</button>
                             </div>
                         </div>
-                        <style>
-                            .historyTable{
-                                    border-collapse: collapse;
-                                    border-style: hidden;
-                            }
-
-                            .historyTable td, table th {
-                                padding: 2px 8px;
-                                    border: 1px solid #faf0b4;
-                            }
-                        </style>
                         <div class="col-12">
                             <div class="width-100 bg-item text-center">▼履歴▼</div>
                             <div id="HISTORY_AREA"></div>
@@ -463,7 +479,7 @@
                                             <span class="ICON"></span>
                                             <img class="CLOSE_BTN yubi" src="./img/icon/icon_close.png" style="position: absolute;top: 5px;left: 5px;height: 20px;" onclick="">
                                         </td>
-                                        <td>武器<span class="WEAPON"></span></td>
+                                        <td class="text-nowrap">武器<span class="WEAPON"></span></td>
                                         <td>MLv<span class="MLV"></span> (<span class="MLV_PER"></span>%)</td>
                                         <td>アビ <span class="AB"></span>%</td>
                                     </tr>
@@ -494,7 +510,7 @@
                                         <td>武器威力：<span class="WEAPON"></span></td>
                                         <td>MLv<span class="MLV"></span> (<span class="MLV_PER"></span>%)</td>
                                         <td>アビリティ <span class="AB"></span>%</td>
-                                        <td class="ST"></td>
+                                        <td>表示:<span class="ST"></span></td>
                                         <td>敵ステータス: <span class="ENEMY_ST"></span></td>
                                         <td rowspan="2" class="fuchidori-blue" style="font-size:22px; position: relative; width: 200px;"">
                                             <span class="DAMAGE"></span>
@@ -507,67 +523,36 @@
                                             威力<span class="GRADE"></span> 
                                             <span class="IRYOKU"></span> 
                                             Rank<span class="RANK"></span></td>
-                                        <td class="ST_CALC"></td>
+                                        <td>計算:<span class="ST_CALC"></span></td>
                                         <td>耐性: <span class="RESIST"></span></td>
                                     </tr>
                                 </table>
                             </div>
                         </div>
-
                     </div>
-
                 </div>
-
-                <!--
-                <h1 class="vitCulc opacity text-center">推定体力計算</h1>
-                <table class="vitCulc table table-hover table-bordered table-sm" id="guess">
-                    <thead>
-                        <tr class="table-primary">
-                            <th class="col-xs-1">体</th>
-                            <th class="col-xs-1">D1</th>
-                            <th class="col-xs-1">D2</th>
-                            <th class="col-xs-1">D3</th>
-                            <th class="col-xs-1">D4</th>
-                            <th class="col-xs-1">D5</th>
-                            <th class="col-xs-1">D6</th>
-                            <th class="col-xs-1">D7</th>
-                            <th class="col-xs-1">D8</th>
-                            <th class="col-xs-1">D9</th>
-                            <th class="col-xs-1">D10</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-                -->
-
-
-                <!--
-                                <h2 class="damageCulc opacity text-center">ダメージランキング</h2>
-                                <div class="table-responsive">
-                                    <table class="damageCulc table table-hover table-striped table-bordered table-sm" id="damageRankTable">
-                                        <thead>
-                                            <tr class="table-primary opacity small">
-                                                <th class="text-center">説明</th>
-                                                <th class="">AVG</th>
-                                                <th class="">D1</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody class=""></tbody>
-                                    </table>
-                                </div>
-                -->
+            </div>
+            <div class="d-block" style="    position: fixed;
+            bottom: 5px;
+            left: 5px;
+            width:95%;
+            z-index: 3;">
+                <div class="damageCulc kadomaru bg-white text-center">ダメージ計算結果
+                    <img src="https://www.silhouette-illust.com/wp-content/uploads/2017/10/icon_calculator_41158-101x101.jpg" width="32" height="32">
+                </div>
+                <div class="table-responsive2" style="    display: block;
+                overflow-x: auto;">
+                    <table class="damageCulc table table-hover table-bordered table-sm width-100" id="damageRangeTable">
+                        <thead class="table-primary text-nowrap">
+                            <td>ST</td><td>耐性</td>
+                            <td>乱1</td><td>乱2</td><td>乱3</td><td>乱4</td><td>乱5</td>
+                            <td>乱6</td><td>乱7</td><td>乱8</td><td>乱9</td><td>乱10</td>
+                        </tbody>
+                        <tbody class=""></tbody>
+                    </table>
+                </div>
             </div>
         </div> <!-- main -->
-        <div id="footer" class="d-block d-md-none">
-            <h2 class="damageCulc kadomaru bg-white text-center">ダメージ計算結果
-                <img src="https://www.silhouette-illust.com/wp-content/uploads/2017/10/icon_calculator_41158-101x101.jpg" width="32" height="32">
-            </h2>
-            <div class="table-responsive">
-                <table class="damageCulc table table-hover table-bordered table-sm " id="damageRangeTable">
-                    <tbody class=""></tbody>
-                </table>
-            </div>
-        </div>
         <!-- Twitter universal website tag code -->
         <script>
             !function (e, t, n, s, u, a) {
