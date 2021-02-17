@@ -1,0 +1,16 @@
+{
+    "year": 2021,
+    "month": 3,
+    "event": [
+        {
+            "startDay": "1",
+            "endDay": "14",
+            "title": "[イベント] <br class='hidden pcBlock'>ターム族との戦い 激闘-リアルクィーン-",
+            "startPrefix": "開催中<br>",
+            "endSuffix": "<br>翌 4:00 終了",
+            "type": "orange"
+        }
+ ],
+    "holiday": [
+    ]
+}
