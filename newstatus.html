@@ -51,7 +51,7 @@
         $("#UPDATE").html(UPDATE);
 
         var gachaStyle = {};
-        OPEN_GACHA = OPEN_GACHA.slice(0,7);
+        //OPEN_GACHA = OPEN_GACHA.slice(0,7);
         for (gacha of OPEN_GACHA) {
             gachaStyle[gacha] = [];
         }
@@ -61,8 +61,7 @@
             var styleInfo = STYLE_MASTER[styleId];
             for (gacha in gachaStyle) {
                 console.log(styleInfo["Name"], styleInfo["gacha"].split("/"), styleInfo["gacha"], gacha, styleInfo["gacha"].indexOf(gacha));
-                if (styleInfo["gacha"].split("/").length == 1 &&
-                    styleInfo["gacha"].indexOf(gacha) > -1) {
+                if (styleInfo["gacha"].indexOf(gacha) == 0) {
                     gachaStyle[gacha].push(styleInfo);
                 }
             }
