@@ -1304,12 +1304,16 @@
                     <div class="info-modal width-max">
                         <div class="text-center info-modal-header">おすすめ継承パターン</div>
                         <div class="text-center fuchidori-white d-md-none" style="color: rgb(250, 240, 180);">
-                            <div class="AUTO_TAB style-tab-active" data-target="AUTO_PATTERN3" style="width: 30%; max-width: 120px;" onclick="">単体3ﾀｰﾝ</div>
-                            <div class="AUTO_TAB style-tab-disabled" data-target="AUTO_PATTERN2" style="width: 30%; max-width: 120px;" onclick="">単体2ﾀｰﾝ</div>
+                            <div class="AUTO_TAB style-tab-active" data-target="AUTO_PATTERN2" style="width: 30%; max-width: 120px;" onclick="">単体2ﾀｰﾝ</div>
+                            <div class="AUTO_TAB style-tab-disabled" data-target="AUTO_PATTERN3" style="width: 30%; max-width: 120px;" onclick="">単体3ﾀｰﾝ</div>
                             <div class="AUTO_TAB style-tab-disabled" data-target="AUTO_PATTERN_ALL" style="width: 30%; max-width: 120px;" onclick="">全体攻撃</div>
                         </div>
 
                         <div class="row" style="line-height: 22px;">
+                            <div class="col-12 col-md-6 AUTO_TAB_AREA" >
+                                <div class="bg-item width-100 text-center text-nowrap" style="padding: 5px 20px;">単体2ターン火力</div>
+                                <div id="AUTO_PATTERN2" ></div>
+                            </div>
                             <div class="col-12 col-md-6 AUTO_TAB_AREA">
                                 <div class="bg-item width-100 text-center text-nowrap" style="padding: 5px 20px;">単体3ターン火力</div>
                                 <div id="AUTO_PATTERN3" ></div>
@@ -1317,10 +1321,6 @@
                             <div class="col-12 col-md-6 AUTO_TAB_AREA">
                                 <div class="bg-item width-100 text-center text-nowrap" style="padding: 5px 20px;">全体火力</div>
                                 <div id="AUTO_PATTERN_ALL" ></div>
-                            </div>
-                            <div class="col-12 col-md-6 AUTO_TAB_AREA" >
-                                <div class="bg-item width-100 text-center text-nowrap" style="padding: 5px 20px;">単体2ターン火力</div>
-                                <div id="AUTO_PATTERN2" ></div>
                             </div>
                         </div>
                         <div id="CARD_TEMPLATE" class="d-none style-skill-list position-relative small" style="padding: 0px 5px;">
