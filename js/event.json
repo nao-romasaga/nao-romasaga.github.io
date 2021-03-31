@@ -1,11 +1,20 @@
 [
-    {"start":"2021-03-31T18:00","title":"[ガチャ] SF2発売日記念プラチナチケットガチャ","classNames":"gacha"},
-    {"start":"2021-06-03T00:00","end":"2021-06-04T04:00","title":"[復刻ガチャ] SF2発売日記念プラチナチケットガチャ","classNames":"fgacha"},
-    {"start":"2021-03-31T18:00","title":"[育成CP] 育成5倍選択 ギュスターヴの剣","classNames":"ikuseiCp"},
-    {"start":"2021-04-18T00:00","end":"2021-04-20T04:00","title":"[終了間近] 育成CP 育成5倍選択 ギュスターヴの剣","classNames":"ikuseiCp"},
-
     {"start":"2021-04-05T12:00","title":"[イベント] 水の将魔との戦い","classNames":"event"},
     {"start":"2021-04-18T00:00","end":"2021-04-20T04:00","title":"[終了間近] 水の将魔との戦い","classNames":"event"},
+
+    {"start":"2021-03-31T18:00","title":"[ガチャ] SF2発売日記念Ultra DXガチャ ギュスターヴ編","classNames":"event"},
+    {"start":"2021-04-18T00:00","end":"2021-04-20T04:00","title":"[終了間近] SF2発売日記念Ultra DXガチャ ギュスターヴ編","classNames":"event"},
+
+    {"start":"2021-03-31T18:00","title":"[ガチャ] SF2発売日記念プラチナチケットガチャ","classNames":"gacha"},
+    {"start":"2021-06-03T00:00","end":"2021-06-04T04:00","title":"[終了間近] SF2発売日記念プラチナチケットガチャ","classNames":"gacha"},
+    {"start":"2021-03-31T18:00","title":"[育成CP] 育成5倍選択 ギュスターヴの剣","classNames":"ikuseiCp"},
+    {"start":"2021-04-18T00:00","end":"2021-04-20T04:00","title":"[終了間近] 育成CP 育成5倍選択 ギュスターヴの剣","classNames":"ikuseiCp"},
+    {"start":"2021-05-02T00:00","end":"2021-05-04T04:00","title":"[終了間近] 交換所 ギュスターヴの剣","classNames":"kokan"},
+    {"start":"2021-05-02T00:00","end":"2021-05-04T04:00","title":"[終了間近] 交換所 UDXガチャメダル","classNames":"kokan"},
+
+    {"start":"2021-03-31T18:00","title":"[イベント] ギュスターヴの剣","classNames":"event"},
+    {"start":"2021-04-18T00:00","end":"2021-04-20T04:00","title":"[終了間近] ギュスターヴの剣","classNames":"event"},
+
     {"start":"2021-03-31T18:00","title":"[ミッション] SF2発売日記念ミッション","classNames":"mission"},
     {"start":"2021-04-13T00:00","end":"2021-04-15T04:00","title":"[終了間近] SF2発売日記念ミッション","classNames":"mission"},
 
