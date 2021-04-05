@@ -183,7 +183,7 @@
                             <img class="sImg kadomaru d-none" src="" width="100px" align="left">
                             <img class="lImg kadomaru" src="" width="100%" alt="">
                             <div class="title" style="white-space: normal;"></div>
-                            <div style="position:absolute; bottom:0;font-size:0.8rem">最終更新:<span class="update"></span></div>
+                            <div class="bg-item" style="padding: 0 20px; text-align: center; left: -5px; color: beige;position:absolute; bottom:0;font-size:0.8rem">最終更新:<span class="update"></span></div>
                         </a>
                     </div>
                 </div>
@@ -852,12 +852,13 @@
         function rssCallbackCat3(results) {
             for (var i = 0; i < results.length; i++) {
                 var entry = results[i];
+                console.log(entry);
                 var $article = $("#ARTICLE_CARD").clone().removeClass("d-none").addClass("d-inline-block").attr("id","");
                 $article.find("a").attr("href", entry.link);
                 $article.find(".sImg").attr("src", entry.thumb);
                 $article.find(".lImg").attr("src", entry.thumb);
                 $article.find(".title").html(entry.title);
-                $article.find(".update").html(entry.pubdate);
+                $article.find(".update").html((entry.pubdate != "") ? entry.pubdate : entry.moddate);
                 $("#article").append($article);
             }
         }
