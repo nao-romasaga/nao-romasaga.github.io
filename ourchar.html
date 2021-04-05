@@ -852,7 +852,6 @@
         function rssCallbackCat3(results) {
             for (var i = 0; i < results.length; i++) {
                 var entry = results[i];
-                console.log(entry);
                 var $article = $("#ARTICLE_CARD").clone().removeClass("d-none").addClass("d-inline-block").attr("id","");
                 $article.find("a").attr("href", entry.link);
                 $article.find(".sImg").attr("src", entry.thumb);
@@ -878,7 +877,7 @@
         }
     </script>
     <script type="text/javascript"
-        src="https://romasagatool.com/blog/get_the_archives2.php?cat=7&limit=8&callback=rssCallbackCat3"></script>
+        src="https://romasagatool.com/blog/get_the_archives.php?cat=7&limit=8&callback=rssCallbackCat3"></script>
     <script type="text/javascript"
         src="https://romasagatool.com/blog/get_the_archives.php?cat=22&callback=rssCallbackCat2"></script>
 </body>
