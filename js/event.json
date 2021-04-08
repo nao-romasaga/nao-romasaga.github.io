@@ -1,9 +1,23 @@
 [
+    {"start":"2021-04-09T12:00","title":"[ガチャ] Ultra DXガチャ バートランド編","classNames":"gacha"},
+    {"start":"2021-05-08T00:00","end":"2021-05-10T04:00","title":"[終了間近] Ultra DXガチャ バートランド編","classNames":"gacha"},
+
+    {"start":"2021-04-09T12:00","title":"[育成CP] 魔獣討伐出陣・UDX","classNames":"ikuseiCp"},
+    {"start":"2021-05-08T00:00","end":"2021-05-10T04:00","title":"[終了間近] 育成CP 魔獣討伐出陣・UDX","classNames":"ikuseiCp"},
+    {"start":"2021-04-09T12:00","title":"[育成CP] 魔獣討伐出陣・SaGaRS","classNames":"ikuseiCp"},
+    {"start":"2021-04-24T00:00","end":"2021-04-26T04:00","title":"[終了間近] 育成CP 魔獣討伐出陣・SaGaRS","classNames":"ikuseiCp"},
+    {"start":"2021-04-09T04:00","end":"2021-04-12T04:00","title":"[キャンペーン] ツヴァイクメダル獲得量2倍","classNames":"cp"},
+    {"start":"2021-04-12T04:00","end":"2021-04-19T04:00","title":"[キャンペーン] 「裏道場の証」獲得量2倍&卵のからドロップ量2倍","classNames":"cp"},
+    {"start":"2021-04-12T04:00","end":"2021-04-15T04:00","title":"[スタ半] メイン","classNames":"cp"},
+    {"start":"2021-04-08T14:00","title":"★★データ更新★★","classNames":"mente"},
+    {"start":"2021-04-14T20:00","title":"★★公式生放送 Day1 前夜祭 ロマサガRS★★","classNames":"housou"},
+    {"start":"2021-04-15T19:00","title":"★★公式生放送 Day2 祝！発売日記念SP★★","classNames":"housou"},
+
     {"start":"2021-04-05T12:00","title":"[イベント] 水の将魔との戦い","classNames":"event"},
     {"start":"2021-04-18T00:00","end":"2021-04-20T04:00","title":"[終了間近] 水の将魔との戦い","classNames":"event"},
 
-    {"start":"2021-03-31T18:00","title":"[ガチャ] SF2発売日記念Ultra DXガチャ ギュスターヴ編","classNames":"event"},
-    {"start":"2021-04-18T00:00","end":"2021-04-20T04:00","title":"[終了間近] SF2発売日記念Ultra DXガチャ ギュスターヴ編","classNames":"event"},
+    {"start":"2021-03-31T18:00","title":"[ガチャ] SF2発売日記念Ultra DXガチャ ギュスターヴ編","classNames":"gacha"},
+    {"start":"2021-04-18T00:00","end":"2021-04-20T04:00","title":"[終了間近] SF2発売日記念Ultra DXガチャ ギュスターヴ編","classNames":"gacha"},
 
     {"start":"2021-03-31T18:00","title":"[ガチャ] SF2発売日記念プラチナチケットガチャ","classNames":"gacha"},
     {"start":"2021-06-03T00:00","end":"2021-06-04T04:00","title":"[終了間近] SF2発売日記念プラチナチケットガチャ","classNames":"gacha"},
