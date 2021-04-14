@@ -1,4 +1,32 @@
 [
+    {"start":"2021-04-15T18:00","title":"[練達] 五月雨斬り,ふみつけ追加","classNames":"new"},
+    {"start":"2021-04-15T18:00","title":"[ガチャ] 超発売記念 Romancing祭 ヒューズ編","classNames":"gacha"},
+    {"start":"2021-04-15T18:00","title":"[ガチャ] 超発売記念 Romancing祭 エミリア編","classNames":"gacha"},
+    {"start":"2021-04-20T18:00","title":"[ガチャ] サガ魂","classNames":"gacha"},
+    {"start":"2021-05-06T00:00","end":"2021-05-07T04:00","title":"[終了間近] 超発売記念 Romancing祭 ヒューズ編","classNames":"gacha"},
+    {"start":"2021-05-06T00:00","end":"2021-05-07T04:00","title":"[終了間近] 超発売記念 Romancing祭 エミリア編","classNames":"gacha"},
+    {"start":"2021-05-06T00:00","end":"2021-05-07T04:00","title":"[終了間近] サガ魂","classNames":"gacha"},
+
+    {"start":"2021-04-15T18:00","title":"[イベント] ジョーカーとの戦い","classNames":"event"},
+    {"start":"2021-04-15T18:00","title":"[再:イベント] 忘れられた礼拝堂へ","classNames":"event"},
+    {"start":"2021-04-15T18:00","title":"[育成CP] 育成5倍選択 ジョーカーとの戦い","classNames":"ikuseiCp"},
+    {"start":"2021-05-05T00:00","end":"2021-05-07T04:00","title":"[終了間近] 育成CP 育成5倍選択 ジョーカーとの戦い","classNames":"ikuseiCp"},
+    {"start":"2021-04-20T12:00","title":"[イベント] 聖石の洞窟","classNames":"event"},
+    {"start":"2021-04-20T18:00","title":"[イベント] 激突！ブラッククロス四天王 スコアバトル","classNames":"event"},
+    {"start":"2021-04-23T04:00","end":"2021-04-26T04:00","title":"[CP] ツヴァイクメダル獲得量2倍","classNames":"cp"},
+    {"start":"2021-04-25T12:00","title":"[メイン] 2章11話 追加","classNames":"new"},
+    {"start":"2021-04-25T12:00","title":"[常設] 陣形交換所 新陣形「バレットシフト」","classNames":"new"},
+    {"start":"2021-04-25T12:00","title":"[イベント] ブラッククロスとの戦い","classNames":"event"},
+    {"start":"2021-04-26T04:00","title":"[CP] 「裏道場の証」獲得量2倍&卵のからドロップ量2倍","classNames":"cp"},
+
+    {"start":"2021-04-15T18:00","title":"[ミッション] SF1リマスター発売日記念ミッション","classNames":"mission"},
+    {"start":"2021-04-29T00:00","end":"2021-05-01T04:00","title":"[終了間近] SF1リマスター発売日記念ミッション","classNames":"mission"},
+    {"start":"2021-04-15T18:00","title":"[ミッション] SF1リマスター発売日記念デイリーミッション","classNames":"mission"},
+    {"start":"2021-04-24T00:00","end":"2021-04-26T04:00","title":"[終了間近] SF1リマスター発売日記念デイリーミッション","classNames":"mission"},
+
+    {"start":"2021-04-15T18:00","title":"[育成CP] 4倍 SF1キャラ","classNames":"ikuseiCp"},
+    {"start":"2021-05-05T00:00","end":"2021-05-07T04:00","title":"[終了間近] 育成CP 4倍 SF1キャラ","classNames":"ikuseiCp"},
+
     {"start":"2021-04-15T11:00","end":"2021-04-15T18:00","title":"★★メンテナンス ver1.23.0★★","classNames":"mente"},
     {"start":"2021-04-09T12:00","end":"2021-04-26T04:00","title":"[CP] 魔獣討伐チケット ドロップ","classNames":"drop"},
     {"start":"2021-04-09T12:00","title":"[ガチャ] Ultra DXガチャ バートランド編","classNames":"gacha"},
@@ -51,7 +79,7 @@
     {"start":"2021-03-26T12:00","title":"[イベント] 財宝の大穴","classNames":"event"},
     {"start":"2021-03-17T18:00","title":"[イベント] 見捨てられた地の大連戦-呪われし者-","classNames":"event"},
     {"start":"2021-03-17T18:00","title":"[イベント] 呪われし者との戦い-打熱陽-","classNames":"event"},
-    {"start":"2021-03-12T12:00","title":"[イベント] 決戦！サルーイン","classNames":"event"},
+    {"start":"2021-03-12T12:00","title":"[イベント] 決戦！サルーイン スコアバトル","classNames":"event"},
     {"start":"2021-03-10T12:00","title":"[イベント] 魔塔サルーイン","classNames":"event"},
     {"start":"2021-02-25T04:00","title":"[イベント] アビス四魔貴族制圧戦","classNames":"event"},
 
