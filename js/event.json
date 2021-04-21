@@ -1,9 +1,15 @@
 [
+    {"start":"2021-04-20T12:00","end":"2021-04-23T04:00","title":"[CP] つるはし ドロップ","classNames":"drop"},
+
+    {"start":"2021-04-20T12:00","title":"[イベント] 聖石の洞窟","classNames":"event"},
+    {"start":"2021-05-06T00:00","end":"2021-05-07T04:00","title":"[終了間近] 聖石の洞窟","classNames":"event"},
+
     {"start":"2021-04-20T18:00","title":"[イベント] ブラッククロス戦闘員との戦","classNames":"event"},
     {"start":"2021-05-06T00:00","end":"2021-05-07T04:00","title":"[終了間近] ブラッククロス戦闘員との戦","classNames":"event"},
     {"start":"2021-04-20T18:00","title":"[スコアバトル] 激突！ブラッククロス四天王","classNames":"event"},
     {"start":"2021-05-06T00:00","end":"2021-05-07T04:00","title":"[終了間近] 激突！ブラッククロス四天王","classNames":"event"},
     {"start":"2021-04-20T18:00","title":"[練達] 音速剣,ハートシーカー追加","classNames":"new"},
+    {"start":"2021-04-20T14:00","title":"★★データ更新★★","classNames":"mente"},
     {"start":"2021-04-15T18:00","title":"[練達] 五月雨斬り,ふみつけ追加","classNames":"new"},
     {"start":"2021-04-15T18:00","title":"[ガチャ] 超発売記念 Romancing祭 ヒューズ編","classNames":"gacha"},
     {"start":"2021-04-15T18:00","title":"[ガチャ] 超発売記念 Romancing祭 エミリア編","classNames":"gacha"},
@@ -20,7 +26,6 @@
     {"start":"2021-04-15T18:00","title":"[育成CP] 育成5倍選択 ジョーカーとの戦い","classNames":"ikuseiCp"},
     {"start":"2021-05-05T00:00","end":"2021-05-07T04:00","title":"[終了間近] 育成CP 育成5倍選択 ジョーカーとの戦い","classNames":"ikuseiCp"},
 
-    {"start":"2021-04-20T12:00","title":"[イベント] 聖石の洞窟","classNames":"event"},
     {"start":"2021-04-23T04:00","end":"2021-04-26T04:00","title":"[CP] ツヴァイクメダル獲得量2倍","classNames":"cp"},
     {"start":"2021-04-25T12:00","title":"[メイン] 2章11話 追加","classNames":"new"},
     {"start":"2021-04-25T12:00","title":"[常設] 陣形交換所 新陣形「バレットシフト」","classNames":"new"},
