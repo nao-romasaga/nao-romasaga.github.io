@@ -483,14 +483,17 @@
             RESIST_MAX = [];
             $(".ARMOR").slideUp();
             $("#RESIST_AREA").slideUp();
-            
+            ATTRS = {"力＋":"STR","体＋":"VIT","器＋":"DEX","速＋":"AGI",
+            "知＋":"INT","火＋":"INT","水＋":"INT","土＋":"INT","風＋":"INT","光＋":"INT","闇＋":"INT"};
+            WP_POWER_TABLE = {"STR":3,"VIT":3, "DEX":2, "AGI":2,"INT":2,"MND":2,"AI":1,"MI":1};
             $(function() {
                 $("#weaponTable").tablesorter();
                 $("#armorTable").tablesorter();
             });
 
-            strOrg = 220;
-            agiOrg = 200;
+            strOrg = 300;
+            agiOrg = 270;
+            enemyVit = 160;
             for(var name of Object.keys(WEAPON_DATA)){
                 var weaponTypeList = WEAPON_DATA[name];
                 for(var rare of Object.keys(weaponTypeList)){
@@ -502,26 +505,42 @@
                         $tr.find(".RARE").html(rare);
                         $tr.find(".NAME").html(weaponInfo['Name']);
                         $tr.find(".WeaponPower").html(weaponInfo['WeaponPower']);
-                        $tr.find(".JutsuPower").html(weaponInfo['JutsuPower']);
                         $tr.find(".JUTSUPower").html(weaponInfo['JutsuTypes']);
                         $tr.find(".Power").html(weaponInfo['Power']);
-                        for(k of PARAM_KEY){
-                            var v = weaponInfo[k];
-                            $tr.find(`.${k}`).html(v);
-                            addColor($tr.find(`.${k}`), v);
-                        }
-                        for(k of ["無",
-                            "力","体","器","速","知","火","水","土","風","光","闇",
-                            "力＋","体＋","器＋","速＋","知＋","火＋","水＋","土＋","風＋","光＋","闇＋"]){
-                                if(weaponInfo[k] == 0){
+                        if(rare == "SS") {
+                            for(k in ATTRS){
+                                if(weaponInfo[k] != 0){
+                                    power1 = weaponInfo['Power'] + 8; // 2*4
+                                    power2 = weaponInfo['Power'] + 16; //4*4
+                                    v = weaponInfo[ATTRS[k]];
+                                    $tr.find(`.${ATTRS[k]}`).html((v+4) + "<br>" + (v+2));
+                                    power1 += WP_POWER_TABLE[ATTRS[k]] * 2;
+                                    power2 += WP_POWER_TABLE[ATTRS[k]] * 4;
+                                    wp = weaponInfo['WeaponPower'];
+                                    $tr.find(".WeaponPower").html(wp + "<br>" + (wp-2) + "<br>" + (wp-4));
+                                    jp = weaponInfo['JutsuPower'];
+                                    if(jp > 0){
+                                        $tr.find(".JutsuPower").html(jp + "<br>" + (jp-2) + "<br>" + (jp-4));
+                                    }
+                                    $tr.find(".Power").html(power2 + "<br>" + power1 + "<br>" + weaponInfo['Power']);
+
+                                    //$tr.find(`.${k}`).html(v);
                                     //$tr.find(`.${k}`).attr("style", "opacity: 0.2;")
                                 }
                             };
+                        }
+                        for(k of PARAM_KEY){
+                            var v = weaponInfo[k];
+                            var out = ($tr.find(`.${k}`).html() != "") ? $tr.find(`.${k}`).html() + "<br>" : "";
+                            $tr.find(`.${k}`).html(out + v);
+                            addColor($tr.find(`.${k}`), v);
+                        }
+
                         if(weaponInfo['drop'] !== undefined){
                             $tr.find(`.QUEST`).html(weaponInfo['drop'].replace(/,/g,"<br>"));
                         }
 
-                        str = strOrg;
+                        str = (name !== "体術") ? strOrg : agiOrg;
                         agi = agiOrg;
                         add = 0;
                         plus = 4;
@@ -540,19 +559,19 @@
                         }
                         str += add;
                         agi += weaponInfo["AGI"];
-                        
-                        $tr.find(`.DAMAGE1`).html(damage(MASTER_LV_KEY[name], str, agi , weaponInfo['WeaponPower'], 7, 99, 100, 1, 30, -35, 5).toLocaleString());
-                        $tr.find(`.DAMAGE2`).html(damage(MASTER_LV_KEY[name], str, agi , weaponInfo['WeaponPower'], 15, 99, 100, 1, 30, -35, 5).toLocaleString());
-                        $tr.find(`.DAMAGE3`).html(damage(MASTER_LV_KEY[name], str, agi , weaponInfo['WeaponPower'], 28, 99, 100, 1, 30, -35, 5).toLocaleString());
-                        $tr.find(`.DAMAGE4`).html(damage(MASTER_LV_KEY[name], str, agi , weaponInfo['WeaponPower'], 50, 99, 100, 1, 30, -35, 5).toLocaleString());
-                        $tr.find(`.DAMAGE5`).html(damage(MASTER_LV_KEY[name], str, agi , weaponInfo['WeaponPower'], 70, 99, 100, 1, 30, -35, 5).toLocaleString());
+                        //damage(TYPE, STR, AGI, WEAPON, skill, RANK, vit, MASTER, ABILITY_BAI, resist, N, HOSEI);
+                        $tr.find(`.DAMAGE1`).html(damage(MASTER_LV_KEY[name], str, agi , weaponInfo['WeaponPower'], 7, 99, enemyVit, 1, 30, -35, 5).toLocaleString());
+                        $tr.find(`.DAMAGE2`).html(damage(MASTER_LV_KEY[name], str, agi , weaponInfo['WeaponPower'], 15, 99, enemyVit, 1, 30, -35, 5).toLocaleString());
+                        $tr.find(`.DAMAGE3`).html(damage(MASTER_LV_KEY[name], str, agi , weaponInfo['WeaponPower'], 28, 99, enemyVit, 1, 30, -35, 5).toLocaleString());
+                        $tr.find(`.DAMAGE4`).html(damage(MASTER_LV_KEY[name], str, agi , weaponInfo['WeaponPower'], 50, 99, enemyVit, 1, 30, -35, 5).toLocaleString());
+                        $tr.find(`.DAMAGE5`).html(damage(MASTER_LV_KEY[name], str, agi , weaponInfo['WeaponPower'], 70, 99, enemyVit, 1, 30, -35, 5).toLocaleString());
                         $tr.find(`.CALC_PARAM`).append(str);
                         if(weaponInfo[target] == 1){
-                            $tr.find(`.DAMAGE1`).append("<br>"+damage(MASTER_LV_KEY[name], str + plus, agi + 4, weaponInfo['WeaponPower'], 7, 99, 100, 1, 30, -35, 5).toLocaleString());
-                            $tr.find(`.DAMAGE2`).append("<br>"+damage(MASTER_LV_KEY[name], str + plus, agi + 4, weaponInfo['WeaponPower'], 15, 99, 100, 1, 30, -35, 5).toLocaleString());
-                            $tr.find(`.DAMAGE3`).append("<br>"+damage(MASTER_LV_KEY[name], str + plus, agi + 4, weaponInfo['WeaponPower'], 28, 99, 100, 1, 30, -35, 5).toLocaleString());
-                            $tr.find(`.DAMAGE4`).append("<br>"+damage(MASTER_LV_KEY[name], str + plus, agi + 4, weaponInfo['WeaponPower'], 50, 99, 100, 1, 30, -35, 5).toLocaleString());
-                            $tr.find(`.DAMAGE5`).append("<br>"+damage(MASTER_LV_KEY[name], str + plus, agi + 4, weaponInfo['WeaponPower'], 70, 99, 100, 1, 30, -35, 5).toLocaleString());
+                            $tr.find(`.DAMAGE1`).append("<br>"+damage(MASTER_LV_KEY[name], str + plus, agi + 4, weaponInfo['WeaponPower'], 7, 99, enemyVit, 1, 30, -35, 5).toLocaleString());
+                            $tr.find(`.DAMAGE2`).append("<br>"+damage(MASTER_LV_KEY[name], str + plus, agi + 4, weaponInfo['WeaponPower'], 15, 99, enemyVit, 1, 30, -35, 5).toLocaleString());
+                            $tr.find(`.DAMAGE3`).append("<br>"+damage(MASTER_LV_KEY[name], str + plus, agi + 4, weaponInfo['WeaponPower'], 28, 99, enemyVit, 1, 30, -35, 5).toLocaleString());
+                            $tr.find(`.DAMAGE4`).append("<br>"+damage(MASTER_LV_KEY[name], str + plus, agi + 4, weaponInfo['WeaponPower'], 50, 99, enemyVit, 1, 30, -35, 5).toLocaleString());
+                            $tr.find(`.DAMAGE5`).append("<br>"+damage(MASTER_LV_KEY[name], str + plus, agi + 4, weaponInfo['WeaponPower'], 70, 99, enemyVit, 1, 30, -35, 5).toLocaleString());
                             $tr.find(`.CALC_PARAM`).append("<br>"+ (str + plus) + `(${target})`);
                         }
                         if(name === "体術" && weaponInfo["力＋"] == 1){
