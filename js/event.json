@@ -1,4 +1,26 @@
 [
+    {"start":"2021-04-28T14:00","title":"★★データ更新★★","classNames":"mente"},
+    {"start":"2021-04-28T18:00","title":"[練達] ダイヤモンドダスト,回し打ち,かめごうら割り,マキ割ダイナミック追加","classNames":"new"},
+    {"start":"2021-04-28T18:00","title":"[ガチャ] GW記念 Romancing祭 聖王編","classNames":"gacha"},
+    {"start":"2021-04-28T18:00","title":"[ガチャ] GW記念 Romancing祭 ジョー編","classNames":"gacha"},
+    {"start":"2021-04-28T18:00","title":"[イベント] 探索！宝物眠る洞窟","classNames":"event"},
+    {"start":"2021-04-28T18:00","title":"[イベント] 第１回 迷いの世界塔GWver","classNames":"event"},
+    {"start":"2021-04-28T18:00","end":"2021-04-30T04:00","title":"[育成CP] 突・GW記念 第１弾 属性別育成応援","classNames":"ikuseiCp"},
+    {"start":"2021-04-30T04:00","end":"2021-05-02T04:00","title":"[育成CP] 打・GW記念 第１弾 属性別育成応援","classNames":"ikuseiCp"},
+    {"start":"2021-05-02T04:00","end":"2021-05-04T04:00","title":"[育成CP] 斬・GW記念 第１弾 属性別育成応援","classNames":"ikuseiCp"},
+    {"start":"2021-05-04T04:00","end":"2021-05-06T04:00","title":"[育成CP] 熱冷雷陰陽・GW記念 第１弾 属性別育成応援","classNames":"ikuseiCp"},
+    {"start":"2021-05-06T04:00","end":"2021-05-10T04:00","title":"[育成CP] 全スタイル・GW記念 第１弾 属性別育成応援","classNames":"ikuseiCp"},
+    {"start":"2021-04-28T18:00","title":"[常設] R杯交換所にSS「(水)ブリムスラーブス」を追加","classNames":"new"},
+    {"start":"2021-04-29T04:00","end":"2021-05-09T04:00","title":"[CP] 魔物 経験値5倍＆財宝収集 オーラム5倍","classNames":"cp"},
+    {"start":"2021-05-02T12:00","title":"[イベント] ルートヴィッヒとの戦い","classNames":"event"},
+    {"start":"2021-05-10T12:00","title":"[イベント] 激闘！ルートヴィッヒ","classNames":"event"},
+
+    {"start":"2021-05-02T12:00","title":"[イベント] 修業者の間","classNames":"event"},
+    {"start":"2021-05-09T00:00","end":"2021-05-11T04:00","title":"[終了間近] 修業者の間","classNames":"event"},
+    {"start":"2021-05-07T04:00","end":"2021-05-10T04:00","title":"[CP] ツヴァイクメダル獲得量2倍","classNames":"cp"},
+
+
+    {"start":"2021-04-23T19:30","title":"★★データ更新★★","classNames":"mente"},
     {"start":"2021-04-20T12:00","end":"2021-04-23T04:00","title":"[CP] つるはし ドロップ","classNames":"drop"},
 
     {"start":"2021-04-20T12:00","title":"[イベント] 聖石の洞窟","classNames":"event"},
@@ -27,6 +49,7 @@
     {"start":"2021-05-05T00:00","end":"2021-05-07T04:00","title":"[終了間近] 育成CP 育成5倍選択 ジョーカーとの戦い","classNames":"ikuseiCp"},
 
     {"start":"2021-04-23T04:00","end":"2021-04-26T04:00","title":"[CP] ツヴァイクメダル獲得量2倍","classNames":"cp"},
+    {"start":"2021-04-25T12:00","title":"[練達] フレイムウィップ追加","classNames":"new"},
     {"start":"2021-04-25T12:00","title":"[メイン] 2章11話 追加","classNames":"new"},
     {"start":"2021-04-25T12:00","title":"[常設] 陣形交換所 新陣形「バレットシフト」","classNames":"new"},
     {"start":"2021-04-25T12:00","title":"[イベント] ブラッククロスとの戦い","classNames":"event"},
