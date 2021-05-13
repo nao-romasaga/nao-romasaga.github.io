@@ -1,6 +1,12 @@
 [
+    {"start":"2021-05-13T11:00","end":"2021-05-13T17:00","title":"[メンテナンス] ver 1.24.0","classNames":"mente"},
+    {"start":"2021-05-18T20:00","title":"★★ 公式生放送 #9 ★★","classNames":"housou"},
+    {"start":"2021-05-18T12:00","title":"[イベント] 第2回 迷いの世界塔GWver","classNames":"event"},
+    {"start":"2021-05-30T00:00","end":"2021-06-01T04:00","title":"[終了間近] 第2回 迷いの世界塔GWver","classNames":"event"},
+
     {"start":"2021-05-07T14:00","title":"★★データ更新★★","classNames":"mente"},
     {"start":"2021-05-10T12:00","title":"[ガチャ] GW記念 Ultra DXガチャ ダーハオ編","classNames":"gacha"},
+    {"start":"2021-05-30T00:00","end":"2021-06-01T04:00","title":"[終了間際] ガチャ GW記念 Ultra DXガチャ ダーハオ編","classNames":"gacha"},
     {"start":"2021-05-10T12:00","title":"[育成CP] 激闘！ルートヴィッヒ/SagaRS/杖","classNames":"ikuseiCp"},
     {"start":"2021-05-22T00:00","end":"2021-05-24T04:00","title":"[終了間近] 育成CP 激闘！ルートヴィッヒ/SagaRS/杖","classNames":"ikuseiCp"},
     {"start":"2021-05-10T00:00","end":"2021-05-14T12:00","title":"[育成CP] GW記念 第２弾 シリーズ別育成応援 GB1/2,RS1,SF1/2,US,ES,SS","classNames":"ikuseiCp"},
