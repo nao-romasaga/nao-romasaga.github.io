@@ -1,4 +1,47 @@
 [
+    {"start":"2021-05-28T21:00","title":"[ガチャ] 2.5周年大決戦祭 Romancing祭 ポルカ編","classNames":"gacha"},
+    {"start":"2021-07-14T00:00","end":"2021-07-15T04:00","title":"[終了間際] 2.5周年大決戦祭 Romancing祭 ポルカ編","classNames":"gacha"},
+    {"start":"2021-06-01T12:00","title":"[ガチャ] プラチナガチャ大決戦セット","classNames":"gacha"},
+    {"start":"2021-07-14T00:00","end":"2021-07-15T04:00","title":"[終了間際] プラチナガチャ大決戦セット","classNames":"gacha"},
+    {"start":"2021-06-06T12:00","title":"[ガチャ] Romancing祭大決戦セット","classNames":"gacha"},
+    {"start":"2021-07-14T00:00","end":"2021-07-15T04:00","title":"[終了間際] Romancing祭大決戦セット","classNames":"gacha"},
+    {"start":"2021-05-28T21:00","title":"[ミッション] 2.5周年記念育成応援","classNames":"mission"},
+    {"start":"2021-07-14T00:00","end":"2021-07-15T04:00","title":"[終了間際] ﾐｯｼｮﾝ 2.5周年記念育成応援","classNames":"mission"},
+    
+    {"start":"2021-05-28T21:00","title":"[イベント] ヴァルドーの超鍛錬道場","classNames":"event"},
+    {"start":"2021-07-14T00:00","end":"2021-07-15T04:00","title":"[終了間際] ｲﾍﾞﾝﾄ ヴァルドーの超鍛錬道場","classNames":"event"},
+    {"start":"2021-05-28T21:00","end":"2021-06-10T04:00","title":"[CP] ドロップ 褒美の間 入室券(超鍛錬道場)","classNames":"drop"},
+    {"start":"2021-07-13T00:00","end":"2021-07-15T04:00","title":"[終了間際] CP ドロップ 2.5周年記念コイン[期間限定]","classNames":"drop"},
+    {"start":"2021-07-28T00:00","end":"2021-07-29T04:00","title":"[終了間近] 交換所 2.5周年記念コイン","classNames":"kokan"},
+    {"start":"2021-05-29T04:00","end":"","title":"[CP] 魔物 経験値5倍＆財宝収集 オーラム5倍","classNames":"cp"},
+    {"start":"2021-07-14T00:00","end":"2021-07-15T04:00","title":"[CP] 魔物 経験値5倍＆財宝収集 オーラム5倍","classNames":"cp"},
+    {"start":"2021-05-28T12:00","end":"2021-05-31T04:00","title":"[CP] ヴァルドー出現 超鍛錬道場","classNames":"drop"},
+    {"start":"2021-06-04T04:00","end":"2021-06-07T04:00","title":"[CP] ヴァルドー出現 超鍛錬道場","classNames":"drop"},
+
+    {"start":"2021-05-28T21:00","title":"[イベント] ヴァルドーの超鍛錬道場-褒美の間-","classNames":"event"},
+    {"start":"2021-06-23T00:00","end":"2021-06-24T04:00","title":"[終了間際] ｲﾍﾞﾝﾄ ヴァルドーの超鍛錬道場-褒美の間-","classNames":"event"},
+    {"start":"2021-05-28T21:00","title":"[イベント] 修行者の間","classNames":"event"},
+    {"start":"2021-07-14T00:00","end":"2021-07-15T04:00","title":"[終了間近] 修行者の間","classNames":"event"},
+    {"start":"2021-07-13T00:00","end":"2021-07-15T04:00","title":"[終了間近] 大決戦祭開催記念クエスト","classNames":"event"},
+
+    {"start":"2021-05-28T21:00","title":"[練達] ・ファイアボール・ウォータームーン追加","classNames":"new"},
+    {"start":"2021-05-28T21:00","title":"[遠征] ・寂れた街(VH2 6-2-5クリア)","classNames":"new"},
+    {"start":"2021-05-28T21:00","title":"[装備メダル] ・SS体術武器「魔鳥の爪」・SS主防具「ロブスターメイル」・SS主防具「パワードスーツ」・SS副防具「げんじのこて」・S装飾品「パンプキンリング」","classNames":"new"},
+    
+
+
+
+
+
+    {"start":"2021-06-07T12:00","end":"","title":"[恒常イベント] 模擬戦-イーヴリン-","classNames":"new"},
+    {"start":"2021-06-07T12:00","end":"","title":"[恒常イベント] トゥ・クアイとの戦い","classNames":"new"},
+    {"start":"2021-06-07T12:00","end":"","title":"[常設] 陣形交換所 新陣形「デザートランス・改」「マギアファイト」","classNames":"new"},
+    {"start":"2021-06-07T04:00","end":"2021-06-14T04:00","title":"[CP] 「裏道場の証」獲得量2倍&卵のからドロップ量2倍","classNames":"cp"},
+    {"start":"2021-06-04T04:00","end":"2021-06-07T04:00","title":"[CP] ツヴァイクメダル獲得量2倍","classNames":"cp"},
+    {"start":"2021-06-03T14:00","title":"★★データ更新★★","classNames":"mente"},
+
+    {"start":"2021-06-04T12:00","end":"2021-06-10T04:00","title":"[CP] つるはし きれいな石(黒) ドロップ","classNames":"drop"},
+
     {"start":"2021-05-18T21:00","title":"[ガチャ] サガ魂ガチャ タイニィフェザー編","classNames":"gacha"},
     {"start":"2021-05-31T00:00","end":"2021-06-01T04:00","title":"[終了間際] サガ魂ガチャ タイニィフェザー編","classNames":"gacha"},
     {"start":"2021-05-18T21:00","title":"[ガチャ] 2.5周年前夜祭記念 Romancing祭 T260G編","classNames":"gacha"},
