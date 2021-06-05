@@ -946,22 +946,20 @@
                     <div class="info-modal width-max" style="padding: 0px 5px 15px 10px;">
                         <div class="text-center info-modal-header">みんなの評価</div>
                         <div class="row">
-                            <div class="col-12">
+                            <div class="col-12 col-lg-6">
                                 <div class="filter-bgcolor">
                                     <div class="text-center" style="background: url(https://romasagatool.com/img/bg_cutin.png);">
                                         <img class="RANK_HEAD_IMG" style="width: 100%; max-width:300px;">
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-12 col-lg-6">
                                 <table>
-                                    <tr class="">
+                                    <tr class="d-none">
                                         <td><div class="bg-item width-100 text-center text-nowrap" style="padding: 5px 20px;">単体火力</div></td>
                                         <td class="SINGLE_FIRE fuchidori-white"></td>
                                         <td class="SINGLE_FIRE_IMG"></td>
                                         <td class="SINGLE_FIRE_DTL fuchidori-white d-none d-sm-table-cell "></td>
                                     </tr>
-                                    <tr class="">
+                                    <tr class="d-none">
                                         <td><div class="bg-item width-100 text-center text-nowrap" style="padding: 5px 20px;">全体火力</div></td>
                                         <td class="MULTI_FIRE fuchidori-white"></td>
                                         <td class="MULTI_FIRE_IMG"></td>
@@ -1332,14 +1330,14 @@
                                     AVG : <span class="AVG_DAMAGE">20,458</span>
                                 </div>
                                 <div class="CUTIN bg-center" style="width:100%;height:100%;position: absolute; background-size: contain;opacity: 0.3; background-position: center;"></div>
-                                <div class="col-10 col-sm-7 DETAIL_DISP_BLOCK" style="line-height:25px;">
+                                <div class="col-10 col-sm-6 DETAIL_DISP_BLOCK" style="line-height:25px;">
                                     <div class="d-none SKILL_TEMPLATE text-nowrap">
                                         <span class="ATTR_ICON"></span>
                                         <span class="SKILL_NAME"></span>
                                         <span class="BP" style="position: absolute;right: 5px;">BP:</span>
                                     </div>
                                 </div>
-                                <div class="col-2 col-lg-1 DETAIL_DISP_BLOCK_LG" style="line-height:25px;">
+                                <div class="col-2 col-lg-2 DETAIL_DISP_BLOCK_LG" style="line-height:25px;">
                                     <div class="KAKUSEI_TEMPLATE"></div>
                                 </div>
                                 <div class="col-3 col-lg-4 small TURN_ACTION_BLOCK d-none d-sm-table-cell" style="overflow-x: scroll;">
@@ -1424,7 +1422,16 @@
                         </div>
                     </div>
                 </div>
-                <br>
+                <div style="margin: 10px 0px;"></div>
+                <div class="info-modal width-max" style="padding: 0px 5px 15px 10px;">
+                    <div class="text-center info-modal-header">スタイル実装履歴</div>
+                    <div id="STYLE_HISTORY_AREA" style="margin: 10px 20px;"></div>
+                    <div id="HISTORY_TEMPLATE" class="d-none">
+                        <div class="icon" style="display: inline-flex;"></div>
+                        <div class="gacha" style="display: inline-block; border-bottom: 1px solid"></div>
+                    </div>
+                </div>
+
                 <!-- ツール_スタイル下部 -->
                 <ins class="adsbygoogle"
                     style="display:block"
