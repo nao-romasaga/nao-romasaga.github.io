@@ -72,12 +72,33 @@
 
                 <div class="info-modal dotList width-max" style="margin-top:10px;">
                     <div class="text-center info-modal-header">敬称略 順不同</div>
-                    <section id="ILLUST_AREA" class="char-choise-section2 row no-gutters"></section>
-                    <section id="UNKNOWN_AREA" class="char-choise-section2 row no-gutters"></section>
-                    <div id="VERTICAL_TEMPLATE" class="col-3 col-sm-1 d-none">
+                    <section id="ILLUST_AREA" class="char-choise-section2"></section>
+                    <section id="SINGLE_AREA" class="char-choise-section2 row no-gutters"></section>
+                    <section id="UNKNOWN_AREA" class="char-choise-section2"></section>
+
+                    <!-- アーティストテンプレート -->
+                    <div id="ARTIST_TEMPLATE" class="d-none row no-gutters">
+                        <div></div>
+                    </div>
+                    <div id="SINGLE_TEMPLATE" class="d-none col-3 col-sm-1 ">
+                        <div class="NAME width-100 bg-item fuchidori-white text-nowrap text-center" style="font-size:10px !important;"></div>
                         <div class="filter-bgcolor" style="padding: 0px !important; border: 1px solid yellow;">
                             <div class="text-center" style="background: url(https://romasagatool.com/img/bg_cutin.png);">
                                 <img class="VERTICAL_IMG lazyload" style="max-width:100%;">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- アーティスト名テンプレート -->
+                    <div id="NAME_TEMPLATE" class="NAME_AREA d-none col-12 bg-item fuchidori-white fuchidoriNormal text-center">
+                        <span class="NAME"></span>
+                        <i class="fas fa-sort-down"></i>
+                    </div>
+                    <!-- 画像テンプレート -->
+                    <div id="VERTICAL_TEMPLATE" class="col-3 col-sm-1 d-none">
+                        <div class="filter-bgcolor" style="padding: 0px !important; border: 1px solid yellow;">
+                            <div class="text-center" style="background: url(https://romasagatool.com/img/bg_cutin.png);">
+                                <img class="VERTICAL_IMG d-none lazyload" style="max-width:100%;">
+                                <img class="ICON_IMG lazyload" style="max-width:100%;">
                             </div>
                         </div>
                     </div>                    
@@ -97,51 +118,82 @@
         </div> <!-- main -->
     </body>
     <script>
-        var result = {};
-        for(var sId in ILLUST_DATA){
-            if(result[ILLUST_DATA[sId]] == undefined){
-                result[ILLUST_DATA[sId]] = {
-                    "artist" : ILLUST_DATA[sId],
-                    "sIds" : [],
-                    "size" : 0
-                };
-            }
-            result[ILLUST_DATA[sId]]['sIds'].push(sId);
-            result[ILLUST_DATA[sId]]['size']++;
-        }
-        var result2 = [];
-        for(var i in result){
-            result2.push(result[i]);
-        }
-        result2.sort(function(a,b){
-            if(a.size > b.size){
-                return -1;
-            } else if(a.size < b.size){
-                return 1;
-            } else {
-                return 0;
-            }
-        });
-        var braekFlag = false;
-        for(var tmp of result2){
-            var target = (tmp['artist'] == "情報募集中") ? "#UNKNOWN_AREA": "#ILLUST_AREA";
-
-            if(tmp['sIds'].length > 2){
-                $(target).append(`<div class="col-12 bg-item fuchidori-white fuchidoriNormal text-center">${tmp['artist']}</div>`);
-            } else if (!braekFlag) {
-                $("#ILLUST_AREA").append(`<div class="col-12"></div>`);
-                braekFlag = true;
-            }
-            for(var sId of tmp['sIds']){
-                var png = getImgPath(`style_vertical/${sId}.png`);
-                var tmpl = $("#VERTICAL_TEMPLATE").clone().removeClass("d-none").attr("id","");
-                tmpl.find(".VERTICAL_IMG").attr('data-src', png);
-
-                if(tmp['sIds'].length <= 2){
-                    tmpl.prepend(`<div class="width-100 bg-item fuchidori-white text-nowrap text-center" style="font-size:10px !important;">${tmp['artist']}</div>`);
+        $(document).on('click', '.NAME_AREA', function () {
+            $(this).find(".fas").toggleClass("fa-sort-up fa-sort-down");
+            // ダウンしたい場合
+            var showAll = $(this).find(".fas").hasClass("fa-sort-up");
+            $(this).parent().find(".col-3").each(function(i, e){
+                if(showAll) {
+                    $(this).find(".VERTICAL_IMG").removeClass("d-none");
+                    $(this).find(".ICON_IMG").addClass("d-none");
+                    $(this).removeClass("d-none");
+                } else {
+                    $(this).find(".VERTICAL_IMG").addClass("d-none");
+                    $(this).find(".ICON_IMG").removeClass("d-none");
+                    if(i >= 4) {
+                        $(this).addClass("d-none");
+                    }
                 }
-                $(target).append(tmpl);
+            });
+        });
+        var result2 = createArtistList(ILLUST_DATA);
+        // アーティスト単位のループ
+        for(var tmp of result2){
+            var target = tmp['artist'].indexOf("情報募集中") > -1 ? "#UNKNOWN_AREA": "#ILLUST_AREA";
+
+            var parent;
+            if(tmp['sIds'].length < 2){
+                target = "#SINGLE_AREA";
+                parent = $("#SINGLE_TEMPLATE").clone().removeClass("d-none").attr("id","");
+                parent.find(".NAME").text(tmp['artist']);
+                parent.find(".VERTICAL_IMG").attr('data-src', getImgPath(`style_vertical/${tmp['sIds'][0]}.png`));
+            } else {
+                var nameTmpl = $("#NAME_TEMPLATE").clone().removeClass("d-none").attr("id","");
+                nameTmpl.find(".NAME").text(tmp['artist']);
+                parent = $("#ARTIST_TEMPLATE").clone().removeClass("d-none").attr("id","");                
+                parent.append(nameTmpl);
+                for(var idx in tmp['sIds']){
+                    sId = tmp['sIds'][idx];
+                    var tmpl = $("#VERTICAL_TEMPLATE").clone().attr("id","").addClass("idx" + idx);
+                    if(idx < 4) {
+                        tmpl.removeClass("d-none");
+                    }
+                    tmpl.find(".VERTICAL_IMG").attr('data-src', getImgPath(`style_vertical/${sId}.png`));
+                    tmpl.find(".ICON_IMG").attr('data-src', getImgPath(`style_icon/${sId}.png`));
+                    parent.append(tmpl);
+                }                
             }
+
+            $(target).append(parent);
         }
+
+        function createArtistList(ILLUST_DATA) {
+            var result = {};
+            for(var sId in ILLUST_DATA){
+                if(result[ILLUST_DATA[sId]] == undefined){
+                    result[ILLUST_DATA[sId]] = {
+                        "artist" : ILLUST_DATA[sId],
+                        "sIds" : [],
+                        "size" : 0
+                    };
+                }
+                result[ILLUST_DATA[sId]]['sIds'].push(sId);
+                result[ILLUST_DATA[sId]]['size']++;
+            }
+            var result2 = [];
+            for(var i in result){
+                result2.push(result[i]);
+            }
+            result2.sort(function(a,b){
+                if(a.size > b.size){
+                    return -1;
+                } else if(a.size < b.size){
+                    return 1;
+                } else {
+                    return 0;
+                }
+            });
+            return result2;
+        }        
     </script>
 </html>
