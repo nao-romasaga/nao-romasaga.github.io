@@ -1,4 +1,21 @@
 [
+    {"start":"2021-06-17T20:00","title":"★★ 公式生放送 #11 2.5周年開催中&オケコン祭開催直前スペシャル ★★","classNames":"housou"},
+    {"start":"2021-06-10T17:00","title":"[ガチャ] 2.5周年大決戦祭 Romancing祭 魔女の娘編","classNames":"gacha"},
+    {"start":"2021-07-14T00:00","end":"2021-07-15T04:00","title":"[終了間際] 2.5周年大決戦祭 Romancing祭 魔女の娘編","classNames":"gacha"},
+    {"start":"2021-06-10T17:00","title":"[ガチャ] 2.5周年大決戦祭 Ultra DXガチャ 聖王編","classNames":"gacha"},
+    {"start":"2021-07-14T00:00","end":"2021-07-15T04:00","title":"[終了間際] 2.5周年大決戦祭 Ultra DXガチャ 聖王編","classNames":"gacha"},
+    
+    {"start":"2021-07-28T00:00","end":"2021-07-29T04:00","title":"[終了間近] 交換所 2.5周年大決戦祭 Romancing祭 魔女の娘編","classNames":"kokan"},
+    {"start":"2021-07-28T00:00","end":"2021-07-29T04:00","title":"[終了間近] 交換所 2.5周年大決戦祭 Ultra DXガチャ 聖王編","classNames":"kokan"},
+    {"start":"2021-06-10T17:00","title":"[練達] ・円舞剣・エナジーストーム追加","classNames":"new"},
+    {"start":"2021-06-10T17:00","title":"[交換所] 卵の殻交換所リニューアル(秘伝書)","classNames":"new"},
+    {"start":"2021-06-10T17:00","end":"2021-06-17T12:00","title":"[イベント] 宿命の大決戦-死闘 イゴマール-","classNames":"event"},
+
+    {"start":"2021-07-14T00:00","end":"2021-07-15T04:00","title":"[終了間際] ｲﾍﾞﾝﾄ ヴァルドーの超鍛錬道場","classNames":"event"},
+    {"start":"2021-06-10T17:00","end":"2021-06-17T12:00","title":"[CP] ドロップ 虹色原石","classNames":"drop"},
+    {"start":"2021-07-28T00:00","end":"2021-07-29T04:00","title":"[終了間近] 交換所 宿命の大決戦-死闘 イゴマール-","classNames":"kokan"},
+
+
     {"start":"2021-05-28T21:00","title":"[ガチャ] 2.5周年大決戦祭 Romancing祭 ポルカ編","classNames":"gacha"},
     {"start":"2021-07-14T00:00","end":"2021-07-15T04:00","title":"[終了間際] 2.5周年大決戦祭 Romancing祭 ポルカ編","classNames":"gacha"},
     {"start":"2021-06-01T12:00","title":"[ガチャ] プラチナガチャ大決戦セット","classNames":"gacha"},
