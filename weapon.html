@@ -510,19 +510,17 @@
                         if(rare == "SS") {
                             for(k in ATTRS){
                                 if(weaponInfo[k] != 0){
-                                    power1 = weaponInfo['Power'] + 8; // 2*4
                                     power2 = weaponInfo['Power'] + 16; //4*4
                                     v = weaponInfo[ATTRS[k]];
-                                    $tr.find(`.${ATTRS[k]}`).html((v+4) + "<br>" + (v+2));
-                                    power1 += WP_POWER_TABLE[ATTRS[k]] * 2;
+                                    $tr.find(`.${ATTRS[k]}`).html((v+4));
                                     power2 += WP_POWER_TABLE[ATTRS[k]] * 4;
                                     wp = weaponInfo['WeaponPower'];
-                                    $tr.find(".WeaponPower").html(wp + "<br>" + (wp-2) + "<br>" + (wp-4));
+                                    $tr.find(".WeaponPower").html(wp + "<br>" + (wp-4));
                                     jp = weaponInfo['JutsuPower'];
                                     if(jp > 0){
-                                        $tr.find(".JutsuPower").html(jp + "<br>" + (jp-2) + "<br>" + (jp-4));
+                                        $tr.find(".JutsuPower").html(jp + "<br>" + (jp-4));
                                     }
-                                    $tr.find(".Power").html(power2 + "<br>" + power1 + "<br>" + weaponInfo['Power']);
+                                    $tr.find(".Power").html(power2 + "<br>" + weaponInfo['Power']);
 
                                     //$tr.find(`.${k}`).html(v);
                                     //$tr.find(`.${k}`).attr("style", "opacity: 0.2;")
