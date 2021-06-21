@@ -89,7 +89,6 @@
 <body>
     <div class="dojohaikei">
         <div class="container">
-
             <h3 class="text-center label-text-small width-100">全力オート <br class="hidden spBlock">平均ダメージランキング</h3>
             <span class="title-text d-none"></span>
             <p class="text-right opacity"><small>バグ発見、ご要望は <a href="https://peing.net/ja/nao_romasaga_rs"
@@ -265,9 +264,13 @@
                                 data-label="レイドボス" href="#enemy_9" onclick=""><img src="http://romasagatool.com/img/enemy/raidboss.jpg" style="width: 40px;"><br>制圧戦<br>ﾚｲﾄﾞﾎﾞｽ</a></li>
                         <li class="col-3 col-sm xs-pad0"><a class="enemyfilterList pad0" data-type="EnemyClassFilter"
                                 data-label="アビスナーガ" href="#enemy_12" onclick=""><img src="http://romasagatool.com/img/enemy/abyss.png" style="width: 40px;"><br>ｱﾋﾞｽﾅｰｶﾞ<br>(UH25)</a></li>
--->                                
                         <li class="col-3 col-sm xs-pad0"><a class="enemyfilterList pad0" data-type="EnemyClassFilter"
-                                data-label="無し" href="#enemy_0" onclick="">無し</a></li>
+                                data-label="無し" href="#enemy_0" onclick="">無し</a></li>-->                                
+                    </ul>
+                    <ul class="nav text-center width-100 text-nowrap" style="margin-top: 20px;">
+                        <li class="col-12 col-sm xs-pad0">
+                            <button class="width-100 icon_btn_off optionButton text-nowrap" data-on="0" data-name="weakFilter">Weak攻撃を<br class="d-md-none">一切含まないスタイルを除外</button>
+                        </li>
                     </ul>
                     <br>
                     <div class=" table-dark d-none">
@@ -432,76 +435,110 @@
                         <button class="CHECKER d-none col-12 icon_btn_off optionButton" data-on="0" data-name="checker" >OFF</button><br>
                         <a class="fuchidori-blue" href="stylecheck.html">スタイル所持チェッカー</a>で登録したスタイルのみを表示します
                     </div>
-                </div>             
-                <div class="col-12 text-right">
-                    <button class="icon_btn_positive text-nowrap" id="SIMPLE_DISP">　簡易表示 　</button>
                 </div>
-                <div class="col-12">
-                    <h3 class="text-center label-text" style="padding-top:10px;padding-bottom:10px;">
-                        <span id="ENEMY"></span>
-                        <span id="TARGET">全スタイル</span>
-                        <br class="hidden spBlock">
-                        <span class="hidden pcBlock">ダメージランキング</span>
-                        <span class="hidden spBlock">ﾀﾞﾒｰｼﾞﾗﾝｷﾝｸﾞ</span>
-                    </span>
-                    </h3>
-                </div>
-                <div class="col-12">
-                    <div id="RANK_AREA" class="row"></div>
-                </div>
-                <button id="MORE_BUTTON" class="col-12 text-nowrap text-center width-100 icon_btn_positive shadow-black" style="font-size: 18px; display: block; padding: 10px 0px; margin-top: 10px;">もっと表示する</button>
-
-                <div id="CARD_TEMPLATE" class="d-none style-skill-list position-relative" style="padding: 0px 5px;">
-                    <div class="row no-gutters">
-                        <div class="char dot_mid dot char-hashiri DETAIL_DISP lazyload" style="top:5px; position: absolute; "></div>
-                        <div class="CUTIN lazyload bg-center d-none d-md-block" style="width:100%;height:100%;position: absolute; background-repeat: no-repeat; background-size: contain;opacity: 0.3;"></div>
-                        <div class="STYLE_ICON SMART_DISP text-center" style="margin: auto 0;"></div>
-                        <div class="col-6 col-md-3 col-lg-2 text-nowrap NAME_AREA overflow-x-scroll">
-                            <div class="icon-left-margin NAME_AREA_INNER" style="line-height: 20px;">
-                                <span class="CHAR_NAME">クローディア</span> 
-                                <span class="SMART_DISP">
-                                    <span class="AGI"></span><br>
-                                    <span class="ANOTHER_NAME">[さようなら、迷いの森]</span>
-                                </span>
-                                <br>
-                                <span class="AVG_DAMAGE fuchidoriJewel damageNumber" style="font-size:25px">20,458</span>
-                                <span class="WP_NAME d-none"><img class="icon_xs WEAPON_RARE"><span class="WEAPON"></span></span>
-                            </div>
-                            <div class="ANOTHER_NAME DETAIL_DISP">[さようなら、迷いの森]</div>
-                            <div class="DETAIL_DISP"><img class="icon_xs WEAPON_RARE"><span class="WEAPON"></span></div>
-                        </div>
-                        <div class="col-4 d-none d-md-block DETAIL_DISP_BLOCK" style="line-height:25px;">
-                            <div class="d-none SKILL_TEMPLATE text-nowrap">
-                                <span class="ATTR_ICON"></span>
-                                <span class="SKILL_NAME"></span>
-                                <span class="BP" style="position: absolute;right: 5px;">BP:</span>
-                            </div>
-                        </div>
-                        <div class="col-1 d-none d-lg-block DETAIL_DISP_BLOCK_LG" style="line-height:26px;">
-                            <div class="KAKUSEI_TEMPLATE"></div>
-                        </div>
-                        <div class="col-6 col-md-5 col-lg-5 small TURN_ACTION_BLOCK overflow-x-scroll" style="line-height:25px;">
-                            <table class="TURN_ACTION text-nowrap">
-                            </table>
-                        </div>
+                <!------------------ ここまで選択画面 ------------------------>
+                <div id="RANKING_AREA">
+                    <div class="col-12 text-right">
+                        <button class="icon_btn_positive text-nowrap" id="SIMPLE_DISP">　簡易表示 　</button>
                     </div>
-                    <img class="CLOSE_BTN yubi" src="./img/icon/icon_close.png" style="position: absolute;top: 0px;right: 0px;height: 15px;" onclick="">
+                    <div class="col-12">
+                        <h3 class="text-center label-text" style="padding-top:10px;padding-bottom:10px;">
+                            <span id="ENEMY"></span>
+                            <span id="TARGET">全スタイル</span>
+                            <br class="hidden spBlock">
+                            <span class="hidden pcBlock">ダメージランキング</span>
+                            <span class="hidden spBlock">ﾀﾞﾒｰｼﾞﾗﾝｷﾝｸﾞ</span>
+                        </span>
+                        </h3>
+                    </div>
+                    <div class="col-12">
+                        <div id="RANK_AREA" class="row"></div>
+                    </div>
+                    <button id="MORE_BUTTON" class="col-12 text-nowrap text-center width-100 icon_btn_positive shadow-black" style="font-size: 18px; display: block; padding: 10px 0px; margin-top: 10px;">もっと表示する</button>
                 </div>
+                <div id="JINKEI_AREA">
+                    陣形
+                </div>
+                <div style="margin-bottom:180px;"></div>
+            </div><!--row-->
+        </div><!--container-->
 
+        <div style="position:fixed; bottom:0px;" class="width-100 d-none">
+            <div class="row no-gutters text-center text-nowrap">
+                <div class="col-5"><button id="FOOTER_CLOSE" class="icon_btn_negative width-100 fuchidori-white footer-font" style="padding:5px 0px;"><span class="FOOTER_CLOSE_ARROW">▼</span><span class="FOOTER_CLOSE_ARROW d-none">▲</span><span class="d-none d-sm-inline"> 表示切替</span></button></div>
+                <div class="col-7"><button id="FOOTER_JINKEI"  class="icon_btn_positive width-100 width-max fuchidori-white footer-font " style="padding:5px 0px;"><i class="fas fa-calculator d-none d-md-inline"></i> 陣形シミュレーション</button></div>
             </div>
-        </div>
-    </div><!-- isLogin -->
-    </div>
-    </div>
+            <div class="width-100 bg-simple small text-center" style="height:95px;" id="FOOTER_PARTY">
+                <div style="position: relative; top:0px;">▼編成中のパーティ▼ (タップで解除)</div>
+                <div id="PARTY_FOOTER" class="party-footer">
+                    <div id="float-footer"></div>
+                </div>
+            </div>
+        </div>        
+    </div><!-- haikei -->
     <script src="./js/culcStyleBonus.js"></script>
     <script src="./js/data_WEAPON.js" ></script>
     <script src="./js/data_CHARMASTER.js"></script>
     <script src="./js/data_STYLEMASTER_style.js"></script>
     <script src="./js/data_SKILLMASTER_list.js"></script>
+    <script src="./js/data_ARMOR_RANK.js"></script>
+    <script src="./js/damage.js"></script>
     <script src="./js/autodamage.js"></script>
 
     <script type="text/javascript"
         src="https://romasagatool.com/blog/get_the_archives.php?limit=30&callback=rssCallback"></script>
+    <div id="STR_STR" class="d-none">0</div>
+    <div id="STR_INT" class="d-none">0</div>
+    <div id="STR_DEX" class="d-none">0</div>
+    <div id="STR_AGI" class="d-none">0</div>
+    <div id="DEX_STR" class="d-none">0</div>
+    <div id="DEX_INT" class="d-none">0</div>
+    <div id="DEX_DEX" class="d-none">0</div>
+    <div id="DEX_AGI" class="d-none">0</div>
+    <div id="AGI_STR" class="d-none">0</div>
+    <div id="AGI_INT" class="d-none">0</div>
+    <div id="AGI_DEX" class="d-none">0</div>
+    <div id="AGI_AGI" class="d-none">0</div>
+    <div id="INT_STR" class="d-none">0</div>
+    <div id="INT_INT" class="d-none">0</div>
+    <div id="INT_DEX" class="d-none">0</div>
+    <div id="INT_AGI" class="d-none">0</div>
+    <div id="CARD_TEMPLATE" class="d-none style-skill-list position-relative" style="padding: 0px 5px;">
+        <div class="row no-gutters">
+            <div class="char dot_mid dot char-hashiri DETAIL_DISP lazyload" style="top:5px; position: absolute; "></div>
+            <div class="CUTIN lazyload bg-center d-none d-md-block" style="width:100%;height:100%;position: absolute; background-repeat: no-repeat; background-size: contain;opacity: 0.3;"></div>
+            <div class="STYLE_ICON SMART_DISP text-center" style="margin: auto 0;"></div>
+            <div class="col-6 col-md-3 col-lg-2 text-nowrap NAME_AREA overflow-x-scroll">
+                <div class="icon-left-margin NAME_AREA_INNER" style="line-height: 20px;">
+                    <span class="CHAR_NAME">クローディア</span> 
+                    <span class="SMART_DISP">
+                        <span class="AGI"></span><br>
+                        <span class="ANOTHER_NAME">[さようなら、迷いの森]</span>
+                    </span>
+                    <br>
+                    <span class="AVG_DAMAGE fuchidoriJewel damageNumber" style="font-size:25px">20,458</span>
+                    <span class="WP_NAME d-none"><img class="icon_xs WEAPON_RARE"><span class="WEAPON"></span></span>
+                </div>
+                <div class="ANOTHER_NAME DETAIL_DISP">[さようなら、迷いの森]</div>
+                <div class="DETAIL_DISP"><img class="icon_xs WEAPON_RARE"><span class="WEAPON"></span></div>
+            </div>
+            <div class="col-4 d-none d-md-block DETAIL_DISP_BLOCK" style="line-height:25px;">
+                <div class="d-none SKILL_TEMPLATE text-nowrap">
+                    <span class="ATTR_ICON"></span>
+                    <span class="SKILL_NAME"></span>
+                    <span class="BP" style="position: absolute;right: 5px;">BP:</span>
+                </div>
+            </div>
+            <div class="col-1 d-none d-lg-block DETAIL_DISP_BLOCK_LG" style="line-height:26px;">
+                <div class="KAKUSEI_TEMPLATE"></div>
+            </div>
+            <div class="col-6 col-md-5 col-lg-5 small TURN_ACTION_BLOCK overflow-x-scroll" style="line-height:25px;">
+                <table class="TURN_ACTION text-nowrap">
+                </table>
+            </div>
+        </div>
+        <img class="CLOSE_BTN yubi" src="./img/icon/icon_close.png" style="position: absolute;top: 0px;right: 0px;height: 15px;" onclick="">
+    </div>
 </body>
 
 </html>
