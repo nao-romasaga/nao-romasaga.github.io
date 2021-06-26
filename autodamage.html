@@ -254,9 +254,9 @@
                                 data-label="陽弱点" href="#enemy_7" onclick=""><img src="http://romasagatool.com/img/icon/icon_yo.png" ></a></li>
                         <li class="col-3 col-sm xs-pad0"><a class="enemyfilterList pad0" data-type="EnemyClassFilter"
                                 data-label="陰弱点" href="#enemy_8" onclick=""><img src="http://romasagatool.com/img/icon/icon_in.png" ></a></li>
-<!--
                         <li class="col-3 col-sm xs-pad0"><a class="enemyfilterList pad0" data-type="EnemyClassFilter"
-                                data-label="呪われし者-斬陰-" href="#enemy_9" onclick=""><img src="http://romasagatool.com/img/enemy/noro.png" style="width: 40px;"><br>呪われし者<br>-斬陰-</a></li>
+                                data-label="イゴマール" href="#enemy_9" onclick="">ｲｺﾞﾏｰﾙ本体</a></li>
+<!--
                         <li class="col-3 col-sm xs-pad0"><a class="enemyfilterList pad0" data-type="EnemyClassFilter"
                                 data-label="呪われし者-打熱陽-" href="#enemy_10" onclick=""><img src="http://romasagatool.com/img/enemy/noro.png" style="width: 40px;"><br>呪われし者<br>-打熱陽-</a></li>
 
@@ -391,6 +391,11 @@
                     <div class="text-center label-text-small width-100" id="STYLE_HEADER">スタイル選択</div>
                     <div id="styleChoice"></div>
                     <div class="text-center label-text-small width-100">SS武器 絞り込み</div>
+                    <ul class="nav text-center width-100 text-nowrap" style="margin: 10px;">
+                        <li class="col-12 col-sm xs-pad0">
+                            <button class="width-100 icon_btn_off optionButton text-nowrap" data-on="0" data-name="weaponDupFilter">同じ武器を2度使用しない</button>
+                        </li>
+                    </ul>                    
                     SS武器の切り替えは負荷対策のため下記の「絞り込み」をタップしないと結果が反映されません<br>
                     <button class="icon_btn_negative text-nowrap" id="SS_FILTER" style="margin-bottom: 10px;">　絞り込み　</button><br>
                     
@@ -463,7 +468,7 @@
             </div><!--row-->
         </div><!--container-->
 
-        <div style="position:fixed; bottom:0px;" class="width-100 d-none">
+        <div style="position:fixed; bottom:0px;" class="width-100">
             <div class="row no-gutters text-center text-nowrap">
                 <div class="col-5"><button id="FOOTER_CLOSE" class="icon_btn_negative width-100 fuchidori-white footer-font" style="padding:5px 0px;"><span class="FOOTER_CLOSE_ARROW">▼</span><span class="FOOTER_CLOSE_ARROW d-none">▲</span><span class="d-none d-sm-inline"> 表示切替</span></button></div>
                 <div class="col-7"><button id="FOOTER_JINKEI"  class="icon_btn_positive width-100 width-max fuchidori-white footer-font " style="padding:5px 0px;"><i class="fas fa-calculator d-none d-md-inline"></i> 陣形シミュレーション</button></div>
