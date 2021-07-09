@@ -1,4 +1,20 @@
 [
+    {"start":"2021-07-09T12:00","title":"[ガチャ] サガ フロンティア発売日記念 Romancing祭 アセルス編","classNames":"gacha"},
+    {"start":"2021-07-31T00:00","end":"2021-08-01T04:00","title":"[終了間際] サガ フロンティア発売日記念 Romancing祭 アセルス編","classNames":"gacha"},
+    {"start":"2021-07-09T12:00","title":"[練達] ・ロザリオインペール・烈風剣追加","classNames":"new"},
+    {"start":"2021-07-09T12:00","title":"[ログボ] ・幻魔・Sイルドゥン 追加","classNames":"new"},
+    {"start":"2021-07-08T14:00","title":"★★データ更新★★","classNames":"mente"},
+    {"start":"2021-08-14T00:00","end":"2021-08-15T04:00","title":"[終了間近] サガ フロンティア発売日記念 Romancing祭 アセルス編","classNames":"kokan"},
+    {"start":"2021-07-09T12:00","title":"[イベント] 挑戦！ヴァジュイールの試練","classNames":"event"},
+    {"start":"2021-07-31T00:00","end":"2021-08-01T04:00","title":"[イベント] 挑戦！ヴァジュイールの試練","classNames":"event"},
+    {"start":"2021-07-10T12:00","title":"[イベント] 挑戦！ヴァジュイールの試練-看破の試練-","classNames":"event"},
+    {"start":"2021-07-11T12:00","title":"[イベント] 挑戦！ヴァジュイールの試練-技巧の試練-","classNames":"event"},
+    {"start":"2021-07-12T12:00","title":"[イベント] 挑戦！ヴァジュイールの試練-敏速の試練-","classNames":"event"},
+    {"start":"2021-07-13T12:00","title":"[イベント] 挑戦！ヴァジュイールの試練-慈愛の試練-","classNames":"event"},
+    {"start":"2021-07-09T12:00","title":"[ミッション] 挑戦！ヴァジュイールの試練ミッション","classNames":"mission"},
+    {"start":"2021-07-31T00:00","end":"2021-08-01T04:00","title":"[終了間際] ﾐｯｼｮﾝ 挑戦！ヴァジュイールの試練ミッション","classNames":"mission"},
+
+
     {"start":"2021-06-24T21:00","end":"2021-07-15T04:00","title":"[イベント] 制圧戦 宿命の大決戦-遥かなる戦いの果て-","classNames":"event"},
     {"start":"2021-06-24T21:00","title":"[ガチャ] 2.5周年大決戦祭 Romancing祭 ジョー/バートランド編","classNames":"gacha"},
     {"start":"2021-07-14T00:00","end":"2021-07-15T04:00","title":"[終了間際] 2.5周年大決戦祭 Romancing祭 ジョー/バートランド編","classNames":"gacha"},
