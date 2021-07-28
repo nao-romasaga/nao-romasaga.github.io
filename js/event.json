@@ -1,4 +1,33 @@
 [
+    {"start":"2021-07-28T20:00","title":"[練達] ・アル・フェニックス・精密射撃・でたらめ弾・ヒートウェイヴ・天地二段 追加","classNames":"new"},
+    {"start":"2021-07-28T20:00","title":"[ガチャ] Romancing佐賀 Romancing祭 アルカイザー編/コーデリア編","classNames":"gacha"},
+    {"start":"2021-08-24T00:00","end":"2021-08-25T04:00","title":"[終了間際] Romancing佐賀 Romancing祭 アルカイザー編/コーデリア編","classNames":"gacha"},
+    {"start":"2021-09-07T00:00","end":"2021-09-08T04:00","title":"[終了間近] Romancing佐賀 Romancing祭 アルカイザー編/コーデリア編","classNames":"kokan"},
+    {"start":"2021-08-02T04:00","end":"2021-08-09T04:00","title":"[CP] 「裏道場の証」獲得量2倍&卵のからドロップ量2倍","classNames":"cp"},
+    {"start":"2021-08-05T18:00","end":"2021-08-08T12:00","title":"育成CP 剣/大剣/斧/杖 4倍 メイン・制圧","classNames":"ikuseiCp"},
+    {"start":"2021-08-08T12:00","end":"2021-08-10T04:00","title":"育成CP 棍棒/銃/体術/小剣/槍/弓 4倍 メイン・制圧","classNames":"ikuseiCp"},
+    {"start":"2021-07-28T20:00","end":"2021-07-15T04:00","title":"[イベント] みんなでいくばい！SaGa風呂制圧戦","classNames":"event"},
+    {"start":"2021-08-24T04:00","end":"2021-08-25T04:00","title":"[終了間際] みんなでいくばい！SaGa風呂制圧戦","classNames":"event"},
+
+    {"start":"2021-07-28T19:00","title":"★★ 公式生放送 #13 ★★","classNames":"housou"},
+    {"start":"2021-07-28T20:00","title":"★★データ更新★★","classNames":"mente"},
+
+
+    {"start":"2021-07-16T21:00","title":"[ガチャ] サガ スカーレット グレイス 緋色の野望発売日記念 UltraDXガチャ","classNames":"gacha"},
+    {"start":"2021-07-31T00:00","end":"2021-08-01T04:00","title":"[終了間際] サガ スカーレット グレイス 緋色の野望発売日記念 UltraDXガチャ","classNames":"gacha"},
+    {"start":"2021-08-14T00:00","end":"2021-08-15T04:00","title":"[終了間近] 交換所 サガ スカーレット グレイス 緋色の野望発売日記念 UltraDXガチャ","classNames":"kokan"},
+    {"start":"2021-07-16T12:00","title":"[イベント] 激闘 緋色の伏魔殿","classNames":"event"},
+    {"start":"2021-07-31T00:00","end":"2021-08-01T04:00","title":"[イベント] 激闘 緋色の伏魔殿","classNames":"event"},
+    {"start":"2021-07-16T12:00","title":"[イベント] サガ スカーレット グレイス 緋色の野望発売日記念BOX","classNames":"event"},
+    {"start":"2021-07-31T00:00","end":"2021-08-01T04:00","title":"[イベント] サガ スカーレット グレイス 緋色の野望発売日記念BOX","classNames":"event"},
+    {"start":"2021-07-19T04:00","end":"2021-07-26T04:00","title":"[CP] 「裏道場の証」獲得量2倍&卵のからドロップ量2倍","classNames":"cp"},
+
+    {"start":"2021-07-16T12:00","end":"2021-07-15T09:30","title":"★★ 緊急メンテ(制圧戦配布ミス) ★★","classNames":"mente"},
+    {"start":"2021-07-16T12:00","title":"[練達] ・召雷・超重力・かぶと割り 追加","classNames":"new"},
+    {"start":"2021-07-16T12:00","title":"[装備メダル交換所] ・召雷・超重力・かぶと割り 追加","classNames":"new"},
+    
+    {"start":"2021-07-15T08:00","end":"2021-07-15T09:30","title":"★★ 緊急メンテ(制圧戦配布ミス) ★★","classNames":"mente"},
+
     {"start":"2021-07-09T12:00","title":"[ガチャ] サガ フロンティア発売日記念 Romancing祭 アセルス編","classNames":"gacha"},
     {"start":"2021-07-31T00:00","end":"2021-08-01T04:00","title":"[終了間際] サガ フロンティア発売日記念 Romancing祭 アセルス編","classNames":"gacha"},
     {"start":"2021-07-09T12:00","title":"[練達] ・ロザリオインペール・烈風剣追加","classNames":"new"},
