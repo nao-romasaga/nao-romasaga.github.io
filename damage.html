@@ -167,7 +167,13 @@
                         <div class="form-group col-xs-12 col-md-6 col-lg-4">
                             <label for="weapon" class="subtitle-long">使用技　</label>
                             <select class="form-control damage" id="skill" name="type"></select>
-                            <input id="skill_val" type="hidden" value="0">
+                            <input id="_skill_val" type="hidden" value="0">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text small">技威力</span>
+                                </div>
+                                <input type="number" class="form-control damage" id="skill_val" value="7">
+                            </div>                            
                             <div class="input-group" id="input_rank">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text small">Rank</span>
@@ -180,18 +186,19 @@
                             </div>
                         </div>
                         <div class="form-group col-xs-12 col-md-6 col-lg-4">
-                            <label for="ability" class="subtitle-long">アビリティ＋特攻＋聖石　</label>
+                            <label for="ability" class="subtitle-long">アビリティ＋聖石　</label>
+                            <!--
                             <div class="form-group">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text small">直接入力</span>
+                                        <span class="input-group-text small">合計</span>
                                     </div>
                                     <input type="number" class="form-control damage" id="ability"  placeholder="直接入力可">
                                     <div class="input-group-append">
                                         <span class="input-group-text">%</span>
                                     </div>
                                 </div>
-                            </div>                        
+                            </div>
                             <select class="form-control culcList" id="ability_list2" name="type">
                                 <option abId="0" value="0">テンションアップなし</option>
                                 <option abId="ID29d93224" value="2">テンションアップI (極小)</option>
@@ -222,12 +229,13 @@
                                 <option abId="ID29d93228" value="15">必殺の一撃III (大)</option>
                                 <option abId="ID29d93400" value="50">超必殺の一撃 (極大)</option>
                             </select>
+                        -->                            
                             <div class="form-group" style="margin-bottom: 0px;">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text small">その他</span>
+                                        <span class="input-group-text small">アビリティ</span>
                                     </div>
-                                    <input type="number" class="form-control damage" id="ability_other"  placeholder="その他アビリティ+X%">
+                                    <input type="number" class="form-control damage" id="ability_other"  placeholder="アビリティ+X%">
                                     <div class="input-group-append">
                                         <span class="input-group-text">%</span>
                                     </div>
@@ -238,7 +246,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text small">聖石</span>
                                     </div>
-                                    <input type="number" class="form-control damage" id="holystone"  placeholder="聖石+X%">
+                                    <input type="number" class="form-control damage" id="holystone"  placeholder="聖石+X%" value="15">
                                     <div class="input-group-append">
                                         <span class="input-group-text">%</span>
                                     </div>
@@ -368,7 +376,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text small"><span class="param_label_teki">体力</span>直接入力</span>
                                     </div>
-                                    <input type="number" class="form-control damage" id="vit" placeholder="直接入力可">
+                                    <input type="number" class="form-control damage" id="vit" placeholder="直接入力可" value=160>
                                 </div>
                                 <table class="width-max text-center table-dark">
                                     <tr class="char-bottom">
@@ -396,7 +404,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text small">耐性</span>
                                 </div>
-                                <input type="number" class="form-control damage" id="resist">
+                                <input type="number" class="form-control damage" id="resist" value="-35">
                             </div>
                             <div class="input-group">
                                 <div class="input-group-prepend">
