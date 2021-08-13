@@ -1,4 +1,20 @@
 [
+    {"start":"2021-08-16T14:00","title":"★★データ更新★★","classNames":"mente"},
+    {"start":"2021-08-16T20:00","title":"★★ 公式緊急放送 #14　D8夏フェス前夜祭 ★★","classNames":"housou"},
+
+    {"start":"2021-08-10T12:00","title":"[ガチャ] サガ魂ガチャ ナハトズィーガー編/ルビィ編","classNames":"gacha"},
+    {"start":"2021-08-10T12:00","title":"[イベント] ごいごいごい！で大爆走ナハトズィーガー！","classNames":"event"},
+
+    {"start":"2021-08-31T00:00","end":"2021-09-01T04:00","title":"[終了間際] サガ魂ガチャ ナハトズィーガー編/ルビィ編","classNames":"gacha"},
+    {"start":"2021-08-31T00:00","end":"2021-09-01T04:00","title":"[終了間近] ごいごいごい！で大爆走ナハトズィーガー！","classNames":"event"},
+
+    {"start":"2021-09-14T00:00","end":"2021-09-15T04:00","title":"[終了間近] 交換所 サガ魂ガチャ ナハトズィーガー編/ルビィ編","classNames":"kokan"},
+    {"start":"2021-09-14T00:00","end":"2021-09-15T04:00","title":"[終了間近] 交換所 ごいごいごい！で大爆走ナハトズィーガー！","classNames":"kokan"},
+
+    {"start":"2021-08-10T12:00","title":"[練達] ・陽だまりの矢・黄龍剣・草伏せ 追加","classNames":"new"},
+    {"start":"2021-08-05T14:00","title":"★★データ更新★★","classNames":"mente"},
+
+
     {"start":"2021-07-28T20:00","title":"[練達] ・アル・フェニックス・精密射撃・でたらめ弾・ヒートウェイヴ・天地二段 追加","classNames":"new"},
     {"start":"2021-07-28T20:00","title":"[ガチャ] Romancing佐賀 Romancing祭 アルカイザー編/コーデリア編","classNames":"gacha"},
     {"start":"2021-08-24T00:00","end":"2021-08-25T04:00","title":"[終了間際] Romancing佐賀 Romancing祭 アルカイザー編/コーデリア編","classNames":"gacha"},
@@ -33,7 +49,7 @@
     {"start":"2021-07-09T12:00","title":"[練達] ・ロザリオインペール・烈風剣追加","classNames":"new"},
     {"start":"2021-07-09T12:00","title":"[ログボ] ・幻魔・Sイルドゥン 追加","classNames":"new"},
     {"start":"2021-07-08T14:00","title":"★★データ更新★★","classNames":"mente"},
-    {"start":"2021-08-14T00:00","end":"2021-08-15T04:00","title":"[終了間近] サガ フロンティア発売日記念 Romancing祭 アセルス編","classNames":"kokan"},
+    {"start":"2021-08-14T00:00","end":"2021-08-15T04:00","title":"[終了間近] 交換所 サガ フロンティア発売日記念 Romancing祭 アセルス編","classNames":"kokan"},
     {"start":"2021-07-09T12:00","title":"[イベント] 挑戦！ヴァジュイールの試練","classNames":"event"},
     {"start":"2021-07-31T00:00","end":"2021-08-01T04:00","title":"[イベント] 挑戦！ヴァジュイールの試練","classNames":"event"},
     {"start":"2021-07-10T12:00","title":"[イベント] 挑戦！ヴァジュイールの試練-看破の試練-","classNames":"event"},
