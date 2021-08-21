@@ -121,6 +121,7 @@
                         <li>技ランク：99</li>
                         <li>聖石：+15%固定</li>
                         <li>乱数：パターン6</li>
+                        <li>勇健：基本は1ターンのみ。佐賀セルマのような確定でダメージ軽減できるスタイルは(軽減回数-1)ターンの間発動（3回軽減＝2ターン維持）</li>
                         <li>覚醒パターンや継承パターンが異なるが技使用回数が同じ場合は「覚醒数が多いケース」の表示されます</li>
                         <li>オートで使わない技は継承パターンに入っていません</li>
                     </ul>
@@ -391,9 +392,18 @@
                         <li class="col-12 col-sm xs-pad0">
                             <button class="width-100 icon_btn_on optionButton text-nowrap" data-on="1" data-name="weaponSFilter">S武器を使用しない</button>
                         </li>
-                    </ul>                    
-                    SS武器の切り替えは負荷対策のため下記の「絞り込み」をタップしないと結果が反映されません<br>
-                    <button class="icon_btn_negative text-nowrap" id="SS_FILTER" style="margin-bottom: 10px;">　絞り込み　</button><br>
+                    </ul>
+                    <ul class="noLogin nav text-center width-100 text-nowrap" style="margin: 10px;">
+                        <li class="col-4 col-sm xs-pad0">
+                            SS武器 所持状態の保存/復元
+                        </li>
+                        <li class="col-4 col-sm xs-pad0">
+                            <button class="icon_btn_negative text-nowrap" id="SS_SAVE" style="margin-bottom: 10px;">　保存　</button><br>
+                        </li>
+                        <li class="col-4 col-sm xs-pad0">
+                            <button class="icon_btn_negative text-nowrap" id="SS_LOAD" style="margin-bottom: 10px;">　復元　</button><br>
+                        </li>
+                    </ul>
                     
                     <div class="row no-gutters text-center width-max " style="margin-bottom: 10px;">
                         <div class="col-12 col-lg">
@@ -406,16 +416,51 @@
                             <button class="icon_btn_negative text-nowrap" id="SS_SECOND_TOGGLE">全2段目 ON/OFF</button>                            
                         </div>
                     </div>
+                    SS武器の切り替えは負荷対策のため下記の「絞り込み」をタップしないと結果が反映されません<br>
+                    <button class="icon_btn_negative text-nowrap" id="SS_FILTER" style="margin-bottom: 10px;">　絞り込み　</button><br>
                     <div class="row no-gutters text-center" style="margin-bottom: 10px;">
-                        <div class="col-4 col-md-2 col-lg ss-filter"><span class="icon_xs icon_ken"></span><div id="SS_icon_ken"></div></div>
-                        <div class="col-4 col-md-2 col-lg ss-filter"><span class="icon_xs icon_dken"></span><div id="SS_icon_dken"></div></div>
+                        <div class="col-4 col-md-2 col-lg ss-filter">
+                            <span class="icon_xs icon_ken"></span>
+                            <div id="SS_icon_ken"></div>
+                            <span class="icon_xs icon_ken"></span><span class="icon_xs icon_hi"></span><span class="icon_xs icon_mizu"></span>
+                            <div id="SS_icon_ken5152"></div>
+                            <span class="icon_xs icon_ken"></span><span class="icon_xs icon_hi"></span>
+                            <div id="SS_icon_ken51"></div>
+                            <span class="icon_xs icon_ken"></span><span class="icon_xs icon_hikari"></span>
+                            <div id="SS_icon_ken55"></div>
+                        </div>
+                        <div class="col-4 col-md-2 col-lg ss-filter">
+                            <span class="icon_xs icon_dken"></span>
+                            <div id="SS_icon_dken"></div>
+                            <span class="icon_xs icon_dken"></span><span class="icon_xs icon_mizu"></span>
+                            <div id="SS_icon_dken52"></div>
+                            <span class="icon_xs icon_dken"></span><span class="icon_xs icon_yami"></span>
+                            <div id="SS_icon_dken56"></div>
+                        </div>
                         <div class="col-4 col-md-2 col-lg ss-filter"><span class="icon_xs icon_ono"></span><div id="SS_icon_ono"></div></div>
-                        <div class="col-4 col-md-2 col-lg ss-filter"><span class="icon_xs icon_kon"></span><div id="SS_icon_kon"></div></div>
+                        <div class="col-4 col-md-2 col-lg ss-filter">
+                            <span class="icon_xs icon_kon"></span><div id="SS_icon_kon"></div>
+                            <span class="icon_xs icon_kon"></span><span class="icon_xs icon_hi"></span>
+                            <div id="SS_icon_kon51"></div>
+                        </div>
                         <div class="col-4 col-md-2 col-lg ss-filter"><span class="icon_xs icon_tai"></span><div id="SS_icon_tai"></div></div>
                         <div class="col-4 col-md-2 col-lg ss-filter"><span class="icon_xs icon_ju"></span><div id="SS_icon_ju"></div></div>
-                        <div class="col-4 col-md-2 col-lg ss-filter"><span class="icon_xs icon_sken"></span><div id="SS_icon_sken"></div></div>
-                        <div class="col-4 col-md-2 col-lg ss-filter"><span class="icon_xs icon_yari"></span><div id="SS_icon_yari"></div></div>
-                        <div class="col-4 col-md-2 col-lg ss-filter"><span class="icon_xs icon_yumi"></span><div id="SS_icon_yumi"></div></div>
+                        <div class="col-4 col-md-2 col-lg ss-filter">
+                            <span class="icon_xs icon_sken"></span>
+                            <div id="SS_icon_sken"></div>
+                            <span class="icon_xs icon_sken"></span><span class="icon_xs icon_hi"></span>
+                            <div id="SS_icon_sken51"></div>
+                        </div>
+                        <div class="col-4 col-md-2 col-lg ss-filter">
+                            <span class="icon_xs icon_yari"></span><div id="SS_icon_yari"></div>
+                            <span class="icon_xs icon_yari"></span><span class="icon_xs icon_hi"></span>
+                            <div id="SS_icon_yari51"></div>
+                        </div>
+                        <div class="col-4 col-md-2 col-lg ss-filter">
+                            <span class="icon_xs icon_yumi"></span><div id="SS_icon_yumi"></div>
+                            <span class="icon_xs icon_yumi"></span><span class="icon_xs icon_mizu"></span>
+                            <div id="SS_icon_yumi52"></div>
+                        </div>
                     </div>
                     <div class="row no-gutters text-center" style="margin-bottom: 10px;">
                         <div class="col-4 col-md-2 col-lg ss-filter"><span class="icon_xs icon_tsue"></span><span class="icon_xs icon_hi"></span><div id="SS_icon_tsue51"></div></div>
@@ -432,10 +477,12 @@
                         <button class="col icon_btn_off optionButton MULTI" data-on="0" data-name="multi" data-label="1">最小HIT</button>                  
                         <button class="col icon_btn_off optionButton MULTI" data-on="0" data-name="multi" data-label="99">最大HIT</button>                  
                     </div>
-                    <div class="text-center label-text-small width-100">スタイル所持チェッカー連動</div>
-                    <div class="row no-gutters text-center" style="margin-bottom: 10px;">
-                        <button class="CHECKER d-none col-12 icon_btn_off optionButton" data-on="0" data-name="checker" >OFF</button><br>
-                        <a class="fuchidori-blue" href="stylecheck.html">スタイル所持チェッカー</a>で登録したスタイルのみを表示します
+                    <div class="noLogin">
+                        <div class="text-center label-text-small width-100">スタイル所持チェッカー連動</div>
+                        <div class="row no-gutters text-center" style="margin-bottom: 10px;">
+                            <button class="CHECKER d-none col-12 icon_btn_off optionButton" data-on="0" data-name="checker" >OFF</button><br>
+                            <a class="fuchidori-blue" href="stylecheck.html">スタイル所持チェッカー</a>で登録したスタイルのみを表示します
+                        </div>
                     </div>
                 </div>
                 <!------------------ ここまで選択画面 ------------------------>
