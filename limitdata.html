@@ -58,7 +58,7 @@
                 <h3 class="text-center title-text">スタイル補正 / 補正込みステータス最大値 一覧</h3>
                 <p class="text-right opacity"><small>バグ発見、ご要望は <a href="https://peing.net/ja/nao_romasaga_rs" target="new">質問箱</a>まで</small></p>
                 <div id="firebaseui-auth-container" style="margin-bottom:10px;"></div>
-                <br>                
+                <br>      
                 <div class="filter-bgcolor text-center small row" style="width:100%; margin: 0px;">
                     <ul class="nav text-center width-100" style="margin-bottom: 5px;">
                         <li class="subtitle fuchidori-white smallFont">武器種別</li>
@@ -130,6 +130,27 @@
                         <div id="example-table" style="width:402px"></div>
                     </div>
                 </div>
+                <div class="width-100 card">
+                    <div id="jokenhead" onclick="" class="card-header bg-warning" style="color:black; font-size:20px;"><i
+                            class="fas fa-question-circle"></i> 戦闘力 計測条件</div>
+                    <div id="jokenbody" class="card-body" style="padding:0px 5px;">
+                        <ul class="trianglelist list5">
+                            <li>キャラ素ステ：その<b>キャラ</b>の最大ステータスを使用</li>
+                            <li>表示ステータス値：素ステ*補正値+ボーナス+裏。少数は<b>切り捨て</b></li>
+                            <li>戦闘力計算：<br>
+                                ・HP（キャップ＋100 ）＋裏HP（最大解放）」<br>
+                                ・各ステータス（少数切り捨てなし）* 各種係数（この結果も少数切り捨てなし）<br>
+                                ・耐性値<br>
+                                以上の合計が戦闘力です。
+                            </li>
+                            <li>　</li>
+                            <li>例：腕力153、補正値74.30%+7の場合<br>
+                                ・ゲーム内表示の腕力は「273」<br>
+                                ・戦闘力計算で使うのは「273.679」</li>
+                            <li>腕力は係数6なので、273.679 * 6 = 1642.074 が腕力分の戦闘力です</li>
+                        </ul>
+                    </div>
+                </div>                          
                 <br>
                 <!-- ツール_ステ上限_top-->
                 <ins class="adsbygoogle"
