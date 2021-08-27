@@ -1,4 +1,22 @@
 [
+    {"start":"2021-08-27T21:00","title":"★★データ更新★★","classNames":"mente"},
+    {"start":"2021-08-27T19:00","title":"★★ 公式生放送 ★★","classNames":"housou"},
+    {"start":"2021-08-27T21:00","title":"[練達] ・マサムネ・必殺の矢 追加","classNames":"new"},
+    {"start":"2021-08-27T12:00","title":"[ガチャ] サガ31周年記念Sa・Ga祭 Romancing祭 めがみ編","classNames":"gacha"},
+    {"start":"2021-08-27T12:00","title":"[ガチャ] Romancing祭 ロビンギャル編","classNames":"gacha"},
+    {"start":"2021-09-31T00:00","end":"2021-10-01T04:00","title":"[終了間際] 祭ガチャ めがみ編/ロビンギャル編","classNames":"gacha"},
+    {"start":"2021-10-14T00:00","end":"2021-10-15T04:00","title":"[終了間近] 交換所 祭ガチャ めがみ編/ロビンギャル編","classNames":"kokan"},
+    {"start":"2021-10-04T04:00","end":"2021-10-05T04:00","title":"[終了間近] ジュエルセール","classNames":"cp"},
+    {"start":"2021-08-30T04:00","end":"2021-09-06T04:00","title":"[CP] 「裏道場の証」獲得量2倍","classNames":"cp"},
+
+
+    {"start":"2021-08-27T21:00","end":"2021-08-28T04:00","title":"[イベント] サガ31周年記念クエスト","classNames":"event"},
+    {"start":"2021-09-31T20:00","end":"2021-10-01T04:00","title":"[終了間近] イベント サガ31周年記念クエスト","classNames":"event"},
+    {"start":"2021-08-27T21:00","end":"2021-09-10T04:00","title":"[ミッション] サガ31周年記念Sa・Ga祭 第１弾ミッション","classNames":"mission"},
+
+    {"start":"2021-08-27T20:00","end":"2021-08-28T04:00","title":"[イベント] サガ31周年記念！めがみからのおくりもの","classNames":"event"},
+    {"start":"2021-10-31T20:00","end":"2021-11-01T04:00","title":"[終了間近] イベント サガ31周年記念！めがみからのおくりもの","classNames":"event"},
+
     {"start":"2021-08-16T14:00","title":"★★データ更新★★","classNames":"mente"},
     {"start":"2021-08-16T20:00","title":"★★ 公式緊急放送 #14　D8夏フェス前夜祭 ★★","classNames":"housou"},
 
