@@ -1,4 +1,13 @@
 [
+    {"start":"2021-09-03T12:00","end":"2021-09-03T18:00","title":"★★ [メンテナンス] ver 1.27.0 ★★","classNames":"mente"},
+    {"start":"2021-09-03T18:00","title":"★★データ更新★★","classNames":"mente"},
+
+    {"start":"2021-09-03T18:00","end":"2021-09-20T04:00","title":"[イベント] 秘宝伝説制圧戦","classNames":"event"},
+    {"start":"2021-09-03T18:00","end":"2021-09-20T04:00","title":"[CP] 単改石・二改石ドロップ","classNames":"cp"},
+    {"start":"2021-09-07T12:00","end":"2021-09-08T04:00","title":"[イベント] アポロンとの戦い(復刻)","classNames":"event"},
+    {"start":"2021-09-30T00:00","end":"2021-10-01T04:00","title":"[終了間際] イベント アポロンとの戦い(復刻)","classNames":"event"},
+    {"start":"2021-09-07T12:00","end":"2021-09-10T04:00","title":"[CP] 聖石の洞窟 つるはしドロップ","classNames":"cp"},
+
     {"start":"2021-08-27T21:00","title":"★★データ更新★★","classNames":"mente"},
     {"start":"2021-08-27T19:00","title":"★★ 公式生放送 ★★","classNames":"housou"},
     {"start":"2021-08-27T21:00","title":"[練達] ・マサムネ・必殺の矢 追加","classNames":"new"},
