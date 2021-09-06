@@ -71,8 +71,15 @@
             padding-left:50px;
         }
         .TURN_ACTION_BLOCK {
-            /* height: 100px; */
+            max-height: 140px;
             overflow-y: scroll;
+        }
+        .weakTaisei {
+            color: lightcoral;
+        }
+            
+        .notWeakTaisei {
+            color: skyblue;
         }
         body{
         user-select:inherit;
@@ -120,6 +127,7 @@
                         <li>マスターレベル：<span id="NOW_MASTER_LV_LIST"></span></li>
                         <li>技ランク：99</li>
                         <li>聖石：+15%固定</li>
+                        <li>錬成武器：<span id="NOW_SERIES_SETTING"></span> [SS2 A1]想定の70%を基本とし、比較的高い倍率が出しやすいシリーズは+10%</li>
                         <li>乱数：パターン6</li>
                         <li>勇健：基本は1ターンのみ。佐賀セルマのような確定でダメージ軽減できるスタイルは(軽減回数-1)ターンの間発動（3回軽減＝2ターン維持）</li>
                         <li>覚醒パターンや継承パターンが異なるが技使用回数が同じ場合は「覚醒数が多いケース」の表示されます</li>
@@ -169,7 +177,7 @@
                         <div class="col-12 col-md-6">
                             <div class="text-center label-text-small width-100">ターン数 選択</div>
                             シミュレーションの<br class="hidden spBlock">ターン数を変更します
-                            <table class="width-max width-100" >
+                            <table class="width-100" >
                                 <tr>
                                     <td>開幕用</td>
                                     <td><button class="width-100 icon_btn_off optionButton text-nowrap" data-on="0" data-name="turn" data-label="1" data-bp=10>1ターン</button></td>
@@ -182,6 +190,10 @@
                                     <td>周回用</td>
                                     <td><button class="width-100 icon_btn_off optionButton text-nowrap" data-on="0" data-name="turn" data-label="3" data-bp=10>3ターン</button></td>
                                 </tr>
+                                <tr>
+                                    <td>レイド用</td>
+                                    <td><button class="width-100 icon_btn_off optionButton text-nowrap" data-on="0" data-name="turn" data-label="5" data-bp=10>5ターン</button></td>
+                                </tr>                                
                                 <tr>
                                     <td>ターン↔︎ラウンド<br class="hidden spBlock">切り替え</td>
                                     <td><button class="width-100 icon_btn_off optionButton text-nowrap" data-on="0" data-name="round">ラウンド <i class="TOGGLE fas fa-toggle-off"></i></button></td>
@@ -390,21 +402,9 @@
                             <button class="width-100 icon_btn_off optionButton text-nowrap" data-on="0" data-name="weaponDupFilter">同じ武器を2度使用しない</button>
                         </li>
                         <li class="col-12 col-sm xs-pad0">
-                            <button class="width-100 icon_btn_on optionButton text-nowrap" data-on="1" data-name="weaponSFilter">S武器を使用しない</button>
+                            <button class="width-100 icon_btn_off optionButton text-nowrap" data-on="1" data-name="weaponSFilter">S武器を使用しない</button>
                         </li>
-                    </ul>
-                    <ul class="noLogin nav text-center width-100 text-nowrap" style="margin: 10px;">
-                        <li class="col-4 col-sm xs-pad0">
-                            SS武器 所持状態の保存/復元
-                        </li>
-                        <li class="col-4 col-sm xs-pad0">
-                            <button class="icon_btn_negative text-nowrap" id="SS_SAVE" style="margin-bottom: 10px;">　保存　</button><br>
-                        </li>
-                        <li class="col-4 col-sm xs-pad0">
-                            <button class="icon_btn_negative text-nowrap" id="SS_LOAD" style="margin-bottom: 10px;">　復元　</button><br>
-                        </li>
-                    </ul>
-                    
+                    </ul>                    
                     <div class="row no-gutters text-center width-max " style="margin-bottom: 10px;">
                         <div class="col-12 col-lg">
                             SS武器 進化一括切り替え
@@ -472,11 +472,22 @@
                         <div class="col-4 col-md-2 col-lg ss-filter"><span class="icon_xs icon_tsue"></span><span class="icon_xs icon_mizu"></span><span class="icon_xs icon_yami"></span><div id="SS_icon_tsue5256"></div></div>
                         <div class="col-4 col-md-2 col-lg ss-filter"><span class="icon_xs icon_tsue"></span><span class="icon_xs icon_yami"></span><div id="SS_icon_tsue56"></div></div>
                     </div>
+
+                    <div class="text-center label-text-small width-100">SS武器 所持状態の保存/復元</div>
+                    <ul class="noLogin nav text-center width-100 text-nowrap" style="margin: 10px;">
+                        <li class="col-6 col-sm xs-pad0">
+                            <button class="icon_btn_negative text-nowrap" id="SS_SAVE" style="margin-bottom: 10px;">　保存　</button><br>
+                        </li>
+                        <li class="col-6 col-sm xs-pad0">
+                            <button class="icon_btn_negative text-nowrap" id="SS_LOAD" style="margin-bottom: 10px;">　復元　</button><br>
+                        </li>
+                    </ul>                    
                     <div class="text-center label-text-small width-100">多段攻撃ヒット数 絞り込み</div>
                     <div class="row no-gutters text-center" style="margin-bottom: 10px;">
                         <button class="col icon_btn_off optionButton MULTI" data-on="0" data-name="multi" data-label="1">最小HIT</button>                  
                         <button class="col icon_btn_off optionButton MULTI" data-on="0" data-name="multi" data-label="99">最大HIT</button>                  
                     </div>
+                    
                     <div class="noLogin">
                         <div class="text-center label-text-small width-100">スタイル所持チェッカー連動</div>
                         <div class="row no-gutters text-center" style="margin-bottom: 10px;">
@@ -486,23 +497,18 @@
                     </div>
                 </div>
                 <!------------------ ここまで選択画面 ------------------------>
-                <div id="RANKING_AREA">
+                <div id="RANKING_AREA" class="width-100">
                     <div class="col-12 text-right">
                         <button class="icon_btn_positive text-nowrap" id="SIMPLE_DISP">　簡易表示 　</button>
                     </div>
-                    <div class="col-12">
-                        <h3 class="text-center label-text" style="padding-top:10px;padding-bottom:10px;">
-                            <span id="ENEMY"></span>
-                            <span id="TARGET">全スタイル</span>
-                            <br class="hidden spBlock">
-                            <span class="hidden pcBlock">ダメージランキング</span>
-                            <span class="hidden spBlock">ﾀﾞﾒｰｼﾞﾗﾝｷﾝｸﾞ</span>
-                        </span>
-                        </h3>
-                    </div>
-                    <div class="col-12">
-                        <div id="RANK_AREA" class="row"></div>
-                    </div>
+                    <h3 class="text-center label-text" style="padding-top:10px;padding-bottom:10px;">
+                        <span id="ENEMY"></span>
+                        <span id="TARGET">全スタイル</span>
+                        <br class="hidden spBlock">
+                        <span class="hidden pcBlock">ダメージランキング</span>
+                        <span class="hidden spBlock">ﾀﾞﾒｰｼﾞﾗﾝｷﾝｸﾞ</span>
+                    </h3>
+                    <div id="RANK_AREA"></div>
                     <button id="MORE_BUTTON" class="col-12 text-nowrap text-center width-100 icon_btn_positive shadow-black" style="font-size: 18px; display: block; padding: 10px 0px; margin-top: 10px;">もっと表示する</button>
                 </div>
                 <div id="JINKEI_AREA">
@@ -553,11 +559,11 @@
     <div id="INT_DEX" class="d-none">0</div>
     <div id="INT_AGI" class="d-none">0</div>
     <div id="CARD_TEMPLATE" class="d-none style-skill-list position-relative" style="padding: 0px 5px;">
-        <div class="row no-gutters">
+        <div class="row no-gutters DETAIL_CARD">
             <div class="char dot_mid dot char-hashiri DETAIL_DISP lazyload" style="top:5px; position: absolute; "></div>
             <div class="CUTIN lazyload bg-center d-none d-md-block" style="width:100%;height:100%;position: absolute; background-repeat: no-repeat; background-size: contain;opacity: 0.3;"></div>
             <div class="STYLE_ICON SMART_DISP text-center" style="margin: auto 0;"></div>
-            <div class="col-6 col-md-3 col-lg-2 text-nowrap NAME_AREA overflow-x-scroll">
+            <div class="col-5 col-md-3 col-lg-2 text-nowrap NAME_AREA overflow-x-scroll">
                 <div class="icon-left-margin NAME_AREA_INNER" style="line-height: 20px;">
                     <span class="CHAR_NAME">クローディア</span> 
                     <span class="SMART_DISP">
@@ -571,7 +577,7 @@
                 <div class="ANOTHER_NAME DETAIL_DISP">[さようなら、迷いの森]</div>
                 <div class="DETAIL_DISP"><img class="icon_xs WEAPON_RARE"><span class="WEAPON"></span></div>
             </div>
-            <div class="col-4 d-none d-md-block DETAIL_DISP_BLOCK" style="line-height:25px;">
+            <div class="col-4 col-md-5 col-lg-4 d-none d-md-block DETAIL_DISP_BLOCK" style="line-height:25px;">
                 <div class="d-none SKILL_TEMPLATE text-nowrap">
                     <span class="ATTR_ICON"></span>
                     <span class="SKILL_NAME"></span>
@@ -581,7 +587,27 @@
             <div class="col-1 d-none d-lg-block DETAIL_DISP_BLOCK_LG" style="line-height:26px;">
                 <div class="KAKUSEI_TEMPLATE"></div>
             </div>
-            <div class="col-6 col-md-5 col-lg-5 small TURN_ACTION_BLOCK overflow-x-scroll" style="line-height:25px;">
+            <div class="col-7 col-md-4 col-lg-5 small TURN_ACTION_BLOCK overflow-x-scroll" style="line-height:25px;">
+                <table class="TURN_ACTION text-nowrap">
+                </table>
+            </div>
+        </div>
+        <!--シンプル用-->
+        <div class="row no-gutters SIMPLE_CARD d-none">
+            <div class="STYLE_ICON text-center" style="margin: auto 0;"></div>
+            <div class="col-5 col-md-4 col-lg-4 text-nowrap NAME_AREA overflow-x-scroll">
+                <div class="NAME_AREA_INNER" style="line-height: 20px;">
+                    <span class="CHAR_NAME">クローディア</span> 
+                    <span class="">
+                        <span class="AGI"></span><br>
+                        <span class="ANOTHER_NAME">[さようなら、迷いの森]</span>
+                    </span>
+                    <br>
+                    <span class="AVG_DAMAGE fuchidoriJewel damageNumber" style="font-size:25px">20,458</span>
+                    <span class="WP_NAME"><img class="icon_xs WEAPON_RARE"><span class="WEAPON"></span></span>
+                </div>
+            </div>
+            <div class="col-7 col-md-6 col-lg-7 small TURN_ACTION_BLOCK overflow-x-scroll" style="line-height:25px;">
                 <table class="TURN_ACTION text-nowrap">
                 </table>
             </div>
