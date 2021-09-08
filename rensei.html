@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#" lang="ja">
+    <head>
+        <script src="./js/jquery-3.3.1.min.js"></script>
+        <script src="./js/lib/lazysizes.min.js"></script>
+        <script src="./js/lib/ls.unveilhooks.min.js"></script>
+        <script src="./js/data_STYLEMASTER_style.js" ></script>
+        <script src="./js/culcStyleBonus.js" ></script>
+        <script src="./js/damage.js" ></script>        
+        <!-- Global site tag (gtag.js) - Google Analytics         -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138966739-1"></script>
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
+        <script src="./js/asyncFunc.js"></script>
+        <script src="./js/data_CHARMASTER.js" ></script>
+        <script src="./js/data_SKILLMASTER_style.js" ></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+            gtag('config', 'UA-138966739-1');
+        </script>
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <meta charset="utf-8">
+        <title>【ロマサガRS】錬成武器 対象キャラ一覧</title>
+        <meta name="description" content="ロマサガRSの錬成武器の対象となるキャラクターを調べるツールです。所持してる錬成武器でどのキャラが適応してるか確認できます。攻略等にお役立て下さい。"/>
+        <meta property="og:title" content="【【ロマサガRS】錬成武器 対象キャラ一覧" />
+        <meta property="og:url" content="https://http://nao-romasaga.github.io/rensei.html" />
+        <meta property="og:description" content="ロマサガRSの錬成武器の対象となるキャラクターを調べるツールです。所持してる錬成武器でどのキャラが適応してるか確認できます。攻略等にお役立て下さい。" />
+        <meta name="description" content="ロマサガRSの錬成武器の対象となるキャラクターを調べるツールです。所持してる錬成武器でどのキャラが適応してるか確認できます。攻略等にお役立て下さい。【ロマンシングサガ リユニバース】" />
+        <meta property="og:image" content="https://nao-romasaga.github.io/img/twitter_card_rensei.png" />
+        <meta property="og:site_name" content="ロマサガRS便利ツール" />
+        <meta property="og:type" content="article">
+        <meta property="og:locale" content="ja_JP" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@nao_romasaga_rs" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="./css/bootstrap/bootstrap.min.css">
+        <script src="./js/bootstrap/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="./css/style2.css">
+        
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/ui/3.5.2/firebase-ui-auth__ja.js"></script>
+        <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+
+        <script src="./js/Firebase.js"></script>
+        <script src="./js/utils2.js" ></script>
+        <script src="./js/rensei.js" ></script>
+        <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet"> 
+        <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <style>
+        .gender-male {
+            color: skyblue;
+        }
+        .gender-famale {
+            color: lightcoral;
+        }
+        .gender-unknown {
+            color: violet;
+        }
+
+        .gender-icon {
+            animation: rollkAnime 2s infinite steps(1);
+            font-size: 130%;
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            z-index: 1;            
+        }
+        @keyframes rollkAnime{
+            50% {   transform: rotate(25deg);}
+            100% {  transform: rotate(0deg);}
+        }
+        .blink {
+            animation: flash 2s linear infinite;
+        }
+        .light-blink {
+            animation: lightflash 2s linear infinite;
+        }
+        @keyframes flash {
+            0%,100%{ background-color: #00bb00; }
+            35% {background-color: #006600; }
+        }
+        @keyframes lightflash {
+            0%,100%{ background-color: #00ff00; }
+            35% {background-color: #00cc00; }
+        }
+        .blink-gender {
+            padding: 1px;
+            border-radius: 5px;
+            animation: rollkAnime 2s infinite steps(1), flash 2s linear infinite;
+        }
+
+
+        .series-banner {
+            position: absolute;
+            height: fit-content;
+            font-size: 8px;
+            color: white;
+            background-color: rgba(0,0,0,0.5);
+            border: solid 1px lightgoldenrodyellow;
+            border-radius: 5px;
+            z-index: 1;
+        }
+        .per-banner {
+            position: absolute;
+            height: fit-content;
+            color: white;
+            padding: 0px 5px;
+            background-color: rgba(0, 0, 0, 0.6);
+            border: solid 1px lightgoldenrodyellow;
+            border-radius: 5px;
+            left: 0px;
+            bottom: 11px;
+            z-index: 1;
+        }
+        .per {
+            font-size: 8px;
+        }
+
+        /* パソコンで表示する場合のCSS */
+        @media (min-width: 768px) {
+            .series-banner {
+                bottom: 20px;
+                right: 4px;
+                padding: 0px 5px;            
+            }
+            .per-banner {
+                bottom: 20px;
+            }
+        }        
+        /* スマホで表示する場合のCSS */
+        @media (max-width: 768px) {
+            .series-banner {
+                top: 4px;
+                right: 0px;
+                padding: 0px 2px;            
+            }
+        }
+        @media screen and (max-width: 400px) {
+            .info-modal {
+                padding: 0px 5px 30px 5px;
+            }
+        }
+        @media screen and (max-width: 329px){
+            .dot-base {
+                width: 60px;
+            }
+            .skill-table {
+                font-size: 8px;
+            }
+        }
+    </style>
+    <body>
+        <div class ="haikei">
+            <div class="container">
+                <h3 class="text-center title-text">錬成武器 対象キャラ一覧</h3>
+                <h5 class="text-center label-text-small width-100">最終更新日: <span id="UPDATE">2021/09/04</span></h5>
+                <p class="text-right opacity"><small>バグ発見、ご要望は <a href="https://peing.net/ja/nao_romasaga_rs" target="new">質問箱</a>まで</small>
+                </p>
+
+                <!-- ツール_スタイル上部 -->
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-5008373409434899"
+                    data-ad-slot="5836482514"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"></ins>
+
+                <div class="filter-bgcolor text-center small width-max" style="padding-bottom: 20px; margin-bottom: 20px;">
+                    <div class="row">
+                        <ul class="col-12 text-left" style="margin-bottom: 5px;">
+                            <li class="subtitle-long fuchidori-white ">錬成武器 設定</li>
+                        </ul>
+                        <ul class="nav text-center width-100">
+                            <li class="col-2 col-sm-1 "><a class="FILTER_LIST " data-type="大剣"><span class="icon_mini icon_dken weapon-icon-button FILTER_BUTTON filterActive" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 "><a class="FILTER_LIST " data-type="体術"><span class="icon_mini icon_tai weapon-icon-button FILTER_BUTTON" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 "><a class="FILTER_LIST " data-type="弓"><span class="icon_mini icon_yumi weapon-icon-button FILTER_BUTTON" onclick=""></span></a></li>
+                        </ul>
+                        
+                        <div class="col-12 col-md-4" id="AB1_AREA">
+                            <label class="bg-item width-100">アビリティ1</label>
+                            <select class="form-control RENSEI_AB" id="ab1" name="ab1" style="margin-bottom: 10px;"></select>
+                        </div>
+                        <div class="col-12 col-md-4" id="AB2_AREA">
+                            <label class="bg-item width-100">アビリティ2</label>
+                            <select class="form-control RENSEI_AB" id="ab2" name="ab2" style="margin-bottom: 10px;"></select>
+                        </div>
+                        <div class="col-12 col-md-4" id="AB3_AREA">
+                            <label class="bg-item width-100">アビリティ3</label>
+                            <select class="form-control RENSEI_AB" id="ab3" name="ab3" style="margin-bottom: 10px;"></select>
+                        </div>
+                        <ul class="nav text-center width-100 d-none" id="AB_TEMPLATE" style="margin-bottom: 20px;">
+                            <li class="col-2"><a class="RARE_BUTTON"><span 
+                                class="weapon-icon-button style_icon_limit_base icon_rare_ss filterActive" data-rare="SS" onclick=""></span></a></li>
+                            <li class="col-2"><a class="RARE_BUTTON "><span
+                                class="weapon-icon-button style_icon_limit_base icon_rare_s" data-rare="S" onclick=""></span></a></li>
+                            <li class="col-2"><a class="RARE_BUTTON "><span
+                                class="weapon-icon-button style_icon_limit_base icon_rare_a" data-rare="A" onclick=""></span></a></li>
+                            <li class="col-6 col-md-6">
+                                <div class="input-group">
+                                    <input type="number" class="form-control AB_PER" readonly value="27">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">%</span>
+                                    </div>
+                                </div>                                
+                            </li>
+                        </ul>
+                        <!--
+                        <div class="col-12" style="margin-bottom: 20px;">
+                            <button class="icon_btn_positive text-nowrap" id="SAVE_NEW">錬成武器を保存する</button>
+                        </div>
+                        <div class="col-12">
+                            <button class="width-100 icon_btn_on text-nowrap" id="OPEN_LIST">保存した錬成武器一覧を表示</button>
+                        </div>
+                        -->
+                    </div>
+                </div>
+
+                <div class="info-modal width-max dotList" style="margin-bottom: 20px;">
+                    <div class="text-center info-modal-header">対象キャラ一覧</div>
+                    <section id="CHAR_LIST" class=""></section>
+                </div>
+
+                <div class="info-modal width-max">
+                    <div class="text-center info-modal-header">所持技一覧</div>
+                    <div class="width-100" style="overflow-x: scroll; padding-bottom: 20px;">
+                        <table class="width-100 skill-table" id="SKILL_TABLE" style="line-height: 12px;">
+                            <thead>
+                                <tr class="text-center" style="border-bottom: 1px solid gray;">
+                                    <th></th>
+                                    <th>属性</th>
+                                    <th class="d-none d-sm-table-cell">名称</th>
+                                    <th>範<br class="d-sm-none">囲</th>
+                                    <th>倍率</th>
+                                    <th class="d-sm-none">名称</th>
+                                    <th>威力</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                            <tfoot>
+                                <tr class="d-none" id="TR_TEMPLATE" style="border-bottom: 1px solid gray;">
+                                    <td class="ICON filter-bgcolor text-center" style="padding:0px;"></td>
+                                    <td class="text-nowrap">
+                                        <img class="BATTLE_ICON icon_xs" loading="lazy" src="">
+                                        <span class="ATTR"></span>
+                                    </td>
+                                    <th class="NAME d-none d-sm-table-cell text-nowrap"></th>
+                                    <td class="RANGE">
+                                        <span class="RANGE_S d-sm-none"></span>
+                                        <span class="RANGE_L d-none d-sm-inline"></span>
+                                    </td>
+                                    <td>+<span class="SKILL_PER">0</span>%</td>
+                                    <td class="NAME text-nowrap d-sm-none"></td>
+                                    <td class="IRYOKU"></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- ツール_スタイル下部 -->
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-5008373409434899"
+                    data-ad-slot="6110964621"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"></ins>                
+                <script> (adsbygoogle = window.adsbygoogle || []).push({});</script>            
+            </div>
+            <script> (adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <p id="PageTopBtn" style="right:10px"><a href="#FILTER"><i class="fas fa-arrow-up"></i></a></p>
+        </div> <!-- main -->
+        <script type="text/javascript" src="https://romasagatool.com/blog/get_the_archives.php?limit=30&callback=rssCallback"></script>
+    </body>
+</html>
