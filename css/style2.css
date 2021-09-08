@@ -270,6 +270,7 @@ html {
     padding: 0px 3px;
     border-radius: 6px;
     font-size: 8px;
+    overflow-x: hidden;
 }
 .dot-nbai-label {
     position:absolute;
