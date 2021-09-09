@@ -25,7 +25,7 @@
         <meta charset="utf-8">
         <title>【ロマサガRS】錬成武器 対象キャラ一覧</title>
         <meta name="description" content="ロマサガRSの錬成武器の対象となるキャラクターを調べるツールです。所持してる錬成武器でどのキャラが適応してるか確認できます。攻略等にお役立て下さい。"/>
-        <meta property="og:title" content="【【ロマサガRS】錬成武器 対象キャラ一覧" />
+        <meta property="og:title" content="【ロマサガRS】錬成武器 対象キャラ一覧" />
         <meta property="og:url" content="https://http://nao-romasaga.github.io/rensei.html" />
         <meta property="og:description" content="ロマサガRSの錬成武器の対象となるキャラクターを調べるツールです。所持してる錬成武器でどのキャラが適応してるか確認できます。攻略等にお役立て下さい。" />
         <meta name="description" content="ロマサガRSの錬成武器の対象となるキャラクターを調べるツールです。所持してる錬成武器でどのキャラが適応してるか確認できます。攻略等にお役立て下さい。【ロマンシングサガ リユニバース】" />
@@ -183,17 +183,21 @@
                     data-full-width-responsive="true"></ins>
 
                 <div class="filter-bgcolor text-center small width-max" style="padding-bottom: 20px; margin-bottom: 20px;">
-                    <div class="row">
+                    <div class="row" id="FILTER">
                         <ul class="col-12 text-left" style="margin-bottom: 5px;">
                             <li class="subtitle-long fuchidori-white ">錬成武器 設定</li>
                         </ul>
                         <ul class="nav text-center width-100">
-                            <li class="col-2 col-sm-1 "><a class="FILTER_LIST " data-type="大剣"><span class="icon_mini icon_dken weapon-icon-button FILTER_BUTTON filterActive" onclick=""></span></a></li>
-                            <li class="col-2 col-sm-1 "><a class="FILTER_LIST " data-type="斧"><span class="icon_mini icon_ono weapon-icon-button FILTER_BUTTON" onclick=""></span></a></li>
-                            <li class="col-2 col-sm-1 "><a class="FILTER_LIST " data-type="体術"><span class="icon_mini icon_tai weapon-icon-button FILTER_BUTTON" onclick=""></span></a></li>
-                            <li class="col-2 col-sm-1 "><a class="FILTER_LIST " data-type="銃"><span class="icon_mini icon_ju weapon-icon-button FILTER_BUTTON" onclick=""></span></a></li>
-                            <li class="col-2 col-sm-1 "><a class="FILTER_LIST " data-type="小剣"><span class="icon_mini icon_sken weapon-icon-button FILTER_BUTTON" onclick=""></span></a></li>
-                            <li class="col-2 col-sm-1 "><a class="FILTER_LIST " data-type="弓"><span class="icon_mini icon_yumi weapon-icon-button FILTER_BUTTON" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class=" " data-type="剣"><span class="icon_mini icon_ken xweapon-icon-button FILTER_BUTTON" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="FILTER_LIST " data-type="大剣"><span class="icon_mini icon_dken weapon-icon-button FILTER_BUTTON filterActive" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="FILTER_LIST " data-type="斧"><span class="icon_mini icon_ono weapon-icon-button FILTER_BUTTON" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class=" " data-type="棍棒"><span class="icon_mini icon_kon xweapon-icon-button FILTER_BUTTON" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="FILTER_LIST " data-type="体術"><span class="icon_mini icon_tai weapon-icon-button FILTER_BUTTON" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="FILTER_LIST " data-type="銃"><span class="icon_mini icon_ju weapon-icon-button FILTER_BUTTON" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="FILTER_LIST " data-type="小剣"><span class="icon_mini icon_sken weapon-icon-button FILTER_BUTTON" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class=" " data-type="槍"><span class="icon_mini icon_yari xweapon-icon-button FILTER_BUTTON" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="FILTER_LIST " data-type="弓"><span class="icon_mini icon_yumi weapon-icon-button FILTER_BUTTON" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class=" " data-type="杖"><span class="icon_mini icon_tsue xweapon-icon-button FILTER_BUTTON" onclick=""></span></a></li>
                         </ul>
                         
                         <div class="col-12 col-md-4" id="AB1_AREA">
@@ -224,56 +228,143 @@
                                 </div>                                
                             </li>
                         </ul>
-                        <!--
                         <div class="col-12" style="margin-bottom: 20px;">
-                            <button class="icon_btn_positive text-nowrap" id="SAVE_NEW">錬成武器を保存する</button>
+                            <button class="icon_btn_positive text-nowrap" id="SAVE_NEW" data-weapon="大剣">錬成武器を保存する</button>
                         </div>
                         <div class="col-12">
                             <button class="width-100 icon_btn_on text-nowrap" id="OPEN_LIST">保存した錬成武器一覧を表示</button>
                         </div>
-                        -->
                     </div>
                 </div>
+
+                <div class="info-modal width-max dotList" style="margin-bottom: 20px;">
+                    <div class="text-center info-modal-header">所持 錬成武器一覧</div>
+                    <div class="row IS_LOGIN d-none">
+                        <div class="col-2 col-sm-9" style="margin-bottom: 20px;"></div>
+                        <div class="col-10 col-sm-3" style="margin-bottom: 20px;">
+                            <button class="icon_btn_positive text-nowrap" id="SAVE_NAME">メモを保存する</button>
+                        </div>                    
+                    </div>
+                    <table id="WEAPON_TABLE" class="weapon-table width-100 text-nowrap" style="overflow-x: scroll;">
+                        <thead>
+                            <tr class="weapon-border text-center">
+                                <td></td>
+                                <td>アビリティ</td>
+                                <td>合計</td>
+                                <td class="d-none d-sm-table-cell">属性</td>
+                                <td class="d-none d-sm-table-cell">範囲</td>
+                                <td class="d-none d-sm-table-cell">シリーズ</td>
+                                <td class="d-none d-sm-table-cell">性別</td>
+                                <td>メモ</td>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                        <tfoot>
+                            <tr class="weapon-border ability-names d-none" id="LIST_TR_TEMPLATE">
+                                <td style="position: relative;">
+                                    <span class="TRASH_BTN yubi" style="position: absolute;top: 0px;left: 15px;height: 15px; z-index: 1;" onclick="">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </span>
+                                    <span class="WP_ICON"></span>
+                                </td>
+                                <td class="">
+                                    <div class="AB_NAME d-none">
+                                        <span class="icon_rare_xx ability_label align-middle"></span
+                                            ><span class="font-xx align-middle"></span>
+                                    </div>                  
+                                </td>
+                                <td class="ALL_PER" style="font-size: initial;"></td>
+                                <td class="d-none d-sm-table-cell Attrs_PER"></td>
+                                <td class="d-none d-sm-table-cell Range_PER"></td>
+                                <td class="d-none d-sm-table-cell Series_PER"></td>
+                                <td class="d-none d-sm-table-cell Gender_PER"></td>
+                                <td><input type="text" class="form-control AB_MY_NAME" /></td>
+                            </tr>                            
+                        </tfoot>
+                    </table>
+                </div>
+                <style>
+                    .weapon-table {
+                        background-color: rgba(0,0,0,0.8);
+                        color: #faf0b4;
+                        border-radius: 5px;
+                        padding: 5px;
+                        line-height: 19px;
+                    }
+                    .weapon-border {
+                        border-bottom: 1px solid rgb(197,187,147);
+                    }
+                    .ability-names {
+                        font-size: 12px;
+                        line-height: 15px !important;
+                    }
+                    .ability_label {
+                        display: inline-block;
+                        width: 15px;
+                        height: 15px;
+                    }
+                </style>
 
                 <div class="info-modal width-max dotList" style="margin-bottom: 20px;">
                     <div class="text-center info-modal-header">対象キャラ一覧</div>
                     <section id="CHAR_LIST" class=""></section>
                 </div>
 
-                <div class="info-modal width-max">
-                    <div class="text-center info-modal-header">所持技一覧</div>
-                    <div class="width-100" style="overflow-x: scroll; padding-bottom: 20px;">
-                        <table class="width-100 skill-table" id="SKILL_TABLE" style="line-height: 14px;">
-                            <thead>
-                                <tr class="text-center" style="border-bottom: 1px solid gray;">
-                                    <th></th>
-                                    <th>属性</th>
-                                    <th class="d-none d-sm-table-cell">名称</th>
-                                    <th>範<br class="d-sm-none">囲</th>
-                                    <th>倍率</th>
-                                    <th class="d-sm-none">名称</th>
-                                    <th>威力</th>
-                                </tr>
-                            </thead>
-                            <tbody></tbody>
-                            <tfoot>
-                                <tr class="d-none" id="TR_TEMPLATE" style="border-bottom: 1px solid gray;">
-                                    <td class="ICON filter-bgcolor text-center" style="padding:0px;"></td>
-                                    <td class="text-nowrap">
-                                        <img class="BATTLE_ICON icon_xs" loading="lazy" src="">
-                                        <span class="ATTR"></span>
-                                    </td>
-                                    <th class="NAME d-none d-sm-table-cell text-nowrap"></th>
-                                    <td class="RANGE">
-                                        <span class="RANGE_S d-sm-none"></span>
-                                        <span class="RANGE_L d-none d-sm-inline"></span>
-                                    </td>
-                                    <td>+<span class="SKILL_PER">0</span>%</td>
-                                    <td class="NAME text-nowrap d-sm-none"></td>
-                                    <td class="IRYOKU"></td>
-                                </tr>
-                            </tfoot>
-                        </table>
+                <div class="row" id="CHAR_AREA">
+                    <div class="col-12 d-lg-none">
+                        <label class="badge badge-pill badge-light">表示切り替え</label>
+                    </div>
+                    <div class="col-6 d-lg-none">
+                        <button class="icon_btn_negative text-nowrap width-100" id="DISP_SKILL">技一覧</button>
+                    </div>
+                    <div class="col-6 d-lg-none" style="margin-bottom: 20px;">
+                        <button class="icon_btn_positive text-nowrap width-100" id="DISP_WEAPON">武器優先度</button>
+                    </div>
+    
+                    <div class="col-12 col-lg-6 info-modal" id="SKILL_AREA">
+                        <div class="text-center info-modal-header">所持技一覧</div>
+                        <div class="width-100" style="overflow-x: scroll; padding-bottom: 20px;">
+                            <table class="width-100 skill-table" id="SKILL_TABLE" style="line-height: 14px;">
+                                <thead>
+                                    <tr class="text-center" style="border-bottom: 1px solid gray;">
+                                        <th></th>
+                                        <th>属性</th>
+                                        <th class="d-none d-sm-table-cell">名称</th>
+                                        <th>範<br class="d-sm-none">囲</th>
+                                        <th>倍率</th>
+                                        <th class="d-sm-none">名称</th>
+                                        <th>威力</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                                <tfoot>
+                                    <tr class="d-none" id="TR_TEMPLATE" style="border-bottom: 1px solid gray;">
+                                        <td class="ICON filter-bgcolor text-center" style="padding:0px;"></td>
+                                        <td class="text-nowrap">
+                                            <img class="BATTLE_ICON icon_xs" loading="lazy" src="">
+                                            <span class="ATTR"></span>
+                                        </td>
+                                        <th class="NAME d-none d-sm-table-cell text-nowrap"></th>
+                                        <td class="RANGE">
+                                            <span class="RANGE_S d-sm-none"></span>
+                                            <span class="RANGE_L d-none d-sm-inline"></span>
+                                        </td>
+                                        <td>+<span class="SKILL_PER">0</span>%</td>
+                                        <td class="NAME text-nowrap d-sm-none"></td>
+                                        <td class="IRYOKU"></td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 info-modal" id="WEAPON_AREA">
+                        <div class="text-center info-modal-header">錬成武器 優先度</div>
+                        <div class="subtitle-long fuchidori-white d-block">汎用</div>
+                        <table id="ALL_STONE" class="weapon-table width-100 text-nowrap"></table>
+                        <div class="subtitle-long fuchidori-white d-block">単体</div>
+                        <table id="SINGLE_STONE" class="weapon-table width-100 text-nowrap"></table>
+                        <div class="subtitle-long fuchidori-white d-block">全体</div>
+                        <table id="MULTI_STONE" class="weapon-table width-100 text-nowrap"></table>
                     </div>
                 </div>
 
