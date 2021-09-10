@@ -228,9 +228,18 @@
                                 </div>                                
                             </li>
                         </ul>
-                        <div class="col-12" style="margin-bottom: 20px;">
-                            <button class="icon_btn_positive text-nowrap" id="SAVE_NEW" data-weapon="大剣">錬成武器を保存する</button>
+                        <div class="col-6 col-sm-2 fuchidori-white" style="margin-bottom: 10px;">
+                            <label class="bg-item width-100">オプション</label>
                         </div>
+                        <div class="col-6 col-sm-2" style="margin-bottom: 10px;">
+                            <div class="input-group">
+                                <select class="form-control" style="width: auto;display: inline;" id="AB_OPTION"></select>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-8" style="margin-bottom: 20px;">
+                            <button class="icon_btn_positive text-nowrap width-100" id="SAVE_NEW" data-weapon="大剣" style="height: 100%;">錬成武器を保存する</button>
+                        </div>
+
                         <div class="col-12">
                             <label class="badge badge-pill badge-light">保存機能はログイン時のみ有効です。</label>
                         </div>
@@ -265,12 +274,13 @@
                         </thead>
                         <tbody></tbody>
                         <tfoot>
-                            <tr class="weapon-border ability-names d-none" id="LIST_TR_TEMPLATE">
+                            <tr class="weapon-border ability-names d-none yubi WEAPON_ROW" id="LIST_TR_TEMPLATE">
                                 <td style="position: relative;">
                                     <span class="TRASH_BTN yubi" style="position: absolute;top: 0px;left: 15px;height: 15px; z-index: 1;" onclick="">
                                         <i class="fas fa-trash-alt"></i>
                                     </span>
                                     <span class="WP_ICON"></span>
+                                    <div class="OPTION_LABEL op-label"></div>
                                 </td>
                                 <td class="">
                                     <div class="AB_NAME d-none">
@@ -283,12 +293,25 @@
                                 <td class="d-none d-sm-table-cell Range_PER"></td>
                                 <td class="d-none d-sm-table-cell Series_PER"></td>
                                 <td class="d-none d-sm-table-cell Gender_PER"></td>
-                                <td><input type="text" class="form-control AB_MY_NAME" /></td>
+                                <td><input type="text" class="form-control AB_MY_NAME" style="display: inline-block;" /></td>
                             </tr>                            
                         </tfoot>
                     </table>
                 </div>
                 <style>
+                    .op-label {
+                        position: absolute;
+                        left:5px; bottom: 0px;
+                        z-index: 1;
+                        position: absolute;
+                        height: fit-content;
+                        color: white;
+                        padding: 0px 8px;
+                        font-size: 8px;
+                        background-color: rgba(0, 0, 0, 0.6);
+                        border: solid 1px lightgoldenrodyellow;
+                        border-radius: 5px;
+                    }
                     .weapon-table {
                         background-color: rgba(0,0,0,0.8);
                         color: #faf0b4;
