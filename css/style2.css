@@ -933,7 +933,15 @@ body {
     margin-left: -30px;
 }
 
-
+.font-ss {
+    color: rgba(230,216, 150, 1) !important;
+}
+.font-s {
+    color: rgba(200,200, 230, 1) !important;
+}
+.font-a {
+    color: rgba(240,190, 180, 1) !important;
+}
 
 
 
