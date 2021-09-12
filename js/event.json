@@ -1,4 +1,17 @@
 [
+    {"start":"2021-10-02T17:45","title":"★★ 「サガ」シリーズTGS2021スペシャル生放送配信 ★★","classNames":"housou"},
+    {"start":"2021-09-09T14:00","title":"★★データ更新★★","classNames":"mente"},
+    {"start":"2021-09-10T12:00","title":"[練達] ・活力の水 追加","classNames":"new"},
+    {"start":"2021-08-27T12:00","title":"[練達] ・マサムネ 必殺の矢 追加","classNames":"new"},
+    {"start":"2021-08-17T12:00","title":"[練達] ・タイガーブレイク 追加","classNames":"new"},
+
+    {"start":"2021-09-10T12:00","title":"[ガチャ] サガ31周年記念Sa・Ga祭 Romancing祭 最終防衛システム編","classNames":"gacha"},
+    {"start":"2021-09-31T00:00","end":"2021-10-01T04:00","title":"[終了間際] 祭ガチャ サガ31周年記念Sa・Ga祭 Romancing祭 最終防衛システム編","classNames":"gacha"},
+    {"start":"2021-09-03T18:00","end":"2021-09-04T04:00","title":"[イベント] 最終防衛システムとの戦い","classNames":"event"},
+    {"start":"2021-09-30T00:00","end":"2021-10-01T04:00","title":"[終了間際] イベント 最終防衛システムとの戦い","classNames":"event"},
+
+    {"start":"2021-10-14T00:00","end":"2021-10-15T04:00","title":"[終了間近] 交換所 祭ガチャ 最終防衛システム編","classNames":"kokan"},
+
     {"start":"2021-09-03T12:00","end":"2021-09-03T18:00","title":"★★ [メンテナンス] ver 1.27.0 ★★","classNames":"mente"},
     {"start":"2021-09-03T18:00","title":"★★データ更新★★","classNames":"mente"},
 
