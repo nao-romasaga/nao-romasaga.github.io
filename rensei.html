@@ -251,6 +251,71 @@
                         -->
                     </div>
                 </div>
+                <style>
+                    .gender-male-bg {
+                        background-color: skyblue;
+                    }
+                    .gender-famale-bg {
+                        background-color: lightcoral;
+                    }
+                    .gender-unknown-bg {
+                        background-color: violet;
+                    }
+                    .matrix-table-div {
+                        overflow-x: scroll;
+                        -webkit-box-sizing: border-box; /* Webkit */
+                        -moz-box-sizing: border-box; /* Firefox */
+                        box-sizing: border-box; /* 標準 */                        
+                    }
+
+                </style>
+
+                <div class="info-modal width-max dotList" style="margin-bottom: 20px;">
+                    <div class="text-center info-modal-header">所持 錬成武器 適応一覧</div>
+                    所持中の錬成武器の適応一覧です<br>
+                    不足している武器を探すのにご利用ください<br>
+                    <div class="matrix-table-div">
+                        <table id="WEAPON_MATRIX_TABLE" class="yubi fuchidori-white matrix-table weapon-table width-100 text-nowrap" border="1">
+                            <thead>
+                                <tr class="text-center matrix-row-border">
+                                    <th rowspan="2">シリーズ</th>
+                                    <th colspan="3">汎用</th>
+                                    <th colspan="3" class="gender-male-bg">男性</th>
+                                    <th colspan="3" class="gender-famale-bg">女性</th>
+                                    <th colspan="3" class="gender-unknown-bg">不明</th>
+                                    <th rowspan="2"></th>
+                                <tr class="text-center matrix-row-border">
+                                    <th class="">汎用</th><th>単体</th><th>全体</th>
+                                    <th class="gender-male-bg">汎用</th><th class="gender-male-bg">単体</th><th class="gender-male-bg">全体</th>
+                                    <th class="gender-famale-bg">汎用</th><th class="gender-famale-bg">単体</th><th class="gender-famale-bg">全体</th>
+                                    <th class="gender-unknown-bg">汎用</th><th class="gender-unknown-bg">単体</th><th class="gender-unknown-bg">全体</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                            <tfoot>
+                                <tr><td><br></td></tr>
+                                <tr id="MATRIX_ROW_TEMPLATE" class="d-none matrix-row-border text-center fuchidori-blue">
+                                    <td class="SERIES fuchidori-white"></td>
+                                    <td class="BASE_"></td>
+                                    <td class="SINGLE_"></td>
+                                    <td class="MULTI_"></td>
+                                    <td class="gender-male-bg BASE_M"></td>
+                                    <td class="gender-male-bg SINGLE_M"></td>
+                                    <td class="gender-male-bg MULTI_M"></td>
+                                    <td class="gender-famale-bg BASE_F"></td>
+                                    <td class="gender-famale-bg SINGLE_F"></td>
+                                    <td class="gender-famale-bg MULTI_F"></td>
+                                    <td class="gender-unknown-bg BASE_Q"></td>
+                                    <td class="gender-unknown-bg SINGLE_Q"></td>
+                                    <td class="gender-unknown-bg MULTI_Q"></td>                                                        
+                                    <td class="SERIES fuchidori-white"></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    * : アビリティに「斬+、打+、突+」などの属性が含まれます<br>
+                    打+は体術の「やきはらう(熱)」や「どくぎり(陰)」など打属性を持たない技には乗らないのでお気をつけください
+                </div>
 
                 <div class="info-modal width-max dotList" style="margin-bottom: 20px;">
                     <div class="text-center info-modal-header">所持 錬成武器一覧</div>
