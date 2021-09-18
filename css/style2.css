@@ -1446,3 +1446,12 @@ input[type=range]::-ms-tooltip {
     opacity : 1;
     transform : translate(0, 0);
 }
+
+.char-dot-jutsu-icon-div {
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    width: 20px;
+    line-height: 15px;
+    z-index: 1;
+}
