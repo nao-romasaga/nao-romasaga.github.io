@@ -189,16 +189,52 @@
                             <li class="subtitle-long fuchidori-white ">錬成武器 設定</li>
                         </ul>
                         <ul class="nav text-center width-100">
-                            <li class="col-2 col-sm-1 xs-pad0"><a class=" " data-type="剣"><span class="icon_mini icon_ken xweapon-icon-button FILTER_BUTTON" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="FILTER_LIST " data-type="剣"><span class="icon_mini icon_ken weapon-icon-button FILTER_BUTTON" onclick=""></span></a></li>
                             <li class="col-2 col-sm-1 xs-pad0"><a class="FILTER_LIST " data-type="大剣"><span class="icon_mini icon_dken weapon-icon-button FILTER_BUTTON filterActive" onclick=""></span></a></li>
                             <li class="col-2 col-sm-1 xs-pad0"><a class="FILTER_LIST " data-type="斧"><span class="icon_mini icon_ono weapon-icon-button FILTER_BUTTON" onclick=""></span></a></li>
-                            <li class="col-2 col-sm-1 xs-pad0"><a class=" " data-type="棍棒"><span class="icon_mini icon_kon xweapon-icon-button FILTER_BUTTON" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="FILTER_LIST " data-type="棍棒"><span class="icon_mini icon_kon weapon-icon-button FILTER_BUTTON" onclick=""></span></a></li>
                             <li class="col-2 col-sm-1 xs-pad0"><a class="FILTER_LIST " data-type="体術"><span class="icon_mini icon_tai weapon-icon-button FILTER_BUTTON" onclick=""></span></a></li>
                             <li class="col-2 col-sm-1 xs-pad0"><a class="FILTER_LIST " data-type="銃"><span class="icon_mini icon_ju weapon-icon-button FILTER_BUTTON" onclick=""></span></a></li>
                             <li class="col-2 col-sm-1 xs-pad0"><a class="FILTER_LIST " data-type="小剣"><span class="icon_mini icon_sken weapon-icon-button FILTER_BUTTON" onclick=""></span></a></li>
-                            <li class="col-2 col-sm-1 xs-pad0"><a class=" " data-type="槍"><span class="icon_mini icon_yari xweapon-icon-button FILTER_BUTTON" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="FILTER_LIST " data-type="槍"><span class="icon_mini icon_yari weapon-icon-button FILTER_BUTTON" onclick=""></span></a></li>
                             <li class="col-2 col-sm-1 xs-pad0"><a class="FILTER_LIST " data-type="弓"><span class="icon_mini icon_yumi weapon-icon-button FILTER_BUTTON" onclick=""></span></a></li>
-                            <li class="col-2 col-sm-1 xs-pad0"><a class=" " data-type="杖"><span class="icon_mini icon_tsue xweapon-icon-button FILTER_BUTTON" onclick=""></span></a></li>
+                            <li class="col-12"></li>
+                            <li class="col-4 col-sm-2 xs-pad0"><a class="FILTER_LIST" data-type="火杖" data-jutsu="火">
+                                <span class="weapon-icon-button icon_mini" style="width:80%">
+                                    <span class="icon_mini icon_hi_sm FILTER_BUTTON" onclick=""></span>
+                                    <span class="icon_mini icon_tsue FILTER_BUTTON" onclick=""></span>
+                                </span>
+                            </a></li>
+                            <li class="col-4 col-sm-2 xs-pad0"><a class="FILTER_LIST" data-type="水杖" data-jutsu="水">
+                                <span class="weapon-icon-button icon_mini" style="width:80%">
+                                    <span class="icon_mini icon_mizu_sm FILTER_BUTTON" onclick=""></span>
+                                    <span class="icon_mini icon_tsue FILTER_BUTTON" onclick=""></span>
+                                </span>
+                            </a></li>
+                            <li class="col-4 col-sm-2 xs-pad0"><a class="FILTER_LIST" data-type="土杖" data-jutsu="土">
+                                <span class="weapon-icon-button icon_mini" style="width:80%">
+                                    <span class="icon_mini icon_tsuchi_sm FILTER_BUTTON" onclick=""></span>
+                                    <span class="icon_mini icon_tsue FILTER_BUTTON" onclick=""></span>
+                                </span>
+                            </a></li>
+                            <li class="col-4 col-sm-2 xs-pad0"><a class="FILTER_LIST" data-type="風杖" data-jutsu="風">
+                                <span class="weapon-icon-button icon_mini" style="width:80%">
+                                    <span class="icon_mini icon_kaze_sm FILTER_BUTTON" onclick=""></span>
+                                    <span class="icon_mini icon_tsue FILTER_BUTTON" onclick=""></span>
+                                </span>
+                            </a></li>
+                            <li class="col-4 col-sm-2 xs-pad0"><a class="FILTER_LIST" data-type="光杖" data-jutsu="光">
+                                <span class="weapon-icon-button icon_mini" style="width:80%">
+                                    <span class="icon_mini icon_hikari_sm FILTER_BUTTON" onclick=""></span>
+                                    <span class="icon_mini icon_tsue FILTER_BUTTON" onclick=""></span>
+                                </span>
+                            </a></li>
+                            <li class="col-4 col-sm-2 xs-pad0"><a class="FILTER_LIST" data-type="闇杖" data-jutsu="闇">
+                                <span class="weapon-icon-button icon_mini" style="width:80%">
+                                    <span class="icon_mini icon_yami_sm FILTER_BUTTON" onclick=""></span>
+                                    <span class="icon_mini icon_tsue FILTER_BUTTON" onclick=""></span>
+                                </span>
+                            </a></li>
                         </ul>
                         
                         <div class="col-12 col-md-4" id="AB1_AREA">
@@ -267,8 +303,41 @@
                         -moz-box-sizing: border-box; /* Firefox */
                         box-sizing: border-box; /* 標準 */                        
                     }
-
+                    .op-label {
+                        position: absolute;
+                        left:5px; bottom: 0px;
+                        z-index: 1;
+                        position: absolute;
+                        height: fit-content;
+                        color: white;
+                        padding: 0px 8px;
+                        font-size: 8px;
+                        background-color: rgba(0, 0, 0, 0.6);
+                        border: solid 1px lightgoldenrodyellow;
+                        border-radius: 5px;
+                    }
+                    .weapon-table {
+                        background-color: rgba(0,0,0,0.8);
+                        color: #faf0b4;
+                        border-radius: 5px;
+                        padding: 5px;
+                        line-height: 19px;
+                    }
+                    .weapon-border {
+                        border-bottom: 1px solid rgb(197,187,147);
+                    }
+                    .ability-names {
+                        font-size: 12px;
+                        line-height: 15px !important;
+                    }
+                    .ability_label {
+                        display: inline-block;
+                        width: 15px;
+                        height: 15px;
+                    }
                 </style>
+
+                <button class="icon_btn_negative text-nowrap width-100 SCROLL_CHAR" style="margin: 20px 0px;"><i class="fas fa-arrow-down"></i> 適当キャラ一覧へ <i class="fas fa-arrow-down"></i></button>
 
                 <div class="info-modal width-max dotList" style="margin-bottom: 20px;">
                     <div class="text-center info-modal-header">所持 錬成武器 適応一覧</div>
@@ -317,6 +386,8 @@
                     打+は体術の「やきはらう(熱)」や「どくぎり(陰)」など打属性を持たない技には乗らないのでお気をつけください
                 </div>
 
+                <button class="icon_btn_negative text-nowrap width-100 SCROLL_CHAR" style="margin: 20px 0px;"><i class="fas fa-arrow-down"></i> 適当キャラ一覧へ <i class="fas fa-arrow-down"></i></button>
+
                 <div class="info-modal width-max dotList" style="margin-bottom: 20px;">
                     <div class="text-center info-modal-header">所持 錬成武器一覧</div>
                     <div class="row IS_LOGIN d-none">
@@ -364,40 +435,6 @@
                         </tfoot>
                     </table>
                 </div>
-                <style>
-                    .op-label {
-                        position: absolute;
-                        left:5px; bottom: 0px;
-                        z-index: 1;
-                        position: absolute;
-                        height: fit-content;
-                        color: white;
-                        padding: 0px 8px;
-                        font-size: 8px;
-                        background-color: rgba(0, 0, 0, 0.6);
-                        border: solid 1px lightgoldenrodyellow;
-                        border-radius: 5px;
-                    }
-                    .weapon-table {
-                        background-color: rgba(0,0,0,0.8);
-                        color: #faf0b4;
-                        border-radius: 5px;
-                        padding: 5px;
-                        line-height: 19px;
-                    }
-                    .weapon-border {
-                        border-bottom: 1px solid rgb(197,187,147);
-                    }
-                    .ability-names {
-                        font-size: 12px;
-                        line-height: 15px !important;
-                    }
-                    .ability_label {
-                        display: inline-block;
-                        width: 15px;
-                        height: 15px;
-                    }
-                </style>
 
                 <div class="info-modal width-max dotList" style="margin-bottom: 20px;">
                     <div class="text-center info-modal-header">対象キャラ一覧</div>
