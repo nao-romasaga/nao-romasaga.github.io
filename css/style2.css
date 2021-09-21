@@ -25,6 +25,10 @@
 .login-card{
     position:absolute; right:15px; font-size:10px;        
 }
+.info-card{
+    position:absolute; right:15px; font-size:10px; bottom: 5px;        
+}
+
 html {
     touch-action: manipulation;
 }
@@ -298,7 +302,10 @@ html {
 }
 @media screen and (max-width:400px) {
     .login-card{
-        position:absolute; right:0px; bottom:20px; font-size:12px;
+        position:absolute; right:0px; bottom:30px; font-size:12px;
+    }    
+    .info-card{
+        position:absolute; right:0px; bottom:0px; font-size:12px;
     }    
     .styleTab {
         font-size: 15px;
