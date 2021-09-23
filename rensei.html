@@ -145,7 +145,7 @@
         /* スマホで表示する場合のCSS */
         @media (max-width: 768px) {
             .series-banner {
-                top: 4px;
+                bottom: 12px;
                 right: 0px;
                 padding: 0px 2px;            
             }
@@ -465,7 +465,7 @@
                                         <th>適応倍率</th>
                                         <th class="d-sm-none">名称</th>
                                         <th>威力</th>
-                                        <th>SS武器相当の錬成アビリティ</th>
+                                        <th class="d-none">SS武器相当の錬成アビリティ</th>
                                     </tr>
                                 </thead>
                                 <tbody></tbody>
@@ -484,7 +484,7 @@
                                         <td>+<span class="SKILL_PER">0</span>%</td>
                                         <td class="NAME text-nowrap d-sm-none"></td>
                                         <td class="IRYOKU text-nowrap"></td>
-                                        <td class="SS_PER text-nowrap"></td>
+                                        <td class="SS_PER text-nowrap d-none"></td>
                                     </tr>
                                 </tfoot>
                             </table>
