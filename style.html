@@ -191,7 +191,7 @@
                     height: 60px;
                 }
                 .near_td {
-                    width:150px;
+                    width:120px;
                 }
                 .S_LABEL {
                     width: 280px;
@@ -314,7 +314,7 @@
                 }
 
                 .near_td {
-                    width:100px;
+                    width:75px;
                 }
                 .S_LABEL {
                     width: 230px;
@@ -359,10 +359,14 @@
             }
             .skill-bp {
                 background: black;
-                font-size: 8px;
+                font-size: 11px;
                 padding: 0px 10px;
                 border-radius: 5px;
                 border:1px solid;
+            }
+            .skill-option {
+                text-align: left;
+                font-size: 65%;
             }
             .skill-bp2 {
                 display: inline-block;
@@ -902,23 +906,24 @@
                                     <div class="width-100" id="skillList"></div>
                                     <table class="width-100 d-none" id="SKILL_TEMPLATE">
                                         <tr>
-                                            <td class="weaponIconTd text-center">
-                                                <span class="icon_sm ">　</span>
-                                            </td>
-                                            <td style="text-align: left;line-height: 10px; position: relative;">
-                                                <p class="text-left skill-name" style="margin: 10px 0px 15px 0px; font-size: 20px;"></p>
-                                                <span class="skill-bp"></span>
+                                            <td class="weaponIconTd text-center SKILL_ICON" style="vertical-align: top;"></td>
+                                            <td class="text-left d-relative" style="line-height: 20px; padding-left: 5px;">
+                                                <div>
+                                                    <div class="d-table-cell">
+                                                        <span class="WEAPON_ICON icon_xs">　</span>
+                                                    </div>
+                                                    <div class="d-table-cell align-middle text-left skill-name" style="padding-left: 5px; font-size: 20px;"></div>
+                                                </div>
+                                                <div class="text-nowrap">
+                                                    <span class="skill-bp"></span>
+                                                    <div class="ICON_AREA_IMG d-inline"></div><br class="spBlock">
+                                                    <div class="SKILL_OPTION d-inline"></div>
+                                                </div>
+                                                <div class="text-nowrap SKILL_FLAVOR skill-option" style="color:white">
+                                                </div>
                                             </td>
                                             <td class="text-right skill-iryoku d-none d-sm-table-cell"></td>
                                             <td class="text-right small weaponIconTd skillKakuseiArea" style="padding-top:2px"></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="weaponIconTd text-center">
-                                                <div class="ICON_AREA_IMG text-nowrap"></div>
-                                            </td>
-                                            <td colspan="3">
-                                                <div class="SKILL_OPTION text-left small">
-                                            </td>
                                         </tr>
                                         <tr>
                                             <td colspan="4">
@@ -929,11 +934,19 @@
 
                                 </section>
                                 <section class="width-max bg-simple">
-                                    <div class="width-100" id="abilityList" style="padding: 5px 12px 25px 12px;">
-                                    </div>
-                                    <div class="d-none" id="AB_TEMPLATE">
-                                        <div class="ab-name"></div>
-                                        <div class="ab-flover small"></div>
+                                    <div style="padding: 5px 12px 25px 0px;">
+                                        <table class="width-100">
+                                            <tbody id="abilityList"></tbody>
+                                            <tfoot>
+                                                <tr class="d-none" id="AB_TEMPLATE">
+                                                    <td class="AB_ICON icon-skill-md" style="vertical-align: top; padding-top: 10px;"></td>
+                                                    <td style="padding: 5px;">
+                                                        <div class="ab-name"></div>
+                                                        <div class="ab-flover small"></div>
+                                                    </td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>                                        
                                     </div>
                                 </section>
                             </div>

@@ -440,6 +440,28 @@
     background: url(https://romasagatool.com/img/icon/icon_back_default.png) no-repeat;
     background-size: 25px;    
 }
+
+.icon-back-skill {
+    display: inline-block;
+    background: url(https://romasagatool.com/img/icon/icon_back_skill.png) no-repeat;
+}
+.icon-back-abiligy {
+    display: inline-block;
+    background: url(https://romasagatool.com/img/icon/icon_back_ability.png) no-repeat;
+}
+.icon-skill {
+    display: inline-block;
+    background-size: contain;
+}
+.icon-back-skill-md {
+    background-size: 60px;
+}
+.icon-skill-md {
+    width : 60px;
+    height : 60px;
+}
+
+
 /* 点滅 */
 .blinking{
 	-webkit-animation:blink 1.5s ease-in-out infinite alternate;
