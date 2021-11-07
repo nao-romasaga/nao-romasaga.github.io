@@ -41,144 +41,297 @@
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
         <script src="./js/Firebase.js"></script>
         <script src="./js/utils2.js"></script>
+
         <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
               <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
               <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-            <![endif]-->
+        <![endif]-->
+        <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+        <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
     </head>
 
     <body>
-        <div class="" style="background: url(http://nao-romasaga.github.io/img/bg_repeat.png); background-size: contain;">
-            <div class="container">
-                <h1 class="text-center label-text">ロマサガRS <br class="hidden spBlock">便利ツール</h1>
-                <br>
-                <div class="opacity kadomaru FADEIN">
-                    <div class="text-center">
-                        このサイトについて
-                    </div>
-                    当サイトは趣味で運営してる非公式のゲーム攻略サイトです。<br>
-                    各社の協力や要請の元作成されたものではありません。<br>
-                    また、当サイトを利用したことにより発生する全ての損害を管理人はいかなる場合でも責任を負いません。<br>
-                    詳しくは<a href="site.html">利用規約・免責事項</a>をご覧ください
-                </div>
-                <br>
-                <h3 class="text-center label-text-small width-100 kadomaru FADEIN">このサイトの使い方</h3>
-                <div class="row row-eq-height">
-                    <div class="col-12 col-sm-4 pt-1 FADEIN">
-                        <div class="info-modal h-100">
-                            <div class="text-center info-modal-header" style="font-size: initial;">育成時に使うと便利なツール</div>
-                            <i class="fas fa-check-circle"></i><a href="./party.html">育成パーティ上限チェック <img src="./img/icon/icon_hot.png"></a><br>
-                            ステータス上限まであとどれぐらいか確認しながら周回できます<br>
-                            <i class="fas fa-check-circle"></i><a href="./mydata.html">周回適正チェック <img src="./img/icon/icon_hot.png"></a><br>
-                            周回時に、どのキャラを育成するか迷った時に<br>
-                            <i class="fas fa-check-circle"></i><a href="./partylist.html">周回攻略おすすめパーティ</a><br>
-                            クエスト攻略のヒントに<br>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-4 pt-1 FADEIN">
-                        <div class="info-modal h-100">
-                            <div class="text-center info-modal-header" style="font-size: initial;">ステータスを調べる</div>
-                            素ステ<br>
-                            <i class="fas fa-check-circle"></i><a href="./ourchar.html">キャラクター育成ランキングから調べる</a><br>
-                            他のプレイヤーの育成具合を参考に<br>
-                            <i class="fas fa-check-circle"></i><a href="./style.html">スタイル検索から調べる</a><br>
-                            スタイル詳細画面からも確認できます<br>
-                            <br>
-                            補正込み<br>
-                            <i class="fas fa-check-circle"></i><a href="./limitdata.html">スタイル補正値+補正込み最大値一覧から調べる</a><br>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-4 pt-1 FADEIN">
-                        <div class="info-modal h-100">
-                            <div class="text-center info-modal-header" style="font-size: initial;">最強のスタイルを知りたい</div>
-                            <i class="fas fa-check-circle"></i><a href="./limitdata.html">スタイル補正値+補正込み最大値一覧から調べる</a><br>
-                            最強の腕力、最強の知力を持つスタイルは...?<br>
-                            <i class="fas fa-check-circle"></i><a href="./autodamage.html">全力AUTOダメージランキングから調べる</a><br>
-                            もっとも強力なダメージを出すスタイルは...？<br>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-4 pt-1 FADEIN">
-                        <div class="info-modal h-100">
-                            <div class="text-center info-modal-header" style="font-size: initial;">技覚醒を効率的に行いたい</div>
-                            <i class="fas fa-check-circle"></i><a href="./auto.html">全力AUTOシミュレーターで調べる</a><br>
-                            オートでどのように動くかを見て覚醒を失敗しないようにしましょう
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-4 pt-1 FADEIN">
-                        <!-- ツールindex1 -->
-                        <ins class="adsbygoogle"
-                            style="display:block"
-                            data-ad-client="ca-pub-5008373409434899"
-                            data-ad-slot="2063090166"
-                            data-ad-format="auto"
-                            data-full-width-responsive="true"></ins>
-                        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-                    </div>
-                    <div class="col-12 col-sm-4 pt-1 FADEIN">
-                        <div class="info-modal h-100">
-                            <div class="text-center info-modal-header" style="font-size: initial;">技や術について知りたい</div>
-                            <i class="fas fa-check-circle"></i><a href="./skill.html">技/術検索から調べる</a><br>
-                            全体攻撃は何がある？マヒ技は何がある？不死特攻は何がある？など、威力毎や覚醒素材毎に調べることもできます
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-4 pt-1 FADEIN">
-                        <div class="info-modal h-100">
-                            <div class="text-center info-modal-header" style="font-size: initial;">ステ２倍やガチャの終了日を知りたい</div>
-                            <i class="fas fa-check-circle"></i><a href="./calendar.html">イベントカレンダーで確認する</a><br>
-                            ゲーム内では確認しづらいガチャやイベントアビリティの終了時刻をカレンダーにまとめました
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-4 pt-3">
-                        <div class="info-modal h-100">
-                            <div class="text-center info-modal-header" style="font-size: initial;">技がダメージいくら出せるか知りたい</div>
-                            <i class="fas fa-check-circle"></i><a href="./damage.html">・ダメージ計算機</a><br>
-                            武器を変えると、技のRankを変えると、聖石を装備すると、どれぐらいダメージが変わるか計算できます
-                            <br>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-4 pt-1 FADEIN">
-                        <!-- ツールindex2 -->
-                        <ins class="adsbygoogle"
-                            style="display:block"
-                            data-ad-client="ca-pub-5008373409434899"
-                            data-ad-slot="8436926825"
-                            data-ad-format="auto"
-                            data-full-width-responsive="true"></ins>
-                        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        <div class="haikei">
+            <h1 class="text-center label-text">ロマサガRS <br class="hidden spBlock">便利ツール</h1>
+            <div style="margin: 20px;">
+                <!-- ツールindex1 -->
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-5008373409434899"
+                    data-ad-slot="2063090166"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> 
+            </div>
 
-                    </div>
-                    <div class="col-12 col-sm-4 pt-3">
-                        <div class="info-modal h-100">
-                            <div class="text-center info-modal-header" style="font-size: initial;">特訓を効率よく行いたい</div>
-                            <i class="fas fa-check-circle"></i><a href="./dojo.html">特訓タイマー</a><br>
-                            特訓に必要な時間を調べることができます
-                            <br>
+            <style>
+                .next-arrow {
+                    position: absolute;
+                    right: 15px;
+                }
+                .menu-button {
+                    padding: 10px;
+                    width: 100%;
+                    text-align: center !important;
+                    white-space: nowrap !important;
+                    position: relative !important;
+                }
+                .modal-bottom {
+                    margin-bottom: 200px;
+                }
+                .blur-background {
+                    height: 160px;
+                    width: 80%;
+                    position: absolute;
+                    opacity: 0.8;
+                }
+                .blur-background-text {
+                    height: 160px;
+                    width: 100%;
+                    backdrop-filter: blur(3px);
+                    font-size: 30px;
+                }
+                .dot-area {
+                    position: absolute;
+                    bottom: 0px;
+                    width: 100%;
+                }
+                /* 画面サイズが1024はこれ 1025からは入らない */
+                @media screen and (max-width:1025px) {
+                    .blur-background {
+                        width: 100%;
+                    }
+
+                }
+                /* 画面サイズが330はこれ 331からは入らない */
+                @media screen and (max-width:330px) {
+                    .blur-background-text {
+                        font-size: 25px;
+                    }
+                    .main-carousel img {
+                        display: block;
+                        height: 350px;
+                    }
+                }
+                .fuchidori-gold{
+                    color: orange;
+                    -webkit-background-clip: text;
+                    font-weight: bold;
+                    font-size: 30px;
+                    text-shadow:0 0 3px #000,0 0 3px #000,0 0 3px #000,0 0 3px #000,0 0 3px #000,0 0 3px #000,0 0 3px #000,0 0 3px #000,0 0 3px #000,0 0 3px #000,0 0 3px #000,0 0 3px #000,0 0 3px #000,0 0 3px #000,0 0 3px #000,0 0 3px #000;
+                }
+
+            </style>
+            <div>
+                <div id="MENU" class="row row-eq-height info-modal FADEIN modal-bottom">
+                    <h3 class="text-center info-modal-header" style="font-size: initial;">このサイトの使い方</h3>
+                        <div class="col-12 col-sm-6 pt-2 FADEIN">
+                            <button id="what" class="menu-button icon_btn_negative shadow-black" onclick="document.getElementById('WHAT_INF').scrollIntoView();">
+                                ロマサガRS便利ツールとは
+                                <span class="next-arrow"><i class="fas fa-chevron-circle-down"></i></span>
+                            </button>
+                        </div>
+                        <div class="col-12 col-sm-6 pt-2 FADEIN">
+                            <button class="menu-button icon_btn_negative shadow-black" onclick="document.getElementById('STATUS_MAX').scrollIntoView();">
+                                ステータス上限を調べる
+                                <span class="next-arrow"><i class="fas fa-chevron-circle-down"></i></span>
+                            </button>
+                        </div>
+                        <div class="col-12 col-sm-6 pt-2 FADEIN">
+                            <button class="menu-button icon_btn_negative shadow-black" onclick="document.getElementById('IKUSEI').scrollIntoView();">
+                                効率の良い育成方法は？
+                                <span class="next-arrow"><i class="fas fa-chevron-circle-down"></i></span>
+                            </button>
+                        </div>
+                        <div class="col-12 col-sm-6 pt-2 FADEIN">
+                            <button class="menu-button icon_btn_negative shadow-black" onclick="document.getElementById('LIMIT').scrollIntoView();">
+                                最強のスタイルは？
+                                <span class="next-arrow"><i class="fas fa-chevron-circle-down"></i></span>
+                            </button>
+                        </div>
+                        <div class="col-12 col-sm-6 pt-2 FADEIN">
+                            <a class="menu-button icon_btn_negative shadow-black" href="./style.html">
+                                スタイル情報を調べる
+                                <span class="next-arrow"><i class="fas fa-chevron-circle-down"></i></span>
+                            </a>
+                        </div>
+                        <div class="col-12 col-sm-6 pt-2 FADEIN" onclick="document.getElementById('SKILL').scrollIntoView();">
+                            <button class="menu-button icon_btn_negative shadow-black">
+                                技・アビリティを調べる
+                                <span class="next-arrow"><i class="fas fa-chevron-circle-down"></i></span>
+                            </button>
+                        </div>
+                </div>
+            </div>
+            <!-- ツールindex2 -->
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-5008373409434899"
+                data-ad-slot="8436926825"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>            
+            <div class="FADEIN modal-bottom" id="WHAT_INF">
+                <div class="info-modal">
+                    <div class="text-center info-modal-header" style="font-size: initial;">ロマサガRS便利ツールとは</div>
+                    <div class="row no-gutters" style="font-size:20px;">
+                        <div class="col-12 col-sm-10">
+                            SQUARE ENIX様より好評配信中の<a href="https://www.jp.square-enix.com/saga_reuniverse/" target="_new">Romancing SaGa Re:UniverSe</a>
+                            を
+                            <span class="fuchidori-gold">100倍</span>
+                            楽しむためのツールです。
+                            <div class="d-none d-sm-block bg-black-frame kadomaru FADEIN small" style="color:beige; padding:25px;">
+                                当サイトは趣味で運営してる非公式のゲーム攻略サイトです。<br>
+                                各社の協力や要請の元作成されたものではありません。<br>
+                                また、当サイトを利用したことにより発生する全ての損害を管理人はいかなる場合でも責任を負いません。<br>
+                                詳しくは<a class="fuchidori-blue" href="site.html">利用規約・免責事項</a>をご覧ください
+                            </div>                            
+                        </div>
+                        <div class="col-12 col-sm-2 text-center">
+                            <div style="margin-bottom: 15px;">
+                                <img src="https://romasagatool.com/img/menu/cmn_icoGame01_sp.png" style="width:200px;; max-width: 50%;">
+                            </div>
+                            <a href="https://itunes.apple.com/jp/app/id1397702917?mt=8" target="_blank" rel="noopener">
+                                <img src="https://romasagatool.com/img/menu/cmn_btn01_sp.png" alt="App Storeからダウンロード" style="width:150px; max-width: 45%;">
+                            </a>
+                            <a href="https://play.google.com/store/apps/details?id=com.square_enix.android_googleplay.RSRS" target="_blank" rel="noopener">
+                                <img src="https://romasagatool.com/img/menu/cmn_btn02_sp.png" alt="Google Playで手に入れよう" style="width:150px; max-width: 45%;">
+                            </a>
+                        </div>
+                        <div class="col-12 d-sm-none">
+                            <div class="bg-black-frame kadomaru FADEIN small" style="color:beige; padding:25px;">
+                                当サイトは趣味で運営してる非公式のゲーム攻略サイトです。<br>
+                                各社の協力や要請の元作成されたものではありません。<br>
+                                また、当サイトを利用したことにより発生する全ての損害を管理人はいかなる場合でも責任を負いません。<br>
+                                詳しくは<a class="fuchidori-blue" href="site.html">利用規約・免責事項</a>をご覧ください
+                            </div>
                         </div>
                     </div>
-                    <div class="col-12 col-sm-4 pt-3">
-                        <div class="info-modal h-100">
-                            <div class="text-center info-modal-header" style="font-size: initial;">アビリティ所持スタイルを知りたい</div>
-                            <i class="fas fa-check-circle"></i><a href="./ability.html">アビリティ検索</a><br>
-                            どんなアビリティがあるか。アビリティの所持スタイル一覧を見れます<br>
-                            「まれに」は何パーセントなのかなど調べることができます<br>
-                            <br>
+                    
+
+                    <br>
+                    <div class="FADEIN">
+                        <div class="blur-background" style="background: url(http://romasagatool.com/img/menu/menu1.png) no-repeat;"></div>
+                        <div class="blur-background-text fuchidori-blue">
+                            <div style="margin: 10px"><i class="fas fa-check-circle"></i> 効率の良い育成をしたり</div>
                         </div>
                     </div>
-                    <div class="col-12 pt-3">
-                        <!-- ツールindex_footer -->
-                        <ins class="adsbygoogle"
-                            style="display:block"
-                            data-ad-client="ca-pub-5008373409434899"
-                            data-ad-slot="8243670928"
-                            data-ad-format="auto"
-                            data-full-width-responsive="true"></ins>
-                        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+                    <div class="FADEIN">
+                        <div class="blur-background" style="background: url(http://romasagatool.com/img/menu/menu2.png) no-repeat;"></div>
+                        <div class="blur-background-text fuchidori-blue">
+                            <div style="margin: 10px"><i class="fas fa-check-circle"></i> 最強のスタイルを調べたり</div>
+                        </div>
                     </div>
-                </div><!-- row -->
-            </div><!-- container -->
+                    <div class="FADEIN">
+                        <div class="blur-background" style="background: url(http://romasagatool.com/img/menu/menu3.png) no-repeat;"></div>
+                        <div class="blur-background-text fuchidori-blue">
+                            <div style="margin: 10px"><i class="fas fa-check-circle"></i> ゲーム内の様々な情報を調たり</div>
+                        </div>
+                    </div>
+                    様々な機能がありますので、攻略のお供としてご利用ください
+                </div>
+            </div>
+            <div class="modal-bottom" id="STATUS_MAX">
+                <div class="FADEIN text-center label-text-small width-100" style="margin-bottom: 10px;">ステータス上限を調べる</div>
+                <div class="FADEIN row row-eq-height" style="margin: 20px 0px;">
+                    <div class="col-12 col-sm">
+                        <div class="text-center filter-bgcolor" style="height:100%; padding: 10px; color: #faf0b4;">
+                            <i class="fas fa-search" style="font-size:50px; margin-bottom:20px;"></i><br>
+                            <a href="./ourchar.html?c=ID92f" target="_blank" class="width-100 icon_btn_positive shadow-black">スタイル詳細から調べる</a>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm">
+                        <div class="text-center filter-bgcolor" style="height:100%; padding: 10px; color: #faf0b4;">
+                            <i class="fas fa-crown" style="font-size:50px; margin-bottom:20px;"></i><br>
+                            <a href="./ourchar.html?c=ID92f" target="_blank" class="width-100 icon_btn_positive shadow-black">素ステ上限一覧から調べる</a>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm">
+                        <div class="text-center filter-bgcolor" style="height:100%; padding: 10px; color: #faf0b4;">
+                            <i class="fas fa-check-circle" style="font-size:50px; margin-bottom:20px;"></i><br>
+                            <a href="./ourchar.html?c=ID92f" target="_blank" class="width-100 icon_btn_positive shadow-black">ステータス上限チェックから調べる</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="FADEIN info-modal h-100">
+                    <div class="text-center info-modal-header" style="font-size: initial;">スタイル詳細</div>
+                    <div class="main-carousel filter-bgcolor" style="margin-bottom: 25px;">
+                        <div class="carousel-cell"><img data-flickity-lazyload="http://romasagatool.com/img/menu/menu2_2.png" alt="メニューからスタイル一覧を選択、ステータス上限を調べたいキャラをタップ"></div>
+                        <div class="carousel-cell"><img data-flickity-lazyload="http://romasagatool.com/img/menu/menu2_3.png" alt="最新クエストでのステータス上限を表示。ステータス上限はスタイル毎に異なる"></div>
+                        <div class="carousel-cell"><img data-flickity-lazyload="http://romasagatool.com/img/menu/menu2_4.png" alt="スタイル成長傾向がついていると上限が高い"></div>
+                    </div>
+                    「<i class="fas fa-search"></i>ゲームデータ検索」→「<a href="./style.html" target="_black"><i class="fas fa-user"></i>スタイル検索</a>」からスタイル情報を調べることができます
+                </div>
+            </div>
+
+            <div class="FADEIN modal-bottom" id="IKUSEI">
+                <div class="info-modal h-100">
+                    <div class="text-center info-modal-header" style="font-size: initial;">効率の良い育成</div>
+                    素ステ<br>
+                    <i class="fas fa-check-circle"></i><a href="./ourchar.html">キャラクター育成ランキングから調べる</a><br>
+                    他のプレイヤーの育成具合を参考に<br>
+                    <i class="fas fa-check-circle"></i><a href="./style.html">スタイル検索から調べる</a><br>
+                    スタイル詳細画面からも確認できます<br>
+                    <br>
+                    補正込み<br>
+                    <i class="fas fa-check-circle"></i><a href="./limitdata.html">スタイル補正値+補正込み最大値一覧から調べる</a><br>
+                </div>
+            </div>
+            <div class="FADEIN modal-bottom" id="LIMIT">
+                <div class="info-modal h-100">
+                    <div class="text-center info-modal-header" style="font-size: initial;">最強のスタイルを知りたい</div>
+                    <i class="fas fa-check-circle"></i><a href="./limitdata.html">スタイル補正値+補正込み最大値一覧から調べる</a><br>
+                    最強の腕力、最強の知力を持つスタイルは...?<br>
+                    <i class="fas fa-check-circle"></i><a href="./autodamage.html">全力AUTOダメージランキングから調べる</a><br>
+                    もっとも強力なダメージを出すスタイルは...？<br>
+                </div>
+            </div>
+            <div class="FADEIN modal-bottom" id="SKILL">
+                <div class="info-modal h-100">
+                    <div class="text-center info-modal-header" style="font-size: initial;">技覚醒を効率的に行いたい</div>
+                    <i class="fas fa-check-circle"></i><a href="./auto.html">全力AUTOシミュレーターで調べる</a><br>
+                    オートでどのように動くかを見て覚醒を失敗しないようにしましょう
+                </div>
+            </div>
+
+            <div class="pt-1 FADEIN">
+                <div class="info-modal h-100">
+                    <div class="text-center info-modal-header" style="font-size: initial;">技や術について知りたい</div>
+                    <i class="fas fa-check-circle"></i><a href="./skill.html">技/術検索から調べる</a><br>
+                    全体攻撃は何がある？マヒ技は何がある？不死特攻は何がある？など、威力毎や覚醒素材毎に調べることもできます
+                </div>
+            </div>
+
+            <div class="pt-3">
+                <div class="info-modal h-100">
+                    <div class="text-center info-modal-header" style="font-size: initial;">技がダメージいくら出せるか知りたい</div>
+                    <i class="fas fa-check-circle"></i><a href="./damage.html">・ダメージ計算機</a><br>
+                    武器を変えると、技のRankを変えると、聖石を装備すると、どれぐらいダメージが変わるか計算できます
+                    <br>
+                </div>
+            </div>
+
+            <div class="pt-3">
+                <div class="info-modal h-100">
+                    <div class="text-center info-modal-header" style="font-size: initial;">アビリティ所持スタイルを知りたい</div>
+                    <i class="fas fa-check-circle"></i><a href="./ability.html">アビリティ検索</a><br>
+                    どんなアビリティがあるか。アビリティの所持スタイル一覧を見れます<br>
+                    「まれに」は何パーセントなのかなど調べることができます<br>
+                    <br>
+                </div>
+            </div>
+            <!-- ツールindex_footer -->
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-5008373409434899"
+                data-ad-slot="8243670928"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 
             <br>
             <!--
@@ -230,7 +383,26 @@
         </div>
         <!-- Twitter universal website tag code -->
         <script type="text/javascript" src="https://romasagatool.com/blog/get_the_archives.php?limit=30&callback=rssCallback"></script>
-        <script type="text/javascript" src="https://romasagatool.com/blog/get_the_archives.php?cat=22&callback=rssCallbackCat"></script>
+        <script>
+            $(document).ready(function(){
+                $("#what").click(function(){
+                    console.log("aa");
+                    $("#MENU").toggleClass("FADEIN FADEOUT");
+                    $("#WHAT_INF").toggleClass("FADEIN FADEOUT");
+                });
+                $(".icon_btn_positive").mouseleave(function(){
+                    $(this).removeClass("icon_btn_positive").addClass("icon_btn_negative");
+                });
+                $('.main-carousel').flickity({
+                    // options
+                    freeScroll: true,
+                    cellAlign: 'center',
+                    contain: true,
+                    lazyLoad: 1
+                });
+            });
+        </script>
+
     </body>
 
 </html>
