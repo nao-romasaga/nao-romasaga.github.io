@@ -328,7 +328,19 @@ html {
     height:100vh;
 }
 /* 1024からはこっち */
+.char-dot-jutsu-icon-div {
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    width: 20px;
+    line-height: 15px;
+    z-index: 1;
+}
 @media screen and (min-width:1024px) {
+    .char-dot-jutsu-icon-div {
+        right: 7px;
+    }
+    
     .haikei::before {
         background: url(https://romasagatool.com/img/bg_pc2.jpg) no-repeat;
         background-position:50% 100%;
@@ -1454,11 +1466,3 @@ input[type=range]::-ms-tooltip {
     transform : translate(0, 0);
 }
 
-.char-dot-jutsu-icon-div {
-    position: absolute;
-    top: 1px;
-    right: 1px;
-    width: 20px;
-    line-height: 15px;
-    z-index: 1;
-}
