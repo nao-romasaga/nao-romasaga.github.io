@@ -490,7 +490,7 @@
                             data-href="OTHER"><div class="fButton width-100 filter-bgcolor text-nowrap">その他</div></a></li>
                 </ul>
                 </div>
-                <label class="badge badge-pill badge-light">キャラ一覧</label>
+
                 <div class="info-modal dotList d-none" id="_icon_ken">
                     <div class="text-center info-modal-header"><span class="icon_mini icon_ken"></span></div>
                 </div>
@@ -705,7 +705,7 @@
                                 <a href="" id="RANK_LINK" target="_blank" class="width-100 icon_btn_positive shadow-black"><i class="fas fa-crown"></i> <span class="CHAR_NAME"></span>の<br class="d-sm-none">育成ランキングを調べる <i class="fas fa-search"></i></a>
                             </div>                            
                         </div>                        
-                    </div>
+                    </div>                                   
                     <div class="col-12 col-lg-6">
                         <div class="info-modal styleInfoArea width-max text-center width-max" id="STYLE_DATA">
                             <div class="info-modal-header">スタイル別 ステータス<span class="ISMAX">最大</span>値</div>
@@ -813,6 +813,14 @@
                     <div class="subtitle-long" style="margin-bottom:10px;">スタイル詳細</div><br>
                     <div id="styleChoice"></div><!-- スタイルアイコン表示 -->
                 </div>
+                <!-- ツール_スタイル下部→台詞上部 -->
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-5008373409434899"
+                    data-ad-slot="6110964621"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"></ins>                
+                <script> (adsbygoogle = window.adsbygoogle || []).push({});</script>                         
                 <div class="info-modal styleChoiceArea " style="padding: 5px 20px 25px 20px; margin-bottom: 10px;">
                     <div class="text-center info-modal-header">バンガード内 セリフ集</div>
                     <div class="row small shadow-black" style="color:  #faf0b4;">
@@ -1172,9 +1180,9 @@
                                     <table class="justify-content-around width-100" style="padding-left: 15px;">
                                         <tr>
                                             <td rowspan="2" style="border-bottom: 1px solid lightblue;">属性</td>
-                                            <td colspan=2>威力12</td>
-                                            <td colspan=2>威力24</td>
-                                            <td colspan=2>威力36</td>
+                                            <td colspan=2>威力<span id="ENEMY_SKILL_L"></span></td>
+                                            <td colspan=2>威力<span id="ENEMY_SKILL_M"></span></td>
+                                            <td colspan=2>威力<span id="ENEMY_SKILL_H"></span></td>
                                         </tr>
                                         <tr class="damage-col-head">
                                             <td class="col_0">技<span class="d-none d-sm-inline">ﾀﾞﾒｰｼﾞ</span></td><td class="col_1">術<span class="d-none d-sm-inline">ﾀﾞﾒｰｼﾞ</span></td>
@@ -1238,7 +1246,7 @@
                                 </div>
                                 体:<span id="calcVit"></span> 精:<span id="calcMnd"></span> 軽減アビ合計:<span id="calcResistAb"></span><br>
                                 聖石 軽減(全)Rank10 * 2<br>
-                                敵 腕力/知力 190想定<br>
+                                敵 腕力<span id="ENEMY_STR"></span> / 知力<span id="ENEMY_INT"></span> 想定<br>
                                 威力12:ストーンシャワー,ブレードロール,など<br>
                                 威力24:ポイゾナスブロウ,ファングクラッシュ,など<br>
                                 威力36:乱れ突き,など<br>
@@ -1428,6 +1436,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="info-modal styleChoiceArea width-max d-none" style="padding: 5px 5px 15px 5px;">
                     <div class="text-center info-modal-header h5">近いステータス</div>
                     <div id="ST_TAB" class="text-center fuchidori-white width-max d-none" style="color: rgb(250, 240, 180);">
@@ -1456,15 +1465,6 @@
                         <div class="gacha" style="display: inline-block; border-bottom: 1px solid"></div>
                     </div>
                 </div>
-
-                <!-- ツール_スタイル下部 -->
-                <ins class="adsbygoogle"
-                    style="display:block"
-                    data-ad-client="ca-pub-5008373409434899"
-                    data-ad-slot="6110964621"
-                    data-ad-format="auto"
-                    data-full-width-responsive="true"></ins>                
-                <script> (adsbygoogle = window.adsbygoogle || []).push({});</script>            
             </div>
             <script> (adsbygoogle = window.adsbygoogle || []).push({});</script>            
             <p id="PageTopBtn" style="right:10px"><a href="#FILTER"><i class="fas fa-arrow-up"></i></a></p>
