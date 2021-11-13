@@ -1475,16 +1475,19 @@
 
         <script>
             $(document).ready(function ($) {
+
                 $(".ARTICLE").hide();
                 $(".ARTICLE").first().toggle();
                 $(".INDEX_LI").click(function(){
                     var pos = $(this).attr("data-id");
+                    clickArticle(pos);
+                })
+                function clickArticle(pos) {
                     $(".ARTICLE").slideUp();
                     $(".ARTICLE").eq(pos).toggle();
                     var position = $(".ARTICLE_TOP").offset().top - 200;
-                    console.log(position);
                     $("html, body").animate({scrollTop:position}, 500, "swing");                    
-                })
+                }
 
                 var list = [];
                 var holy = [20,30,50,100,150,200,250,500,1000];
@@ -1509,6 +1512,11 @@
                     var position = $("#INDEX").offset().top;
                     $("html, body").animate({scrollTop:position}, 500, "swing");
                 });
+
+                if (location.search !== "") {
+                    let pos = (location.search).substr(3);
+                    clickArticle(pos);
+                }
             });
         </script>
     </body>

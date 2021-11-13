@@ -395,6 +395,16 @@
 .icon_sekika {    background:url(https://romasagatool.com/img/icon/icon_sekika.png) no-repeat; }
 .icon_zzz {    background:url(https://romasagatool.com/img/icon/icon_zzz.png) no-repeat; }
 
+.icon_gl_slash {    background:url(https://romasagatool.com/img/icon/icon_gl_slash.png) no-repeat; }
+.icon_gl_pierce {    background:url(https://romasagatool.com/img/icon/icon_gl_pierce.png) no-repeat; }
+.icon_gl_strike {    background:url(https://romasagatool.com/img/icon/icon_gl_strike.png) no-repeat; }
+.icon_gl_hot {    background:url(https://romasagatool.com/img/icon/icon_gl_hot.png) no-repeat; }
+.icon_gl_rei {    background:url(https://romasagatool.com/img/icon/icon_gl_rei.png) no-repeat; }
+.icon_gl_rai {    background:url(https://romasagatool.com/img/icon/icon_gl_rai.png) no-repeat; }
+.icon_gl_inn {    background:url(https://romasagatool.com/img/icon/icon_gl_inn.png) no-repeat; }
+.icon_gl_you {    background:url(https://romasagatool.com/img/icon/icon_gl_you.png) no-repeat; }
+
+
 .icon_bsand {   background:url(https://romasagatool.com/img/icon/icon_kakusei_bsand.png) no-repeat; }
 .icon_gsand {   background:url(https://romasagatool.com/img/icon/icon_kakusei_gsand.png) no-repeat; }
 .icon_ksand {   background:url(https://romasagatool.com/img/icon/icon_kakusei_ksand.png) no-repeat; }
@@ -459,6 +469,13 @@
 .icon-skill-md {
     width : 60px;
     height : 60px;
+}
+.icon-back-skill-xs {
+    background-size: 25px;
+}
+.icon-skill-xs {
+    width : 25px;
+    height : 25px;
 }
 
 
