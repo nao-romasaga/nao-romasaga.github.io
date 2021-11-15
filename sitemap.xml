@@ -4,18 +4,13 @@
     <url>
         <loc>https://nao-romasaga.github.io/</loc>
         <priority>1.0</priority>
-        <lastmod>2019-05-12</lastmod>
+        <lastmod>2021-11-12</lastmod>
         <changefreq>weekly</changefreq>
     </url>
     <url>
         <loc>https://nao-romasaga.github.io/ability.html</loc>
         <lastmod>2019-07-03</lastmod>
         <changefreq>daily</changefreq>
-    </url>
-    <url>
-        <loc>https://nao-romasaga.github.io/quest.html</loc>
-        <lastmod>2020-02-28</lastmod>
-        <changefreq>monthly</changefreq>
     </url>
     <url>
         <loc>https://nao-romasaga.github.io/auto.html</loc>
@@ -25,11 +20,6 @@
     <url>
         <loc>https://nao-romasaga.github.io/damage.html</loc>
         <lastmod>2019-06-24</lastmod>
-        <changefreq>daily</changefreq>
-    </url>
-    <url>
-        <loc>https://nao-romasaga.github.io/dojo.html</loc>
-        <lastmod>2019-05-09</lastmod>
         <changefreq>daily</changefreq>
     </url>
     <url>
@@ -63,9 +53,16 @@
         <changefreq>daily</changefreq>
     </url>
     <url>
-        <loc>https://nao-romasaga.github.io/mydata.html</loc>
-        <lastmod>2019-05-12</lastmod>
-        <changefreq>daily</changefreq>
+        <loc>https://nao-romasaga.github.io/style_ailments</loc>
+        <priority>1.0</priority>
+        <lastmod>2021-11-16</lastmod>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://nao-romasaga.github.io/ranking/ailments/success/paralysis.html</loc>
+        <priority>1.0</priority>
+        <lastmod>2021-11-16</lastmod>
+        <changefreq>weekly</changefreq>
     </url>
     <url>
         <loc>https://nao-romasaga.github.io/site.html</loc>
@@ -88,314 +85,8 @@
         <changefreq>daily</changefreq>
     </url>
     <url>
-        <loc>https://nao-romasaga.github.io/partylist.html</loc>
-        <lastmod>2019-06-24</lastmod>
-        <changefreq>daily</changefreq>
-    </url>
-    <url>
         <loc>https://nao-romasaga.github.io/autodamage.html</loc>
         <lastmod>2019-10-11</lastmod>
         <changefreq>monthly</changefreq>
-    </url>    
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID334b5</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID334b6</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID334b7</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID33519</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID3351a</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID3351b</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID3357d</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID3357e</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID3357f</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID335e1</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID335e2</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID33645</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID33646</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID33647</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID336a9</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID336aa</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID3370d</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID3370e</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID3370f</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID33771</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID33772</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID33774</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID3389d</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID3389e</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID339c9</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID339ca</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID33a2e</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID33db1</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID33db2</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID35bc5</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID35c29</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID35c2a</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID35c2b</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID35c8d</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID35c8e</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID35db9</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID35dba</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID35fb7</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID3601b</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID360e3</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID361ab</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID361ac</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID3620f</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID36210</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID36219</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID36273</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID3639f</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID36403</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID36467</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID364cb</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID36511</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID3652f</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID36575</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID365f7</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID36723</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID36787</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID367eb</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID367ec</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID367f5</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID36859</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID3685a</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID368b3</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID36917</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID3697b</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID36a43</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID36a44</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID36a45</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID36b0b</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID36b6f</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID36b70</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID36bd3</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID36bd4</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID36c9b</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID36c9c</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID36c9d</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID37849</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID37b05</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID37b69</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID37f51</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID37f52</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID37fb5</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID37fb6</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID37fb7</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID38019</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID3807d</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID3807e</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID380e1</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID380e2</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID382d5</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID382d6</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID382d7</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID382d8</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID38339</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID3833a</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID3839d</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID3839e</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID384c9</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID384ca</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID384cb</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID3852d</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID3852e</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID3852f</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID38591</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID38592</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID38593</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID386bd</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID386be</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID38785</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID387e9</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID387ea</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID387eb</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID3884d</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID38915</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID38916</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID38979</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID389dd</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID38aa5</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID38ad7</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID38b6d</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID38d61</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID38dc5</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID38dc6</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID38e29</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID38e2a</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID38e2b</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID38ef1</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID38ef2</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID392d9</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID392da</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID392db</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID3a14d</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID3a215</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4bb55</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4bb56</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4bbb9</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4bbba</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4bc81</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4bc82</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4bc83</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4bd4a</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4c1f9</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4c25d</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4c3ed</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4c3ee</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4c3ef</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4c451</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4c452</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4c7d6</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4e265</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4e266</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4e2c9</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4e2ca</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4e32d</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4e32e</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4e391</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4e392</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4e393</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4e841</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4e842</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4ea35</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4ea36</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4ea37</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID641f5</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID641f6</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID645dd</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID645de</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID94f35</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID94f36</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=IDad5d5</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=IDad5d7</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=IDad69d</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=IDad701</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=IDad765</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=IDad82d</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID37b06</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID38ef4</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4c25e</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4e715</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID35bc6</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID35dbb</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID38145</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID38146</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4c1fa</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID335e4</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID33a2d</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID33ce9</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID7c8f9</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID7c8fb</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=IDad639</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID336ab</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID36593</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID37b6a</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID38401</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID38402</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID35e1d</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID36aa7</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID37eed</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID37eee</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID386bf</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=IDad767</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID38403</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID3933d</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4bc1d</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4bce5</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4bfa1</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=IDad702</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4bc1e</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4bd49</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4bd4b</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4c7d5</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4cd4d</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID3884e</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID38cfd</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID39276</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID3933e</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID3a2dd</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID3389f</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID36c9e</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID383a1</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=IDad5d8</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=IDad63a</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID35d55</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID95062</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID3351c</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID33773</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID33cea</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID7c8fc</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=IDad766</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4e267</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID35d56</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID36a46</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID377e5</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID39275</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID94f38</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID94f99</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID94ffd</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID95061</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4e268</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4e716</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4e843</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4ec8d</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID334b8</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID33710</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID33a2f</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID3432a</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID38aa6</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID35cf2</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID36999</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID36ac5</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID3839f</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID38532</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID38918</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID3897a</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID389de</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4bdad</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=IDaea25</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID336ac</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID336ad</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID33db3</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID3432b</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID3833b</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID38465</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID384cd</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID38d62</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID339cb</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID37b07</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID37b6b</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID38cfe</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID3a2de</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4bb58</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4bb59</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4c3f0</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4c4b5</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4c70d</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID3897b</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4bc85</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4bce7</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4c1fb</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4c2c1</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID36530</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID33648</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID336ae</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID33b5b</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4e2cd</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4e395</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID383a0</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID38404</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID38596</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID3884f</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID38dc7</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID38b6e</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID38c36</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID35bc7</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID35cf3</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID38cff</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4c453</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID38466</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID384cf</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID38e2c</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=ID4c7d8</loc><priority>0.5</priority></url>
-<url><loc>https://nao-romasaga.github.io/style.html?s=IDad703</loc><priority>0.5</priority></url>
+    </url>
 </urlset>
