@@ -703,16 +703,19 @@
         <div class="col-12 bg-simple CHAR_STATUS partyStatusTableFont" style="padding:10px;"></div>
     </div>
     <table class="width-100 text-center d-none charTable" id="CHAR_TEMPLATE">
-        <tr style="font-size:8px;">
+        <tr style="font-size:10px;">
             <td></td>
-            <td colspan=4 class="text-left"><div class="text-nowrap charUnset icon_btn_red" onclick="">編成から外す</div></td>
-            <td colspan=5 class="nowData"><div class="text-nowrap openMenu icon_btn_negative" onclick="" style="width:80%"><span class="d-none d-lg-inline">スタイル変更</span><span class="d-lg-none"><img src="./img/icon/icon_menu.png" width="20" height="20"> 編集</span></div></td>
+            <td class="d-none d-sm-table-cell"><button class="text-nowrap icon_btn_negative CHAR_SAVE">保存</button></td>
+            <td colspan=3 class="text-center"><div class="text-nowrap charUnset icon_btn_red" onclick="">編成から外す</div></td>
+            <td colspan=2 class="d-none d-sm-table-cell" style="font-size: initial;">TotalStatus:<span class="SUM"></span></td>
+            <td colspan=3 class="nowData d-none d-sm-table-cell"><div class="text-nowrap openMenu icon_btn_negative" onclick="" style="width:80%"><span class="d-none d-lg-inline">スタイル変更</span><span class="d-lg-none"><img src="./img/icon/icon_menu.png" width="20" height="20"> 編集</span></div></td>
+            <td colspan=6 class="nowData d-sm-none"><div class="text-nowrap openMenu icon_btn_negative" onclick="" style="width:80%"><span class="d-none d-lg-inline">スタイル変更</span><span class="d-lg-none"><img src="./img/icon/icon_menu.png" width="20" height="20"> 編集</span></div></td>
         </tr>
-        <tr class="text-center nowData" onclick="">
+        <tr class="text-center nowData" onclick="" style="line-height: 20px;">
             <td></td>
             <td>
                 <span class="text-nowrap" style="margin-bottom:-5px">
-                    <img src="./img/icon/icon_menu.png" width="20" height="20" style="position: absolute; top:5px; left:5px;"> HP / Max <span class="BASE_HP d-none d-sm-inline">0</span>
+                    <img src="./img/icon/icon_menu.png" width="20" height="20" style="position: absolute; top:5px; left:5px;"> HP Cup <span class="BASE_HP d-none d-sm-inline">0</span>
                 </span>
                 <div class="d-lg-none limitFont text-nowrap">
                     <span class="HP">0</span> / <span class="BASE_HP small">0</span>
@@ -744,8 +747,7 @@
             </td>
         </tr>
         <tr class="text-center  d-none d-lg-table-row">
-            <td class="width:70px;"><button class="text-nowrap icon_btn_negative CHAR_SAVE">保存</button></td>
-            <td class=""><img src="https://romasagatool.com/img/icon/icon_minus.png" class="paramButton" width="20"
+            <td class="" colspan=2><img src="https://romasagatool.com/img/icon/icon_minus.png" class="paramButton" width="20"
                     height="30" data-param="HP" data-pm="minus" onclick=""><input type="number"
                     class="input charParam kadomaru charHP" style="width: 75px" value="3" data-param="HP"><img
                     src="https://romasagatool.com/img/icon/icon_plus.png" class="paramButton" width="20" height="30" data-param="HP"
