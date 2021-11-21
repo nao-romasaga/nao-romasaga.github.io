@@ -7,16 +7,14 @@
         <script src="./js/data_STYLEMASTER_style.js" ></script>
         <script src="./js/damage.js" ></script>
         <script>
-            if (location.search !== "") {
-                var styleId = (location.search).substr(3);
-                var styleInfo = STYLE_MASTER[styleId];
-                if (styleInfo !== undefined) {
-                    //Title変更
-                    document.title = `【ロマサガRS】${styleInfo['Rarity']} ${styleInfo['Name']} ${styleInfo['AnotherName']}の素ステ。ステータス最大値、技・アビリティ・耐性一覧`;
-                    //Description変更
-                    var desc = `${styleInfo['Name']} ${styleInfo['Rarity']} ${styleInfo['AnotherName']} の最新クエストでの素ステ上限、スタイル補正込み最大ステータス値、別スタイルとの比較を掲載しています`;
-                    $("meta[name='description']").attr("content", desc);
-                }
+            var URL_STYLE_ID = (location.search).substr(3);
+            var styleInfo = STYLE_MASTER[URL_STYLE_ID];
+            if (styleInfo !== undefined) {
+                //Title変更
+                document.title = `【ロマサガRS】${styleInfo['Rarity']} ${styleInfo['Name']} ${styleInfo['AnotherName']}の素ステ。ステータス最大値、技・アビリティ・耐性一覧`;
+                //Description変更
+                var desc = `${styleInfo['Name']} ${styleInfo['Rarity']} ${styleInfo['AnotherName']} の最新クエストでの素ステ上限、スタイル補正込み最大ステータス値、別スタイルとの比較を掲載しています`;
+                $("meta[name='description']").attr("content", desc);
             }
         </script>
         <!--
