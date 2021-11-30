@@ -407,92 +407,100 @@
                     </div>
                     <div class="text-center label-text-small width-100" id="STYLE_HEADER">スタイル選択</div>
                     <div id="styleChoice"></div>
-                    <div class="text-center label-text-small width-100">SS武器 絞り込み</div>
-                    <ul class="nav text-center width-100 text-nowrap" style="margin: 10px;">
-                        <li class="col-12 col-sm xs-pad0">
-                            <button class="width-100 icon_btn_off optionButton text-nowrap" data-on="0" data-name="weaponDupFilter">同じ武器を2度使用しない</button>
-                        </li>
-                        <li class="col-12 col-sm xs-pad0">
-                            <button class="width-100 icon_btn_off optionButton text-nowrap" data-on="0" data-name="weaponSFilter">S武器を使用しない</button>
-                        </li>
-                    </ul>                    
-                    <div class="row no-gutters text-center width-max " style="margin-bottom: 10px;">
-                        <div class="col-12 col-lg">
-                            SS武器 進化一括切り替え
+                    <div id="SS_WEAPON_TOGGLE" class="text-center label-text-small width-100">SS武器 絞り込み <i class="fas fa-caret-down"></i></div>
+                    <div class="row text-center" style="margin-bottom: 10px;">
+                        <div class="col-12">
+                            ↑タップで展開
                         </div>
-                        <div class="col-6 col-lg">
-                            <button class="icon_btn_negative text-nowrap" id="SS_FIRST_TOGGLE">全1段目 ON/OFF</button>                            
+                    </div>   
+                    <div id="SS_WEAPON_AREA">
+                        <ul class="nav text-center width-100 text-nowrap" style="margin: 10px;">
+                            <li class="col-12 col-sm xs-pad0">
+                                <button class="width-100 icon_btn_off optionButton text-nowrap" data-on="0" data-name="weaponDupFilter">同じ武器を2度使用しない</button>
+                            </li>
+                            <li class="col-12 col-sm xs-pad0">
+                                <button class="width-100 icon_btn_off optionButton text-nowrap" data-on="0" data-name="weaponSFilter">S武器を使用しない</button>
+                            </li>
+                        </ul>                    
+                        <div class="row no-gutters text-center width-max " style="margin-bottom: 10px;">
+                            <div class="col-12 col-lg">
+                                SS武器 進化一括切り替え
+                            </div>
+                            <div class="col-6 col-lg">
+                                <button class="icon_btn_negative text-nowrap" id="SS_FIRST_TOGGLE">全1段目 ON/OFF</button>                            
+                            </div>
+                            <div class="col-6 col-lg">
+                                <button class="icon_btn_negative text-nowrap" id="SS_SECOND_TOGGLE">全2段目 ON/OFF</button>                            
+                            </div>
                         </div>
-                        <div class="col-6 col-lg">
-                            <button class="icon_btn_negative text-nowrap" id="SS_SECOND_TOGGLE">全2段目 ON/OFF</button>                            
+                        SS武器の切り替えは負荷対策のため下記の「絞り込み」をタップしないと結果が反映されません<br>
+                        <button class="icon_btn_negative text-nowrap" id="SS_FILTER" style="margin-bottom: 10px;">　絞り込み　</button><br>
+                        <div class="row no-gutters text-center" style="margin-bottom: 10px;">
+                            <div class="col-4 col-md-2 col-lg ss-filter">
+                                <span class="icon_xs icon_ken"></span>
+                                <div id="SS_icon_ken"></div>
+                                <span class="icon_xs icon_ken"></span><span class="icon_xs icon_hi"></span><span class="icon_xs icon_mizu"></span>
+                                <div id="SS_icon_ken5152"></div>
+                                <span class="icon_xs icon_ken"></span><span class="icon_xs icon_hi"></span>
+                                <div id="SS_icon_ken51"></div>
+                                <span class="icon_xs icon_ken"></span><span class="icon_xs icon_hikari"></span>
+                                <div id="SS_icon_ken55"></div>
+                            </div>
+                            <div class="col-4 col-md-2 col-lg ss-filter">
+                                <span class="icon_xs icon_dken"></span>
+                                <div id="SS_icon_dken"></div>
+                                <span class="icon_xs icon_dken"></span><span class="icon_xs icon_mizu"></span>
+                                <div id="SS_icon_dken52"></div>
+                                <span class="icon_xs icon_dken"></span><span class="icon_xs icon_yami"></span>
+                                <div id="SS_icon_dken56"></div>
+                            </div>
+                            <div class="col-4 col-md-2 col-lg ss-filter"><span class="icon_xs icon_ono"></span><div id="SS_icon_ono"></div></div>
+                            <div class="col-4 col-md-2 col-lg ss-filter">
+                                <span class="icon_xs icon_kon"></span><div id="SS_icon_kon"></div>
+                                <span class="icon_xs icon_kon"></span><span class="icon_xs icon_hi"></span>
+                                <div id="SS_icon_kon51"></div>
+                            </div>
+                            <div class="col-4 col-md-2 col-lg ss-filter"><span class="icon_xs icon_tai"></span><div id="SS_icon_tai"></div></div>
+                            <div class="col-4 col-md-2 col-lg ss-filter"><span class="icon_xs icon_ju"></span><div id="SS_icon_ju"></div></div>
+                            <div class="col-4 col-md-2 col-lg ss-filter">
+                                <span class="icon_xs icon_sken"></span>
+                                <div id="SS_icon_sken"></div>
+                                <span class="icon_xs icon_sken"></span><span class="icon_xs icon_hi"></span>
+                                <div id="SS_icon_sken51"></div>
+                            </div>
+                            <div class="col-4 col-md-2 col-lg ss-filter">
+                                <span class="icon_xs icon_yari"></span><div id="SS_icon_yari"></div>
+                                <span class="icon_xs icon_yari"></span><span class="icon_xs icon_hi"></span>
+                                <div id="SS_icon_yari51"></div>
+                            </div>
+                            <div class="col-4 col-md-2 col-lg ss-filter">
+                                <span class="icon_xs icon_yumi"></span><div id="SS_icon_yumi"></div>
+                                <span class="icon_xs icon_yumi"></span><span class="icon_xs icon_mizu"></span>
+                                <div id="SS_icon_yumi52"></div>
+                            </div>
                         </div>
-                    </div>
-                    SS武器の切り替えは負荷対策のため下記の「絞り込み」をタップしないと結果が反映されません<br>
-                    <button class="icon_btn_negative text-nowrap" id="SS_FILTER" style="margin-bottom: 10px;">　絞り込み　</button><br>
-                    <div class="row no-gutters text-center" style="margin-bottom: 10px;">
-                        <div class="col-4 col-md-2 col-lg ss-filter">
-                            <span class="icon_xs icon_ken"></span>
-                            <div id="SS_icon_ken"></div>
-                            <span class="icon_xs icon_ken"></span><span class="icon_xs icon_hi"></span><span class="icon_xs icon_mizu"></span>
-                            <div id="SS_icon_ken5152"></div>
-                            <span class="icon_xs icon_ken"></span><span class="icon_xs icon_hi"></span>
-                            <div id="SS_icon_ken51"></div>
-                            <span class="icon_xs icon_ken"></span><span class="icon_xs icon_hikari"></span>
-                            <div id="SS_icon_ken55"></div>
+                        <div class="row no-gutters text-center" style="margin-bottom: 10px;">
+                            <div class="col-4 col-md-2 col-lg ss-filter"><span class="icon_xs icon_tsue"></span><span class="icon_xs icon_hi"></span><div id="SS_icon_tsue51"></div></div>
+                            <div class="col-4 col-md-2 col-lg ss-filter"><span class="icon_xs icon_tsue"></span><span class="icon_xs icon_mizu"></span><div id="SS_icon_tsue52"></div></div>
+                            <div class="col-4 col-md-2 col-lg ss-filter"><span class="icon_xs icon_tsue"></span><span class="icon_xs icon_hi"></span><span class="icon_xs icon_mizu"></span><div id="SS_icon_tsue5152"></div></div>
+                            <div class="col-4 col-md-2 col-lg ss-filter"><span class="icon_xs icon_tsue"></span><span class="icon_xs icon_hi"></span><span class="icon_xs icon_tsuchi"></span><div id="SS_icon_tsue5153"></div></div>
+                            <div class="col-4 col-md-2 col-lg ss-filter"><span class="icon_xs icon_tsue"></span><span class="icon_xs icon_kaze"></span><div id="SS_icon_tsue54"></div></div>
+                            <div class="col-4 col-md-2 col-lg ss-filter"><span class="icon_xs icon_tsue"></span><span class="icon_xs icon_hikari"></span><div id="SS_icon_tsue55"></div></div>
+                            <div class="col-4 col-md-2 col-lg ss-filter"><span class="icon_xs icon_tsue"></span><span class="icon_xs icon_mizu"></span><span class="icon_xs icon_yami"></span><div id="SS_icon_tsue5256"></div></div>
+                            <div class="col-4 col-md-2 col-lg ss-filter"><span class="icon_xs icon_tsue"></span><span class="icon_xs icon_yami"></span><div id="SS_icon_tsue56"></div></div>
                         </div>
-                        <div class="col-4 col-md-2 col-lg ss-filter">
-                            <span class="icon_xs icon_dken"></span>
-                            <div id="SS_icon_dken"></div>
-                            <span class="icon_xs icon_dken"></span><span class="icon_xs icon_mizu"></span>
-                            <div id="SS_icon_dken52"></div>
-                            <span class="icon_xs icon_dken"></span><span class="icon_xs icon_yami"></span>
-                            <div id="SS_icon_dken56"></div>
-                        </div>
-                        <div class="col-4 col-md-2 col-lg ss-filter"><span class="icon_xs icon_ono"></span><div id="SS_icon_ono"></div></div>
-                        <div class="col-4 col-md-2 col-lg ss-filter">
-                            <span class="icon_xs icon_kon"></span><div id="SS_icon_kon"></div>
-                            <span class="icon_xs icon_kon"></span><span class="icon_xs icon_hi"></span>
-                            <div id="SS_icon_kon51"></div>
-                        </div>
-                        <div class="col-4 col-md-2 col-lg ss-filter"><span class="icon_xs icon_tai"></span><div id="SS_icon_tai"></div></div>
-                        <div class="col-4 col-md-2 col-lg ss-filter"><span class="icon_xs icon_ju"></span><div id="SS_icon_ju"></div></div>
-                        <div class="col-4 col-md-2 col-lg ss-filter">
-                            <span class="icon_xs icon_sken"></span>
-                            <div id="SS_icon_sken"></div>
-                            <span class="icon_xs icon_sken"></span><span class="icon_xs icon_hi"></span>
-                            <div id="SS_icon_sken51"></div>
-                        </div>
-                        <div class="col-4 col-md-2 col-lg ss-filter">
-                            <span class="icon_xs icon_yari"></span><div id="SS_icon_yari"></div>
-                            <span class="icon_xs icon_yari"></span><span class="icon_xs icon_hi"></span>
-                            <div id="SS_icon_yari51"></div>
-                        </div>
-                        <div class="col-4 col-md-2 col-lg ss-filter">
-                            <span class="icon_xs icon_yumi"></span><div id="SS_icon_yumi"></div>
-                            <span class="icon_xs icon_yumi"></span><span class="icon_xs icon_mizu"></span>
-                            <div id="SS_icon_yumi52"></div>
-                        </div>
-                    </div>
-                    <div class="row no-gutters text-center" style="margin-bottom: 10px;">
-                        <div class="col-4 col-md-2 col-lg ss-filter"><span class="icon_xs icon_tsue"></span><span class="icon_xs icon_hi"></span><div id="SS_icon_tsue51"></div></div>
-                        <div class="col-4 col-md-2 col-lg ss-filter"><span class="icon_xs icon_tsue"></span><span class="icon_xs icon_mizu"></span><div id="SS_icon_tsue52"></div></div>
-                        <div class="col-4 col-md-2 col-lg ss-filter"><span class="icon_xs icon_tsue"></span><span class="icon_xs icon_hi"></span><span class="icon_xs icon_mizu"></span><div id="SS_icon_tsue5152"></div></div>
-                        <div class="col-4 col-md-2 col-lg ss-filter"><span class="icon_xs icon_tsue"></span><span class="icon_xs icon_hi"></span><span class="icon_xs icon_tsuchi"></span><div id="SS_icon_tsue5153"></div></div>
-                        <div class="col-4 col-md-2 col-lg ss-filter"><span class="icon_xs icon_tsue"></span><span class="icon_xs icon_kaze"></span><div id="SS_icon_tsue54"></div></div>
-                        <div class="col-4 col-md-2 col-lg ss-filter"><span class="icon_xs icon_tsue"></span><span class="icon_xs icon_hikari"></span><div id="SS_icon_tsue55"></div></div>
-                        <div class="col-4 col-md-2 col-lg ss-filter"><span class="icon_xs icon_tsue"></span><span class="icon_xs icon_mizu"></span><span class="icon_xs icon_yami"></span><div id="SS_icon_tsue5256"></div></div>
-                        <div class="col-4 col-md-2 col-lg ss-filter"><span class="icon_xs icon_tsue"></span><span class="icon_xs icon_yami"></span><div id="SS_icon_tsue56"></div></div>
-                    </div>
 
-                    <div class="text-center label-text-small width-100">SS武器 所持状態の保存/復元</div>
-                    <ul class="noLogin nav text-center width-100 text-nowrap" style="margin: 10px;">
-                        <li class="col-6 col-sm xs-pad0">
-                            <button class="icon_btn_negative text-nowrap" id="SS_SAVE" style="margin-bottom: 10px;">　保存　</button><br>
-                        </li>
-                        <li class="col-6 col-sm xs-pad0">
-                            <button class="icon_btn_negative text-nowrap" id="SS_LOAD" style="margin-bottom: 10px;">　復元　</button><br>
-                        </li>
-                    </ul>                    
+                        <div class="text-center label-text-small width-100">SS武器 所持状態の保存/復元</div>
+                        <ul class="noLogin nav text-center width-100 text-nowrap" style="margin: 10px;">
+                            <li class="col-6 col-sm xs-pad0">
+                                <button class="icon_btn_negative text-nowrap" id="SS_SAVE" style="margin-bottom: 10px;">　保存　</button><br>
+                            </li>
+                            <li class="col-6 col-sm xs-pad0">
+                                <button class="icon_btn_negative text-nowrap" id="SS_LOAD" style="margin-bottom: 10px;">　復元　</button><br>
+                            </li>
+                        </ul>
+                    </div>                 
+
                     <div class="text-center label-text-small width-100">多段攻撃ヒット数 絞り込み</div>
                     <div class="row no-gutters text-center" style="margin-bottom: 10px;">
                         <button class="col icon_btn_off optionButton MULTI" data-on="0" data-name="multi" data-label="1">最小HIT</button>                  
