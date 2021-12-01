@@ -53,6 +53,31 @@
         <changefreq>daily</changefreq>
     </url>
     <url>
+        <loc>https://nao-romasaga.github.io/ranking/debuff/success/str.html</loc><priority>1.0</priority><lastmod>2021-12-01</lastmod><changefreq>weekly</changefreq>
+    </url>
+    <url>
+        <loc>https://nao-romasaga.github.io/ranking/debuff/success/end.html</loc><priority>1.0</priority><lastmod>2021-12-01</lastmod><changefreq>weekly</changefreq>
+    </url>
+    <url>
+        <loc>https://nao-romasaga.github.io/ranking/debuff/success/dex.html</loc><priority>1.0</priority><lastmod>2021-12-01</lastmod><changefreq>weekly</changefreq>
+    </url>
+    <url>
+        <loc>https://nao-romasaga.github.io/ranking/debuff/success/agi.html</loc><priority>1.0</priority><lastmod>2021-12-01</lastmod><changefreq>weekly</changefreq>
+    </url>
+    <url>
+        <loc>https://nao-romasaga.github.io/ranking/debuff/success/int.html</loc><priority>1.0</priority><lastmod>2021-12-01</lastmod><changefreq>weekly</changefreq>
+    </url>
+    <url>
+        <loc>https://nao-romasaga.github.io/ranking/debuff/success/wil.html</loc><priority>1.0</priority><lastmod>2021-12-01</lastmod><changefreq>weekly</changefreq>
+    </url>
+    <url>
+        <loc>https://nao-romasaga.github.io/ranking/debuff/success/lov.html</loc><priority>1.0</priority><lastmod>2021-12-01</lastmod><changefreq>weekly</changefreq>
+    </url>
+    <url>
+        <loc>https://nao-romasaga.github.io/ranking/debuff/success/cha.html</loc><priority>1.0</priority><lastmod>2021-12-01</lastmod><changefreq>weekly</changefreq>
+    </url>
+
+    <url>
         <loc>https://nao-romasaga.github.io/style_ailments</loc>
         <priority>1.0</priority>
         <lastmod>2021-11-28</lastmod>
