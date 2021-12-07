@@ -1,1 +1,378 @@
-function _0x228f(_0x1dfc3b,_0x2469e9){var _0x4d3f8a=_0x4d3f();return _0x228f=function(_0x228ff8,_0x4fc513){_0x228ff8=_0x228ff8-0x1b3;var _0x5e2261=_0x4d3f8a[_0x228ff8];return _0x5e2261;},_0x228f(_0x1dfc3b,_0x2469e9);}var _0x51d45d=_0x228f;(function(_0x1cde08,_0x1a53e6){var _0x5e5354=_0x228f,_0x3745b0=_0x1cde08();while(!![]){try{var _0x1ada9b=-parseInt(_0x5e5354(0x24e))/0x1*(parseInt(_0x5e5354(0x203))/0x2)+parseInt(_0x5e5354(0x1fa))/0x3+parseInt(_0x5e5354(0x1f8))/0x4*(parseInt(_0x5e5354(0x228))/0x5)+-parseInt(_0x5e5354(0x22e))/0x6*(-parseInt(_0x5e5354(0x206))/0x7)+-parseInt(_0x5e5354(0x1f0))/0x8*(-parseInt(_0x5e5354(0x20e))/0x9)+parseInt(_0x5e5354(0x234))/0xa+-parseInt(_0x5e5354(0x239))/0xb;if(_0x1ada9b===_0x1a53e6)break;else _0x3745b0['push'](_0x3745b0['shift']());}catch(_0x3c3bc6){_0x3745b0['push'](_0x3745b0['shift']());}}}(_0x4d3f,0xda78b));var NOW_UID=getMyId();$(_0x51d45d(0x22f))[_0x51d45d(0x20d)](Object[_0x51d45d(0x1ee)](STYLE_MASTER)[_0x51d45d(0x21b)]),$(_0x51d45d(0x221))['slideUp']();var hanyoText=_0x51d45d(0x21d),onlyText=_0x51d45d(0x211),totalText=_0x51d45d(0x1f3),giwakuText=_0x51d45d(0x1c9);$hanyoInfo=$(_0x51d45d(0x1fe))[_0x51d45d(0x1d9)]()[_0x51d45d(0x1ec)]('id'),$hanyoInfo[_0x51d45d(0x1e2)](_0x51d45d(0x1b9))[_0x51d45d(0x20d)]('汎用性ランキング'),$hanyoInfo[_0x51d45d(0x1e2)](_0x51d45d(0x1fc))[_0x51d45d(0x24f)]('id',_0x51d45d(0x1c6)),$hanyoInfo['find'](_0x51d45d(0x1d5))[_0x51d45d(0x20d)](hanyoText),$onlyInfo=$(_0x51d45d(0x1fe))[_0x51d45d(0x1d9)]()[_0x51d45d(0x1ec)]('id'),$onlyInfo[_0x51d45d(0x1e2)](_0x51d45d(0x1b9))[_0x51d45d(0x20d)](_0x51d45d(0x238)),$onlyInfo[_0x51d45d(0x1e2)](_0x51d45d(0x1fc))[_0x51d45d(0x24f)]('id',_0x51d45d(0x1dc)),$onlyInfo[_0x51d45d(0x1e2)]('.INFO')[_0x51d45d(0x20d)](onlyText),$totalInfo=$(_0x51d45d(0x1fe))[_0x51d45d(0x1d9)]()[_0x51d45d(0x1ec)]('id'),$totalInfo[_0x51d45d(0x1e2)]('.TITLE')['html'](_0x51d45d(0x23d)),$totalInfo[_0x51d45d(0x1e2)](_0x51d45d(0x1fc))[_0x51d45d(0x24f)]('id',_0x51d45d(0x1fd)),$totalInfo[_0x51d45d(0x1e2)](_0x51d45d(0x1d5))[_0x51d45d(0x20d)](totalText),$giwakuInfo=$(_0x51d45d(0x1fe))[_0x51d45d(0x1d9)]()[_0x51d45d(0x1ec)]('id'),$giwakuInfo['find'](_0x51d45d(0x1b9))[_0x51d45d(0x20d)](_0x51d45d(0x1c5)),$giwakuInfo[_0x51d45d(0x1e2)](_0x51d45d(0x1fc))[_0x51d45d(0x24f)]('id','G_RANK'),$giwakuInfo[_0x51d45d(0x1e2)]('.INFO')[_0x51d45d(0x20d)](giwakuText),$giwakuInfo[_0x51d45d(0x1e2)](_0x51d45d(0x1d7))[_0x51d45d(0x1d4)]()['remove'](),$giwakuInfo[_0x51d45d(0x1e2)]('.RANK')[_0x51d45d(0x1f2)](),$giwakuInfo['find'](_0x51d45d(0x22c))[_0x51d45d(0x20d)]('<div\x20class=\x22col-12\x20ALL\x22></div>'),$gachaInfo=$(_0x51d45d(0x1fe))[_0x51d45d(0x1d9)]()['removeAttr']('id'),$gachaInfo[_0x51d45d(0x1e2)](_0x51d45d(0x1b9))['html']('開催中ガチャ\x20ピックアップスタイル'),$gachaInfo['find'](_0x51d45d(0x1fc))[_0x51d45d(0x24f)]('id','GACHA_RANK'),$gachaInfo[_0x51d45d(0x1e2)](_0x51d45d(0x1d5))[_0x51d45d(0x1f2)](),$gachaInfo[_0x51d45d(0x1e2)](_0x51d45d(0x1d7))[_0x51d45d(0x1d4)]()[_0x51d45d(0x1f2)](),$gachaInfo['find'](_0x51d45d(0x241))[_0x51d45d(0x1f2)](),$gachaInfo['find'](_0x51d45d(0x20a))[_0x51d45d(0x20d)]('<div\x20class=\x22col-12\x20ALL\x22></div>'),$('#RANK_TEMPLATE')[_0x51d45d(0x21e)]($onlyInfo),$(_0x51d45d(0x1fe))[_0x51d45d(0x21e)]($hanyoInfo),$(_0x51d45d(0x1fe))[_0x51d45d(0x1c1)]($giwakuInfo),$('#RANK_TEMPLATE')[_0x51d45d(0x1c1)]($gachaInfo),$(_0x51d45d(0x1fe))[_0x51d45d(0x1c1)]($totalInfo),$hanyoInfo[_0x51d45d(0x1cf)](function(){var _0x460486=_0x51d45d;$(_0x460486(0x1be))[_0x460486(0x1ce)](),$(_0x460486(0x1ba))[_0x460486(0x1ce)](),$(_0x460486(0x1f5))[_0x460486(0x1ce)](),$(_0x460486(0x21c))['slideUp']();}),$[_0x51d45d(0x1bf)](_0x51d45d(0x1b5)+NOW_UID+'&c=dispVoteInfo&dispVoteInfo=?'),$(document)['on']('click',_0x51d45d(0x21a),function(){var _0x24c7dd=_0x51d45d;for(var _0x1e07d4 in VOTE_DB_COLUMN){changeVoteStar(0x3,VOTE_DB_COLUMN[_0x1e07d4]);}var _0x551302=$(this)['attr'](_0x24c7dd(0x1ca));$('#VOTE_STAR')[_0x24c7dd(0x24f)](_0x24c7dd(0x1ca),_0x551302),uid=NOW_UID?_0x24c7dd(0x224)+NOW_UID:'',$[_0x24c7dd(0x1bf)](_0x24c7dd(0x226)+_0x551302+uid+_0x24c7dd(0x1ff));var _0xf69d62=STYLE_MASTER[_0x551302];$(_0x24c7dd(0x232))[_0x24c7dd(0x20d)]('')['append']($(this)['clone']()),$('#VOTE_NAME')[_0x24c7dd(0x20d)](_0xf69d62['Name']),$(_0x24c7dd(0x1f1))[_0x24c7dd(0x20d)](_0xf69d62[_0x24c7dd(0x244)]),$(_0x24c7dd(0x1cd))[_0x24c7dd(0x24f)](_0x24c7dd(0x220),getImgPath('style_cutin/'+_0x551302+'.png')),$(_0x24c7dd(0x1ef))[_0x24c7dd(0x24f)](_0x24c7dd(0x250),'https://nao-romasaga.github.io/style.html?s='+_0x551302);var _0x56f59b=RANK_RESULT[_0x551302]!=undefined?Number(RANK_RESULT[_0x551302][_0x24c7dd(0x227)]):0x0,_0x2663db=RANK_RESULT[_0x551302]!=undefined?Number(RANK_RESULT[_0x551302]['v2_avg']):0x0,_0x12d18d=RANK_RESULT[_0x551302]!=undefined?Number(RANK_RESULT[_0x551302][_0x24c7dd(0x1ea)]):0x0;$('#VOTE_SHUKAI')[_0x24c7dd(0x20d)]((Math[_0x24c7dd(0x202)](_0x56f59b*0x64)/0x64)[_0x24c7dd(0x23f)](0x2)),$(_0x24c7dd(0x251))[_0x24c7dd(0x20d)]((Math[_0x24c7dd(0x202)](_0x2663db*0x64)/0x64)[_0x24c7dd(0x23f)](0x2)),$('#VOTE_ONLY')[_0x24c7dd(0x20d)]((Math[_0x24c7dd(0x202)](_0x12d18d*0x64)/0x64)[_0x24c7dd(0x23f)](0x2)),$(_0x24c7dd(0x221))[_0x24c7dd(0x23b)](),$(_0x24c7dd(0x1b8))[_0x24c7dd(0x1e1)](_0x24c7dd(0x213));}),$(document)['on'](_0x51d45d(0x1c0),_0x51d45d(0x240),function(){var _0x4e52ef=_0x51d45d,_0xdacd37=$(_0x4e52ef(0x240))[_0x4e52ef(0x24f)](_0x4e52ef(0x1ca));voteAPI(_0xdacd37);var _0x4d4eb3=SPEECH_DATA[_0xdacd37];$(_0x4e52ef(0x210))['html'](_0x4d4eb3[Math[_0x4e52ef(0x1e8)](Math[_0x4e52ef(0x1d1)]()*Math[_0x4e52ef(0x1e8)](0x3))]),$('#SPEECH_ICON')[_0x4e52ef(0x24f)](_0x4e52ef(0x220),getImgPath(_0x4e52ef(0x24c)+_0xdacd37+_0x4e52ef(0x23a))),dotPath=getImgPath('dot/'+STYLE_MASTER[_0xdacd37][_0x4e52ef(0x1fb)]+_0x4e52ef(0x23a)),$(_0x4e52ef(0x246))['attr'](_0x4e52ef(0x208),_0x4e52ef(0x248)+dotPath+_0x4e52ef(0x1c4)),$(_0x4e52ef(0x221))['slideUp'](),$('.js-cover')[_0x4e52ef(0x1e0)](_0x4e52ef(0x213)),setTimeout(function(){var _0x59ddd5=_0x4e52ef;$(_0x59ddd5(0x1b8))[_0x59ddd5(0x1e1)]('active');},0x7d0);}),$(document)['on'](_0x51d45d(0x1c0),_0x51d45d(0x247),function(){var _0x5a2989=_0x51d45d;$('#VOTE_AREA')[_0x5a2989(0x1ce)]();}),$(document)['on'](_0x51d45d(0x1c0),_0x51d45d(0x200),function(){var _0x159732=_0x51d45d,_0x1b06fa=$(this)[_0x159732(0x24f)](_0x159732(0x218)),_0xb6823=$(this)[_0x159732(0x24f)](_0x159732(0x24a));changeVoteStar(_0x1b06fa,_0xb6823);});function voteAPI(_0x1d5b17){var _0xdbed01=_0x51d45d,_0x2a87e4=_0xdbed01(0x216)+NOW_UID+_0xdbed01(0x223)+_0x1d5b17+_0xdbed01(0x1d2)+VOTE[_0xdbed01(0x219)]+_0xdbed01(0x1f6)+VOTE[_0xdbed01(0x22b)]+_0xdbed01(0x1bc)+VOTE[_0xdbed01(0x1e6)];$['getJSON']('https://romasagatool.com/api/vote_style.php?'+_0x2a87e4+_0xdbed01(0x1ff));}function _0x4d3f(){var _0x18433c=['汎用性、周回性、唯一性の総合評価値のランキングです','.ICON','.TOTSU','&v2=','split','5149828gOdwIj','indexOf','3994530cKeWTC','DotId','#V1_RANK','ALL_RANK','#RANK_TEMPLATE','&c=dispVoteRadar&dispVoteRadar=?','.vote','toggleClass','round','4NnxLzs','calc','.ANOTHER','6650yObHLM','LV2','style','#VOTE_END','#GACHA_RANK','append','multiHensa','html','504gYevun','d-none','#SPEECH','他のスタイルでは代用が聞かない物を持っているかを評価したランキングです<br>例：全体即死の王者の剣、トーマスの高知力デルタペトラ、バルテルミーの強襲アバドンハンズ','push','active','mydata','sort','uid=','#TEMPLATE','data-value','shukai','.style','length','.TSUE','周回、ボス戦、ツヴァイク、R杯など様々なシーンに対応可能かを評価したランキングです','after','.LTIME','src','#VOTE_AREA','.V2','&sid=','&uid=','.NAME','https://romasagatool.com/api/vote_style.php?sid=','v1_avg','5xJuAUh','singleHensa','.V3','hanyo','#G_RANK','start','4944mGVFHB','#TOTAL_STYLE','icon_btn_off\x20icon_btn_on','total','#VOTE_ICON','cnt','5269050mPLynf','Name','.RANGE','プラチナガチャ','唯一性ランキング','32187507UGiuBc','.png','slideDown','#VOTE_STYLE','総合ランキング','#V3_RANK','toFixed','#VOTE_STAR','.RANK','LV1','WeaponType','AnotherName','Rarity','#SPEECH_DOT','#CLOSE','background:\x20url(','.PARENT','data-type','myvote','style_icon/','CharacterId','133414nrKfOw','attr','href','#VOTE_HANYO','gacha','nearly','each','ALL','https://romasagatool.com/api/vote_info.php?uid=','https://romasagatool.com/api/select_vote_style.php?c=dispVoteRanking&dispVoteRanking=?','.VALUE','.js-cover','.TITLE','.DA','fuchidori-yellow','&v3=','col2','.ZAN','getJSON','click','before','params','user',')\x20no-repeat;','もう少しデータ欲しいランキング','V2_RANK','.V1','icon_btn_on','評価は高いのですが、投票数が少ないため信憑性が低いスタイルです。<br>ぜひ皆さんの投票で信憑性をあげていただけると助かります◝(*º꒳​º)◜','data-id','#ALL_RANK','https://romasagatool.com/api/select_vote_style.php?c=dispVoteRanking&dispVoteRanking=?&t=','#RANK_HEAD_IMG','slideUp','ready','.GACHA','random','&v1=','icon_btn_positive','parent','.INFO','sid','.DISP_CHANGE','parents','clone','updated_at','vAll_avg','V3_RANK','.STIME','#TOTAL_VOTE','slice','addClass','removeClass','find','icon_btn_off','d-inline-block','toLocaleString','only','v2_avg','floor','#VOTE_ROW','v3_avg','col1','removeAttr','.CNT','keys','#VOTE_HREF','22736pBFDRC','#VOTE_ANOTHRNAME','remove'];_0x4d3f=function(){return _0x18433c;};return _0x4d3f();}function dispVoteRadar(_0xae14d8){var _0x72eb88=_0x51d45d;for(var _0xb2b09c in VOTE_DB_COLUMN){val=_0xae14d8[_0x72eb88(0x214)]['col1']!==undefined?_0xae14d8['mydata'][_0xb2b09c]:0x3,changeVoteStar(val,VOTE_DB_COLUMN[_0xb2b09c]);}}function dispVoteInfo(_0x149430){var _0x2dde47=_0x51d45d,_0x55d45e=_0x149430[_0x2dde47(0x231)],_0x5008c5=_0x149430[_0x2dde47(0x253)],_0x1ad87a=Number(_0x149430[_0x2dde47(0x24b)][_0x2dde47(0x233)]),_0x7bfc2a=0x1,_0x160d59=0x0,_0x44012f=0x0;for(row of _0x55d45e){userConut=Number(row[_0x2dde47(0x1c3)]),voteCount=Number(row['cnt']),_0x160d59+=voteCount,_0x44012f+=userConut,voteCount>=_0x1ad87a&&(_0x7bfc2a+=userConut);}$('#TOTAL_USER')[_0x2dde47(0x20d)](_0x44012f[_0x2dde47(0x1e5)]()),$('#YOUR_VOTE')[_0x2dde47(0x20d)](_0x1ad87a[_0x2dde47(0x1e5)]());for(row of _0x5008c5){$tr=$(_0x2dde47(0x1e9))[_0x2dde47(0x1d9)]()['removeAttr']('id')[_0x2dde47(0x1e1)]('d-none'),styleId=row[_0x2dde47(0x1d6)],styleInfo=STYLE_MASTER[styleId];let _0x1f1d27=getStyleIcon(styleInfo[_0x2dde47(0x245)],styleId,CHAR_MASTER[styleInfo[_0x2dde47(0x24d)]],!![],!![]);$tr[_0x2dde47(0x1e2)](_0x2dde47(0x1f4))[_0x2dde47(0x20b)](_0x1f1d27),$tr[_0x2dde47(0x1e2)](_0x2dde47(0x225))['html'](styleInfo[_0x2dde47(0x235)]+'<br>'+styleInfo[_0x2dde47(0x244)]),$tr['find']('.LINK')[_0x2dde47(0x24f)](_0x2dde47(0x250),'https://nao-romasaga.github.io/style.html?s='+styleId),$tr[_0x2dde47(0x1e2)](_0x2dde47(0x1d0))['html'](styleInfo['gacha'][_0x2dde47(0x1f7)]('/')[0x0]),$tr[_0x2dde47(0x1e2)](_0x2dde47(0x1c7))[_0x2dde47(0x20d)](row[_0x2dde47(0x1eb)]),$tr[_0x2dde47(0x1e2)](_0x2dde47(0x222))[_0x2dde47(0x20d)](row[_0x2dde47(0x1bd)]),$tr[_0x2dde47(0x1e2)](_0x2dde47(0x22a))['html'](row['col3']),$tr['find'](_0x2dde47(0x1dd))['html'](row[_0x2dde47(0x1da)]['substr'](0x5,0xb)),$tr[_0x2dde47(0x1e2)](_0x2dde47(0x21f))[_0x2dde47(0x20d)](row[_0x2dde47(0x1da)]),$('#VOTE_ROW')[_0x2dde47(0x1c1)]($tr);}}var singleRanking,multiRanking,v1Ranking,v2Ranking,v3Ranking,vAllRanking,cntRanking,giwakuRanking,RANK_RESULT={};$[_0x51d45d(0x1bf)](_0x51d45d(0x1b6));function dispVoteRanking(_0x1d906f){var _0x3fa782=_0x51d45d,_0x262b37=0x0;for(res of _0x1d906f[_0x3fa782(0x204)]){_0x262b37+=Number(res[_0x3fa782(0x233)]),RANK_RESULT[res[_0x3fa782(0x1d6)]]=res;}$(_0x3fa782(0x1de))[_0x3fa782(0x20d)](_0x262b37['toLocaleString']()),$('#VOTE_START')['html'](_0x1d906f[_0x3fa782(0x1c2)][_0x3fa782(0x22d)][_0x3fa782(0x1f7)]('\x20')[0x0]),$(_0x3fa782(0x209))['html'](_0x1d906f[_0x3fa782(0x1c2)]['end'][_0x3fa782(0x1f7)]('\x20')[0x0]),$(_0x3fa782(0x23c))[_0x3fa782(0x20d)](Object[_0x3fa782(0x1ee)](RANK_RESULT)[_0x3fa782(0x21b)]),setData(_0x1d906f[_0x3fa782(0x204)]),createCard(_0x3fa782(0x1fc),v1Ranking,_0x3fa782(0x227)),createCard('#V2_RANK',v2Ranking,_0x3fa782(0x1e7)),createCard(_0x3fa782(0x23e),v3Ranking,_0x3fa782(0x1ea)),createCard(_0x3fa782(0x1cb),vAllRanking,_0x3fa782(0x1db)),createCard(_0x3fa782(0x22c),giwakuRanking,'vAll_avg');var _0x53f7e9={};for(gacha of OPEN_GACHA){_0x53f7e9[gacha]=[];}for(styleId in STYLE_MASTER){var _0xd571be=STYLE_MASTER[styleId];for(gacha of OPEN_GACHA){if(_0xd571be['gacha']['split']('/')[_0x3fa782(0x21b)]>0x1&&_0xd571be[_0x3fa782(0x245)]!='SS')continue;_0xd571be[_0x3fa782(0x252)][_0x3fa782(0x1f9)](gacha)>-0x1&&_0x53f7e9[gacha][_0x3fa782(0x212)](_0xd571be);}}var _0x208612=[];for(gacha in _0x53f7e9){for(_0xd571be of _0x53f7e9[gacha]){_0x1d906f=RANK_RESULT[_0xd571be['Id']]!==undefined?RANK_RESULT[_0xd571be['Id']]:{'sid':_0xd571be['Id']},_0x208612[_0x3fa782(0x212)](_0x1d906f);}}createCard(_0x3fa782(0x20a),_0x208612,_0x3fa782(0x1db));}$(_0x51d45d(0x1d7))[_0x51d45d(0x1c0)](function(){var _0x59ad12=_0x51d45d;$target=$(this)[_0x59ad12(0x1d8)](_0x59ad12(0x249)),$target[_0x59ad12(0x1e2)](_0x59ad12(0x1d7))[_0x59ad12(0x1e1)](_0x59ad12(0x1d3))['addClass']('icon_btn_negative'),$(this)[_0x59ad12(0x1e0)]('icon_btn_positive')[_0x59ad12(0x1e1)]('icon_btn_negative'),$target[_0x59ad12(0x1e2)]('.RANK')[_0x59ad12(0x1ce)](),$target[_0x59ad12(0x1e2)](_0x59ad12(0x1be))[_0x59ad12(0x1ce)](),$target[_0x59ad12(0x1e2)](_0x59ad12(0x1ba))[_0x59ad12(0x1ce)](),$target[_0x59ad12(0x1e2)]('.TOTSU')[_0x59ad12(0x1ce)](),$target[_0x59ad12(0x1e2)](_0x59ad12(0x21c))[_0x59ad12(0x1ce)]();var _0x143cf3=$(this)[_0x59ad12(0x24f)](_0x59ad12(0x1ca));_0x143cf3=='ATTR'?($target[_0x59ad12(0x1e2)](_0x59ad12(0x1be))[_0x59ad12(0x23b)](),$target[_0x59ad12(0x1e2)]('.DA')[_0x59ad12(0x23b)](),$target['find'](_0x59ad12(0x1f5))['slideDown'](),$target[_0x59ad12(0x1e2)](_0x59ad12(0x21c))[_0x59ad12(0x23b)]()):$target[_0x59ad12(0x1e2)]('.'+_0x143cf3)['slideDown']();});function createCard(_0x2a6e4f,_0x45893c,_0x3079c8){var _0x9d49a9=_0x51d45d,_0x12c227={'vAll_avg':[4.6,4.4,4.2],'v1_avg':[4.75,4.6,4.4],'v2_avg':[4.6,4.4,4.2],'v3_avg':[4.75,4.7,4.6]};for(className of[_0x9d49a9(0x1b4),'LV1',_0x9d49a9(0x207),'LV3','斬','打','突','杖']){$(_0x2a6e4f)[_0x9d49a9(0x1e2)]('.'+className)[_0x9d49a9(0x20d)]('');}var _0xfe7650=0xa,_0x1c830f=0x1e,_0x45959c=0x1e;for(d of _0x45893c){$card=$(_0x9d49a9(0x217))[_0x9d49a9(0x1d9)](),$card[_0x9d49a9(0x24f)]('id','')['removeClass'](_0x9d49a9(0x20f))['addClass'](_0x9d49a9(0x1e4)),styleInfo=STYLE_MASTER[d[_0x9d49a9(0x1d6)]],charInfo=CHAR_MASTER[styleInfo['CharacterId']],weaponAttr=charInfo[_0x9d49a9(0x243)]=='杖'?'杖':WEAPON_ATTR[charInfo[_0x9d49a9(0x243)]],val=d[_0x3079c8]!=undefined?(Math[_0x9d49a9(0x202)](Number(d[_0x3079c8])*0x64)/0x64)['toFixed'](0x2):0x0;if(val>=_0x12c227[_0x3079c8][0x0])star='LV3';else{if(val>=_0x12c227[_0x3079c8][0x1])star=_0x9d49a9(0x207);else val>=_0x12c227[_0x3079c8][0x2]?star=_0x9d49a9(0x242):star='';}var _0x26011e=styleInfo['gacha']['indexOf'](_0x9d49a9(0x237))>-0x1?_0x9d49a9(0x1bb):'fuchidori-blue';let _0x17c4f7=getStyleIcon(styleInfo[_0x9d49a9(0x245)],d[_0x9d49a9(0x1d6)],charInfo[_0x9d49a9(0x243)],!![],!![]);$card[_0x9d49a9(0x1e2)](_0x9d49a9(0x1f4))[_0x9d49a9(0x20b)](_0x17c4f7),$card[_0x9d49a9(0x1e2)]('.NAME')['append'](styleInfo[_0x9d49a9(0x235)]),$card[_0x9d49a9(0x1e2)](_0x9d49a9(0x205))[_0x9d49a9(0x20b)](styleInfo['AnotherName']),$card[_0x9d49a9(0x1e2)](_0x9d49a9(0x1b7))[_0x9d49a9(0x20d)](val),$card[_0x9d49a9(0x1e2)]('.VALUE')[_0x9d49a9(0x1e0)](_0x26011e),$card['find'](_0x9d49a9(0x1ed))['html'](d[_0x9d49a9(0x233)]!=undefined?d[_0x9d49a9(0x233)]:0x0);if(_0x2a6e4f=='#G_RANK'||_0x2a6e4f==_0x9d49a9(0x20a)){$(_0x2a6e4f)[_0x9d49a9(0x1e2)]('.ALL')[_0x9d49a9(0x20b)]($card['clone']());continue;}if(_0x45959c>=Number(d[_0x9d49a9(0x233)]))continue;if(star==''||$(_0x2a6e4f)[_0x9d49a9(0x1e2)]('.'+star)[_0x9d49a9(0x1e2)](_0x9d49a9(0x21a))[_0x9d49a9(0x21b)]>_0x1c830f){}else $(_0x2a6e4f)[_0x9d49a9(0x1e2)]('.'+star)[_0x9d49a9(0x20b)]($card['clone']());if($(_0x2a6e4f)[_0x9d49a9(0x1e2)]('.斬')[_0x9d49a9(0x1e2)](_0x9d49a9(0x21a))[_0x9d49a9(0x21b)]>=_0xfe7650&&$(_0x2a6e4f)['find']('.打')[_0x9d49a9(0x1e2)](_0x9d49a9(0x21a))['length']>=_0xfe7650&&$(_0x2a6e4f)[_0x9d49a9(0x1e2)]('.突')[_0x9d49a9(0x1e2)](_0x9d49a9(0x21a))['length']>=_0xfe7650&&$(_0x2a6e4f)[_0x9d49a9(0x1e2)]('.杖')[_0x9d49a9(0x1e2)](_0x9d49a9(0x21a))[_0x9d49a9(0x21b)]>=_0xfe7650)break;if($(_0x2a6e4f)[_0x9d49a9(0x1e2)]('.'+weaponAttr)[_0x9d49a9(0x1e2)]('.style')['length']>=_0xfe7650)continue;$(_0x2a6e4f)['find']('.'+weaponAttr)['append']($card[_0x9d49a9(0x1d9)]());}}function setData(_0x369008){var _0x4a3192=_0x51d45d;for(d of _0x369008){d[_0x4a3192(0x1db)]=(Number(d['v1'])+Number(d['v2'])+Number(d['v3']))/0x3/d[_0x4a3192(0x233)],d['cnt']=Number(d[_0x4a3192(0x233)]);}_0x369008['sort'](function(_0x44865d,_0x3e6a07){var _0x19c098=_0x4a3192;if(_0x44865d['singleHensa']<_0x3e6a07[_0x19c098(0x229)])return 0x1;if(_0x44865d[_0x19c098(0x229)]>_0x3e6a07[_0x19c098(0x229)])return-0x1;return 0x0;}),singleRanking=_0x369008['slice'](0x0,0xa),_0x369008['sort'](function(_0x4370d2,_0x5f4cc7){var _0x280e61=_0x4a3192;if(_0x4370d2[_0x280e61(0x20c)]<_0x5f4cc7[_0x280e61(0x20c)])return 0x1;if(_0x4370d2['multiHensa']>_0x5f4cc7[_0x280e61(0x20c)])return-0x1;return 0x0;}),multiRanking=_0x369008[_0x4a3192(0x1df)](0x0,0xa),_0x369008[_0x4a3192(0x215)](function(_0x5dae97,_0x42cd4b){var _0x42bc12=_0x4a3192;if(_0x5dae97[_0x42bc12(0x227)]<_0x42cd4b['v1_avg'])return 0x1;if(_0x5dae97['v1_avg']>_0x42cd4b[_0x42bc12(0x227)])return-0x1;return 0x0;}),v1Ranking=_0x369008['slice'](0x0,0xc8),_0x369008['sort'](function(_0x283a91,_0x6d756e){var _0x13be76=_0x4a3192;if(_0x283a91['v2_avg']<_0x6d756e[_0x13be76(0x1e7)])return 0x1;if(_0x283a91[_0x13be76(0x1e7)]>_0x6d756e[_0x13be76(0x1e7)])return-0x1;return 0x0;}),v2Ranking=_0x369008[_0x4a3192(0x1df)](0x0,0xc8),_0x369008['sort'](function(_0x2af4,_0x23b436){var _0x386d9f=_0x4a3192;if(_0x2af4[_0x386d9f(0x1ea)]<_0x23b436[_0x386d9f(0x1ea)])return 0x1;if(_0x2af4[_0x386d9f(0x1ea)]>_0x23b436[_0x386d9f(0x1ea)])return-0x1;return 0x0;}),v3Ranking=_0x369008[_0x4a3192(0x1df)](0x0,0xc8),_0x369008[_0x4a3192(0x215)](function(_0x5e8705,_0x44d8e4){var _0x101c8f=_0x4a3192;if(_0x5e8705[_0x101c8f(0x1db)]<_0x44d8e4[_0x101c8f(0x1db)])return 0x1;if(_0x5e8705[_0x101c8f(0x1db)]>_0x44d8e4[_0x101c8f(0x1db)])return-0x1;return 0x0;}),vAllRanking=_0x369008[_0x4a3192(0x1df)](0x0,0xc8),giwaku=[];for(res of _0x369008){res[_0x4a3192(0x1db)]>0x4&&res[_0x4a3192(0x233)]<0x32&&giwaku[_0x4a3192(0x212)](res);}giwaku['sort'](function(_0x49a76d,_0x393f8d){var _0x343352=_0x4a3192;if(_0x49a76d[_0x343352(0x1db)]<_0x393f8d[_0x343352(0x1db)])return 0x1;if(_0x49a76d[_0x343352(0x1db)]>_0x393f8d[_0x343352(0x1db)])return-0x1;return 0x0;}),giwakuRanking=giwaku[_0x4a3192(0x1df)](0x0,0xc8);}$(document)['on']('click',_0x51d45d(0x236),function(){var _0x26de43=_0x51d45d;$('.RANGE')[_0x26de43(0x1b3)](function(){var _0x27d97a=_0x26de43;$(this)['addClass'](_0x27d97a(0x1e3))['removeClass'](_0x27d97a(0x1c8));}),$(this)[_0x26de43(0x201)](_0x26de43(0x230));var _0x3e810b=$(this)[_0x26de43(0x24f)](_0x26de43(0x1ca));$[_0x26de43(0x1bf)](_0x26de43(0x1cc)+_0x3e810b);});
+var NOW_UID = getMyId();
+$("#TOTAL_STYLE").html(Object.keys(STYLE_MASTER).length);
+
+
+$("#VOTE_AREA").slideUp();
+var hanyoText = "周回、ボス戦、ツヴァイク、R杯など様々なシーンに対応可能かを評価したランキングです";
+var onlyText= "他のスタイルでは代用が聞かない物を持っているかを評価したランキングです<br>例：全体即死の王者の剣、トーマスの高知力デルタペトラ、バルテルミーの強襲アバドンハンズ";
+var totalText = "汎用性、周回性、唯一性の総合評価値のランキングです";
+var giwakuText = "評価は高いのですが、投票数が少ないため信憑性が低いスタイルです。<br>ぜひ皆さんの投票で信憑性をあげていただけると助かります◝(*º꒳​º)◜";
+
+$hanyoInfo = $("#RANK_TEMPLATE").clone().removeAttr("id");
+$hanyoInfo.find(".TITLE").html("汎用性ランキング");
+$hanyoInfo.find("#V1_RANK").attr("id","V2_RANK");
+$hanyoInfo.find(".INFO").html(hanyoText);
+
+$onlyInfo = $("#RANK_TEMPLATE").clone().removeAttr("id");
+$onlyInfo.find(".TITLE").html("唯一性ランキング");
+$onlyInfo.find("#V1_RANK").attr("id","V3_RANK");
+$onlyInfo.find(".INFO").html(onlyText);
+
+$totalInfo = $("#RANK_TEMPLATE").clone().removeAttr("id");
+$totalInfo.find(".TITLE").html("総合ランキング");
+$totalInfo.find("#V1_RANK").attr("id","ALL_RANK");
+$totalInfo.find(".INFO").html(totalText);
+
+$giwakuInfo = $("#RANK_TEMPLATE").clone().removeAttr("id");
+$giwakuInfo.find(".TITLE").html("もう少しデータ欲しいランキング");
+$giwakuInfo.find("#V1_RANK").attr("id","G_RANK");
+$giwakuInfo.find(".INFO").html(giwakuText);
+$giwakuInfo.find(".DISP_CHANGE").parent().remove();
+$giwakuInfo.find(".RANK").remove();
+$giwakuInfo.find("#G_RANK").html(`<div class="col-12 ALL"></div>`);
+
+$gachaInfo = $("#RANK_TEMPLATE").clone().removeAttr("id");
+$gachaInfo.find(".TITLE").html("開催中ガチャ ピックアップスタイル");
+$gachaInfo.find("#V1_RANK").attr("id","GACHA_RANK");
+$gachaInfo.find(".INFO").remove();
+$gachaInfo.find(".DISP_CHANGE").parent().remove();
+$gachaInfo.find(".RANK").remove();
+$gachaInfo.find("#GACHA_RANK").html(`<div class="col-12 ALL"></div>`);
+
+
+// 逆順に
+$("#RANK_TEMPLATE").after($onlyInfo);
+$("#RANK_TEMPLATE").after($hanyoInfo);
+$("#RANK_TEMPLATE").before($giwakuInfo);
+$("#RANK_TEMPLATE").before($gachaInfo);
+$("#RANK_TEMPLATE").before($totalInfo);
+
+$hanyoInfo.ready(function(){
+    $(".ZAN").slideUp();
+    $(".DA").slideUp();
+    $(".TOTSU").slideUp();
+    $(".TSUE").slideUp();
+});
+
+$.getJSON(`https://romasagatool.com/api/vote_info.php?uid=${NOW_UID}&c=dispVoteInfo&dispVoteInfo=?`);
+
+// スタイルアイコンクリック
+$(document).on('click', '.style', function () {
+    for(var type in VOTE_DB_COLUMN){
+        changeVoteStar(3, VOTE_DB_COLUMN[type] );
+    }
+
+    var styleId = $(this).attr("data-id");
+    $("#VOTE_STAR").attr('data-id', styleId);
+    uid = (NOW_UID) ? `&uid=${NOW_UID}` : "" ;
+    $.getJSON(`https://romasagatool.com/api/vote_style.php?sid=${styleId}${uid}&c=dispVoteRadar&dispVoteRadar=?`);    
+
+    var styleInfo = STYLE_MASTER[styleId];
+    $("#VOTE_ICON").html("").append($(this).clone());
+    $("#VOTE_NAME").html(styleInfo['Name']);
+    $("#VOTE_ANOTHRNAME").html(styleInfo['AnotherName']);
+    $("#RANK_HEAD_IMG").attr('src', getImgPath(`style_cutin/${styleId}.png`) );
+    $("#VOTE_HREF").attr('href', `https://nao-romasaga.github.io/style.html?s=${styleId}` );
+    var v1 = (RANK_RESULT[styleId] != undefined) ? Number(RANK_RESULT[styleId]['v1_avg']) : 0;
+    var v2 = (RANK_RESULT[styleId] != undefined) ? Number(RANK_RESULT[styleId]['v2_avg']) : 0;
+    var v3 = (RANK_RESULT[styleId] != undefined) ? Number(RANK_RESULT[styleId]['v3_avg']) : 0;
+    $("#VOTE_SHUKAI").html((Math.round(v1 * 100) / 100).toFixed(2));
+    $("#VOTE_HANYO").html((Math.round(v2 * 100) / 100).toFixed(2));
+    $("#VOTE_ONLY").html((Math.round(v3 * 100) / 100).toFixed(2));
+
+    $("#VOTE_AREA").slideDown();
+    $('.js-cover').removeClass('active');            
+});
+// 投票ボタン
+$(document).on('click', '#VOTE_STAR', function () {
+    var styleId = $("#VOTE_STAR").attr('data-id');
+    voteAPI(styleId);
+    var speech = SPEECH_DATA[styleId];
+    $("#SPEECH").html(speech[Math.floor(Math.random() * Math.floor(3))]);
+    $("#SPEECH_ICON").attr('src', getImgPath(`style_icon/${styleId}.png`));
+    dotPath = getImgPath(`dot/${STYLE_MASTER[styleId]['DotId']}.png`);
+    $("#SPEECH_DOT").attr('style', `background: url(${dotPath}) no-repeat;`);
+    
+    $("#VOTE_AREA").slideUp();
+    $('.js-cover').addClass('active');
+    setTimeout(function(){$('.js-cover').removeClass('active')}, 2000);
+});
+// 投票閉じるボタン
+$(document).on('click', '#CLOSE', function () {
+    $("#VOTE_AREA").slideUp();
+});
+
+// 評価の星クリック時
+$(document).on('click', '.vote', function () {
+    var val = $(this).attr("data-value");
+    var type = $(this).attr("data-type");
+    changeVoteStar(val, type);
+});
+function voteAPI(styleId){
+    var param = `uid=${NOW_UID}&sid=${styleId}&v1=${VOTE['shukai']}&v2=${VOTE['hanyo']}&v3=${VOTE['only']}`;
+    $.getJSON(`https://romasagatool.com/api/vote_style.php?${param}&c=dispVoteRadar&dispVoteRadar=?`);    
+}
+function dispVoteRadar(data){
+    // 自分が投票してるスタイルじゃないから元に戻す
+    for(var type in VOTE_DB_COLUMN){
+        val = (data['mydata']['col1'] !== undefined) ? data['mydata'][type] : 3;
+        changeVoteStar(val, VOTE_DB_COLUMN[type] );
+    }
+}
+
+function dispVoteInfo(data){
+    
+    var total = data['total'];
+    var nealy = data['nearly'];
+    var myCnt = Number(data['myvote']['cnt']);
+
+    var myRank = 1;
+    var totalVote = 0;
+    var totalUser = 0;
+    for(row of total){
+        userConut = Number(row['user']);
+        voteCount = Number(row['cnt']);
+        totalVote += voteCount;
+        totalUser += userConut;
+        if(voteCount >= myCnt){
+            myRank += userConut;
+        }
+    }
+    //$("#TOTAL_VOTE").html(totalVote.toLocaleString());
+    $("#TOTAL_USER").html(totalUser.toLocaleString());
+    $("#YOUR_VOTE").html(myCnt.toLocaleString());
+
+    for(row of nealy){
+        $tr = $("#VOTE_ROW").clone().removeAttr('id').removeClass("d-none");
+        styleId = row['sid'];
+        styleInfo = STYLE_MASTER[styleId];
+        let styleIcon = getStyleIcon(styleInfo['Rarity'], styleId, CHAR_MASTER[styleInfo['CharacterId']], true, true);
+        $tr.find(".ICON").append(styleIcon);
+        $tr.find(".NAME").html(styleInfo['Name'] +"<br>" + styleInfo['AnotherName']);
+        $tr.find(".LINK").attr('href', `https://nao-romasaga.github.io/style.html?s=${styleId}`);
+        $tr.find(".GACHA").html((styleInfo['gacha'].split("/"))[0]);
+        $tr.find(".V1").html(row['col1']);
+        $tr.find(".V2").html(row['col2']);
+        $tr.find(".V3").html(row['col3']);
+        $tr.find(".STIME").html(row['updated_at'].substr(5,11));
+        $tr.find(".LTIME").html(row['updated_at']);
+        $("#VOTE_ROW").before($tr);
+    }
+
+}
+
+var singleRanking, multiRanking, v1Ranking, v2Ranking, v3Ranking,vAllRanking, cntRanking, giwakuRanking;
+var RANK_RESULT = {};
+
+$.getJSON(`https://romasagatool.com/api/select_vote_style.php?c=dispVoteRanking&dispVoteRanking=?`)
+function dispVoteRanking(result){
+    
+    var totalVote = 0;
+    for(res of result['calc']){
+        totalVote += Number(res['cnt']);
+        RANK_RESULT[res['sid']] = res;
+    }
+
+    $("#TOTAL_VOTE").html(totalVote.toLocaleString());
+    $("#VOTE_START").html(result['params']['start'].split(" ")[0]);
+    $("#VOTE_END").html(result['params']['end'].split(" ")[0]);
+    
+    $("#VOTE_STYLE").html(Object.keys(RANK_RESULT).length);
+
+    setData(result['calc']);
+    //createCard("#SINGLE_RANK", singleRanking, "singleHensa");
+    //createCard("#MULTI_RANK", multiRanking, "multiHensa");
+    createCard("#V1_RANK", v1Ranking, "v1_avg");
+    createCard("#V2_RANK", v2Ranking, "v2_avg");
+    createCard("#V3_RANK", v3Ranking, "v3_avg");
+    createCard("#ALL_RANK", vAllRanking, "vAll_avg");
+    createCard("#G_RANK", giwakuRanking, "vAll_avg");
+    
+    var gachaStyle = {};
+    for(gacha of OPEN_GACHA){
+        gachaStyle[gacha] = [];
+    }
+    for(styleId in STYLE_MASTER){
+        var styleInfo = STYLE_MASTER[styleId];
+        for(gacha of OPEN_GACHA){
+            if(styleInfo['gacha'].split("/").length > 1 && styleInfo['Rarity'] != 'SS'){
+                continue;
+            }
+            if(styleInfo['gacha'].indexOf(gacha) > -1) {
+                gachaStyle[gacha].push(styleInfo);
+            }
+        }
+    }
+    var gachaSort = [];
+    for(gacha in gachaStyle){
+        for(styleInfo of gachaStyle[gacha]){
+            result = (RANK_RESULT[styleInfo['Id']] !== undefined) ? RANK_RESULT[styleInfo['Id']] : {"sid": styleInfo['Id']} ; 
+            gachaSort.push(result);
+        }
+    }
+    createCard("#GACHA_RANK", gachaSort, "vAll_avg");
+    //createCard("#CNT_RANK", cntRanking, "cnt");
+}
+
+$(".DISP_CHANGE").click(function(){
+    // ボタン切り替え
+    $target = $(this).parents(".PARENT");
+    $target.find(".DISP_CHANGE").removeClass("icon_btn_positive").addClass("icon_btn_negative");
+    $(this).addClass("icon_btn_positive").removeClass("icon_btn_negative");
+    $target.find(".RANK").slideUp();
+    $target.find(".ZAN").slideUp();
+    $target.find(".DA").slideUp();
+    $target.find(".TOTSU").slideUp();
+    $target.find(".TSUE").slideUp();
+
+    var id = $(this).attr("data-id");
+    if(id == "ATTR"){
+        $target.find(".ZAN").slideDown();
+        $target.find(".DA").slideDown();
+        $target.find(".TOTSU").slideDown();
+        $target.find(".TSUE").slideDown();
+    } else {
+        $target.find("." + id).slideDown();
+    }
+});
+
+function createCard(div, rankingList, target){
+    var LV = {
+        "vAll_avg": [4.6, 4.4, 4.2],
+        "v1_avg": [4.75, 4.6, 4.4],
+        "v2_avg": [4.6, 4.4, 4.2],
+        "v3_avg": [4.75, 4.7, 4.6],
+    }
+    for(className of ["ALL","LV1","LV2","LV3","斬","打","突","杖"]) {
+        $(div).find(`.${className}`).html("");
+    }
+
+    //$(div).html("");
+    var attrLimit = 10;
+    var allLimit = 30;
+    var cntLimit = 30;
+    for(d of rankingList) {
+        $card = $("#TEMPLATE").clone();
+        $card.attr("id","").removeClass("d-none").addClass("d-inline-block");
+        styleInfo = STYLE_MASTER[d['sid']];
+        charInfo = CHAR_MASTER[styleInfo['CharacterId']];
+        weaponAttr = (charInfo['WeaponType'] == "杖") ? "杖" : WEAPON_ATTR[charInfo['WeaponType']];
+        val = (d[target] != undefined) ? (Math.round(Number(d[target]) * 100) / 100).toFixed(2) : 0;
+        if(val >= LV[target][0]) {
+            star = "LV3"
+        } else if(val >= LV[target][1]) {
+            star = "LV2"
+        } else if(val >= LV[target][2]) {
+            star = "LV1"
+        } else {
+            star = "";
+        }
+        var fontClass = (styleInfo['gacha'].indexOf("プラチナガチャ") > -1) ? "fuchidori-yellow": "fuchidori-blue";
+        let styleIcon = getStyleIcon(styleInfo['Rarity'], d['sid'], charInfo['WeaponType'], true, true);
+        $card.find(".ICON").append(styleIcon);
+        $card.find(".NAME").append(styleInfo['Name']);
+        $card.find(".ANOTHER").append(styleInfo['AnotherName']);
+        $card.find(".VALUE").html(val);
+        $card.find(".VALUE").addClass(fontClass);                
+        $card.find(".CNT").html((d['cnt'] != undefined) ? d['cnt'] : 0);
+
+        if(div == "#G_RANK" || div == "#GACHA_RANK" ) {
+            $(div).find(`.ALL`).append($card.clone());
+            continue;
+        }
+        // 投票数が足りない物は入れない
+        if(cntLimit >= Number(d["cnt"])) {
+            continue;
+        }
+
+        if(star == "" || $(div).find(`.${star}`).find(".style").length > allLimit){
+        } else {
+            $(div).find(`.${star}`).append($card.clone());
+        }
+
+        if($(div).find(`.斬`).find(".style").length >= attrLimit &&
+            $(div).find(`.打`).find(".style").length >= attrLimit &&
+            $(div).find(`.突`).find(".style").length >= attrLimit &&
+            $(div).find(`.杖`).find(".style").length >= attrLimit){
+            break;
+        }
+        if($(div).find(`.${weaponAttr}`).find(".style").length >= attrLimit){
+            continue;
+        }
+        $(div).find(`.${weaponAttr}`).append($card.clone());
+    }
+}
+
+
+function setData(data){
+    for(d of data){
+        //d['singleHensa'] = STYLE_DAMAGE_HENSA[d['sid']]['singleHensa'] / 100;
+        //d['multiHensa'] = STYLE_DAMAGE_HENSA[d['sid']]['multiHensa'] / 100;
+        d['vAll_avg'] = (Number(d['v1']) +Number(d['v2']) + Number(d['v3'])) / 3 / d['cnt'];
+        d['cnt'] = Number(d['cnt']);
+    }
+    data.sort(function(a,b){
+        if(a.singleHensa < b.singleHensa) return 1;
+        if(a.singleHensa > b.singleHensa) return -1;
+        return 0;
+    });
+    singleRanking = data.slice(0, 10);
+    data.sort(function(a,b){
+        if(a.multiHensa < b.multiHensa) return 1;
+        if(a.multiHensa > b.multiHensa) return -1;
+        return 0;
+    });
+    multiRanking = data.slice(0, 10);
+
+    data.sort(function(a,b){
+        if(a.v1_avg < b.v1_avg) return 1;
+        if(a.v1_avg > b.v1_avg) return -1;
+        return 0;
+    });
+    v1Ranking = data.slice(0, 200);
+    data.sort(function(a,b){
+        if(a.v2_avg < b.v2_avg) return 1;
+        if(a.v2_avg > b.v2_avg) return -1;
+        return 0;
+    });
+    v2Ranking = data.slice(0, 200);
+    data.sort(function(a,b){
+        if(a.v3_avg < b.v3_avg) return 1;
+        if(a.v3_avg > b.v3_avg) return -1;
+        return 0;
+    });
+    v3Ranking = data.slice(0, 200);
+
+    data.sort(function(a,b){
+        if(a.vAll_avg < b.vAll_avg) return 1;
+        if(a.vAll_avg > b.vAll_avg) return -1;
+        return 0;
+    });
+    vAllRanking = data.slice(0, 200);
+
+    giwaku = [];
+    for(res of data){
+        if(res['vAll_avg'] > 4 && res['cnt'] < 50){
+            giwaku.push(res);
+        }
+    }
+
+    giwaku.sort(function(a,b){
+        if(a.vAll_avg < b.vAll_avg) return 1;
+        if(a.vAll_avg > b.vAll_avg) return -1;
+        return 0;
+    });
+    giwakuRanking = giwaku.slice(0, 200);
+
+}
+
+
+
+$(document).on('click', '.RANGE', function () {
+    $(".RANGE").each(function(){
+        $(this).addClass("icon_btn_off").removeClass("icon_btn_on");
+    });
+    $(this).toggleClass("icon_btn_off icon_btn_on");
+    var target = $(this).attr("data-id");
+    $.getJSON(`https://romasagatool.com/api/select_vote_style.php?c=dispVoteRanking&dispVoteRanking=?&t=${target}`);
+});
