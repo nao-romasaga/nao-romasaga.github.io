@@ -167,10 +167,10 @@ function dispClassData(result){
     }
 
     var styleList = [];
-    if (result["SS"] !== undefined) {
-        var ss = (result["SS"] !== undefined) ? result["SS"] : [];
-        var s = (result["S"] !== undefined) ? result["S"] : [];
-        var a = (result["A"] !== undefined) ? result["A"] : [];
+    if (typeof result["SS"] !== "undefined") {
+        var ss = (typeof result["SS"] !== "undefined") ? result["SS"] : [];
+        var s = (typeof result["S"] !== "undefined") ? result["S"] : [];
+        var a = (typeof result["A"] !== "undefined") ? result["A"] : [];
         styleList = ss.concat(s).concat(a);
     } else {
         for(styleId in STYLE_MASTER){
@@ -181,7 +181,7 @@ function dispClassData(result){
     }
 
     for(styleId of styleList){
-        if(STYLE_CLASS[styleId] === undefined){
+        if(typeof STYLE_CLASS[styleId] === "undefined"){
             continue;
         }
         // "単体火力" => "o",
@@ -192,7 +192,7 @@ function dispClassData(result){
         // "状態異常" => "j",
         // "ファスト" => "f",        
         for(var pattern of ["o","a","q","r","d","j"]){
-            if(STYLE_CLASS[styleId][pattern] == undefined){
+            if(typeof STYLE_CLASS[styleId][pattern] == "undefined"){
                 continue;
             }
             var styleInfo = STYLE_MASTER[styleId];
@@ -758,7 +758,7 @@ function display() {
             for ( idx in gachaNames) {
                 var gachaName = gachaNames[idx];
                 gachaName += (idx > 0 && kotei.indexOf(gachaName) == -1 && gachaName.indexOf("20") > -1 ) ? "【復刻】": "";
-                if (gacha[gachaName] === undefined) {
+                if (typeof  gacha[gachaName] === "undefined") {
                     gacha[gachaName] = {"SS": [], "S": [], "A": []};
                     gachaNameList.push(gachaName);
                 }
@@ -778,7 +778,7 @@ function display() {
     }
     // オープン中のガチャは除外する
     for(var name of OPEN_GACHA){
-        name = (gacha[name] !== undefined) ? name : name + "【復刻】";
+        name = (typeof gacha[name] !== "undefined") ? name : name + "【復刻】";
         var idx = gachaNameList.indexOf(name);
         delete gachaNameList[idx];
     }
@@ -788,7 +788,7 @@ function display() {
 
     // Array.prototype.splice.apply(gachaNameList,[HEAD_DISP,0].concat(kotei));
     for (let name of gachaNameList) {
-        name = (gacha[name] !== undefined) ? name : name + "【復刻】";
+        name = (typeof gacha[name] !== "undefined") ? name : name + "【復刻】";
         if(name.indexOf("Ultra") == -1 
         || name.indexOf("【復刻】") == -1 
         || name.indexOf("配布") > -1) {
@@ -798,7 +798,10 @@ function display() {
         var $gachaArea = $(`<div class="ICON_PARENT"></div>`);
         var dispName = $(`<span class="subtitle-long fuchidori-white smallFont" style="margin-bottom: 8px;">${name}</span><br>`)
         $gachaArea.append(dispName);
-        console.log(gacha[name]);
+        console.log(gacha[name], name);
+        if(typeof gacha[name] == "undefined") {
+            gacha[name] = {"SS": [], "S": [], "A": []};
+        }
 
         gacha[name]["SS"] = (typeof gacha[name]["SS"] === "undefined") ? [] : gacha[name]["SS"];
         gacha[name]["S"] = (typeof gacha[name]["S"] === "undefined") ? [] : gacha[name]["S"];
@@ -874,9 +877,9 @@ function intialMyStyle(){
 
     readStyleCheckData(i, function (result) {
         if (result !== null) {
-            sslist = (result['SS'] !== undefined) ? result['SS'] : [];
-            slist = (result['S'] !== undefined) ? result['S'] : [];
-            alist = (result['A'] !== undefined) ? result['A'] : [];
+            sslist = (typeof result['SS'] !== "undefined") ? result['SS'] : [];
+            slist = (typeof result['S'] !== "undefined") ? result['S'] : [];
+            alist = (typeof result['A'] !== "undefined") ? result['A'] : [];
             sslist = sslist.filter(function (x, i, self) {
                 return self.indexOf(x) === i;
             });            
