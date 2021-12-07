@@ -341,9 +341,12 @@ html {
     }
     
     .haikei::before {
+        background: url(https://romasagatool.com/img/v2bg.jpg) no-repeat;
+        background-position:50% 20%;
+        /*
         background: url(https://romasagatool.com/img/bg_pc2.jpg) no-repeat;
         background-position:50% 100%;
-        /*background: url(http://romasagatool.com/img/bg2nd.jpg) no-repeat;
+        background: url(http://romasagatool.com/img/bg2nd.jpg) no-repeat;
         background-position:50% 20%;*/
         background-size:cover;
         }
@@ -351,11 +354,17 @@ html {
 /* 1023まではこっち */
 @media screen and (max-width:1023px) {
     .haikei::before {
-        background: url(https://romasagatool.com/img/bg.jpg) no-repeat;
-        background-position:50% 40%;
+        background: url(https://romasagatool.com/img/v2bg.jpg) no-repeat;
+        background-position:50% 20%;
         /*background: url(http://romasagatool.com/img/bg_2nd.jpg) no-repeat;
         background-position:50% 20%;*/
         background-size:cover;
+    }
+    .filter-bgcolor {
+        border: 1px solid rgb(197,187,147);
+    }
+    .weapon-bgcolor {
+        border: 1px solid rgb(197,187,147);
     }    
 }
 
