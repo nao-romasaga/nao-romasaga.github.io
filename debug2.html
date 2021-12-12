@@ -27,7 +27,6 @@
         <meta name="twitter:site" content="@nao_romasaga_rs" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noindex">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
         <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
         <link rel="stylesheet" href="./css/bootstrap/bootstrap.min.css">
         <script src="./js/bootstrap/bootstrap.min.js"></script>
@@ -52,7 +51,7 @@
     </head>
     <body>
         <div id="debug">
-            this is test debug2
+            this is test debug2 js3
         </div>
         js with 絶対ぱす<br>
             <a href="./debug.html">debug1</a><br>
@@ -62,15 +61,28 @@
     </body>
     <script>
         document.getElementById('debug').innerHTML = "調整<br>";
-    </script>
-    <script src="https://nao-romasaga.github.io/js/utils3.js"></script>
-    <script>
-        document.getElementById('debug').innerHTML = "end";
-        $(document).ready(function () {
-            document.getElementById('debug').innerHTML = "jquery";
-            $('body').prepend("dispHeader check " + (typeof dispHeader) + "<br>");
+        $('body').prepend("before js loading js========<br>");
+        function beforeFunction () {
+            $('body').prepend("beforeFunction<br>");
+        }
 
+        $(document).ready(function () {
+            $('body').prepend("====dispHeader<br>");
+            $('body').prepend("dispHeader check " + (typeof dispHeader) + "<br>");
+            $('body').prepend("beforeFunction check " + (typeof beforeFunction) + "<br>");
+            $('body').prepend("afterFunction check " + (typeof afterFunction) + "<br>");
+            $('body').prepend("tfunction check " + (typeof tfunction) + "<br>");
+            function tfunction () {
+                $('body').prepend("test<br>");
+            }
+            $('body').prepend("tfunction check " + (typeof tfunction) + "<br>");
+            $('body').prepend("ここまでHTML内部のjs<br>");
         });
+        function afterFunction () {
+            $('body').prepend("afterFunction<br>");
+        }
+        $('body').prepend("next js loading js========<br>");
     </script>
+    <script src="./js/utils3.js"></script>
 
 </html>

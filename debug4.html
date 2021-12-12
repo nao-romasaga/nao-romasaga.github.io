@@ -27,7 +27,6 @@
         <meta name="twitter:site" content="@nao_romasaga_rs" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noindex">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
         <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
         <link rel="stylesheet" href="./css/bootstrap/bootstrap.min.css">
         <script src="./js/bootstrap/bootstrap.min.js"></script>
@@ -35,6 +34,10 @@
         crossorigin="anonymous"></script>
         <link rel="stylesheet" type="text/css" href="./css/style2.css">
         <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
+        <script src="./js/Firebase.js"></script>
 
         <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -48,7 +51,7 @@
     </head>
     <body>
         <div id="debug">
-            this is test debug4
+            this is test debug4 js5
         </div>
         js with 絶対ぱす<br>
             <a href="./debug.html">debug1</a><br>
@@ -58,61 +61,28 @@
     </body>
     <script>
         document.getElementById('debug').innerHTML = "調整<br>";
-    </script>
-    <script src="https://nao-romasaga.github.io/js/utils3.js"></script>
-    <script>
-        document.getElementById('debug').innerHTML = "before document ready";
+        $('body').prepend("before js loading js========<br>");
+        function beforeFunction () {
+            $('body').prepend("beforeFunction<br>");
+        }
+
         $(document).ready(function () {
-            $('body').prepend("dispHeader<br>");
+            $('body').prepend("====dispHeader<br>");
             $('body').prepend("dispHeader check " + (typeof dispHeader) + "<br>");
-
-            dispHeader();
-            $('body').prepend("dropdown<br>");
-            $(".dropdown-item").addClass("d-none");
-            var _window = $(window),
-            _header = $('.site-header'),
-            lastPos, winScrollTop, heroBottom;
-            _window.on('scroll',function(){     
-                heroBottom = $('.header-image').height();
-                winScrollTop = _window.scrollTop();
-                if(winScrollTop > heroBottom){
-                    if(winScrollTop >= lastPos){
-                        _header.addClass('fixed hide');   
-                    } else {
-                        _header.addClass('fixed').removeClass("hide");
-                    }
-                } else{
-                    _header.removeClass('fixed hide');
-                }
-                lastPos = _window.scrollTop();
-            }); 
-            _window.trigger('scroll');
-
-            $('body').prepend("contextmenu<br>");
-            $("body").bind("contextmenu", function (e) {
-                return false;
-            });
-            $('body').prepend("mousedown<br>");
-            $("body").mousedown(function (e) {
-                //return false;
-            });
-
-            $('body').prepend("loading<br>");
-            var loading = $(".loading");
-            if (loading.length > 0) {
-                loading.each(function(){
-                    var random = Math.floor(Math.random() * charRand.length)
-                    dot1 = getImgPath(`dot/${charRand[random][0]}.png`);
-                    dot2 = getImgPath(`dot/${charRand[random][1]}.png`);
-                    $(this).parent().find(".CHAR_BACK").attr("style", `background: url(${dot1});`);
-                    $(this).parent().find(".CHAR_FRONT").attr("style", `background: url(${dot2});`);
-                })
+            $('body').prepend("beforeFunction check " + (typeof beforeFunction) + "<br>");
+            $('body').prepend("afterFunction check " + (typeof afterFunction) + "<br>");
+            $('body').prepend("tfunction check " + (typeof tfunction) + "<br>");
+            function tfunction () {
+                $('body').prepend("test<br>");
             }
-            $('body').prepend("insertCommonComponent<br>");
-            insertCommonComponent();
-            $('body').prepend("insertCommonComponent end<br>");
-
-
+            $('body').prepend("tfunction check " + (typeof tfunction) + "<br>");
+            $('body').prepend("ここまでHTML内部のjs<br>");
         });
+        function afterFunction () {
+            $('body').prepend("afterFunction<br>");
+        }
+        $('body').prepend("next js loading js========<br>");
     </script>
+    <script src="./js/utils5.js"></script>
+
 </html>
