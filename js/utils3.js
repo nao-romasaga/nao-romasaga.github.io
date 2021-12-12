@@ -870,60 +870,8 @@ var charRand = [
     ["ID3a854","ID3a2dc"],
     ["ID39274","ID3a854"],
 ];
-alert("$(document).ready の前");
+
 document.getElementById('debug').innerHTML = "調整<br>";
-$(document).ready(function () {
-    alert("$(document).ready 開始");
-    $('body').prepend("dispHeader<br>");
-
-    dispHeader();
-    $('body').prepend("dropdown<br>");
-    $(".dropdown-item").addClass("d-none");
-    var _window = $(window),
-    _header = $('.site-header'),
-    lastPos, winScrollTop, heroBottom;
-    _window.on('scroll',function(){     
-        heroBottom = $('.header-image').height();
-        winScrollTop = _window.scrollTop();
-        if(winScrollTop > heroBottom){
-            if(winScrollTop >= lastPos){
-                _header.addClass('fixed hide');   
-            } else {
-                _header.addClass('fixed').removeClass("hide");
-            }
-        } else{
-            _header.removeClass('fixed hide');
-        }
-        lastPos = _window.scrollTop();
-    }); 
-    _window.trigger('scroll');
-
-    $('body').prepend("contextmenu<br>");
-    $("body").bind("contextmenu", function (e) {
-        return false;
-    });
-    $('body').prepend("mousedown<br>");
-    $("body").mousedown(function (e) {
-        //return false;
-    });
-
-    $('body').prepend("loading<br>");
-    var loading = $(".loading");
-    if (loading.length > 0) {
-        loading.each(function(){
-            var random = Math.floor(Math.random() * charRand.length)
-            dot1 = getImgPath(`dot/${charRand[random][0]}.png`);
-            dot2 = getImgPath(`dot/${charRand[random][1]}.png`);
-            $(this).parent().find(".CHAR_BACK").attr("style", `background: url(${dot1});`);
-            $(this).parent().find(".CHAR_FRONT").attr("style", `background: url(${dot2});`);
-        })
-    }
-
-    $('body').prepend("insertCommonComponent<br>");
-    insertCommonComponent();
-    $('body').prepend("insertCommonComponent end<br>");
-
-});
 
 function getDevice() {
     let width = window.innerWidth;
