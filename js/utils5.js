@@ -1,5 +1,6 @@
 $('body').prepend("///////これはjsファイルの内部<br>");
-$('body').prepend("///////lineは1700程度<br>");
+$('body').prepend("///////lineは1800程度<br>");
+
 
 function beforeFunction () {
     $('body').prepend("beforeFunction<br>");
@@ -1730,4 +1731,85 @@ function dispGachaStyle(){
             $("#GACHA_AREA").append(styleIcon);
         }
     }    
+}
+
+
+// 錬成関連
+function getBestRenseiWeapon($base, $weaponType = null) {
+    var id = $base.attr("data-id");
+    var charInfo = CHAR_MASTER[id];
+    let weaponType = $weaponType?? charInfo['WeaponType'];
+    let my_list = [];
+    
+    if(typeof MY_RENSEI_LIST[weaponType] != "undefined") {
+        my_list = my_list.concat(MY_RENSEI_LIST[weaponType]);
+    } else if(weaponType == "杖" && $base.attr("data-jutsuattrs") != "") {
+        for(idx in $base.attr("data-jutsuattrs")) {
+            jutsuName = $base.attr("data-jutsuattrs")[idx] + "杖";
+            if(typeof MY_RENSEI_LIST[jutsuName] != "undefined") {
+                my_list = my_list.concat(MY_RENSEI_LIST[jutsuName]);
+            }
+        }
+    } else {
+        return [allList, multiList, singleList];
+    }
+
+    var allList = [];
+    var multiList = [];
+    var singleList = [];
+    for(idx in my_list) {
+        rensei = my_list[idx];
+        base = $base.clone();
+        var all = 0, single = 0, multi = 0;
+        [all, single, multi] = getAbilityPer(base, RENSEI_ATTRS[rensei[`ab1`]], rensei[`ab1R`], all, single, multi);
+        [all, single, multi] = getAbilityPer(base, RENSEI_ATTRS[rensei[`ab2`]], rensei[`ab2R`], all, single, multi);
+        [all, single, multi] = getAbilityPer(base, RENSEI_ATTRS[rensei[`ab3`]], rensei[`ab3R`], all, single, multi);
+        
+        allRec = Object.assign({}, rensei);
+        allRec['total'] = all;
+        singleRec = Object.assign({}, rensei);
+        singleRec['total'] = single;
+        multiRec = Object.assign({}, rensei);
+        multiRec['total'] = multi;
+        allList.push(allRec);
+        singleList.push(singleRec);
+        multiList.push(multiRec);
+    }
+    allList.sort(function(a,b){
+        return (a.total <= b.total) ? 1 : -1;
+    });
+    singleList.sort(function(a,b){
+        return (a.total <= b.total) ? 1 : -1;
+    });
+    multiList.sort(function(a,b){
+        return (a.total <= b.total) ? 1 : -1;
+    });
+    return [allList, multiList, singleList];
+}
+
+function getAbilityPer($base, attrs, rare, all, single, multi){
+    var type = attrs["Type"];
+    var target = attrs["Target"];
+    var per = attrs[rare];
+    if (type == "All"
+    || (type == "Attrs" && $base.attr("data-attrs").indexOf(target) > -1)
+    || (type == "Gender" && $base.attr("data-gender") == target)
+    ) {
+        all += per;
+        single += per;
+        multi += per;
+    } else if (type == "Series") {
+        if( $base.attr("data-series") == "OTR"
+        || (target == "GB" && $base.attr("data-series").indexOf(target) > -1)
+        || (target != "GB" && $base.attr("data-series") == target) ) {
+            all += per;
+            single += per;
+            multi += per;
+        }
+    } else if (target == "敵全体") {
+        multi += per;
+    } else if (target == "敵単体") {
+        single += per;
+    }    
+    return [all, single, multi];
 }

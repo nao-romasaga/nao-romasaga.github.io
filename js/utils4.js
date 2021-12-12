@@ -1,5 +1,5 @@
 $('body').prepend("///////これはjsファイルの内部<br>");
-$('body').prepend("///////lineは1600程度<br>");
+$('body').prepend("///////lineは1780程度<br>");
 
 
 function beforeFunction () {
@@ -1620,3 +1620,169 @@ function filterPercent(target){
     return (""+target).replace(/[^0-9%]/g, '');
 }
 
+
+/**
+ * オートシミュレーター、ダメージ計算機で使う装備アイコン表示
+ */
+var NOW_WEAPON = "";
+function displayWeaponIcon(charInfo){
+    if(NOW_WEAPON == charInfo['WeaponType']){
+        return;
+    }
+    NOW_WEAPON = charInfo['WeaponType'];
+    var weaponList = WEAPON_DATA[NOW_WEAPON];
+    var ssList = (weaponList['SS'] != undefined) ? weaponList['SS'] : [];
+    var sWeapon = {};
+    
+    for(wp of weaponList['S']){
+        if(wp['Name'].indexOf("エンシェント") > -1){
+        //if(wp['drop'].indexOf("章") > -1){
+            sWeapon = wp;
+            break;
+        }
+    }
+    $(".STR-WEAPON").attr("data-STR",sWeapon["STR"] + 4).attr("data-DEX",sWeapon["DEX"])
+        .attr("data-AGI",sWeapon["AGI"]).attr("data-INT",sWeapon["INT"]).attr("data-val",sWeapon["WeaponPower"]);
+    $(".DEX-WEAPON").attr("data-STR",sWeapon["STR"]).attr("data-DEX",sWeapon["DEX"] + 4)
+        .attr("data-AGI",sWeapon["AGI"]).attr("data-INT",sWeapon["INT"]).attr("data-val",sWeapon["WeaponPower"]);
+    $(".AGI-WEAPON").attr("data-STR",sWeapon["STR"]).attr("data-DEX",sWeapon["DEX"])
+        .attr("data-AGI",sWeapon["AGI"] + 4).attr("data-INT",sWeapon["INT"]).attr("data-val",sWeapon["WeaponPower"]);
+    $(".INT-WEAPON").attr("data-STR",sWeapon["STR"]).attr("data-DEX",sWeapon["DEX"])
+        .attr("data-AGI",sWeapon["AGI"]).attr("data-INT",sWeapon["INT"] + 4).attr("data-val",sWeapon["WeaponPower"]);
+    $(".WEAPON_AREA").find(".style_icon_illust").each(function(){
+        $(this).attr("style", `background-size: contain; background-color: rgba(0, 0, 0, 0);background-image: url("https://romasagatool.com/img/equipment/${sWeapon['Illust']}.png");`);
+    });
+
+    $(".TEMP_WEAPON").remove();
+    $PLUS = { "力＋":"STR", "器＋":"DEX", "速＋":"AGI", "知＋":"INT", "火＋":"INT", "水＋":"INT", "土＋":"INT", "風＋":"INT", "光＋":"INT", "闇＋":"INT"};
+    for(weapon of ssList){
+        for(key in $PLUS) {
+            idx = $PLUS[key];
+            // 二段階進化
+            if(weapon[key] != 0){
+                weapon[idx] += 4;
+                break;
+            }
+        }
+        $ssWeapon = $("#SS-TEMPLATE").clone().removeAttr("id").removeClass("d-none").addClass("TEMP_WEAPON d-inline-block");
+        $ssWeapon.attr("data-STR",weapon["STR"]).attr("data-DEX",weapon["DEX"])
+        .attr("data-AGI",weapon["AGI"]).attr("data-INT",weapon["INT"])
+        .attr("data-val",weapon["WeaponPower"])
+        .attr("data-type",weapon["JutsuTypes"]);
+        
+        $ssWeapon.find(".WEAPON_NAME").text(weapon['Name']);
+        $icon = $ssWeapon.find(".style_icon_illust");
+        $icon.attr("style", `background-size: contain; background-color: rgba(0, 0, 0, 0);background-image: url("https://romasagatool.com/img/equipment/${weapon['Illust']}.png");`);
+        $("#SS-TEMPLATE").after($ssWeapon);
+    }
+}
+
+/**
+ * 防具をクリックした場合に表示を切り替える
+ * @param {*} target [STR/DEC/AGI/INT]
+ */
+function clickArmor(target) {
+    for(key of ["MAIN","SUB","ACC"]) {
+        armor = ARMOR_RANK_DATA[key][target]; 
+        $(`#${key}_NAME`).text(ARMOR_RANK_DATA[key][target]['Name']);
+        for(st of ["STR","DEX","AGI","INT"]){
+            $(`#${key}_${st}`).text(ARMOR_RANK_DATA[key][target][st]);
+        }
+    }
+}
+
+/**
+ * 武器、防具の値を反映する
+ */
+function changeStatus(){
+    var result = {"STR":0,"DEX":0,"AGI":0,"INT":0};
+    for(key of ["MAIN","SUB","ACC"]) {
+        for(st of ["STR","DEX","AGI","INT"]){
+            result[st] += Number($(`#${key}_${st}`).text());
+        }
+    }
+    $(".WEAPON_AREA").find(".filterActive").each(function(){
+        for(st of ["STR","DEX","AGI","INT"]){
+            result[st] += Number($(this).attr(`data-${st}`));
+        }
+    });
+    for(st of ["STR","DEX","AGI","INT"]){
+        $(`#eq${st}`).val(result[st] + URA);
+    }
+}
+function dispGachaStyle(){
+    var gachaStyle = {};
+    for(gacha of OPEN_GACHA){
+        gachaStyle[gacha] = [];
+    }
+    for(styleId in STYLE_MASTER){
+        var styleInfo = STYLE_MASTER[styleId];
+        for(gacha of OPEN_GACHA){
+            if(styleInfo['gacha'].indexOf(gacha) > -1 && styleInfo['gacha'].split("/").length == 1) {
+                gachaStyle[gacha].push(styleInfo);
+            }
+        }
+    }
+    for(gacha in gachaStyle){
+        var styleIdList = sortStyleId(gachaStyle[gacha], "SS", "old");
+        for(styleId of styleIdList){
+            styleInfo = STYLE_MASTER[styleId];
+            var styleIcon = getStyleIcon(styleInfo['Rarity'], styleInfo['Id'], "", true);
+            $("#GACHA_AREA").append(styleIcon);
+        }
+    }    
+}
+
+
+// 錬成関連
+function getBestRenseiWeapon($base, $weaponType = null) {
+    var id = $base.attr("data-id");
+    var charInfo = CHAR_MASTER[id];
+    let weaponType = $weaponType?? charInfo['WeaponType'];
+    let my_list = [];
+    
+    if(typeof MY_RENSEI_LIST[weaponType] != "undefined") {
+        my_list = my_list.concat(MY_RENSEI_LIST[weaponType]);
+    } else if(weaponType == "杖" && $base.attr("data-jutsuattrs") != "") {
+        for(idx in $base.attr("data-jutsuattrs")) {
+            jutsuName = $base.attr("data-jutsuattrs")[idx] + "杖";
+            if(typeof MY_RENSEI_LIST[jutsuName] != "undefined") {
+                my_list = my_list.concat(MY_RENSEI_LIST[jutsuName]);
+            }
+        }
+    } else {
+        return [allList, multiList, singleList];
+    }
+
+    var allList = [];
+    var multiList = [];
+    var singleList = [];
+    for(idx in my_list) {
+        rensei = my_list[idx];
+        base = $base.clone();
+        var all = 0, single = 0, multi = 0;
+        [all, single, multi] = getAbilityPer(base, RENSEI_ATTRS[rensei[`ab1`]], rensei[`ab1R`], all, single, multi);
+        [all, single, multi] = getAbilityPer(base, RENSEI_ATTRS[rensei[`ab2`]], rensei[`ab2R`], all, single, multi);
+        [all, single, multi] = getAbilityPer(base, RENSEI_ATTRS[rensei[`ab3`]], rensei[`ab3R`], all, single, multi);
+        
+        allRec = Object.assign({}, rensei);
+        allRec['total'] = all;
+        singleRec = Object.assign({}, rensei);
+        singleRec['total'] = single;
+        multiRec = Object.assign({}, rensei);
+        multiRec['total'] = multi;
+        allList.push(allRec);
+        singleList.push(singleRec);
+        multiList.push(multiRec);
+    }
+    allList.sort(function(a,b){
+        return (a.total <= b.total) ? 1 : -1;
+    });
+    singleList.sort(function(a,b){
+        return (a.total <= b.total) ? 1 : -1;
+    });
+    multiList.sort(function(a,b){
+        return (a.total <= b.total) ? 1 : -1;
+    });
+    return [allList, multiList, singleList];
+}
