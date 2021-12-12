@@ -51,15 +51,25 @@
     </head>
     <body>
         <div id="debug">
-            this is test debug3
+            this is test debug2
+        </div>
             <a href="./debug.html">debug1</a><br>
             <a href="./debug2.html">debug2</a><br>
             <a href="./debug3.html">debug3</a><br>
             <a href="./debug4.html">debug4</a><br>
-        </div>
     </body>
     <script>
         document.getElementById('debug').innerHTML = "調整<br>";
+    </script>
+    <script src="./js/utils3.js"></script>
+    <script>
+        document.getElementById('debug').innerHTML = "end";
+        $(document).ready(function () {
+            alert("$(document).ready 開始");
+            $('body').prepend("dispHeader<br>");
+
+            dispHeader();
+        });
     </script>
 
 
