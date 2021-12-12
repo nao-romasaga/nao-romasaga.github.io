@@ -1,5 +1,5 @@
 $('body').prepend("///////これはjsファイルの内部<br>");
-$('body').prepend("///////lineは1780程度<br>");
+$('body').prepend("///////lineは1780程度 調整済み<br>");
 
 
 function beforeFunction () {
@@ -1738,7 +1738,7 @@ function dispGachaStyle(){
 function getBestRenseiWeapon($base, $weaponType = null) {
     var id = $base.attr("data-id");
     var charInfo = CHAR_MASTER[id];
-    let weaponType = $weaponType?? charInfo['WeaponType'];
+    let weaponType = $weaponType ?? charInfo['WeaponType'];
     let my_list = [];
     
     if(typeof MY_RENSEI_LIST[weaponType] != "undefined") {

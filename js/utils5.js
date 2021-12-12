@@ -1,5 +1,5 @@
 $('body').prepend("///////これはjsファイルの内部<br>");
-$('body').prepend("///////lineは1800程度<br>");
+$('body').prepend("///////lineは1800程度 調整済み<br>");
 
 
 function beforeFunction () {
@@ -1735,10 +1735,11 @@ function dispGachaStyle(){
 
 
 // 錬成関連
-function getBestRenseiWeapon($base, $weaponType = null) {
+function getBestRenseiWeapon($base, $weaponType) {
     var id = $base.attr("data-id");
     var charInfo = CHAR_MASTER[id];
-    let weaponType = $weaponType?? charInfo['WeaponType'];
+    let weaponType = ($weaponType == null || typeof $weaponType == "undefined") 
+        ? $weaponType : charInfo['WeaponType'];
     let my_list = [];
     
     if(typeof MY_RENSEI_LIST[weaponType] != "undefined") {
@@ -1785,31 +1786,4 @@ function getBestRenseiWeapon($base, $weaponType = null) {
         return (a.total <= b.total) ? 1 : -1;
     });
     return [allList, multiList, singleList];
-}
-
-function getAbilityPer($base, attrs, rare, all, single, multi){
-    var type = attrs["Type"];
-    var target = attrs["Target"];
-    var per = attrs[rare];
-    if (type == "All"
-    || (type == "Attrs" && $base.attr("data-attrs").indexOf(target) > -1)
-    || (type == "Gender" && $base.attr("data-gender") == target)
-    ) {
-        all += per;
-        single += per;
-        multi += per;
-    } else if (type == "Series") {
-        if( $base.attr("data-series") == "OTR"
-        || (target == "GB" && $base.attr("data-series").indexOf(target) > -1)
-        || (target != "GB" && $base.attr("data-series") == target) ) {
-            all += per;
-            single += per;
-            multi += per;
-        }
-    } else if (target == "敵全体") {
-        multi += per;
-    } else if (target == "敵単体") {
-        single += per;
-    }    
-    return [all, single, multi];
 }
