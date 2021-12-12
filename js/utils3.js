@@ -1833,3 +1833,9 @@ var AB_ATTR_GL = {
     "陽属性攻撃": "Sun attack",
     "陰属性攻撃": "Shadow attack",
 };
+
+$(document).ready(function () {
+    $('body').prepend("dispHeader<br>");
+    $('body').prepend("dispHeader check " + (typeof dispHeader) + "<br>");
+    dispHeader();
+});
