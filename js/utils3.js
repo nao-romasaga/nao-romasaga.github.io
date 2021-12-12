@@ -919,25 +919,6 @@ $(document).ready(function () {
     window.alert('insertCommonComponent');
     insertCommonComponent();
 
-    window.alert('$btn.on( click');
-    // ハンバーガーメニュー
-    var $nav = $('#navArea');
-    var $btn = $('.toggle-btn');
-    var $mask = $('#mask');
-    var open = 'open'; // class
-    // menu open close
-    $btn.on( 'click', function() {
-      if ( ! $nav.hasClass( open ) ) {
-        $nav.addClass( open );
-      } else {
-        $nav.removeClass( open );
-      }
-    });
-    window.alert('$mask.on( click');
-    // mask close
-    $mask.on('click', function() {
-      $nav.removeClass( open );
-    });    
 });
 
 function getDevice() {
