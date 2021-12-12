@@ -340,6 +340,7 @@ function arrayAvg(arr) {
 
 function dispHeader() {
     var closeMenuStyle= "font-size:inherit; color:white;";
+    $('body').prepend("header<br>");
     var header = `
     <div class="header-image">
         <div class="fuchidori-white" style="position:absolute; left:0px; max-width:100%;">
@@ -360,6 +361,7 @@ function dispHeader() {
     </div>    
     `;
     // <img src="https://romasagatool.com/img/icon/n14-icon-new.gif">
+    $('body').prepend("humNav<br>");
     var humNav = `
     <div id="navArea" class="">
       <h-nav class="bg-simple">
@@ -485,6 +487,7 @@ function dispHeader() {
       <div id="mask"></div>
     </div>
     `;
+    $('body').prepend("sliderMenu<br>");
     var sliderMenu = `
     <nav class="site-header text-nowrap d-none d-sm-block">
         <img class="d-sm-none blinking" src="https://romasagatool.com/img/icon/icon_arrow_right.png" style="position: fixed; right: 0px; height: 50px;">
@@ -519,6 +522,7 @@ function dispHeader() {
     </nav>    
     `;
 
+    $('body').prepend("nav<br>");
     var nav = `
     <div class="header-area">
         ${header}
@@ -529,7 +533,9 @@ function dispHeader() {
     <img src="https://romasagatool.com/img/icon/qe15.gif">
     -->
     `;
+    $('body').prepend("nav add start<br>");
     $('body').prepend(nav);
+    $('body').prepend("nav add end<br>");
 }
 $(document).on('click', '.DROPDOWN_OPEN', function () {
     $(this).find(".fa-sort-up").toggleClass("d-none");
