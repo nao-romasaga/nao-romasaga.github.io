@@ -61,7 +61,28 @@
     </body>
     <script>
         document.getElementById('debug').innerHTML = "調整<br>";
+        $('body').prepend("before js loading js========<br>");
+        function beforeFunction () {
+            $('body').prepend("beforeFunction<br>");
+        }
+
+        $(document).ready(function () {
+            $('body').prepend("====dispHeader<br>");
+            $('body').prepend("dispHeader check " + (typeof dispHeader) + "<br>");
+            $('body').prepend("beforeFunction check " + (typeof beforeFunction) + "<br>");
+            $('body').prepend("afterFunction check " + (typeof afterFunction) + "<br>");
+            $('body').prepend("tfunction check " + (typeof tfunction) + "<br>");
+            function tfunction () {
+                $('body').prepend("test<br>");
+            }
+            $('body').prepend("tfunction check " + (typeof tfunction) + "<br>");
+            $('body').prepend("ここまでHTML内部のjs<br>");
+        });
+        function afterFunction () {
+            $('body').prepend("afterFunction<br>");
+        }
+        $('body').prepend("next js loading js========<br>");
     </script>
-    <script src="https://nao-romasaga.github.io/js/utils3.js"></script>
+    <script src="./js/utils3.js"></script>
 
 </html>

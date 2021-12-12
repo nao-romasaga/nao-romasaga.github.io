@@ -1,9 +1,12 @@
-$('body').prepend("loading js<br>");
+$('body').prepend("///////これはjsファイルの内部<br>");
+
+
 function beforeFunction () {
     $('body').prepend("beforeFunction<br>");
 }
 
 $(document).ready(function () {
+    $('body').prepend("///////これはjsファイルの内部のready<br>");
     $('body').prepend("dispHeader<br>");
     $('body').prepend("dispHeader check " + (typeof dispHeader) + "<br>");
     $('body').prepend("beforeFunction check " + (typeof beforeFunction) + "<br>");
