@@ -1,4 +1,3 @@
-window.alert('start');
 var BASE_URL = (location.href.indexOf("localhost") > -1) ? "http://localhost/nao-romasaga.github.io" :"https://nao-romasaga.github.io";
 var articleStyleLimit = 8;
 var articleOtherLimit = 8;
@@ -269,7 +268,6 @@ var ENEMY_RESIST = [
 ];
 
 
-window.alert('scroll_effect');
 scroll_effect();
 $(window).scroll(function(){
     scroll_effect();
@@ -873,8 +871,10 @@ var charRand = [
     ["ID39274","ID3a854"],
 ];
 $(document).ready(function () {
-    window.alert('dispHeader');
+    $('body').prepend("dispHeader<br>");
+
     dispHeader();
+    $('body').prepend("dropdown<br>");
     $(".dropdown-item").addClass("d-none");
     var _window = $(window),
     _header = $('.site-header'),
@@ -893,18 +893,18 @@ $(document).ready(function () {
         }
         lastPos = _window.scrollTop();
     }); 
-    window.alert('scroll');
     _window.trigger('scroll');
 
-    window.alert('contextmenu');
+    $('body').prepend("contextmenu<br>");
     $("body").bind("contextmenu", function (e) {
         return false;
     });
-    window.alert('mousedown');
+    $('body').prepend("mousedown<br>");
     $("body").mousedown(function (e) {
         //return false;
     });
-    window.alert('loading');
+
+    $('body').prepend("loading<br>");
     var loading = $(".loading");
     if (loading.length > 0) {
         loading.each(function(){
@@ -916,8 +916,9 @@ $(document).ready(function () {
         })
     }
 
-    window.alert('insertCommonComponent');
+    $('body').prepend("insertCommonComponent<br>");
     insertCommonComponent();
+    $('body').prepend("insertCommonComponent end<br>");
 
 });
 
