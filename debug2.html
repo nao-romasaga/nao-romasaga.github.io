@@ -67,6 +67,8 @@
         document.getElementById('debug').innerHTML = "end";
         $(document).ready(function () {
             document.getElementById('debug').innerHTML = "jquery";
+            $('body').prepend("dispHeader check " + (typeof dispHeader) + "<br>");
+
         });
     </script>
 
