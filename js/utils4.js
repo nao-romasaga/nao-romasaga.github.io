@@ -1,4 +1,5 @@
 $('body').prepend("///////これはjsファイルの内部<br>");
+$('body').prepend("///////lineは1600程度<br>");
 
 
 function beforeFunction () {
@@ -1250,3 +1251,372 @@ function setTaisei(target, val) {
     }
     target.html(val);
 }
+
+function formatDate(d) {
+    return `${d.getFullYear()}/${(d.getMonth()+1).toString().padStart(2, '0')}/${d.getDate().toString().padStart(2, '0')}`.replace(/\n|\r/g, '');
+}
+function rssCallback(results) {
+
+    var ul = document.createElement("ul");
+    ul.className = "trianglelist list5";
+    var ul2 = document.createElement("ul");
+    ul2.className = "trianglelist list5";
+    var catList = [];
+    for (var i = 0; i < results.length; i++) {
+        var entry = results[i];
+        var li = document.createElement("li");
+        var a = document.createElement("a");
+        entry.title = entry.title.replace("【ロマサガRS】","");
+        a.setAttribute("title", entry.title);
+        a.setAttribute("href", entry.link);
+        a.setAttribute("target", "_blank");
+
+        var pub = new Date(entry.pubdate.replace(/-/g,"/"));
+        var mod = new Date(entry.moddate.replace(/-/g,"/"));
+        var newDay = new Date();
+        newDay.setDate(newDay.getDate() - 1); // 記事が2日前より未来なら
+        var modDay = new Date();
+        modDay.setDate(modDay.getDate() - 2); // 記事が2日前より未来なら
+
+        if(newDay < pub) {
+            var img = document.createElement("img");
+            img.setAttribute("src", 'https://romasagatool.com/img/icon/n14-icon-new.gif');
+            a.appendChild(img);
+            entry.title = " " + entry.title;
+        } else if(newDay < mod && modDay < mod) {
+            var img = document.createElement("img");
+            img.setAttribute("src", 'https://romasagatool.com/img/icon/nb05-icon-up.gif');
+            a.appendChild(img);
+            entry.title = " " + entry.title;
+        }
+        
+        a.appendChild(document.createTextNode(entry.title));
+        var comment = document.createElement("span");
+        var font = document.createElement("i");
+        font.setAttribute("class", "fas fa-comments");
+        comment.appendChild(font);
+        comment.appendChild(document.createTextNode(`:${entry.comment}`));
+        comment.setAttribute("style", `
+        background-color: rgba(100, 100, 80, 0.8);
+        color: white;
+        padding: 0px 3px;
+        border-radius: 6px;
+        margin-right:3px;
+        font-size: 10px;`);
+        //a.appendChild(comment);
+        if(Number(entry.comment) > 0){
+            li.appendChild(comment);
+        }
+        li.appendChild(a);
+        catIds = entry.catId.split(",");
+        kousatsuFlag = false;
+        for(cat of catIds) {
+            // 考察記事はそっちにいれる
+            if(["49", "47", "48", "7","213"].indexOf(cat) > -1){
+                kousatsuFlag = true;
+            }
+        }
+        if(kousatsuFlag) {
+            // 考察記事はこっち
+            var date = (entry.pubdate == "") ? entry.oddate : entry.pubdate;
+            catList.push({card:li, d:date});
+        } else if(ul2.childNodes.length < articleOtherLimit){
+            // その他記事はこっち
+            ul2.appendChild(li);
+        }
+    }
+    catList.sort(function(a,b){
+        if(a.d < b.d) return 1;
+        if(a.d > b.d) return -1;
+        return 0;
+    });    
+    for(li of catList){
+        // 考察記事はこっち
+        if(ul.childNodes.length < articleStyleLimit){
+            ul.appendChild(li['card']);
+        }
+    }
+    let $articleCard = $(`<div class="row">
+            <div class="col-12 col-lg-6">
+                <div class="card">
+                    <div class="card-header bg-info" style='color:white'>
+                        <i class="far fa-newspaper"></i> スタイル考察記事
+                    </div>
+                    <div class="card-body text-nowrap" style="padding:0px 5px; overflow-x: auto;">${ul.outerHTML}</div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6">
+                <div class="card">
+                    <div class="card-header bg-primary" style='color:white'>
+                        <i class="far fa-newspaper"></i> その他 攻略記事
+                    </div>
+                    <div class="card-body text-nowrap" style="padding:0px 5px; overflow-x: auto;">${ul2.outerHTML}</div>
+                </div>
+            </div>
+        </div>
+        `);
+    $(".title-text").after($articleCard);
+}
+function rssCallbackCat(results, target=".container") {
+    var ul = document.createElement("ul");
+    ul.className = "trianglelist list5";
+    for (var i = 0; i < results.length; i++) {
+        var entry = results[i];
+        var li = document.createElement("li");
+        var a = document.createElement("a");
+        
+        a.setAttribute("title", entry.title);
+        a.setAttribute("href", entry.link);
+        a.setAttribute("target", "_blank");
+        a.appendChild(document.createTextNode(entry.title));
+        li.appendChild(a);
+        ul.appendChild(li);
+    }
+    let $articleCard = $(`<div class="card" style="margin:10px 0px;"><div class="card-header bg-primary" style='color:white'><i class="fas fa-file-archive"></i> 永久保存版の記事</div></div>`);
+    var $body = $(`<div class="card-body" style="padding:0px 5px;"></div>`);
+    $body.append(ul);
+    $articleCard.append($body);
+    $(target).append($articleCard);
+}
+
+function getImgPath(target){
+    return "https://romasagatool.com/img/" + target;
+}
+function getStyleIcon(rare, id, weapon, isPlaneIcon = false, isLazyLoad = false){
+
+    var smallRare = rare.toLowerCase();
+    var illust = $(`<button class="style_icon_illust"></button>`);
+    if(isLazyLoad){
+        illust.attr('data-bg',`https://romasagatool.com/img/style_icon/${id}.png`);
+        illust.attr('style',`background-size:contain; background-color: rgba(0,0,0,0);`);
+        illust.addClass("lazyload");
+    } else {
+        illust.attr('style',`background: url(https://romasagatool.com/img/style_icon/${id}.png) no-repeat; background-size:contain;`);
+    }
+
+    var wpDisp = (weapon != "") ? "" : "d-none";
+    var weaponIcon = $(`<span class="icon_weapon ${wpDisp}"></span>`);
+    if(weapon != ""){
+        var wpIcon = ICON_LIST[weapon];
+        if(isLazyLoad){
+            weaponIcon.attr('data-bg',`https://romasagatool.com/img/icon/${wpIcon}.png`);
+            weaponIcon.attr('style',`background-size: 100%; background-color: rgba(0,0,0,0);`);
+            weaponIcon.addClass("lazyload");
+        } else {
+            weaponIcon.attr('style',`background: url(https://romasagatool.com/img/icon/${wpIcon}.png); background-size: 100%;`);
+        }
+
+    }
+    var plane = (isPlaneIcon) ? "d-none" : "" ;
+return $(`<span class="style ${id} style_icon_bg_${smallRare} style_icon_bg_base" data-id="${id}" data-rare="${rare}" data-type="${weapon}" style="display:inline-block; vertical-align: middle;">
+${illust[0].outerHTML}
+<span class="style_icon_frame_base style_icon_frame_${smallRare}"></span>
+<span class="style_icon_rare_base icon_rare_${smallRare}"></span>
+<span class="icon_weapon_frame ${wpDisp}"></span>
+${weaponIcon[0].outerHTML}
+<span class="CHECK_COVER icon_nocheck ${plane}"></span>
+</span>`);
+}
+
+function getWeaponIcon(rare, id, weapon, label){
+    var smallRare = rare.toLowerCase();
+    var illust = $(`<button class="style_icon_illust"></button>`);
+        illust.attr('data-bg',`https://romasagatool.com/img/equipment/${id}.png`);
+        illust.attr('style',`background-size:contain; background-color: rgba(0,0,0,0);`);
+        illust.addClass("lazyload");
+
+    var wpIcon = ICON_LIST[weapon];
+    var wpIconFrame = `<span class="icon_weapon_frame_small" style="" ></span>`;
+    if(wpIcon != undefined){
+        var weaponIcon = $(`<span class="icon_weapon_small "></span>`);
+        weaponIcon.attr('data-bg',`https://romasagatool.com/img/icon/${wpIcon}.png`);
+        weaponIcon.attr('style',`background-size: 100%; background-color: rgba(0,0,0,0);`);
+        weaponIcon.addClass("lazyload");
+    } else {
+        wpIconFrame = ``;
+        var weaponIcon = $(`<span></span>`);
+    }
+    var labelArea = $(`<span></span>`);
+    if(label != undefined){
+        labelArea = $(`<span class="icon-label"><div class="icon-label-inner">${label}</div></span>`);
+    }
+return $(`<span class="weapon ${id} style_icon_bg_${smallRare} weapon_icon_bg_base" data-id="${id}" data-rare="${rare}" data-type="${weapon}" style="display:inline-block; vertical-align: middle;">
+${illust[0].outerHTML}
+<span class="style_icon_frame_base style_icon_frame_${smallRare}"></span>
+<span class="weapon_icon_rare_base icon_rare_${smallRare}"></span>
+${wpIconFrame}
+${weaponIcon[0].outerHTML}
+${labelArea[0].outerHTML}
+</span>`);
+}
+
+function getSkillIcon(skillId, size) {
+    icon = getImgPath(`icon/tex_skill_${skillId}.png`);
+    return $(`
+    <span class="position-relative">
+      <span class="icon-back-skill icon-back-skill-${size}">
+        <span class="icon-skill icon-skill-${size}" style="background-image: url(${icon});">　</span>
+      </span>
+    </span>`);
+}
+function getAbilityIcon(abId, size) {
+    icon = getImgPath(`icon/tex_ability_${abId}.png`);
+    return $(`
+    <span class="position-relative">
+      <span class="icon-back-abiligy icon-back-skill-${size}">
+        <span class="icon-skill icon-skill-${size}" style="background-image: url(${icon});">　</span>
+      </span>
+    </span>`);
+}
+
+function sortStyleId(styleInfoList, upperStyle = "SS", upperId = "new"){
+    var rlist = {"SS":[],"S":[],"A":[]};
+    for(let styleInfo of styleInfoList){
+        var rare = styleInfo['Rarity'];
+        rlist[rare].push(styleInfo['Id']);
+    }
+    var gt = (upperId == "new") ? -1 : 1;
+    var lt = (upperId == "new") ? 1 : -1;
+    rlist["SS"].sort(function(a,b){ if( a > b ) return gt; if( a < b ) return lt; return 0; });
+    rlist["S"].sort(function(a,b){ if( a > b ) return gt; if( a < b ) return lt; return 0; });
+    rlist["A"].sort(function(a,b){ if( a > b ) return gt; if( a < b ) return lt; return 0; });
+    if(upperStyle == "SS") {
+        return rlist["SS"].concat(rlist["S"]).concat(rlist["A"]);
+    } else {
+        return rlist["A"].concat(rlist["S"]).concat(rlist["SS"]);
+    }
+}
+
+function copyToClipboard(targetID) {
+    // コピー対象をJavaScript上で変数として定義する
+    var copyTarget = document.getElementById(targetID);
+
+    // コピー対象のテキストを選択する
+    copyTarget.select();
+
+    // 選択しているテキストをクリップボードにコピーする
+    document.execCommand("Copy");
+    // コピーをお知らせする
+    alert("コピーしました : " + copyTarget.value);
+}
+function getStarIcon(value){
+    if (value >= 1) {
+        iconPath = getImgPath("icon/icon_star10.png");
+    } else if(value >= 0.7) {
+        iconPath = getImgPath("icon/icon_star07.png");
+    } else if(value >= 0.5){
+        iconPath = getImgPath("icon/icon_star05.png");
+    } else if(value > 0){
+        iconPath = getImgPath("icon/icon_star03.png");
+    } else {
+        iconPath = getImgPath("icon/icon_star00.png");
+    }
+    return $(`<img class="icon-star" src="${iconPath}">`);
+}
+
+function getMyId(){
+    var rand = "guest" + Math.floor(Math.random() * ( 999999999 - 100000000 ) + 100000000);
+    if (localStorage !== undefined) {
+        if(localStorage.uid !== undefined){
+            rand =  localStorage.uid;
+        } else if(localStorage.uniqid !== undefined) {
+            rand = localStorage.uniqid;
+        } else {
+            localStorage.uniqid = rand;
+        }
+        return rand;
+    } else {
+        return false;
+    }
+}
+
+var STAR_ONE = getImgPath("/icon/icon_star10.png");
+var STAR_ZERO = getImgPath("/icon/icon_star00.png");
+var VOTE = {
+    "shukai" : 3,
+    "hanyo" : 3,
+    "only" : 3
+};
+
+function changeVoteStar(val, type){
+    $(".vote").each(function(){
+        valTmp = $(this).attr("data-value");
+        typeTmp = $(this).attr("data-type");
+        if(typeTmp == type){
+            if(Number(valTmp) <= Number(val) ){
+                $(this).attr("src", STAR_ONE);
+            } else {
+                $(this).attr("src", STAR_ZERO);
+            }
+        }
+        VOTE[type] = Number(val);
+    });        
+}
+
+function getAbilityDamagePer(styleInfo, skillInfo, isRound, isWeak, isCritical, isHPMax, isNotHPMax) {
+    let ability = 0;
+    let attackAttrs = skillInfo['AttackAttributes'];
+    let abName = [];
+    //極小:2% 小:5% 中:10% 大:15% 特大:30% 極大:50%
+    for (let key in styleInfo['StyleAbilityIds']) {
+        let abilityId = styleInfo['StyleAbilityIds'][key];
+        let abInfo = ABILITY_MASTER[abilityId];
+        for(attr of abInfo['Attr']) {
+            let turn = filterNumber(attr['turn']);
+            if(turn > 0 // 効果ターンがあるものはターンチェックが必要なのでここではやらない
+            || ["ダメージ強化", "全員強化(バフ)"].indexOf(attr['main']) == -1 
+            || attr['time'].indexOf("必ず") == -1 // 確率発動はやらない
+            || (attr['main'] == "全員強化(バフ)" && attr['sub'].indexOf("ダメージ") == -1) // ステバフはやらない
+            ) {
+                continue;
+            }
+            let size = filterNumber(attr['size']);
+            // 氷炎の絆や戦士鼓舞が常時発動
+            if(["常時", "武器装備時", "全ダメージ", "味方が全員生存している時"].indexOf(attr['sub']) > -1 
+            || (isRound && attr['sub'] == "ラウンド開始時")
+            || (isWeak && attr['sub'] == "Weak攻撃")
+            || (isCritical && attr['sub'] == "Critical攻撃")
+            || (isHPMax && attr['sub'] == "HP満タン時")
+            || (isNotHPMax && attr['sub'] == "HPが満タンではない時")
+            || (skillInfo['FlavorText'].indexOf("カウンター状態") > -1 && attr['sub'] == "カウンター攻撃")
+            ) {
+                ability += size;
+                if((isRound && attr['sub'] == "ラウンド開始時")
+                || (isCritical && attr['sub'] == "Critical攻撃")
+                || (skillInfo['FlavorText'].indexOf("カウンター状態") > -1 && attr['sub'] == "カウンター攻撃")){
+                    abName.push(abInfo['Name']);
+                }
+            } else if(attr['sub'].indexOf("属性") > -1) {
+                subAttackAttr = attr['sub'].replace("属性攻撃","").replace("属性ダメージ","");
+                if (attackAttrs.indexOf(subAttackAttr) > -1) { // 属性攻撃
+                    ability += size;
+                }
+            } else if(["単体攻撃","範囲攻撃","全体攻撃"].indexOf(attr['sub']) > -1) {
+                checkAttr = skillInfo['AttackArea']
+                .replace("敵単体","単体攻撃")
+                .replace("敵縦一列","範囲攻撃")
+                .replace("敵横一列","範囲攻撃")
+                .replace("敵全体","全体攻撃");
+                if(attr['sub'] == checkAttr) {
+                    ability += size;
+                    abName.push(abInfo['Name']);
+                }
+            }
+        }
+    }
+    ability += (isCritical && skillInfo['CriticalTargets'] != undefined && skillInfo['CriticalTargets'] !== "") ? 20 : 0;
+
+    return [ability, abName];
+}
+
+/**
+ * 文字列の中から数字だクエを抜き出す
+ * @param String target 
+ */
+function filterNumber(target){
+    return Number(target.replace(/[^0-9]/g, ''));
+}
+function filterPercent(target){
+    return (""+target).replace(/[^0-9%]/g, '');
+}
+
