@@ -1834,8 +1834,22 @@ var AB_ATTR_GL = {
     "陰属性攻撃": "Shadow attack",
 };
 
+function beforeFunction () {
+    $('body').prepend("beforeFunction<br>");
+}
+
 $(document).ready(function () {
     $('body').prepend("dispHeader<br>");
     $('body').prepend("dispHeader check " + (typeof dispHeader) + "<br>");
+    $('body').prepend("beforeFunction check " + (typeof beforeFunction) + "<br>");
+    $('body').prepend("afterFunction check " + (typeof afterFunction) + "<br>");
+    $('body').prepend("tfunction check " + (typeof tfunction) + "<br>");
+    function tfunction () {
+        $('body').prepend("test<br>");
+    }
+    $('body').prepend("tfunction check " + (typeof tfunction) + "<br>");
     dispHeader();
 });
+function afterFunction () {
+    $('body').prepend("afterFunction<br>");
+}
