@@ -1,26 +1,3 @@
-$('body').prepend("///////これはjsファイルの内部<br>");
-
-
-function beforeFunction () {
-    $('body').prepend("beforeFunction<br>");
-}
-
-$(document).ready(function () {
-    $('body').prepend("///////これはjsファイルの内部のready<br>");
-    $('body').prepend("dispHeader<br>");
-    $('body').prepend("dispHeader check " + (typeof dispHeader) + "<br>");
-    $('body').prepend("beforeFunction check " + (typeof beforeFunction) + "<br>");
-    $('body').prepend("afterFunction check " + (typeof afterFunction) + "<br>");
-    $('body').prepend("tfunction check " + (typeof tfunction) + "<br>");
-    function tfunction () {
-        $('body').prepend("test<br>");
-    }
-    $('body').prepend("tfunction check " + (typeof tfunction) + "<br>");
-});
-function afterFunction () {
-    $('body').prepend("afterFunction<br>");
-}
-
 var BASE_URL = (location.href.indexOf("localhost") > -1) ? "http://localhost/nao-romasaga.github.io" :"https://nao-romasaga.github.io";
 var articleStyleLimit = 8;
 var articleOtherLimit = 8;
@@ -290,7 +267,6 @@ var ENEMY_RESIST = [
     [30, 125, 30, -35, -35, -35, -35, -35, "虫", "ゴールデンバウム"],
 ];
 
-
 scroll_effect();
 $(window).scroll(function(){
     scroll_effect();
@@ -363,7 +339,6 @@ function arrayAvg(arr) {
 
 function dispHeader() {
     var closeMenuStyle= "font-size:inherit; color:white;";
-    $('body').prepend("header<br>");
     var header = `
     <div class="header-image">
         <div class="fuchidori-white" style="position:absolute; left:0px; max-width:100%;">
@@ -384,7 +359,6 @@ function dispHeader() {
     </div>    
     `;
     // <img src="https://romasagatool.com/img/icon/n14-icon-new.gif">
-    $('body').prepend("humNav<br>");
     var humNav = `
     <div id="navArea" class="">
       <h-nav class="bg-simple">
@@ -510,7 +484,6 @@ function dispHeader() {
       <div id="mask"></div>
     </div>
     `;
-    $('body').prepend("sliderMenu<br>");
     var sliderMenu = `
     <nav class="site-header text-nowrap d-none d-sm-block">
         <img class="d-sm-none blinking" src="https://romasagatool.com/img/icon/icon_arrow_right.png" style="position: fixed; right: 0px; height: 50px;">
@@ -545,7 +518,6 @@ function dispHeader() {
     </nav>    
     `;
 
-    $('body').prepend("nav<br>");
     var nav = `
     <div class="header-area">
         ${header}
@@ -556,9 +528,7 @@ function dispHeader() {
     <img src="https://romasagatool.com/img/icon/qe15.gif">
     -->
     `;
-    $('body').prepend("nav add start<br>");
     $('body').prepend(nav);
-    $('body').prepend("nav add end<br>");
 }
 $(document).on('click', '.DROPDOWN_OPEN', function () {
     $(this).find(".fa-sort-up").toggleClass("d-none");
@@ -899,6 +869,65 @@ var charRand = [
     ["ID3a854","ID3a2dc"],
     ["ID39274","ID3a854"],
 ];
+$(document).ready(function () {
+    dispHeader();
+    $(".dropdown-item").addClass("d-none");
+    var _window = $(window),
+    _header = $('.site-header'),
+    lastPos, winScrollTop, heroBottom;
+    _window.on('scroll',function(){     
+        heroBottom = $('.header-image').height();
+        winScrollTop = _window.scrollTop();
+        if(winScrollTop > heroBottom){
+            if(winScrollTop >= lastPos){
+                _header.addClass('fixed hide');   
+            } else {
+                _header.addClass('fixed').removeClass("hide");
+            }
+        } else{
+            _header.removeClass('fixed hide');
+        }
+        lastPos = _window.scrollTop();
+    }); 
+    _window.trigger('scroll');
+
+    $("body").bind("contextmenu", function (e) {
+        return false;
+    });
+    $("body").mousedown(function (e) {
+        //return false;
+    });
+    var loading = $(".loading");
+    if (loading.length > 0) {
+        loading.each(function(){
+            var random = Math.floor(Math.random() * charRand.length)
+            dot1 = getImgPath(`dot/${charRand[random][0]}.png`);
+            dot2 = getImgPath(`dot/${charRand[random][1]}.png`);
+            $(this).parent().find(".CHAR_BACK").attr("style", `background: url(${dot1});`);
+            $(this).parent().find(".CHAR_FRONT").attr("style", `background: url(${dot2});`);
+        })
+    }
+
+    insertCommonComponent();
+
+    // ハンバーガーメニュー
+    var $nav = $('#navArea');
+    var $btn = $('.toggle-btn');
+    var $mask = $('#mask');
+    var open = 'open'; // class
+    // menu open close
+    $btn.on( 'click', function() {
+      if ( ! $nav.hasClass( open ) ) {
+        $nav.addClass( open );
+      } else {
+        $nav.removeClass( open );
+      }
+    });
+    // mask close
+    $mask.on('click', function() {
+      $nav.removeClass( open );
+    });    
+});
 
 function getDevice() {
     let width = window.innerWidth;
@@ -1737,7 +1766,8 @@ function dispGachaStyle(){
 function getBestRenseiWeapon($base, $weaponType = null) {
     var id = $base.attr("data-id");
     var charInfo = CHAR_MASTER[id];
-    let weaponType = $weaponType?? charInfo['WeaponType'];
+    let weaponType = ($weaponType == null || typeof $weaponType == "undefined") 
+        ? $weaponType : charInfo['WeaponType'];
     let my_list = [];
     
     if(typeof MY_RENSEI_LIST[weaponType] != "undefined") {
@@ -1854,4 +1884,3 @@ var AB_ATTR_GL = {
     "陽属性攻撃": "Sun attack",
     "陰属性攻撃": "Shadow attack",
 };
-
