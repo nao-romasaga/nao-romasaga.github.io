@@ -870,7 +870,10 @@ var charRand = [
     ["ID3a854","ID3a2dc"],
     ["ID39274","ID3a854"],
 ];
+alert("$(document).ready の前");
+document.getElementById('debug').innerHTML = "調整<br>";
 $(document).ready(function () {
+    alert("$(document).ready 開始");
     $('body').prepend("dispHeader<br>");
 
     dispHeader();
