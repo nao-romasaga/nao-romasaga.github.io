@@ -1,3 +1,24 @@
+$('body').prepend("loading js<br>");
+function beforeFunction () {
+    $('body').prepend("beforeFunction<br>");
+}
+
+$(document).ready(function () {
+    $('body').prepend("dispHeader<br>");
+    $('body').prepend("dispHeader check " + (typeof dispHeader) + "<br>");
+    $('body').prepend("beforeFunction check " + (typeof beforeFunction) + "<br>");
+    $('body').prepend("afterFunction check " + (typeof afterFunction) + "<br>");
+    $('body').prepend("tfunction check " + (typeof tfunction) + "<br>");
+    function tfunction () {
+        $('body').prepend("test<br>");
+    }
+    $('body').prepend("tfunction check " + (typeof tfunction) + "<br>");
+    dispHeader();
+});
+function afterFunction () {
+    $('body').prepend("afterFunction<br>");
+}
+
 var BASE_URL = (location.href.indexOf("localhost") > -1) ? "http://localhost/nao-romasaga.github.io" :"https://nao-romasaga.github.io";
 var articleStyleLimit = 8;
 var articleOtherLimit = 8;
@@ -876,8 +897,6 @@ var charRand = [
     ["ID3a854","ID3a2dc"],
     ["ID39274","ID3a854"],
 ];
-
-document.getElementById('debug').innerHTML = "調整<br>";
 
 function getDevice() {
     let width = window.innerWidth;
@@ -1834,22 +1853,3 @@ var AB_ATTR_GL = {
     "陰属性攻撃": "Shadow attack",
 };
 
-function beforeFunction () {
-    $('body').prepend("beforeFunction<br>");
-}
-
-$(document).ready(function () {
-    $('body').prepend("dispHeader<br>");
-    $('body').prepend("dispHeader check " + (typeof dispHeader) + "<br>");
-    $('body').prepend("beforeFunction check " + (typeof beforeFunction) + "<br>");
-    $('body').prepend("afterFunction check " + (typeof afterFunction) + "<br>");
-    $('body').prepend("tfunction check " + (typeof tfunction) + "<br>");
-    function tfunction () {
-        $('body').prepend("test<br>");
-    }
-    $('body').prepend("tfunction check " + (typeof tfunction) + "<br>");
-    dispHeader();
-});
-function afterFunction () {
-    $('body').prepend("afterFunction<br>");
-}
