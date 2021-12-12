@@ -920,3 +920,333 @@ function getTime(time) {
         return x[time];
     }
 }
+
+function getStyleBgColor(rare) {
+    let colorClass = "bg_ss";
+    if (rare === "A") {
+        colorClass = "bg_a";
+    } else if (rare === "S") {
+        colorClass = "bg_s";
+    }
+    return colorClass;
+}
+function getStyleIconClass(rare) {
+    let colorClass = "style_icon_ss";
+    if (rare === "A") {
+        colorClass = "style_icon_a";
+    } else if (rare === "S") {
+        colorClass = "style_icon_s";
+    }
+    return colorClass;
+}
+
+function getStyleIconBgClass(rare) {
+    let colorClass = "icon_bg_ss";
+    if (rare === "A") {
+        colorClass = "icon_bg_a";
+    } else if (rare === "S") {
+        colorClass = "icon_bg_s";
+    }
+    return colorClass;
+}
+function dispChar_bk(master) {
+    let idx = {};
+    let width = (device === "sp") ? 6 : 12;
+    for (let i in master) {
+        if (master[i]['Holders'] === undefined) {
+            continue;
+        }
+        let series = master[i]['Series'];
+        let weaponType = ICON_LIST[master[i]['WeaponType']];
+        if (idx[series] >= 24) {
+            series = series + "2";
+        }
+
+        if (idx[series] === undefined) {
+            idx[series] = 0;
+        }
+        if (idx[weaponType] === undefined) {
+            idx[weaponType] = 0;
+        }
+
+        let dotId = master[i]['DotId'];
+        let pngName = (dotId !== "ID4e2c8") ? dotId : "ID4e2c9";
+        let id = master[i]['Id'];
+        var png = getImgPath(`dot/${pngName}.png`);
+        let url = `background:url(${png}) no-repeat; padding-top:35px;`;
+        let charDot = $("<span>").attr("id", "dot" + pngName)
+                .addClass("char-aruku char char-bottom dot_mid dot")
+                .addClass("dot" + pngName)
+                .attr("data-id", id).attr('style', url).attr("onclick", "");
+        let seriesBanner = $("<span>").addClass("series-button");
+        seriesBanner.append(master[i]['Series']);
+        charDot.append(seriesBanner);
+        $("#" + series).append(charDot.clone());
+        if (++idx[series] % width === 0) {
+            $("#" + series).append("<br>");
+        }
+        $("#_" + weaponType).append(charDot.clone());
+        if (++idx[weaponType] % width === 0) {
+            $("#_" + weaponType).append("<br>");
+        }
+    }
+}
+function dispChar(master) {
+    let idx = {};
+    let width = (device === "sp") ? 6 : 12;
+    let otherSeries = ["US","SS","ES"];
+    var result = [];
+    for (let i in master) {
+        if (master[i]['Holders'] === undefined) {
+            continue;
+        }
+        let series = master[i]['Series'];
+        let weaponType = ICON_LIST[master[i]['WeaponType']];
+
+        if (idx[series] === undefined) {
+            idx[series] = 0;
+        }
+        if (idx[weaponType] === undefined) {
+            idx[weaponType] = 0;
+        }
+        let dotId = master[i]['DotId'];
+        let id = master[i]['Id'];
+        let name = master[i]['Name'];
+        var base = getCharBase(id, dotId, name);
+
+        //series = (otherSeries.indexOf(series) != -1) ? "OTR" :series;
+        $("#SEC" + series).append(base);
+        if (++idx[series] % width === 0) {
+            //$("#" + series).append("<br>");
+        }
+
+        $("#_" + weaponType).append(base.clone());
+        if (++idx[weaponType] % width === 0) {
+            //$("#_" + weaponType).append("<br>");
+        }
+    }
+}
+// これを呼び出す場合は下記のimportが必要
+// <script src="./js/lib/lazysizes.min.js"></script>
+// <script src="./js/lib/ls.unveilhooks.min.js"></script>
+function dispChar2(master, option = {}) {
+    let idx = {};
+    //let result = {"RS1":[],"RS2":[],"RS3":[],};
+    let result = [];
+
+    for (let i in master) {
+        if (master[i]['Holders'] === undefined) {
+            continue;
+        }
+        var dotOption = {};
+        if(typeof option != undefined && option['jutsu']) {
+            dotOption['jutsu'] = master[i]['JutsuAttrs'];
+        }
+
+        let series = master[i]['Series'];
+        if (idx[series] === undefined) {
+            idx[series] = 0;
+        }
+
+        let dotId = master[i]['DotId'];
+        let id = master[i]['Id'];
+        let name = master[i]['Name'];
+        var base = getCharBase2(id, dotId, name, '', true, dotOption);
+        $("#SEC" + series).append(base);
+
+        for(weaponTypeOrg of master[i]['WeaponType']) {
+            let weaponType = ICON_LIST[weaponTypeOrg];
+
+            if (idx[weaponType] === undefined) {
+                idx[weaponType] = 0;
+            }
+
+            if(weaponType != "icon_tsue") {
+                $("#_" + weaponType).append(base.clone());
+            } else {
+                for(attr of master[i]['JutsuAttrs']) {
+                    tmpBase = base.clone();
+                    tmpBase.find(`.${ICON_LIST[attr]}_sm`).remove();
+                    $("#_" + ICON_LIST[attr]).append(tmpBase.clone());
+                }
+                if(master[i]['JutsuAttrs'].length == 0) {
+                    $("#_icon_noJustu").append(base.clone());
+                }
+            }
+            for(attr of master[i]['AttackAttrs']) {
+                if(attr == "斬" && ["icon_ken" , "icon_dken" , "icon_ono"].indexOf(weaponType) > -1){
+                    continue;
+                } else if(attr == "突" && ["icon_sken" , "icon_yari" , "icon_yumi"].indexOf(weaponType) > -1){
+                    continue;
+                } else if(attr == "打" && ["icon_kon" , "icon_tai" , "icon_ju"].indexOf(weaponType) > -1){
+                    continue;
+                } else if(attr == "熱" && weaponType == "icon_tsue" && master[i]['JutsuAttrs'].indexOf("火") > -1){
+                    continue;
+                } else if(attr == "冷" && weaponType == "icon_tsue" && master[i]['JutsuAttrs'].indexOf("水") > -1){
+                    continue;
+                } else if(attr == "陽" && weaponType == "icon_tsue" && master[i]['JutsuAttrs'].indexOf("光") > -1){
+                    continue;
+                } else if(attr == "陰" && weaponType == "icon_tsue" && master[i]['JutsuAttrs'].indexOf("闇") > -1){
+                    continue;
+                }
+                $("#_" + ICON_LIST[attr]).append(base.clone());
+            }
+        }
+    }
+}
+function getCharBase(id, dotId, name){
+    let pngName = (dotId !== "ID4e2c8") ? dotId : "ID4e2c9";
+    var png = getImgPath(`dot/${pngName}.png`);
+    let url = `background:url(${png}) no-repeat; position:relative;`;//padding-top:35px; 
+
+    let base = $(`<div class="dot-base">`);
+    var baseUrl = getImgPath(`icon/icon_base_common.png`);
+    let baseImg = $(`<img src="${baseUrl}" class="dot-base-circle">`);
+    base.append(baseImg);
+    let charDot = $(`<div class="char-aruku-left char dot_mid dot dot${pngName} dot-base-char"
+    id="dot${pngName}" data-id="${id}" style="${url}" onclick=""
+    >`);
+    let seriesBanner = $(`<div class="text-center text-nowrap dot-name-label">${name}</div>`);
+    base.append(seriesBanner);
+    base.append(charDot);
+    return base.clone();
+}
+function getCharBase2(id, dotId, name, rare, isLazyLoad = false, option = {}){
+    let pngName = (dotId !== "ID4e2c8") ? dotId : "ID4e2c9";
+    var dotPath = getImgPath(`dot/${pngName}.png`);
+    var baseCircle = (rare == '' ) ? 'common' : rare.toLowerCase();
+    var baseUrl = getImgPath(`icon/icon_base_${baseCircle}.png`);
+    let base = $(`<div class="dot-base">`);
+
+    let baseImg = $(`<img src="${baseUrl}" class="dot-base-circle">`);
+    let charDot = $(`<div class="char-dot-base char-aruku-left2 char dot_mid dot dot${pngName} dot-base-char"
+    id="dot${pngName}" data-id="${id}" onclick=""></div>`);
+
+    if(isLazyLoad){
+        charDot.attr('data-bg',dotPath);
+        charDot.addClass("lazyload");
+        baseImg = $(`<img data-src="${baseUrl}" class="dot-base-circle lazyload">`);
+    } else {
+        charDot.attr('style',`background:url(${dotPath}) no-repeat; position:relative;`);
+    }
+    base.append(baseImg);
+
+    let seriesBanner = $(`<div class="text-center text-nowrap dot-name-label">${name}</div>`);
+    base.append(seriesBanner);
+
+    if(typeof option['jutsu'] != "undefined") {
+        let jutsuBanner = $(`<div class="char-dot-jutsu-icon-div"></div>`);
+        for(jutsu of option['jutsu']) {
+            jutsuBanner.append($(`<span class="icon_xs ${ICON_LIST[jutsu]}_sm">　　</span>`));
+        }
+        base.append(jutsuBanner);
+    }
+    
+    base.append(charDot);
+
+    return base.clone();
+}
+function getKakuseiIcon(skillInfo, size = 40, jp = true){
+    let iconClass = KAKUSEI_COLOR[skillInfo['KakuseiSozai']] + KAKUSEI_ICON[skillInfo['Kakusei']];
+    let iconJp = (jp) ? KAKUSEI_JP[skillInfo['KakuseiSozai']] : skillInfo['KakuseiSozai'];
+
+    return $(`
+    <span style="position: relative; width:${size}px;">
+    <span class="icon_back_default" style="background-size: ${size}px;">
+        <span class="icon_${iconClass}" style="width:${size}px;height:${size}px; display: inline-block; background-size: contain;">　</span>
+    </span>
+    <span style="position: absolute;
+    bottom: -36px;
+    right: 0;
+    width: ${size}px;
+    text-align: center;
+    font-size: 8px;">${iconJp}${skillInfo['Kakusei']}</span>
+    </span>
+    `);    
+}
+
+let KAKUSEI_COLOR = {"black": "k", "green": "g", "blue": "b", "orange": "o", "purple": "p", "red": "r", "yellow": "y", "white": "w"};
+let KAKUSEI_JP = {"black": "黒", "green": "緑", "blue": "青", "orange": "橙", "purple": "紫", "red": "赤", "yellow": "黄", "white": "白"};
+let KAKUSEI_ICON = ["", "sand", "stone", "jewel"];
+function skillLabel(skillInfo) {
+    let skillList = $("<button>").addClass("skill_select").addClass("keishoSkill").attr("data-id", skillInfo['Id']);
+    let topDiv = $('<div>').attr('style', 'width:100%; display: inline-flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid;');
+    // 武器種別 BattleType、名称、所有数
+    let skillName = $("<p>").addClass("text-left skillNameClass").attr('style', 'margin:0;');
+    skillName.append(skillInfo['Name']);    // 技名称
+    let skillRight = $("<p>").addClass('text-right').addClass('small').attr('style', 'margin:0;');
+    skillRight.append("覚醒:" + skillInfo['Kakusei']);
+    let iconClass = KAKUSEI_COLOR[skillInfo['KakuseiSozai']] + KAKUSEI_ICON[skillInfo['Kakusei']];
+    skillRight.append(`<span class="icon_${iconClass}" style="width:25px;height:25px; display: inline-block;background-size: contain;">　</span>`);
+
+    skillRight.append("BP:" + skillInfo['ConsumeBp']);
+    skillRight.append(" 威力:" + skillInfo['PowerGrade'] + "(" + skillInfo['SkillIryoku'] + ")");
+    topDiv.append(skillName).append(skillRight);
+
+    // 属性 AttackAttributes
+    let bottomDiv = $('<div>').addClass("iconClass").attr('style', 'display: table-cell; vertical-align: middle; height:30px');
+    bottomDiv.append($('<span>').addClass('icon_sm').addClass(ICON_LIST[skillInfo['BattleType']]).text("　"));
+    skillInfo['AttackAttributes'].split(',').forEach(function (value) {
+        let img = $('<span>').addClass('icon_sm').addClass(ICON_LIST[value]).text("　");
+        bottomDiv.append(img);
+    });
+    if (skillInfo['BadStatus'] != "") {
+        let img = $('<span>').addClass('').addClass("icon_sm").addClass(ICON_LIST[skillInfo['BadStatus']]).text("　");
+        bottomDiv.append(img);
+    }
+    if (skillInfo['DeBuff'] != "") {
+        let img = $('<span>').addClass('icon_sm').addClass(ICON_LIST[skillInfo['DeBuff'] + "低下"]).text("　");
+        bottomDiv.append(img);
+    }
+    if (skillInfo['Buff'] != "") {
+        if (skillInfo['Buff'] === "HP") {
+            bottomDiv.append("[HP回復]");
+        } else {
+            let img = $('<span>').addClass('icon_sm').addClass(ICON_LIST[skillInfo['Buff'] + "上昇"]).text("　");
+            bottomDiv.append(img);
+        }
+    }
+    if (skillInfo['AttackDistance'] !== "近") {
+        bottomDiv.append("[" + skillInfo['AttackDistance'] + "]");
+    }
+    if (skillInfo['AttackArea'] !== "敵単体") {
+        bottomDiv.append("[" + AREA_SHORT[skillInfo['AttackArea']] + "]");
+    }
+    if (skillInfo['Fast']) {
+        bottomDiv.append("[ファスト]");
+    }
+    if (skillInfo['Delay']) {
+        bottomDiv.append("[ディレイ]");
+    }
+
+    bottomDiv.append(" <span class='holderClass'>所持者(" + skillInfo['Holders'].length + ")</span>");   // 所有者数
+
+    skillList.append(topDiv).append(bottomDiv);
+
+    return skillList;
+}
+function createInfoButton() {
+    return $("<button>")
+            .addClass("icon_info_md").attr("data-toggle", "tooltip").attr("data-placement", "top")
+            .attr("data-html", 'true');
+}
+
+function addBonus(org, per, add) {
+    return Number(org) + Math.floor(org * per / 100) + Number(add);
+}
+
+function animeReset(selector, animeClass) {
+    $(selector).removeClass(animeClass);
+    $(selector)[0].offsetWidth = $(selector)[0].offsetWidth;
+    $(selector).addClass(animeClass);
+}
+function setTaisei(target, val) {
+    target.removeClass("resist_plus");
+    target.removeClass("resist_minus");
+    if (val > 0) {
+        target.addClass("resist_plus");
+    } else if (val < 0) {
+        target.addClass("resist_minus");
+    }
+    target.html(val);
+}
