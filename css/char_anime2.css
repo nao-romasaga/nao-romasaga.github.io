@@ -1,6 +1,3 @@
-/*
-.dot_cat {    background:url(../img/dot/ID36a44.png);}
-*/
 .dot_cat {    background:url(https://romasagatool.com/img/dot/ID36a46.png);}
 .dot_poruka {    background:url(https://romasagatool.com/img/dot/IDad5d4.png);}
 .dot_liz {    background:url(https://romasagatool.com/img/dot/IDad638.png);}
@@ -13,6 +10,8 @@
 .dot_sofia {    background: url(https://romasagatool.com/img/dot/ID367e0.png) no-repeat;}
 .dot_gyusu {    background: url(https://romasagatool.com/img/dot/ID4e268.png) no-repeat;}
 .dot_musume {    background: url(https://romasagatool.com/img/dot/ID37e8c.png) no-repeat;}
+.dot_jiny {    background: url(https://romasagatool.com/img/dot/ID4e397.png) no-repeat;}
+.dot_bunei {    background: url(https://romasagatool.com/img/dot/ID3a662.png) no-repeat;}
 .dot_mini {    background-size: 200px !important;}
 
 
@@ -223,6 +222,18 @@
     0% { background-position:  -165px -5px;} /* 4.3 */
     15% { background-position:  -165px -45px;} /* 4.2 */
     30% { background-position:  -165px -5px;} /* 4.3 */
+    45% { background-position:  -165px -45px;} /* 4.2 */
+}
+.char-single-attack-mini {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-position: -45px -85px;
+    margin: 0 0 0 0px;
+    animation: single-attack-mini 2s steps(1) infinite;
+}
+@keyframes single-attack-mini {
+    0% { background-position:  -165px -5px;} /* 4.3 */
     45% { background-position:  -165px -45px;} /* 4.2 */
 }
 .char-tate-mini {

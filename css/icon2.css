@@ -209,9 +209,9 @@
 }
 .fukidashi-left {
     background: 
-     url(https://romasagatool.com/img/icon/fukidashi_wide_left.png) left / 30px 100% no-repeat,
-     url(https://romasagatool.com/img/icon/fukidashi_wide_right.png) right / 30px 100% no-repeat,
-     url(https://romasagatool.com/img/icon/fukidashi_wide_center.png) center / calc(100% - 50px) 100% no-repeat;
+     url(https://romasagatool.com/img/icon/fukidashi_wide_left.png) left / 23px 100% no-repeat,
+     url(https://romasagatool.com/img/icon/fukidashi_wide_right.png) right / 12px 100% no-repeat,
+     url(https://romasagatool.com/img/icon/fukidashi_wide_center.png) calc(50% + 6px) / calc(100% - 33px) 100% no-repeat;     
     padding: 5px 20px 5px 20px;
     display: inline-block;
     color: darkslategray;
@@ -476,6 +476,13 @@
 .icon-skill-xs {
     width : 25px;
     height : 25px;
+}
+.icon-back-skill-sm {
+    background-size: 40px;
+}
+.icon-skill-sm {
+    width : 40px;
+    height : 40px;
 }
 
 
