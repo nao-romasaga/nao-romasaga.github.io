@@ -35,7 +35,6 @@
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
         <script src="./js/data_ABILITY.js" ></script>
         <script src="./js/data_SKILL.js" ></script>
-        <script src="./js/data_SKILL_FLAVOR.js" ></script>
         <script src="./js/data_STYLEMASTER_style.js" ></script>
         <script src="./js/data_SKILLMASTER_list.js" ></script>
         <script src="./js/Firebase.js"></script>
@@ -55,6 +54,9 @@
         <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Anton&text=0123456789" rel="stylesheet">
         <style>
+            .img-icon {
+                width: 20px;
+            }
             .withLabel{
                 padding-top: 30px;
             }
@@ -62,6 +64,7 @@
                 background-color:black !important;
             }
             ._FilterLink{}
+
             .pari{
                 display: inline-block;
                 width: 35px;
@@ -70,38 +73,87 @@
                 margin: 0 0 0 0px;
                 background-size: 200px !important;                
             }
-            /* 330px未満の画面の場合 */
-            @media screen and (min-width:322px) and ( max-width:400px) {
-                .icon_mini {
-                    width:35px;
-                    height:35px;
-                }
-            }
-            /* 330px未満の画面の場合 */
-            @media (max-width: 320px) {
-                .icon_mini {
-                    width:30px;
-                    height:30px;
-                }
-            }
             .weaponIconTd {
                 width: 40px;
                 position:relative
             }
             .skill-name {
-                margin: 10px 0px; font-size: 20px;                
+                margin: auto 0px;
             }
-            /* 画面サイズ330より小さい場合 */
-            @media screen and (max-width:330px) {
+            .kakusei-bp {
+                position: absolute;
+                top: 40px;
+                right: 0;
+                width: 40px;
+                text-align: center;
+                font-size: 8px;
+            }
+            .holderStyleArea {
+                line-height: 0px;
+                height:75px;
+                overflow-x: scroll;
+                overflow-y: hidden;
+                white-space:nowrap;
+            }
+            .series-button {
+                display: inline-block;
+                min-width: 30px;
+            }
+
+            /* 画面サイズ320より小さい場合 iphone5 */
+            @media screen and (max-width:320px) {
+                .icon_mini {
+                    width:30px;
+                    height:30px;
+                }
                 .skill-name {
                     font-size: 15px;
                 }
             }            
+            /* 322〜400pxの画面の場合 */
+            @media screen and (min-width:321px) and ( max-width:400px) {
+                .icon_mini {
+                    width:35px;
+                    height:35px;
+                }
+            }
             /* 440pxより大きい画面の場合 */
             @media (min-width: 440px) {
                 .weaponIconTd {
                     width: 50px;
                 }
+            }
+            /* 768px以下の画面の場合 */
+            @media (max-width: 768px) {
+                .style_icon_bg_base {
+                    width: 35px;
+                    height: 35px;
+                }
+                .style_icon_rare_base {
+                    width: 18px;
+                    height: 18px;
+                }
+                .holderStyleArea {
+                    height:55px;
+                }
+            }
+            /* 1024px以下の画面の場合 */
+            @media (max-width: 1024px) {
+                .style_icon_bg_base {
+                    width: 45px;
+                    height: 45px;
+                }
+                .style_icon_rare_base {
+                    width: 20px;
+                    height: 20px;
+                }
+                .holderStyleArea {
+                    height:60px;
+                }
+            }
+
+            .HOLDER_DISP_AREA {
+                display: none1;
             }
 
 
@@ -159,8 +211,8 @@
                             <a class="_FilterLink pad0 d-inline-block" data-href="skill_hikari" data-col="BattleType"><span class="withLabel icon_mini_zokusei icon_hikari"><span class="series-button" id="count_skill_hikari">...</span></span></a>
                             <a class="_FilterLink pad0 d-inline-block" data-href="skill_yami" data-col="BattleType"><span class="withLabel icon_mini_zokusei icon_yami"><span class="series-button" id="count_skill_yami">...</span></span></a>
                         </li>
-                        <li class="col-12  label-text-small">属性・追加効果・攻撃範囲など</li>
 
+                        <li class="col-12  label-text-small">属性・状態異常</li>
                         <li class="col-12 col-sm-2 table-success char-bottom">属性(or)</li>
                         <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom">
                             <a class="_FilterLink pad0 d-inline-block" data-href="skill_zan" data-col="AttackAttributes"><span class="withLabel icon_mini_zokusei icon_zan"><span class="series-button" id="count_skill_zan">...</span></span></a>
@@ -195,6 +247,15 @@
                         <li class="col-2 col-sm-1 char-bottom"><a class="_FilterLink pad0 d-inline-block text-nowrap" data-col="BadStatus" data-href="skill_kyosenshi"><span class="withLabel icon_mini_zokusei icon_kyosenshi"><small>狂戦</small><span class="series-button" id="count_skill_kyosenshi">...</span></span></a></li>
                         <li class="col-2 col-sm-1 char-bottom"><a class="_FilterLink pad0 d-inline-block text-nowrap" data-col="BadStatus" data-href="skill_sokushi"><span class="withLabel icon_mini_zokusei icon_kizetsu"><small>気絶</small><span class="series-button" id="count_skill_sokushi">...</span></span></a></li>
 
+                        <li class="col-12 label-text-small">能力変化</li>
+                        <li class="col-12 col-sm-2 table-success char-bottom">能力変化対象</li>
+                        <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom">
+                            <a class="_FilterLink small d-inline-block" data-href="skill_buf_tantai" data-col="BuffArea"><span class="char-single-attack-mini dot_jiny dot dot_mini" id="icon_buf_oneSkill"></span><br>　単体<span class="series-button" id="count_skill_buf_tantai">...</span></a>
+                            <a class="_FilterLink small d-inline-block" data-href="skill_buf_zentai" data-col="BuffArea"><span class="char-eisho-mini dot_bunei dot dot_mini" id="icon_buf_allSkill"></span><br>　全体<span class="series-button" id="count_skill_buf_zentai">...</span></a>
+                        </li>
+                        
+
+
                         <li class="col-12 col-sm-2 table-success char-bottom">バフ</li>
                         <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom">
                             <a class="_FilterLink pad0 d-inline-block" data-href="skill_buf_wan" data-col="Buff"><span class="withLabel icon_mini_zokusei icon_buff_str"><span class="series-button" id="count_skill_buf_wan">...</span></span></a>
@@ -206,7 +267,28 @@
                             <a class="_FilterLink pad0 d-inline-block" data-href="skill_buf_ai" data-col="Buff"><span class="withLabel icon_mini_zokusei icon_buff_ai"><span class="series-button" id="count_skill_buf_ai">...</span></span></a>
                             <a class="_FilterLink pad0 d-inline-block" data-href="skill_buf_mi" data-col="Buff"><span class="withLabel icon_mini_zokusei icon_buff_mi"><span class="series-button" id="count_skill_buf_mi">...</span></span></a>
                         </li>
-                        <li class="col-12 col-sm-2 table-success char-bottom">デバフ</li>
+                        <li class="col-12 col-sm-2 table-success char-bottom">味方強化(攻)</li>
+                        <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom">
+                            <a class="_FilterLink  small" data-href="skill_MoralUp" data-col="MoralUp">モラルアップ <span class="series-button" id="count_skill_MoralUp">...</span></a>
+                            <a class="_FilterLink  small" data-href="skill_AttackUp" data-col="AttackUp">攻撃強化 <span class="series-button" id="count_skill_AttackUp">...</span></a>
+                            <a class="_FilterLink  small" data-href="skill_XAttackUp" data-col="XAttackUp">X属性攻撃強化 <span class="series-button" id="count_skill_XAttackUp">...</span></a>
+                            　
+                        <li class="col-12 col-sm-2 table-success char-bottom">味方強化(防)</li>
+                        <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom">
+                            <a class="_FilterLink  small" data-href="skill_GuardUp" data-col="GuardUp">ガードアップ <span class="series-button" id="count_skill_GuardUp">...</span></a>
+                            <a class="_FilterLink  small" data-href="skill_DefenceUp" data-col="DefenceUp">防御強化 <span class="series-button" id="count_skill_DefenceUp">...</span></a>
+                            <a class="_FilterLink  small" data-href="skill_Wall" data-col="Wall">ウォール <span class="series-button" id="count_skill_Wall">...</span></a>
+                            <a class="_FilterLink  small" data-href="skill_MagicShield" data-col="MagicShield">魔法盾 <span class="series-button" id="count_skill_MagicShield">...</span></a>
+                        </li>
+                        <li class="col-12 col-sm-2 table-success">回復</li>
+                        <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom">
+                            <a class="_FilterLink small" data-href="skill_hp" data-col="HealTypeHP"><img src="https://romasagatool.com/img/icon/heart.png" class="img-icon">HP回復 <span class="series-button" id="count_skill_hp">...</span></a>
+                            <a class="_FilterLink small" data-href="skill_bp" data-col="HealTypeBP"><img src="https://romasagatool.com/img/icon/bp.png" class="img-icon">BP回復 <span class="series-button" id="count_skill_bp">...</span></a>
+                            <a class="_FilterLink small" data-href="skill_ijo" data-col="HealTypeBad"><img src="https://romasagatool.com/img/icon/red-cross.png" class="img-icon">状態異常回復 <span class="series-button" id="count_skill_ijo">...</span></a>
+                        </li>
+
+
+                        <li class="col-12 col-sm-2 table-danger char-bottom">デバフ</li>
                         <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom">
                             <a class="_FilterLink pad0 d-inline-block" data-href="skill_deb_wan" data-col="DeBuff"><span class="withLabel icon_mini_zokusei icon_debuff_str"><span class="series-button" id="count_skill_deb_wan">...</span></span></a>
                             <a class="_FilterLink pad0 d-inline-block" data-href="skill_deb_tai" data-col="DeBuff"><span class="withLabel icon_mini_zokusei icon_debuff_vit"><span class="series-button" id="count_skill_deb_tai">...</span></span></a>
@@ -215,7 +297,14 @@
                             <a class="_FilterLink pad0 d-inline-block" data-href="skill_deb_chi" data-col="DeBuff"><span class="withLabel icon_mini_zokusei icon_debuff_int"><span class="series-button" id="count_skill_deb_chi">...</span></span></a>
                             <a class="_FilterLink pad0 d-inline-block" data-href="skill_deb_sei" data-col="DeBuff"><span class="withLabel icon_mini_zokusei icon_debuff_mnd"><span class="series-button" id="count_skill_deb_sei">...</span></span></a>
                         </li>
-                        
+                        <li class="col-12 col-sm-2 table-danger char-bottom">敵弱化</li>
+                        <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom">
+                            <a class="_FilterLink  small" data-href="skill_MoralDown" data-col="MoralDown">モラルダウン <span class="series-button" id="count_skill_MoralDown">...</span></a>
+                            <a class="_FilterLink  small" data-href="skill_AttackDown" data-col="AttackDown">攻撃弱化 <span class="series-button" id="count_skill_AttackDown">...</span></a>
+                            <a class="_FilterLink  small" data-href="skill_GuardDown" data-col="GuardDown">ガードダウン <span class="series-button" id="count_skill_GuardDown">...</span></a>
+                            <a class="_FilterLink  small" data-href="skill_DefenceDown" data-col="DefenceDown">防御弱化 <span class="series-button" id="count_skill_DefenceDown">...</span></a>
+                        </li>
+                        <li class="col-12  label-text-small">攻撃範囲・対象</li>
                         <li class="col-12 col-sm-2 table-info">攻撃範囲</li>
                         <li class="m-auto side-padding-zero"><a class="_FilterLink small d-inline-block" data-href="skill_tantai" data-col="AttackArea"><span class="char-eisho-mini dot_last dot dot_mini" id="icon_oneSkill"></span><br>　単体<span class="series-button" id="count_skill_tantai">...</span></a></li>
                         <li class="m-auto side-padding-zero"><a class="_FilterLink small d-inline-block" data-href="skill_zentai" data-col="AttackArea"><span class="char-eisho-mini dot_leon dot dot_mini" id="icon_allSkill"></span><br>　全体<span class="series-button" id="count_skill_zentai">...</span></a></li>
@@ -228,21 +317,6 @@
                                 <span class="pari" style="background: url(./img/dot/ID334b6.png)"></span>
                                 <span class="pari" style="background: url(./img/dot/ID3645c.png)"></span><br>自身 <span class="series-button" id="count_skill_jishin">...</span></a></li>
                         <li class="col-12 char-bottom"> </li>
-                        <li class="col-12 col-sm-2 table-success">タイプ</li>
-                        <li class="m-auto side-padding-zero"><a class="_FilterLink small" data-href="skill_typeatk" data-col="type">タイプ:攻撃 <span class="series-button" id="count_skill_typeatk">...</span></a></li>
-                        <li class="m-auto side-padding-zero"><a class="_FilterLink small" data-href="skill_typedef" data-col="type">タイプ:防御 <span class="series-button" id="count_skill_typedef">...</span></a></li>
-                        <li class="m-auto side-padding-zero"><a class="_FilterLink small" data-href="skill_typehojyo" data-col="type">タイプ:補助 <span class="series-button" id="count_skill_typehojyo">...</span></a></li>
-                        <li class="m-auto side-padding-zero"><a class="_FilterLink small" data-href="skill_typeheal" data-col="type">タイプ:回復 <span class="series-button" id="count_skill_typeheal">...</span></a></li>
-                        <li class="col-12 char-bottom"> </li>
-                        <li class="col-12 col-sm-2 table-info">補助効果</li>
-                        <li class="m-auto side-padding-zero"><a class="_FilterLink small" data-href="skill_change" data-col="change">ランク変動あり <span class="series-button" id="count_skill_change">...</span></a></li>
-                        <li class="m-auto side-padding-zero"><a class="_FilterLink small" data-href="skill_nochange" data-col="change">ランク変動なし <span class="series-button" id="count_skill_nochange">...</span></a></li>
-                        <li class="col-12 char-bottom"> </li>
-                        <li class="col-12 col-sm-2 table-success">回復</li>
-                        <li class="m-auto side-padding-zero"><a class="_FilterLink small" data-href="skill_hp" data-col="Buff">HP回復 <span class="series-button" id="count_skill_hp">...</span></a></li>
-                        <li class="m-auto side-padding-zero"><a class="_FilterLink small" data-href="skill_bp" data-col="Buff">BP回復 <span class="series-button" id="count_skill_bp">...</span></a></li>
-                        <li class="m-auto side-padding-zero"><a class="_FilterLink small" data-href="skill_ijo" data-col="Buff">状態異常回復 <span class="series-button" id="count_skill_ijo">...</span></a></li>
-                        <li class="col-12 char-bottom"> </li>
                         <li class="col-12 col-sm-2 table-info char-bottom">直接/間接 近/遠</li>
                         <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom">
                             <a class="_FilterLink small" data-href="skill_cyoku" data-col="AttackKansetsu">直接攻撃 <span class="series-button" id="count_skill_cyoku">...</span></a>
@@ -250,71 +324,46 @@
                             <a class="_FilterLink small" data-href="skill_kin" data-col="AttackDistance">近距離 <span class="series-button" id="count_skill_kin">...</span></a>
                             <a class="_FilterLink small" data-href="skill_en" data-col="AttackDistance">遠距離 <span class="series-button" id="count_skill_en">...</span></a>
                         </li>
-                        <li class="col-12 col-sm-2 table-success char-bottom">カウンター</li>
+
+                        <li class="col-12 col-sm-2 table-success">タイプ</li>
+                        <li class="m-auto side-padding-zero"><a class="_FilterLink small" data-href="skill_typeatk" data-col="type"><img src="https://romasagatool.com/img/icon/sword.png" class="img-icon">タイプ:攻撃 <span class="series-button" id="count_skill_typeatk">...</span></a></li>
+                        <li class="m-auto side-padding-zero"><a class="_FilterLink small" data-href="skill_typedef" data-col="type"><img src="https://romasagatool.com/img/icon/shield.png" class="img-icon">タイプ:防御 <span class="series-button" id="count_skill_typedef">...</span></a></li>
+                        <li class="m-auto side-padding-zero"><a class="_FilterLink small" data-href="skill_typehojyo" data-col="type"><img src="https://romasagatool.com/img/icon/feather.png" class="img-icon">タイプ:補助 <span class="series-button" id="count_skill_typehojyo">...</span></a></li>
+                        <li class="m-auto side-padding-zero"><a class="_FilterLink small" data-href="skill_typeheal" data-col="type"><img src="https://romasagatool.com/img/icon/heart.png" class="img-icon">タイプ:回復 <span class="series-button" id="count_skill_typeheal">...</span></a></li>
+                        <li class="col-12 char-bottom"> </li>
+                        <li class="col-12 col-sm-2 table-info">補助効果</li>
+                        <li class="m-auto side-padding-zero"><a class="_FilterLink small" data-href="skill_change" data-col="change"><i class="fas fa-level-up-alt"></i> ランク変動あり <span class="series-button" id="count_skill_change">...</span></a></li>
+                        <li class="m-auto side-padding-zero"><a class="_FilterLink small" data-href="skill_nochange" data-col="change"><i class="fas fa-window-minimize"></i> ランク変動なし <span class="series-button" id="count_skill_nochange">...</span></a></li>
+                        <li class="col-12 char-bottom"> </li>
+                        <li class="col-12 char-bottom"> </li>
+                        <li class="col-12 col-sm-2 table-info char-bottom">カウンター</li>
                         <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom">
                             <a class="_FilterLink  small" data-href="skill_cou" data-col="isCounter">カウンター <span class="series-button" id="count_skill_cou">...</span></a>
                             <a class="_FilterLink  small" data-href="skill_kaicou" data-col="isCounter">回避カウンター <span class="series-button" id="count_skill_kaicou">...</span></a>
                             <a class="_FilterLink  small" data-href="skill_boucou" data-col="isCounter">防御カウンター <span class="series-button" id="count_skill_boucou">...</span></a>
                         </li>
-                        <li class="col-12 col-sm-2 table-info char-bottom">特殊状態</li>
-                        <li class="col-12 col-sm-2 d-flex justify-content-around char-bottom">
-                            <a class="_FilterLink  small" data-href="skill_tame" data-col="Tame">溜め技 <span class="series-button" id="count_skill_tame">...</span></a>
-                        </li>
-                        <li class="col-12 col-sm-3 d-flex justify-content-around char-bottom">
-                            <a class="_FilterLink  small" data-href="skill_moral" data-col="MoralUp">モラルアップ <span class="series-button" id="count_skill_moral">...</span></a>
-                            <a class="_FilterLink  small" data-href="skill_AttackUp" data-col="AttackUp">攻撃強化 <span class="series-button" id="count_skill_AttackUp">...</span></a>
-                        </li>
-                        <li class="col-12 col-sm-5 d-flex justify-content-around char-bottom">
-                            <a class="_FilterLink  small" data-href="skill_guard" data-col="GuardUp">ガードアップ <span class="series-button" id="count_skill_guard">...</span></a>
-                            <a class="_FilterLink  small" data-href="skill_DefenceUp" data-col="DefenceUp">防御強化 <span class="series-button" id="count_skill_DefenceUp">...</span></a>
-                            <a class="_FilterLink  small" data-href="skill_Wall" data-col="Wall">ウォール <span class="series-button" id="count_skill_Wall">...</span></a>
-                            <a class="_FilterLink  small" data-href="skill_MagicShield" data-col="MagicShield">魔法盾 <span class="series-button" id="count_skill_MagicShield">...</span></a>
-                        </li>
 
-                        <li class="col-12 col-sm-2 table-success char-bottom">その他1</li>
-                        <li class="col-12 col-sm-4 d-flex justify-content-around char-bottom">
+                        <li class="col-12  label-text-small">いろいろ</li>
+                        <li class="col-12 col-sm-2 table-info char-bottom">練達</li>
+                        <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom">
                             <a class="_FilterLink  small" data-href="skill_rentatsu" data-col="Rentatsu">練達 <span class="series-button" id="count_skill_rentatsu">...</span></a>
                             <a class="_FilterLink  small" data-href="skill_can_rentatsu" data-col="Rentatsu">練達可能 <span class="series-button" id="count_skill_can_rentatsu">...</span></a>
                         </li>
-                        <li class="col-12 col-sm-4 d-flex justify-content-around char-bottom">
-                            <a class="_FilterLink  small" data-href="skill_fast" data-col="FastDelay">ファスト <span class="series-button" id="count_skill_fast">...</span></a>
-                            <a class="_FilterLink  small" data-href="skill_delay" data-col="FastDelay">ディレイ <span class="series-button" id="count_skill_delay">...</span></a>
+                        <li class="col-12 col-sm-2 table-success char-bottom">行動順</li>
+                        <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom">
+                            <a class="_FilterLink  small" data-href="skill_fast" data-col="FastDelay"><img src="https://romasagatool.com/img/icon/fast.png" class="img-icon">ファスト <span class="series-button" id="count_skill_fast">...</span></a>
+                            <a class="_FilterLink  small" data-href="skill_delay" data-col="FastDelay"><img src="https://romasagatool.com/img/icon/delay.png" class="img-icon">ディレイ <span class="series-button" id="count_skill_delay">...</span></a>
                         </li>
-                        <li class="col-12 col-sm-2 d-flex justify-content-around char-bottom">
+                        <li class="col-12 col-sm-2 table-info char-bottom">その他</li>
+                        <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom">
                             <a class="_FilterLink  small" data-href="skill_payHP" data-col="PayHP">代償ダメージ <span class="series-button" id="count_skill_payHP">...</span></a>
+                            <a class="_FilterLink  small" data-href="skill_tame" data-col="Tame">溜め技 <span class="series-button" id="count_skill_tame">...</span></a>
                         </li>
-                        
-
-                        <li class="col-12 col-sm-2 table-success char-bottom">特効1</li>
-                        <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom">
-                            <a class="_FilterLink  small" data-href="skill_crit_hone" data-col="CriticalTargets"><img src="https://romasagatool.com/img/enemy/icon_hone.png" width="50" height="50"><br>骨 <span class="series-button" id="count_skill_crit_hone">...</span></a>
-                            <a class="_FilterLink  small" data-href="skill_crit_fushi" data-col="CriticalTargets"><img src="https://romasagatool.com/img/enemy/icon_fushi.png" width="50" height="50"><br>不死 <span class="series-button" id="count_skill_crit_fushi">...</span></a>
-                            <a class="_FilterLink  small" data-href="skill_crit_devil" data-col="CriticalTargets"><img src="https://romasagatool.com/img/enemy/icon_devil.png" width="50" height="50"><br>悪魔 <span class="series-button" id="count_skill_crit_devil">...</span></a>
-                            <a class="_FilterLink  small" data-href="skill_crit_mushi" data-col="CriticalTargets"><img src="https://romasagatool.com/img/enemy/icon_mushi.png" width="50" height="50"><br>虫 <span class="series-button" id="count_skill_crit_mushi">...</span></a>
-                            <a class="_FilterLink  small" data-href="skill_crit_gan" data-col="CriticalTargets"><img src="https://romasagatool.com/img/enemy/icon_gan.png" width="50" height="50"><br>岩石 <span class="series-button" id="count_skill_crit_gan">...</span></a>
-                        </li>
-                        <li class="col-12 col-sm-2 table-success char-bottom">特効2</li>
-                        <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom">
-                            <a class="_FilterLink  small" data-href="skill_crit_nin" data-col="CriticalTargets"><img src="https://romasagatool.com/img/enemy/icon_hu.png" width="50" height="50"><br>人間 <span class="series-button" id="count_skill_crit_nin">...</span></a>
-                            <a class="_FilterLink  small" data-href="skill_crit_jo" data-col="CriticalTargets"><img src="https://romasagatool.com/img/enemy/icon_jo.png" width="50" height="50"><br>女性 <span class="series-button" id="count_skill_crit_jo">...</span></a>
-                            <a class="_FilterLink  small" data-href="skill_crit_giant" data-col="CriticalTargets"><img src="https://romasagatool.com/img/enemy/icon_giant.png" width="50" height="50"><br>巨人 <span class="series-button" id="count_skill_crit_giant">...</span></a>
-                            <a class="_FilterLink  small" data-href="skill_crit_fire" data-col="CriticalTargets"><img src="https://romasagatool.com/img/enemy/icon_ka.png" width="50" height="50"><br>火精 <span class="series-button" id="count_skill_crit_fire">...</span></a>
-                        </li>
-                        <li class="col-12 col-sm-2 table-success char-bottom">特効3</li>
-                        <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom">
-                            <a class="_FilterLink  small" data-href="skill_crit_shoku" data-col="CriticalTargets"><img src="https://romasagatool.com/img/enemy/icon_sho.png" width="50" height="50"><br>植物 <span class="series-button" id="count_skill_crit_shoku">...</span></a>
-                            <a class="_FilterLink  small" data-href="skill_crit_suise" data-col="CriticalTargets"><img src="https://romasagatool.com/img/enemy/icon_sui.png" width="50" height="50"><br>水棲 <span class="series-button" id="count_skill_crit_suise">...</span></a>
-                            <a class="_FilterLink  small" data-href="skill_crit_kaeru" data-col="CriticalTargets"><img src="https://romasagatool.com/img/enemy/icon_kaeru.png" width="50" height="50"><br>蛙 <span class="series-button" id="count_skill_crit_kaeru">...</span></a>
-                            <a class="_FilterLink  small" data-href="skill_crit_fish" data-col="CriticalTargets"><img src="https://romasagatool.com/img/enemy/icon_fish.png" width="50" height="50"><br>魚 <span class="series-button" id="count_skill_crit_fish">...</span></a>
-                        </li>
-                        <li class="col-12 col-sm-2 table-success char-bottom">特効4</li>
-                        <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom">
-                            <a class="_FilterLink  small" data-href="skill_crit_fuyu" data-col="CriticalTargets"><img src="https://romasagatool.com/img/enemy/icon_fuyu.png" width="50" height="50"><br>浮遊 <span class="series-button" id="count_skill_crit_fuyu">...</span></a>
-                            <a class="_FilterLink  small" data-href="skill_crit_dragon" data-col="CriticalTargets"><img src="https://romasagatool.com/img/enemy/type_16.png" width="50" height="50"><br>竜 <span class="series-button" id="count_skill_crit_dragon">...</span></a>
-                            <a class="_FilterLink  small" data-href="skill_crit_kemo" data-col="CriticalTargets"><img src="https://romasagatool.com/img/enemy/icon_kemo.png" width="50" height="50"><br>獣 <span class="series-button" id="count_skill_crit_kemo">...</span></a>
-                            <a class="_FilterLink  small" data-href="skill_crit_jujin" data-col="CriticalTargets"><img src="https://romasagatool.com/img/enemy/type_2.png" width="50" height="50"><br>獣人 <span class="series-button" id="count_skill_crit_jujin">...</span></a>
-                        </li>
-
+                    </ul>
+                    <ul class="row nav nav-tabs text-center opacity">
+                        <li class="col-12 label-text-small yubi" id="BP_TOGGLE">消費BP・威力（タップでオープン）</li>
+                    </ul>
+                    <ul class="row nav nav-tabs text-center opacity" id="BP_UL">
                         <li class="col-12 col-sm-2 table-info">消費BP</li>
                         <li class="col-12 col-sm-5 d-flex justify-content-around char-bottom">
                             <a class="_FilterLink pad0 d-inline-block" data-href="skill_bp0" data-col="ConsumeBp"><span style="font-family:arial black; font-size:15px">0</span><br><span class="series-button" id="count_skill_bp0">...</span></a>
@@ -363,57 +412,97 @@
                             <a class="_FilterLink pad0 d-inline-block" data-href="skill_kbp16" data-col="KakuseiBp"><span style="font-family:arial black; font-size:15px">16</span><br><span class="series-button" id="count_skill_kbp16">...</span></a>
                         </li>                        
                         <li class="col-12 col-sm-2 table-info">技威力</li>
-                        <li class="col m-auto side-padding-zero"><a class="_FilterLink pad0 d-inline-block" data-href="skill_iryoku_-" data-col="PowerGrade"><span style="font-family:arial black; font-size:15px">無</span><br><span class="series-button" id="count_skill_iryoku_-">...</span></a></li>
-                        <li class="col m-auto side-padding-zero"><a class="_FilterLink pad0 d-inline-block" data-href="skill_iryoku_e" data-col="PowerGrade"><span style="font-family:arial black; font-size:15px">E</span><br><span class="series-button" id="count_skill_iryoku_e">...</span></a></li>
-                        <li class="col m-auto side-padding-zero"><a class="_FilterLink pad0 d-inline-block" data-href="skill_iryoku_d" data-col="PowerGrade"><span style="font-family:arial black; font-size:15px">D</span><br><span class="series-button" id="count_skill_iryoku_d">...</span></a></li>
-                        <li class="col m-auto side-padding-zero"><a class="_FilterLink pad0 d-inline-block" data-href="skill_iryoku_c" data-col="PowerGrade"><span style="font-family:arial black; font-size:15px">C</span><br><span class="series-button" id="count_skill_iryoku_c">...</span></a></li>
-                        <li class="col m-auto side-padding-zero"><a class="_FilterLink pad0 d-inline-block" data-href="skill_iryoku_b" data-col="PowerGrade"><span style="font-family:arial black; font-size:15px">B</span><br><span class="series-button" id="count_skill_iryoku_b">...</span></a></li>
-                        <li class="col m-auto side-padding-zero"><a class="_FilterLink pad0 d-inline-block" data-href="skill_iryoku_a" data-col="PowerGrade"><span style="font-family:arial black; font-size:15px">A</span><br><span class="series-button" id="count_skill_iryoku_a">...</span></a></li>
-                        <li class="col m-auto side-padding-zero"><a class="_FilterLink pad0 d-inline-block" data-href="skill_iryoku_s" data-col="PowerGrade"><span style="font-family:arial black; font-size:15px">S</span><br><span class="series-button" id="count_skill_iryoku_s">...</span></a></li>
-                        <li class="col m-auto side-padding-zero"><a class="_FilterLink pad0 d-inline-block" data-href="skill_iryoku_ss" data-col="PowerGrade"><span style="font-family:arial black; font-size:15px">SS</span><br><span class="series-button" id="count_skill_iryoku_ss">...</span></a></li>
-                        <li class="col m-auto side-padding-zero"><a class="_FilterLink pad0 d-inline-block" data-href="skill_iryoku_sss" data-col="PowerGrade"><span style="font-family:arial black; font-size:15px">SSS</span><br><span class="series-button" id="count_skill_iryoku_sss">...</span></a></li>
-                        <li class="col m-auto side-padding-zero"><a class="_FilterLink pad0 d-inline-block" data-href="skill_iryoku_ssss" data-col="PowerGrade"><span style="font-family:arial black; font-size:15px">SSSS</span><br><span class="series-button" id="count_skill_iryoku_ssss">...</span></a></li>
-                        <li class="col-12 col-sm-1 table-info">覚醒<br class="hidden pcBlock">素材</li>
-                        <li class="col m-auto side-padding-zero">
-                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_black1" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_ksand"><span class="series-button" id="count_skill_black1">...</span></span></a>
-                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_black2" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_kstone"><span class="series-button" id="count_skill_black2">...</span></span></a>
-                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_black3" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_kjewel"><span class="series-button" id="count_skill_black3">...</span></span></a>
+                        <li class="col-12 col-sm-5 d-flex justify-content-around char-bottom">
+                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_iryoku_-" data-col="PowerGrade"><span style="font-family:arial black; font-size:15px">無</span><br><span class="series-button" id="count_skill_iryoku_-">...</span></a>
+                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_iryoku_e" data-col="PowerGrade"><span style="font-family:arial black; font-size:15px">E</span><br><span class="series-button" id="count_skill_iryoku_e">...</span></a>
+                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_iryoku_d" data-col="PowerGrade"><span style="font-family:arial black; font-size:15px">D</span><br><span class="series-button" id="count_skill_iryoku_d">...</span></a>
+                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_iryoku_c" data-col="PowerGrade"><span style="font-family:arial black; font-size:15px">C</span><br><span class="series-button" id="count_skill_iryoku_c">...</span></a>
+                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_iryoku_b" data-col="PowerGrade"><span style="font-family:arial black; font-size:15px">B</span><br><span class="series-button" id="count_skill_iryoku_b">...</span></a>
                         </li>
-                        <li class="col m-auto side-padding-zero">
-                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_blue1" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_bsand"><span class="series-button" id="count_skill_blue1">...</span></span></a>
-                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_blue2" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_bstone"><span class="series-button" id="count_skill_blue2">...</span></span></a>
-                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_blue3" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_bjewel"><span class="series-button" id="count_skill_blue3">...</span></span></a>
+
+                        <li class="col-12 col-sm-5 d-flex justify-content-around char-bottom">
+                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_iryoku_a" data-col="PowerGrade"><span style="font-family:arial black; font-size:15px">A</span><br><span class="series-button" id="count_skill_iryoku_a">...</span></a>
+                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_iryoku_s" data-col="PowerGrade"><span style="font-family:arial black; font-size:15px">S</span><br><span class="series-button" id="count_skill_iryoku_s">...</span></a>
+                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_iryoku_ss" data-col="PowerGrade"><span style="font-family:arial black; font-size:15px">SS</span><br><span class="series-button" id="count_skill_iryoku_ss">...</span></a>
+                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_iryoku_sss" data-col="PowerGrade"><span style="font-family:arial black; font-size:15px">SSS</span><br><span class="series-button" id="count_skill_iryoku_sss">...</span></a>
+                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_iryoku_ssss" data-col="PowerGrade"><span style="font-family:arial black; font-size:15px">SSSS</span><br><span class="series-button" id="count_skill_iryoku_ssss">...</span></a>
                         </li>
-                        <li class="col m-auto side-padding-zero">
-                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_green1" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_gsand"><span class="series-button" id="count_skill_green1">...</span></span></a>
-                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_green2" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_gstone"><span class="series-button" id="count_skill_green2">...</span></span></a>
-                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_green3" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_gjewel"><span class="series-button" id="count_skill_green3">...</span></span></a>
-                        </li>
-                        <li class="col m-auto side-padding-zero">
-                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_orange1" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_osand"><span class="series-button" id="count_skill_orange1">...</span></span></a>
-                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_orange2" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_ostone"><span class="series-button" id="count_skill_orange2">...</span></span></a>
-                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_orange3" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_ojewel"><span class="series-button" id="count_skill_orange3">...</span></span></a>
-                        </li>
-                        <li class="col m-auto side-padding-zero">
-                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_purple1" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_psand"><span class="series-button" id="count_skill_purple1">...</span></span></a>
-                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_purple2" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_pstone"><span class="series-button" id="count_skill_purple2">...</span></span></a>
-                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_purple3" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_pjewel"><span class="series-button" id="count_skill_purple3">...</span></span></a>
-                        </li>
-                        <li class="col m-auto side-padding-zero">
-                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_red1" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_rsand"><span class="series-button" id="count_skill_red1">...</span></span></a>
-                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_red2" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_rstone"><span class="series-button" id="count_skill_red2">...</span></span></a>
-                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_red3" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_rjewel"><span class="series-button" id="count_skill_red3">...</span></span></a>
-                        </li>
-                        <li class="col m-auto side-padding-zero">
-                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_yellow1" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_ysand"><span class="series-button" id="count_skill_yellow1">...</span></span></a>
-                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_yellow2" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_ystone"><span class="series-button" id="count_skill_yellow2">...</span></span></a>
-                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_yellow3" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_yjewel"><span class="series-button" id="count_skill_yellow3">...</span></span></a>
-                        </li>
-                        <li class="col m-auto side-padding-zero">
-                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_white1" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_wsand"><span class="series-button" id="count_skill_white1">...</span></span></a>
-                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_white2" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_wstone"><span class="series-button" id="count_skill_white2">...</span></span></a>
-                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_white3" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_wjewel"><span class="series-button" id="count_skill_white3">...</span></span></a>
-                        </li>
+                    </ul>
+                    <ul class="row nav nav-tabs text-center opacity">
+                        <li class="col-12 label-text-small yubi" id="TOKKOU_TOGGLE">特攻・覚醒素材（タップでオープン）</li>
+                    </ul>
+                    <ul class="row nav nav-tabs text-center opacity" id="TOKKOU_UL">
+                            <li class="col-12 col-sm-2 table-success char-bottom">特効1</li>
+                            <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom">
+                                <a class="_FilterLink  small" data-href="skill_crit_hone" data-col="CriticalTargets"><img src="https://romasagatool.com/img/enemy/icon_hone.png" width="50" height="50"><br>骨 <span class="series-button" id="count_skill_crit_hone">...</span></a>
+                                <a class="_FilterLink  small" data-href="skill_crit_fushi" data-col="CriticalTargets"><img src="https://romasagatool.com/img/enemy/icon_fushi.png" width="50" height="50"><br>不死 <span class="series-button" id="count_skill_crit_fushi">...</span></a>
+                                <a class="_FilterLink  small" data-href="skill_crit_devil" data-col="CriticalTargets"><img src="https://romasagatool.com/img/enemy/icon_devil.png" width="50" height="50"><br>悪魔 <span class="series-button" id="count_skill_crit_devil">...</span></a>
+                                <a class="_FilterLink  small" data-href="skill_crit_mushi" data-col="CriticalTargets"><img src="https://romasagatool.com/img/enemy/icon_mushi.png" width="50" height="50"><br>虫 <span class="series-button" id="count_skill_crit_mushi">...</span></a>
+                                <a class="_FilterLink  small" data-href="skill_crit_gan" data-col="CriticalTargets"><img src="https://romasagatool.com/img/enemy/icon_gan.png" width="50" height="50"><br>岩石 <span class="series-button" id="count_skill_crit_gan">...</span></a>
+                            </li>
+                            <li class="col-12 col-sm-2 table-success char-bottom">特効2</li>
+                            <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom">
+                                <a class="_FilterLink  small" data-href="skill_crit_nin" data-col="CriticalTargets"><img src="https://romasagatool.com/img/enemy/icon_hu.png" width="50" height="50"><br>人間 <span class="series-button" id="count_skill_crit_nin">...</span></a>
+                                <a class="_FilterLink  small" data-href="skill_crit_jo" data-col="CriticalTargets"><img src="https://romasagatool.com/img/enemy/icon_jo.png" width="50" height="50"><br>女性 <span class="series-button" id="count_skill_crit_jo">...</span></a>
+                                <a class="_FilterLink  small" data-href="skill_crit_giant" data-col="CriticalTargets"><img src="https://romasagatool.com/img/enemy/icon_giant.png" width="50" height="50"><br>巨人 <span class="series-button" id="count_skill_crit_giant">...</span></a>
+                                <a class="_FilterLink  small" data-href="skill_crit_fire" data-col="CriticalTargets"><img src="https://romasagatool.com/img/enemy/icon_ka.png" width="50" height="50"><br>火精 <span class="series-button" id="count_skill_crit_fire">...</span></a>
+                            </li>
+                            <li class="col-12 col-sm-2 table-success char-bottom">特効3</li>
+                            <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom">
+                                <a class="_FilterLink  small" data-href="skill_crit_shoku" data-col="CriticalTargets"><img src="https://romasagatool.com/img/enemy/icon_sho.png" width="50" height="50"><br>植物 <span class="series-button" id="count_skill_crit_shoku">...</span></a>
+                                <a class="_FilterLink  small" data-href="skill_crit_suise" data-col="CriticalTargets"><img src="https://romasagatool.com/img/enemy/icon_sui.png" width="50" height="50"><br>水棲 <span class="series-button" id="count_skill_crit_suise">...</span></a>
+                                <a class="_FilterLink  small" data-href="skill_crit_kaeru" data-col="CriticalTargets"><img src="https://romasagatool.com/img/enemy/icon_kaeru.png" width="50" height="50"><br>蛙 <span class="series-button" id="count_skill_crit_kaeru">...</span></a>
+                                <a class="_FilterLink  small" data-href="skill_crit_fish" data-col="CriticalTargets"><img src="https://romasagatool.com/img/enemy/icon_fish.png" width="50" height="50"><br>魚 <span class="series-button" id="count_skill_crit_fish">...</span></a>
+                            </li>
+                            <li class="col-12 col-sm-2 table-success char-bottom">特効4</li>
+                            <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom">
+                                <a class="_FilterLink  small" data-href="skill_crit_fuyu" data-col="CriticalTargets"><img src="https://romasagatool.com/img/enemy/icon_fuyu.png" width="50" height="50"><br>浮遊 <span class="series-button" id="count_skill_crit_fuyu">...</span></a>
+                                <a class="_FilterLink  small" data-href="skill_crit_dragon" data-col="CriticalTargets"><img src="https://romasagatool.com/img/enemy/type_16.png" width="50" height="50"><br>竜 <span class="series-button" id="count_skill_crit_dragon">...</span></a>
+                                <a class="_FilterLink  small" data-href="skill_crit_kemo" data-col="CriticalTargets"><img src="https://romasagatool.com/img/enemy/icon_kemo.png" width="50" height="50"><br>獣 <span class="series-button" id="count_skill_crit_kemo">...</span></a>
+                                <a class="_FilterLink  small" data-href="skill_crit_jujin" data-col="CriticalTargets"><img src="https://romasagatool.com/img/enemy/type_2.png" width="50" height="50"><br>獣人 <span class="series-button" id="count_skill_crit_jujin">...</span></a>
+                            </li>                        
+                            <li class="col-12 col-sm-2 table-info">覚醒<br class="hidden pcBlock">素材</li>
+                            <li class="col m-auto side-padding-zero">
+                                <a class="_FilterLink pad0 d-inline-block" data-href="skill_black1" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_ksand"><span class="series-button" id="count_skill_black1">...</span></span></a><br>
+                                <a class="_FilterLink pad0 d-inline-block" data-href="skill_black2" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_kstone"><span class="series-button" id="count_skill_black2">...</span></span></a><br>
+                                <a class="_FilterLink pad0 d-inline-block" data-href="skill_black3" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_kjewel"><span class="series-button" id="count_skill_black3">...</span></span></a>
+                            </li>
+                            <li class="col m-auto side-padding-zero">
+                                <a class="_FilterLink pad0 d-inline-block" data-href="skill_blue1" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_bsand"><span class="series-button" id="count_skill_blue1">...</span></span></a><br>
+                                <a class="_FilterLink pad0 d-inline-block" data-href="skill_blue2" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_bstone"><span class="series-button" id="count_skill_blue2">...</span></span></a><br>
+                                <a class="_FilterLink pad0 d-inline-block" data-href="skill_blue3" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_bjewel"><span class="series-button" id="count_skill_blue3">...</span></span></a>
+                            </li>
+                            <li class="col m-auto side-padding-zero">
+                                <a class="_FilterLink pad0 d-inline-block" data-href="skill_green1" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_gsand"><span class="series-button" id="count_skill_green1">...</span></span></a><br>
+                                <a class="_FilterLink pad0 d-inline-block" data-href="skill_green2" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_gstone"><span class="series-button" id="count_skill_green2">...</span></span></a><br>
+                                <a class="_FilterLink pad0 d-inline-block" data-href="skill_green3" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_gjewel"><span class="series-button" id="count_skill_green3">...</span></span></a>
+                            </li>
+                            <li class="col m-auto side-padding-zero">
+                                <a class="_FilterLink pad0 d-inline-block" data-href="skill_orange1" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_osand"><span class="series-button" id="count_skill_orange1">...</span></span></a><br>
+                                <a class="_FilterLink pad0 d-inline-block" data-href="skill_orange2" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_ostone"><span class="series-button" id="count_skill_orange2">...</span></span></a><br>
+                                <a class="_FilterLink pad0 d-inline-block" data-href="skill_orange3" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_ojewel"><span class="series-button" id="count_skill_orange3">...</span></span></a>
+                            </li>
+                            <li class="col m-auto side-padding-zero">
+                                <a class="_FilterLink pad0 d-inline-block" data-href="skill_purple1" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_psand"><span class="series-button" id="count_skill_purple1">...</span></span></a><br>
+                                <a class="_FilterLink pad0 d-inline-block" data-href="skill_purple2" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_pstone"><span class="series-button" id="count_skill_purple2">...</span></span></a><br>
+                                <a class="_FilterLink pad0 d-inline-block" data-href="skill_purple3" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_pjewel"><span class="series-button" id="count_skill_purple3">...</span></span></a>
+                            </li>
+                            <li class="col m-auto side-padding-zero">
+                                <a class="_FilterLink pad0 d-inline-block" data-href="skill_red1" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_rsand"><span class="series-button" id="count_skill_red1">...</span></span></a><br>
+                                <a class="_FilterLink pad0 d-inline-block" data-href="skill_red2" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_rstone"><span class="series-button" id="count_skill_red2">...</span></span></a><br>
+                                <a class="_FilterLink pad0 d-inline-block" data-href="skill_red3" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_rjewel"><span class="series-button" id="count_skill_red3">...</span></span></a>
+                            </li>
+                            <li class="col m-auto side-padding-zero">
+                                <a class="_FilterLink pad0 d-inline-block" data-href="skill_yellow1" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_ysand"><span class="series-button" id="count_skill_yellow1">...</span></span></a><br>
+                                <a class="_FilterLink pad0 d-inline-block" data-href="skill_yellow2" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_ystone"><span class="series-button" id="count_skill_yellow2">...</span></span></a><br>
+                                <a class="_FilterLink pad0 d-inline-block" data-href="skill_yellow3" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_yjewel"><span class="series-button" id="count_skill_yellow3">...</span></span></a>
+                            </li>
+                            <li class="col m-auto side-padding-zero">
+                                <a class="_FilterLink pad0 d-inline-block" data-href="skill_white1" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_wsand"><span class="series-button" id="count_skill_white1">...</span></span></a><br>
+                                <a class="_FilterLink pad0 d-inline-block" data-href="skill_white2" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_wstone"><span class="series-button" id="count_skill_white2">...</span></span></a><br>
+                                <a class="_FilterLink pad0 d-inline-block" data-href="skill_white3" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_wjewel"><span class="series-button" id="count_skill_white3">...</span></span></a>
+                            </li>
+                        </span>
 
                     </ul>
                 </div>
@@ -434,46 +523,51 @@
                     <div class="col-12 col-md-8">
                         <table class="width-100">
                             <tr>
-                                <td class="weaponIconTd" rowspan=2>
-                                    <span class="WEAPON_ICON" style="position: absolute; left: 0px; top: 5px;"></span>
-                                    <div class="ICON_AREA_IMG1 width-100 text-nowrap" style="position: absolute; left: -5px; bottom: 0px;"></div>
+                                <td class="weaponIconTd">
+                                    <div class="SKILL_ICON width-100" style="position: absolute; top: 3px;"></div>
                                 </td>
-                                <td style="text-align: left;line-height: 10px;position: relative;">
-                                    <p class="text-nowrap text-left skill-name"></p>
-                                    <span class="IRYOKU_AREA d-sm-none" style="background: black;font-size: 12px; padding: 0px 10px; border-radius: 5px;"></span>
+                                <td style="text-align: left;line-height: 14px;position: relative; padding-left: 5px;">
+                                    <div class="d-flex">
+                                        <img class="icon_xs WEAPON_ICON" style="margin: 3px 5px 0px 0px;">
+                                        <div class="text-nowrap text-left skill-name" style="vertical-align: middle;"></div>
+                                    </div>
+                                    <span class="IRYOKU_AREA d-sm-none" style="background: black;font-size: 12px; padding: 0px 10px; border-radius: 5px; border: 1px solid;"></span>
+                                    <div class="d-none d-sm-block" style="font-size: 13px; position: relative;">
+                                        <span class="ICON_AREA_TEXT"></span>
+                                    </div>
                                 </td>
-                                <td class="d-none d-sm-table-cell text-right text-nowrap" style="width:120px; padding-right:5px">
+                                <td class="d-none d-sm-table-cell text-right text-nowrap" style="width:120px; padding-right:5px; line-height: 20px;">
                                     <div class="IRYOKU_TD"></div>
+                                    <span class="IRYOKU_AREA" style="background: black;font-size: 14px; padding: 0px 10px; border-radius: 10px; border: 1px solid;"></span>                                    
                                 </td>
                                 <td class="text-right small skillKakuseiArea" style="position: relative; width:40px; height:40px;">
                                     <span class="icon_back_default" style="position: absolute; top: 5px; right: 0; background-size: 40px;">
                                         <span class="KAKUSEI_CLASS" style="width:40px;height:40px; display: inline-block; background-size: contain;">　</span>
                                     </span>
-                                    <span class="KAKUSEI_BP" style="position: absolute;
-                                    bottom: -15px;
-                                    right: 0;
-                                    width: 40px;
-                                    text-align: center;
-                                    font-size: 8px;"></span>
+                                    <span class="kakusei-bp KAKUSEI_BP"></span>
                                 </td>
                             </tr>
                             <tr>
-                                <td>
-                                    <div class="text-left" style="font-size: 13px; position: relative;">
-                                        <span class="ICON_AREA_IMG2"></span>
-                                        <span class="ICON_AREA_TEXT"></span>　</div>
+                                <td class="weaponIconTd">
+                                    <div class="ICON_AREA_IMG1 width-100 text-nowrap"></div>
                                 </td>
-                                <td class="d-none d-sm-table-cell text-right" style="padding-right: 5px;">
-                                    <span class="IRYOKU_AREA" style="background: black;font-size: 14px; padding: 0px 10px; border-radius: 10px; border: 1px solid;"></span>
+                                <td class="text-left" style="line-height: initial;" colspan=2>
+                                    <div class="d-sm-none" style="font-size: 13px; position: relative;">
+                                        <span class="ICON_AREA_TEXT"></span>
+                                    </div>
+                                    <div style="font-size: 13px; position: relative;">
+                                        <span class="ICON_AREA_IMG2"></span>
+                                    </div>
                                 </td>
                             </tr>
                         </table>
                     </div>
                     <div class="col-12 d-md-none"><div style="width:100%; border: 1px solid rgba(152,137,106,1); margin-bottom:1px;"></div></div>
                     <div class="col-12 col-md-4 HOLDER_DISP_AREA">
-                        <div class="iconClass holderStyleArea text-left" style="line-height: 0px; height:60px; overflow-x: scroll; overflow-y: hidden; white-space:nowrap;"></div>
+                        <div class="iconClass holderStyleArea text-left"></div>
                     </div>
                 </button>
+
                 <div class="selectJoken">
                     <label id="SKILLTOP"  class="badge badge-pill badge-light">技・術の表示順</label>
                     <div class="row justify-content-md-center text-nowrap">
@@ -485,14 +579,13 @@
                         </div>
                         <div class="col-12 col-lg-3" style="margin-bottom:5px;">                            
                             <button id="HIDE_LIMIT" class="width-100 icon_btn_negative">限定技を非表示</button>
-                        </div>
-                        <div class="col-12 d-lg-none">
-                            <button id="DISP_HOLDER" class="width-100 icon_btn_positive fuchidori-white">技・術保持スタイルの表示/非表示</button>
-                        </div>
-                        
+                        </div>                        
                     </div>
 
                     <label class="badge badge-pill badge-light">技・術をタップすると詳細を表示します</label>
+                    <div class="d-lg-none">
+                        <button id="DISP_HOLDER" class="width-100 icon_btn_positive fuchidori-white">保持スタイルの表示切り替え</button>
+                    </div>
                     <label class="label-text-small width-100" style="padding: 5px 25px;"><span id="skill_name_label">剣</span>の技・術選択</label>
                     <div id="skillList" class="row" style="margin-bottom: 30px;"></div>
                     <div id="SKILL_SCROLL_ID"></div>
