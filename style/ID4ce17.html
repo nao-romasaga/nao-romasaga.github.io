@@ -1,33 +1,25 @@
 <!DOCTYPE html>
 <html prefix="og: http://ogp.me/ns#" lang="ja">
     <head>
-        <script src="./js/jquery-3.3.1.min.js"></script>
-        <script src="./js/lib/lazysizes.min.js"></script>
-        <script src="./js/lib/ls.unveilhooks.min.js"></script>
-        <script src="./js/data_STYLEMASTER_style.js" ></script>
-        <script src="./js/damage.js" ></script>
+        <script src="../js/jquery-3.3.1.min.js"></script>
+        <script src="../js/lib/lazysizes.min.js"></script>
+        <script src="../js/lib/ls.unveilhooks.min.js"></script>
+        <script src="../js/data_STYLEMASTER_style.js" ></script>
+        <script src="../js/damage.js" ></script>
         <script>
-            var URL_STYLE_ID = (location.search).substr(3);
-            var styleInfo = STYLE_MASTER[URL_STYLE_ID];
-            if (styleInfo !== undefined) {
-                //Title変更
-                document.title = `【ロマサガRS】${styleInfo['Rarity']} ${styleInfo['Name']} ${styleInfo['AnotherName']}の素ステ。ステータス最大値、技・アビリティ・耐性一覧`;
-                //Description変更
-                var desc = `${styleInfo['Name']} ${styleInfo['Rarity']} ${styleInfo['AnotherName']} の最新クエストでの素ステ上限、スタイル補正込み最大ステータス値、別スタイルとの比較を掲載しています`;
-                $("meta[name='description']").attr("content", desc);
-            }
+            var URL_STYLE_ID = "ID4ce17";
         </script>
         <!-- Global site tag (gtag.js) - Google Analytics         -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138966739-1"></script>
         <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
-        <script src="./js/asyncFunc.js"></script>
-        <script src="./js/data_TYPE_RANK_CHAR.js" ></script>
-        <script src="./js/data_TYPE_RANK_STYLE.js" ></script>
-        <script src="./js/data_CHARMASTER.js" ></script>
-        <script src="./js/data_ABILITY.js" ></script>
-        <script src="./js/data_SKILLMASTER_style.js" ></script>
-        <script src="./js/data_STYLESPEECH.js" ></script>
-        <script src="./js/data_STYLEILLUST.js" ></script>
+        <script src="../js/asyncFunc.js"></script>
+        <script src="../js/data_TYPE_RANK_CHAR.js" ></script>
+        <script src="../js/data_TYPE_RANK_STYLE.js" ></script>
+        <script src="../js/data_CHARMASTER.js" ></script>
+        <script src="../js/data_ABILITY.js" ></script>
+        <script src="../js/data_SKILLMASTER_style.js" ></script>
+        <script src="../js/data_STYLESPEECH.js" ></script>
+        <script src="../js/data_STYLEILLUST.js" ></script>
         <script>
             window.dataLayer = window.dataLayer || [];
             function gtag() {
@@ -39,13 +31,13 @@
         </script>
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <meta charset="utf-8">
-        <title>【ロマサガRS】全キャラ スタイル一覧</title>
-        <meta name="description" content="ロマサガRSのキャラクターごとのスタイルを調べるツールです。技・アビリティ・スタイル補正などが比較できます。攻略等にお役立て下さい。"/>
-        <meta property="og:title" content="【ロマサガRS】全キャラ スタイル一覧" />
+        <title>【ロマサガRS】S ラスタバン [一滴の血が変える世界]のスタイル詳細。ステータス上限値、技・アビリティの紹介</title>
+        <meta name="description" content="S ラスタバン [一滴の血が変える世界] の最新クエストでの素ステ上限、スタイル補正込み最大ステータス値、別スタイルとの比較を掲載しています"/>
+        <meta property="og:title" content="【ロマサガRS】S ラスタバン [一滴の血が変える世界]の素ステ。ステータス最大値、技・アビリティ・耐性一覧" />
         <meta property="og:url" content="https://nao-romasaga.github.io/style.html" />
-        <meta property="og:description" content="ロマサガRSのキャラクターごとのスタイルを調べるツールです。技・アビリティ・スタイル補正などが比較できます。攻略等にお役立て下さい。" />
-        <meta name="description" content="ロマサガRSのキャラクターごとのスタイルを調べるツールです。技・アビリティ・スタイル補正などが比較できます。攻略等にお役立て下さい。【ロマンシングサガ リユニバース】" />
-        <meta property="og:image" content="https://nao-romasaga.github.io/img/twitter_card_style.png" />
+        <meta property="og:description" content="S ラスタバン [一滴の血が変える世界] の最新クエストでの素ステ上限、スタイル補正込み最大ステータス値、別スタイルとの比較を掲載しています" />
+        <meta name="description" content="S ラスタバン [一滴の血が変える世界] の最新クエストでの素ステ上限、スタイル補正込み最大ステータス値、別スタイルとの比較を掲載しています" />
+        <meta property="og:image" content="https://romasagatool.com/img/banner/news_banner_character_314903.png" />
         <meta property="og:site_name" content="ロマサガRS便利ツール" />
         <meta property="og:type" content="article">
         <meta property="og:locale" content="ja_JP" />
@@ -53,10 +45,10 @@
         <meta name="twitter:site" content="@nao_romasaga_rs" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="stylesheet" href="./css/bootstrap/bootstrap.min.css">
-        <script src="./js/bootstrap/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="../css/bootstrap/bootstrap.min.css">
+        <script src="../js/bootstrap/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <link rel="stylesheet" type="text/css" href="./css/style2.css">
+        <link rel="stylesheet" type="text/css" href="../css/style2.css">
         
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
@@ -64,12 +56,12 @@
         <script src="https://www.gstatic.com/firebasejs/ui/3.5.2/firebase-ui-auth__ja.js"></script>
         <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
 
-        <script src="./js/Firebase.js"></script>
-        <script src="./js/utils2.js" ></script>
-        <script src="./js/style.js" ></script>
-        <script src="./js/culcStyleBonus.js" ></script>
+        <script src="../js/Firebase.js"></script>
+        <script src="../js/utils2.js" ></script>
+        <script src="../js/style.js" ></script>
+        <script src="../js/culcStyleBonus.js" ></script>
         <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
-        <style>
+        <style> 
             .right_parts {
                 text-anchor: unset;
             }
@@ -135,7 +127,7 @@
                 text-align: center;
                 background: url(https://romasagatool.com/img/icon/fukidashi_left_wide.png) no-repeat;
                 background-size: contain;
-                padding: 4px 2px 10px 10px;
+                padding: 4px 2px 0px 10px;
                 width: 190px;
                 height: 85px;
                 display: table-cell;
@@ -174,7 +166,6 @@
             .near_td {
                 display: block;
                 width:550px;
-                height: 50px;
                 line-height: 0px;
                 overflow-x: scroll;
                 overflow-y: hidden;
@@ -183,14 +174,11 @@
 
             /* 画面サイズ767(ipadの768は含まない)まで */
             @media screen and (max-width:767px) {
-                .right_parts {
-                    display: none !important;
-                }
                 .gacha-fukidashi {
                     height: 60px;
                 }
                 .near_td {
-                    width:200px;
+                    width:120px;
                 }
                 .S_LABEL {
                     width: 280px;
@@ -229,18 +217,6 @@
 
             /* 画面サイズ767(ipadの768を含む)より大きい場合 */
             @media screen and (min-width:767px) {
-                .RANKING-TABLE .style_icon_bg_base{
-                    width: 40px;
-                    height: 40px;
-                }
-                .RANKING-TABLE .style_icon_rare_base{
-                    width: 17px;
-                    height: 17px;
-                }
-                .RANKING-TABLE .shadow-blue{
-                    font-size: 10px !important;
-                }                
-
                 .KEISHO_SKILL{
                     width:250px;
                 }
@@ -323,11 +299,9 @@
                 .gacha-fukidashi {
                     height: 50px;
                 }
-                .right_parts {
-                    display: none !important;
-                }
+
                 .near_td {
-                    width:160px;
+                    width:75px;
                 }
                 .S_LABEL {
                     width: 230px;
@@ -406,202 +380,36 @@
         <![endif]-->
     </head>
     <body>
-        <div class ="haikei">
+        <div class ="">
             <div class="container">
-                <h3 class="text-center title-text">全キャラ スタイル一覧</h3>
-                <h5 class="text-center label-text-small width-100">最終更新日: <span id="UPDATE">2021/07/11</span></h5>
-                <p class="text-right opacity"><small>バグ発見、ご要望は <a href="https://peing.net/ja/nao_romasaga_rs" target="new">質問箱</a>まで</small>
+                <h3 class="text-center title-text">S ラスタバン [一滴の血が変える世界] のスタイル詳細</h3>
                 </p>
-<!--
-                <h5 class="text-center opacity kadomaru" onclick="$('.movie').toggleClass('d-none')">つかいかた動画をみる</h5>
-                <div class="movie d-none">
-                    <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">[new] キャラクターとスタイル詳細機能を作成しました。<br>スタイルレベル50の性能や、所有技の比較などが簡単に出来ます<br><br>ガチャを引く判断や限界突破の判断にご活用下さい✨<a href="https://t.co/vsr2OMd3zG">https://t.co/vsr2OMd3zG</a><br><br>お布施もお待ちしております😘<a href="https://t.co/3qFDqY1Kdx">https://t.co/3qFDqY1Kdx</a> <a href="https://t.co/lka5BOKblU">pic.twitter.com/lka5BOKblU</a></p>&mdash; (nAo)@ロマサガRS (@nao_romasaga_rs) <a href="https://twitter.com/nao_romasaga_rs/status/1120049965747687424?ref_src=twsrc%5Etfw">April 21, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                </div>
--->
-                <!-- ツール_スタイル上部 -->
+                <!-- スタイル詳細個別_上部 -->
                 <ins class="adsbygoogle"
                     style="display:block"
                     data-ad-client="ca-pub-5008373409434899"
-                    data-ad-slot="5836482514"
+                    data-ad-slot="5322688915"
                     data-ad-format="auto"
-                    data-full-width-responsive="true"></ins>   
+                    data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
                 <div class="info-modal" style="margin-bottom: 10px;">
-                    <div class="text-center info-modal-header">最新のスタイル</div>
+                    <div class="text-center info-modal-header">最新のスタイル一覧</div>
                     <div id="GACHA_AREA" ></div>
                 </div>
+                <div class="info-modal width-max" style="padding: 0px 5px 15px 10px;">
+                    <div class="text-center info-modal-header">同時期に実装されたスタイル</div>
+                    タップでそのスタイルの詳細を表示します
+                    <div id="GACHA_TEMPLATE_AREA"></div>
+                    <div id="GACHA_TEMPLATE" class="d-none">
+                        <div class="subtitle-long" style="margin-bottom:10px;"></div>
+                        <div class="styleIconArea"></div>
+                    </div>                        
+                </div>
+                <div style="margin: 10px 0px;"></div>
 
-                <label class="badge badge-pill badge-light">絞り込み</label>
-                <div class="filter-bgcolor text-center small row" style="width:100%; margin: 0px;">
-                    <ul class="nav text-center width-100" style="margin-bottom: 5px;">
-                        <li id="FILTER" class="subtitle fuchidori-white smallFont">武器種別</li>
-                    </ul>
-                    <ul class="nav text-center width-100">
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_ken"><span
-                                    class="icon_mini icon_ken weapon-icon-button fButton" onclick=""></span></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_dken"><span
-                                    class="icon_mini icon_dken weapon-icon-button fButton" onclick=""></span></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_ono"><span
-                                    class="icon_mini icon_ono weapon-icon-button fButton" onclick=""></span></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_kon"><span
-                                    class="icon_mini icon_kon weapon-icon-button fButton" onclick=""></span></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_tai"><span
-                                    class="icon_mini icon_tai weapon-icon-button fButton" onclick=""></span></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_ju"><span
-                                    class="icon_mini icon_ju weapon-icon-button fButton" onclick=""></span></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_sken"><span
-                                    class="icon_mini icon_sken weapon-icon-button fButton" onclick=""></span></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_yari"><span
-                                    class="icon_mini icon_yari weapon-icon-button fButton" onclick=""></span></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_yumi"><span
-                                    class="icon_mini icon_yumi weapon-icon-button fButton" onclick=""></span></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_tsue"><span
-                                    class="icon_mini icon_tsue weapon-icon-button fButton" onclick=""></span></a></li>
-                    </ul><!--
-                    <ul class="nav text-center width-100">
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_zan"><span
-                                    class="icon_mini icon_zan weapon-icon-button fButton" onclick=""></span></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_da"><span
-                                    class="icon_mini icon_da weapon-icon-button fButton" onclick=""></span></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_totsu"><span
-                                    class="icon_mini icon_totsu weapon-icon-button fButton" onclick=""></span></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_netsu"><span
-                                    class="icon_mini icon_netsu weapon-icon-button fButton" onclick=""></span></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_rei"><span
-                                    class="icon_mini icon_rei weapon-icon-button fButton" onclick=""></span></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_rai"><span
-                                    class="icon_mini icon_rai weapon-icon-button fButton" onclick=""></span></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_yo"><span
-                                    class="icon_mini icon_yo weapon-icon-button fButton" onclick=""></span></a></li>
-                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_in"><span
-                                    class="icon_mini icon_in weapon-icon-button fButton" onclick=""></span></a></li>
-                    </ul>-->
-                    <ul class="nav text-center width-100" style="margin-bottom: 5px;">
-                        <li class="fuchidori-white subtitle smallFont">シリーズ</li>
-                    </ul>
-                    <ul class="nav text-center width-100">
-                        <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0"
-                            data-href="RS1"><div class="fButton width-100 filter-bgcolor">RS1</div></a></li>
-                    <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0"
-                            data-href="RS2"><div class="fButton width-100 filter-bgcolor">RS2</div></a></li>
-                    <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0"
-                            data-href="RS3"><div class="fButton width-100 filter-bgcolor">RS3</div></a></li>
-                    <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0"
-                            data-href="SF1"><div class="fButton width-100 filter-bgcolor">SF1</div></a></li>
-                    <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0"
-                            data-href="SF2"><div class="fButton width-100 filter-bgcolor">SF2</div></a></li>
-                    <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0"
-                            data-href="US"><div class="fButton width-100 filter-bgcolor">US</div></a></li>
-                    <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0"
-                            data-href="ES"><div class="fButton width-100 filter-bgcolor">ES</div></a></li>
-                    <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0"
-                            data-href="SS"><div class="fButton width-100 filter-bgcolor">SSG</div></a></li>
-                    <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0"
-                            data-href="RSR"><div class="fButton width-100 filter-bgcolor">SaGaRS</div></a></li>
-                    <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0"
-                        data-href="GB"><div class="fButton width-100 filter-bgcolor text-nowrap">GB</div></a></li>    
-                    <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0"
-                            data-href="OTHER"><div class="fButton width-100 filter-bgcolor text-nowrap">その他</div></a></li>
-                </ul>
-                </div>
-
-                <div class="info-modal dotList d-none" id="_icon_ken">
-                    <div class="text-center info-modal-header"><span class="icon_mini icon_ken"></span></div>
-                </div>
-                <div class="info-modal dotList d-none" id="_icon_dken">
-                    <div class="text-center info-modal-header"><span class="icon_mini icon_dken"></span></div>
-                </div>
-                <div class="info-modal dotList d-none" id="_icon_ono">
-                    <div class="text-center info-modal-header"><span class="icon_mini icon_ono"></span></div>
-                </div>
-                <div class="info-modal dotList d-none" id="_icon_sken">
-                    <div class="text-center info-modal-header"><span class="icon_mini icon_sken"></span></div>
-                </div>
-                <div class="info-modal dotList d-none" id="_icon_yumi">
-                    <div class="text-center info-modal-header"><span class="icon_mini icon_yumi"></span></div>
-                </div>
-                <div class="info-modal dotList d-none" id="_icon_yari">
-                    <div class="text-center info-modal-header"><span class="icon_mini icon_yari"></span></div>
-                </div>
-                <div class="info-modal dotList d-none" id="_icon_ju">
-                    <div class="text-center info-modal-header"><span class="icon_mini icon_ju"></span></div>
-                </div>
-                <div class="info-modal dotList d-none" id="_icon_tai">
-                    <div class="text-center info-modal-header"><span class="icon_mini icon_tai"></span></div>
-                </div>
-                <div class="info-modal dotList d-none" id="_icon_kon">
-                    <div class="text-center info-modal-header"><span class="icon_mini icon_kon"></span></div>
-                </div>
-                <div class="info-modal dotList d-none" id="_icon_tsue">
-                    <div class="text-center info-modal-header"><span class="icon_mini icon_tsue"></span></div>
-                    <div id="_icon_hi"><span class="icon_sm icon_hi_sm"></span><br class="hidden spBlock"></div>
-                    <div id="_icon_mizu"><span class="icon_sm icon_mizu_sm"></span><br class="hidden spBlock"></div>
-                    <div id="_icon_tsuchi"><span class="icon_sm icon_tsuchi_sm"></span><br class="hidden spBlock"></div>
-                    <div id="_icon_kaze"><span class="icon_sm icon_kaze_sm"></span><br class="hidden spBlock"></div>
-                    <div id="_icon_hikari"><span class="icon_sm icon_hikari_sm"></span><br class="hidden spBlock"></div>
-                    <div id="_icon_yami"><span class="icon_sm icon_yami_sm"></span><br class="hidden spBlock"></div>                    
-                    <div id="_icon_noJustu"><span class="icon_sm icon_tsue_sm"></span><br class="hidden spBlock"></div>                    
-                </div>
-    
-                <div class="info-modal dotList" id="RS1">
-                    <div class="text-center info-modal-header"><span class="hidden pcBlock">ロマンシング・サガ1</span><span
-                            class="hidden spBlock">ロマサガ1</span></div>
-                    <section id="SECRS1" class="char-choise-section"></section>
-                </div>
-                <div class="info-modal dotList d-none" id="RS2">
-                    <div class="text-center info-modal-header"><span class="hidden pcBlock">ロマンシング・サガ2</span><span
-                            class="hidden spBlock">ロマサガ2</span></div>
-                    <section id="SECRS2" class="char-choise-section"></section>
-                </div>
-                <div class="info-modal dotList d-none" id="RS3">
-                    <div class="text-center info-modal-header"><span class="hidden pcBlock">ロマンシング・サガ3</span><span
-                            class="hidden spBlock">ロマサガ3</span></div>
-                    <section id="SECRS3" class="char-choise-section"></section>
-                </div>
-                <div class="info-modal dotList d-none" id="SF1">
-                    <div class="text-center info-modal-header"><span class="hidden pcBlock">サガフロンティア1</span><span
-                            class="hidden spBlock">サガフロ1</span></div>
-                    <section id="SECSF1" class="char-choise-section"></section>
-                </div>
-                <div class="info-modal dotList d-none" id="SF2">
-                    <div class="text-center info-modal-header"><span class="hidden pcBlock">サガフロンティア2</span><span
-                            class="hidden spBlock">サガフロ2</span></div>
-                    <section id="SECSF2" class="char-choise-section"></section>
-                </div>
-                <div class="info-modal dotList d-none" id="US">
-                    <div class="text-center info-modal-header"><span class="hidden pcBlock">アンリミテッド・サガ</span><span
-                            class="hidden spBlock">アンサガ</span></div>
-                    <section id="SECUS" class="char-choise-section"></section>
-                </div>
-                <div class="info-modal dotList d-none" id="SS">
-                    <div class="text-center info-modal-header"><span class="hidden pcBlock">サガ・スカーレットグレイス</span><span
-                            class="hidden spBlock">サガスカ</span></div>
-                    <section id="SECSS" class="char-choise-section"></section>
-                </div>
-                <div class="info-modal dotList d-none" id="ES">
-                    <div class="text-center info-modal-header"><span class="hidden pcBlock">エンペラーズ・サガ</span><span
-                            class="hidden spBlock">エンサガ</span></div>
-                    <section id="SECES" class="char-choise-section"></section>
-                </div>
-                <div class="info-modal dotList d-none" id="RSR">
-                    <div class="text-center info-modal-header"><span class="hidden pcBlock">ロマサガ リ・ユニバース</span><span
-                        class="hidden spBlock">ロマサガRS</span></div>
-                    <section id="SECRSR" class="char-choise-section"></section>
-                </div>
-                <div class="info-modal dotList d-none" id="GB">
-                    <div class="text-center info-modal-header">GB</div>
-                    <section class="char-choise-section">
-                        <span id="SECGB1"></span>
-                        <span id="SECGB2"></span>
-                        <span id="SECGB3"></span>
-                    </section>
-                </div>
-                <div class="info-modal dotList d-none" id="OTHER">
-                    <div class="text-center info-modal-header">その他</div>
-                    <section class="char-choise-section">
-                        <span id="SECOTR"></span>
-                    </section>
-                </div>
-                <div class="row">
+                <div class="row d-none">
                     <div class="col-12 d-none d-lg-block">
                         <div class="info-modal styleInfoArea width-max text-center">
                             <div class="info-modal-header">表示ステータスを変更する</div>
@@ -808,45 +616,11 @@
                         </div>
                     </div>           
                 </div>
-                <div id="CHAR_ARTICLE" class="d-none info-modal" style="margin: 10px 0px;">
-                    <div class="info-modal-header"><span class="CHAR_NAME">キャラ名</span>の記事</div>
-                    <div id="CHAR_ARTICLE_BODY" style="width: 100%; height: 250px; overflow-x: scroll; overflow-y: hidden; white-space:nowrap;">
-                    </div>
-                    <div id="ARTICLE_CARD" class="d-none opacity kadomaru" style="position: relative; margin: 0px 5px; width: 220px; height:250px; padding:5px 5px 20px 5px; font-size:0.9rem; vertical-align: top;">
-                        <a href="" target="_new">
-                            <img class="sImg kadomaru d-none" src="" width="100px" align="left">
-                            <img class="lImg kadomaru" src="" width="100%" alt="">
-                            <div class="title" style="white-space: normal;"></div>
-                            <div style="position:absolute; bottom:0;font-size:0.8rem">最終更新:<span class="update"></span></div>
-                        </a>
-                    </div>
-                </div>                
-
-                <div class="filter-bgcolor styleChoiceArea width-100" style="margin:10px 0px">
-                    <div class="subtitle-long" style="margin-bottom:10px;">スタイル詳細</div><br>
-                    <div id="styleChoice"></div><!-- スタイルアイコン表示 -->
-                </div>
-                <!-- ツール_スタイル下部→台詞上部 -->
-                <ins class="adsbygoogle"
-                    style="display:block"
-                    data-ad-client="ca-pub-5008373409434899"
-                    data-ad-slot="6110964621"
-                    data-ad-format="auto"
-                    data-full-width-responsive="true"></ins>                
-                <script> (adsbygoogle = window.adsbygoogle || []).push({});</script>                         
-                <div class="info-modal styleChoiceArea " style="padding: 5px 20px 25px 20px; margin-bottom: 10px;">
-                    <div class="text-center info-modal-header">バンガード内 セリフ集</div>
-                    <div class="row small shadow-black" style="color:  #faf0b4;">
-                        <div class="col-12 col-lg-4 filter-bgcolor SPEECH0" style="padding: 5px 10px; height:80px;"><span style="display: block; line-height: 1.5;"></span><img src="" class="speech-icon"></div>
-                        <div class="col-12 col-lg-4 filter-bgcolor SPEECH1" style="padding: 5px 10px; height:80px;"><span style="display: block; line-height: 1.5;"></span><img src="" class="speech-icon"></div>
-                        <div class="col-12 col-lg-4 filter-bgcolor SPEECH2" style="padding: 5px 10px; height:80px;"><span style="display: block; line-height: 1.5;"></span><img src="" class="speech-icon"></div>                        
-                    </div>
-                </div>
                 <div class="styleChoiceArea width-100">
                     <div>
                         <div class="row no-gutters">
                             <div class="col-12 col-lg-5 position-relative" id="styleBgImg" onclick="">
-                                <div style="position:relative; min-height:667px; height: 100%">
+                                <div style="position:relative; min-height:667px;">
                                     <div class="width-100 text-center" style="position: absolute; z-index:2;">
                                         <img src="" class="width-100" id="styleRareTitle" style="max-width: 400px;">
                                         <div class="style-name-area fuchidori-white width-100">
@@ -922,7 +696,6 @@
 
                                 </div>
                             </div>
-
                             <div class="col-12 col-lg-7 bg-black-frame width-max-nobackground" style="padding:20px 10px;">
                                 <section class="bg-simple width-max" style="margin-bottom:10px">
                                     <div class="width-100" id="skillList"></div>
@@ -979,17 +752,7 @@
                     </div>
                     <div style="margin: 10px 0px;"></div>
                     <div class="info-modal width-max" style="padding: 0px 5px 15px 10px;">
-                        <div class="text-center info-modal-header">同時期に実装されたスタイル</div>
-                        タップでそのスタイルの詳細を表示します
-                        <div id="GACHA_TEMPLATE_AREA"></div>
-                        <div id="GACHA_TEMPLATE" class="d-none">
-                            <div class="subtitle-long" style="margin-bottom:10px;"></div>
-                            <div class="styleIconArea"></div>
-                        </div>                        
-                    </div>
-                    <div style="margin: 10px 0px;"></div>
-                    <div class="info-modal width-max" style="padding: 0px 5px 15px 10px;">
-                        <div class="text-center info-modal-header">みんなの評価</div>
+                        <div class="text-center info-modal-header">ラスタバン [一滴の血が変える世界] の評価</div>
                         <div class="row">
                             <div class="col-12 col-lg-6">
                                 <div class="filter-bgcolor">
@@ -1031,322 +794,18 @@
                                 </table>
                             </div>
                             <div class="col-12 col-lg-6">
-                                <span class="subtitle-long">あなたの評価<span class="ALREADY_VOTE d-none">(投票済)</span>　</span><br>
-                                ☆をタップして変更できます
-                                <table>
-                                    <tr>
-                                        <td><div class="bg-item width-100 text-center text-nowrap" style="padding: 5px 20px;">周回性能</div></td>
-                                        <td class="">
-                                            <img class="vote icon-star yubi" data-type="shukai" data-value="1" src="https://romasagatool.com/img/icon/icon_star10.png">
-                                            <img class="vote icon-star yubi" data-type="shukai" data-value="2" src="https://romasagatool.com/img/icon/icon_star10.png">
-                                            <img class="vote icon-star yubi" data-type="shukai" data-value="3" src="https://romasagatool.com/img/icon/icon_star10.png">
-                                            <img class="vote icon-star yubi" data-type="shukai" data-value="4" src="https://romasagatool.com/img/icon/icon_star00.png">
-                                            <img class="vote icon-star yubi" data-type="shukai" data-value="5" src="https://romasagatool.com/img/icon/icon_star00.png">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><div class="bg-item width-100 text-center text-nowrap" style="padding: 5px 20px;">汎用性</div></td>
-                                        <td class="">
-                                            <img class="vote icon-star yubi" data-type="hanyo" data-value="1" src="https://romasagatool.com/img/icon/icon_star10.png">
-                                            <img class="vote icon-star yubi" data-type="hanyo" data-value="2" src="https://romasagatool.com/img/icon/icon_star10.png">
-                                            <img class="vote icon-star yubi" data-type="hanyo" data-value="3" src="https://romasagatool.com/img/icon/icon_star10.png">
-                                            <img class="vote icon-star yubi" data-type="hanyo" data-value="4" src="https://romasagatool.com/img/icon/icon_star00.png">
-                                            <img class="vote icon-star yubi" data-type="hanyo" data-value="5" src="https://romasagatool.com/img/icon/icon_star00.png">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><div class="bg-item width-100 text-center text-nowrap" style="padding: 5px 20px;">唯一性</div></td>
-                                        <td class="">
-                                            <img class="vote icon-star yubi" data-type="only" data-value="1" src="https://romasagatool.com/img/icon/icon_star10.png">
-                                            <img class="vote icon-star yubi" data-type="only" data-value="2" src="https://romasagatool.com/img/icon/icon_star10.png">
-                                            <img class="vote icon-star yubi" data-type="only" data-value="3" src="https://romasagatool.com/img/icon/icon_star10.png">
-                                            <img class="vote icon-star yubi" data-type="only" data-value="4" src="https://romasagatool.com/img/icon/icon_star00.png">
-                                            <img class="vote icon-star yubi" data-type="only" data-value="5" src="https://romasagatool.com/img/icon/icon_star00.png">
-                                        </td>
-                                    </tr>
-                                </table>
-                                <button id="VOTE_STAR" class="icon_btn_positive width-100 shadow-blue" style="margin-top: 20px;"><span class="NO_VOTE">投票する</span><span class="ALREADY_VOTE d-none">投票を変更する</span></button>
-                                <div class="text-center small">
-                                    投票内容は何度でも変更できます<br>
-                                    「このぐらいかな？」の軽い気持ちで投票してください<br>
-                                    皆さんの投票お待ちしております( 'ω')و
+                                <span class="subtitle-long">凡例　</span><br>
+                                <div class="bg-simple" style="padding:15px;">
+                                    <span class="shadow-blue" style="color:white">単体火力/全体火力とは</span>　全力オート平均ダメージから自動算出。偏差値50を2.5として評価しています<br>
+                                    <span class="shadow-blue" style="color:white">周回性能とは</span>　引率としての周回を効率よく回ることができるか。<br>
+                                    継続して全体攻撃ができること、多属性でResistされにくいことが評価されます<br>
+                                    <span class="shadow-blue" style="color:white">汎用性とは</span>　周回、ボス戦、ツヴァイク、R杯など様々なシーンに対応可能か<br>
+                                    <span class="shadow-blue" style="color:white">唯一性とは</span>　他のスタイルでは代用がきかないものを持っているか<br>
+                                    例：全体即死の王者の剣、トーマスの高知力デルタペトラ、バルテルミーの強襲アバドンハンズなど
                                 </div>
                             </div>
                         </div>  
-                        <hr>
-                        <span class="subtitle-long">凡例　</span><br>
-                        <div class="bg-simple" style="padding:15px;">
-                            <span class="shadow-blue" style="color:white">単体火力/全体火力とは</span>　全力オート平均ダメージから自動算出。偏差値50を2.5として評価しています<br>
-                            <span class="shadow-blue" style="color:white">周回性能とは</span>　引率としての周回を効率よく回ることができるか。<br>
-                            継続して全体攻撃ができること、多属性でResistされにくいことが評価されます<br>
-                            <span class="shadow-blue" style="color:white">汎用性とは</span>　周回、ボス戦、ツヴァイク、R杯など様々なシーンに対応可能か<br>
-                            <span class="shadow-blue" style="color:white">唯一性とは</span>　他のスタイルでは代用がきかないものを持っているか<br>
-                            例：全体即死の王者の剣、トーマスの高知力デルタペトラ、バルテルミーの強襲アバドンハンズなど
-                        </div>
                     </div>
-
-                    <div class="info-modal width-max" id="HIDAME_AREA" style="margin-bottom: 10px;">
-                        <div class="text-center info-modal-header">被ダメージ 計算</div>                        
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="filter-bgcolor">
-                                    <div class="text-center" style="background: url(https://romasagatool.com/img/bg_cutin.png);">
-                                        <img class="RANK_HEAD_IMG" style="width: 100%; max-width:300px;">
-                                    </div>
-                                </div>
-                            </div>                            
-                            <div class="col-12 col-lg-6">
-                                <div class="bg-simple small text-nowrap text-center width-max" style="padding: 7px 20px; color: white;">
-                                    <table class="justify-content-around width-100" style="padding-left: 15px;">
-                                        <tr style="border-bottom: 1px solid lightblue; line-height: 10px;">
-                                            <td style="width: calc(100% / 8);"><span class="icon_xs_zokusei icon_zan" style="width:23px; height:23px;"></span></td>
-                                            <td style="width: calc(100% / 8);"><span class="icon_xs_zokusei icon_da" style="width:23px; height:23px;"></span></td>
-                                            <td style="width: calc(100% / 8);"><span class="icon_xs_zokusei icon_totsu" style="width:23px; height:23px;"></span></td>
-                                            <td style="width: calc(100% / 8);"><span class="icon_xs_zokusei icon_netsu" style="width:23px; height:23px;"></span></td>
-                                            <td style="width: calc(100% / 8);"><span class="icon_xs_zokusei icon_rei" style="width:23px; height:23px;"></span></td>
-                                            <td style="width: calc(100% / 8);"><span class="icon_xs_zokusei icon_rai" style="width:23px; height:23px;"></span></td>
-                                            <td style="width: calc(100% / 8);"><span class="icon_xs_zokusei icon_yo" style="width:23px; height:23px;"></span></td>
-                                            <td style="width: calc(100% / 8);"><span class="icon_xs_zokusei icon_in" style="width:23px; height:23px;"></span></td>
-                                        </tr>
-                                        <tr style="border-bottom: 1px solid lightblue; line-height: 15px;">
-                                            <td><span class="taisei_Zan">0</span><br><span class="bairitsu_Zan">1倍</span></td>
-                                            <td><span class="taisei_Da">0</span><br><span class="bairitsu_Da">1倍</span></td>
-                                            <td><span class="taisei_Totsu">0</span><br><span class="bairitsu_Totsu">1倍</span></td>
-                                            <td><span class="taisei_Netsu">0</span><br><span class="bairitsu_Netsu">1倍</span></td>
-                                            <td><span class="taisei_Rei">0</span><br><span class="bairitsu_Rei">1倍</span></td>
-                                            <td><span class="taisei_Rai">0</span><br><span class="bairitsu_Rai">1倍</span></td>
-                                            <td><span class="taisei_You">0</span><br><span class="bairitsu_You">1倍</span></td>
-                                            <td><span class="taisei_Inn">0</span><br><span class="bairitsu_Inn">1倍</span></td>
-                                        </tr>
-                                        <tr style="border-bottom: 1px solid lightblue; line-height: 15px;">
-                                            <td><span class="calc_taisei_Zan">0</span><br><span class="calc_bairitsu_Zan">1倍</span></td>
-                                            <td><span class="calc_taisei_Da">0</span><br><span class="calc_bairitsu_Da">1倍</span></td>
-                                            <td><span class="calc_taisei_Totsu">0</span><br><span class="calc_bairitsu_Totsu">1倍</span></td>
-                                            <td><span class="calc_taisei_Netsu">0</span><br><span class="calc_bairitsu_Netsu">1倍</span></td>
-                                            <td><span class="calc_taisei_Rei">0</span><br><span class="calc_bairitsu_Rei">1倍</span></td>
-                                            <td><span class="calc_taisei_Rai">0</span><br><span class="calc_bairitsu_Rai">1倍</span></td>
-                                            <td><span class="calc_taisei_You">0</span><br><span class="calc_bairitsu_You">1倍</span></td>
-                                            <td><span class="calc_taisei_Inn">0</span><br><span class="calc_bairitsu_Inn">1倍</span></td>
-                                        </tr>
-                                    </table>
-                                </div>
-                                <div id="ARMOR_AREA">
-                                    <table>
-                                        <tr>
-                                            <td>主<span class='hidden pcBlock'>防具</span></td><td class="main"></td><td class="main_detail small d-lg-none" style="line-height: 15px;"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>副<span class='hidden pcBlock'>防具</span></td><td class="sub"></td><td class="sub_detail small d-lg-none" style="line-height: 15px;"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>ア<span class='hidden pcBlock'>クセ</span></td><td class="acc"></td><td class="acc_detail small d-lg-none" style="line-height: 15px;"></td>
-                                        </tr>
-                                    </table>
-                                    <table class="d-none d-lg-table width-100 bg-simple" >
-                                        <tr class="text-center small">
-                                            <td style="width: 33%">主防具</td>
-                                            <td style="width: 33%">副防具</td>
-                                            <td style="width: 33%">アクセサリー</td>
-                                        </tr>
-                                        <tr class="small text-nowrap align-top" style="line-height: 15px;">
-                                            <td class="main_detail" style="padding-left: 5px; padding-bottom:15px;"></td>
-                                            <td class="sub_detail"></td>
-                                            <td class="acc_detail" style="padding-right: 5px;"></td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
-                            <style>
-                                tr.damage-col td:nth-child(3) {
-                                    padding-right: 5px;
-                                    border-right: 1px dashed lightblue;
-                                }
-                                tr.damage-col td:nth-child(5) {
-                                    padding-right: 5px;
-                                    border-right: 1px dashed lightblue;
-                                }
-                                .damage-col-head {
-                                    border-bottom: 1px solid lightblue;
-                                }
-                                tr.damage-col-head td:nth-child(2) {
-                                    padding-right: 5px;
-                                    border-right: 1px dashed lightblue;
-                                }
-                                tr.damage-col-head td:nth-child(4) {
-                                    padding-right: 5px;
-                                    border-right: 1px dashed lightblue;
-                                }
-                                .damage-col {
-                                    border-bottom: 1px solid lightblue;
-                                    font-size: 20px;
-                                }
-                                /* 画面サイズ767(ipadの768は含まない)まで */
-                                @media screen and (max-width:767px) {
-                                    .damage-col {
-                                        border-bottom: 1px solid lightblue;
-                                        font-size: 16px;
-                                    }
-                                }
-
-                            </style>
-                            <div class="col-12 col-lg-6">
-                                <div class="bg-simple small text-nowrap text-center width-max" style="padding: 7px 20px; color: white;">
-                                    <table class="justify-content-around width-100" style="padding-left: 15px;">
-                                        <tr>
-                                            <td rowspan="2" style="border-bottom: 1px solid lightblue;">属性</td>
-                                            <td colspan=2>威力<span id="ENEMY_SKILL_L"></span></td>
-                                            <td colspan=2>威力<span id="ENEMY_SKILL_M"></span></td>
-                                            <td colspan=2>威力<span id="ENEMY_SKILL_H"></span></td>
-                                        </tr>
-                                        <tr class="damage-col-head">
-                                            <td class="col_0">技<span class="d-none d-sm-inline">ﾀﾞﾒｰｼﾞ</span></td><td class="col_1">術<span class="d-none d-sm-inline">ﾀﾞﾒｰｼﾞ</span></td>
-                                            <td class="col_2">技<span class="d-none d-sm-inline">ﾀﾞﾒｰｼﾞ</span></td><td class="col_3">術<span class="d-none d-sm-inline">ﾀﾞﾒｰｼﾞ</span></td>
-                                            <td class="col_4">技<span class="d-none d-sm-inline">ﾀﾞﾒｰｼﾞ</span></td><td class="col_5">術<span class="d-none d-sm-inline">ﾀﾞﾒｰｼﾞ</span></td>
-                                        </tr>
-                                        <tr class="damage-col">
-                                            <td style="width: calc(100% / 8);"><span class="icon_xs_zokusei icon_zan" style="width:23px; height:23px;"></span></td>
-                                            <td class="damage_Zan_0v text-right"></td><td class="damage_Zan_0m text-right"></td>
-                                            <td class="damage_Zan_1v text-right"></td><td class="damage_Zan_1m text-right"></td>
-                                            <td class="damage_Zan_2v text-right"></td><td class="damage_Zan_2m text-right"></td>
-                                        </tr>
-                                        <tr class="damage-col">
-                                            <td style="width: calc(100% / 8);"><span class="icon_xs_zokusei icon_da" style="width:23px; height:23px;"></span></td>
-                                            <td class="damage_Da_0v text-right"></td><td class="damage_Da_0m text-right"></td>
-                                            <td class="damage_Da_1v text-right"></td><td class="damage_Da_1m text-right"></td>
-                                            <td class="damage_Da_2v text-right"></td><td class="damage_Da_2m text-right"></td>
-                                        </tr>
-                                        <tr class="damage-col">
-                                            <td style="width: calc(100% / 8);"><span class="icon_xs_zokusei icon_totsu" style="width:23px; height:23px;"></span></td>
-                                            <td class="damage_Totsu_0v text-right"></td><td class="damage_Totsu_0m text-right"></td>
-                                            <td class="damage_Totsu_1v text-right"></td><td class="damage_Totsu_1m text-right"></td>
-                                            <td class="damage_Totsu_2v text-right"></td><td class="damage_Totsu_2m text-right"></td>
-                                        </tr>
-                                        <tr class="damage-col">
-                                            <td style="width: calc(100% / 8);"><span class="icon_xs_zokusei icon_netsu" style="width:23px; height:23px;"></span></td>
-                                            <td class="damage_Netsu_0v text-right"></td><td class="damage_Netsu_0m text-right"></td>
-                                            <td class="damage_Netsu_1v text-right"></td><td class="damage_Netsu_1m text-right"></td>
-                                            <td class="damage_Netsu_2v text-right"></td><td class="damage_Netsu_2m text-right"></td>
-                                        </tr>
-                                        <tr class="damage-col">
-                                            <td style="width: calc(100% / 8);"><span class="icon_xs_zokusei icon_rei" style="width:23px; height:23px;"></span></td>
-                                            <td class="damage_Rei_0v text-right"></td><td class="damage_Rei_0m text-right"></td>
-                                            <td class="damage_Rei_1v text-right"></td><td class="damage_Rei_1m text-right"></td>
-                                            <td class="damage_Rei_2v text-right"></td><td class="damage_Rei_2m text-right"></td>
-                                        </tr>
-                                        <tr class="damage-col">
-                                            <td style="width: calc(100% / 8);"><span class="icon_xs_zokusei icon_rai" style="width:23px; height:23px;"></span></td>
-                                            <td class="damage_Rai_0v text-right"></td><td class="damage_Rai_0m text-right"></td>
-                                            <td class="damage_Rai_1v text-right"></td><td class="damage_Rai_1m text-right"></td>
-                                            <td class="damage_Rai_2v text-right"></td><td class="damage_Rai_2m text-right"></td>
-                                        </tr>
-                                        <tr class="damage-col">
-                                            <td style="width: calc(100% / 8);"><span class="icon_xs_zokusei icon_yo" style="width:23px; height:23px;"></span></td>
-                                            <td class="damage_You_0v text-right"></td><td class="damage_You_0m text-right"></td>
-                                            <td class="damage_You_1v text-right"></td><td class="damage_You_1m text-right"></td>
-                                            <td class="damage_You_2v text-right"></td><td class="damage_You_2m text-right"></td>
-                                        </tr>
-                                        <tr class="damage-col">
-                                            <td style="width: calc(100% / 8);"><span class="icon_xs_zokusei icon_in" style="width:23px; height:23px;"></span></td>
-                                            <td class="damage_Inn_0v text-right"></td><td class="damage_Inn_0m text-right"></td>
-                                            <td class="damage_Inn_1v text-right"></td><td class="damage_Inn_1m text-right"></td>
-                                            <td class="damage_Inn_2v text-right"></td><td class="damage_Inn_2m text-right"></td>
-                                        </tr>
-                                    </table>
-                                </div>
-                                <div id="ABILITY_BUTTON_AREA" class="d-none">
-                                    <div>アビリティ切り替え</div>
-                                    <div id="BUTTON_AREA"></div>
-                                    <button id="AB_BTN_TMPL" class="d-none icon_btn_negative shadow-black"></button>
-                                </div>
-                                体:<span id="calcVit"></span> 精:<span id="calcMnd"></span> 軽減アビ合計:<span id="calcResistAb"></span><br>
-                                聖石 軽減(全)Rank10 * 2<br>
-                                敵 腕力<span id="ENEMY_STR"></span> / 知力<span id="ENEMY_INT"></span> 想定<br>
-                                威力12:ストーンシャワー,ブレードロール,など<br>
-                                威力24:ポイゾナスブロウ,ファングクラッシュ,など<br>
-                                威力36:乱れ突き,など<br>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="info-modal width-max" id="HEAL_AREA" style="margin-bottom: 10px;">
-                        <div class="text-center info-modal-header">HP回復 期待値</div>
-                        <div class="filter-bgcolor">
-                            <div class="text-center" style="background: url(https://romasagatool.com/img/bg_cutin.png);">
-                                <img class="RANK_HEAD_IMG" style="width: 100%; max-width:300px;">
-                            </div>
-                        </div>                            
-                        <div class="bg-simple width-max" style="padding: 10px;">
-                            <table class="width-100">
-                                <tr style="border-bottom: 1px solid;">
-                                    <td>技・アビ<span class="hidden pcBlock">リティ</span></td>
-                                    <td>武器<br class="hidden spBlock">威力</td>
-                                    <td>回復<br class="hidden spBlock">威力</td>
-                                    <td>回復量</td><td>愛</td><td>魅</td><td>アビ<span class="d-none d-sm-inline">リティ</span></td>
-                                </tr>
-                                <tr class="d-none ROW">
-                                    <td class="HEAL_NAME"></td>
-                                    <td class="HEAL_WEAPON"></td>
-                                    <td class="HEAL_IRYOKU"></td>
-                                    <td class="HEAL_RANGE shadow-blue" style="color:rgba(133,220,88);"></td></td>
-                                    <td class="HEAL_AI"></td><td class="HEAL_MI"></td><td class="HEAL_ABILITY"></td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-
-                    <div class="info-modal width-max">
-                        <div class="text-center info-modal-header">所持している 技・術</div>
-                        <div class="text-center fuchidori-white" style="color: rgb(250, 240, 180);">
-                            <div class="SKILL_TAB style-tab-active text-nowrap" data-target="styleSkillOrg" style="width: 33%; max-width: 130px;" onclick="">スタイル別</div>
-                            <div class="SKILL_TAB style-tab-disabled" data-target="styleSkillIryoku" style="width: 30%; max-width: 130px;" onclick="">威力別</div>
-                            <div class="SKILL_TAB style-tab-disabled" data-target="styleSkillRange" style="width: 30%; max-width: 130px;" onclick="">範囲別</div>
-                        </div>
-                        <div id="styleSkillOrg" class="STYLE_SKILL_TAB style-bgcolor" style="padding: 20px 5px; border-collapse:collapse"></div>
-                        <div id="styleSkillIryoku" class="STYLE_SKILL_TAB style-bgcolor"" style="padding: 20px 5px; border-collapse:collapse"></div>
-                        <div id="styleSkillRange" class="STYLE_SKILL_TAB style-bgcolor"" style="padding: 20px 5px; border-collapse:collapse"></div>
-                        <div class="subtitle-long d-none width-100" id="RANGE_TITLE"></div>
-
-                        <div class="text-center" style="margin-top: 10px;">
-                            <a href="./skill.html" target="_blank" class="icon_btn_positive  width-100 shadow-black"><i class="fas fa-search"></i> 技・術 一覧を調べる</a>
-                        </div>
-                        <table id="SKILL_KEISHO_TEMPLATE" class="d-none">
-                            <tr class="d-sm-none" style="border-bottom: 1px solid gray;">
-                                <td class="STYLE_CUTIN filter-bgcolor" colspan="3" style="padding:3px; ">
-                                    <div class="text-center" style="background: url(https://romasagatool.com/img/bg_cutin.png); background-size: 19px;">
-                                        <img class="RANK_HEAD_IMG" style="width: 40%; max-width:300px;">
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid gray;">
-                                <td class="text-center filter-bgcolor STYLE_ICON d-none d-sm-table-cell" style="vertical-align: middle;"></td>
-                                <td class="text-left pad5 text-nowrap">
-                                    <img class="BATTLE_ICON icon_xs" loading="lazy">
-                                    <span class="SKILL_ATTR"></span>
-                                </td>
-                                <td class="text-left pad5 skill-name text-nowrap KEISHO_SKILL"></td>
-                                <td class="text-left pad5 skill-iryoku text-nowrap KEISHO_IRYOKU d-none d-sm-table-cell"></td>
-                                <td class="text-left pad5 d-none d-sm-table-cell KEISHO_BP text-nowrap">
-                                    <span class="consume-bp"></span>
-                                    <span class="consume-lp"></span>
-                                </td>
-                                <td class="small SKILL_TEXT d-none d-sm-table-cell" style="width: 50%; padding-left: 10px;"></td>
-                                <td class="text-right d-sm-none INFO_BTN" style="width:30px"><img src="https://romasagatool.com/img/icon/icon_info.png" class="width-100"></td>
-                            </tr>
-                            <tr class="d-sm-none">
-                                <td colspan="5">
-                                    <div class="small SKILL_TEXT TOGGLE_FLAVOR bg-common-window" style="padding: 10px 5px;"></div>
-                                </td>
-                            </tr>
-                        </table>                        
-                    </div>
-                    <!-- ツール_スタイル中央 -->
-                    <ins class="adsbygoogle"
-                        style="display:block"
-                        data-ad-client="ca-pub-5008373409434899"
-                        data-ad-slot="2237461930"
-                        data-ad-format="auto"
-                        data-full-width-responsive="true"></ins>
-                    <script> (adsbygoogle = window.adsbygoogle || []).push({});</script>                    
                     <div class="info-modal width-max">
                         <div class="text-center info-modal-header">おすすめ継承パターン</div>
                         <div class="text-center fuchidori-white d-md-none" style="color: rgb(250, 240, 180);">
@@ -1391,13 +850,95 @@
                                     </table>
                                 </div>
                             </div>
-                            <img class="d-none CLOSE_BTN yubi" src="./img/icon/icon_close.png" style="position: absolute;top: 0px;right: 0px;height: 15px;" onclick="">
+                            <img class="d-none CLOSE_BTN yubi" src="../img/icon/icon_close.png" style="position: absolute;top: 0px;right: 0px;height: 15px;" onclick="">
                         </div>        
                     </div>
                     <br>
+
+                    <div class="info-modal width-max">
+                        <div class="text-center info-modal-header">ラスタバン が所持している 技・術</div>
+                        <div class="text-center fuchidori-white" style="color: rgb(250, 240, 180);">
+                            <div class="SKILL_TAB style-tab-active text-nowrap" data-target="styleSkillOrg" style="width: 33%; max-width: 130px;" onclick="">スタイル別</div>
+                            <div class="SKILL_TAB style-tab-disabled" data-target="styleSkillIryoku" style="width: 30%; max-width: 130px;" onclick="">威力別</div>
+                            <div class="SKILL_TAB style-tab-disabled" data-target="styleSkillRange" style="width: 30%; max-width: 130px;" onclick="">範囲別</div>
+                        </div>
+                        <div id="styleSkillOrg" class="STYLE_SKILL_TAB style-bgcolor" style="padding: 20px 5px; border-collapse:collapse"></div>
+                        <div id="styleSkillIryoku" class="STYLE_SKILL_TAB style-bgcolor"" style="padding: 20px 5px; border-collapse:collapse"></div>
+                        <div id="styleSkillRange" class="STYLE_SKILL_TAB style-bgcolor"" style="padding: 20px 5px; border-collapse:collapse"></div>
+                        <div class="subtitle-long d-none width-100" id="RANGE_TITLE"></div>
+
+                        <div class="text-center" style="margin-top: 10px;">
+                            <a href="../skill.html" target="_blank" class="icon_btn_positive  width-100 shadow-black"><i class="fas fa-search"></i> 技・術 一覧を調べる</a>
+                        </div>
+                        <table id="SKILL_KEISHO_TEMPLATE" class="d-none">
+                            <tr class="d-sm-none" style="border-bottom: 1px solid gray;">
+                                <td class="STYLE_CUTIN filter-bgcolor" colspan="3" style="padding:3px; ">
+                                    <div class="text-center" style="background: url(https://romasagatool.com/img/bg_cutin.png); background-size: 19px;">
+                                        <img class="RANK_HEAD_IMG" style="width: 40%; max-width:300px;">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid gray;">
+                                <td class="text-center filter-bgcolor STYLE_ICON d-none d-sm-table-cell" style="vertical-align: middle;"></td>
+                                <td class="text-left pad5 text-nowrap">
+                                    <img class="BATTLE_ICON icon_xs" loading="lazy">
+                                    <span class="SKILL_ATTR"></span>
+                                </td>
+                                <td class="text-left pad5 skill-name text-nowrap KEISHO_SKILL"></td>
+                                <td class="text-left pad5 skill-iryoku text-nowrap KEISHO_IRYOKU d-none d-sm-table-cell"></td>
+                                <td class="text-left pad5 d-none d-sm-table-cell KEISHO_BP text-nowrap">
+                                    <span class="consume-bp"></span>
+                                    <span class="consume-lp"></span>
+                                </td>
+                                <td class="small SKILL_TEXT d-none d-sm-table-cell" style="width: 50%; padding-left: 10px;"></td>
+                                <td class="text-right d-sm-none INFO_BTN" style="width:30px"><img src="https://romasagatool.com/img/icon/icon_info.png" class="width-100"></td>
+                            </tr>
+                            <tr class="d-sm-none">
+                                <td colspan="5">
+                                    <div class="small SKILL_TEXT TOGGLE_FLAVOR bg-common-window" style="padding: 10px 5px;"></div>
+                                </td>
+                            </tr>
+                        </table>                        
+                    </div>
+<!-- スタイル詳細個別_技下 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5008373409434899"
+     data-ad-slot="9614121865"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+                    <div class="info-modal width-max" id="HEAL_AREA" style="margin: 10px 0px;">
+                        <div class="text-center info-modal-header">HP回復 期待値</div>
+                        <div class="filter-bgcolor">
+                            <div class="text-center" style="background: url(https://romasagatool.com/img/bg_cutin.png);">
+                                <img class="RANK_HEAD_IMG" style="width: 100%; max-width:300px;">
+                            </div>
+                        </div>                            
+                        <div class="bg-simple width-max" style="padding: 10px;">
+                            <table class="width-100">
+                                <tr style="border-bottom: 1px solid;">
+                                    <td>技・アビ<span class="hidden pcBlock">リティ</span></td>
+                                    <td>武器<br class="hidden spBlock">威力</td>
+                                    <td>回復<br class="hidden spBlock">威力</td>
+                                    <td>回復量</td><td>魅</td><td>アビ<span class="d-none d-sm-inline">リティ</span></td>
+                                </tr>
+                                <tr class="d-none ROW">
+                                    <td class="HEAL_NAME"></td>
+                                    <td class="HEAL_WEAPON"></td>
+                                    <td class="HEAL_IRYOKU"></td>
+                                    <td class="HEAL_RANGE shadow-blue" style="color:rgba(133,220,88);"></td></td><td class="HEAL_MI"></td><td class="HEAL_ABILITY"></td>
+                                </tr>
+                            </table>
+                            共通設定：愛=<span class="HEAL_AI"></span>
+                        </div>
+                    </div>
+                 
                     <div class="info-modal width-max" style="padding: 0px 5px 25px 5px;">
-                        <div class="text-center info-modal-header h5">ステータスランキング</div>    
-                        <table class="RANKING-TABLE bg-simple width-100 text-center" style="border-left: 1px solid #faf0b4;">
+                        <div class="text-center info-modal-header h5">ラスタバン [一滴の血が変える世界] のステータスランキング</div>    
+                        <table class="bg-simple width-100 text-center" style="border-left: 1px solid #faf0b4;">
                             <tbody>
                                 <tr colspan=15>
                                     <div class="filter-bgcolor">
@@ -1451,6 +992,39 @@
                     </div>
                 </div>
 
+                <div id="CHAR_ARTICLE" class="d-none info-modal" style="margin: 10px 0px;">
+                    <div class="info-modal-header"><span class="CHAR_NAME">キャラ名</span>の記事</div>
+                    <div id="CHAR_ARTICLE_BODY" style="width: 100%; height: 250px; overflow-x: scroll; overflow-y: hidden; white-space:nowrap;">
+                    </div>
+                    <div id="ARTICLE_CARD" class="d-none opacity kadomaru" style="position: relative; margin: 0px 5px; width: 220px; height:250px; padding:5px 5px 20px 5px; font-size:0.9rem; vertical-align: top;">
+                        <a href="" target="_new">
+                            <img class="sImg kadomaru d-none" src="" width="100px" align="left">
+                            <img class="lImg kadomaru" src="" width="100%" alt="">
+                            <div class="title" style="white-space: normal;"></div>
+                            <div style="position:absolute; bottom:0;font-size:0.8rem">最終更新:<span class="update"></span></div>
+                        </a>
+                    </div>
+                </div>                
+
+                <!-- スタイル詳細個別_下部 -->
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-5008373409434899"
+                    data-ad-slot="3142731218"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>                       
+                <div class="info-modal styleChoiceArea " style="padding: 5px 20px 25px 20px; margin-bottom: 10px;">
+                    <div class="text-center info-modal-header">バンガード内 セリフ集</div>
+                    <div class="row small shadow-black" style="color:  #faf0b4;">
+                        <div class="col-12 col-lg-4 filter-bgcolor SPEECH0" style="padding: 5px 10px; height:80px;"><span style="display: block; line-height: 1.5;"></span><img src="" class="speech-icon"></div>
+                        <div class="col-12 col-lg-4 filter-bgcolor SPEECH1" style="padding: 5px 10px; height:80px;"><span style="display: block; line-height: 1.5;"></span><img src="" class="speech-icon"></div>
+                        <div class="col-12 col-lg-4 filter-bgcolor SPEECH2" style="padding: 5px 10px; height:80px;"><span style="display: block; line-height: 1.5;"></span><img src="" class="speech-icon"></div>                        
+                    </div>
+                </div>
+
                 <div class="info-modal styleChoiceArea width-max d-none" style="padding: 5px 5px 15px 5px;">
                     <div class="text-center info-modal-header h5">近いステータス</div>
                     <div id="ST_TAB" class="text-center fuchidori-white width-max d-none" style="color: rgb(250, 240, 180);">
@@ -1483,6 +1057,5 @@
             <script> (adsbygoogle = window.adsbygoogle || []).push({});</script>            
             <p id="PageTopBtn" style="right:10px"><a href="#FILTER"><i class="fas fa-arrow-up"></i></a></p>
         </div> <!-- main -->
-        <script type="text/javascript" src="https://romasagatool.com/blog/get_the_archives.php?limit=30&callback=rssCallback"></script>
     </body>
 </html>
