@@ -335,10 +335,13 @@ html {
     line-height: 15px;
     z-index: 1;
 }
-@media screen and (min-width:1024px) {
+@media screen and (min-width:768px) {
     .char-dot-jutsu-icon-div {
-        right: 7px;
+        right: 5px;
     }
+}
+
+@media screen and (min-width:1024px) {
     
     .haikei::before {
         background: url(https://romasagatool.com/img/v2bg.jpg) no-repeat;
@@ -1653,3 +1656,125 @@ h-nav .inner ul li a {
     opacity: 1;
     visibility: visible;
 }
+
+.series-banner {
+    position: absolute;
+    height: fit-content;
+    font-size: 8px;
+    color: white;
+    background-color: rgba(0,0,0,0.5);
+    border: solid 1px lightgoldenrodyellow;
+    border-radius: 5px;
+    z-index: 1;
+}
+
+/* パソコンで表示する場合のCSS */
+@media (min-width: 768px) {
+    .series-banner {
+        bottom: 20px;
+        right: 4px;
+        padding: 0px 5px;            
+    }
+}        
+/* スマホで表示する場合のCSS */
+@media (max-width: 768px) {
+    .series-banner {
+        bottom: 12px;
+        right: 0px;
+        padding: 0px 2px;            
+    }
+}
+.gender-male {
+    color: skyblue;
+}
+.gender-famale {
+    color: lightcoral;
+}
+.gender-unknown {
+    color: violet;
+}
+
+.gender-icon {
+    animation: rollkAnime 2s infinite steps(1);
+    font-size: 130%;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    z-index: 1;            
+}
+.gender-male-bg {
+    background-color: skyblue;
+}
+.gender-famale-bg {
+    background-color: lightcoral;
+}
+.gender-unknown-bg {
+    background-color: violet;
+}
+
+.style-header-img-div {
+    position: relative;
+    max-width: 400px;
+    left: 50%;
+    transform: translate(-50%, -0%);    
+}
+
+.style-header-weapon-icon {
+    position: absolute;
+    top: 5px;
+    left: calc(70%);
+}
+
+.style-header-jutsu-icon {
+    position: absolute;
+    display: inline-block;
+    width: 20px !important;
+    height: 20px !important;
+    background-size: cover !important;
+    margin: 0 0 0 0px;    
+}
+
+@media screen and (min-width:320px) {
+    .style-header-weapon-icon {
+        width: 50px;
+        height: 50px;    
+    }
+    .jicon-1 {
+        right: 15px;
+        top: 10px;
+    }
+    .jicon-2 {
+        right: 22px;
+        bottom: 10px;
+    }    
+}
+@media screen and (min-width:360px) {
+    .style-header-weapon-icon {
+        width: 60px;
+        height: 60px;    
+    }
+    .jicon-1 {
+        right: 20px;
+        top: 12px;
+    }
+    .jicon-2 {
+        right: 28px;
+        bottom: 13px;
+    }    
+}
+@media screen and (min-width:410px) {
+    .style-header-weapon-icon {
+        width: 70px;
+        height: 70px;    
+    }
+    .jicon-1 {
+        right: 27px;
+        top: 15px;
+    }
+    .jicon-2 {
+        right: 35px;
+        bottom: 18px;
+    }
+}
+
+

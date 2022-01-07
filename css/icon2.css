@@ -829,7 +829,7 @@
     }    
 }
 
-@media (max-width: 576px) {
+@media (max-width: 768px) {
     .icon_xs {
         display: inline-block;
         width:20px !important;
@@ -859,7 +859,7 @@
         margin: 0 0 0 0px;
     }
 }
-@media screen and (min-width: 576px) { 
+@media screen and (min-width: 769px) { 
     .icon_xs { 
         display: inline-block;
         width: 25px !important;
