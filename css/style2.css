@@ -656,6 +656,13 @@ body {
     height: 150px;
     z-index: 3;
 }
+
+.base-footer {
+    margin-top: 20px;
+    position: relative;
+    padding: 0px 15px;
+}
+
 #checker-footer {
     position: fixed;
     bottom: 0px;
