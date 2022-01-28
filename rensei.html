@@ -62,6 +62,9 @@
         <![endif]-->
     </head>
     <style>
+        #WEAPON_MATRIX_TABLE td {
+            text-align: left !important;
+        }
 
         @keyframes rollkAnime{
             50% {   transform: rotate(25deg);}
@@ -319,40 +322,49 @@
                     不足している武器を探すのにご利用ください<br>
 
                     <div class="text-left width-100" style="margin: 10px 0px;">
-                        <li class="subtitle-long fuchidori-white">フィルタ</li>
+                        <li class="width-100 subtitle-long fuchidori-white">フィルタ</li>
                     </div>
                     <style>
                         .j-filter {
                             margin: 0px 5px;
                         }
                     </style>
-                    <span class="bg-item">　術威力　</span>
-                    <ul class="nav" style="margin: 5px 0px;">
-                        <li class="j-filter"><a class="TABLE_FILTER_LIST " data-type="火"><span class="icon_mini icon_hi_sm weapon-icon-button" onclick=""></span></a></li>
-                        <li class="j-filter"><a class="TABLE_FILTER_LIST " data-type="水"><span class="icon_mini icon_mizu_sm weapon-icon-button" onclick=""></span></a></li>
-                        <li class="j-filter"><a class="TABLE_FILTER_LIST " data-type="土"><span class="icon_mini icon_tsuchi_sm weapon-icon-button" onclick=""></span></a></li>
-                        <li class="j-filter"><a class="TABLE_FILTER_LIST " data-type="風"><span class="icon_mini icon_kaze_sm weapon-icon-button" onclick=""></span></a></li>
-                        <li class="j-filter"><a class="TABLE_FILTER_LIST " data-type="光"><span class="icon_mini icon_hikari_sm weapon-icon-button" onclick=""></span></a></li>
-                        <li class="j-filter"><a class="TABLE_FILTER_LIST " data-type="闇"><span class="icon_mini icon_yami_sm weapon-icon-button" onclick=""></span></a></li>
-                        <li class="j-filter"><a class="TABLE_FILTER_LIST " data-type="無"><span class="icon_btn_negative" style="padding: 7px 7px">なし</span></a></li>
-                    </ul>
-                    <span class="bg-item">　性別 / HP満タン / OD　</span>
-                    <ul class="nav" style="margin: 5px 0px;">
-                        <li class="j-filter"><a class="TABLE_COL_FILTER_LIST " data-type="COL_"><span class="icon_btn_positive" style="padding: 7px 9px">汎用</span></a></li>
-                        <li class="j-filter"><a class="TABLE_COL_FILTER_LIST " data-type="gender-male-bg"><span class="icon_btn_positive" style="padding: 7px 9px">男性</span></a></li>
-                        <li class="j-filter"><a class="TABLE_COL_FILTER_LIST " data-type="gender-famale-bg"><span class="icon_btn_positive" style="padding: 7px 9px">女性</span></a></li>
-                        <li class="j-filter"><a class="TABLE_COL_FILTER_LIST " data-type="gender-unknown-bg"><span class="icon_btn_positive" style="padding: 7px 9px">不明</span></a></li>
-                        <li class="j-filter"><a class="TABLE_COL_FILTER_LIST " data-type="COL_HP"><span class="icon_btn_positive" style="padding: 7px 9px">HP+</span></a></li>
-                        <li class="j-filter"><a class="TABLE_COL_FILTER_LIST " data-type="COL_OD"><span class="icon_btn_positive" style="padding: 7px 9px">OD+</span></a></li>
-                    </ul>
-                    <span class="bg-item">　範囲　</span>
-                    <ul class="nav" style="margin: 5px 0px;">
-                        <li class="j-filter"><a class="TABLE_COL_FILTER_LIST " data-type="BASE_"><span class="icon_btn_positive" style="padding: 7px 11px">汎用</span></a></li>
-                        <li class="j-filter"><a class="TABLE_COL_FILTER_LIST " data-type="SINGLE_"><span class="icon_btn_positive" style="padding: 7px 11px">単体</span></a></li>
-                        <li class="j-filter"><a class="TABLE_COL_FILTER_LIST " data-type="MULTI_"><span class="icon_btn_positive" style="padding: 7px 11px">全体</span></a></li>
-                        <li class="j-filter"><a class="TABLE_COL_FILTER_LIST " data-type="V_"><span class="icon_btn_positive" style="padding: 7px 15px"><i class="fas fa-arrows-alt-v"></i> 縦</span></a></li>
-                        <li class="j-filter"><a class="TABLE_COL_FILTER_LIST " data-type="H_"><span class="icon_btn_positive" style="padding: 7px 12px"><i class="fas fa-arrows-alt-h"></i> 横</span></a></li>
-                    </ul>
+                    <div class="row">
+                        <div class="col-12 col-sm">
+                            <div class="bg-item">　術威力　</div>
+                            <ul class="nav" style="margin: 5px 0px;">
+                                <li class="j-filter"><a class="TABLE_FILTER_LIST " data-type="火"><span class="icon_mini icon_hi_sm weapon-icon-button" onclick=""></span></a></li>
+                                <li class="j-filter"><a class="TABLE_FILTER_LIST " data-type="水"><span class="icon_mini icon_mizu_sm weapon-icon-button" onclick=""></span></a></li>
+                                <li class="j-filter"><a class="TABLE_FILTER_LIST " data-type="土"><span class="icon_mini icon_tsuchi_sm weapon-icon-button" onclick=""></span></a></li>
+                                <li class="j-filter"><a class="TABLE_FILTER_LIST " data-type="風"><span class="icon_mini icon_kaze_sm weapon-icon-button" onclick=""></span></a></li>
+                                <li class="j-filter"><a class="TABLE_FILTER_LIST " data-type="光"><span class="icon_mini icon_hikari_sm weapon-icon-button" onclick=""></span></a></li>
+                                <li class="j-filter"><a class="TABLE_FILTER_LIST " data-type="闇"><span class="icon_mini icon_yami_sm weapon-icon-button" onclick=""></span></a></li>
+                                <li class="j-filter"><a class="TABLE_FILTER_LIST " data-type="無"><span class="icon_btn_negative" style="padding: 7px 7px">なし</span></a></li>
+                            </ul>
+                        </div>
+                        <div class="col-12 col-sm">
+                            <div class="bg-item">　性別 / HP満タン / OD　</div>
+                            <ul class="nav" style="margin: 5px 0px;">
+                                <li class="j-filter"><a class="TABLE_COL_FILTER_LIST " data-type="COL_"><span class="icon_btn_positive" style="padding: 7px 9px">汎用</span></a></li>
+                                <li class="j-filter"><a class="TABLE_COL_FILTER_LIST " data-type="gender-male-bg"><span class="icon_btn_positive" style="padding: 7px 9px">男性</span></a></li>
+                                <li class="j-filter"><a class="TABLE_COL_FILTER_LIST " data-type="gender-famale-bg"><span class="icon_btn_positive" style="padding: 7px 9px">女性</span></a></li>
+                                <li class="j-filter"><a class="TABLE_COL_FILTER_LIST " data-type="gender-unknown-bg"><span class="icon_btn_positive" style="padding: 7px 9px">不明</span></a></li>
+                                <li class="j-filter"><a class="TABLE_COL_FILTER_LIST " data-type="COL_HP"><span class="icon_btn_positive" style="padding: 7px 9px">HP+</span></a></li>
+                                <li class="j-filter"><a class="TABLE_COL_FILTER_LIST " data-type="COL_OD"><span class="icon_btn_positive" style="padding: 7px 9px">OD+</span></a></li>
+                            </ul>
+                        </div>
+                        <div class="col-12 col-sm">
+                            <div class="bg-item">　範囲　</div>
+                            <ul class="nav" style="margin: 5px 0px;">
+                                <li class="j-filter"><a class="TABLE_COL_FILTER_LIST " data-type="BASE_"><span class="icon_btn_positive" style="padding: 7px 11px">汎用</span></a></li>
+                                <li class="j-filter"><a class="TABLE_COL_FILTER_LIST " data-type="SINGLE_"><span class="icon_btn_positive" style="padding: 7px 11px">単体</span></a></li>
+                                <li class="j-filter"><a class="TABLE_COL_FILTER_LIST " data-type="MULTI_"><span class="icon_btn_positive" style="padding: 7px 11px">全体</span></a></li>
+                                <li class="j-filter"><a class="TABLE_COL_FILTER_LIST " data-type="V_"><span class="icon_btn_positive" style="padding: 7px 15px"><i class="fas fa-arrows-alt-v"></i> 縦</span></a></li>
+                                <li class="j-filter"><a class="TABLE_COL_FILTER_LIST " data-type="H_"><span class="icon_btn_positive" style="padding: 7px 12px"><i class="fas fa-arrows-alt-h"></i> 横</span></a></li>
+                            </ul>                        
+                        </div>
+
+                    </div>
 
                     <div class="matrix-table-div">
                         <table id="WEAPON_MATRIX_TABLE" class="yubi fuchidori-white matrix-table weapon-table width-100 text-nowrap" border="1">
@@ -422,9 +434,30 @@
                             </tfoot>
                         </table>
                     </div>
-                    <div style="padding:10px;">
-                        <span class="d-none">* : アビリティに「斬+、打+、突+」などの属性が含まれます<br></span>
-                        打+は体術の「やきはらう(熱)」や「どくぎり(陰)」など打属性を持たない技には乗らないのでお気をつけください
+                    <div class="row" style="margin: 10px 0px;">
+                        <div style="padding: 10px" class="bg-simple text-center col-12 col-sm-6">
+                            <table border=1>
+                                <tr>
+                                    <td>シリーズ</td>
+                                    <td>黒鉄</td>
+                                    <td>ｴﾝｼｪﾝﾄ</td>
+                                    <td>ｱｶｶﾞﾈ</td>
+                                </tr>
+                                <tr><td>RS1</td><td>○</td><td></td><td>○</td></tr>
+                                <tr><td>RS2</td><td>○</td><td></td><td></td></tr>
+                                <tr><td>RS3</td><td>○</td><td></td><td></td></tr>
+                                <tr><td>SF1</td><td></td><td>○</td><td>○</td></tr>
+                                <tr><td>SF2</td><td>○</td><td></td><td>○</td></tr>
+                                <tr><td>USES</td><td>○</td><td></td><td></td></tr>
+                                <tr><td>SSG</td><td></td><td>○</td><td></td></tr>
+                                <tr><td>RSR</td><td></td><td>○</td><td>○</td></tr>
+                                <tr><td>GB</td><td></td><td>○</td><td>○</td></tr>
+                            </table>
+                        </div>
+                        <div style="padding:10px;" class="col-12 col-sm-6">
+                            <span class="">* : アビリティに「斬+、打+、突+」などの属性が含まれます<br></span>
+                            打+は体術の「やきはらう(熱)」や「どくぎり(陰)」など打属性を持たない技には乗らないのでお気をつけください
+                        </div>
                     </div>
                 </div>
 
