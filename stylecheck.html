@@ -150,8 +150,7 @@
                     </div>
                 </div>
 
-
-                <div class="style-bgcolor smallFont d-none" id="styleAreaRare">
+                <div class="style-bgcolor smallFont d-none" id="styleAreaRare" style="padding:5px">
                     <img src="https://romasagatool.com//img/icon/icon_SS.png" class="rare-icon-big">
                     <button class="d-none icon_btn_positive allOn" data-rare="SS">全てチェック</button>
                     <button class="d-none icon_btn_negative allOff" data-rare="SS">全て外す</button>
@@ -322,7 +321,7 @@
                                 <td><img class="icon_mini_zokusei" src="./img/icon/icon_SS.png"></td>
                                 <td><img class="icon_mini_zokusei" src="./img/icon/icon_S.png"></td>
                                 <td><img class="icon_mini_zokusei" src="./img/icon/icon_A.png"></td>
-                                <td>限界MLv</td>
+                                <td>限界MLv</td>
                             </tr>
                             <tr class=" d-none" id="masterTableTmpl" style="border-bottom:1px solid #faf0b4;">
                                 <td><span class="icon_mini_zokusei_checker icon_ken"></span></td>
@@ -401,25 +400,46 @@
                             <td><span class="APer"></span>%</td>
                         </tr>                        
                         <tr class="char-bottom">
-                            <td class="text-left">┣プラチナ</td>
-                            <td><span class="mypAll">0</span>/<span class="pAll">0</span></td>
-                            <td><span class="mypSS">0</span>/<span class="pAllSS">0</span></td>
-                            <td><span class="mypS">0</span>/<span class="pAllS">0</span></td>
-                            <td><span class="mypA">0</span>/<span class="pAllA">0</span></td>
+                            <td class="text-left">┣プラチナ/螺旋</td>
+                            <td><span class="mypraAll">0</span>/<span class="praAll">0</span></td>
+                            <td><span class="mypraSS">0</span>/<span class="praAllSS">0</span></td>
+                            <td><span class="mypraS">0</span>/<span class="praAllS">0</span></td>
+                            <td><span class="mypraA">0</span>/<span class="praAllA">0</span></td>
                         </tr>
                         <tr class="char-bottom">
-                            <td class="text-left">┣限定</td>
+                            <td class="text-left">┣祭</td>
                             <td><span class="mylimAll">0</span>/<span class="limAll">0</span></td>
                             <td><span class="mylimSS">0</span>/<span class="limAllSS">0</span></td>
                             <td><span class="mylimS">0</span>/<span class="limAllS">0</span></td>
                             <td><span class="mylimA">0</span>/<span class="limAllA">0</span></td>
                         </tr>
                         <tr class="char-bottom">
-                                <td class="text-left">┗その他</td>
-                                <td><span class="myoAll">0</span>/<span class="oAll">0</span></td>
-                                <td><span class="myoSS">0</span>/<span class="oAllSS">0</span></td>
-                                <td><span class="myoS">0</span>/<span class="oAllS">0</span></td>
-                                <td><span class="myoA">0</span>/<span class="oAllA">0</span></td>
+                            <td class="text-left">┣UDX限定</td>
+                            <td><span class="myudxAll">0</span>/<span class="udxAll">0</span></td>
+                            <td><span class="myudxSS">0</span>/<span class="udxAllSS">0</span></td>
+                            <td><span class="myudxS">0</span>/<span class="udxAllS">0</span></td>
+                            <td><span class="myudxA">0</span>/<span class="udxAllA">0</span></td>
+                        </tr>
+                        <tr class="char-bottom">
+                            <td class="text-left">┣サガ魂</td>
+                            <td><span class="mytamaAll">0</span>/<span class="tamaAll">0</span></td>
+                            <td><span class="mytamaSS">0</span>/<span class="tamaAllSS">0</span></td>
+                            <td><span class="mytamaS">0</span>/<span class="tamaAllS">0</span></td>
+                            <td><span class="mytamaA">0</span>/<span class="tamaAllA">0</span></td>
+                        </tr>
+                        <tr class="char-bottom">
+                            <td class="text-left">┣限定配布</td>
+                            <td><span class="mydistlimAll">0</span>/<span class="distlimAll">0</span></td>
+                            <td><span class="mydistlimSS">0</span>/<span class="distlimAllSS">0</span></td>
+                            <td><span class="mydistlimS">0</span>/<span class="distlimAllS">0</span></td>
+                            <td><span class="mydistlimA">0</span>/<span class="distlimAllA">0</span></td>
+                        </tr>
+                        <tr class="char-bottom">
+                            <td class="text-left">┗配布</td>
+                            <td><span class="mydistAll">0</span>/<span class="distAll">0</span></td>
+                            <td><span class="mydistSS">0</span>/<span class="distAllSS">0</span></td>
+                            <td><span class="mydistS">0</span>/<span class="distAllS">0</span></td>
+                            <td><span class="mydistA">0</span>/<span class="distAllA">0</span></td>
                         </tr>
                     </table>
                     <table class="width-100 text-nowrap" id="MASTER_TABLE">
@@ -430,7 +450,7 @@
                             <td><img class="icon_mini_zokusei" src="./img/icon/icon_SS.png"></td>
                             <td><img class="icon_mini_zokusei" src="./img/icon/icon_S.png"></td>
                             <td><img class="icon_mini_zokusei" src="./img/icon/icon_A.png"></td>
-                            <td>限界MLv</td>
+                            <td>限界MLv</td>
                         </tr>
                         <tr class="char-bottom d-none" id="masterTableTmpl">
                             <td><span class="icon_mini_zokusei_checker icon_ken"></span></td>
@@ -463,23 +483,23 @@
                         </tr>
                         <tr class="char-bottom">
                             <td>所持数</td>
-                            <td><span class="mypAll">0</span>/<span class="pAll">0</span></td>
-                            <td><span class="mypSS">0</span>/<span class="pAllSS">0</span></td>
-                            <td><span class="mypS">0</span>/<span class="pAllS">0</span></td>
-                            <td><span class="mypA">0</span>/<span class="pAllA">0</span></td>                            
+                            <td><span class="mypraAll">0</span>/<span class="praAll">0</span></td>
+                            <td><span class="mypraSS">0</span>/<span class="praAllSS">0</span></td>
+                            <td><span class="mypraS">0</span>/<span class="praAllS">0</span></td>
+                            <td><span class="mypraA">0</span>/<span class="praAllA">0</span></td>                            
                         </tr>
                         <tr class="char-bottom">
                             <td>所持率</td>
-                            <td><span class="mypAllPer">0</span>%</td>
-                            <td><span class="mypSSPer">0</span>%</td>
-                            <td><span class="mypSPer">0</span>%</td>
-                            <td><span class="mypAPer">0</span>%</td>
+                            <td><span class="mypraAllPer">0</span>%</td>
+                            <td><span class="mypraSSPer">0</span>%</td>
+                            <td><span class="mypraSPer">0</span>%</td>
+                            <td><span class="mypraAPer">0</span>%</td>
                         </tr>
                         <tr class="char-bottom">
                             <td>未所持排出率</td>
-                            <td style="font-size:15px;"><span class="mypAllGetPer">0</span>%<!--<br>(<span class="mypAllGetBunsu">0</span>)--></td>
-                            <td style="font-size:15px;"><span class="mypSSGetPer">0</span>%<!--<br>(<span class="mypSSGetBunsu">0</span>)--></td>
-                            <td style="font-size:15px;"><span class="mypSGetPer">0</span>%<!--<br>(<span class="mypSGetBunsu">0</span>)--></td>
+                            <td style="font-size:15px;"><span class="mypraAllGetPer">0</span>%<!--<br>(<span class="mypAllGetBunsu">0</span>)--></td>
+                            <td style="font-size:15px;"><span class="mypraSSGetPer">0</span>%<!--<br>(<span class="mypSSGetBunsu">0</span>)--></td>
+                            <td style="font-size:15px;"><span class="mypraraSGetPer">0</span>%<!--<br>(<span class="mypSGetBunsu">0</span>)--></td>
                             <td style="font-size:15px;"><span class="mypAGetPer">0</span>%<!--<br>(<span class="mypAGetBunsu">0</span>)--></td>
                         </tr>
                         <tr class="char-bottom label-text-header">
@@ -487,24 +507,24 @@
                         </tr>    
                         <tr class="char-bottom">
                             <td>5連(チケ25枚)</td>
-                            <td><span class="mypAll5RenPer">0</span>%</td>
-                            <td><span class="mypSS5RenPer">0</span>%</td>
-                            <td><span class="mypS5RenPer">0</span>%</td>
-                            <td><span class="mypA5RenPer">0</span>%</td>
+                            <td><span class="mypraAll5RenPer">0</span>%</td>
+                            <td><span class="mypraSS5RenPer">0</span>%</td>
+                            <td><span class="mypraS5RenPer">0</span>%</td>
+                            <td><span class="mypraA5RenPer">0</span>%</td>
                         </tr>
                         <tr class="char-bottom">
                             <td>20連(チケ100枚)</td>
-                            <td><span class="mypAll20RenPer">0</span>%</td>
-                            <td><span class="mypSS20RenPer">0</span>%</td>
-                            <td><span class="mypS20RenPer">0</span>%</td>
-                            <td><span class="mypA20RenPer">0</span>%</td>
+                            <td><span class="mypraAll20RenPer">0</span>%</td>
+                            <td><span class="mypraSS20RenPer">0</span>%</td>
+                            <td><span class="mypraS20RenPer">0</span>%</td>
+                            <td><span class="mypraA20RenPer">0</span>%</td>
                         </tr>
                         <tr class="char-bottom">
                             <td>50連(チケ250枚)</td>
-                            <td><span class="mypAll50RenPer">0</span>%</td>
-                            <td><span class="mypSS50RenPer">0</span>%</td>
-                            <td><span class="mypS50RenPer">0</span>%</td>
-                            <td><span class="mypA50RenPer">0</span>%</td>
+                            <td><span class="mypraAll50RenPer">0</span>%</td>
+                            <td><span class="mypraSS50RenPer">0</span>%</td>
+                            <td><span class="mypraS50RenPer">0</span>%</td>
+                            <td><span class="mypraA50RenPer">0</span>%</td>
                         </tr>
                         <tr class="char-bottom label-text-header">
                             <td colspan=10 class="text-center">シミュレート結果 (チケット使用数<span id="USE_TICKET" class=" simTarget">0</span>枚)</td>
