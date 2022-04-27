@@ -376,8 +376,16 @@
         <div class="modal" id="modal01">
             <!-- モーダルウィンドウの中身 -->
             <div class="inner text-center width-100 smallFont" id="modalInner">
+                <div class="row" style="margin-top:20px">
+                    <div class="col-6">
+                        <button id="summary_gacha" class="icon_btn_positive fuchidori-white smallFont text-nowrap">ガチャ種別表示</button>
+                    </div>
+                    <div class="col-6">
+                        <button id="summary_ml" class="icon_btn_negative fuchidori-white smallFont text-nowrap">マスターレベル表示</button>
+                    </div>
+                </div>
                 <div class=" modalClose" id="allParamConfirm" onclick="" style="padding:15px;">
-                    <table class="width-100">
+                    <table class="width-100" id="GACHA_TYPE_TABLE">
                         <tr class="char-bottom label-text-header">
                             <td></td>
                             <td class="text-nowrap">全体</td>
@@ -449,7 +457,7 @@
                             <td><span class="mydistA">0</span>/<span class="distAllA">0</span></td>
                         </tr>
                     </table>
-                    <table class="width-100 text-nowrap" id="MASTER_TABLE">
+                    <table class="width-100 text-nowrap MASTER_TABLE_TMP" id="MASTER_TABLE">
                         <tr class="char-bottom label-text-header">
                             <td>種別</td>
                             <td>所持数</td>
