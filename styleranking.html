@@ -149,21 +149,36 @@
             <div class="filter-bgcolor small" style="margin-bottom:20px;">
                 <div class="subtitle-long">投票期間 変更　</div>
                 <ul class="nav text-center width-100" style="margin-bottom: 20px;">
-                    <li class="col-6 col-sm-4 col-lg-3" style="margin-bottom: 10px;"><button class="RANGE icon_btn_on text-nowrap width-100" data-id="all">全期間</button></li>
-                    <li class="col-6 col-sm-4 col-lg-3" style="margin-bottom: 10px;"><button class="RANGE icon_btn_off text-nowrap width-100" data-id="y">今年分のみ</button></li>
-                    <li class="col-6 col-sm-4 col-lg-3" style="margin-bottom: 10px;"><button class="RANGE icon_btn_off text-nowrap width-100" data-id="3m">直近3ヶ月</button></li>
-                    <li class="col-6 col-sm-4 col-lg-3" style="margin-bottom: 10px;"><button class="RANGE icon_btn_off text-nowrap width-100" data-id="6m">直近6ヶ月</button></li>
+                    <li class="col-12 col-sm-12 col-lg" style="margin-bottom: 10px;"><button class="RANGE icon_btn_on text-nowrap width-100" data-id="all">全期間</button></li>
+                    <li class="col-6 col-sm-4 col-lg" style="margin-bottom: 10px;"><button class="RANGE icon_btn_off text-nowrap width-100" data-id="1m">直近1ヶ月</button></li>
+                    <li class="col-6 col-sm-4 col-lg" style="margin-bottom: 10px;"><button class="RANGE icon_btn_off text-nowrap width-100" data-id="3m">直近3ヶ月</button></li>
+                    <li class="col-6 col-sm-4 col-lg" style="margin-bottom: 10px;"><button class="RANGE icon_btn_off text-nowrap width-100" data-id="6m">直近6ヶ月</button></li>
+                    <li class="col-6 col-sm-4 col-lg" style="margin-bottom: 10px;"><button class="RANGE icon_btn_off text-nowrap width-100" data-id="y">今年分のみ</button></li>
                 </ul>
 
                 <div class="subtitle-long">投票状況　</div>
-                <div style="padding-left:15px; color: #faf0b4;">
-                投票期間：<span id="VOTE_START"></span> 〜 <span id="VOTE_END"></span><br>
-                総投票数：<span id="TOTAL_VOTE"></span>票<br>
-                <br>
-                総投票ユーザ：<span id="TOTAL_USER"></span>人<br>
-                有効投票スタイル数：<span id="VOTE_STYLE"></span>/<span id="TOTAL_STYLE"></span>スタイル<br>
-                あなたの投票：<span id="YOUR_VOTE"></span>票
+                <div style="padding-left:15px; color: #faf0b4; margin-bottom: 10px;">
+                    投票期間：<span id="VOTE_START"></span> 〜 <span id="VOTE_END"></span><br>
+                    総投票数：<span id="TOTAL_VOTE"></span>票<br>
+                    <br>
+                    総投票ユーザ：<span id="TOTAL_USER"></span>人<br>
+                    有効投票スタイル数：<span id="VOTE_STYLE"></span>/<span id="TOTAL_STYLE"></span>スタイル<br>
+                    あなたの投票：<span id="YOUR_VOTE"></span>票
                 </div>
+                <div class="noLogin d-none">
+                    <div class="subtitle-long">スタイル所持チェッカー連動 </div>
+                    <div class="row no-gutters text-center" style="margin-bottom: 10px;">
+                        <li class="col-6 col-sm-4 col-lg-3" style="margin-bottom: 10px;">
+                            <button class="CHECKER icon_btn_off text-nowrap width-100" data-on="0" >
+                                <span class="text">OFF</span>
+                                <i class="TOGGLE fas fa-toggle-off"></i>
+                            </button>
+                        </li>
+                        <div style="color:white; text-align: left;">
+                            <a class="fuchidori-blue" href="stylecheck.html">スタイル所持チェッカー</a>で登録したスタイルを色分けします
+                        </div>
+                    </div>
+                </div>                
             </div>
 
             <div class="row width-max">
