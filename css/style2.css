@@ -1492,7 +1492,7 @@ nav
         width: 80% !important;
     }
     .toggle-btn {
-        top: 10px;
+        /*top: 10px;*/
         right: 10px;
     }
     .toggle_btn span {
@@ -1505,7 +1505,7 @@ nav
         right: 60px;
     }
     .toggle-btn {
-        top: 55px;
+        /*top: 55px;*/
         right: 10px;
     }
     .header-area {
