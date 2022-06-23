@@ -1241,6 +1241,9 @@ input[type=range]::-ms-tooltip {
 	left:0px; 
 	border-bottom: 2px dashed #aaa;
 }
+.articlelist {
+    padding-bottom: 15px;
+}
 
 
 .fuchidori{
