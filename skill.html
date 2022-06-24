@@ -258,6 +258,54 @@
                         <li class="col-2 col-sm-1 char-bottom"><a class="_FilterLink pad0 d-inline-block text-nowrap" data-col="BadStatus" data-href="skill_miryo"><span class="withLabel icon_mini_zokusei icon_miryo"><small>魅了</small><span class="series-button" id="count_skill_miryo">...</span></span></a></li>
                         <li class="col-2 col-sm-1 char-bottom"><a class="_FilterLink pad0 d-inline-block text-nowrap" data-col="BadStatus" data-href="skill_kyosenshi"><span class="withLabel icon_mini_zokusei icon_kyosenshi"><small>狂戦</small><span class="series-button" id="count_skill_kyosenshi">...</span></span></a></li>
                         <li class="col-2 col-sm-1 char-bottom"><a class="_FilterLink pad0 d-inline-block text-nowrap" data-col="BadStatus" data-href="skill_sokushi"><span class="withLabel icon_mini_zokusei icon_kizetsu"><small>気絶</small><span class="series-button" id="count_skill_sokushi">...</span></span></a></li>
+                        <li class="col-12  label-text-small">技・術タイプ</li>
+                        <li class="col-12 col-sm-2 table-success">タイプ</li>
+                        <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom" style="flex-wrap: wrap">
+                            <a class="_FilterLink small" data-href="skill_typeatk" data-col="type"><img src="https://romasagatool.com/img/icon/sword.png" class="img-icon">タイプ:攻撃 <span class="series-button" id="count_skill_typeatk">...</span></a>
+                            <a class="_FilterLink small" data-href="skill_typedef" data-col="type"><img src="https://romasagatool.com/img/icon/shield.png" class="img-icon">タイプ:防御 <span class="series-button" id="count_skill_typedef">...</span></a>
+                            <a class="_FilterLink small" data-href="skill_typehojyo" data-col="type"><img src="https://romasagatool.com/img/icon/feather.png" class="img-icon">タイプ:補助 <span class="series-button" id="count_skill_typehojyo">...</span></a>
+                            <a class="_FilterLink small" data-href="skill_typeheal" data-col="type"><img src="https://romasagatool.com/img/icon/heart.png" class="img-icon">タイプ:回復 <span class="series-button" id="count_skill_typeheal">...</span></a>
+                        </li>
+
+                        <li class="col-12 char-bottom"> </li>
+                        <li class="col-12 col-sm-2 table-success">補助効果</li>
+                        <li class="m-auto side-padding-zero"><a class="_FilterLink small" data-href="skill_change" data-col="change"><i class="fas fa-level-up-alt"></i> ランク変動あり <span class="series-button" id="count_skill_change">...</span></a></li>
+                        <li class="m-auto side-padding-zero"><a class="_FilterLink small" data-href="skill_nochange" data-col="change"><i class="fas fa-window-minimize"></i> ランク変動なし <span class="series-button" id="count_skill_nochange">...</span></a></li>
+                        <li class="col-12 char-bottom"> </li>
+                        <li class="col-12 char-bottom"> </li>
+                        <li class="col-12 col-sm-2 table-success">カウンター</li>
+                        <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom">
+                            <a class="_FilterLink  small" data-href="skill_cou" data-col="isCounter">カウンター <span class="series-button" id="count_skill_cou">...</span></a>
+                            <a class="_FilterLink  small" data-href="skill_kaicou" data-col="isCounter">回避カウンター <span class="series-button" id="count_skill_kaicou">...</span></a>
+                            <a class="_FilterLink  small" data-href="skill_boucou" data-col="isCounter">防御カウンター <span class="series-button" id="count_skill_boucou">...</span></a>
+                        </li>
+                        <li class="col-12 col-sm-2 table-success">回復</li>
+                        <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom">
+                            <a class="_FilterLink small" data-href="skill_hp" data-col="HealTypeHP"><img src="https://romasagatool.com/img/icon/heart.png" class="img-icon">HP回復 <span class="series-button" id="count_skill_hp">...</span></a>
+                            <a class="_FilterLink small" data-href="skill_bp" data-col="HealTypeBP"><img src="https://romasagatool.com/img/icon/bp.png" class="img-icon">BP回復 <span class="series-button" id="count_skill_bp">...</span></a>
+                            <a class="_FilterLink small" data-href="skill_ijo" data-col="HealTypeBad"><img src="https://romasagatool.com/img/icon/red-cross.png" class="img-icon">状態異常回復 <span class="series-button" id="count_skill_ijo">...</span></a>
+                        </li>
+
+                        <li class="col-12  label-text-small">攻撃範囲・対象</li>
+                        <li class="col-12 col-sm-2 table-info">攻撃範囲</li>
+                        <li class="m-auto side-padding-zero"><a class="_FilterLink small d-inline-block" data-href="skill_tantai" data-col="AttackArea"><span class="char-eisho-mini dot_last dot dot_mini" id="icon_oneSkill"></span><br>　単体<span class="series-button" id="count_skill_tantai">...</span></a></li>
+                        <li class="m-auto side-padding-zero"><a class="_FilterLink small d-inline-block" data-href="skill_zentai" data-col="AttackArea"><span class="char-eisho-mini dot_leon dot dot_mini" id="icon_allSkill"></span><br>　全体<span class="series-button" id="count_skill_zentai">...</span></a></li>
+                        <li class="m-auto side-padding-zero"><a class="_FilterLink small d-inline-block" data-href="skill_tate" data-col="AttackArea"><span class="char-tate-mini dot_hector dot dot_mini" id="icon_tateSkill"></span><br>縦一列<span class="series-button" id="count_skill_tate">...</span></a></li>
+                        <li class="m-auto side-padding-zero"><a class="_FilterLink small d-inline-block" data-href="skill_yoko" data-col="AttackArea"><span class="char-tsuki-mini dot_roza dot dot_mini" id="icon_yokoSkill"></span><br>横一列<span class="series-button" id="count_skill_yoko">...</span></a></li>
+                        <li class="m-auto side-padding-zero"><a class="_FilterLink small d-inline-block" data-href="skill_random" data-col="AttackArea"><span class="char-rand-mini dot_gyusu dot dot_mini" id="icon_randSkill"></span><br>ランダム<span class="series-button" id="count_skill_random">...</span></a></li>
+                        <li class="m-auto side-padding-zero"><a class="_FilterLink small d-inline-block" data-href="skill_mikata" data-col="AttackArea"><span class="char-eisho-mini dot_sofia dot dot_mini" id="icon_healSkill"></span><br>味方単<span class="series-button" id="count_skill_mikata">...</span></a></li>
+                        <li class="m-auto side-padding-zero"><a class="_FilterLink small d-inline-block" data-href="skill_mzentai" data-col="AttackArea"><span class="char-eisho-mini dot_musume dot dot_mini" id="icon_healAllSkill"></span><br>味方全<span class="series-button" id="count_skill_mzentai">...</span></a></li>
+                        <li class="m-auto"><a class="_FilterLink  small d-inline-block" data-href="skill_jishin" data-col="AttackArea">
+                                <span class="pari" style="background: url(./img/dot/ID334b6.png)"></span>
+                                <span class="pari" style="background: url(./img/dot/ID3645c.png)"></span><br>自身 <span class="series-button" id="count_skill_jishin">...</span></a></li>
+                        <li class="col-12 char-bottom"> </li>
+                        <li class="col-12 col-sm-2 table-info char-bottom">直接/間接 近/遠</li>
+                        <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom">
+                            <a class="_FilterLink small" data-href="skill_cyoku" data-col="AttackKansetsu">直接攻撃 <span class="series-button" id="count_skill_cyoku">...</span></a>
+                            <a class="_FilterLink small" data-href="skill_kan" data-col="AttackKansetsu">間接攻撃 <span class="series-button" id="count_skill_kan">...</span></a>
+                            <a class="_FilterLink small" data-href="skill_kin" data-col="AttackDistance">近距離 <span class="series-button" id="count_skill_kin">...</span></a>
+                            <a class="_FilterLink small" data-href="skill_en" data-col="AttackDistance">遠距離 <span class="series-button" id="count_skill_en">...</span></a>
+                        </li>
 
                         <li class="col-12 label-text-small">能力変化</li>
                         <li class="col-12 col-sm-2 table-success char-bottom">能力変化対象</li>
@@ -286,17 +334,15 @@
                             <a class="_FilterLink  small" data-href="skill_XAttackUp" data-col="ATR-UP">X属性攻撃強化 <span class="series-button" id="count_skill_XAttackUp">...</span></a>
                             　
                         <li class="col-12 col-sm-2 table-success char-bottom">味方強化(防)</li>
-                        <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom">
+                        <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom" style="flex-wrap: wrap">
                             <a class="_FilterLink  small" data-href="skill_GuardUp" data-col="DEF-UP">ガードアップ <span class="series-button" id="count_skill_GuardUp">...</span></a>
                             <a class="_FilterLink  small" data-href="skill_DefenceUp" data-col="DEF-UP">防御強化 <span class="series-button" id="count_skill_DefenceUp">...</span></a>
+                            <a class="_FilterLink  small" data-href="skill_DefMacic" data-col="DEF-UP">防御姿勢(術) <span class="series-button" id="count_skill_DefMacic">...</span></a>
+                            <a class="_FilterLink  small" data-href="skill_DamageBlock" data-col="DEF-UP">ダメージブロック <span class="series-button" id="count_skill_DamageBlock">...</span></a>
                             <a class="_FilterLink  small" data-href="skill_Wall" data-col="DEF-UP">ウォール <span class="series-button" id="count_skill_Wall">...</span></a>
                             <a class="_FilterLink  small" data-href="skill_MagicShield" data-col="DEF-UP">魔法盾 <span class="series-button" id="count_skill_MagicShield">...</span></a>
-                        </li>
-                        <li class="col-12 col-sm-2 table-success">回復</li>
-                        <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom">
-                            <a class="_FilterLink small" data-href="skill_hp" data-col="HealTypeHP"><img src="https://romasagatool.com/img/icon/heart.png" class="img-icon">HP回復 <span class="series-button" id="count_skill_hp">...</span></a>
-                            <a class="_FilterLink small" data-href="skill_bp" data-col="HealTypeBP"><img src="https://romasagatool.com/img/icon/bp.png" class="img-icon">BP回復 <span class="series-button" id="count_skill_bp">...</span></a>
-                            <a class="_FilterLink small" data-href="skill_ijo" data-col="HealTypeBad"><img src="https://romasagatool.com/img/icon/red-cross.png" class="img-icon">状態異常回復 <span class="series-button" id="count_skill_ijo">...</span></a>
+                            <a class="_FilterLink  small" data-href="skill_Deflect" data-col="DEF-UP">回避 <span class="series-button" id="count_skill_Deflect">...</span></a>
+                            <a class="_FilterLink  small" data-href="skill_Kabau" data-col="DEF-UP">かばう <span class="series-button" id="count_skill_Kabau">...</span></a>
                         </li>
 
 
@@ -310,49 +356,12 @@
                             <a class="_FilterLink pad0 d-inline-block" data-href="skill_deb_sei" data-col="DeBuff"><span class="withLabel icon_mini_zokusei icon_debuff_mnd"><span class="series-button" id="count_skill_deb_sei">...</span></span></a>
                         </li>
                         <li class="col-12 col-sm-2 table-danger char-bottom">敵弱化</li>
-                        <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom">
+                        <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom" style="flex-wrap: wrap">
                             <a class="_FilterLink  small" data-href="skill_MoralDown" data-col="ENEMY-DOWN">モラルダウン <span class="series-button" id="count_skill_MoralDown">...</span></a>
                             <a class="_FilterLink  small" data-href="skill_AttackDown" data-col="ENEMY-DOWN">攻撃弱化 <span class="series-button" id="count_skill_AttackDown">...</span></a>
                             <a class="_FilterLink  small" data-href="skill_GuardDown" data-col="ENEMY-DOWN">ガードダウン <span class="series-button" id="count_skill_GuardDown">...</span></a>
                             <a class="_FilterLink  small" data-href="skill_DefenceDown" data-col="ENEMY-DOWN">防御弱化 <span class="series-button" id="count_skill_DefenceDown">...</span></a>
-                        </li>
-                        <li class="col-12  label-text-small">攻撃範囲・対象</li>
-                        <li class="col-12 col-sm-2 table-info">攻撃範囲</li>
-                        <li class="m-auto side-padding-zero"><a class="_FilterLink small d-inline-block" data-href="skill_tantai" data-col="AttackArea"><span class="char-eisho-mini dot_last dot dot_mini" id="icon_oneSkill"></span><br>　単体<span class="series-button" id="count_skill_tantai">...</span></a></li>
-                        <li class="m-auto side-padding-zero"><a class="_FilterLink small d-inline-block" data-href="skill_zentai" data-col="AttackArea"><span class="char-eisho-mini dot_leon dot dot_mini" id="icon_allSkill"></span><br>　全体<span class="series-button" id="count_skill_zentai">...</span></a></li>
-                        <li class="m-auto side-padding-zero"><a class="_FilterLink small d-inline-block" data-href="skill_tate" data-col="AttackArea"><span class="char-tate-mini dot_hector dot dot_mini" id="icon_tateSkill"></span><br>縦一列<span class="series-button" id="count_skill_tate">...</span></a></li>
-                        <li class="m-auto side-padding-zero"><a class="_FilterLink small d-inline-block" data-href="skill_yoko" data-col="AttackArea"><span class="char-tsuki-mini dot_roza dot dot_mini" id="icon_yokoSkill"></span><br>横一列<span class="series-button" id="count_skill_yoko">...</span></a></li>
-                        <li class="m-auto side-padding-zero"><a class="_FilterLink small d-inline-block" data-href="skill_random" data-col="AttackArea"><span class="char-rand-mini dot_gyusu dot dot_mini" id="icon_randSkill"></span><br>ランダム<span class="series-button" id="count_skill_random">...</span></a></li>
-                        <li class="m-auto side-padding-zero"><a class="_FilterLink small d-inline-block" data-href="skill_mikata" data-col="AttackArea"><span class="char-eisho-mini dot_sofia dot dot_mini" id="icon_healSkill"></span><br>味方単<span class="series-button" id="count_skill_mikata">...</span></a></li>
-                        <li class="m-auto side-padding-zero"><a class="_FilterLink small d-inline-block" data-href="skill_mzentai" data-col="AttackArea"><span class="char-eisho-mini dot_musume dot dot_mini" id="icon_healAllSkill"></span><br>味方全<span class="series-button" id="count_skill_mzentai">...</span></a></li>
-                        <li class="m-auto"><a class="_FilterLink  small d-inline-block" data-href="skill_jishin" data-col="AttackArea">
-                                <span class="pari" style="background: url(./img/dot/ID334b6.png)"></span>
-                                <span class="pari" style="background: url(./img/dot/ID3645c.png)"></span><br>自身 <span class="series-button" id="count_skill_jishin">...</span></a></li>
-                        <li class="col-12 char-bottom"> </li>
-                        <li class="col-12 col-sm-2 table-info char-bottom">直接/間接 近/遠</li>
-                        <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom">
-                            <a class="_FilterLink small" data-href="skill_cyoku" data-col="AttackKansetsu">直接攻撃 <span class="series-button" id="count_skill_cyoku">...</span></a>
-                            <a class="_FilterLink small" data-href="skill_kan" data-col="AttackKansetsu">間接攻撃 <span class="series-button" id="count_skill_kan">...</span></a>
-                            <a class="_FilterLink small" data-href="skill_kin" data-col="AttackDistance">近距離 <span class="series-button" id="count_skill_kin">...</span></a>
-                            <a class="_FilterLink small" data-href="skill_en" data-col="AttackDistance">遠距離 <span class="series-button" id="count_skill_en">...</span></a>
-                        </li>
-
-                        <li class="col-12 col-sm-2 table-success">タイプ</li>
-                        <li class="m-auto side-padding-zero"><a class="_FilterLink small" data-href="skill_typeatk" data-col="type"><img src="https://romasagatool.com/img/icon/sword.png" class="img-icon">タイプ:攻撃 <span class="series-button" id="count_skill_typeatk">...</span></a></li>
-                        <li class="m-auto side-padding-zero"><a class="_FilterLink small" data-href="skill_typedef" data-col="type"><img src="https://romasagatool.com/img/icon/shield.png" class="img-icon">タイプ:防御 <span class="series-button" id="count_skill_typedef">...</span></a></li>
-                        <li class="m-auto side-padding-zero"><a class="_FilterLink small" data-href="skill_typehojyo" data-col="type"><img src="https://romasagatool.com/img/icon/feather.png" class="img-icon">タイプ:補助 <span class="series-button" id="count_skill_typehojyo">...</span></a></li>
-                        <li class="m-auto side-padding-zero"><a class="_FilterLink small" data-href="skill_typeheal" data-col="type"><img src="https://romasagatool.com/img/icon/heart.png" class="img-icon">タイプ:回復 <span class="series-button" id="count_skill_typeheal">...</span></a></li>
-                        <li class="col-12 char-bottom"> </li>
-                        <li class="col-12 col-sm-2 table-info">補助効果</li>
-                        <li class="m-auto side-padding-zero"><a class="_FilterLink small" data-href="skill_change" data-col="change"><i class="fas fa-level-up-alt"></i> ランク変動あり <span class="series-button" id="count_skill_change">...</span></a></li>
-                        <li class="m-auto side-padding-zero"><a class="_FilterLink small" data-href="skill_nochange" data-col="change"><i class="fas fa-window-minimize"></i> ランク変動なし <span class="series-button" id="count_skill_nochange">...</span></a></li>
-                        <li class="col-12 char-bottom"> </li>
-                        <li class="col-12 char-bottom"> </li>
-                        <li class="col-12 col-sm-2 table-info char-bottom">カウンター</li>
-                        <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom">
-                            <a class="_FilterLink  small" data-href="skill_cou" data-col="isCounter">カウンター <span class="series-button" id="count_skill_cou">...</span></a>
-                            <a class="_FilterLink  small" data-href="skill_kaicou" data-col="isCounter">回避カウンター <span class="series-button" id="count_skill_kaicou">...</span></a>
-                            <a class="_FilterLink  small" data-href="skill_boucou" data-col="isCounter">防御カウンター <span class="series-button" id="count_skill_boucou">...</span></a>
+                            <a class="_FilterLink  small" data-href="skill_Cancel" data-col="ENEMY-DOWN">能力アップ状態解除 <span class="series-button" id="count_skill_Cancel">...</span></a>
                         </li>
 
                         <li class="col-12  label-text-small">いろいろ</li>
