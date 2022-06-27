@@ -164,7 +164,7 @@
                         精神:<input id="mid" class="input kadomaru" type="number" value="400" style="width: 120px"/>
                     </li>
                     <li class="col-6 col-sm-4" style="color:beige; margin-bottom: 5px;">
-                        耐性:<input id="resist" class="input kadomaru" type="number" value="0" style="width: 120px"/>
+                        耐性:<input id="resist" class="input kadomaru" type="number" value="150" style="width: 120px"/>
                     </li>
                     <li class="col-12 col-sm-4" style="color:beige; margin-bottom: 5px;">
                         <button class="icon_btn_positive" id="recalc">変更</button>
@@ -179,7 +179,7 @@
                         キャラ名 / スタイル名<br>
                         技名 / 状態異常効果
                     </div>
-                    <div class="col-1 text-nowrap">命中<br>素早さ</div>
+                    <div class="col-1 text-nowrap text-center">命中<br>素早さ</div>
                     <div class="col-2 text-nowrap ST_AREA" style="line-height: 20px;">
                         <div>陣形補正なし</div>
                     </div>
@@ -193,23 +193,41 @@
             </div>
 
             <div id="STYLE_AREA"></div>
+            <style>
+                .disp-skill-area {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                }
+            </style>
 
             <div class="row no-gutters style-skill-list d-none" id='TEMPLATE'>
                 <div class="col-2 col-sm-2 col-md-1 text-nowrap ICON text-right"></div>
                 <div class="col-10 col-sm-8 col-md-4 text-nowrap" style="overflow-x: hidden; line-height:22px;">
-                    <span class="NAME"></span>
-                    <span class="ANOTHER_NAME small"></span><br>
-                    <div>
-                        <span class="icon_xs SKILL_ICON">　</span>
-                        <span class="SKILL_NAME"></span>
-                        BP:<span class="USE_BP"></span>
-                        <span class="MOD_TARGET"></span>(<span class="SKILL_PER"></span>)
+                    <div class="disp-skill-area">
+                        <div>
+                            <span class="NAME"></span>
+                            <span class="ANOTHER_NAME small"></span><br>
+                        </div>
+                        <div class="small">
+                            確定ST:<span class="fuchidori-blue INT-Threashold" style="font-size: large">100</span>以上
+                        </div>
+                    </div>
+                    <div class="disp-skill-area">
+                        <div style="display: flex; align-items: center;">
+                            <span class="icon_xs SKILL_ICON">　</span>
+                            <span class="SKILL_NAME"></span>
+                        </div>
+                        <div>
+                            BP:<span class="USE_BP"></span>
+                            <span class="MOD_TARGET"></span>(<span class="SKILL_PER"></span>)
+                        </div>
                     </div>
                     <span class="CHAR_INT d-none"></span>
                     <span class="small CHECK_PARAM"></span>
                     <br>
                 </div>
-                <div class="d-none d-sm-table-cell col-sm-2 col-md-1 text-nowrap text-center" style="line-height: 15px;">
+                <div class="d-none d-sm-table-cell col-sm-2 col-md-1 text-nowrap text-right" style="line-height: 15px; padding-right: 5px;">
                     <div class="">
                         <span class="" style="font-size:10px">素</span><span class="CHAR_ST_LABEL" style="font-size:10px"></span>
                         <span class="char_st"></span>
