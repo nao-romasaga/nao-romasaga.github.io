@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#" lang="ja">
+    <head>
+        <script src="./js/jquery-3.3.1.min.js"></script>
+        <script src="./js/lib/lazysizes.min.js"></script>
+        <script src="./js/lib/ls.unveilhooks.min.js"></script>
+
+        <script src="./js/data_ARMOR_CHOICE.js" ></script>
+        <!-- choose a theme file -->
+        <link rel="stylesheet" href="./js/tablesorter/theme.default.css">
+        <!-- load jQuery and tablesorter scripts -->
+        <script type="text/javascript" src="./js/tablesorter/jquery.tablesorter.js"></script>
+        <!--
+        <link rel="canonical" href="/style.html">
+        -->
+        <!-- Global site tag (gtag.js) - Google Analytics         -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138966739-1"></script>
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
+        <script src="./js/asyncFunc.js"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', 'UA-138966739-1');
+        </script>
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <meta charset="utf-8">
+        <title>【ロマサガRS】防具自動選択ツール</title>
+        <meta name="description" content="ロマサガRSの防具自動選択ツールです"/>
+        <meta property="og:title" content="【ロマサガRS】防具自動選択ツール" />
+        <meta property="og:url" content="https://nao-romasaga.github.io/armor.html" />
+        <meta property="og:description" content="ロマサガRSの装備を調べるツールです。ボスに合わせて装備を変えたい場合に自動で調べてくれます。【ロマンシングサガ リユニバース】" />
+        <meta name="description" content="ロマサガRSの装備を調べるツールです。ボスに合わせて装備を変えたい場合に自動で調べてくれます。【ロマンシングサガ リユニバース】" />
+        <meta property="og:image" content="https://romasagatool.com/img/twitter_card_weapon.jpg" />
+        <meta property="og:site_name" content="ロマサガRS便利ツール" />
+        <meta property="og:type" content="article">
+        <meta property="og:locale" content="ja_JP" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@nao_romasaga_rs" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="./css/bootstrap/bootstrap.min.css">
+        <script src="./js/bootstrap/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="./css/style2.css">
+        
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/ui/3.5.2/firebase-ui-auth__ja.js"></script>
+        <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+
+        <script src="./js/Firebase.js"></script>
+        <script src="./js/utils2.js" ></script>
+        <script src="./js/armor.js" ></script>
+        <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+        <style>
+            #RANK_TBODY .PARAM {
+                font-size: 12px;
+                text-align: center;
+            }
+            td.PARAM {
+                font-size: 20px;
+                text-align: right;
+            }
+
+            th.PARAM {
+                font-size: 12px;
+                text-align: center;
+            }
+            .header-icon {
+                width: 25px;
+            }
+            .RESIST, .POISON{
+                text-align: center;
+            }
+            .now-param {
+                border-radius: 10px;
+                box-shadow: 0px 3px 10px skyblue;
+            }
+            .sum-tr {
+                border-bottom: 1px dotted;
+            }
+            .dark-selected {
+                background: linear-gradient(black, skyblue);
+                outline: solid 1px goldenrod;
+                border-radius: 5px;    
+            }
+            .armor-rank-tr {
+                line-height: 1rem;
+                vertical-align: baseline;
+            }
+            .td-names {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .td-name-sum {
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+            }
+            .pattern-tr-header {
+                line-height: 1rem;
+            }
+            .icon_mini {
+                width: 30px;
+                height: 30px;
+            }
+
+            .icon_middle {
+                width: 40px;
+                height: 40px;
+                display: inline-block;
+                background-size: cover !important;
+                margin: 0 0 0 0px;
+            }
+
+            /* 画面サイズが768まではこれ */
+            @media screen and ( max-width:768px) {
+            }
+
+            /* 画面サイズが330まではこれ */
+            @media screen and ( max-width:420px) {
+                .icon_attr {
+                    width: 25px;
+                    height: 25px;
+                }
+                .icon_ail {
+                    width: 20px;
+                    height: 20px;
+                }
+                .weapon_icon_bg_base {
+                    width: 30px;
+                    height: 30px;
+                }
+                .weapon_icon_rare_base {
+                    width: 15px;
+                    height: 15px;
+                }
+                .td-names {
+                    font-size: 80%;
+                }                
+            }            
+        </style>
+        <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div class ="haikei">
+            <div class="container">
+                <h3 class="text-center title-text">防具自動選択ツール</h3>
+                <p class="text-right opacity"><small>バグ発見、ご要望は <a href="https://peing.net/ja/nao_romasaga_rs" target="new">質問箱</a>まで</small>
+                </p>
+                <!-- 装備一覧_上部 -->
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-5008373409434899"
+                    data-ad-slot="6626329041"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+
+                <div class="info-modal" style="margin-bottom: 10px;">
+                    <div class="text-center info-modal-header">使い方</div>
+                    <div>
+                        <span class="bg-item">　耐性種別　</span><br>
+                        タップした順にその耐性の優先度が上がります<br>
+                        例：斬→冷とタップすると、斬の降順、冷の降順で並び替えされます<br>
+                        ※状態異常耐性は今後対応予定です<br>
+                        <span class="bg-item">　装備一覧　</span><br>
+                        耐性種別で選択した順に並び替えられた葬儀が表示されます<br>
+                        未選択の場合は、耐性合計の降順で表示されます<br>
+                        
+                        <span class="bg-item">　キープ中の装備セット　</span><br>
+                        後述の「装備候補一覧」でキープした装備セットを表示します<br>
+                        削除ボタンでキープを解除できます<br>
+                        <span class="bg-item">　装備セット候補　</span><br>
+                        選択した耐性種別が高い順に装備セットの候補が表示れます<br>
+                        複数耐性を選択した場合は、「選択中の耐性の合計の降順」で表示されます<br>
+                        キープボタンを押すことで、その装備セットをキープ中に装備セットに保存することができます<br>
+                        ※保存した内容は画面をリロードすると消えます<br>
+                        キープ中にある防具、アクサは装備セット候補に出現しなくなります<br>
+                        例：タイタンスーツを含む装備セットをキープした場合、次の候補ではタイタンスーツは表示されません
+                    </div>
+                </div>
+
+                <div class="filter-bgcolor text-center small row" style="width:100%; margin: 0px;">
+                    <ul class="WEAPON nav text-center width-100" style="margin-bottom: 5px;">
+                        <li id="FILTER" class="subtitle-long fuchidori-white smallFont">耐性種別</li>
+                    </ul>
+                    <ul class="WEAPON nav text-center width-100">
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="zan"><span
+                                    class="icon_middle icon_zan weapon-icon-button FILTER_BTN"  data-attr="0" onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="da"><span
+                                    class="icon_middle icon_da weapon-icon-button FILTER_BTN"  data-attr="1"  onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="totsu"><span
+                                    class="icon_middle icon_totsu weapon-icon-button FILTER_BTN"  data-attr="2"  onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="netsu"><span
+                                    class="icon_middle icon_netsu weapon-icon-button FILTER_BTN"  data-attr="3"  onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="rei"><span
+                                    class="icon_middle icon_rei weapon-icon-button FILTER_BTN"  data-attr="4"  onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="rai"><span
+                                    class="icon_middle icon_rai weapon-icon-button FILTER_BTN"  data-attr="5"  onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="yo"><span
+                                    class="icon_middle icon_yo weapon-icon-button FILTER_BTN"  data-attr="6"  onclick=""></span></a></li>
+                        <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="in"><span
+                                    class="icon_middle icon_in weapon-icon-button FILTER_BTN"  data-attr="7"  onclick=""></span></a></li>
+                    </ul>
+                    <ul class="WEAPON nav text-center width-100" style="margin-bottom: 5px;">
+                        <li id="FILTER" class="subtitle-long fuchidori-white smallFont">優先度</li>
+                    </ul>
+                    <ul class="WEAPON nav text-center width-100 fuchidori-white" style="margin-bottom: 5px;display: flex; align-items: center;">
+                        <li id="ATTR_PRIMARY_SUM" class="weapon-icon-button" style="padding:5px">合計</li>
+                        <li id="ATTR_PRIMARY_LIST" class="" style="display: flex; align-items: center; height:42px;">
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-simple width-100" style="padding: 10px 10px 30px 10px; overflow: scroll;">
+                    <div class="d-flex" style="justify-content: space-around;">
+                        <button id="DISP_MAIN" class="TABLE-FILTER icon_btn_positive">主防具</button>
+                        <button id="DISP_SUB"  class="TABLE-FILTER icon_btn_negative">副防具</button>
+                        <button id="DISP_ACC"  class="TABLE-FILTER icon_btn_negative">アクセサリー</button>
+                    </div>
+                    <table class="width-100" id="ARMOR_TABLE">
+                        <thead>
+                            <tr class="text-right">
+                                <td></td>
+                                <td class="text-center">
+                                    Name
+                                </td>
+                                <td><span class="ATTR0 icon_mini icon_attr icon_zan" ></span></td>
+                                <td><span class="ATTR1 icon_mini icon_attr icon_da" ></span></td>
+                                <td><span class="ATTR2 icon_mini icon_attr icon_totsu" ></span></td>
+                                <td><span class="ATTR3 icon_mini icon_attr icon_netsu" ></span></td>
+                                <td><span class="ATTR4 icon_mini icon_attr icon_rei" ></span></td>
+                                <td><span class="ATTR5 icon_mini icon_attr icon_rai" ></span></td>
+                                <td><span class="ATTR6 icon_mini icon_attr icon_yo" ></span></td>
+                                <td><span class="ATTR7 icon_mini icon_attr icon_in" ></span></td>
+
+                                <td><span class="icon_mini icon_ail icon_doku"></span></td>
+                                <td><span class="icon_mini icon_ail icon_mahi"></span></td>
+                                <td><span class="icon_mini icon_ail icon_kurayami"></span></td>
+                                <td><span class="icon_mini icon_ail icon_zzz"></span></td>
+                                <td><span class="icon_mini icon_ail icon_sekika"></span></td>
+                                <td><span class="icon_mini icon_ail icon_stan"></span></td>
+                                <td><span class="icon_mini icon_ail icon_konran"></span></td>
+                                <td><span class="icon_mini icon_ail icon_miryo"></span></td>
+                                <td><span class="icon_mini icon_ail icon_kyosenshi"></span></td>
+                                <td><span class="icon_mini icon_ail icon_kizetsu"></span></td>
+
+                                <td class="">腕</td>
+                                <td class="">体</td>
+                                <td class="">器</td>
+                                <td class="">速</td>
+                                <td class="">知</td>
+                                <td class="">精</td>
+                                <td class="">愛</td>
+                                <td class="">魅</td>
+                            </tr>
+                        </thead>
+                        <TBODY></TBODY>
+                    </table>            
+                </div>
+                <div class="info-modal" style="margin-bottom: 10px;">
+                    <div class="text-center info-modal-header">キープ中の装備セット</div>
+                    <div id="KEEP_AREA"></div>
+                </div>
+
+                <div id="ARMOR_RANK">
+                </div>
+                <br>
+                <!-- 装備一覧_下部 -->
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-5008373409434899"
+                    data-ad-slot="5957805702"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script> 
+            </div>
+            <script> (adsbygoogle = window.adsbygoogle || []).push({});</script>            
+            <p id="PageTopBtn" style="right:10px"><a href="#FILTER"><i class="fas fa-arrow-up"></i></a></p>
+        </div> <!-- main -->
+        <script type="text/javascript" src="https://romasagatool.com/blog/get_the_archives.php?limit=30&callback=rssCallback"></script>
+
+
+        <!-- 以下テンプレート -->
+        <table>
+            <tr id="TMPL" class="text-right armor-rank-tr SELECT_ARMOR">
+                <td class="ICON text-center"></td>
+                <td class="td-names text-nowrap ">
+                    <div class="NAME1"></div>
+                    <div class="NAME2"></div>
+                </td>
+                <td class="ZAN"></td><td class="DA"></td><td class="TOTSU"></td>
+                <td class="NETSU"></td><td class="REI"></td><td class="RAI"></td><td class="YO"></td><td class="IN"></td>
+                <td class="doku"></td>
+                <td class="mahi"></td>
+                <td class="kurayami"></td>
+                <td class="zzz"></td>
+                <td class="sekika"></td>
+                <td class="stan"></td>
+                <td class="konran"></td>
+                <td class="miryo"></td>
+                <td class="kyosenshi"></td>
+                <td class="kizetsu"></td>
+
+                <td class="ST_STR"></td>
+                <td class="ST_VIT"></td>
+                <td class="ST_DEX"></td>
+                <td class="ST_AGI"></td>
+                <td class="ST_INT"></td>
+                <td class="ST_MND"></td>
+                <td class="ST_AI"></td>
+                <td class="ST_MI"></td>                            
+            </tr>
+        </table>
+        <div class="bg-simple d-none" style="padding: 10px; overflow: scroll;" 
+        id="ARMOR_TABLE_PATTERN">
+            <table class="width-100">
+                <thead>
+                    <tr class="text-right pattern-tr-header">
+                        <td></td>
+                        <td class="td-name-sum">
+                            <div><button class="KEEP_BUTTON icon_btn_positive small fuchidori-white">キープ</button></div>
+                            <div></div>
+                            <div></div>
+                        </td>
+                        <td class="ATTR_0"><span class="icon_mini icon_attr icon_zan" ></span></td>
+                        <td class="ATTR_1"><span class="icon_mini icon_attr icon_da" ></span></td>
+                        <td class="ATTR_2"><span class="icon_mini icon_attr icon_totsu" ></span></td>
+                        <td class="ATTR_3"><span class="icon_mini icon_attr icon_netsu" ></span></td>
+                        <td class="ATTR_4"><span class="icon_mini icon_attr icon_rei" ></span></td>
+                        <td class="ATTR_5"><span class="icon_mini icon_attr icon_rai" ></span></td>
+                        <td class="ATTR_6"><span class="icon_mini icon_attr icon_yo" ></span></td>
+                        <td class="ATTR_7"><span class="icon_mini icon_attr icon_in" ></span></td>
+                        <td><span class="icon_mini icon_ail icon_doku"></span></td>
+                        <td><span class="icon_mini icon_ail icon_mahi"></span></td>
+                        <td><span class="icon_mini icon_ail icon_kurayami"></span></td>
+                        <td><span class="icon_mini icon_ail icon_zzz"></span></td>
+                        <td><span class="icon_mini icon_ail icon_sekika"></span></td>
+                        <td><span class="icon_mini icon_ail icon_stan"></span></td>
+                        <td><span class="icon_mini icon_ail icon_konran"></span></td>
+                        <td><span class="icon_mini icon_ail icon_miryo"></span></td>
+                        <td><span class="icon_mini icon_ail icon_kyosenshi"></span></td>
+                        <td><span class="icon_mini icon_ail icon_kizetsu"></span></td>
+                        <td class="">腕</td>
+                        <td class="">体</td>
+                        <td class="">器</td>
+                        <td class="">速</td>
+                        <td class="">知</td>
+                        <td class="">精</td>
+                        <td class="">愛</td>
+                        <td class="">魅</td>                          
+                    </tr>
+                </thead>
+                <TBODY class="TBODY"></TBODY>
+            </table>
+        </div>        
+    </body>
+</html>
