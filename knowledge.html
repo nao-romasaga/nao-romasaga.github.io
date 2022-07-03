@@ -108,10 +108,13 @@
                                 <li class="parent"><a class='INDEX_LI yubi' data-id="11">HP上昇率ってどれぐらい？</a></li>
                                 <li class="parent"><a class='INDEX_LI yubi' data-id="10">陣形補正は何を参照する？</a></li>
                                 <li class="parent"><a class='INDEX_LI yubi' data-id="2">ダメージ計算について</a></li>
+                                <li class="parent"><a class='INDEX_LI yubi' data-id="14">HP回復量計算について</a></li>
                                 <li class="parent"><a class='INDEX_LI yubi' data-id="6">技ランクについて</a></li>
+                                <li class="parent"><a class='INDEX_LI yubi' data-id="16">技のランクアップ率について</a></li>
                                 <li class="parent"><a class='INDEX_LI yubi' data-id="3">聖石について</a></li>
                                 <li class="parent"><a class='INDEX_LI yubi' data-id="4">技・術の命中率について</a></li>
                                 <li class="parent"><a class='INDEX_LI yubi' data-id="5">バフ・デバフについて</a></li>
+                                <li class="parent"><a class='INDEX_LI yubi' data-id="15">技・術・アビリティの効果発動順について</a></li>
                                 <li class="parent"><a class='INDEX_LI yubi' data-id="7">「術」と「属性」は別物</a></li>
                                 <li class="parent"><a class='INDEX_LI yubi' data-id="9">裏道場などの「強さに合った敵」とは？</a></li>
                                 <li class="parent"><a class='INDEX_LI yubi' data-id="12">連携/OD連携の行動順について</a></li>
@@ -337,7 +340,11 @@
                                 各項目の内訳は下記の通り<br>
                                 <i class="fas fa-check-circle"></i>威力項：武器威力、技威力項<br>
                                 <i class="fas fa-check-circle"></i>ステータス項：腕力・素早さ・器用さ・知力、敵の体力・精神<br>
-                                <i class="fas fa-check-circle"></i>倍率項：アビリティ（テンションIVなど）、マスターレベル、聖石、敵耐性、乱数<br>
+                                <i class="fas fa-check-circle"></i>倍率項：アビリティ（テンションIVなど）、マスターレベル、聖石、連携、敵耐性、乱数<br>
+                                ◆連携時のダメージボーナス<br>
+                                　2,3連携 +30%<br>
+                                　4連携 +40%<br>
+                                　5連携 +50%<br>
 
                                 <a name="3-2"></a>
                                 <div class="style-skill-list">武器威力が１上がるとどれぐらいダメージ違うの？</div>
@@ -870,7 +877,7 @@
                                 111 + (73 * 25%) = 111 + 18.25 = 129<br>
                                 バフを入れた直後の知力は129となります
                                 <div class="style-skill-list">バフ・デバフは何を参照する？（敵の場合）</div>
-                                <i class="fas fa-check-circle"></i>敵キャラには装備やスタイル補正という概念がありませんので、ステータスにそのまま影響します<br>
+                                <i class="fas fa-check-circle"></i>敵キャラには装備やスタイル補正という概念がありませんので、<span class="fuchidori-blue">ステータスにそのまま影響します</span><br>
                                 敵は腕力380など非常に大きいのでバフ・デバフの効果が非常に大きくなります<br>
 
                                 <div class="style-skill-list">効果はどれぐらい？</div>
@@ -883,13 +890,13 @@
                                 <br>
                                 サブミッションやヒロイズムなどは技ランクをあげることで、バフ効果、デバフ効果が上がります<br>
                                 しかし、水祭や勝利の歌、豊穣の大波などは技ランクが上がってもバフ量は変化しません<br>
-                                法則性がないので、実測調査するしかありません<br>
+                                <span class="fuchidori-blue">法則性がないので、実測調査するしかない</span>のが現状です<br>
 
                                 <div class="style-skill-list">バフ・デバフの効果はいつ切れるの？</div>
                                 バフ・デバフの効果は下記のタイミングで切れます<br>
                                 ・最後にバフ・デバフをかけたターンから4ターン経過<br>
                                 ・気絶時<br>
-                                ・ラウンド終了時<br>
+                                ・ラウンド切り替え時<br>
                                 <div class="style-skill-list">バフ・デバフの効果はずっと同じなの？</div>
                                 バフ・デバフの効果はターンごとに減衰していきます<br>
                                 計算式は<span style="font-size:20px">小数切り上げ(バフ量 / 4)</span> です<br>
@@ -932,11 +939,20 @@
                                 -15%デバフ技 → -18%デバフ<br>
                                 +30%バフ技 → +36%バフ<br>
                                 のように変化します<br>
+                                <div class="style-skill-list">バフとデバフを重ねるとどうなる？</div>
+                                <i class="fas fa-check-circle"></i>加算した結果で再計算されます<br>
+                                バフ+15%、デバフ-30%を同一ターンにかけた場合<br>
+                                合計バフ量は-15%となり、減衰量は4%となる<br>
+
                                 <div class="style-skill-list">バフ・デバフの効果は無制限？</div>
                                 <del>上限があります<br>
-                               バフ・デバフは150%が上限です</del>
+                               ステータスのバフ・デバフは150%が上限です</del>
                                 <br>
-                                <i class="fas fa-check-circle"></i>アップデートでバフ・デバフの<span class="fuchidori-blue">上限は撤廃</span>されました<br>
+                                <i class="fas fa-check-circle"></i>アップデートでバフ・デバフの上限は<span class="fuchidori-blue">500%</span>に変更されました<br>
+                                <a href="https://twitter.com/chin_ohnck/status/1347544397844336641">ちんさん調査結果</a><br>
+                                <br>
+                                ただし、攻撃強化などのバフ上限は2022/7/4現在<span class="fuchidori-blue">上限なし</span>です（バフ589%まで確認）<br>
+                                <a href="https://twitter.com/chin_ohnck/status/1496878129318871043">ちんさん調査結果</a><br>
                             </div>
                             <ins class="adsbygoogle"　style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5008373409434899" data-ad-slot="1992251055"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
                             <button class="icon_btn_positive UP_TOP width-100 width-max fuchidori-white footer-font " style="padding:5px 0px;"> <i class="fas fa-arrow-up d-none d-md-inline"></i> 目次に戻る <i class="fas fa-arrow-up"></i></button>
@@ -1480,45 +1496,100 @@
                             <ins class="adsbygoogle"　style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5008373409434899" data-ad-slot="1992251055"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
                             <button class="icon_btn_positive UP_TOP width-100 width-max fuchidori-white footer-font " style="padding:5px 0px;"> <i class="fas fa-arrow-up d-none d-md-inline"></i> 目次に戻る <i class="fas fa-arrow-up"></i></button>
                         </div>
+                        <div class="ARTICLE">
+                            <h4 class="text-center label-text-small width-100">HP回復量計算について</h4>
+                            <div class="content-bg kadomaru">
+                                <div class="style-skill-list">基本計算式(簡易) <i class="fas fa-calculator"></i></div>
+                                HP回復量の計算式は大雑把に説明すると下記の通りです<br>
+                                <span style="font-size:22px; color:red;">威力項</span> × 
+                                <span style="font-size:22px; color:blue;">ステータス項</span> × 
+                                <span style="font-size:22px; color:darkgreen;">倍率項</span> ÷
+                                <span style="font-size:22px; color:purple;">調整項</span> = 
+                                HP回復量<br><br>
+                                各項目の内訳は下記の通り<br>
+                                ・威力項：基本威力、武器威力、技威力項<br>
+                                ・ステータス項：使用者の愛、対象の魅力<br>
+                                ・倍率項：アビリティ（回復強化など）、乱数<br>
+                                ・調整項：通常は60、効果極小は240<br>
+                                <br>
+                                <div class="style-skill-list">回復タイプの計算式</div>
+                                <i class="fas fa-check-circle"></i>威力項<br>
+                                ・基本威力 + 武器威力 + 技威力<br>
+                                基本威力：70<br>
+                                武器威力：威力 * 1.5<span class="fuchidori-blue">（全 武器種共通）</span><br>
+                                回復威力：5 + (威力 - 5) * (2 + Rank/100) （回復タイプは技威力＝回復威力）<br>
+                                <i class="fas fa-check-circle"></i>ステータス項<br>
+                                ・使用者の<span class="fuchidori-blue">愛</span> + 対象の<span class="fuchidori-blue">魅力</span><br>
+                                ダメージ計算のような係数はかかりません<br>
+                                <i class="fas fa-check-circle"></i>倍率項<br>
+                                ・1 + (アビリティ + 連携 + (乱数 - 6)) / 100<br>
+                                アビリティ：回復強化や聖石(回復+)など<br>
+                                乱数：1〜10<br>
+                                連携：ダメージ計算同様の連携ボーナス<br>
+                                　2,3連携 +30%<br>
+                                　4連携 +40%<br>
+                                　5連携 +50%<br>
+                                <i class="fas fa-check-circle"></i>調整項<br>
+                                通常は60<br>
+                                プリティヒットや生命循環などの効果<span class="fuchidori-blue">極小は240</span><br>
 
-                        <div class="d-none">
-                        <h4 class="text-center label-text-small width-100">この新武器って必要？ [執筆中...]</h4>
-                        <div class="content-bg kadomaru">
-                            <a name="5-1"></a>
-                            <div class="style-skill-list">+X%表記だけど、そんなにダメージ増えない</div>
-                            新章が始まると、新しい武器が手に入りますよね<br>
-                            新しい武器の性能はどんなものか知りたい。でもフル強化するには素材が勿体無い<br>
-                            そんな悩みを解決する項です。
-                            <div class="style-skill-list">強化時の威力の上がりかた</div>
-                            こちらの武器の改造前
-                            改造後
-                            どちらも同じだけ武器威力が上がっています
-                            これは防具にも言えます
-                            つまり、成長は同じなら強化前の状態を比較すれば強化後の差もわかるわけです
-                            小剣
-                            デュアルソード　青の華 炎のロッド
-                            武器を進化させる前に詳細を比較して、この装備が必要かどうか見極めましょう
+                                <div class="style-skill-list">回復効果（エナジースティールや回復呼吸）の計算式</div>
+                                係数が以下の通り設定され、回復タイプと同じ式で計算されます<br>
+                                ・武器威力：0<br>
+                                ・技ランク：1<br>
+                                ・アビリティ：0<br>
+                                ・連携：0<br>
+                                このため、回復タイプでない回復効果は<span class="fuchidori-blue">武器の有無、技ランク、聖石+で変化しません</span><br>
+                            </div>
+                        </div>
+                        <div class="ARTICLE">
+                            <h4 class="text-center label-text-small width-100">技・術・アビリティの効果発動順について</h4>
+                            <div class="content-bg kadomaru">
+                                <div class="style-skill-list">デバフ、状態異常などの効果はどのような順で発動する？</div>
+                                <i class="fas fa-check-circle"></i>発生順序は以下の通り<br>
+                                1.ダメージ<br>
+                                2.技 バフデバフ<br>
+                                3.技 状態異常<br>
+                                4.アビ バフデバフ(聖石含む)<br>
+                                5.アビ 状態異常<br>
+                                <div class="small">
+                                    1→2は詩人で検証済み<br>
+                                    2→3は耐性デバフで検証済み<br>
+                                    1→4はイーヴリンで検証済み
+                                </div>
+                                <a href="https://twitter.com/hato_gameaka/status/1539578847171321856">はとさん検証(3→4)</a><br>
+                            </div>
+                        </div>
+                        <div class="ARTICLE">
+                            <h4 class="text-center label-text-small width-100">技・術のランクアップ率</h4>
+                            <div class="content-bg kadomaru">
+                                <div class="style-skill-list">使用BPによるランクアップ率の違い</div>
+                                BP1の技でも、BP19の技でも<span class="fuchidori-blue">ランクアップ率は同じ</span>です<br>
+                                <br>
+                                <div class="style-skill-list">クエストによるランクアップ率の違い</div>
+                                Base45以降は技ランクアップ確率はほぼ変動なし<br>
+                                Base45未満のクエストは、技3がランクアップしにくくなるなどの変化があります<br>
+                                <br>
+                                <div class="style-skill-list">ランクアップ判定</div>
+                                技ランクアップの<span class="fuchidori-blue">判定タイミングは技・術の使用時</span>です（命中時ではない）<br>
+                                技がミスする→ランクアップしないは誤りです<br>
+                                術はミスしてもランクアップ判定があります<br>
+                                <br>
+                                <div class="style-skill-list">ランクアップ確率</div>
+                                技：11%前後<br>
+                                術：使用回数によりランクアップ率が変動<br>
+                                1回:10%前後<br>
+                                2回:20%前後<br>
+                                3回:26%前後<br>
+                                5回:50%前後<br>
+                                10回:64%前後<br>
+                                大体、技ランクを99にするのに必要な使用回数は<span class="fuchidori-blue">700回</span>が目安です<br>
+                                <div class="style-skill-list">技ランクが上がりやすいクエストはどれぐらい上がりやすい？</div>
+                                <span class="fuchidori-blue">3倍</span>上がりやすくなります<br>
+                                技ランクが大体30〜33%ぐらいで上がります<br>
+                            </div>  
                         </div>
 
-                        <h4 class="text-center label-text-small width-100"><img src="./img/icon/icon_jinkei_PowerRise.png" height=15 >陣形効果について [執筆中...]</h4>
-                        <div class="content-bg kadomaru">
-                            <a name="5-1"></a>
-                            <div class="style-skill-list">ステータスがX%上がるってどういうこと？</div>
-                            陣形には、ステータスが上がる配置があります<br>
-                            アマゾンストライクの前列：腕力+50%や中列：腕力25%<br>
-                            ラピッドストリームの素早さ50%<br>
-                            などなど、これは素のステータスにかかってきます<br>
-                            表示ステータスは以下の合計です<br>
-                            素ステ＋素ステ×スタイル補正＋スタイルボーナス＋裏能力＋装備<br>
-                            この中の素ステの部分にのみかかってきますので<br>
-                            という感じになります<br>
-                            <a name="5-1"></a>
-                            <div class="style-skill-list">ポジションによる被弾率</div>
-                            ハンターシフトの後列が被弾率４％で一番低いです<br>
-                            ちんさんが被弾率を実測しまとめてくださっていますのでそちらをご参照ください<br>
-                            出典：
-                        </div>
-                        
                         <li class="parent waiting">
                             <ol class="childs">
                                 <li class="child"></a></li>
