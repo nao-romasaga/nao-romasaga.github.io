@@ -42,101 +42,528 @@
         <link rel="stylesheet" type="text/css" href="./css/style2.css">
         <link rel="stylesheet" type="text/css" href="./css/ability.css">
         <style>
+            .noneCount {
+                background-color: black !important;
+            }
+            .flex-flow{
+                flex-direction: column;
+                align-items: center;
+            }
+            .sub-filter-flex {
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-between;
+            }
 
+            button {
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                outline: none;
+                padding: 0;
+                appearance: none;
+            }
+            .tiny-line {
+                line-height: 1rem;
+            }
+            .seriesButton {
+                color: #faf0b4;
+                border: 2px solid #faf0b4;
+                border-radius: 15px;
+                min-width: 80px;
+                font-size: 1rem; 
+                margin: 0 5px 15px 5px;
+            }
+            .buff-per-button {
+                color: #faf0b4;
+                border: 2px solid #faf0b4;
+                border-radius: 15px;
+                width: 90px;
+                margin: 0 5px 15px 5px;
+            }
+            .buff-per-name {
+                padding: 2px;
+            }
         </style>
     </head>
-    <body>
-        <div class ="haikei"><div class="container">
-                最終更新日: <span id="UPDATE">2020/5/21</span>
-                <h4 class="text-center title-text">全アビリティ一覧 <br class="hidden spBlock">+ 所有スタイル検索</h4>
-                <p class="text-right opacity"><small>バグ発見、ご要望は <a href="https://peing.net/ja/nao_romasaga_rs" target="new">質問箱</a>まで</small>
-                </p>
-                <h5 class="text-center opacity kadomaru" onclick="$('.movie').toggleClass('d-none')">つかいかた動画をみる</h5>
-                <div class="movie d-none">
-                    <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">[update]アビリティツリー<a href="https://t.co/ESK0C5gHcC">https://t.co/ESK0C5gHcC</a><br><br>スマホから見れるようになりました <a href="https://t.co/gfWs3N4YC7">pic.twitter.com/gfWs3N4YC7</a></p>&mdash; (nAo)@ロマサガRS (@nao_romasaga_rs) <a href="https://twitter.com/nao_romasaga_rs/status/1115317630208888832?ref_src=twsrc%5Etfw">April 8, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                </div>
-                <br>
-                <!-- ツール_アビリティ_上部 -->
-                <ins class="adsbygoogle"
-                    style="display:block"
-                    data-ad-client="ca-pub-5008373409434899"
-                    data-ad-slot="9722948134"
-                    data-ad-format="auto"
-                    data-full-width-responsive="true"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-                <label class="badge badge-pill badge-light">
-                    <span class="xs-hide">ラベルor○クリックで展開します。<br></span>
-                    アビリティ名をクリックでスタイル表示します。</label><br>
-                <!--
-            <div class="xs-hide">
-                <svg width="100%" height="500" class="bg-white"></svg>
-            </div>
-                -->
-                <div class="xs-show-tmp">
-                    <div class="acdList skillListSP switch" id="sp_skill_tree"><ul></ul></div>
-                </div>
-                <br>
-                <!-- ツール_アビリティ_下部 -->
-                <ins class="adsbygoogle"
-                    style="display:block"
-                    data-ad-client="ca-pub-5008373409434899"
-                    data-ad-slot="9987985093"
-                    data-ad-format="auto"
-                    data-full-width-responsive="true"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-                <br>
-
-                <div class="bg-simple text-center">
-                    <div id="ability_label" class="char-bottom" style="font-size:20px;"></div>
-                    <span id="ability_flavor" style="font-size:10px;"></span>
-                </div>
-                <label class="badge badge-pill badge-light">アビリティ保持者一覧</label>
-                <div class="style-bgcolor styleChoiceArea">
-                    <div id="ability_holder_list"></div>
-                </div>
-                <label class="badge badge-pill badge-light">アビリティ保持者<br>
-                アビリティ名をタップでフィルタ出来ます</label>
-                <div class="row">
-                    <div class="col-6 text-center"><button class="icon_btn_negative BTN_FILTER " style="min-width:80%"><i class="fas fa-filter"></i> 絞り込み</button></div>
-                    <div class="col-6 text-center"><button class="icon_btn_positive BTN_ALL " style="min-width:80%"><i class="fas fa-list"></i> 全表示</button></div>
-                </div>
-                <div id="ability_holder_table" class="row no-gutters"></div>
-
-                <div class="col-12 col-md-6 col-lg-4 bg-simple d-none" id="AB_CARD_TEMPLATE">
-                    <div class="" style="display:inline-block;padding: 10px 20px !important;width: 100%;margin:0px;">
-                        <div class="S_NAME text-center text-nowrap" style="line-height: 19px;"></div>
-                        <div class="S_AB" style=" line-height: 20px;display: inline-table;height: 100%;" class="fuchidori-blue"></div>
-                        <div class="S_ICON" style="float:right" ></div>
-                    </div>
-                </div>                
-
-            </div></div> <!-- main -->
-        <!-- Twitter universal website tag code -->
+    <body><div class ="dojohaikei"><div class="container">
+        <h2 class="text-center title-text">全アビリティ一覧 <br class="hidden spBlock">+ 所有スタイル検索</h2>
+        <p class="text-right opacity"><small>バグ発見、ご要望は <a href="https://peing.net/ja/nao_romasaga_rs" target="new">質問箱</a>まで</small></p>
+        <br>
+        <!-- ツール_アビリティ_上部 -->
+        <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-5008373409434899"
+            data-ad-slot="9722948134"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
         <script>
-            !function (e, t, n, s, u, a) {
-                e.twq || (s = e.twq = function () {
-                    s.exe ? s.exe.apply(s, arguments) : s.queue.push(arguments);
-                }, s.version = '1.1', s.queue = [], u = t.createElement(n), u.async = !0, u.src = '//static.ads-twitter.com/uwt.js',
-                        a = t.getElementsByTagName(n)[0], a.parentNode.insertBefore(u, a))
-            }(window, document, 'script');
-            // Insert Twitter Pixel ID and Standard Event data below
-            twq('init', 'o1u7p');
-            twq('track', 'PageView');
+            (adsbygoogle = window.adsbygoogle || []).push({});
         </script>
-        <!-- End Twitter universal website tag code -->
+        <ul class="row nav text-center opacity">
+            <li class="col-12 label-text-small" id="weaponLabel">攻撃/防御/回復</li>
+            <li class="col-12 col-sm-2 table-success char-bottom">攻撃系</li>
+            <li class="col-12 col-sm-10 d-flex flex-wrap justify-content-around ">
+                <button class="_FilterLink pad0 d-inline-block" data-main="ダメージ強化" data-sub=""><span class="withLabel">ダメージ強化<span class="countLabel" id="count_damage_up">...</span></span></button>
+                <button class="_FilterLink pad0 d-inline-block" data-main="ダメージ強化(全体)" data-sub=""><span class="withLabel">ダメージ強化(全員)<span class="countLabel" id="count_damage_up_all">...</span></span></button>
+                <div class="width-100"></div>
+                <button class="_FilterLink pad0 d-inline-block" data-main="追撃" data-sub=""><span class="withLabel">追撃<span class="countLabel" id="count_tsuigeki">...</span></span></button>
+                <button class="_FilterLink pad0 d-inline-block" data-main="カウンター" data-sub=""><span class="withLabel">カウンター<span class="countLabel" id="count_counter">...</span></span></button>
+                <button class="_FilterLink pad0 d-inline-block" data-main="Critical攻撃追加" data-sub=""><span class="withLabel">特攻追加<span class="countLabel" id="count_add_critical">...</span></span></button>
+        <li class="col-12 col-sm-2 table-success char-bottom">状態異常付与</li>
+        <li class="col-12 col-sm-10 d-flex flex-wrap justify-content-around char-bottom tiny-line">
+                <button class="_FilterLink pad0 d-flex flex-flow" data-main="状態異常付与" data-sub="毒"><span class="withLabel icon_mini_zokusei icon_doku">　</span><small>毒</small><span class="countLabel" id="count_add_ail_0">...</span></button>
+                <button class="_FilterLink pad0 d-flex flex-flow" data-main="状態異常付与" data-sub="マヒ"><span class="withLabel icon_mini_zokusei icon_mahi">　</span><small>マヒ</small><span class="countLabel" id="count_add_ail_1">...</span></button>
+                <button class="_FilterLink pad0 d-flex flex-flow" data-main="状態異常付与" data-sub="暗闇"><span class="withLabel icon_mini_zokusei icon_kurayami">　</span><small>暗闇</small><span class="countLabel" id="count_add_ail_2">...</span></button>
+                <button class="_FilterLink pad0 d-flex flex-flow" data-main="状態異常付与" data-sub="眠り"><span class="withLabel icon_mini_zokusei icon_zzz">　</span><small>眠り</small><span class="countLabel" id="count_add_ail_3">...</span></button>
+                <button class="_FilterLink pad0 d-flex flex-flow" data-main="状態異常付与" data-sub="石化"><span class="withLabel icon_mini_zokusei icon_sekika">　</span><small>石化</small><span class="countLabel" id="count_add_ail_4">...</span></button>
+                <button class="_FilterLink pad0 d-flex flex-flow" data-main="状態異常付与" data-sub="スタン"><span class="withLabel icon_mini_zokusei icon_stan">　</span><small>ｽﾀﾝ</small><span class="countLabel" id="count_add_ail_5">...</span></button>
+                <button class="_FilterLink pad0 d-flex flex-flow" data-main="状態異常付与" data-sub="混乱"><span class="withLabel icon_mini_zokusei icon_konran">　</span><small>混乱</small><span class="countLabel" id="count_add_ail_6">...</span></button>
+                <button class="_FilterLink pad0 d-flex flex-flow" data-main="状態異常付与" data-sub="魅了"><span class="withLabel icon_mini_zokusei icon_miryo">　</span><small>魅了</small><span class="countLabel" id="count_add_ail_7">...</span></button>
+                <button class="_FilterLink pad0 d-flex flex-flow" data-main="状態異常付与" data-sub="狂戦士"><span class="withLabel icon_mini_zokusei icon_kyosenshi">　</span><small>狂戦</small><span class="countLabel" id="count_add_ail_8">...</span></button>
+                <button class="_FilterLink pad0 d-flex flex-flow" data-main="状態異常付与" data-sub="気絶"><span class="withLabel icon_mini_zokusei icon_kizetsu">　</span><small>気絶</small><span class="countLabel" id="count_add_ail_9">...</span></button>                    
+            </li>
+            <li class="col-12 col-sm-2 table-info char-bottom">防御系</li>
+            <li class="col-12 col-sm-10 d-flex flex-wrap justify-content-around char-bottom">
+                <button class="_FilterLink pad0 d-inline-block" data-main="被ダメージ軽減" data-sub=""><span class="withLabel">ダメージ軽減<span class="countLabel" id="count_damage_down">...</span></span></button>
+                <button class="_FilterLink pad0 d-inline-block" data-main="被ダメージ軽減(全体)" data-sub=""><span class="withLabel">ダメージ軽減(全員)<span class="countLabel" id="count_damage_down_all">...</span></span></button>
+                <div class="width-100"></div>
+                <button class="_FilterLink pad0 d-inline-block" data-main="回避" data-sub=""><span class="withLabel">回避<span class="countLabel" id="count_deflect">...</span></span></button>
+                <button class="_FilterLink pad0 d-inline-block" data-main="かばう" data-sub=""><span class="withLabel">かばう<span class="countLabel" id="count_kabau">...</span></span></button>
+                <button class="_FilterLink pad0 d-inline-block" data-main="ふんばる" data-sub=""><span class="withLabel">ふんばる<span class="countLabel" id="count_funbaru">...</span></span></button>
+            </li>
+
+            <li class="col-12 col-sm-2 table-success char-bottom">回復系</li>
+            <li class="col-12 col-sm-10 d-flex flex-wrap justify-content-around char-bottom">
+                <button class="_FilterLink pad0 d-inline-block" data-main="HP回復" data-sub=""><span class="withLabel">HP回復<span class="countLabel" id="count_hp">...</span></span></button>
+                <button class="_FilterLink pad0 d-inline-block" data-main="HP回復量上昇" data-sub=""><span class="withLabel">HP回復量上昇<span class="countLabel" id="count_hp_up">...</span></span></button>
+                
+                <button class="_FilterLink pad0 d-inline-block" data-main="BP回復" data-sub=""><span class="withLabel">BP回復<span class="countLabel" id="count_bp">...</span></span></button>
+                <button class="_FilterLink pad0 d-inline-block" data-main="ODゲージ上昇" data-sub=""><span class="withLabel">OD上昇<span class="countLabel" id="count_od">...</span></span></button>
+                <div class="width-100"></div>
+                <button class="_FilterLink pad0 d-inline-block" data-main="能力ダウン解除" data-sub=""><span class="withLabel">能力ダウン解除<span class="countLabel" id="count_dis_down">...</span></span></button>
+                <button class="_FilterLink pad0 d-inline-block" data-main="状態異常解除" data-sub=""><span class="withLabel">状態異常解除<span class="countLabel" id="count_dis_ail">...</span></span></button>
+            </li>
+            <li class="col-12 col-sm-2 table-info char-bottom">その他</li>
+            <li class="col-12 col-sm-10 d-flex flex-wrap justify-content-around char-bottom">
+                <button class="_FilterLink pad0 d-inline-block" data-main="命中上昇" data-sub=""><span class="withLabel">命中上昇<span class="countLabel" id="count_hit">...</span></span></button>
+                <button class="_FilterLink pad0 d-inline-block" data-main="アビリティ付与" data-sub=""><span class="withLabel">アビリティ付与<span class="countLabel" id="count_add_ability">...</span></span></button>
+                <button class="_FilterLink pad0 d-inline-block" data-main="挑発" data-sub=""><span class="withLabel">挑発<span class="countLabel" id="count_hate1">...</span></span></button>
+                <button class="_FilterLink pad0 d-inline-block" data-main="ステルス" data-sub=""><span class="withLabel">ステルス<span class="countLabel" id="count_hate2">...</span></span></button>
+            </li>
+
+            <li class="col-12 label-text-small" id="weaponLabel">バフ</li>
+            <li class="col-12 col-sm-2 table-success char-bottom">ステータス</li>
+            <li class="col-12 col-sm-10 d-flex flex-wrap justify-content-around tiny-line">
+                <button class="_FilterLink pad0 d-flex flex-flow" data-main="バフ" data-sub="腕力"><span class="withLabel icon_mini_zokusei icon_buff_str">　</span><span class="countLabel" id="count_buff_st_0">...</span></button>
+                <button class="_FilterLink pad0 d-flex flex-flow" data-main="バフ" data-sub="体力"><span class="withLabel icon_mini_zokusei icon_buff_vit">　</span><span class="countLabel" id="count_buff_st_1">...</span></button>
+                <button class="_FilterLink pad0 d-flex flex-flow" data-main="バフ" data-sub="器用さ"><span class="withLabel icon_mini_zokusei icon_buff_dex">　</span><span class="countLabel" id="count_buff_st_2">...</span></button>
+                <button class="_FilterLink pad0 d-flex flex-flow" data-main="バフ" data-sub="素早さ"><span class="withLabel icon_mini_zokusei icon_buff_agi">　</span><span class="countLabel" id="count_buff_st_3">...</span></button>
+                <button class="_FilterLink pad0 d-flex flex-flow" data-main="バフ" data-sub="知力"><span class="withLabel icon_mini_zokusei icon_buff_int">　</span><span class="countLabel" id="count_buff_st_4">...</span></button>
+                <button class="_FilterLink pad0 d-flex flex-flow" data-main="バフ" data-sub="精神"><span class="withLabel icon_mini_zokusei icon_buff_mnd">　</span><span class="countLabel" id="count_buff_st_5">...</span></button>
+                <button class="_FilterLink pad0 d-flex flex-flow" data-main="バフ" data-sub="愛"><span class="withLabel icon_mini_zokusei icon_buff_ai">　</span><span class="countLabel" id="count_buff_st_6">...</span></button>
+                <button class="_FilterLink pad0 d-flex flex-flow" data-main="バフ" data-sub="魅力"><span class="withLabel icon_mini_zokusei icon_buff_mi">　</span><span class="countLabel" id="count_buff_st_7">...</span></button>
+            <li class="col-12 col-sm-2 table-info char-bottom">状態異常耐性</li>
+            <li class="col-12 col-sm-10 d-flex flex-wrap justify-content-around tiny-line">
+                <button class="_FilterLink pad0 d-flex flex-flow" data-main="" data-sub=""><span class="withLabel icon_mini_zokusei icon_doku">　</span><small>毒<br class="sp-block">耐性</small><span class="countLabel" id="count_buff_ail_0">...</span></button>
+                <button class="_FilterLink pad0 d-flex flex-flow" data-main="" data-sub=""><span class="withLabel icon_mini_zokusei icon_mahi">　</span><small>マヒ<br class="sp-block">耐性</small><span class="countLabel" id="count_buff_ail_1">...</span></button>
+                <button class="_FilterLink pad0 d-flex flex-flow" data-main="" data-sub=""><span class="withLabel icon_mini_zokusei icon_kurayami">　</span><small>暗闇<br class="sp-block">耐性</small><span class="countLabel" id="count_buff_ail_2">...</span></button>
+                <button class="_FilterLink pad0 d-flex flex-flow" data-main="" data-sub=""><span class="withLabel icon_mini_zokusei icon_zzz">　</span><small>眠り<br class="sp-block">耐性</small><span class="countLabel" id="count_buff_ail_3">...</span></button>
+                <button class="_FilterLink pad0 d-flex flex-flow" data-main="" data-sub=""><span class="withLabel icon_mini_zokusei icon_sekika">　</span><small>石化<br class="sp-block">耐性</small><span class="countLabel" id="count_buff_ail_4">...</span></button>
+                <button class="_FilterLink pad0 d-flex flex-flow" data-main="" data-sub=""><span class="withLabel icon_mini_zokusei icon_stan">　</span><small>ｽﾀﾝ<br class="sp-block">耐性</small><span class="countLabel" id="count_buff_ail_5">...</span></button>
+                <button class="_FilterLink pad0 d-flex flex-flow" data-main="" data-sub=""><span class="withLabel icon_mini_zokusei icon_konran">　</span><small>混乱<br class="sp-block">耐性</small><span class="countLabel" id="count_buff_ail_6">...</span></button>
+                <button class="_FilterLink pad0 d-flex flex-flow" data-main="" data-sub=""><span class="withLabel icon_mini_zokusei icon_miryo">　</span><small>魅了<br class="sp-block">耐性</small><span class="countLabel" id="count_buff_ail_7">...</span></button>
+                <button class="_FilterLink pad0 d-flex flex-flow" data-main="" data-sub=""><span class="withLabel icon_mini_zokusei icon_kyosenshi">　</span><small>狂戦<br class="sp-block">耐性</small><span class="countLabel" id="count_buff_ail_8">...</span></button>
+                <button class="_FilterLink pad0 d-flex flex-flow" data-main="" data-sub=""><span class="withLabel icon_mini_zokusei icon_kizetsu">　</span><small>気絶<br class="sp-block">耐性</small><span class="countLabel" id="count_buff_ail_9">...</span></button>                    
+                <!--
+                <button class="_FilterLink pad0 d-inline-block" data-main="自身強化(バフ)" data-sub=""><span class="withLabel">バフ(自身)<span class="countLabel" id="count_my_buff">...</span></span></button>
+                <button class="_FilterLink pad0 d-inline-block" data-main="味方強化(バフ)" data-sub=""><span class="withLabel">バフ(味方)<span class="countLabel" id="count_tag_buff">...</span></span></button>
+                <button class="_FilterLink pad0 d-inline-block" data-main="全員強化(バフ)" data-sub=""><span class="withLabel">バフ(全体)<span class="countLabel" id="count_all_buff">...</span></span></button>
+                -->
+            </li>
+            <li class="col-12 label-text-small" id="weaponLabel">デバフ</li>
+            <li class="col-12 col-sm-2 table-success char-bottom">ステータス</li>
+            <li class="col-12 col-sm-10 d-flex flex-wrap justify-content-around char-bottom tiny-line">
+                <button class="_FilterLink pad0 d-flex flex-flow" data-main="デバフ" data-sub="腕力"><span class="withLabel icon_mini_zokusei icon_debuff_str">　</span><span class="countLabel" id="count_debuff_st_0">...</span></button>
+                <button class="_FilterLink pad0 d-flex flex-flow" data-main="デバフ" data-sub="体力"><span class="withLabel icon_mini_zokusei icon_debuff_vit">　</span><span class="countLabel" id="count_debuff_st_1">...</span></button>
+                <button class="_FilterLink pad0 d-flex flex-flow" data-main="デバフ" data-sub="器用さ"><span class="withLabel icon_mini_zokusei icon_debuff_dex">　</span><span class="countLabel" id="count_debuff_st_2">...</span></button>
+                <button class="_FilterLink pad0 d-flex flex-flow" data-main="デバフ" data-sub="素早さ"><span class="withLabel icon_mini_zokusei icon_debuff_agi">　</span><span class="countLabel" id="count_debuff_st_3">...</span></button>
+                <button class="_FilterLink pad0 d-flex flex-flow" data-main="デバフ" data-sub="知力"><span class="withLabel icon_mini_zokusei icon_debuff_int">　</span><span class="countLabel" id="count_debuff_st_4">...</span></button>
+                <button class="_FilterLink pad0 d-flex flex-flow" data-main="デバフ" data-sub="精神"><span class="withLabel icon_mini_zokusei icon_debuff_mnd">　</span><span class="countLabel" id="count_debuff_st_5">...</span></button>
+                <button class="_FilterLink pad0 d-flex flex-flow" data-main="デバフ" data-sub="愛"><span class="withLabel icon_mini_zokusei icon_debuff_ai">　</span><span class="countLabel" id="count_debuff_st_6">...</span></button>
+                <button class="_FilterLink pad0 d-flex flex-flow" data-main="デバフ" data-sub="魅力"><span class="withLabel icon_mini_zokusei icon_debuff_mi">　</span><span class="countLabel" id="count_debuff_st_7">...</span></button>
+                <div class="width-100"></div>
+            </li>
+            <li class="col-12 col-sm-2 table-info char-bottom">状態異常耐性</li>
+            <li class="col-12 col-sm-10 d-flex flex-wrap justify-content-around char-bottom tiny-line">
+                <button class="_FilterLink pad0 d-flex flex-flow" data-main="デバフ" data-sub=""><span class="withLabel icon_mini_zokusei icon_doku">　</span><small>毒<br class="sp-block">耐性</small><span class="countLabel" id="count_debuff_ail_0">...</span></button>
+                <button class="_FilterLink pad0 d-flex flex-flow" data-main="デバフ" data-sub=""><span class="withLabel icon_mini_zokusei icon_mahi">　</span><small>マヒ<br class="sp-block">耐性</small><span class="countLabel" id="count_debuff_ail_1">...</span></button>
+                <button class="_FilterLink pad0 d-flex flex-flow" data-main="デバフ" data-sub=""><span class="withLabel icon_mini_zokusei icon_kurayami">　</span><small>暗闇<br class="sp-block">耐性</small><span class="countLabel" id="count_debuff_ail_2">...</span></button>
+                <button class="_FilterLink pad0 d-flex flex-flow" data-main="デバフ" data-sub=""><span class="withLabel icon_mini_zokusei icon_zzz">　</span><small>眠り<br class="sp-block">耐性</small><span class="countLabel" id="count_debuff_ail_3">...</span></button>
+                <button class="_FilterLink pad0 d-flex flex-flow" data-main="デバフ" data-sub=""><span class="withLabel icon_mini_zokusei icon_sekika">　</span><small>石化<br class="sp-block">耐性</small><span class="countLabel" id="count_debuff_ail_4">...</span></button>
+                <button class="_FilterLink pad0 d-flex flex-flow" data-main="デバフ" data-sub=""><span class="withLabel icon_mini_zokusei icon_stan">　</span><small>ｽﾀﾝ<br class="sp-block">耐性</small><span class="countLabel" id="count_debuff_ail_5">...</span></button>
+                <button class="_FilterLink pad0 d-flex flex-flow" data-main="デバフ" data-sub=""><span class="withLabel icon_mini_zokusei icon_konran">　</span><small>混乱<br class="sp-block">耐性</small><span class="countLabel" id="count_debuff_ail_6">...</span></button>
+                <button class="_FilterLink pad0 d-flex flex-flow" data-main="デバフ" data-sub=""><span class="withLabel icon_mini_zokusei icon_miryo">　</span><small>魅了<br class="sp-block">耐性</small><span class="countLabel" id="count_debuff_ail_7">...</span></button>
+                <button class="_FilterLink pad0 d-flex flex-flow" data-main="デバフ" data-sub=""><span class="withLabel icon_mini_zokusei icon_kyosenshi">　</span><small>狂戦<br class="sp-block">耐性</small><span class="countLabel" id="count_debuff_ail_8">...</span></button>
+                <button class="_FilterLink pad0 d-flex flex-flow" data-main="デバフ" data-sub=""><span class="withLabel icon_mini_zokusei icon_kizetsu">　</span><small>気絶<br class="sp-block">耐性</small><span class="countLabel" id="count_debuff_ail_9">...</span></button>                    
+                <!--
+                <button class="_FilterLink pad0 d-inline-block" data-main="敵弱体化(デバフ)" data-sub=""><span class="withLabel">デバフ(単体)<span class="countLabel" id="count_single_debuff">...</span></span></button>
+                <button class="_FilterLink pad0 d-inline-block" data-main="敵全体弱体化(デバフ)" data-sub=""><span class="withLabel">デバフ(全体)<span class="countLabel" id="count_all_debuff">...</span></span></button>
+                -->
+            </li>
+            <li class="col-12 col-sm-2 table-success char-bottom">その他</li>
+            <li class="col-12 col-sm-10 d-flex flex-wrap justify-content-around">
+                <button class="_FilterLink pad0 d-inline-block" data-main="能力アップ解除" data-sub=""><span class="withLabel">能力アップ解除<span class="countLabel" id="count_buff_clear">...</span></span></button>
+            </li>
+            <li class="col-12 label-text-small" id="weaponLabel">クエスト系</li>
+            <li class="col-12 d-flex flex-wrap justify-content-around char-bottom">
+                <button class="_FilterLink pad0 d-flex flex-flow" data-main="オーラム/経験値/スタイルEXP" data-sub="オーラムドロップ量"><span class="withLabel">オーラム増加<span class="countLabel" id="count_quest1">...</span></span></button>
+                <button class="_FilterLink pad0 d-flex flex-flow" data-main="オーラム/経験値/スタイルEXP" data-sub="プレイヤーEXP"><span class="withLabel">プレイヤーEXP増加<span class="countLabel" id="count_quest2">...</span></span></button>
+                <button class="_FilterLink pad0 d-flex flex-flow" data-main="オーラム/経験値/スタイルEXP" data-sub="スタイル強化EXP"><span class="withLabel">スタイルEXP増加<span class="countLabel" id="count_quest3">...</span></span></button>
+            </li>
+            <li class="col-12 label-text-small" id="weaponLabel">バステ系</li>
+            <li class="col-12 d-flex flex-wrap justify-content-around char-bottom">
+                <button class="_FilterLink pad0 d-flex flex-flow" data-main="状態異常付与(味方)" data-sub=""><span class="withLabel">状態異常付与(味方)<span class="countLabel" id="count_own_ail">...</span></span></button>
+                <button class="_FilterLink pad0 d-flex flex-flow" data-main="代償" data-sub=""><span class="withLabel">代償<span class="countLabel" id="count_pay">...</span></span></button>
+                <button class="_FilterLink pad0 d-flex flex-flow" data-main="被ダメージ増加" data-sub=""><span class="withLabel">被ダメージ増加<span class="countLabel" id="count_own_damage_up">...</span></span></button>
+            </li>       
+        </ul>
+        <!-- ツール_アビリティ_上部 -->
+        <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-5008373409434899"
+            data-ad-slot="9722948134"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+
+        <style>
+            .ab-name-row {
+                padding: 5px;
+            }
+            .ab-name {
+                padding-left: 5px;
+                font-size: 1.3rem;
+                line-height: 1.4rem;
+            }
+            .ab-flavor {
+                line-height: 1.5rem;
+                margin-left: 10px;
+                padding: 5px;
+                border: 1px solid;
+                border-radius: 10px;
+            }
+            .ab-icon {
+                padding: 5px;
+            }
+            .ab-holders {
+                line-height: 0px;
+                height: 75px;
+                overflow-x: scroll;
+                overflow-y: hidden;
+                white-space: nowrap;
+            }
+            .wpButton {
+                margin: 0px 10px 10px 10px;
+            }
+        </style>
+        <div class="label-text-small subtitle-long width-100 text-center" style="font-size: 1rem;"><span id="FILTER_NAME"></span>の追加フィルタ</div>
+        <div class="filter-bgcolor text-center small row" style="width:100%; margin: 0px;">
+            <ul class="nav text-center width-100" style="margin-bottom: 5px;">
+                <li class="fuchidori-white subtitle-long" style="font-size: 1.2rem;">スタイル数カウント</li>
+                <div class="width-100"></div>
+                <li class="fuchidori-white subtitle-long smallFont">武器種別</li>
+                <div class="width-100"></div>
+                <li class="width-100 d-flex flex-wrap justify-content-around tiny-line">
+                    <button class="_StyleFilterLink pad0 d-flex flex-flow wpButton" data-target="WeaponType" data-value="剣"><span class="withLabel icon_mini icon_ken">　</span><span class="countLabel" id="count_剣">...</span></button>
+                    <button class="_StyleFilterLink pad0 d-flex flex-flow wpButton" data-target="WeaponType" data-value="大剣"><span class="withLabel icon_mini icon_dken">　</span><span class="countLabel" id="count_大剣">...</span></button>
+                    <button class="_StyleFilterLink pad0 d-flex flex-flow wpButton" data-target="WeaponType" data-value="斧"><span class="withLabel icon_mini icon_ono">　</span><span class="countLabel" id="count_斧">...</span></button>
+                    <button class="_StyleFilterLink pad0 d-flex flex-flow wpButton" data-target="WeaponType" data-value="棍棒"><span class="withLabel icon_mini icon_kon">　</span><span class="countLabel" id="count_棍棒">...</span></button>
+                    <button class="_StyleFilterLink pad0 d-flex flex-flow wpButton" data-target="WeaponType" data-value="体術"><span class="withLabel icon_mini icon_tai">　</span><span class="countLabel" id="count_体術">...</span></button>
+                    <button class="_StyleFilterLink pad0 d-flex flex-flow wpButton" data-target="WeaponType" data-value="銃"><span class="withLabel icon_mini icon_ju">　</span><span class="countLabel" id="count_銃">...</span></button>
+                    <button class="_StyleFilterLink pad0 d-flex flex-flow wpButton" data-target="WeaponType" data-value="小剣"><span class="withLabel icon_mini icon_sken">　</span><span class="countLabel" id="count_小剣">...</span></button>
+                    <button class="_StyleFilterLink pad0 d-flex flex-flow wpButton" data-target="WeaponType" data-value="弓"><span class="withLabel icon_mini icon_yumi">　</span><span class="countLabel" id="count_弓">...</span></button>
+                    <button class="_StyleFilterLink pad0 d-flex flex-flow wpButton" data-target="WeaponType" data-value="槍"><span class="withLabel icon_mini icon_yari">　</span><span class="countLabel" id="count_槍">...</span></button>
+                    <button class="_StyleFilterLink pad0 d-flex flex-flow wpButton" data-target="WeaponType" data-value="杖"><span class="withLabel icon_mini icon_tsue">　</span><span class="countLabel" id="count_杖">...</span></button>
+                </li>
+            </ul>
+            <ul class="nav text-center width-100" style="margin-bottom: 5px;">
+                <li class="fuchidori-white subtitle-long smallFont">シリーズ</li>
+                <div class="width-100"></div>
+                <li class="width-100 d-flex flex-wrap justify-content-around tiny-line">
+                    <button class="_StyleFilterLink pad0 d-flex flex-flow seriesButton" data-target="Series" data-value="RS1"><span class="withLabel">RS1</span><span class="countLabel" id="count_RS1">...</span></button>
+                    <button class="_StyleFilterLink pad0 d-flex flex-flow seriesButton" data-target="Series" data-value="RS2"><span class="withLabel">RS2</span><span class="countLabel" id="count_RS2">...</span></button>
+                    <button class="_StyleFilterLink pad0 d-flex flex-flow seriesButton" data-target="Series" data-value="RS3"><span class="withLabel">RS3</span><span class="countLabel" id="count_RS3">...</span></button>
+                    <button class="_StyleFilterLink pad0 d-flex flex-flow seriesButton" data-target="Series" data-value="SF1"><span class="withLabel">SF1</span><span class="countLabel" id="count_SF1">...</span></button>
+                    <button class="_StyleFilterLink pad0 d-flex flex-flow seriesButton" data-target="Series" data-value="SF2"><span class="withLabel">SF2</span><span class="countLabel" id="count_SF2">...</span></button>
+                    <button class="_StyleFilterLink pad0 d-flex flex-flow seriesButton" data-target="Series" data-value="US,ES"><span class="withLabel">US/ES</span><span class="countLabel" id="count_USES">...</span></button>
+                    <button class="_StyleFilterLink pad0 d-flex flex-flow seriesButton" data-target="Series" data-value="SSG"><span class="withLabel">SSG</span><span class="countLabel" id="count_SSG">...</span></button>
+                    <button class="_StyleFilterLink pad0 d-flex flex-flow seriesButton" data-target="Series" data-value="RSR"><span class="withLabel">RSR</span><span class="countLabel" id="count_RSR">...</span></button>
+                    <button class="_StyleFilterLink pad0 d-flex flex-flow seriesButton" data-target="Series" data-value="GB1,GB2,GB3"><span class="withLabel">GB</span><span class="countLabel" id="count_GB">...</span></button>
+                    <button class="_StyleFilterLink pad0 d-flex flex-flow seriesButton" data-target="Series" data-value="OTR"><span class="withLabel">その他</span><span class="countLabel" id="count_OTR">...</span></button>
+                </li>
+            </ul>
+            <ul class="nav text-center width-100" style="margin-bottom: 5px;">
+                <li class="fuchidori-white subtitle-long smallFont">レアリティ</li>
+                <div class="width-100"></div>
+                <li class="width-100 d-flex tiny-line">
+                    <button class="_StyleFilterLink pad0 d-flex flex-flow wpButton" data-target="Rarity" data-value="SS"><span class="withLabel"><img src="https://romasagatool.com/img/icon/icon_SS.png" width="40"></span><span class="countLabel" id="count_SS">...</span></button>
+                    <button class="_StyleFilterLink pad0 d-flex flex-flow wpButton" data-target="Rarity" data-value="S"><span class="withLabel"><img src="https://romasagatool.com/img/icon/icon_S.png" width="40"></span><span class="countLabel" id="count_S">...</span></button>
+                    <button class="_StyleFilterLink pad0 d-flex flex-flow wpButton" data-target="Rarity" data-value="A"><span class="withLabel"><img src="https://romasagatool.com/img/icon/icon_A.png" width="40"></span><span class="countLabel" id="count_A">...</span></button>
+                </li>
+            </ul>
+            
+            <ul class="nav text-center width-100" style="margin-bottom: 5px;">
+                <li class="fuchidori-white subtitle-long" style="font-size: 1.2rem;">アビリティ数カウント</li>
+                <div class="width-100"></div>
+                <li class="fuchidori-white subtitle-long smallFont">対象</li>
+                <div class="width-100"></div>
+                <li class="d-flex flex-wrap justify-content-around tiny-line" id="FILTER_TAG" ></li>
+            </ul>
+            <ul class="nav text-center width-100" style="margin-bottom: 5px;">
+                <li class="fuchidori-white subtitle-long smallFont">サブ</li>
+                <div class="width-100"></div>
+                <li class="d-flex flex-wrap justify-content-around tiny-line" id="FILTER_SUB" ></li>
+            </ul>
+            <ul class="nav text-center width-100" style="margin-bottom: 5px;">
+                <li class="fuchidori-white subtitle-long smallFont">発動タイミング</li>
+                <div class="width-100"></div>
+                <li class="d-flex flex-wrap justify-content-around tiny-line" id="FILTER_WHEN" ></li>
+            </ul>
+            <ul class="nav text-center width-100" style="margin-bottom: 5px;">
+                <li class="fuchidori-white subtitle-long smallFont">発動確率</li>
+                <div class="width-100"></div>
+                <li class="d-flex flex-wrap justify-content-around tiny-line" id="FILTER_TIME" ></li>
+            </ul>
+            <ul class="nav text-center width-100" style="margin-bottom: 5px;">
+                <li class="fuchidori-white subtitle-long smallFont">効果</li>
+                <div class="width-100"></div>
+                <li class="d-flex flex-wrap justify-content-around tiny-line" id="FILTER_PER"></li>
+            </ul>
+        </div>
+        <!-- TMPL -->     
+        <button id="BUFF_PER_TMPL" class="_SubFilterLink d-flex flex-flow justify-content-evenly buff-per-button BUFF_PER_BTN " data-target="" data-value="" style="display: none !important;">
+            <span class="BUFF_PER_NAME buff-per-name"></span>
+            <span class="countLabel BUFF_PER_COUNT">...</span>
+        </button>
+
+        <ul class="row nav" id="AB-LIST"></ul>
+        <li class="col-12 row no-gutters bg-simple d-none" id="AB-LIST-TMPL">
+            <div class="col-12 col-sm-9 col-md-8 col-lg-6 ab-name-row small">
+                <div class="d-flex" style="align-items: center; padding-left: 10px;">
+                      <span class="icon-back-abiligy icon-back-skill-xs">
+                          <span class="AB-ICON icon-skill icon-skill-xs">　</span>
+                      </span>
+                    <div class="ab-name NAME-AREA"></div>
+                </div>
+                <div class="yubi ab-flavor FLAVOR-AREA"></div>
+            </div>
+            <div class="col-12 col-sm-3 col-md-4 col-lg-6">
+                <div class="ab-holders ICON-AREA"></div>
+            </div>
+        </li>
+
+        <!-- ツール_アビリティ_下部 -->
+        <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-5008373409434899"
+            data-ad-slot="9987985093"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div><!-- container -->
+    </div><!-- dojohaikei -->
+    <div id="INFO_AB_OVERLAY" class="overlay d-none"></div>
+    <div id="INFO_AB_AREA" class="yubi info-modal ab-text-info animation animation-out d-none" style="
+    top: 1000px;">
+        <div id="INFO_AB_NAME" class="text-center info-modal-header">使い方</div>
+        <div id="INFO_AB_TEXT" class="width-100 bg-simple small" style="height: 75%; padding: 15px; overflow: scroll;"></div>
+        <div class="width-100 text-center">
+            <button class="icon_btn_negative">閉じる</button>
+        </div>
+    </div>
+    <style>
+        .overlay {
+            justify-content: center;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: 4;
+            background-color: rgba(0,0,0,0.6);
+            top: 0;
+            left: 0;
+            display: flex;            
+        }        
+        .ab-text-info {
+            position: fixed;
+            width: calc(100% - 20px);
+            height: 50%;
+            z-index: 5;
+            margin: 20% 10px;
+        }
+        .when-group {
+            margin-top: 20px;
+        }
+    </style>
+        
     </body>
 
     <!--script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script-->
+    <!--
     <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
     <script src="./js/Firebase.js"></script>
-    <script src="https://d3js.org/d3.v5.min.js"></script>
-    <script src="./js/data_STYLEMASTER_auto.js" ></script>
-    <script src="./js/data_ABILITYTREE.js"></script>
+    -->
+    <script src="./js/data_CHARMASTER.js" ></script>
+    <script src="./js/data_STYLEMASTER.js" ></script>
+    <script src="./js/data_ABILITY.js"></script>
+    <script src="./js/data_ABILITY_COUNT.js"></script>
     <script src="./js/ability.js"></script>
+    <script type="text/javascript" src="https://romasagatool.com/blog/get_the_archives.php?limit=30&callback=rssCallback"></script>
+    <style>
+.animation {
+  animation-direction: normal;
+  animation-duration: 0.5s;
+  animation-timing-function: ease;
+}
+.animation-in {
+  animation-name: anim_sc;
+  transform: scale(1, 1);
+}
+.animation-out {
+  animation-name: anim_sc_out;
+  transform: scale(0, 0);
+}
+@keyframes anim_sc {
+  0% {
+    transform: scale(0, 0);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}     
+@keyframes anim_sc_out {
+  0% {
+    transform: scale(1, 1);
+  }
+  100% {
+    transform: scale(0, 0);
+  }
+}        
+            .img-icon {
+                width: 20px;
+            }
+            .withLabel{
+                display: flex;
+                align-items: center;
+            }
+            .noneCount{
+                background-color:black !important;
+            }
+            ._FilterLink{}
+
+            .pari{
+                display: inline-block;
+                width: 35px;
+                height: 35px;
+                background-position: -365px -45px !important;
+                margin: 0 0 0 0px;
+                background-size: 200px !important;                
+            }
+            .weaponIconTd {
+                width: 40px;
+                position:relative
+            }
+            .skill-name {
+                margin: auto 0px;
+            }
+            .kakusei-bp {
+                position: absolute;
+                top: 40px;
+                right: 0;
+                width: 40px;
+                text-align: center;
+                font-size: 8px;
+            }
+            .holderStyleArea {
+                line-height: 0px;
+                height:75px;
+                overflow-x: scroll;
+                overflow-y: hidden;
+                white-space:nowrap;
+            }
+            .countLabel {
+                display: inline-block;
+                min-width: 30px;
+                font-size: 0.9rem;
+                padding: 1px 5px;
+                background-color: rgba(160, 40, 40, 0.6);
+                color: white;
+                border-radius: 6px;
+                border: 1px solid lightcyan;
+                margin-left: 0px;
+            }
+
+            /* 画面サイズ320より小さい場合 iphone5 */
+            @media screen and (max-width:320px) {
+                .icon_mini {
+                    width:30px;
+                    height:30px;
+                }
+                .skill-name {
+                    font-size: 15px;
+                }
+            }            
+            /* 322〜400pxの画面の場合 */
+            @media screen and (min-width:321px) and ( max-width:400px) {
+                .icon_mini {
+                    width:35px;
+                    height:35px;
+                }
+            }
+            /* 440pxより大きい画面の場合 */
+            @media (min-width: 440px) {
+                .weaponIconTd {
+                    width: 50px;
+                }
+            }
+            /* 768px以下の画面の場合 */
+            @media (max-width: 768px) {
+                .style_icon_bg_base {
+                    width: 35px;
+                    height: 35px;
+                }
+                .style_icon_rare_base {
+                    width: 18px;
+                    height: 18px;
+                }
+                .holderStyleArea {
+                    height:55px;
+                }
+            }
+            /* 1024px以下の画面の場合 */
+            @media (max-width: 1024px) {
+                .style_icon_bg_base {
+                    width: 45px;
+                    height: 45px;
+                }
+                .style_icon_rare_base {
+                    width: 20px;
+                    height: 20px;
+                }
+                .holderStyleArea {
+                    height:60px;
+                }
+            }
+
+            .HOLDER_DISP_AREA {
+                display: none1;
+            }
+    </style>
+
 </html>
