@@ -169,7 +169,23 @@
                             </div>
                         </div>
                         -->
-                        <div class="col-12 col-md-6">
+                        <div class="col-12">
+                            <div class="text-center label-text-small width-100">BP 状態</div>
+                            BP回復の特殊状態を指定<br>
+                            <table class="width-100 text-nowrap">
+                                <tr>
+                                    <td style="line-height: 1.2rem;">ﾊﾞﾄﾙとﾗｳﾝﾄﾞの開始時<span class="fuchidori-blue">BP+1</span><br>ﾗｳﾝﾄﾞ開始時 全ｽﾃｰﾀｽ+15%</td>
+                                    <td><button style="margin-bottom: 10px;" class="width-100 icon_btn_off optionButton" data-on="0" data-name="special_bp"
+                                            data-label="anya">不思議な絆Ⅰ　<i class="TOGGLE fas fa-toggle-off"></i></button></td>
+                                </tr>
+                                <tr>
+                                    <td style="line-height: 1.2rem;">ターン終了時<span class="fuchidori-blue">BP+1</span><br>常時 腕体速知+50%</td>
+                                    <td><button style="margin-bottom: 10px;" class="width-100 icon_btn_off optionButton" data-on="0" data-name="special_bp"
+                                            data-label="ryujin">龍陣・改　<i class="TOGGLE fas fa-toggle-off"></i></button></td>
+                                </tr>
+                            </table>                            
+                        </div>                        
+                        <div class="col-12 col-md-6">                   
                             <div class="text-center label-text-small width-100">範囲攻撃 評価</div>
                             範囲攻撃ダメージを<br class="hidden spBlock">下記の敵数分で再計算<br>
                             <table class="width-100 text-nowrap">
@@ -196,7 +212,9 @@
                                     <td><button class="width-100 icon_btn_off optionButton text-nowrap" data-on="0" data-name="round">ラウンド <i class="TOGGLE fas fa-toggle-off"></i></button></td>
                                 </tr>
                                 <tr><td colspan="2" class="small text-left text-nowrap">ターン毎計算からラウンド毎計算に切り替わります<br>
-                                    ・勇健、強襲、バフ持ち越しなしが適応<span class="d-none d-sm-inline">されます</span></td>
+                                    ・勇健、強襲、バフ持ち越しなしが適応<span class="d-none d-sm-inline">されます</span><br>
+                                    ・打倒練気など<span class="fuchidori-blue">撃破時BP回復が適応</span><span class="d-none d-sm-inline">されます</span><br>
+                                </td>
                                 </tr>
                                 <tr>
                                     <td>使用技フィルタ</td>
@@ -464,7 +482,7 @@
                             </div>
                         </div>
                         <div class="row no-gutters text-center SS_WP_AREA" style="margin-bottom: 10px;">
-                            <div class="col ss-filter text-nowrap">
+                            <div class="col-2 col-sm ss-filter text-nowrap">
                                 <span class="icon_xs icon_ken"></span>
                                 <div id="SS_icon_ken"></div>
                                 <div class="">
@@ -477,7 +495,7 @@
                                     <div id="SS_icon_ken55"></div>
                                 </div>
                             </div>
-                            <div class="col ss-filter text-nowrap">
+                            <div class="col-2 col-sm ss-filter text-nowrap">
                                 <span class="icon_xs icon_dken"></span>
                                 <div id="SS_icon_dken"></div>
                                 <div class="">
@@ -488,14 +506,14 @@
                                     <div id="SS_icon_dken56"></div>
                                 </div>
                             </div>
-                            <div class="col ss-filter text-nowrap">
+                            <div class="col-2 col-sm ss-filter text-nowrap">
                                 <span class="icon_xs icon_ono"></span><div id="SS_icon_ono"></div>
                                 <div class="">
                                     <span class="icon_xs icon_ono"></span><span class="icon_xs icon_yami"></span>
                                     <div id="SS_icon_ono56"></div>
                                 </div>                                
                             </div>
-                            <div class="col ss-filter text-nowrap">
+                            <div class="col-2 col-sm ss-filter text-nowrap">
                                 <span class="icon_xs icon_kon"></span><div id="SS_icon_kon"></div>
                                 <div class="">
                                     <span class="icon_xs icon_kon"></span><span class="icon_xs icon_hi"></span>
@@ -506,9 +524,9 @@
                                     <div id="SS_icon_kon53"></div>
                                 </div>
                             </div>
-                            <div class="col ss-filter"><span class="icon_xs icon_tai"></span><div id="SS_icon_tai"></div></div>
-                            <div class="col ss-filter text-nowrap"><span class="icon_xs icon_ju"></span><div id="SS_icon_ju"></div></div>
-                            <div class="col ss-filter text-nowrap">
+                            <div class="col-2 col-sm ss-filter"><span class="icon_xs icon_tai"></span><div id="SS_icon_tai"></div></div>
+                            <div class="col-2 col-sm ss-filter text-nowrap"><span class="icon_xs icon_ju"></span><div id="SS_icon_ju"></div></div>
+                            <div class="col-2 col-sm ss-filter text-nowrap">
                                 <span class="icon_xs icon_sken"></span>
                                 <div id="SS_icon_sken"></div>
                                 <div class="">
@@ -520,37 +538,35 @@
                                     <div id="SS_icon_sken53"></div>
                                 </div>
                             </div>
-                            <div class="col ss-filter text-nowrap">
+                            <div class="col-2 col-sm ss-filter text-nowrap">
                                 <span class="icon_xs icon_yari"></span><div id="SS_icon_yari"></div>
                                 <div class="">
                                     <span class="icon_xs icon_yari"></span><span class="icon_xs icon_hi"></span>
                                     <div id="SS_icon_yari51"></div>
                                 </div>
                             </div>
-                            <div class="col ss-filter text-nowrap">
+                            <div class="col-2 col-sm ss-filter text-nowrap">
                                 <span class="icon_xs icon_yumi"></span><div id="SS_icon_yumi"></div>
                                 <div class="">
                                     <span class="icon_xs icon_yumi"></span><span class="icon_xs icon_mizu"></span>
                                     <div id="SS_icon_yumi52"></div>
                                 </div>
                             </div>
-                            <div class="col ss-filter text-nowrap">
+                            <div class="col-2 col-sm ss-filter text-nowrap">
                                 <span class="icon_xs icon_tsue"></span><span class="icon_xs icon_hi"></span><div id="SS_icon_tsue51"></div>
-                                <span class="icon_xs icon_tsue"></span><span class="icon_xs icon_mizu"></span><div id="SS_icon_tsue52"></div>
-                            </div>
-                            <div class="col ss-filter text-nowrap">
                                 <span class="icon_xs icon_tsue"></span><span class="icon_xs icon_hi"></span><span class="icon_xs icon_mizu"></span><div id="SS_icon_tsue5152"></div>
                                 <span class="icon_xs icon_tsue"></span><span class="icon_xs icon_hi"></span><span class="icon_xs icon_tsuchi"></span><div id="SS_icon_tsue5153"></div>
                             </div>
-                            <!--
-                            <div class="col ss-filter text-nowrap"><span class="icon_xs icon_tsue"></span><span class="icon_xs icon_tsuchi"></span><div id="SS_icon_tsue53"></div></div>
-                            -->
-                            <div class="col ss-filter text-nowrap">
-                                <span class="icon_xs icon_tsue"></span><span class="icon_xs icon_kaze"></span><div id="SS_icon_tsue54"></div>
-                                <span class="icon_xs icon_tsue"></span><span class="icon_xs icon_hikari"></span><div id="SS_icon_tsue55"></div></div>
-                            <div class="col ss-filter text-nowrap">
+                            <div class="col-2 col-sm ss-filter text-nowrap">
+                                <span class="icon_xs icon_tsue"></span><span class="icon_xs icon_mizu"></span><div id="SS_icon_tsue52"></div>
+                                <span class="icon_xs icon_tsue"></span><span class="icon_xs icon_mizu"></span><span class="icon_xs icon_kaze"></span><div id="SS_icon_tsue5254"></div>
                                 <span class="icon_xs icon_tsue"></span><span class="icon_xs icon_mizu"></span><span class="icon_xs icon_yami"></span><div id="SS_icon_tsue5256"></div>
-                                <span class="icon_xs icon_tsue"></span><span class="icon_xs icon_yami"></span><div id="SS_icon_tsue56"></div></div>
+                            </div>
+                            <div class="col-2 col-sm ss-filter text-nowrap">
+                                <span class="icon_xs icon_tsue"></span><span class="icon_xs icon_hikari"></span><div id="SS_icon_tsue55"></div>
+                                <span class="icon_xs icon_tsue"></span><span class="icon_xs icon_kaze"></span><div id="SS_icon_tsue54"></div>
+                                <span class="icon_xs icon_tsue"></span><span class="icon_xs icon_yami"></span><div id="SS_icon_tsue56"></div>
+                            </div>
                         </div>
 
                         <div class="row no-gutters text-center width-max " style="margin-bottom: 10px;">
@@ -559,21 +575,21 @@
                             </div>
                         </div>                        
                         <div class="row no-gutters text-center SS_TUIOKU_WP_AREA" style="margin-bottom: 10px;">
-                            <div class="col ss-filter text-nowrap"><span class="icon_xs icon_ken"></span><div id="SS_TUIOKU_icon_ken"></div></div>
-                            <div class="col ss-filter text-nowrap"><span class="icon_xs icon_dken"></span><div id="SS_TUIOKU_icon_dken"></div></div>
-                            <div class="col ss-filter text-nowrap"><span class="icon_xs icon_ono"></span><div id="SS_TUIOKU_icon_ono"></div></div>
-                            <div class="col ss-filter text-nowrap"><span class="icon_xs icon_kon"></span><div id="SS_TUIOKU_icon_kon"></div></div>
-                            <div class="col ss-filter text-nowrap"><span class="icon_xs icon_tai"></span><div id="SS_TUIOKU_icon_tai"></div></div>
-                            <div class="col ss-filter text-nowrap"><span class="icon_xs icon_ju"></span><div id="SS_TUIOKU_icon_ju"></div></div>
-                            <div class="col ss-filter text-nowrap"><span class="icon_xs icon_sken"></span><div id="SS_TUIOKU_icon_sken"></div></div>
-                            <div class="col ss-filter text-nowrap"><span class="icon_xs icon_yari"></span><div id="SS_TUIOKU_icon_yari"></div></div>
-                            <div class="col ss-filter text-nowrap"><span class="icon_xs icon_yumi"></span><div id="SS_TUIOKU_icon_yumi"></div></div>
-                            <div class="col ss-filter text-nowrap"><span class="icon_xs icon_tsue"></span><span class="icon_xs icon_hi"></span><div id="SS_TUIOKU_icon_tsue51"></div></div>
-                            <div class="col ss-filter text-nowrap"><span class="icon_xs icon_tsue"></span><span class="icon_xs icon_mizu"></span><div id="SS_TUIOKU_icon_tsue52"></div></div>
-                            <div class="col ss-filter text-nowrap"><span class="icon_xs icon_tsue"></span><span class="icon_xs icon_tsuchi"></span><div id="SS_TUIOKU_icon_tsue53"></div></div>
-                            <div class="col ss-filter text-nowrap"><span class="icon_xs icon_tsue"></span><span class="icon_xs icon_kaze"></span><div id="SS_TUIOKU_icon_tsue54"></div></div>
-                            <div class="col ss-filter text-nowrap"><span class="icon_xs icon_tsue"></span><span class="icon_xs icon_hikari"></span><div id="SS_TUIOKU_icon_tsue55"></div></div>
-                            <div class="col ss-filter text-nowrap"><span class="icon_xs icon_tsue"></span><span class="icon_xs icon_yami"></span><div id="SS_TUIOKU_icon_tsue56"></div></div>
+                            <div class="col-2 col-sm ss-filter text-nowrap"><span class="icon_xs icon_ken"></span><div id="SS_TUIOKU_icon_ken"></div></div>
+                            <div class="col-2 col-sm ss-filter text-nowrap"><span class="icon_xs icon_dken"></span><div id="SS_TUIOKU_icon_dken"></div></div>
+                            <div class="col-2 col-sm ss-filter text-nowrap"><span class="icon_xs icon_ono"></span><div id="SS_TUIOKU_icon_ono"></div></div>
+                            <div class="col-2 col-sm ss-filter text-nowrap"><span class="icon_xs icon_kon"></span><div id="SS_TUIOKU_icon_kon"></div></div>
+                            <div class="col-2 col-sm ss-filter text-nowrap"><span class="icon_xs icon_tai"></span><div id="SS_TUIOKU_icon_tai"></div></div>
+                            <div class="col-2 col-sm ss-filter text-nowrap"><span class="icon_xs icon_ju"></span><div id="SS_TUIOKU_icon_ju"></div></div>
+                            <div class="col-2 col-sm ss-filter text-nowrap"><span class="icon_xs icon_sken"></span><div id="SS_TUIOKU_icon_sken"></div></div>
+                            <div class="col-2 col-sm ss-filter text-nowrap"><span class="icon_xs icon_yari"></span><div id="SS_TUIOKU_icon_yari"></div></div>
+                            <div class="col-2 col-sm ss-filter text-nowrap"><span class="icon_xs icon_yumi"></span><div id="SS_TUIOKU_icon_yumi"></div></div>
+                            <div class="col-2 col-sm ss-filter text-nowrap"><span class="icon_xs icon_tsue"></span><span class="icon_xs icon_hi"></span><div id="SS_TUIOKU_icon_tsue51"></div></div>
+                            <div class="col-2 col-sm ss-filter text-nowrap"><span class="icon_xs icon_tsue"></span><span class="icon_xs icon_mizu"></span><div id="SS_TUIOKU_icon_tsue52"></div></div>
+                            <div class="col-2 col-sm ss-filter text-nowrap"><span class="icon_xs icon_tsue"></span><span class="icon_xs icon_tsuchi"></span><div id="SS_TUIOKU_icon_tsue53"></div></div>
+                            <div class="col-2 col-sm ss-filter text-nowrap"><span class="icon_xs icon_tsue"></span><span class="icon_xs icon_kaze"></span><div id="SS_TUIOKU_icon_tsue54"></div></div>
+                            <div class="col-2 col-sm ss-filter text-nowrap"><span class="icon_xs icon_tsue"></span><span class="icon_xs icon_hikari"></span><div id="SS_TUIOKU_icon_tsue55"></div></div>
+                            <div class="col-2 col-sm ss-filter text-nowrap"><span class="icon_xs icon_tsue"></span><span class="icon_xs icon_yami"></span><div id="SS_TUIOKU_icon_tsue56"></div></div>
                         </div>
 
                 </div>
