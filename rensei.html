@@ -7,13 +7,12 @@
         <script src="./js/data_STYLEMASTER_style.js" ></script>
         <script src="./js/culcStyleBonus.js" ></script>
         <script src="./js/damage.js" ></script>        
-        <!-- Global site tag (gtag.js) - Google Analytics         -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138966739-1"></script>
-        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
         <script src="./js/asyncFunc.js"></script>
         <script src="./js/data_CHARMASTER.js" ></script>
         <script src="./js/data_SKILLMASTER_list.js" ></script>
         <script src="./js/data_ABILITY.js" ></script>
+        <!-- Global site tag (gtag.js) - Google Analytics     -->    
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138966739-1"></script>
         <script>
             window.dataLayer = window.dataLayer || [];
             function gtag() {
@@ -65,6 +64,11 @@
         #WEAPON_MATRIX_TABLE td {
             text-align: left !important;
         }
+        .char-matrix td {
+            line-height: 1.5rem;
+            padding: 0 8px;
+        }
+        
 
         @keyframes rollkAnime{
             50% {   transform: rotate(25deg);}
@@ -151,6 +155,9 @@
             .skill-table {
                 font-size: 8px;
             }
+        }
+        .TRASH_TMP {
+            background-color: crimson;
         }
     </style>
     <body>
@@ -366,8 +373,8 @@
 
                     </div>
 
-                    <div class="matrix-table-div">
-                        <table id="WEAPON_MATRIX_TABLE" class="yubi fuchidori-white matrix-table weapon-table width-100 text-nowrap" border="1">
+                    <div class="matrix-table-div" style="margin-bottom: 20px;">
+                        <table id="WEAPON_MATRIX_TABLE" class="WEAPON_MATRIX_TABLE_CL yubi fuchidori-white matrix-table weapon-table width-100 text-nowrap" border="1">
                             <thead>
                                 <tr class="text-center matrix-row-border">
                                     <th rowspan="2">シリーズ</th>
@@ -434,6 +441,54 @@
                             </tfoot>
                         </table>
                     </div>
+
+                    <div class="matrix-table-div">
+                        <table id="WEAPON_MATRIX_TABLE_CRIT" class="WEAPON_MATRIX_TABLE_CL yubi fuchidori-white matrix-table weapon-table width-100 text-nowrap" border="1">
+                            <thead>
+                                <tr class="text-center matrix-row-border">
+                                    <th rowspan="2">特性</th>
+                                    <th colspan="3" class="TH COL_ ">汎用</th>
+                                    <th colspan="3" class="TH gender-male-bg">男性</th>
+                                    <th colspan="3" class="TH gender-famale-bg">女性</th>
+                                    <th colspan="3" class="TH gender-unknown-bg">不明</th>
+                                    <th colspan="3" class="TH COL_HP ">HP満タン</th>
+                                    <th rowspan="2"></th>
+                                <tr class="text-center matrix-row-border">
+                                    <th class="COL_ BASE_">汎用</th><th class="COL_ COL SINGLE_">単体</th><th class="COL_ MULTI_">全体</th>
+                                    <th class="gender-male-bg BASE_">汎用</th>
+                                    <th class="gender-male-bg SINGLE_">単体</th>
+                                    <th class="gender-male-bg MULTI_">全体</th>
+                                    <th class="gender-famale-bg BASE_">汎用</th><th class="gender-famale-bg SINGLE_">単体</th><th class="gender-famale-bg MULTI_">全体</th>
+                                    <th class="gender-unknown-bg BASE_">汎用</th><th class="gender-unknown-bg SINGLE_">単体</th><th class="gender-unknown-bg MULTI_">全体</th>
+                                    <th class="COL_HP BASE_">汎用</th><th class="COL_HP SINGLE_">単体</th><th class="COL_HP MULTI_">全体</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                            <tfoot>
+                                <tr><td><br></td></tr>
+                                <tr id="MATRIX_CRIT_ROW_TEMPLATE" class="d-none matrix-row-border text-center fuchidori-blue">
+                                    <td class="CRITICAL fuchidori-white"></td>
+                                    <td class="COL_ BASE_"></td>
+                                    <td class="COL_ SINGLE_"></td>
+                                    <td class="COL_ MULTI_"></td>
+                                    <td class="gender-male-bg BASE_M"></td>
+                                    <td class="gender-male-bg SINGLE_M"></td>
+                                    <td class="gender-male-bg MULTI_M"></td>
+                                    <td class="gender-famale-bg BASE_F"></td>
+                                    <td class="gender-famale-bg SINGLE_F"></td>
+                                    <td class="gender-famale-bg MULTI_F"></td>
+                                    <td class="gender-unknown-bg BASE_Q"></td>
+                                    <td class="gender-unknown-bg SINGLE_Q"></td>
+                                    <td class="gender-unknown-bg MULTI_Q"></td>                                                        
+                                    <td class="COL_HP BASE_HP"></td>
+                                    <td class="COL_HP SINGLE_HP"></td>
+                                    <td class="COL_HP MULTI_HP"></td>
+                                    <td class="CRITICAL fuchidori-white"></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+
                     <div class="row" style="margin: 10px 0px;">
                         <div style="padding: 10px" class="bg-simple text-center col-12 col-sm-6">
                             <table border=1>
@@ -467,14 +522,16 @@
                 <div class="info-modal width-max dotList" style="margin-bottom: 20px;">
                     <div class="text-center info-modal-header">所持 錬成武器一覧</div>
                     <div class="row IS_LOGIN d-none">
-                        <div class="col-2 col-sm-9" style="margin-bottom: 20px;"></div>
-                        <div class="col-10 col-sm-3" style="margin-bottom: 20px;">
+                        <div class="col-2 col-sm-8" style="margin-bottom: 20px;"></div>
+                        <div class="col-10 col-sm-4" style="margin-bottom: 20px;">
                             <button class="icon_btn_positive text-nowrap" id="SAVE_NAME">削除結果/メモを保存する</button>
                         </div>                    
                     </div>
+                    <i class="fas fa-trash-alt"></i>をタップして赤背景になった後、上記の保存ボタンで削除結果を反映できます<br>
                     <table id="WEAPON_TABLE" class="weapon-table width-100 text-nowrap" style="overflow-x: scroll;">
                         <thead>
                             <tr class="weapon-border text-center">
+                                <td></td>
                                 <td></td>
                                 <td>アビリティ</td>
                                 <td>合計</td>
@@ -488,10 +545,12 @@
                         <tbody></tbody>
                         <tfoot>
                             <tr class="weapon-border ability-names d-none yubi WEAPON_ROW" id="LIST_TR_TEMPLATE">
-                                <td style="position: relative;">
-                                    <span class="TRASH_BTN yubi" style="font-size:1rem; position: absolute;top: 0px;left: 15px;height: 15px; z-index: 1;" onclick="">
+                                <td class="TRASH_BTN yubi">
+                                    <div class="TRASH_BTN yubi width-100 text-center">
                                         <i class="fas fa-trash-alt"></i>
-                                    </span>
+                                    </div>
+                                </td>
+                                <td style="position: relative;">
                                     <span class="WP_ICON"></span>
                                     <div class="OPTION_LABEL op-label"></div>
                                 </td>
@@ -511,13 +570,45 @@
                         </tfoot>
                     </table>
                 </div>
-
+                <style>
+                    .char-matrix {
+                        display: flex;
+                        flex-flow: column;
+                    }
+                    .char-matrix-series {
+                        display: flex;
+                    }
+                </style>
                 <div class="info-modal width-max dotList" style="margin-bottom: 20px;">
                     <div class="text-center info-modal-header">
                         <img id="JUTSU_ICON" class="BATTLE_ICON icon_xs" loading="lazy" src="">
                         <img id="WP_ICON" class="BATTLE_ICON icon_xs" loading="lazy" src="">
                         対象キャラ一覧</div>
                     <section id="CHAR_LIST" class=""></section>
+                    <div class="bg-simple">
+                        <table class="char-matrix width-100" border=1 style="border: 1px solid #faf0b4;">
+                            <tr><td>シリーズ</td><td>男</td><td>女</td><td>不明</td></tr>
+                            <tr><td>RS1</td><td class="RS1_M"></td><td class="RS1_F"></td><td class="RS1_U"></td></tr>
+                            <tr><td>RS2</td><td class="RS2_M"></td><td class="RS2_F"></td><td class="RS2_U"></td></tr>
+                            <tr><td>RS3</td><td class="RS3_M"></td><td class="RS3_F"></td><td class="RS3_U"></td></tr>
+                            <tr><td>SF1</td><td class="SF1_M"></td><td class="SF1_F"></td><td class="SF1_U"></td></tr>
+                            <tr><td>SF2</td><td class="SF2_M"></td><td class="SF2_F"></td><td class="SF2_U"></td></tr>
+                            <tr><td>ES/US</td><td class="ESUS_M"></td><td class="ESUS_F"></td><td class="ESUS_U"></td></tr>
+                            <tr><td>GB</td><td class="GB_M"></td><td class="GB_F"></td><td class="GB_U"></td></tr>
+                            <tr><td>RSR</td><td class="RSR_M"></td><td class="RSR_F"></td><td class="RSR_U"></td></tr>
+                            <tr><td>他</td><td class="OTR_M"></td><td class="OTR_F"></td><td class="OTR_U"></td></tr>
+                        </table>
+                    </div>
+                    <div class="bg-simple d-none">
+                        <table class="width-100">
+                            <tr class="text-center"><td>シリーズ</td><td>RS1</td><td>RS2</td><td>RS3</td><td>SF1</td><td>SF2</td><td>ESUS</td><td>SSG</td><td>GB</td><td>RSR</td><td>他</td></tr>
+                            <tr><td>男</td><td class="RS1_M"></td><td class="RS2_M"></td><td class="RS3_M"></td><td class="SF1_M"></td><td class="SF2_M"></td><td class="ESUS_M"></td><td class="SSG_M"></td><td class="GB_M"></td><td class="RSR_M"></td><td class="OTR_M"></td></tr>
+                            <tr><td>女</td><td class="RS1_F"></td><td class="RS2_F"></td><td class="RS3_F"></td><td class="SF1_F"></td><td class="SF2_F"></td><td class="ESUS_F"></td><td class="SSG_F"></td><td class="GB_F"></td><td class="RSR_F"></td><td class="OTR_F"></td></tr>
+                            <tr><td>不明</td><td class="RS1_U"></td><td class="RS2_U"></td><td class="RS3_U"></td><td class="SF1_U"></td><td class="SF2_U"></td><td class="ESUS_U"></td><td class="SSG_U"></td><td class="GB_U"></td><td class="RSR_U"></td><td class="OTR_U"></td></tr>
+                        </table>
+                    </div>
+
+
                     <div class="text-center">
                         キャラの並び順は「%の降順」、「登録HPの降順(利用頻度の高いキャラが優先)」、「シリーズ」です
                     </div>
