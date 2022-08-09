@@ -891,6 +891,29 @@
                                 サブミッションやヒロイズムなどは技ランクをあげることで、バフ効果、デバフ効果が上がります<br>
                                 しかし、水祭や勝利の歌、豊穣の大波などは技ランクが上がってもバフ量は変化しません<br>
                                 <span class="fuchidori-blue">法則性がないので、実測調査するしかない</span>のが現状です<br>
+                                <div class="bg-item text-center">バフ・デバフ量</div>
+                                バフ・デバフ量は技ランクだけでなく、単体、全体などでも量が代わります<br>
+                                <br>
+                                また、一部の技は技ランクが変わってもバフ・デバフ量が変わらないものもあります<br>
+                                技ランクで効果が変化するかどうかにルールはなく、検証で確認しています<br>
+                                <table class="style-skill-list text-center" border="1">
+                                    <tr>
+                                        <td>対象</td><td>効果</td>
+                                        <td style="padding: 0px 10px;">技ランク1<br>変化量</td>
+                                        <td style="padding: 0px 10px;">技ランク99<br>変化量</td>
+                                        <td style="padding: 0px 10px;">アビ(単体)<br>変化量</td>
+                                        <td style="padding: 0px 10px;">アビ(全体)<br>変化量</td>
+                                    </tr>
+                                    <tr><td>杖 通常攻撃</td><td>小</td><td>10</td><td>-</td><td></td><td></td></tr>
+                                    <tr><td>バフ</td><td>小</td><td>15</td><td>25</td><td>5</td><td>5</td></tr>
+                                    <tr><td>バフ</td><td>中</td><td>20</td><td>30</td><td>10 or 15</td><td>10 or 15</td></tr>
+                                    <tr><td>バフ</td><td>大</td><td>30</td><td>40</td><td>15 or 20</td><td>15 or 20</td></tr>
+                                    <tr><td>バフ</td><td>特大</td><td></td><td></td><td>25</td></tr>
+                                    <tr><td>デバフ</td><td>小</td><td>10</td><td>15</td><td>5</td><td></td></tr>
+                                    <tr><td>デバフ</td><td>中</td><td>15</td><td>20</td><td>10</td><td>5</td></tr>
+                                    <tr><td>デバフ</td><td>大</td><td>25</td><td>30</td><td>15</td><td>10</td></tr>
+                                    <tr><td>デバフ</td><td>特大</td><td></td><td></td><td>20</td><td></td></tr>
+                                </table>
 
                                 <div class="style-skill-list">バフ・デバフの効果はいつ切れるの？</div>
                                 バフ・デバフの効果は下記のタイミングで切れます<br>
@@ -1013,18 +1036,21 @@
                                 技ランクで効果が変化するかどうかにルールはなく、検証で確認しています<br>
                                 <table class="style-skill-list text-center" border="1">
                                     <tr>
-                                        <td></td><td>対象</td><td>効果</td>
+                                        <td>対象</td><td>効果</td>
                                         <td style="padding: 0px 10px;">技ランク1<br>変化量</td>
                                         <td style="padding: 0px 10px;">技ランク99<br>変化量</td>
+                                        <td style="padding: 0px 10px;">アビ(単体)<br>変化量</td>
+                                        <td style="padding: 0px 10px;">アビ(全体)<br>変化量</td>
                                     </tr>
-                                    <tr><td>バフ</td><td>杖 通常攻撃</td><td>小</td><td>10</td><td>-</td></tr>
-                                    <tr><td>バフ</td><td>単体</td><td>小</td><td>15</td><td>25</td></tr>
-                                    <tr><td>バフ</td><td>単体</td><td>中</td><td>20</td><td>30</td></tr>
-                                    <tr><td>バフ</td><td>単体</td><td>大</td><td>30</td><td>40</td></tr>
-                                    <tr><td>バフ</td><td>全体</td><td>小</td><td>25</td><td>-</td></tr>
-                                    <tr><td>バフ</td><td>全体</td><td>中</td><td>30</td><td>-</td></tr>
-                                    <tr><td>デバフ</td><td>単体</td><td>小</td><td>10</td><td>15</td></tr>
-                                    <tr><td>デバフ</td><td>単体</td><td>中</td><td>15</td><td>20</td></tr>
+                                    <tr><td>杖 通常攻撃</td><td>小</td><td>10</td><td>-</td><td></td><td></td></tr>
+                                    <tr><td>バフ</td><td>小</td><td>15</td><td>25</td><td>5</td><td>5</td></tr>
+                                    <tr><td>バフ</td><td>中</td><td>20</td><td>30</td><td>10 or 15</td><td>10 or 15</td></tr>
+                                    <tr><td>バフ</td><td>大</td><td>30</td><td>40</td><td>15 or 20</td><td>15 or 20</td></tr>
+                                    <tr><td>バフ</td><td>特大</td><td></td><td></td><td>25</td></tr>
+                                    <tr><td>デバフ</td><td>小</td><td>10</td><td>15</td><td>5</td><td></td></tr>
+                                    <tr><td>デバフ</td><td>中</td><td>15</td><td>20</td><td>10</td><td>5</td></tr>
+                                    <tr><td>デバフ</td><td>大</td><td>25</td><td>30</td><td>15</td><td>10</td></tr>
+                                    <tr><td>デバフ</td><td>特大</td><td></td><td></td><td>20</td><td></td></tr>
                                 </table>
                             </div>
                             <ins class="adsbygoogle"　style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5008373409434899" data-ad-slot="1992251055"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
@@ -1589,6 +1615,10 @@
                                 技ランクが大体30〜33%ぐらいで上がります<br>
                             </div>  
                         </div>
+                        <!--
+                            挑発は減衰しない
+                            https://twitter.com/chin_ohnck/status/1149648615796695043
+                        -->
 
                         <li class="parent waiting">
                             <ol class="childs">
