@@ -17,7 +17,7 @@
     <meta charset="utf-8">
     <title>【ロマサガRS】クエスト一覧</title>
     <meta property="og:title" content="【ロマサガRS】クエスト一覧" />
-    <meta property="og:url" content="https://http://nao-romasaga.github.io/quest.html" />
+    <meta property="og:url" content="https://nao-romasaga.github.io/quest.html" />
     <meta property="og:description" content="【ロマサガRS】メインクエストの敵の耐性や状態異常耐性、ドロップアイテムのまとめです。攻略のヒントにお使いください" />
     <meta name="description" content="【ロマサガRS】メインクエストの敵の耐性や状態異常耐性、ドロップアイテムのまとめです。攻略のヒントにお使いください【ロマンシングサガ リユニバース】" />
     <meta property="og:site_name" content="ロマサガRS便利ツール" />
@@ -27,7 +27,7 @@
     <meta name="twitter:site" content="@nao_romasaga_rs" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
         integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
         crossorigin="anonymous"></script>
@@ -39,44 +39,13 @@
     <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
     <script src="./js/Firebase.js"></script>
     <script src="./js/utils2.js"></script>
+    <script src="./js/data_QUEST.js"></script>
+    <script src="./js/data_QUEST_EV.js"></script>
+    <script src="./js/data_QUEST_DL.js"></script>
+    <script src="./js/data_QUEST_EX.js"></script>
+    <script src="./js/data_QUEST_SP.js"></script>
+    <script src="./js/data_QUEST_LM.js"></script>
     <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
-    <style>
-        @media only screen and (min-width: 768px) and (max-width: 1024px) {
-            .xs-show {
-                display: none;
-            }
-
-            .xs-hide {
-                display: block;
-            }
-        }
-
-        @media only screen and (min-width: 568px) and (max-width: 768px) {
-            .sp-button {
-                width: 25px;
-                height: 18px;
-            }
-        }
-
-        .table-header-img {
-            width: 20px;
-        }
-
-        .taisei {
-            font-size: 8px;
-            width: 20px;
-            text-align: right
-        }
-
-        .RESIST_TD {
-            width: 26px;
-        }
-        #DISP_ZONE {
-            text-align: center;
-            margin-left: calc(((100vw - 100%) / 2) * -1);
-            margin-right: calc(((100vw - 100%) / 2) * -1);            
-        }
-    </style>
     <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -92,1351 +61,358 @@
             <h3 class="text-center title-text">バトルクエスト一覧</h3>
             <p class="text-right opacity">
                 <small>
-                    現在、外伝1,2以降のクエストのみ表示しています<br>
-                    それより前のクエストは現在整備中です<br>
                     バグ発見、ご要望は <a href="https://twitter.com/nao_romasaga_rs" target="new">nao_romasaga_rs</a>まで</small>
             </p>
-            <div class="bg-simple small" style="padding: 20px;">
-                <div class="subtitle-long">凡例</div><br>
-                <span class="taisei shadow-red text-white">-50</span>：耐性がマイナス。弱点です<br>
-                <span class="taisei shadow-blue text-white">50</span>：耐性がプラス。Resistされます<br>
-                ★:耐性が0。状態異常が通りやすいです<br>
-                ○:耐性が0〜50。状態異常はまだ通りやすいです<br>
-                △:耐性が51〜125。状態異常が通りにくくなってきます<br>
-                ×:耐性が126〜。状態異常はほぼ通りません<br>
-                無印:耐性が999です。状態異常は無効です<br>
+            <div class="filter-bgcolor">
+                <div class="subtitle-long space-bottom">メインクエスト</div><br>
+                <div class="d-flex space-bottom text-nowrap" style="line-height: 1.1rem;">
+                    <button class="QUEST_SELECT quest-button icon_btn_negative">リアム編</button>
+                    <button class="QUEST_SELECT quest-button icon_btn_negative">ポルカ編<br class="sp-block">2章</button>
+                    <button class="QUEST_SELECT quest-button icon_btn_negative">ポルカ編<br class="sp-block">1章</button>
+                </div>
+                <div class="space-bottom">
+                    <select id="リアム編"    data-target="MAIN" class="QUEST_OPTION form-control d-none"></select>
+                    <select id="ポルカ編2章" data-target="MAIN" class="QUEST_OPTION form-control d-none"></select>
+                    <select id="ポルカ編1章" data-target="MAIN" class="QUEST_OPTION form-control d-none"></select>
+                </div>
+                <div class="subtitle-long space-bottom">サブクエスト</div><br>
+                <div class="d-flex space-bottom">
+                    <button class="QUEST_SELECT quest-button icon_btn_negative">イベント</button>
+                    <button class="QUEST_SELECT quest-button icon_btn_negative">討伐</button>
+                    <button class="QUEST_SELECT quest-button icon_btn_negative">塔</button>
+                    <button class="QUEST_SELECT quest-button icon_btn_negative">祠</button>
+                </div>
+                <div class="space-bottom">
+                    <select id="イベント" data-target="EVENT" class="QUEST_OPTION form-control d-none"></select>
+                    <select id="討伐" data-target="EVENT" class="QUEST_OPTION form-control d-none"></select>
+                    <select id="塔" data-target="EVENT" class="QUEST_OPTION form-control d-none"></select>
+                    <select id="祠" data-target="EVENT" class="QUEST_OPTION form-control d-none"></select>
+                </div>
+                
+                <div class="subtitle-long space-bottom">デイリー</div><br>
+                <div class="d-flex space-bottom text-nowrap">
+                    <button class="QUEST_SELECT quest-button icon_btn_negative" data-type="DIRECT" data-target="DAILY" id="魔物たっぷりの洞窟修練">洞窟修練</button>
+                    <button class="QUEST_SELECT quest-button icon_btn_negative" data-type="DIRECT" data-target="DAILY" id="ザクザク財宝収集">財宝収集</button>
+                    <button class="QUEST_SELECT quest-button icon_btn_negative">遺跡潜り</button>
+                </div>
+                <div class="space-bottom">
+                    <select id="遺跡潜り" data-target="DAILY" class="QUEST_OPTION form-control d-none"><option>選択してください</option></select>
+                </div>
+
+                <div class="subtitle-long space-bottom">チャレンジ</div><br>
+                <div class="d-flex text-nowrap space-bottom " style="flex-wrap: wrap;">
+                    <button class="QUEST_SELECT quest-button icon_btn_negative space-bottom " data-type="DIRECT" data-target="EXPLORE" id="深奥の密林調査" style="margin: 0 2px">深奥の密林調査</button>
+                    <button class="QUEST_SELECT quest-button icon_btn_negative " style="margin: 0 2px">大連戦-ﾊﾞｰﾄﾗﾝﾄﾞ-</button>
+                </div>
+                <div class="space-bottom">
+                    <select id="大連戦" data-target="EXPLORE" class="QUEST_OPTION form-control d-none"><option>選択してください</option></select>
+                </div>
+                
+                <div class="subtitle-long space-bottom">螺旋回廊</div><br>
+                <div class="d-flex text-nowrap" style="flex-wrap: wrap;">
+                    <button class="QUEST_SELECT quest-button icon_btn_negative space-bottom " data-target="SPIRAL" id="50">〜50階</button>
+                    <button class="QUEST_SELECT quest-button icon_btn_negative space-bottom " data-target="SPIRAL" id="100">〜100階</button>
+                    <button class="QUEST_SELECT quest-button icon_btn_negative space-bottom " data-target="SPIRAL" id="150">〜150階</button>
+                </div>
+                <div class="space-bottom">
+                    <select id="螺旋回廊50" data-target="SPIRAL" class="QUEST_OPTION form-control d-none"><option>選択してください</option></select>
+                    <select id="螺旋回廊100" data-target="SPIRAL" class="QUEST_OPTION form-control d-none"><option>選択してください</option></select>
+                    <select id="螺旋回廊150" data-target="SPIRAL" class="QUEST_OPTION form-control d-none"><option>選択してください</option></select>
+                </div>
+                <div class="subtitle-long space-bottom">最果ての決戦島</div><br>
+                <div class="d-flex space-bottom">
+                    <button class="QUEST_SELECT quest-button icon_btn_negative" data-type="DIRECT" data-target="LIMIT" id="thisWeek">今週</button>
+                    <button class="QUEST_SELECT quest-button icon_btn_negative" data-type="DIRECT" data-target="LIMIT" id="nextWeek">次回の井戸</button>
+                    <button class="QUEST_SELECT quest-button icon_btn_negative" id="井戸一覧">井戸一覧</button>
+                </div>
+                <div class="QUEST_OPTION d-none" id="井戸一覧">
+                    <div class="d-flex space-bottom" id="最果ての決戦島" style="flex-flow: column;"></div>
+                </div>
+
             </div>
-            <div id="DISP_ZONE"></div>
-            <div class="info-modal width-max d-none"
-                style="min-width: 720px; max-width: 720px; margin:10px auto; padding: 0px 2px 40px 2px;
-                display:inline-block; text-align: left;"
-                id="QUEST_BASE">
-                <div class="text-center info-modal-header fuchidori-white">外伝1.xxxxxx</div>
-                <div id="TABLE_TEMPLATE" class="bg-simple d-none" style="margin: 10px;">
-                    <table class="" style="line-height: 15px; margin-bottom:10px; table-layout: fixed;">
-                        <tr>
-                            <td colspan=6 class="bg-item text-center">
-                                <span class="QUEST_INFO"></span>
-                                <span class="QUEST_BASE small"></span>
-                            </td>
-                            <td colspan=14 class="DROP_INFO small"></td>
-                        </tr>
-                        <tr class="text-center char-bottom">
-                            <td class="" style="width:120px;"></td>
-                            <td class="RESIST_TD text-right"><img class="table-header-img"
-                                    src="https://romasagatool.com/img/icon/icon_zan.png"></td>
-                            <td class="RESIST_TD text-right"><img class="table-header-img"
-                                    src="https://romasagatool.com/img/icon/icon_da.png"></td>
-                            <td class="RESIST_TD text-right"><img class="table-header-img"
-                                    src="https://romasagatool.com/img/icon/icon_totsu.png"></td>
-                            <td class="RESIST_TD text-right"><img class="table-header-img"
-                                    src="https://romasagatool.com/img/icon/icon_netsu.png"></td>
-                            <td class="RESIST_TD text-right"><img class="table-header-img"
-                                    src="https://romasagatool.com/img/icon/icon_rei.png"></td>
-                            <td class="RESIST_TD text-right"><img class="table-header-img"
-                                    src="https://romasagatool.com/img/icon/icon_rai.png"></td>
-                            <td class="RESIST_TD text-right"><img class="table-header-img"
-                                    src="https://romasagatool.com/img/icon/icon_yo.png"></td>
-                            <td class="RESIST_TD text-right"><img class="table-header-img"
-                                    src="https://romasagatool.com/img/icon/icon_in.png"></td>
-                            <!--
-                            <td>有効状態異常</td>
-                            -->
-                            <td><img class="DOKU table-header-img" src="https://romasagatool.com/img/icon/icon_doku.png">
-                            </td>
-                            <td><img class="MAHI table-header-img" src="https://romasagatool.com/img/icon/icon_mahi.png">
-                            </td>
-                            <td><img class="ZZZ table-header-img" src="https://romasagatool.com/img/icon/icon_zzz.png"></td>
-                            <td><img class="SEKIKA table-header-img" src="https://romasagatool.com/img/icon/icon_sekika.png">
-                            </td>
-                            <td><img class="STAN table-header-img" src="https://romasagatool.com/img/icon/icon_stan.png">
-                            </td>
-                            <td><img class="KONRAN table-header-img" src="https://romasagatool.com/img/icon/icon_konran.png">
-                            </td>
-                            <td><img class="MIRYO table-header-img" src="https://romasagatool.com/img/icon/icon_miryo.png">
-                            </td>
-                            <td><img class="KIZETSU table-header-img"
-                                    src="https://romasagatool.com/img/icon/icon_kizetsu.png"></td>
-                            <td>Round1</td>
-                            <td>Round2</td>
-                            <td>Round3</td>
-                        </tr>
-                        <tr class="small d-none" id="ROW_TEMPLATE">
-                            <td class="NAME text-nowrap">ヴァンパイアレディ</td>
-                            <td class="ZAN taisei">45</td>
-                            <td class="DA taisei">-55</td>
-                            <td class="TOTSU taisei">0</td>
-                            <td class="NETSU taisei">-55</td>
-                            <td class="REI taisei">-55</td>
-                            <td class="RAI taisei">-55</td>
-                            <td class="YO taisei">-55</td>
-                            <td class="IN taisei">-55</td>
-                            <td class="DOKU text-center"></td>
-                            <td class="MAHI text-center"></td>
-                            <td class="ZZZ text-center"></td>
-                            <td class="SEKIKA text-center"></td>
-                            <td class="STAN text-center"></td>
-                            <td class="KONRAN text-center"></td>
-                            <td class="MIRYO text-center"></td>
-                            <td class="KIZETSU text-center"></td>
-                            <!--
-                        <td ><img class="DOKU table-header-img" src="https://romasagatool.com/img/icon/icon_doku.png"></td>
-                            <td><img class="MAHI table-header-img" src="https://romasagatool.com/img/icon/icon_mahi.png"></td>
-                            <td><img class="ZZZ table-header-img" src="https://romasagatool.com/img/icon/icon_zzz.png"></td>
-                            <td><img class="SEKIKA table-header-img" src="https://romasagatool.com/img/icon/icon_sekika.png"></td>
-                            <td><img class="STAN table-header-img" src="https://romasagatool.com/img/icon/icon_stan.png"></td>
-                            <td><img class="KONRAN table-header-img" src="https://romasagatool.com/img/icon/icon_konran.png"></td>
-                            <td><img class="MIRYO table-header-img" src="https://romasagatool.com/img/icon/icon_miryo.png"></td>
-                            <td><img class="KIZETSU table-header-img" src="https://romasagatool.com/img/icon/icon_kizetsu.png"></td>
-                        </td>
-                        -->
-                        </tr>
-                    </table>
+            <div id="TOP"></div>
+            <div id="ENEMY_AREA"></div>            
+            <div class="bg-simple" style="padding: 10px">
+                <div class="subtitle-long space-bottom">凡例</div><br>
+                陣形:並び順は敵アイコンの左から順に①〜⑨と対応<br>
+                <span class="taisei shadow-red text-white">-50</span>：耐性がマイナス。-35以下でWeak攻撃が発生します<br>
+                <span class="taisei shadow-blue text-white">50</span>：耐性がプラス。35以上でResistされます<br>
+                ?:現在調査中です<br>
+                ×:状態異常耐性999=その状態異常は無効です<br>
+            </div>
+
+            <!--テンプレ-->
+            <div class="info-modal width-max d-none" id="TMPL" style="padding: 5px 0px  ;">
+                <div class="text-center info-modal-header fuchidori-white"></div>
+            </div>
+            <span id="POS_POSTION" class="d-none pos-position">●</span>
+            <span id="POS_ENEMY" class="d-none pos-enemy">●</span>
+            <div id="ROUND_TEMPLATE" class="subtitle-long d-none" style="padding-right: 20px;"></div>
+            <div id="QUEST_TEMPLATE" class="d-none">
+                <div class="subtitle-long" style="margin-left:5px; padding-right: 40px;"></div>
+                <div class="bg-simple" style="margin: 5px;">
+                    <div class="WELL-TITLE"></div>
+                    <div class="ROUND-DATA"></div>
                 </div>
             </div>
+            <span id="ENEMY_POSITION_TEMPLATE" class="weapon_icon_bg_base d-none" style="position: relative;">
+                <img class="enemy-illust">
+                <span class="style_icon_frame_base style_icon_frame_b"></span>
+                <span class="enemy-name"></span>
+            </span>
+            <span id="FORMATION_POSITION_TEMPLATE" class="weapon_icon_bg_base d-none" style="position: relative;">
+                <span class="style_icon_frame_base formation_frame"></span>
+            </span>
+            
+            <div id="BREAK_TMPL" class="width-100" style="padding-bottom: 15px; overflow: scroll;"> </div>
+            <style>
+                .table-enemy-name{
+                    width: 120px;
+                    min-width: 75px;
+                }
+                .table-enemy-crit{
+                    width:80px;
+                    min-width: 45px;
+                }
+                .table-line {
+                    border-bottom: 0.5px solid aliceblue;
+                }
+
+            </style>
+            <table class="ENEMY-TABLE d-none" style="line-height: 15px;" id="TABLE_TEMPLATE">
+                <tbody>
+                <tr class="text-center char-bottom">
+                    <td class="table-enemy-name">名称</td>
+                    <td class="table-enemy-crit">特性</td>
+                    <td class="table-enemy-hp">HP</td>
+                    <td class="table-enemy-hp text-nowrap">体精</td>
+                    <td class="RESIST_TD text-right"><img class="table-header-img" src="https://romasagatool.com/img/icon/icon_zan.png"></td>
+                    <td class="RESIST_TD text-right"><img class="table-header-img" src="https://romasagatool.com/img/icon/icon_da.png"></td>
+                    <td class="RESIST_TD text-right"><img class="table-header-img" src="https://romasagatool.com/img/icon/icon_totsu.png"></td>
+                    <td class="RESIST_TD text-right"><img class="table-header-img" src="https://romasagatool.com/img/icon/icon_netsu.png"></td>
+                    <td class="RESIST_TD text-right"><img class="table-header-img" src="https://romasagatool.com/img/icon/icon_rei.png"></td>
+                    <td class="RESIST_TD text-right"><img class="table-header-img" src="https://romasagatool.com/img/icon/icon_rai.png"></td>
+                    <td class="RESIST_TD text-right"><img class="table-header-img" src="https://romasagatool.com/img/icon/icon_yo.png"></td>
+                    <td class="RESIST_TD text-right"><img class="table-header-img" src="https://romasagatool.com/img/icon/icon_in.png"></td>
+                    <td class="AILMENT_TD "><img class="DOKU table-header-img" src="https://romasagatool.com/img/icon/icon_doku.png"></td>
+                    <td class="AILMENT_TD "><img class="MAHI table-header-img" src="https://romasagatool.com/img/icon/icon_mahi.png"></td>
+                    <td class="AILMENT_TD "><img class="ZZZ table-header-img" src="https://romasagatool.com/img/icon/icon_zzz.png"></td>
+                    <td class="AILMENT_TD "><img class="SEKIKA table-header-img" src="https://romasagatool.com/img/icon/icon_sekika.png"></td>
+                    <td class="AILMENT_TD "><img class="STAN table-header-img" src="https://romasagatool.com/img/icon/icon_stan.png"></td>
+                    <td class="AILMENT_TD "><img class="KONRAN table-header-img" src="https://romasagatool.com/img/icon/icon_konran.png"></td>
+                    <td class="AILMENT_TD "><img class="MIRYO table-header-img" src="https://romasagatool.com/img/icon/icon_miryo.png"></td>
+                    <td class="AILMENT_TD "><img class="KIZETSU table-header-img" src="https://romasagatool.com/img/icon/icon_kizetsu.png"></td>
+                </tr>
+            </tbody></table>
+            <table>
+                <tr class="table-line small d-none" id="ROW_TEMPLATE">
+                    <td class="NAME table-enemy-name">モンスター名</td>
+                    <td class="CRIT table-enemy-crit">特性</td>
+                    <td class="HP text-right">?</td>
+                    <td class="text-right">
+                        <span class="VIT">?</span><br>
+                        <span class="MND">?</span>
+                    </td>
+                    <td class="RESIST_TD ZAN taisei">-</td>
+                    <td class="RESIST_TD DA taisei">-</td>
+                    <td class="RESIST_TD TOTSU taisei">-</td>
+                    <td class="RESIST_TD NETSU taisei">-</td>
+                    <td class="RESIST_TD REI taisei">-</td>
+                    <td class="RESIST_TD RAI taisei">-</td>
+                    <td class="RESIST_TD YO taisei">-</td>
+                    <td class="RESIST_TD IN taisei">-</td>
+                    <td class="AILMENT_TD DOKU text-right">999</td>
+                    <td class="AILMENT_TD MAHI text-right">999</td>
+                    <td class="AILMENT_TD ZZZ text-right">999</td>
+                    <td class="AILMENT_TD SEKIKA text-right">999</td>
+                    <td class="AILMENT_TD STAN text-right">999</td>
+                    <td class="AILMENT_TD KONRAN text-right">999</td>
+                    <td class="AILMENT_TD MIRYO text-right">999</td>
+                    <td class="AILMENT_TD KIZETSU text-right">999</td>
+                </tr>                
+            </table>
+            <div class="well-header-area d-none" id="WELL_ENEMY_ICON_TMPL">
+                <div class="well-header">
+                    <span class="enemy-bg-well">
+                        <img class="enemy-illust" src="">
+                    </span>
+                    <div class="fuchidori-white well-label"></div>
+                </div>
+                <div>
+                    <select class="form-control WELL-LEVEL">
+                        <option value="7">七段</option>
+                        <option value="6">六段</option>
+                        <option value="5">五段</option>
+                        <option value="4">四段</option>
+                        <option value="3">三段</option>
+                        <option value="2">二段</option>
+                        <option value="1">初段</option>
+                    </select>
+                </div>
+            </div>
+            <div class="well-header-area yubi WELL_LIST d-none" id="WELL_LIST_ENEMY_ICON_TMPL" style="flex-flow: wrap;">
+                <div class="well-header">
+                    <span class="enemy-bg-well">
+                        <img class="enemy-illust" src="">
+                    </span>
+                    <div class="fuchidori-white well-label"></div>
+                </div>
+                <div class="d-flex FORMATION_AREA" style="align-items: center; color: #faf0b4;"></div>
+            </div>            
+            <!--テンプレ-->
         </div> <!-- container -->
     </div> <!-- main -->
+    <div style="position:fixed; bottom:10px;z-index: 1;margin-right: 50px; width: calc(100% - 50px);" class="width-100">
+        <div style="display: flex; justify-content: space-around;" class="text-center text-nowrap">
+            <button id="FOOTER_ATTR" class="icon_btn_positive fuchidori-white footer-button">属性耐性表示</button>
+            <button id="FOOTER_AILMENT" class="icon_btn_positive fuchidori-white footer-button">状態異常耐性表示</button>
+        </div>
+    </div>
+    <p id="PageTopBtn" style="right:10px"><a href="#FILTER"><i class="fas fa-arrow-up"></i></a></p>    
+    <style>
+        .sp-block {
+            display: none;
+        }
+        .pos-position {
+            position: absolute;
+            font-size: 12px;
+        }
+        :root {
+            --base: 1.1;
+            --size: 80px;
+            --padding: 4px;
+        }
+
+        @media (max-width: 420px) {
+            :root {
+                --base: 0.8;
+                --size: 60px;
+                --padding: 2px;
+            }
+            .sp-block {
+                display: block;
+            }
+            .pos-position {
+                position: absolute;
+                font-size: 8px;
+            }
+
+        }
+        @media (max-width: 400px) {
+            :root {
+                --size: 57px;
+            }
+        }        
+        .weapon_icon_bg_base {
+            width: var(--size);
+            height: var(--size);
+            background: url(https://romasagatool.com/img/tex_ui_formation_icon_base.png);
+            background-size: cover;            
+        }
+
+        .table-header-img {
+            width: 20px;
+        }
+
+        .taisei {
+            font-size: 0.8rem;
+            text-align: right
+        }
+
+        #DISP_ZONE {
+            text-align: center;
+            margin-left: calc(((100vw - 100%) / 2) * -1);
+            margin-right: calc(((100vw - 100%) / 2) * -1);            
+        }
+        .enemy-illust {
+            max-width: 80%;
+            max-height: 80%;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+        .enemy-illust-well {
+            max-width: 100%;
+            max-height: 100%;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            border-radius: 150px;
+        }
+        .enemy-bg-well {
+            position: relative;
+            width: var(--size);
+            height: var(--size);
+            background: radial-gradient(#ff0000, #000000);
+            border-radius: 150px;
+            border: 5px solid darkgreen;            
+        }
+        .pos-enemy {
+            position: absolute;
+        }
+        .enemy-name {
+            position: absolute;
+            font-size: 8px;
+            line-height: 0.8rem;
+            text-align: center;
+            margin: auto;
+            bottom: -8px;
+            left: 0;
+            right: 0;
+            width: 90%;
+            padding: 0px 5px;
+            background-color: rgba(100, 100, 80, 1);
+            color: white;
+            border-radius: 6px;
+            border: 1px solid white;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .quest-button {
+            margin: 0px 5px;
+        }
+        .space-bottom {
+            margin-bottom: 10px;
+        }        
+        .well-header-area {
+            width: 100%;
+            display: flex;
+            flex-flow: column;
+            padding: 0 10px;
+        }
+        .well-header {
+            display: flex;
+            flex-flow: row;
+            align-items: center;
+        }
+
+        .well-label {
+            font-size: 1.5rem;
+            margin-left: -30px;
+            height: 77%;
+            background-color: #faf0b4;
+            padding-left: 40px;
+            padding-right: 10px;
+            border-radius: 15px;
+            color: aliceblue;            
+        }
+        .footer-button {
+            padding:5px 0px;
+            min-width: 170px;
+            max-width: 300px;
+        }
+        .bg-blue {
+            background-color: blue;
+        }
+    </style>
 </body>
-<script>
-    // "NAME", "毒","暗闇","スタン","麻痺","眠り","石化","混乱","魅了","狂戦士","気絶",  "斬","打",突","熱","冷","気","雷","陽","陰"
-    var quest_data = [
-    {
-        "2章6話 帝国艦隊と女道化師イゴマール2":[
-            {
-                "name": "2VH625",
-                "base": 101,
-                "drop": ["icon_dken.png:東方不敗"],
-                "enemy": [
-                    ["アデプト","0","0","0","0","0","0","0","0","0","0","-35","0","0","50","50","50","50","-35"],
-                    ["ルートヴィッヒ","300","300","300","300","300","300","300","300","300","300","-35","0","0","50","50","50","50","-35"],
-                    ["マクシムスガード","300","300","300","300","300","300","300","300","300","300","-35","0","0","50","50","50","50","-35"],
-                    ["マクシムス","300","300","300","300","300","300","300","300","300","300","-35","0","0","50","50","50","50","-35"],
-                ],
-                "position": [
-                    [["ア", "30%", "0px"],["ア", "30%", "20px"],["ア", "60%", "0px"],["ア", "60%", "20px"],],
-                    [["ル", "50%", "20px"]],
-                    [["マ", "50%", "0px"],["ガ", "80%", "0px"],["ガ", "20%", "0px"], ["ガ", "35%", "20px"],["ガ", "65%", "20px"]],
-                ]
-            },
-            {
-                "name": "2VH624",
-                "base": 100,
-                "drop": ["icon_dken.png:東方不敗"],
-                "enemy": [
-                    ["腐骨鳥","999","999","0","999","999","999","999","999","999","999","0","-35","50","-35","50","0","-45","50"],
-                    ["イルヘッド","999","999","0","999","999","999","999","999","999","999",  "0","-35","50",  "-35","50","0","-45","50"],
-                    ["アドバード","999","999","0","999","999","999","999","999","999","999",  "0","-35","50","-35","50","0","-45","50"],
-                    ["スカルロード","999","999","0","999","999","999","999","999","999","999",  "0","-35","50","-35","50","0","-45","50"],
-                ],
-                "position": [
-                    [["腐", "35%", "0px"],["腐", "20%", "15px"],["腐", "35%", "30px"], ["腐", "65%", "0px"],["腐", "80%", "15px"],["腐", "65%", "30px"],],
-                    [["ア", "50%", "0px"],["ア", "50%", "20px"],["腐", "50%", "40px"],["イ", "20%", "20px"],["イ", "80%", "20px"]],
-                    [["ア", "20%", "0px"],["ア", "80%", "0px"],["腐", "50%", "40px"],["ス", "40%", "20px"],["ス", "60%", "20px"]],
-                ]
-            },            
-            {
-                "name": "2VH623",
-                "base": 100,
-                "drop": ["icon_yari.png:ハルベルト"],
-                "enemy": [
-                    ["ヘルハウンド","0","0","0","0","0","0","0","0","0","0",   "0","50","0",  "0","-35","0","0","0"],
-                    ["リザードレディ","0","0","0","0","0","0","0","999","0","0",   "0","0","0",   "0","-35","-35","0","0"],
-                    ["ガルム","0","0","0","0","0","0","0","0","0","0",   "0","50","0",  "0","-35","0","0","0"],
-                    ["ウーズ", "125", "125", "125", "125", "125", "0", "125", "999", "125", "999",   "30","125","30",  "-35","-35","-45","-35","-35"],
-                    ["ヌエ","0","0","125","0","0",  "125","0","0","0","0",   "0","50","0", "0","0","0","0","0"],
-                ],
-                "position": [
-                    [["ヘ", "50%", "30px"],["リ", "50%", "10px"]],
-                    [["ガ", "50%", "20px"]],
-                    [["ウ", "25%", "10px"],["ヌ", "50%", "10px"],["ウ", "75%", "10px"]],
-                ]
-            },
-            {
-                "name": "2VH622",
-                "base": 99,
-                "drop": ["icon_yari.png:ハルベルト"],
-                "enemy": [
-                    ["マグマ","125","125","999","125","125","125","125","0","125","0",   "-35","0","0","50","50","50","50","50"],
-                    ["アルラウネ","0","0","999","999","0","0","0","999","0","999",   "0","50","0",   "-45","50","0","0","0"],
-                    ["フェーン", "0", "0", "999", "125", "125", "0", "125", "0", "125", "0", "-35", "0", "0", "50", "50", "50", "50", "50"],
-                    ["ﾏｽター","0","0","0","0","0","0","0","0","0","0",  "-35","0","0","50","50","50","50","-35"],
-                ],
-                "position": [
-                    [["マ", "50%", "20px"],["ア", "50%", "0px"]],
-                    [["フ", "65%", "0px"],["フ", "35%", "20px"]],
-                    [["フ", "35%", "0px"],["ﾏｽ", "65%", "20px"]],
-                ]
-            },         
-            {
-                "name": "2VH621",
-                "base": 99,
-                "drop": ["icon_tai.png:アサシンリング"],
-                "enemy": [
-                    ["シーバンブー","0","0","0","0","0",   "0","0","0","0","999",  "30","30","30","0","0","0","50","-45"],
-                    ["覚魂","0","0","0","0","0",   "0","0","0","0","999",  "30","30","30","0","0","0","50","-45"],
-                    ["ケリュケイオン","0","0","0","0","0",   "0","0","0","0","999",  "30","30","30","0","0","0","50","-45"],
-                    ["デビルテンタクラー","300","300","300","300","300",  "15","300","300","999","999",  "50","0","-20", "0","300","-20","0","0"],
-                ],
-                "position": [
-                    [["シ", "35%", "20px"],["シ", "65%", "0px"]],
-                    [["覚", "35%", "0px"],["覚", "65%", "20px"]],
-                    [["ケ", "65%", "20px"],["デ", "50%", "0px"],["ケ", "35%", "20px"]],
-                ]
-            },            
-        ],
-
-        "2章6話 帝国艦隊と女道化師イゴマール1":[
-            {
-                "name": "2VH615",
-                "base": 98,
-                "drop": ["icon_tai.png:アサシンリング"],
-                "enemy": [
-                    ["エルムバード", "999", "999", "0", "999", "999", "999", "999", "999", "999", "999", "0", "-35", "50", "50", "-35", "0", "-45", "50"],
-                    ["デスバイザー","125","125","125","125", "125","125","125","999","125","0", "50","0","-45","0",　"-35","-35","0","0"],
-                    ["蛇女", "125","125","125","0",  "0","0","0","999",  "0", "0",   "50","0", "0","50",  "-45","-35","0","0"],
-                    ["コーラルクラブ","0","0","0","0","0","0","0","999","0","0","50","0","-45","0","-35","-35","0","0"],
-                    ["カンヘルドラコ", "125","125","125","0",  "0","0","0","999",  "0", "0",   "50","0", "0","50",  "-45","-35","0","0"],
-                    ["アドバード","999","999","0","999","999","999","999","999","999","999",  "0","-35","50","-35","50","0","-45","50"],
-                    ["メーベルワーゲン","0","0","0","0","0","0","0","999","0","0","50","0","-45","0","-35","-35","0","0"],
-                    ["グリフォン", "0", "0", "125", "125", "0", "125", "0", "0", "0", "0",   "0", "0", "-35",   "0", "50", "0", "0", "0"],
-                ],
-                "position": [
-                    [["エ", "30%", "30px"],["エ", "75%", "30px"],["蛇", "30%", "0px"],["蛇", "75%", "0px"],["デ", "50%", "15px"]],
-                    [["コ", "35%", "20px"],["カ", "65%", "20px"]],
-                    [["グ", "65%", "0px"],["ア", "50%", "20px"],["メ", "35%", "0px"]],
-                ]
-            },
-            {
-                "name": "2VH614",
-                "base": 98,
-                "drop": ["icon_ken.png:白銀の剣","icon_kakusei_bsand.png:青の砂"],
-                "enemy": [
-                    ["腐骨鳥","999","999","0","999","999","999","999","999","999","999","0","-35","50","-35","50","0","-45","50"],
-                    ["イルヘッド","999","999","0","999","999","999","999","999","999","999",  "0","-35","50",  "-35","50","0","-45","50"],
-                    ["コーラルクラブ","0","0","0","0","0","0","0","999","0","0","50","0","-45","0","-35","-35","0","0"],
-                    ["バルチャー", "0", "0", "125", "0", "0", "0", "0", "0", "0", "0",   "0", "0", "-35",   "0", "50", "0", "0", "0"],
-                    ["グリフォン", "0", "0", "125", "125", "0", "125", "0", "0", "0", "0",   "0", "0", "-35",   "0", "50", "0", "0", "0"],
-                    ["デスバイザー","125","125","125","125", "125","125","125","999","125","0", "50","0","-45","0",　"-35","-35","0","0"],
-                ],
-                "position": [
-                    [["腐", "65%", "20px"],["イ", "50%", "0px"],["腐", "35%", "20px"]],
-                    [["コ", "65%", "30px"],["バ", "50%", "0px"],["コ", "50%", "15px"],["コ", "35%", "30px"]],
-                    [["グ", "35%", "20px"],["デ", "65%", "0px"]],
-                ]
-            },            
-            {
-                "name": "2VH613",
-                "base": 97,
-                "drop": ["icon_ken.png:白銀の剣","icon_kakusei_bsand.png:青の砂"],
-                "enemy": [
-                    ["化石魚","0","0","0","0", "0","0","0","999", "0","0", "0","-35","0","0", "-35","-35","0","0"],
-                    ["スノーウィルム", "0", "0", "0", "125", "0", "125", "0", "0", "0", "0",   "0", "0", "-35",   "0", "50", "0", "0", "0"],
-                    ["イルヘッド","999","999","0","999","999","999","999","999","999","999",  "0","-35","50",  "-35","50","0","-45","50"],
-                    ["フライマンバ","0","0","125","0","0","0","0","0","0","0",   "0","0","-35", "0","50","0","0","0"],
-                    ["ネプトゥーネ","0","0","125","0","0","0","0","999","0","0", "0","-35","0","0", "-35","-35","0","0"],
-                ],
-                "position": [
-                    [["化", "65%", "0px"],["化", "50%", "20px"],["化", "35%", "0px"]],
-                    [["ス", "50%", "20px"],["イ", "70%", "5px"],["イ", "30%", "5px"],["イ", "50%", "0px"]],
-                    [["フ", "65%", "0px"],["ネ", "50%", "20px"],["フ", "35%", "0px"]],
-                ]
-            },
-            {
-                "name": "2VH612",
-                "base": 96,
-                "drop": ["icon_kakusei_bstone.png:青の石"],
-                "enemy": [
-                    ["フライマンバ","0","0","125","0","0","0","0","0","0","0", "0","0","-35","0", "50","0","0","0"],
-                    ["蛇女", "125","125","125","0",  "0","0","0","999",  "0", "0",   "50","0", "0","50",  "-45","-35","0","0"],
-                    ["グリフォン", "0", "0", "125", "125", "0", "125", "0", "0", "0", "0",   "0", "0", "-35",   "0", "50", "0", "0", "0"],
-                    ["ラットラー", "0","0","125","0",  "0","0","0","999",  "0", "0",   "50","0", "0","50",  "-45","-35","0","0"],
-                    ["カンヘルドラコ", "125","125","125","0",  "0","0","0","999",  "0", "0",   "50","0", "0","50",  "-45","-35","0","0"],
-                    ["腐骨鳥","999","999","0","999","999","999","999","999","999","999","0","-35","50","-35","50","0","-45","50"],
-                    ["スノーウィルム", "0", "0", "0", "125", "0", "125", "0", "0", "0", "0",   "0", "0", "-35",   "0", "50", "0", "0", "0"],
-                ],
-                "position": [
-                    [["フ", "30%", "20px"],["グ", "60%", "0px"],["蛇", "60%", "20px"]],
-                    [["フ", "65%", "20px"],["カ", "50%", "0px"],["ラ", "35%", "20px"]],
-                    [["カ", "65%", "20px"],["ス", "50%", "0px"],["腐", "35%", "20px"]],
-                ]
-            },
-            {
-                "name": "2VH611",
-                "base": 95,
-                "drop": ["icon_kakusei_bstone.png:青の石"],
-                "enemy": [
-                    ["毒魚", "0","0","0","0", "0","0","0","999", "0","0", "0","-35","0","0", "-35","-35","0","0"],
-                    ["化石魚","0","0","0","0", "0","0","0","999", "0","0", "0","-35","0","0", "-35","-35","0","0"],
-                    ["大海竜", "0", "0", "125","0", "0","0","0","999", "0","0",  "50","0","-45","0", "-35","-35","0","0"],
-                    ["腐骨鳥","999","999","0","999","999","999","999","999","999","999","0","-35","50","-35","50","0","-45","50"],
-                    ["デスバイザー","125","125","125","125", "125","125","125","999","125","0", "50","0","-45","0",　"-35","-35","0","0"],
-                ],
-                "position": [
-                    [["化", "25%", "0px"],["化", "75%", "0px"],["毒", "35%", "20px"],["毒", "65%", "20px"],],
-                    [["毒", "50%", "20px"],["大", "25%", "0px"],["大", "75%", "0px"]],
-                    [["腐", "50%", "30px"],["腐", "20%", "15px"],["デ", "50%", "0px"],["腐", "80%", "15px"]],
-                ]
-            },      
-        ],
-        "2章5話 穢れし聖獣と朱鳥の恩恵2": [
-            {
-                "name": "2VH525",
-                "base": 95,
-                "drop": ["icon_tsue.png:(光)砂龍の杖","icon_tsue.png:(闇)砂龍の杖"],
-                "enemy": [
-                    ["ナイトヘッド","0","0","999","999","0","0","0","999","0","999",   "0","50","0",   "-45","50","0","0","0"],
-                    ["シグナルツリー","0","0","999","999","0","0","0","999","0","999",   "0","50","0",   "-45","50","0","0","0"],
-                    ["玄竜", "999", "50", "999", "300", "30", "999", "300", "300", "999", "999", "0", "0", "0", "0", "0", "50", "0", "0"],
-                ],
-                "position": [
-                    [["ナ", "50%", "20px"]],
-                    [["シ", "50%", "20px"],["シ", "50%", "0px"],],
-                    [["玄", "50%", "20px"]],
-                ]
-            }, 
-            {
-                "name": "2VH524",
-                "base": 94,
-                "drop": ["icon_tsue.png:(光)砂龍の杖","icon_tsue.png:(闇)砂龍の杖"],
-                "enemy": [
-                    ["グラスホッパー","0","0","999","999","0","0","0","999","0","999",   "0","50","0",   "-45","50","0","0","0"],
-                    ["アルラウネ","0","0","999","999","0","0","0","999","0","999",   "0","50","0",   "-45","50","0","0","0"],
-                    ["ラッフルツリー","0","0","999","999","0","0","0","999","0","999",   "0","50","0",   "-45","50","0","0","0"],
-                ],
-                "position": [
-                    [["グ", "50%", "20px"]],
-                    [["グ", "50%", "0px"],["ア", "50%", "20px"]],
-                    [["ラ", "75%", "20px"],["グ", "25%", "0px"]],
-                ]
-            },                 
-            {
-                "name": "2VH523",
-                "base": 94,
-                "drop": ["icon_tsue.png:(水)砂龍の杖","icon_tsue.png:(土)砂龍の杖"],
-                "enemy": [
-                    ["ダーティーランス","0","0","0","0","0","0","0","999","0","0", "0","-45","0","0", "-45","-45","0","0"],
-                    ["スノーレディ","0","0","0","0","0","0","0","999","0","0", "0","-45","0","0", "-45","-45","0","0"],
-                    ["ネプトゥーネ","0","0","125","0","0","0","0","999","0","0", "0","-35","0","0", "-35","-35","0","0"],
-                ],
-                "position": [
-                    [["ダ", "50%", "20px"],["ダ", "15%", "15px"],["ス", "30%", "0px"],["ス", "60%", "0px"],["ダ", "85%", "15px"]],
-                    [["ネ", "50%", "20px"],["ス", "25%", "0px"],["ス", "75%", "0px"]],
-                    [["ネ", "80%", "20px"],["ダ", "20%", "20px"],["ダ", "50%", "25px"],["ダ", "50%", "0px"]],
-                ]
-            },                        
-            {
-                "name": "2VH522",
-                "base": 94,
-                "drop": ["icon_tsue.png:(水)砂龍の杖","icon_tsue.png:(土)砂龍の杖"],
-                "enemy": [
-                    ["オアンネス","0","0","0","0", "0","0","0","999", "0","0", "0","-35","0","0", "-35","-35","0","0"],
-                    ["コーラルクラブ","0","0","0","0","0","0","0","999","0","0","50","0","-45","0","-35","-35","0","0"],
-                    ["メーベルワーゲン","0","0","0","0","0","0","0","999","0","0","50","0","-45","0","-35","-35","0","0"],
-                ],
-                "position": [
-                    [["オ", "65%", "40px"],["コ", "50%", "20px"],["オ", "35%", "0px"]],
-                    [["オ", "35%", "40px"],["メ", "50%", "20px"],["オ", "65%", "0px"]],
-                    [["コ", "75%", "20px"],["メ", "25%", "10px"],["コ", "75%", "0px"]],
-                ]
-            },            
-            {
-                "name": "2VH521",
-                "base": 93,
-                "drop": ["icon_tsue.png:(火)砂龍の杖","icon_tsue.png:(風)砂龍の杖"],
-                "enemy": [
-                    ["ロトンギアン","999","999","0","999","999","125","999","999","999","999", "0","0","-35","-35", "50","0","-55","50"],
-                    ["のろわれたししゃ","999","999","0","999","999","0","999","999","999","999","0","0","-35","-35","50","0","-55","50"],
-                    ["腐骨鳥","999","999","0","999","999","999","999","999","999","999","0","-35","50","-35","50","0","-45","50"],
-                ],
-                "position": [
-                    [["の", "75%", "20px"],["ロ", "25%", "10px"],["の", "75%", "0px"]],
-                    [["腐", "75%", "20px"],["腐", "25%", "20px"],["腐", "75%", "0px"],["ロ", "25%", "0px"]],
-                    [["の", "75%", "20px"],["腐", "25%", "20px"],["の", "75%", "0px"],["腐", "25%", "0px"]],
-                ]
-            },            
-        ],
-        "2章5話 穢れし聖獣と朱鳥の恩恵1": [
-            {
-                "name": "2VH515",
-                "base": 93,
-                "drop": ["icon_tsue.png:(火)砂龍の杖","icon_tsue.png:(風)砂龍の杖"],
-                "enemy": [
-                    ["フューリー","999","999","999","999","999","999","0","0","0","999",   "0","0","0",   "-20","30","-20","-20","50"],
-                    ["屍竜","999","999","0","999","999","0","999","999","999","999","0","0","-35","-35","50","0","-55","50"],
-                    ["ロア","999","999","999","999","999","999","0","0","0","999",   "0","0","0",   "-20","30","-20","-20","50"],
-                ],
-                "position": [
-                    [["フ", "50%", "20px"],["屍", "50%", "0px"],],
-                    [["ロ", "50%", "20px"],["屍", "25%", "0px"],["屍", "75%", "0px"]],
-                    [["ロ", "50%", "20px"],["フ", "50%", "0px"],],
-                ]
-            },                         
-            {
-                "name": "2VH514",
-                "base": 93,
-                "drop": ["icon_yumi.png:あずさ弓","icon_kakusei_osand.png:橙の砂"],
-                "enemy": [
-                    ["スケルトン","999","999","0","999","999","999","999","999","999","999","0","-35","50","-35","50","0","-45","50"],
-                    ["ロトンビースト","999","999","0","999","999","999","999","999","999","999","0","-35","50","-35","50","0","-45","50"],
-                    ["毒魚","0","0","0","0", "0","0","0","999", "0","0", "0","-35","0","0", "-35","-35","0","0"],
-                ],
-                "position": [
-                    [["ス", "50%", "30px"],["ス", "20%", "15px"],["ロ", "50%", "0px"],["ス", "80%", "15px"]],
-                    [["毒", "25%", "30px"],["毒", "20%", "15px"],["毒", "25%", "0px"],["ス", "75%", "30px"],["ス", "80%", "15px"],["ス", "75%", "0px"]],
-                    [["毒", "50%", "20px"],["毒", "15%", "15px"],["ロ", "30%", "0px"],["ロ", "60%", "0px"],["毒", "85%", "15px"]],
-                ]
-            },                 
-            {
-                "name": "2VH513",
-                "base": 92,
-                "drop": ["icon_yumi.png:あずさ弓","icon_kakusei_gsand.png:緑の砂"],
-                "enemy": [
-                    ["スライム", "125", "125", "125", "125", "125", "0", "125", "999", "125", "999", "30", "125", "30", "-35", "-35", "-45", "-35", "-35"],
-                    ["ブロッブ", "125", "125", "125", "125", "125", "0", "125", "999", "125", "999", "30", "50", "30", "-45", "-45", "-55", "-45", "-45"],
-                    ["サイケビースト", "125", "125", "125", "125", "125", "0", "125", "999", "125", "999", "30", "50", "30", "-45", "-45", "-55", "-45", "-45"],
-                ],
-                "position": [
-                    [["ス", "70%", "0px"],["ウ", "50%", "15px"],["ス", "30%", "30px"]],
-                    [["ス", "50%", "20px"],["ブ", "25%", "0px"],["ブ", "75%", "0px"]],
-                    [["サ", "50%", "0px"],["ブ", "25%", "20px"],["サ", "75%", "20px"]],
-                ]
-            },                        
-            {
-                "name": "2VH512",
-                "base": 92,
-                "drop": ["icon_kakusei_ostone.png:橙の石"],
-                "enemy": [
-                    ["キャンサー","0","0","125","0","0","0","0","999","0","0","50","0","-45","0","-35","-35","0","0"],
-                    ["ヘプトパス", "0", "0", "0", "0", "0", "0", "0", "999", "0", "0", "50", "0", "-45", "0", "-35", "-35", "0", "0"],
-                    ["大海竜", "0", "0", "125", "0", "0", "0", "0", "999", "0", "0", "50", "0", "-45", "0", "-35", "-35", "0", "0"],
-                ],
-                "position": [
-                    [["キ", "75%", "20px"],["キ", "25%", "20px"],["ヘ", "75%", "0px"],["ヘ", "25%", "0px"]],
-                    [["ヘ", "75%", "20px"],["ヘ", "25%", "20px"],["大", "75%", "0px"],["大", "25%", "0px"]],
-                    [["キ", "80%", "20px"],["キ", "20%", "20px"],["キ", "50%", "20px"],["大", "50%", "0px"]],
-                ]
-            },            
-            {
-                "name": "2VH511",
-                "base": 92,
-                "drop": ["icon_kakusei_gstone.png:緑の石"],
-                "enemy": [
-                    ["スティンガー","0","0","0","0","0","0","0","999","0","0","0","-45","0","0","-45","-45","0","0"],
-                    ["シーキラー","0","0","0","0","0","0","0","999","0","0","0","-35","0","0","-35","-35","0","0"],
-                    ["化石魚","0","0","0","0","0","0","0","999","0","0","0","-35","0","0","-35","-35","0","0"],
-                ],
-                "position": [
-                    [["ス", "75%", "20px"],["ス", "25%", "20px"],["シ", "75%", "0px"],["シ", "25%", "0px"]],
-                    [["化", "75%", "20px"],["化", "25%", "20px"],["ス", "75%", "0px"],["ス", "25%", "0px"]],
-                    [["化", "75%", "0px"],["化", "25%", "0px"],["化", "50%", "20px"]],
-                ]
-            },            
-        ],
-
-        "2章4話 二人の少年とシン・ドゥの帰還2": [
-            {
-                "name": "2VH425",
-                "base": 92,
-                "drop": ["icon_sken.png:コンツェシェ"],
-                "enemy": [
-                    ["ロトンビースト","999","999","0","999","999","999","999","999","999","999","0","-35","50","-35","50","0","-45","50"],
-                    ["腐骨鳥","999","999","0","999","999","999","999","999","999","999","0","-35","50","-35","50","0","-45","50"],
-                    ["マンティゴッド", "0", "0", "0", "125", "0", "125", "0", "0", "0", "0", "0", "-35", "0", "0", "-35", "0", "50", "0"],
-                    ["ドレッドナイト","999","999","125","999","999","999","999","999","999","999","0","-35","50","-35","50","0","-45","50"],
-                ],
-                "position": [
-                    [["ロ", "75%", "20px"],["腐", "25%", "0px"],],
-                    [["マ", "50%", "20px"]],
-                    [["ド", "50%", "20px"]],
-                ]
-            },                         
-            {
-                "name": "2VH424",
-                "base": 91,
-                "drop": ["icon_sken.png:コンツェシェ"],
-                "enemy": [
-                    ["影","0","0","0","0","0","0","0","0","0","0",   "-35","0","0",  "50","50","50","50","-35"],
-                    ["バルキリー","0","0","999","0", "0","0","0","0","0","0", "-35","0","0","50",　"50","50","50","50"],
-                    ["マスター","0","0","0","0","0","0","0","0","0","0",   "-35","0","0",  "50","50","50","50","-35"],
-                ],
-                "position": [
-                    [["影", "25%", "20px"],["バ", "75%", "20px"],],
-                    [["マ", "50%", "0px"],["影", "50%", "20px"]],
-                    [["マ", "75%", "20px"],["バ", "25%", "0px"]],
-                ]
-            },                 
-            {
-                "name": "2VH423",
-                "base": 91,
-                "drop": ["icon_sken.png:コンツェシェ"],
-                "enemy": [
-                    ["ウィズゴブリン","0","0","125","0","0","0","0","0","0","0", "0","0","-35","0", "50","0","0","0"],
-                    ["フライマンバ","0","0","125","0","0","0","0","0","0","0", "0","0","-35","0", "50","0","0","0"],
-                    ["スノーウィルム", "0", "0", "0", "125", "0", "125", "0", "0", "0", "0",   "0", "0", "-35",   "0", "50", "0", "0", "0"],
-                ],
-                "position": [
-                    [["ウ", "50%", "20px"]],
-                    [["フ", "25%", "0px"],["フ", "75%", "20px"]],
-                    [["ス", "50%", "10px"],["ウ", "25%", "25px"],["フ", "75%", "25px"]],
-                ]
-            },                        
-            {
-                "name": "2VH422",
-                "base": 91,
-                "drop": ["icon_kon.png:スリッジハンマー","icon_ju.png:マークエルフ"],
-                "enemy": [
-                    ["アルラウネ","0","0","999","999","0","0","0","999","0","999",   "0","50","0",   "-45","50","0","0","0"],
-                    ["お化けキノコ","0","0","999","999","0","0","0","999","0","999",   "0","50","0",   "-45","50","0","0","0"],
-                    ["ラッフルツリー","0","0","999","999","0","0","0","999","0","999",   "0","50","0",   "-45","50","0","0","0"],
-                ],
-                "position": [
-                    [["ア", "50%", "40px"],["ア", "50%", "20px"],["お", "50%", "0px"]],
-                    [["ア", "50%", "10px"],["お", "25%", "25px"],["お", "75%", "25px"]],
-                    [["お", "25%", "0px"],["ラ", "75%", "20px"]]
-                ]
-            },            
-            {
-                "name": "2VH421",
-                "base": 90,
-                "drop": ["icon_kon.png:スリッジハンマー","icon_ju.png:マークエルフ"],
-                "enemy": [
-                    ["フライマンバ","0","0","125","0","0","0","0","0","0","0", "0","0","-35","0", "50","0","0","0"],
-                    ["グリフォン", "0", "0", "125", "125", "0", "125", "0", "0", "0", "0",   "0", "0", "-35",   "0", "50", "0", "0", "0"],
-                    ["ドードー","0","0","125","0","0","0","0","0","0","0","0","0","-35","0","50","0","0","0"],
-                    ["スノーウィルム", "0", "0", "0", "125", "0", "125", "0", "0", "0", "0",   "0", "0", "-35",   "0", "50", "0", "0", "0"],
-                ],
-                "position": [
-                    [["フ", "75%", "20px"],["グ", "25%", "0px"]],
-                    [["ド", "40%", "0px"],["ド", "40%", "15px"],["ド", "40%", "30px"],["ド", "70%", "0px"],["ド", "70%", "15px"]],
-                    [["グ", "25%", "20px"],["ス", "75%", "20px"]]
-                ]
-            },            
-        ],
-        "2章4話 二人の少年とシン・ドゥの帰還1": [
-            {
-                "name": "2VH415",
-                "base": 90,
-                "drop": ["icon_kon.png:スリッジハンマー","icon_ju.png:マークエルフ"],
-                "enemy": [
-                    ["ビー", "0", "0", "125", "0", "0", "0", "0", "0", "0", "0", "0", "-35", "0", "0", "-35", "0", "50", "0"],
-                    ["ﾋﾟｱｽ","0","0","125","0","0","0","0","0","0","0","0","-35","0","0","-35","0","50","0"],
-                    ["バガー","0","0","0","0","0","0","0","0","0","0",  "0","-35","0",  "0","-35","0","50","0"],
-                    ["ﾓｰﾀﾙｺﾞｰｽﾄ","999","999","0","999", "999","999","999","999", "999","999",  "0","-35","50","-35",  "50","0","-45","50"],
-
-                ],
-                "position": [
-                    [["ﾋﾟ", "25%", "0px"],["ﾋﾟ", "75%", "0px"],["ビ", "25%", "20px"],["ビ", "75%", "20px"]],
-                    [["バ", "25%", "0px"],["バ", "75%", "0px"],["ビ", "25%", "20px"],["ビ", "75%", "20px"]],
-                    [["ﾓｰ", "25%", "20px"],["ﾓｰ", "75%", "0px"]],
-                ]
-            },                  
-            {
-                "name": "2VH414",
-                "base": 90,
-                "drop": ["icon_ono.png:ブローヴァ","icon_kakusei_ysand.png:黄の砂"],
-                "enemy": [
-                    ["ヘルハウンド","0","0","0","0","0","0","0","0","0","0",   "0","50","0",  "0","-35","0","0","0"],
-                    ["オーガ","0","0","0","0","0","0","0","0","0","0",   "0","0","50",  "-35","-35","-35","0","0"],
-                    ["ロックパイソン","125","125","125","0","0","0","0","999","0","0","50","0","0","50","-45","-35","0","0"],
-
-                ],
-                "position": [
-                    [["ヘ", "25%", "0px"],["ヘ", "75%", "20px"]],
-                    [["オ", "25%", "0px"],["ヘ", "75%", "20px"]],
-                    [["オ", "25%", "0px"],["オ", "75%", "0px"],["ロ", "35%", "20px"],["ロ", "85%", "20px"]],
-                ]
-            },                   
-            {
-                "name": "2VH413",
-                "base": 89,
-                "drop": ["icon_ono.png:ブローヴァ","icon_kakusei_ksand.png:黒の砂"],
-                "enemy": [
-                    ["フライマンバ","0","0","125","0","0","0","0","0","0","0", "0","0","-35","0", "50","0","0","0"],
-                    ["ロトンギアン","999","999","0","999","999","125","999","999","999","999", "0","0","-35","-35", "50","0","-55","50"],
-                    ["ヴァンパイア","999","999","125","999","999","125","999","999","999","999", "0","0","-35","-35", "50","0","-55","50"],
-                ],
-                "position": [
-                    [["フ", "75%", "20px"],["ロ", "25%", "0px"]],
-                    [["ヴ", "25%", "20px"],["ロ", "75%", "20px"]],
-                    [["ヴ", "25%", "0px"],["ヴ", "75%", "20px"]],
-                ]
-            },         
-            {
-                "name": "2VH412",
-                "base": 89,
-                "drop": ["icon_kakusei_ystone.png:黄の石"],
-                "enemy": [
-                    ["シュラーク","125","125","999","125", "125","0","125","0","125","0", "-35","0","0","50",　"50","50","50","50"],
-                    ["影","0","0","0","0","0","0","0","0","0","0",   "-35","0","0",  "50","50","50","50","-35"],
-                    ["かまいたち","125","125","999","125", "125","0","125","0","125","0", "-35","0","0","50",　"50","50","50","50"],
-                    ["バルキリー","0","0","999","0", "0","0","0","0","0","0", "-35","0","0","50",　"50","50","50","50"],
-                    ["アース","125","125","999","125", "125","0","125","0","125","0", "-35","0","0","50",　"50","50","50","50"],
-                ],
-                "position": [
-                    [["影", "50%", "0px"],["シ", "25%", "20px"],["シ", "75%", "20px"]],
-                    [["影", "50%", "0px"],["か", "25%", "20px"],["か", "75%", "20px"]],
-                    [["ア", "35%", "0px"],["ア", "85%", "0px"],["バ", "25%", "20px"],["バ", "75%", "20px"]],
-                ]
-            },            
-            {
-                "name": "2VH411",
-                "base": 89,
-                "drop": ["icon_kakusei_kstone.png:黒の石"],
-                "enemy": [
-                    ["化石魚","0","0","0","0", "0","0","0","999", "0","0", "0","-35","0","0", "-35","-35","0","0"],
-                    ["毒魚","0","0","0","0", "0","0","0","999", "0","0", "0","-35","0","0", "-35","-35","0","0"],
-                    ["オアンネス","0","0","0","0", "0","0","0","999", "0","0", "0","-35","0","0", "-35","-35","0","0"],
-                    ["デスバイザー","125","125","125","125", "125","125","125","999","125","0", "50","0","-45","0",　"-35","-35","0","0"],
-                ],
-                "position": [
-                    [["化", "50%", "20px"],["毒", "50%", "0px"]],
-                    [["デ", "50%", "0px"],["オ", "25%", "20px"],["オ", "75%", "20px"]],
-                    [["デ", "25%", "0px"],["デ", "75%", "20px"]],
-                ]
-            }                  
-        ],
-        "2章3話 バンガードの危機と魂継ぎの儀2": [
-            {
-                "name": "2VH325",
-                "base": 89,
-                "drop": ["icon_dken.png:名刀千鳥"],
-                "enemy": [
-                    ["タームソルジャー","0","0","0","0", "0","0","0","0", "0","300", "0","-35","0", "0","-35","0","50","0"],
-                    ["ﾀｰﾑｼﾞｪﾈﾗﾙ(突)","300","300","300","300", "300","300","300","300","300","300","-45","0","50","0","-20","0","50","0"],
-                    ["ﾀｰﾑｼﾞｪﾈﾗﾙ(打)","300","300","300","300", "300","300","300","300","300","300","0","50","-45","0","-20","0","50","0"],
-                    ["ﾀｰﾑｼﾞｪﾈﾗﾙ(斬)","300","300","300","300", "300","300","300","300","300","300","50","-45","0","0","-20","0","50","0"],
-                ],
-                "position": [
-                    [["タ", "50%", "20px"]],
-                    [["タ", "50%", "20px"]],
-                    [["打", "35%", "0px"], ["突", "50%", "20px"], ["斬", "65%", "0px"]],
-                ]
-            }      
-            ,{
-                "name": "2VH324",
-                "base": 88,
-                "drop": ["icon_dken.png:名刀千鳥"],
-                "enemy": [
-                    ["アンモナイト","0","0","0","0", "0","0","0","999", "0","300", "50","0","-45", "0","-35","-35","0","0"],
-                    ["水中花","0","0","0","0", "0","0","0","999", "0","0", "50","0","-45", "0","-35","-35","0","0"],
-                    ["デスバイザー","125","125","125","125", "125","125","125","999","125","0", "50","0","-45", "0","-35","-35","0","0"],
-                ],
-                "position": [
-                    [["ア", "70%", "0px"], ["ア", "30%", "20px"]],
-                    [["水", "70%", "20px"], ["水", "30%", "0px"]],
-                    [["デ", "50%", "20px"]],
-                ]
-            }   
-            ,{
-                "name": "2VH323",
-                "base": 88,
-                "drop": ["icon_yari.png:金剛石の槍"],
-                "enemy": [
-                    ["バガー","0","0","0","0","0","0","0","0","0","0",  "0","-35","0",  "0","-35","0","50","0"],
-                    ["化石魚","0","0","0","0","0","0","0","999","0","0", "0","-35","0", "0","-35","-35","0","0"],
-                    ["ｱｰﾑﾌｨｯｼｭ","0","0","125","0","0","0","0","999","0","300", "0","-35","0", "0","-35","-35","0","0"],
-                ],
-                "position": [
-                    [["ハ", "70%", "20px"], ["ハ", "30%", "0px"]],
-                    [["化", "70%", "0px"], ["化", "30%", "20px"]],
-                    [["ア", "70%", "0px"], ["ア", "30%", "20px"]],
-                ]
-            }
-            ,{
-                "name": "2VH322",
-                "base": 88,
-                "drop": ["icon_yari.png:金剛石の槍"],
-                "enemy": [
-                    ["プロセルピナ", "125", "125", "999", "125", "125", "0", "125", "0", "125", "0",   "-35", "0", "0",   "50", "50", "50", "50", "50"],
-                    ["ブレイザー", "0", "0", "125", "0", "0", "0", "0", "0", "0", "0",   "0", "0", "-35",   "50", "0", "0", "0", "0"],
-                    ["グリフォン", "0", "0", "125", "125", "0", "125", "0", "0", "0", "0",   "0", "0", "-35",   "0", "50", "0", "0", "0"],
-                ],
-                "position": [
-                    [["ﾌﾟﾛ", "70%", "20px"], ["ﾌﾟﾛ", "30%", "0px"]],
-                    [["ブ", "30%", "0px"], ["ブ", "50%", "30px"], ["ブ", "70%", "0px"]],
-                    [["グ", "50%", "20px"]],
-                ]
-            }
-            ,{
-                "name": "2VH321",
-                "base": 87,
-                "drop": ["icon_tai.png:虎殺し"],
-                "enemy": [
-                    ["ウォッチマン","0","0","125","0","0","0","0","0","0","0",   "0","0","50",   "-35","-35","-35","0","0"],
-                    ["お化けキノコ","0","0","999","999","0","0","0","999","0","999",   "0","50","0",   "-45","50","0","0","0"],
-                    ["スプリッツァー","0","0","999","999","0","0","0","999","0","999",   "0","50","0",   "-45","50","0","0","0"],
-                ],
-                "position": [
-                    [["ウ", "30%", "30px"], ["ウ", "50%", "0px"], ["ウ", "70%", "30px"]],
-                    [["お", "70%", "0px"], ["お", "30%", "20px"]],
-                    [["ス", "50%", "20px"]],
-                ]
-            }      
-        ],
-        "2章3話 バンガードの危機と魂継ぎの儀1": [
-            {
-                "name": "2VH315",
-                "base": 86,
-                "drop": ["icon_tai.png:虎殺し"],
-                "enemy": [
-                    ["カエル戦士","0","0","0","0","0","0","0","999","0","0",   "0","0","0",   "0","-35","-35","0","0"],
-                    ["メルドウォーム","0","0","0","0","0","0","0","999","0","0",   "50","0","0",   "50","-45","-35","0","0"],
-                    ["フューリー","999","999","999","999","999","999","0","0","0","999",   "0","0","0",   "-20","30","-20","-20","50"],
-                ],
-                "position": [
-                    [["カ", "20%", "0px"], ["カ", "50%", "15px"], ["カ", "80%", "0px"]],
-                    [["メ", "65%", "20px"], ["メ", "30%", "0px"]],
-                    [["カ", "30%", "20px"], ["フ", "50%", "0px"], ["カ", "70%", "20px"]],
-                ]
-            }
-            ,{
-                "name": "2VH314",
-                "base": 86,
-                "drop": ["icon_ken.png:幻獣剣","icon_kakusei_wsand.png:白の砂"],
-                "enemy": [
-                    ["インパラ","0","0","125","0","0","0","0","0","0","0", "0","50","0",   "0","0","0","0","0"],
-                    ["トーチャー","0","0","999","999","125","0","125","999","125","999",   "0","50","0",   "50","-45","0","0","0"],
-                    ["リザード","0","0","0","0","0","0","0","999","0","0",   "0","0","0",   "0","-35","-35","0","0"],
-                ],
-                "position": [
-                    [["イ", "65%", "0px"], ["イ", "30%", "20px"]],
-                    [["ト", "65%", "20px"], ["ト", "30%", "0px"]],
-                    [["リ", "30%", "0px"], ["イ", "50%", "20px"], ["リ", "80%", "0px"]],
-                ]
-            }
-            ,{
-                "name": "2VH313",
-                "base": 85,
-                "drop": ["icon_ken.png:幻獣剣","icon_kakusei_wsand.png:白の砂"],
-                "enemy": [
-                    ["アデプト","0","0","0","0","0","0","0","0","0","0",  "-35","0","0",  "50","50","50","50","-35"],
-                    ["インプ","0","0","125","0","0","0","0","0","0","0",   "0","0","0",  "50","50","50","-55","50"],
-                    ["影","0","0","0","0","0","0","0","0","0","0",   "-35","0","0",  "50","50","50","50","-35"],
-                ],
-                "position": [
-                    [["ア", "65%", "20px"], ["ア", "30%", "0px"]],
-                    [["イ", "50%", "0px"], ["イ", "20%", "30px"], ["イ", "80%", "30px"]],
-                    [["影", "10%", "20px"], ["イ", "50%", "20px"], ["影", "90%", "20px"]],
-                ]
-            }
-            ,{
-                "name": "2VH312",
-                "base": 84,
-                "drop": ["icon_kakusei_wstone.png:白の石"],
-                "enemy": [
-                    ["オーガ","0","0","0","0","0","0","0","0","0","0",   "0","0","50",  "-35","-35","-35","0","0"],
-                    ["ヘルハウンド","0","0","0","0","0","0","0","0","0","0",   "0","50","0",  "0","-35","0","0","0"],
-                    ["ガーゴイル","125","125","0","125","125","0","125","0","125","0",   "0","0","0",  "50","50","50","-55","50"],
-                ],
-                "position": [
-                    [["オ", "50%", "20px"]],
-                    [["ヘ", "25%", "20px"],["ヘ", "75%", "20px"]],
-                    [["ガ", "20%", "25px"], ["ガ", "75%", "25px"], ["ガ", "25%", "0px"], ["ガ", "80%", "0px"]],
-
-                ]
-            }
-            ,{
-                "name": "2VH311",
-                "base": 83,
-                "drop": ["icon_kakusei_wstone.png:白の石"],
-                "enemy": [
-                    ["ロックパイソン","125","125","125","0","0","0","0","999","0","0",   "50","0","0","50","-45","-35","0","0"],
-                    ["オーク","0","0","0","0","0","0","0","0","0","0",   "0","0","50",  "-35","-35","-35","0","0"],
-                    ["ノービス","0","0","0","0","0","0","0","0","0","0",   "-35","0","0",  "50","50","50","50","-35"],
-                ],
-                "position": [
-                    [["ロ", "20%", "0px"], ["ロ", "50%", "15px"], ["ロ", "80%", "0px"]],
-                    [["オ", "65%", "0px"], ["オ", "30%", "20px"]],
-                    [["ノ", "65%", "20px"], ["ノ", "30%", "0px"]],
-                ]
-            }
-        ],
-        "2章2話 新たな少年と集いし者たち2": [
-            {
-                "name": "2VH225",
-                "base": 83,
-                "drop": ["icon_tsue.png:(光)霊銀の杖","icon_tsue.png:(闇)霊銀の杖"],
-                "enemy": [
-                    ["アデプト","0","0","0","0","0","0","0","0","0","0","-35","0","0","50","50","50","50","-35"],
-                    ["ノービス","0","0","0","0","0","0","0","0","0","0","-35","0","0","50","50","50","50","-35"],
-                    ["スケルトン","999","999","0","999","999","999","999","999","999","999","0","-35","50","-35","50","0","-45","50"],
-                    ["ナイトフラワー","125","999","999","999","999","999","999","999","999","999","-35","125","-20","-35","50","0","-35","50"],
-                ],
-                "position": [
-                    [["ノ", "65%", "20px"], ["ア", "30%", "0px"]],
-                    [["ノ", "30%", "20px"], ["ス", "65%", "0px"]],
-                    [["ナ", "50%", "10px"]],
-                ]
-            },
-            {
-                "name": "2VH224",
-                "base": 82,
-                "drop": ["icon_tsue.png:(光)霊銀の杖","icon_tsue.png:(闇)霊銀の杖"],
-                "enemy": [
-                    ["アース","125","125","999","125","125","125","125","0","125","0","-35","0","0","50","50","50","50","50"],
-                    ["マグマ","125","125","999","125","125","125","125","0","125","0","-35","0","0","50","50","50","50","50"],
-                    ["ﾏｽター","0","0","0","0","0","0","0","0","0","0","-35","0","0","50","50","50","50","-35"],
-                    ["影","0","0","0","0","0","0","0","0","0","0","-35","0","0","50","50","50","50","-35"],                    
-                ],
-                "position": [
-                    [["ア", "65%", "20px"], ["マ", "30%", "0px"]],
-                    [["ﾏｽ", "50%", "10px"]],
-                    [["ﾏｽ", "30%", "20px"], ["影", "65%", "0px"]],
-                ]
-            },
-            {
-                "name": "2VH223",
-                "base": 82,
-                "drop": ["icon_tsue.png:(水)霊銀の杖","icon_tsue.png:(土)霊銀の杖"],
-                "enemy": [
-                    ["キャンサー","0","0","125","0","0","0","0","999","0","0","50","0","-45","0","-35","-35","0","0"],
-                    ["ロトンギアン","999","999","0","999","999","125","999","999","999","999","0","0","-35","-35","50","0","-55","50"],
-                    ["屍竜","999","999","0","999","999","0","999","999","999","999","0","0","-35","-35","50","0","-55","50"],
-                    ["フライマンバ","0","0","125","0","0","0","0","0","0","0","0","0","-35","0","50","0","0","0"],
-                    ["メーベルワーゲン","0","0","0","0","0","0","0","999","0","0","50","0","-45","0","-35","-35","0","0"],
-                ],
-                "position": [
-                    [["キ", "65%", "20px"], ["ロ", "30%", "0px"]],
-                    [["屍", "30%", "20px"], ["フ", "65%", "0px"]],
-                    [["メ", "50%", "10px"]],
-                ]
-            },
-            {
-                "name": "2VH222",
-                "base": 81,
-                "drop": ["icon_tsue.png:(水)霊銀の杖","icon_tsue.png:(土)霊銀の杖"],
-                "enemy": [
-                    ["アドバード","999","999","0","999","999","999","999","999","999","999","0","-35","50","-35","50","0","-45","50"],
-                    ["ピアス","0","0","125","0","0","0","0","0","0","0","0","-35","0","0","-35","0","50","0"],
-                    ["マンターム","0","0","0","0","0","0","0","0","0","0","0","-35","0","0","-35","0","50","0"],
-                    ["バガー","0","0","0","0","0","0","0","0","0","0","0","-35","0","0","-35","0","50","0"],
-                    ["マンティスゴッド","0","0","125","0","0","125","0","0","0","0","0","-35","0","0","-35","0","50","0"],
-                ],
-                "position": [
-                    [["ア", "65%", "20px"], ["ピ", "30%", "0px"]],
-                    [["マ", "65%", "20px"], ["バ", "30%", "0px"]],
-                    [["ﾏﾝﾃｨｽ", "50%", "10px"]],
-                ]
-            },
-            {
-                "name": "2VH221",
-                "base": 81,
-                "drop": ["icon_tsue.png:(火)霊銀の杖","icon_tsue.png:(風)霊銀の杖"],
-                "enemy": [
-                    ["ゴブリン","0","0","0","0","0","0","0","0","0","0","0","0","50","-35","-35","-35","0","0"],
-                    ["ｽﾗｯｸﾞﾐｭｰﾄ","0","0","0","0","0","0","0","999","0","999","30","125","30","-35","-35","-45","-35","-35"],
-                    ["リザード","0","0","0","0","0","0","0","999","0","0","0","0","0","0","-35","-35","0","0"],
-                    ["タータラ","0","0","0","0","0","0","0","999","0","0","0","0","0","0","-35","-35","0","0"],
-                    ["ｽﾗイム","125","125","125","125","125","0","125","999","125","999","30","125","30","-35","-35","-45","-35","-35"],
-                ],
-                "position": [
-                    [["ス", "20%", "0"], ["ス", "50%", "0"], ["ス", "80%", "0"], ["ゴ", "30%", "25px"], ["ゴ", "70%", "25px"]],
-                    [["ゴ", "35%", "0px"], ["リ", "50%", "20px"], ["ゴ", "65%", "0px"]],
-                    [["ｽﾗ", "25%", "0px"], ["ｽﾗ", "75%", "0px"], ["タ", "25%", "25px"], ["タ", "75%", "25px"]],
-                ]
-            },
-            ]
-        },
-        {
-            "2章2話 新たな少年と集いし者たち1": [
-            {
-                    "name": "2VH215",
-                    "base": 81,
-                    "drop": ["icon_tsue.png:(火)霊銀の杖","icon_tsue.png:(風)霊銀の杖"],
-                    "enemy": [
-                        ["ドードー","0","0","125","0","0","0","0","0","0","0","0","0","-35","0","50","0","0","0"],
-                        ["ノービス","0","0","0","0","0","0","0","0","0","0","-35","0","0","50","50","50","50","-35"],
-                        ["バガー","0","0","0","0","0","0","0","0","0","0","0","-35","0","0","-35","0","50","0"],
-                        ["屍竜","999","999","0","999","999","0","999","999","999","999","0","0","-35","-35","50","0","-55","50"],
-                        ["プロセルピナ","125","125","999","125","125","125","125","0","125","0","-35","0","0","50","50","50","50","50"],
-                    ],
-                    "position": [
-                        [["ド", "25%", "15px"], ["ノ", "50%", "15px"],  ["ド", "75%", "15px"]],
-                        [["バ", "65%", "20px"], ["屍", "30%", "0px"]],
-                        [["バ", "30%", "20px"], ["プ", "65%", "0px"]],
-                    ]
-                },
-                {
-                    "name": "2VH214",
-                    "base": 80,
-                    "drop": ["icon_yumi.png:剛弓","icon_kakusei_bsand.png:青の砂"],
-                    "enemy": [
-                        ["スコーピオン","0","0","0","0","0","0","0","0","0","0","0","-35","0","0","-35","0","50","0"],
-                        ["アルラウネ","0","0","999","999","0","0","0","999","0","999","0","50","0","-45","50","0","0","0"],
-                        ["ゼラチナスマター","125","125","125","125","125","125","125","999","125","999","30","125","30","-35","-35","-45","-35","-35"],
-                        ["オーク","0","0","0","0","0","0","0","0","0","0","0","0","50","-35","-35","-35","0","0"],
-                        ["ラムリザード","0","0","0","0","0","0","0","999","0","0","0","0","0","0","-35","-35","0","0"],
-                    ],
-                    "position": [
-                        [["ス", "65%", "20px"], ["ア", "30%", "0px"]],
-                        [["オ", "30%", "20px"], ["ゼ", "65%", "0px"]],
-                        [["ラ", "50%", "30px"]],
-                    ]
-                },
-                {
-                    "name": "2VH213",
-                    "base": 80,
-                    "drop": ["icon_yumi.png:剛弓","icon_kakusei_bsand.png:青の砂"],
-                    "enemy": [
-                        ["シー","0","0","999","0","0","0","0","0","0","0","-35","0","0","50","50","50","50","50"],
-                        ["ジェスター","0","0","0","0","0","0","0","0","0","0","-35","0","0","50","50","50","50","-35"],
-                        ["かまいたち","125","125","999","125","125","125","125","0","125","0","-35","0","0","50","50","50","50","50"],
-                    ],
-                    "position": [
-                        [["シ", "15%", "25px"], ["シ", "50%", "25px"], ["シ", "85%", "25px"], ["ジ", "30%", "0px"], ["ジ", "70%", "0px"]],
-                        [["か", "25%", "0px"], ["か", "75%", "0px"], ["シ", "25%", "25px"], ["ジ", "75%", "25px"]],
-                        [["か", "0%", "15px"], ["ジ", "50%", "5px"],  ["か", "100%", "15px"]],
-                    ]
-                },
-                {
-                    "name": "2VH212",
-                    "base": 80,
-                    "drop": ["icon_kakusei_bstone.png:青の石"],
-                    "enemy": [
-                        ["ロックパイソン","125","125","125","0","0","0","0","999","0","0","50","0","0","50","-45","-35","0","0"],
-                        ["へプトパス","0","0","0","0","0","0","0","999","0","0","50","0","-45","0","-35","-35","0","0"],
-                        ["タータラ","0","0","0","0","0","0","0","999","0","0","0","0","0","0","-35","-35","0","0"],
-                    ],
-                    "position": [
-                        [["へ", "25%", "0px"], ["へ", "75%", "0px"], ["ロ", "25%", "25px"], ["ロ", "75%", "25px"]],
-                        [["タ", "25%", "0px"], ["タ", "75%", "0px"], ["ヘ", "25%", "25px"], ["ヘ", "75%", "25px"]],
-                        [["へ", "0%", "15px"], ["へ", "33%", "15px"], ["ヘ", "66%", "15px"], ["ヘ", "100%", "15px"]],
-                    ]
-                },
-                {
-                    "name": "2VH211",
-                    "base": 80,
-                    "drop": ["icon_kakusei_bstone.png:青の石"],
-                    "enemy": [
-                        ["化石魚","0","0","0","0","0","0","0","999","0","0","0","-35","0","0","-35","-35","0","0"],
-                        ["シーキラー","0","0","0","0","0","0","0","999","0","0","0","-35","0","0","-35","-35","0","0"],
-                        ["毒魚","0","0","0","0","0","0","0","999","0","0","0","-35","0","0","-35","-35","0","0"],
-                    ],
-                    "position": [
-                        [["化", "50%", "30px"], ["シ", "50%", "0px"]],
-                        [["化", "50%", "30px"], ["毒", "50%", "0px"]],
-                        [["化", "50%", "15px"]],
-                    ]
-                },
-            ]
-        },
-        {
-            "2章1話 氷炎の術師ジョセフィン・リン・ウッド2": [
-            {
-                    "name": "2VH125",
-                    "base": 80,
-                    "drop": ["icon_sken.png:星辰の礼剣"],
-                    "enemy": [
-                        ["アース", "125", "125", "999", "125", "125", "125", "125", "0", "125", "0", "-35", "0", "0", "50", "50", "50", "50", "50"],
-                        ["プロセルピナ", "125", "125", "999", "125", "125", "125", "125", "0", "125", "0", "-35", "0", "0", "50", "50", "50", "50", "50"],
-                        ["ヴリトラ", "999", "50", "999", "999", "50", "999", "999", "999", "999", "999", "-35", "0", "0", "50", "50", "50", "0", "0"],
-                    ],
-                    "position": [
-                        [["ア", "65%", "20px"], ["ア", "30%", "0px"]],
-                        [["プ", "30%", "20px"], ["プ", "65%", "0px"]],
-                        [["ヴ", "50%", "10px"]],
-                    ]
-                },
-                {
-                    "name": "2VH124",
-                    "base": 79,
-                    "drop": ["icon_sken.png:星辰の礼剣"],
-                    "enemy": [
-                        ["ｽﾗｯｸﾞﾐｭｰﾄ", "0", "0", "0", "0", "0", "0", "0", "999", "0", "999", "30", "125", "30", "-35", "-35", "-45", "-35", "-35"],
-                        ["ディノバブル", "125", "125", "125", "125", "125", "0", "125", "999", "125", "999", "30", "125", "30", "-35", "-35", "-45", "-35", "-35"],
-                        ["　", "999", "999", "999", "999", "999", "999", "999", "999", "999", "999", "0", "0", "0", "0", "0", "0", "0", "0"],
-                    ],
-                    "position": [
-                        [["ス", "30%", "20px"], ["ス", "65%", "0px"]],
-                        [["ス", "65%", "20px"], ["デ", "30%", "0px"]],
-                        [["デ", "30%", "20px"], ["デ", "65%", "0px"]],
-                    ]
-                },
-                {
-                    "name": "2VH123",
-                    "base": 79,
-                    "drop": ["icon_sken.png:星辰の礼剣"],
-                    "enemy": [
-                        ["大海竜", "0", "0", "125", "0", "0", "0", "0", "999", "0", "0", "50", "0", "-45", "0", "-35", "-35", "0", "0"],
-                        ["ヘプトパス", "0", "0", "0", "0", "0", "0", "0", "999", "0", "0", "50", "0", "-45", "0", "-35", "-35", "0", "0"],
-                        ["　", "999", "999", "999", "999", "999", "999", "999", "999", "999", "999", "0", "0", "0", "0", "0", "0", "0", "0"],
-                    ],
-                    "position": [
-                        [["大", "50%", "20px"]],
-                        [["ヘ", "65%", "20px"], ["ヘ", "30%", "0px"]],
-                        [["大", "50%", "0px"], ["ヘ", "20%", "30px"], ["ヘ", "80%", "30px"]],
-                    ]
-                },
-                {
-                    "name": "2VH122",
-                    "base": 78,
-                    "drop": ["icon_kon.png:ルーンハンマー", "icon_ju.png:リーサルドラグーン"],
-                    "enemy": [
-                        ["シーキラー", "0", "0", "0", "0", "0", "0", "0", "999", "0", "0", "0", "-35", "0", "0", "-35", "-35", "0", "0"],
-                        ["化石魚", "0", "0", "0", "0", "0", "0", "0", "999", "0", "0", "0", "-35", "0", "0", "-35", "-35", "0", "0"],
-                        ["　", "999", "999", "999", "999", "999", "999", "999", "999", "999", "999", "0", "0", "0", "0", "0", "0", "0", "0"],
-                    ],
-                    "position": [
-                        [["シ", "30%", "20px"], ["シ", "65%", "0px"]],
-                        [["シ", "50%", "20px"], ["化", "50%", "0px"]],
-                        [["化", "65%", "20px"], ["化", "30%", "0px"]],
-                    ]
-                },
-                {
-                    "name": "2VH121",
-                    "base": 78,
-                    "drop": ["icon_kon.png:ルーンハンマー", "icon_ju.png:リーサルドラグーン"],
-                    "enemy": [
-                        ["トレンティノ", "0", "0", "999", "999", "125", "0", "125", "999", "125", "999", "0", "50", "0", "-45", "50", "0", "0", "0"],
-                        ["ビー", "0", "0", "125", "0", "0", "0", "0", "0", "0", "0", "0", "-35", "0", "0", "-35", "0", "50", "0"],
-                        ["ロックパイソン", "125", "125", "125", "0", "0", "0", "0", "999", "0", "0", "50", "0", "0", "50", "-45", "-35", "0", "0"],
-                    ],
-                    "position": [
-                        [["ト", "25%", "10px"], ["ト", "50%", "0px"], ["ト", "75%", "10px"]],
-                        [["ビ", "40%", "0px"], ["ト", "50%", "15px"], ["ビ", "60%", "30px"]],
-                        [["ビ", "15%", "25px"], ["ビ", "50%", "25px"], ["ビ", "85%", "25px"], ["ロ", "30%", "0px"], ["ロ", "70%", "0px"]],
-                    ]
-                },
-            ]
-        },
-        {
-            "2章1話 氷炎の術師ジョセフィン・リン・ウッド1": [
-            {
-                    "name": "2VH115",
-                    "base": 78,
-                    "drop": ["icon_kon.png:ルーンハンマー", "icon_ju.png:リーサルドラグーン"],
-                    "enemy": [
-                        ["カークリノラース","0","0","0","0","0","0","0","0","0","0","0","50","0","0","0","0","0","0"],
-                        ["ジャム","0","0","125","0","0","0","0","0","0","0","0","0","0","50","50","50","-55","50"],
-                        ["ロックアイン","0","0","0","0","0","0","0","0","0","0","0","50","0","0","0","0","0","0"],                        
-                    ],
-                    "position": [
-                        [["カ", "20%", "25px"], ["カ", "80%", "25px"], ["ジ", "25%", "0px"], ["ジ", "75%", "0px"]],
-                        [["ジ", "20%", "25px"], ["ジ", "80%", "25px"], ["ロ", "25%", "0px"], ["ロ", "75%", "0px"]],
-                        [["カ", "20%", "25px"], ["ロ", "80%", "25px"], ["カ", "25%", "0px"], ["ロ", "75%", "0px"]],
-                    ]
-                },
-                {
-                    "name": "2VH114",
-                    "base": 77,
-                    "drop": ["icon_ono.png:白銀の斧","icon_kakusei_psand.png:紫の砂"],
-                    "enemy": [
-                        ["ジェル","125","125","125","125","125","0","125","999","125","999","30","125","30","-35","-35","-45","-35","-35"],
-                        ["ゲットー","0","0","125","0","0","0","0","0","0","0","0","0","50","-35","-35","-35","0","0"],
-                        ["ｽﾗｯｸﾞﾐｭｰﾄ","0","0","0","0","0","0","0","999","0","999","30","125","30","-35","-35","-45","-35","-35"],
-                    ],
-                    "position": [
-                        [["ジ", "20%", "25px"], ["ゲ", "80%", "25px"], ["ゲ", "25%", "0px"], ["ジ", "75%", "0px"]],
-                        [["ス", "50%", "0px"], ["ス", "50%", "15px"], ["ス", "50%", "30px"]],
-                        [["ス", "15%", "0px"], ["ス", "50%", "10px"], ["ジ", "85%", "0px"],["ジ", "50%", "30px"]],
-                    ]
-                },
-                {
-                    "name": "2VH113",
-                    "base": 77,
-                    "drop": ["icon_ono.png:白銀の斧","icon_kakusei_rsand.png:赤の砂"],
-                    "enemy": [
-                        ["ゲットー","0","0","125","0","0","0","0","0","0","0","0","0","50","-35","-35","-35","0","0"],
-                        ["ヴァイパー","0","0","125","0","0","0","0","999","0","0","50","0","0","50","-45","-35","0","0"],
-                        ["クリーパー","0","0","999","999","0","0","0","999","0","999","0","50","0","-45","50","0","0","0"],
-                    ],
-                    "position": [
-                        [["ヴ", "15%", "10px"], ["ゲ", "15%", "30px"], ["ゲ", "50%", "15px"], ["ヴ", "80%", "0px"], ["ゲ", "80%", "20px"]],
-                        [["ヴ", "25%", "0px"], ["ヴ", "50%", "20px"], ["ク", "75%", "0px"]],
-                        [["ク", "20%", "25px"], ["ゲ", "80%", "25px"], ["ク", "25%", "0px"], ["ゲ", "75%", "0px"]],
-                    ]
-                },
-                {
-                    "name": "2VH112",
-                    "base": 77,
-                    "drop": ["icon_kakusei_pstone.png:紫の石"],
-                    "enemy": [
-                        ["シー","0","0","999","0","0","0","0","0","0","0","-35","0","0","50","50","50","50","50"],
-                        ["ジェスター","0","0","0","0","0","0","0","0","0","0","-35","0","0","50","50","50","50","-35"],
-                        ["かまいたち","125","125","999","125","125","125","125","0","125","0","-35","0","0","50","50","50","50","50"],
-
-                    ],
-                    "position": [
-                        [["ジ", "30%", "0px"], ["シ", "65%", "20px"]],
-                        [["か", "25%", "0px"], ["か", "75%", "0px"], ["ジ", "25%", "25px"], ["ジ", "75%", "25px"]],
-                        [["か", "25%", "25px"], ["か", "75%", "25px"], ["シ", "25%", "0px"], ["シ", "75%", "0px"]],
-                    ]
-                },
-                {
-                    "name": "2VH111",
-                    "base": 77,
-                    "drop": ["icon_kakusei_rstone.png:赤の石"],
-                    "enemy": [
-                        ["ジェスター","0","0","0","0","0","0","0","0","0","0","-35","0","0","50","50","50","50","-35"],
-                        ["ヴァイパー","0","0","125","0","0","0","0","999","0","0","50","0","0","50","-45","-35","0","0"],
-                        ["イルヘッド","999","999","0","999","999","999","999","999","999","999","0","-35","50","-35","50","0","-45","50"],
-                    ],
-                    "position": [
-                        [["ジ", "25%", "0px"], ["ジ", "50%", "20px"], ["ジ", "75%", "0px"]],
-                        [["ヴ", "25%", "20px"], ["ヴ", "50%", "0px"], ["イ", "75%", "20px"]],
-                        [["イ", "25%", "25px"], ["ジ", "75%", "25px"], ["イ", "15%", "0px"], ["ジ", "90%", "0px"]],
-                    ]
-                },
-            ]
-        },        
-        {
-            "外伝-2.巨竜ドーラと魔龍公ビューネイ": [
-            {
-                    "name": "外伝2-5",
-                    "base": 76,
-                    "drop": ["icon_dken.png:カリブール"],
-                    "enemy": [
-                        ["フリスベルグ", "999", "999", "0", "999", "999", "999", "999", "999", "999", "999", "0", "-35", "50", "-35", "50", "0", "-45", "50"],
-                        ["フェーン", "125", "125", "999", "125", "125", "0", "125", "0", "125", "0", "-35", "0", "0", "50", "50", "50", "50", "50"],
-                        ["イカロス", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "50", "-35", "-35", "-35", "0", "0"],
-                        ["ビューネイ", "999", "999", "999", "999", "999", "999", "999", "999", "999", "999", "0", "0", "0", "300", "0", "0", "0", "0"],
-                    ],
-                    "position": [
-                        [["フ", "50%", "30px"], ["フ", "75%", "15px"], ["ﾌｫ", "25%", "15px"], ["ﾌｫ", "50%", "0px"]],
-                        [["ﾌｫ", "30%", "20px"], ["ﾌｫ", "60%", "20px"], ["イ", "30%", "0px"], ["イ", "60%", "0px"]],
-                        [["ビ", "50%", "10px"]],
-                    ]
-                },
-                {
-                    "name": "外伝2-4",
-                    "base": 76,
-                    "drop": ["icon_dken.png:カリブール"],
-                    "enemy": [
-                        ["ストーマー", "0", "0", "125", "0", "0", "0", "0", "0", "0", "0", "0", "0", "-35", "0", "50", "0", "0", "0"],
-                        ["サンダイバー", "0", "0", "125", "0", "0", "0", "0", "0", "0", "0", "0", "0", "-35", "0", "50", "0", "0", "0"],
-                        ["ブルードラゴン", "999", "0", "999", "999", "50", "999", "300", "300", "50", "999", "0", "0", "-35", "0", "50", "0", "0", "0"],
-                    ],
-                    "position": [
-                        [["ス", "25%", "25px"], ["ス", "50%", "25px"], ["ス", "75%", "25px"], ["サ", "37%", "0px"], ["サ", "62%", "0px"]],
-                        [["サ", "25%", "25px"], ["サ", "50%", "25px"], ["サ", "75%", "25px"], ["サ", "50%", "0px"]],
-                        [["青", "50%", "0px"], ["ス", "35%", "30px"], ["ス", "65%", "30px"]],
-                    ]
-                },
-                {
-                    "name": "外伝2-3",
-                    "base": 76,
-                    "drop": ["icon_yari.png:黒曜石の槍"],
-                    "enemy": [
-                        ["強鬼", "125", "125", "0", "125", "125", "0", "125", "125", "125", "0", "0", "0", "0", "50", "50", "50", "-45", "50"],
-                        ["マンティスゴッド", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "-45", "0", "0", "-45", "0", "30", "0"],
-                        ["アークウインガー", "125", "125", "125", "125", "125", "125", "125", "999", "125", "0", "50", "0", "-45", "0", "-35", "-35", "0", "0"],
-                    ],
-                    "position": [
-                        [["強", "50%", "20px"]],
-                        [["マ", "30%", "0px"], ["マ", "60%", "20px"]],
-                        [["ア", "30%", "20px"], ["ア", "60%", "0px"]],
-                    ]
-                },
-                {
-                    "name": "外伝2-2",
-                    "base": 75,
-                    "drop": ["icon_yari.png:黒曜石の槍"],
-                    "enemy": [
-                        ["ラプトル", "0", "0", "0", "0", "0", "0", "0", "999", "0", "0", "0", "0", "0", "0", "-45", "-45", "0", "0"],
-                        ["ウーズ", "125", "125", "125", "125", "125", "0", "125", "999", "125", "999", "30", "125", "30", "-35", "-35", "-45", "-35", "-35"],
-                        ["トリケプス", "0", "0", "30", "125", "30", "125", "125", "0", "0", "30", "-20", "50", "0", "0", "0", "0", "0", "0"],
-                        ["デスコラーダ", "0", "0", "0", "0", "0", "0", "0", "999", "0", "999", "30", "125", "30", "-35", "-35", "-45", "-35", "-35"],
-                    ],
-                    "position": [
-                        [["ウ", "20%", "0"], ["ウ", "50%", "0"], ["ウ", "80%", "0"], ["ラ", "30%", "25px"], ["ラ", "70%", "25px"]],
-                        [["ト", "30%", "20px"], ["ト", "60%", "0px"]],
-                        [["ウ", "25%", "0"], ["デ", "25%", "25px"], ["ウ", "50%", "15px"], ["ウ", "75%", "10px"], ["デ", "75%", "30px"]],
-                    ]
-                },
-                {
-                    "name": "外伝2-1",
-                    "base": 75,
-                    "drop": ["icon_tai.png:格闘王の拳"],
-                    "enemy": [
-                        ["ビューネイの精", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "-35", "0", "0", "0", "0", "0"],
-                        ["ビューネイの精", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "-35", "0", "0", "0", "0", "0"],
-                        ["ビューネイの精", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "-35", "0", "0", "0", "0", "0"],
-                    ],
-                    "position": [
-                        [["精", "50%", "50%"]],
-                        [["精", "25%", "0px"], ["精", "50%", "10px"], ["精", "75%", "0px"]],
-                        [["精", "25%", "0"], ["精", "50%", "0"], ["精", "75%", "0"], ["精", "37%", "25px"], ["精", "62%", "25px"]],
-                    ]
-                },
-            ]
-        },
-        {
-            "外伝-1.巨竜ドーラと魔龍公ビューネイ": [
-            {
-                    "name": "外伝1-5",
-                    "base": 75,
-                    "drop": ["icon_tai.png:格闘王の拳"],
-                    "enemy": [
-                        ["リーパー", "125", "125", "0", "125", "125", "0", "125", "125", "125", "0", "0", "0", "0", "50", "50", "50", "-45", "50"],
-                        ["インプ", "0", "0", "125", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "50", "50", "50", "-45", "50"],
-                        ["ライフトラップ", "999", "999", "999", "999", "999", "999", "999", "999", "999", "999", "30", "30", "30", "-45", "0", "-20", "0", "0"],
-                        ["ビューネイバード", "999", "999", "999", "999", "999", "999", "999", "999", "999", "999", "0", "0", "0", "0", "0", "0", "0", "0"],
-                        ["ビューネイベビー", "999", "999", "999", "999", "999", "999", "999", "999", "999", "999", "0", "0", "0", "0", "0", "0", "0", "0"],
-                        ["ビューネイドッグ", "999", "999", "999", "999", "999", "999", "999", "999", "999", "999", "0", "0", "0", "0", "0", "0", "0", "0"],
-                    ],
-                    "position": [
-                        [["イ", "25%", "0px"], ["リ", "25%", "20px"], ["イ", "75%", "0px"], ["リ", "75%", "20px"]],
-                        [["ラ", "50%", "50%"]],
-                        [["鳥", "25%", "20px"], ["犬", "50%", "10px"], ["べ", "75%", "20px"]],
-                    ]
-                },
-                {
-                    "name": "外伝1-4",
-                    "base": 74,
-                    "drop": ["icon_kakusei_psand.png:紫の砂", "icon_ken.png:異国式二連剣"],
-                    "enemy": [
-                        ["ブレイザー", "0", "0", "125", "0", "0", "0", "0", "0", "0", "0", "0", "0", "-35", "50", "0", "0", "0", "0"],
-                        ["翼手竜", "0", "0", "125", "0", "0", "0", "0", "0", "0", "0", "0", "0", "-35", "0", "50", "0", "0", "0"],
-                        ["ワイバーン", "0", "0", "125", "0", "0", "0", "0", "0", "0", "0", "0", "0", "-35", "0", "50", "0", "0", "0"],
-                        ["ブラックドラゴン", "999", "0", "999", "999", "50", "999", "300", "300", "50", "999", "0", "0", "-35", "0", "50", "0", "0", "0"],
-                    ],
-                    "position": [
-                        [["翼", "50%", "0px"], ["ブ", "25%", "30px"], ["ブ", "75%", "30px"]],
-                        [["ワ", "30%", "0px"], ["ワ", "60%", "30px"]],
-                        [["黒", "50%", "0px"], ["ブ", "35%", "30px"], ["ブ", "65%", "30px"]],
-                    ]
-                },
-                {
-                    "name": "外伝1-3",
-                    "base": 74,
-                    "drop": ["icon_kakusei_rsand.png:赤の砂", "icon_ken.png:異国式二連剣"],
-                    "enemy": [
-                        ["翼手竜", "0", "0", "125", "0", "0", "0", "0", "0", "0", "0", "0", "0", "-35", "0", "50", "0", "0", "0"],
-                        ["バイター", "0", "0", "125", "0", "0", "0", "0", "0", "0", "0", "0", "0", "-35", "0", "50", "0", "0", "0"],
-                        ["エルムバード", "999", "999", "0", "999", "999", "999", "999", "999", "999", "999", "0", "-35", "50", "50", "-35", "0", "-45", "50"],
-                        ["グリーンドラゴン", "999", "0", "999", "999", "50", "999", "300", "300", "50", "999", "0", "0", "-35", "0", "50", "0", "0", "0"],
-                    ],
-                    "position": [
-                        [["翼", "50%", "50%"]],
-                        [["エ", "25%", "0"], ["バ", "50%", "0"], ["エ", "75%", "0"], ["バ", "37%", "25px"], ["エ", "62%", "25px"]],
-                        [["グ", "50%", "0"], ["バ", "20%", "25px"], ["バ", "50%", "30px"], ["バ", "80%", "25px"]],
-                    ]
-                },
-                {
-                    "name": "外伝1-2",
-                    "base": 74,
-                    "drop": ["icon_kakusei_pstone.png:紫の石"],
-                    "enemy": [
-                        ["ヘルダイバー", "0", "0", "125", "0", "0", "0", "0", "0", "0", "0", "0", "0", "-35", "0", "50", "0", "0", "0"],
-                        ["ブレイザー", "0", "0", "125", "0", "0", "0", "0", "0", "0", "0", "0", "0", "-35", "50", "0", "0", "0", "0"],
-                        ["ワイバーン", "0", "0", "125", "0", "0", "0", "0", "0", "0", "0", "0", "0", "-35", "0", "50", "0", "0", "0"],
-                    ],
-                    "position": [
-                        [["ブ", "50%", "0"], ["ヘ", "20%", "30px"], ["ヘ", "50%", "25px"], ["ブ", "80%", "30px"]],
-                        [["ワ", "50%", "30px"], ["ヘ", "25%", "0px"], ["ヘ", "75%", "0px"]],
-                        [["ワ", "50%", "0px"], ["ブ", "25%", "30px"], ["ブ", "75%", "30px"]],
-                    ]
-                },
-                {
-                    "name": "外伝1-1",
-                    "base": 74,
-                    "drop": ["icon_kakusei_rstone.png:赤の石"],
-                    "enemy": [
-                        ["バイター", "0", "0", "125", "0", "0", "0", "0", "0", "0", "0", "0", "0", "-35", "0", "50", "0", "0", "0"],
-                        ["フェイ", "125", "125", "999", "125", "125", "0", "125", "0", "125", "0", "-35", "0", "0", "50", "50", "50", "50", "50"],
-                        ["翼手竜", "0", "0", "125", "0", "0", "0", "0", "0", "0", "0", "0", "0", "-35", "0", "50", "0", "0", "0"],
-                    ],
-                    "position": [
-                        [["バ", "50%", "0"], ["バ", "50%", "20px"], ["バ", "50%", "40px"]],
-                        [["フ", "25%", "0"], ["バ", "30%", "20px"], ["フ", "75%", "5px"], ["バ", "80%", "25px"]],
-                        [["翼", "50%", "0"], ["バ", "20%", "25px"], ["フ", "50%", "30px"], ["バ", "80%", "25px"]],
-                    ]
-                },
-            ]
-        }
-    ];
-    $(document).ready(function () {
-        // 外伝1/2の始まり
-        for (var idx in quest_data) {
-            for (var quest_main in quest_data[idx]) {
-                var $base = $("#QUEST_BASE").clone().attr("id", "").removeClass("d-none");
-                $base.find(".info-modal-header").html(quest_main);
-                // 外伝1-1〜2-5の始まり
-                for (var quest of quest_data[idx][quest_main]) {
-                    var $div = $("#TABLE_TEMPLATE").clone().attr("id", "").removeClass("d-none");
-                    var $table = $div.find("table");
-                    $table.find(".QUEST_INFO").html(quest['name']);
-                    var hp = (quest['base'] + 26) * 10;
-                    $table.find(".QUEST_BASE").html(`HP:${hp} (${quest['base']})`);
-                    var drophtml = "";
-                    for (var dropitem of quest['drop']) {
-                        var tmp = dropitem.split(":");
-                        var imgpath = getImgPath("icon/" + tmp[0]);
-                        drophtml += `<img src="${imgpath}" height=20>${tmp[1]} `;
-                    }
-                    $table.find(".DROP_INFO").html(drophtml);
-                    var first = true;
-                    var html = [];
-                    for (var r in quest['position']) {
-                        var tag = "";
-                        for (var enemy of quest['position'][r]) {
-                            tag += `<span style="position:absolute; top:${enemy[1]}; left:${enemy[2]};">${enemy[0]}</span>`;
-                        }
-                        html.push(tag);
-                    }
-                    while (quest['enemy'].length < 3) {
-                        quest['enemy'].push(["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",]);
-                    }
-                    for (var enemy of quest['enemy']) {
-                        var $row = $("#ROW_TEMPLATE").clone().attr("id", "").removeClass("d-none");
-                        $row.find(".NAME").html(enemy[0]);
-                        setJyotaiOpacity($row.find(".DOKU"), enemy[1]);
-                        setJyotaiOpacity($row.find(".STAN"), enemy[3]);
-                        setJyotaiOpacity($row.find(".MAHI"), enemy[4]);
-                        setJyotaiOpacity($row.find(".ZZZ"), enemy[5]);
-                        setJyotaiOpacity($row.find(".SEKIKA"), enemy[6]);
-                        setJyotaiOpacity($row.find(".KONRAN"), enemy[7]);
-                        setJyotaiOpacity($row.find(".MIRYO"), enemy[8]);
-                        setJyotaiOpacity($row.find(".KIZETSU"), enemy[10]);
-                        setReistValue($row.find(".ZAN"), enemy[11]);
-                        setReistValue($row.find(".DA"), enemy[12]);
-                        setReistValue($row.find(".TOTSU"), enemy[13]);
-                        setReistValue($row.find(".NETSU"), enemy[14]);
-                        setReistValue($row.find(".REI"), enemy[15]);
-                        setReistValue($row.find(".RAI"), enemy[16]);
-                        setReistValue($row.find(".YO"), enemy[17]);
-                        setReistValue($row.find(".IN"), enemy[18]);
-                        if (first) {
-                            var size = quest['enemy'].length;
-                            $row.append(`
-                        <td rowspan=${size} class="haichi1" style="position:relative;">${html[0]}</td>
-                        <td rowspan=${size} class="haichi2" style="position:relative;">${html[1]}</td>
-                        <td rowspan=${size} class="haichi3" style="position:relative;">${html[2]}</td>`);
-                            first = false;
-                        }
-                        $table.append($row.clone());
-                    }
-                    $base.append($div.clone());
-                }
-                $("#DISP_ZONE").append($base.clone());
-            }
-        }
-
-        function setReistValue(target, value) {
-            var v = value == "0" ? "" : value;
-            var clazz = (value >= 0) ? "shadow-blue text-white" : "shadow-red text-white";
-            target.addClass(clazz).html(v);
-        }
-        function setJyotaiOpacity(target, value) {
-            var style = "opacity : 1;"
-            var text = "★";
-            if (value > 300 || value === "") {
-                style = "opacity : 0;";
-                text = "";
-            } else if (value > 125) {
-                style = "opacity : 0.2;";
-                text = "×";
-            } else if (value > 50) {
-                style = "opacity : 0.2;";
-                text = "△";
-            } else if (value > 0) {
-                style = "opacity : 0.8;";
-                text = "○";
-            }
-            //target.attr("style",style);
-            target.html(text);
-        }
-    });
-</script>
+<script src="./js/quest.js"></script>
 
 </html>
