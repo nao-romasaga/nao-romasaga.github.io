@@ -67,6 +67,10 @@
     background:url(https://romasagatool.com/img/icon/icon_frame_default.png);
     background-size: 100% 100%;
 }
+.formation_frame{
+    background:url(https://romasagatool.com/img/tex_ui_formation_icon_frame.png);
+    background-size: 100% 100%;
+}
 
 .weapon_icon_rare_base {
     position: absolute;
