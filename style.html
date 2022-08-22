@@ -155,9 +155,9 @@
                 background: rgba(240,240,220,1);
                 border: solid 3px #555;
                 box-sizing: border-box;
-                font-size: 1vw;
                 height: 5rem;
-                list-style: 1rem;
+                line-height: 1rem;
+                font-size: 0.8rem;
             }
 
             .balloon2-left:before {
@@ -271,6 +271,9 @@
             }
             /* 画面サイズ410より大きい場合 */
             @media screen and (min-width:410px) {
+                .balloon2-left {
+                    font-size: 1rem;
+                }
             }
 
             /* 画面サイズ767(ipadの768を含む)より大きい場合 */
