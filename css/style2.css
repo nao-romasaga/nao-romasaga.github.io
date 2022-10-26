@@ -344,7 +344,7 @@ html {
 @media screen and (min-width:1024px) {
     
     .haikei::before {
-        background: url(https://romasagatool.com/img/bg2nd.jpg) no-repeat;
+        background: url(https://romasagatool.com/img/bg2nd.webp) no-repeat;
         background-position:50% 100%;
         /*
         background: url(https://romasagatool.com/img/v2bg.jpg) no-repeat;
@@ -355,7 +355,7 @@ html {
 /* 1023まではこっち */
 @media screen and (max-width:1023px) {
     .haikei::before {        
-        background: url(http://romasagatool.com/img/bg_2nd.jpg) no-repeat;
+        background: url(http://romasagatool.com/img/bg2nd.webp) no-repeat;
         background-position:50% 20%;
         /*
         background: url(https://romasagatool.com/img/v2bg.jpg) no-repeat;
