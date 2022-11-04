@@ -34,31 +34,31 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
         integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./css/bootstrap/bootstrap.min.css">
-    <script src="./js/bootstrap/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="./css/accordion.css">
-    <link rel="stylesheet" type="text/css" href="./css/style2.css">
+        crossorigin="anonymous" async></script>
+    <link rel="stylesheet" href="./css/bootstrap/bootstrap.min.css" rel="preload" as="style">
+    <script src="./js/bootstrap/bootstrap.min.js" async></script>
+    <link rel="stylesheet" type="text/css" href="./css/accordion.css" rel="preload" as="style">
+    <link rel="stylesheet" type="text/css" href="./css/style2.css" rel="preload" as="style">
     <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
-    <script src="./js/lib/lazysizes.min.js"></script>
-    <script src="./js/lib/ls.unveilhooks.min.js"></script>
+    <script src="./js/lib/lazysizes.min.js" defer></script>
+    <script src="./js/lib/ls.unveilhooks.min.js" defer></script>
 
     <script src="./js/Firebase.js"></script>
     <script src="./js/utils2.js"></script>
 
-    <script src="./js/data_CHARMASTER.js"></script>
-    <script src="./js/data_ABILITY.js"></script>
-    <script src="./js/data_STYLEMASTER_auto.js"></script>
-    <script src="./js/data_SKILLMASTER_auto.js"></script>
-    <script src="./js/data_WEAPON.js"></script>
-    <script src="./js/data_ARMOR_RANK.js"></script>
-    <script src="./js/culcStyleBonus.js"></script>
-    <script src="./js/damage.js"></script>
+    <script src="./js/data_CHARMASTER.js" async></script>
+    <script src="./js/data_ABILITY.js" async></script>
+    <script src="./js/data_STYLEMASTER_auto.js" async></script>
+    <script src="./js/data_SKILLMASTER_auto.js" async></script>
+    <script src="./js/data_WEAPON.js" async></script>
+    <script src="./js/data_ARMOR_RANK.js" async></script>
+    <script src="./js/culcStyleBonus.js" async></script>
+    <script src="./js/damage.js" async></script>
 
-    <script src="./js/auto.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+    <script src="./js/auto.js" async></script>
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet" rel="preload" as="style">
     <style>
         /* スライド下のページャーの設定 */
         .sp-buttons {
@@ -535,8 +535,8 @@
                         -->
                     <div class="col-12 col-md-6 text-center">
                         <div class="bg-item">▼敵 体力/精神▼</div>
-                        体力=<input id="enemy_vit" type="number" class="input charParam kadomaru" value="190" style="width:60px">
-                        精神=<input id="enemy_mnd" type="number" class="input charParam kadomaru" value="190" style="width:60px">
+                        体力=<input id="enemy_vit" type="number" class="input charParam kadomaru" value="350" style="width:60px">
+                        精神=<input id="enemy_mnd" type="number" class="input charParam kadomaru" value="350" style="width:60px">
                         
                         <div class="bg-item">▼敵種族選択▼</div>
                         <ul class="nav text-center width-100 small text-nowrap">
