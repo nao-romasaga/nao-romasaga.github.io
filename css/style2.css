@@ -34,7 +34,7 @@ html {
 }
 
 .header-area {
-    background: url(https://nao-romasaga.github.io/img/bg.jpg);
+    background: url(https://romasagatool.com/img/bg_header.webp);
     background-size: cover;
     background-position-y: -100px;
 }
@@ -165,69 +165,69 @@ html {
 .info-modal {
     padding: 5px 20px 50px 20px;
     background: 
-    url(https://romasagatool.com/img/bg_modal_corner1.png) top left / 120px 90px no-repeat,
-    url(https://romasagatool.com/img/bg_modal_corner2.png) top right / 120px 90px no-repeat,
-    url(https://romasagatool.com/img/bg_modal_corner3.png) bottom left / 120px 90px no-repeat,
-    url(https://romasagatool.com/img/bg_modal_corner4.png) bottom right / 120px 90px no-repeat,
-    url(https://romasagatool.com/img/bg_modal_top.png) top / calc(100% - 80px) 90px no-repeat,
-    url(https://romasagatool.com/img/bg_modal_btm.png) bottom / calc(100% - 80px) 90px no-repeat,
-    url(https://romasagatool.com/img/bg_modal_left.png) left / 120px calc(100% - 80px)  no-repeat,
-    url(https://romasagatool.com/img/bg_modal_right.png) right / 120px calc(100% - 80px)  no-repeat,
-    url(https://romasagatool.com/img/bg_modal_center.png) center / calc(100% - 80px) calc(100% - 80px)  no-repeat;
+    url(https://romasagatool.com/img/bg_modal_corner1.webp) top left / 120px 90px no-repeat,
+    url(https://romasagatool.com/img/bg_modal_corner2.webp) top right / 120px 90px no-repeat,
+    url(https://romasagatool.com/img/bg_modal_corner3.webp) bottom left / 120px 90px no-repeat,
+    url(https://romasagatool.com/img/bg_modal_corner4.webp) bottom right / 120px 90px no-repeat,
+    url(https://romasagatool.com/img/bg_modal_top.webp) top / calc(100% - 80px) 90px no-repeat,
+    url(https://romasagatool.com/img/bg_modal_btm.webp) bottom / calc(100% - 80px) 90px no-repeat,
+    url(https://romasagatool.com/img/bg_modal_left.webp) left / 120px calc(100% - 80px)  no-repeat,
+    url(https://romasagatool.com/img/bg_modal_right.webp) right / 120px calc(100% - 80px)  no-repeat,
+    url(https://romasagatool.com/img/bg_modal_center.webp) center / calc(100% - 80px) calc(100% - 80px)  no-repeat;
     /* color: #faf0b4; */
 }
 .bg-common-frame {
     padding: 20px;
     background: 
-    url(https://romasagatool.com/img/bg_common_frame_corner1.png) top left / 40px 40px no-repeat,
-    url(https://romasagatool.com/img/bg_common_frame_corner2.png) top right / 40px 40px no-repeat,
-    url(https://romasagatool.com/img/bg_common_frame_corner3.png) bottom left / 40px 40px no-repeat,
-    url(https://romasagatool.com/img/bg_common_frame_corner4.png) bottom right / 40px 40px no-repeat,
-    url(https://romasagatool.com/img/bg_common_frame_top.png) top / calc(100% - 40px) 40px no-repeat,
-    url(https://romasagatool.com/img/bg_common_frame_btm.png) bottom / calc(100% - 40px) 40px no-repeat,
-    url(https://romasagatool.com/img/bg_common_frame_left.png) left / 40px calc(100% - 40px)  no-repeat,
-    url(https://romasagatool.com/img/bg_common_frame_right.png) right / 40px calc(100% - 40px)  no-repeat,
-    url(https://romasagatool.com/img/bg_common_frame_center.png) center / calc(100% - 40px) calc(100% - 40px)  no-repeat;
+    url(https://romasagatool.com/img/bg_common_frame_corner1.webp) top left / 40px 40px no-repeat,
+    url(https://romasagatool.com/img/bg_common_frame_corner2.webp) top right / 40px 40px no-repeat,
+    url(https://romasagatool.com/img/bg_common_frame_corner3.webp) bottom left / 40px 40px no-repeat,
+    url(https://romasagatool.com/img/bg_common_frame_corner4.webp) bottom right / 40px 40px no-repeat,
+    url(https://romasagatool.com/img/bg_common_frame_top.webp) top / calc(100% - 40px) 40px no-repeat,
+    url(https://romasagatool.com/img/bg_common_frame_btm.webp) bottom / calc(100% - 40px) 40px no-repeat,
+    url(https://romasagatool.com/img/bg_common_frame_left.webp) left / 40px calc(100% - 40px)  no-repeat,
+    url(https://romasagatool.com/img/bg_common_frame_right.webp) right / 40px calc(100% - 40px)  no-repeat,
+    url(https://romasagatool.com/img/bg_common_frame_center.webp) center / calc(100% - 40px) calc(100% - 40px)  no-repeat;
 }
 .bg-common-window {
     padding: 20px;
     color:beige;
     background: 
-    url(https://romasagatool.com/img/bg_common_window_corner1.png) top left / 40px 20px no-repeat,
-    url(https://romasagatool.com/img/bg_common_window_corner2.png) top right / 40px 20px no-repeat,
-    url(https://romasagatool.com/img/bg_common_window_corner3.png) bottom left / 40px 20px no-repeat,
-    url(https://romasagatool.com/img/bg_common_window_corner4.png) bottom right / 40px 20px no-repeat,
-    url(https://romasagatool.com/img/bg_common_window_top.png) top / calc(100% - 78px) 20px no-repeat,
-    url(https://romasagatool.com/img/bg_common_window_btm.png) bottom / calc(100% - 78px) 20px no-repeat,
-    url(https://romasagatool.com/img/bg_common_window_left.png) left / 40px calc(100% - 38px)  no-repeat,
-    url(https://romasagatool.com/img/bg_common_window_right.png) right / 40px calc(100% - 38px)  no-repeat,
-    url(https://romasagatool.com/img/bg_common_window_center.png) center / calc(100% - 78px) calc(100% - 38px)  no-repeat;
+    url(https://romasagatool.com/img/bg_common_window_corner1.webp) top left / 40px 20px no-repeat,
+    url(https://romasagatool.com/img/bg_common_window_corner2.webp) top right / 40px 20px no-repeat,
+    url(https://romasagatool.com/img/bg_common_window_corner3.webp) bottom left / 40px 20px no-repeat,
+    url(https://romasagatool.com/img/bg_common_window_corner4.webp) bottom right / 40px 20px no-repeat,
+    url(https://romasagatool.com/img/bg_common_window_top.webp) top / calc(100% - 78px) 20px no-repeat,
+    url(https://romasagatool.com/img/bg_common_window_btm.webp) bottom / calc(100% - 78px) 20px no-repeat,
+    url(https://romasagatool.com/img/bg_common_window_left.webp) left / 40px calc(100% - 38px)  no-repeat,
+    url(https://romasagatool.com/img/bg_common_window_right.webp) right / 40px calc(100% - 38px)  no-repeat,
+    url(https://romasagatool.com/img/bg_common_window_center.webp) center / calc(100% - 78px) calc(100% - 38px)  no-repeat;
 }
 .bg-black-frame {
     padding: 20px;
     background: 
-    url(https://romasagatool.com/img/bg_black_frame_corner1.png) top left / 40px 40px no-repeat,
-    url(https://romasagatool.com/img/bg_black_frame_corner2.png) top right / 40px 40px no-repeat,
-    url(https://romasagatool.com/img/bg_black_frame_corner3.png) bottom left / 40px 40px no-repeat,
-    url(https://romasagatool.com/img/bg_black_frame_corner4.png) bottom right / 40px 40px no-repeat,
-    url(https://romasagatool.com/img/bg_black_frame_top.png) top / calc(100% - 80px) 40px no-repeat,
-    url(https://romasagatool.com/img/bg_black_frame_btm.png) bottom / calc(100% - 80px) 40px no-repeat,
-    url(https://romasagatool.com/img/bg_black_frame_left.png) left / 40px calc(100% - 80px)  no-repeat,
-    url(https://romasagatool.com/img/bg_black_frame_right.png) right / 40px calc(100% - 80px)  no-repeat,
-    url(https://romasagatool.com/img/bg_black_frame_center.png) center / calc(100% - 80px) calc(100% - 80px)  no-repeat;
+    url(https://romasagatool.com/img/bg_black_frame_corner1.webp) top left / 40px 40px no-repeat,
+    url(https://romasagatool.com/img/bg_black_frame_corner2.webp) top right / 40px 40px no-repeat,
+    url(https://romasagatool.com/img/bg_black_frame_corner3.webp) bottom left / 40px 40px no-repeat,
+    url(https://romasagatool.com/img/bg_black_frame_corner4.webp) bottom right / 40px 40px no-repeat,
+    url(https://romasagatool.com/img/bg_black_frame_top.webp) top / calc(100% - 80px) 40px no-repeat,
+    url(https://romasagatool.com/img/bg_black_frame_btm.webp) bottom / calc(100% - 80px) 40px no-repeat,
+    url(https://romasagatool.com/img/bg_black_frame_left.webp) left / 40px calc(100% - 80px)  no-repeat,
+    url(https://romasagatool.com/img/bg_black_frame_right.webp) right / 40px calc(100% - 80px)  no-repeat,
+    url(https://romasagatool.com/img/bg_black_frame_center.webp) center / calc(100% - 80px) calc(100% - 80px)  no-repeat;
 }
 .bg-black-half {
     padding: 5px 20px 10px 20px;
     background: 
-    url(https://romasagatool.com/img/bg_blackhalf_corner1.png) top left / 40px 40px no-repeat,
-    url(https://romasagatool.com/img/bg_blackhalf_corner2.png) top right / 40px 40px no-repeat,
-    url(https://romasagatool.com/img/bg_blackhalf_corner3.png) bottom left / 40px 40px no-repeat,
-    url(https://romasagatool.com/img/bg_blackhalf_corner4.png) bottom right / 40px 40px no-repeat,
-    url(https://romasagatool.com/img/bg_blackhalf_top.png) top / calc(100% - 80px) 40px no-repeat,
-    url(https://romasagatool.com/img/bg_blackhalf_btm.png) bottom / calc(100% - 80px) 40px no-repeat,
-    url(https://romasagatool.com/img/bg_blackhalf_left.png) left / 40px calc(100% - 80px)  no-repeat,
-    url(https://romasagatool.com/img/bg_blackhalf_right.png) right / 40px calc(100% - 80px)  no-repeat,
-    url(https://romasagatool.com/img/bg_blackhalf_center.png) center / calc(100% - 80px) calc(100% - 80px)  no-repeat;
+    url(https://romasagatool.com/img/bg_blackhalf_corner1.webp) top left / 40px 40px no-repeat,
+    url(https://romasagatool.com/img/bg_blackhalf_corner2.webp) top right / 40px 40px no-repeat,
+    url(https://romasagatool.com/img/bg_blackhalf_corner3.webp) bottom left / 40px 40px no-repeat,
+    url(https://romasagatool.com/img/bg_blackhalf_corner4.webp) bottom right / 40px 40px no-repeat,
+    url(https://romasagatool.com/img/bg_blackhalf_top.webp) top / calc(100% - 80px) 40px no-repeat,
+    url(https://romasagatool.com/img/bg_blackhalf_btm.webp) bottom / calc(100% - 80px) 40px no-repeat,
+    url(https://romasagatool.com/img/bg_blackhalf_left.webp) left / 40px calc(100% - 80px)  no-repeat,
+    url(https://romasagatool.com/img/bg_blackhalf_right.webp) right / 40px calc(100% - 80px)  no-repeat,
+    url(https://romasagatool.com/img/bg_blackhalf_center.webp) center / calc(100% - 80px) calc(100% - 80px)  no-repeat;
 }
 .info-modal-header {
     color: beige;
@@ -244,8 +244,8 @@ html {
     border-top: 1px solid yellow;
     border-bottom: 1px solid yellow;
     background: 
-        url(https://romasagatool.com/img/icon/icon_label_left.png) top 50% left 10px  / 23px 15px no-repeat,
-        url(https://romasagatool.com/img/icon/icon_label_right.png) top 50% right 10px / 23px 15px no-repeat,
+        url(https://romasagatool.com/img/icon/icon_label_left.webp) top 50% left 10px  / 23px 15px no-repeat,
+        url(https://romasagatool.com/img/icon/icon_label_right.webp) top 50% right 10px / 23px 15px no-repeat,
         rgba(40,30,20, 0.7);    
 }
 
@@ -380,7 +380,7 @@ html {
 }
 @media screen and (min-width:300px) {
     .title-text{
-        background:url(https://romasagatool.com/img/bg_window_large.png);
+        background:url(https://romasagatool.com/img/bg_window_large.webp);
         background-size:100% 100%;
         color:#faf0b4;
         padding:5px;
@@ -394,7 +394,7 @@ html {
         font-size: 20px !important;
     }
     .title-text{
-        background:url(https://romasagatool.com/img/bg_window_large.png);
+        background:url(https://romasagatool.com/img/bg_window_large.webp);
         background-size:100% 100%;
         color:#faf0b4;
         padding:5px;    
@@ -502,7 +502,7 @@ html {
 
 .label-text-header{
     /* trで使う場合など */
-    background:url(https://romasagatool.com/img/bg_window_large.png);
+    background:url(https://romasagatool.com/img/bg_window_large.webp);
     background-size:100% 100%;
     color:#faf0b4;
     padding:5px;    
@@ -511,42 +511,42 @@ html {
 .label-text{
     padding: 5px;
     background: 
-    url(https://romasagatool.com/img/bg_window_corner1.png) top left no-repeat,
-    url(https://romasagatool.com/img/bg_window_corner2.png) top right no-repeat,
-    url(https://romasagatool.com/img/bg_window_corner3.png) bottom left no-repeat,
-    url(https://romasagatool.com/img/bg_window_corner4.png) bottom right no-repeat,
-    url(https://romasagatool.com/img/bg_window_top.png) top / calc(100% - 79px) 41px no-repeat,
-    url(https://romasagatool.com/img/bg_window_btm.png) bottom / calc(100% - 79px) 41px no-repeat,
-    url(https://romasagatool.com/img/bg_window_left.png) left / 41px calc(100% - 79px)  no-repeat,
-    url(https://romasagatool.com/img/bg_window_right.png) right / 41px calc(100% - 79px)  no-repeat,
-    url(https://romasagatool.com/img/bg_window_center.png) center / calc(100% - 79px) calc(100% - 79px)  no-repeat;
+    url(https://romasagatool.com/img/bg_window_corner1.webp) top left no-repeat,
+    url(https://romasagatool.com/img/bg_window_corner2.webp) top right no-repeat,
+    url(https://romasagatool.com/img/bg_window_corner3.webp) bottom left no-repeat,
+    url(https://romasagatool.com/img/bg_window_corner4.webp) bottom right no-repeat,
+    url(https://romasagatool.com/img/bg_window_top.webp) top / calc(100% - 79px) 41px no-repeat,
+    url(https://romasagatool.com/img/bg_window_btm.webp) bottom / calc(100% - 79px) 41px no-repeat,
+    url(https://romasagatool.com/img/bg_window_left.webp) left / 41px calc(100% - 79px)  no-repeat,
+    url(https://romasagatool.com/img/bg_window_right.webp) right / 41px calc(100% - 79px)  no-repeat,
+    url(https://romasagatool.com/img/bg_window_center.webp) center / calc(100% - 79px) calc(100% - 79px)  no-repeat;
     color: #faf0b4;
 }
 .bg-black-window{
     padding: 5px;
     background: 
-    url(https://romasagatool.com/img/bg_window_corner1.png) top left no-repeat,
-    url(https://romasagatool.com/img/bg_window_corner2.png) top right no-repeat,
-    url(https://romasagatool.com/img/bg_window_corner3.png) bottom left no-repeat,
-    url(https://romasagatool.com/img/bg_window_corner4.png) bottom right no-repeat,
-    url(https://romasagatool.com/img/bg_window_top.png) top / calc(100% - 79px) 41px no-repeat,
-    url(https://romasagatool.com/img/bg_window_btm.png) bottom / calc(100% - 79px) 41px no-repeat,
-    url(https://romasagatool.com/img/bg_window_left.png) left / 41px calc(100% - 79px)  no-repeat,
-    url(https://romasagatool.com/img/bg_window_right.png) right / 41px calc(100% - 79px)  no-repeat,
-    url(https://romasagatool.com/img/bg_window_center.png) center / calc(100% - 79px) calc(100% - 79px)  no-repeat;
+    url(https://romasagatool.com/img/bg_window_corner1.webp) top left no-repeat,
+    url(https://romasagatool.com/img/bg_window_corner2.webp) top right no-repeat,
+    url(https://romasagatool.com/img/bg_window_corner3.webp) bottom left no-repeat,
+    url(https://romasagatool.com/img/bg_window_corner4.webp) bottom right no-repeat,
+    url(https://romasagatool.com/img/bg_window_top.webp) top / calc(100% - 79px) 41px no-repeat,
+    url(https://romasagatool.com/img/bg_window_btm.webp) bottom / calc(100% - 79px) 41px no-repeat,
+    url(https://romasagatool.com/img/bg_window_left.webp) left / 41px calc(100% - 79px)  no-repeat,
+    url(https://romasagatool.com/img/bg_window_right.webp) right / 41px calc(100% - 79px)  no-repeat,
+    url(https://romasagatool.com/img/bg_window_center.webp) center / calc(100% - 79px) calc(100% - 79px)  no-repeat;
     color: #faf0b4;
 }
 .bg-simple {
     padding: 5px;
     background: 
-    url(https://romasagatool.com/img/bg_simple_corner1.png) top left / 29px 29px no-repeat,
-    url(https://romasagatool.com/img/bg_simple_corner2.png) top right / 29px 29px no-repeat,
-    url(https://romasagatool.com/img/bg_simple_corner3.png) bottom left / 29px 29px no-repeat,
-    url(https://romasagatool.com/img/bg_simple_corner4.png) bottom right / 29px 29px no-repeat,
-    url(https://romasagatool.com/img/bg_simple_top.png) top / calc(100% - 56px) 29px no-repeat,
-    url(https://romasagatool.com/img/bg_simple_btm.png) bottom / calc(100% - 56px) 29px no-repeat,
-    url(https://romasagatool.com/img/bg_simple_left.png) left / 29px calc(100% - 56px)  no-repeat,
-    url(https://romasagatool.com/img/bg_simple_right.png) right / 29px calc(100% - 56px)  no-repeat,
+    url(https://romasagatool.com/img/bg_simple_corner1.webp) top left / 29px 29px no-repeat,
+    url(https://romasagatool.com/img/bg_simple_corner2.webp) top right / 29px 29px no-repeat,
+    url(https://romasagatool.com/img/bg_simple_corner3.webp) bottom left / 29px 29px no-repeat,
+    url(https://romasagatool.com/img/bg_simple_corner4.webp) bottom right / 29px 29px no-repeat,
+    url(https://romasagatool.com/img/bg_simple_top.webp) top / calc(100% - 56px) 29px no-repeat,
+    url(https://romasagatool.com/img/bg_simple_btm.webp) bottom / calc(100% - 56px) 29px no-repeat,
+    url(https://romasagatool.com/img/bg_simple_left.webp) left / 29px calc(100% - 56px)  no-repeat,
+    url(https://romasagatool.com/img/bg_simple_right.webp) right / 29px calc(100% - 56px)  no-repeat,
     rgba(43,33,12,1);
     color: #faf0b4;
     border-radius: 10px;
@@ -555,9 +555,9 @@ html {
 }
 .label-text-small {
     background: 
-    url(https://romasagatool.com/img/bg_window_small_left.png) left / 36px 100% no-repeat, 
-    url(https://romasagatool.com/img/bg_window_small_right.png) right / 36px 100% no-repeat, 
-    url(https://romasagatool.com/img/bg_window_small_center.png) center / calc(100% - 70px) 100% no-repeat;
+    url(https://romasagatool.com/img/bg_window_small_left.webp) left / 36px 100% no-repeat, 
+    url(https://romasagatool.com/img/bg_window_small_right.webp) right / 36px 100% no-repeat, 
+    url(https://romasagatool.com/img/bg_window_small_center.webp) center / calc(100% - 70px) 100% no-repeat;
     padding: 3px 13px 3px 13px;
     display: inline-block;
     color: #faf0b4;
@@ -566,15 +566,15 @@ html {
 }
 .bg-item {
     background: 
-        url(https://romasagatool.com/img/bg_item_left.png) left / 48px 100% no-repeat, 
-        url(https://romasagatool.com/img/bg_item_right.png) right / 48px 100% no-repeat, 
-        url(https://romasagatool.com/img/bg_item_center.png) center / calc(100% - 94px) 100% no-repeat;
+        url(https://romasagatool.com/img/bg_item_left.webp) left / 48px 100% no-repeat, 
+        url(https://romasagatool.com/img/bg_item_right.webp) right / 48px 100% no-repeat, 
+        url(https://romasagatool.com/img/bg_item_center.webp) center / calc(100% - 94px) 100% no-repeat;
     color: #faf0b4;
     padding: 6px 0px;
 }
 
 .label-text_bk{
-    background:url(https://romasagatool.com/img/bg_window_large.png);
+    background:url(https://romasagatool.com/img/bg_window_large.webp);
     background-size:100% 100%;
     color:#faf0b4;
     padding:5px;    
@@ -635,7 +635,7 @@ html {
     background-size: cover;
 }
 .dojohaikei {
-    background: url(https://romasagatool.com/img/bg_dojo.png);
+    background: url(https://romasagatool.com/img/bg_dojo.webp);
     padding-top: 10px;
 }
 
@@ -797,7 +797,7 @@ body {
 }
 
 .sorry_cat {
-    background: url(https://romasagatool.com/img/dot/ID36a44.png) no-repeat; /* riz */
+    background: url(https://romasagatool.com/img/dot/ID36a44.webp) no-repeat; /* riz */
     background-size: 400px 400px
 }
 .sorry_center{
@@ -819,7 +819,7 @@ body {
     animation: nemuri 2s steps(1);
 }        
 .icon-zzz {
-    background: url(https://romasagatool.com/img/icon/icon_zzz.png) no-repeat;
+    background: url(https://romasagatool.com/img/icon/icon_zzz.webp) no-repeat;
     display: inline-block;
     width: 60px;
     height: 60px;
@@ -911,7 +911,7 @@ body {
 .style-skill-window {
     color: white;
     margin: 0 20px 0 20px;
-    background: url(https://romasagatool.com/img/bg_window.png) no-repeat;
+    background: url(https://romasagatool.com/img/bg_window.webp) no-repeat;
     background-size: 100% 100%;
     opacity: 0.8;    
 }
@@ -927,14 +927,14 @@ body {
 .style-tab-active{
     padding-top: 5px;
     display: inline-block; 
-    background:url(https://romasagatool.com/img/icon/icon_tab_active.png) no-repeat; 
+    background:url(https://romasagatool.com/img/icon/icon_tab_active.webp) no-repeat; 
     background-size: 100% 100%;
     color: white;
 }
 .style-tab-disabled{
     padding-top: 5px;
     display: inline-block;
-    background:url(https://romasagatool.com/img/icon/icon_tab_disable.png) no-repeat;
+    background:url(https://romasagatool.com/img/icon/icon_tab_disable.webp) no-repeat;
     background-size: 100% 100%;
 }
 
@@ -943,7 +943,7 @@ body {
     margin-left:60px;
     width:60px;
     height:60px;
-    background: url(https://romasagatool.com/img/icon/icon_kakashi.png);
+    background: url(https://romasagatool.com/img/icon/icon_kakashi.webp);
     background-size: cover;    
 }
 .arrow_box {
@@ -1167,27 +1167,27 @@ input[type=range]::-ms-tooltip {
     color: black;    
 }
 .bg1{
-    background: url(https://romasagatool.com/img/bg_renkei_1.png);
+    background: url(https://romasagatool.com/img/bg_renkei_1.webp);
     background-size: contain;
 }
 .bg2{
-    background: url(https://romasagatool.com/img/bg_renkei_2.png);
+    background: url(https://romasagatool.com/img/bg_renkei_2.webp);
     background-size: contain;
 }
 .bg3{
-    background: url(https://romasagatool.com/img/bg_renkei_3.png);
+    background: url(https://romasagatool.com/img/bg_renkei_3.webp);
     background-size: contain;
 }
 .bg4{
-    background: url(https://romasagatool.com/img/bg_renkei_4.png);
+    background: url(https://romasagatool.com/img/bg_renkei_4.webp);
     background-size: contain;
 }
 .bg5{
-    background: url(https://romasagatool.com/img/bg_renkei_5.png);
+    background: url(https://romasagatool.com/img/bg_renkei_5.webp);
     background-size: contain;
 }
 .updatePanel{
-    background:url(https://romasagatool.com/img/bg_window_large.png);
+    background:url(https://romasagatool.com/img/bg_window_large.webp);
     background-size: contain;
     width: 330px;
     height: 33px;
@@ -1331,7 +1331,7 @@ input[type=range]::-ms-tooltip {
 }
 
 .bg-cutin {
-    background: url(https://romasagatool.com/img/bg_cutin.png);
+    background: url(https://romasagatool.com/img/bg_cutin.webp);
 }
 .partyNowStyle .ICON_TD {
     border-top: 2px solid rgba(120, 120, 245, 0.8);
@@ -1342,7 +1342,7 @@ input[type=range]::-ms-tooltip {
     display: inline-block;/*忘れずに！*/
     width: 36px;/*画像の幅*/
     height: 16px;/*画像の幅*/
-    background: url(https://romasagatool.com/img/icon/icon_label_select.png) no-repeat;
+    background: url(https://romasagatool.com/img/icon/icon_label_select.webp) no-repeat;
     background-size: contain;
     position: absolute;
 }
