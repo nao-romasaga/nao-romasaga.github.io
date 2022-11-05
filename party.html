@@ -28,29 +28,35 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@nao_romasaga_rs" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script type="text/javascript" src="./js/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="./js/jquery.ui.touch-punch.js"></script>
-    <script src="./js/lib/lazysizes.min.js"></script>
-    <script src="./js/lib/ls.unveilhooks.min.js"></script>
+    <script src="./js/dataload.js"></script>
+    <script>
+        // require dataload.js
+        dataload([
+            "data_CHARMASTER",
+            "data_STYLEMASTER",
+        ]);
+    </script>    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" async></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" defer></script>
+    <script type="text/javascript" src="./js/jquery-ui.min.js" defer></script>
+    <script type="text/javascript" src="./js/jquery.ui.touch-punch.js" defer></script>
+    <script src="./js/lib/lazysizes.min.js" defer></script>
+    <script src="./js/lib/ls.unveilhooks.min.js" defer></script>
     
-    <link rel="stylesheet" type="text/css" href="./css/bootstrap/bootstrap.min.css">
-    <script src="./js/popper.min.js"></script>
-    <script src="./js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="./css/style2.css">
-    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/ui/3.5.2/firebase-ui-auth__ja.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
-    <script src="./js/Firebase.js"></script>
-    <script src="./js/asyncFunc.js"></script>
-    <script src="./js/utils2.js"></script>
-    <script src="./js/data_CHARMASTER.js"></script>
-    <script src="./js/data_STYLEMASTER.js"></script>
-    <script src="./js/party.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap/bootstrap.min.css" rel="preload" as="style"/>
+    <script src="./js/popper.min.js" defer></script>
+    <script src="./js/bootstrap.min.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="./css/style2.css" rel="preload" as="style"/>
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/3.5.2/firebase-ui-auth__ja.js" defer></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" rel="preload" as="style"/>
+    <script src="./js/Firebase.js" defer></script>
+    <script src="./js/asyncFunc.js" defer></script>
+    <script src="./js/utils2.js" defer></script>
+    <script src="./js/party.js" defer></script>
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet" rel="preload" as="style">
     <style>
         .ab-line {
             line-height: 13px;
@@ -1202,7 +1208,7 @@
     </style>
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     <script type="text/javascript"
-        src="https://romasagatool.com/blog/get_the_archives.php?limit=30&callback=rssCallback"></script>
+        src="https://romasagatool.com/blog/get_the_archives.php?limit=30&callback=rssCallback" defer></script>
 </body>
 
 </html>
