@@ -5,6 +5,17 @@
     <script type="text/javascript" src="./js/jquery-3.3.1.min.js" defer></script>
     <script type="text/javascript" src="./js/jquery-ui.min.js" defer></script>
     <script type="text/javascript" src="./js/jquery.ui.touch-punch.js" defer></script>
+    <script src="./js/dataload.js"></script>
+    <script>
+        // require dataload.js
+        dataload([
+            "data_WEAPON",
+            "data_CHARMASTER",
+            "data_STYLEMASTER_autodamage",
+            "data_SKILLMASTER_autodamage",
+            "data_ARMOR_RANK"
+        ]);
+    </script>
     <script src="./js/lib/lazysizes.min.js" defer></script>
     <script src="./js/lib/ls.unveilhooks.min.js" defer></script>
     <!-- Global site tag (gtag.js) - Google Analytics         -->
@@ -43,6 +54,7 @@
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" rel="preload" as="style"/>
     <script src="./js/Firebase.js" defer></script>
     <script src="./js/utils2.js" defer></script>
+
     <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet" rel="preload" as="style">
     <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet" rel="preload" as="style">
 
@@ -661,11 +673,6 @@
         </div>        
     </div><!-- haikei -->
     <script src="./js/culcStyleBonus.js" async></script>
-    <script src="https://romasagatool.com/data/data_WEAPON.js.gz" defer></script>
-    <script src="https://romasagatool.com/data/data_CHARMASTER.js.gz" defer></script>
-    <script src="https://romasagatool.com/data/data_STYLEMASTER_autodamage.js.gz" defer></script>
-    <script src="https://romasagatool.com/data/data_SKILLMASTER_autodamage.js.gz" async></script>
-    <script src="https://romasagatool.com/data/data_ARMOR_RANK.js.gz" async></script>
     <script src="./js/damage.js" async></script>
     <script src="./js/autodamage.js" defer></script>
 
