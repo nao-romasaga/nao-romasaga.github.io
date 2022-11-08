@@ -26,31 +26,36 @@
         <meta property="og:locale" content="ja_JP" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@nao_romasaga_rs" />
-
+        <script src="./js/dataload.js"></script>
+        <script>
+            // require dataload.js
+            dataload([
+                "data_CHARMASTER",
+                "data_STYLEMASTER_checker",
+                //"data_STYLECLASS",
+                //"data_STYLEHOLDER",
+            ]);
+        </script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="./js/jquery-3.3.1.min.js" defer></script>
         <!--
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script type="text/javascript" src="./js/jquery-ui.min.js"></script>
         <script type="text/javascript" src="./js/jquery.ui.touch-punch.js"></script>
         -->
-        <link rel="stylesheet" type="text/css" href="./css/bootstrap/bootstrap.min.css">
-        <script src="./js/lib/lazysizes.min.js"></script>
-        <script src="./js/lib/ls.unveilhooks.min.js"></script>
-        <script src="./js/bootstrap.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="./css/style2.css">
-        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/ui/3.5.2/firebase-ui-auth__ja.js"></script>
-        <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
-        <script src="./js/Firebase.js"></script>
-        <script src="./js/utils2.js" ></script>
+        <link rel="stylesheet" type="text/css" href="./css/bootstrap/bootstrap.min.css" rel="preload" as="style">
+        <script src="./js/lib/lazysizes.min.js" defer></script>
+        <script src="./js/lib/ls.unveilhooks.min.js" defer></script>
+        <script src="./js/bootstrap.min.js" defer></script>
+        <link rel="stylesheet" type="text/css" href="./css/style2.css" rel="preload" as="style">
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js" async></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js" async></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js" async></script>
+        <script src="https://www.gstatic.com/firebasejs/ui/3.5.2/firebase-ui-auth__ja.js" async></script>
+        <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css"  rel="preload" as="style">
+        <script src="./js/Firebase.js" defer></script>
+        <script src="./js/utils2.js"  defer></script>
         
-        <script src="./js/data_CHARMASTER.js" ></script>
-        <script src="./js/data_STYLEMASTER_checker.js" ></script>
-        <script src="./js/data_STYLECLASS.js" ></script>
-        <script src="./js/data_STYLEHOLDER.js" ></script>
         <script>
             var upper = [
                 //"2022.03.07.響け情熱のステージドロップCP【復刻】",
@@ -67,8 +72,8 @@
                 "宝箱・決戦島ピース交換","螺旋回廊ガチャ限定",
                 ]
         </script>
-        <script src="./js/stylecheck.js" ></script>
-        <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+        <script src="./js/stylecheck.js"  defer></script>
+        <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet" rel="preload" as="style">
         <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -583,11 +588,6 @@
             <!-- モーダルウィンドウが開いている時のオーバーレイ -->
             <div class="overLay style-bgcolor modalClose"></div>
         </div>
-        <script>
-            $("#OnlySSArea").slideUp();
-            $("#OnlySArea").slideUp();
-            $("#OnlyAArea").slideUp();
-        </script>
         <style>
             /* モーダルウィンドウのスタイル */
             .modal {
@@ -627,6 +627,6 @@
                 100% {top:100%}
             }
         </style>
-        <script type="text/javascript" src="https://romasagatool.com/blog/get_the_archives.php?limit=30&callback=rssCallback"></script>
+        <script type="text/javascript" src="https://romasagatool.com/blog/get_the_archives.php?limit=30&callback=rssCallback" defer></script>
     </body>
 </html>
