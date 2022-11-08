@@ -12,6 +12,20 @@
 
             gtag('config', 'UA-138966739-1');
         </script>
+        <script src="./js/dataload.js"></script>
+        <script>
+            // require dataload.js
+            dataload([
+                "data_WEAPON",
+                "data_ARMOR_RANK",
+                "data_CHARMASTER",
+                "data_CHARMASTER",
+                "data_STYLEMASTER_style",
+                "data_SKILLMASTER_list",
+                "data_ABILITY",
+            ]);
+        </script>
+        <script src="./js/data_ENEMY.js" ></script>
 
         <meta charset="utf-8">
         <title>【ロマサガRS】ダメージ計算機</title>
@@ -39,16 +53,9 @@
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
         <script src="./js/Firebase.js"></script>
-        <script src="./js/data_WEAPON.js"></script>
-        <script src="./js/data_ARMOR_RANK.js"></script>
     
         <script src="./js/damage.js" ></script>
         <script src="./js/utils2.js" ></script>
-        <script src="./js/data_ENEMY.js" ></script>
-        <script src="./js/data_CHARMASTER.js" ></script>
-        <script src="./js/data_STYLEMASTER_style.js" ></script>
-        <script src="./js/data_SKILLMASTER_list.js" ></script>
-        <script src="./js/data_ABILITY.js"></script>
         <script src="./js/culcStyleBonus.js" ></script>
         <script src="./js/damage_calc.js" ></script>
         <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
