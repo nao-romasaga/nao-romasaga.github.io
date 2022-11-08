@@ -12,6 +12,7 @@
 
             gtag('config', 'UA-138966739-1');
         </script>
+        
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <meta charset="utf-8">
         <title>【ロマサガRS】スタイル補正 / 補正込みステータス最大値 一覧</title>
@@ -28,22 +29,31 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <script src="./js/jquery-3.3.1.min.js"></script>
-        
-        <link rel="stylesheet" href="./css/tabulator.css">
+        <script src="./js/dataload.js"></script>
+        <script>
+            // require dataload.js
+            dataload([
+                "data_STYLEMASTER_style",
+                "data_SKILLMASTER_style",
+                "data_CHARMASTER",
+            ]);
+        </script>            
+
+        <link rel="stylesheet" href="./css/tabulator.css" rel="preload" as="style"/>
         <script type="text/javascript" src="./js/tabulator.js"></script>
 
-        <link rel="stylesheet" type="text/css" href="./css/bootstrap/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="./css/bootstrap/bootstrap.min.css" rel="preload" as="style"/>
         <script src="./js/popper.min.js"></script>
         <script src="./js/bootstrap.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="./css/style2.css">
+        <link rel="stylesheet" type="text/css" href="./css/style2.css" rel="preload" as="style"/>
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
         <script src="https://www.gstatic.com/firebasejs/ui/3.5.2/firebase-ui-auth__ja.js"></script>
-        <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+        <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css"  rel="preload" as="style"/>
         <script src="./js/Firebase.js"></script>
         <script src="./js/utils2.js" ></script>
-        <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet" rel="preload" as="style"/>
         <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -78,16 +88,18 @@
                     <ul class="nav text-center width-100" style="margin-bottom: 5px;">
                         <li class="fuchidori-white subtitle smallFont">シリーズ</li>
                     </ul>
-                    <ul class="nav text-center width-100">
-                        <li class="col-4 col-sm-2 margin-bottom5 text-center"><a class="filterList pad0" data-type="SeriesFilter" data-href="RS1"><img src="https://romasagatool.com/img/icon/icon_rs1.png" class="width-100 fButton"></a></li>
-                        <li class="col-4 col-sm-2 margin-bottom5 text-center"><a class="filterList pad0" data-type="SeriesFilter" data-href="RS2"><img src="https://romasagatool.com/img/icon/icon_rs2.png" class="width-100 fButton"></a></li>
-                        <li class="col-4 col-sm-2 margin-bottom5 text-center"><a class="filterList pad0" data-type="SeriesFilter" data-href="RS3"><img src="https://romasagatool.com/img/icon/icon_rs3.png" class="width-100 fButton"></a></li>
-                        <li class="col-4 col-sm-2 margin-bottom5 text-center"><a class="filterList pad0" data-type="SeriesFilter" data-href="SF1"><img src="https://romasagatool.com/img/icon/icon_sf1.png" class="width-100 fButton"></a></li>
-                        <li class="col-4 col-sm-2 margin-bottom5 text-center"><a class="filterList pad0" data-type="SeriesFilter" data-href="SF2"><img src="https://romasagatool.com/img/icon/icon_sf2.png" class="width-100 fButton"></a></li>
-                        <li class="col-4 col-sm-2 margin-bottom5 text-center"><a class="filterList pad0" data-type="SeriesFilter" data-href="US"><img src="https://romasagatool.com/img/icon/icon_us.png" class="width-100 fButton"></a></li>
-                        <li class="col-4 col-sm-2 margin-bottom5 text-center"><a class="filterList pad0" data-type="SeriesFilter" data-href="SSG"><img src="https://romasagatool.com/img/icon/icon_ss.png" class="width-100 fButton"></a></li>
-                        <li class="col-4 col-sm-2 margin-bottom5 text-center"><a class="filterList pad0" data-type="SeriesFilter" data-href="ES"><img src="https://romasagatool.com/img/icon/icon_es.png" class="width-100 fButton"></a></li>
-                        <li class="col-4 col-sm-2 margin-bottom5 text-center"><a class="filterList pad0" data-type="SeriesFilter" data-href="RSR"><img src="https://romasagatool.com/img/icon/icon_rsr.png" class="width-100 fButton"></a></li>
+                    <ul class="nav text-center width-100" style="color:beige;">
+                        <li class="col-4 col-sm-2 margin-bottom5 text-center"><a class="filterList pad0" data-type="SeriesFilter" data-href="RS1"><div class="fButton width-100 filter-bgcolor">RS1</div></a></li>
+                        <li class="col-4 col-sm-2 margin-bottom5 text-center"><a class="filterList pad0" data-type="SeriesFilter" data-href="RS2"><div class="fButton width-100 filter-bgcolor">RS2</div></a></li>
+                        <li class="col-4 col-sm-2 margin-bottom5 text-center"><a class="filterList pad0" data-type="SeriesFilter" data-href="RS3"><div class="fButton width-100 filter-bgcolor">RS3</div></a></li>
+                        <li class="col-4 col-sm-2 margin-bottom5 text-center"><a class="filterList pad0" data-type="SeriesFilter" data-href="SF1"><div class="fButton width-100 filter-bgcolor">SF1</div></a></li>
+                        <li class="col-4 col-sm-2 margin-bottom5 text-center"><a class="filterList pad0" data-type="SeriesFilter" data-href="SF2"><div class="fButton width-100 filter-bgcolor">SF2</div></a></li>
+                        <li class="col-4 col-sm-2 margin-bottom5 text-center"><a class="filterList pad0" data-type="SeriesFilter" data-href="US"><div class="fButton width-100 filter-bgcolor">US</div></a></li>
+                        <li class="col-4 col-sm-2 margin-bottom5 text-center"><a class="filterList pad0" data-type="SeriesFilter" data-href="SSG"><div class="fButton width-100 filter-bgcolor">SSG</div></a></li>
+                        <li class="col-4 col-sm-2 margin-bottom5 text-center"><a class="filterList pad0" data-type="SeriesFilter" data-href="ES"><div class="fButton width-100 filter-bgcolor">ES</div></a></li>
+                        <li class="col-4 col-sm-2 margin-bottom5 text-center"><a class="filterList pad0" data-type="SeriesFilter" data-href="RSR"><div class="fButton width-100 filter-bgcolor">SagaRS</div></a></li>
+                        <li class="col-4 col-sm-2 margin-bottom5 text-center"><a class="filterList pad0" data-type="SeriesFilter" data-href="GB"><div class="fButton width-100 filter-bgcolor">GB</div></a></li>
+                        <li class="col-4 col-sm-2 margin-bottom5 text-center"><a class="filterList pad0" data-type="SeriesFilter" data-href="OTR"><div class="fButton width-100 filter-bgcolor">その他</div></a></li>
                     </ul>
                     <ul class="nav text-center width-100" style="margin-bottom: 5px;">
                         <li class="fuchidori-white subtitle smallFont">レアリティ</li>
@@ -195,9 +207,6 @@
                 </div>                                
             </div>
         </div>
-        <script src="./js/data_STYLEMASTER_style.js" ></script>
-        <script src="./js/data_SKILLMASTER_style.js" ></script>
-        <script src="./js/data_CHARMASTER.js" ></script>
         <script src="./js/limitdata.js" ></script>
         <script type="text/javascript" src="https://romasagatool.com/blog/get_the_archives.php?limit=30&callback=rssCallback"></script>
     </body>
