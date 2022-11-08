@@ -28,22 +28,29 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <script src="./js//jquery-3.3.1.min.js"></script>
-        <script src="./js/bootstrap/bootstrap.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
-        <script src="./js/data_ABILITY.js" ></script>
-        <script src="./js/data_SKILL.js" ></script>
-        <script src="./js/data_STYLEMASTER_style.js" ></script>
-        <script src="./js/data_SKILLMASTER_list.js" ></script>
-        <script src="./js/Firebase.js"></script>
-        <script src="./js/utils2.js" ></script>
-        <script src="./js/skill.js" ></script>
+        <script src="./js/bootstrap/bootstrap.min.js" async></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous" async></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js" defer></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js" defer></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js" defer></script>
+        <script src="./js/dataload.js"></script>
+        <script>
+            // require dataload.js
+            dataload([
+                "data_ABILITY",
+                "data_SKILL",
+                "data_STYLEMASTER_style",
+                "data_ABILITY",
+                "data_SKILLMASTER_list",
+            ]);
+        </script>
+        <script src="./js/Firebase.js" defer></script>
+        <script src="./js/utils2.js"></script>
+        <script src="./js/skill.js" defer></script>
         <script src="./js/damage.js" ></script>
         <script src="./js/culcStyleBonus.js" ></script>
-        <link rel="stylesheet" type="text/css" href="./css/bootstrap/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="./css/style2.css">
+        <link rel="stylesheet" type="text/css" href="./css/bootstrap/bootstrap.min.css" rel="preload" as="style">
+        <link rel="stylesheet" type="text/css" href="./css/style2.css" rel="preload" as="style">
         <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -51,8 +58,8 @@
           <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
-        <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Anton&text=0123456789" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet" rel="preload" as="style">
+        <link href="https://fonts.googleapis.com/css?family=Anton&text=0123456789" rel="stylesheet" rel="preload" as="style">
         <style>
             .img-icon {
                 width: 20px;
@@ -651,6 +658,6 @@
                 <span class="bgcolor-brawn" style="border-radius: 10px;">　　技・術数：<span id="SKILL_RESULT">99</span>　　</span>
         </div>
         <p id="PageTopBtn" style="right: 20px;"><a data-href="wrap"><i class="fas fa-arrow-up"></i></a></p>
-        <script type="text/javascript" src="https://romasagatool.com/blog/get_the_archives.php?limit=30&callback=rssCallback"></script>
+        <script type="text/javascript" src="https://romasagatool.com/blog/get_the_archives.php?limit=30&callback=rssCallback" defer></script>
     </body>
 </html>
