@@ -2,15 +2,30 @@
 <html prefix="og: http://ogp.me/ns#" lang="ja">
     <head>
         <script src="./js/jquery-3.3.1.min.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/ui/3.5.2/firebase-ui-auth__ja.js"></script>
+
         <script src="./js/lib/lazysizes.min.js"></script>
         <script src="./js/lib/ls.unveilhooks.min.js"></script>
-        <script src="./js/data_STYLEMASTER_style.js" ></script>
-        <script src="./js/culcStyleBonus.js" ></script>
-        <script src="./js/damage.js" ></script>        
-        <script src="./js/asyncFunc.js"></script>
-        <script src="./js/data_CHARMASTER.js" ></script>
-        <script src="./js/data_SKILLMASTER_list.js" ></script>
-        <script src="./js/data_ABILITY.js" ></script>
+        <script src="./js/dataload.js"></script>
+        <script>
+            // require dataload.js
+            dataload([
+                "data_ABILITY",
+                "data_CHARMASTER",
+                "data_STYLEMASTER_style",
+                "data_SKILLMASTER_list",
+            ]);
+        </script>
+
+        <script src="./js/Firebase.js" defer></script>
+        <script src="./js/utils2.js" defer></script>
+        <script src="./js/culcStyleBonus.js" defer></script>
+        <script src="./js/damage.js" defer></script>
+        <script src="./js/rensei.js" defer></script>
+        <script src="./js/asyncFunc.js" defer></script>
         <!-- Global site tag (gtag.js) - Google Analytics     -->    
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138966739-1"></script>
         <script>
@@ -37,21 +52,14 @@
         <meta name="twitter:site" content="@nao_romasaga_rs" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="stylesheet" href="./css/bootstrap/bootstrap.min.css">
-        <script src="./js/bootstrap/bootstrap.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <link rel="stylesheet" type="text/css" href="./css/style2.css">
+        <link rel="stylesheet" href="./css/bootstrap/bootstrap.min.css" rel="preload" as="style">
+        <script src="./js/bootstrap/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" defer integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="./css/style2.css" rel="preload" as="style">
         
-        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/ui/3.5.2/firebase-ui-auth__ja.js"></script>
-        <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+        <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" rel="preload" as="style">
 
-        <script src="./js/Firebase.js"></script>
-        <script src="./js/utils2.js" ></script>
-        <script src="./js/rensei.js" ></script>
-        <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet" rel="preload" as="style">
         <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -773,6 +781,6 @@
             <script> (adsbygoogle = window.adsbygoogle || []).push({});</script>
             <p id="PageTopBtn" style="right:10px"><a href="#FILTER"><i class="fas fa-arrow-up"></i></a></p>
         </div> <!-- main -->
-        <script type="text/javascript" src="https://romasagatool.com/blog/get_the_archives.php?limit=30&callback=rssCallback"></script>
+        <script type="text/javascript" src="https://romasagatool.com/blog/get_the_archives.php?limit=30&callback=rssCallback" defer></script>
     </body>
 </html>
