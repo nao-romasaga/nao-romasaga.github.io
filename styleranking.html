@@ -13,6 +13,22 @@
         gtag('config', 'UA-138966739-1');
     </script>
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="./js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="./js/jquery.ui.touch-punch.js"></script>
+    <script src="./js/lib/lazysizes.min.js"></script>
+    <script src="./js/lib/ls.unveilhooks.min.js"></script>
+    <script src="./js/dataload.js"></script>
+    <script>
+        // require dataload.js
+        dataload([
+        "data_STYLESPEECH",
+            "data_CHARMASTER",
+            "data_STYLE_DAMAGE_HENSA",
+            "data_SKILLMASTER_list",
+            "data_STYLEMASTER_style",
+        ]);
+    </script>
     <meta charset="utf-8">
     <title>【ロマサガRS】スタイル評価 ランキング</title>
     <meta property="og:title" content="【ロマサガRS】スタイル評価 ランキング" />
@@ -26,25 +42,19 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@nao_romasaga_rs" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="./js/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="./js/jquery.ui.touch-punch.js"></script>
-    <script src="./js/lib/lazysizes.min.js"></script>
-    <script src="./js/lib/ls.unveilhooks.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="./css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap/bootstrap.min.css" rel="preload" as="style">
     <script src="./js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="./css/style2.css">
+    <link rel="stylesheet" type="text/css" href="./css/style2.css" rel="preload" as="style">
     <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/3.5.2/firebase-ui-auth__ja.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" / rel="preload" as="style">
     <script src="./js/Firebase.js"></script>
-    <script src="./js/utils2.js"></script>
-    <script src="./js/data_STYLESPEECH.js" ></script>
-    <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+    <script src="./js/utils2.js" defer></script>
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet" rel="preload" as="style">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet" rel="preload" as="style">
 
     <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -390,16 +400,12 @@
             </div>
         </div>
     </div><!-- isLogin -->
-    <script src="./js/culcStyleBonus.js"></script>
-    <script src="./js/damage.js"></script>
-    <script src="./js/data_CHARMASTER.js"></script>
-    <script src="./js/data_STYLE_DAMAGE_HENSA.js"></script>
-    <script src="./js/data_STYLEMASTER_style.js"></script>
-    <script src="./js/data_SKILLMASTER_list.js"></script>
-    <script src="./js/styleranking.js"></script>
+    <script src="./js/culcStyleBonus.js" defer></script>
+    <script src="./js/damage.js" defer></script>
+    <script src="./js/styleranking.js" defer></script>
 
     <script type="text/javascript"
-        src="https://romasagatool.com/blog/get_the_archives.php?limit=30&callback=rssCallback"></script>
+        src="https://romasagatool.com/blog/get_the_archives.php?limit=30&callback=rssCallback" defer></script>
 </body>
 
 </html>
