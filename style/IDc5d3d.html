@@ -4,7 +4,20 @@
         <script src="../js/jquery-3.3.1.min.js"></script>
         <script src="../js/lib/lazysizes.min.js"></script>
         <script src="../js/lib/ls.unveilhooks.min.js"></script>
-        <script src="../js/data_STYLEMASTER_style.js" ></script>
+        <script src="../js/dataload.js"></script>
+        <script>
+            // require dataload.js
+            dataload([
+                "data_STYLEMASTER_style",
+                "data_TYPE_RANK_CHAR",
+                "data_TYPE_RANK_STYLE",
+                "data_CHARMASTER",
+                "data_ABILITY",
+                "data_SKILLMASTER_style",
+                "data_STYLEILLUST",
+                "data_STYLESPEECH",
+            ]);
+        </script>
         <script src="../js/damage.js" ></script>
         <script>
             var URL_STYLE_ID = "IDc5d3d";
@@ -13,13 +26,6 @@
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138966739-1"></script>
         <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
         <script src="../js/asyncFunc.js"></script>
-        <script src="../js/data_TYPE_RANK_CHAR.js" ></script>
-        <script src="../js/data_TYPE_RANK_STYLE.js" ></script>
-        <script src="../js/data_CHARMASTER.js" ></script>
-        <script src="../js/data_ABILITY.js" ></script>
-        <script src="../js/data_SKILLMASTER_style.js" ></script>
-        <script src="../js/data_STYLESPEECH.js" ></script>
-        <script src="../js/data_STYLEILLUST.js" ></script>
         <script>
             window.dataLayer = window.dataLayer || [];
             function gtag() {
@@ -45,22 +51,22 @@
         <meta name="twitter:site" content="@nao_romasaga_rs" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="stylesheet" href="../css/bootstrap/bootstrap.min.css">
+        <link rel="stylesheet" href="../css/bootstrap/bootstrap.min.css" rel="preload" as="style"/>
         <script src="../js/bootstrap/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <link rel="stylesheet" type="text/css" href="../css/style2.css">
+        <link rel="stylesheet" type="text/css" href="../css/style2.css" rel="preload" as="style"/>
         
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
         <script src="https://www.gstatic.com/firebasejs/ui/3.5.2/firebase-ui-auth__ja.js"></script>
-        <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+        <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css"  rel="preload" as="style"/>
 
         <script src="../js/Firebase.js"></script>
-        <script src="../js/utils2.js" ></script>
-        <script src="../js/style.js" ></script>
-        <script src="../js/culcStyleBonus.js" ></script>
-        <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+        <script src="../js/utils2.js" defer></script>
+        <script src="../js/style.js"  defer></script>
+        <script src="../js/culcStyleBonus.js"  defer></script>
+        <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet" rel="preload" as="style"/>
         <style> 
             .right_parts {
                 text-anchor: unset;
