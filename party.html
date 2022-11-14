@@ -28,6 +28,9 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@nao_romasaga_rs" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="./js/jquery.ui.touch-punch.js"></script>
     <script src="./js/dataload.js"></script>
     <script>
         // require dataload.js
@@ -37,9 +40,6 @@
         ]);
     </script>    
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script type="text/javascript" src="./js/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="./js/jquery.ui.touch-punch.js"></script>
     <script src="./js/lib/lazysizes.min.js" defer></script>
     <script src="./js/lib/ls.unveilhooks.min.js" defer></script>
     
@@ -47,11 +47,11 @@
     <script src="./js/popper.min.js" defer></script>
     <script src="./js/bootstrap.min.js" defer></script>
     <link rel="stylesheet" type="text/css" href="./css/style2.css" rel="preload" as="style"/>
-    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/ui/3.5.2/firebase-ui-auth__ja.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" rel="preload" as="style"/>
+    <script src="https://www.gstatic.com/firebasejs/9.13.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.13.0/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.13.0/firebase-messaging-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.13.0/firebase-auth-compat.js"></script>
+
     <script src="./js/Firebase.js"></script>
     <script src="./js/asyncFunc.js" defer></script>
     <script src="./js/utils2.js" defer></script>
@@ -157,6 +157,9 @@
         .charParam {
             font-size:15px;
         }
+        .char-param-sp {
+            width: 70px;
+        }        
         .ability_label {
             display: inline-block;
             width: 15px;
@@ -885,7 +888,7 @@
                             <td>ＨＰ</td>
                             <td><img src="https://romasagatool.com/img/icon/icon_minus.png" class="paramButton" width="30" data-param="HP"
                                     data-pm="minus" onclick=""><input type="number" pattern="[0-9]*"
-                                    class="input charParam kadomaru charHP" data-param="HP" style="width: 50px"
+                                    class="input charParam kadomaru charHP char-param-sp" data-param="HP"
                                     value="3"><img src="https://romasagatool.com/img/icon/icon_plus.png" class="paramButton" width="30"
                                     data-param="HP" data-pm="plus" onclick=""></td>
                             <td rowspan="3" class="RENSEI_CARD RENSEI_BASE1 bg-simple"></td>
@@ -902,7 +905,7 @@
                             <td>腕力</td>
                             <td><img src="https://romasagatool.com/img/icon/icon_minus.png" class="paramButton" width="30" data-param="STR"
                                     data-pm="minus" onclick=""><input type="number" pattern="[0-9]*"
-                                    class="input charParam kadomaru charSTR" data-param="STR" style="width: 50px"
+                                    class="input charParam kadomaru charSTR char-param-sp" data-param="STR"
                                     value="3"><img src="https://romasagatool.com/img/icon/icon_plus.png" class="paramButton" width="30"
                                     data-param="STR" data-pm="plus" onclick=""></td>
                         </tr>
@@ -910,7 +913,7 @@
                             <td>体力</td>
                             <td><img src="https://romasagatool.com/img/icon/icon_minus.png" class="paramButton" width="30" data-param="VIT"
                                     data-pm="minus" onclick=""><input type="number" pattern="[0-9]*"
-                                    class="input charParam kadomaru charVIT" data-param="VIT" style="width: 50px"
+                                    class="input charParam kadomaru charVIT char-param-sp" data-param="VIT"
                                     value="3"><img src="https://romasagatool.com/img/icon/icon_plus.png" class="paramButton" width="30"
                                     data-param="VIT" data-pm="plus" onclick=""></td>
                         </tr>
@@ -918,7 +921,7 @@
                             <td class="small">器用さ</td>
                             <td><img src="https://romasagatool.com/img/icon/icon_minus.png" class="paramButton" width="30" data-param="DEX"
                                     data-pm="minus" onclick=""><input type="number" pattern="[0-9]*"
-                                    class="input charParam kadomaru charDEX" data-param="DEX" style="width: 50px"
+                                    class="input charParam kadomaru charDEX char-param-sp" data-param="DEX"
                                     value="6"><img src="https://romasagatool.com/img/icon/icon_plus.png" class="paramButton" width="30"
                                     data-param="DEX" data-pm="plus" onclick=""></td>
                             <td rowspan="3" class="RENSEI_CARD RENSEI_BASE2 bg-simple"></td>
@@ -929,7 +932,7 @@
                             <td class="small">素早さ</td>
                             <td><img src="https://romasagatool.com/img/icon/icon_minus.png" class="paramButton" width="30" data-param="AGI"
                                     data-pm="minus" onclick=""><input type="number" pattern="[0-9]*"
-                                    class="input charParam kadomaru charAGI" data-param="AGI" style="width: 50px"
+                                    class="input charParam kadomaru charAGI char-param-sp" data-param="AGI"
                                     value="7"><img src="https://romasagatool.com/img/icon/icon_plus.png" class="paramButton" width="30"
                                     data-param="AGI" data-pm="plus" onclick=""></td>
                         </tr>
@@ -937,7 +940,7 @@
                             <td>知力</td>
                             <td><img src="https://romasagatool.com/img/icon/icon_minus.png" class="paramButton" width="30" data-param="INT"
                                     data-pm="minus" onclick=""><input type="number" pattern="[0-9]*"
-                                    class="input charParam kadomaru charINT" data-param="INT" style="width: 50px"
+                                    class="input charParam kadomaru charINT char-param-sp" data-param="INT"
                                     value="9"><img src="https://romasagatool.com/img/icon/icon_plus.png" class="paramButton" width="30"
                                     data-param="INT" data-pm="plus" onclick=""></td>
                         </tr>
@@ -945,7 +948,7 @@
                             <td>精神</td>
                             <td><img src="https://romasagatool.com/img/icon/icon_minus.png" class="paramButton" width="30" data-param="MND"
                                     data-pm="minus" onclick=""><input type="number" pattern="[0-9]*"
-                                    class="input charParam kadomaru charMND" data-param="MND" style="width: 50px"
+                                    class="input charParam kadomaru charMND char-param-sp" data-param="MND"
                                     value="6"><img src="https://romasagatool.com/img/icon/icon_plus.png" class="paramButton" width="30"
                                     data-param="MND" data-pm="plus" onclick=""></td>
                             <td rowspan="3" class="RENSEI_CARD RENSEI_BASE3 bg-simple"></td>
@@ -956,7 +959,7 @@
                             <td>愛</td>
                             <td><img src="https://romasagatool.com/img/icon/icon_minus.png" class="paramButton" width="30" data-param="AI"
                                     data-pm="minus" onclick=""><input type="number" pattern="[0-9]*"
-                                    class="input charParam kadomaru charAI" data-param="AI" style="width: 50px"
+                                    class="input charParam kadomaru charAI char-param-sp" data-param="AI"
                                     value="7"><img src="https://romasagatool.com/img/icon/icon_plus.png" class="paramButton" width="30"
                                     data-param="AI" data-pm="plus" onclick=""></td>
                         </tr>
@@ -964,7 +967,7 @@
                             <td>魅力</td>
                             <td><img src="https://romasagatool.com/img/icon/icon_minus.png" class="paramButton" width="30" data-param="MI"
                                     data-pm="minus" onclick=""><input type="number" pattern="[0-9]*"
-                                    class="input charParam kadomaru charMI" data-param="MI" style="width: 50px"
+                                    class="input charParam kadomaru charMI char-param-sp" data-param="MI"
                                     value="6"><img src="https://romasagatool.com/img/icon/icon_plus.png" class="paramButton" width="30"
                                     data-param="MI" data-pm="plus" onclick=""></td>
                         </tr>
@@ -979,7 +982,7 @@
                                 <td>ＨＰ</td>
                                 <td><img src="https://romasagatool.com/img/icon/icon_minus.png" class="paramButton" width="30" data-param="HP"
                                         data-pm="minus" onclick=""><input type="number" pattern="[0-9]*"
-                                        class="input charParam kadomaru charHP" data-param="HP" style="width: 50px"
+                                        class="input charParam kadomaru charHP char-param-sp" data-param="HP"
                                         value="3"><img src="https://romasagatool.com/img/icon/icon_plus.png" class="paramButton" width="30"
                                         data-param="HP" data-pm="plus" onclick=""></td>
                             </tr>
@@ -987,13 +990,13 @@
                                 <td>腕力</td>
                                 <td><img src="https://romasagatool.com/img/icon/icon_minus.png" class="paramButton" width="30" data-param="STR"
                                         data-pm="minus" onclick=""><input type="number" pattern="[0-9]*"
-                                        class="input charParam kadomaru charSTR" data-param="STR" style="width: 50px"
+                                        class="input charParam kadomaru charSTR char-param-sp" data-param="STR"
                                         value="3"><img src="https://romasagatool.com/img/icon/icon_plus.png" class="paramButton" width="30"
                                         data-param="STR" data-pm="plus" onclick=""></td>
                                 <td>体力</td>
                                 <td><img src="https://romasagatool.com/img/icon/icon_minus.png" class="paramButton" width="30" data-param="VIT"
                                         data-pm="minus" onclick=""><input type="number" pattern="[0-9]*"
-                                        class="input charParam kadomaru charVIT" data-param="VIT" style="width: 50px"
+                                        class="input charParam kadomaru charVIT char-param-sp" data-param="VIT"
                                         value="3"><img src="https://romasagatool.com/img/icon/icon_plus.png" class="paramButton" width="30"
                                         data-param="VIT" data-pm="plus" onclick=""></td>
                             </tr>
@@ -1001,13 +1004,13 @@
                                 <td class="small">器用さ</td>
                                 <td><img src="https://romasagatool.com/img/icon/icon_minus.png" class="paramButton" width="30" data-param="DEX"
                                         data-pm="minus" onclick=""><input type="number" pattern="[0-9]*"
-                                        class="input charParam kadomaru charDEX" data-param="DEX" style="width: 50px"
+                                        class="input charParam kadomaru charDEX char-param-sp" data-param="DEX"
                                         value="6"><img src="https://romasagatool.com/img/icon/icon_plus.png" class="paramButton" width="30"
                                         data-param="DEX" data-pm="plus" onclick=""></td>
                                 <td class="small">素早さ</td>
                                 <td><img src="https://romasagatool.com/img/icon/icon_minus.png" class="paramButton" width="30" data-param="AGI"
                                         data-pm="minus" onclick=""><input type="number" pattern="[0-9]*"
-                                        class="input charParam kadomaru charAGI" data-param="AGI" style="width: 50px"
+                                        class="input charParam kadomaru charAGI char-param-sp" data-param="AGI"
                                         value="7"><img src="https://romasagatool.com/img/icon/icon_plus.png" class="paramButton" width="30"
                                         data-param="AGI" data-pm="plus" onclick=""></td>
                             </tr>
@@ -1015,13 +1018,13 @@
                                 <td>知力</td>
                                 <td><img src="https://romasagatool.com/img/icon/icon_minus.png" class="paramButton" width="30" data-param="INT"
                                         data-pm="minus" onclick=""><input type="number" pattern="[0-9]*"
-                                        class="input charParam kadomaru charINT" data-param="INT" style="width: 50px"
+                                        class="input charParam kadomaru charINT char-param-sp" data-param="INT"
                                         value="9"><img src="https://romasagatool.com/img/icon/icon_plus.png" class="paramButton" width="30"
                                         data-param="INT" data-pm="plus" onclick=""></td>
                                 <td>精神</td>
                                 <td><img src="https://romasagatool.com/img/icon/icon_minus.png" class="paramButton" width="30" data-param="MND"
                                         data-pm="minus" onclick=""><input type="number" pattern="[0-9]*"
-                                        class="input charParam kadomaru charMND" data-param="MND" style="width: 50px"
+                                        class="input charParam kadomaru charMND char-param-sp" data-param="MND"
                                         value="6"><img src="https://romasagatool.com/img/icon/icon_plus.png" class="paramButton" width="30"
                                         data-param="MND" data-pm="plus" onclick=""></td>
                             </tr>
@@ -1029,13 +1032,13 @@
                                 <td>愛</td>
                                 <td><img src="https://romasagatool.com/img/icon/icon_minus.png" class="paramButton" width="30" data-param="AI"
                                         data-pm="minus" onclick=""><input type="number" pattern="[0-9]*"
-                                        class="input charParam kadomaru charAI" data-param="AI" style="width: 50px"
+                                        class="input charParam kadomaru charAI char-param-sp" data-param="AI"
                                         value="7"><img src="https://romasagatool.com/img/icon/icon_plus.png" class="paramButton" width="30"
                                         data-param="AI" data-pm="plus" onclick=""></td>
                                 <td>魅力</td>
                                 <td><img src="https://romasagatool.com/img/icon/icon_minus.png" class="paramButton" width="30" data-param="MI"
                                         data-pm="minus" onclick=""><input type="number" pattern="[0-9]*"
-                                        class="input charParam kadomaru charMI" data-param="MI" style="width: 50px"
+                                        class="input charParam kadomaru charMI char-param-sp" data-param="MI"
                                         value="6"><img src="https://romasagatool.com/img/icon/icon_plus.png" class="paramButton" width="30"
                                         data-param="MI" data-pm="plus" onclick=""></td>
                             </tr>
