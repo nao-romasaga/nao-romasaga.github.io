@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#" lang="ja">
+    <head>
+        <link rel="canonical" href="/stylerecover.html">
+        <meta charset="utf-8">
+        <title>【ロマサガRS】所持スタイル一覧</title>
+        <meta property="og:title" content="【ロマサガRS】所持スタイル一覧" />
+        <meta property="og:url" content="https://nao-romasaga.github.io/stylerecover.html" />
+        <meta property="og:site_name" content="ロマサガRS便利ツール" />
+        <meta property="og:type" content="article">
+        <meta property="og:locale" content="ja_JP" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@nao_romasaga_rs" />
+        <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
+        <script src="./js/dataload.js"></script>
+        <script>
+            // require dataload.js
+            dataload([
+                "data_CHARMASTER",
+                "data_STYLEMASTER_style",
+            ]);
+        </script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="./css/bootstrap/bootstrap.min.css" rel="preload" as="style">
+        <script src="./js/lib/lazysizes.min.js" defer></script>
+        <script src="./js/lib/ls.unveilhooks.min.js" defer></script>
+        <script src="./js/bootstrap.min.js" defer></script>
+        <link rel="stylesheet" type="text/css" href="./css/style2.css" rel="preload" as="style">
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"r></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/ui/3.5.2/firebase-ui-auth__ja.js"></script>
+        <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css"  rel="preload" as="style">
+        <script src="./js/Firebase.js" defer></script>
+        <script src="./js/utils2.js"  defer></script>
+        
+        <script>
+            var upper = [];
+            var kotei = []
+        </script>
+        <script src="./js/stylecheck.js"  defer></script>
+    </head>
+    <body>
+        スタイル所持チェッカーに登録してある全てのスタイルが出力されます<br>
+        スタイルレベルは50固定ですので適宜修正してください<br>
+        <textarea id="STYLE_RECOVER" style="width:80%; margin: 20px; height:300px;"></textarea>
+    </body>
+</html>
