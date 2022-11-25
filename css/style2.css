@@ -1785,3 +1785,7 @@ h-nav .inner ul li a {
 }
 
 
+.loading-notice {
+    font-size: 0.7rem;
+    margin-bottom: 10px;
+}
