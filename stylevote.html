@@ -71,7 +71,7 @@
         </style>
     <body>
         <div class ="haikei">
-            <button id="POST" class="post-button icon_btn_positive width-100 shadow-black" style="position: fixed; bottom: 10px; z-index: 2; font-size: 2rem;">投票する</button>
+            <button id="POST" class="POST_BTN post-button icon_btn_positive width-100 shadow-black" style="position: fixed; bottom: 10px; z-index: 2; font-size: 2rem;">投票する</button>
             <div class="container">
                 <h3 class="text-center title-text">スタイルオブザイヤー2022投票会場</h3>
                 <div id="firebaseui-auth-container" style="margin-bottom:10px;"></div>
@@ -92,30 +92,20 @@
                         ロマサガRS便利ツールユーザにより、その年でいちばん活躍したスタイルを決める祭典です。<br>
                         「活躍」の定義は「高難度(討伐系）」「周回」「追憶の幻闘場」など様々です。<br>
                         評価はあくまで主観ですので、お気軽に。<br>
-                        私が活躍したと思えば活躍したのだ。<br>
+                        自分が活躍したと思えば活躍したのだ。<br>
                         <div class="width-100 text-center bg-item">2022年ルール</div>
                         2022年に実装されたSSスタイルが対象です（復刻は除く）<br><br>
                         Q. 部門ごとに投票分けた方がいいんじゃないの？<br>
-                        A. 本当はそうしたかったけど、データベース構築とか面倒だったから諦めました<br>
+                        A. 本当はそうしたかったけど、データベース構築とか色々な都合で諦めました<br>
                         <br>
                         Q. 何票でも投票できるの？<br>
-                        A. 好きなだけ投票してください<br>
+                        A. 好きなだけ投票してください。修正も可能です。<br>
                         <br>
-                        Q. 投票しなおしってできるの？<br>
-                        A. 何回でも投票は修正できます<br>
+                        Q. 便利ツールにログインしてないと投票できないの？<br>
+                        A. 今回は未ログインユーザの投票は実施していません<br>
                     </div>
                 </div>
 
-                <div id="LOADING" class="label-text text-center">
-                    <div class="loading">
-                        <span>L</span><span>O</span><span>A</span><span>D</span><span>I</span><span>N</span><span>G</span><span>.</span><span>.</span><span>.</span>
-                    </div>
-                    <div class="">
-                        <span class="CHAR_BACK char dot_mid dot char-hashiri-right" style="background: url(./img/dot/IDad82c.png);"></span>
-                        <span class="CHAR_FRONT char dot_mid dot char-hashiri-right" style="background: url(./img/dot/ID38400.png);"></span>
-                    </div>
-                    <div class="loading-notice">Loadingが終わらない場合リロードしてみてください</div>
-                </div>
                 <div class="text-center width-100 bg-black-window">
                     <table class="width-100 text-nowrap" id="MASTER_TABLE">
                         <td colspan="7" style="font-size: 1.5rem">2022 スタイル実装数</td>
@@ -139,6 +129,17 @@
                         </tr>
                     </table>
                 </div>    
+
+                <div id="LOADING" class="label-text text-center">
+                    <div class="loading">
+                        <span>L</span><span>O</span><span>A</span><span>D</span><span>I</span><span>N</span><span>G</span><span>.</span><span>.</span><span>.</span>
+                    </div>
+                    <div class="">
+                        <span class="CHAR_BACK char dot_mid dot char-hashiri-right" style="background: url(./img/dot/IDad82c.png);"></span>
+                        <span class="CHAR_FRONT char dot_mid dot char-hashiri-right" style="background: url(./img/dot/ID38400.png);"></span>
+                    </div>
+                    <div class="loading-notice">Loadingが終わらない場合リロードしてみてください</div>
+                </div>
 
                 <div class="col-12 text-center myinput d-none" style="margin: 20px 0; ">
                     <a href="./stylevote.html" class="width-100 h5" style="background-color: rgba(41,163,239,1); color:white; padding:5px 10px; border-radius:10px;"><i class="fas fa-edit"></i> 投票に切り替え</a>
@@ -174,8 +175,10 @@
                                 
 
                 <div class="style-bgcolor max-width" style="padding: 10px 5px;">
+                    <button class="POST_BTN icon_btn_negative width-100 shadow-black" style="margin-bottom: 30px;">投票する</button>
                     <div class="" id="styleAreaRare" style="padding:5px"></div>
                     <div class="d-none" id="styleAreaGacha"></div>
+                    <button class="POST_BTN icon_btn_negative width-100 shadow-black" style="margin-top: 30px;">投票する</button>
                 </div>
 
             </div>
