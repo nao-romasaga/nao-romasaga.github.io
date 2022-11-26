@@ -147,12 +147,13 @@
                             class="fas fa-question-circle"></i> 戦闘力 計測条件</div>
                     <div id="jokenbody" class="card-body" style="padding:0px 5px;">
                         <ul class="trianglelist list5">
+                            <li>base：<span id="BASE"></span></li>
                             <li>キャラ素ステ：その<b>キャラ</b>の最大ステータスを使用</li>
-                            <li>表示ステータス値：素ステ*補正値+ボーナス+裏。少数は<b>切り捨て</b></li>
+                            <li>表示ステータス値：素ステ*補正値+ボーナス+裏(<span id="URA"></span>)。少数は<b>切り捨て</b></li>
                             <li>戦闘力計算：<br>
-                                ・HP（キャップ＋100 ）＋裏HP（最大解放）」<br>
+                                ・HP（キャップ＋100=<span id="HP_MAX"></span> ）＋裏HP（<span id="URA_HP"></span>）」<br>
                                 ・各ステータス（少数切り捨てなし）* 各種係数（この結果も少数切り捨てなし）<br>
-                                ・昇段あり<br>
+                                ・昇段あり(<span id="SHODAN"></span>%)<br>
                                 ・耐性値<br>
                                 以上の合計が戦闘力です。
                             </li>
