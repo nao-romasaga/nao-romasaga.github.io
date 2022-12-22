@@ -387,13 +387,26 @@
                         <div class="row text-nowrap" style="padding: 0px 20px">
                             <div class="col-12 bg-item">▼アビリティなど▼</div>
                             <div class="col-12 ONOFF_BTN icon_btn_off optionButton" data-type="normal">1T目 通常攻撃固定 <i class="d-none d-sm-inline fas fa-toggle-off" style="vertical-align: middle; font-size: 20px;"></i></div><br>
-                            <div class="col-6 ONOFF_BTN icon_btn_off optionButton" data-type="yuken">1T目勇健 <i class="d-none d-sm-inline fas fa-toggle-off" style="vertical-align: middle; font-size: 20px;"></i></div><br>
-                            <div class="col-6 ONOFF_BTN icon_btn_off optionButton" data-type="gyaku">2T〜逆境 <i class="d-none d-sm-inline fas fa-toggle-off" style="vertical-align: middle; font-size: 20px;"></i></div><br>
                             <div class="col-12 col-sm-6 ONOFF_BTN icon_btn_off optionButton" data-type="crit">特効 発動 <i class="d-none d-sm-inline fas fa-toggle-off" style="vertical-align: middle; font-size: 20px;"></i></div><br>
                             <div class="col-12 col-sm-6 ONOFF_BTN icon_btn_on optionButton" data-type="buf">バフ/デバフ 発動 <i class="d-none d-sm-inline fas fa-toggle-on" style="vertical-align: middle; font-size: 20px;"></i></div><br>
                             <div class="col-6 ONOFF_BTN icon_btn_off optionButton ADD100" data-type="add100" data-value="100">追撃 確定 <i class="d-none d-sm-inline fas fa-toggle-off" style="vertical-align: middle; font-size: 20px;"></i></div><br>
                             <div class="col-6 ONOFF_BTN icon_btn_off optionButton ADD0" data-type="add0" data-value="0">追撃オフ <i class="d-none d-sm-inline fas fa-toggle-off" style="vertical-align: middle; font-size: 20px;"></i></div><br>
                             <div class="col-12 ONOFF_BTN icon_btn_off optionButton COUNTER" data-type="counter">追加カウンター 発動 <i class="d-none d-sm-inline fas fa-toggle-off" style="vertical-align: middle; font-size: 20px;"></i></div><br>
+                            <div class="col-12">
+                                <div class="d-flex justify-content-around">
+                                    <span>HP満タン</span>
+                                    <span><input type="number" pattern="[0-9]*" id="SET_HPMAX" value="1"
+                                    style="width:65px; text-align:right" class="kadomaru">
+                                    T目まで</span>
+                                </div>
+                                <div class="d-flex justify-content-around">
+                                    <span>OD</span>
+                                    <span><input type="number" pattern="[0-9]*" id="SET_OD" value="5"
+                                    style="width:65px; text-align:right" class="kadomaru">
+                                    Tごと</span>
+                                </div>
+                            </div>
+
                         </div>
                         <div class="row no-gutters">
                             <div class="col-6 text-center">
