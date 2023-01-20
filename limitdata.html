@@ -37,7 +37,12 @@
                 "data_SKILLMASTER_style",
                 "data_CHARMASTER",
             ]);
-        </script>            
+        </script>
+        <style>
+            .tabulator-row {
+                height: 43px;
+            }
+        </style>
 
         <link rel="stylesheet" href="./css/tabulator.css" rel="preload" as="style"/>
         <script type="text/javascript" src="./js/tabulator.js"></script>
@@ -108,6 +113,35 @@
                         <li class="col-2 col-sm-1 margin-bottom5 text-center"><a class="filterList pad0" data-type="RareFilter" data-href="SS"><img src="https://romasagatool.com/img/icon/icon_SS.png" width="40" class="fButton"></a></li>
                         <li class="col-2 col-sm-1 margin-bottom5 text-center"><a class="filterList pad0" data-type="RareFilter" data-href="S"><img src="https://romasagatool.com/img/icon/icon_S.png" width="40" class="fButton"></a></li>
                         <li class="col-2 col-sm-1 margin-bottom5 text-center"><a class="filterList pad0" data-type="RareFilter" data-href="A"><img src="https://romasagatool.com/img/icon/icon_A.png" width="40" class="fButton"></a></li>
+                    </ul>                    
+                    <ul class="nav text-center width-100" style="margin-bottom: 5px;">
+                        <li class="fuchidori-white subtitle smallFont">ガチャタイプ</li>
+                    </ul>
+                    <ul class="nav text-center width-100" style="color: beige;">
+                        <li class="col-4 col-sm-2 margin-bottom5 text-center"><a class="filterList pad0" data-type="GachaFilter" data-href="fes"><div class="fButton width-100 filter-bgcolor">祭限定</div></a></li>
+                        <li class="col-4 col-sm-2 margin-bottom5 text-center"><a class="filterList pad0" data-type="GachaFilter" data-href="udx"><div class="fButton width-100 filter-bgcolor">UDX限定</div></a></li>
+                        <li class="col-4 col-sm-2 margin-bottom5 text-center"><a class="filterList pad0" data-type="GachaFilter" data-href="soul"><div class="fButton width-100 filter-bgcolor">魂限定</div></a></li>
+                        <li class="col-4 col-sm-2 margin-bottom5 text-center"><a class="filterList pad0" data-type="GachaFilter" data-href="pra"><div class="fButton width-100 filter-bgcolor">プラチナ</div></a></li>
+                        <li class="col-4 col-sm-2 margin-bottom5 text-center"><a class="filterList pad0" data-type="GachaFilter" data-href="haifu"><div class="fButton width-100 filter-bgcolor">配布</div></a></li>
+                    </ul>                    
+                    <ul class="nav text-center width-100" style="margin-bottom: 5px;">
+                        <li class="fuchidori-white subtitle smallFont">ロール</li>
+                    </ul>
+                    <ul class="nav text-center width-100" style="color: beige;">
+                        <li class="col-6 col-sm-2 margin-bottom5 text-center"><a class="filterList pad0" data-type="RoleFilter" data-href="アタッカー"><div class="fButton width-100 filter-bgcolor">アタッカー</div></a></li>
+                        <li class="col-6 col-sm-2 margin-bottom5 text-center"><a class="filterList pad0" data-type="RoleFilter" data-href="ジャマー"><div class="fButton width-100 filter-bgcolor">ジャマー</div></a></li>
+                        <li class="col-6 col-sm-2 margin-bottom5 text-center"><a class="filterList pad0" data-type="RoleFilter" data-href="ディフェンダー"><div class="fButton width-100 filter-bgcolor">ディフェンダー</div></a></li>
+                        <li class="col-6 col-sm-2 margin-bottom5 text-center"><a class="filterList pad0" data-type="RoleFilter" data-href="サポーター"><div class="fButton width-100 filter-bgcolor">サポーター</div></a></li>
+                    </ul>                    
+                    <ul class="nav text-center width-100" style="margin-bottom: 5px;">
+                        <li class="fuchidori-white subtitle smallFont">実装年</li>
+                    </ul>
+                    <ul class="nav text-center width-100" style="color: beige;">
+                        <li class="col-4 col-sm-2 margin-bottom5 text-center"><a class="filterList pad0" data-type="YearFilter" data-href="2023"><div class="fButton width-100 filter-bgcolor">2023</div></a></li>
+                        <li class="col-4 col-sm-2 margin-bottom5 text-center"><a class="filterList pad0" data-type="YearFilter" data-href="2022"><div class="fButton width-100 filter-bgcolor">2022</div></a></li>
+                        <li class="col-4 col-sm-2 margin-bottom5 text-center"><a class="filterList pad0" data-type="YearFilter" data-href="2021"><div class="fButton width-100 filter-bgcolor">2021</div></a></li>
+                        <li class="col-4 col-sm-2 margin-bottom5 text-center"><a class="filterList pad0" data-type="YearFilter" data-href="2020"><div class="fButton width-100 filter-bgcolor">2020</div></a></li>
+                        <li class="col-4 col-sm-2 margin-bottom5 text-center"><a class="filterList pad0" data-type="YearFilter" data-href="2019"><div class="fButton width-100 filter-bgcolor">2019以前</div></a></li>
                     </ul>                    
                 </div>
                 <div class="filter-bgcolor text-center small row" style="width:100%; margin: 10px 0px;">
