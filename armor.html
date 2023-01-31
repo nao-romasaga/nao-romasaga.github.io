@@ -5,7 +5,18 @@
         <script src="./js/lib/lazysizes.min.js"></script>
         <script src="./js/lib/ls.unveilhooks.min.js"></script>
 
-        <script src="./js/data_ARMOR_CHOICE.js" ></script>
+        <script src="./js/dataload.js"></script>
+        <script>
+            // require dataload.js
+            dataload([
+                "data_STYLEMASTER_style",
+                "data_ABILITY",
+                "data_ARMOR_CHOICE",
+                "data_RESIST_ABILITY",
+                "data_RESIST_STYLE",
+            ]);
+        </script>
+
         <!-- choose a theme file -->
         <link rel="stylesheet" href="./js/tablesorter/theme.default.css">
         <!-- load jQuery and tablesorter scripts -->
@@ -46,7 +57,7 @@
         <script src="./js/bootstrap/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <link rel="stylesheet" type="text/css" href="./css/style2.css">
-        
+        <!--
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
@@ -54,10 +65,25 @@
         <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
 
         <script src="./js/Firebase.js"></script>
-        <script src="./js/utils2.js" ></script>
-        <script src="./js/armor.js" ></script>
+        -->
+        <script src="./js/utils2.js" defer></script>
+        <script src="./js/armor.js" defer></script>
         <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
         <style>
+            .AB {
+                color: aliceblue;
+                font-size: 0.8rem;
+            }
+            .NAME2 {
+                font-size: 0.8rem;
+            }
+            .col-ail {
+                display: none;
+            }
+            #SET_ARMOR {
+                margin-top: 20px;
+                font-size: 1.1rem;
+            }
             #RANK_TBODY .PARAM {
                 font-size: 12px;
                 text-align: center;
@@ -83,6 +109,7 @@
             }
             .sum-tr {
                 border-bottom: 1px dotted;
+                vertical-align: bottom !important;
             }
             .dark-selected {
                 background: linear-gradient(black, skyblue);
@@ -93,15 +120,30 @@
                 line-height: 1rem;
                 vertical-align: baseline;
             }
+            .party-style-tr {
+                font-size: 1.2rem;
+                line-height: 1rem;
+                vertical-align: middle;
+            }
+            .style-tr-name {
+                max-width: 250px;
+                font-size: 1rem;
+            }            
             .td-names {
+                text-align: left;
+                max-width: 100px;
+                vertical-align: middle;
+                /*
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
+                */
             }
             .td-name-sum {
                 display: flex;
                 justify-content: space-around;
                 align-items: center;
+                max-width: 100px;
             }
             .pattern-tr-header {
                 line-height: 1rem;
@@ -119,12 +161,40 @@
                 margin: 0 0 0 0px;
             }
 
-            /* 画面サイズが768まではこれ */
+            #ARMOR_TABLE tbody tr:nth-child(odd) td {
+                background-color: rgba(100, 100, 100, 0.1);
+            }
+            #PARTY_TABLE tbody tr:nth-child(odd) td {
+                background-color: rgba(100, 100, 100, 0.1);
+            }
+            #ARMOR_TABLE_WRAPPER {
+                max-height: 500px;
+                padding: 10px 10px 30px 10px;
+                overflow: scroll;
+            }
+            #ARMOR_SET_LIST {
+                margin-bottom: 10px;
+                padding: 0px 5px 30px 5px;
+            }
+            #ARMOR_RANK .weapon_icon_bg_base {
+                width: 30px;
+                height: 30px;
+            }
+            #ARMOR_RANK {
+                max-height: 368px;
+                overflow: scroll;
+            }
+
+            /* 画面サイズが768以下はこれ */
             @media screen and ( max-width:768px) {
             }
 
-            /* 画面サイズが330まではこれ */
+            /* 画面サイズが420以下はこれ */
             @media screen and ( max-width:420px) {
+                #ARMOR_TABLE_WRAPPER {
+                    max-height: 300px;
+                }
+
                 .icon_attr {
                     width: 25px;
                     height: 25px;
@@ -142,17 +212,39 @@
                     height: 15px;
                 }
                 .td-names {
-                    font-size: 80%;
-                }                
-            }            
+                    font-size: 0.8rem;
+                }
+                #TENPIN_AREA .style_icon_bg_base {
+                    width:40px;
+                    height:40px;
+                }
+            }
+            #TENPIN_AREA .style_icon_bg_base {
+                width:50px;
+                height:50px;
+            }                
+
+            .td-style-resist {
+                font-size: 0.8rem;
+                color: gray;
+                text-shadow: initial;
+                text-align: right;
+            }
+            .list_wp_icon {
+                display: inline-grid;
+                height: 40px;
+                width: 40px;                    
+            }
+            #TENPIN_AREA {
+                max-height: 300px;
+                overflow: scroll;
+                background-color: rgba(0,0,0,0.5);
+                border-radius: 10px;
+                padding: 5px;
+                margin-bottom: 10px;
+            }
+
         </style>
-        <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
-        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
     </head>
     <body>
         <div class ="haikei">
@@ -170,8 +262,26 @@
                 <script>
                     (adsbygoogle = window.adsbygoogle || []).push({});
                 </script>
-
                 <div class="info-modal" style="margin-bottom: 10px;">
+                    <div class="text-center info-modal-header">使い方</div>
+                    <div>
+                        <span class="bg-item">　1.スタイル選択　</span><br>
+                        <div style="line-height: 1rem; margin-bottom: 10px;">
+                            装備セットを作りたいスタイルのアイコンをタップします<br>
+                            最大で5体まで登録できます<br>
+                            TODO: 天稟/対抗集中持ち以外のスタイルは後日対応予定<br>    
+                        </div>
+                        <span class="bg-item">　2.耐性選択　</span><br>
+                        <div style="line-height: 1rem; margin-bottom: 10px;">
+                            Resistしたい耐性を選択します<br>
+                            選択した全ての属性がResistできる装備セットを探します<br>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="info-modal d-none" style="margin-bottom: 10px;">
                     <div class="text-center info-modal-header">使い方</div>
                     <div>
                         <span class="bg-item">　耐性種別　</span><br>
@@ -194,12 +304,85 @@
                         例：タイタンスーツを含む装備セットをキープした場合、次の候補ではタイタンスーツは表示されません
                     </div>
                 </div>
+                <div class="info-modal d-none" style="margin-bottom: 10px;">
+                    <div class="text-center info-modal-header">パーティ選択</div>
 
-                <div class="filter-bgcolor text-center small row" style="width:100%; margin: 0px;">
-                    <ul class="WEAPON nav text-center width-100" style="margin-bottom: 5px;">
-                        <li id="FILTER" class="subtitle-long fuchidori-white smallFont">耐性種別</li>
+                    <div class="d-none">
+                        ・Resist効果:天稟や対抗集中などResist発生時に効果のあるアビ持ち<br>
+                        ・特殊耐性：めがみなど特殊耐性や防陣など属性無効がある通常は異なるスタイル<br>
+                        ・汎用耐性：上記以外のスタイル
+                        <div class="d-flex text-nowrap " style="justify-content: space-around; margin-bottom:10px;">
+                            <button id="DISP_MAIN" class="TABLE-FILTER icon_btn_positive">Resist効果</button>
+                            <button id="DISP_SUB" class="TABLE-FILTER icon_btn_negative">特殊耐性</button>
+                            <button id="DISP_ACC" class="TABLE-FILTER icon_btn_negative">汎用耐性</button>
+                        </div>
+                    </div>
+                    <div id="UNUSUAL_CHAR" class="d-none"></div>
+                    <div id="UNUSUAL_STYLE" class="d-none"></div>
+                </div>
+
+                <div class="filter-bgcolor text-center small row" style="width:100%; margin: 0px; color:white;">
+                    <ul class="nav text-center width-100" style="margin-bottom: 5px;">
+                        <li id="FILTER" class="subtitle-long fuchidori-white smallFont">1. パーティ選択</li>
                     </ul>
-                    <ul class="WEAPON nav text-center width-100">
+                    <div id="WP_ICON_TMPL" class="d-none list_wp_icon"></div>
+                    <div id="TENPIN_AREA" class="text-left width-100 row no-gutters"></div>
+                    <div id="TENPIN_AREA_NOTICE">
+                        ・パーティ選択は5人までです。スタイルを選び直す場合は選択中のスタイルを解除してください
+                    </div>
+                    
+                    <ul class="nav text-center width-100" style="margin-bottom: 5px;">
+                        <li class="subtitle-long fuchidori-white smallFont">選択中のスタイル</li>
+                    </ul>
+                    <div>
+                        ・選択中のスタイルアイコンをタップすると選択解除できます
+                    </div>                    
+                    <div class="width-100 bg-simple" style="padding-right: 20px; margin-bottom: 10px;">
+                        <table class="width-100" id="PARTY_TABLE">
+                            <thead>
+                                <tr class="text-right pattern-tr-header">
+                                    <td></td>
+                                    <td class="d-none d-md-table-cell">
+                                        <span id="NO_STYLE_MSG">スタイルを選択してください</span>
+                                    </td>
+                                    <td class="ATTR_0"><span class="icon_mini icon_attr icon_zan"></span></td>
+                                    <td class="ATTR_1"><span class="icon_mini icon_attr icon_da"></span></td>
+                                    <td class="ATTR_2"><span class="icon_mini icon_attr icon_totsu"></span></td>
+                                    <td class="ATTR_3"><span class="icon_mini icon_attr icon_netsu"></span></td>
+                                    <td class="ATTR_4"><span class="icon_mini icon_attr icon_rei"></span></td>
+                                    <td class="ATTR_5"><span class="icon_mini icon_attr icon_rai"></span></td>
+                                    <td class="ATTR_6"><span class="icon_mini icon_attr icon_yo"></span></td>
+                                    <td class="ATTR_7"><span class="icon_mini icon_attr icon_in"></span></td>
+                                </tr>
+                            </thead>
+                            <tbody class="TBODY"></tbody>
+                            <tfoot>
+                                <tr id="STYLE_TR_TMPL" class="text-right party-style-tr d-none" style="vertical-align: middle;">
+                                    <td class="ICON text-center"></td>
+                                    <td class="td-names text-nowrap d-none d-md-table-cell style-tr-name">
+                                        <div class="NAME1"></div>
+                                        <div class="NAME2"></div>
+                                        <div class="AB"></div>
+                                    </td>                                    
+                                    <td class="ZAN"></td>
+                                    <td class="DA"></td>
+                                    <td class="TOTSU"></td>
+                                    <td class="NETSU"></td>
+                                    <td class="REI"></td>
+                                    <td class="RAI"></td>
+                                    <td class="YO"></td>
+                                    <td class="IN"></td>
+                                </tr>
+                            </tfoot>
+                        </table> 
+                    </div>                   
+
+
+                    <ul class="nav text-center width-100" style="margin-bottom: 5px;">
+                        <li id="FILTER" class="subtitle-long fuchidori-white smallFont">2. Resistしたい耐性を選択</li>
+                    </ul>
+                    
+                    <ul class="nav text-center width-100">
                         <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="zan"><span
                                     class="icon_middle icon_zan weapon-icon-button FILTER_BTN"  data-attr="0" onclick=""></span></a></li>
                         <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="da"><span
@@ -216,63 +399,20 @@
                                     class="icon_middle icon_yo weapon-icon-button FILTER_BTN"  data-attr="6"  onclick=""></span></a></li>
                         <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="in"><span
                                     class="icon_middle icon_in weapon-icon-button FILTER_BTN"  data-attr="7"  onclick=""></span></a></li>
+                        <li class="col-12 xs-pad0"><button id="SET_ARMOR" class="icon_btn_negative">装備 自動選択 開始</button></li>
+                                    
+                    </ul>                    
+
+                    <ul class="d-none WEAPON nav text-center width-100" style="margin-bottom: 5px;">
+                        <li class="subtitle-long fuchidori-white smallFont">優先度</li>
                     </ul>
-                    <ul class="WEAPON nav text-center width-100" style="margin-bottom: 5px;">
-                        <li id="FILTER" class="subtitle-long fuchidori-white smallFont">優先度</li>
-                    </ul>
-                    <ul class="WEAPON nav text-center width-100 fuchidori-white" style="margin-bottom: 5px;display: flex; align-items: center;">
+                    <ul class="d-none WEAPON nav text-center width-100 fuchidori-white" style="margin-bottom: 5px;display: flex; align-items: center;">
                         <li id="ATTR_PRIMARY_SUM" class="weapon-icon-button" style="padding:5px">合計</li>
                         <li id="ATTR_PRIMARY_LIST" class="" style="display: flex; align-items: center; height:42px;">
                         </li>
                     </ul>
                 </div>
-
-                <div class="bg-simple width-100" style="padding: 10px 10px 30px 10px; overflow: scroll;">
-                    <div class="d-flex" style="justify-content: space-around;">
-                        <button id="DISP_MAIN" class="TABLE-FILTER icon_btn_positive">主防具</button>
-                        <button id="DISP_SUB"  class="TABLE-FILTER icon_btn_negative">副防具</button>
-                        <button id="DISP_ACC"  class="TABLE-FILTER icon_btn_negative">アクセサリー</button>
-                    </div>
-                    <table class="width-100" id="ARMOR_TABLE">
-                        <thead>
-                            <tr class="text-right">
-                                <td></td>
-                                <td class="text-center">
-                                    Name
-                                </td>
-                                <td><span class="ATTR0 icon_mini icon_attr icon_zan" ></span></td>
-                                <td><span class="ATTR1 icon_mini icon_attr icon_da" ></span></td>
-                                <td><span class="ATTR2 icon_mini icon_attr icon_totsu" ></span></td>
-                                <td><span class="ATTR3 icon_mini icon_attr icon_netsu" ></span></td>
-                                <td><span class="ATTR4 icon_mini icon_attr icon_rei" ></span></td>
-                                <td><span class="ATTR5 icon_mini icon_attr icon_rai" ></span></td>
-                                <td><span class="ATTR6 icon_mini icon_attr icon_yo" ></span></td>
-                                <td><span class="ATTR7 icon_mini icon_attr icon_in" ></span></td>
-
-                                <td><span class="icon_mini icon_ail icon_doku"></span></td>
-                                <td><span class="icon_mini icon_ail icon_mahi"></span></td>
-                                <td><span class="icon_mini icon_ail icon_kurayami"></span></td>
-                                <td><span class="icon_mini icon_ail icon_zzz"></span></td>
-                                <td><span class="icon_mini icon_ail icon_sekika"></span></td>
-                                <td><span class="icon_mini icon_ail icon_stan"></span></td>
-                                <td><span class="icon_mini icon_ail icon_konran"></span></td>
-                                <td><span class="icon_mini icon_ail icon_miryo"></span></td>
-                                <td><span class="icon_mini icon_ail icon_kyosenshi"></span></td>
-                                <td><span class="icon_mini icon_ail icon_kizetsu"></span></td>
-
-                                <td class="">腕</td>
-                                <td class="">体</td>
-                                <td class="">器</td>
-                                <td class="">速</td>
-                                <td class="">知</td>
-                                <td class="">精</td>
-                                <td class="">愛</td>
-                                <td class="">魅</td>
-                            </tr>
-                        </thead>
-                        <TBODY></TBODY>
-                    </table>            
-                </div>
+                <div id="RESULT_TOP"></div>
                 <!-- 装備一覧_下部 -->
                 <ins class="adsbygoogle"
                     style="display:block"
@@ -282,17 +422,103 @@
                     data-full-width-responsive="true"></ins>
                 <script>
                     (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>                 
+                </script>
                 <div class="info-modal" style="margin-bottom: 10px;">
-                    <div class="text-center info-modal-header">キープ中の装備セット</div>
-                    <div id="KEEP_AREA"></div>
+                    <div class="text-center info-modal-header">装備自動選択結果</div>
+                    <div id="AUTO_ARMOR_RESULT"></div>
                 </div>
-                <div id="ARMOR_RANK">
+
+
+                <div class="subtitle-long">以下はパーティ選択機能実装前のお試し機能</div>
+                <div class="row no-gutters">
+                    <div class="col-12 col-lg-5">
+                        <div class="info-modal" style="margin-bottom: 10px;">
+                            <div class="text-center info-modal-header">装備一覧</div>
+                            <div class="d-flex" style="justify-content: space-around; margin-bottom: 10px;">
+                                <button id="DISP_MAIN" class="TABLE-FILTER icon_btn_positive">主防具</button>
+                                <button id="DISP_SUB"  class="TABLE-FILTER icon_btn_negative">副防具</button>
+                                <button id="DISP_ACC"  class="TABLE-FILTER icon_btn_negative">アクセサリー</button>
+                            </div>
+
+                            <div class="bg-simple width-100" id="ARMOR_TABLE_WRAPPER">
+                                <table class="width-100" id="ARMOR_TABLE">
+                                    <thead>
+                                        <tr class="text-right">
+                                            <td></td>
+                                            <td class="text-center">
+                                                Name
+                                            </td>
+                                            <td><span class="ATTR0 icon_mini icon_attr icon_zan" ></span></td>
+                                            <td><span class="ATTR1 icon_mini icon_attr icon_da" ></span></td>
+                                            <td><span class="ATTR2 icon_mini icon_attr icon_totsu" ></span></td>
+                                            <td><span class="ATTR3 icon_mini icon_attr icon_netsu" ></span></td>
+                                            <td><span class="ATTR4 icon_mini icon_attr icon_rei" ></span></td>
+                                            <td><span class="ATTR5 icon_mini icon_attr icon_rai" ></span></td>
+                                            <td><span class="ATTR6 icon_mini icon_attr icon_yo" ></span></td>
+                                            <td><span class="ATTR7 icon_mini icon_attr icon_in" ></span></td>
+
+                                            <td class="col-ail"><span class="icon_mini icon_ail icon_doku"></span></td>
+                                            <td class="col-ail"><span class="icon_mini icon_ail icon_mahi"></span></td>
+                                            <td class="col-ail"><span class="icon_mini icon_ail icon_kurayami"></span></td>
+                                            <td class="col-ail"><span class="icon_mini icon_ail icon_zzz"></span></td>
+                                            <td class="col-ail"><span class="icon_mini icon_ail icon_sekika"></span></td>
+                                            <td class="col-ail"><span class="icon_mini icon_ail icon_stan"></span></td>
+                                            <td class="col-ail"><span class="icon_mini icon_ail icon_konran"></span></td>
+                                            <td class="col-ail"><span class="icon_mini icon_ail icon_miryo"></span></td>
+                                            <td class="col-ail"><span class="icon_mini icon_ail icon_kyosenshi"></span></td>
+                                            <td class="col-ail"><span class="icon_mini icon_ail icon_kizetsu"></span></td>
+
+                                            <td class="">腕</td>
+                                            <td class="">体</td>
+                                            <td class="">器</td>
+                                            <td class="">速</td>
+                                            <td class="">知</td>
+                                            <td class="">精</td>
+                                            <td class="">愛</td>
+                                            <td class="">魅</td>
+                                        </tr>
+                                    </thead>
+                                    <TBODY></TBODY>
+                                </table>            
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-7">
+                        <div class="info-modal" style="margin-bottom: 10px;">
+                            <div class="text-center info-modal-header">キープ中の装備セット</div>
+                            キープ中に入っている装備は「装備セット候補」に出現しません
+                            <div id="KEEP_AREA"></div>
+                        </div>
+                        <div class="info-modal" id="ARMOR_SET_LIST">
+                            <div class="text-center info-modal-header">装備セット候補</div>
+                            <div class="d-flex" style="justify-content: space-around; align-items: center; margin-bottom:10px;">
+                                <button id="RANK_PARTY" class="text-nowrap icon_btn_negative">パーティモード</button>
+                                <div style="line-height: 1rem; padding:5px">ONにすると防具が重複した候補が出現しなくなります</div>
+                            </div>
+                            <div style="margin-left: 5px;">
+                                装備セット候補が<span id="ARMOR_SET_COUNT">0</span>件見つかりました
+                            </div>
+                            <div id="ARMOR_INFO"></div>
+                            <div id="ARMOR_RANK"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <p id="PageTopBtn" style="right:10px"><a href="#FILTER"><i class="fas fa-arrow-up"></i></a></p>
         </div> <!-- main -->
+
+        <!-- オーバーレイテンプレ -->
+        <div id="INFO_AB_OVERLAY" class="popup-overlay d-none"></div>
+        <div id="INFO_AB_AREA" class="yubi info-modal popup-text-info popup-animation popup-animation-out" style="top: 1000px;">
+            <div id="INFO_AB_NAME" class="text-center info-modal-header"></div>
+            <div id="INFO_AB_TEXT" class="width-100 bg-simple small" style="height: 75%; padding: 15px; overflow: scroll;"></div>
+            <div class="width-100 text-center">
+                <button class="icon_btn_negative">閉じる</button>
+            </div>
+        </div>        
+        <!--
         <script type="text/javascript" src="https://romasagatool.com/blog/get_the_archives.php?limit=30&callback=rssCallback"></script>
+        -->
 
 
         <!-- 以下テンプレート -->
@@ -305,16 +531,16 @@
                 </td>
                 <td class="ZAN"></td><td class="DA"></td><td class="TOTSU"></td>
                 <td class="NETSU"></td><td class="REI"></td><td class="RAI"></td><td class="YO"></td><td class="IN"></td>
-                <td class="doku"></td>
-                <td class="mahi"></td>
-                <td class="kurayami"></td>
-                <td class="zzz"></td>
-                <td class="sekika"></td>
-                <td class="stan"></td>
-                <td class="konran"></td>
-                <td class="miryo"></td>
-                <td class="kyosenshi"></td>
-                <td class="kizetsu"></td>
+                <td class="col-ail doku"></td>
+                <td class="col-ail mahi"></td>
+                <td class="col-ail kurayami"></td>
+                <td class="col-ail zzz"></td>
+                <td class="col-ail sekika"></td>
+                <td class="col-ail stan"></td>
+                <td class="col-ail konran"></td>
+                <td class="col-ail miryo"></td>
+                <td class="col-ail kyosenshi"></td>
+                <td class="col-ail kizetsu"></td>
 
                 <td class="ST_STR"></td>
                 <td class="ST_VIT"></td>
@@ -333,7 +559,7 @@
                     <tr class="text-right pattern-tr-header">
                         <td></td>
                         <td class="td-name-sum">
-                            <div><button class="KEEP_BUTTON icon_btn_positive small fuchidori-white">キープ</button></div>
+                            <div><button class="KEEP_BUTTON icon_btn_positive small fuchidori-white text-nowrap">キープ</button></div>
                             <div></div>
                             <div></div>
                         </td>
@@ -345,16 +571,16 @@
                         <td class="ATTR_5"><span class="icon_mini icon_attr icon_rai" ></span></td>
                         <td class="ATTR_6"><span class="icon_mini icon_attr icon_yo" ></span></td>
                         <td class="ATTR_7"><span class="icon_mini icon_attr icon_in" ></span></td>
-                        <td><span class="icon_mini icon_ail icon_doku"></span></td>
-                        <td><span class="icon_mini icon_ail icon_mahi"></span></td>
-                        <td><span class="icon_mini icon_ail icon_kurayami"></span></td>
-                        <td><span class="icon_mini icon_ail icon_zzz"></span></td>
-                        <td><span class="icon_mini icon_ail icon_sekika"></span></td>
-                        <td><span class="icon_mini icon_ail icon_stan"></span></td>
-                        <td><span class="icon_mini icon_ail icon_konran"></span></td>
-                        <td><span class="icon_mini icon_ail icon_miryo"></span></td>
-                        <td><span class="icon_mini icon_ail icon_kyosenshi"></span></td>
-                        <td><span class="icon_mini icon_ail icon_kizetsu"></span></td>
+                        <td class="col-ail"><span class="icon_mini icon_ail icon_doku"></span></td>
+                        <td class="col-ail"><span class="icon_mini icon_ail icon_mahi"></span></td>
+                        <td class="col-ail"><span class="icon_mini icon_ail icon_kurayami"></span></td>
+                        <td class="col-ail"><span class="icon_mini icon_ail icon_zzz"></span></td>
+                        <td class="col-ail"><span class="icon_mini icon_ail icon_sekika"></span></td>
+                        <td class="col-ail"><span class="icon_mini icon_ail icon_stan"></span></td>
+                        <td class="col-ail"><span class="icon_mini icon_ail icon_konran"></span></td>
+                        <td class="col-ail"><span class="icon_mini icon_ail icon_miryo"></span></td>
+                        <td class="col-ail"><span class="icon_mini icon_ail icon_kyosenshi"></span></td>
+                        <td class="col-ail"><span class="icon_mini icon_ail icon_kizetsu"></span></td>                        
                         <td class="">腕</td>
                         <td class="">体</td>
                         <td class="">器</td>
