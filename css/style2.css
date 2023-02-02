@@ -1789,3 +1789,48 @@ h-nav .inner ul li a {
     font-size: 0.7rem;
     margin-bottom: 10px;
 }
+
+.popup-overlay {
+    justify-content: center;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+    background-color: rgba(0,0,0,0.6);
+    top: 0;
+    left: 0;
+    display: flex;            
+}        
+.popup-text-info {
+    position: fixed;
+    width: calc(100% - 20px);
+    height: 50%;
+    z-index: 5;
+    margin: 20% 10px;
+}
+.popup-animation {
+    animation-direction: normal;
+    animation-duration: 0.5s;
+    animation-timing-function: ease;
+}
+.popup-animation-in {
+    animation-name: popup-anim_sc;
+    transform: scale(1, 1);
+}
+.popup-animation-out {
+    animation-name: popup-anim_sc_out;
+    transform: scale(0, 0);
+}
+@keyframes popup-anim_sc {
+    0% {transform: scale(0, 0);}
+    100% {transform: scale(1, 1);}
+}     
+@keyframes popup-anim_sc_out {
+    0% {transform: scale(1, 1);}
+    100% {transform: scale(0, 0);}
+}
+
+.special_effect {
+    color: dodgerblue;
+    text-decoration: underline;    
+}
