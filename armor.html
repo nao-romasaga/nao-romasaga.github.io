@@ -400,8 +400,8 @@
                         <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="in"><span
                                     class="icon_middle icon_in weapon-icon-button FILTER_BTN"  data-attr="7"  onclick=""></span></a></li>
                         <li class="col-12 xs-pad0"><button id="SET_ARMOR" class="icon_btn_negative">装備 自動選択 開始</button></li>
-                                    
-                    </ul>                    
+                        <li id="SET_MESSAGE" class="col-12 xs-pad0">Resistしたいスタイル+耐性を選んでください</li>                                    
+                    </ul>
 
                     <ul class="d-none WEAPON nav text-center width-100" style="margin-bottom: 5px;">
                         <li class="subtitle-long fuchidori-white smallFont">優先度</li>
@@ -426,7 +426,30 @@
                 <div class="info-modal" style="margin-bottom: 10px;">
                     <div class="text-center info-modal-header">装備自動選択結果</div>
                     <div id="AUTO_ARMOR_RESULT"></div>
+                    <!--テンプレ-->
+                    <div id="AUTO_ARMOR_RESULT_TMPL" class="d-none bg-black-window armor-result-window row no-gutters">
+                        <div class="col-12 col-sm-5 ICON_AREA"></div>
+                        <div class="col-12 col-sm-7">
+                            <div class="armor-result-test-area MESSAGE_AREA"></div>
+                        </div>
+                    </div>
                 </div>
+                <style>
+                .armor-result-window {
+                    padding: 10px;
+                }
+                .armor-result-test-area {
+                    background: black;
+                    border: 1px solid;
+                    border-radius: 5px;
+                    padding: 2px 10px
+                }
+                .armor-result-border {
+                    border-bottom: 2px dotted black;
+                    margin: 10px;                    
+                }
+                </style>
+
 
 
                 <div class="subtitle-long">以下はパーティ選択機能実装前のお試し機能</div>
