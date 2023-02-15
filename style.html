@@ -66,6 +66,16 @@
         <script src="./js/culcStyleBonus.js" async></script>
         <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet rel="preload" as="style">
         <style>
+            .pc-skill-list {
+                overflow-x: scroll;
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+            /*スクロールバー非表示（Chrome・Safari）*/
+            .pc-skill-list::-webkit-scrollbar{
+                display:none;
+            }
+
             .right_parts {
                 text-anchor: unset;
             }
@@ -868,16 +878,8 @@
                 </div>                
 
                 <div class="filter-bgcolor styleChoiceArea width-100" style="margin:10px 0px">
-                    <div class="subtitle-long" style="margin-bottom:10px;">スタイル詳細</div><br>
+                    <div class="subtitle-long" style="margin-bottom:10px;">表示スタイルの選択</div><br>
                     <div id="styleChoice"></div><!-- スタイルアイコン表示 -->
-                </div>
-                <div class="info-modal styleChoiceArea " style="padding: 5px 20px 25px 20px; margin-bottom: 10px;">
-                    <div class="text-center info-modal-header">バンガード内 セリフ集</div>
-                    <div class="row small shadow-black" style="color:  #faf0b4;">
-                        <div class="col-12 col-lg-4 filter-bgcolor SPEECH0" style="padding: 5px 10px; height:80px;"><span style="display: block; line-height: 1.5;"></span><img src="" class="speech-icon"></div>
-                        <div class="col-12 col-lg-4 filter-bgcolor SPEECH1" style="padding: 5px 10px; height:80px;"><span style="display: block; line-height: 1.5;"></span><img src="" class="speech-icon"></div>
-                        <div class="col-12 col-lg-4 filter-bgcolor SPEECH2" style="padding: 5px 10px; height:80px;"><span style="display: block; line-height: 1.5;"></span><img src="" class="speech-icon"></div>                        
-                    </div>
                 </div>
                 <div class="styleChoiceArea width-100">
                     <div class="row no-gutters">
@@ -1032,17 +1034,7 @@
                                 </div>
                             </section>
                         </div>
-                    </div>
-                    <div style="margin: 10px 0px;"></div>
-                    <div class="info-modal width-max" style="padding: 0px 5px 15px 10px;">
-                        <div class="text-center info-modal-header">同時期に実装されたスタイル</div>
-                        タップでそのスタイルの詳細を表示します
-                        <div id="GACHA_TEMPLATE_AREA"></div>
-                        <div id="GACHA_TEMPLATE" class="d-none">
-                            <div class="subtitle-long" style="margin-bottom:10px;"></div>
-                            <div class="styleIconArea"></div>
-                        </div>                        
-                    </div>
+                    </div>                    
                     <div style="margin: 10px 0px;"></div>
                     <div class="info-modal width-max" style="padding: 0px 5px 15px 10px;">
                         <div class="text-center info-modal-header">みんなの評価</div>
@@ -1140,7 +1132,51 @@
                             例：ブーケや海の主の娘の全ステデバフ、聖王の全体複数ステバフなど
                         </div>
                     </div>
-
+                    <div class="row no-gutters">
+                        <div class="col-12 col-sm-6 col-md-4">
+                            <div class="info-modal styleChoiceArea " style="padding: 5px 20px 25px 20px; margin-bottom: 10px;">
+                                <div class="text-center info-modal-header">バンガード内 セリフ集</div>
+                                <div class="filter-bgcolor speach SPEECH0"><span style="display: block; line-height: 1.5;"></span><img src="" class="speech-icon"></div>
+                                <div class="filter-bgcolor speach SPEECH1"><span style="display: block; line-height: 1.5;"></span><img src="" class="speech-icon"></div>
+                                <div class="filter-bgcolor speach SPEECH2"><span style="display: block; line-height: 1.5;"></span><img src="" class="speech-icon"></div>                        
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4">
+                            <div class="info-modal" style="padding: 0px 5px 15px 10px;">
+                                <div class="text-center info-modal-header">同時実装スタイル</div>
+                                タップでそのスタイルの詳細を表示します
+                                <div id="GACHA_TEMPLATE_AREA"></div>
+                                <div id="GACHA_TEMPLATE" class="d-none">
+                                    <div class="subtitle-long" style="margin-bottom:10px; line-height: 1.2rem;"></div>
+                                    <div class="styleIconArea"></div>
+                                </div>                        
+                            </div>    
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4">
+                            <div class="info-modal" style="padding: 0px 5px 15px 10px;">
+                                <div class="text-center info-modal-header">スタイル実装周期</div>
+                                <div id="STYLE_HISTORY_AREA" style="margin: 10px;"></div>
+                                <div id="HISTORY_TEMPLATE" class="d-none">
+                                    <div class="d-flex">
+                                        <div class="icon" style="display: inline-flex;"></div>
+                                        <div class="" style="display: inline-block; border-bottom: 1px solid; align-self: end; width: 80%;">
+                                            <div class="d-none name-area justify-content-between text-nowrap">
+                                                <div><span class="name"></span></div>
+                                                <div>平均周期:<span class="avgSpan"></span>日</div>    
+                                            </div>                 
+                                            <div class="progress" style="height: 20px; background-color:rgba(50,50,50,0.8)">
+                                                <div class="progress-bar text-left"></div>
+                                            </div>
+                                            <div class="d-flex justify-content-between">
+                                                <div><span class="openYear"></span>年<span class="openMonth"></span>月<span class="openDay"></span>日</div>
+                                                <div><span class="gachaSpan"></span>日</div>    
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                            
+                        </div>
+                    </div>
                     <div class="info-modal width-max" id="HIDAME_AREA" style="margin-bottom: 10px;">
                         <div class="text-center info-modal-header">被ダメージ 計算</div>                        
                         <div class="row">
@@ -1213,6 +1249,10 @@
                                 </div>
                             </div>
                             <style>
+                                .speach {
+                                    color:  #faf0b4;
+                                    padding: 5px 10px; height:80px;
+                                }
                                 tr.damage-col td:nth-child(3) {
                                     padding-right: 5px;
                                     border-right: 1px dashed lightblue;
@@ -1386,7 +1426,9 @@
                                     <span class="consume-lp"></span>
                                 </td>
                                 <td class="text-left pad5 skill-od text-nowrap d-none d-sm-table-cell"></td>
-                                <td class="small SKILL_TEXT d-none d-sm-table-cell" style="width: 50%; padding-left: 10px;"></td>
+                                <td class="small text-nowrap d-none d-sm-table-cell" style="width: 50%; padding-left: 10px; overflow: scroll;">
+                                    <div class="width-100 SKILL_TEXT pc-skill-list"></div>
+                                </td>
                                 <td class="text-right d-sm-none INFO_BTN" style="width:30px"><img src="https://romasagatool.com/img/icon/icon_info.png" class="width-100"></td>
                             </tr>
                             <tr class="d-sm-none">
@@ -1525,15 +1567,6 @@
                             <div class="V_LABEL col-2 text-center shadow-black" style="width:40px; color:white;"></div>
                             <div class="S_LABEL col-10 style-icon-scroll"></div>
                         </div>
-                    </div>
-                </div>
-                <div style="margin: 10px 0px;"></div>
-                <div class="info-modal width-max" style="padding: 0px 5px 15px 10px;">
-                    <div class="text-center info-modal-header">スタイル実装履歴</div>
-                    <div id="STYLE_HISTORY_AREA" style="margin: 10px 20px;"></div>
-                    <div id="HISTORY_TEMPLATE" class="d-none">
-                        <div class="icon" style="display: inline-flex;"></div>
-                        <div class="gacha" style="display: inline-block; border-bottom: 1px solid"></div>
                     </div>
                 </div>
             </div>
