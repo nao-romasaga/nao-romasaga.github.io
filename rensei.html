@@ -69,6 +69,13 @@
         <![endif]-->
     </head>
     <style>
+        .match-col {
+            vertical-align: top;
+            white-space: nowrap;
+        }
+        .char-dot-jutsu-icon-div {
+            white-space: normal;
+        }
         #WEAPON_MATRIX_TABLE td {
             text-align: left !important;
         }
@@ -184,6 +191,62 @@
                     data-ad-format="auto"
                     data-full-width-responsive="true"></ins>
 
+                    <div class="info-modal" style="margin-bottom: 20px;">
+                        <div class="text-center info-modal-header">天虹錬成用 術適正早見表</div>
+                        <div class="text-left width-100" style="margin: 10px 0px;" id="MATCH_AREA">
+                            <div class="bg-simple">
+                                <ul class="col-12 text-left" style="margin-bottom: 5px;">
+                                    <li class="subtitle-long fuchidori-white ">武器種フィルタ</li>
+                                </ul>
+                                <ul class="nav text-center width-100">
+                                    <li class="col-2 col-sm-1 xs-pad0"><a class="MATCH_FILTER " data-type="剣"><span class="icon_mini icon_ken weapon-icon-button FILTER_BUTTON" onclick=""></span></a></li>
+                                    <li class="col-2 col-sm-1 xs-pad0"><a class="MATCH_FILTER " data-type="大剣"><span class="icon_mini icon_dken weapon-icon-button FILTER_BUTTON" onclick=""></span></a></li>
+                                    <li class="col-2 col-sm-1 xs-pad0"><a class="MATCH_FILTER " data-type="斧"><span class="icon_mini icon_ono weapon-icon-button FILTER_BUTTON" onclick=""></span></a></li>
+                                    <li class="col-2 col-sm-1 xs-pad0"><a class="MATCH_FILTER " data-type="棍棒"><span class="icon_mini icon_kon weapon-icon-button FILTER_BUTTON" onclick=""></span></a></li>
+                                    <li class="col-2 col-sm-1 xs-pad0"><a class="MATCH_FILTER " data-type="体術"><span class="icon_mini icon_tai weapon-icon-button FILTER_BUTTON" onclick=""></span></a></li>
+                                    <li class="col-2 col-sm-1 xs-pad0"><a class="MATCH_FILTER " data-type="銃"><span class="icon_mini icon_ju weapon-icon-button FILTER_BUTTON" onclick=""></span></a></li>
+                                    <li class="col-2 col-sm-1 xs-pad0"><a class="MATCH_FILTER " data-type="小剣"><span class="icon_mini icon_sken weapon-icon-button FILTER_BUTTON" onclick=""></span></a></li>
+                                    <li class="col-2 col-sm-1 xs-pad0"><a class="MATCH_FILTER " data-type="槍"><span class="icon_mini icon_yari weapon-icon-button FILTER_BUTTON" onclick=""></span></a></li>
+                                    <li class="col-2 col-sm-1 xs-pad0"><a class="MATCH_FILTER " data-type="弓"><span class="icon_mini icon_yumi weapon-icon-button FILTER_BUTTON" onclick=""></span></a></li>
+                                    <li class="col-2 col-sm-1 xs-pad0"><a class="MATCH_FILTER " data-type="杖"><span class="icon_mini icon_tsue weapon-icon-button FILTER_BUTTON" onclick=""></span></a></li>
+                                </ul>
+                                <table class="match-table char-matrix width-100" border=1 style="border: 1px solid #faf0b4;
+                                 max-width: 1000px;
+                        overflow: scroll;">
+                                    <tr class="text-center"><td>
+                                        <span data-weapon="剣" class="names icon_mini icon_ken_sm" onclick=""></span>
+                                        <span data-weapon="大剣" class="names d-none icon_mini icon_dken_sm" onclick=""></span>
+                                        <span data-weapon="斧" class="names d-none icon_mini icon_ono_sm" onclick=""></span>
+                                        <span data-weapon="小剣" class="names d-none icon_mini icon_sken_sm" onclick=""></span>
+                                        <span data-weapon="弓" class="names d-none icon_mini icon_yumi_sm" onclick=""></span>
+                                        <span data-weapon="槍" class="names d-none icon_mini icon_yari_sm" onclick=""></span>
+                                        <span data-weapon="棍棒" class="names d-none icon_mini icon_kon_sm" onclick=""></span>
+                                        <span data-weapon="体術" class="names d-none icon_mini icon_tai_sm" onclick=""></span>
+                                        <span data-weapon="銃" class="names d-none icon_mini icon_ju_sm" onclick=""></span>
+                                        <span data-weapon="杖" class="names d-none icon_mini icon_tsue_sm" onclick=""></span>
+                                    </td>
+                                        <td><span class="icon_xs_zokusei icon_hi_sm"></span></td>
+                                        <td><span class="icon_xs_zokusei icon_mizu_sm"></span></td>
+                                        <td><span class="icon_xs_zokusei icon_tsuchi_sm"></span></td>
+                                        <td><span class="icon_xs_zokusei icon_kaze_sm"></span></td>
+                                        <td><span class="icon_xs_zokusei icon_hikari_sm"></span></td>
+                                        <td><span class="icon_xs_zokusei icon_yami_sm"></span></td>
+                                    </tr>                            
+                                    <tr class="RS1"><td>RS1</td><td class="match-col 火"></td><td class="match-col 水"></td><td class="match-col 土"></td><td class="match-col 風"></td><td class="match-col 光"></td><td class="match-col 闇"></td></tr>
+                                    <tr class="RS2"><td>RS2</td><td class="match-col 火"></td><td class="match-col 水"></td><td class="match-col 土"></td><td class="match-col 風"></td><td class="match-col 光"></td><td class="match-col 闇"></td></tr>
+                                    <tr class="RS3"><td>RS3</td><td class="match-col 火"></td><td class="match-col 水"></td><td class="match-col 土"></td><td class="match-col 風"></td><td class="match-col 光"></td><td class="match-col 闇"></td></tr>
+                                    <tr class="SF1"><td>SF1</td><td class="match-col 火"></td><td class="match-col 水"></td><td class="match-col 土"></td><td class="match-col 風"></td><td class="match-col 光"></td><td class="match-col 闇"></td></tr>
+                                    <tr class="SF2"><td>SF2</td><td class="match-col 火"></td><td class="match-col 水"></td><td class="match-col 土"></td><td class="match-col 風"></td><td class="match-col 光"></td><td class="match-col 闇"></td></tr>
+                                 <tr class="ESUS"><td>ES/US</td><td class="match-col 火"></td><td class="match-col 水"></td><td class="match-col 土"></td><td class="match-col 風"></td><td class="match-col 光"></td><td class="match-col 闇"></td></tr>
+                                    <tr class="SSG"><td>SSG</td><td class="match-col 火"></td><td class="match-col 水"></td><td class="match-col 土"></td><td class="match-col 風"></td><td class="match-col 光"></td><td class="match-col 闇"></td></tr>
+                                      <tr class="GB"><td>GB</td><td class="match-col 火"></td><td class="match-col 水"></td><td class="match-col 土"></td><td class="match-col 風"></td><td class="match-col 光"></td><td class="match-col 闇"></td></tr>
+                                    <tr class="RSR"><td>RSR</td><td class="match-col 火"></td><td class="match-col 水"></td><td class="match-col 土"></td><td class="match-col 風"></td><td class="match-col 光"></td><td class="match-col 闇"></td></tr>
+                                     <tr class="OTR"><td>他</td><td class="match-col 火"></td><td class="match-col 水"></td><td class="match-col 土"></td><td class="match-col 風"></td><td class="match-col 光"></td><td class="match-col 闇"></td></tr>
+                                </table>
+                            </div>                    
+                        </div>
+                    </div>
+        
                 <div class="filter-bgcolor text-center small width-max" style="padding-bottom: 20px; margin-bottom: 20px;">
                     <div class="row" id="FILTER">
                         <ul class="col-12 text-left" style="margin-bottom: 5px;">
