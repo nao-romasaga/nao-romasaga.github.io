@@ -333,14 +333,22 @@
                             <a class="_FilterLink pad0 d-inline-block" data-href="skill_buf_ai" data-col="Buff"><span class="withLabel icon_mini_zokusei icon_buff_ai"><span class="series-button" id="count_skill_buf_ai">...</span></span></a>
                             <a class="_FilterLink pad0 d-inline-block" data-href="skill_buf_mi" data-col="Buff"><span class="withLabel icon_mini_zokusei icon_buff_mi"><span class="series-button" id="count_skill_buf_mi">...</span></span></a>
                         </li>
-                        <li class="col-12 col-sm-2 table-success char-bottom">味方強化(攻)</li>
-                        <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom">
+                        <li class="col-12 col-sm-2 table-info char-bottom" style="line-height: 1.2rem;">状態異常<br>耐性アップ</li>
+                        <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom align-center">
+                            <a class="_FilterLink  small" data-href="skill_ail_up_all" data-col="AilUp">全て <span class="series-button" id="count_skill_ail_up_all">...</span></a>
+                        </li>
+
+                        <li class="col-12 col-sm-2 table-success char-bottom">攻撃面の強化</li>
+                        <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom" style="flex-wrap: wrap">
                             <a class="_FilterLink  small" data-href="skill_MoralUp" data-col="ATR-UP">モラルアップ <span class="series-button" id="count_skill_MoralUp">...</span></a>
                             <a class="_FilterLink  small" data-href="skill_AttackUp" data-col="ATR-UP">攻撃強化 <span class="series-button" id="count_skill_AttackUp">...</span></a>
                             <a class="_FilterLink  small" data-href="skill_XAttackUp" data-col="ATR-UP">X属性攻撃強化 <span class="series-button" id="count_skill_XAttackUp">...</span></a>
                             <a class="_FilterLink  small" data-href="skill_HeatUp" data-col="ATR-UP">ヒートアップ <span class="series-button" id="count_skill_HeatUp">...</span></a>
-                            　
-                        <li class="col-12 col-sm-2 table-success char-bottom">味方強化(防)</li>
+                            <div class="width-100"></div>
+                            <a class="_FilterLink  small" data-href="skill_GuardDown" data-col="ENEMY-DOWN">ガードダウン <span class="series-button" id="count_skill_GuardDown">...</span></a>
+                            <a class="_FilterLink  small" data-href="skill_DefDown" data-col="ENEMY-DOWN">ディフェンスダウン <span class="series-button" id="count_skill_DefDown">...</span></a>
+                            <a class="_FilterLink  small" data-href="skill_DefenceDown" data-col="ENEMY-DOWN">防御弱化 <span class="series-button" id="count_skill_DefenceDown">...</span></a>
+                        <li class="col-12 col-sm-2 table-success char-bottom">防御面の強化</li>
                         <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom" style="flex-wrap: wrap">
                             <a class="_FilterLink  small" data-href="skill_GuardUp" data-col="DEF-UP">ガードアップ <span class="series-button" id="count_skill_GuardUp">...</span></a>
                             <a class="_FilterLink  small" data-href="skill_DefenceUp" data-col="DEF-UP">防御強化 <span class="series-button" id="count_skill_DefenceUp">...</span></a>
@@ -352,10 +360,14 @@
                             <div class="width-100"></div>
                             <a class="_FilterLink  small" data-href="skill_Wall" data-col="DEF-UP">ウォール <span class="series-button" id="count_skill_Wall">...</span></a>
                             <a class="_FilterLink  small" data-href="skill_MagicShield" data-col="DEF-UP">魔法盾 <span class="series-button" id="count_skill_MagicShield">...</span></a>
-                            <a class="_FilterLink  small" data-href="skill_Deflect" data-col="DEF-UP">回避 <span class="series-button" id="count_skill_Deflect">...</span></a>
                             <div class="width-100"></div>
+                            <a class="_FilterLink  small" data-href="skill_Deflect" data-col="DEF-UP">回避 <span class="series-button" id="count_skill_Deflect">...</span></a>
                             <a class="_FilterLink  small" data-href="skill_DamageBlock" data-col="DEF-UP">ダメージブロック <span class="series-button" id="count_skill_DamageBlock">...</span></a>
                             <a class="_FilterLink  small" data-href="skill_Kabau" data-col="DEF-UP">かばう <span class="series-button" id="count_skill_Kabau">...</span></a>
+                            <div class="width-100"></div>
+                            <a class="_FilterLink  small" data-href="skill_MoralDown" data-col="ENEMY-DOWN">モラルダウン <span class="series-button" id="count_skill_MoralDown">...</span></a>
+                            <a class="_FilterLink  small" data-href="skill_HeatDown" data-col="ENEMY-DOWN">ヒートダウン <span class="series-button" id="count_skill_HeatDown">...</span></a>
+                            <a class="_FilterLink  small" data-href="skill_AttackDown" data-col="ENEMY-DOWN">攻撃弱化 <span class="series-button" id="count_skill_AttackDown">...</span></a>
                         </li>
 
                         <li class="col-12 col-sm-2 table-danger char-bottom">デバフ</li>
@@ -366,16 +378,6 @@
                             <a class="_FilterLink pad0 d-inline-block" data-href="skill_deb_suba" data-col="DeBuff"><span class="withLabel icon_mini_zokusei icon_debuff_agi"><span class="series-button" id="count_skill_deb_suba">...</span></span></a>
                             <a class="_FilterLink pad0 d-inline-block" data-href="skill_deb_chi" data-col="DeBuff"><span class="withLabel icon_mini_zokusei icon_debuff_int"><span class="series-button" id="count_skill_deb_chi">...</span></span></a>
                             <a class="_FilterLink pad0 d-inline-block" data-href="skill_deb_sei" data-col="DeBuff"><span class="withLabel icon_mini_zokusei icon_debuff_mnd"><span class="series-button" id="count_skill_deb_sei">...</span></span></a>
-                        </li>
-                        <li class="col-12 col-sm-2 table-danger char-bottom">敵弱化</li>
-                        <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom" style="flex-wrap: wrap">
-                            <a class="_FilterLink  small" data-href="skill_MoralDown" data-col="ENEMY-DOWN">モラルダウン <span class="series-button" id="count_skill_MoralDown">...</span></a>
-                            <a class="_FilterLink  small" data-href="skill_HeatDown" data-col="ENEMY-DOWN">ヒートダウン <span class="series-button" id="count_skill_HeatDown">...</span></a>
-                            <a class="_FilterLink  small" data-href="skill_AttackDown" data-col="ENEMY-DOWN">攻撃弱化 <span class="series-button" id="count_skill_AttackDown">...</span></a>
-                            <div class="width-100"></div>                            
-                            <a class="_FilterLink  small" data-href="skill_GuardDown" data-col="ENEMY-DOWN">ガードダウン <span class="series-button" id="count_skill_GuardDown">...</span></a>
-                            <a class="_FilterLink  small" data-href="skill_DefDown" data-col="ENEMY-DOWN">ディフェンスダウン <span class="series-button" id="count_skill_DefDown">...</span></a>
-                            <a class="_FilterLink  small" data-href="skill_DefenceDown" data-col="ENEMY-DOWN">防御弱化 <span class="series-button" id="count_skill_DefenceDown">...</span></a>
                         </li>
                         <li class="col-12 col-sm-2 table-info char-bottom">能力変化</li>
                         <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom">
