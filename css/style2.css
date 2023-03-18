@@ -4,6 +4,9 @@
 @import url("loading.css");
 @import url("https://use.fontawesome.com/releases/v5.8.1/css/all.css");
 
+.align-center {
+    align-items: center;
+}
 .card {
     backdrop-filter: blur(5px);
     background-color: rgba(255,255,255,0.7);
