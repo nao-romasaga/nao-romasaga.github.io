@@ -202,7 +202,7 @@
                                     <li class="subtitle-long fuchidori-white ">武器種フィルタ</li>
                                 </ul>
                                 <ul class="nav text-center width-100">
-                                    <li class="col-2 col-sm-1 xs-pad0"><a class="MATCH_FILTER " data-type="剣"><span class="icon_mini icon_ken weapon-icon-button FILTER_BUTTON" onclick=""></span></a></li>
+                                    <li class="col-2 col-sm-1 xs-pad0"><a class="MATCH_FILTER " data-type="剣"><span class="icon_mini icon_ken weapon-icon-button FILTER_BUTTON filterActive" onclick=""></span></a></li>
                                     <li class="col-2 col-sm-1 xs-pad0"><a class="MATCH_FILTER " data-type="大剣"><span class="icon_mini icon_dken weapon-icon-button FILTER_BUTTON" onclick=""></span></a></li>
                                     <li class="col-2 col-sm-1 xs-pad0"><a class="MATCH_FILTER " data-type="斧"><span class="icon_mini icon_ono weapon-icon-button FILTER_BUTTON" onclick=""></span></a></li>
                                     <li class="col-2 col-sm-1 xs-pad0"><a class="MATCH_FILTER " data-type="棍棒"><span class="icon_mini icon_kon weapon-icon-button FILTER_BUTTON" onclick=""></span></a></li>
@@ -228,6 +228,7 @@
                                         <span data-weapon="銃" class="names d-none icon_mini icon_ju_sm" onclick=""></span>
                                         <span data-weapon="杖" class="names d-none icon_mini icon_tsue_sm" onclick=""></span>
                                     </td>
+                                        <td>術なし</td>
                                         <td><span class="icon_xs_zokusei icon_hi_sm"></span></td>
                                         <td><span class="icon_xs_zokusei icon_mizu_sm"></span></td>
                                         <td><span class="icon_xs_zokusei icon_tsuchi_sm"></span></td>
@@ -235,16 +236,17 @@
                                         <td><span class="icon_xs_zokusei icon_hikari_sm"></span></td>
                                         <td><span class="icon_xs_zokusei icon_yami_sm"></span></td>
                                     </tr>                            
-                                    <tr class="RS1"><td>RS1</td><td class="match-col 火"></td><td class="match-col 水"></td><td class="match-col 土"></td><td class="match-col 風"></td><td class="match-col 光"></td><td class="match-col 闇"></td></tr>
-                                    <tr class="RS2"><td>RS2</td><td class="match-col 火"></td><td class="match-col 水"></td><td class="match-col 土"></td><td class="match-col 風"></td><td class="match-col 光"></td><td class="match-col 闇"></td></tr>
-                                    <tr class="RS3"><td>RS3</td><td class="match-col 火"></td><td class="match-col 水"></td><td class="match-col 土"></td><td class="match-col 風"></td><td class="match-col 光"></td><td class="match-col 闇"></td></tr>
-                                    <tr class="SF1"><td>SF1</td><td class="match-col 火"></td><td class="match-col 水"></td><td class="match-col 土"></td><td class="match-col 風"></td><td class="match-col 光"></td><td class="match-col 闇"></td></tr>
-                                    <tr class="SF2"><td>SF2</td><td class="match-col 火"></td><td class="match-col 水"></td><td class="match-col 土"></td><td class="match-col 風"></td><td class="match-col 光"></td><td class="match-col 闇"></td></tr>
-                                    <tr class="USES"><td>ES/US</td><td class="match-col 火"></td><td class="match-col 水"></td><td class="match-col 土"></td><td class="match-col 風"></td><td class="match-col 光"></td><td class="match-col 闇"></td></tr>
-                                    <tr class="SSG"><td>SSG</td><td class="match-col 火"></td><td class="match-col 水"></td><td class="match-col 土"></td><td class="match-col 風"></td><td class="match-col 光"></td><td class="match-col 闇"></td></tr>
-                                      <tr class="GB"><td>GB</td><td class="match-col 火"></td><td class="match-col 水"></td><td class="match-col 土"></td><td class="match-col 風"></td><td class="match-col 光"></td><td class="match-col 闇"></td></tr>
-                                    <tr class="RSR"><td>RSR</td><td class="match-col 火"></td><td class="match-col 水"></td><td class="match-col 土"></td><td class="match-col 風"></td><td class="match-col 光"></td><td class="match-col 闇"></td></tr>
-                                     <tr class="OTR"><td>他</td><td class="match-col 火"></td><td class="match-col 水"></td><td class="match-col 土"></td><td class="match-col 風"></td><td class="match-col 光"></td><td class="match-col 闇"></td></tr>
+                                    <tr class="ALL"><td>ALL</td><td class="match-col NONE"></td><td class="match-col 火"></td><td class="match-col 水"></td><td class="match-col 土"></td><td class="match-col 風"></td><td class="match-col 光"></td><td class="match-col 闇"></td></tr>
+                                    <tr class="RS1"><td>RS1</td><td class="match-col NONE"></td><td class="match-col 火"></td><td class="match-col 水"></td><td class="match-col 土"></td><td class="match-col 風"></td><td class="match-col 光"></td><td class="match-col 闇"></td></tr>
+                                    <tr class="RS2"><td>RS2</td><td class="match-col NONE"></td><td class="match-col 火"></td><td class="match-col 水"></td><td class="match-col 土"></td><td class="match-col 風"></td><td class="match-col 光"></td><td class="match-col 闇"></td></tr>
+                                    <tr class="RS3"><td>RS3</td><td class="match-col NONE"></td><td class="match-col 火"></td><td class="match-col 水"></td><td class="match-col 土"></td><td class="match-col 風"></td><td class="match-col 光"></td><td class="match-col 闇"></td></tr>
+                                    <tr class="SF1"><td>SF1</td><td class="match-col NONE"></td><td class="match-col 火"></td><td class="match-col 水"></td><td class="match-col 土"></td><td class="match-col 風"></td><td class="match-col 光"></td><td class="match-col 闇"></td></tr>
+                                    <tr class="SF2"><td>SF2</td><td class="match-col NONE"></td><td class="match-col 火"></td><td class="match-col 水"></td><td class="match-col 土"></td><td class="match-col 風"></td><td class="match-col 光"></td><td class="match-col 闇"></td></tr>
+                                    <tr class="USES"><td>ES/US</td><td class="match-col NONE"></td><td class="match-col 火"></td><td class="match-col 水"></td><td class="match-col 土"></td><td class="match-col 風"></td><td class="match-col 光"></td><td class="match-col 闇"></td></tr>
+                                    <tr class="SSG"><td>SSG</td><td class="match-col NONE"></td><td class="match-col 火"></td><td class="match-col 水"></td><td class="match-col 土"></td><td class="match-col 風"></td><td class="match-col 光"></td><td class="match-col 闇"></td></tr>
+                                      <tr class="GB"><td>GB</td><td class="match-col NONE"></td><td class="match-col 火"></td><td class="match-col 水"></td><td class="match-col 土"></td><td class="match-col 風"></td><td class="match-col 光"></td><td class="match-col 闇"></td></tr>
+                                    <tr class="RSR"><td>RSR</td><td class="match-col NONE"></td><td class="match-col 火"></td><td class="match-col 水"></td><td class="match-col 土"></td><td class="match-col 風"></td><td class="match-col 光"></td><td class="match-col 闇"></td></tr>
+                                     <tr class="OTR"><td>他</td><td class="match-col NONE"></td><td class="match-col 火"></td><td class="match-col 水"></td><td class="match-col 土"></td><td class="match-col 風"></td><td class="match-col 光"></td><td class="match-col 闇"></td></tr>
                                 </table>
                             </div>                    
                         </div>
@@ -256,8 +258,8 @@
                             <li class="subtitle-long fuchidori-white ">錬成武器 設定</li>
                         </ul>
                         <ul class="nav text-center width-100">
-                            <li class="col-2 col-sm-1 xs-pad0"><a class="FILTER_LIST " data-type="剣"><span class="icon_mini icon_ken weapon-icon-button FILTER_BUTTON" onclick=""></span></a></li>
-                            <li class="col-2 col-sm-1 xs-pad0"><a class="FILTER_LIST " data-type="大剣"><span class="icon_mini icon_dken weapon-icon-button FILTER_BUTTON filterActive" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="FILTER_LIST " data-type="剣"><span class="icon_mini icon_ken weapon-icon-button FILTER_BUTTON filterActive" onclick=""></span></a></li>
+                            <li class="col-2 col-sm-1 xs-pad0"><a class="FILTER_LIST " data-type="大剣"><span class="icon_mini icon_dken weapon-icon-button FILTER_BUTTON" onclick=""></span></a></li>
                             <li class="col-2 col-sm-1 xs-pad0"><a class="FILTER_LIST " data-type="斧"><span class="icon_mini icon_ono weapon-icon-button FILTER_BUTTON" onclick=""></span></a></li>
                             <li class="col-2 col-sm-1 xs-pad0"><a class="FILTER_LIST " data-type="棍棒"><span class="icon_mini icon_kon weapon-icon-button FILTER_BUTTON" onclick=""></span></a></li>
                             <li class="col-2 col-sm-1 xs-pad0"><a class="FILTER_LIST " data-type="体術"><span class="icon_mini icon_tai weapon-icon-button FILTER_BUTTON" onclick=""></span></a></li>
