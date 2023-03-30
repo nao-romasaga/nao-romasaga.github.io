@@ -329,12 +329,6 @@
                         <li class="col-3 col-sm xs-pad0"><a class="enemyfilterList pad0" data-type="EnemyClassFilter"
                                 data-label="無し" href="#enemy_0" onclick="">無し</a></li>-->                                
                     </ul>
-                    <ul class="nav text-center width-100 text-nowrap" style="margin-top: 20px;">
-                        <li class="col-12 col-sm xs-pad0">
-                            <button class="width-100 icon_btn_off optionButton text-nowrap" data-on="0" data-name="weakFilter">Weak攻撃を<br class="d-md-none">一切含まないスタイルを除外</button>
-                        </li>
-                    </ul>
-                    <br>
                     <div class=" table-dark d-none">
                         <table class="width-100 text-center table-dark">
                             <tr class="char-bottom">
@@ -671,7 +665,29 @@
                             <a class="fuchidori-blue" href="stylecheck.html">スタイル所持チェッカー</a>で登録したスタイルのみを表示します
                         </div>
                     </div>
+
+                    <div class="text-center label-text-small width-100"style="margin-top: 30px;">結果表示切り替え</div>
+                    <div class="row text-center" style="margin-bottom: 10px;">
+                        <div class="col-12 col-sm-6">
+                            <button class="width-100 icon_btn_off optionButton text-nowrap" data-on="0" data-name="weakFilter">耐性0 非表示 <i class="TOGGLE fas fa-toggle-off"></i></button>
+                        </div>
+                        <div class="col-12 col-sm-6 result-disp-change-text">Weak攻撃を一切含まないスタイルを除外</div>
+                        <div class="col-12 col-sm-6">
+                            <button class="col icon_btn_on dispFilterButton" data-on="1" data-target="attr">属性 表示 <i class="TOGGLE fas fa-toggle-on"></i></button>                  
+                        </div>
+                        <div class="col-12 col-sm-6 result-disp-change-text">技術の属性アイコンの表示切り替え</div>
+                        <div class="col-12 col-sm-6">
+                            <button class="col icon_btn_off dispFilterButton" data-on="0" data-target="method">間接表記 表示 <i class="TOGGLE fas fa-toggle-off"></i></button>                  
+                        </div>
+                        <div class="col-12 col-sm-6 result-disp-change-text">間接攻撃に[間]を表示</div>
+                    </div>
                 </div>
+                <style>
+                .result-disp-change-text {
+                    align-self: center;
+                    text-align: left;                    
+                }
+                </style>
                 <!------------------ ここまで選択画面 ------------------------>
                 <div id="RANKING_AREA" class="width-100">
                     <div class="col-12 text-right">
