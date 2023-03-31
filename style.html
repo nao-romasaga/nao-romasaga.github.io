@@ -208,13 +208,26 @@
             .skill-text-added {
                 border-bottom: 2px dashed #faf0b4 !important;
             }
+            .skill-template-table {
+                margin-bottom:5px;
+                border-bottom: 1px solid;
+            }
             .skill-text {
-                border-bottom: 1px solid #faf0b4;
+                background: black;
+                border: 1px;
+                border-radius: 8px;
                 margin: 0px 5px 0px 5px;
                 padding: 5px;
-                font-size: 8px;
-                color: white;
+                font-size: 0.9rem;
+                line-height: 1.2rem;
             }
+            .child-skill {
+                margin-left: 20px;
+            }
+            .ab-name {
+                font-size: 20px;
+            }
+
             .skill-icons {
                 display: inline-flex;
                 align-items: center;
@@ -416,6 +429,7 @@
                 border: 1px solid;
                 border-radius: 5px;
                 padding: 2px 10px;
+                line-height: 1.2rem;
             }
             .kakusei-bp {
                 position: absolute;
@@ -434,7 +448,7 @@
             }
             .skill-option {
                 text-align: left;
-                font-size: 65%;
+                font-size: 0.9rem;
             }
             .skill-bp2 {
                 display: inline-block;
@@ -911,7 +925,7 @@
                                 </div>
                                 <div class="text-center">
                                     <div id="styleDot"></div>
-                                    <div class="small bg-item" style="position: relative; top:-25px; padding: 5px 15px;">
+                                    <div class="small bg-item text-nowrap" style="position: relative; top:-25px; padding: 5px 15px;">
                                         <span id="SERIES"></span> / <span id="GENDER"></span>
                                     </div>                                    
                                 </div>
@@ -981,7 +995,7 @@
                         <div class="col-12 col-lg-7 bg-black-frame width-max-nobackground" style="padding:20px 10px;">
                             <section class="bg-simple width-max" style="margin-bottom:10px">
                                 <div class="width-100" id="skillList"></div>
-                                <table class="width-100 d-none" id="SKILL_TEMPLATE">
+                                <table class="width-100 d-none skill-template-table" id="SKILL_TEMPLATE">
                                     <tr>
                                         <td rowspan=2 class="weaponIconTd text-center SKILL_ICON" style="vertical-align: top;"></td>
                                         <td class="text-left d-relative" style="line-height: 20px; padding-left: 5px;">
@@ -1006,12 +1020,16 @@
                                     </tr>
                                     <tr style="line-height: 12px;">
                                         <td>
-                                            <div class="text-nowrap SKILL_FLAVOR skill-option" style="color:white"></div>
+                                            <div class="text-nowrap SKILL_FLAVOR skill-option"></div>
                                         </td>
                                     </tr>
-                                    <tr style="line-height: 15px;">
+                                    <tr>
                                         <td colspan="4">
-                                            <div class="skill-text"></div>
+                                            <div class="skill-text">
+                                                <div class="skill-text1"></div>
+                                                <hr class="skill-text-added d-none" style="margin: 0.2rem 0;"></span>
+                                                <div class="skill-text2"></div>
+                                            </div>
                                         </td>
                                     </tr>
                                 </table>
@@ -1026,7 +1044,11 @@
                                                 <td class="AB_ICON icon-skill-md" style="vertical-align: top; padding-top: 10px;"></td>
                                                 <td style="padding: 5px;">
                                                     <div class="ab-name"></div>
-                                                    <div class="ab-flover small"></div>
+                                                    <div class="ab-flover">
+                                                        <span class="flover"></span>
+                                                        <hr class="skill-text-added d-none" style="margin: 0.2rem 0;"></span>
+                                                        <span class="option"></span>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         </tfoot>
@@ -1127,7 +1149,7 @@
                             <span class="shadow-blue" style="color:white">単体火力/全体火力とは</span>　全力オート平均ダメージから自動算出。偏差値50を2.5として評価しています<br>
                             <span class="shadow-blue" style="color:white">周回性能とは</span>　引率としての周回を効率よく回ることができるか。<br>
                             継続して全体攻撃ができること、多属性でResistされにくいことが評価されます<br>
-                            <span class="shadow-blue" style="color:white">汎用性とは</span>　周回、ボス戦、ツヴァイク、R杯など様々なシーンに対応可能か<br>
+                            <span class="shadow-blue" style="color:white">汎用性とは</span>　周回、高難度、決戦島、幻闘場など様々なシーンに対応可能か<br>
                             <span class="shadow-blue" style="color:white">唯一性とは</span>　他のスタイルでは代用がきかないものを持っているか<br>
                             例：ブーケや海の主の娘の全ステデバフ、聖王の全体複数ステバフなど
                         </div>
