@@ -180,22 +180,32 @@
                             </div>
                         </div>
                         -->
-                        <div class="col-12">
-                            <div class="text-center label-text-small width-100">BP 状態</div>
-                            BP回復の特殊状態を指定<br>
+                        <div class="col-12 col-sm-6">
+                            <div class="text-center label-text-small width-100">特殊 状態</div>
+                            BP回復など特殊状態を指定<br>
                             <table class="width-100 text-nowrap">
                                 <tr>
                                     <td style="line-height: 1.2rem;">ﾊﾞﾄﾙ開始時<span class="fuchidori-blue">BP+1</span></td>
                                     <td><button style="margin-bottom: 10px;" class="width-100 icon_btn_off optionButton" data-on="0" data-name="special_bp"
                                             data-label="anya">ﾏｽﾊﾟﾜｰﾁｬｰｼﾞI <i class="TOGGLE fas fa-toggle-off"></i></button></td>
                                 </tr>
+                            </table>                            
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div class="text-center label-text-small width-100">陣形 選択</div>
+                            <table class="width-100 text-nowrap">
                                 <tr>
                                     <td style="line-height: 1.2rem;">ターン終了時<span class="fuchidori-blue">BP+1</span><br>常時 腕体速知+50%</td>
                                     <td><button style="margin-bottom: 10px;" class="width-100 icon_btn_off optionButton" data-on="0" data-name="special_bp"
-                                            data-label="ryujin">龍陣・改　<i class="TOGGLE fas fa-toggle-off"></i></button></td>
+                                            data-label="ryujin" id="btn_ryujin">龍陣・改　<i class="TOGGLE fas fa-toggle-off"></i></button></td>
                                 </tr>
+                                <tr>
+                                    <td style="line-height: 1.2rem;">直接攻撃<span class="fuchidori-blue">+75%</span></td>
+                                    <td><button style="margin-bottom: 10px;" class="width-100 icon_btn_off optionButton" data-on="0" data-name="special_bp"
+                                            data-label="otoko" id="btn_otoko">漢街道　<i class="TOGGLE fas fa-toggle-off"></i></button></td>
+                                </tr>                                
                             </table>                            
-                        </div>                        
+                        </div>
                         <div class="col-12 col-md-6">                   
                             <div class="text-center label-text-small width-100">範囲攻撃 評価</div>
                             範囲攻撃ダメージを<br class="hidden spBlock">下記の敵数分で再計算<br>
