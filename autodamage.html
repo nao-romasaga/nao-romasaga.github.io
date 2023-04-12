@@ -128,23 +128,7 @@
             <span class="title-text d-none"></span>
             <p class="text-right opacity"><small>バグ発見、ご要望は <a href="https://peing.net/ja/nao_romasaga_rs"
                         target="new">質問箱</a>まで</small></p>
-            <div id="firebaseui-auth-container" style="margin-bottom:10px;"></div>
-            <br>
-            <div class="width-100 card">
-                <!--
-                <div id="howtohead" onclick="" class="card-header bg-primary" style="color:white; font-size:20px;"><i
-                        class="fas fa-question-circle"></i> 表示内容の読み方 (<span class="hidden pcBlock">タップで展開 </span><i
-                        class="fas fa-sort"></i>)</div>
-                -->
-                <div id="howtobody" class="card-body" style="padding:0px 5px;">
-                    <div class="d-md-none"><img src="/img/howto_sp.png" style="width:100%"></div>
-                    <div class="d-none d-md-block d-lg-none"><img src="/img/howto_ipad.png" style="width:100%"></div>
-                    <div class="d-none d-lg-block"><img src="/img/howto_pc.png" style="width:100%"></div>
-                    <br>
-                    スマートフォン、ipad、パソコンなど画面の大きさによって表示される内容は異なります
-                </div>
-            </div>
-
+            <div id="firebaseui-auth-container" style="margin-bottom:10px;"></div>            
             <div class="width-100 card">
                 <div id="jokenhead" onclick="" class="card-header bg-warning" style="color:black; font-size:20px;"><i
                         class="fas fa-question-circle"></i> ダメージ計測条件 (<span class="hidden pcBlock">タップで展開 </span><i
@@ -182,12 +166,16 @@
                         -->
                         <div class="col-12 col-sm-6">
                             <div class="text-center label-text-small width-100">特殊 状態</div>
-                            BP回復など特殊状態を指定<br>
                             <table class="width-100 text-nowrap">
                                 <tr>
-                                    <td style="line-height: 1.2rem;">ﾊﾞﾄﾙ開始時<span class="fuchidori-blue">BP+1</span></td>
+                                    <td style="line-height: 1.2rem;">ﾊﾞﾄﾙ開始時 <span class="fuchidori-blue">BP+1</span></td>
                                     <td><button style="margin-bottom: 10px;" class="width-100 icon_btn_off optionButton" data-on="0" data-name="special_bp"
-                                            data-label="anya">ﾏｽﾊﾟﾜｰﾁｬｰｼﾞI <i class="TOGGLE fas fa-toggle-off"></i></button></td>
+                                            data-label="anya" id="btn_anya">ﾏｽﾊﾟﾜｰﾁｬｰｼﾞI <i class="TOGGLE fas fa-toggle-off"></i></button></td>
+                                </tr>
+                                <tr>
+                                    <td style="line-height: 1.2rem;">1-4T目 <span class="fuchidori-blue">BP2軽減</span><br>計測ターン 5T固定</td>
+                                    <td><button style="margin-bottom: 10px;" class="width-100 icon_btn_off optionButton" data-on="0" data-name="special_bp"
+                                            data-label="valdo" id="btn_valdo">覇気の一本 <i class="TOGGLE fas fa-toggle-off"></i></button></td>
                                 </tr>
                             </table>                            
                         </div>
@@ -195,12 +183,12 @@
                             <div class="text-center label-text-small width-100">陣形 選択</div>
                             <table class="width-100 text-nowrap">
                                 <tr>
-                                    <td style="line-height: 1.2rem;">ターン終了時<span class="fuchidori-blue">BP+1</span><br>常時 腕体速知+50%</td>
+                                    <td style="line-height: 1.2rem;">ターン終了時 <span class="fuchidori-blue">BP+1</span><br>常時 腕体速知+50%</td>
                                     <td><button style="margin-bottom: 10px;" class="width-100 icon_btn_off optionButton" data-on="0" data-name="special_bp"
                                             data-label="ryujin" id="btn_ryujin">龍陣・改　<i class="TOGGLE fas fa-toggle-off"></i></button></td>
                                 </tr>
                                 <tr>
-                                    <td style="line-height: 1.2rem;">直接攻撃<span class="fuchidori-blue">+75%</span></td>
+                                    <td style="line-height: 1.2rem;">直接攻撃 <span class="fuchidori-blue">+75%</span></td>
                                     <td><button style="margin-bottom: 10px;" class="width-100 icon_btn_off optionButton" data-on="0" data-name="special_bp"
                                             data-label="otoko" id="btn_otoko">漢街道　<i class="TOGGLE fas fa-toggle-off"></i></button></td>
                                 </tr>                                
