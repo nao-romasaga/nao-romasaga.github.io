@@ -58,7 +58,6 @@
     <div class ="haikei">
         <div class="container">
             <h3 class="text-center title-text">陣形 一覧</h3>
-            <span class="title-text d-none"></span>
             <p class="text-right opacity"><small>バグ発見、ご要望は <a href="https://peing.net/ja/nao_romasaga_rs"
                         target="new">質問箱</a>まで</small></p>
             <div id="firebaseui-auth-container" style="margin-bottom:10px;"></div>
@@ -299,8 +298,189 @@
         }        
     </style>
     <script>
-const _0x1ede80=_0x7616;(function(_0x423060,_0x37a7c3){const _0xa0bc3e=_0x7616,_0x7f9821=_0x423060();while(!![]){try{const _0x19c780=-parseInt(_0xa0bc3e(0x197))/0x1+parseInt(_0xa0bc3e(0x188))/0x2+parseInt(_0xa0bc3e(0x1b7))/0x3+-parseInt(_0xa0bc3e(0x196))/0x4*(-parseInt(_0xa0bc3e(0x18f))/0x5)+-parseInt(_0xa0bc3e(0x19c))/0x6+-parseInt(_0xa0bc3e(0x1c9))/0x7*(-parseInt(_0xa0bc3e(0x1c2))/0x8)+parseInt(_0xa0bc3e(0x1b4))/0x9*(-parseInt(_0xa0bc3e(0x18c))/0xa);if(_0x19c780===_0x37a7c3)break;else _0x7f9821['push'](_0x7f9821['shift']());}catch(_0x4f3eb8){_0x7f9821['push'](_0x7f9821['shift']());}}}(_0x1b0d,0x91dad));const ICON_PATH={'-3':'icon_down_3.png','-2':_0x1ede80(0x18a),'-1':_0x1ede80(0x1a1),'0':_0x1ede80(0x193),'1':_0x1ede80(0x1af),'2':_0x1ede80(0x1bf),'3':_0x1ede80(0x1c1)},v=1.3,vL=3.5;let PLUS_COUNT={},MINUS_COUNT={},NOW_FORMATION_DATA=data_FORMATION;function _0x7616(_0x598845,_0x289fe0){const _0x1b0d73=_0x1b0d();return _0x7616=function(_0x761674,_0x41dfa3){_0x761674=_0x761674-0x184;let _0x79cc90=_0x1b0d73[_0x761674];return _0x79cc90;},_0x7616(_0x598845,_0x289fe0);}initFormation();function initFormation(){displayFilteredFormation(data_FORMATION),countFormationAttr(data_FORMATION);}function displayFilteredFormation(_0x223aac){const _0x5858e0=_0x1ede80;$('#F_LIST_AREA')[_0x5858e0(0x1a3)]('');for(let _0x6dd9e0 in _0x223aac){const _0x176bbf=_0x223aac[_0x6dd9e0];let _0x5b8c3b=$('#FORMATION_LIST_TEMPLATE')[_0x5858e0(0x1b9)]()[_0x5858e0(0x1c7)]('id',_0x176bbf['Id'])[_0x5858e0(0x192)](_0x5858e0(0x1ac))[_0x5858e0(0x1c6)]('d-flex');_0x5b8c3b[_0x5858e0(0x1c8)](_0x5858e0(0x185))[_0x5858e0(0x1a3)](_0x176bbf[_0x5858e0(0x184)]),_0x5b8c3b[_0x5858e0(0x1c7)](_0x5858e0(0x18e),_0x6dd9e0);for(let _0x462da1 in _0x176bbf[_0x5858e0(0x18d)]){const _0x5b8e98=_0x176bbf['Pos'][_0x462da1];_0x5b8c3b[_0x5858e0(0x1c8)](_0x5858e0(0x1ae)+(Number(_0x462da1)+0x1))['attr'](_0x5858e0(0x199),_0x5858e0(0x1be)+(Number(_0x5b8e98['y'])*v-0x5)+_0x5858e0(0x191)+(Number(_0x5b8e98['x'])*v+0x3)+'px;');}_0x5b8c3b['attr'](_0x5858e0(0x1c4),_0x176bbf['plus']),_0x5b8c3b['attr']('data-minus',_0x176bbf['minus']),$(_0x5858e0(0x1a4))['append'](_0x5b8c3b);}}function countFormationAttr(_0x1af0fa){const _0xc92d73=_0x1ede80;PLUS_COUNT={},MINUS_COUNT={};for(let _0x3fa6f7 in _0x1af0fa){const _0x386089=_0x1af0fa[_0x3fa6f7];for(let _0x326725 of(_0x386089[_0xc92d73(0x1c0)]||'')['split']('/')){if(_0x326725=='')continue;typeof PLUS_COUNT[_0x326725]=='undefined'&&(PLUS_COUNT[_0x326725]=0x0),PLUS_COUNT[_0x326725]++;}for(let _0x500fe4 of(_0x386089[_0xc92d73(0x1b0)]||'')[_0xc92d73(0x190)]('/')){if(_0x500fe4=='')continue;typeof MINUS_COUNT[_0x500fe4]=='undefined'&&(MINUS_COUNT[_0x500fe4]=0x0),MINUS_COUNT[_0x500fe4]++;}}for(let _0x2ee8bf of PARAM_KEY){$(_0xc92d73(0x198)+_0x2ee8bf)[_0xc92d73(0x1a3)](PLUS_COUNT[_0x2ee8bf]||0x0)[_0xc92d73(0x1c6)](_0xc92d73(0x1ab)),$(_0xc92d73(0x198)+_0x2ee8bf)[_0xc92d73(0x1a3)]()!='0'&&$(_0xc92d73(0x198)+_0x2ee8bf)[_0xc92d73(0x192)](_0xc92d73(0x1ab)),$('#count_minus_'+_0x2ee8bf)['html'](MINUS_COUNT[_0x2ee8bf]||0x0)['addClass']('zero'),$(_0xc92d73(0x1b8)+_0x2ee8bf)['html']()!='0'&&$(_0xc92d73(0x1b8)+_0x2ee8bf)['removeClass'](_0xc92d73(0x1ab));}}let plus_filter=[],minus_filter=[];$(document)['on'](_0x1ede80(0x1ba),'._FILTER',function(){const _0xb92eca=_0x1ede80,_0x19862e=$(this)[_0xb92eca(0x1c7)](_0xb92eca(0x18e)),_0x24b248=!$(this)[_0xb92eca(0x19b)](_0xb92eca(0x1b6));$(this)[_0xb92eca(0x1b3)]('filterActive'),_filterCreate(_0x19862e,_0x24b248);let _0x258bc7=[];if(plus_filter[_0xb92eca(0x1b2)]+minus_filter[_0xb92eca(0x1b2)]==0x0)_0x258bc7=data_FORMATION;else for(let _0x54ed96 in data_FORMATION){const _0x33699e=data_FORMATION[_0x54ed96];let _0x457a01=(_0x33699e[_0xb92eca(0x1c0)]??'')[_0xb92eca(0x190)]('/')[_0xb92eca(0x19d)](_0x57f6af=>plus_filter[_0xb92eca(0x1a5)](_0x57f6af)>-0x1),_0x2544ef=(_0x33699e[_0xb92eca(0x1b0)]??'')[_0xb92eca(0x190)]('/')['filter'](_0x5def2f=>minus_filter[_0xb92eca(0x1a5)](_0x5def2f)>-0x1);_0x457a01[_0xb92eca(0x1b2)]==plus_filter['length']&&_0x2544ef[_0xb92eca(0x1b2)]==minus_filter[_0xb92eca(0x1b2)]&&_0x258bc7[_0xb92eca(0x1a8)](_0x33699e);}NOW_FORMATION_DATA=_0x258bc7,displayFilteredFormation(_0x258bc7),countFormationAttr(_0x258bc7);}),$(document)['on'](_0x1ede80(0x1ba),_0x1ede80(0x195),function(){const _0x370d0d=_0x1ede80,_0x3ccb82=$(this)[_0x370d0d(0x1c7)]('data-id'),_0x1f3b42=NOW_FORMATION_DATA[_0x3ccb82];changeFormationInfo(_0x1f3b42);});function changeFormationInfo(_0x25c984){const _0x3ae2e0=_0x1ede80;$('.formation-name')[_0x3ae2e0(0x1a3)](_0x25c984[_0x3ae2e0(0x184)]),$('.formation-flover')[_0x3ae2e0(0x1a3)](_0x25c984[_0x3ae2e0(0x1bb)]),$(_0x3ae2e0(0x194))[_0x3ae2e0(0x1a3)]('');let _0x1b6d33=[];for(i in _0x25c984[_0x3ae2e0(0x18d)]){let _0x502eb0=_0x25c984[_0x3ae2e0(0x18d)][i],_0x122a7e=data_FORMATION_BONUS[_0x502eb0['bonusId']];_0x1b6d33[_0x3ae2e0(0x1a8)](Number(_0x122a7e['HitRate']??0x0)*0x1f4+0x7d0);}const _0x45282d=_0x1b6d33[_0x3ae2e0(0x187)](function(_0x5e5950,_0x20933d){return _0x5e5950+_0x20933d;},0x0);for(i in _0x25c984['Pos']){let _0x1bedf7=_0x25c984[_0x3ae2e0(0x18d)][i];$(_0x3ae2e0(0x19f))[_0x3ae2e0(0x1c8)](_0x3ae2e0(0x1ae)+(Number(i)+0x1))[_0x3ae2e0(0x1c7)](_0x3ae2e0(0x199),_0x3ae2e0(0x1be)+(Number(_0x1bedf7['y'])*vL-0x12)+_0x3ae2e0(0x191)+(Number(_0x1bedf7['x'])*vL+0x0)+_0x3ae2e0(0x1a2));let _0x38280e=$(_0x3ae2e0(0x19a))[_0x3ae2e0(0x1b9)]()['attr']('id','')[_0x3ae2e0(0x192)](_0x3ae2e0(0x1ac)),_0x28b897=data_FORMATION_BONUS[_0x1bedf7[_0x3ae2e0(0x186)]];_0x38280e[_0x3ae2e0(0x1c8)](_0x3ae2e0(0x1a0))['html'](Number(i)+0x1);for(key of PARAM_KEY){if(_0x28b897[key]){let _0x941ca6=Number(_0x28b897[key]),_0x2f369f=_0x941ca6>0x0?'fuchidori-blue':_0x3ae2e0(0x18b);_0x38280e[_0x3ae2e0(0x1c8)]('.'+key)[_0x3ae2e0(0x1c6)](_0x2f369f)[_0x3ae2e0(0x1a3)](_0x941ca6);}}_0x38280e[_0x3ae2e0(0x1c8)](_0x3ae2e0(0x1a0))[_0x3ae2e0(0x1a3)](Number(i)+0x1);const _0x24b9c2=data_FORMATION_ABILITY[_0x28b897['AbilityId']];typeof _0x24b9c2!='undefined'&&(_0x38280e[_0x3ae2e0(0x1c8)]('.ATK')[_0x3ae2e0(0x1a3)](_0x24b9c2['Atk']?_0x24b9c2[_0x3ae2e0(0x1bd)]+'%':''),_0x38280e[_0x3ae2e0(0x1c8)](_0x3ae2e0(0x189))['html'](_0x24b9c2['Def']?_0x24b9c2['Def']+'%':''),_0x38280e[_0x3ae2e0(0x1c8)]('.ACT')[_0x3ae2e0(0x1a3)](_0x24b9c2[_0x3ae2e0(0x1c3)]?'Qs:'+_0x24b9c2[_0x3ae2e0(0x1c3)]:''),_0x38280e['find'](_0x3ae2e0(0x1bc))[_0x3ae2e0(0x1a3)](_0x24b9c2[_0x3ae2e0(0x184)]??''));let _0x4a9d3e=getImgPath(_0x3ae2e0(0x1aa)+ICON_PATH[_0x28b897[_0x3ae2e0(0x1c5)]??0x0]),_0x3ac67a=(_0x28b897[_0x3ae2e0(0x1c5)]??0x0)==0x0?_0x3ae2e0(0x1ad):'';_0x38280e[_0x3ae2e0(0x1c8)](_0x3ae2e0(0x1b1))['html'](_0x3ae2e0(0x19e)+_0x3ac67a+_0x3ae2e0(0x1ca)+_0x4a9d3e+_0x3ae2e0(0x1b5)+Math[_0x3ae2e0(0x1a6)](_0x1b6d33[i]/_0x45282d*0x64)+'%'),$('#FORMATION_INFO_BODY')['append'](_0x38280e);}}function _filterCreate(_0x2862bc,_0x26a937){const _0x24a712=_0x1ede80;if(_0x2862bc[_0x24a712(0x1a5)]('plus_')>-0x1){let _0x4e07fc=_0x2862bc['replace'](_0x24a712(0x1a9),'');_0x26a937?plus_filter[_0x24a712(0x1a8)](_0x4e07fc):plus_filter=plus_filter[_0x24a712(0x19d)](_0x5b1652=>_0x5b1652!=_0x4e07fc);}else{let _0x523861=_0x2862bc['replace'](_0x24a712(0x1a7),'');_0x26a937?minus_filter[_0x24a712(0x1a8)](_0x523861):minus_filter=minus_filter[_0x24a712(0x19d)](_0x2c66c4=>_0x2c66c4!=_0x523861);}}function _0x1b0d(){const _0x4fef19=['?v=1\x22>\x20','filterActive','2691252ZTdjRe','#count_minus_','clone','click','FlavorText','.ABILITY','Atk','top:\x20','icon_up_2.png','plus','icon_up_3.png','16syZltS','Act','data-plus','HitRate','addClass','attr','find','3191377LetIxq','\x22\x20src=\x22','Name','.f-name','bonusId','reduce','1574050ubJEps','.DEF','icon_down_2.png','shadow-red\x20resist-minus','2030YwARPd','Pos','data-id','42390qiGqYc','split','px;\x20left:\x20','removeClass','icon_ind_1.png','#FORMATION_INFO_BODY','.FORMATION_ICON','356nILGMG','287208sTzzwD','#count_','style','#FORMATION_ROW_TEMPLATE','hasClass','7040058YIyolX','filter','<img\x20class=\x22hate-icon\x20','.formation-area-large','.No','icon_down_1.png','px;','html','#F_LIST_AREA','indexOf','floor','minus_','push','plus_','icon/','zero','d-none','ind_0','.pos','icon_up_1.png','minus','.HATE','length','toggleClass','57303aLvsvV'];_0x1b0d=function(){return _0x4fef19;};return _0x1b0d();}
+        const ICON_PATH = {
+            "-3": "icon_down_3.png",
+            "-2": "icon_down_2.png",
+            "-1": "icon_down_1.png",
+            "0" : "icon_ind_1.png",
+            "1": "icon_up_1.png",
+            "2": "icon_up_2.png",
+            "3": "icon_up_3.png",
+        }
+
+        const v = 1.3;
+        const vL = 3.5;
+        let PLUS_COUNT = {};
+        let MINUS_COUNT = {};
+        let NOW_FORMATION_DATA = data_FORMATION;
+
+        initFormation();
+
+        function initFormation() {
+            
+            displayFilteredFormation(data_FORMATION);
+            countFormationAttr(data_FORMATION);
+        }
+        function displayFilteredFormation(formations){
+            $("#F_LIST_AREA").html("");
+            for(let i in formations){
+                const formation = formations[i];
+                let formationBox = $("#FORMATION_LIST_TEMPLATE").clone().attr("id",formation['Id']).removeClass("d-none").addClass("d-flex");
+                formationBox.find(".f-name").html(formation['Name']);
+                formationBox.attr('data-id', i);
+
+                for(let j in formation['Pos']){
+                    const pos = formation['Pos'][j];
+                    formationBox.find(".pos"+(Number(j)+1)).attr('style', `top: ${Number(pos['y']) * v - 5}px; left: ${Number(pos['x']) * v + 3}px;`);
+                }
+                formationBox.attr('data-plus', formation['plus']);
+                formationBox.attr('data-minus', formation['minus']);
+                $("#F_LIST_AREA").append(formationBox);
+            }
+        }
+
+        function countFormationAttr(formationList) {
+            PLUS_COUNT = {};
+            MINUS_COUNT = {};            
+            for(let i in formationList){
+                const formation = formationList[i];
+                for(let p of (formation['plus'] || "").split("/")) {
+                    if(p == "") continue;
+                    if(typeof PLUS_COUNT[p] == "undefined") {
+                        PLUS_COUNT[p] = 0;
+                    }
+                    PLUS_COUNT[p]++;
+                }
+                for(let p of (formation['minus'] || "").split("/")) {
+                    if(p == "") continue;
+                    if(typeof MINUS_COUNT[p] == "undefined") {
+                        MINUS_COUNT[p] = 0;
+                    }
+                    MINUS_COUNT[p]++;
+                }
+            }
+            for(let key of PARAM_KEY) {
+                $("#count_" + key).html(PLUS_COUNT[key] || 0).addClass("zero");
+                if($("#count_" + key).html() != "0"){
+                    $("#count_" + key).removeClass("zero");
+                }
+                $("#count_minus_" + key).html(MINUS_COUNT[key] || 0).addClass("zero");
+                if($("#count_minus_" + key).html() != "0"){
+                    $("#count_minus_" + key).removeClass("zero");
+                }
+            }
+        }
+
+        let plus_filter = [];
+        let minus_filter = [];
+        $(document).on('click', '._FILTER', function () {
+            const id = $(this).attr('data-id');
+            const isAddFlag = !$(this).hasClass("filterActive");
+            $(this).toggleClass("filterActive");
+            // filter配列にデータを入れたり出したり
+            _filterCreate(id, isAddFlag);
+        
+            let result = [];
+            if((plus_filter.length + minus_filter.length) == 0) {
+                result = data_FORMATION;
+            } else {
+                for(let i in data_FORMATION){
+                    const formation = data_FORMATION[i];
+                    let attr1 = (formation['plus'] ?? "").split("/").filter(
+                        x => plus_filter.indexOf(x) > -1
+                    );
+                    let attr2 = (formation['minus'] ?? "").split("/").filter(
+                        x => minus_filter.indexOf(x) > -1
+                    );
+                    if(attr1.length == plus_filter.length
+                    && attr2.length == minus_filter.length) {
+                        result.push(formation);
+                    }                    
+                }
+            }
+            NOW_FORMATION_DATA = result ;
+            displayFilteredFormation(result);
+            countFormationAttr(result);
+        });
+        
+
+        $(document).on('click', '.FORMATION_ICON', function () {
+            const id = $(this).attr('data-id');
+            const formation = NOW_FORMATION_DATA[id];
+            changeFormationInfo(formation);
+        });
+
+        function changeFormationInfo(data){
+            $(".formation-name").html(data['Name']);
+            $(".formation-flover").html(data['FlavorText']);
+            $("#FORMATION_INFO_BODY").html("");
+            let hateList = [];
+            for(i in data['Pos']) {
+                let p = data['Pos'][i];
+                let bonus = data_FORMATION_BONUS[p['bonusId']];                
+                hateList.push((Number(bonus['HitRate'] ?? 0) ) * 500 + 2000 );
+            }
+            const hateTotal = hateList.reduce(function(sum, element){
+            return sum + element;
+            }, 0);
+            
+            for(i in data['Pos']) {
+                let p = data['Pos'][i];
+                $(".formation-area-large").find(".pos"+(Number(i)+1)).attr('style', `top: ${Number(p['y']) * vL - 18}px; left: ${Number(p['x']) * vL + 0        }px;`);
+
+                let $tr = $("#FORMATION_ROW_TEMPLATE").clone().attr("id",'').removeClass("d-none");
+                let bonus = data_FORMATION_BONUS[p['bonusId']];
+                $tr.find(`.No`).html(Number(i)+1);
+                for(key of PARAM_KEY) {
+                    if(bonus[key]) {
+                        let v = Number(bonus[key]);
+                        let clz = (v > 0) ? "fuchidori-blue" : "shadow-red resist-minus";
+                        $tr.find(`.${key}`).addClass(clz).html(v);
+                    }
+                }
+                $tr.find(`.No`).html(Number(i)+1);
+                const ability = data_FORMATION_ABILITY[bonus['AbilityId']];
+                if(typeof ability != "undefined") {
+                    $tr.find(`.ATK`).html(ability['Atk'] ? ability['Atk'] +"%" : "");
+                    $tr.find(`.DEF`).html(ability['Def'] ? ability['Def'] +"%" :  "");
+                    $tr.find(`.ACT`).html(ability['Act'] ? "Qs:"+ability['Act'] :  "");
+                    $tr.find(`.ABILITY`).html(ability['Name'] ?? "");
+                }
+
+                let imgPath = getImgPath("icon/"+ICON_PATH[bonus['HitRate'] ?? 0]);
+                let imgClass = (bonus['HitRate'] ?? 0) == 0 ? "ind_0" : "";
+                $tr.find(`.HATE`).html(`<img class="hate-icon ${imgClass}" src="${imgPath}?v=1"> ${Math.floor((hateList[i] / hateTotal) * 100)}%`);
+                
+                $("#FORMATION_INFO_BODY").append($tr);
+            }
+        }
+
+        function _filterCreate(id, isAddFlag) {
+            if(id.indexOf("plus_") > -1) {
+                let target = id.replace("plus_","");
+                if(isAddFlag) {
+                    plus_filter.push(target);
+                } else {
+                    plus_filter = plus_filter.filter(x => x != target);
+                }
+            } else {
+                let target = id.replace("minus_","");
+                if(isAddFlag) {
+                    minus_filter.push(target);
+                } else {
+                    minus_filter = minus_filter.filter(x => x != target);
+                }
+            }            
+        }        
     </script>
     <script type="text/javascript" src="https://romasagatool.com/blog/get_the_archives.php?limit=30&callback=rssCallback"></script>
 </body>
 </html>
+
+陣形一覧ページを作成しました
+知力が上がる陣形ってなんだっけ？とか
+パワレ改の軽減率っていくつだったっけ？とか調べる時にご利用ください
+
+なんちゃって被弾率もあります
+https://nao-romasaga.github.io/formation.html
+#ロマサガRS
