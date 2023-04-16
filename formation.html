@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="./js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="./js/jquery.ui.touch-punch.js"></script>
+    <script src="./js/dataload.js"></script>
+    <script>
+        // require dataload.js
+        dataload([
+            "data_FORMATION",
+        ], false);
+    </script>    
+
+    <!-- Global site tag (gtag.js) - Google Analytics         -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138966739-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-138966739-1');
+    </script>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <meta charset="utf-8">
+    <title>【ロマサガRS】陣形一覧</title>
+    <meta property="og:title" content="【ロマサガRS】陣形一覧" />
+    <meta property="og:url" content="https://nao-romasaga.github.io/formation.html" />
+    <meta property="og:description" content="ロマサガRSの陣形一覧です" />
+    <meta name="description" content="ロマサガRSの陣形一覧です。攻略の際にご利用ください。【ロマンシングサガ リユニバース】" />
+    <!--<meta property="og:image" content="https://nao-romasaga.github.io/img/twitter_card_autodamage.png" />-->
+    <meta property="og:site_name" content="ロマサガRS便利ツール" />
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="ja_JP" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@nao_romasaga_rs" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap/bootstrap.min.css">
+    <script src="./js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/style2.css">
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/3.5.2/firebase-ui-auth__ja.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+    <script src="./js/Firebase.js"></script>
+    <script src="./js/utils2.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+    <style>
+    </style>
+</head>
+
+<body>
+    <div class ="haikei">
+        <div class="container">
+            <h3 class="text-center title-text">陣形 一覧</h3>
+            <span class="title-text d-none"></span>
+            <p class="text-right opacity"><small>バグ発見、ご要望は <a href="https://peing.net/ja/nao_romasaga_rs"
+                        target="new">質問箱</a>まで</small></p>
+            <div id="firebaseui-auth-container" style="margin-bottom:10px;"></div>
+
+            <div class="bg-black-window">
+                <div class="d-flex flex-wrap" style="justify-content: space-around; align-items: center;">
+                    <div style="width:200px;">
+                        <div class="formation-area-large">
+                            <img src="https://romasagatool.com/img/bg_formation.png" class="formation-img">
+                            <span class="f-pos f-pos-large pos1">❶</span>
+                            <span class="f-pos f-pos-large pos2">❷</span>
+                            <span class="f-pos f-pos-large pos3">❸</span>
+                            <span class="f-pos f-pos-large pos4">❹</span>
+                            <span class="f-pos f-pos-large pos5">❺</span>
+                        </div>
+                    </div>
+                    <div class=" " style="padding: 0px 25px; min-width:400px; max-width: 70%;">
+                        <div class="formation-name fuchidori-white bg-item text-center width-100">陣形名</div>
+                        <div style="overflow-x: scroll; padding-bottom: 30px;">
+                            <table border="1" class="text-nowrap width-100">
+                                <thead>
+                                    <tr class="odd-row" style="line-height: 1rem;">
+                                        <td>No</td>
+                                        <td class="param-header">腕</td>
+                                        <td class="param-header">体</td>
+                                        <td class="param-header">器</td>
+                                        <td class="param-header">速</td>
+                                        <td class="param-header">知</td>
+                                        <td class="param-header">精</td>
+                                        <td class="param-header">愛</td>
+                                        <td class="param-header">魅</td>
+                                        <td class="param-header">攻撃</td>
+                                        <td class="param-header">防御</td>
+                                        <td class="param-header">行動</td>
+                                        <td class="param-header" style="line-height: 1rem;">被弾<br>(※)</td>
+                                        <td>アビリティ</td>
+                                    </tr>
+                                </thead>
+                                <tbody id="FORMATION_INFO_BODY"></tbody>
+                                <tfoot>
+                                    <tr id="FORMATION_ROW_TEMPLATE" class="d-none text-right odd-row" style="    border: 1px solid darkkhaki;">
+                                        <td class="No"></td>
+                                        <td class="STR"></td>
+                                        <td class="VIT"></td>
+                                        <td class="DEX"></td>
+                                        <td class="AGI"></td>
+                                        <td class="INT"></td>
+                                        <td class="MND"></td>
+                                        <td class="AI"></td>
+                                        <td class="MI"></td>
+                                        <td class="ATK"></td>
+                                        <td class="DEF"></td>
+                                        <td class="ACT"></td>
+                                        <td>
+                                            <div class="HATE d-flex" style="align-items: center; justify-content: space-around;"></div>
+                                        </td>
+                                        <td class="ABILITY text-left"></td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                            ※: 狙われやすさから概算。実際の被弾率とは異なります
+                        </div>
+                    </div>
+                    <div class="width-100">
+                        <div class="formation-flover">陣形説明文</div>
+                    </div>
+                </div>
+            </div>
+            <div class="style-bgcolor" style="padding: 20px 5px;">
+                <div class="subtitle-long">ステータス上昇　</div>
+                <div class="d-flex" style="justify-content: space-evenly;">
+                    <div class="d-flex flex-column filter-button yubi _FILTER" data-id="plus_STR">
+                        <span class="withLabel icon_mini_zokusei icon_buff_str"></span>
+                        <span class="text-center text-nowrap width-100 label-area" id="count_STR"></span>
+                    </div>
+                    <div class="d-flex flex-column filter-button yubi _FILTER" data-id="plus_VIT">
+                        <span class="withLabel icon_mini_zokusei icon_buff_vit"></span>
+                        <span class="text-center text-nowrap width-100 label-area" id="count_VIT"></span>
+                    </div>                    
+                    <div class="d-flex flex-column filter-button yubi _FILTER" data-id="plus_DEX">
+                        <span class="withLabel icon_mini_zokusei icon_buff_dex"></span>
+                        <span class="text-center text-nowrap width-100 label-area" id="count_DEX"></span>
+                    </div>                    
+                    <div class="d-flex flex-column filter-button yubi _FILTER" data-id="plus_AGI">
+                        <span class="withLabel icon_mini_zokusei icon_buff_agi"></span>
+                        <span class="text-center text-nowrap width-100 label-area" id="count_AGI"></span>
+                    </div>                    
+                    <div class="d-flex flex-column filter-button yubi _FILTER" data-id="plus_INT">
+                        <span class="withLabel icon_mini_zokusei icon_buff_int"></span>
+                        <span class="text-center text-nowrap width-100 label-area" id="count_INT"></span>
+                    </div>                    
+                    <div class="d-flex flex-column filter-button yubi _FILTER" data-id="plus_MND">
+                        <span class="withLabel icon_mini_zokusei icon_buff_mnd"></span>
+                        <span class="text-center text-nowrap width-100 label-area" id="count_MND"></span>
+                    </div>                    
+                    <div class="d-flex flex-column filter-button yubi _FILTER" data-id="plus_AI">
+                        <span class="withLabel icon_mini_zokusei icon_buff_ai"></span>
+                        <span class="text-center text-nowrap width-100 label-area" id="count_AI"></span>
+                    </div>                    
+                    <div class="d-flex flex-column filter-button yubi _FILTER" data-id="plus_MI">
+                        <span class="withLabel icon_mini_zokusei icon_buff_mi"></span>
+                        <span class="text-center text-nowrap width-100 label-area" id="count_MI"></span>
+                    </div>
+                </div>
+                <div class="subtitle-long">ステータス下降　</div>
+                <div class="d-flex" style="justify-content: space-evenly;">
+                    <div class="d-flex flex-column filter-button yubi _FILTER" data-id="minus_STR">
+                        <span class="withLabel icon_mini_zokusei icon_debuff_str"></span>
+                        <span class="text-center text-nowrap width-100 label-area" id="count_minus_STR"></span>
+                    </div>
+                    <div class="d-flex flex-column filter-button yubi _FILTER" data-id="minus_VIT">
+                        <span class="withLabel icon_mini_zokusei icon_debuff_vit"></span>
+                        <span class="text-center text-nowrap width-100 label-area" id="count_minus_VIT"></span>
+                    </div>                    
+                    <div class="d-flex flex-column filter-button yubi _FILTER" data-id="minus_DEX">
+                        <span class="withLabel icon_mini_zokusei icon_debuff_dex"></span>
+                        <span class="text-center text-nowrap width-100 label-area" id="count_minus_DEX"></span>
+                    </div>                    
+                    <div class="d-flex flex-column filter-button yubi _FILTER" data-id="minus_AGI">
+                        <span class="withLabel icon_mini_zokusei icon_debuff_agi"></span>
+                        <span class="text-center text-nowrap width-100 label-area" id="count_minus_AGI"></span>
+                    </div>                    
+                    <div class="d-flex flex-column filter-button yubi _FILTER" data-id="minus_INT">
+                        <span class="withLabel icon_mini_zokusei icon_debuff_int"></span>
+                        <span class="text-center text-nowrap width-100 label-area" id="count_minus_INT"></span>
+                    </div>                    
+                    <div class="d-flex flex-column filter-button yubi _FILTER" data-id="minus_MND">
+                        <span class="withLabel icon_mini_zokusei icon_debuff_mnd"></span>
+                        <span class="text-center text-nowrap width-100 label-area" id="count_minus_MND"></span>
+                    </div>                    
+                    <div class="d-flex flex-column filter-button yubi _FILTER" data-id="minus_AI">
+                        <span class="withLabel icon_mini_zokusei icon_debuff_ai"></span>
+                        <span class="text-center text-nowrap width-100 label-area" id="count_minus_AI"></span>
+                    </div>                    
+                    <div class="d-flex flex-column filter-button yubi _FILTER" data-id="minus_MI">
+                        <span class="withLabel icon_mini_zokusei icon_debuff_mi"></span>
+                        <span class="text-center text-nowrap width-100 label-area" id="count_minus_MI"></span>
+                    </div>
+            </div>
+
+            <div class="" style="padding: 20px 5px;">
+                <div class="subtitle-long">陣形一覧　</div>
+                <div class="d-flex flex-wrap" id="F_LIST_AREA" style="justify-content: center;"></div>
+            </div>
+        </div>
+    </div>
+    <!--テンプレート-->
+    <div class="d-none FORMATION_ICON yubi flex-column" style="align-items: center;" id="FORMATION_LIST_TEMPLATE">
+        <div class="formation-area">
+            <img src="https://romasagatool.com/img/bg_formation.png" class="formation-img">
+            <span class="f-pos pos1">●</span>
+            <span class="f-pos pos2">●</span>
+            <span class="f-pos pos3">●</span>
+            <span class="f-pos pos4">●</span>
+            <span class="f-pos pos5">●</span>
+        </div>
+        <span class="text-center text-nowrap width-100 label-area f-name">フリーファイト</span>
+    </div>
+
+    <style>
+        .flex-column {
+            padding: 0 15px;
+        }
+        .formation-name {
+            font-size: 1.2rem;
+        }
+        .formation-flover {
+            background: black;
+            border: 2px solid gold;
+            border-radius: 8px;
+            margin: 10px;
+            padding: 5px;
+            font-size: 1.2rem;
+        }
+
+        .param-header {
+            text-align: center;
+            padding: 0 10px;
+        }
+        .formation-area-large {
+            position: relative;
+            width: 200px;
+            height: 200px;            
+        }
+        .formation-area {
+            position: relative;
+            width: 80px;
+            height: 80px;
+        }
+        .formation-img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 0;            
+        }
+        .f-pos {
+            z-index: 1;
+            color: #faf0b4;
+            position: absolute;
+            font-size: 13px;
+        }
+        .f-pos-large {
+            font-size: 35px;
+        }
+        .label-area {
+            background-color: rgba(100, 100, 80, 0.8);
+            border-radius: 5px;
+            color: white;
+            overflow-x: hidden;
+            padding: 0 3px;
+        }
+        .f-name {
+            font-size: 0.8rem;
+            width: 75px;
+        }        
+        .hate-icon {
+            width: 30px;
+            height: 30px;
+        }
+        .ind_0 {
+            width: 20px;
+            height: 20px;
+        }
+        .zero {
+            background-color: black !important;
+        }
+        /* 500px以上はこっち */
+        @media screen and (min-width:500px) {
+            .filter-button {
+                padding: 5px 10px;
+            }
+        }
+        /* 1000px以上はこっち */
+        @media screen and (min-width:1000px) {
+            .filter-button {
+                padding: 5px 20px;
+            }
+        }        
+    </style>
+    <script>
+const _0x1ede80=_0x7616;(function(_0x423060,_0x37a7c3){const _0xa0bc3e=_0x7616,_0x7f9821=_0x423060();while(!![]){try{const _0x19c780=-parseInt(_0xa0bc3e(0x197))/0x1+parseInt(_0xa0bc3e(0x188))/0x2+parseInt(_0xa0bc3e(0x1b7))/0x3+-parseInt(_0xa0bc3e(0x196))/0x4*(-parseInt(_0xa0bc3e(0x18f))/0x5)+-parseInt(_0xa0bc3e(0x19c))/0x6+-parseInt(_0xa0bc3e(0x1c9))/0x7*(-parseInt(_0xa0bc3e(0x1c2))/0x8)+parseInt(_0xa0bc3e(0x1b4))/0x9*(-parseInt(_0xa0bc3e(0x18c))/0xa);if(_0x19c780===_0x37a7c3)break;else _0x7f9821['push'](_0x7f9821['shift']());}catch(_0x4f3eb8){_0x7f9821['push'](_0x7f9821['shift']());}}}(_0x1b0d,0x91dad));const ICON_PATH={'-3':'icon_down_3.png','-2':_0x1ede80(0x18a),'-1':_0x1ede80(0x1a1),'0':_0x1ede80(0x193),'1':_0x1ede80(0x1af),'2':_0x1ede80(0x1bf),'3':_0x1ede80(0x1c1)},v=1.3,vL=3.5;let PLUS_COUNT={},MINUS_COUNT={},NOW_FORMATION_DATA=data_FORMATION;function _0x7616(_0x598845,_0x289fe0){const _0x1b0d73=_0x1b0d();return _0x7616=function(_0x761674,_0x41dfa3){_0x761674=_0x761674-0x184;let _0x79cc90=_0x1b0d73[_0x761674];return _0x79cc90;},_0x7616(_0x598845,_0x289fe0);}initFormation();function initFormation(){displayFilteredFormation(data_FORMATION),countFormationAttr(data_FORMATION);}function displayFilteredFormation(_0x223aac){const _0x5858e0=_0x1ede80;$('#F_LIST_AREA')[_0x5858e0(0x1a3)]('');for(let _0x6dd9e0 in _0x223aac){const _0x176bbf=_0x223aac[_0x6dd9e0];let _0x5b8c3b=$('#FORMATION_LIST_TEMPLATE')[_0x5858e0(0x1b9)]()[_0x5858e0(0x1c7)]('id',_0x176bbf['Id'])[_0x5858e0(0x192)](_0x5858e0(0x1ac))[_0x5858e0(0x1c6)]('d-flex');_0x5b8c3b[_0x5858e0(0x1c8)](_0x5858e0(0x185))[_0x5858e0(0x1a3)](_0x176bbf[_0x5858e0(0x184)]),_0x5b8c3b[_0x5858e0(0x1c7)](_0x5858e0(0x18e),_0x6dd9e0);for(let _0x462da1 in _0x176bbf[_0x5858e0(0x18d)]){const _0x5b8e98=_0x176bbf['Pos'][_0x462da1];_0x5b8c3b[_0x5858e0(0x1c8)](_0x5858e0(0x1ae)+(Number(_0x462da1)+0x1))['attr'](_0x5858e0(0x199),_0x5858e0(0x1be)+(Number(_0x5b8e98['y'])*v-0x5)+_0x5858e0(0x191)+(Number(_0x5b8e98['x'])*v+0x3)+'px;');}_0x5b8c3b['attr'](_0x5858e0(0x1c4),_0x176bbf['plus']),_0x5b8c3b['attr']('data-minus',_0x176bbf['minus']),$(_0x5858e0(0x1a4))['append'](_0x5b8c3b);}}function countFormationAttr(_0x1af0fa){const _0xc92d73=_0x1ede80;PLUS_COUNT={},MINUS_COUNT={};for(let _0x3fa6f7 in _0x1af0fa){const _0x386089=_0x1af0fa[_0x3fa6f7];for(let _0x326725 of(_0x386089[_0xc92d73(0x1c0)]||'')['split']('/')){if(_0x326725=='')continue;typeof PLUS_COUNT[_0x326725]=='undefined'&&(PLUS_COUNT[_0x326725]=0x0),PLUS_COUNT[_0x326725]++;}for(let _0x500fe4 of(_0x386089[_0xc92d73(0x1b0)]||'')[_0xc92d73(0x190)]('/')){if(_0x500fe4=='')continue;typeof MINUS_COUNT[_0x500fe4]=='undefined'&&(MINUS_COUNT[_0x500fe4]=0x0),MINUS_COUNT[_0x500fe4]++;}}for(let _0x2ee8bf of PARAM_KEY){$(_0xc92d73(0x198)+_0x2ee8bf)[_0xc92d73(0x1a3)](PLUS_COUNT[_0x2ee8bf]||0x0)[_0xc92d73(0x1c6)](_0xc92d73(0x1ab)),$(_0xc92d73(0x198)+_0x2ee8bf)[_0xc92d73(0x1a3)]()!='0'&&$(_0xc92d73(0x198)+_0x2ee8bf)[_0xc92d73(0x192)](_0xc92d73(0x1ab)),$('#count_minus_'+_0x2ee8bf)['html'](MINUS_COUNT[_0x2ee8bf]||0x0)['addClass']('zero'),$(_0xc92d73(0x1b8)+_0x2ee8bf)['html']()!='0'&&$(_0xc92d73(0x1b8)+_0x2ee8bf)['removeClass'](_0xc92d73(0x1ab));}}let plus_filter=[],minus_filter=[];$(document)['on'](_0x1ede80(0x1ba),'._FILTER',function(){const _0xb92eca=_0x1ede80,_0x19862e=$(this)[_0xb92eca(0x1c7)](_0xb92eca(0x18e)),_0x24b248=!$(this)[_0xb92eca(0x19b)](_0xb92eca(0x1b6));$(this)[_0xb92eca(0x1b3)]('filterActive'),_filterCreate(_0x19862e,_0x24b248);let _0x258bc7=[];if(plus_filter[_0xb92eca(0x1b2)]+minus_filter[_0xb92eca(0x1b2)]==0x0)_0x258bc7=data_FORMATION;else for(let _0x54ed96 in data_FORMATION){const _0x33699e=data_FORMATION[_0x54ed96];let _0x457a01=(_0x33699e[_0xb92eca(0x1c0)]??'')[_0xb92eca(0x190)]('/')[_0xb92eca(0x19d)](_0x57f6af=>plus_filter[_0xb92eca(0x1a5)](_0x57f6af)>-0x1),_0x2544ef=(_0x33699e[_0xb92eca(0x1b0)]??'')[_0xb92eca(0x190)]('/')['filter'](_0x5def2f=>minus_filter[_0xb92eca(0x1a5)](_0x5def2f)>-0x1);_0x457a01[_0xb92eca(0x1b2)]==plus_filter['length']&&_0x2544ef[_0xb92eca(0x1b2)]==minus_filter[_0xb92eca(0x1b2)]&&_0x258bc7[_0xb92eca(0x1a8)](_0x33699e);}NOW_FORMATION_DATA=_0x258bc7,displayFilteredFormation(_0x258bc7),countFormationAttr(_0x258bc7);}),$(document)['on'](_0x1ede80(0x1ba),_0x1ede80(0x195),function(){const _0x370d0d=_0x1ede80,_0x3ccb82=$(this)[_0x370d0d(0x1c7)]('data-id'),_0x1f3b42=NOW_FORMATION_DATA[_0x3ccb82];changeFormationInfo(_0x1f3b42);});function changeFormationInfo(_0x25c984){const _0x3ae2e0=_0x1ede80;$('.formation-name')[_0x3ae2e0(0x1a3)](_0x25c984[_0x3ae2e0(0x184)]),$('.formation-flover')[_0x3ae2e0(0x1a3)](_0x25c984[_0x3ae2e0(0x1bb)]),$(_0x3ae2e0(0x194))[_0x3ae2e0(0x1a3)]('');let _0x1b6d33=[];for(i in _0x25c984[_0x3ae2e0(0x18d)]){let _0x502eb0=_0x25c984[_0x3ae2e0(0x18d)][i],_0x122a7e=data_FORMATION_BONUS[_0x502eb0['bonusId']];_0x1b6d33[_0x3ae2e0(0x1a8)](Number(_0x122a7e['HitRate']??0x0)*0x1f4+0x7d0);}const _0x45282d=_0x1b6d33[_0x3ae2e0(0x187)](function(_0x5e5950,_0x20933d){return _0x5e5950+_0x20933d;},0x0);for(i in _0x25c984['Pos']){let _0x1bedf7=_0x25c984[_0x3ae2e0(0x18d)][i];$(_0x3ae2e0(0x19f))[_0x3ae2e0(0x1c8)](_0x3ae2e0(0x1ae)+(Number(i)+0x1))[_0x3ae2e0(0x1c7)](_0x3ae2e0(0x199),_0x3ae2e0(0x1be)+(Number(_0x1bedf7['y'])*vL-0x12)+_0x3ae2e0(0x191)+(Number(_0x1bedf7['x'])*vL+0x0)+_0x3ae2e0(0x1a2));let _0x38280e=$(_0x3ae2e0(0x19a))[_0x3ae2e0(0x1b9)]()['attr']('id','')[_0x3ae2e0(0x192)](_0x3ae2e0(0x1ac)),_0x28b897=data_FORMATION_BONUS[_0x1bedf7[_0x3ae2e0(0x186)]];_0x38280e[_0x3ae2e0(0x1c8)](_0x3ae2e0(0x1a0))['html'](Number(i)+0x1);for(key of PARAM_KEY){if(_0x28b897[key]){let _0x941ca6=Number(_0x28b897[key]),_0x2f369f=_0x941ca6>0x0?'fuchidori-blue':_0x3ae2e0(0x18b);_0x38280e[_0x3ae2e0(0x1c8)]('.'+key)[_0x3ae2e0(0x1c6)](_0x2f369f)[_0x3ae2e0(0x1a3)](_0x941ca6);}}_0x38280e[_0x3ae2e0(0x1c8)](_0x3ae2e0(0x1a0))[_0x3ae2e0(0x1a3)](Number(i)+0x1);const _0x24b9c2=data_FORMATION_ABILITY[_0x28b897['AbilityId']];typeof _0x24b9c2!='undefined'&&(_0x38280e[_0x3ae2e0(0x1c8)]('.ATK')[_0x3ae2e0(0x1a3)](_0x24b9c2['Atk']?_0x24b9c2[_0x3ae2e0(0x1bd)]+'%':''),_0x38280e[_0x3ae2e0(0x1c8)](_0x3ae2e0(0x189))['html'](_0x24b9c2['Def']?_0x24b9c2['Def']+'%':''),_0x38280e[_0x3ae2e0(0x1c8)]('.ACT')[_0x3ae2e0(0x1a3)](_0x24b9c2[_0x3ae2e0(0x1c3)]?'Qs:'+_0x24b9c2[_0x3ae2e0(0x1c3)]:''),_0x38280e['find'](_0x3ae2e0(0x1bc))[_0x3ae2e0(0x1a3)](_0x24b9c2[_0x3ae2e0(0x184)]??''));let _0x4a9d3e=getImgPath(_0x3ae2e0(0x1aa)+ICON_PATH[_0x28b897[_0x3ae2e0(0x1c5)]??0x0]),_0x3ac67a=(_0x28b897[_0x3ae2e0(0x1c5)]??0x0)==0x0?_0x3ae2e0(0x1ad):'';_0x38280e[_0x3ae2e0(0x1c8)](_0x3ae2e0(0x1b1))['html'](_0x3ae2e0(0x19e)+_0x3ac67a+_0x3ae2e0(0x1ca)+_0x4a9d3e+_0x3ae2e0(0x1b5)+Math[_0x3ae2e0(0x1a6)](_0x1b6d33[i]/_0x45282d*0x64)+'%'),$('#FORMATION_INFO_BODY')['append'](_0x38280e);}}function _filterCreate(_0x2862bc,_0x26a937){const _0x24a712=_0x1ede80;if(_0x2862bc[_0x24a712(0x1a5)]('plus_')>-0x1){let _0x4e07fc=_0x2862bc['replace'](_0x24a712(0x1a9),'');_0x26a937?plus_filter[_0x24a712(0x1a8)](_0x4e07fc):plus_filter=plus_filter[_0x24a712(0x19d)](_0x5b1652=>_0x5b1652!=_0x4e07fc);}else{let _0x523861=_0x2862bc['replace'](_0x24a712(0x1a7),'');_0x26a937?minus_filter[_0x24a712(0x1a8)](_0x523861):minus_filter=minus_filter[_0x24a712(0x19d)](_0x2c66c4=>_0x2c66c4!=_0x523861);}}function _0x1b0d(){const _0x4fef19=['?v=1\x22>\x20','filterActive','2691252ZTdjRe','#count_minus_','clone','click','FlavorText','.ABILITY','Atk','top:\x20','icon_up_2.png','plus','icon_up_3.png','16syZltS','Act','data-plus','HitRate','addClass','attr','find','3191377LetIxq','\x22\x20src=\x22','Name','.f-name','bonusId','reduce','1574050ubJEps','.DEF','icon_down_2.png','shadow-red\x20resist-minus','2030YwARPd','Pos','data-id','42390qiGqYc','split','px;\x20left:\x20','removeClass','icon_ind_1.png','#FORMATION_INFO_BODY','.FORMATION_ICON','356nILGMG','287208sTzzwD','#count_','style','#FORMATION_ROW_TEMPLATE','hasClass','7040058YIyolX','filter','<img\x20class=\x22hate-icon\x20','.formation-area-large','.No','icon_down_1.png','px;','html','#F_LIST_AREA','indexOf','floor','minus_','push','plus_','icon/','zero','d-none','ind_0','.pos','icon_up_1.png','minus','.HATE','length','toggleClass','57303aLvsvV'];_0x1b0d=function(){return _0x4fef19;};return _0x1b0d();}
+    </script>
+    <script type="text/javascript" src="https://romasagatool.com/blog/get_the_archives.php?limit=30&callback=rssCallback"></script>
+</body>
+</html>
