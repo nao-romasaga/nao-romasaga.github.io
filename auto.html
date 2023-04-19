@@ -66,6 +66,9 @@
     <script src="./js/auto.js" async></script>
     <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet" rel="preload" as="style">
     <style>
+        .detail-row td {
+            padding-left: 5px;
+        }
         .party-area {
             display: flex;
             align-items: center;
@@ -880,48 +883,46 @@
                 </div>
 
                 <div class="bg-item text-center">▼シミュレーション結果▼</div>
-                <div class="bg-simple width-max small" style="padding: 15px;">
+                <div class="bg-simple width-max small" style="padding: 15px 10px 30px 5px; overflow-y: scroll;">
                     <table id="culcDetail" class="width-100">
                         <thead style="border-bottom: 1px solid #faf0b4;">
-                            <tr class="text-center">
+                            <tr class="text-center" style="line-height: 1rem;">
                                 <td class="" style="width:20px">T</td>
-                                
-                                <td class="d-none d-lg-inline" style="width:80px">属性</td>
+                                <td class="" style="width:80px">属性</td>
                                 <td>名称</td>
                                 <td class="" style="width:52px">Damage</td>
                                 <td class="" style="width:52px">AVG</td>
-                                <td class="d-none d-lg-table-cell">BP</td>
-                                <td class="d-none d-lg-table-cell">消費</td>
+                                <td class="">BP</td>
+                                <td class="">消費</td>
                                 <td class="">残BP</td>
-                                <td class="d-none d-xs-table-cell">Status</td>
-                                <td class="d-none d-xs-table-cell">ﾊﾞﾌ</td>
-                                <td class="d-none d-xs-table-cell">ｱﾋﾞ</td>
-                                <td class="d-none d-lg-table-cell">敵ｽﾃ</td>
-                                <td class="d-none d-lg-table-cell">ﾃﾞﾊﾞﾌ</td>
-                                <td class="d-none d-lg-table-cell">耐性</td>
-                                <td class="d-none d-xs-table-cell" style="width:100px">Ability</td>
+                                <td class="">Status</td>
+                                <td class="">ﾊﾞﾌ</td>
+                                <td class="">ｱﾋﾞ</td>
+                                <td class="">敵ｽﾃ</td>
+                                <td class="">ﾃﾞﾊﾞﾌ</td>
+                                <td class="">耐性</td>
+                                <td class="" style="width:100px">Ability</td>
                             </tr>
                         </thead>
                         <tbody></tbody>
                     </table>
                     <table>
-                        <tr class="d-none" id="DETAIL_TEMPLATE" style="border-bottom: 1px solid #faf0b4;">
+                        <tr class="d-none detail-row" id="DETAIL_TEMPLATE" style="border-bottom: 1px solid #faf0b4;">
                             <td class="NOW_TURN text-center" style="width:30px"></td>
-                            <td class="SKILL_ICON d-none d-lg-table-cell"></td>
-                            <td class="SKILL_NAME d-none d-lg-table-cell text-nowrap"></td>
-                            <td class="SKILL_NAME_SM d-lg-none text-nowrap"></td>
-                            <td class="DAMAGE text-right"></td>
-                            <td class="AVG text-right"></td>
-                            <td class="d-none d-lg-table-cell NOW_BP text-right"></td>
-                            <td class="d-none d-lg-table-cell text-right USEBP"></td>
+                            <td class="SKILL_ICON text-nowrap"></td>
+                            <td class="SKILL_NAME text-nowrap"></td>
+                            <td class="text-right DAMAGE"></td>
+                            <td class="text-right AVG"></td>
+                            <td class="text-right NOW_BP"></td>
+                            <td class="text-right USEBP"></td>
                             <td class="text-right LEFT_BP"></td>
-                            <td class="d-none d-xs-table-cell text-right ATTACK_PARAM"></td>
-                            <td class="d-none d-xs-table-cell text-right"><span class="BUFF"></span></td>
-                            <td class="d-none d-xs-table-cell text-right"><span class="ABILITY_PER"></span></td>
-                            <td class="d-none d-lg-table-cell text-right ENEMY_PARAM"></td>
-                            <td class="d-none d-lg-table-cell text-right"><span class="DEBUFF"></span></td>
-                            <td class="d-none d-lg-table-cell text-right ENEMY_RESIST"></td>
-                            <td class="d-none d-xs-table-cell text-right ABILITY fuchidori-blue text-nowrap" style="line-height: 0.8rem;"></td>
+                            <td class="text-right ATTACK_PARAM"></td>
+                            <td class="text-right"><span class="BUFF"></span></td>
+                            <td class="text-right"><span class="ABILITY_PER"></span></td>
+                            <td class="text-right ENEMY_PARAM"></td>
+                            <td class="text-right"><span class="DEBUFF"></span></td>
+                            <td class="text-right ENEMY_RESIST"></td>
+                            <td class="text-right ABILITY fuchidori-blue text-nowrap" style="line-height: 0.8rem;"></td>
                         </tr>
                     </table>
                 </div>
