@@ -60,6 +60,25 @@
         <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet" rel="preload" as="style">
         <link href="https://fonts.googleapis.com/css?family=Anton&text=0123456789" rel="stylesheet" rel="preload" as="style">
         <style>
+            .ICON_AREA_IMG2 {
+                margin-bottom: 5px;
+            }
+            .optional-text-area {
+                background-color: black;
+                font-size: 0.8rem;
+                position: relative;
+                margin-bottom: 5px;
+                border: 1px solid;
+                border-radius: 5px;
+                padding: 5px;                
+            }
+            .MOD_TEXT_AREA {
+                line-height: 0.9rem;
+            }
+            .ICON_AREA_IMG1 {
+                position: absolute;
+                top: 0;    
+            }
             .img-icon {
                 width: 20px;
             }
@@ -281,9 +300,9 @@
                         <li class="col-12 char-bottom"> </li>
                         <li class="col-12 col-sm-2 table-success">カウンター</li>
                         <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom">
-                            <a class="_FilterLink  small" data-href="skill_cou" data-col="isCounter">カウンター <span class="series-button" id="count_skill_cou">...</span></a>
-                            <a class="_FilterLink  small" data-href="skill_kaicou" data-col="isCounter">回避カウンター <span class="series-button" id="count_skill_kaicou">...</span></a>
-                            <a class="_FilterLink  small" data-href="skill_boucou" data-col="isCounter">防御カウンター <span class="series-button" id="count_skill_boucou">...</span></a>
+                            <a class="_FilterLink  small" data-href="skill_cou" data-col="counterLabel">カウンター <span class="series-button" id="count_skill_cou">...</span></a>
+                            <a class="_FilterLink  small" data-href="skill_kaicou" data-col="counterLabel">回避カウンター <span class="series-button" id="count_skill_kaicou">...</span></a>
+                            <a class="_FilterLink  small" data-href="skill_boucou" data-col="counterLabel">防御カウンター <span class="series-button" id="count_skill_boucou">...</span></a>
                         </li>
                         <li class="col-12 col-sm-2 table-success">回復</li>
                         <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom">
@@ -347,16 +366,21 @@
                             <a class="_FilterLink  small" data-href="skill_HeatUp" data-col="ATR-UP">ヒートアップ <span class="series-button" id="count_skill_HeatUp">...</span></a>
                             <div class="width-100"></div>
                             <a class="_FilterLink  small" data-href="skill_GuardDown" data-col="ENEMY-DOWN">ガードダウン <span class="series-button" id="count_skill_GuardDown">...</span></a>
-                            <a class="_FilterLink  small" data-href="skill_DefDown" data-col="ENEMY-DOWN">ディフェンスダウン <span class="series-button" id="count_skill_DefDown">...</span></a>
                             <a class="_FilterLink  small" data-href="skill_DefenceDown" data-col="ENEMY-DOWN">防御弱化 <span class="series-button" id="count_skill_DefenceDown">...</span></a>
+                            <a class="_FilterLink  small" data-href="skill_DefDown" data-col="ENEMY-DOWN">ディフェンスダウン <span class="series-button" id="count_skill_DefDown">...</span></a>
                         <li class="col-12 col-sm-2 table-success char-bottom">防御面の強化</li>
                         <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom" style="flex-wrap: wrap">
                             <a class="_FilterLink  small" data-href="skill_GuardUp" data-col="DEF-UP">ガードアップ <span class="series-button" id="count_skill_GuardUp">...</span></a>
                             <a class="_FilterLink  small" data-href="skill_DefenceUp" data-col="DEF-UP">防御強化 <span class="series-button" id="count_skill_DefenceUp">...</span></a>
                             <a class="_FilterLink  small" data-href="skill_DefUp" data-col="DEF-UP">ディフェンスアップ <span class="series-button" id="count_skill_DefUp">...</span></a>
                             <div class="width-100"></div>
+                            <a class="_FilterLink  small" data-href="skill_MoralDown" data-col="ENEMY-DOWN">モラルダウン <span class="series-button" id="count_skill_MoralDown">...</span></a>
+                            <a class="_FilterLink  small" data-href="skill_AttackDown" data-col="ENEMY-DOWN">攻撃弱化 <span class="series-button" id="count_skill_AttackDown">...</span></a>
+                            <a class="_FilterLink  small" data-href="skill_HeatDown" data-col="ENEMY-DOWN">ヒートダウン <span class="series-button" id="count_skill_HeatDown">...</span></a>
+                            <div class="width-100"></div>
                             <a class="_FilterLink  small" data-href="skill_DefSkill" data-col="DEF-UP">防御態勢(技) <span class="series-button" id="count_skill_DefSkill">...</span></a>
                             <a class="_FilterLink  small" data-href="skill_DefMagic" data-col="DEF-UP">防御態勢(術) <span class="series-button" id="count_skill_DefMagic">...</span></a>
+                            <a class="_FilterLink  small" data-href="skill_DefChokusetsu" data-col="DEF-UP">防御態勢(直接) <span class="series-button" id="count_skill_DefChokusetsu">...</span></a>                            
                             <a class="_FilterLink  small" data-href="skill_DefKansetsu" data-col="DEF-UP">防御態勢(間接) <span class="series-button" id="count_skill_DefKansetsu">...</span></a>                            
                             <div class="width-100"></div>
                             <a class="_FilterLink  small" data-href="skill_Wall" data-col="DEF-UP">ウォール <span class="series-button" id="count_skill_Wall">...</span></a>
@@ -365,10 +389,6 @@
                             <a class="_FilterLink  small" data-href="skill_Deflect" data-col="DEF-UP">回避 <span class="series-button" id="count_skill_Deflect">...</span></a>
                             <a class="_FilterLink  small" data-href="skill_DamageBlock" data-col="DEF-UP">ダメージブロック <span class="series-button" id="count_skill_DamageBlock">...</span></a>
                             <a class="_FilterLink  small" data-href="skill_Kabau" data-col="DEF-UP">かばう <span class="series-button" id="count_skill_Kabau">...</span></a>
-                            <div class="width-100"></div>
-                            <a class="_FilterLink  small" data-href="skill_MoralDown" data-col="ENEMY-DOWN">モラルダウン <span class="series-button" id="count_skill_MoralDown">...</span></a>
-                            <a class="_FilterLink  small" data-href="skill_HeatDown" data-col="ENEMY-DOWN">ヒートダウン <span class="series-button" id="count_skill_HeatDown">...</span></a>
-                            <a class="_FilterLink  small" data-href="skill_AttackDown" data-col="ENEMY-DOWN">攻撃弱化 <span class="series-button" id="count_skill_AttackDown">...</span></a>
                         </li>
 
                         <li class="col-12 col-sm-2 table-danger char-bottom">デバフ</li>
@@ -479,7 +499,9 @@
                             <a class="_FilterLink pad0 d-inline-block" data-href="skill_iryoku_ssss" data-col="PowerGrade"><span style="font-family:arial black; font-size:15px">SSSS</span><br><span class="series-button" id="count_skill_iryoku_ssss">...</span></a>
                         </li>
                         <li class="col-12 col-sm-2 table-success">OD</li>
-                        <li class="col-12 col-sm-10 d-flex justify-content-around flex-wrap char-bottom" id="OD_LIST">
+                        <li class="col-12 col-sm-10">
+                            <div class="d-flex justify-content-around flex-wrap char-bottom" id="OD_LIST"></div>
+                            <div class="text-left char-bottom">通常攻撃+25 被弾+8(回避時0) 溜め状態+20</div>
                             <a id="OD_TMPL" class="d-none _FilterLink pad0" data-href="skill_iryoku_" data-col="OD" style="margin: 5px 5px; line-height: 1rem;"><span class="OD_NAME" style="font-family:arial black; font-size:15px"></span><br><span class="series-button OD_COUNT">...</span></a>
                         </li>
                         <li class="col-12 col-sm-2 table-info">Qs</li>
@@ -616,9 +638,8 @@
                                     <div class="d-sm-none" style="font-size: 13px; position: relative;">
                                         <span class="ICON_AREA_TEXT"></span>
                                     </div>
-                                    <div style="font-size: 13px; position: relative;">
-                                        <span class="ICON_AREA_IMG2"></span>
-                                    </div>
+                                    <div class="ICON_AREA_IMG2 d-flex"></div>
+                                    <div class="MOD_TEXT_AREA optional-text-area"></div>
                                 </td>
                             </tr>
                         </table>
@@ -630,17 +651,27 @@
                 </button>
 
                 <div class="selectJoken">
-                    <label id="SKILLTOP"  class="badge badge-pill badge-light">技・術の表示順</label>
-                    <div class="row justify-content-md-center text-nowrap">
-                        <div class="col-6 col-lg-3">
-                            <button id="SORT_BP" class="width-100 icon_btn_on sortButton desc" data-id="bp">BP順 <span class="d-none d-md-inline">に並び替える</span> <i class="fas fa-sort-up d-none" id="BP_SORT_ASC"></i><i class="fas fa-sort-down" id="BP_SORT_DESC"></i></button>
+                    <div class="opacity" style="border-radius: 10px; padding: 10px;">
+                        <div id="SKILLTOP" class="text-center width-100 label-text-small">技・術の表示 / 並び替え</div>
+                        <div class="row justify-content-md-center text-nowrap" style="margin: 10px 0px">
+                            <div class="col-6 col-lg-3">
+                                <button id="SORT_BP" class="width-100 icon_btn_on sortButton desc" data-id="bp">BP順 <span class="d-none d-md-inline">に並び替える</span> <i class="fas fa-sort-up d-none" id="BP_SORT_ASC"></i><i class="fas fa-sort-down" id="BP_SORT_DESC"></i></button>
+                            </div>
+                            <div class="col-6 col-lg-3" style="margin-bottom:5px;">                            
+                                <button id="SORT_IRYOKU" class="width-100 icon_btn_off sortButton asc" data-id="iryoku">威力順 <span class="d-none d-md-inline">に並び替える</span> <i class="fas fa-sort-up" id="IRYOKU_SORT_ASC"></i><i class="fas fa-sort-down d-none" id="IRYOKU_SORT_DESC"></i></button>
+                            </div>
+                            <div class="col-12 col-lg-3" style="margin-bottom:5px;">                            
+                                <button id="HIDE_LIMIT" class="width-100 icon_btn_negative">限定技を非表示</button>
+                            </div>                        
                         </div>
-                        <div class="col-6 col-lg-3" style="margin-bottom:5px;">                            
-                            <button id="SORT_IRYOKU" class="width-100 icon_btn_off sortButton asc" data-id="iryoku">威力順 <span class="d-none d-md-inline">に並び替える</span> <i class="fas fa-sort-up" id="IRYOKU_SORT_ASC"></i><i class="fas fa-sort-down d-none" id="IRYOKU_SORT_DESC"></i></button>
+                        <div class="d-none">
+                        <div id="SKILL_EFFECT" class="text-center width-100 label-text-small">技・術の効果</div>
+                        <div id="EFFECT_FILTER_AREA" class="d-flex justify-content-md-center text-nowrap" style="margin: 10px 0px;"></div>
+                        <div id="EFFECT_TEMPLATE" class="d-none yubi text-center" style="flex-flow: column;">
+                            <span class="label"></span>
+                            <span class="width-100 series-button"></span>
                         </div>
-                        <div class="col-12 col-lg-3" style="margin-bottom:5px;">                            
-                            <button id="HIDE_LIMIT" class="width-100 icon_btn_negative">限定技を非表示</button>
-                        </div>                        
+                    </div>
                     </div>
 
                     <label class="badge badge-pill badge-light">技・術をタップすると詳細を表示します</label>
