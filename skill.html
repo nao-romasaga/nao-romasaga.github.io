@@ -428,7 +428,7 @@
                         <li class="col-12 col-sm-2 table-info char-bottom">レイド用</li>
                         <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom">
                             <a class="_FilterLink  small" data-href="skill_payHP" data-col="PayHP">代償ダメージ <span class="series-button" id="count_skill_payHP">...</span></a>
-                            <a class="_FilterLink  small" data-href="skill_kizetsu" data-col="kizetsu">気絶 <span class="series-button" id="count_skill_kizetsu">...</span></a>
+                            <a class="_FilterLink  small" data-href="skill_kizetsu" data-col="kizetsu">自身に気絶 <span class="series-button" id="count_skill_kizetsu">...</span></a>
                         </li>
                     </ul>
                     <ul class="row nav nav-tabs text-center opacity">
@@ -601,13 +601,13 @@
                     (adsbygoogle = window.adsbygoogle || []).push({});
                 </script>
                 <br>
-                <button class="skill_select bg-simple row width-100 position-relative d-none" id="SKILL_TEMPLATE" style="margin-left:0px !important;">
+                <div class="yubi skill_select bg-simple row width-100 position-relative d-none" id="SKILL_TEMPLATE" style="margin-left:0px !important;">
                     <img class="CLOSE_BTN yubi" src="./img/icon/icon_close.png" style="position: absolute;top: 5px;right: 5px;height: 15px; z-index: 1;" onclick="">                    
                     <div class="col-12 col-md-8">
                         <table class="width-100">
                             <tr>
                                 <td class="weaponIconTd">
-                                    <div class="SKILL_ICON width-100" style="position: absolute; top: 3px;"></div>
+                                    <div class="SKILL_ICON width-100 text-center" style="position: absolute; top: 3px;"></div>
                                 </td>
                                 <td style="text-align: left;line-height: 14px;position: relative; padding-left: 5px;">
                                     <div class="d-flex">
@@ -632,7 +632,7 @@
                             </tr>
                             <tr>
                                 <td class="weaponIconTd">
-                                    <div class="ICON_AREA_IMG1 width-100 text-nowrap"></div>
+                                    <div class="ICON_AREA_IMG1 width-100 text-nowrap text-center"></div><br>
                                 </td>
                                 <td class="text-left" style="line-height: initial;" colspan=2>
                                     <div class="d-sm-none" style="font-size: 13px; position: relative;">
@@ -648,7 +648,7 @@
                     <div class="col-12 col-md-4 HOLDER_DISP_AREA">
                         <div class="iconClass holderStyleArea text-left"></div>
                     </div>
-                </button>
+                </div>
 
                 <div class="selectJoken">
                     <div class="opacity" style="border-radius: 10px; padding: 10px;">
