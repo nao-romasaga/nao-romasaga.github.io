@@ -39,8 +39,15 @@
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
         <script src="./js/Firebase.js"></script>
-        <script src="./js/utils.js" ></script>
-        <script src="./js/data_RENKEI.js" ></script>
+        <script src="./js/utils2.js" ></script>
+        <script src="./js/dataload.js"></script>
+        <script>
+            // require dataload.js
+            dataload([
+                "data_SKILLMASTER",
+                "data_STYLEMASTER",
+            ]);
+        </script>
 
         <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -249,7 +256,8 @@
                 $("#haikei").attr("style", `background: url(./img/bg_renkei_${rand + 1}.png); height:640px;`);
                 var PRE_LIST = {};
                 var SUF_LIST = {};
-                for(skillInfo of SKILL_LIST) {
+                for(i in SKILL_MASTER) {
+                    skillInfo = SKILL_MASTER[i];
                     if(skillInfo['Name'].indexOf("+") > -1
                     || skillInfo['Name'].indexOf("通常攻撃") > -1) {
                         continue;
@@ -315,20 +323,23 @@
                 });
 
                 function set(i) {
-                    var random = Math.floor(Math.random() * SKILL_LIST.length);
-                    let holders = SKILL_LIST[random]['Holders'];
-                    if (i === 5 && SKILL_LIST[random]['SkillIryoku'] === "-") {
+                    var keys = Object.keys(SKILL_MASTER);
+                    var rand = Math.floor(Math.random() * keys.length);
+                    var random = keys[rand];
+                    let holders = SKILL_MASTER[random]['Holders'];
+                    if (i === 5 && SKILL_MASTER[random]['SkillIryoku'] === "-"
+                    || holders.length == 0) {
                         return false;
                     }
-                    if (SKILL_LIST[random]['Name'].indexOf("[ｶｳﾝﾀｰ]") > -1 
-                    || SKILL_LIST[random]['Id'] === "ID68ffe30") {
+                    if (SKILL_MASTER[random]['Name'].indexOf("[ｶｳﾝﾀｰ]") > -1 
+                    || SKILL_MASTER[random]['Id'] === "ID68ffe30") {
                         return false;
                     }
                     var randomStyle = Math.floor(Math.random() * holders.length);
                     if(STYLE_MASTER[holders[randomStyle]] == undefined) {
                         return false;
                     }
-                    let illustId = STYLE_MASTER[holders[randomStyle]]['IllustId'];
+                    let illustId = STYLE_MASTER[holders[randomStyle]]['Id'];
                     let charId = STYLE_MASTER[holders[randomStyle]]['CharacterId'];
                     if (RENKEI_CHAR_LIST.indexOf(charId) > -1) {
                         return false;
@@ -336,9 +347,9 @@
                     RENKEI_CHAR_LIST.push(charId);
 
                     //holders.splice(randomStyle, 1);
-                    let name = SKILL_LIST[random]['Name'];
+                    let name = SKILL_MASTER[random]['Name'];
                     name = name.replace("[溜め発動]","");
-                    let renkei = (i < 5) ? SKILL_LIST[random]['RushPrefix'] : SKILL_LIST[random]['RushSuffix'];
+                    let renkei = (i < 5) ? SKILL_MASTER[random]['RushPrefix'] : SKILL_MASTER[random]['RushSuffix'];
                     $(`#name${i}`).html(name);
                     var imgPath = getImgPath(`style_cutin/${illustId}.png`);
                     $(`#img${i}`).attr("style", `background : url(${imgPath}) no-repeat; background-size: contain; background-position:right; position:absolute; top:0px; right:-20px; width:60%; height: 55px; z-index:0;`);
