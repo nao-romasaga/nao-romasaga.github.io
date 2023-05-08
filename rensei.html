@@ -135,7 +135,12 @@
         .per {
             font-size: 8px;
         }
-
+        .wp-table-jutsu-icon {
+            position: absolute;
+            right: 3px;
+            bottom: 0;
+            width: 20px;
+        }
         /* パソコンで表示する場合のCSS */
         @media (min-width: 768px) {
             .series-banner {
@@ -145,6 +150,9 @@
             }
             .per-banner {
                 bottom: 20px;
+            }
+            .all-per-font {
+                font-size: initial;
             }
         }        
         /* スマホで表示する場合のCSS */
@@ -680,6 +688,7 @@
                                 <td style="position: relative;">
                                     <span class="WP_ICON"></span>
                                     <div class="OPTION_LABEL op-label"></div>
+                                    <img class="OPTION_LABEL_JP wp-table-jutsu-icon"/>
                                 </td>
                                 <td class="">
                                     <div class="AB_NAME d-none">
@@ -687,12 +696,12 @@
                                             ><span class="font-xx align-middle"></span>
                                     </div>                  
                                 </td>
-                                <td class="ALL_PER" style="font-size: initial;"></td>
+                                <td class="ALL_PER all-per-font"></td>
                                 <td class="d-none d-sm-table-cell Attrs_PER"></td>
                                 <td class="d-none d-sm-table-cell Range_PER"></td>
                                 <td class="d-none d-sm-table-cell Series_PER"></td>
                                 <td class="d-none d-sm-table-cell Gender_PER"></td>
-                                <td><input type="text" class="form-control AB_MY_NAME" style="display: inline-block;" /></td>
+                                <td class=""><input type="text" class="form-control AB_MY_NAME" style="display: inline-block;" /></td>
                             </tr>                            
                         </tfoot>
                     </table>
