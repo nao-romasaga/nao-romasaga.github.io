@@ -224,6 +224,7 @@
             <li class="col-12 col-sm-2 table-success char-bottom">その他</li>
             <li class="col-12 col-sm-10 d-flex flex-wrap justify-content-around">
                 <button class="_FilterLink pad0 d-inline-block" data-main="能力アップ解除" data-sub=""><span class="withLabel">能力アップ解除<span class="countLabel" id="count_buff_clear">...</span></span></button>
+                <button class="_FilterLink pad0 d-inline-block" data-main="OD攻撃関連" data-sub=""><span class="withLabel">OD攻撃関連<span class="countLabel" id="count_overdrive">...</span></span></button>
             </li>
             <li class="col-12 label-text-small" id="weaponLabel">クエスト系</li>
             <li class="col-12 d-flex flex-wrap justify-content-around char-bottom">
@@ -361,7 +362,7 @@
 
         <ul class="row nav" id="AB-LIST"></ul>
         <li class="col-12 row no-gutters bg-simple d-none" id="AB-LIST-TMPL">
-            <div class="col-12 col-sm-9 col-md-8 col-lg-6 ab-name-row small">
+            <div class="col-12 col-sm-9 col-md-8 col-lg-7 ab-name-row small">
                 <div class="d-flex" style="align-items: center; padding-left: 10px;">
                       <span class="icon-back-abiligy icon-back-skill-xs">
                           <span class="AB-ICON icon-skill icon-skill-xs">　</span>
@@ -370,7 +371,7 @@
                 </div>
                 <div class="yubi ab-flavor FLAVOR-AREA"></div>
             </div>
-            <div class="col-12 col-sm-3 col-md-4 col-lg-6">
+            <div class="col-12 col-sm-3 col-md-4 col-lg-5">
                 <div class="ab-holders ICON-AREA"></div>
             </div>
         </li>
@@ -387,9 +388,8 @@
         </script>
     </div><!-- container -->
     </div><!-- dojohaikei -->
-    <div id="INFO_AB_OVERLAY" class="overlay d-none"></div>
-    <div id="INFO_AB_AREA" class="yubi info-modal ab-text-info animation animation-out d-none" style="
-    top: 1000px;">
+    <div id="INFO_AB_OVERLAY" class="popup-overlay d-none"></div>
+    <div id="INFO_AB_AREA" class="yubi info-modal popup-text-info popup-animation popup-animation-out d-none" style="top: 1000px;">
         <div id="INFO_AB_NAME" class="text-center info-modal-header">使い方</div>
         <div id="INFO_AB_TEXT" class="width-100 bg-simple small" style="height: 75%; padding: 15px; overflow: scroll;"></div>
         <div class="width-100 text-center">
@@ -397,24 +397,6 @@
         </div>
     </div>
     <style>
-        .overlay {
-            justify-content: center;
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            z-index: 4;
-            background-color: rgba(0,0,0,0.6);
-            top: 0;
-            left: 0;
-            display: flex;            
-        }        
-        .ab-text-info {
-            position: fixed;
-            width: calc(100% - 20px);
-            height: 50%;
-            z-index: 5;
-            margin: 20% 10px;
-        }
         .when-group {
             margin-top: 20px;
         }
@@ -432,35 +414,6 @@
     <script src="./js/ability.js" defer></script>
     <script type="text/javascript" src="https://romasagatool.com/blog/get_the_archives.php?limit=30&callback=rssCallback" defer></script>
     <style>
-.animation {
-  animation-direction: normal;
-  animation-duration: 0.5s;
-  animation-timing-function: ease;
-}
-.animation-in {
-  animation-name: anim_sc;
-  transform: scale(1, 1);
-}
-.animation-out {
-  animation-name: anim_sc_out;
-  transform: scale(0, 0);
-}
-@keyframes anim_sc {
-  0% {
-    transform: scale(0, 0);
-  }
-  100% {
-    transform: scale(1, 1);
-  }
-}     
-@keyframes anim_sc_out {
-  0% {
-    transform: scale(1, 1);
-  }
-  100% {
-    transform: scale(0, 0);
-  }
-}        
             .img-icon {
                 width: 20px;
             }
