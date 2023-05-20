@@ -82,8 +82,15 @@
             .skill-lineheight {
                 line-height: 20px;
             }
+            .skill-iryoku-sp {
+                font-size: 0.9rem;
+            }
             .pad5 {
                 padding: 0px 5px;
+            }
+            .skill-attr {
+                display: inline-block;
+                width: 55px;
             }
             .auto-info {
                 position: absolute;
@@ -441,10 +448,13 @@
             }
             .skill-bp {
                 background: black;
-                font-size: 11px;
-                padding: 0px 10px;
+                font-size: 0.8rem;
                 border-radius: 5px;
                 border:1px solid;
+                display: flex;
+                align-items: center;
+                padding: 0px 5px;
+                margin: 1px 5px 1px 0;
             }
             .skill-option {
                 text-align: left;
@@ -498,7 +508,6 @@
                     <div class="text-center info-modal-header">最新のスタイル</div>
                     <div id="GACHA_AREA" ></div>
                 </div>
-
                 <label class="badge badge-pill badge-light">絞り込み</label>
                 <div class="filter-bgcolor text-center small row" style="width:100%; margin: 0px;">
                     <ul class="nav text-center width-100" style="margin-bottom: 5px;">
@@ -670,7 +679,12 @@
                         <span id="SECOTR"></span>
                     </section>
                 </div>
-                <div class="row">
+
+                <div class="info-modal d-none" style="margin-top: 20px; margin-bottom: 10px;" id="SHOW_HISTORY_AREA">
+                    <div class="text-center info-modal-header">最近表示したスタイル</div>
+                    <div id="HISTORY_AREA"></div>
+                </div>
+                <div class="row" >
                     <div class="col-12 d-none d-lg-block">
                         <div class="info-modal styleInfoArea width-max text-center">
                             <div class="info-modal-header">表示ステータスを変更する</div>
@@ -1005,14 +1019,21 @@
                                                 </div>
                                                 <div class="d-table-cell align-middle text-left skill-name" style="padding-left: 5px; font-size: 20px;"></div>
                                             </div>
-                                            <div class="text-nowrap">
+                                            <div class="text-nowrap d-none d-sm-flex align-items-center">
                                                 <span class="skill-bp"></span>
-                                                <div class="ICON_AREA_IMG d-inline"></div>
-                                                <span class="d-none d-sm-inline">｜</span>
-                                                <span class="d-sm-none"><br></span>
-                                                <div class="SKILL_OPTION d-inline"></div>
-                                                <br class="spBlock">
+                                                <div class="ICON_AREA_IMG"></div>
+                                                <div class="SKILL_OPTION"></div>
                                             </div>
+                                            <div class="d-sm-none d-block">
+                                                <div class="text-nowrap d-flex align-items-center justify-content-between">
+                                                    <span class="skill-bp"></span>
+                                                    <span class="skill-iryoku-sp"></span>
+                                                </div>
+                                                <div class="text-nowrap d-flex align-items-center">
+                                                    <div class="ICON_AREA_IMG"></div>
+                                                    <div class="SKILL_OPTION"></div>
+                                                </div>
+                                            </div>                                            
                                         </td>
                                         <td class="text-right skill-iryoku d-none d-sm-table-cell" style="line-height: 1.2rem;"></td>
                                         <td class="text-right small weaponIconTd skillKakuseiArea" style="padding-top:2px"></td>
@@ -1388,21 +1409,29 @@
                                 <img class="RANK_HEAD_IMG" style="width: 100%; max-width:300px;">
                             </div>
                         </div>                            
-                        <div class="bg-simple width-max" style="padding: 10px;">
-                            <table class="width-100">
-                                <tr style="border-bottom: 1px solid;">
-                                    <td>技・アビ<span class="hidden pcBlock">リティ</span></td>
-                                    <td>武器<br class="hidden spBlock">威力</td>
-                                    <td>回復<br class="hidden spBlock">威力</td>
-                                    <td>回復量</td><td>愛</td><td>魅</td><td>アビ<span class="d-none d-sm-inline">リティ</span></td>
+                        <div class="bg-simple width-max" style="padding: 10px; overflow-x: scroll;">
+                            <table class="width-100 text-nowrap">
+                                <tr class="text-center" style="border-bottom: 1px solid;">
+                                    <td>技・アビリティ</td>
+                                    <td style="line-height: 1rem;padding: 0 5px 5px"">武器<br class="hidden spBlock">威力</td>
+                                    <td style="line-height: 1rem;padding: 0 5px 5px"">回復<br class="hidden spBlock">威力</td>
+                                    <td>回復量</td>
+                                    <td>　愛　</td>
+                                    <td>魅力</td>
+                                    <td>アビリティ</span></td>
                                 </tr>
-                                <tr class="d-none ROW">
-                                    <td class="HEAL_NAME"></td>
+                                <tr class="d-none ROW text-center">
+                                    <td class="HEAL_NAME text-left"></td>
                                     <td class="HEAL_WEAPON"></td>
                                     <td class="HEAL_IRYOKU"></td>
                                     <td class="HEAL_RANGE shadow-blue" style="color:rgba(133,220,88);"></td></td>
-                                    <td class="HEAL_AI"></td><td class="HEAL_MI"></td><td class="HEAL_ABILITY"></td>
+                                    <td class="HEAL_AI" style="padding: 0 5px"></td>
+                                    <td class="HEAL_MI" style="padding: 0 5px"></td>
+                                    <td class="HEAL_ABILITY text-left"></td>
                                 </tr>
+                                <tfoot>
+                                    <tr><td style="    height: 15px;"> </td></tr>
+                                </tfoot>
                             </table>
                         </div>
                     </div>
@@ -1417,13 +1446,13 @@
                         <div id="styleSkillOrg" class="STYLE_SKILL_TAB style-bgcolor" style="padding: 20px 5px; border-collapse:collapse"></div>
                         <div id="styleSkillIryoku" class="STYLE_SKILL_TAB style-bgcolor"" style="padding: 20px 5px; border-collapse:collapse"></div>
                         <div id="styleSkillRange" class="STYLE_SKILL_TAB style-bgcolor"" style="padding: 20px 5px; border-collapse:collapse"></div>
-                        <div class="subtitle-long d-none width-100" id="RANGE_TITLE"></div>
+                        <div class="subtitle-long d-none width-100" ></div>
 
                         <div class="text-center" style="margin-top: 10px;">
                             <a href="./skill.html" target="_blank" class="icon_btn_positive  width-100 shadow-black"><i class="fas fa-search"></i> 技・術 一覧を調べる</a>
                         </div>
                         <table id="SKILL_KEISHO_TEMPLATE" class="d-none">
-                            <tr class="d-sm-none" style="border-bottom: 1px solid gray;">
+                            <tr class="d-sm-none" style="border-bottom: 1px solid gray;">
                                 <td class="STYLE_CUTIN filter-bgcolor" colspan="3" style="padding:3px; ">
                                     <div class="text-center" style="background: url(https://romasagatool.com/img/bg_cutin.png); background-size: 19px;">
                                         <img class="RANK_HEAD_IMG" style="width: 40%; max-width:300px;">
@@ -1434,7 +1463,7 @@
                                 <td class="text-center filter-bgcolor STYLE_ICON d-none d-sm-table-cell" style="vertical-align: middle;"></td>
                                 <td class="text-left pad5 text-nowrap">
                                     <img class="BATTLE_ICON icon_xs" loading="lazy">
-                                    <span class="SKILL_ATTR"></span>
+                                    <div class="SKILL_ATTR skill-attr"></span>
                                 </td>
                                 <td class="text-left pad5 skill-name text-nowrap KEISHO_SKILL"></td>
                                 <td class="text-left pad5 skill-iryoku text-nowrap KEISHO_IRYOKU d-none d-sm-table-cell"></td>
