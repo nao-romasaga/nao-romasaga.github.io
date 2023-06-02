@@ -187,6 +187,18 @@
                                     </div>
                                 </div>                                
                             </div>
+                            <label for="master" class="subtitle-long">冒険者Rank</label>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text small">ﾀﾞﾒｰｼﾞ+</span>
+                                    </div>
+                                    <input type="number" class="form-control damage" id="adventDamage" value="0.2" step="0.1"">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">%</span>
+                                    </div>
+                                </div>                                
+                            </div>
 
                             <label for="master" class="subtitle-long">武器威力</label>
                                 <div class="form-group">
@@ -406,12 +418,19 @@
                                 <option value="x">敵を選択</option>
                             </select>
                             <div class="form-group">
-                                <div class="input-group mb-3">
+                                <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text small"><span class="param_label_teki">体力</span>直接入力</span>
                                     </div>
                                     <input type="number" class="form-control damage" id="vit" placeholder="直接入力可" value=85>
-                                </div>
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text small">デバフ</span>
+                                    </div>
+                                    <input type="number" class="form-control damage" id="debuff_per" value="0">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">%</span>
+                                    </div>
+                                </div>                                
                                 <div class="bg-simple">
                                     <table class="width-100 table-dark">
                                         <tr class="char-bottom">
