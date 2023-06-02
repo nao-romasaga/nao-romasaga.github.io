@@ -122,7 +122,6 @@
 
                         <div class="col-12 text-left"><span class="subtitle-long fuchidori-white smallFont">スタイル表示　</span></div>
                         <div class="col-6 col-sm-4 col-lg-3" style="margin-bottom: 10px;"><button class="icon_btn_negative text-nowrap width-100 CHANGE_DISP" data-id="style">ステータス一覧</button></div>
-                        <div class="col-6 col-sm-4 col-lg-3" style="margin-bottom: 10px;"><button class="icon_btn_negative text-nowrap width-100 CHANGE_DISP" data-id="uradojo">裏道場報酬</button></div>
                         <div class="col-12 bg-item">オプション</div>
                         <div class="col-12" id="STYLE_OPTION">
                             スタイルレベル50時ステータス表示
@@ -139,9 +138,11 @@
                                 <li class="subtitle fuchidori-white smallFont">周回クエストの手動入力</li>
                             </ul>
                             <ul class="nav text-center width-100" style="margin-bottom: 20px;">
-                                <li class="col-6 xs-pad0" style="color:white; font-size:12px;margin-bottom: 10px;">base:<input type="number" pattern="[0-9]*" class="kadomaru baseInput" id="baseInput-base" style="width: 60px" value="183"></li>
-                                <li class="col-6 xs-pad0" style="color:white; font-size:12px;margin-bottom: 10px;">HP:<input type="number" pattern="[0-9]*" class="kadomaru baseInput" id="baseInput-HP" style="width: 60px" value="2090"></li>
+                                <li class="col-12 col-sm-6 xs-pad0" style="color:white; font-size:12px;margin-bottom: 10px;">base:<input type="number" pattern="[0-9]*" class="kadomaru baseInput" id="baseInput-base" style="font-size:1.4rem; width: 120px" value="266"></li>
+                                <li class="col-12 col-sm-6 xs-pad0" style="color:white; font-size:12px;margin-bottom: 10px;">育成目安 HP:<input type="number" pattern="[0-9]*" class="kadomaru baseInput" id="baseInput-HP" style="font-size:1.4rem; width: 120px" step="10" value="2910">まで(※)<br>これはゲーム上に表示される「育成目安:HPXXXXまで」を入力します<br>実際の仮上限は目安+10です</li>
                             </ul>
+
+                            <!--
                             <ul class="nav text-center width-100" style="margin-bottom: 5px;">
                                 <li class="subtitle-long fuchidori-white smallFont">周回クエスト範囲の選択</li>
                             </ul>
@@ -293,6 +294,7 @@
                                 <li class="col-12"><p class="label-text-small">モンスター乱入！大荒れの前夜祭パーティー</p></li>
                                 <li class="col-6 col-sm-3 col-lg-2 xs-pad0"><button class="icon_btn_off baseValue text-nowrap questpad" data-id="257">共通(257)</button></li>
                             </ul>
+                            -->
                         </div>
                     </div>
 
@@ -541,6 +543,9 @@
                                 <div class="col-6 col-sm" style="margin-bottom: 10px;">
                                     <button class="URA-ALL icon_btn_positive fuchidori-blue" data-val=16>四段 全開放</button>
                                 </div>                                
+                                <div class="col-6 col-sm" style="margin-bottom: 10px;">
+                                    <button class="URA-ALL icon_btn_positive fuchidori-blue" data-val=20>五段 全開放</button>
+                                </div>                                
                             </div>
 
                             <div class="small row text-center">
@@ -563,185 +568,6 @@
                         </div>
                         <button class="icon_btn_positive text-nowrap width-100" id="LIMIT_TABLE_TOGGLE">キャラ詳細の開閉</button>
                     </div>
-
-                    <div class="info-modal width-max min-pad" id="URA_ITEM_INFO" style="padding: 0px 10px; margin-bottom:20px；">
-                        <div class="text-center info-modal-header">裏道場報酬</div>
-                        <div class="bg-item text-center">報酬判定情報</div>
-                        <div class="bg-simple width-100" style="padding: 16px;">
-                            <div class="row align-items-center no-gutters">
-                                <div class="col-4 d-sm-none ICON_SM text-center"></div>
-                                <div class="col-4 d-none d-sm-block ICON_LG">
-                                    <div class="text-center" style="background: url(https://romasagatool.com/img/bg_cutin.png);">
-                                        <img class="RANK_HEAD_IMG" style="width: 100%; max-width:300px;">
-                                    </div>
-                                </div>
-                                <div class="col-8" style="
-                                line-height: 20px;
-                                display: table-cell;
-                                vertical-align: middle;">
-                                    <div class="NAME">アセルス</div>
-                                    <div class="ANOTHER_NAME">[xxxx]</div>
-                                    判定ｽﾃｰﾀｽ<span class="ST fuchidori-blue">1,234.00</span>
-                                </div>
-                                <div class="col-4 text-center">報酬UPまで</div>
-                                <div class="col-8"><span class="NEXT_DIFF"></span> (<span class="NEXT_ST"></span>)</div>
-                            </div>
-                        </div>
-
-                        <div class="NOW_HOSHU">
-                            <div class="bg-item text-center">現在の報酬</div>
-                            <div class="bg-simple width-100" style="padding:8px; margin-bottom:10px;">
-                                <table class="width-100 text-center">
-                                    <tr>
-                                        <td colspan="2">死合1<span class="d-none d-sm-inline">報酬</span></td>
-                                        <td colspan="2">死合2<span class="d-none d-sm-inline">報酬</span></td>
-                                        <td colspan="2">死合3<span class="d-none d-sm-inline">報酬</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td><img class="dojo-icon" src="http://romasagatool.com/img/icon/icon_ura_g.png"></td>
-                                        <td><img class="dojo-icon" src="http://romasagatool.com/img/icon/icon_ura_p.png"></td>
-                                        <td><img class="dojo-icon" src="http://romasagatool.com/img/icon/icon_ura_g.png"></td>
-                                        <td><img class="dojo-icon" src="http://romasagatool.com/img/icon/icon_ura_p.png"></td>
-                                        <td><img class="dojo-icon" src="http://romasagatool.com/img/icon/icon_ura_g.png"></td>
-                                        <td><img class="dojo-icon" src="http://romasagatool.com/img/icon/icon_ura_p.png"></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="G_1">12</td><td class="P_1">7</td>
-                                        <td class="G_2">12</td><td class="P_2">7</td>
-                                        <td class="G_3">12</td><td class="P_3">7</td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2">死合4<span class="d-none d-sm-inline">報酬</span></td>
-                                        <td colspan="2">死合5<span class="d-none d-sm-inline">報酬</span></td>
-                                        <td colspan="2"></td>
-                                    </tr>
-                                    <tr>
-                                        <td><img class="dojo-icon" src="http://romasagatool.com/img/icon/icon_ura_g.png"></td>
-                                        <td><img class="dojo-icon" src="http://romasagatool.com/img/icon/icon_ura_p.png"></td>
-                                        <td><img class="dojo-icon" src="http://romasagatool.com/img/icon/icon_ura_g.png"></td>
-                                        <td><img class="dojo-icon" src="http://romasagatool.com/img/icon/icon_ura_p.png"></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="G_4">12</td><td class="P_4">7</td>
-                                        <td class="G_5">?</td><td class="P_5">?</td>
-                                        <td></td><td></td>
-                                    </tr>                                    
-                                </table>
-                                <div class="row align-items-center no-gutters">
-                                    <div class="col-6 col-lg-3 text-center" style="margin-bottom:10px;">
-                                        報酬合計<br>
-                                        <img class="dojo-icon" src="http://romasagatool.com/img/icon/icon_ura_g.png">
-                                        <span class="SUM_ITEM_G">99</span>
-                                        <img class="dojo-icon" src="http://romasagatool.com/img/icon/icon_ura_p.png">
-                                        <span class="SUM_ITEM_P">99</span>
-                                    </div>
-                                    <div class="col-6 col-lg-3 text-center" style="margin-bottom:10px;">
-                                        週間報酬合計<br>
-                                        <img class="dojo-icon" src="http://romasagatool.com/img/icon/icon_ura_g.png">
-                                        <span class="SUM_ITEM_G_SUM small">99</span>
-                                        <img class="dojo-icon" src="http://romasagatool.com/img/icon/icon_ura_p.png">
-                                        <span class="SUM_ITEM_P_SUM small">99</span>
-                                    </div>
-                                    <div class="col-6 col-lg-3 text-center" style="margin-bottom:10px;">
-                                        週間交換ｱｲﾃﾑ数<br>
-                                        <img class="dojo-icon" src="http://romasagatool.com/img/icon/icon_ura_item_1.png" style="border: 1px solid; border-radius: 5px;">
-                                        <span class="SUM_ITEM_P_MONTH">99</span>
-                                        <img class="dojo-icon" src="http://romasagatool.com/img/icon/icon_ura_item_str.png" style="border: 1px solid; border-radius: 5px;">
-                                        <span class="SUM_ITEM_G_MONTH">99</span>
-                                    </div>
-                                    <div class="col-6 col-lg-3 text-center" style="margin-bottom:10px;">
-                                        週間報酬余り<br>
-                                        <img class="dojo-icon" src="http://romasagatool.com/img/icon/icon_ura_g.png">
-                                        <span class="SUM_ITEM_G_MONTH_MOD">99</span>
-                                        <img class="dojo-icon" src="http://romasagatool.com/img/icon/icon_ura_p.png">
-                                        <span class="SUM_ITEM_P_MONTH_MOD">99</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="NEXT_HOSHU">
-                            <div class="bg-item text-center">次の報酬</div>
-                            <div class="NEXT_HOSHU_IS_NONE">現在の報酬が確認されている最大報酬です</div>
-                            <div class="NEXT_HOSHU_LIST bg-simple width-100" style="padding:8px; margin-bottom:10px;">
-                                <table class="width-100 text-center">
-                                    <tr>
-                                        <td colspan="2">死合1<span class="d-none d-sm-inline">報酬</span></td>
-                                        <td colspan="2">死合2<span class="d-none d-sm-inline">報酬</span></td>
-                                        <td colspan="2">死合3<span class="d-none d-sm-inline">報酬</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td><img class="dojo-icon" src="http://romasagatool.com/img/icon/icon_ura_g.png"></td>
-                                        <td><img class="dojo-icon" src="http://romasagatool.com/img/icon/icon_ura_p.png"></td>
-                                        <td><img class="dojo-icon" src="http://romasagatool.com/img/icon/icon_ura_g.png"></td>
-                                        <td><img class="dojo-icon" src="http://romasagatool.com/img/icon/icon_ura_p.png"></td>
-                                        <td><img class="dojo-icon" src="http://romasagatool.com/img/icon/icon_ura_g.png"></td>
-                                        <td><img class="dojo-icon" src="http://romasagatool.com/img/icon/icon_ura_p.png"></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="G_1">12</td><td class="P_1">7</td>
-                                        <td class="G_2">12</td><td class="P_2">7</td>
-                                        <td class="G_3">12</td><td class="P_3">7</td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2">死合4<span class="d-none d-sm-inline">報酬</span></td>
-                                        <td colspan="2">死合5<span class="d-none d-sm-inline">報酬</span></td>
-                                        <td colspan="2"></td>
-                                    </tr>
-                                    <tr>
-                                        <td><img class="dojo-icon" src="http://romasagatool.com/img/icon/icon_ura_g.png"></td>
-                                        <td><img class="dojo-icon" src="http://romasagatool.com/img/icon/icon_ura_p.png"></td>
-                                        <td><img class="dojo-icon" src="http://romasagatool.com/img/icon/icon_ura_g.png"></td>
-                                        <td><img class="dojo-icon" src="http://romasagatool.com/img/icon/icon_ura_p.png"></td>
-                                        <td></td><td></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="G_4">12</td><td class="P_4">7</td>
-                                        <td class="G_5">?</td><td class="P_5">?</td>
-                                        <td></td><td></td>
-                                    </tr>                                    
-                                </table>
-                                <div class="row align-items-center no-gutters">
-                                    <div class="col-6 col-lg-3 text-center" style="margin-bottom:10px;">
-                                        報酬合計<br>
-                                        <img class="dojo-icon" src="http://romasagatool.com/img/icon/icon_ura_g.png">
-                                        <span class="SUM_ITEM_G">99</span>
-                                        <img class="dojo-icon" src="http://romasagatool.com/img/icon/icon_ura_p.png">
-                                        <span class="SUM_ITEM_P">99</span>
-                                    </div>
-                                    <div class="col-6 col-lg-3 text-center" style="margin-bottom:10px;">
-                                        週間報酬合計<br>
-                                        <img class="dojo-icon" src="http://romasagatool.com/img/icon/icon_ura_g.png">
-                                        <span class="SUM_ITEM_G_SUM small">99</span>
-                                        <img class="dojo-icon" src="http://romasagatool.com/img/icon/icon_ura_p.png">
-                                        <span class="SUM_ITEM_P_SUM small">99</span>
-                                    </div>
-                                    <div class="col-6 col-lg-3 text-center" style="margin-bottom:10px;">
-                                        週間交換ｱｲﾃﾑ数<br>
-                                        <img class="dojo-icon" src="http://romasagatool.com/img/icon/icon_ura_item_1.png" style="border: 1px solid; border-radius: 5px;">
-                                        <span class="SUM_ITEM_P_MONTH">99</span>
-                                        <img class="dojo-icon" src="http://romasagatool.com/img/icon/icon_ura_item_str.png" style="border: 1px solid; border-radius: 5px;">
-                                        <span class="SUM_ITEM_G_MONTH">99</span>
-                                    </div>
-                                    <div class="col-6 col-lg-3 text-center" style="margin-bottom:10px;">
-                                        週間報酬余り<br>
-                                        <img class="dojo-icon" src="http://romasagatool.com/img/icon/icon_ura_g.png">
-                                        <span class="SUM_ITEM_G_MONTH_MOD">99</span>
-                                        <img class="dojo-icon" src="http://romasagatool.com/img/icon/icon_ura_p.png">
-                                        <span class="SUM_ITEM_P_MONTH_MOD">99</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div style="padding:10px; padding-bottom:30px;">
-                            裏道場報酬の決定タイミングは<br>
-                            「その日（04:00以降）初めて裏道場画面に入った時点」です<br>
-                            そのため一度裏道場に入った後に、ステータスを上げて報酬獲得ラインが変更されても裏道場報酬は増えません<br>
-                        </div>
-                        
-                    </div>
-
 
                     <div class="info-modal">
                         <div class="text-center info-modal-header"><i class="fas fa-info-circle"></i> 機能説明</div>
