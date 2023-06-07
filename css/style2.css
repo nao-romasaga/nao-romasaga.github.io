@@ -302,6 +302,14 @@ html {
     border-radius: 10px;
     box-shadow: 0 0px 3px yellow;    
 }
+.base-image {
+    width: 500px;
+}
+@media screen and (max-width:500px) {
+    .base-image {
+        width: 100%;
+    }    
+}
 @media screen and (max-width:400px) {
     .login-card{
         position:absolute; right:0px; bottom:30px; font-size:12px;
@@ -1332,6 +1340,8 @@ input[type=range]::-ms-tooltip {
         1px -1px 2px blue,
         -1px -1px 2px blue;    
 }
+
+
 
 .bg-cutin {
     background: url(https://romasagatool.com/img/bg_cutin.png);
