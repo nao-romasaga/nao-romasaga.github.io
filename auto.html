@@ -553,9 +553,31 @@
                                         <span class="d-none d-lg-inline">▼武器威力▼</span>
                                         <span class="d-lg-none">武器威力</span>
                                     </div>
-                                    <input type="number" pattern="[0-9]*" id="SET_WEAPON" value="35" style="width:65px; text-align:right" class="kadomaru">    
-                                    <input type="number" pattern="[0-9]*" id="SET_WEAPON_JP" value="0" style="width:65px; text-align:right" class="kadomaru d-none">    
+                                    <input type="number" pattern="[0-9]*" id="SET_WEAPON" value="35" style="width:65px; text-align:right" class="kadomaru">
+                                    <div class="bg-item">
+                                        <span class="d-none d-lg-inline">▼術威力▼</span>
+                                        <span class="d-lg-none">術威力</span>
+                                    </div>
+                                    <div class="d-flex flex-wrap">
+                                        <div class="jutsu-power-area"><img class="icon_xs" src="https://romasagatool.com/img/icon/icon_hi_sm.png"><input type="number" pattern="[0-9]*" id="SET_WEAPON_51" value="0" class="kadomaru jutsuIryoku"></div>
+                                        <div class="jutsu-power-area"><img class="icon_xs" src="https://romasagatool.com/img/icon/icon_mizu_sm.png"><input type="number" pattern="[0-9]*" id="SET_WEAPON_52" value="0" class="kadomaru jutsuIryoku"></div>
+                                        <div class="jutsu-power-area"><img class="icon_xs" src="https://romasagatool.com/img/icon/icon_tsuchi_sm.png"><input type="number" pattern="[0-9]*" id="SET_WEAPON_53" value="0" class="kadomaru jutsuIryoku"></div>
+                                        <div class="jutsu-power-area"><img class="icon_xs" src="https://romasagatool.com/img/icon/icon_kaze_sm.png"><input type="number" pattern="[0-9]*" id="SET_WEAPON_54" value="0" class="kadomaru jutsuIryoku"></div>
+                                        <div class="jutsu-power-area"><img class="icon_xs" src="https://romasagatool.com/img/icon/icon_hikari_sm.png"><input type="number" pattern="[0-9]*" id="SET_WEAPON_55" value="0" class="kadomaru jutsuIryoku"></div>
+                                        <div class="jutsu-power-area"><img class="icon_xs" src="https://romasagatool.com/img/icon/icon_yami_sm.png"><input type="number" pattern="[0-9]*" id="SET_WEAPON_56" value="0" class="kadomaru jutsuIryoku"></div>
+                                    </div>
                                 </div>
+                                <style>
+                                    .jutsuIryoku {
+                                        width: 50px;
+                                        text-align:right;
+                                    }
+                                    .jutsu-power-area {
+                                        padding: 0 3px;
+                                        align-items: center;
+                                        display: flex;
+                                    }                                    
+                                </style>
                                 <div class="col-6">
                                     <div class="bg-item">
                                         <span class="d-none d-lg-inline">▼聖石▼</span>
