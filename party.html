@@ -677,7 +677,7 @@
             <div style="position:fixed; bottom:0px;z-index: 1;" class="width-100">
                 <div style="" class="row no-gutters text-center text-nowrap">
                     <div class="col-2"><button id="FOOTER_CLOSE" class="icon_btn_negative width-100 fuchidori-white footer-font" style="padding:5px 0px;"><span class="FOOTER_CLOSE_ARROW">▼</span><span class="FOOTER_CLOSE_ARROW d-none">▲</span><span class="d-none d-sm-inline"> 表示切替</span></button></div>
-                    <div class="col-5"><button id="FOOTER_QUEST"  class="icon_btn_positive width-100 width-max fuchidori-white footer-font " style="padding:5px 0px;"><i class="fas fa-arrow-up d-none d-md-inline"></i> クエスト選択 <i class="fas fa-arrow-up"></i><br class="d-md-none"><span class="d-none d-md-inline">　</span><span class="footer-info text-nowrap d-none d-md-inline" id="NOW_QUEST">G23-25(76) (HP1020) </span></button></div>
+                    <div class="col-5"><button id="FOOTER_QUEST"  class="icon_btn_positive width-100 width-max fuchidori-white footer-font " style="padding:5px 0px;"><i class="fas fa-arrow-up d-none d-md-inline"></i> クエスト選択 <i class="fas fa-arrow-up"></i><br class="d-md-none"><span class="d-none d-md-inline">　</span></button></div>
                     <div class="col-5"><button id="FOOTER_CHAR"  class="icon_btn_positive width-100 width-max fuchidori-white footer-font " style="padding:5px 0px;"><i class="fas fa-arrow-up d-none d-md-inline"></i> キャラ選択 <i class="fas fa-arrow-up"></i><br class="d-md-none"><span class="d-none d-md-inline">　</span><span class="footer-info text-nowrap d-none d-md-inline"><span id="NOW_PARTYNUM">0</span>体 編成中</span></button></div>
                 </div>
                 <div class="width-100 bg-simple small text-center" style="height:95px;" id="FOOTER_PARTY">
@@ -803,44 +803,6 @@
         <tr>
             <td colspan="10" class="WINDOW_AREA">
                 <div class="fukidashiInput fukidashi">
-                    <table class="width-100 d-none" id="RENSEI_TABLE" style="background-color: rgba(0,0,0, 0.7);">
-                        <tr>
-                            <td class="text-left" style="position: relative;">
-                                <span class="ICON"></span>
-                                <div class="OPTION_LABEL op-label"></div>
-                            </td>
-                            <td colspan=2 class="fuchidori-blue" style="font-size:large">
-                                +<span class="TOTAL_PER"></span>%
-                            </td>
-                        </tr>
-                        <tr class="AB1 ab-line">
-                            <td colspan=2 class="text-left">
-                                <span class="icon_rare_xx ability_label align-middle"></span>
-                                <span class="font-xx align-middle"><span class="AB_NAME"></span>
-                            </td>
-                            <td><span class="AB_PER"></span>%</span></td>
-                        </tr>
-                        <tr class="AB2 ab-line">
-                            <td colspan=2 class="text-left">
-                                <span class="icon_rare_xx ability_label align-middle"></span>
-                                <span class="font-xx align-middle"><span class="AB_NAME"></span>
-                            </td>
-                            <td><span class="AB_PER"></span>%</span></td>
-                        </tr>
-                        <tr class="AB3 ab-line">
-                            <td colspan=2 class="text-left">
-                                <span class="icon_rare_xx ability_label align-middle"></span>
-                                <span class="font-xx align-middle"><span class="AB_NAME"></span>
-                            </td>
-                            <td><span class="AB_PER"></span>%</span></td>
-                        </tr>
-                        <tr>
-                            <td style="width:33%"></td>
-                            <td style="width:33%"></td>
-                            <td style="width:33%"></td>
-                        </tr>
-
-                    </table>                    
                     <table class="width-100 inputArea small">
                         <tr class="text-center">
                             <td colspan="2">
@@ -857,36 +819,21 @@
                         </tr>
                         <tbody class="DISP_VERTICAL">
                         <tr class="text-nowrap d-table-row d-lg-none">
-                            <td  class="text-center" colspan="2">
+                            <td  class="text-center" colspan="4">
                                 <div class="bg-item fuchidori-white fuchidoriNormal">▼ステータス入力▼</div>
                                 <br>
                             </td>
-                            <td  class="text-center" colspan="2">
-                                <div class="bg-item fuchidori-white fuchidoriNormal">▼推奨 錬成武器▼</div>
-                                <button class="RENSEI_CHANGE" data-type="BASE">汎用</button>
-                                <button class="RENSEI_CHANGE" data-type="SINGLE">単体</button>
-                                <button class="RENSEI_CHANGE" data-type="ALL">全体</button>
-                            </td>
                         </tr>
                         <tr class="text-nowrap d-table-row d-lg-none">
-                            <td>ＨＰ</td>
+                            <td colspan="2">ＨＰ</td>
                             <td><img src="https://romasagatool.com/img/icon/icon_minus.png" class="paramButton" width="30" data-param="HP"
                                     data-pm="minus" onclick=""><input type="number" pattern="[0-9]*"
                                     class="input charParam kadomaru charHP char-param-sp" data-param="HP"
                                     value="3"><img src="https://romasagatool.com/img/icon/icon_plus.png" class="paramButton" width="30"
                                     data-param="HP" data-pm="plus" onclick=""></td>
-                            <td rowspan="3" class="RENSEI_CARD RENSEI_BASE1 bg-simple"></td>
-                            <td rowspan="3" class="RENSEI_CARD RENSEI_SINGLE1 d-none bg-simple"></td>
-                            <td rowspan="3" class="RENSEI_CARD RENSEI_ALL1 d-none bg-simple"></td>
-                            <td rowspan="9" class="NOW_LOADING d-none text-left bg-simple" style="white-space: initial; padding:13px;">
-                                錬成武器が登録されていないか。読み込み中です。<br>
-                                <br><br>
-                                <a href="./rensei.html" target="_blank">錬成武器を登録</a>するか。<br><br>
-                                少し待ってから入力エリアを開き直してみてください。
-                            </td>
                         </tr>
                         <tr class="text-nowrap d-table-row d-lg-none">
-                            <td>腕力</td>
+                            <td colspan="2">腕力</td>
                             <td><img src="https://romasagatool.com/img/icon/icon_minus.png" class="paramButton" width="30" data-param="STR"
                                     data-pm="minus" onclick=""><input type="number" pattern="[0-9]*"
                                     class="input charParam kadomaru charSTR char-param-sp" data-param="STR"
@@ -894,7 +841,7 @@
                                     data-param="STR" data-pm="plus" onclick=""></td>
                         </tr>
                         <tr class="text-nowrap d-table-row d-lg-none">
-                            <td>体力</td>
+                            <td colspan="2">体力</td>
                             <td><img src="https://romasagatool.com/img/icon/icon_minus.png" class="paramButton" width="30" data-param="VIT"
                                     data-pm="minus" onclick=""><input type="number" pattern="[0-9]*"
                                     class="input charParam kadomaru charVIT char-param-sp" data-param="VIT"
@@ -902,18 +849,15 @@
                                     data-param="VIT" data-pm="plus" onclick=""></td>
                         </tr>
                         <tr class="text-nowrap d-table-row d-lg-none">
-                            <td class="small">器用さ</td>
+                            <td colspan="2" class="small">器用さ</td>
                             <td><img src="https://romasagatool.com/img/icon/icon_minus.png" class="paramButton" width="30" data-param="DEX"
                                     data-pm="minus" onclick=""><input type="number" pattern="[0-9]*"
                                     class="input charParam kadomaru charDEX char-param-sp" data-param="DEX"
                                     value="6"><img src="https://romasagatool.com/img/icon/icon_plus.png" class="paramButton" width="30"
                                     data-param="DEX" data-pm="plus" onclick=""></td>
-                            <td rowspan="3" class="RENSEI_CARD RENSEI_BASE2 bg-simple"></td>
-                            <td rowspan="3" class="RENSEI_CARD RENSEI_SINGLE2 d-none bg-simple"></td>
-                            <td rowspan="3" class="RENSEI_CARD RENSEI_ALL2 d-none bg-simple"></td>
                         </tr>
                         <tr class="text-nowrap d-table-row d-lg-none">
-                            <td class="small">素早さ</td>
+                            <td colspan="2" class="small">素早さ</td>
                             <td><img src="https://romasagatool.com/img/icon/icon_minus.png" class="paramButton" width="30" data-param="AGI"
                                     data-pm="minus" onclick=""><input type="number" pattern="[0-9]*"
                                     class="input charParam kadomaru charAGI char-param-sp" data-param="AGI"
@@ -921,7 +865,7 @@
                                     data-param="AGI" data-pm="plus" onclick=""></td>
                         </tr>
                         <tr class="text-nowrap d-table-row d-lg-none">
-                            <td>知力</td>
+                            <td colspan="2">知力</td>
                             <td><img src="https://romasagatool.com/img/icon/icon_minus.png" class="paramButton" width="30" data-param="INT"
                                     data-pm="minus" onclick=""><input type="number" pattern="[0-9]*"
                                     class="input charParam kadomaru charINT char-param-sp" data-param="INT"
@@ -929,18 +873,15 @@
                                     data-param="INT" data-pm="plus" onclick=""></td>
                         </tr>
                         <tr class="text-nowrap d-table-row d-lg-none">
-                            <td>精神</td>
+                            <td colspan="2">精神</td>
                             <td><img src="https://romasagatool.com/img/icon/icon_minus.png" class="paramButton" width="30" data-param="MND"
                                     data-pm="minus" onclick=""><input type="number" pattern="[0-9]*"
                                     class="input charParam kadomaru charMND char-param-sp" data-param="MND"
                                     value="6"><img src="https://romasagatool.com/img/icon/icon_plus.png" class="paramButton" width="30"
                                     data-param="MND" data-pm="plus" onclick=""></td>
-                            <td rowspan="3" class="RENSEI_CARD RENSEI_BASE3 bg-simple"></td>
-                            <td rowspan="3" class="RENSEI_CARD RENSEI_SINGLE3 d-none bg-simple"></td>
-                            <td rowspan="3" class="RENSEI_CARD RENSEI_ALL3 d-none bg-simple"></td> 
                         </tr>
                         <tr class="text-nowrap d-table-row d-lg-none">
-                            <td>愛</td>
+                            <td colspan="2">愛</td>
                             <td><img src="https://romasagatool.com/img/icon/icon_minus.png" class="paramButton" width="30" data-param="AI"
                                     data-pm="minus" onclick=""><input type="number" pattern="[0-9]*"
                                     class="input charParam kadomaru charAI char-param-sp" data-param="AI"
@@ -948,7 +889,7 @@
                                     data-param="AI" data-pm="plus" onclick=""></td>
                         </tr>
                         <tr class="text-nowrap d-table-row d-lg-none">
-                            <td>魅力</td>
+                            <td colspan="2">魅力</td>
                             <td><img src="https://romasagatool.com/img/icon/icon_minus.png" class="paramButton" width="30" data-param="MI"
                                     data-pm="minus" onclick=""><input type="number" pattern="[0-9]*"
                                     class="input charParam kadomaru charMI char-param-sp" data-param="MI"
