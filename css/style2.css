@@ -352,27 +352,25 @@ html {
     }
 }
 
-@media screen and (min-width:1024px) {
-    
+
+@media screen and (min-width:501px) {
     .haikei::before {
-        background: url(https://romasagatool.com/img/bg2nd.png) no-repeat;
-        background-position:50% 100%;
-        /*
-        background: url(https://romasagatool.com/img/v2bg.jpg) no-repeat;
-        background-position:50% 20%;*/
+        background: url(https://romasagatool.com/img/bg/v3bg.png) no-repeat;
+        background-position:50% 20%;
         background-size:cover;
         }
 }
+/* 500まではこっち */
+@media screen and (max-width:500px) {
+    .haikei::before {        
+        background: url(https://romasagatool.com/img/bg/v3bg_sp.png) no-repeat;
+        background-position:50% 20%;
+        background-size:cover;
+    }    
+}
+
 /* 1023まではこっち */
 @media screen and (max-width:1023px) {
-    .haikei::before {        
-        background: url(https://romasagatool.com/img/bg2nd.png) no-repeat;
-        background-position:50% 20%;
-        /*
-        background: url(https://romasagatool.com/img/v2bg.jpg) no-repeat;
-        background-position:50% 20%;*/
-        background-size:cover;
-    }
     .filter-bgcolor {
         border: 1px solid rgb(197,187,147);
     }
@@ -640,11 +638,6 @@ html {
     opacity: 0.9;
 }
 
-.haikei_old {
-    background: url(https://romasagatool.com/img/bg.jpg) no-repeat;
-    width:100%;
-    background-size: cover;
-}
 .dojohaikei {
     background: url(https://romasagatool.com/img/bg_dojo.png);
     padding-top: 10px;

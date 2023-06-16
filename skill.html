@@ -105,14 +105,6 @@
             .skill-name {
                 margin: auto 0px;
             }
-            .kakusei-bp {
-                position: absolute;
-                top: 40px;
-                right: 0;
-                width: 40px;
-                text-align: center;
-                font-size: 8px;
-            }
             .holderStyleArea {
                 line-height: 0px;
                 height:75px;
@@ -535,7 +527,7 @@
                         </li>
                     </ul>
                     <ul class="row nav nav-tabs text-center opacity">
-                        <li class="col-12 label-text-small yubi" id="TOKKOU_TOGGLE">特攻・覚醒素材（タップでオープン）</li>
+                        <li class="col-12 label-text-small yubi" id="TOKKOU_TOGGLE">特攻（タップでオープン）</li>
                     </ul>
                     <ul class="row nav nav-tabs text-center opacity" id="TOKKOU_UL">
                             <li class="col-12 col-sm-2 table-success char-bottom">特効1</li>
@@ -566,47 +558,6 @@
                                 <a class="_FilterLink  small" data-href="skill_crit_dragon" data-col="CriticalTargets"><img src="https://romasagatool.com/img/enemy/type_16.png" width="50" height="50"><br>竜 <span class="series-button" id="count_skill_crit_dragon">...</span></a>
                                 <a class="_FilterLink  small" data-href="skill_crit_kemo" data-col="CriticalTargets"><img src="https://romasagatool.com/img/enemy/icon_kemo.png" width="50" height="50"><br>獣 <span class="series-button" id="count_skill_crit_kemo">...</span></a>
                                 <a class="_FilterLink  small" data-href="skill_crit_jujin" data-col="CriticalTargets"><img src="https://romasagatool.com/img/enemy/type_2.png" width="50" height="50"><br>獣人 <span class="series-button" id="count_skill_crit_jujin">...</span></a>
-                            </li>                        
-                            <li class="col-12 col-sm-2 table-info">覚醒<br class="hidden pcBlock">素材</li>
-                            <li class="col m-auto side-padding-zero">
-                                <a class="_FilterLink pad0 d-inline-block" data-href="skill_black1" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_ksand"><span class="series-button" id="count_skill_black1">...</span></span></a><br>
-                                <a class="_FilterLink pad0 d-inline-block" data-href="skill_black2" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_kstone"><span class="series-button" id="count_skill_black2">...</span></span></a><br>
-                                <a class="_FilterLink pad0 d-inline-block" data-href="skill_black3" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_kjewel"><span class="series-button" id="count_skill_black3">...</span></span></a>
-                            </li>
-                            <li class="col m-auto side-padding-zero">
-                                <a class="_FilterLink pad0 d-inline-block" data-href="skill_blue1" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_bsand"><span class="series-button" id="count_skill_blue1">...</span></span></a><br>
-                                <a class="_FilterLink pad0 d-inline-block" data-href="skill_blue2" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_bstone"><span class="series-button" id="count_skill_blue2">...</span></span></a><br>
-                                <a class="_FilterLink pad0 d-inline-block" data-href="skill_blue3" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_bjewel"><span class="series-button" id="count_skill_blue3">...</span></span></a>
-                            </li>
-                            <li class="col m-auto side-padding-zero">
-                                <a class="_FilterLink pad0 d-inline-block" data-href="skill_green1" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_gsand"><span class="series-button" id="count_skill_green1">...</span></span></a><br>
-                                <a class="_FilterLink pad0 d-inline-block" data-href="skill_green2" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_gstone"><span class="series-button" id="count_skill_green2">...</span></span></a><br>
-                                <a class="_FilterLink pad0 d-inline-block" data-href="skill_green3" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_gjewel"><span class="series-button" id="count_skill_green3">...</span></span></a>
-                            </li>
-                            <li class="col m-auto side-padding-zero">
-                                <a class="_FilterLink pad0 d-inline-block" data-href="skill_orange1" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_osand"><span class="series-button" id="count_skill_orange1">...</span></span></a><br>
-                                <a class="_FilterLink pad0 d-inline-block" data-href="skill_orange2" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_ostone"><span class="series-button" id="count_skill_orange2">...</span></span></a><br>
-                                <a class="_FilterLink pad0 d-inline-block" data-href="skill_orange3" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_ojewel"><span class="series-button" id="count_skill_orange3">...</span></span></a>
-                            </li>
-                            <li class="col m-auto side-padding-zero">
-                                <a class="_FilterLink pad0 d-inline-block" data-href="skill_purple1" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_psand"><span class="series-button" id="count_skill_purple1">...</span></span></a><br>
-                                <a class="_FilterLink pad0 d-inline-block" data-href="skill_purple2" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_pstone"><span class="series-button" id="count_skill_purple2">...</span></span></a><br>
-                                <a class="_FilterLink pad0 d-inline-block" data-href="skill_purple3" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_pjewel"><span class="series-button" id="count_skill_purple3">...</span></span></a>
-                            </li>
-                            <li class="col m-auto side-padding-zero">
-                                <a class="_FilterLink pad0 d-inline-block" data-href="skill_red1" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_rsand"><span class="series-button" id="count_skill_red1">...</span></span></a><br>
-                                <a class="_FilterLink pad0 d-inline-block" data-href="skill_red2" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_rstone"><span class="series-button" id="count_skill_red2">...</span></span></a><br>
-                                <a class="_FilterLink pad0 d-inline-block" data-href="skill_red3" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_rjewel"><span class="series-button" id="count_skill_red3">...</span></span></a>
-                            </li>
-                            <li class="col m-auto side-padding-zero">
-                                <a class="_FilterLink pad0 d-inline-block" data-href="skill_yellow1" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_ysand"><span class="series-button" id="count_skill_yellow1">...</span></span></a><br>
-                                <a class="_FilterLink pad0 d-inline-block" data-href="skill_yellow2" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_ystone"><span class="series-button" id="count_skill_yellow2">...</span></span></a><br>
-                                <a class="_FilterLink pad0 d-inline-block" data-href="skill_yellow3" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_yjewel"><span class="series-button" id="count_skill_yellow3">...</span></span></a>
-                            </li>
-                            <li class="col m-auto side-padding-zero">
-                                <a class="_FilterLink pad0 d-inline-block" data-href="skill_white1" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_wsand"><span class="series-button" id="count_skill_white1">...</span></span></a><br>
-                                <a class="_FilterLink pad0 d-inline-block" data-href="skill_white2" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_wstone"><span class="series-button" id="count_skill_white2">...</span></span></a><br>
-                                <a class="_FilterLink pad0 d-inline-block" data-href="skill_white3" data-col="KakuseiSearch"><span class="icon_mini withLabel icon_wjewel"><span class="series-button" id="count_skill_white3">...</span></span></a>
                             </li>
                         </span>
 
@@ -645,12 +596,6 @@
                                 <td class="d-none d-sm-table-cell text-right text-nowrap" style="width:120px; padding-right:5px; line-height: 20px;">
                                     <div class="IRYOKU_TD"></div>
                                     <span class="IRYOKU_AREA" style="background: black;font-size: 14px; padding: 0px 10px; border-radius: 10px; border: 1px solid;"></span>                                    
-                                </td>
-                                <td class="text-right small skillKakuseiArea" style="position: relative; width:40px; height:40px;">
-                                    <span class="icon_back_default" style="position: absolute; top: 5px; right: 0; background-size: 40px;">
-                                        <span class="KAKUSEI_CLASS" style="width:40px;height:40px; display: inline-block; background-size: contain;">　</span>
-                                    </span>
-                                    <span class="kakusei-bp KAKUSEI_BP"></span>
                                 </td>
                             </tr>
                             <tr>
