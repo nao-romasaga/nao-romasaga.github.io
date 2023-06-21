@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics         -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138966739-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-138966739-1');
+    </script>
+    <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="./js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="./js/jquery.ui.touch-punch.js"></script>
+    <script type="text/javascript" src="./js/tabulator.js"></script>
+    <script type="text/javascript" src="./js/dataload.js"></script>
+    <script>
+        // require dataload.js
+        dataload([
+            "data_CHARMASTER",
+            "data_STYLEMASTER_style",
+            "data_ABILITY",
+            "data_SKILLMASTER_style",
+        ], false);
+    </script>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <meta charset="utf-8">
+    <title>【ロマサガRS】デバフ所持スタイル一覧</title>
+    <meta property="og:title" content="【ロマサガRS】デバフ所持スタイル一覧" />
+    <meta property="og:description" content="ロマサガRSのデバフを所持しているスタイル一覧です。デバフが有効なボス戦などで活躍できるスタイルを探すのにご利用ください。" />
+    <meta name="description" content="ロマサガRSのデバフを所持しているスタイル一覧です。デバフが有効なボス戦などで活躍できるスタイルを探すのにご利用ください。【ロマンシングサガ リユニバース】" />
+    <meta property="og:site_name" content="ロマサガRS便利ツール" />
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="ja_JP" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@nao_romasaga_rs" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap/bootstrap.min.css" rel="preload" as="style">
+    <link rel="stylesheet" type="text/css" href="./css/style2.css" rel="preload" as="style">
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" / rel="preload" as="style">
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet" rel="preload" as="style">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet" rel="preload" as="style">
+    <script type="text/javascript" src="./js/bootstrap.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/3.5.2/firebase-ui-auth__ja.js"></script>
+    <script type="text/javascript" src="./js/Firebase.js"></script>
+    <script type="text/javascript" src="./js/utils2.js"></script>
+
+    <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.  com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+</head>
+
+<body style="background-color: darkgoldenrod;">
+    <div class="dojohaikei" style="padding-bottom: 20px;">
+        <div class="container">
+
+            <h3 class="text-center label-text-small width-100">デバフ所持 スタイル一覧</h3>
+
+            <div class="filter-bgcolor text-center small row" style="width:100%; margin: 20px 0px;">
+                <ul class="nav text-center width-100 nav-pad">
+                    <li class="subtitle-long fuchidori-white smallFont" style="margin-bottom: 15px;">デバフ種類</li>
+                </ul>
+                <div class="d-flex text-center width-100 fuchidori-white justify-content-around" style="line-height: 16px; margin-bottom: 5px;">
+                    <div class="attr-filter">OR<br>条件</div>
+                    <div class="attr-filter"><div class="filterList yubi weapon-icon-button filter-button" data-href="STR" data-target="Type">
+                        <span class="icon_mini_zokusei icon_debuff_str"></span><span>(<span id="DEBUFF_STR_count" class="skill-count">99</span>)</span></div></div>
+                    <!--
+                    <div class="attr-filter"><div class="filterList yubi weapon-icon-button filter-button" data-href="VIT" data-target="Type">
+                        <span class="icon_mini_zokusei icon_debuff_vit"></span><span>(<span id="DEBUFF_VIT_count" class="skill-count">99</span>)</span></div></div>
+                    -->
+                    <div class="attr-filter"><div class="filterList yubi weapon-icon-button filter-button" data-href="DEX" data-target="Type">
+                        <span class="icon_mini_zokusei icon_debuff_dex"></span><span>(<span id="DEBUFF_DEX_count" class="skill-count">99</span>)</span></div></div>
+                    <div class="attr-filter"><div class="filterList yubi weapon-icon-button filter-button" data-href="AGI" data-target="Type">
+                        <span class="icon_mini_zokusei icon_debuff_agi"></span><span>(<span id="DEBUFF_AGI_count" class="skill-count">99</span>)</span></div></div>
+                    <div class="attr-filter"><div class="filterList yubi weapon-icon-button filter-button" data-href="INT" data-target="Type">
+                        <span class="icon_mini_zokusei icon_debuff_int"></span><span>(<span id="DEBUFF_INT_count" class="skill-count">99</span>)</span></div></div>
+                    <!--
+                    <div class="attr-filter"><div class="filterList yubi weapon-icon-button filter-button" data-href="MND" data-target="Type">
+                        <span class="icon_mini_zokusei icon_debuff_mnd"></span><span>(<span id="DEBUFF_MND_count" class="skill-count">99</span>)</span></div></div>
+                    <div class="attr-filter"><div class="filterList yubi weapon-icon-button filter-button" data-href="AI" data-target="Type">
+                        <span class="icon_mini_zokusei icon_debuff_ai"></span><span>(<span id="DEBUFF_AI_count" class="skill-count">99</span>)</span></div></div>
+                    <div class="attr-filter"><div class="filterList yubi weapon-icon-button filter-button" data-href="MI" data-target="Type">
+                        <span class="icon_mini_zokusei icon_debuff_mi"></span><span>(<span id="DEBUFF_MI_count" class="skill-count">99</span>)</span></div></div>
+                    -->
+                </div>
+                <div class="d-flex text-center width-100 fuchidori-white justify-content-around" style="line-height: 16px; margin-bottom: 5px;">
+                    <div class="attr-filter">AND<br>条件</div>
+                    <div class="attr-filter"><div class="filterList yubi weapon-icon-button filter-button" data-href="STR" data-target="TypeAnd">
+                        <span class="icon_mini_zokusei icon_debuff_str"></span><span>(<span id="DEBUFF_STR_And_count" class="skill-count">99</span>)</span></div></div>
+                    <!--
+                    <div class="attr-filter"><div class="filterList yubi weapon-icon-button filter-button" data-href="VIT" data-target="TypeAnd">
+                        <span class="icon_mini_zokusei icon_debuff_vit"></span><span>(<span id="DEBUFF_VIT_And_count" class="skill-count">99</span>)</span></div></div>
+                    -->
+                    <div class="attr-filter"><div class="filterList yubi weapon-icon-button filter-button" data-href="DEX" data-target="TypeAnd">
+                        <span class="icon_mini_zokusei icon_debuff_dex"></span><span>(<span id="DEBUFF_DEX_And_count" class="skill-count">99</span>)</span></div></div>
+                    <div class="attr-filter"><div class="filterList yubi weapon-icon-button filter-button" data-href="AGI" data-target="TypeAnd">
+                        <span class="icon_mini_zokusei icon_debuff_agi"></span><span>(<span id="DEBUFF_AGI_And_count" class="skill-count">99</span>)</span></div></div>
+                    <div class="attr-filter"><div class="filterList yubi weapon-icon-button filter-button" data-href="INT" data-target="TypeAnd">
+                        <span class="icon_mini_zokusei icon_debuff_int"></span><span>(<span id="DEBUFF_INT_And_count" class="skill-count">99</span>)</span></div></div>
+                    <!--
+                    <div class="attr-filter"><div class="filterList yubi weapon-icon-button filter-button" data-href="MND" data-target="TypeAnd">
+                        <span class="icon_mini_zokusei icon_debuff_mnd"></span><span>(<span id="DEBUFF_MND_And_count" class="skill-count">99</span>)</span></div></div>
+                    <div class="attr-filter"><div class="filterList yubi weapon-icon-button filter-button" data-href="AI" data-target="TypeAnd">
+                        <span class="icon_mini_zokusei icon_debuff_ai"></span><span>(<span id="DEBUFF_AI_And_count" class="skill-count">99</span>)</span></div></div>
+                    <div class="attr-filter"><div class="filterList yubi weapon-icon-button filter-button" data-href="MI" data-target="TypeAnd">
+                        <span class="icon_mini_zokusei icon_debuff_mi"></span><span>(<span id="DEBUFF_MI_And_count" class="skill-count">99</span>)</span></div></div>
+                    -->
+                </div>                
+                <ul class="nav text-center width-100 nav-pad" style="margin-bottom: 5px;">
+                    <li class="subtitle-long fuchidori-white smallFont">範囲</li>
+                </ul>
+                <ul class="nav text-center width-100 nav-pad">
+                    <li class="col-6 col-sm-3" style="color:beige; margin-bottom: 5px;"><div class="filterList yubi pad0"
+                        data-href="敵単体" data-target="Area"><div class="fButton text-center width-100 filter-bgcolor">単体 (<span id="AREA_敵単体_count" class="skill-count">99</span>)</div></span></li>
+                    <li class="col-6 col-sm-3" style="color:beige; margin-bottom: 5px;"><div class="filterList yubi pad0"
+                        data-href="敵全体" data-target="Area"><div class="fButton text-center width-100 filter-bgcolor">全体 (<span id="AREA_敵全体_count" class="skill-count">99</span>)</div></span></li>
+                </ul>
+
+                <ul class="nav text-center width-100 nav-pad" style="margin-bottom: 5px;">
+                    <li class="subtitle-long fuchidori-white smallFont">武器種別</li>
+                </ul>
+                <div class="d-flex text-center width-100 fuchidori-white justify-content-around" style="line-height: 14px; flex-wrap: wrap;">
+                    <div class="attr-filter"><div class="filterList weapon-icon-button filter-button yubi pad0" data-href="WEAPON_剣" data-target="Weapon"><span
+                                class="icon_mini icon_ken  fButton" onclick=""></span><span>(<span id="icon_ken_count" class="skill-count">99</span>)</span></div></div>
+                    <div class="attr-filter"><div class="filterList weapon-icon-button filter-button yubi pad0" data-href="WEAPON_大剣" data-target="Weapon"><span
+                                class="icon_mini icon_dken  fButton" onclick=""></span><span>(<span id="icon_dken_count" class="skill-count">99</span>)</span></div></div>
+                    <div class="attr-filter"><div class="filterList weapon-icon-button filter-button yubi pad0" data-href="WEAPON_斧" data-target="Weapon"><span
+                                class="icon_mini icon_ono  fButton" onclick=""></span><span>(<span id="icon_ono_count" class="skill-count">99</span>)</span></div></div>
+                    <div class="attr-filter"><div class="filterList weapon-icon-button filter-button yubi pad0" data-href="WEAPON_棍棒" data-target="Weapon"><span
+                                class="icon_mini icon_kon  fButton" onclick=""></span><span>(<span id="icon_kon_count" class="skill-count">99</span>)</span></div></div>
+                    <div class="attr-filter"><div class="filterList weapon-icon-button filter-button yubi pad0" data-href="WEAPON_体術" data-target="Weapon"><span
+                                class="icon_mini icon_tai  fButton" onclick=""></span><span>(<span id="icon_tai_count" class="skill-count">99</span>)</span></div></div>
+                    <div class="attr-filter"><div class="filterList weapon-icon-button filter-button yubi pad0" data-href="WEAPON_銃" data-target="Weapon"><span
+                                class="icon_mini icon_ju  fButton" onclick=""></span><span>(<span id="icon_ju_count" class="skill-count">99</span>)</span></div></div>
+                    <div class="attr-filter"><div class="filterList weapon-icon-button filter-button yubi pad0" data-href="WEAPON_小剣" data-target="Weapon"><span
+                                class="icon_mini icon_sken  fButton" onclick=""></span><span>(<span id="icon_sken_count" class="skill-count">99</span>)</span></div></div>
+                    <div class="attr-filter"><div class="filterList weapon-icon-button filter-button yubi pad0" data-href="WEAPON_槍" data-target="Weapon"><span
+                                class="icon_mini icon_yari  fButton" onclick=""></span><span>(<span id="icon_yari_count" class="skill-count">99</span>)</span></div></div>
+                    <div class="attr-filter"><div class="filterList weapon-icon-button filter-button yubi pad0" data-href="WEAPON_弓" data-target="Weapon"><span
+                                class="icon_mini icon_yumi  fButton" onclick=""></span><span>(<span id="icon_yumi_count" class="skill-count">99</span>)</span></div></div>
+                    <div class="attr-filter"><div class="filterList weapon-icon-button filter-button yubi pad0" data-href="WEAPON_杖" data-target="Weapon"><span
+                                class="icon_mini icon_tsue  fButton" onclick=""></span><span>(<span id="icon_tsue_count" class="skill-count">99</span>)</span></div></div>
+                </div>
+                <ul class="nav text-center width-100 nav-pad">
+                    <li class="fuchidori-white subtitle-long smallFont">シリーズ</li>
+                </ul>
+                <ul class="nav no-gutters text-center width-100 nav-pad">
+                    <li class="col-4 col-sm-2" style="color:beige; margin-bottom: 5px;"><div class="filterList yubi pad0"
+                        data-href="RS1" data-target="Series"><div class="fButton text-center width-100 filter-bgcolor">RS1(<span id="RS1_count" class="skill-count">99</span>)</div></span></li>
+                    <li class="col-4 col-sm-2" style="color:beige; margin-bottom: 5px;"><div class="filterList yubi pad0"
+                            data-href="RS2" data-target="Series"><div class="fButton text-center width-100 filter-bgcolor">RS2(<span id="RS2_count" class="skill-count">99</span>)</div></span></li>
+                    <li class="col-4 col-sm-2" style="color:beige; margin-bottom: 5px;"><div class="filterList yubi pad0"
+                            data-href="RS3" data-target="Series"><div class="fButton text-center width-100 filter-bgcolor">RS3(<span id="RS3_count" class="skill-count">99</span>)</div></span></li>
+                    <li class="col-4 col-sm-2" style="color:beige; margin-bottom: 5px;"><div class="filterList yubi pad0"
+                            data-href="SF1" data-target="Series"><div class="fButton text-center width-100 filter-bgcolor">SF1(<span id="SF1_count" class="skill-count">99</span>)</div></span></li>
+                    <li class="col-4 col-sm-2" style="color:beige; margin-bottom: 5px;"><div class="filterList yubi pad0"
+                            data-href="SF2" data-target="Series"><div class="fButton text-center width-100 filter-bgcolor">SF2(<span id="SF2_count" class="skill-count">99</span>)</div></span></li>
+                    <li class="col-4 col-sm-2" style="color:beige; margin-bottom: 5px;"><div class="filterList yubi pad0"
+                            data-href="US" data-target="Series"><div class="fButton text-center width-100 filter-bgcolor">US(<span id="US_count" class="skill-count">99</span>)</div></span></li>
+                    <li class="col-4 col-sm-2" style="color:beige; margin-bottom: 5px;"><div class="filterList yubi pad0"
+                            data-href="ES" data-target="Series"><div class="fButton text-center width-100 filter-bgcolor">ES(<span id="ES_count" class="skill-count">99</span>)</div></span></li>
+                    <li class="col-4 col-sm-2" style="color:beige; margin-bottom: 5px;"><div class="filterList yubi pad0"
+                            data-href="SS" data-target="Series"><div class="fButton text-center width-100 filter-bgcolor">SSG(<span id="SS_count" class="skill-count">99</span>)</div></span></li>
+                    <li class="col-4 col-sm-2" style="color:beige; margin-bottom: 5px;"><div class="filterList yubi pad0"
+                            data-href="RSR" data-target="Series"><div class="fButton text-center width-100 filter-bgcolor">SaGaRS(<span id="RSR_count" class="skill-count">99</span>)</div></span></li>
+                    <li class="col-4 col-sm-2" style="color:beige; margin-bottom: 5px;"><div class="filterList yubi pad0"
+                        data-href="GB" data-target="Series"><div class="fButton text-center width-100 filter-bgcolor text-nowrap">GB(<span id="GB_count" class="skill-count">99</span>)</div></span></li>    
+                    <li class="col-4 col-sm-2" style="color:beige; margin-bottom: 5px;"><div class="filterList yubi pad0"
+                            data-href="OTR" data-target="Series"><div class="fButton text-center width-100 filter-bgcolor text-nowrap">その他(<span id="OTR_count" class="skill-count">99</span>)</div></span></li>
+                </ul>
+            </div>
+
+            <div id="PARAM_AREA"></div>
+
+            <style>
+                .attr-filter {
+                    margin: 5px;
+                }
+                .skill-area {
+                    overflow-x: scroll;
+                    line-height: 25px;
+                    padding-bottom: 15px;
+                }
+                .filter-button {
+                    display: -ms-flexbox !important;
+                    display: flex !important;
+                    -ms-flex-align: center !important;
+                    align-items: center !important;
+                    -ms-flex-direction: column !important;
+                    flex-direction: column !important;
+                    padding: 5px;
+                }
+
+            </style>
+
+            <div id="SKILL_TEMPLATE" class="d-none style-skill-list-child" style="margin-right: 10px;">
+                <span class="icon_xs SKILL_ICON">　</span> <span class="SKILL_NAME"></span>
+            </div>
+            <div id="AB_TEMPLATE" class="d-none style-skill-list-child">
+                <span class="AB_ICON"></span>[<span class="AB_TIME"></span>%][<span class="AB_TARGET"></span>(-<span class="AB_SIZE"></span>%)]<span class="AB_NAME"></span> 
+            </div>
+            <div class="row width-max no-gutters style-skill-list position-relative d-none" id='TEMPLATE'>
+                <img class="CLOSE_BTN yubi" src="./img/icon/icon_close.png" style="position: absolute;top: 0px;right: 0px;height: 15px;" onclick="">
+                <div class="col-2 col-sm-1 text-nowrap ICON text-center"></div>
+                <div class="col-10 col-sm-4 col-lg-3 text-nowrap" style="overflow-x: hidden; line-height:22px; padding-left: 5px">
+                    <span class="NAME"></span>
+                    <span class="ANOTHER_NAME"></span><br>
+                    <span class="CHAR_INT d-none"></span>
+                    <div class="d-none d-sm-inline"><!--PC-->
+                        知:<span class="STYLE_INT"></span><span class="STYLE_INT_BONUS">　</span><br>
+                        精:<span class="STYLE_MND"></span><span class="STYLE_MND_BONUS">　</span><br>
+                        速:<span class="STYLE_AGI"></span><span class="STYLE_AGI_BONUS">　</span><br>
+                        BP回復:<span class="HEAL_BP"></span>/T
+                    </div>
+                    <div class="d-sm-none"><!--SP-->
+                        知:<span class="STYLE_INT"></span> | 
+                        精:<span class="STYLE_MND"></span> |
+                        速:<span class="STYLE_AGI"></span> |
+                        BP回復:<span class="HEAL_BP"></span>/T
+                    </div>
+                </div>
+                <!--PC-->
+                <div class="col-12 col-sm-7 col-lg-8 text-nowrap skill-area">
+                    <div class="SKILL_AREA"></div>
+                    <div class="AB_AREA"></div>
+                </div>
+            </div>
+        </div>
+    </div><!-- isLogin -->
+    </div>
+    </div>
+    <script type="text/javascript" src="./js/culcStyleBonus.js"></script>
+    <script type="text/javascript" src="./js/damage.js"></script>
+    <script type="text/javascript" src="https://romasagatool.com/blog/get_the_archives.php?limit=30&callback=rssCallback" defer></script>
+    <script type="text/javascript" src="./js/debuff.js"></script>
+</body>
+</html>
