@@ -88,8 +88,6 @@
             .noneCount{
                 background-color:black !important;
             }
-            ._FilterLink{}
-
             .pari{
                 display: inline-block;
                 width: 35px;
@@ -632,13 +630,17 @@
                                 <button id="HIDE_LIMIT" class="width-100 icon_btn_negative">限定技を非表示</button>
                             </div>                        
                         </div>
-                        <div class="d-none">
+                        <div class="">
                         <div id="SKILL_EFFECT" class="text-center width-100 label-text-small">技・術の効果</div>
-                        <div id="EFFECT_FILTER_AREA" class="d-flex justify-content-md-center text-nowrap" style="margin: 10px 0px;"></div>
-                        <div id="EFFECT_TEMPLATE" class="d-none yubi text-center" style="flex-flow: column;">
-                            <span class="label"></span>
-                            <span class="width-100 series-button"></span>
+                        <div id="EFFECT_FILTER_AREA" class="d-flex flex-wrap justify-content-md-center text-center text-nowrap" style="margin: 10px 0px;"></div>
+                        <div id="EFFECT_TEMPLATE" class="d-none flex-sm-column" style="line-height: 1rem; align-items: center;">
+                            <div class="label bg-item TITLE width-100" style="min-width: 70px; padding: 0.5rem 20px; line-height: 1.5rem;"></div>
+                            <div class="d-flex justify-content-center PER_AREA"></div>
                         </div>
+                        <div id="EFFECT_PER" class="yubi SUB-FILTER d-none" style="margin: 0 5px;">
+                            <div class="label SIZE"></div>
+                            <div class="width-100 series-button"></div>
+                        </div>                        
                     </div>
                     </div>
 
