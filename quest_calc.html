@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#" lang="ja">
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138966739-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', 'UA-138966739-1');
+        </script>
+        <meta charset="utf-8">
+        <title>【ロマサガRS】フリークエスト周回計算機</title>
+        <meta property="og:title" content="【ロマサガRS】フリークエスト周回計算機" />
+        <meta property="og:url" content="https://http://nao-romasaga.github.io/dojo.html" />
+        <meta property="og:description" content="ロマサガRSのフリークエストでステージLv99に必要な周回数の計算機です。自動周回の設定目安にご参考ください。" />
+        <meta name="description" content="ロマサガRSのフリークエストでステージLv99に必要な周回数の計算機です。自動周回の設定目安にご参考ください。【ロマンシングサガ リユニバース】" />
+        <meta property="og:image" content="https://nao-romasaga.github.io/img/twitter_card.png" />
+        <meta property="og:site_name" content="ロマサガRS便利ツール" />
+        <meta property="og:type" content="article">
+        <meta property="og:locale" content="ja_JP" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@nao_romasaga_rs" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <script src="./js/jquery-3.3.1.min.js"></script>
+        <link rel="stylesheet" href="./css/bootstrap/bootstrap.min.css">
+        <script src="./js/bootstrap/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="./css/style2.css">
+        <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
+        <script src="./js/Firebase.js"></script>
+        <script src="./js/utils2.js" ></script>
+        <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div class="dojohaikei"><div class="container">
+
+                <h1 class="text-center title-text">ステージ周回数計算機</h1>
+                <br>
+                <div class="text-center">
+                </div>
+                <p class="text-right opacity"><small>バグ発見、ご要望は <a href="https://peing.net/ja/nao_romasaga_rs" target="new">質問箱</a>まで</small>
+                </p>
+                <div id="main">
+                    <div class="info-modal">
+                        <div class="text-center info-modal-header">設定</div>
+                        <span class="subtitle-long">設定例　</span>
+                        <div class="d-flex" style="flex-wrap: wrap;    justify-content: center;">
+                            <img src="https://romasagatool.com/img/quest_calc.png" style="max-width: 90%;">
+                            <div>上記の画像の場合「ステージLv=66」「次Lvまで=570」「1周あたり=150」で設定してください</div>
+                        </div>
+                        <span class="subtitle-long">設定　</span>
+                        <div class="d-flex justy">
+                            <div class="text-nowrap">現在のステージLv</div>
+                            <div class=""><input id="NOW_LV" type="number" class="input kadomaru battle" value="50"></div>
+                        </div>
+                        <div class="d-flex justy">
+                            <div class="text-nowrap">次Lvまでの残EXP</div>
+                            <div class=""><input id="NEXT_LV" type="number" class="input kadomaru battle" vaue="0"></div>
+                        </div>
+                        <div class="d-flex justy">
+                            <div class="text-nowrap">1周あたりのEXP</div>
+                            <div class="">
+                                <select id="BATTLE_EXP" class="input kadomaru exp battle">
+                                    <option>250</option>
+                                    <option>200</option>
+                                    <option selected>150</option>
+                                    <option>100</option>
+                                    <option>50</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="d-flex justy" style="margin: 10px">
+                            <button id="calc" class="icon_btn_positive">計算</button>
+                        </div>
+                        <div class="d-flex justy" style="margin-top: 20px">
+                            <div class="bg-simple" style="padding: 10px 20px;">
+                                <table id="EXP_TABLE">
+                                    <thead>
+                                        <tr style="border-bottom: 1px solid;">
+                                            <th>Lv</th>
+                                            <th style="padding: 0 10px">周回数</th>
+                                            <th style="padding: 0 10px">スタミナ</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <table class="d-none" >
+                            <tr class="d-none" id="EXP_TR_TMPL">
+                                <td class="lv"></td>
+                                <td class="num text-right"></td>
+                                <td class="st  text-right"></td>
+                            </tr>
+                        </table>
+
+                    </div>
+                </div>
+                <style>
+                    .justy {
+                        justify-content: space-around;
+                    }
+                    .exp {
+                        width: 200px;
+                        padding: 5px;
+                    }
+                    .battle {
+                        max-width: 150px;
+                    }
+                </style>
+            <script>
+                const LV_MAP = {1:0, 2:100, 3:300, 4:600, 5:1000, 6:1400, 7:1900, 8:2500, 9:3200, 10:4000, 11:4800, 12:5600, 13:6400, 14:7200, 15:8000, 16:8800, 17:9600, 18:10400, 19:11200, 20:12000, 21:12810, 22:13620, 23:14430, 24:15240, 25:16050, 26:16860, 27:17670, 28:18480, 29:19290, 30:20100, 31:20920, 32:21740, 33:22560, 34:23380, 35:24200, 36:25020, 37:25840, 38:26660, 39:27480, 40:28300, 41:29130, 42:29960, 43:30790, 44:31620, 45:32450, 46:33280, 47:34110, 48:34940, 49:35770, 50:36600, 51:37440, 52:38280, 53:39120, 54:39960, 55:40800, 56:41640, 57:42480, 58:43320, 59:44160, 60:45000, 61:45880, 62:46800, 63:47760, 64:48760, 65:49800, 66:50920, 67:52120, 68:53400, 69:54760, 70:56200, 71:57760, 72:59440, 73:61240, 74:63160, 75:65200, 76:67400, 77:69760, 78:72280, 79:74960, 80:77800, 81:80880, 82:84200, 83:87760, 84:91560, 85:95600, 86:99960, 87:104640, 88:109640, 89:114960, 90:120600, 91:126720, 92:133320, 93:140400, 94:148120, 95:156480, 96:165640, 97:175760, 98:187000, 99:200000};
+                const LV_LIST = [99,95,90,80,70,60,50,40,30];
+                $("#calc").click(function(){
+                    let now = Number($("#NOW_LV").val());
+                    let next = Number($("#NEXT_LV").val());
+                    let exp = Number($("#BATTLE_EXP").val());
+                    let st = 5; //スタミナ
+                    // LV5のとき、次までは必要な経験値はnuxt - now
+                    let totalExp = LV_MAP[now];
+                    $("#EXP_TABLE > tbody").html("");
+                    let list = now > 80 ? [99,98,97,96,95,94,93,92,91,90] : LV_LIST;
+                    for(nextLv of list){
+                        if(nextLv <= now) {
+                            break;
+                        }
+                        let nextExp = LV_MAP[nextLv];
+                        let required_exp = (nextExp - totalExp - next);
+                        let num = Math.ceil(required_exp / exp);
+                        let $row = $("#EXP_TR_TMPL").clone().attr("id","").removeClass("d-none");
+                        $row.find(".lv").text(nextLv);
+                        $row.find(".num").text(num);
+                        $row.find(".st").text(num * st);
+                        $("#EXP_TABLE > tbody").append($row);
+                        console.log($row, nextLv, nextExp , totalExp, required_exp);
+                    }
+                });
+
+            </script>
+
+            </div></div>
+        <!-- End Twitter universal website tag code -->        
+        <script type="text/javascript" src="https://romasagatool.com/blog/get_the_archives.php?limit=30&callback=rssCallback"></script>
+    </body>
+</html>
