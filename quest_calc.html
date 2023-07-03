@@ -130,22 +130,25 @@
                     let exp = Number($("#BATTLE_EXP").val());
                     let st = 5; //スタミナ
                     // LV5のとき、次までは必要な経験値はnuxt - now
-                    let totalExp = LV_MAP[now];
+                    let nowExp = (LV_MAP[now+1] - next);
+                    if(next == 0) {
+                        nowExp = LV_MAP[now];
+                    }
                     $("#EXP_TABLE > tbody").html("");
                     let list = now > 80 ? [99,98,97,96,95,94,93,92,91,90] : LV_LIST;
                     for(nextLv of list){
                         if(nextLv <= now) {
                             break;
                         }
-                        let nextExp = LV_MAP[nextLv];
-                        let required_exp = (nextExp - totalExp - next);
+                        let nextExp = LV_MAP[nextLv]; // 165640 - 
+                        let required_exp = nextExp - nowExp;
                         let num = Math.ceil(required_exp / exp);
                         let $row = $("#EXP_TR_TMPL").clone().attr("id","").removeClass("d-none");
                         $row.find(".lv").text(nextLv);
                         $row.find(".num").text(num);
                         $row.find(".st").text(num * st);
                         $("#EXP_TABLE > tbody").append($row);
-                        console.log($row, nextLv, nextExp , totalExp, required_exp);
+                        console.log($row, nextLv, nextExp , nowExp, required_exp);
                     }
                 });
 
