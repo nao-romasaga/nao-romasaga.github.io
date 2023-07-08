@@ -11,6 +11,19 @@ var ENEMY_DATA = [{
     "in": -35,
     "vit": 10,
     "mnd": 10
+}, {
+    "quest": "討伐",
+    "name": "アラケス-深淵の激闘-(Romancing)",
+    "zan": -35,
+    "da": 0,
+    "totsu": 0,
+    "netsu": -35,
+    "rei": 0,
+    "rai": 0,
+    "you": 0,
+    "in": 0,
+    "vit": 370,
+    "mnd": 0
 },
     {
     "quest": "討伐",
