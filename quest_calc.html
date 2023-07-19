@@ -74,6 +74,8 @@
                             <div class="text-nowrap">1周あたりのEXP</div>
                             <div class="">
                                 <select id="BATTLE_EXP" class="input kadomaru exp battle">
+                                    <option>350</option>
+                                    <option>300</option>
                                     <option>250</option>
                                     <option>200</option>
                                     <option selected>150</option>
@@ -82,6 +84,16 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="d-flex justy">
+                            <div class="text-nowrap">1周の消費スタミナ</div>
+                            <div class="">
+                                <select id="QUEST_ST" class="input kadomaru exp battle">
+                                    <option selected>10</option>
+                                    <option>5</option>
+                                </select>
+                            </div>
+                        </div>
+
                         <div class="d-flex justy" style="margin: 10px">
                             <button id="calc" class="icon_btn_positive">計算</button>
                         </div>
@@ -128,7 +140,7 @@
                     let now = Number($("#NOW_LV").val());
                     let next = Number($("#NEXT_LV").val());
                     let exp = Number($("#BATTLE_EXP").val());
-                    let st = 5; //スタミナ
+                    let st = Number($("#QUEST_ST").val());; //スタミナ                    
                     // LV5のとき、次までは必要な経験値はnuxt - now
                     let nowExp = (LV_MAP[now+1] - next);
                     if(next == 0) {
