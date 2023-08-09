@@ -242,7 +242,7 @@
                                 continue;
                             }
                             let illustId = STYLE_MASTER[sid]['IllustId'];
-                            var imgPath = getImgPath(`style_icon/${illustId}.png`);
+                            var imgPath = getImgPath(`style_icon_bg/${sid}.png`);
                             tmpl.find(".name").append(`<img src="${imgPath}" style="width:30px;">`);
                         }
                         $("#" + target).append(tmpl);
