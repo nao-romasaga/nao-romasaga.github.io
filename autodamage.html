@@ -135,10 +135,10 @@
                         class="fas fa-sort"></i>)</div>
                 <div id="jokenbody" class="card-body" style="padding:0px 5px;">
                     <ul class="trianglelist list5">
-                        <li>計測ステータス：キャラ最大素ステ、スタイルレベル最大。装備あり、裏+<span id="NOW_URA"></span></li>
+                        <li>計測ステータス：キャラ最大素ステ、スタイルレベル最大。装備あり、裏+<span id="NOW_URA"></span> 昇段 <span id="NOW_SHODAN"></span>%</li>
                         <li>マスターレベル：<span id="NOW_MASTER_LV_LIST"></span></li>
                         <li>技ランク：99</li>
-                        <li>錬成武器：SS錬成 鏡花90%</li>
+                        <li>冒険者ランク補正 <span id="BOUKEN_RANK_PER"></span>%</li>
                         <li>乱数：パターン6</li>
                         <li>勇健：基本は1ターンのみ。佐賀セルマのような確定でダメージ軽減できるスタイルは(軽減回数-1)ターンの間発動（3回軽減＝2ターン維持）</li>
                         <li>覚醒パターンや継承パターンが異なるが技使用回数が同じ場合は「覚醒数が多いケース」の表示されます</li>
@@ -460,6 +460,7 @@
                         データ量削減のためにS,Aスタイルと<span id="SKIP_YEAR"></span>年より前に実装されたスタイルは除外してあります
                     </div>
                     <div id="styleChoice"></div>
+                    <!--
                     <div id="SS_WEAPON_TOGGLE" class="text-center label-text-small width-100">SS武器 絞り込み <i class="fas fa-caret-down"></i></div>
                     <div class="row text-center" style="margin-bottom: 10px;">
                         <div class="col-12">
@@ -480,7 +481,6 @@
                         </ul>                    
                         武器の切り替えは「絞り込み」をタップしないと結果が反映されません<br>
                         <button class="icon_btn_negative text-nowrap" id="SS_FILTER" style="margin-bottom: 10px;">　絞り込み　</button><br>
-                        <!--
                         <div class="row no-gutters text-center width-max " style="margin-bottom: 10px;">
                             <div class="col">
                                 <button class="icon_btn_negative text-nowrap WP_TOGGLE" data-id="SS_WP_AREA">神獣武器+α 全種ON/OFF</button>                            
@@ -516,7 +516,6 @@
                             <div class="col-2 col-sm ss-filter text-nowrap"><span class="icon_xs icon_tsue"></span><span class="icon_xs icon_hikari"></span><div id="SS_TUIOKU_icon_tsue55"></div></div>
                             <div class="col-2 col-sm ss-filter text-nowrap"><span class="icon_xs icon_tsue"></span><span class="icon_xs icon_yami"></span><div id="SS_TUIOKU_icon_tsue56"></div></div>
                         </div>
-                        -->
                         <div class="row no-gutters text-center width-max " style="margin-bottom: 10px;">
                             <div class="col">
                                 <button class="icon_btn_negative text-nowrap WP_TOGGLE" data-id="SSS_WP_AREA">SSS武器 全種ON/OFF</button>                            
@@ -564,8 +563,7 @@
                             <div class="col-2 col-sm ss-filter text-nowrap"><span class="icon_xs icon_tsue"></span><span class="icon_xs icon_hikari"></span><div id="SSS_icon_tsue55"></div></div>
                             <div class="col-2 col-sm ss-filter text-nowrap"><span class="icon_xs icon_tsue"></span><span class="icon_xs icon_yami"></span><div id="SSS_icon_tsue56"></div></div>
                         </div>
-                </div>
-
+                    </div>
                     <div class="text-center label-text-small width-100">SSS武器 所持状態の保存/復元</div>
                     <ul class="noLogin nav text-center width-100 text-nowrap" style="margin: 10px;">
                         <li class="col-6 col-sm xs-pad0">
@@ -575,6 +573,7 @@
                             <button class="icon_btn_negative text-nowrap" id="SS_LOAD" style="margin-bottom: 10px;">　復元　</button><br>
                         </li>
                     </ul>
+                -->
 
                     <div class="text-center label-text-small width-100">多段攻撃ヒット数 絞り込み</div>
                     <div class="row no-gutters text-center" style="margin-bottom: 10px;">
