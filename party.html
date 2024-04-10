@@ -70,6 +70,7 @@
             }
             input[type="number"] {
                 -moz-appearance:textfield;
+                appearance:textfield;
             }
         }        
 
@@ -294,6 +295,8 @@
                         <li class="col-4 col-sm-2 text-center xs-pad0" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0"
                                 data-href="SSG"><div class="fButton width-100 filter-bgcolor">SSG</div></a></li>
                         <li class="col-4 col-sm-2 text-center xs-pad0" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0"
+                                data-href="SEB"><div class="fButton width-100 filter-bgcolor">SaGaEB</div></a></li>
+                        <li class="col-4 col-sm-2 text-center xs-pad0" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0"
                                 data-href="RSR"><div class="fButton width-100 filter-bgcolor">SaGaRS</div></a></li>
                         <li class="col-4 col-sm-2 text-center xs-pad0" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0"
                                 data-href="GB"><div class="fButton width-100 filter-bgcolor text-nowrap">GB</div></a></li>
@@ -416,11 +419,17 @@
                             class="hidden spBlock">エンサガ</span></div>
                     <section id="SECES" class="char-choise-section"></section>
                 </div>
+                <div class="info-modal dotList d-none" id="SEB">
+                    <div class="text-center info-modal-header"><span class="hidden pcBlock">サガ エメラルドビヨンド</span><span
+                        class="hidden spBlock">サガエメ</span></div>
+                    <section id="SECSEB" class="char-choise-section"></section>
+                </div>
                 <div class="info-modal dotList d-none" id="RSR">
                     <div class="text-center info-modal-header"><span class="hidden pcBlock">ロマサガ リ・ユニバース</span><span
                         class="hidden spBlock">ロマサガRS</span></div>
                     <section id="SECRSR" class="char-choise-section"></section>
                 </div>
+
                 <div class="info-modal dotList d-none" id="GB">
                     <div class="text-center info-modal-header">GB</div>
                     <section class="char-choise-section">
@@ -675,7 +684,7 @@
                 </div>
             </div>
             <div style="position:fixed; bottom:0px;z-index: 1;" class="width-100">
-                <div style="" class="row no-gutters text-center text-nowrap">
+                <div class="row no-gutters text-center text-nowrap">
                     <div class="col-2"><button id="FOOTER_CLOSE" class="icon_btn_negative width-100 fuchidori-white footer-font" style="padding:5px 0px;"><span class="FOOTER_CLOSE_ARROW">▼</span><span class="FOOTER_CLOSE_ARROW d-none">▲</span><span class="d-none d-sm-inline"> 表示切替</span></button></div>
                     <div class="col-5"><button id="FOOTER_QUEST"  class="icon_btn_positive width-100 width-max fuchidori-white footer-font " style="padding:5px 0px;"><i class="fas fa-arrow-up d-none d-md-inline"></i> クエスト選択 <i class="fas fa-arrow-up"></i><br class="d-md-none"><span class="d-none d-md-inline">　</span></button></div>
                     <div class="col-5"><button id="FOOTER_CHAR"  class="icon_btn_positive width-100 width-max fuchidori-white footer-font " style="padding:5px 0px;"><i class="fas fa-arrow-up d-none d-md-inline"></i> キャラ選択 <i class="fas fa-arrow-up"></i><br class="d-md-none"><span class="d-none d-md-inline">　</span><span class="footer-info text-nowrap d-none d-md-inline"><span id="NOW_PARTYNUM">0</span>体 編成中</span></button></div>

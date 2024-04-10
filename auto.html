@@ -301,6 +301,8 @@
                     <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0"
                             data-href="SSG"><div class="fButton width-100 filter-bgcolor">SSG</div></a></li>
                     <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0"
+                            data-href="SEB"><div class="fButton width-100 filter-bgcolor">SaGaEB</div></a></li>
+                    <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0"
                             data-href="RSR"><div class="fButton width-100 filter-bgcolor">SaGaRS</div></a></li>
                     <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0"
                             data-href="OTHER"><div class="fButton width-100 filter-bgcolor text-nowrap">その他</div></a></li>
@@ -386,6 +388,11 @@
                 <div class="text-center info-modal-header"><span class="hidden pcBlock">エンペラーズ・サガ</span><span
                         class="hidden spBlock">エンサガ</span></div>
                 <section id="SECES" class="char-choise-section"></section>
+            </div>
+            <div class="info-modal dotList d-none" id="SEB">
+                <div class="text-center info-modal-header"><span class="hidden pcBlock">サガ エメラルドビヨンド</span><span
+                    class="hidden spBlock">サガエメ</span></div>
+                <section id="SECSEB" class="char-choise-section"></section>
             </div>
             <div class="info-modal dotList d-none" id="RSR">
                 <div class="text-center info-modal-header"><span class="hidden pcBlock">ロマサガ リ・ユニバース</span><span
@@ -477,7 +484,7 @@
                 <br>
                 <a href="./skill.html" target="_blank" class="h6 shadow-black text-center icon_btn_positive width-100" style="padding: 5px 0px;"><i class="fas fa-search"></i> 技・術 一覧を調べる</a>
                 <div class="row">
-                    <button class="col-12 col-sm-6 text-nowrap text-center width-100 icon_btn_negative culcStart" data-type="loop" style="font-size:18px; display: inline-block; padding: 5px 0px; margin-top: 10px;">ループダメージ計測</button>
+                    <button class="d-none col-12 col-sm-6 text-nowrap text-center width-100 icon_btn_negative culcStart" data-type="loop" style="font-size:18px; display: inline-block; padding: 5px 0px; margin-top: 10px;">ループダメージ計測</button>
                     <button class="col-12 col-sm-6 text-nowrap text-center width-100 icon_btn_positive culcStart shadow-black" style="font-size:18px; display: inline-block; padding: 5px 0px; margin-top: 10px;">全力AUTO 開始</button>    
                 </div>
             </div>
@@ -494,8 +501,8 @@
                             <div class="d-none" id="SS-TEMPLATE">
                                 <span class="WEAPON_CHOISE yubi style_icon_bg_ss style_icon_bg_base" style="display:inline-block; vertical-align: middle;">
                                     <button class="style_icon_illust" style="background-size: contain; background-color: rgba(0, 0, 0, 0);"></button>
-                                    <span class="style_icon_frame_base style_icon_frame_ss"></span>
-                                    <span class="weapon_icon_rare_base icon_rare_ss"></span>
+                                    <span class="style_icon_frame_base style_icon_frame_sss"></span>
+                                    <span class="weapon_icon_rare_base icon_rare_sss"></span>
                                 </span>
                                 <div class="small text-center WEAPON_NAME" style="max-width: 60px;
                                 overflow: hidden;
@@ -506,8 +513,8 @@
                             <div class="d-inline-block STR-WEAPON">
                                 <span class="WEAPON_CHOISE yubi style_icon_bg_s style_icon_bg_base" style="display:inline-block; vertical-align: middle;">
                                     <button class="style_icon_illust" style="background-size: contain; background-color: rgba(0, 0, 0, 0);"></button>
-                                    <span class="style_icon_frame_base style_icon_frame_s"></span>
-                                    <span class="weapon_icon_rare_base icon_rare_s"></span>
+                                    <span class="style_icon_frame_base style_icon_frame_ss"></span>
+                                    <span class="weapon_icon_rare_base icon_rare_ss"></span>
                                 </span>
                                 <div class="small text-center WEAPON_NAME" style="max-width: 60px;
                                 overflow: hidden;
@@ -517,8 +524,8 @@
                             <div class="d-inline-block DEX-WEAPON">
                                 <span class="WEAPON_CHOISE style_icon_bg_s style_icon_bg_base" style="display:inline-block; vertical-align: middle;">
                                     <button class="style_icon_illust" style="background-size: contain; background-color: rgba(0, 0, 0, 0);"></button>
-                                    <span class="style_icon_frame_base style_icon_frame_s"></span>
-                                    <span class="weapon_icon_rare_base icon_rare_s"></span>
+                                    <span class="style_icon_frame_base style_icon_frame_ss"></span>
+                                    <span class="weapon_icon_rare_base icon_rare_ss"></span>
                                 </span>
                                 <div class="small text-center WEAPON_NAME" style="max-width: 60px;
                                 overflow: hidden;
@@ -528,8 +535,8 @@
                             <div class="d-inline-block AGI-WEAPON">
                                 <span class="WEAPON_CHOISE style_icon_bg_s style_icon_bg_base" style="display:inline-block; vertical-align: middle;">
                                     <button class="style_icon_illust" style="background-size: contain; background-color: rgba(0, 0, 0, 0);"></button>
-                                    <span class="style_icon_frame_base style_icon_frame_s"></span>
-                                    <span class="weapon_icon_rare_base icon_rare_s"></span>
+                                    <span class="style_icon_frame_base style_icon_frame_ss"></span>
+                                    <span class="weapon_icon_rare_base icon_rare_ss"></span>
                                 </span>
                                 <div class="small text-center WEAPON_NAME" style="max-width: 60px;
                                 overflow: hidden;
@@ -539,8 +546,8 @@
                             <div class="d-inline-block INT-WEAPON">
                                 <span class="WEAPON_CHOISE style_icon_bg_s style_icon_bg_base" style="display:inline-block; vertical-align: middle;">
                                     <button class="style_icon_illust" style="background-size: contain; background-color: rgba(0, 0, 0, 0);"></button>
-                                    <span class="style_icon_frame_base style_icon_frame_s"></span>
-                                    <span class="weapon_icon_rare_base icon_rare_s"></span>
+                                    <span class="style_icon_frame_base style_icon_frame_ss"></span>
+                                    <span class="weapon_icon_rare_base icon_rare_ss"></span>
                                 </span>
                                 <div class="small text-center WEAPON_NAME" style="max-width: 60px;
                                 overflow: hidden;
@@ -553,7 +560,7 @@
                                         <span class="d-none d-lg-inline">▼武器威力▼</span>
                                         <span class="d-lg-none">武器威力</span>
                                     </div>
-                                    <input type="number" pattern="[0-9]*" id="SET_WEAPON" value="35" style="width:65px; text-align:right" class="kadomaru">
+                                    <input type="number" pattern="[0-9]*" id="SET_WEAPON" value="46" style="width:65px; text-align:right" class="kadomaru">
                                     <div class="bg-item">
                                         <span class="d-none d-lg-inline">▼術威力▼</span>
                                         <span class="d-lg-none">術威力</span>
@@ -583,7 +590,7 @@
                                         <span class="d-none d-lg-inline">▼聖石▼</span>
                                         <span class="d-lg-none">聖石</span>
                                     </div>
-                                    <input type="number" pattern="[0-9]*" id="SET_SEISEKI" value="102" style="width:65px; text-align:right" class="kadomaru">%
+                                    <input type="number" pattern="[0-9]*" id="SET_SEISEKI" value="90" style="width:65px; text-align:right" class="kadomaru">%
                                 </div>
                             </div>
                         </div>
@@ -820,7 +827,7 @@
             </div>
 
             <div class="row">
-                <button class="col-12 col-sm-6 text-nowrap text-center width-100 icon_btn_negative culcStart" data-type="loop" style="font-size:18px; display: inline-block; padding: 5px 0px; margin-top: 10px;">ループダメージ計測</button>
+                <button class="d-none col-12 col-sm-6 text-nowrap text-center width-100 icon_btn_negative culcStart" data-type="loop" style="font-size:18px; display: inline-block; padding: 5px 0px; margin-top: 10px;">ループダメージ計測</button>
                 <button class="col-12 col-sm-6 text-nowrap text-center width-100 icon_btn_positive culcStart shadow-black" style="font-size:18px; display: inline-block; padding: 5px 0px; margin-top: 10px;">全力AUTO 開始</button>
             </div>
 
@@ -920,8 +927,8 @@
                                 <td class="">Status</td>
                                 <td class="">ﾊﾞﾌ</td>
                                 <td class="">ｱﾋﾞ</td>
-                                <td class="">敵ｽﾃ</td>
-                                <td class="">ﾃﾞﾊﾞﾌ</td>
+                                <td class="d-none">敵ｽﾃ</td>
+                                <td class="d-none">ﾃﾞﾊﾞﾌ</td>
                                 <td class="">耐性</td>
                                 <td class="" style="width:100px">Ability</td>
                             </tr>
@@ -941,8 +948,8 @@
                             <td class="text-right ATTACK_PARAM"></td>
                             <td class="text-right"><span class="BUFF"></span></td>
                             <td class="text-right"><span class="ABILITY_PER"></span></td>
-                            <td class="text-right ENEMY_PARAM"></td>
-                            <td class="text-right"><span class="DEBUFF"></span></td>
+                            <td class="d-none text-right ENEMY_PARAM"></td>
+                            <td class="d-none text-right"><span class="DEBUFF"></span></td>
                             <td class="text-right ENEMY_RESIST"></td>
                             <td class="text-right ABILITY fuchidori-blue text-nowrap" style="line-height: 0.8rem;"></td>
                         </tr>
