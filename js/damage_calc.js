@@ -1,1 +1,814 @@
-var _0x49e170=_0x7371;function _0x1eae(){var _0x28603a=['SpecialType','name','ショウタイム','ダメージ強化','<option>','28〜35','val','kaze','filterActive','#skill','器用さ','#char','DAMAGE_TMPL','21〜27','disabled','.DAMAGE','ターン開始時','#masterODDamage','Rarity','LABEL','.bg-simple','#SAVE','vit','#ABILITY_AREA','74〜99','#abINT','\x20体:','push','.ST','.ICON','80AedBtE','#ability_other','#DAMAGE_LIST_TEMPLATE','removeClass','#skill_grade','#holystone3','#HOLDERS_AREA_','round','MAX','.calcDamage','prop','\x20BP:','.CLOSE_BTN','click','#type\x20option:selected','jutsu','toUpperCase','通常攻撃','tsue','d-inline-block','#skill_val','children','parents','#HISTORY_AREA','6〜9','#holystone2','selected','database','#styleINT','#param_label','<br>\u3000','.d-inline-block','.ENEMY_ST','#charDEX','.RANK','.iryoku','split','uid','assign','SkillType','15〜20','.ARMOR_CHOISE','ALL','武器装備時','#charINT','====\x20威力:','#HOLDERS_AREA_SS','Per','.WEAPON','PowerGrade','全員強化(バフ)','Type','#type','enemy','.jinkei_label','netsu','masterPer','.MLV','#HOLDERS_AREA_S','hide','59227tQMvGM','#holystone1','.DAMAGE_TMPL','StyleAbilityIds','.SKILL_NAME','data-id','#resist','append','main','undefined','ターン','#taijyutsu','change','SkillIryoku','#masterDamage','replace','Attr','4ARnnMe','\x20精:','floor','12hgEYAF','属性攻撃','turn','attr','status','932107mGdMEV','mizu','skill','text','data-type','map','ability_list2','keys','ラウンド開始時','#charSTR','auth','rank','#debuff_per','10〜14','remove','.match-damage','129oGXvhK','find','必ず(100%)','#taisei_','trim','\x20option','length','ConsumeBp','.WEAPON_AREA','all','yami','icon_btn_positive','.AB','.filterActive','tsuchi','152VlbyWQ','.culcList','yumi','#HISTORY_TEMPLATE','#enemy_vit','#jinkeiDEX','MASTER','totsu','iryoku','time','abStone','.MLV_PER','tai','sken','\x20|\x20','.RESIST','#NOW_ADV_LV','unshift','forEach','#extraforce','zan','weapon','58〜73','Holders','CharacterId','#skill_grade\x20option:selected','rai','statusCalc','<br>','#skill_rank','.param_label_teki','join','d-none','size','NAME','hikari','Name','rei','filter','.IRYOKU','#NOW_MAX_ML','味方が全員生存している時','after','addClass','威力:','styleId','BattleType','onAuthStateChanged','素早さ','goOffline','#charAGI','\x20/\x20速\x20','#weapon','resist','158811TmmzhL','2749715LOpELS','#jinkeiAGI','ken','when','html','removeAttr','damage','clone','each','#buf','7404qwnPqY','14922recDuo','敵弱体化(デバフ)','1737636aUVUPG','sub','#abDEX','grade','master','#vit','Bonus','#master','#skill\x20option:selected','#HOLDERS_AREA_A','36〜44','sort','table#damageRangeTable\x20tbody\x20*','indexOf','inArray','match-damage','#CALC_MODE'];_0x1eae=function(){return _0x28603a;};return _0x1eae();}(function(_0x422b14,_0x129f92){var _0x1075d8=_0x7371,_0x3256ff=_0x422b14();while(!![]){try{var _0x19d50a=parseInt(_0x1075d8(0x116))/0x1*(parseInt(_0x1075d8(0x166))/0x2)+-parseInt(_0x1075d8(0x15b))/0x3+-parseInt(_0x1075d8(0xfe))/0x4*(parseInt(_0x1075d8(0x15c))/0x5)+parseInt(_0x1075d8(0x169))/0x6+parseInt(_0x1075d8(0xed))/0x7*(parseInt(_0x1075d8(0x125))/0x8)+parseInt(_0x1075d8(0x167))/0x9*(parseInt(_0x1075d8(0x198))/0xa)+-parseInt(_0x1075d8(0x106))/0xb*(-parseInt(_0x1075d8(0x101))/0xc);if(_0x19d50a===_0x129f92)break;else _0x3256ff['push'](_0x3256ff['shift']());}catch(_0x3183b0){_0x3256ff['push'](_0x3256ff['shift']());}}}(_0x1eae,0x67484));let DAMAGE_ABILITY={'ID29d93221':{'Id':_0x49e170(0x10c),'Per':0x2},'ID29d93221':{'Id':'ability_list2','Per':0x5},'ID29d93221':{'Id':'ability_list2','Per':0xa},'ID29d93221':{'Id':'ability_list2','Per':0xf},'ID29d93221':{'Id':'ability_list2','Per':0x14}},SKILL_LIST={'剣':[],'大剣':[],'斧':[],'小剣':[],'槍':[],'弓':[],'棍棒':[],'体術':[],'銃':[],'火術':[],'水術':[],'風術':[],'土術':[],'光術':[],'闇術':[],'杖':[]},SKILL_MAP={'ken':'剣','dken':'大剣','ono':'斧','sken':'小剣','yari':'槍','yumi':'弓','kon':'棍棒','tai':'体術','ju':'銃','hi':'火術','mizu':'水術','kaze':'風術','tsuchi':'土術','hikari':'光術','yami':'闇術'},DEX_LIST=[_0x49e170(0x127),'sken','ju'];var MY_MASTER_LV={'ken':0x1,'dken':0x1,'ono':0x1,'sken':0x1,'yumi':0x1,'yari':0x1,'ju':0x1,'kon':0x1,'tai':0x1,'tsue':0x1},SAVE_OPTION={'styleId':'','weapon':0x0,'master':'','masterPer':'','ab':0x0,'enemy':0x0,'resist':0x0,'damage':0x0,'name':'通常攻撃','grade':'E','iryoku':0x7,'rank':0x1,'status':'','statusCalc':''};typeof firebase!==_0x49e170(0xf6)&&firebase[_0x49e170(0x110)](appUsers)[_0x49e170(0x154)](_0x326a50=>{var _0x3fdeae=_0x49e170;_0x326a50&&(USER=_0x326a50,UID=_0x326a50[_0x3fdeae(0xd6)],initial());});async function initial(){var _0x45fad8=_0x49e170;let _0x43dedf=readUserData(_0x45fad8(0x12b),function(_0x150116){var _0x5610eb=_0x45fad8;_0x150116!==null?(MY_MASTER_LV=_0x150116,$(_0x5610eb(0x170))[_0x5610eb(0x180)](MY_MASTER_LV[_0x5610eb(0x15e)]),$(_0x5610eb(0x14d))['val'](WEAPON_MAP['剣'][_0x5610eb(0x16d)]),setMasterDamageRate()):($(_0x5610eb(0x170))[_0x5610eb(0x180)](WEAPON_MAP['剣'][_0x5610eb(0x16d)]),$(_0x5610eb(0x14d))['val'](WEAPON_MAP['剣']['master']));});$(_0x45fad8(0x135))[_0x45fad8(0x180)](BOUKEN_RANK_PER),await Promise[_0x45fad8(0x11f)]([_0x43dedf]),firebase[_0x45fad8(0xcc)]()['goOffline'](),firebase[_0x45fad8(0xcc)](appUsers)[_0x45fad8(0x156)]();}$(function(){var _0x59c963=_0x49e170;for(let _0x31df39 in ENEMY_DATA){let _0x25517e=ENEMY_DATA[_0x31df39],_0x34c5ba=_0x25517e['quest']+'\x20'+_0x25517e[_0x59c963(0x17b)]+_0x59c963(0x194)+_0x25517e[_0x59c963(0x190)]+_0x59c963(0xff)+_0x25517e['mnd'];$option=$(_0x59c963(0x17e),{'value':_0x31df39,'text':_0x34c5ba}),$('#enemy_vit')[_0x59c963(0xf4)]($option);}for(let _0x1356d6 in SKILL_MASTER){let _0x4dc780=SKILL_MASTER[_0x1356d6];if(_0x4dc780[_0x59c963(0xe4)]!='攻撃')continue;typeof SKILL_LIST[_0x4dc780['BattleType']][_0x59c963(0xdb)]==_0x59c963(0xf6)&&(SKILL_LIST[_0x4dc780[_0x59c963(0x153)]][_0x59c963(0xdb)]=[]),typeof SKILL_LIST[_0x4dc780[_0x59c963(0x153)]][_0x4dc780[_0x59c963(0xe2)]]==_0x59c963(0xf6)&&(SKILL_LIST[_0x4dc780[_0x59c963(0x153)]][_0x4dc780[_0x59c963(0xe2)]]=[]),SKILL_LIST[_0x4dc780[_0x59c963(0x153)]][_0x59c963(0xdb)][_0x59c963(0x195)](_0x4dc780),SKILL_LIST[_0x4dc780[_0x59c963(0x153)]][_0x4dc780[_0x59c963(0xe2)]][_0x59c963(0x195)](_0x4dc780);}let _0x222aa7=0x0,_0x4df555={'Id':'','ConsumeBp':0x0,'Name':'','PowerGrade':'E','SkillIryoku':0x7,'SkillType':'技'},_0x1a3125={'E':_0x59c963(0x1b0),'D':_0x59c963(0x113),'C':_0x59c963(0xd9),'B':_0x59c963(0x187),'A':_0x59c963(0x17f),'S':_0x59c963(0x173),'SS':'45〜57','SSS':_0x59c963(0x13b),'SSSS':_0x59c963(0x192)};for(let _0x254466 in SKILL_LIST){for(grade in _0x1a3125){label=Object[_0x59c963(0xd7)]({},_0x4df555),label['Id']=_0x59c963(0x18d)+_0x254466+grade;let _0x3e528c=typeof SKILL_LIST[_0x254466][grade]!=_0x59c963(0xf6)?SKILL_LIST[_0x254466][grade][_0x59c963(0x11c)]:0x0;label[_0x59c963(0x149)]=_0x59c963(0xde)+grade+'\x20'+_0x1a3125[grade]+'\x20'+_0x3e528c+'種\x20====',label[_0x59c963(0xe2)]=grade,label[_0x59c963(0xfa)]=_0x1a3125[grade][_0x59c963(0xd5)]('〜')[0x1],label['ConsumeBp']=0x64,SKILL_LIST[_0x254466]['ALL'][_0x59c963(0x195)](label),typeof SKILL_LIST[_0x254466][grade]!=_0x59c963(0xf6)&&SKILL_LIST[_0x254466][grade][_0x59c963(0x195)](label);}}for(let _0x46cc3c in SKILL_LIST){for(let _0x3469d6 in SKILL_LIST[_0x46cc3c]){SKILL_LIST[_0x46cc3c][_0x3469d6][_0x59c963(0x174)](function(_0x5b65d8,_0xd39d88){var _0x11a625=_0x59c963;if(_0x5b65d8[_0x11a625(0xfa)]>_0xd39d88[_0x11a625(0xfa)])return-0x1;else{if(_0x5b65d8[_0x11a625(0xfa)]<_0xd39d88[_0x11a625(0xfa)])return 0x1;else return _0x5b65d8[_0x11a625(0x11d)]<_0xd39d88['ConsumeBp']?0x1:-0x1;}});}SKILL_LIST[_0x46cc3c]['ALL'][_0x59c963(0x136)]({'Id':'ID'+_0x222aa7++,'ConsumeBp':0x0,'Name':'通常攻撃('+_0x46cc3c+')','PowerGrade':'E','SkillIryoku':0x7,'SkillType':'技'});}addOptionWithDisable(createSkillOption(SKILL_LIST['剣']['ALL']),_0x59c963(0x108)),setDefaultSkillIryoku();}),$(document)['on']('click',_0x49e170(0x1a4),function(){var _0x4b32ac=_0x49e170;$(this)[_0x4b32ac(0x1ae)](_0x4b32ac(0x18e))['slideUp'](0x12c,function(){var _0x3925b9=_0x4b32ac;$(this)[_0x3925b9(0x114)]();});}),$(document)['on'](_0x49e170(0xf9),_0x49e170(0x1a1),function(){var _0x19f77c=_0x49e170;$(_0x19f77c(0xef))[_0x19f77c(0x19b)](_0x19f77c(0x145)),$(_0x19f77c(0x115))[_0x19f77c(0x19b)](_0x19f77c(0x178)),$(_0x19f77c(0x1a1))[_0x19f77c(0x164)](function(){var _0x4b63c6=_0x19f77c,_0x14bd74=$(this)[_0x4b63c6(0x180)]();if(_0x14bd74=='')return!![];$(_0x4b63c6(0xef))[_0x4b63c6(0x164)](function(){var _0x1a643d=_0x4b63c6,_0x30b3fd=![];for(i=0x1;i<=0xa;i++){$col=$(this)[_0x1a643d(0x117)]('.d'+i),d=Number($col['html']()['replace'](',','')),_0x14bd74==d&&($col[_0x1a643d(0x150)](_0x1a643d(0x178)),_0x30b3fd=!![]);}!_0x30b3fd&&$(this)['addClass'](_0x1a643d(0x145));});});}),$(document)['on'](_0x49e170(0xf9),'.damage',function(){damageCalc();}),$(document)['on']('change','.charParam',function(){damageCalc();}),$(document)['on']('change',_0x49e170(0x126),function(){damageCalc();}),$(document)['on'](_0x49e170(0xf9),_0x49e170(0x170),function(){var _0x16d75a=_0x49e170;type=$(_0x16d75a(0xe5))[_0x16d75a(0x180)](),$['inArray'](type,['hi',_0x16d75a(0x107),_0x16d75a(0x124),'kaze','hikari',_0x16d75a(0x120)])>-0x1&&(type=_0x16d75a(0x1aa)),MY_MASTER_LV[type]=$(_0x16d75a(0x170))['val'](),setMasterDamageRate(),damageCalc();}),$(document)['on'](_0x49e170(0xf9),'#resist',function(){var _0x29a8e8=_0x49e170,_0x4ed9d7=$(_0x29a8e8(0xf3))['val']();$('#resistDamage')[_0x29a8e8(0x180)](Math[_0x29a8e8(0x19f)](0x1/(0x1+0.008*_0x4ed9d7)*0x64*0x64)/0x64);}),$(document)['on'](_0x49e170(0x1a5),_0x49e170(0x18f),function(){var _0x59562c=_0x49e170;damageCalc(),$history=$(_0x59562c(0x128))[_0x59562c(0x163)]()[_0x59562c(0x161)]('id')[_0x59562c(0x19b)](_0x59562c(0x145)),styleId=SAVE_OPTION[_0x59562c(0x152)];if(styleId!=''){styleInfo=STYLE_MASTER[styleId];let _0x3464bc=getStyleIcon(styleInfo[_0x59562c(0x18c)],styleId,'',!![]);$history[_0x59562c(0x117)](_0x59562c(0x197))[_0x59562c(0xf4)](_0x3464bc);}$history['find']('.GRADE')[_0x59562c(0x109)](SAVE_OPTION[_0x59562c(0x16c)]),$history['find'](_0x59562c(0xe1))['text'](SAVE_OPTION[_0x59562c(0x13a)]),$history[_0x59562c(0x117)](_0x59562c(0xea))['text'](SAVE_OPTION['master']),$history[_0x59562c(0x117)](_0x59562c(0x130))[_0x59562c(0x109)](SAVE_OPTION[_0x59562c(0xe9)]),$history[_0x59562c(0x117)](_0x59562c(0x122))[_0x59562c(0x109)](SAVE_OPTION['ab']),$history[_0x59562c(0x117)]('.AB_STONE')['text'](SAVE_OPTION[_0x59562c(0x12f)]),$history[_0x59562c(0x117)](_0x59562c(0xd1))[_0x59562c(0x109)](SAVE_OPTION[_0x59562c(0xe6)]),$history[_0x59562c(0x117)](_0x59562c(0x189))['text'](number_format(SAVE_OPTION[_0x59562c(0x162)])),$history[_0x59562c(0x117)](_0x59562c(0xf1))[_0x59562c(0x109)](SAVE_OPTION[_0x59562c(0x17b)]),$history[_0x59562c(0x117)](_0x59562c(0x14c))[_0x59562c(0x109)](SAVE_OPTION[_0x59562c(0x12d)]),$history[_0x59562c(0x117)](_0x59562c(0xd3))['text'](SAVE_OPTION[_0x59562c(0x111)]),$history[_0x59562c(0x117)](_0x59562c(0x196))[_0x59562c(0x109)](SAVE_OPTION['status']),$history[_0x59562c(0x117)]('.ST_CALC')['text'](SAVE_OPTION['statusCalc']),$history[_0x59562c(0x117)](_0x59562c(0x134))[_0x59562c(0x109)](SAVE_OPTION[_0x59562c(0x15a)]),$(_0x59562c(0x1af))['append']($history);}),$(document)['on'](_0x49e170(0xf9),_0x49e170(0x129),function(){var _0x47fae8=_0x49e170;let _0x3a8816=$(_0x47fae8(0x129))[_0x47fae8(0x180)]();if(_0x3a8816==='x')return;let _0xee2b91=ENEMY_DATA[_0x3a8816];type=$('#type')[_0x47fae8(0x180)]();$[_0x47fae8(0x177)](type,['hi',_0x47fae8(0x107),_0x47fae8(0x124),_0x47fae8(0x181),'hikari','yami'])>-0x1?$(_0x47fae8(0x16e))[_0x47fae8(0x180)](_0xee2b91['mnd']):$(_0x47fae8(0x16e))[_0x47fae8(0x180)](_0xee2b91['vit']);for(let _0x444764 of[_0x47fae8(0x139),'da',_0x47fae8(0x12c),_0x47fae8(0xe8),_0x47fae8(0x14a),_0x47fae8(0x13f),'in','you']){setTaisei($(_0x47fae8(0x119)+_0x444764),_0xee2b91[_0x444764]);}damageCalc();}),$(document)['on'](_0x49e170(0x1a5),'.WEAPON_CHOISE',function(){var _0x271b42=_0x49e170;$(_0x271b42(0x11e))[_0x271b42(0x117)](_0x271b42(0x123))[_0x271b42(0x164)](function(){var _0xe935a7=_0x271b42;$(this)[_0xe935a7(0x19b)](_0xe935a7(0x182));}),$(this)['parents'](_0x271b42(0xd0))[_0x271b42(0x150)]('filterActive'),$(_0x271b42(0x159))[_0x271b42(0x180)](Number($(this)[_0x271b42(0x1ae)]('.d-inline-block')[_0x271b42(0x104)]('data-val'))),changeStatus(),damageCalc();}),$(document)['on']('click',_0x49e170(0xda),function(){var _0x4de21d=_0x49e170,_0x239891=$(this)[_0x4de21d(0x104)](_0x4de21d(0x10a));clickArmor(_0x239891),$(_0x4de21d(0xda))[_0x4de21d(0x164)](function(){var _0x13b0a3=_0x4de21d;$(this)[_0x13b0a3(0x19b)](_0x13b0a3(0x121))[_0x13b0a3(0x150)]('icon_btn_negative');}),$(this)[_0x4de21d(0x19b)]('icon_btn_negative')[_0x4de21d(0x150)](_0x4de21d(0x121)),changeStatus(),damageCalc();}),$(document)['on'](_0x49e170(0xf9),_0x49e170(0xe5),function(){var _0x8a34a4=_0x49e170;$(_0x8a34a4(0xdf))['html'](''),$(_0x8a34a4(0xeb))[_0x8a34a4(0x160)](''),$('#HOLDERS_AREA_A')[_0x8a34a4(0x160)](''),$(_0x8a34a4(0x191))[_0x8a34a4(0x160)](''),SAVE_OPTION[_0x8a34a4(0x152)]='',SAVE_OPTION[_0x8a34a4(0x17b)]='通常攻撃',SAVE_OPTION[_0x8a34a4(0x16c)]='E',type=$(_0x8a34a4(0xe5))[_0x8a34a4(0x180)]();var _0xc17806=type[_0x8a34a4(0xfc)](/(mizu)|(tsuchi)|(kaze)|(hikari)|(yami)|(hi)/g,_0x8a34a4(0x1aa));for(var _0x13f1d4 in MASTER_LV_KEY){if(_0xc17806==MASTER_LV_KEY[_0x13f1d4]){$('#NOW_MAX_ML')[_0x8a34a4(0x180)](WEAPON_MAP[_0x13f1d4][_0x8a34a4(0x16d)]);break;}}_0xc17806=='tsue'&&$('.TEMP_WEAPON')[_0x8a34a4(0x164)](function(){var _0x26efb3=_0x8a34a4,_0x5bc741=$(this)[_0x26efb3(0x104)](_0x26efb3(0x10a));_0x5bc741[_0x26efb3(0x176)](JUTSU_MASTER[type])==-0x1?$(this)[_0x26efb3(0x150)](_0x26efb3(0x145))[_0x26efb3(0x19b)](_0x26efb3(0x1ab)):$(this)[_0x26efb3(0x19b)]('d-none')[_0x26efb3(0x150)](_0x26efb3(0x1ab));}),masterType=$(_0x8a34a4(0xe5))[_0x8a34a4(0x180)](),$[_0x8a34a4(0x177)](masterType,['hi','mizu','tsuchi','kaze',_0x8a34a4(0x148),'yami'])>-0x1&&(masterType=_0x8a34a4(0x1aa)),$(_0x8a34a4(0x170))[_0x8a34a4(0x180)](MY_MASTER_LV[masterType]),setMasterDamageRate(),$(_0x8a34a4(0x183))[_0x8a34a4(0x1ad)]()[_0x8a34a4(0x114)](),addOptionWithDisable(createSkillOption(SKILL_LIST[SKILL_MAP[type]][_0x8a34a4(0xdb)]),'skill'),setDefaultSkillIryoku(),changeSkillType(masterType,{}),$(_0x8a34a4(0x19c))[_0x8a34a4(0x180)](_0x8a34a4(0xdb)),damageCalc();}),$(document)['on']('change',_0x49e170(0x19c),function(){var _0x1cfd8c=_0x49e170;let _0xc619d6=$(_0x1cfd8c(0x13e))['val'](),_0x678cd2=$(_0x1cfd8c(0xe5))[_0x1cfd8c(0x180)]();$('#skill')['children']()['remove'](),typeof SKILL_LIST[SKILL_MAP[_0x678cd2]][_0xc619d6]!='undefined'&&addOptionWithDisable(createSkillOption(SKILL_LIST[SKILL_MAP[_0x678cd2]][_0xc619d6]),_0x1cfd8c(0x108));}),$(document)['on'](_0x49e170(0xf9),_0x49e170(0x183),function(){var _0x181413=_0x49e170;$(_0x181413(0xdf))[_0x181413(0x160)](''),$(_0x181413(0xeb))[_0x181413(0x160)](''),$(_0x181413(0x172))[_0x181413(0x160)](''),$(_0x181413(0x191))[_0x181413(0x160)](''),GOUREI={},ALWAYS_ABILITY=[],NOW_ABILITY_BUFF=[],BUFF_ABILITY=[],DEBUFF_ABILITY=[],setDefaultSkillIryoku();let _0x227e4c=$(_0x181413(0x171))[_0x181413(0x109)]();if(_0x227e4c[_0x181413(0x176)](_0x181413(0x1a9))!==-0x1)$(_0x181413(0x142))[_0x181413(0x180)](0x1),SAVE_OPTION[_0x181413(0x17b)]='通常攻撃',SAVE_OPTION[_0x181413(0x16c)]='E',SAVE_OPTION[_0x181413(0x111)]=0x1;else{let _0x57033d=$(_0x181413(0x171))[_0x181413(0x180)](),_0x94b427=SKILL_MASTER[_0x57033d];SAVE_OPTION['name']=_0x94b427[_0x181413(0x149)],SAVE_OPTION[_0x181413(0x16c)]=_0x94b427[_0x181413(0xe2)];let _0x530aa4=[];for(key in _0x94b427[_0x181413(0x13c)]){let _0x1ce1d5=_0x94b427[_0x181413(0x13c)][key],_0x4106e5=STYLE_MASTER[_0x1ce1d5],_0x2c4f96=CHAR_MASTER[_0x4106e5[_0x181413(0x13d)]];for(styleIds of _0x2c4f96[_0x181413(0x13c)]){_0x530aa4[_0x181413(0x195)](styleIds);}}_0x530aa4=_0x530aa4[_0x181413(0x14b)](function(_0x2bb241,_0xf5bb1,_0x5b78df){var _0x460005=_0x181413;return _0x5b78df[_0x460005(0x176)](_0x2bb241)===_0xf5bb1;});for(styleId of _0x530aa4){styleInfo=STYLE_MASTER[styleId];let _0x302e88=getStyleIcon(styleInfo[_0x181413(0x18c)],styleId,'',!![]);$(_0x181413(0x19e)+styleInfo[_0x181413(0x18c)][_0x181413(0x1a8)]())[_0x181413(0xf4)](_0x302e88);}masterType=$('#type')[_0x181413(0x180)](),$[_0x181413(0x177)](masterType,['hi',_0x181413(0x107),_0x181413(0x124),_0x181413(0x181),_0x181413(0x148),'yami'])>-0x1&&(masterType=_0x181413(0x1aa)),changeSkillType(masterType,_0x94b427);}}),$(document)['on']('click','.HOLDERS_AREA\x20.style',function(){var _0x5e7dc8=_0x49e170;styleId=$(this)[_0x5e7dc8(0x104)](_0x5e7dc8(0xf2)),SAVE_OPTION[_0x5e7dc8(0x152)]=styleId,styleInfo=STYLE_MASTER[styleId],charInfo=CHAR_MASTER[styleInfo[_0x5e7dc8(0x13d)]];let _0x348d25=culcStyleAddintional(styleInfo);var _0xbe8eea={'STR':'腕力','DEX':_0x5e7dc8(0x184),'AGI':_0x5e7dc8(0x155),'INT':'知力'};for(var _0x179089 in _0xbe8eea){var _0x556da0=_0xbe8eea[_0x179089],_0x245ed4=charInfo[_0x5e7dc8(0x1a0)+_0x179089]+LIMIT_BASE;let _0x2c4cd4=_0x348d25[_0x556da0][0x32][_0x5e7dc8(0xe0)],_0xf0f43c=_0x348d25[_0x556da0][0x32][_0x5e7dc8(0x16f)],_0x19a1c6=addBonus(_0x245ed4,_0x2c4cd4,_0xf0f43c);$(_0x5e7dc8(0x185)+_0x179089)['val'](_0x245ed4),$('#style'+_0x179089)[_0x5e7dc8(0x180)](_0x19a1c6);}var _0x42330a=[],_0x1e4f53=[],_0x4b6407=0x0;for(lv of Object[_0x5e7dc8(0x10d)](styleInfo['StyleAbility'])){_0x1e4f53['push'](styleInfo[_0x5e7dc8(0xf0)][lv]),abId=styleInfo['StyleAbilityIds'][lv];var _0x53c1d0=ABILITY_MASTER[abId],_0x2f4a2a=_0x53c1d0['Name'],_0x4ab476=[];for(attr of _0x53c1d0[_0x5e7dc8(0xfd)]){if(attr[_0x5e7dc8(0xf5)]==_0x5e7dc8(0x17d)){var _0x3b65f1=attr[_0x5e7dc8(0x12e)]!=_0x5e7dc8(0x118)?'\x20確率\x20'+attr['time']:'',_0x16bf4b=attr[_0x5e7dc8(0x16a)]!='常時'?attr['sub']:'',_0x3e3cf6='+'+filterNumber(attr[_0x5e7dc8(0x146)])+'%';_0x4ab476[_0x5e7dc8(0x195)](_0x3e3cf6+'\x20'+_0x16bf4b+_0x3b65f1),(attr[_0x5e7dc8(0x16a)]=='常時'||attr[_0x5e7dc8(0x16a)]==_0x5e7dc8(0xdc))&&(_0x4b6407+=filterNumber(attr['size']));}if(attr[_0x5e7dc8(0xf5)]=='ダメージ強化(全体)'){var _0x3b65f1=attr[_0x5e7dc8(0x12e)]!=_0x5e7dc8(0x118)?'\x20確率\x20'+attr[_0x5e7dc8(0x12e)]:'',_0x16bf4b=attr[_0x5e7dc8(0x16a)]!='常時'?attr[_0x5e7dc8(0x16a)][_0x5e7dc8(0xfc)](_0x5e7dc8(0x102),''):'',_0x3e3cf6='+'+filterNumber(attr[_0x5e7dc8(0x146)])+'%';_0x4ab476[_0x5e7dc8(0x195)](_0x3e3cf6+'\x20:'+_0x16bf4b+_0x3b65f1);}}_0x4ab476[_0x5e7dc8(0x11c)]>0x0&&(_0x2f4a2a+=_0x5e7dc8(0xcf)+_0x4ab476[_0x5e7dc8(0x144)](_0x5e7dc8(0x133))),_0x42330a[_0x5e7dc8(0x195)](_0x2f4a2a);}$(_0x5e7dc8(0x199))[_0x5e7dc8(0x180)](_0x4b6407),setAbilityBuffDeBuff(styleInfo),$(_0x5e7dc8(0x191))[_0x5e7dc8(0x160)](_0x42330a[_0x5e7dc8(0x144)](_0x5e7dc8(0x141))),damageCalc();});function addOptionWithDisable(_0x57f5ae,_0x36058a){var _0xd4d978=_0x49e170;$[_0xd4d978(0x10b)](_0x57f5ae,function(_0x115436,_0x274a89){var _0xe6e137=_0xd4d978;$option=$(_0xe6e137(0x17e),{'value':_0x115436[_0xe6e137(0x109)],'text':_0x274a89,'disabled':_0x115436[_0xe6e137(0x188)]}),$('#'+_0x36058a)['append']($option);});}function createSkillOption(_0x210ae0){var _0x5d789a=_0x49e170,_0x42c3a4={};return _0x210ae0[_0x5d789a(0x137)](function(_0x157ee1){var _0x2bf5e7=_0x5d789a;let _0x1bfddb=_0x157ee1[_0x2bf5e7(0xfa)];var _0x190505=_0x157ee1['AttackAttributes']!=undefined?'['+_0x157ee1['AttackAttributes'][_0x2bf5e7(0xfc)](',','')+']\x20':'';_0x157ee1[_0x2bf5e7(0x11d)]==0x64?label=_0x190505+_0x157ee1['Name']:label=_0x2bf5e7(0x151)+_0x1bfddb+'\x20'+_0x157ee1[_0x2bf5e7(0x149)]+'\x20'+_0x190505+_0x2bf5e7(0x1a3)+_0x157ee1[_0x2bf5e7(0x11d)],_0x42c3a4[label]={'text':_0x157ee1['Id'],'disabled':_0x157ee1['ConsumeBp']==0x64};}),_0x42c3a4;}function changeSkillType(_0x5338cd,_0x151896){var _0x7cd970=_0x49e170,_0x260253=_0x151896['SpecialType']==undefined?'':_0x151896[_0x7cd970(0x17a)];if(_0x5338cd===_0x7cd970(0x1aa)||_0x260253=='知力')$(_0x7cd970(0xce))[_0x7cd970(0x109)]('知力'),$(_0x7cd970(0xe7))['text']('知'),$(_0x7cd970(0x143))[_0x7cd970(0x109)]('精神'),$(_0x7cd970(0xf8))[_0x7cd970(0xec)]();else{if($['inArray'](_0x5338cd,DEX_LIST)>-0x1)$(_0x7cd970(0xce))[_0x7cd970(0x109)](_0x7cd970(0x184)),$(_0x7cd970(0x143))[_0x7cd970(0x109)]('体力'),$(_0x7cd970(0xe7))[_0x7cd970(0x109)]('器'),$(_0x7cd970(0xf8))[_0x7cd970(0xec)]();else _0x5338cd===_0x7cd970(0x131)?($(_0x7cd970(0xce))[_0x7cd970(0x109)]('腕力'),$(_0x7cd970(0x143))[_0x7cd970(0x109)]('体力'),$(_0x7cd970(0xe7))['text']('腕'),$(_0x7cd970(0xf8))['show']()):($('#param_label')['text']('腕力'),$(_0x7cd970(0x143))[_0x7cd970(0x109)]('体力'),$(_0x7cd970(0xe7))[_0x7cd970(0x109)]('腕'),$(_0x7cd970(0xf8))['hide']());}}function setDefaultSkillIryoku(){var _0x5b3d79=_0x49e170;let _0x540871=$('#skill\x20option:selected')[_0x5b3d79(0x180)](),_0x33c3cd=SKILL_MASTER[_0x540871],_0x5cc80=_0x33c3cd===undefined?0x7:_0x33c3cd[_0x5b3d79(0xfa)];$(_0x5b3d79(0x1ac))[_0x5b3d79(0x180)](_0x5cc80);}function damageCalc(){var _0x37890d=_0x49e170,_0x12272b=Number($('#skill_val')[_0x37890d(0x180)]()),_0x279a48=$('#skill_grade')[_0x37890d(0x180)]();if(_0x279a48==_0x37890d(0xdb)||_0x12272b!='')$(_0x37890d(0x179))[_0x37890d(0x150)]('d-none'),_calc(_0x12272b);else{$('#CALC_MODE')[_0x37890d(0x19b)]('d-none');var _0x39e3e0=IRYOKU_LIST[_0x279a48][_0x37890d(0xd5)]('〜'),_0x1d7cd4=Number(_0x39e3e0[0x0]),_0x360bcf=Number(_0x39e3e0[0x1]);dispDamageRangeClear();for(var _0x2c21da=_0x1d7cd4;_0x2c21da<=_0x360bcf;_0x2c21da++){_calc(_0x2c21da,!![]);}}}function _calc(_0x199688,_0x40eb80=![]){var _0x2d8dd8=_0x49e170,_0xc32625=Number($(_0x2d8dd8(0x159))[_0x2d8dd8(0x180)]());let _0x56c918=Number($(_0x2d8dd8(0x199))[_0x2d8dd8(0x180)]());holy1=$(_0x2d8dd8(0xee))[_0x2d8dd8(0x180)](),holy2=$(_0x2d8dd8(0x1b1))[_0x2d8dd8(0x180)](),holy3=$(_0x2d8dd8(0x19d))['val'](),extraforce=$(_0x2d8dd8(0x138))[_0x2d8dd8(0x180)](),extraforce=0x1+extraforce/0x64;let _0x289074=Number(holy1)+Number(holy2)+Number(holy3);adv=Number($('#adventDamage')[_0x2d8dd8(0x180)]());var _0x2d16ec=_0x56c918+_0x289074+adv,_0x1ab852=Number($(_0x2d8dd8(0xf3))[_0x2d8dd8(0x180)]()),_0x51b06b=$(_0x2d8dd8(0x183))[_0x2d8dd8(0x180)](),_0xf976ed=Number($(_0x2d8dd8(0x142))[_0x2d8dd8(0x180)]()),_0x326f1e=Number($(_0x2d8dd8(0x16e))['val']()),_0xea6f6d=Number($(_0x2d8dd8(0x112))[_0x2d8dd8(0x180)]()),_0x32dfc5=Number($('#masterDamage')[_0x2d8dd8(0x180)]()),_0x49338c=SKILL_MASTER[_0x51b06b];_0x49338c==undefined&&(_0x49338c={'BattleType':$(_0x2d8dd8(0x1a6))['text']()});var _0x218bab=Number($('#styleSTR')[_0x2d8dd8(0x180)]()),_0x37aa42=Number($('#styleDEX')[_0x2d8dd8(0x180)]()),_0x3c28d9=Number($('#styleAGI')[_0x2d8dd8(0x180)]()),_0x4e4be9=Number($(_0x2d8dd8(0xcd))[_0x2d8dd8(0x180)]()),_0x214c89=_0x218bab+Math['floor'](Number($(_0x2d8dd8(0x10f))['val']())*(Number($('#jinkeiSTR')[_0x2d8dd8(0x180)]())+Number($('#abSTR')[_0x2d8dd8(0x180)]()))/0x64),_0x45b9e6=_0x37aa42+Math[_0x2d8dd8(0x100)](Number($(_0x2d8dd8(0xd2))['val']())*(Number($(_0x2d8dd8(0x12a))['val']())+Number($(_0x2d8dd8(0x16b))[_0x2d8dd8(0x180)]()))/0x64),_0x301b34=_0x3c28d9+Math[_0x2d8dd8(0x100)](Number($(_0x2d8dd8(0x157))[_0x2d8dd8(0x180)]())*(Number($(_0x2d8dd8(0x15d))[_0x2d8dd8(0x180)]())+Number($('#abAGI')[_0x2d8dd8(0x180)]()))/0x64),_0x1c0ea8=_0x4e4be9+Math[_0x2d8dd8(0x100)](Number($(_0x2d8dd8(0xdd))['val']())*(Number($('#jinkeiINT')[_0x2d8dd8(0x180)]())+Number($(_0x2d8dd8(0x193))[_0x2d8dd8(0x180)]()))/0x64),_0x1309f6=_0x49338c[_0x2d8dd8(0x17a)]=='知力'?_0x2d8dd8(0x1a7):$(_0x2d8dd8(0xe5))['val'](),_0x59cc8b=_0x49338c[_0x2d8dd8(0x153)],_0x251320=_0x214c89,_0x531e20=_0x218bab;if(_0x49338c[_0x2d8dd8(0xd8)]==='術'||_0x49338c[_0x2d8dd8(0x17a)]=='知力')_0x251320=_0x1c0ea8,_0x531e20=_0x4e4be9;else['小剣','弓','銃'][_0x2d8dd8(0x176)](_0x59cc8b)>-0x1&&(_0x251320=_0x45b9e6,_0x531e20=_0x37aa42);dRange=damageStepCulc(_0x1309f6,_0x251320,_0x301b34,_0xc32625,_0x199688,_0xf976ed,_0x326f1e*(0x1-_0xea6f6d/0x64),_0x32dfc5,_0x2d16ec,_0x1ab852);!_0x40eb80&&dispDamageRangeClear();dispDamageRange(_0x199688,dRange,extraforce);var _0x425ec1=_0x1309f6;(_0x49338c['SpecialType']=='知力'||$[_0x2d8dd8(0x177)](_0x425ec1,['hi',_0x2d8dd8(0x107),_0x2d8dd8(0x124),_0x2d8dd8(0x181),'hikari',_0x2d8dd8(0x120)])>-0x1)&&(_0x425ec1='tsue');if(_0x425ec1==='ju'||_0x425ec1===_0x2d8dd8(0x132)||_0x425ec1==='yumi')st='器\x20'+_0x531e20,stCalc='器\x20'+_0x251320;else{if(_0x425ec1===_0x2d8dd8(0x1aa))st='知\x20'+_0x531e20,stCalc='知\x20'+_0x251320;else _0x425ec1===_0x2d8dd8(0x131)?(st='腕\x20'+_0x531e20+_0x2d8dd8(0x158)+_0x3c28d9,stCalc='腕\x20'+_0x251320+_0x2d8dd8(0x158)+_0x301b34):(st='腕\x20'+_0x531e20,stCalc='腕\x20'+_0x251320);}SAVE_OPTION[_0x2d8dd8(0x13a)]=_0xc32625,SAVE_OPTION['master']=$(_0x2d8dd8(0x170))[_0x2d8dd8(0x180)](),SAVE_OPTION[_0x2d8dd8(0xe9)]=_0x32dfc5,SAVE_OPTION['ab']=_0x56c918,SAVE_OPTION[_0x2d8dd8(0x12f)]=_0x289074,SAVE_OPTION[_0x2d8dd8(0xe6)]=_0x326f1e,SAVE_OPTION['resist']=_0x1ab852,SAVE_OPTION['damage']=dRange[0x5],SAVE_OPTION['iryoku']=_0x199688,SAVE_OPTION[_0x2d8dd8(0x111)]=_0xf976ed,SAVE_OPTION[_0x2d8dd8(0x105)]=st,SAVE_OPTION[_0x2d8dd8(0x140)]=stCalc;}function setMasterDamageRate(){var _0x4d0ecf=_0x49e170,_0x45d1f8=masterLevel($(_0x4d0ecf(0x170))[_0x4d0ecf(0x180)]())*0x64,_0x132065=Math[_0x4d0ecf(0x19f)](_0x45d1f8*0x64)/0x64;SAVE_OPTION['master']=$(_0x4d0ecf(0x170))[_0x4d0ecf(0x180)](),SAVE_OPTION['masterPer']=_0x132065;var _0x20f253=overdrive($(_0x4d0ecf(0x170))['val']())*0x64,_0x32fdbe=Math['round'](_0x20f253*0x64)/0x64;$(_0x4d0ecf(0xfb))[_0x4d0ecf(0x180)](_0x132065),$(_0x4d0ecf(0x18b))[_0x4d0ecf(0x180)](_0x32fdbe);}function dispDamageRangeClear(){var _0x467457=_0x49e170;$(_0x467457(0x175))['remove'](),$('.DAMAGE_TMPL')[_0x467457(0x114)]();}function dispDamageRange(_0x12cb1d,_0x4a0ff5,_0xdc5461){var _0x4e6f0b=_0x49e170;$tmpl=$('#DAMAGE_LIST_TEMPLATE')[_0x4e6f0b(0x163)]()['removeAttr']('id')['removeClass'](_0x4e6f0b(0x145))[_0x4e6f0b(0x150)](_0x4e6f0b(0x186)),$tmpl[_0x4e6f0b(0x117)]('.iryokuCol')[_0x4e6f0b(0x19b)]('d-none'),$tmpl['find'](_0x4e6f0b(0xd4))[_0x4e6f0b(0x160)](number_format(_0x12cb1d));for(i=0x0;i<_0x4a0ff5[_0x4e6f0b(0x11c)];i++){let _0x4455e3=Math[_0x4e6f0b(0x100)](_0x4a0ff5[i]*_0xdc5461);$tmpl[_0x4e6f0b(0x117)]('.d'+(i+0x1))[_0x4e6f0b(0x160)](number_format(_0x4455e3));}$(_0x4e6f0b(0x19a))[_0x4e6f0b(0x14f)]($tmpl);}function Compare(_0x4ff109,_0x5ce646){return arr[_0x4ff109]-arr[_0x5ce646];}var GOUREI={},ALWAYS_ABILITY=[],NOW_ABILITY_BUFF=[],BUFF_ABILITY=[],DEBUFF_ABILITY=[];function setAbilityBuffDeBuff(_0x590c72){var _0x34e36e=_0x49e170;GOUREI={},ALWAYS_ABILITY=[],NOW_ABILITY_BUFF=[],BUFF_ABILITY=[],DEBUFF_ABILITY=[];for(var _0x2a3892 in _0x590c72['StyleAbilityIds']){abInfo=ABILITY_MASTER[_0x590c72['StyleAbilityIds'][_0x2a3892]];if(abInfo['Name']==_0x34e36e(0x17c)){addShowTime();continue;}for(abCategory of abInfo['Attr']){if(abCategory['main']=='自身強化(バフ)'||abCategory[_0x34e36e(0xf5)]=='敵弱体化(デバフ)'||abCategory[_0x34e36e(0xf5)]==_0x34e36e(0xe3)){per=filterNumber(abCategory[_0x34e36e(0x146)]),time=filterNumber(abCategory[_0x34e36e(0x12e)]),tmp3=abCategory[_0x34e36e(0x15f)]['split']('\x20'),trigger=tmp3[0x0][_0x34e36e(0x11a)]()[_0x34e36e(0xfc)](),trigger=[_0x34e36e(0x14e)][_0x34e36e(0x176)](trigger)>-0x1?'常時':trigger;if(time!=0x64)continue;if($[_0x34e36e(0x177)](trigger,[_0x34e36e(0x18a),_0x34e36e(0x10e),'常時'])==-0x1)continue;var _0xcbaf0d=abCategory[_0x34e36e(0x16a)]['replace'](/ダメージ/g,'');_0xcbaf0d=_0xcbaf0d['replace'](/属性/g,'');var _0x47301b=_0xcbaf0d[_0x34e36e(0xd5)]('と'),_0x314356=![],_0x63740b=![],_0x57b5c4=![],_0x529bff=[];for(sub of _0x47301b){if(['全','斬','打','突','熱','冷','雷','陰','陽'][_0x34e36e(0x176)](sub)>-0x1)_0x57b5c4=!![];else{_0x529bff[_0x34e36e(0x195)](PARAM_KEY[PARAM_NAME[_0x34e36e(0x176)](sub)]);if(abCategory[_0x34e36e(0xf5)]==_0x34e36e(0x168))['体力','精神'][_0x34e36e(0x176)](sub)>-0x1&&(_0x63740b=!![]);else['腕力',_0x34e36e(0x155),_0x34e36e(0x184),'知力'][_0x34e36e(0x176)](sub)>-0x1&&(_0x314356=!![]);}}if(_0x314356)BUFF_ABILITY=BUFF_ABILITY[_0x34e36e(0x14b)](_0x440fbc=>_0x440fbc[_0x34e36e(0x147)]!=abInfo[_0x34e36e(0x149)]),BUFF_ABILITY['push']({'NAME':abInfo[_0x34e36e(0x149)],'PARAM':_0x529bff,'TIME':time,'PER':per});else{if(_0x63740b)DEBUFF_ABILITY=DEBUFF_ABILITY[_0x34e36e(0x14b)](_0x2b414e=>_0x2b414e[_0x34e36e(0x147)]!=abInfo[_0x34e36e(0x149)]),DEBUFF_ABILITY[_0x34e36e(0x195)]({'NAME':abInfo[_0x34e36e(0x149)],'PARAM':_0x529bff,'TIME':time,'PER':per});else{if(_0x57b5c4){turn=abCategory[_0x34e36e(0x103)][_0x34e36e(0xfc)]('効果','')['replace'](_0x34e36e(0xf7),''),tmp3=abCategory[_0x34e36e(0x15f)][_0x34e36e(0xd5)]('\x20'),trigger=tmp3[0x0][_0x34e36e(0x11a)]()[_0x34e36e(0xfc)](),trigger=[_0x34e36e(0x14e)][_0x34e36e(0x176)](trigger)>-0x1?'常時':trigger;var _0x253b15={'NAME':abInfo[_0x34e36e(0x149)],'ATTR':_0xcbaf0d,'TIME':time,'PER':filterNumber(abCategory[_0x34e36e(0x146)]),'TURN':Number(turn),'LIMIT':0x3e8};trigger!='常時'?(GOUREI[trigger]==undefined&&(GOUREI[trigger]=[]),GOUREI[trigger][_0x34e36e(0x195)](_0x253b15)):ALWAYS_ABILITY['push'](_0x253b15);}}}}}}var _0x5f3828={'STR':0x0,'DEX':0x0,'AGI':0x0,'INT':0x0};for(buffInfo of BUFF_ABILITY){for(p of buffInfo['PARAM']){_0x5f3828[p]+=buffInfo['PER'];}}for(param in _0x5f3828){$(_0x34e36e(0x165)+param)[_0x34e36e(0x160)](_0x5f3828[param]);}}function setAbBox(_0x4875ad,_0x26e541){var _0x17ca15=_0x49e170;$(''+_0x4875ad)['val'](0x0),$(_0x4875ad+_0x17ca15(0x11b))[_0x17ca15(0x164)](function(_0x167d6a){var _0x77465f=_0x17ca15,_0x3d82e9=$(this)['attr']('abId'),_0x17f885=$(this)['val']();if(_0x26e541[_0x77465f(0x176)](_0x3d82e9)>-0x1)return $(this)[_0x77465f(0x1a2)](_0x77465f(0xcb),!![]),![];});}function _0x7371(_0x3233fb,_0x565322){var _0x1eae07=_0x1eae();return _0x7371=function(_0x737179,_0x40097c){_0x737179=_0x737179-0xcb;var _0xf22395=_0x1eae07[_0x737179];return _0xf22395;},_0x7371(_0x3233fb,_0x565322);};
+let DAMAGE_ABILITY = {
+    "ID29d93221" : {"Id":"ability_list2", "Per":2},
+    "ID29d93221" : {"Id":"ability_list2", "Per":5},
+    "ID29d93221" : {"Id":"ability_list2", "Per":10},
+    "ID29d93221" : {"Id":"ability_list2", "Per":15},
+    "ID29d93221" : {"Id":"ability_list2", "Per":20},
+};
+let SKILL_LIST = {
+    "剣": [], "大剣": [], "斧": [],
+    "小剣": [], "槍": [], "弓": [],
+    "棍棒": [], "体術": [], "銃": [],
+    "火術": [], "水術": [], "風術": [],
+    "土術": [], "光術": [], "闇術": [],"杖": []};
+let SKILL_MAP = {
+    'ken': '剣',
+    'dken': '大剣',
+    'ono': '斧',
+    'sken': '小剣',
+    'yari': '槍',
+    'yumi': '弓',
+    'kon': '棍棒',
+    'tai': '体術',
+    'ju': '銃',
+    'hi': '火術',
+    'mizu': '水術',
+    'kaze': '風術',
+    'tsuchi': '土術',
+    'hikari': '光術',
+    'yami': '闇術'
+};
+let DEX_LIST = ["yumi", "sken", "ju"];
+var MY_MASTER_LV = {"ken":1,"dken":1,"ono":1,"sken":1,"yumi":1,"yari":1,"ju":1,"kon":1,"tai":1,"tsue":1};
+var SAVE_OPTION = {
+    "styleId" : "",
+    "weapon" : 0,
+    "master" : "",
+    "masterPer" : "",
+    "ab" : 0,
+    "enemy" : 0,
+    "resist" : 0,
+    "damage" : 0,
+
+    "name" : "通常攻撃",
+    "grade" : "E",
+    "iryoku" : 7,
+    "rank" : 1,
+    "status" : "",
+    "statusCalc" : "",
+};
+
+if(typeof firebase !== 'undefined'){
+    firebase.auth(appUsers).onAuthStateChanged((user) => {
+        if (user) {
+            USER = user;
+            UID = user.uid;
+            initial();
+        }
+    });
+}
+
+
+async function initial() {
+    // マスターレベル
+    let masterFunc = readUserData("MASTER", function (read) {
+        if (read !== null) {
+            MY_MASTER_LV = read;
+            $("#master").val(MY_MASTER_LV["ken"]);
+            $("#NOW_MAX_ML").val(WEAPON_MAP["剣"]['master']);
+            setMasterDamageRate();
+        } else {
+            $("#master").val(WEAPON_MAP["剣"]['master']);
+            $("#NOW_MAX_ML").val(WEAPON_MAP["剣"]['master']);
+        }
+    });
+    $("#NOW_ADV_LV").val(BOUKEN_RANK_PER);    
+    await Promise.all([masterFunc]);
+    firebase.database().goOffline();
+    firebase.database(appUsers).goOffline();
+}
+
+$(function () {
+
+    for (let idx in ENEMY_DATA) {
+        let row = ENEMY_DATA[idx];
+        let disp = row['quest'] + " " + row['name'] + " 体:" + row['vit'] + " 精:" + row['mnd'];
+        //" 推定HP:" + row['hp'];
+        $option = $('<option>', {value: idx, text: disp});
+        $('#enemy_vit').append($option);
+    }
+    
+    for (let idx in SKILL_MASTER) {
+        let row = SKILL_MASTER[idx];
+        if(row['Type'] != "攻撃") {
+            continue;
+        }
+        if(typeof SKILL_LIST[row['BattleType']]['ALL'] == "undefined") {
+            SKILL_LIST[row['BattleType']]['ALL'] = [];
+        }
+        if(typeof SKILL_LIST[row['BattleType']][row['PowerGrade']] == "undefined") {
+            SKILL_LIST[row['BattleType']][row['PowerGrade']] = [];
+        }
+        SKILL_LIST[row['BattleType']]['ALL'].push(row);
+        SKILL_LIST[row['BattleType']][row['PowerGrade']].push(row);
+    }
+
+    let idx = 0;
+    let base = {"Id": "", "ConsumeBp": 0, "Name": "", "PowerGrade": "E", "SkillIryoku": 7, "SkillType": "技"};
+    let IRYOKU_LABEL = {
+        "E":"6〜9","D":"10〜14","C":"15〜20",
+        "B":"21〜27","A":"28〜35","S":"36〜44",
+        "SS":"45〜57","SSS":"58〜73","SSSS":"74〜99"}
+    ;
+
+    for (let battleType in SKILL_LIST) {
+        for(grade in IRYOKU_LABEL) {
+            label = Object.assign({}, base);
+            label['Id'] = "LABEL" + battleType + grade;
+            let count = (typeof SKILL_LIST[battleType][grade] != "undefined") ? SKILL_LIST[battleType][grade].length : 0;
+            label['Name'] = `==== 威力:${grade} ${IRYOKU_LABEL[grade]} ${count}種 ====`;
+            label['PowerGrade'] = grade;
+            label['SkillIryoku'] = IRYOKU_LABEL[grade].split("〜")[1];
+            label['ConsumeBp'] = 100;
+            SKILL_LIST[battleType]['ALL'].push(label);
+            if(typeof SKILL_LIST[battleType][grade] != "undefined") {
+                SKILL_LIST[battleType][grade].push(label);
+            }            
+        }
+    }
+    for (let battleType in SKILL_LIST) {
+        for (let grade in SKILL_LIST[battleType]) {
+            SKILL_LIST[battleType][grade].sort(function (a, b) {
+
+                if (a.SkillIryoku > b.SkillIryoku) {
+                    return -1;
+                } else if (a.SkillIryoku < b.SkillIryoku) {
+                    return 1;
+                } else if (a.ConsumeBp < b.ConsumeBp) {
+                    return 1;
+                } else {
+                    return -1;
+                }
+            });
+        }
+        SKILL_LIST[battleType]['ALL'].unshift({"Id": "ID" + (idx++), "ConsumeBp": 0, "Name": "通常攻撃(" + battleType + ")", "PowerGrade": "E", "SkillIryoku": 7, "SkillType": "技"});
+    }
+    // 初回表示
+    addOptionWithDisable(createSkillOption(SKILL_LIST["剣"]['ALL']), "skill");
+    setDefaultSkillIryoku();
+});
+
+//////////////////////////////////////////////////
+// 画面操作の挙動
+//////////////////////////////////////////////////
+$(document).on('click', '.CLOSE_BTN', function () {
+    $(this).parents(".bg-simple").slideUp(300, function (){ $(this).remove() });
+});
+
+$(document).on('change', '.calcDamage', function () {
+    $(".DAMAGE_TMPL").removeClass("d-none");
+    $(".match-damage").removeClass("match-damage");
+
+    $(".calcDamage").each(function(){
+        var damage = $(this).val();
+        if(damage == "") {
+            return true; // continue
+        }
+        $(".DAMAGE_TMPL").each(function(){
+            var match_flg = false;
+            for (i = 1; i <= 10; i++) {
+                $col = $(this).find(".d" + i)
+                d = Number($col.html().replace(",",""));
+                if(damage == d) {
+                    $col.addClass("match-damage");
+                    match_flg = true;
+                }
+            }
+            if(!match_flg) {
+                $(this).addClass("d-none");
+            }
+        })
+    });
+});
+
+$(document).on('change', '.damage', function () {
+    damageCalc();
+});
+
+$(document).on('change', '.charParam', function () {
+    damageCalc();
+});
+
+$(document).on('change', '.culcList', function () {
+    // abilityの値を入れ替えるので計算はこのタイミング
+    damageCalc();
+});
+$(document).on('change', '#master', function () {
+    type = $("#type").val();
+    if ($.inArray(type, ["hi", "mizu", "tsuchi", "kaze", "hikari", "yami"]) > -1) {
+        type = "tsue";
+    }
+    // マスターレベルの変更
+    MY_MASTER_LV[type] = $("#master").val();
+    setMasterDamageRate();
+    damageCalc();
+});
+
+$(document).on('change', '#resist', function () {
+    var r = $('#resist').val();
+    $("#resistDamage").val(Math.round(1 / (1 + 0.008 * r) * 100 * 100) / 100);
+});
+
+$(document).on('click', '#SAVE', function () {
+    damageCalc();
+
+    $history = $("#HISTORY_TEMPLATE").clone().removeAttr("id").removeClass("d-none");
+    
+    styleId = SAVE_OPTION["styleId"];
+    if(styleId != ""){
+        styleInfo = STYLE_MASTER[styleId];
+        let styleIcon = getStyleIcon(styleInfo['Rarity'], styleId, "", true);
+        $history.find(".ICON").append(styleIcon);
+    }
+    $history.find(".GRADE").text(SAVE_OPTION['grade']);
+    $history.find(".WEAPON").text(SAVE_OPTION['weapon'])
+    $history.find(".MLV").text(SAVE_OPTION['master']);
+    $history.find(".MLV_PER").text(SAVE_OPTION['masterPer']);
+    $history.find(".AB").text(SAVE_OPTION['ab']);
+    $history.find(".AB_STONE").text(SAVE_OPTION['abStone']);
+    $history.find(".ENEMY_ST").text(SAVE_OPTION['enemy']);
+    $history.find(".DAMAGE").text(number_format(SAVE_OPTION['damage']));
+    $history.find(".SKILL_NAME").text(SAVE_OPTION['name']);
+    $history.find(".IRYOKU").text(SAVE_OPTION['iryoku']);
+    $history.find(".RANK").text(SAVE_OPTION['rank']);
+    $history.find(".ST").text(SAVE_OPTION['status']);
+    $history.find(".ST_CALC").text(SAVE_OPTION['statusCalc']);
+    $history.find(".RESIST").text(SAVE_OPTION['resist']);
+    $("#HISTORY_AREA").append($history);
+});
+
+$(document).on('change', '#enemy_vit', function () {
+    let idx = $("#enemy_vit").val();
+    if (idx === "x") {
+        return;
+    }
+    let row = ENEMY_DATA[idx];
+    type = $("#type").val();
+    if ($.inArray(type, ["hi", "mizu", "tsuchi", "kaze", "hikari", "yami"]) > -1) {
+        $("#vit").val(row['mnd']);
+    } else {
+        $("#vit").val(row['vit']);
+    }
+    for (let z of ["zan", "da", "totsu", "netsu", "rei", "rai", "in", "you"]) {
+        setTaisei($("#taisei_" + z), row[z]);
+    }
+    // vitの値を入れ替えるので計算はこのタイミング
+    damageCalc();
+});
+
+/**
+ * 武器ボタンクリック
+ */
+$(document).on('click', '.WEAPON_CHOISE', function () {
+    $(".WEAPON_AREA").find(".filterActive").each(function(){
+        $(this).removeClass("filterActive");
+    });
+    $(this).parents(".d-inline-block").addClass("filterActive");
+    $("#weapon").val(Number($(this).parents(".d-inline-block").attr("data-val")));
+    changeStatus();
+    damageCalc();
+});
+/**
+ * 装備ボタンクリック
+ */
+$(document).on('click', '.ARMOR_CHOISE', function () {
+    var type = $(this).attr("data-type");
+    clickArmor(type);
+    $(".ARMOR_CHOISE").each(function(){
+        $(this).removeClass("icon_btn_positive").addClass("icon_btn_negative");
+    });
+    $(this).removeClass("icon_btn_negative").addClass("icon_btn_positive");
+    changeStatus();
+    damageCalc();
+});
+// 武器種別が変更された場合
+$(document).on('change', '#type', function () {
+    $("#HOLDERS_AREA_SS").html("");
+    $("#HOLDERS_AREA_S").html("");
+    $("#HOLDERS_AREA_A").html("");
+    $("#ABILITY_AREA").html("");
+    SAVE_OPTION["styleId"] = "";
+    SAVE_OPTION["name"] = "通常攻撃";
+    SAVE_OPTION["grade"] = "E";
+
+    type = $("#type").val();
+
+    var wp = type.replace(/(mizu)|(tsuchi)|(kaze)|(hikari)|(yami)|(hi)/g,"tsue");
+
+    for(var WeaponType in MASTER_LV_KEY) {
+        if(wp == MASTER_LV_KEY[WeaponType]){
+            // 武器の表示
+            $("#NOW_MAX_ML").val(WEAPON_MAP[WeaponType]['master']);
+            break;
+        }
+    }
+    if(wp == "tsue") {
+        $(".TEMP_WEAPON").each(function(){
+            var jutsuType = $(this).attr("data-type");
+            if(jutsuType.indexOf(JUTSU_MASTER[type]) == -1) {
+                $(this).addClass("d-none").removeClass("d-inline-block");
+            } else {
+                $(this).removeClass("d-none").addClass("d-inline-block");
+            }
+        });
+    }
+
+    masterType = $("#type").val();
+    if ($.inArray(masterType, ["hi", "mizu", "tsuchi", "kaze", "hikari", "yami"]) > -1) {
+        masterType = "tsue";
+    }
+    // マスターレベルの変更
+    $("#master").val(MY_MASTER_LV[masterType]);
+
+    setMasterDamageRate();
+
+    // 技リストを更新する
+    $('#skill').children().remove();
+    addOptionWithDisable(createSkillOption(SKILL_LIST[SKILL_MAP[type]]['ALL']), "skill");
+    setDefaultSkillIryoku();
+    changeSkillType(masterType, {});
+    $('#skill_grade').val("ALL");
+    damageCalc();
+});
+/**
+ * 技威力ラベル変更された場合
+ */ 
+$(document).on('change', '#skill_grade', function () {
+    let val = $('#skill_grade option:selected').val();
+    let type = $("#type").val();
+    // 技リストを更新する
+    $('#skill').children().remove();
+    if(typeof SKILL_LIST[SKILL_MAP[type]][val] != "undefined") {
+        addOptionWithDisable(createSkillOption(SKILL_LIST[SKILL_MAP[type]][val]), "skill");
+    }
+});
+
+/**
+ * 技が変更された場合
+ * 通常攻撃はrankを非表示で1に設定。それ以外はrankを表示
+ */
+ $(document).on('change', '#skill', function () {
+    $("#HOLDERS_AREA_SS").html("");
+    $("#HOLDERS_AREA_S").html("");
+    $("#HOLDERS_AREA_A").html("");
+    $("#ABILITY_AREA").html("");
+    // リセット
+    GOUREI = {};
+    ALWAYS_ABILITY = [];
+    NOW_ABILITY_BUFF = [];
+    BUFF_ABILITY = [];
+    DEBUFF_ABILITY = [];
+    
+    setDefaultSkillIryoku();
+
+    let text = $('#skill option:selected').text();
+
+    if (text.indexOf('通常攻撃') !== -1) {
+        //$('#input_rank').hide();
+        $('#skill_rank').val(1);
+        SAVE_OPTION["name"] = "通常攻撃";
+        SAVE_OPTION["grade"] = "E";
+        SAVE_OPTION["rank"] = 1;
+    } else {
+        let skillId = $('#skill option:selected').val();
+        let skillInfo = SKILL_MASTER[skillId];
+        SAVE_OPTION["name"] = skillInfo['Name'];
+        SAVE_OPTION["grade"] = skillInfo['PowerGrade'];
+        let holders = [];
+        for (key in skillInfo['Holders']) {
+            let styleId = skillInfo['Holders'][key];
+            let styleInfo = STYLE_MASTER[styleId];
+            let charInfo = CHAR_MASTER[styleInfo['CharacterId']];
+            for(styleIds of charInfo['Holders']){
+                holders.push(styleIds);
+            }
+        }
+        holders = holders.filter(function (x, i, self) {
+            return self.indexOf(x) === i;
+        });
+        for(styleId of holders){
+            styleInfo = STYLE_MASTER[styleId];
+            let styleIcon = getStyleIcon(styleInfo['Rarity'], styleId, "", true);
+            $("#HOLDERS_AREA_"+styleInfo['Rarity'].toUpperCase()).append(styleIcon);
+        }
+
+        masterType = $("#type").val();
+        if ($.inArray(masterType, ["hi", "mizu", "tsuchi", "kaze", "hikari", "yami"]) > -1) {
+            masterType = "tsue";
+        }
+
+        changeSkillType(masterType, skillInfo);
+        //$('#input_rank').show();
+    }
+});
+
+$(document).on('click', '.HOLDERS_AREA .style', function () {
+    styleId = $(this).attr("data-id");
+
+    SAVE_OPTION["styleId"] = styleId;
+    styleInfo = STYLE_MASTER[styleId];
+    charInfo = CHAR_MASTER[styleInfo['CharacterId']];
+
+    let styleBonus = culcStyleAddintional(styleInfo);
+    var map = {"STR": "腕力", "DEX": "器用さ", "AGI": "素早さ", "INT": "知力"};
+    for (var key in map ) {
+        var paramName = map[key]
+        var charBase = charInfo[`MAX${key}`] + LIMIT_BASE;
+        let per = styleBonus[paramName][50]["Per"];
+        let bonus = styleBonus[paramName][50]["Bonus"];
+        let val = addBonus(charBase, per, bonus);
+        $("#char" + key).val(charBase);
+        $("#style" + key).val(val);
+    }
+
+    var abList = [];
+    var abIdList = [];
+    var dispPer = 0;
+    for(lv of Object.keys(styleInfo['StyleAbility'])){
+        //abList.push(styleInfo['StyleAbility'][lv]);
+        abIdList.push(styleInfo['StyleAbilityIds'][lv]);
+        abId = styleInfo['StyleAbilityIds'][lv];
+        var abInfo = ABILITY_MASTER[abId];
+        var disp = abInfo['Name'];
+        var attrs = [];
+        for(attr of abInfo['Attr']) {
+            if(attr['main'] == "ダメージ強化") {
+                var time = (attr['time'] != "必ず(100%)") ? " 確率 " + attr['time'] : "";
+                var sub = (attr['sub'] != "常時") ? attr['sub'] : "";
+                var size = "+"+filterNumber(attr['size']) + "%";
+                attrs.push(size + " " + sub + time);
+                if(attr['sub'] == "常時" || attr['sub'] == "武器装備時") {
+                    dispPer += filterNumber(attr['size']);
+                }
+            }
+            if(attr['main'] == "ダメージ強化(全体)") {
+                var time = (attr['time'] != "必ず(100%)") ? " 確率 " + attr['time'] : "";
+                var sub = (attr['sub'] != "常時") ? attr['sub'].replace("属性攻撃","") : "";
+                var size = "+"+filterNumber(attr['size']) + "%";
+                attrs.push(size + " :" + sub + time);
+            }            
+        }
+        if(attrs.length > 0) {
+            disp += "<br>　" + attrs.join(" | ");
+        }
+        abList.push(disp);
+    }
+    $("#ability_other").val(dispPer);
+
+    // アビリティの設定
+    setAbilityBuffDeBuff(styleInfo);
+
+    $("#ABILITY_AREA").html(abList.join("<br>"));
+    damageCalc();
+});
+
+function addOptionWithDisable(list, target) {
+    $.map(list, function (v, name) {
+        $option = $('<option>', {value: v['text'], text: name, disabled: v['disabled'] });
+        $('#' + target).append($option);
+    });
+}
+function createSkillOption(list) {
+    var result = {};
+    list.forEach(function (rows) {
+        let iryoku = rows['SkillIryoku'];
+        // 0:種別、1:威力、2:Name、3:Grade、4:BP、5:覚醒
+        var attr = (rows['AttackAttributes'] != undefined) 
+        ? "["+rows['AttackAttributes'].replace(",","")+"] " : "";
+        if(rows['ConsumeBp'] == 100) {
+            label = attr + rows['Name'];
+        } else {
+            label = `威力:${iryoku} ${rows['Name']} ${attr} BP:${rows['ConsumeBp']}`;
+        }
+        result[label] = {'text':rows['Id'], 'disabled': (rows['ConsumeBp'] == 100)};
+    });
+    return result;
+}
+
+function changeSkillType(BattleType, skillInfo){
+    // 影響のある陣形を入れ替える
+    var SpecialType = skillInfo['SpecialType'] == undefined ? "" : skillInfo['SpecialType'];
+    if (BattleType === "tsue" || SpecialType == "知力" ) {
+        $("#param_label").text("知力");
+        $(".jinkei_label").text("知");
+        $(".param_label_teki").text("精神");
+
+        $("#taijyutsu").hide();
+    } else if ($.inArray(BattleType, DEX_LIST) > -1) {
+        $("#param_label").text("器用さ");
+        $(".param_label_teki").text("体力");
+        $(".jinkei_label").text("器");
+        $("#taijyutsu").hide();
+    } else if (BattleType === "tai") {
+        $("#param_label").text("腕力");
+        $(".param_label_teki").text("体力");
+        $(".jinkei_label").text("腕");
+
+        $("#taijyutsu").show();
+    } else {
+        $("#param_label").text("腕力");
+        $(".param_label_teki").text("体力");
+        $(".jinkei_label").text("腕");
+
+        $("#taijyutsu").hide();
+    }
+}
+
+////////////////////////
+
+
+function setDefaultSkillIryoku() {
+    let skillId = $('#skill option:selected').val();
+    let skill = SKILL_MASTER[skillId];
+    let iryoku = (skill === undefined) ? 7 : skill['SkillIryoku'];
+    $("#skill_val").val(iryoku);
+}
+
+/**
+ * 計算処理
+ * @returns {undefined}
+ */
+function damageCalc() {
+    var skill = Number($("#skill_val").val()); // 技威力
+    var skill_range = $("#skill_grade").val();    
+    if(skill_range == "ALL" || skill != "") {
+        $("#CALC_MODE").addClass("d-none");
+        _calc(skill);
+    } else {
+        $("#CALC_MODE").removeClass("d-none");
+        var x = IRYOKU_LIST[skill_range].split("〜");
+        var min = Number(x[0]);
+        var max = Number(x[1])
+        dispDamageRangeClear();
+        for(var x2 = min; x2 <= max; x2++) {
+            _calc(x2, true);
+        }
+    }
+}
+
+
+
+function _calc(skill, IryokuCalc = false) {
+    var weapon = Number($("#weapon").val());
+    let other = Number($("#ability_other").val());
+    holy1 = $("#holystone1").val();
+    holy2 = $("#holystone2").val();
+    holy3 = $("#holystone3").val();
+    extraforce = $("#extraforce").val();
+    extraforce = 1 + (extraforce/100);
+    
+    let holy = Number(holy1) + Number(holy2) + Number(holy3);
+    adv = Number($("#adventDamage").val());
+    
+    var ability = other + holy + adv;
+    var resist = Number($("#resist").val());
+    var skillId = $("#skill").val();
+    var rank = Number($("#skill_rank").val());
+    
+    var vit = Number($("#vit").val());
+    var debuff_per = Number($("#debuff_per").val());
+    
+    var master = Number($("#masterDamage").val());
+
+    var skillInfo = SKILL_MASTER[skillId];
+    if(skillInfo == undefined) {
+        skillInfo = {
+            "BattleType": $('#type option:selected').text(),
+        };
+    }
+
+    var baseStr = Number($("#styleSTR").val());
+    var baseDex = Number($("#styleDEX").val());
+    var baseAgi = Number($("#styleAGI").val());
+    var baseInt = Number($("#styleINT").val());
+    var str = baseStr + Math.floor(Number($("#charSTR").val()) * (Number($("#jinkeiSTR").val()) + Number($("#abSTR").val()) ) / 100);
+    var dex = baseDex + Math.floor(Number($("#charDEX").val()) * (Number($("#jinkeiDEX").val()) + Number($("#abDEX").val()) ) / 100);
+    var agi = baseAgi + Math.floor(Number($("#charAGI").val()) * (Number($("#jinkeiAGI").val()) + Number($("#abAGI").val()) ) / 100);
+    var int = baseInt + Math.floor(Number($("#charINT").val()) * (Number($("#jinkeiINT").val()) + Number($("#abINT").val()) ) / 100);
+
+    // 依存ステータスの変更
+    var type = (skillInfo['SpecialType'] == '知力') ? "jutsu" : $("#type").val();
+    var battleType = skillInfo['BattleType'];
+
+    var attackParam = str;
+    var attackParamBase = baseStr;
+    if　(skillInfo['SkillType'] === "術" || skillInfo['SpecialType'] == '知力') {
+        attackParam = int;
+        attackParamBase = baseInt;
+    } else if (["小剣", "弓", "銃"].indexOf(battleType) > -1) {
+        attackParam = dex;
+        attackParamBase = baseDex;
+    }
+
+    dRange = damageStepCulc(type, attackParam, agi, weapon, skill, rank, vit * (1-(debuff_per/100)), master, ability, resist);
+    if(!IryokuCalc) {
+        dispDamageRangeClear();
+    }
+    dispDamageRange(skill, dRange, extraforce);
+
+    var masterType = type;
+    if (skillInfo['SpecialType'] == '知力' 
+    || $.inArray(masterType, ["hi", "mizu", "tsuchi", "kaze", "hikari", "yami"]) > -1) {
+        masterType = "tsue";
+    }
+    if (masterType === "ju" || masterType === "sken" || masterType === "yumi" ) {
+        st = `器 ${attackParamBase}`;
+        stCalc = `器 ${attackParam}`;
+    } else if (masterType === "tsue") {
+        st = `知 ${attackParamBase}`;
+        stCalc = `知 ${attackParam}`;
+    } else if (masterType === "tai") {
+        st = `腕 ${attackParamBase} / 速 ${baseAgi}`;
+        stCalc = `腕 ${attackParam} / 速 ${agi}`;
+    } else {
+        st = `腕 ${attackParamBase}`;
+        stCalc = `腕 ${attackParam}`;
+    }
+
+    SAVE_OPTION['weapon'] = weapon;
+    SAVE_OPTION['master'] = $("#master").val();
+    SAVE_OPTION['masterPer'] = master;
+    SAVE_OPTION['ab'] = other;
+    SAVE_OPTION['abStone'] = holy;
+    SAVE_OPTION['enemy'] = vit;
+    SAVE_OPTION['resist'] = resist;
+    SAVE_OPTION['damage'] = dRange[5];
+    SAVE_OPTION['iryoku'] = skill;
+    SAVE_OPTION['rank'] = rank;
+    SAVE_OPTION['status'] = st;
+    SAVE_OPTION['statusCalc'] = stCalc;
+}
+
+function setMasterDamageRate(){
+    var master = masterLevel($("#master").val()) * 100;
+    var per = Math.round(master * 100) / 100;
+    SAVE_OPTION['master'] = $("#master").val();
+    SAVE_OPTION['masterPer'] = per;
+    var masterOD = overdrive($("#master").val()) * 100;
+    var perOd = Math.round(masterOD * 100) / 100;
+    $("#masterDamage").val(per);    
+    $("#masterODDamage").val(perOd);    
+}
+
+
+function dispDamageRangeClear() {
+    $("table#damageRangeTable tbody *").remove();
+    $(".DAMAGE_TMPL").remove();
+}
+function dispDamageRange(skill, dRange, extraforce) {
+    $tmpl = $("#DAMAGE_LIST_TEMPLATE").clone().removeAttr("id").removeClass("d-none").addClass("DAMAGE_TMPL");
+
+    $tmpl.find(".iryokuCol").removeClass("d-none");
+    $tmpl.find(".iryoku").html(number_format(skill));    
+    for (i = 0; i < dRange.length; i++) {
+        let d = Math.floor(dRange[i] * extraforce);
+        $tmpl.find(".d" + (i+1)).html(number_format(d))
+    }
+    $("#DAMAGE_LIST_TEMPLATE").after($tmpl);
+}
+
+
+function Compare(a, b) {
+    return arr[a] - arr[b];
+}
+
+var GOUREI = {};
+var ALWAYS_ABILITY = [];
+var NOW_ABILITY_BUFF = [];
+var BUFF_ABILITY = [];
+var DEBUFF_ABILITY = [];
+
+/**
+ * ターン開始時、ラウンド開始時100％のものだけ設定する
+ */
+function setAbilityBuffDeBuff(styleInfo){
+    // リセット
+    GOUREI = {};
+    ALWAYS_ABILITY = [];
+    NOW_ABILITY_BUFF = [];
+    BUFF_ABILITY = [];
+    DEBUFF_ABILITY = [];
+
+    for(var lv in styleInfo['StyleAbilityIds']){
+        abInfo = ABILITY_MASTER[styleInfo['StyleAbilityIds'][lv]];
+        // アビリティの複合バフは分解して登録してあるので、バラした物は使わない
+        if(abInfo['Name'] == "ショウタイム") {
+            addShowTime();
+            continue;
+        }
+
+        for(abCategory of abInfo['Attr']){
+            if(abCategory['main'] == "自身強化(バフ)" 
+            || abCategory['main'] == "敵弱体化(デバフ)"
+            || abCategory['main'] == "全員強化(バフ)"){
+
+                per = filterNumber(abCategory['size']); // "大(20%)"
+                time = filterNumber(abCategory['time']); // "必ず(100%)"
+                tmp3 = abCategory['when'].split(" ");
+                trigger = tmp3[0].trim().replace(); // "Weak攻撃命中時","攻撃命中寺","ターン開始時","ラウンド開始時",""
+                trigger = (["味方が全員生存している時"].indexOf(trigger) > -1) ? "常時": trigger;
+
+                // バフ使わない場合は確定発動以外は無視
+                if(time != 100) {
+                    continue;
+                }
+                if ($.inArray(trigger, ["ターン開始時", "ラウンド開始時", "常時"]) == -1) {
+                    continue;
+                }
+
+                var attr = abCategory['sub'].replace(/ダメージ/g, ''); // 斬属性ダメージ,全ダメージ
+                attr = attr.replace (/属性/g, ''); // 斬属性ダメージ
+
+                var subs = attr.split("と"); // 「腕力と体力」 「全」「斬」
+                var setBuff = false;
+                var setDeBuff = false;
+                var setGouirei = false;
+                var params = [];
+                // バフするパラメータを配列でいれる
+                for(sub of subs){
+                    if(["全","斬","打","突","熱","冷","雷","陰","陽"].indexOf(sub) > -1) {
+                        setGouirei = true;
+                    } else {
+                        params.push(PARAM_KEY[PARAM_NAME.indexOf(sub)]);
+                        if(abCategory['main'] == "敵弱体化(デバフ)") {
+                            if(["体力", "精神"].indexOf(sub) > -1) {
+                                setDeBuff = true;
+                            }
+                        } else if( ["腕力", "素早さ", "器用さ", "知力"].indexOf(sub) > -1){
+                            // バフ利用
+                            setBuff = true;
+                        }
+
+                    }
+                }
+
+                if(setBuff){
+                    // 同名アビリティは後勝ち（腕力、素早さ、腕力と素早さ。で登録してあるはず）
+                    BUFF_ABILITY = BUFF_ABILITY.filter(ab => ab['NAME'] != abInfo['Name']);
+                    BUFF_ABILITY.push({
+                        "NAME": abInfo['Name'],
+                        "PARAM": params,
+                        "TIME": time,
+                        "PER" : per,    
+                    });
+                } else if(setDeBuff){
+                    // 同名アビリティは後勝ち（腕力、素早さ、腕力と素早さ。で登録してあるはず）
+                    DEBUFF_ABILITY = DEBUFF_ABILITY.filter(ab => ab['NAME'] != abInfo['Name']);
+                    DEBUFF_ABILITY.push({
+                        "NAME": abInfo['Name'],
+                        "PARAM": params,
+                        "TIME": time,
+                        "PER" : per,
+                    });
+                } else if (setGouirei) {
+                    turn = abCategory['turn'].replace('効果','').replace('ターン', ''); // 効果2ターン
+    
+                    tmp3 = abCategory['when'].split(" ");
+                    trigger = tmp3[0].trim().replace(); // "Weak攻撃命中時","攻撃命中寺","ターン開始時","ラウンド開始時",""
+                    trigger = (["味方が全員生存している時"].indexOf(trigger) > -1) ? "常時": trigger;
+                    var data = {
+                        "NAME" : abInfo['Name'],
+                        "ATTR" : attr, // 全,斬,打,突など
+                        "TIME" : time, // "必ず(100%)"
+                        "PER" : filterNumber(abCategory['size']), // "大(20%)",
+                        "TURN": Number(turn),
+                        "LIMIT": 1000, // 常時発動
+                    };
+                    if(trigger != "常時") {
+                        if(GOUREI[trigger] == undefined){
+                            GOUREI[trigger] = [];
+                        }
+                        GOUREI[trigger].push(data);
+                    } else {
+                        ALWAYS_ABILITY.push(data);             
+                    }
+                }
+            }
+        }
+    }
+    // バフ量調整
+    var NOW_BUFF = {"STR":0,"DEX":0,"AGI":0,"INT":0};
+    for(buffInfo of BUFF_ABILITY) {
+        for(p of buffInfo["PARAM"]) {
+            NOW_BUFF[p] += buffInfo["PER"];
+        }
+    }
+    for(param in NOW_BUFF) {
+        $(`#buf${param}`).html(NOW_BUFF[param]);
+    }
+
+}
+
+function setAbBox(id, abIdList){
+    $(`${id}`).val(0);
+    $(`${id} option`).each(function(i){
+        var targetId = $(this).attr("abId");
+        var val = $(this).val();
+        if(abIdList.indexOf(targetId) > -1){
+            $(this).prop('selected', true);
+            //$(`${id}`).val(val);
+            return false; // break
+        }
+    });
+};
+
