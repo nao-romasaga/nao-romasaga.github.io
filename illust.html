@@ -103,11 +103,11 @@
                         <div class="NAME_AREA"></div>
                         <div class="ICON_AREA artist height-min row no-gutters"></div>
                     </div>
-                    <div id="SINGLE_TEMPLATE" class="d-none col-2 col-sm-1 ">
+                    <div id="SINGLE_TEMPLATE" class="d-none col-2 col-sm-1 yubi">
                         <div class="NAME width-100 bg-item fuchidori-white text-nowrap text-center" style="font-size:10px !important;"></div>
                         <div class="filter-bgcolor" style="padding: 0px !important; border: 1px solid yellow;">
                             <div class="text-center" style="background: url(https://romasagatool.com/img/bg_cutin.png);">
-                                <img class="VERTICAL_IMG lazyload" style="max-width:100%;">
+                                <img class="ICON_IMG lazyload" style="max-width:100%;">
                             </div>
                         </div>
                     </div>
@@ -162,8 +162,9 @@
             if(tmp['sIds'].length < 2){
                 target = "#SINGLE_AREA";
                 parent = $("#SINGLE_TEMPLATE").clone().removeClass("d-none").attr("id","");
-                parent.find(".NAME").text(tmp['artist']);
-                parent.find(".VERTICAL_IMG").attr('data-src', getImgPath(`style_vertical/${tmp['sIds'][0]}.png`));
+                parent.attr('data-id', sId);
+                parent.find(".NAME").text(tmp['sIds'][0]);
+                parent.find(".ICON_IMG").attr('data-src', getImgPath(`style_icon_bg/${tmp['sIds'][0]}.png`));
             } else {
                 var nameTmpl = $("#NAME_TEMPLATE").clone().removeClass("d-none").attr("id","");
                 nameTmpl.find(".NAME").text(tmp['artist']);
