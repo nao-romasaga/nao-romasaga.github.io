@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#" lang="ja">
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138966739-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', 'UA-138966739-1');
+        </script>
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <meta charset="utf-8">
+        <title>【ロマサガRS】検索結果</title>
+        <meta property="og:title" content="【ロマサガRS】検索結果" />
+        <meta property="og:url" content="https://nao-romasaga.github.io/search.html" />
+        <meta property="og:description" content="ロマサガRSの全スタイル。技・術、アビリティの検索ページです。" />
+        <meta name="description" content="ロマサガRSの全スタイル。技・術、アビリティの検索ページです。【ロマンシングサガ リユニバース】" />
+        <meta property="og:image" content="https://nao-romasaga.github.io/img/twitter_card_skill.png" />
+        <meta property="og:site_name" content="ロマサガRS便利ツール" />
+        <meta property="og:type" content="article">
+        <meta property="og:locale" content="ja_JP" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@nao_romasaga_rs" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <script src="./js//jquery-3.3.1.min.js"></script>
+        <script src="./js/bootstrap/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
+        <script src="./js/lib/lazysizes.min.js"></script>
+        <script src="./js/lib/ls.unveilhooks.min.js"></script>
+        <script src="./js/dataload.js"></script>
+        <script>
+            // require dataload.js
+            dataload([
+                "data_ABILITY",
+                "data_STYLEMASTER_style",
+                "data_SKILLMASTER",
+                "data_SPECIAL_EFFECT",
+                "data_SEARCH",
+            ]);
+        </script>        
+        <script src="./js/Firebase.js"></script>
+        <script src="./js/utils2.js" ></script>
+        <script src="./js/search.js" ></script>
+        <link rel="stylesheet" type="text/css" href="./css/bootstrap/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="./css/style2.css">
+        <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+        <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Anton&text=0123456789" rel="stylesheet">
+        <style>
+            .mini-popup-text-info {
+                width: 80%;
+            }
+            .img-icon {
+                width: 20px;
+            }
+            .withLabel{
+                padding-top: 30px;
+            }
+            .noneCount{
+                background-color:black !important;
+            }
+            .kome {
+                font-size: 0.8rem;
+                line-height: 0.8rem;
+                display: inline-block;
+            }
+            .hasei{
+                margin-top: 8px;
+                font-size: 0.8rem;
+                line-height: 0.8rem;                
+            }
+
+            .pari{
+                display: inline-block;
+                width: 35px;
+                height: 35px;
+                background-position: -365px -45px !important;
+                margin: 0 0 0 0px;
+                background-size: 200px !important;                
+            }
+            .weaponIconTd {
+                width: 40px;
+                position:relative
+            }
+            .skill-name {
+                margin: auto 0px;
+            }
+            .kakusei-bp {
+                position: absolute;
+                top: 40px;
+                right: 0;
+                width: 40px;
+                text-align: center;
+                font-size: 8px;
+            }
+            .series-button {
+                display: inline-block;
+                min-width: 30px;
+            }
+
+            /* 画面サイズ320より小さい場合 iphone5 */
+            @media screen and (max-width:320px) {
+                .icon_mini {
+                    width:30px;
+                    height:30px;
+                }
+                .skill-name {
+                    font-size: 15px;
+                }
+            }            
+            .abilityIconTd {
+                display: flex;
+                gap: 10px;
+                .icon-area {
+                    display: flex;
+                    gap: 10px;
+                    align-items: center;                    
+                    flex-grow: 1;
+                }
+                .style-area {
+                    display: flex;
+                }
+            }
+            
+            .style_icon_bg_base2 {
+                width: inherit;
+            }
+
+            /* 322〜400pxの画面の場合 */
+            @media screen and (min-width:321px) and ( max-width:400px) {
+                .icon_mini {
+                    width:35px;
+                    height:35px;
+                }
+            }
+            /* 440pxより大きい画面の場合 */
+            @media (min-width: 440px) {
+                .weaponIconTd {
+                    width: 50px;
+                }
+            }
+            /* 768px以下の画面の場合 */
+            @media (max-width: 768px) {
+                .style_icon_bg_base {
+                    width: 35px;
+                    height: 35px;
+                }
+                .style_icon_rare_base {
+                    width: 18px;
+                    height: 18px;
+                }
+            }
+            /* 1024px以下の画面の場合 */
+            @media (max-width: 1024px) {
+                .style_icon_bg_base {
+                    width: 45px;
+                    height: 45px;
+                }
+                .style_icon_rare_base {
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+
+            .HOLDER_DISP_AREA {
+                display: none1;
+            }
+
+            .flover-cond {
+                font-size: 1rem;
+                display: inline-block;
+            }
+            .flover {
+                font-size: 1.2rem;
+                line-height: 1.5rem;
+                background-color: black;
+                border: 1px solid;
+                padding: 5px;
+            }
+            .small-flover {
+                font-size: 1rem;
+                line-height: 1.2rem;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="dojohaikei"><div class="container">
+            <h2 class="text-center title-text">技・術 一覧(50音)</h2>
+            <div class="text-center">
+            </div>
+            <p class="text-right opacity"><small>バグ発見、ご要望は <a href="https://peing.net/ja/nao_romasaga_rs" target="new">質問箱</a>まで</small>
+            </p>
+            <!-- ツール_技検索_top -->
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-5008373409434899"
+                data-ad-slot="9053343220"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+            <div class="info-modal width-max" id="input-area">
+                <div class="info-modal-header">検索</div>
+                キーワード：<input id="input" class="input kadomaru" style="width:200px"><br>
+                入力が終わったら、入力エリア以外をタップしてください<br>
+            </div>
+            <h3 class="text-center bg-item"><span id="q"></span>の検索結果</h3>
+            <div class="bg-item text-center">技・術 一覧（<span id="SKILL_COUNT">0</span>件）</div>
+            <div id="skillList" class="row" style="margin-bottom: 30px;"></div>
+            <div class="bg-item text-center">アビリティ 一覧（<span id="ABILITY_COUNT">0</span>件）</div>
+            <div id="abilityList" class="row" style="margin-bottom: 30px;"></div>
+            <!--
+            <div class="bg-item text-center">スタイル 一覧（<span id="STYLE_COUNT">0</span>件）</div>
+            <div id="stlyeList" class="row" style="margin-bottom: 30px;"></div>
+            -->
+        </div> <!-- main -->
+
+        <p id="PageTopBtn" style="right: 20px;"><a data-href="wrap"><i class="fas fa-arrow-up"></i></a></p>
+        <script type="text/javascript" src="https://romasagatool.com/blog/get_the_archives.php?limit=30&callback=rssCallback"></script>
+
+        <div class="bg-simple row width-100 position-relative d-none" id="SKILL_TEMPLATE" style="margin-left:0px !important;">
+            <img class="CLOSE_BTN yubi" src="./img/icon/icon_close.png" style="position: absolute;top: 5px;right: 5px;height: 15px; z-index: 1;" onclick="">                    
+            <div class="col-12 col-md-8" style="margin-bottom: 10px;">
+                <table class="width-100">
+                    <tr>
+                        <td class="weaponIconTd">
+                            <div class="SKILL_ICON width-100" style="position: absolute; top: 3px;"></div>
+                        </td>
+                        <td style="text-align: left;line-height: 14px;position: relative; padding-left: 5px;">
+                            <div class="d-flex">
+                                <img class="icon_xs WEAPON_ICON" style="margin: 3px 5px 0px 0px;">
+                                <div class="text-nowrap text-left skill-name" style="vertical-align: middle;"></div>
+                            </div>
+                            <span class="IRYOKU_AREA d-sm-none" style="background: black;font-size: 12px; padding: 0px 10px; border-radius: 5px; border: 1px solid;"></span>
+                            <div class="d-none d-sm-block" style="font-size: 13px; position: relative;">
+                                <span class="ICON_AREA_TEXT"></span>
+                            </div>
+                        </td>
+                        <td class="d-none d-sm-table-cell text-right text-nowrap" style="width:120px; padding-right:5px; line-height: 20px;">
+                            <div class="IRYOKU_TD"></div>
+                            <span class="IRYOKU_AREA" style="background: black;font-size: 14px; padding: 0px 10px; border-radius: 10px; border: 1px solid;"></span>                                    
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="weaponIconTd">
+                            <div class="ICON_AREA_IMG1 width-100 text-nowrap"></div>
+                        </td>
+                        <td class="text-left" style="line-height: initial;" colspan=2>
+                            <div class="d-sm-none" style="font-size: 13px; position: relative;">
+                                <span class="ICON_AREA_TEXT"></span>
+                            </div>
+                            <div style="font-size: 13px; position: relative;">
+                                <span class="ICON_AREA_IMG2"></span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan=4 class="flover text-left"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-12 col-md-4 HOLDER_DISP_AREA">
+                <div class="iconClass holderStyleArea text-left"></div>
+            </div>
+        </div>
+        <div class="bg-simple row width-100 position-relative d-none" id="ABILITY_TEMPLATE" style="margin-left:0px !important;">
+            <img class="CLOSE_BTN yubi" src="./img/icon/icon_close.png" style="position: absolute;top: 5px;right: 5px;height: 15px; z-index: 1;" onclick="">                    
+            <div class="col-12 col-md-8" style="margin-bottom: 10px;">
+                <table class="width-100">
+                    <tr>
+                        <td class="abilityIconTd">
+                            <div class="icon-area">
+                                <span class="ABILITY_ICON"></span>
+                                <span class="skill-name"></span>
+                            </div>
+                            <div class="style-area"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="flover text-left"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-12 col-md-4 HOLDER_DISP_AREA">
+                <div class="iconClass holderStyleArea text-left"></div>
+            </div>
+        </div>
+    </body>
+</html>
