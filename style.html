@@ -66,6 +66,10 @@
         <script src="./js/culcStyleBonus.js" async></script>
         <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet rel="preload" as="style">
         <style>
+            .kome {
+                font-size: 0.8rem;
+                line-height: 0.8rem;
+            }
             .pc-skill-list {
                 overflow-x: scroll;
                 -ms-overflow-style: none;
@@ -256,8 +260,18 @@
                 overflow-y: hidden;
                 white-space: nowrap;
             }
+            .dotList .char-choise-section{
+                display: flex;
+                flex-wrap: wrap;
+                gap: 5px;
+                align-items: center;
+            }
 
             @media screen and (max-width:767px) {
+                .near-style {
+                    height: 180px;
+                }                
+
                 .right_parts {
                     display: none !important;
                 }
@@ -362,6 +376,7 @@
                     font-size: 17px;
                 }                
             }
+            
             /* PC(1024を超える)場合 */
             @media screen and (min-width:1024px) {
                 .headerMaxCol{
@@ -392,6 +407,9 @@
                 .style-name {
                     font-size: 20px;
                 }
+            }
+            .near-style {
+                overflow: scroll;
             }
             /* 画面サイズ340まで */
             @media screen and (max-width:350px) {
@@ -436,7 +454,7 @@
                 border: 1px solid;
                 border-radius: 5px;
                 padding: 2px 10px;
-                line-height: 1.2rem;
+                line-height: 1.05rem;
             }
             .kakusei-bp {
                 position: absolute;
@@ -507,6 +525,19 @@
                 <div class="info-modal" style="margin-bottom: 10px;">
                     <div class="text-center info-modal-header">最新のスタイル</div>
                     <div id="GACHA_AREA" ></div>
+                    <div class="subtitle-long" style="display:table">直近3ヶ月のスタイル</div>
+                    <div class="bg-simple near-style">
+                        <div id="GACHA_NEW_AREA_剣" ></div>
+                        <div id="GACHA_NEW_AREA_大剣" ></div>
+                        <div id="GACHA_NEW_AREA_斧" ></div>
+                        <div id="GACHA_NEW_AREA_棍棒" ></div>
+                        <div id="GACHA_NEW_AREA_体術" ></div>
+                        <div id="GACHA_NEW_AREA_銃" ></div>
+                        <div id="GACHA_NEW_AREA_小剣" ></div>
+                        <div id="GACHA_NEW_AREA_槍" ></div>
+                        <div id="GACHA_NEW_AREA_弓" ></div>
+                        <div id="GACHA_NEW_AREA_杖" ></div>
+                    </div>
                 </div>
                 <label class="badge badge-pill badge-light">絞り込み</label>
                 <div class="filter-bgcolor text-center small row" style="width:100%; margin: 0px;">
@@ -534,7 +565,11 @@
                                     class="icon_mini icon_yumi weapon-icon-button fButton" onclick=""></span></a></li>
                         <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_tsue"><span
                                     class="icon_mini icon_tsue weapon-icon-button fButton" onclick=""></span></a></li>
-                    </ul><!--
+                    </ul>
+                    <!--
+                    <ul class="nav text-center width-100" style="margin-bottom: 5px;">
+                        <li id="FILTER" class="subtitle fuchidori-white smallFont">攻撃属性</li>
+                    </ul>
                     <ul class="nav text-center width-100">
                         <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_zan"><span
                                     class="icon_mini icon_zan weapon-icon-button fButton" onclick=""></span></a></li>
@@ -552,7 +587,8 @@
                                     class="icon_mini icon_yo weapon-icon-button fButton" onclick=""></span></a></li>
                         <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_in"><span
                                     class="icon_mini icon_in weapon-icon-button fButton" onclick=""></span></a></li>
-                    </ul>-->
+                    </ul>
+                    -->
                     <ul class="nav text-center width-100" style="margin-bottom: 5px;">
                         <li class="fuchidori-white subtitle smallFont">シリーズ</li>
                     </ul>
@@ -584,95 +620,106 @@
                 </ul>
                 </div>
 
-                <div class="info-modal dotList d-none" id="_icon_ken">
+                <div class="info-modal dotList d-none" id="_SEC_icon_ken">
                     <div class="text-center info-modal-header"><span class="icon_mini icon_ken"></span></div>
+                    <section id="_icon_ken" class="char-choise-section"></section>
                 </div>
-                <div class="info-modal dotList d-none" id="_icon_dken">
+                <div class="info-modal dotList d-none" id="_SEC_icon_dken">
                     <div class="text-center info-modal-header"><span class="icon_mini icon_dken"></span></div>
+                    <section id="_icon_dken" class="char-choise-section"></section>
                 </div>
-                <div class="info-modal dotList d-none" id="_icon_ono">
+                <div class="info-modal dotList d-none" id="_SEC_icon_ono">
                     <div class="text-center info-modal-header"><span class="icon_mini icon_ono"></span></div>
+                    <section id="_icon_ono" class="char-choise-section"></section>
                 </div>
-                <div class="info-modal dotList d-none" id="_icon_sken">
+                <div class="info-modal dotList d-none" id="_SEC_icon_sken">
                     <div class="text-center info-modal-header"><span class="icon_mini icon_sken"></span></div>
+                    <section id="_icon_sken" class="char-choise-section"></section>
                 </div>
-                <div class="info-modal dotList d-none" id="_icon_yumi">
+                <div class="info-modal dotList d-none" id="_SEC_icon_yumi">
                     <div class="text-center info-modal-header"><span class="icon_mini icon_yumi"></span></div>
+                    <section id="_icon_yumi" class="char-choise-section"></section>
                 </div>
-                <div class="info-modal dotList d-none" id="_icon_yari">
+                <div class="info-modal dotList d-none" id="_SEC_icon_yari">
                     <div class="text-center info-modal-header"><span class="icon_mini icon_yari"></span></div>
+                    <section id="_icon_yari" class="char-choise-section"></section>
                 </div>
-                <div class="info-modal dotList d-none" id="_icon_ju">
+                <div class="info-modal dotList d-none" id="_SEC_icon_ju">
                     <div class="text-center info-modal-header"><span class="icon_mini icon_ju"></span></div>
+                    <section id="_icon_ju" class="char-choise-section"></section>
                 </div>
-                <div class="info-modal dotList d-none" id="_icon_tai">
+                <div class="info-modal dotList d-none" id="_SEC_icon_tai">
                     <div class="text-center info-modal-header"><span class="icon_mini icon_tai"></span></div>
+                    <section id="_icon_tai" class="char-choise-section"></section>
                 </div>
-                <div class="info-modal dotList d-none" id="_icon_kon">
+                <div class="info-modal dotList d-none" id="_SEC_icon_kon">
                     <div class="text-center info-modal-header"><span class="icon_mini icon_kon"></span></div>
+                    <section id="_icon_kon" class="char-choise-section"></section>
                 </div>
-                <div class="info-modal dotList d-none" id="_icon_tsue">
+                <div class="info-modal dotList d-none" id="_SEC_icon_tsue">
                     <div class="text-center info-modal-header"><span class="icon_mini icon_tsue"></span></div>
-                    <div id="_icon_hi"><span class="icon_sm icon_hi_sm"></span><br class="hidden spBlock"></div>
-                    <div id="_icon_mizu"><span class="icon_sm icon_mizu_sm"></span><br class="hidden spBlock"></div>
-                    <div id="_icon_tsuchi"><span class="icon_sm icon_tsuchi_sm"></span><br class="hidden spBlock"></div>
-                    <div id="_icon_kaze"><span class="icon_sm icon_kaze_sm"></span><br class="hidden spBlock"></div>
-                    <div id="_icon_hikari"><span class="icon_sm icon_hikari_sm"></span><br class="hidden spBlock"></div>
-                    <div id="_icon_yami"><span class="icon_sm icon_yami_sm"></span><br class="hidden spBlock"></div>                    
-                    <div id="_icon_noJustu"><span class="icon_sm icon_tsue_sm"></span><br class="hidden spBlock"></div>                    
+                    <section class="char-choise-section">
+                        <div id="_icon_hi"><span class="icon_sm icon_hi_sm"></span><br class="hidden spBlock"></div>
+                        <div id="_icon_mizu"><span class="icon_sm icon_mizu_sm"></span><br class="hidden spBlock"></div>
+                        <div id="_icon_tsuchi"><span class="icon_sm icon_tsuchi_sm"></span><br class="hidden spBlock"></div>
+                        <div id="_icon_kaze"><span class="icon_sm icon_kaze_sm"></span><br class="hidden spBlock"></div>
+                        <div id="_icon_hikari"><span class="icon_sm icon_hikari_sm"></span><br class="hidden spBlock"></div>
+                        <div id="_icon_yami"><span class="icon_sm icon_yami_sm"></span><br class="hidden spBlock"></div>                    
+                        <div id="_icon_noJustu"><span class="icon_sm icon_tsue_sm"></span><br class="hidden spBlock"></div>
+                    </section>
                 </div>
     
-                <div class="info-modal dotList" id="RS1">
+                <div class="info-modal dotList" id="_SECRS1">
                     <div class="text-center info-modal-header"><span class="hidden pcBlock">ロマンシング・サガ1</span><span
                             class="hidden spBlock">ロマサガ1</span></div>
                     <section id="SECRS1" class="char-choise-section"></section>
                 </div>
-                <div class="info-modal dotList d-none" id="RS2">
+                <div class="info-modal dotList d-none" id="_SECRS2">
                     <div class="text-center info-modal-header"><span class="hidden pcBlock">ロマンシング・サガ2</span><span
                             class="hidden spBlock">ロマサガ2</span></div>
                     <section id="SECRS2" class="char-choise-section"></section>
                 </div>
-                <div class="info-modal dotList d-none" id="RS3">
+                <div class="info-modal dotList d-none" id="_SECRS3">
                     <div class="text-center info-modal-header"><span class="hidden pcBlock">ロマンシング・サガ3</span><span
                             class="hidden spBlock">ロマサガ3</span></div>
                     <section id="SECRS3" class="char-choise-section"></section>
                 </div>
-                <div class="info-modal dotList d-none" id="SF1">
+                <div class="info-modal dotList d-none" id="_SECSF1">
                     <div class="text-center info-modal-header"><span class="hidden pcBlock">サガフロンティア1</span><span
                             class="hidden spBlock">サガフロ1</span></div>
                     <section id="SECSF1" class="char-choise-section"></section>
                 </div>
-                <div class="info-modal dotList d-none" id="SF2">
+                <div class="info-modal dotList d-none" id="_SECSF2">
                     <div class="text-center info-modal-header"><span class="hidden pcBlock">サガフロンティア2</span><span
                             class="hidden spBlock">サガフロ2</span></div>
                     <section id="SECSF2" class="char-choise-section"></section>
                 </div>
-                <div class="info-modal dotList d-none" id="US">
+                <div class="info-modal dotList d-none" id="_SECUS">
                     <div class="text-center info-modal-header"><span class="hidden pcBlock">アンリミテッド・サガ</span><span
                             class="hidden spBlock">アンサガ</span></div>
                     <section id="SECUS" class="char-choise-section"></section>
                 </div>
-                <div class="info-modal dotList d-none" id="SSG">
+                <div class="info-modal dotList d-none" id="_SECSSG">
                     <div class="text-center info-modal-header"><span class="hidden pcBlock">サガ・スカーレットグレイス</span><span
                             class="hidden spBlock">サガスカ</span></div>
                     <section id="SECSSG" class="char-choise-section"></section>
                 </div>
-                <div class="info-modal dotList d-none" id="ES">
+                <div class="info-modal dotList d-none" id="_SECES">
                     <div class="text-center info-modal-header"><span class="hidden pcBlock">エンペラーズ・サガ</span><span
                             class="hidden spBlock">エンサガ</span></div>
                     <section id="SECES" class="char-choise-section"></section>
                 </div>
-                <div class="info-modal dotList d-none" id="SEB">
+                <div class="info-modal dotList d-none" id="_SECSEB">
                     <div class="text-center info-modal-header"><span class="hidden pcBlock">サガ エメラルド ビヨンド</span><span
                         class="hidden spBlock">サガエメ</span></div>
                     <section id="SECSEB" class="char-choise-section"></section>
                 </div>
-                <div class="info-modal dotList d-none" id="RSR">
+                <div class="info-modal dotList d-none" id="_SECRSR">
                     <div class="text-center info-modal-header"><span class="hidden pcBlock">ロマサガ リ・ユニバース</span><span
                         class="hidden spBlock">ロマサガRS</span></div>
                     <section id="SECRSR" class="char-choise-section"></section>
                 </div>                
-                <div class="info-modal dotList d-none" id="GB">
+                <div class="info-modal dotList d-none" id="_SECGB">
                     <div class="text-center info-modal-header">GB</div>
                     <section class="char-choise-section">
                         <span id="SECGB1"></span>
@@ -680,12 +727,19 @@
                         <span id="SECGB3"></span>
                     </section>
                 </div>
-                <div class="info-modal dotList d-none" id="OTHER">
+                <div class="info-modal dotList d-none" id="_SECOTHER">
                     <div class="text-center info-modal-header">その他</div>
                     <section class="char-choise-section">
                         <span id="SECOTR"></span>
                     </section>
                 </div>
+                <div class="info-modal dotList d-none" id="_SEC_icon_zan">
+                    <div class="text-center info-modal-header">斬</div>
+                    <section class="char-choise-section">
+                        <span id="_icon_zan"></span>
+                    </section>
+                </div>                
+                
 
                 <div class="info-modal d-none" style="margin-top: 20px; margin-bottom: 10px;" id="SHOW_HISTORY_AREA">
                     <div class="text-center info-modal-header">最近表示したスタイル</div>
@@ -1063,9 +1117,11 @@
                                         <tbody id="abilityList"></tbody>
                                         <tfoot>
                                             <tr class="d-none" id="AB_TEMPLATE">
-                                                <td class="AB_ICON icon-skill-md" style="vertical-align: top; padding-top: 10px;"></td>
                                                 <td style="padding: 5px;">
-                                                    <div class="ab-name"></div>
+                                                    <div class="d-flex" style="gap:10px; margin-bottom: 5px;">
+                                                        <span class="AB_ICON"></span>
+                                                        <span class="ab-name"></span>
+                                                    </div>
                                                     <div class="ab-flover">
                                                         <span class="flover"></span>
                                                         <hr class="skill-text-added d-none" style="margin: 0.2rem 0;"></span>
@@ -1213,7 +1269,7 @@
                                             </div>
                                             <div class="d-flex justify-content-between">
                                                 <div><span class="openYear"></span>年<span class="openMonth"></span>月<span class="openDay"></span>日</div>
-                                                <div><span class="gachaSpan"></span>日</div>    
+                                                <div><span class="gachaSpan"></span></div>    
                                             </div>
                                         </div>
                                     </div>
