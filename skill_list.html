@@ -33,10 +33,19 @@
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
-        <script src="https://romasagatool.com/data/data_ABILITY.js" ></script>
-        <script src="https://romasagatool.com/data/data_SKILL.js" ></script>
-        <script src="https://romasagatool.com/data/data_STYLEMASTER_style.js" ></script>
-        <script src="https://romasagatool.com/data/data_SKILLMASTER_list.js" ></script>
+        <script src="./js/lib/lazysizes.min.js"></script>
+        <script src="./js/lib/ls.unveilhooks.min.js"></script>
+        <script src="./js/dataload.js"></script>
+        <script>
+            // require dataload.js
+            dataload([
+                "data_ABILITY",
+                "data_STYLEMASTER_style",
+                "data_SKILLMASTER",
+                "data_SPECIAL_EFFECT",
+                "data_SEARCH",
+            ]);
+        </script>        
         <script src="./js/Firebase.js"></script>
         <script src="./js/utils2.js" ></script>
         <script src="./js/skill_list.js" ></script>
@@ -61,7 +70,6 @@
             .noneCount{
                 background-color:black !important;
             }
-            ._FilterLink{}
 
             .pari{
                 display: inline-block;
@@ -177,7 +185,7 @@
         <p id="PageTopBtn" style="right: 20px;"><a data-href="wrap"><i class="fas fa-arrow-up"></i></a></p>
         <script type="text/javascript" src="https://romasagatool.com/blog/get_the_archives.php?limit=30&callback=rssCallback"></script>
 
-        <button class="skill_select bg-simple row width-100 position-relative d-none" id="SKILL_TEMPLATE" style="margin-left:0px !important;">
+        <div class="skill_select bg-simple row width-100 position-relative d-none" id="SKILL_TEMPLATE" style="margin-left:0px !important;">
             <img class="CLOSE_BTN yubi" src="./img/icon/icon_close.png" style="position: absolute;top: 5px;right: 5px;height: 15px; z-index: 1;" onclick="">                    
             <div class="col-12 col-md-8" style="margin-bottom: 10px;">
                 <table class="width-100">
@@ -198,12 +206,6 @@
                         <td class="d-none d-sm-table-cell text-right text-nowrap" style="width:120px; padding-right:5px; line-height: 20px;">
                             <div class="IRYOKU_TD"></div>
                             <span class="IRYOKU_AREA" style="background: black;font-size: 14px; padding: 0px 10px; border-radius: 10px; border: 1px solid;"></span>                                    
-                        </td>
-                        <td class="text-right small skillKakuseiArea" style="position: relative; width:40px; height:40px;">
-                            <span class="icon_back_default" style="position: absolute; top: 5px; right: 0; background-size: 40px;">
-                                <span class="KAKUSEI_CLASS" style="width:40px;height:40px; display: inline-block; background-size: contain;">　</span>
-                            </span>
-                            <span class="kakusei-bp KAKUSEI_BP"></span>
                         </td>
                     </tr>
                     <tr>
@@ -233,6 +235,6 @@
             <div class="col-12 col-md-4 HOLDER_DISP_AREA">
                 <div class="iconClass holderStyleArea text-left"></div>
             </div>
-        </button>
+        </div>
     </body>
 </html>
