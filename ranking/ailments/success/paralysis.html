@@ -153,6 +153,8 @@
                     <li class="col-4 col-sm-2" style="color:beige; margin-bottom: 5px;"><div class="filterList yubi pad0"
                             data-href="SS" data-target="Series"><div class="fButton text-center width-100 filter-bgcolor">SSG(<span id="SS_count" class="skill-count">99</span>)</div></span></li>
                     <li class="col-4 col-sm-2" style="color:beige; margin-bottom: 5px;"><div class="filterList yubi pad0"
+                            data-href="SEB" data-target="Series"><div class="fButton text-center width-100 filter-bgcolor">SaGaEB(<span id="SEB_count" class="skill-count">99</span>)</div></span></li>
+                    <li class="col-4 col-sm-2" style="color:beige; margin-bottom: 5px;"><div class="filterList yubi pad0"
                             data-href="RSR" data-target="Series"><div class="fButton text-center width-100 filter-bgcolor">SaGaRS(<span id="RSR_count" class="skill-count">99</span>)</div></span></li>
                     <li class="col-4 col-sm-2" style="color:beige; margin-bottom: 5px;"><div class="filterList yubi pad0"
                         data-href="GB" data-target="Series"><div class="fButton text-center width-100 filter-bgcolor text-nowrap">GB(<span id="GB_count" class="skill-count">99</span>)</div></span></li>    
@@ -162,12 +164,16 @@
                 <ul class="nav text-center width-100 nav-pad">
                     <li class="fuchidori-white subtitle smallFont">敵情報</li>
                 </ul>
+                <div class="" style="color:white">
+                    [道を塞ぐもの H5] 精神603 スタン耐性700<br>
+                    [道を塞ぐもの H4] 精神502 スタン耐性650<br>
+                </div>
                 <ul class="nav no-gutters text-center width-100 nav-pad">
                     <li class="col-6 col-sm-4" style="color:beige; margin-bottom: 5px;">
-                        精神:<input id="mid" class="input kadomaru" type="number" value="400" style="width: 120px"/>
+                        精神:<input id="mid" class="input kadomaru" type="number" value="603" style="width: 120px"/>
                     </li>
                     <li class="col-6 col-sm-4" style="color:beige; margin-bottom: 5px;">
-                        耐性:<input id="resist" class="input kadomaru" type="number" value="150" style="width: 120px"/>
+                        耐性:<input id="resist" class="input kadomaru" type="number" value="700" style="width: 120px"/>
                     </li>
                     <li class="col-12 col-sm-4" style="color:beige; margin-bottom: 5px;">
                         <button class="icon_btn_positive" id="recalc">変更</button>
@@ -187,10 +193,10 @@
                         <div>陣形補正なし</div>
                     </div>
                     <div class="col-2 text-nowrap ST_AREA" style="line-height: 20px;">
-                        <div>陣形補正25%</div>
+                        <div>陣形補正30%</div>
                     </div>
                     <div class="col-2 text-nowrap ST_AREA" style="line-height: 20px;">
-                        <div>陣形補正50%</div>
+                        <div>陣形補正75%</div>
                     </div>
                 </div>
             </div>
@@ -205,11 +211,11 @@
             </style>
 
             <div class="row no-gutters style-skill-list d-none" id='TEMPLATE'>
-                <div class="col-2 col-sm-2 col-md-1 text-nowrap ICON text-right"></div>
+                <div class="col-2 col-sm-2 col-md-1 text-nowrap ICON text-right justify-content-center align-items-center d-flex"></div>
                 <div class="col-10 col-sm-8 col-md-4 text-nowrap" style="overflow-x: hidden; line-height:22px;">
                     <div class="disp-skill-area">
-                        <div>
-                            <span class="NAME"></span>
+                        <div style="line-height: 1rem;">
+                            <span class="NAME"></span><br>
                             <span class="ANOTHER_NAME small"></span><br>
                         </div>
                         <div class="small">
@@ -252,32 +258,53 @@
                         <span class="ST_AGI"></span>
                     </div>
                 </div> 
+                <div class="col-12 d-md-none" style="
+                border-bottom: 1px dashed white;
+                margin: 5px 0;"></div>                
                 <div class="col-4 col-md-2 text-nowrap small" style="line-height: 20px;">
-                    <div class="d-sm-none">陣形なし</div>
+                    <div class="d-sm-none" style="line-height: 0.8rem;">
+                        補正+0%<br>
+                        <span style="font-size: 0.6rem;">陣形なし</span>
+                    </div>                    
                     <div><span class="STYLE_INT0"></span></div>
                     <div class="d-none">必要知力:<span class="SKILL_INT"></span></span></div>
                     <div class="d-none d-sm-block">判定:<span class="STYLE_INT_ALL0"></span></div>
                     <div style="font-size: initial;">
-                        <span class="d-none d-sm-inline">成功率:</span>
+                        <span class="d-sm-inline small">成功率:</span>
                         <span class="SUCCESS_RATE0"></span>%</div>
+                    <div style="font-size: initial;">
+                        <span class="d-sm-inline" style="font-size: 0.6rem;">必要バフ量:</span>
+                        <span class="SUCCESS_BUFF0"></span></div>
                 </div>
                 <div class="col-4 col-md-2 text-nowrap small" style="line-height: 20px;">
-                    <div class="d-sm-none">陣形+25%</div>
-                    <div><span class="STYLE_INT25"></span></div>
+                    <div class="d-sm-none" style="line-height: 0.8rem;">
+                        補正+30%<br>
+                        <span style="font-size: 0.6rem;">ｵｰﾊﾞｰｱｸｾﾗﾚｰﾄ</span>
+                    </div>
+                    <div><span class="STYLE_INT30"></span></div>
                     <div class="d-none">必要知力:<span class="SKILL_INT"></span></span></div>
-                    <div class="d-none d-sm-block">判定:<span class="STYLE_INT_ALL25"></span></div>
+                    <div class="d-none d-sm-block">判定:<span class="STYLE_INT_ALL30"></span></div>
                     <div style="font-size: initial;">
-                        <span class="d-none d-sm-inline">成功率:</span>
-                        <span class="SUCCESS_RATE25"></span>%</div>
+                        <span class="d-sm-inline small">成功率:</span>
+                        <span class="SUCCESS_RATE30"></span>%</div>
+                    <div style="font-size: initial;">
+                        <span class="d-sm-inline" style="font-size: 0.6rem;">必要バフ量:</span>
+                        <span class="SUCCESS_BUFF30"></span></div>
                 </div>
                 <div class="col-4 col-md-2 text-nowrap small" style="line-height: 20px;">
-                    <div class="d-sm-none">陣形+50%</div>
-                    <div><span class="STYLE_INT50"></span></div>
+                    <div class="d-sm-none" style="line-height: 0.8rem;">
+                        補正+75%<br>
+                        <span style="font-size: 0.6rem;">ﾊﾞｯｸｺﾝｾﾝﾄﾚｰｼｮﾝ</span>
+                    </div>
+                    <div><span class="STYLE_INT75"></span></div>
                     <div class="d-none">必要知力:<span class="SKILL_INT"></span></span></div>
-                    <div class="d-none d-sm-block">判定:<span class="STYLE_INT_ALL50"></span></div>
+                    <div class="d-none d-sm-block">判定:<span class="STYLE_INT_ALL75"></span></div>
                     <div style="font-size: initial;">
-                        <span class="d-none d-sm-inline">成功率:</span>
-                        <span class="SUCCESS_RATE50"></span>%</div>
+                        <span class="d-sm-inline small">成功率:</span>
+                        <span class="SUCCESS_RATE75"></span>%</div>
+                    <div style="font-size: initial;">
+                        <span class="d-sm-inline" style="font-size: 0.6rem;">必要バフ量:</span>
+                        <span class="SUCCESS_BUFF75"></span></div>
                 </div>
             </div>
         </div>
