@@ -34,6 +34,7 @@
                 "data_ABILITY",
                 "data_CHARMASTER",
                 "data_STYLEMASTER",
+                "data_SKILLMASTER",
                 "data_ABILITY_COUNT",
             ]);
         </script>    
@@ -79,10 +80,12 @@
             .seriesButton {
                 color: #faf0b4;
                 border: 2px solid #faf0b4;
-                border-radius: 15px;
+                border-radius: 10px;
                 min-width: 80px;
-                font-size: 1rem; 
-                margin: 0 5px 15px 5px;
+                font-size: 1rem;
+            }
+            .seriesDiv {
+                gap: 10px;
             }
             .buff-per-button {
                 color: #faf0b4;
@@ -303,19 +306,22 @@
             <ul class="nav text-center width-100" style="margin-bottom: 5px;">
                 <li class="fuchidori-white subtitle-long smallFont">シリーズ</li>
                 <div class="width-100"></div>
-                <li class="width-100 d-flex flex-wrap justify-content-around tiny-line">
+                <li class="width-100 d-flex flex-wrap justify-content-around tiny-line seriesDiv">
                     <button class="_StyleFilterLink pad0 d-flex flex-flow seriesButton" data-target="Series" data-value="RS1"><span class="withLabel">RS1</span><span class="countLabel" id="count_RS1">...</span></button>
                     <button class="_StyleFilterLink pad0 d-flex flex-flow seriesButton" data-target="Series" data-value="RS2"><span class="withLabel">RS2</span><span class="countLabel" id="count_RS2">...</span></button>
                     <button class="_StyleFilterLink pad0 d-flex flex-flow seriesButton" data-target="Series" data-value="RS3"><span class="withLabel">RS3</span><span class="countLabel" id="count_RS3">...</span></button>
                     <button class="_StyleFilterLink pad0 d-flex flex-flow seriesButton" data-target="Series" data-value="SF1"><span class="withLabel">SF1</span><span class="countLabel" id="count_SF1">...</span></button>
                     <button class="_StyleFilterLink pad0 d-flex flex-flow seriesButton" data-target="Series" data-value="SF2"><span class="withLabel">SF2</span><span class="countLabel" id="count_SF2">...</span></button>
-                    <button class="_StyleFilterLink pad0 d-flex flex-flow seriesButton" data-target="Series" data-value="US,ES"><span class="withLabel">US/ES</span><span class="countLabel" id="count_USES">...</span></button>
+                    <button class="_StyleFilterLink pad0 d-flex flex-flow seriesButton" data-target="Series" data-value="US"><span class="withLabel">US</span><span class="countLabel" id="count_US">...</span></button>
+                    <button class="_StyleFilterLink pad0 d-flex flex-flow seriesButton" data-target="Series" data-value="ES"><span class="withLabel">ES</span><span class="countLabel" id="count_ES">...</span></button>
                     <button class="_StyleFilterLink pad0 d-flex flex-flow seriesButton" data-target="Series" data-value="SSG"><span class="withLabel">SSG</span><span class="countLabel" id="count_SSG">...</span></button>
-                    <button class="_StyleFilterLink pad0 d-flex flex-flow seriesButton" data-target="Series" data-value="RSR"><span class="withLabel">RSR</span><span class="countLabel" id="count_RSR">...</span></button>
+                    <button class="_StyleFilterLink pad0 d-flex flex-flow seriesButton" data-target="Series" data-value="SEB"><span class="withLabel">SagaEB</span><span class="countLabel" id="count_SEB">...</span></button>
+                    <button class="_StyleFilterLink pad0 d-flex flex-flow seriesButton" data-target="Series" data-value="RSR"><span class="withLabel">SagaRS</span><span class="countLabel" id="count_RSR">...</span></button>
                     <button class="_StyleFilterLink pad0 d-flex flex-flow seriesButton" data-target="Series" data-value="GB1,GB2,GB3"><span class="withLabel">GB</span><span class="countLabel" id="count_GB">...</span></button>
                     <button class="_StyleFilterLink pad0 d-flex flex-flow seriesButton" data-target="Series" data-value="OTR"><span class="withLabel">その他</span><span class="countLabel" id="count_OTR">...</span></button>
                 </li>
             </ul>
+
             <ul class="nav text-center width-100" style="margin-bottom: 5px;">
                 <li class="fuchidori-white subtitle-long smallFont">レアリティ</li>
                 <div class="width-100"></div>
@@ -362,7 +368,7 @@
 
         <ul class="row nav" id="AB-LIST"></ul>
         <li class="col-12 row no-gutters bg-simple d-none" id="AB-LIST-TMPL">
-            <div class="col-12 col-sm-9 col-md-8 col-lg-7 ab-name-row small">
+            <div class="col-12 col-sm-9 col-md-9 col-lg-9 ab-name-row small">
                 <div class="d-flex" style="align-items: center; padding-left: 10px;">
                       <span class="icon-back-abiligy icon-back-skill-xs">
                           <span class="AB-ICON icon-skill icon-skill-xs">　</span>
@@ -371,7 +377,7 @@
                 </div>
                 <div class="yubi ab-flavor FLAVOR-AREA"></div>
             </div>
-            <div class="col-12 col-sm-3 col-md-4 col-lg-5">
+            <div class="col-12 col-sm-3 col-md-3 col-lg-3">
                 <div class="ab-holders ICON-AREA"></div>
             </div>
         </li>
@@ -424,8 +430,6 @@
             .noneCount{
                 background-color:black !important;
             }
-            ._FilterLink{}
-
             .pari{
                 display: inline-block;
                 width: 35px;
