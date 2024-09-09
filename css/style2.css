@@ -297,6 +297,13 @@ html {
 	width: 100%;
 	height: 220px;
 }
+.char-choise-weapon {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: left;
+    align-content: baseline;
+}
 .weapon-icon-button {
     border: 2px solid rgb(190,185,160);
     border-radius: 10px;
