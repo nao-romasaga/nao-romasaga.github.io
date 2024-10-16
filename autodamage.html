@@ -227,7 +227,7 @@
                                     ・打倒練気など<span class="fuchidori-blue">撃破時BP回復が適応</span><span class="d-none d-sm-inline">されます</span><br>
                                 </td>
                                 </tr>
-                                <tr>
+                                <tr class="d-none">
                                     <td>使用技フィルタ</td>
                                     <td><button class="width-100 icon_btn_off optionButton text-nowrap" data-on="0" data-name="same">同一技のみ <i class="TOGGLE fas fa-toggle-off"></i></button></td>
                                 </tr>
@@ -242,11 +242,12 @@
                                     <td><button class="width-100 icon_btn_off optionButton text-nowrap" data-on="0" data-name="turn" data-label="1" data-bp=10>1ターン</button></td>
                                 </tr>
                                 <tr>
-                                    <td>ﾌﾘｰｸｴｽﾄ周回用</td>
+                                    <td>周回用(2R)</td>
                                     <td><button class="width-100 icon_btn_off optionButton text-nowrap" data-on="0" data-name="turn" data-label="2" data-bp=10>2ターン</button></td>
                                 </tr>
                                 <tr>
-                                    <td>3Rｸｴｽﾄ周回用(休止中)</td>
+                                    <td>周回用(2R+BP13)</td>
+                                    <td><button class="width-100 icon_btn_off optionButton text-nowrap" data-on="0" data-name="turn" data-label="2" data-bp=13>BP13 2ターン</button></td>
                                     <td><button disabled class="width-100 icon_btn_off d-none optionButton text-nowrap" data-on="0" data-name="turn" data-label="3" data-bp=10>3ターン</button></td>
                                 </tr>
                                 <tr>
@@ -460,7 +461,7 @@
                     </div>
                     <div class="text-center label-text-small width-100" id="STYLE_HEADER">スタイル選択</div>
                     <div>
-                        データ量削減のためにS,Aスタイルと<span id="SKIP_YEAR"></span>年より前に実装されたスタイルは除外してあります
+                        データ量削減のためにS,Aスタイルと<span id="SKIP_YEAR"></span>年以前に実装されたスタイルは除外してあります
                     </div>
                     <div id="styleChoice"></div>
                     <!--
@@ -706,10 +707,12 @@
                     </table>
                 </div>
             </div>
-            <div class="col-7 col-md-3 col-lg-5 small TURN_ACTION_BLOCK d-none d-md-block  overflow-x-scroll" style="line-height:25px;">
+            <div class="col-7 col-md-3 col-lg-5 small TURN_ACTION_BLOCK2 d-none d-md-block  overflow-x-scroll" style="line-height:25px;">
+                <div style="position: absolute; overflow: scroll;">
                 <table class="TURN_ACTION text-nowrap">
                     <tfoot><tr><td>　</td></tr></tfoot>
                 </table>
+                </div>
             </div>
         </div>
         <!--シンプル用-->
@@ -728,9 +731,11 @@
                     <span class="WP_NAME"><img class="icon_xs WEAPON_RARE"><span class="WEAPON"></span></span>
                 </div>
             </div>
-            <div class="col small TURN_ACTION_BLOCK overflow-x-scroll" style="line-height:25px;">
+            <div class="col small TURN_ACTION_BLOCK2 overflow-x-scroll" style="line-height:25px;">
+                <div style="position: absolute; overflow: scroll;">
                 <table class="TURN_ACTION text-nowrap">
                 </table>
+            </div>
             </div>
         </div>
         <img class="CLOSE_BTN yubi" src="./img/icon/icon_close.png" style="position: absolute;top: 0px;right: 0px;height: 15px;" onclick="">
