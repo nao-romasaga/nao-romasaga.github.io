@@ -118,11 +118,18 @@
                                     </tr>
                                 </tfoot>
                             </table>
-                            ※: 狙われやすさから概算。実際の被弾率とは異なります
+                            ※: 狙われやすさから概算。実際の被弾率とは異なります<br>
                         </div>
                     </div>
                     <div class="width-100">
-                        <div class="formation-flover">陣形説明文</div>
+                        <div class="formation-flover f-ability-area d-none">
+                            <span class="text-center text-nowrap width-100 label-area f-name">陣形アビリティ説明</span>
+                            <div id="F-ABILITY"></div>
+                        </div>                        
+                        <div class="formation-flover">
+                            <span class="text-center text-nowrap width-100 label-area f-name">陣形説明</span>
+                            <div id="F-FLAVOR"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -335,7 +342,9 @@
 
         function changeFormationInfo(data){
             $(".formation-name").html(data['Name']);
-            $(".formation-flover").html(data['FlavorText']);
+            $("#F-FLAVOR").html(data['FlavorText']);
+            $(".f-ability-area").addClass("d-none");
+
             $("#FORMATION_INFO_BODY").html("");
             let hateList = [];
             for(i in data['Pos']) {
@@ -344,9 +353,10 @@
                 hateList.push((Number(bonus['HitRate'] ?? 0) ) * 500 + 2000 );
             }
             const hateTotal = hateList.reduce(function(sum, element){
-            return sum + element;
+                return sum + element;
             }, 0);
             
+            let abilityList = new Set();
             for(i in data['Pos']) {
                 let p = data['Pos'][i];
                 $(".formation-area-large").find(".pos"+(Number(i)+1)).attr('style', `top: ${Number(p['y']) * vL - 18}px; left: ${Number(p['x']) * vL + 0        }px;`);
@@ -364,6 +374,7 @@
                 $tr.find(`.No`).html(Number(i)+1);
                 const ability = data_FORMATION_ABILITY[bonus['AbilityId']];
                 if(typeof ability != "undefined") {
+                    abilityList.add(bonus['AbilityId'])
                     $tr.find(`.ATK`).html(ability['Atk'] ? ability['Atk'] +"%" : "");
                     $tr.find(`.DEF`).html(ability['Def'] ? ability['Def'] +"%" :  "");
                     $tr.find(`.ACT`).html(ability['Act'] ? "Qs:"+ability['Act'] :  "");
@@ -375,6 +386,15 @@
                 $tr.find(`.HATE`).html(`<img class="hate-icon ${imgClass}" src="${imgPath}?v=1"> ${Math.floor((hateList[i] / hateTotal) * 100)}%`);
                 
                 $("#FORMATION_INFO_BODY").append($tr);
+            }
+            let flavorList = [];
+            for(abId of abilityList) {                
+                const ability = data_FORMATION_ABILITY[abId];
+                flavorList.push(`■${ability["Name"]}: ${ability["FlavorText"]}`);
+            }
+            if(abilityList.size > 0) {
+                $(".f-ability-area").removeClass("d-none");
+                $("#F-ABILITY").html(flavorList.join("<br>"));
             }
         }
 
