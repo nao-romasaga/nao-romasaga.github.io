@@ -49,11 +49,16 @@
         <script src="./js/lib/ls.unveilhooks.min.js" defer></script>
         <script src="./js/bootstrap.min.js" defer></script>
         <link rel="stylesheet" type="text/css" href="./css/style2.css" rel="preload" as="style">
-        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"r></script>
-        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/ui/3.5.2/firebase-ui-auth__ja.js"></script>
-        <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css"  rel="preload" as="style">
+        <!-- Firebase v9以降の compat CDN（名前空間API互換） -->
+        <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js" defer></script>
+        <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js" defer></script>
+        <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js" defer></script>
+
+        <!-- FirebaseUI -->
+        <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
+        <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
+
+
         <script src="./js/Firebase.js" defer></script>
         <script src="./js/utils2.js"  defer></script>
         <!--<script src="./js/lib/Chart.js"></script>-->
@@ -122,7 +127,7 @@
                 (adsbygoogle = window.adsbygoogle || []).push({});
                 </script>
 
-                <div class="info-modal styleInfoArea width-max ">
+                <div class="info-modal styleInfoArea width-max d-none">
                     <div class="info-modal-header">スタイル所持率 推移</div>
                     <div class="chart-container bg-simple" style="border-radius: 10px;">
                         <canvas id="myChart"></canvas>
