@@ -567,8 +567,25 @@ html {
     color: #faf0b4;
     border-radius: 10px;
     border:none;
-
 }
+.bg-soul-simple {
+    padding: 5px;
+    background: 
+    linear-gradient(rgba(138,0,255,0.7), rgba(0,0,0,1),rgba(0,0,0,1),rgba(128,0,255,0.7)),
+    url(https://romasagatool.com/img/bg_simple_corner1.png) top left / 29px 29px no-repeat,
+    url(https://romasagatool.com/img/bg_simple_corner2.png) top right / 29px 29px no-repeat,
+    url(https://romasagatool.com/img/bg_simple_corner3.png) bottom left / 29px 29px no-repeat,
+    url(https://romasagatool.com/img/bg_simple_corner4.png) bottom right / 29px 29px no-repeat,
+    url(https://romasagatool.com/img/bg_simple_top.png) top / calc(100% - 56px) 29px no-repeat,
+    url(https://romasagatool.com/img/bg_simple_btm.png) bottom / calc(100% - 56px) 29px no-repeat,
+    url(https://romasagatool.com/img/bg_simple_left.png) left / 29px calc(100% - 56px)  no-repeat,
+    url(https://romasagatool.com/img/bg_simple_right.png) right / 29px calc(100% - 56px)  no-repeat,
+    rgba(43,33,12,1);
+    color: #faf0b4;
+    border-radius: 10px;
+    border:none;
+}
+
 .label-text-small {
     background: 
     url(https://romasagatool.com/img/bg_window_small_left.png) left / 36px 100% no-repeat, 

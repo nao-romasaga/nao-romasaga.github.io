@@ -481,6 +481,10 @@
     display: inline-block;
     background: url(https://romasagatool.com/img/icon/icon_back_ability.png) no-repeat;
 }
+.icon-back-soul-abiligy {
+    display: inline-block;
+    background: url(https://romasagatool.com/img/icon/icon_back_soul_ability.png) no-repeat;
+}
 .icon-skill {
     display: inline-block;
     background-size: contain;
