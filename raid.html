@@ -275,7 +275,15 @@
             background: var(--ink); border-radius: 3px; padding: 2px 4px;
         }
         .slot .score-row .v { font-family: var(--font-num); color: var(--gold); font-size: 15px; font-weight: 600; }
+        .slot .score-row .v.zeroed { color: var(--fg-dim); text-decoration: line-through; opacity: .6; }
         .slot .score-row .u { font-size: 9px; color: var(--fg-dim); }
+        .slot .zero-btn {
+            margin-left: auto; font-size: 9px; line-height: 1; padding: 3px 5px; cursor: pointer;
+            border-radius: 3px; border: 1px solid var(--line); background: transparent; color: var(--fg-dim);
+            white-space: nowrap; align-self: center;
+        }
+        .slot .zero-btn:hover { border-color: var(--cyan); color: var(--cyan); }
+        .slot .zero-btn.on { background: rgba(87,199,206,.18); border-color: var(--cyan); color: var(--cyan); font-weight: 700; }
         .slot .tags { display: flex; flex-wrap: wrap; gap: 2px; justify-content: center; min-height: 2px; }
         .slot .plan-txt { font-size: 9px; color: var(--cyan); text-align: center; line-height: 1.3; word-break: break-all; }
         @media (max-width: 560px) {
@@ -453,7 +461,7 @@
     </div>
 </main>
 
-<script src="./js/raid_engine.js?v=20260608i"></script>
-<script src="./js/raid.js?v=20260608i"></script>
+<script src="./js/raid_engine.js?v=20260608j"></script>
+<script src="./js/raid.js?v=20260608j"></script>
 </body>
 </html>

@@ -6,14 +6,14 @@
     "use strict";
 
     const ATTRS = ["斬", "打", "突", "熱", "冷", "雷", "陽", "陰"];
-    const GOTAI_KEYS = ["直接", "間接", "技", "術"];
-    const CUTS = [0, 0.5, 0.9, 0.99];
+    const GOTAI_KEYS = ["全体", "直接", "間接", "技", "術"];
+    const CUTS = [0, 0.1, 0.5, 0.9, 0.99];
     const CAP = 99999999;
 
     // ===== 状態 =====
     const state = {
         weaks: [],
-        gotai: { 直接: 0, 間接: 0, 技: 0, 術: 0 },
+        gotai: { 全体: 0, 直接: 0, 間接: 0, 技: 0, 術: 0 },
         hitMode: "max",
         party: [],          // [{styleId, supportPlan?}] slot0=先頭
         ranking: [],
@@ -298,7 +298,11 @@
                         ${wpIcon ? `<img class="wp-icon" src="${IMG}/icon/${wpIcon}.png" alt="">` : ""}
                         <span class="nm" title="${meta.char || ""}">${meta.char || p.styleId}</span>
                     </div>
-                    <div class="score-row"><span class="v">${m ? fmtOku(m.damage) : "-"}</span><span class="u">億</span></div>
+                    <div class="score-row">
+                        <span class="v${p.scoreZero ? " zeroed" : ""}">${m ? fmtOku(m.damage) : "-"}</span><span class="u">億</span>
+                        <button class="zero-btn${p.scoreZero ? " on" : ""}" data-act="zero"
+                            title="補助のみ: このスタイルの自前火力を合計スコアから除外（支援EFは反映）">${p.scoreZero ? "補助のみ" : "スコア0"}</button>
+                    </div>
                     <div class="tags">${bpBadge}${odDesc}</div>
                     ${planDesc ? `<div class="plan-txt" title="${planDesc}">${planDesc}</div>` : ""}
                 </div>
@@ -306,6 +310,10 @@
             slot.querySelector('[data-act="up"]').addEventListener("click", () => moveSlot(i, -1));
             slot.querySelector('[data-act="down"]').addEventListener("click", () => moveSlot(i, 1));
             slot.querySelector('[data-act="del"]').addEventListener("click", () => { state.party.splice(i, 1); refreshParty(); });
+            slot.querySelector('[data-act="zero"]').addEventListener("click", () => {
+                state.party[i].scoreZero = !state.party[i].scoreZero;
+                refreshParty();
+            });
             wrap.appendChild(slot);
         }
     }

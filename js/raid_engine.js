@@ -453,6 +453,7 @@
                 variant: null, config: null, odTurns: p.odTurns || [],
                 skillUseByTurn: {}, actionSeqByTurn: {}, attacksByTurn: {},
                 supportPlan: p.supportPlan || null,
+                scoreZero: !!p.scoreZero, // 補助のみ: 自前火力をスコアから除外（支援EFは反映）
             };
             const entry = D.pattern[p.styleId];
             if (entry) {
@@ -608,7 +609,7 @@
         const result = { total: 0, members: [], unhandled: out.unhandled, unknownConds, grants: out.grants };
 
         for (const m of members) {
-            const mr = { styleId: m.styleId, name: m.meta.name, char: m.meta.char, damage: 0, hits: 0, actions: 0, turns: [], bpNeed: m.config ? m.config.b : 0, variant: m.variant, config: m.config };
+            const mr = { styleId: m.styleId, name: m.meta.name, char: m.meta.char, damage: 0, hits: 0, actions: 0, turns: [], bpNeed: m.config ? m.config.b : 0, variant: m.variant, config: m.config, scoreZero: m.scoreZero };
             for (let t = 1; t <= TURNS; t++) {
                 const seq = m.actionSeqByTurn[t] ?? 1;
                 const turnDetail = [];
@@ -650,8 +651,9 @@
                         }
                     }
                     const efSum = Object.values(byCond).reduce((s, g) => s + (g.mult || 0), 0);
-                    // 剛体: 直間×技術 乗算
+                    // 剛体: 全体 × 直間 × 技術 の乗算
                     let cut = 1;
+                    if (gotai["全体"]) cut *= (1 - gotai["全体"]);
                     if (gotai[hit.method]) cut *= (1 - gotai[hit.method]);
                     if (gotai[hit.type]) cut *= (1 - gotai[hit.type]);
                     const dmg = Math.round(hit.hits * CAP * (1 + efSum) * cut);
@@ -667,7 +669,8 @@
                 }
                 mr.turns.push(turnDetail);
             }
-            result.total += mr.damage;
+            // 補助のみ指定のメンバーは自前火力を合計に含めない（支援EFは他メンバーに反映済み）
+            if (!m.scoreZero) result.total += mr.damage;
             result.members.push(mr);
         }
         result.unknownConds = [...unknownConds];
