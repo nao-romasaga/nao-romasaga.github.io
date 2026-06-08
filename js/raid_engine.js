@@ -373,6 +373,58 @@
         return true;
     }
 
+    /**
+     * 発動トリガー(攻撃時系)が1つの攻撃に合致するか。
+     * ラッパーEF(エクストラオーラ/ウィーク等)や条件付き付与の発動判定に使う。
+     * 例: "斬または陰属性攻撃時"(OR), "斬・冷属性攻撃時"(AND), "単体攻撃時", "Weak攻撃時", "攻撃時"
+     * レイドでは被弾しないため "カウンター攻撃時" は常に不成立。
+     */
+    function triggerMatchesAttack(trigger, act) {
+        const w = String(trigger || "");
+        if (w === "" ) return true; // トリガーなし = 常時
+        if (/カウンター/.test(w)) return false; // レイドにカウンターは無い
+        const am = w.match(/([斬打突熱冷雷陽陰](?:または[斬打突熱冷雷陽陰])*)属性攻撃時/);
+        if (am) {
+            const attrs = am[1].split("または");
+            return attrs.length > 1
+                ? attrs.some(a => act.attrs.includes(a))   // 「または」= OR
+                : am[1].split("・").every(a => act.attrs.includes(a)); // 「・」= AND
+        }
+        if (/単体攻撃時/.test(w)) return act.area === "敵単体" || act.area === "ランダム";
+        if (/Weak攻撃時/.test(w)) return act.weak;
+        if (/OD攻撃時/.test(w)) return act.od;
+        if (/攻撃時|攻撃のたび/.test(w)) return true;
+        return false; // ターン開始時等の非攻撃トリガーは攻撃連動では扱わない
+    }
+
+    /**
+     * 付与対象メンバーのうち、トリガーを満たす者と発動ターンを返す。
+     * @return [{slot, fireTurn}] fireTurn = castTurn以降で最初にトリガー成立したターン
+     *         トリガーが非攻撃連動/空なら全対象を castTurn で返す。
+     */
+    function triggerActivations(trigger, targetSlots, members, castTurn) {
+        const w = String(trigger || "");
+        // 攻撃連動でないトリガー(空/ターン開始時等)は cast ターンから即時付与
+        if (w === "" || /カウンター/.test(w) === false && !/攻撃/.test(w)) {
+            if (/カウンター/.test(w)) return [];
+            return targetSlots.map(slot => ({ slot, fireTurn: castTurn }));
+        }
+        if (/カウンター/.test(w)) return [];
+        const acts = [];
+        for (const slot of targetSlots) {
+            const tm = members.find(mm => mm.slot === slot);
+            if (!tm) continue;
+            let fire = null;
+            for (let t = castTurn; t <= TURNS && fire === null; t++) {
+                for (const a of (tm.attacksByTurn[t] || [])) {
+                    if (triggerMatchesAttack(w, a)) { fire = t; break; }
+                }
+            }
+            if (fire !== null) acts.push({ slot, fireTurn: fire });
+        }
+        return acts;
+    }
+
     // ============================================================
     // パーティ評価
     // ============================================================
@@ -502,12 +554,45 @@
                     for (const evIdx of (Array.isArray(evIdxRaw) ? evIdxRaw : [evIdxRaw])) {
                         const e = events[evIdx];
                         if (!e || e.type !== "ef") continue;
+                        const dur = parseDuration(e.turn);
+                        const targetSlots = resolveTargets(e.target, m.slot, partySize);
+                        // ラッパーEF等のトリガー条件(斬攻撃時等)を、付与対象の攻撃で判定。
+                        // トリガー成立した対象のみ、成立ターンから発動させる。
+                        const acts = triggerActivations(e.trigger, targetSlots, members, t);
+                        for (const { slot, fireTurn } of acts) {
+                            out.grants.push({
+                                cond: e.cond, mult: e.mult, grade: e.grade,
+                                targets: [slot],
+                                turn: fireTurn, seq: m.actionSeqByTurn[t] ?? 1, beforeAttack: false, fromHit: 1,
+                                expireTurn: fireTurn + dur - 1,
+                                source: e, owner: m.slot, isCrit: false,
+                            });
+                        }
+                    }
+                }
+            }
+        }
+
+        // ---- 4b. 維持ループEF(アデプトカウント型) ----
+        // 前ターンに該当攻撃(単体攻撃等)を maintain.count 回以上行ったメンバーは、次ターンも
+        // EFを維持する。ターン1はバトル開始時付与(expandMemberEvents)で全員に乗るため t>=2 のみ。
+        for (const m of members) {
+            const events = (D.support[m.styleId] || {}).events || [];
+            for (const e of events) {
+                if (e.type !== "ef" || e.inactive || !e.maintain) continue;
+                const targetSlots = resolveTargets(effectiveTarget(e), m.slot, partySize);
+                const dur = parseDuration(e.turn) || 1;
+                for (let t = 2; t <= TURNS; t++) {
+                    for (const slot of targetSlots) {
+                        const tm = members.find(mm => mm.slot === slot);
+                        if (!tm) continue;
+                        const cnt = (tm.attacksByTurn[t - 1] || [])
+                            .filter(a => triggerMatchesAttack(e.maintain.trigger, a)).length;
+                        if (cnt < e.maintain.count) continue;
                         out.grants.push({
-                            cond: e.cond, mult: e.mult, grade: e.grade,
-                            targets: resolveTargets(e.target, m.slot, partySize),
-                            turn: t, seq: m.actionSeqByTurn[t] ?? 1, beforeAttack: false, fromHit: 1,
-                            expireTurn: t + parseDuration(e.turn) - 1,
-                            source: e, owner: m.slot, isCrit: false,
+                            cond: e.cond, mult: e.mult, grade: e.grade, targets: [slot],
+                            turn: t, seq: 0, beforeAttack: false, fromHit: 1,
+                            expireTurn: t + dur - 1, source: e, owner: m.slot, isCrit: false,
                         });
                     }
                 }

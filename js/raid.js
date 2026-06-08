@@ -40,8 +40,9 @@
 
     // ===== データロード =====
     const FILES = ["raid_pattern", "raid_skill_dict", "raid_support", "raid_meta", "raid_weapon_ef"];
+    const DATA_VER = "20260608i"; // データ再生成時にbump（ブラウザキャッシュ対策）
     Promise.all(FILES.map(f =>
-        fetch(`./data/raid/${f}.json`).then(r => {
+        fetch(`./data/raid/${f}.json?v=${DATA_VER}`).then(r => {
             if (!r.ok) throw new Error(`${f} load error ${r.status}`);
             return r.json();
         })

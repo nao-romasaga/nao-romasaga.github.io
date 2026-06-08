@@ -333,6 +333,24 @@ EFキャラ条件（同一武器種/性別/特定技 等）の判定に使用。
 - `SpecialEffect.csv` にEFは717 ID / 207ユニーク名。同名異IDが多数あるため**同名判定は名前の条件部**で行う
 - 武器EF: `Weapon.csv` の `UraHolyStoneId` → `UraHolyStone.csv` の `FixedAbilityIds` → `Ability.csv` の FlavorText から抽出（現在14本）
 
+### 10.2 ラッパーEF・維持ループの抽出（2026-06-08 追加）
+
+- **ラッパーバフEF**: `エクストラオーラ/エクストラウィーク/ウィークエクストラオーラ` 等（165 SE）は
+  名前に「エクストラフォース」を含まないが、FlavorText内で条件付きにEFを付与する。
+  `resolveWrapperEf()` が SpecialEffect を再帰的に辿り、内側のEFと発動トリガー
+  （`斬または冷属性攻撃時` 等）を抽出。技側 `extractFromSkill` から呼ぶ。
+  → イベントに `trigger`（発動条件）/ `triggerLimit`（上限回数）を付与。
+  例: レスリー「想い届けるチョコレイン」→ EF(Weak/中)、ヴァンパイアレディ「バットハートビート」→ EF(Weak・技/中)他
+- **維持ループ**: `buildMaintenanceRules()` が「[ターン終了時]『C』状態でない場合→『B(1回)』を付与」
+  かつ C が攻撃トリガーのカウンターバフ（`[X攻撃時]…上限回数:N回`）の組を抽出し、
+  B由来のEFに `maintain:{trigger,count}` を付与。被弾トリガー(`攻撃を受けた時`)はレイドで枯渇しない=不成立のため除外。
+  実質 A.J.（マスターチャージ→アデプトカウント単体攻撃5回→単体激化Ⅳ(1回)）のみ該当。
+- **エンジン対応**: `triggerMatchesAttack`（OR属性`または`/AND属性`・`/単体/Weak/OD/攻撃時）、
+  support_skillは `triggerActivations` で付与対象の攻撃を見てトリガー成立ターンから発動。
+  `maintain` は「前ターンに該当攻撃を count 回（追撃含む）→次ターン付与」を全メンバー個別に評価（ターン2以降。ターン1はバトル開始時付与）。
+- チェーン元が `味方生存者全体` 配布のEFは `effectiveTarget()` で実効対象を全員に展開（`自身`基準のEFも全員へ）。
+- ブラウザキャッシュ対策: `raid.html` のscript `?v=` と `raid.js` の `DATA_VER`（データfetchの`?v=`）を**再生成のたび両方bump**する。
+
 ## 11. 決定事項の経緯メモ
 
 - スコア=ダメージ。カンスト固定なので実質 hit数 × EF倍率 × 剛体 の勝負
