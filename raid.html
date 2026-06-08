@@ -115,9 +115,17 @@
         }
         .mode-toggle button.on { background: var(--gold); color: #1a1500; font-weight: 700; }
 
-        /* ===== 2カラム ===== */
-        .cols { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 18px; align-items: start; }
-        @media (max-width: 1100px) { .cols { grid-template-columns: 1fr; } }
+        /* ===== レイアウト ===== */
+        /* 上段: ボス設定(1/3) + パーティ編成(2/3) */
+        .top-cols { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,2fr); gap: 18px; align-items: start; }
+        /* パーティ内: スロット(1/3) + TOTAL(2/3) */
+        .party-inner { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,2fr); gap: 14px; align-items: start; }
+        @media (max-width: 760px) { .party-inner { grid-template-columns: 1fr; } }
+        /* ランキング横並び */
+        .cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+        @media (max-width: 1100px) {
+            .top-cols, .cols { grid-template-columns: 1fr; }
+        }
 
         /* ===== ランキングテーブル ===== */
         table.rank { width: 100%; border-collapse: collapse; font-size: 13px; }
@@ -145,23 +153,36 @@
 
         /* ターン明細: 1行動 = 1行（縦積み）。ターンごとに合計スコアつきヘッダ */
         .turnbox { display: grid; gap: 10px; }
-        .turngroup { border: 1px solid var(--line); border-radius: 5px; overflow: hidden; }
+        /* はみ出したらグループごと横スクロール（バーは全OSで細く統一） */
+        .turngroup {
+            border: 1px solid var(--line); border-radius: 5px;
+            overflow-x: auto; overflow-y: hidden;
+            scrollbar-width: thin;                          /* Firefox */
+            scrollbar-color: var(--line) transparent;       /* Firefox */
+            overscroll-behavior-x: contain;
+        }
+        .turngroup::-webkit-scrollbar { height: 6px; }       /* Chrome/Edge/Safari */
+        .turngroup::-webkit-scrollbar-track { background: transparent; }
+        .turngroup::-webkit-scrollbar-thumb { background: var(--line); border-radius: 3px; }
+        .turngroup::-webkit-scrollbar-thumb:hover { background: var(--fg-dim); }
         .turnhead {
             display: flex; align-items: baseline; gap: 10px;
             padding: 4px 10px;
             background: linear-gradient(90deg, rgba(255,90,54,.14), transparent 55%);
             border-bottom: 1px solid var(--line);
+            position: sticky; left: 0;
         }
         .turnhead .t { font-family: var(--font-num); color: var(--ember); font-size: 13px; }
         .turnhead .tsum { margin-left: auto; font-family: var(--font-num); color: var(--gold); font-size: 13px; }
         .turnhead .tsum .u { color: var(--fg-dim); font-size: 10px; margin-left: 3px; }
         .actrow {
             display: grid;
-            grid-template-columns: 64px minmax(110px, 165px) 175px 1fr;
+            grid-template-columns: 64px minmax(110px, 165px) 175px auto;
             gap: 8px; align-items: center;
             padding: 4px 10px; font-size: 12px;
             border-bottom: 1px solid rgba(52,57,69,.45);
             background: var(--ink-3);
+            width: max-content; min-width: 100%;
         }
         .turngroup .actrow:last-child { border-bottom: none; }
         .actrow.od { box-shadow: inset 3px 0 0 var(--gold); }
@@ -173,7 +194,8 @@
         .actrow .calc { font-family: var(--font-num); color: var(--cyan); white-space: nowrap; }
         .actrow .calc .h { color: var(--gold); }
         .actrow .calc .dmg-v { color: var(--gold); font-weight: 600; }
-        .actrow .efs { line-height: 1.7; }
+        .actrow .efs { white-space: nowrap; }
+        .actrow .efchip { white-space: nowrap; }
         @media (max-width: 700px) {
             .actrow { grid-template-columns: 56px minmax(90px, 1fr) auto; }
             .actrow .efs { grid-column: 1 / -1; padding-left: 4px; }
@@ -189,26 +211,77 @@
         }
         .efchip.weakcond { color: var(--weak); border-color: rgba(255,138,101,.5); background: rgba(255,138,101,.1); }
 
-        /* ===== パーティシミュレーター ===== */
+        /* ===== パーティシミュレーター（縦カード型）===== */
+        #slots {
+            display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px;
+        }
         .slot {
-            display: flex; align-items: center; gap: 8px;
+            display: flex; flex-direction: column;
             border: 1px solid var(--line); border-radius: 5px;
-            background: var(--ink-3); padding: 7px 10px; margin-bottom: 7px;
+            background: var(--ink-3); overflow: hidden; position: relative;
+            min-width: 0;
         }
-        .slot.empty { border-style: dashed; color: var(--fg-dim); justify-content: center; min-height: 44px; }
+        .slot.empty {
+            border-style: dashed; color: var(--fg-dim);
+            align-items: center; justify-content: center; min-height: 150px;
+            font-size: 12px; text-align: center; cursor: default;
+        }
+        .slot.empty .pos { position: static; background: none; box-shadow: none; margin-bottom: 4px; }
+        /* カードヘッダー: 縦キャラ絵（背景つき・全体表示） */
+        .slot .card-head {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background: #333 url(https://romasagatool.com/img/bg_styleback_ss.jpg) repeat-y;
+            background-size: contain;
+        }
+        .slot .char-img {
+            max-width: 100%; max-height: 100%; object-fit: contain; object-position: center;
+            display: block;
+        }
         .slot .pos {
-            font-family: var(--font-num); font-size: 15px; color: var(--ember);
-            width: 20px; text-align: center; flex-shrink: 0;
+            position: absolute; top: 3px; left: 3px; z-index: 2;
+            font-family: var(--font-num); font-size: 13px; color: #fff;
+            background: var(--ember-dim); border: 1px solid var(--ember);
+            width: 19px; height: 19px; line-height: 17px; text-align: center; border-radius: 3px;
+            box-shadow: 0 0 6px rgba(255,90,54,.4);
         }
-        .slot .who { flex: 1; min-width: 0; }
-        .slot .who .nm { font-weight: 700; }
-        .slot .who .sub { font-size: 11px; color: var(--fg-dim); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-        .slot .dmg-mini { font-family: var(--font-num); color: var(--gold); font-size: 13px; }
-        .slot button {
-            background: none; border: 1px solid var(--line); border-radius: 3px;
-            color: var(--fg-dim); cursor: pointer; padding: 2px 7px; font-size: 12px;
+        .slot .rare-icon { position: absolute; top: 2px; right: 2px; width: 26px; height: 26px; z-index: 2; }
+        .slot .del-btn {
+            position: absolute; bottom: 2px; right: 2px; z-index: 2;
+            width: 20px; height: 20px; line-height: 18px; text-align: center;
+            background: rgba(20,22,27,.8); border: 1px solid var(--line); border-radius: 3px;
+            color: var(--fg-dim); cursor: pointer; font-size: 11px; padding: 0;
         }
-        .slot button:hover { color: var(--fg); border-color: var(--fg-dim); }
+        .slot .del-btn:hover { color: var(--ember); border-color: var(--ember); }
+        .slot .move-btns { position: absolute; bottom: 2px; left: 2px; z-index: 2; display: flex; gap: 2px; }
+        .slot .move-btns button {
+            width: 18px; height: 18px; line-height: 16px; text-align: center; padding: 0;
+            background: rgba(20,22,27,.8); border: 1px solid var(--line); border-radius: 3px;
+            color: var(--fg-dim); cursor: pointer; font-size: 10px;
+        }
+        .slot .move-btns button:hover { color: var(--fg); border-color: var(--fg-dim); }
+        /* カードボディ */
+        .slot .card-body { padding: 4px 5px 5px; display: flex; flex-direction: column; gap: 3px; }
+        .slot .nm-row { display: flex; align-items: center; gap: 3px; }
+        .slot .wp-icon { width: 14px; height: 14px; flex-shrink: 0; }
+        .slot .nm { font-size: 11px; font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .slot .score-row {
+            display: flex; align-items: baseline; justify-content: center; gap: 3px;
+            background: var(--ink); border-radius: 3px; padding: 2px 4px;
+        }
+        .slot .score-row .v { font-family: var(--font-num); color: var(--gold); font-size: 15px; font-weight: 600; }
+        .slot .score-row .u { font-size: 9px; color: var(--fg-dim); }
+        .slot .tags { display: flex; flex-wrap: wrap; gap: 2px; justify-content: center; min-height: 2px; }
+        .slot .plan-txt { font-size: 9px; color: var(--cyan); text-align: center; line-height: 1.3; word-break: break-all; }
+        @media (max-width: 560px) {
+            #slots { grid-template-columns: repeat(5, 1fr); }
+            .slot .nm { font-size: 9px; }
+        }
         #partyTotal {
             text-align: center; padding: 12px;
             border: 1px solid var(--ember-dim); border-radius: 6px;
@@ -290,33 +363,63 @@
 </header>
 
 <main>
-    <!-- ボス設定 -->
-    <section class="panel" id="bossPanel">
-        <h2>ボス設定</h2>
-        <div class="body">
-            <div class="row">
-                <span class="lbl">弱点属性</span>
-                <div id="weakChips"></div>
-            </div>
-            <div class="row">
-                <span class="lbl">剛体</span>
-                <div style="display:flex; gap:14px; flex-wrap:wrap;" id="gotaiSelects"></div>
-            </div>
-            <div class="row">
-                <span class="lbl">HIT計算</span>
-                <div class="mode-toggle" id="hitMode">
-                    <button data-v="avg">平均HIT</button>
-                    <button data-v="max" class="on">最大HIT</button>
+    <!-- 上段: ボス設定(左) + パーティ編成(右) -->
+    <div class="top-cols">
+        <section class="panel" id="bossPanel">
+            <h2>ボス設定</h2>
+            <div class="body">
+                <div class="row">
+                    <span class="lbl">弱点属性</span>
+                    <div id="weakChips"></div>
                 </div>
-                <span class="note" style="margin:0 0 0 8px;">スコア = カンスト × (1 + ΣEF倍率) × 剛体残存率 をhit単位で集計</span>
+                <div class="row">
+                    <span class="lbl">剛体</span>
+                    <div style="display:flex; gap:14px; flex-wrap:wrap;" id="gotaiSelects"></div>
+                </div>
+                <div class="row">
+                    <span class="lbl">HIT計算</span>
+                    <div class="mode-toggle" id="hitMode">
+                        <button data-v="avg">平均HIT</button>
+                        <button data-v="max" class="on">最大HIT</button>
+                    </div>
+                </div>
+                <div class="note" style="margin-top:4px;">スコア = カンスト × (1 + ΣEF倍率) × 剛体残存率 をhit単位で集計</div>
             </div>
+        </section>
+
+        <!-- パーティシミュレーター -->
+        <section class="panel">
+            <h2>パーティ編成（1番が先頭）</h2>
+            <div class="body">
+                <div class="party-inner">
+                    <div id="slots"></div>
+                    <div class="party-right">
+                        <div id="partyTotal">
+                            <div class="v" id="totalVal">0億</div>
+                            <div class="u">TOTAL DAMAGE（億）</div>
+                            <button class="ghost-btn" id="partyDetailBtn">パーティ明細を表示</button>
+                        </div>
+                        <div id="partyDetail" class="hidden" style="margin-top:10px;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 自由選択（ランキング上部） -->
+    <section class="panel">
+        <h2>自由選択 <span style="font-family:var(--font-body);font-size:11px;color:var(--fg-dim);">全スタイルから検索して編成へ</span></h2>
+        <div class="body">
+            <input type="text" class="searchbox" id="freeSearch" placeholder="キャラ名・スタイル名で検索…" style="margin-bottom:0;">
+            <div id="freeList" style="max-height:200px; overflow-y:auto; margin-top:8px;"></div>
         </div>
     </section>
 
+    <!-- ランキング横並び -->
     <div class="cols">
         <!-- アタッカーランキング -->
         <section class="panel">
-            <h2>アタッカーランキング <span style="font-family:var(--font-body);font-size:11px;color:var(--fg-dim);">行クリックで明細 / ▶ボタンで編成へ</span></h2>
+            <h2>アタッカーランキング <span style="font-family:var(--font-body);font-size:11px;color:var(--fg-dim);">行クリックで明細 / ▶で編成へ</span></h2>
             <div class="body" style="padding:8px 10px; overflow-x:auto;">
                 <table class="rank" id="rankTable">
                     <thead>
@@ -333,47 +436,24 @@
             </div>
         </section>
 
-        <!-- パーティシミュレーター -->
-        <div>
-            <section class="panel">
-                <h2>パーティ編成（1番が先頭）</h2>
-                <div class="body">
-                    <div id="partyTotal">
-                        <div class="v" id="totalVal">0.0</div>
-                        <div class="u">TOTAL DAMAGE（億）</div>
-                        <button class="ghost-btn" id="partyDetailBtn">パーティ明細を表示</button>
-                    </div>
-                    <div id="slots"></div>
-                    <div id="partyDetail" class="hidden" style="margin-top:10px;"></div>
+        <!-- サポーターランキング -->
+        <section class="panel">
+            <h2>サポーターランキング <span style="font-family:var(--font-body);font-size:11px;color:var(--fg-dim);">支援効果順 / 行クリックで内容 / ▶で編成へ</span></h2>
+            <div class="body">
+                <input type="text" class="searchbox" id="supSearch" placeholder="キャラ名で絞り込み…">
+                <div style="display:flex; gap:14px; font-size:11px; color:var(--fg-dim); padding:0 8px 4px;">
+                    <span style="width:70px; text-align:right;">支援効果</span>
+                    <span style="width:64px; text-align:right;">自前火力</span>
+                    <span>スタイル</span>
                 </div>
-            </section>
-
-            <section class="panel">
-                <h2>自由選択 <span style="font-family:var(--font-body);font-size:11px;color:var(--fg-dim);">全スタイルから検索して編成へ</span></h2>
-                <div class="body">
-                    <input type="text" class="searchbox" id="freeSearch" placeholder="キャラ名・スタイル名で検索…">
-                    <div id="freeList" style="max-height:240px; overflow-y:auto;"></div>
-                </div>
-            </section>
-
-            <section class="panel">
-                <h2>サポーターランキング <span style="font-family:var(--font-body);font-size:11px;color:var(--fg-dim);">支援効果順 / 行クリックで内容 / ▶で編成へ</span></h2>
-                <div class="body">
-                    <input type="text" class="searchbox" id="supSearch" placeholder="キャラ名で絞り込み…">
-                    <div style="display:flex; gap:14px; font-size:11px; color:var(--fg-dim); padding:0 8px 4px;">
-                        <span style="width:70px; text-align:right;">支援効果</span>
-                        <span style="width:64px; text-align:right;">自前火力</span>
-                        <span>スタイル</span>
-                    </div>
-                    <div id="supList"></div>
-                    <div class="note">支援効果 = このスタイルを入れた時の「他メンバー」のスコア増分。自前火力 = 本人の攻撃分</div>
-                </div>
-            </section>
-        </div>
+                <div id="supList"></div>
+                <div class="note">支援効果 = このスタイルを入れた時の「他メンバー」のスコア増分。自前火力 = 本人の攻撃分</div>
+            </div>
+        </section>
     </div>
 </main>
 
-<script src="./js/raid_engine.js"></script>
-<script src="./js/raid.js"></script>
+<script src="./js/raid_engine.js?v=20260608g"></script>
+<script src="./js/raid.js?v=20260608g"></script>
 </body>
 </html>

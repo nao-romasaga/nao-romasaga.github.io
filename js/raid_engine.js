@@ -109,6 +109,27 @@
      * 対象文字列 → スロットインデックス配列
      * @param target 付与対象（自身/味方単体/対象/味方生存者全体/敵...）
      */
+    /** 全体配布先か（味方生存者全体/全員/味方全体） */
+    function isBroadTarget(t) {
+        t = t || "";
+        return t.indexOf("味方生存者全体") >= 0 || t === "全員" || t === "味方全体";
+    }
+    /**
+     * EFイベントの実効付与対象を決める。
+     * e.target はバフ保持者基準（多くは「自身」）だが、チェーン元のアビが
+     * 「味方生存者全体」等にバフを配布している場合、各保持者が自身へEFを付与する＝全員が対象になる。
+     */
+    function effectiveTarget(e) {
+        const t = e.target || "自身";
+        // 自身/対象/味方単体 のような狭い対象でも、配布元が全体なら全員へ広げる
+        if (t === "自身" || t === "対象" || t === "味方単体" || t === "対象と自身") {
+            for (const c of (e.chain || [])) {
+                if (isBroadTarget(c.target)) return c.target;
+            }
+        }
+        return t;
+    }
+
     function resolveTargets(target, selfSlot, partySize) {
         const all = [];
         for (let i = 0; i < partySize; i++) all.push(i);
@@ -181,7 +202,7 @@
             if (e.source === "support_skill") continue;
 
             const isCrit = e.type === "critical";
-            const targets = resolveTargets(e.target, member.slot, partySize);
+            const targets = resolveTargets(effectiveTarget(e), member.slot, partySize);
             const duration = parseDuration(e.turn);
             let fireLimit = parseMaxLimit(e.maxLimit);
 

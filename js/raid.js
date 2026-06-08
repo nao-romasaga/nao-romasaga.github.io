@@ -248,39 +248,59 @@
         refreshParty();
     }
 
+    const IMG = "https://romasagatool.com/img";
+    const WP_ICON = {
+        "剣": "icon_ken", "大剣": "icon_dken", "斧": "icon_ono", "小剣": "icon_sken",
+        "槍": "icon_yari", "弓": "icon_yumi", "棍棒": "icon_kon", "体術": "icon_tai",
+        "銃": "icon_ju", "杖": "icon_tsue",
+    };
+
     function renderSlots() {
         const wrap = $("#slots");
         wrap.innerHTML = "";
-        const result = state.party.length ? RaidEngine.evaluateParty(state.party, bossConfig(), opt()) : null;
+        const result = state.partyResult;
         for (let i = 0; i < 5; i++) {
             const p = state.party[i];
             if (!p) {
-                wrap.appendChild(el(`<div class="slot empty">空きスロット ${i + 1}</div>`));
+                wrap.appendChild(el(`<div class="slot empty"><span class="pos">${i + 1}</span>空き</div>`));
                 continue;
             }
             const m = result ? result.members[i] : null;
-            const meta = m || {};
-            // 補助技プラン: 技名つきで表示
+            const meta = RaidEngine.getMeta(p.styleId);
             const events = RaidEngine.getSupportEvents(p.styleId);
             const planDesc = p.supportPlan
                 ? Object.entries(p.supportPlan).map(([t, idx]) => {
                     const i0 = Array.isArray(idx) ? idx[0] : idx;
                     return `T${t}:${(events[i0] || {}).skill || "補助技"}`;
-                }).join(" → ")
+                }).join(" / ")
                 : "";
             const odDesc = (p.odTurns || []).length ? `<span class="badge slow">OD:T${p.odTurns.join(",T")}</span>` : "";
             const bpBadge = m && m.bpNeed > 0 ? `<span class="badge bp">要BP${m.bpNeed}</span>` : "";
+            const rare = (meta.rarity || "SS").toUpperCase();
+            const rareLow = rare.toLowerCase();
+            const wpIcon = WP_ICON[meta.weaponType];
             const slot = el(`<div class="slot">
-                <span class="pos">${i + 1}</span>
-                ${styleIcon(p.styleId, 36)}
-                <div class="who">
-                    <div class="nm">${meta.char || p.styleId}${bpBadge}${odDesc}</div>
-                    <div class="sub" title="${planDesc}">${planDesc}</div>
+                <div class="card-head" style="background:#333 url(${IMG}/bg_styleback_${rareLow}.jpg) repeat-y;background-size:contain;">
+                    <span class="pos">${i + 1}</span>
+                    <img class="rare-icon" src="${IMG}/icon/icon_${rare}.png" alt="${rare}"
+                         onerror="this.style.display='none'">
+                    <img class="char-img" src="${IMG}/style_vertical/${p.styleId}.png" alt="${meta.char || ''}"
+                         onerror="this.src='${IMG}/style_icon_bg/${p.styleId}.png';this.style.objectFit='contain'">
+                    <div class="move-btns">
+                        <button data-act="up" title="左へ">◀</button>
+                        <button data-act="down" title="右へ">▶</button>
+                    </div>
+                    <button class="del-btn" data-act="del" title="外す">✕</button>
                 </div>
-                <span class="dmg-mini">${m ? fmtCap(m.damage) : "-"}</span>
-                <button data-act="up" title="上へ">↑</button>
-                <button data-act="down" title="下へ">↓</button>
-                <button data-act="del" title="外す">✕</button>
+                <div class="card-body">
+                    <div class="nm-row">
+                        ${wpIcon ? `<img class="wp-icon" src="${IMG}/icon/${wpIcon}.png" alt="">` : ""}
+                        <span class="nm" title="${meta.char || ""}">${meta.char || p.styleId}</span>
+                    </div>
+                    <div class="score-row"><span class="v">${m ? fmtOku(m.damage) : "-"}</span><span class="u">億</span></div>
+                    <div class="tags">${bpBadge}${odDesc}</div>
+                    ${planDesc ? `<div class="plan-txt" title="${planDesc}">${planDesc}</div>` : ""}
+                </div>
             </div>`);
             slot.querySelector('[data-act="up"]').addEventListener("click", () => moveSlot(i, -1));
             slot.querySelector('[data-act="down"]').addEventListener("click", () => moveSlot(i, 1));
