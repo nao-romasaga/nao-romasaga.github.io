@@ -41,8 +41,13 @@
     // ===== データロード =====
     const FILES = ["raid_pattern", "raid_skill_dict", "raid_support", "raid_meta", "raid_weapon_ef"];
     const DATA_VER = "20260608i"; // データ再生成時にbump（ブラウザキャッシュ対策）
+    // データ取得先: 本番(GitHub Pages)はサイト規約どおり romasagatool.com から、
+    // ローカルは data シンボリックリンク(→ romasaga-tool-be/data)経由。dataload.js と同じ方針。
+    const DATA_BASE = location.hostname.endsWith("github.io")
+        ? "https://romasagatool.com/data/raid"
+        : "./data/raid";
     Promise.all(FILES.map(f =>
-        fetch(`./data/raid/${f}.json?v=${DATA_VER}`).then(r => {
+        fetch(`${DATA_BASE}/${f}.json?v=${DATA_VER}`).then(r => {
             if (!r.ok) throw new Error(`${f} load error ${r.status}`);
             return r.json();
         })

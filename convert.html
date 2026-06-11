@@ -7,6 +7,8 @@ and open the template in the editor.
 <html>
     <head>
         <title>メンテ中</title>
+        <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
+
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138966739-1"></script>
         <script>
@@ -20,7 +22,7 @@ and open the template in the editor.
         </script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="./css/style.css">
+        <link rel="stylesheet" type="text/css" href="./css/style2.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
@@ -56,26 +58,33 @@ and open the template in the editor.
             </div>
         </div>
         <script>
-            var configBlue = {
-                apiKey: "AIzaSyBliZfwz-xZnVtIZmeAQv0uo2IgmL5eUKM",
-                authDomain: "nao-romasaga-rs-blue.firebaseapp.com",
-                databaseURL: "https://nao-romasaga-rs-blue.firebaseio.com",
-                projectId: "nao-romasaga-rs-blue",
-                storageBucket: "nao-romasaga-rs-blue.appspot.com",
-                messagingSenderId: "593259380066",
-                appId: "1:593259380066:web:fb3ac46f01df8c11"
-            };
             var configUsers = {
-                apiKey: "AIzaSyDvB6eT5hyVrgYQwuPMRomveJmwI3M6OOQ",
-                authDomain: "nao-romasaga-rs-users.firebaseapp.com",
-                databaseURL: "https://nao-romasaga-rs-users.firebaseio.com",
-                projectId: "nao-romasaga-rs-users",
-                storageBucket: "nao-romasaga-rs-users.appspot.com",
-                messagingSenderId: "82869347272",
-                appId: "1:82869347272:web:17b30ed91988d949"
+                "YXBpS2V5": "QUl6YVN5RHZCNmVUNWh5VnJnWVF3dVBNUm9tdmVKbXdJM002T09R",
+                "YXV0aERvbWFpbg==": "bmFvLXJvbWFzYWdhLXJzLXVzZXJzLmZpcmViYXNlYXBwLmNvbQ==",
+                "ZGF0YWJhc2VVUkw=": "aHR0cHM6Ly9uYW8tcm9tYXNhZ2EtcnMtdXNlcnMuZmlyZWJhc2Vpby5jb20=",
+                "bWVzc2FnaW5nU2VuZGVySWQ=": "ODI4NjkzNDcyNzI="
             };
-            const app1 = firebase.initializeApp(configBlue);
-            const appUsers = firebase.initializeApp(configUsers, "Users");
+            var Base64 = {
+                encode: function (str) {
+                    return btoa(unescape(encodeURIComponent(str)));
+                },
+                decode: function (str) {
+                    return decodeURIComponent(escape(atob(str)));
+                }
+            };            
+            function decodeConfig(config) {
+                let target = {};
+                for (let k in config) {
+                    target[Base64.decode(k)] = Base64.decode(config[k]);
+                }
+                return target;
+            }
+
+            conf = decodeConfig(configUsers);
+            console.log(conf);
+
+            const appUsers = firebase.initializeApp(decodeConfig(configUsers));
+
             var OLD_UID;
             var NEW_UID;
             var UNAME;
@@ -89,30 +98,7 @@ and open the template in the editor.
             };
 
             var oLogin = false, nLogin = false;
-            firebase.auth().onAuthStateChanged((user) => {
-                if (!user) {
-                    var ui = new firebaseui.auth.AuthUI(firebase.auth());
-                    ui.start('#firebaseui-auth-container', uiConfig);
-                    $("#myDataOld").html("登録情報はありません");
-                } else {
-                    database = firebase.database();
-                    OLD_UID = user.uid;
-                    UNAME = user.displayName;
-                    $("#loginInfo").hide();
-                    let icon = $("<img>").attr("src", user.photoURL)
-                            .attr("style", "width:40px; heidht:40px;    border-radius: 50%;");
-                    let name = `${user.displayName} さん:ログイン中<br>ID : ${OLD_UID}`;
-                    $("#firebaseui-auth-container").addClass("bg-white kadomaru")
-                            .append(icon).append(name);
-                    firebase.database().ref(`user_data/${OLD_UID}/`).once("value").then(function (snapshot) {
-                        $("#myDataOld").html(mydata(snapshot.val()));
-                    });
-                    oLogin = true;
-                    if (oLogin && nLogin) {
-                        convert();
-                    }
-                }
-            });
+
             firebase.auth(appUsers).onAuthStateChanged((user) => {
                 if (!user) {
                     var ui = new firebaseui.auth.AuthUI(firebase.auth(appUsers), "Users");

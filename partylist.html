@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html prefix="og: http://ogp.me/ns#" lang="ja">
     <head>
+        <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="./js/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="./js/jquery.ui.touch-punch.js"></script>
+        <script src="./js/dataload.js"></script>
+        <script>
+            // require dataload.js
+            dataload([
+                "data_CHARMASTER",
+                "data_STYLEMASTER",
+                "data_FORMATION",
+            ], false);
+        </script>
+
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138966739-1"></script>
         <script>
@@ -26,15 +39,12 @@
         <meta name="twitter:site" content="@nao_romasaga_rs" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
 
-        <script type="text/javascript" src="./js/jquery-ui.min.js"></script>
-        <script type="text/javascript" src="./js/jquery.ui.touch-punch.js"></script>
         <link rel="stylesheet" type="text/css" href="./css/bootstrap/bootstrap.min.css">
         <script src="./js/popper.min.js"></script>
         <script src="./js/bootstrap.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="./css/style.css">
+        <link rel="stylesheet" type="text/css" href="./css/style2.css">
         <link rel="stylesheet" type="text/css" href="./css/party.css">
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
@@ -42,10 +52,8 @@
         <script src="https://www.gstatic.com/firebasejs/ui/3.5.2/firebase-ui-auth__ja.js"></script>
         <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
         <script src="./js/Firebase.js"></script>
-        <script src="./js/utils.js" ></script>
+        <script src="./js/utils2.js" ></script>
         
-        <script src="./js/data_CHARMASTER.js" ></script>
-        <script src="./js/data_STYLEMASTER.js" ></script>
         <script src="./js/partylist.js" ></script>
         <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
         <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
@@ -340,7 +348,7 @@
                 <tr class="d-md-none" id="TMPL_ROW1">
                     <td class="label-text text-center TMPL_QUEST" colspan="8"></td>
                 </tr>
-                <tr style="zbackground: url(./img/bg_carpet.png); background-size: 100%;" id="TMPL_ROW2">
+                <tr style="background: url(./img/bg_carpet.png); background-size: 100%;" id="TMPL_ROW2">
                     <td class="label-text d-none d-md-table-cell text-center text-nowrap TMPL_QUEST"></td>
                     <td class="text-center char1"></td>
                     <td class="text-center char2"></td>
@@ -400,7 +408,7 @@
                             <tr class="char-bottom text-nowrap">
                                 <td class="text-center" colspan="4">▼スタイル選択▼</td>
                             </tr>
-                            <tr style=""><td colspan="4" class="STYLE_ICON"></td></tr>
+                            <tr><td colspan="4" class="STYLE_ICON"></td></tr>
                             <tr class="char-bottom text-nowrap">
                                 <td class="text-center" colspan="2">
                                     <button class="icon_btn_red charUnset" style="background-size: 150px 40px; width:150px; height: 40px;">編成から外す</button>
