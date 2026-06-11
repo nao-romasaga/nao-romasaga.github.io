@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>レイドバトルシミュレーター | ロマサガRS攻略</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Reggae+One&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Oswald:wght@500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #14161b;
+            --ink-2: #1c1f26;
+            --ink-3: #252932;
+            --line: #343945;
+            --ember: #ff5a36;
+            --ember-dim: #b33d24;
+            --gold: #ffc94d;
+            --fg: #e8e6e0;
+            --fg-dim: #9a9890;
+            --weak: #ff8a65;
+            --cyan: #57c7ce;
+            --green: #7bc96f;
+            --font-disp: "Reggae One", serif;
+            --font-body: "Zen Kaku Gothic New", sans-serif;
+            --font-num: "Oswald", sans-serif;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scrollbar-color: var(--line) var(--ink); }
+        body {
+            background: var(--ink);
+            background-image:
+                radial-gradient(ellipse 80% 50% at 50% -10%, rgba(255, 90, 54, .08), transparent),
+                repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255,255,255,.006) 3px, rgba(255,255,255,.006) 4px);
+            color: var(--fg);
+            font-family: var(--font-body);
+            font-size: 14px;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        a { color: var(--cyan); }
+
+        /* ===== ヘッダー ===== */
+        header {
+            position: sticky; top: 0; z-index: 50;
+            background: rgba(20, 22, 27, .92);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--line);
+            padding: 10px 16px;
+            display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
+        }
+        header h1 {
+            font-family: var(--font-disp);
+            font-size: 22px; font-weight: 400;
+            letter-spacing: .04em;
+            color: var(--fg);
+        }
+        header h1 .x { color: var(--ember); }
+        header .cap-note {
+            font-family: var(--font-num);
+            color: var(--gold); font-size: 13px; letter-spacing: .08em;
+        }
+        header .status { margin-left: auto; font-size: 12px; color: var(--fg-dim); }
+
+        main { max-width: 1500px; margin: 0 auto; padding: 18px 16px 80px; }
+
+        /* ===== パネル共通 ===== */
+        .panel {
+            background: var(--ink-2);
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            margin-bottom: 18px;
+            overflow: hidden;
+        }
+        .panel > h2 {
+            font-family: var(--font-disp);
+            font-weight: 400; font-size: 15px;
+            letter-spacing: .1em;
+            padding: 8px 14px;
+            border-bottom: 1px solid var(--line);
+            background: linear-gradient(90deg, rgba(255,90,54,.12), transparent 60%);
+            display: flex; align-items: center; gap: 8px;
+        }
+        .panel > h2::before { content: "▍"; color: var(--ember); }
+        .panel .body { padding: 14px; }
+
+        /* ===== ボス設定 ===== */
+        #bossPanel .row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
+        #bossPanel .row:last-child { margin-bottom: 0; }
+        #bossPanel .lbl { width: 76px; color: var(--fg-dim); font-size: 12px; letter-spacing: .1em; flex-shrink: 0; }
+        .attr-chip {
+            font-family: var(--font-body); font-weight: 700;
+            border: 1px solid var(--line); border-radius: 4px;
+            background: var(--ink-3); color: var(--fg-dim);
+            padding: 4px 13px; cursor: pointer; user-select: none;
+            transition: all .12s ease;
+        }
+        .attr-chip:hover { border-color: var(--weak); color: var(--fg); }
+        .attr-chip.on {
+            background: var(--ember-dim); border-color: var(--ember);
+            color: #fff; box-shadow: 0 0 10px rgba(255, 90, 54, .35);
+        }
+        .gotai-item { display: flex; align-items: center; gap: 5px; }
+        .gotai-item span { font-size: 13px; }
+        .gotai-item select {
+            background: var(--ink-3); color: var(--fg);
+            border: 1px solid var(--line); border-radius: 4px;
+            padding: 3px 6px; font-family: var(--font-num); font-size: 13px;
+        }
+        .gotai-item select.cut { border-color: var(--ember); color: var(--weak); }
+        .mode-toggle { display: inline-flex; border: 1px solid var(--line); border-radius: 4px; overflow: hidden; }
+        .mode-toggle button {
+            background: var(--ink-3); color: var(--fg-dim); border: none;
+            padding: 4px 14px; cursor: pointer; font-family: var(--font-body); font-size: 13px;
+        }
+        .mode-toggle button.on { background: var(--gold); color: #1a1500; font-weight: 700; }
+
+        /* ===== レイアウト ===== */
+        /* 上段: ボス設定(1/3) + パーティ編成(2/3) */
+        .top-cols { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,2fr); gap: 18px; align-items: start; }
+        /* パーティ内: スロット(1/3) + TOTAL(2/3) */
+        .party-inner { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,2fr); gap: 14px; align-items: start; }
+        @media (max-width: 760px) { .party-inner { grid-template-columns: 1fr; } }
+        /* ランキング横並び */
+        .cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+        @media (max-width: 1100px) {
+            .top-cols, .cols { grid-template-columns: 1fr; }
+        }
+
+        /* ===== ランキングテーブル ===== */
+        table.rank { width: 100%; border-collapse: collapse; font-size: 13px; }
+        table.rank th {
+            text-align: left; color: var(--fg-dim); font-weight: 500; font-size: 11px;
+            letter-spacing: .1em; padding: 4px 8px; border-bottom: 1px solid var(--line);
+            white-space: nowrap;
+        }
+        table.rank td { padding: 6px 8px; border-bottom: 1px solid rgba(52,57,69,.5); white-space: nowrap; }
+        table.rank tbody tr { cursor: pointer; transition: background .1s; }
+        table.rank tbody tr:hover { background: rgba(255, 90, 54, .07); }
+        td.num, th.num { text-align: right; font-family: var(--font-num); }
+        .rank-pos { font-family: var(--font-num); color: var(--fg-dim); width: 34px; }
+        tr:nth-child(1) .rank-pos { color: var(--gold); font-size: 16px; }
+        tr:nth-child(2) .rank-pos, tr:nth-child(3) .rank-pos { color: var(--weak); }
+        .dmg { color: var(--gold); font-weight: 600; }
+        .badge {
+            display: inline-block; font-size: 10px; border-radius: 3px;
+            padding: 1px 6px; margin-left: 5px; vertical-align: 1px;
+            font-family: var(--font-num); letter-spacing: .05em;
+        }
+        .badge.bp { background: #4a2c14; color: #ffb36b; border: 1px solid #7a4a20; }
+        .badge.slow { background: #16323a; color: var(--cyan); border: 1px solid #235662; }
+        .detail-row td { background: var(--ink); padding: 10px 14px; white-space: normal; cursor: default; }
+
+        /* ターン明細: 1行動 = 1行（縦積み）。ターンごとに合計スコアつきヘッダ */
+        .turnbox { display: grid; gap: 10px; }
+        /* はみ出したらグループごと横スクロール（バーは全OSで細く統一） */
+        .turngroup {
+            border: 1px solid var(--line); border-radius: 5px;
+            overflow-x: auto; overflow-y: hidden;
+            scrollbar-width: thin;                          /* Firefox */
+            scrollbar-color: var(--line) transparent;       /* Firefox */
+            overscroll-behavior-x: contain;
+        }
+        .turngroup::-webkit-scrollbar { height: 6px; }       /* Chrome/Edge/Safari */
+        .turngroup::-webkit-scrollbar-track { background: transparent; }
+        .turngroup::-webkit-scrollbar-thumb { background: var(--line); border-radius: 3px; }
+        .turngroup::-webkit-scrollbar-thumb:hover { background: var(--fg-dim); }
+        .turnhead {
+            display: flex; align-items: baseline; gap: 10px;
+            padding: 4px 10px;
+            background: linear-gradient(90deg, rgba(255,90,54,.14), transparent 55%);
+            border-bottom: 1px solid var(--line);
+            position: sticky; left: 0;
+        }
+        .turnhead .t { font-family: var(--font-num); color: var(--ember); font-size: 13px; }
+        .turnhead .tsum { margin-left: auto; font-family: var(--font-num); color: var(--gold); font-size: 13px; }
+        .turnhead .tsum .u { color: var(--fg-dim); font-size: 10px; margin-left: 3px; }
+        .actrow {
+            display: grid;
+            grid-template-columns: 64px minmax(110px, 165px) 175px auto;
+            gap: 8px; align-items: center;
+            padding: 4px 10px; font-size: 12px;
+            border-bottom: 1px solid rgba(52,57,69,.45);
+            background: var(--ink-3);
+            width: max-content; min-width: 100%;
+        }
+        .turngroup .actrow:last-child { border-bottom: none; }
+        .actrow.od { box-shadow: inset 3px 0 0 var(--gold); }
+        .actrow.weakhit { box-shadow: inset 3px 0 0 var(--weak); }
+        .actrow .nm { font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .actrow .nm .tsui { color: var(--fg-dim); font-weight: 400; font-size: 11px; }
+        .actrow .a { color: var(--fg-dim); font-size: 11px; white-space: nowrap; }
+        .actrow .a .flags { color: var(--weak); margin-left: 4px; font-weight: 700; }
+        .actrow .calc { font-family: var(--font-num); color: var(--cyan); white-space: nowrap; }
+        .actrow .calc .h { color: var(--gold); }
+        .actrow .calc .dmg-v { color: var(--gold); font-weight: 600; }
+        .actrow .efs { white-space: nowrap; }
+        .actrow .efchip { white-space: nowrap; }
+        @media (max-width: 700px) {
+            .actrow { grid-template-columns: 56px minmax(90px, 1fr) auto; }
+            .actrow .efs { grid-column: 1 / -1; padding-left: 4px; }
+        }
+        .efchip {
+            display: inline-block; font-size: 11px; border-radius: 10px;
+            padding: 0 8px; margin: 1px 2px;
+            background: rgba(87, 199, 206, .12); color: var(--cyan); border: 1px solid rgba(87,199,206,.4);
+        }
+        .efchip.wasted {
+            background: rgba(154,152,144,.08); color: var(--fg-dim);
+            border-style: dashed; text-decoration: line-through;
+        }
+        .efchip.weakcond { color: var(--weak); border-color: rgba(255,138,101,.5); background: rgba(255,138,101,.1); }
+
+        /* ===== パーティシミュレーター（縦カード型）===== */
+        #slots {
+            display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px;
+        }
+        .slot {
+            display: flex; flex-direction: column;
+            border: 1px solid var(--line); border-radius: 5px;
+            background: var(--ink-3); overflow: hidden; position: relative;
+            min-width: 0;
+        }
+        .slot.empty {
+            border-style: dashed; color: var(--fg-dim);
+            align-items: center; justify-content: center; min-height: 150px;
+            font-size: 12px; text-align: center; cursor: default;
+        }
+        .slot.empty .pos { position: static; background: none; box-shadow: none; margin-bottom: 4px; }
+        /* カードヘッダー: 縦キャラ絵（背景つき・全体表示） */
+        .slot .card-head {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background: #333 url(https://romasagatool.com/img/bg_styleback_ss.jpg) repeat-y;
+            background-size: contain;
+        }
+        .slot .char-img {
+            max-width: 100%; max-height: 100%; object-fit: contain; object-position: center;
+            display: block;
+        }
+        .slot .pos {
+            position: absolute; top: 3px; left: 3px; z-index: 2;
+            font-family: var(--font-num); font-size: 13px; color: #fff;
+            background: var(--ember-dim); border: 1px solid var(--ember);
+            width: 19px; height: 19px; line-height: 17px; text-align: center; border-radius: 3px;
+            box-shadow: 0 0 6px rgba(255,90,54,.4);
+        }
+        .slot .rare-icon { position: absolute; top: 2px; right: 2px; width: 26px; height: 26px; z-index: 2; }
+        .slot .del-btn {
+            position: absolute; bottom: 2px; right: 2px; z-index: 2;
+            width: 20px; height: 20px; line-height: 18px; text-align: center;
+            background: rgba(20,22,27,.8); border: 1px solid var(--line); border-radius: 3px;
+            color: var(--fg-dim); cursor: pointer; font-size: 11px; padding: 0;
+        }
+        .slot .del-btn:hover { color: var(--ember); border-color: var(--ember); }
+        .slot .move-btns { position: absolute; bottom: 2px; left: 2px; z-index: 2; display: flex; gap: 2px; }
+        .slot .move-btns button {
+            width: 18px; height: 18px; line-height: 16px; text-align: center; padding: 0;
+            background: rgba(20,22,27,.8); border: 1px solid var(--line); border-radius: 3px;
+            color: var(--fg-dim); cursor: pointer; font-size: 10px;
+        }
+        .slot .move-btns button:hover { color: var(--fg); border-color: var(--fg-dim); }
+        /* カードボディ */
+        .slot .card-body { padding: 4px 5px 5px; display: flex; flex-direction: column; gap: 3px; }
+        .slot .nm-row { display: flex; align-items: center; gap: 3px; }
+        .slot .wp-icon { width: 14px; height: 14px; flex-shrink: 0; }
+        .slot .nm { font-size: 11px; font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .slot .score-row {
+            display: flex; align-items: baseline; justify-content: center; gap: 3px;
+            background: var(--ink); border-radius: 3px; padding: 2px 4px;
+        }
+        .slot .score-row .v { font-family: var(--font-num); color: var(--gold); font-size: 15px; font-weight: 600; }
+        .slot .score-row .v.zeroed { color: var(--fg-dim); text-decoration: line-through; opacity: .6; }
+        .slot .score-row .u { font-size: 9px; color: var(--fg-dim); }
+        .slot .zero-btn {
+            margin-left: auto; font-size: 9px; line-height: 1; padding: 3px 5px; cursor: pointer;
+            border-radius: 3px; border: 1px solid var(--line); background: transparent; color: var(--fg-dim);
+            white-space: nowrap; align-self: center;
+        }
+        .slot .zero-btn:hover { border-color: var(--cyan); color: var(--cyan); }
+        .slot .zero-btn.on { background: rgba(87,199,206,.18); border-color: var(--cyan); color: var(--cyan); font-weight: 700; }
+        .slot .tags { display: flex; flex-wrap: wrap; gap: 2px; justify-content: center; min-height: 2px; }
+        .slot .plan-txt { font-size: 9px; color: var(--cyan); text-align: center; line-height: 1.3; word-break: break-all; }
+        @media (max-width: 560px) {
+            #slots { grid-template-columns: repeat(5, 1fr); }
+            .slot .nm { font-size: 9px; }
+        }
+        #partyTotal {
+            text-align: center; padding: 12px;
+            border: 1px solid var(--ember-dim); border-radius: 6px;
+            background: radial-gradient(ellipse at 50% 120%, rgba(255,90,54,.18), transparent 70%);
+            margin-bottom: 12px;
+        }
+        #partyTotal .v {
+            font-family: var(--font-num); font-size: 34px; font-weight: 600;
+            color: var(--gold); letter-spacing: .03em; line-height: 1.2;
+            text-shadow: 0 0 18px rgba(255, 201, 77, .35);
+        }
+        #partyTotal .u { font-size: 11px; color: var(--fg-dim); letter-spacing: .15em; }
+        #partyDetailBtn { margin-top: 6px; }
+        .ghost-btn {
+            background: none; border: 1px solid var(--line); color: var(--fg-dim);
+            border-radius: 4px; padding: 3px 12px; cursor: pointer; font-family: var(--font-body); font-size: 12px;
+        }
+        .ghost-btn:hover { color: var(--fg); border-color: var(--fg-dim); }
+
+        /* サポーターランキング */
+        #supList { max-height: 480px; overflow-y: auto; }
+        .sup-row {
+            display: flex; align-items: center; gap: 8px;
+            padding: 6px 8px; border-bottom: 1px solid rgba(52,57,69,.5);
+            cursor: pointer; transition: background .1s;
+        }
+        .sup-row:hover { background: rgba(87, 199, 206, .08); }
+        .sup-row .gain { font-family: var(--font-num); color: var(--cyan); width: 70px; text-align: right; flex-shrink: 0; }
+        .sup-row .self { font-family: var(--font-num); color: var(--fg-dim); font-size: 11px; width: 64px; text-align: right; flex-shrink: 0; }
+        .sup-row .nm { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+        /* スタイルアイコン */
+        .sicon {
+            display: inline-block; vertical-align: middle;
+            background-size: contain; background-repeat: no-repeat; background-position: center;
+            border-radius: 4px; margin-right: 6px; flex-shrink: 0;
+        }
+
+        /* サポート内容の展開 */
+        .sup-detail {
+            background: var(--ink); border-bottom: 1px solid var(--line);
+            padding: 8px 12px; font-size: 12px;
+        }
+        .sup-detail-line { display: flex; gap: 8px; align-items: baseline; margin-bottom: 3px; line-height: 1.8; }
+        .sup-detail-line .lb { color: var(--ember); font-size: 11px; white-space: nowrap; flex-shrink: 0; }
+
+        /* 検索ボックス */
+        .searchbox {
+            width: 100%; background: var(--ink); border: 1px solid var(--line); border-radius: 4px;
+            color: var(--fg); padding: 6px 10px; font-family: var(--font-body); font-size: 13px;
+            margin-bottom: 8px;
+        }
+        .searchbox:focus { outline: none; border-color: var(--cyan); }
+
+        /* ローディング */
+        #loading {
+            position: fixed; inset: 0; z-index: 99;
+            background: var(--ink); display: flex; flex-direction: column;
+            align-items: center; justify-content: center; gap: 14px;
+        }
+        #loading .flame {
+            font-family: var(--font-disp); font-size: 28px; color: var(--ember);
+            animation: pulse 1.2s ease-in-out infinite;
+        }
+        @keyframes pulse { 50% { opacity: .4; transform: scale(.97); } }
+        #loading .pct { font-family: var(--font-num); color: var(--fg-dim); }
+
+        .note { font-size: 11px; color: var(--fg-dim); margin-top: 8px; }
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body>
+<div id="loading"><div class="flame">▍RAID SIMULATOR</div><div class="pct" id="loadPct">データ読込中…</div></div>
+
+<header>
+    <h1>レイドバトル<span class="x">×</span>シミュレーター</h1>
+    <span class="cap-note">DMG CAP 99,999,999 / 3 TURNS</span>
+    <span class="status" id="hdrStatus"></span>
+</header>
+
+<main>
+    <!-- 上段: ボス設定(左) + パーティ編成(右) -->
+    <div class="top-cols">
+        <section class="panel" id="bossPanel">
+            <h2>ボス設定</h2>
+            <div class="body">
+                <div class="row">
+                    <span class="lbl">弱点属性</span>
+                    <div id="weakChips"></div>
+                </div>
+                <div class="row">
+                    <span class="lbl">剛体</span>
+                    <div style="display:flex; gap:14px; flex-wrap:wrap;" id="gotaiSelects"></div>
+                </div>
+                <div class="row">
+                    <span class="lbl">HIT計算</span>
+                    <div class="mode-toggle" id="hitMode">
+                        <button data-v="avg">平均HIT</button>
+                        <button data-v="max" class="on">最大HIT</button>
+                    </div>
+                </div>
+                <div class="note" style="margin-top:4px;">スコア = カンスト × (1 + ΣEF倍率) × 剛体残存率 をhit単位で集計</div>
+            </div>
+        </section>
+
+        <!-- パーティシミュレーター -->
+        <section class="panel">
+            <h2>パーティ編成（1番が先頭）</h2>
+            <div class="body">
+                <div class="party-inner">
+                    <div id="slots"></div>
+                    <div class="party-right">
+                        <div id="partyTotal">
+                            <div class="v" id="totalVal">0億</div>
+                            <div class="u">TOTAL DAMAGE（億）</div>
+                            <button class="ghost-btn" id="partyDetailBtn">パーティ明細を表示</button>
+                        </div>
+                        <div id="partyDetail" class="hidden" style="margin-top:10px;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 自由選択（ランキング上部） -->
+    <section class="panel">
+        <h2>自由選択 <span style="font-family:var(--font-body);font-size:11px;color:var(--fg-dim);">全スタイルから検索して編成へ</span></h2>
+        <div class="body">
+            <input type="text" class="searchbox" id="freeSearch" placeholder="キャラ名・スタイル名で検索…" style="margin-bottom:0;">
+            <div id="freeList" style="max-height:200px; overflow-y:auto; margin-top:8px;"></div>
+        </div>
+    </section>
+
+    <!-- ランキング横並び -->
+    <div class="cols">
+        <!-- アタッカーランキング -->
+        <section class="panel">
+            <h2>アタッカーランキング <span style="font-family:var(--font-body);font-size:11px;color:var(--fg-dim);">行クリックで明細 / ▶で編成へ</span></h2>
+            <div class="body" style="padding:8px 10px; overflow-x:auto;">
+                <table class="rank" id="rankTable">
+                    <thead>
+                    <tr>
+                        <th></th><th>スタイル</th>
+                        <th class="num">スコア(億)</th>
+                        <th class="num">HIT</th>
+                        <th class="num">行動</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- サポーターランキング -->
+        <section class="panel">
+            <h2>サポーターランキング <span style="font-family:var(--font-body);font-size:11px;color:var(--fg-dim);">支援効果順 / 行クリックで内容 / ▶で編成へ</span></h2>
+            <div class="body">
+                <input type="text" class="searchbox" id="supSearch" placeholder="キャラ名で絞り込み…">
+                <div style="display:flex; gap:14px; font-size:11px; color:var(--fg-dim); padding:0 8px 4px;">
+                    <span style="width:70px; text-align:right;">支援効果</span>
+                    <span style="width:64px; text-align:right;">自前火力</span>
+                    <span>スタイル</span>
+                </div>
+                <div id="supList"></div>
+                <div class="note">支援効果 = このスタイルを入れた時の「他メンバー」のスコア増分。自前火力 = 本人の攻撃分</div>
+            </div>
+        </section>
+    </div>
+</main>
+
+<script src="./js/raid_engine.js?v=20260608j"></script>
+<script src="./js/raid.js?v=20260608j"></script>
+</body>
+</html>
