@@ -174,6 +174,91 @@
 
 
         </style>
+        <style>
+        /* ===== フィルタUI改修 (fm-*) ===== */
+        /* 攻撃回数スライダー */
+        .fm-range { max-width: 560px; margin: 0 auto; }
+        .fm-range-readout { text-align: center; font-size: 14px; margin-bottom: 4px; }
+        .fm-range-readout b { font-size: 21px; color: #7a4a12; }
+        .fm-range-note { font-size: 11px; color: #999; margin-left: 8px; }
+        .fm-range-track { position: relative; height: 28px; }
+        .fm-range-track::before {
+            content: ""; position: absolute; top: 11px; left: 0; right: 0;
+            height: 6px; border-radius: 3px; background: #ded4b8;
+        }
+        .fm-range-fill { position: absolute; top: 11px; height: 6px; border-radius: 3px;
+            background: linear-gradient(90deg, #c89b3c, #8a5a1a); }
+        .fm-range-track input[type=range] {
+            position: absolute; left: 0; top: 0; width: 100%; height: 28px; margin: 0;
+            background: none; -webkit-appearance: none; appearance: none; pointer-events: none;
+        }
+        .fm-range-track input[type=range]:focus { outline: none; }
+        .fm-range-track input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none; pointer-events: auto;
+            width: 22px; height: 22px; border-radius: 50%;
+            background: #fffbe8; border: 3px solid #8a5a1a;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, .4); cursor: grab; margin-top: 3px;
+        }
+        .fm-range-track input[type=range]::-moz-range-thumb {
+            pointer-events: auto; width: 18px; height: 18px; border-radius: 50%;
+            background: #fffbe8; border: 3px solid #8a5a1a; cursor: grab;
+        }
+        .fm-range-scale { display: flex; justify-content: space-between;
+            font-size: 10px; color: #9a8a72; padding: 0 8px; }
+
+        /* 攻撃面/防御面の強化グループ */
+        .fm-group-cell { padding: 8px 12px; }
+        .fm-group-toggle {
+            width: 100%; display: flex; align-items: center; gap: 8px;
+            background: #fdf9ec; border: 1px solid #c9b98a; border-radius: 8px;
+            padding: 9px 14px; font-size: 13px; color: #5a4a28;
+            cursor: pointer; text-align: left;
+        }
+        .fm-group-toggle:hover { background: #f5edd6; }
+        .fm-group-arrow { margin-left: auto; transition: transform .2s ease; font-style: normal; }
+        .fm-group-arrow::before { content: "▾"; color: #8a5a1a; }
+        .fm-group-toggle.open .fm-group-arrow { transform: rotate(180deg); }
+        .fm-group-badge { background: #8a5a1a; color: #fffbe8; border-radius: 999px;
+            font-size: 11px; padding: 2px 10px; white-space: nowrap; }
+        .fm-group-badge:empty { display: none; }
+        .fm-group-body { display: none; padding: 6px 2px 0; }
+        .fm-group-body.open { display: block; animation: fmSlide .18s ease; }
+        @keyframes fmSlide { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; } }
+        .fm-subrow { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 12px;
+            padding: 7px 4px; border-bottom: 1px dashed #d9cfb4; }
+        .fm-subrow:last-child { border-bottom: none; }
+        .fm-subrow-label { flex: 0 0 76px; font-size: 11px; color: #fff;
+            background: #9a8a5a; border-radius: 4px; text-align: center; padding: 3px 0; }
+
+        /* 技・術の効果エリア */
+        .fm-eff-area { margin: 8px 0; }
+        /* サブフィルタ グループ（横並び） */
+        .fm-eff-grp { margin-bottom: 10px; }
+        .fm-eff-grp-label {
+            font-size: 12px; font-weight: bold; color: #fffbe8; background: #6a5424;
+            border-left: 6px solid #d4af37; padding: 5px 12px; border-radius: 4px;
+            letter-spacing: .08em; margin-bottom: 8px;
+        }
+        .fm-eff-grp:nth-child(2) .fm-eff-grp-label { border-left-color: #b05a2d; background: #7a4220; }
+        .fm-eff-grp:nth-child(3) .fm-eff-grp-label { border-left-color: #3f8aa8; background: #245060; }
+        .fm-eff-chips { display: flex; flex-wrap: wrap; gap: 8px; padding: 0 4px; }
+        .fm-eff-chip { display: inline-flex; align-items: center; gap: 6px;
+            border: 1px solid #c9b98a; background: #fff; border-radius: 999px;
+            padding: 5px 14px; font-size: 13px; color: #4a3a18; cursor: pointer;
+            transition: border-color .12s ease, background .12s ease; white-space: nowrap; }
+        .fm-eff-chip:hover { border-color: #8a5a1a; background: #fdf6e6; }
+        .fm-eff-chip .series-button { background: #ece2c4; color: #6a5424;
+            border-radius: 999px; padding: 0 8px; font-size: 11px; }
+        .fm-eff-chip.filterActive { background: #8a5a1a !important; border-color: #6a4310 !important; color: #fffbe8 !important; }
+        .fm-eff-chip.filterActive .series-button { background: #fffbe8; color: #6a5424; }
+        /* 3段目サブ変種 */
+        .fm-eff-subrow { display: flex; flex-wrap: wrap; align-items: center; gap: 6px;
+            width: 100%; padding: 6px 4px 8px 18px; margin: 2px 0 4px;
+            border-left: 3px solid #c9b98a; background: rgba(201,185,138,.12); border-radius: 0 8px 8px 0; }
+        .fm-eff-subarrow { font-size: 11px; color: #6a5424; font-weight: 600; }
+        .fm-eff-chip.fm-eff-subchip { padding: 3px 11px; font-size: 12px; background: #fffdf4; }
+        .fm-eff-chip.fm-eff-subchip.filterActive { background: #b07a2a !important; }
+    </style>
     </head>
     <body>
         <div class="dojohaikei"><div class="container">
@@ -294,6 +379,11 @@
                             <a class="_FilterLink small" data-href="skill_bp" data-col="HealTypeBP"><img src="https://romasagatool.com/img/icon/bp.png" class="img-icon">BP回復 <span class="series-button" id="count_skill_bp">...</span></a>
                             <a class="_FilterLink small" data-href="skill_ijo" data-col="HealTypeBad"><img src="https://romasagatool.com/img/icon/red-cross.png" class="img-icon">状態異常回復 <span class="series-button" id="count_skill_ijo">...</span></a>
                         </li>
+                        <li class="col-12 col-sm-2 table-success char-bottom">行動順</li>
+                        <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom">
+                            <a class="_FilterLink  small" data-href="skill_fast" data-col="FastDelay"><img src="https://romasagatool.com/img/icon/fast.png" class="img-icon">ファスト <span class="series-button" id="count_skill_fast">...</span></a>
+                            <a class="_FilterLink  small" data-href="skill_delay" data-col="FastDelay"><img src="https://romasagatool.com/img/icon/delay.png" class="img-icon">ディレイ <span class="series-button" id="count_skill_delay">...</span></a>
+                        </li>
 
                         <li class="col-12  label-text-small">攻撃範囲・対象</li>
                         <li class="col-12 col-sm-2 table-info">攻撃範囲</li>
@@ -315,50 +405,70 @@
                             <a class="_FilterLink small" data-href="skill_kin" data-col="AttackDistance">近距離 <span class="series-button" id="count_skill_kin">...</span></a>
                             <a class="_FilterLink small" data-href="skill_en" data-col="AttackDistance">遠距離 <span class="series-button" id="count_skill_en">...</span></a>
                         </li>
-                        <li class="col-12 col-sm-2 table-success char-bottom">攻撃回数(最小)</li>
-                        <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom">
-                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_min_time_1" data-col="MinActionTime"><span style="font-family:arial black; font-size:15px">1回</span><br><span class="series-button" id="count_skill_min_time_1"></span></a>
-                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_min_time_2" data-col="MinActionTime"><span style="font-family:arial black; font-size:15px">2回</span><br><span class="series-button" id="count_skill_min_time_2"></span></a>
-                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_min_time_3" data-col="MinActionTime"><span style="font-family:arial black; font-size:15px">3回</span><br><span class="series-button" id="count_skill_min_time_3"></span></a>
-                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_min_time_4" data-col="MinActionTime"><span style="font-family:arial black; font-size:15px">4回</span><br><span class="series-button" id="count_skill_min_time_4"></span></a>
-                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_min_time_5" data-col="MinActionTime"><span style="font-family:arial black; font-size:15px">5回</span><br><span class="series-button" id="count_skill_min_time_5"></span></a>
-                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_min_time_6" data-col="MinActionTime"><span style="font-family:arial black; font-size:15px">6回</span><br><span class="series-button" id="count_skill_min_time_6"></span></a>
-                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_min_time_7" data-col="MinActionTime"><span style="font-family:arial black; font-size:15px">7回</span><br><span class="series-button" id="count_skill_min_time_7"></span></a>
-                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_min_time_8" data-col="MinActionTime"><span style="font-family:arial black; font-size:15px">8回</span><br><span class="series-button" id="count_skill_min_time_8"></span></a>
-                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_min_time_10" data-col="MinActionTime"><span style="font-family:arial black; font-size:15px">10回</span><br><span class="series-button" id="count_skill_min_time_10"></span></a>
-                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_min_time_12" data-col="MinActionTime"><span style="font-family:arial black; font-size:15px">12回</span><br><span class="series-button" id="count_skill_min_time_12"></span></a>
-                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_min_time_15" data-col="MinActionTime"><span style="font-family:arial black; font-size:15px">15回</span><br><span class="series-button" id="count_skill_min_time_15"></span></a>
-                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_min_time_16" data-col="MinActionTime"><span style="font-family:arial black; font-size:15px">16回</span><br><span class="series-button" id="count_skill_min_time_16"></span></a>
-                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_min_time_20" data-col="MinActionTime"><span style="font-family:arial black; font-size:15px">20回</span><br><span class="series-button" id="count_skill_min_time_20"></span></a>
-                        </li>
-                        <li class="col-12 col-sm-2 table-info char-bottom">攻撃回数(最大)</li>
-                        <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom">
-                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_max_time_1" data-col="MaxActionTime"><span style="font-family:arial black; font-size:15px">1回</span><br><span class="series-button" id="count_skill_max_time_1"></span></a>
-                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_max_time_2" data-col="MaxActionTime"><span style="font-family:arial black; font-size:15px">2回</span><br><span class="series-button" id="count_skill_max_time_2"></span></a>
-                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_max_time_3" data-col="MaxActionTime"><span style="font-family:arial black; font-size:15px">3回</span><br><span class="series-button" id="count_skill_max_time_3"></span></a>
-                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_max_time_4" data-col="MaxActionTime"><span style="font-family:arial black; font-size:15px">4回</span><br><span class="series-button" id="count_skill_max_time_4"></span></a>
-                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_max_time_5" data-col="MaxActionTime"><span style="font-family:arial black; font-size:15px">5回</span><br><span class="series-button" id="count_skill_max_time_5"></span></a>
-                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_max_time_6" data-col="MaxActionTime"><span style="font-family:arial black; font-size:15px">6回</span><br><span class="series-button" id="count_skill_max_time_6"></span></a>
-                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_max_time_7" data-col="MaxActionTime"><span style="font-family:arial black; font-size:15px">7回</span><br><span class="series-button" id="count_skill_max_time_7"></span></a>
-                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_max_time_8" data-col="MaxActionTime"><span style="font-family:arial black; font-size:15px">8回</span><br><span class="series-button" id="count_skill_max_time_8"></span></a>
-                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_max_time_10" data-col="MaxActionTime"><span style="font-family:arial black; font-size:15px">10回</span><br><span class="series-button" id="count_skill_max_time_10"></span></a>
-                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_max_time_12" data-col="MaxActionTime"><span style="font-family:arial black; font-size:15px">12回</span><br><span class="series-button" id="count_skill_max_time_12"></span></a>
-                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_max_time_15" data-col="MaxActionTime"><span style="font-family:arial black; font-size:15px">15回</span><br><span class="series-button" id="count_skill_max_time_15"></span></a>
-                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_max_time_16" data-col="MaxActionTime"><span style="font-family:arial black; font-size:15px">16回</span><br><span class="series-button" id="count_skill_max_time_16"></span></a>
-                            <a class="_FilterLink pad0 d-inline-block" data-href="skill_max_time_20" data-col="MaxActionTime"><span style="font-family:arial black; font-size:15px">20回</span><br><span class="series-button" id="count_skill_max_time_20"></span></a>
+                        <li class="col-12 col-sm-2 table-success char-bottom">攻撃回数</li>
+                        <li class="col-12 col-sm-10 char-bottom" style="padding: 12px 25px;">
+                            <div class="fm-range">
+                                <div class="fm-range-readout"><b id="fmTimeMinDisp">1</b>回 〜 <b id="fmTimeMaxDisp">20</b>回<span class="fm-range-note" id="fmTimeNote">（指定なし）</span></div>
+                                <div class="fm-range-track">
+                                    <div class="fm-range-fill" id="fmTimeFill"></div>
+                                    <input type="range" id="fmTimeLo" min="1" max="20" value="1" step="1" aria-label="攻撃回数の下限">
+                                    <input type="range" id="fmTimeHi" min="1" max="20" value="20" step="1" aria-label="攻撃回数の上限">
+                                </div>
+                                <div class="fm-range-scale"><span>1</span><span>5</span><span>10</span><span>15</span><span>20</span></div>
+                            </div>
                         </li>
 
                                                 
 
-                        <li class="col-12 label-text-small">能力変化</li>
-                        <li class="col-12 col-sm-2 table-success char-bottom">能力変化対象</li>
-                        <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom">
-                            <a class="_FilterLink small d-inline-block" data-href="skill_buf_tantai" data-col="BuffArea"><span class="char-single-attack-mini dot_jiny dot dot_mini" id="icon_buf_oneSkill"></span><br>　単体<span class="series-button" id="count_skill_buf_tantai">...</span></a>
-                            <a class="_FilterLink small d-inline-block" data-href="skill_buf_zentai" data-col="BuffArea"><span class="char-eisho-mini dot_bunei dot dot_mini" id="icon_buf_allSkill"></span><br>　全体<span class="series-button" id="count_skill_buf_zentai">...</span></a>
+                        <li class="col-12  label-text-small">ダメージに関わる効果</li>
+                        <li class="col-12 col-sm-2 table-success char-bottom" style="line-height: 1.2rem;">攻撃面の強化</li>
+                        <li class="col-12 col-sm-10 char-bottom">
+                            <a class="_FilterLink small" data-href="skill_atk_group" data-col="ATK_GROUP">ダメージアップ系 <span class="series-button" id="count_skill_atk_group">...</span></a>
                         </li>
-                        
+                        <!-- 攻撃強化サブフィルタ：効果エリアに動的表示するためのテンプレ（非表示） -->
+                        <div class="d-none" id="atkSubTmpl">
+                            <a class="_FilterLink small" data-href="skill_AttackUp" data-col="ATR-UP">攻撃強化 <span class="series-button" id="count_skill_AttackUp">...</span></a>
+                            <a class="_FilterLink small" data-href="skill_XAttackUp" data-col="ATR-UP">X属性攻撃強化 <span class="series-button" id="count_skill_XAttackUp">...</span></a>
+                            <a class="_FilterLink small" data-href="skill_WeakPoint" data-col="ATR-UP">ウィークポイント(X/防御弱化) <span class="series-button" id="count_skill_WeakPoint">...</span></a>
+                            <a class="_FilterLink small" data-href="skill_ODAttackUp" data-col="ATR-UP">OD攻撃強化 <span class="series-button" id="count_skill_ODAttackUp">...</span></a>
+                            <a class="_FilterLink small" data-href="skill_DefenceDown" data-col="ENEMY-DOWN">防御弱化 <span class="series-button" id="count_skill_DefenceDown">...</span></a>
+                            <a class="_FilterLink small" data-href="skill_XDefenceDown" data-col="ENEMY-DOWN">属性防御弱化 <span class="series-button" id="count_skill_XDefenceDown">...</span></a>
+                            <a class="_FilterLink small" data-href="skill_MoralUp" data-col="ATR-UP">モラルアップ <span class="series-button" id="count_skill_MoralUp">...</span></a>
+                            <a class="_FilterLink small" data-href="skill_GuardDown" data-col="ENEMY-DOWN">ガードダウン <span class="series-button" id="count_skill_GuardDown">...</span></a>
+                            <a class="_FilterLink small" data-href="skill_Extra" data-col="ATR-UP">エクストラフォース <span class="series-button" id="count_skill_Extra">...</span></a>
+                            <a class="_FilterLink small" data-href="skill_HeatUp" data-col="ATR-UP">ヒートアップ <span class="series-button" id="count_skill_HeatUp">...</span></a>
+                            <a class="_FilterLink small" data-href="skill_DefDown" data-col="ENEMY-DOWN">ディフェンスダウン <span class="series-button" id="count_skill_DefDown">...</span></a>
+                            <a class="_FilterLink small" data-href="skill_own_damage_up" data-col="ENEMY-DOWN">被ダメージ増加 <span class="series-button" id="count_skill_own_damage_up">...</span></a>
+                            <a class="_FilterLink small" data-href="skill_buf_tantai" data-col="BuffArea">単体 <span class="series-button" id="count_skill_buf_tantai">...</span></a>
+                            <a class="_FilterLink small" data-href="skill_buf_zentai" data-col="BuffArea">全体 <span class="series-button" id="count_skill_buf_zentai">...</span></a>
+                        </div>
+                        <li class="col-12 col-sm-2 table-info char-bottom" style="line-height: 1.2rem;">防御面の強化</li>
+                        <li class="col-12 col-sm-10 char-bottom">
+                            <a class="_FilterLink small" data-href="skill_def_group" data-col="DEF_GROUP">ダメージ軽減系 <span class="series-button" id="count_skill_def_group">...</span></a>
+                        </li>
+                        <!-- ダメージ軽減系サブフィルタ：効果エリアに動的表示するためのテンプレ（非表示） -->
+                        <div class="d-none" id="defSubTmpl">
+                            <a class="_FilterLink small" data-href="skill_DefenceUp" data-col="DEF-UP">防御強化 <span class="series-button" id="count_skill_DefenceUp">...</span></a>
+                            <a class="_FilterLink small" data-href="skill_XDefenceUp" data-col="DEF-UP">属性防御強化 <span class="series-button" id="count_skill_XDefenceUp">...</span></a>
+                            <a class="_FilterLink small" data-href="skill_GuardUp" data-col="DEF-UP">ガードアップ <span class="series-button" id="count_skill_GuardUp">...</span></a>
+                            <a class="_FilterLink small" data-href="skill_DefUp" data-col="DEF-UP">ディフェンスアップ <span class="series-button" id="count_skill_DefUp">...</span></a>
+                            <a class="_FilterLink small" data-href="skill_DamageBlock" data-col="DEF-UP">ダメージブロック <span class="series-button" id="count_skill_DamageBlock">...</span></a>
+                            <a class="_FilterLink small" data-href="skill_Deflect" data-col="DEF-UP">回避 <span class="series-button" id="count_skill_Deflect">...</span></a>
+                            <a class="_FilterLink small" data-href="skill_Kabau" data-col="DEF-UP">かばう <span class="series-button" id="count_skill_Kabau">...</span></a>
+                            <a class="_FilterLink small" data-href="skill_Wall" data-col="DEF-UP">ウォール <span class="series-button" id="count_skill_Wall">...</span></a>
+                            <a class="_FilterLink small" data-href="skill_MagicShield" data-col="DEF-UP">魔法盾 <span class="series-button" id="count_skill_MagicShield">...</span></a>
+                            <a class="_FilterLink small" data-href="skill_DefStance" data-col="DEF-UP">防御態勢 <span class="series-button" id="count_skill_DefStance">...</span></a>
+                            <a class="_FilterLink small" data-href="skill_DmgNullify" data-col="DEF-UP">ダメージ無効 <span class="series-button" id="count_skill_DmgNullify">...</span></a>
+                            <a class="_FilterLink small" data-href="skill_AttackDown" data-col="ENEMY-DOWN">攻撃弱化 <span class="series-button" id="count_skill_AttackDown">...</span></a>
+                            <a class="_FilterLink small" data-href="skill_MoralDown" data-col="ENEMY-DOWN">モラルダウン <span class="series-button" id="count_skill_MoralDown">...</span></a>
+                            <a class="_FilterLink small" data-href="skill_HeatDown" data-col="ENEMY-DOWN">ヒートダウン <span class="series-button" id="count_skill_HeatDown">...</span></a>
+                            <a class="_FilterLink small" data-href="skill_DefSkill" data-col="DefStanceSub">防御態勢(技) <span class="series-button" id="count_skill_DefSkill">...</span></a>
+                            <a class="_FilterLink small" data-href="skill_DefMagic" data-col="DefStanceSub">防御態勢(術) <span class="series-button" id="count_skill_DefMagic">...</span></a>
+                            <a class="_FilterLink small" data-href="skill_DefChokusetsu" data-col="DefStanceSub">防御態勢(直接) <span class="series-button" id="count_skill_DefChokusetsu">...</span></a>
+                            <a class="_FilterLink small" data-href="skill_DefKansetsu" data-col="DefStanceSub">防御態勢(間接) <span class="series-button" id="count_skill_DefKansetsu">...</span></a>
+                        </div>
 
-
+                        <li class="col-12  label-text-small">能力変化（ステータス）</li>
                         <li class="col-12 col-sm-2 table-success char-bottom">バフ</li>
                         <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom">
                             <a class="_FilterLink pad0 d-inline-block" data-href="skill_buf_wan" data-col="Buff"><span class="withLabel icon_mini_zokusei icon_buff_str"><span class="series-button" id="count_skill_buf_wan">...</span></span></a>
@@ -370,54 +480,6 @@
                             <a class="_FilterLink pad0 d-inline-block" data-href="skill_buf_ai" data-col="Buff"><span class="withLabel icon_mini_zokusei icon_buff_ai"><span class="series-button" id="count_skill_buf_ai">...</span></span></a>
                             <a class="_FilterLink pad0 d-inline-block" data-href="skill_buf_mi" data-col="Buff"><span class="withLabel icon_mini_zokusei icon_buff_mi"><span class="series-button" id="count_skill_buf_mi">...</span></span></a>
                         </li>
-                        <li class="col-12 col-sm-2 table-info char-bottom" style="line-height: 1.2rem;">状態異常<br>耐性アップ</li>
-                        <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom align-center">
-                            <a class="_FilterLink  small" data-href="skill_ail_up_all" data-col="AilUp">全て <span class="series-button" id="count_skill_ail_up_all">...</span></a>
-                        </li>
-
-                        <li class="col-12 col-sm-2 table-success char-bottom" style="line-height: 1.2rem;">攻撃面の強化<br class="hidden pcBlock">(累積あり)</li>
-                        <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom" style="flex-wrap: wrap; align-items: center;">
-                            <a class="_FilterLink  small" data-href="skill_AttackUp" data-col="ATR-UP">攻撃強化 <span class="series-button" id="count_skill_AttackUp">...</span></a>
-                            <a class="_FilterLink  small" data-href="skill_XAttackUp" data-col="ATR-UP">X属性攻撃強化 <span class="series-button" id="count_skill_XAttackUp">...</span></a>
-                            <a class="_FilterLink  small" data-href="skill_WeakPoint" data-col="ATR-UP">ウィークポイント(X/防御弱化) <span class="series-button" id="count_skill_WeakPoint">...</span></a>
-                            <a class="_FilterLink  small" data-href="skill_ODAttackUp" data-col="ATR-UP">OD攻撃強化 <span class="series-button" id="count_skill_ODAttackUp">...</span></a>
-                            <a class="_FilterLink  small" data-href="skill_DefenceDown" data-col="ENEMY-DOWN">防御弱化 <span class="series-button" id="count_skill_DefenceDown">...</span></a>
-                        <li class="col-12 col-sm-2 table-success char-bottom" style="line-height: 1.2rem;">攻撃面の強化<br class="hidden pcBlock">(累積なし)</li>
-                        <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom" style="flex-wrap: wrap; align-items: center;">
-                            <a class="_FilterLink  small" data-href="skill_MoralUp" data-col="ATR-UP">モラルアップ <span class="series-button" id="count_skill_MoralUp">...</span></a>
-                            <a class="_FilterLink  small" data-href="skill_GuardDown" data-col="ENEMY-DOWN">ガードダウン <span class="series-button" id="count_skill_GuardDown">...</span></a>
-                            <a class="_FilterLink  small" data-href="skill_Extra" data-col="ATR-UP">エクストラフォース <span class="series-button" id="count_skill_Extra">...</span></a>
-                        <li class="col-12 col-sm-2 table-success char-bottom" style="line-height: 1.2rem;">攻撃面の強化<br class="hidden pcBlock">(永続)</li>
-                        <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom" style="flex-wrap: wrap; align-items: center;">
-                            <a class="_FilterLink  small" data-href="skill_HeatUp" data-col="ATR-UP">ヒートアップ <span class="series-button" id="count_skill_HeatUp">...</span></a>
-                            <a class="_FilterLink  small" data-href="skill_DefDown" data-col="ENEMY-DOWN">ディフェンスダウン <span class="series-button" id="count_skill_DefDown">...</span></a>                        
-                        <li class="col-12 col-sm-2 table-info char-bottom" style="line-height: 1.2rem;">防御面の強化<br class="hidden pcBlock">(累積あり)</li>
-                        <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom" style="flex-wrap: wrap; align-items: center;">
-                            <a class="_FilterLink  small" data-href="skill_DefenceUp" data-col="DEF-UP">防御強化 <span class="series-button" id="count_skill_DefenceUp">...</span></a>
-                            <a class="_FilterLink  small" data-href="skill_AttackDown" data-col="ENEMY-DOWN">攻撃弱化 <span class="series-button" id="count_skill_AttackDown">...</span></a>
-                        </li>
-                        <li class="col-12 col-sm-2 table-info char-bottom" style="line-height: 1.2rem;">防御面の強化<br class="hidden pcBlock">(累積なし)</li>
-                        <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom" style="flex-wrap: wrap; align-items: center;">
-                            <a class="_FilterLink  small" data-href="skill_GuardUp" data-col="DEF-UP">ガードアップ <span class="series-button" id="count_skill_GuardUp">...</span></a>
-                            <a class="_FilterLink  small" data-href="skill_MoralDown" data-col="ENEMY-DOWN">モラルダウン <span class="series-button" id="count_skill_MoralDown">...</span></a>
-                            <a class="_FilterLink  small" data-href="skill_Wall" data-col="DEF-UP">ウォール <span class="series-button" id="count_skill_Wall">...</span></a>
-                            <a class="_FilterLink  small" data-href="skill_MagicShield" data-col="DEF-UP">魔法盾 <span class="series-button" id="count_skill_MagicShield">...</span></a>
-                            <div class="width-100"></div>
-                            <a class="_FilterLink  small" data-href="skill_DefSkill" data-col="DEF-UP">防御態勢(技) <span class="series-button" id="count_skill_DefSkill">...</span></a>
-                            <a class="_FilterLink  small" data-href="skill_DefMagic" data-col="DEF-UP">防御態勢(術) <span class="series-button" id="count_skill_DefMagic">...</span></a>
-                            <a class="_FilterLink  small" data-href="skill_DefChokusetsu" data-col="DEF-UP">防御態勢(直接) <span class="series-button" id="count_skill_DefChokusetsu">...</span></a>                            
-                            <a class="_FilterLink  small" data-href="skill_DefKansetsu" data-col="DEF-UP">防御態勢(間接) <span class="series-button" id="count_skill_DefKansetsu">...</span></a>                            
-                            <div class="width-100"></div>
-                            <a class="_FilterLink  small" data-href="skill_Deflect" data-col="DEF-UP">回避 <span class="series-button" id="count_skill_Deflect">...</span></a>
-                            <a class="_FilterLink  small" data-href="skill_DamageBlock" data-col="DEF-UP">ダメージブロック <span class="series-button" id="count_skill_DamageBlock">...</span></a>
-                            <a class="_FilterLink  small" data-href="skill_Kabau" data-col="DEF-UP">かばう <span class="series-button" id="count_skill_Kabau">...</span></a>
-                        </li>
-                        <li class="col-12 col-sm-2 table-info char-bottom" style="line-height: 1.2rem;">防御面の強化<br class="hidden pcBlock">(永続)</li>
-                        <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom" style="flex-wrap: wrap; align-items: center;">
-                            <a class="_FilterLink  small" data-href="skill_DefUp" data-col="DEF-UP">ディフェンスアップ <span class="series-button" id="count_skill_DefUp">...</span></a>
-                            <a class="_FilterLink  small" data-href="skill_HeatDown" data-col="ENEMY-DOWN">ヒートダウン <span class="series-button" id="count_skill_HeatDown">...</span></a>
-                        </li>
-
                         <li class="col-12 col-sm-2 table-danger char-bottom">デバフ</li>
                         <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom">
                             <a class="_FilterLink pad0 d-inline-block" data-href="skill_deb_wan" data-col="DeBuff"><span class="withLabel icon_mini_zokusei icon_debuff_str"><span class="series-button" id="count_skill_deb_wan">...</span></span></a>
@@ -438,20 +500,19 @@
                             <a class="_FilterLink small" data-href="skill_down" data-col="HealTypeDown"><img src="https://romasagatool.com/img/icon/debuff_cancel.png" class="img-icon">能力ダウン解除 <span class="series-button" id="count_skill_down">...</span></a>
                             <a class="_FilterLink  small" data-href="skill_Cancel" data-col="ENEMY-DOWN"><img src="https://romasagatool.com/img/icon/buff_cancel.png" class="img-icon">能力アップ解除 <span class="series-button" id="count_skill_Cancel">...</span></a>
                         </li>
+                        <li class="col-12 col-sm-2 table-info char-bottom" style="line-height: 1.2rem;">状態異常<br>耐性アップ</li>
+                        <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom align-center">
+                            <a class="_FilterLink  small" data-href="skill_ail_up_all" data-col="AilUp">全て <span class="series-button" id="count_skill_ail_up_all">...</span></a>
+                        </li>
+                        <li class="col-12  label-text-small">その他・特殊</li>
                         <li class="col-12 col-sm-2 table-success char-bottom">OD</li>
                         <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom">
                             <a class="_FilterLink  small" data-href="skill_OdGage" data-col="OD">ODゲージ増 <span class="series-button" id="count_skill_OdGage">...</span></a>
                         </li>
-                        <li class="col-12  label-text-small">いろいろ</li>
                         <li class="col-12 col-sm-2 table-info char-bottom">練達</li>
                         <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom">
                             <a class="_FilterLink  small" data-href="skill_rentatsu" data-col="Rentatsu">練達 <span class="series-button" id="count_skill_rentatsu">...</span></a>
                             <a class="_FilterLink  small" data-href="skill_can_rentatsu" data-col="Rentatsu">練達可能 <span class="series-button" id="count_skill_can_rentatsu">...</span></a>
-                        </li>
-                        <li class="col-12 col-sm-2 table-success char-bottom">行動順</li>
-                        <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom">
-                            <a class="_FilterLink  small" data-href="skill_fast" data-col="FastDelay"><img src="https://romasagatool.com/img/icon/fast.png" class="img-icon">ファスト <span class="series-button" id="count_skill_fast">...</span></a>
-                            <a class="_FilterLink  small" data-href="skill_delay" data-col="FastDelay"><img src="https://romasagatool.com/img/icon/delay.png" class="img-icon">ディレイ <span class="series-button" id="count_skill_delay">...</span></a>
                         </li>
                         <li class="col-12 col-sm-2 table-info char-bottom">その他</li>
                         <li class="col-12 col-sm-10 d-flex justify-content-around char-bottom">
@@ -646,16 +707,8 @@
                             </div>                        
                         </div>
                         <div class="">
-                        <div id="SKILL_EFFECT" class="text-center width-100 label-text-small">技・術の効果</div>
-                        <div id="EFFECT_FILTER_AREA" class="d-flex flex-wrap justify-content-md-center text-center text-nowrap" style="margin: 10px 0px;"></div>
-                        <div id="EFFECT_TEMPLATE" class="d-none flex-sm-column" style="line-height: 1rem; align-items: center;">
-                            <div class="label bg-item TITLE width-100" style="min-width: 70px; padding: 0.5rem 20px; line-height: 1.5rem;"></div>
-                            <div class="d-flex justify-content-center PER_AREA"></div>
-                        </div>
-                        <div id="EFFECT_PER" class="yubi SUB-FILTER d-none" style="margin: 0 5px;">
-                            <div class="label SIZE"></div>
-                            <div class="width-100 series-button"></div>
-                        </div>                        
+                        <div id="SKILL_EFFECT" class="d-none text-center width-100 label-text-small">ダメージアップ系の種類で絞り込み</div>
+                        <div id="EFFECT_FILTER_AREA" class="d-none fm-eff-area"></div>
                     </div>
                     </div>
 
@@ -701,5 +754,56 @@
         </div>
         <p id="PageTopBtn" style="right: 20px;"><a data-href="wrap"><i class="fas fa-arrow-up"></i></a></p>
         <script type="text/javascript" src="https://romasagatool.com/blog/get_the_archives.php?limit=30&callback=rssCallback" defer></script>
+            <script>
+        // ===== フィルタUI改修の配線 (fm-*) =====
+        (function () {
+            // 攻撃回数スライダー
+            var lo = document.getElementById('fmTimeLo');
+            var hi = document.getElementById('fmTimeHi');
+            var fill = document.getElementById('fmTimeFill');
+            var minDisp = document.getElementById('fmTimeMinDisp');
+            var maxDisp = document.getElementById('fmTimeMaxDisp');
+            var note = document.getElementById('fmTimeNote');
+            function pct(v) { return ((v - 1) / 19) * 100; }
+            function paint() {
+                var l = +lo.value, h = +hi.value;
+                minDisp.textContent = l;
+                maxDisp.textContent = h;
+                fill.style.left = pct(l) + '%';
+                fill.style.width = (pct(h) - pct(l)) + '%';
+                note.textContent = (l === 1 && h === 20) ? '（指定なし）' : '（回数がこの範囲に収まる技だけ表示）';
+            }
+            function commit() {
+                paint();
+                if (window.refreshSkillFilter) window.refreshSkillFilter();
+            }
+            if (lo && hi) {
+                lo.addEventListener('input', function () { if (+lo.value > +hi.value) lo.value = hi.value; paint(); });
+                hi.addEventListener('input', function () { if (+hi.value < +lo.value) hi.value = lo.value; paint(); });
+                lo.addEventListener('change', commit);
+                hi.addEventListener('change', commit);
+                paint();
+            }
+            // 攻撃面/防御面グループの開閉
+            document.querySelectorAll('.fm-group-toggle').forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    var body = document.getElementById(btn.getAttribute('data-target'));
+                    btn.classList.toggle('open');
+                    if (body) body.classList.toggle('open');
+                });
+            });
+            // グループ内の選択数バッジ
+            document.addEventListener('click', function (e) {
+                if (!e.target.closest('._FilterLink')) return;
+                setTimeout(function () {
+                    document.querySelectorAll('.fm-group-cell').forEach(function (cell) {
+                        var n = cell.querySelectorAll('._FilterLink.filterActive').length;
+                        var b = cell.querySelector('.fm-group-badge');
+                        if (b) b.textContent = n ? n + '件選択中' : '';
+                    });
+                }, 30);
+            });
+        })();
+        </script>
     </body>
 </html>
