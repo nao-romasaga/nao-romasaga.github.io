@@ -39,3 +39,6 @@ js_data_gl
 wp
 html/*
 .playwright-mcp
+
+# アーカイブ（公開停止した旧コンテンツ）
+archives/

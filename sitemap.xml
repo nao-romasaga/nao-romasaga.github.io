@@ -8,11 +8,6 @@
         <changefreq>weekly</changefreq>
     </url>
     <url>
-        <loc>https://nao-romasaga.github.io/rensei.html</loc>
-        <lastmod>2021-12-06</lastmod>
-        <changefreq>weekly</changefreq>
-    </url>
-    <url>
         <loc>https://nao-romasaga.github.io/ability.html</loc>
         <lastmod>2021-11-28</lastmod>
         <changefreq>daily</changefreq>
@@ -57,92 +52,8 @@
         <lastmod>2021-11-28</lastmod>
         <changefreq>daily</changefreq>
     </url>
-    <url>
-        <loc>https://nao-romasaga.github.io/ranking/debuff/success/str.html</loc><priority>1.0</priority><lastmod>2021-12-01</lastmod><changefreq>weekly</changefreq>
-    </url>
-    <url>
-        <loc>https://nao-romasaga.github.io/ranking/debuff/success/end.html</loc><priority>1.0</priority><lastmod>2021-12-01</lastmod><changefreq>weekly</changefreq>
-    </url>
-    <url>
-        <loc>https://nao-romasaga.github.io/ranking/debuff/success/dex.html</loc><priority>1.0</priority><lastmod>2021-12-01</lastmod><changefreq>weekly</changefreq>
-    </url>
-    <url>
-        <loc>https://nao-romasaga.github.io/ranking/debuff/success/agi.html</loc><priority>1.0</priority><lastmod>2021-12-01</lastmod><changefreq>weekly</changefreq>
-    </url>
-    <url>
-        <loc>https://nao-romasaga.github.io/ranking/debuff/success/int.html</loc><priority>1.0</priority><lastmod>2021-12-01</lastmod><changefreq>weekly</changefreq>
-    </url>
-    <url>
-        <loc>https://nao-romasaga.github.io/ranking/debuff/success/wil.html</loc><priority>1.0</priority><lastmod>2021-12-01</lastmod><changefreq>weekly</changefreq>
-    </url>
-    <url>
-        <loc>https://nao-romasaga.github.io/ranking/debuff/success/lov.html</loc><priority>1.0</priority><lastmod>2021-12-01</lastmod><changefreq>weekly</changefreq>
-    </url>
-    <url>
-        <loc>https://nao-romasaga.github.io/ranking/debuff/success/cha.html</loc><priority>1.0</priority><lastmod>2021-12-01</lastmod><changefreq>weekly</changefreq>
-    </url>
 
-    <url>
-        <loc>https://nao-romasaga.github.io/style_ailments</loc>
-        <priority>1.0</priority>
-        <lastmod>2021-11-28</lastmod>
-        <changefreq>monthly</changefreq>
-    </url>
-    <url>
-        <loc>https://nao-romasaga.github.io/ranking/ailments/success/paralysis.html</loc>
-        <priority>1.0</priority>
-        <lastmod>2021-11-28</lastmod>
-        <changefreq>weekly</changefreq>
-    </url>
 
-    <url>
-        <loc>https://nao-romasaga.github.io/ranking/ailments/success/stun.html</loc>
-        <priority>1.0</priority>
-        <lastmod>2021-11-28</lastmod>
-        <changefreq>weekly</changefreq>
-    </url>
-    <url>
-        <loc>https://nao-romasaga.github.io/ranking/ailments/success/confusion.html</loc>
-        <priority>1.0</priority>
-        <lastmod>2021-11-28</lastmod>
-        <changefreq>weekly</changefreq>
-    </url>
-    <url>
-        <loc>https://nao-romasaga.github.io/ranking/ailments/success/unconsciousness.html</loc>
-        <priority>1.0</priority>
-        <lastmod>2021-11-28</lastmod>
-        <changefreq>weekly</changefreq>
-    </url>
-    <url>
-        <loc>https://nao-romasaga.github.io/ranking/ailments/success/darkness.html</loc>
-        <priority>1.0</priority>
-        <lastmod>2021-11-28</lastmod>
-        <changefreq>weekly</changefreq>
-    </url>
-    <url>
-        <loc>https://nao-romasaga.github.io/ranking/ailments/success/charm.html</loc>
-        <priority>1.0</priority>
-        <lastmod>2021-11-28</lastmod>
-        <changefreq>weekly</changefreq>
-    </url>
-    <url>
-        <loc>https://nao-romasaga.github.io/ranking/ailments/success/poizon.html</loc>
-        <priority>1.0</priority>
-        <lastmod>2021-11-28</lastmod>
-        <changefreq>weekly</changefreq>
-    </url>
-    <url>
-        <loc>https://nao-romasaga.github.io/ranking/ailments/success/sleep.html</loc>
-        <priority>1.0</priority>
-        <lastmod>2021-11-28</lastmod>
-        <changefreq>weekly</changefreq>
-    </url>
-    <url>
-        <loc>https://nao-romasaga.github.io/ranking/ailments/success/petrification.html</loc>
-        <priority>1.0</priority>
-        <lastmod>2021-11-28</lastmod>
-        <changefreq>weekly</changefreq>
-    </url>
 
     <url>
         <loc>https://nao-romasaga.github.io/site.html</loc>
