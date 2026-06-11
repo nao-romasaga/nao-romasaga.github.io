@@ -117,6 +117,7 @@
             <li class="col-12 col-sm-2 table-success char-bottom">攻撃系</li>
             <li class="col-12 col-sm-10 d-flex flex-wrap justify-content-around ">
                 <button class="_FilterLink pad0 d-inline-block" data-main="ダメージ強化" data-sub=""><span class="withLabel">ダメージ強化<span class="countLabel" id="count_damage_up">...</span></span></button>
+                <button class="_FilterLink pad0 d-inline-block" data-main="ダメージ強化" data-sub="エクストラフォース"><span class="withLabel">エクストラフォース<span class="countLabel" id="count_extraforce">...</span></span></button>
                 <button class="_FilterLink pad0 d-inline-block" data-main="ダメージ強化(全体)" data-sub=""><span class="withLabel">ダメージ強化(全員)<span class="countLabel" id="count_damage_up_all">...</span></span></button>
                 <div class="width-100"></div>
                 <button class="_FilterLink pad0 d-inline-block" data-main="追撃" data-sub=""><span class="withLabel">追撃<span class="countLabel" id="count_tsuigeki">...</span></span></button>
@@ -336,7 +337,7 @@
                 <li class="fuchidori-white subtitle-long" style="font-size: 1.2rem;">アビリティ数カウント</li>
             </ul>
             <ul class="nav text-center width-100" style="margin-bottom: 5px;">
-                <li class="fuchidori-white subtitle-long smallFont">対象</li>
+                <li class="fuchidori-white subtitle-long smallFont">種別</li>
                 <div class="width-100"></div>
                 <li class="d-flex flex-wrap justify-content-around tiny-line" id="FILTER_TAG" ></li>
             </ul>
@@ -344,6 +345,11 @@
                 <li class="fuchidori-white subtitle-long smallFont">サブ</li>
                 <div class="width-100"></div>
                 <li class="d-flex flex-wrap justify-content-around tiny-line" id="FILTER_SUB" ></li>
+            </ul>
+            <ul class="nav text-center width-100" style="margin-bottom: 5px;">
+                <li class="fuchidori-white subtitle-long smallFont">対象</li>
+                <div class="width-100"></div>
+                <li class="d-flex flex-wrap justify-content-around tiny-line" id="FILTER_TARGET" ></li>
             </ul>
             <ul class="nav text-center width-100" style="margin-bottom: 5px;">
                 <li class="fuchidori-white subtitle-long smallFont">発動タイミング</li>
@@ -354,6 +360,11 @@
                 <li class="fuchidori-white subtitle-long smallFont">発動確率</li>
                 <div class="width-100"></div>
                 <li class="d-flex flex-wrap justify-content-around tiny-line" id="FILTER_TIME" ></li>
+            </ul>
+            <ul class="nav text-center width-100" style="margin-bottom: 5px;">
+                <li class="fuchidori-white subtitle-long smallFont">効果量</li>
+                <div class="width-100"></div>
+                <li class="d-flex flex-wrap justify-content-around tiny-line" id="FILTER_PER" ></li>
             </ul>
         </div>
         <!-- TMPL -->     
