@@ -66,18 +66,18 @@
         <script src="./js/culcStyleBonus.js" async></script>
         <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet rel="preload" as="style">
         <style>
+            .speach {
+                color: #faf0b4;
+                padding: 5px 10px;
+                height: 80px;
+            }
             .kome {
                 font-size: 0.8rem;
                 line-height: 0.8rem;
             }
             .pc-skill-list {
-                overflow-x: scroll;
-                -ms-overflow-style: none;
-                scrollbar-width: none;
-            }
-            /*スクロールバー非表示（Chrome・Safari）*/
-            .pc-skill-list::-webkit-scrollbar{
-                display:none;
+                white-space: normal;     /* 親td の text-nowrap を上書きして折り返す */
+                word-break: break-word;  /* 区切りのない長い説明文もテーブル内に収める */
             }
 
             .right_parts {
@@ -753,46 +753,6 @@
                     <div id="HISTORY_AREA"></div>
                 </div>
                 <div class="row" >
-                    <div class="col-12 d-none d-lg-block">
-                        <div class="info-modal styleInfoArea width-max text-center">
-                            <div class="info-modal-header">表示ステータスを変更する</div>
-                            <div class="width-100 text-center">
-                                スタイルレベル：<input type="number" class="input charParam charParam2 kadomaru MY_STYLE_LV" style="width: 50px" value="50" min="1" max="50"><br>
-                                <div class="btn-group btn-group-toggle noLogin" data-toggle="buttons">
-                                    <label class="btn btn-primary active" id="MAX_STATUS">
-                                        <input type="radio" name="options" autocomplete="off" checked>最大<span class="d-none d-lg-inline">ステータス</span>値
-                                    </label>
-                                    <label class="btn btn-primary" id="MY_STATUS" >
-                                        <input type="radio" name="options" autocomplete="off">自分のキャラの<span class="d-none d-lg-inline">ステータス</span>値
-                                    </label>
-                                </div>
-                            </div>
-                            <table class="width-100 text-center">
-                                <tbody>
-                                    <tr class="text-center">
-                                        <td class="paramHead paramCell2">腕</td>
-                                        <td class="paramHead paramCell2">体</td>
-                                        <td class="paramHead paramCell2">器</td>
-                                        <td class="paramHead paramCell2">速</td>
-                                        <td class="paramHead paramCell2">知</td>
-                                        <td class="paramHead paramCell2">精</td>
-                                        <td class="paramHead paramCell2">愛</td>
-                                        <td class="paramHead paramCell2">魅</td>
-                                    </tr>
-                                    <tr class="text-center">
-                                        <td class=" paramCell2"><input type="number" class="input charParam charParam2 myst kadomaru charSTR" data-param="STR" style="width: 55px" value="3"></td>
-                                        <td class=" paramCell2"><input type="number" class="input charParam charParam2 myst kadomaru charVIT" data-param="VIT" style="width: 55px" value="3"></td>
-                                        <td class=" paramCell2"><input type="number" class="input charParam charParam2 myst kadomaru charDEX" data-param="DEX" style="width: 55px" value="3"></td>
-                                        <td class=" paramCell2"><input type="number" class="input charParam charParam2 myst kadomaru charAGI" data-param="AGI" style="width: 55px" value="3"></td>
-                                        <td class=" paramCell2"><input type="number" class="input charParam charParam2 myst kadomaru charINT" data-param="INT" style="width: 55px" value="3"></td>
-                                        <td class=" paramCell2"><input type="number" class="input charParam charParam2 myst kadomaru charMND" data-param="MND" style="width: 55px" value="3"></td>
-                                        <td class=" paramCell2"><input type="number" class="input charParam charParam2 myst kadomaru charAI"  data-param="AI"  style="width: 55px" value="3"></td>
-                                        <td class=" paramCell2"><input type="number" class="input charParam charParam2 myst kadomaru charMI"  data-param="MI"  style="width: 55px" value="3"></td>
-                                    </tr>                                    
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>              
                     <div class="col-12 col-lg-6">
                         <div class="info-modal styleInfoArea width-max text-center">
                             <div class="info-modal-header"><span class="CHAR_NAME">キャラ名</span>のステータス</div>
@@ -914,47 +874,6 @@
                             <div class="opacity kadomaru d-sm-none bg-warning" style="font-size:10px;">
                                 <i class="fas fa-exclamation-triangle"></i>注：ご使用の環境では横幅が足りないため補正値は四捨五入されています。
                                 スマートフォンの横向きにしたりPCなど幅のある端末で確認すると少数以下も表示されます
-                            </div>
-                            <div class="pad0 d-lg-none">
-                                <div class=" text-center label-text-small" style="margin-bottom: 10px">表示ステータスを変更する</div>
-                                <div class="width-100 text-center">
-                                    スタイルレベル：<input type="number" class="input charParam1 kadomaru MY_STYLE_LV" style="width: 50px" value="50" min="1" max="50">
-                                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                        <label class="btn btn-primary active" id="MAX_STATUS">
-                                            <input type="radio" name="options" autocomplete="off" checked>最大<span class="d-none d-lg-inline">ステータス</span>値
-                                        </label>
-                                        <label class="btn btn-primary" id="MY_STATUS" >
-                                            <input type="radio" name="options" autocomplete="off">自分のキャラの<span class="d-none d-lg-inline">ステータス</span>値
-                                        </label>
-                                    </div>
-                                </div>
-                                <table class="width-100 text-center">
-                                    <tbody>
-                                        <tr class="text-center">
-                                            <td class="paramHead paramCell2">腕</td>
-                                            <td class="paramHead paramCell2">体</td>
-                                            <td class="paramHead paramCell2">器</td>
-                                            <td class="paramHead paramCell2">速</td>
-                                        </tr>
-                                        <tr class="text-center">
-                                            <td class=" paramCell2"><input type="number" class="input charParam charParam1 myst kadomaru charSTR" data-param="STR" style="width: 50px" value="3"></td>
-                                            <td class=" paramCell2"><input type="number" class="input charParam charParam1 myst kadomaru charVIT" data-param="VIT" style="width: 50px" value="3"></td>
-                                            <td class=" paramCell2"><input type="number" class="input charParam charParam1 myst kadomaru charDEX" data-param="DEX" style="width: 50px" value="3"></td>
-                                            <td class=" paramCell2"><input type="number" class="input charParam charParam1 myst kadomaru charAGI" data-param="AGI" style="width: 50px" value="3"></td>
-                                        </tr>
-                                        <tr class="text-center">
-                                            <td class="paramHead paramCell2">知</td>
-                                            <td class="paramHead paramCell2">精</td>
-                                            <td class="paramHead paramCell2">愛</td>
-                                            <td class="paramHead paramCell2">魅</td>
-                                        <tr class="text-center">
-                                            <td class=" paramCell2"><input type="number" class="input charParam charParam1 myst kadomaru charINT" data-param="INT" style="width: 50px" value="3"></td>
-                                            <td class=" paramCell2"><input type="number" class="input charParam charParam1 myst kadomaru charMND" data-param="MND" style="width: 50px" value="3"></td>
-                                            <td class=" paramCell2"><input type="number" class="input charParam charParam1 myst kadomaru charAI"  data-param="AI"  style="width: 50px" value="3"></td>
-                                            <td class=" paramCell2"><input type="number" class="input charParam charParam1 myst kadomaru charMI"  data-param="MI"  style="width: 50px" value="3"></td>
-                                        </tr>                                    
-                                    </tbody>
-                                </table>
                             </div>
                         </div>
                     </div>           
@@ -1284,226 +1203,7 @@
                             </div>                            
                         </div>
                     </div>
-                    <div class="info-modal width-max" id="HIDAME_AREA" style="margin-bottom: 10px;">
-                        <div class="text-center info-modal-header">被ダメージ 計算</div>                        
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="filter-bgcolor">
-                                    <div class="text-center" style="background: url(https://romasagatool.com/img/bg_cutin.png);">
-                                        <img class="RANK_HEAD_IMG" style="width: 100%; max-width:300px;">
-                                    </div>
-                                </div>
-                            </div>                            
-                            <div class="col-12 col-lg-6">
-                                <div class="bg-simple small text-nowrap text-center width-max" style="padding: 7px 20px; color: white;">
-                                    <table class="justify-content-around width-100" style="padding-left: 15px;">
-                                        <tr style="border-bottom: 1px solid lightblue; line-height: 10px;">
-                                            <td style="width: calc(100% / 8);"><span class="icon_xs_zokusei icon_zan" style="width:23px; height:23px;"></span></td>
-                                            <td style="width: calc(100% / 8);"><span class="icon_xs_zokusei icon_da" style="width:23px; height:23px;"></span></td>
-                                            <td style="width: calc(100% / 8);"><span class="icon_xs_zokusei icon_totsu" style="width:23px; height:23px;"></span></td>
-                                            <td style="width: calc(100% / 8);"><span class="icon_xs_zokusei icon_netsu" style="width:23px; height:23px;"></span></td>
-                                            <td style="width: calc(100% / 8);"><span class="icon_xs_zokusei icon_rei" style="width:23px; height:23px;"></span></td>
-                                            <td style="width: calc(100% / 8);"><span class="icon_xs_zokusei icon_rai" style="width:23px; height:23px;"></span></td>
-                                            <td style="width: calc(100% / 8);"><span class="icon_xs_zokusei icon_yo" style="width:23px; height:23px;"></span></td>
-                                            <td style="width: calc(100% / 8);"><span class="icon_xs_zokusei icon_in" style="width:23px; height:23px;"></span></td>
-                                        </tr>
-                                        <tr style="border-bottom: 1px solid lightblue; line-height: 15px;">
-                                            <td><span class="taisei_Zan">0</span><br><span class="bairitsu_Zan">1倍</span></td>
-                                            <td><span class="taisei_Da">0</span><br><span class="bairitsu_Da">1倍</span></td>
-                                            <td><span class="taisei_Totsu">0</span><br><span class="bairitsu_Totsu">1倍</span></td>
-                                            <td><span class="taisei_Netsu">0</span><br><span class="bairitsu_Netsu">1倍</span></td>
-                                            <td><span class="taisei_Rei">0</span><br><span class="bairitsu_Rei">1倍</span></td>
-                                            <td><span class="taisei_Rai">0</span><br><span class="bairitsu_Rai">1倍</span></td>
-                                            <td><span class="taisei_You">0</span><br><span class="bairitsu_You">1倍</span></td>
-                                            <td><span class="taisei_Inn">0</span><br><span class="bairitsu_Inn">1倍</span></td>
-                                        </tr>
-                                        <tr style="border-bottom: 1px solid lightblue; line-height: 15px;">
-                                            <td><span class="calc_taisei_Zan">0</span><br><span class="calc_bairitsu_Zan">1倍</span></td>
-                                            <td><span class="calc_taisei_Da">0</span><br><span class="calc_bairitsu_Da">1倍</span></td>
-                                            <td><span class="calc_taisei_Totsu">0</span><br><span class="calc_bairitsu_Totsu">1倍</span></td>
-                                            <td><span class="calc_taisei_Netsu">0</span><br><span class="calc_bairitsu_Netsu">1倍</span></td>
-                                            <td><span class="calc_taisei_Rei">0</span><br><span class="calc_bairitsu_Rei">1倍</span></td>
-                                            <td><span class="calc_taisei_Rai">0</span><br><span class="calc_bairitsu_Rai">1倍</span></td>
-                                            <td><span class="calc_taisei_You">0</span><br><span class="calc_bairitsu_You">1倍</span></td>
-                                            <td><span class="calc_taisei_Inn">0</span><br><span class="calc_bairitsu_Inn">1倍</span></td>
-                                        </tr>
-                                    </table>
-                                </div>
-                                <div id="ARMOR_AREA">
-                                    <table>
-                                        <tr>
-                                            <td>主<span class='hidden pcBlock'>防具</span></td><td class="main"></td><td class="main_detail small d-lg-none" style="line-height: 15px;"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>副<span class='hidden pcBlock'>防具</span></td><td class="sub"></td><td class="sub_detail small d-lg-none" style="line-height: 15px;"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>ア<span class='hidden pcBlock'>クセ</span></td><td class="acc"></td><td class="acc_detail small d-lg-none" style="line-height: 15px;"></td>
-                                        </tr>
-                                    </table>
-                                    <table class="d-none d-lg-table width-100 bg-simple" >
-                                        <tr class="text-center small">
-                                            <td style="width: 33%">主防具</td>
-                                            <td style="width: 33%">副防具</td>
-                                            <td style="width: 33%">アクセサリー</td>
-                                        </tr>
-                                        <tr class="small text-nowrap align-top" style="line-height: 15px;">
-                                            <td class="main_detail" style="padding-left: 5px; padding-bottom:15px;"></td>
-                                            <td class="sub_detail"></td>
-                                            <td class="acc_detail" style="padding-right: 5px;"></td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
-                            <style>
-                                .speach {
-                                    color:  #faf0b4;
-                                    padding: 5px 10px; height:80px;
-                                }
-                                tr.damage-col td:nth-child(3) {
-                                    padding-right: 5px;
-                                    border-right: 1px dashed lightblue;
-                                }
-                                tr.damage-col td:nth-child(5) {
-                                    padding-right: 5px;
-                                    border-right: 1px dashed lightblue;
-                                }
-                                .damage-col-head {
-                                    border-bottom: 1px solid lightblue;
-                                }
-                                tr.damage-col-head td:nth-child(2) {
-                                    padding-right: 5px;
-                                    border-right: 1px dashed lightblue;
-                                }
-                                tr.damage-col-head td:nth-child(4) {
-                                    padding-right: 5px;
-                                    border-right: 1px dashed lightblue;
-                                }
-                                .damage-col {
-                                    border-bottom: 1px solid lightblue;
-                                    font-size: 20px;
-                                }
-                                /* 画面サイズ767(ipadの768は含まない)まで */
-                                @media screen and (max-width:767px) {
-                                    .damage-col {
-                                        border-bottom: 1px solid lightblue;
-                                        font-size: 16px;
-                                    }
-                                }
 
-                            </style>
-                            <div class="col-12 col-lg-6">
-                                <div class="bg-simple small text-nowrap text-center width-max" style="padding: 7px 20px; color: white;">
-                                    <table class="justify-content-around width-100" style="padding-left: 15px;">
-                                        <tr>
-                                            <td rowspan="2" style="border-bottom: 1px solid lightblue;">属性</td>
-                                            <td colspan=2>威力<span id="ENEMY_SKILL_L"></span></td>
-                                            <td colspan=2>威力<span id="ENEMY_SKILL_M"></span></td>
-                                            <td colspan=2>威力<span id="ENEMY_SKILL_H"></span></td>
-                                        </tr>
-                                        <tr class="damage-col-head">
-                                            <td class="col_0">技<span class="d-none d-sm-inline">ﾀﾞﾒｰｼﾞ</span></td><td class="col_1">術<span class="d-none d-sm-inline">ﾀﾞﾒｰｼﾞ</span></td>
-                                            <td class="col_2">技<span class="d-none d-sm-inline">ﾀﾞﾒｰｼﾞ</span></td><td class="col_3">術<span class="d-none d-sm-inline">ﾀﾞﾒｰｼﾞ</span></td>
-                                            <td class="col_4">技<span class="d-none d-sm-inline">ﾀﾞﾒｰｼﾞ</span></td><td class="col_5">術<span class="d-none d-sm-inline">ﾀﾞﾒｰｼﾞ</span></td>
-                                        </tr>
-                                        <tr class="damage-col">
-                                            <td style="width: calc(100% / 8);"><span class="icon_xs_zokusei icon_zan" style="width:23px; height:23px;"></span></td>
-                                            <td class="damage_Zan_0v text-right"></td><td class="damage_Zan_0m text-right"></td>
-                                            <td class="damage_Zan_1v text-right"></td><td class="damage_Zan_1m text-right"></td>
-                                            <td class="damage_Zan_2v text-right"></td><td class="damage_Zan_2m text-right"></td>
-                                        </tr>
-                                        <tr class="damage-col">
-                                            <td style="width: calc(100% / 8);"><span class="icon_xs_zokusei icon_da" style="width:23px; height:23px;"></span></td>
-                                            <td class="damage_Da_0v text-right"></td><td class="damage_Da_0m text-right"></td>
-                                            <td class="damage_Da_1v text-right"></td><td class="damage_Da_1m text-right"></td>
-                                            <td class="damage_Da_2v text-right"></td><td class="damage_Da_2m text-right"></td>
-                                        </tr>
-                                        <tr class="damage-col">
-                                            <td style="width: calc(100% / 8);"><span class="icon_xs_zokusei icon_totsu" style="width:23px; height:23px;"></span></td>
-                                            <td class="damage_Totsu_0v text-right"></td><td class="damage_Totsu_0m text-right"></td>
-                                            <td class="damage_Totsu_1v text-right"></td><td class="damage_Totsu_1m text-right"></td>
-                                            <td class="damage_Totsu_2v text-right"></td><td class="damage_Totsu_2m text-right"></td>
-                                        </tr>
-                                        <tr class="damage-col">
-                                            <td style="width: calc(100% / 8);"><span class="icon_xs_zokusei icon_netsu" style="width:23px; height:23px;"></span></td>
-                                            <td class="damage_Netsu_0v text-right"></td><td class="damage_Netsu_0m text-right"></td>
-                                            <td class="damage_Netsu_1v text-right"></td><td class="damage_Netsu_1m text-right"></td>
-                                            <td class="damage_Netsu_2v text-right"></td><td class="damage_Netsu_2m text-right"></td>
-                                        </tr>
-                                        <tr class="damage-col">
-                                            <td style="width: calc(100% / 8);"><span class="icon_xs_zokusei icon_rei" style="width:23px; height:23px;"></span></td>
-                                            <td class="damage_Rei_0v text-right"></td><td class="damage_Rei_0m text-right"></td>
-                                            <td class="damage_Rei_1v text-right"></td><td class="damage_Rei_1m text-right"></td>
-                                            <td class="damage_Rei_2v text-right"></td><td class="damage_Rei_2m text-right"></td>
-                                        </tr>
-                                        <tr class="damage-col">
-                                            <td style="width: calc(100% / 8);"><span class="icon_xs_zokusei icon_rai" style="width:23px; height:23px;"></span></td>
-                                            <td class="damage_Rai_0v text-right"></td><td class="damage_Rai_0m text-right"></td>
-                                            <td class="damage_Rai_1v text-right"></td><td class="damage_Rai_1m text-right"></td>
-                                            <td class="damage_Rai_2v text-right"></td><td class="damage_Rai_2m text-right"></td>
-                                        </tr>
-                                        <tr class="damage-col">
-                                            <td style="width: calc(100% / 8);"><span class="icon_xs_zokusei icon_yo" style="width:23px; height:23px;"></span></td>
-                                            <td class="damage_You_0v text-right"></td><td class="damage_You_0m text-right"></td>
-                                            <td class="damage_You_1v text-right"></td><td class="damage_You_1m text-right"></td>
-                                            <td class="damage_You_2v text-right"></td><td class="damage_You_2m text-right"></td>
-                                        </tr>
-                                        <tr class="damage-col">
-                                            <td style="width: calc(100% / 8);"><span class="icon_xs_zokusei icon_in" style="width:23px; height:23px;"></span></td>
-                                            <td class="damage_Inn_0v text-right"></td><td class="damage_Inn_0m text-right"></td>
-                                            <td class="damage_Inn_1v text-right"></td><td class="damage_Inn_1m text-right"></td>
-                                            <td class="damage_Inn_2v text-right"></td><td class="damage_Inn_2m text-right"></td>
-                                        </tr>
-                                    </table>
-                                </div>
-                                <div id="ABILITY_BUTTON_AREA" class="d-none">
-                                    <div>アビリティ切り替え</div>
-                                    <div id="BUTTON_AREA"></div>
-                                    <button id="AB_BTN_TMPL" class="d-none icon_btn_negative shadow-black"></button>
-                                </div>
-                                体:<span id="calcVit"></span> 精:<span id="calcMnd"></span> 軽減アビ合計:<span id="calcResistAb"></span><br>
-                                聖石 軽減(全)Rank10 * 2<br>
-                                敵 腕力<span id="ENEMY_STR"></span> / 知力<span id="ENEMY_INT"></span> 想定<br>
-                                威力12:ストーンシャワー,ブレードロール,など<br>
-                                威力24:ポイゾナスブロウ,ファングクラッシュ,など<br>
-                                威力36:乱れ突き,など<br>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="info-modal width-max" id="HEAL_AREA" style="margin-bottom: 10px;">
-                        <div class="text-center info-modal-header">HP回復 期待値</div>
-                        <div class="filter-bgcolor">
-                            <div class="text-center" style="background: url(https://romasagatool.com/img/bg_cutin.png);">
-                                <img class="RANK_HEAD_IMG" style="width: 100%; max-width:300px;">
-                            </div>
-                        </div>                            
-                        <div class="bg-simple width-max" style="padding: 10px; overflow-x: scroll;">
-                            <table class="width-100 text-nowrap">
-                                <tr class="text-center" style="border-bottom: 1px solid;">
-                                    <td>技・アビリティ</td>
-                                    <td style="line-height: 1rem;padding: 0 5px 5px"">武器<br class="hidden spBlock">威力</td>
-                                    <td style="line-height: 1rem;padding: 0 5px 5px"">回復<br class="hidden spBlock">威力</td>
-                                    <td>回復量</td>
-                                    <td>　愛　</td>
-                                    <td>魅力</td>
-                                    <td>アビリティ</span></td>
-                                </tr>
-                                <tr class="d-none ROW text-center">
-                                    <td class="HEAL_NAME text-left"></td>
-                                    <td class="HEAL_WEAPON"></td>
-                                    <td class="HEAL_IRYOKU"></td>
-                                    <td class="HEAL_RANGE shadow-blue" style="color:rgba(133,220,88);"></td></td>
-                                    <td class="HEAL_AI" style="padding: 0 5px"></td>
-                                    <td class="HEAL_MI" style="padding: 0 5px"></td>
-                                    <td class="HEAL_ABILITY text-left"></td>
-                                </tr>
-                                <tfoot>
-                                    <tr><td style="    height: 15px;"> </td></tr>
-                                </tfoot>
-                            </table>
-                        </div>
-                    </div>
 
                     <div class="info-modal width-max">
                         <div class="text-center info-modal-header">所持している 技・術</div>
@@ -1638,8 +1338,6 @@
                                 <tr class="odd-row text-nowrap" id="RANK_MND"><td class="paramHead paramCell2">精</td></tr>
                                 <tr class="odd-row text-nowrap" id="RANK_AI"><td class="paramHead paramCell2">愛</td></tr>
                                 <tr class="odd-row text-nowrap" id="RANK_MI"><td class="paramHead paramCell2">魅</td></tr>
-                                <tr class="odd-row text-nowrap" id="RANK_skill"><td class="paramHead paramCell2">技命中</td></tr>
-                                <tr class="odd-row text-nowrap" id="RANK_jutsu"><td class="paramHead paramCell2">術命中</td></tr>
                                 <tr class="odd-row text-nowrap" id="RANK_SUM" style="border-top: 1px solid;border-top: 1px solid;"><td class="paramHead paramCell2" style="font-size: 15px;">合計</td></tr>
                             </tbody>
                         </table>
