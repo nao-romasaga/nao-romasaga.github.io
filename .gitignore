@@ -43,9 +43,7 @@ html/*
 # アーカイブ（公開停止した旧コンテンツ）
 archives/
 
-# 管理人専用ローカルツール（公開しない）
+# 管理人専用ツール（計画書はローカルのみ。本体は実機アクセスのためデプロイする）
 ADMIN_MULTISTYLE_PLAN.md
-admin_multistyle.html
-js/admin_multistyle.js
 
 .superpowers/

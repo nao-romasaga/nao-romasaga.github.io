@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>管理人専用 マルチアカウント スタイル所持管理</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex,nofollow">
+    <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
+    <script src="./js/dataload.js"></script>
+    <script>
+        dataload([
+            "data_CHARMASTER",
+            "data_STYLEMASTER_checker",
+        ]);
+    </script>
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap/bootstrap.min.css">
+    <script src="./js/lib/lazysizes.min.js" defer></script>
+    <script src="./js/lib/ls.unveilhooks.min.js" defer></script>
+    <script src="./js/bootstrap.min.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="./css/style2.css">
+    <!-- Firebase（PC↔実機 データ同期用） -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js" defer></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
+    <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
+    <script src="./js/Firebase.js" defer></script>
+    <script src="./js/utils2.js" defer></script>
+    <!-- スクショ所持登録（カラー署名辞書＋OCRモジュール） -->
+    <script src="./js/style_icon_hash.js?v=2026062503c" defer></script>
+    <script src="./js/ocr_style.js" defer></script>
+    <script src="./js/admin_multistyle.js" defer></script>
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+    <style>
+        /* ===== アカウントタブ ===== */
+        #account-tabs-wrapper {
+            display: flex;
+            align-items: center;
+            flex-wrap: nowrap;
+            gap: 4px;
+            overflow-x: auto;
+            padding: 8px 4px;
+            background: rgba(0,0,0,0.75);
+            border: 1px solid rgb(197,187,147);
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        .acct-tab {
+            flex: 0 0 auto;
+            min-width: 80px;
+            padding: 4px 8px;
+            font-size: 11px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            background: rgba(255,255,255,0.15);
+            color: #fff;
+            text-align: center;
+            white-space: nowrap;
+        }
+        .acct-tab.active {
+            background: rgba(41,163,239,0.9);
+            font-weight: bold;
+        }
+        .acct-tab .acct-name-label {
+            display: block;
+            font-size: 12px;
+        }
+        .acct-tab .acct-count-label {
+            display: block;
+            font-size: 10px;
+            opacity: 0.8;
+        }
+        .acct-name-edit {
+            font-size: 11px;
+            background: transparent;
+            border: 1px solid #aaa;
+            border-radius: 4px;
+            color: #fff;
+            width: 70px;
+            text-align: center;
+        }
+
+        /* ===== モード切替タブ ===== */
+        #mode-tabs {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 12px;
+            background: rgba(0,0,0,0.65);
+            border-radius: 8px;
+            padding: 6px;
+        }
+        .mode-tab-btn {
+            flex: 1;
+            padding: 6px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            background: rgba(255,255,255,0.15);
+            color: #fff;
+            font-size: 13px;
+        }
+        .mode-tab-btn.active {
+            background: rgba(41,163,239,0.9);
+            font-weight: bold;
+        }
+
+        /* ===== モード1: アイコングリッド ===== */
+        #mode1-icon-area {
+            background: rgba(30,30,30,0.80);
+            backdrop-filter: blur(4px);
+            border: 2px solid rgb(197,187,147);
+            border-radius: 10px;
+            padding: 10px;
+        }
+        .year-section {
+            margin-bottom: 20px;
+        }
+        .year-section-title {
+            display: block;
+            padding: 4px 20px;
+            margin-bottom: 6px;
+            font-size: 13px;
+            background: rgba(0,0,0,0.75);
+            border-radius: 6px;
+            color: #faf0b4;
+            font-weight: bold;
+        }
+        .icon-grid {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        /* ===== アイコン上の所持バッジ ===== */
+        .style-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+        .acct-badges {
+            position: absolute;
+            bottom: 2px;
+            left: 0;
+            right: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1px;
+            pointer-events: none;
+        }
+        .acct-badge {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            font-size: 7px;
+            line-height: 10px;
+            text-align: center;
+            background: rgba(50,50,50,0.7);
+            color: rgba(255,255,255,0.3);
+            font-weight: bold;
+        }
+        .acct-badge.on {
+            background: rgba(41,163,239,1);
+            color: #fff;
+        }
+
+        /* ===== モード1 フィルタ ===== */
+        #mode1-filter {
+            padding: 8px;
+            margin-bottom: 10px;
+            background: rgba(50,50,50,0.85);
+            backdrop-filter: blur(5px);
+            border: 2px solid rgb(197,187,147);
+            border-radius: 10px;
+        }
+        .filter-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-bottom: 6px;
+            align-items: center;
+        }
+        .filter-row label {
+            font-size: 11px;
+            color: #ccc;
+            min-width: 60px;
+        }
+        .filter-chip {
+            padding: 2px 8px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            font-size: 11px;
+            cursor: pointer;
+        }
+        .filter-chip.active {
+            background: rgba(41,163,239,0.8);
+            border-color: transparent;
+        }
+        #m1-text-search {
+            padding: 3px 8px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.3);
+            background: rgba(0,0,0,0.4);
+            color: #fff;
+            font-size: 12px;
+            width: 140px;
+        }
+        #m1-unowned-toggle, #m1-unfixed-toggle {
+            padding: 3px 10px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            font-size: 11px;
+            cursor: pointer;
+            transition: background 0.15s, box-shadow 0.15s;
+        }
+        #m1-unowned-toggle.active, #m1-unfixed-toggle.active {
+            background: rgba(239,120,41,1);
+            border-color: rgba(255,160,60,0.9);
+            box-shadow: 0 0 6px rgba(239,120,41,0.7);
+            font-weight: bold;
+        }
+
+        /* ===== モード2: 横断検索 ===== */
+        #mode2-search-box {
+            width: 100%;
+            max-width: 400px;
+            padding: 6px 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.3);
+            background: rgba(0,0,0,0.4);
+            color: #fff;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+        #mode2-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+        }
+        #mode2-table th, #mode2-table td {
+            padding: 4px 6px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            vertical-align: middle;
+            text-align: center;
+            color: #fff;
+        }
+        #mode2-table th {
+            background: rgba(0,0,0,0.6);
+            font-size: 11px;
+            color: #faf0b4;
+        }
+        #mode2-table td.icon-cell {
+            width: 50px;
+        }
+        #mode2-table td.name-cell {
+            text-align: left;
+            font-size: 11px;
+        }
+        .have-mark { color: #4df; font-weight: bold; }
+        .not-have-mark { color: rgba(255,255,255,0.2); }
+
+        /* ===== モード2: 横断検索 コンテナ ===== */
+        #mode-panel-2 {
+            background: rgba(30,30,30,0.85);
+            backdrop-filter: blur(5px);
+            border: 2px solid rgb(197,187,147);
+            border-radius: 10px;
+            padding: 12px;
+        }
+
+        /* ===== モード3: ステ上限未確定 ===== */
+        #mode-panel-3 {
+            background: rgba(30,30,30,0.85);
+            backdrop-filter: blur(5px);
+            border: 2px solid rgb(197,187,147);
+            border-radius: 10px;
+            padding: 12px;
+        }
+        #mode3-summary {
+            padding: 6px 12px;
+            background: rgba(0,0,0,0.5);
+            border-radius: 6px;
+            margin-bottom: 10px;
+            font-size: 13px;
+            color: #faf0b4;
+        }
+        #mode3-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 11px;
+        }
+        #mode3-table th, #mode3-table td {
+            padding: 4px 4px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            vertical-align: middle;
+            text-align: center;
+            color: #fff;
+        }
+        #mode3-table th {
+            background: rgba(0,0,0,0.6);
+            font-size: 10px;
+            white-space: nowrap;
+            color: #faf0b4;
+        }
+        #mode3-table td.icon-cell { width: 50px; }
+        #mode3-table td.name-cell {
+            text-align: left;
+            font-size: 11px;
+            max-width: 100px;
+        }
+        #mode3-table td.unconf-cell {
+            text-align: left;
+            font-size: 10px;
+            color: #ffa;
+            max-width: 120px;
+        }
+        .fix-val-c { color: #f88; font-weight: bold; }
+        .fix-val-f { color: #8f8; }
+
+        /* ===== エクスポート/インポート ===== */
+        #io-buttons {
+            display: flex;
+            gap: 6px;
+            margin-left: auto;
+            flex-shrink: 0;
+        }
+        .io-btn {
+            padding: 4px 10px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 11px;
+            background: rgba(255,255,255,0.2);
+            color: #fff;
+        }
+        .io-btn:hover { background: rgba(255,255,255,0.35); }
+
+        /* ===== 汎用 ===== */
+        .header-area {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+        .mode-panel { display: none; }
+        .mode-panel.active { display: block; }
+        #mode3-owned-toggle {
+            padding: 3px 10px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.3);
+            background: rgba(239,120,41,0.8);
+            color: #fff;
+            font-size: 11px;
+            cursor: pointer;
+            margin-bottom: 8px;
+        }
+        #mode3-owned-toggle.off {
+            background: rgba(255,255,255,0.1);
+        }
+        #mode3-error {
+            color: #f88;
+            padding: 10px;
+            display: none;
+        }
+
+        /* ===== 一括操作ボタン ===== */
+        .m1-bulk-on, .m1-bulk-off {
+            padding: 3px 8px;
+            border-radius: 12px;
+            border: none;
+            font-size: 11px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        .m1-bulk-on {
+            background: rgba(41,163,100,0.85);
+            color: #fff;
+        }
+        .m1-bulk-on:hover { background: rgba(41,163,100,1); }
+
+        /* OCR 所持登録 */
+        #admin-ocr-area { margin: 8px 0 12px; }
+        .ocr-help { font-size: 12px; opacity: .85; margin: 6px 0; color:#ddd; }
+        .ocr-shot { display: flex; gap: 12px; align-items: flex-start; flex-wrap: wrap; margin: 10px 0; padding: 8px; background: rgba(255,255,255,.06); border-radius: 6px; }
+        .ocr-prev { max-width: 300px; border: 1px solid rgba(255,255,255,.2); }
+        .ocr-detinfo { font-size: 12px; color:#cda; }
+        .ocr-cands { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+        .ocr-cand { width: 92px; padding: 5px; border-radius: 6px; background: rgba(255,255,255,.06); text-align: center; font-size: 11px; color:#eee; }
+        .ocr-cand.ocr-warn { background: rgba(255,80,80,.18); }
+        .ocr-cand.ocr-ex { opacity: .4; }
+        .ocr-pair { display: flex; align-items: center; justify-content: center; gap: 2px; }
+        .ocr-pair img { width: 34px; height: 34px; }
+        .ocr-arrow { font-size: 10px; opacity: .6; }
+        .ocr-name { line-height: 1.1; margin: 3px 0; min-height: 2.2em; }
+        .ocr-name small { display: block; opacity: .7; }
+        .ocr-exline { font-size: 10px; display: block; }
+        .ocr-replace { font-size: 10px; padding: 1px 6px; }
+        .ocr-alts { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 4px; }
+        .ocr-alt { width: 100%; display: flex; align-items: center; gap: 4px; font-size: 10px; padding: 2px; background: rgba(0,0,0,.2); border: 1px solid rgba(255,255,255,.15); color:#eee; }
+        .ocr-alt img { width: 24px; height: 24px; }
+        .m1-bulk-off {
+            background: rgba(200,60,60,0.85);
+            color: #fff;
+        }
+        .m1-bulk-off:hover { background: rgba(200,60,60,1); }
+    </style>
+</head>
+<body>
+<div class="haikei">
+<div class="container">
+    <h4 class="text-center title-text" style="margin-bottom:6px;">管理人専用 マルチアカウント スタイル所持管理</h4>
+
+    <!-- ログイン＋同期ステータス（PC↔実機 同期） -->
+    <div id="firebaseui-auth-container" style="margin-bottom:6px;"></div>
+    <div id="admin-sync-status" style="text-align:center;font-size:12px;color:#cda;margin-bottom:8px;"></div>
+
+    <!-- アカウントタブ + エクスポート/インポート -->
+    <div class="header-area">
+        <div id="account-tabs-wrapper">
+            <!-- JS で生成 -->
+        </div>
+        <div id="io-buttons">
+            <button class="io-btn" id="btn-export">エクスポート</button>
+            <button class="io-btn" id="btn-import">インポート</button>
+            <input type="file" id="import-file-input" accept=".json" style="display:none;">
+        </div>
+    </div>
+
+    <!-- モード切替 -->
+    <div id="mode-tabs">
+        <button class="mode-tab-btn active" data-mode="1">所持編集</button>
+        <button class="mode-tab-btn" data-mode="2">横断検索</button>
+        <button class="mode-tab-btn" data-mode="3">ステ上限未確定</button>
+    </div>
+
+    <!-- モード1: 所持編集 -->
+    <div id="mode-panel-1" class="mode-panel active">
+        <!-- スクショから所持を一括登録（現在のアカウントに追加） -->
+        <div id="admin-ocr-area"></div>
+        <div id="mode1-filter">
+            <div class="filter-row">
+                <label>レア</label>
+                <button class="filter-chip active" data-filter-type="rarity" data-filter-val="ALL">全て</button>
+                <button class="filter-chip" data-filter-type="rarity" data-filter-val="SS">SS</button>
+                <button class="filter-chip" data-filter-type="rarity" data-filter-val="S">S</button>
+                <button class="filter-chip" data-filter-type="rarity" data-filter-val="A">A</button>
+            </div>
+            <div class="filter-row">
+                <label>武器種</label>
+                <button class="filter-chip active" data-filter-type="weapon" data-filter-val="ALL">全て</button>
+                <button class="filter-chip" data-filter-type="weapon" data-filter-val="剣">剣</button>
+                <button class="filter-chip" data-filter-type="weapon" data-filter-val="大剣">大剣</button>
+                <button class="filter-chip" data-filter-type="weapon" data-filter-val="斧">斧</button>
+                <button class="filter-chip" data-filter-type="weapon" data-filter-val="棍棒">棍棒</button>
+                <button class="filter-chip" data-filter-type="weapon" data-filter-val="体術">体術</button>
+                <button class="filter-chip" data-filter-type="weapon" data-filter-val="銃">銃</button>
+                <button class="filter-chip" data-filter-type="weapon" data-filter-val="小剣">小剣</button>
+                <button class="filter-chip" data-filter-type="weapon" data-filter-val="弓">弓</button>
+                <button class="filter-chip" data-filter-type="weapon" data-filter-val="槍">槍</button>
+                <button class="filter-chip" data-filter-type="weapon" data-filter-val="杖">杖</button>
+            </div>
+            <div class="filter-row">
+                <label>年代</label>
+                <button class="filter-chip active" data-filter-type="year" data-filter-val="ALL">全て</button>
+                <button class="filter-chip" data-filter-type="year" data-filter-val="2026">2026</button>
+                <button class="filter-chip" data-filter-type="year" data-filter-val="2025">2025</button>
+                <button class="filter-chip" data-filter-type="year" data-filter-val="2024">2024</button>
+                <button class="filter-chip" data-filter-type="year" data-filter-val="2023">2023</button>
+                <button class="filter-chip" data-filter-type="year" data-filter-val="2022">2022</button>
+                <button class="filter-chip" data-filter-type="year" data-filter-val="2021">2021</button>
+                <button class="filter-chip" data-filter-type="year" data-filter-val="2020">2020</button>
+                <button class="filter-chip" data-filter-type="year" data-filter-val="2019">2019</button>
+                <button class="filter-chip" data-filter-type="year" data-filter-val="恒常">恒常</button>
+            </div>
+            <div class="filter-row">
+                <label>検索</label>
+                <input type="text" id="m1-text-search" placeholder="キャラ名・二つ名">
+                <button id="m1-unowned-toggle">未所持のみ</button>
+                <button id="m1-unfixed-toggle">上限未確定のみ</button>
+            </div>
+            <div class="filter-row" id="m1-bulk-buttons">
+                <label style="min-width:60px;">一括操作</label>
+                <button class="m1-bulk-on icon_btn_positive" data-rare="SS">SS 全チェック</button>
+                <button class="m1-bulk-on icon_btn_positive" data-rare="S">S 全チェック</button>
+                <button class="m1-bulk-on icon_btn_positive" data-rare="A">A 全チェック</button>
+                <button class="m1-bulk-off icon_btn_negative" data-rare="SS">SS 全て外す</button>
+                <button class="m1-bulk-off icon_btn_negative" data-rare="S">S 全て外す</button>
+                <button class="m1-bulk-off icon_btn_negative" data-rare="A">A 全て外す</button>
+            </div>
+        </div>
+        <div id="mode1-icon-area">
+            <!-- JS で年代別セクションを生成 -->
+        </div>
+    </div>
+
+    <!-- モード2: 横断検索 -->
+    <div id="mode-panel-2" class="mode-panel">
+        <input type="text" id="mode2-search-box" placeholder="キャラ名・二つ名で検索...">
+        <div id="mode2-result">
+            <p style="color:#ccc; font-size:13px;">キーワードを入力してください</p>
+        </div>
+    </div>
+
+    <!-- モード3: ステ上限未確定 -->
+    <div id="mode-panel-3" class="mode-panel">
+        <div id="mode3-error"></div>
+        <div id="mode3-summary">読み込み中...</div>
+        <button id="mode3-owned-toggle">所持アカウントありのみ表示 ON</button>
+        <div id="mode3-table-wrapper">
+            <table id="mode3-table">
+                <thead>
+                    <tr>
+                        <th>アイコン</th>
+                        <th>キャラ名・二つ名</th>
+                        <th>レア</th>
+                        <th>Fix</th>
+                        <th>未確定ステ</th>
+                        <th>ア1</th><th>ア2</th><th>ア3</th><th>ア4</th>
+                        <th>ア5</th><th>ア6</th><th>ア7</th><th>ア8</th>
+                    </tr>
+                </thead>
+                <tbody id="mode3-tbody">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <br><br>
+</div>
+</div>
+</body>
+</html>
