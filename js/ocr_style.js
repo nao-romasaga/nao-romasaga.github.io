@@ -332,20 +332,20 @@ function injectOcrStyles() {
         ".ocr-shot{display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap;margin:10px 0;padding:8px;background:rgba(0,0,0,0.6);border-radius:8px;}" +
         ".ocr-prev{max-width:300px;border:1px solid rgba(255,255,255,.35);border-radius:4px;}" +
         ".ocr-detinfo{display:inline-block;font-size:12px;margin-top:6px;padding:4px 10px;background:rgba(0,0,0,0.75);color:#bfe9c8;border-radius:6px;}" +
-        ".ocr-cands{display:grid;grid-template-columns:repeat(auto-fill,minmax(76px,1fr));gap:6px;margin-top:8px;padding:8px;background:rgba(0,0,0,0.62);border-radius:8px;}" +
-        ".ocr-cand{padding:4px 3px;border-radius:6px;background:rgba(255,255,255,.12);text-align:center;font-size:10px;color:#fff;box-shadow:0 1px 2px rgba(0,0,0,.4);}" +
-        ".ocr-cand.ocr-warn{background:rgba(255,90,90,.32);}" +
+        // 縦1列・大アイコン（視線は縦スクロールのみ）
+        ".ocr-cands{display:flex;flex-direction:column;gap:6px;margin-top:8px;padding:8px;background:rgba(0,0,0,0.62);border-radius:8px;}" +
+        ".ocr-cand{display:flex;align-items:center;flex-wrap:wrap;gap:8px;padding:6px 8px;border-radius:6px;background:rgba(255,255,255,.10);color:#fff;box-shadow:0 1px 2px rgba(0,0,0,.4);}" +
+        ".ocr-cand.ocr-warn{background:rgba(255,90,90,.30);}" +
         ".ocr-cand.ocr-ex{opacity:.4;}" +
-        ".ocr-pair{display:flex;align-items:center;justify-content:center;gap:1px;}" +
-        ".ocr-pair img{width:26px;height:26px;}" +
-        ".ocr-arrow{font-size:9px;opacity:.7;}" +
-        ".ocr-name{line-height:1.15;margin:2px 0;min-height:2.5em;word-break:break-all;}" +
-        ".ocr-name small{display:block;opacity:.75;}" +
-        ".ocr-exline{font-size:10px;display:block;margin-top:2px;}" +
-        ".ocr-replace{font-size:10px;padding:1px 6px;margin-top:2px;}" +
-        ".ocr-alts{display:flex;flex-direction:column;gap:3px;margin-top:4px;}" +
-        ".ocr-alt{display:flex;align-items:center;gap:4px;font-size:10px;padding:2px;background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:4px;}" +
-        ".ocr-alt img{width:22px;height:22px;}" +
+        ".ocr-pair{display:flex;align-items:center;gap:4px;flex:0 0 auto;}" +
+        ".ocr-pair img{width:48px;height:48px;border-radius:4px;}" +
+        ".ocr-arrow{font-size:14px;opacity:.7;}" +
+        ".ocr-name-label{flex:1 1 auto;min-width:90px;background-color:rgba(100,100,80,0.8);color:#fff;padding:2px 8px;border-radius:6px;font-size:13px;line-height:1.3;}" +
+        ".ocr-actions{display:flex;gap:6px;flex:0 0 auto;}" +
+        ".ocr-cand .icon_btn_red,.ocr-cand .icon_btn_on{font-size:11px;padding:5px 16px;cursor:pointer;}" +
+        ".ocr-alts{flex:1 1 100%;display:flex;flex-wrap:wrap;gap:4px;margin-top:4px;}" +
+        ".ocr-alt{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:9px;padding:3px;background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:4px;width:60px;}" +
+        ".ocr-alt img{width:40px;height:40px;}" +
         ".ocr-toast{margin:8px 0;padding:8px 12px;background:rgba(40,140,70,0.92);color:#fff;border-radius:6px;font-size:13px;font-weight:bold;}" +
         ".ocr-progress{height:10px;background:rgba(0,0,0,0.5);border-radius:5px;overflow:hidden;margin-top:4px;}" +
         ".ocr-progress-bar{height:100%;background:linear-gradient(90deg,#3aa564,#7be0a0);transition:width .2s;}";
@@ -477,23 +477,26 @@ function renderConfirmUI() {
     var $grid = $('<div class="ocr-cands"></div>');
     OCR_CANDIDATES.forEach(function (cand, i) {
         var warn = cand.dist > OCR_DIST_OK;
+        // 縦1列・大アイコン。視線は縦スクロールのみ
         var $c = $('<div class="ocr-cand' + (warn ? " ocr-warn" : "") + (cand.excluded ? " ocr-ex" : "") + '" data-i="' + i + '"></div>');
         $c.append('<div class="ocr-pair"><img class="ocr-crop" src="' + cand.crop + '">' +
             '<span class="ocr-arrow">→</span><img class="ocr-ref" src="' + iconUrl(cand.sid) + '"></div>');
-        $c.append('<div class="ocr-name">' + escHtml(styleName(cand.sid)) + '<small>d=' + cand.dist + '</small></div>');
-        $c.append('<label class="ocr-exline"><input type="checkbox" class="ocr-exchk"' + (cand.excluded ? " checked" : "") + '>除外</label>');
-        $c.append('<button type="button" class="btn btn-xs ocr-replace">差替</button>');
+        $c.append('<span class="ocr-name-label">' + escHtml(styleName(cand.sid)) + '</span>');
+        $c.append('<div class="ocr-actions">' +
+            '<button type="button" class="icon_btn_red ocr-exbtn">' + (cand.excluded ? "戻す" : "除外") + '</button>' +
+            '<button type="button" class="icon_btn_on ocr-replace">差替</button>' +
+            '</div>');
         $c.append('<div class="ocr-alts" style="display:none;"></div>');
         $grid.append($c);
     });
     $r.append($grid);
-    $r.append('<div style="margin-top:12px;"><button type="button" class="btn btn-success" id="ocrSave">この内容で登録</button> ' +
-        '<span id="ocrSaveMsg" style="margin-left:8px;"></span></div>');
+    $r.append('<div style="margin-top:12px;text-align:center;"><button type="button" class="icon_btn_positive" id="ocrSave">この内容で登録</button></div>');
 
-    $grid.on("change", ".ocr-exchk", function () {
-        var i = $(this).closest(".ocr-cand").data("i");
-        OCR_CANDIDATES[i].excluded = this.checked;
-        $(this).closest(".ocr-cand").toggleClass("ocr-ex", this.checked);
+    $grid.on("click", ".ocr-exbtn", function () {
+        var $cand = $(this).closest(".ocr-cand"); var i = $cand.data("i");
+        OCR_CANDIDATES[i].excluded = !OCR_CANDIDATES[i].excluded;
+        $cand.toggleClass("ocr-ex", OCR_CANDIDATES[i].excluded);
+        $(this).text(OCR_CANDIDATES[i].excluded ? "戻す" : "除外");
     });
     $grid.on("click", ".ocr-replace", function () {
         var $cand = $(this).closest(".ocr-cand"); var i = $cand.data("i");
@@ -502,7 +505,7 @@ function renderConfirmUI() {
         var tops = matchIconTopN(OCR_CANDIDATES[i].hash, 6);
         $alts.empty();
         tops.forEach(function (t) {
-            var $a = $('<button type="button" class="ocr-alt" data-sid="' + t.sid + '" title="d=' + t.dist + '"></button>');
+            var $a = $('<button type="button" class="ocr-alt" data-sid="' + t.sid + '"></button>');
             $a.append('<img src="' + iconUrl(t.sid) + '"><span>' + escHtml(styleName(t.sid)) + '</span>');
             $alts.append($a);
         });
