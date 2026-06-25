@@ -28,7 +28,7 @@
     <script src="./js/utils2.js" defer></script>
     <!-- スクショ所持登録（カラー署名辞書＋OCRモジュール） -->
     <script src="./js/style_icon_hash.js?v=2026062503c" defer></script>
-    <script src="./js/ocr_style.js?v=2026062601" defer></script>
+    <script src="./js/ocr_style.js?v=2026062602" defer></script>
     <script src="./js/admin_multistyle.js" defer></script>
     <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
     <style>
@@ -382,26 +382,8 @@
         }
         .m1-bulk-on:hover { background: rgba(41,163,100,1); }
 
-        /* OCR 所持登録 */
+        /* OCR 所持登録（.ocr-* の詳細CSSは ocr_style.js が注入。ここは配置のみ） */
         #admin-ocr-area { margin: 8px 0 12px; }
-        .ocr-help { font-size: 12px; opacity: .85; margin: 6px 0; color:#ddd; }
-        .ocr-shot { display: flex; gap: 12px; align-items: flex-start; flex-wrap: wrap; margin: 10px 0; padding: 8px; background: rgba(255,255,255,.06); border-radius: 6px; }
-        .ocr-prev { max-width: 300px; border: 1px solid rgba(255,255,255,.2); }
-        .ocr-detinfo { font-size: 12px; color:#cda; }
-        .ocr-cands { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
-        .ocr-cand { width: 92px; padding: 5px; border-radius: 6px; background: rgba(255,255,255,.06); text-align: center; font-size: 11px; color:#eee; }
-        .ocr-cand.ocr-warn { background: rgba(255,80,80,.18); }
-        .ocr-cand.ocr-ex { opacity: .4; }
-        .ocr-pair { display: flex; align-items: center; justify-content: center; gap: 2px; }
-        .ocr-pair img { width: 34px; height: 34px; }
-        .ocr-arrow { font-size: 10px; opacity: .6; }
-        .ocr-name { line-height: 1.1; margin: 3px 0; min-height: 2.2em; }
-        .ocr-name small { display: block; opacity: .7; }
-        .ocr-exline { font-size: 10px; display: block; }
-        .ocr-replace { font-size: 10px; padding: 1px 6px; }
-        .ocr-alts { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 4px; }
-        .ocr-alt { width: 100%; display: flex; align-items: center; gap: 4px; font-size: 10px; padding: 2px; background: rgba(0,0,0,.2); border: 1px solid rgba(255,255,255,.15); color:#eee; }
-        .ocr-alt img { width: 24px; height: 24px; }
         .m1-bulk-off {
             background: rgba(200,60,60,0.85);
             color: #fff;

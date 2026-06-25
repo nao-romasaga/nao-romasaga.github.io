@@ -284,7 +284,38 @@ function styleName(sid) {
     return info ? (info.Name || sid) : sid;
 }
 
+// OCR UI のCSSを一度だけ注入（admin/mystyle 共通。背景色付きで視認性を確保）
+function injectOcrStyles() {
+    if (document.getElementById("ocr-injected-styles")) return;
+    var css =
+        ".ocr-panel{margin:8px 0 14px;}" +
+        ".ocr-help{font-size:12px;margin:6px 0;padding:7px 10px;background:rgba(0,0,0,0.75);color:#ffeebb;border-radius:6px;line-height:1.4;}" +
+        ".ocr-shot{display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap;margin:10px 0;padding:8px;background:rgba(0,0,0,0.6);border-radius:8px;}" +
+        ".ocr-prev{max-width:300px;border:1px solid rgba(255,255,255,.35);border-radius:4px;}" +
+        ".ocr-detinfo{display:inline-block;font-size:12px;margin-top:6px;padding:4px 10px;background:rgba(0,0,0,0.75);color:#bfe9c8;border-radius:6px;}" +
+        ".ocr-cands{display:grid;grid-template-columns:repeat(auto-fill,minmax(76px,1fr));gap:6px;margin-top:8px;padding:8px;background:rgba(0,0,0,0.62);border-radius:8px;}" +
+        ".ocr-cand{padding:4px 3px;border-radius:6px;background:rgba(255,255,255,.12);text-align:center;font-size:10px;color:#fff;box-shadow:0 1px 2px rgba(0,0,0,.4);}" +
+        ".ocr-cand.ocr-warn{background:rgba(255,90,90,.32);}" +
+        ".ocr-cand.ocr-ex{opacity:.4;}" +
+        ".ocr-pair{display:flex;align-items:center;justify-content:center;gap:1px;}" +
+        ".ocr-pair img{width:26px;height:26px;}" +
+        ".ocr-arrow{font-size:9px;opacity:.7;}" +
+        ".ocr-name{line-height:1.15;margin:2px 0;min-height:2.5em;word-break:break-all;}" +
+        ".ocr-name small{display:block;opacity:.75;}" +
+        ".ocr-exline{font-size:10px;display:block;margin-top:2px;}" +
+        ".ocr-replace{font-size:10px;padding:1px 6px;margin-top:2px;}" +
+        ".ocr-alts{display:flex;flex-direction:column;gap:3px;margin-top:4px;}" +
+        ".ocr-alt{display:flex;align-items:center;gap:4px;font-size:10px;padding:2px;background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:4px;}" +
+        ".ocr-alt img{width:22px;height:22px;}" +
+        "#ocrSaveMsg{display:inline-block;padding:3px 8px;border-radius:6px;background:rgba(0,0,0,0.7);}";
+    var st = document.createElement("style");
+    st.id = "ocr-injected-styles";
+    st.textContent = css;
+    document.head.appendChild(st);
+}
+
 function initOcrUI(containerSel, onConfirm) {
+    injectOcrStyles();
     OCR_ON_CONFIRM = onConfirm;
     OCR_SHOTS = [];
     OCR_CANDIDATES = [];

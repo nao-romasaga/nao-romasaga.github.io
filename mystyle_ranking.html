@@ -52,7 +52,7 @@
         <script src="./js/Firebase.js" defer></script>
         <script src="./js/utils2.js" defer></script>
         <script src="./js/style_icon_hash.js?v=2026062503c" defer></script>
-        <script src="./js/ocr_style.js?v=2026062601" defer></script>
+        <script src="./js/ocr_style.js?v=2026062602" defer></script>
         <script src="./js/mystyle_ranking.js" defer></script>
 
         <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet" rel="preload" as="style">
@@ -70,28 +70,7 @@
             .rank-dmg { font-variant-numeric: tabular-nums; font-weight: bold; white-space: nowrap; }
             .mys-empty { text-align:center; opacity:.8; padding: 24px 8px; }
             .mys-section-title { margin-top: 18px; font-size: 15px; font-weight: bold; }
-
-            /* OCR 所持登録 */
-            .ocr-panel { margin: 8px 0 14px; }
-            .ocr-help { font-size: 12px; opacity: .85; margin: 6px 0; }
-            .ocr-shot { display: flex; gap: 12px; align-items: flex-start; flex-wrap: wrap; margin: 10px 0; padding: 8px; background: rgba(255,255,255,.06); border-radius: 6px; }
-            .ocr-prev { max-width: 320px; border: 1px solid rgba(255,255,255,.2); }
-            .ocr-ctrl { display: grid; grid-template-columns: repeat(2, auto); gap: 4px 10px; }
-            .ocr-f { font-size: 11px; display: flex; flex-direction: column; }
-            .ocr-cands { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
-            .ocr-cand { width: 92px; padding: 5px; border-radius: 6px; background: rgba(255,255,255,.06); text-align: center; font-size: 11px; }
-            .ocr-cand.ocr-warn { background: rgba(255,80,80,.18); }
-            .ocr-cand.ocr-ex { opacity: .4; }
-            .ocr-pair { display: flex; align-items: center; justify-content: center; gap: 2px; }
-            .ocr-pair img { width: 34px; height: 34px; }
-            .ocr-arrow { font-size: 10px; opacity: .6; }
-            .ocr-name { line-height: 1.1; margin: 3px 0; min-height: 2.2em; }
-            .ocr-name small { display: block; opacity: .7; }
-            .ocr-exline { font-size: 10px; display: block; }
-            .ocr-replace { font-size: 10px; padding: 1px 6px; }
-            .ocr-alts { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 4px; }
-            .ocr-alt { width: 100%; display: flex; align-items: center; gap: 4px; font-size: 10px; padding: 2px; background: rgba(0,0,0,.2); border: 1px solid rgba(255,255,255,.15); }
-            .ocr-alt img { width: 24px; height: 24px; }
+            /* OCR 所持登録の .ocr-* CSS は ocr_style.js が注入する */
         </style>
     </head>
     <body>
