@@ -155,48 +155,64 @@ function detectGridCells(img) {
     var L = function (x, y) { return lum[y * W + x]; };
     var yTop = Math.round(H * 0.08), yBot = Math.round(H * 0.92);
 
-    // --- 列検出: 各xの最小輝度 → 暗い帯。端のUIは太いので幅で絞る ---
-    var colMin = new Array(W);
-    for (var x = 0; x < W; x++) { var m = 255; for (var y = yTop; y < yBot; y += 3) { var v = L(x, y); if (v < m) m = v; } colMin[x] = m; }
-    var rawCols = detectBands(colMin, 120, true, Math.round(W * 0.06), 6);
-    // アイコン列幅は概ね W*0.13〜0.19。端のUI帯(太い/細い)を除外
-    var clean = rawCols.filter(function (b) { var w = b[1] - b[0]; return w > W * 0.12 && w < W * 0.19; });
-    if (clean.length < 2) return null;
-    var cellW = Math.round(median(clean.map(function (b) { return b[1] - b[0]; })));
-    var starts = clean.map(function (b) { return b[0]; });
-    // ピッチ = 連続スタート差の中央値
-    var diffs = []; for (var i = 1; i < starts.length; i++) diffs.push(starts[i] - starts[i - 1]);
-    var pitch = Math.round(median(diffs));
-    // 清浄列のスタートを基準に、左右へピッチ展開して全列を復元
-    var anchor = starts[0];
-    var colLefts = [anchor];
-    for (var lx = anchor - pitch; lx > W * 0.01; lx -= pitch) colLefts.unshift(lx);
-    for (var rx = anchor + pitch; rx + cellW < W * 0.99; rx += pitch) colLefts.push(rx);
+    // 分散プロファイル（背景の明暗・色に依存せず、アイコン=高分散/余白=低分散で効く）
+    function varProfileCols() {
+        var arr = new Array(W);
+        for (var x = 0; x < W; x++) { var s = 0, s2 = 0, n = 0; for (var y = yTop; y < yBot; y += 3) { var v = L(x, y); s += v; s2 += v * v; n++; } var mn = s / n; arr[x] = s2 / n - mn * mn; }
+        return arr;
+    }
+    function varProfileRows(rx0, rx1) {
+        var arr = new Array(H);
+        for (var y = 0; y < H; y++) { var s = 0, s2 = 0, n = 0; for (var x = rx0; x < rx1; x += 3) { var v = L(x, y); s += v; s2 += v * v; n++; } var mn = s / n; arr[y] = s2 / n - mn * mn; }
+        return arr;
+    }
+    // 周期を自己相関で推定（ノイジーな余白でも周期構造は強い）
+    function autocorrPitch(sig, s0, s1, lo, hi) {
+        var mean = 0, cnt = 0; for (var i = s0; i < s1; i++) { mean += sig[i]; cnt++; } mean /= cnt;
+        var best = lo, bc = -1e18;
+        for (var lag = lo; lag <= hi; lag++) { var c = 0; for (var j = s0; j + lag < s1; j += 2) c += (sig[j] - mean) * (sig[j + lag] - mean); if (c > bc) { bc = c; best = lag; } }
+        return best;
+    }
+    // 位相: 周期 pitch・幅 cellW のセル群を off だけずらし、セル内分散和が最大の off を選ぶ
+    function bestPhase(sig, lo, hi, pitch, cellW, count) {
+        var bestOff = lo, bestS = -1;
+        for (var off = lo; off < lo + pitch; off += 1) {
+            var sc = 0;
+            for (var k = 0; (off + k * pitch) < hi; k++) {
+                var st = off + k * pitch; var en = Math.min(st + cellW, hi);
+                for (var x = st; x < en; x += 2) sc += sig[x] || 0;
+            }
+            if (sc > bestS) { bestS = sc; bestOff = off; }
+        }
+        return bestOff;
+    }
 
-    // --- 行検出: 内側x範囲の最小輝度で「ベージュ余白行」を検出（端UIを除外）---
-    var rx0 = Math.round(W * 0.06), rx1 = Math.round(W * 0.94);
-    var rowMin = new Array(H);
-    for (var yy = 0; yy < H; yy++) { var mm = 255; for (var xx = rx0; xx < rx1; xx += 2) { var vv = L(xx, yy); if (vv < mm) mm = vv; } rowMin[yy] = mm; }
-    // コンテンツ塊（min<150 が連続, 余白(min>150)が4px超で区切る）。
-    // 各行は [アイコン塊, 知力塊, 名前塊] と割れるので、先頭塊=アイコン上端、行ピッチで等差展開する
-    var blocks = detectBands(rowMin, 150, true, 8, 4).filter(function (b) { return b[0] > yTop && b[0] < yBot; });
-    if (blocks.length < 2) return null;
-    var tops = blocks.map(function (b) { return b[0]; });
-    // 行ピッチ = 1つ飛ばし塊差の中央値（icon→text→次icon の text を飛ばす）
-    var pdiffs = []; for (var p2 = 2; p2 < tops.length; p2++) pdiffs.push(tops[p2] - tops[p2 - 2]);
-    var rowPitch = pdiffs.length ? Math.round(median(pdiffs)) : Math.round(cellW * 1.4);
-    if (rowPitch < cellW * 0.9) rowPitch = Math.round(cellW * 1.4); // 異常値ガード
-    var firstTop = tops[0];
-    var merged = [];
-    for (var ty = firstTop; ty + cellW * 0.6 < yBot; ty += rowPitch) merged.push(Math.round(ty));
+    // --- 列: 5列想定でピッチ≈W/5。自己相関→位相 ---
+    var colVar = varProfileCols();
+    var colPitch = autocorrPitch(colVar, Math.round(W * 0.02), Math.round(W * 0.98), Math.round(W * 0.15), Math.round(W * 0.24));
+    var cellW = Math.round(colPitch * 0.88);
+    var nCol = Math.round(W / colPitch);
+    var colOff = bestPhase(colVar, 0, W, colPitch, cellW, nCol);
+    var colLefts = [];
+    for (var k = 0; k < nCol; k++) { var st = colOff + k * colPitch; if (st >= 0 && st + cellW <= W) colLefts.push(st); }
+    if (colLefts.length < 2) return null;
+
+    // --- 行: アイコン縦ピッチ≈cellW*1.1〜1.9。自己相関→位相 ---
+    var rx0 = colLefts[0], rx1 = colLefts[colLefts.length - 1] + cellW;
+    var rowVar = varProfileRows(rx0, rx1);
+    var rowPitch = autocorrPitch(rowVar, yTop, yBot, Math.round(cellW * 1.05), Math.round(cellW * 1.95));
+    var rowOff = bestPhase(rowVar, yTop, yBot, rowPitch, cellW, 0);
+    var rowTops = [];
+    for (var ty = rowOff; ty + cellW * 0.6 < yBot; ty += rowPitch) rowTops.push(Math.round(ty));
+    if (!rowTops.length) return null;
 
     var cells = [];
-    for (var ri = 0; ri < merged.length; ri++) {
+    for (var ri = 0; ri < rowTops.length; ri++) {
         for (var ci = 0; ci < colLefts.length; ci++) {
-            cells.push({ x: Math.round(colLefts[ci]), y: merged[ri], w: cellW, h: cellW });
+            cells.push({ x: Math.round(colLefts[ci]), y: rowTops[ri], w: cellW, h: cellW });
         }
     }
-    return { cells: cells, cols: colLefts.length, rows: merged.length, cellW: cellW, pitch: pitch, colLefts: colLefts.map(Math.round), rowTops: merged };
+    return { cells: cells, cols: colLefts.length, rows: rowTops.length, cellW: cellW, pitch: colPitch, colLefts: colLefts.map(Math.round), rowTops: rowTops };
 }
 
 function median(a) { var b = a.slice().sort(function (x, y) { return x - y; }); return b[Math.floor(b.length / 2)]; }
@@ -205,7 +221,8 @@ function median(a) { var b = a.slice().sort(function (x, y) { return x - y; }); 
 // カラー署名は縮小で位置ズレに頑健なので軽量な3x3探索で十分。
 function matchCellSnap(img, box) {
     var best = null;
-    var offs = [-4, 0, 4];
+    var s = Math.max(2, Math.round(box.w * 0.04)); // セル幅に比例した微調整幅（細かめ）
+    var offs = [-2 * s, -s, 0, s, 2 * s];
     for (var di = 0; di < offs.length; di++) {
         for (var dj = 0; dj < offs.length; dj++) {
             var x = box.x + offs[di], y = box.y + offs[dj];
