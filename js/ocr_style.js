@@ -59,13 +59,52 @@ function ensureDictSig() {
     return DICT_SIG;
 }
 
-// sig(Uint8Array) → 最良一致
+// sig(Uint8Array) → 最良一致（基本辞書＋全体共有の学習辞書）
 function matchIcon(sig) {
     var dict = ensureDictSig();
-    if (!dict) return { sid: null, dist: 1e9 };
     var best = null, bd = 1e9;
-    for (var sid in dict) { var dd = colorDist(sig, dict[sid]); if (dd < bd) { bd = dd; best = sid; } }
+    if (dict) for (var sid in dict) { var dd = colorDist(sig, dict[sid]); if (dd < bd) { bd = dd; best = sid; } }
+    // 学習辞書（皆の差し替え訂正例）も照合。端末ごとの色味に適応する
+    for (var s in LEARNED_SIG) {
+        var arr = LEARNED_SIG[s];
+        for (var i = 0; i < arr.length; i++) { var d2 = colorDist(sig, arr[i]); if (d2 < bd) { bd = d2; best = s; } }
+    }
     return { sid: best, dist: bd };
+}
+
+/* ---------- 全体共有 学習辞書（差し替え訂正を皆で蓄積し精度UP） ---------- */
+var LEARNED_SIG = {};            // {sid: [Uint8Array,...]} 実行時にデコード保持
+var LEARN_CAP_PER_SID = 30;      // 1スタイルあたりの上限（肥大化防止）
+
+// Firebase の ocr_learn/{sid} から全件読込（ログイン不要・閲覧は誰でも）
+function loadLearnedSigs(cb) {
+    if (typeof firebase === "undefined" || typeof appUsers === "undefined") { if (cb) cb(); return; }
+    try {
+        firebase.database(appUsers).ref("ocr_learn").once("value").then(function (snap) {
+            var val = snap.val() || {}, out = {};
+            for (var sid in val) {
+                var arr = [];
+                for (var k in val[sid]) { try { arr.push(b64ToSig(val[sid][k].s)); } catch (e) { } }
+                if (arr.length) out[sid] = arr;
+            }
+            LEARNED_SIG = out;
+            if (cb) cb();
+        }).catch(function () { if (cb) cb(); });
+    } catch (e) { if (cb) cb(); }
+}
+
+// 差し替え訂正を全体辞書へ寄与（荒らし対策でログイン必須＋上限＋重複抑制）
+function contributeLearned(sid, sigBytes) {
+    if (!sid || !sigBytes) return;
+    if (typeof firebase === "undefined" || typeof appUsers === "undefined") return;
+    if (typeof UID === "undefined" || !UID) return;                // ログイン必須
+    var existing = LEARNED_SIG[sid] || [];
+    if (existing.length >= LEARN_CAP_PER_SID) return;              // 上限
+    for (var i = 0; i < existing.length; i++) { if (colorDist(sigBytes, existing[i]) < 1500) return; } // 酷似は追加しない
+    try {
+        if (typeof addData === "function") addData("ocr_learn/" + sid, { s: sigToB64(sigBytes), t: (new Date()).getTime(), u: UID });
+        (LEARNED_SIG[sid] = LEARNED_SIG[sid] || []).push(sigBytes); // ローカル即反映
+    } catch (e) { }
 }
 
 // 上位N候補（差し替え用）
@@ -318,6 +357,7 @@ function injectOcrStyles() {
 
 function initOcrUI(containerSel, onConfirm) {
     injectOcrStyles();
+    loadLearnedSigs();           // 全体共有の学習辞書を読込
     OCR_ON_CONFIRM = onConfirm;
     OCR_SHOTS = [];
     OCR_CANDIDATES = [];
@@ -471,6 +511,7 @@ function renderConfirmUI() {
     $grid.on("click", ".ocr-alt", function () {
         var $cand = $(this).closest(".ocr-cand"); var i = $cand.data("i");
         OCR_CANDIDATES[i].sid = $(this).data("sid");
+        OCR_CANDIDATES[i].corrected = true;   // 差し替え＝学習用の正解ラベル
         renderConfirmUI();
     });
     $("#ocrSave").on("click", function () {
@@ -478,6 +519,8 @@ function renderConfirmUI() {
         // 重複排除
         var uniq = []; var seen = {};
         sids.forEach(function (s) { if (!seen[s]) { seen[s] = 1; uniq.push(s); } });
+        // 差し替え訂正したものを全体学習辞書へ寄与（登録された＝確定ラベル）
+        OCR_CANDIDATES.forEach(function (c) { if (c.corrected && !c.excluded && c.hash) contributeLearned(c.sid, c.hash); });
         if (OCR_ON_CONFIRM) OCR_ON_CONFIRM(uniq);
         // 取込・候補をクリアして次の登録に備える（成功メッセージは #ocrToast に残す）
         clearOcrInputs();
