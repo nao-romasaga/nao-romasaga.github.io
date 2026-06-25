@@ -318,6 +318,10 @@ var OCR_CANDIDATES = [];   // [{sid, dist, crop, excluded}]
 var OCR_ON_CONFIRM = null; // function(sids)
 
 function iconUrl(sid) { return "https://romasagatool.com/img/style_icon_bg/" + sid + ".png"; }
+function altButtonHtml(sid) {
+    return '<button type="button" class="ocr-alt" data-sid="' + sid + '">' +
+        '<img src="' + iconUrl(sid) + '"><span>' + escHtml(styleName(sid)) + '</span></button>';
+}
 function styleName(sid) {
     var info = (typeof STYLE_MASTER !== "undefined") ? STYLE_MASTER[sid] : null;
     return info ? (info.Name || sid) : sid;
@@ -332,18 +336,22 @@ function injectOcrStyles() {
         ".ocr-shot{display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap;margin:10px 0;padding:8px;background:rgba(0,0,0,0.6);border-radius:8px;}" +
         ".ocr-prev{max-width:300px;border:1px solid rgba(255,255,255,.35);border-radius:4px;}" +
         ".ocr-detinfo{display:inline-block;font-size:12px;margin-top:6px;padding:4px 10px;background:rgba(0,0,0,0.75);color:#bfe9c8;border-radius:6px;}" +
-        // 縦1列・大アイコン（視線は縦スクロールのみ）
+        // 縦1列。左=アイコン＋下に名前 / 右=ボタン（視線は縦スクロールのみ）
         ".ocr-cands{display:flex;flex-direction:column;gap:6px;margin-top:8px;padding:8px;background:rgba(0,0,0,0.62);border-radius:8px;}" +
-        ".ocr-cand{display:flex;align-items:center;flex-wrap:wrap;gap:8px;padding:6px 8px;border-radius:6px;background:rgba(255,255,255,.10);color:#fff;box-shadow:0 1px 2px rgba(0,0,0,.4);}" +
+        ".ocr-cand{display:flex;align-items:flex-start;flex-wrap:wrap;gap:10px;padding:6px 8px;border-radius:6px;background:rgba(255,255,255,.10);color:#fff;box-shadow:0 1px 2px rgba(0,0,0,.4);}" +
         ".ocr-cand.ocr-warn{background:rgba(255,90,90,.30);}" +
         ".ocr-cand.ocr-ex{opacity:.4;}" +
-        ".ocr-pair{display:flex;align-items:center;gap:4px;flex:0 0 auto;}" +
+        ".ocr-left{display:flex;flex-direction:column;align-items:center;flex:0 0 auto;}" +
+        ".ocr-pair{display:flex;align-items:center;gap:4px;}" +
         ".ocr-pair img{width:48px;height:48px;border-radius:4px;}" +
         ".ocr-arrow{font-size:14px;opacity:.7;}" +
-        ".ocr-name-label{flex:1 1 auto;min-width:90px;background-color:rgba(100,100,80,0.8);color:#fff;padding:2px 8px;border-radius:6px;font-size:13px;line-height:1.3;}" +
-        ".ocr-actions{display:flex;gap:6px;flex:0 0 auto;}" +
+        ".ocr-name-label{margin-top:3px;max-width:108px;text-align:center;background-color:rgba(100,100,80,0.8);color:#fff;padding:2px 6px;border-radius:6px;font-size:12px;line-height:1.25;word-break:break-all;}" +
+        ".ocr-actions{display:flex;gap:8px;flex:0 0 auto;align-items:center;align-self:center;}" +
         ".ocr-cand .icon_btn_red,.ocr-cand .icon_btn_on{font-size:11px;padding:5px 16px;cursor:pointer;}" +
-        ".ocr-alts{flex:1 1 100%;display:flex;flex-wrap:wrap;gap:4px;margin-top:4px;}" +
+        ".ocr-alts{flex:1 1 100%;margin-top:4px;}" +
+        ".ocr-alt-hint{font-size:11px;color:#cde;margin:2px 0;}" +
+        ".ocr-alt-row{display:flex;flex-wrap:wrap;gap:4px;}" +
+        ".ocr-search-input{width:100%;max-width:260px;margin:2px 0 4px;padding:4px 8px;border-radius:6px;border:1px solid rgba(255,255,255,.3);background:rgba(0,0,0,.4);color:#fff;font-size:13px;}" +
         ".ocr-alt{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:9px;padding:3px;background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:4px;width:60px;}" +
         ".ocr-alt img{width:40px;height:40px;}" +
         ".ocr-toast{margin:8px 0;padding:8px 12px;background:rgba(40,140,70,0.92);color:#fff;border-radius:6px;font-size:13px;font-weight:bold;}" +
@@ -479,9 +487,12 @@ function renderConfirmUI() {
         var warn = cand.dist > OCR_DIST_OK;
         // 縦1列・大アイコン。視線は縦スクロールのみ
         var $c = $('<div class="ocr-cand' + (warn ? " ocr-warn" : "") + (cand.excluded ? " ocr-ex" : "") + '" data-i="' + i + '"></div>');
-        $c.append('<div class="ocr-pair"><img class="ocr-crop" src="' + cand.crop + '">' +
-            '<span class="ocr-arrow">→</span><img class="ocr-ref" src="' + iconUrl(cand.sid) + '"></div>');
-        $c.append('<span class="ocr-name-label">' + escHtml(styleName(cand.sid)) + '</span>');
+        // 左: アイコン(切出→正解) ＋ その下に名前 / 右: ボタン
+        $c.append('<div class="ocr-left">' +
+            '<div class="ocr-pair"><img class="ocr-crop" src="' + cand.crop + '">' +
+            '<span class="ocr-arrow">→</span><img class="ocr-ref" src="' + iconUrl(cand.sid) + '"></div>' +
+            '<span class="ocr-name-label">' + escHtml(styleName(cand.sid)) + '</span>' +
+            '</div>');
         $c.append('<div class="ocr-actions">' +
             '<button type="button" class="icon_btn_red ocr-exbtn">' + (cand.excluded ? "戻す" : "除外") + '</button>' +
             '<button type="button" class="icon_btn_on ocr-replace">差替</button>' +
@@ -502,14 +513,30 @@ function renderConfirmUI() {
         var $cand = $(this).closest(".ocr-cand"); var i = $cand.data("i");
         var $alts = $cand.find(".ocr-alts");
         if ($alts.is(":visible")) { $alts.hide(); return; }
+        // 近い候補(色)＋「名前検索で全スタイルから選ぶ」（候補に無い時の救済）
         var tops = matchIconTopN(OCR_CANDIDATES[i].hash, 6);
         $alts.empty();
-        tops.forEach(function (t) {
-            var $a = $('<button type="button" class="ocr-alt" data-sid="' + t.sid + '"></button>');
-            $a.append('<img src="' + iconUrl(t.sid) + '"><span>' + escHtml(styleName(t.sid)) + '</span>');
-            $alts.append($a);
-        });
+        $alts.append('<div class="ocr-alt-hint">近い候補：</div>');
+        var $sug = $('<div class="ocr-alt-row"></div>');
+        tops.forEach(function (t) { $sug.append(altButtonHtml(t.sid)); });
+        $alts.append($sug);
+        $alts.append('<div class="ocr-alt-hint" style="margin-top:6px;">無ければ名前で検索：</div>');
+        $alts.append('<input type="text" class="ocr-search-input" placeholder="キャラ名・二つ名（例：デューン）">');
+        $alts.append('<div class="ocr-alt-row ocr-search-results"></div>');
         $alts.show();
+    });
+    // 名前検索（候補に無い正解を全スタイルから探す）
+    $grid.on("input", ".ocr-search-input", function () {
+        var q = $(this).val().trim();
+        var $res = $(this).closest(".ocr-alts").find(".ocr-search-results").empty();
+        if (q.length < 1 || typeof STYLE_MASTER === "undefined") return;
+        var hit = 0;
+        for (var sid in STYLE_MASTER) {
+            var info = STYLE_MASTER[sid];
+            var hay = (info.Name || "") + (info.AnotherName || "");
+            if (hay.indexOf(q) > -1) { $res.append(altButtonHtml(sid)); if (++hit >= 24) break; }
+        }
+        if (!hit) $res.append('<div class="ocr-alt-hint">該当なし</div>');
     });
     $grid.on("click", ".ocr-alt", function () {
         var $cand = $(this).closest(".ocr-cand"); var i = $cand.data("i");
