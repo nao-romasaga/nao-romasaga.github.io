@@ -167,7 +167,7 @@ function onOcrConfirm(sids) {
     } else {
         saveOwnership(sids);
     }
-    $("#ocrSaveMsg").text("登録しました（" + sids.length + "件）。ランキングを更新します。").css("color", "#8f8");
+    if (typeof showOcrToast === "function") showOcrToast("✅ 登録しました（" + sids.length + "件）。ランキングを更新しました。");
     renderRanking(LAST_RANKING);
     $("html,body").animate({ scrollTop: $("#rankingList").offset().top - 20 }, 300);
 }

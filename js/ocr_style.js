@@ -307,7 +307,9 @@ function injectOcrStyles() {
         ".ocr-alts{display:flex;flex-direction:column;gap:3px;margin-top:4px;}" +
         ".ocr-alt{display:flex;align-items:center;gap:4px;font-size:10px;padding:2px;background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:4px;}" +
         ".ocr-alt img{width:22px;height:22px;}" +
-        "#ocrSaveMsg{display:inline-block;padding:3px 8px;border-radius:6px;background:rgba(0,0,0,0.7);}";
+        ".ocr-toast{margin:8px 0;padding:8px 12px;background:rgba(40,140,70,0.92);color:#fff;border-radius:6px;font-size:13px;font-weight:bold;}" +
+        ".ocr-progress{height:10px;background:rgba(0,0,0,0.5);border-radius:5px;overflow:hidden;margin-top:4px;}" +
+        ".ocr-progress-bar{height:100%;background:linear-gradient(90deg,#3aa564,#7be0a0);transition:width .2s;}";
     var st = document.createElement("style");
     st.id = "ocr-injected-styles";
     st.textContent = css;
@@ -327,6 +329,7 @@ function initOcrUI(containerSel, onConfirm) {
         '    <input type="file" id="ocrFiles" accept="image/*" multiple>' +
         '    <div id="ocrShots"></div>' +
         '    <button type="button" class="btn btn-sm btn-success" id="ocrAnalyze" style="display:none;">🔍 読み取る</button>' +
+        '    <div id="ocrToast" class="ocr-toast" style="display:none;"></div>' +
         '    <div id="ocrResult"></div>' +
         '  </div>' +
         '</div>';
@@ -376,23 +379,53 @@ function drawDetectPreview(shot) {
 
 function runOcrAnalyze() {
     if (!STYLE_ICON_HASH) { alert("辞書が読み込まれていません"); return; }
-    $("#ocrResult").html('<p class="ocr-help">読み取り中…</p>');
-    // 重い処理なので次フレームで実行
-    setTimeout(function () {
-        var byBest = {};   // sid -> {sid,dist,crop,hash}
-        OCR_SHOTS.forEach(function (shot) {
-            var r = analyzeScreenshotAuto(shot.img);
-            r.cells.forEach(function (cell) {
-                if (!cell.sid) return;
-                if (!byBest[cell.sid] || cell.dist < byBest[cell.sid].dist) {
-                    byBest[cell.sid] = { sid: cell.sid, dist: cell.dist, crop: cell.crop, hash: cell.hash };
-                }
-            });
-        });
-        OCR_CANDIDATES = Object.keys(byBest).map(function (s) { var o = byBest[s]; o.excluded = false; return o; })
-            .sort(function (a, b) { return a.dist - b.dist; });
-        renderConfirmUI();
-    }, 30);
+    $("#ocrToast").hide();
+    var byBest = {};                 // sid -> {sid,dist,crop,hash}
+    var total = OCR_SHOTS.length, idx = 0;
+    $("#ocrAnalyze").prop("disabled", true);
+
+    function progress(done) {
+        var pct = total ? Math.round(done / total * 100) : 0;
+        $("#ocrResult").html(
+            '<p class="ocr-help">読み取り中… ' + done + ' / ' + total + ' 枚目（重いので少し待ってね）</p>' +
+            '<div class="ocr-progress"><div class="ocr-progress-bar" style="width:' + pct + '%"></div></div>');
+    }
+
+    function step() {
+        if (idx >= total) {
+            OCR_CANDIDATES = Object.keys(byBest).map(function (s) { var o = byBest[s]; o.excluded = false; return o; })
+                .sort(function (a, b) { return a.dist - b.dist; });
+            $("#ocrAnalyze").prop("disabled", false);
+            renderConfirmUI();
+            return;
+        }
+        progress(idx + 1);
+        // 進捗テキストを描画させてから重い1枚分を処理（UIが固まって見えないように）
+        setTimeout(function () {
+            try {
+                var r = analyzeScreenshotAuto(OCR_SHOTS[idx].img);
+                r.cells.forEach(function (cell) {
+                    if (!cell.sid) return;
+                    if (!byBest[cell.sid] || cell.dist < byBest[cell.sid].dist) {
+                        byBest[cell.sid] = { sid: cell.sid, dist: cell.dist, crop: cell.crop, hash: cell.hash };
+                    }
+                });
+            } catch (e) { /* この画像は検出失敗 → スキップ */ }
+            idx++;
+            step();
+        }, 30);
+    }
+    step();
+}
+
+// 登録後に取込/候補をクリア（次の登録でスクロールしないように）
+function clearOcrInputs() {
+    OCR_SHOTS = [];
+    OCR_CANDIDATES = [];
+    $("#ocrShots").empty();
+    $("#ocrResult").empty();
+    var f = document.getElementById("ocrFiles"); if (f) f.value = "";
+    $("#ocrAnalyze").hide();
 }
 
 function renderConfirmUI() {
@@ -446,7 +479,14 @@ function renderConfirmUI() {
         var uniq = []; var seen = {};
         sids.forEach(function (s) { if (!seen[s]) { seen[s] = 1; uniq.push(s); } });
         if (OCR_ON_CONFIRM) OCR_ON_CONFIRM(uniq);
+        // 取込・候補をクリアして次の登録に備える（成功メッセージは #ocrToast に残す）
+        clearOcrInputs();
     });
+}
+
+// 成功メッセージ表示（ページの onConfirm から呼ぶ。クリア後も残る）
+function showOcrToast(msg) {
+    $("#ocrToast").text(msg).show();
 }
 
 function escHtml(s) {

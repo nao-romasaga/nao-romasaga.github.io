@@ -183,9 +183,9 @@ function onAdminOcrConfirm(sids) {
     saveData();
     renderAccountTabs();
     if (APP.mode === 1) renderMode1();
-    var msg = "「" + acct.name + "」に " + added + " 件追加しました（既所持はスキップ）";
+    var msg = "✅ 「" + acct.name + "」に " + added + " 件追加しました（既所持はスキップ）";
     if (skipped) msg += " / 辞書外 " + skipped + " 件";
-    $("#ocrSaveMsg").text(msg).css("color", "#8f8");
+    if (typeof showOcrToast === "function") showOcrToast(msg);
 }
 
 function buildStyleList() {
