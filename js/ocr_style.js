@@ -267,13 +267,46 @@ function detectGridCells(img) {
     }
     if (colLefts.length < 2) return null;
 
-    // --- 行: アイコン縦ピッチ≈cellW*1.1〜1.9。自己相関→位相 ---
-    var rx0 = colLefts[0], rx1 = colLefts[colLefts.length - 1] + cellW;
-    var rowVar = varProfileRows(rx0, rx1);
-    var rowPitch = autocorrPitch(rowVar, yTop, yBot, Math.round(cellW * 1.05), Math.round(cellW * 1.95));
-    var rowOff = bestPhase(rowVar, yTop, yBot, rowPitch, cellW, 0);
+    // --- 行: 「アイコン列の大半が同時に高分散」な行だけを拾う ---
+    // 上部のソート/フィルタUI・検索ボックス・タブや下部のボタン帯は、5列全てが
+    // 同時に高分散になることはほぼ無い。列ごとの行分散を出し、列方向の中央値を
+    // 行スコアにすると、アイコン行だけが高くなりUIヘッダ/フッタを自然に除外できる。
+    function colRowVarProfiles() {
+        var profs = [];
+        for (var c = 0; c < colLefts.length; c++) {
+            var x0 = colLefts[c], x1 = Math.min(W, colLefts[c] + cellW);
+            var arr = new Float64Array(H);
+            for (var y = 0; y < H; y++) {
+                var s = 0, s2 = 0, n = 0;
+                for (var x = x0; x < x1; x += 3) { var v = L(x, y); s += v; s2 += v * v; n++; }
+                var mn = s / n; arr[y] = s2 / n - mn * mn;
+            }
+            profs.push(arr);
+        }
+        return profs;
+    }
+    var cprofs = colRowVarProfiles();
+    var rowScore = new Float64Array(H);
+    var tmpC = new Array(cprofs.length);
+    for (var ys = 0; ys < H; ys++) {
+        for (var c2 = 0; c2 < cprofs.length; c2++) tmpC[c2] = cprofs[c2][ys];
+        tmpC.sort(function (a, b) { return a - b; });
+        rowScore[ys] = tmpC[Math.floor(tmpC.length / 2)]; // 列方向の中央値
+    }
+    var rowPitch = autocorrPitch(rowScore, yTop, yBot, Math.round(cellW * 1.05), Math.round(cellW * 1.95));
+    var rowOff = bestPhase(rowScore, yTop, yBot, rowPitch, cellW, 0);
+    // しきい値: アイコン行スコアの最大値に対する比
+    var rsMax = 0; for (var yr = yTop; yr < yBot; yr++) if (rowScore[yr] > rsMax) rsMax = rowScore[yr];
+    var rsThr = rsMax * 0.18;
+    // 画像全体から候補行を生成し、アイコン本体のスコアがしきい値以上の行だけ残す
+    // （= ヘッダ/フッタ/余白行を捨てる）
     var rowTops = [];
-    for (var ty = rowOff; ty + cellW * 0.6 < yBot; ty += rowPitch) rowTops.push(Math.round(ty));
+    for (var ty = rowOff % rowPitch; ty + cellW * 0.6 < H; ty += rowPitch) {
+        var top = Math.round(ty); if (top < 0) continue;
+        var a = top + Math.round(cellW * 0.15), b = Math.min(H, top + Math.round(cellW * 0.85));
+        var sum = 0, cnt = 0; for (var yy = a; yy < b; yy += 2) { sum += rowScore[yy]; cnt++; }
+        if (cnt && (sum / cnt) >= rsThr) rowTops.push(top);
+    }
     if (!rowTops.length) return null;
 
     var cells = [];
