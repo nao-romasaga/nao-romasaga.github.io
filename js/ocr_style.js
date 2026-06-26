@@ -354,9 +354,13 @@ function injectOcrStyles() {
         ".ocr-alts{flex:1 1 100%;margin-top:4px;}" +
         "@media(min-width:768px){.ocr-cand{align-items:center;}.ocr-alts{flex:1 1 auto;}}" +
         ".ocr-alt-hint{font-size:11px;color:#cde;margin:2px 0;}" +
-        ".ocr-alt-row{display:flex;flex-wrap:wrap;gap:4px;}" +
-        ".ocr-search-input{width:100%;max-width:260px;margin:2px 0 4px;padding:4px 8px;border-radius:6px;border:1px solid rgba(255,255,255,.3);background:rgba(0,0,0,.4);color:#fff;font-size:13px;}" +
-        ".ocr-alt{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:9px;padding:3px;background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:4px;width:60px;}" +
+        ".ocr-alt-head{display:flex;align-items:center;gap:8px;flex-wrap:nowrap;margin-bottom:4px;}" +
+        ".ocr-alt-title{font-size:12px;min-width:96px;text-align:center;flex:0 0 auto;}" +
+        ".ocr-search-wrap{display:flex;align-items:center;gap:4px;font-size:12px;color:#cde;white-space:nowrap;flex:1 1 auto;min-width:0;}" +
+        // 候補はgridでアイコンサイズ据え置きのまま列数を最大化（SP390で5列）
+        ".ocr-alt-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(56px,1fr));gap:4px;}" +
+        ".ocr-search-input{flex:1 1 auto;min-width:60px;width:100%;padding:4px 8px;border-radius:6px;border:1px solid rgba(255,255,255,.3);background:rgba(0,0,0,.4);color:#fff;font-size:13px;}" +
+        ".ocr-alt{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:9px;padding:3px 0;background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:4px;width:auto;}" +
         ".ocr-alt img{width:40px;height:40px;}" +
         ".ocr-toast{margin:8px 0;padding:8px 12px;background:rgba(40,140,70,0.92);color:#fff;border-radius:6px;font-size:13px;font-weight:bold;}" +
         ".ocr-progress{height:10px;background:rgba(0,0,0,0.5);border-radius:5px;overflow:hidden;margin-top:4px;}" +
@@ -522,12 +526,13 @@ function renderConfirmUI() {
         var topN = (window.innerWidth >= 768) ? 12 : 5;
         var tops = matchIconTopN(OCR_CANDIDATES[i].hash, topN);
         $alts.empty();
-        $alts.append('<div class="ocr-alt-hint">近い候補：</div>');
-        var $sug = $('<div class="ocr-alt-row"></div>');
+        $alts.append('<div class="ocr-alt-head">' +
+            '<span class="bg-item ocr-alt-title">近い候補</span>' +
+            '<span class="ocr-search-wrap">名前で検索：<input type="text" class="ocr-search-input" placeholder="例：デューン"></span>' +
+            '</div>');
+        var $sug = $('<div class="ocr-alt-row ocr-suggest"></div>');
         tops.forEach(function (t) { $sug.append(altButtonHtml(t.sid)); });
         $alts.append($sug);
-        $alts.append('<div class="ocr-alt-hint" style="margin-top:6px;">無ければ名前で検索：</div>');
-        $alts.append('<input type="text" class="ocr-search-input" placeholder="キャラ名・二つ名（例：デューン）">');
         $alts.append('<div class="ocr-alt-row ocr-search-results"></div>');
         $alts.show();
     });
