@@ -29,8 +29,8 @@
     <script src="./js/utils2.js" defer></script>
     <!-- スクショ所持登録（カラー署名辞書＋OCRモジュール） -->
     <script src="./js/style_icon_hash.js?v=2026062503c" defer></script>
-    <script src="./js/ocr_style.js?v=2026062611" defer></script>
-    <script src="./js/admin_multistyle.js?v=2026062611" defer></script>
+    <script src="./js/ocr_style.js?v=2026062619" defer></script>
+    <script src="./js/admin_multistyle.js?v=2026062616" defer></script>
     <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
     <style>
         /* ===== アカウントタブ ===== */
@@ -114,6 +114,29 @@
             border-radius: 10px;
             padding: 10px;
         }
+        /* 表示切替（年代別/ガチャ別） */
+        #mode1-viewtoggle { display: flex; gap: 6px; margin-bottom: 8px; }
+        .m1-view-btn {
+            padding: 5px 16px; border-radius: 8px; cursor: pointer; font-size: 13px;
+            border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: #fff;
+        }
+        .m1-view-btn.active { background: rgba(41,163,239,0.9); border-color: transparent; font-weight: bold; }
+        /* ガチャ別: 年セクション内をガチャ小カードで横並び分割 */
+        .gacha-cards-wrap { display: flex; flex-wrap: wrap; gap: 8px; align-items: flex-start; }
+        .gacha-card {
+            width: 164px; padding: 6px;
+            background: rgba(30,30,30,0.85); border: 1px solid rgb(197,187,147); border-radius: 8px;
+        }
+        /* ガチャ表示時のみアイコンを小さく（他画面・年代別には影響させない） */
+        #mode1-icon-area.gacha-view .style_icon_bg_base {
+            width: 45px !important; height: 45px !important;
+        }
+        .gacha-card-title {
+            display: block; font-size: 11px; padding: 3px 8px; margin-bottom: 4px;
+            background: rgba(0,0,0,0.75); border-radius: 6px; color: #faf0b4;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        }
+        .gacha-card .icon-grid { gap: 2px; }
         .year-section {
             margin-bottom: 20px;
         }
@@ -197,6 +220,18 @@
         .filter-chip.active {
             background: rgba(41,163,239,0.8);
             border-color: transparent;
+        }
+        /* アイコンチップ（レア・武器種） */
+        .filter-chip.chip-icon {
+            padding: 3px 5px;
+            line-height: 0;
+            display: inline-flex;
+            align-items: center;
+        }
+        .filter-chip.chip-icon .icon_xs {
+            vertical-align: middle;
+            background-repeat: no-repeat;
+            background-position: center;
         }
         #m1-text-search {
             padding: 3px 8px;
@@ -426,25 +461,30 @@
         <div id="admin-ocr-area"></div>
         <div id="mode1-filter">
             <div class="filter-row">
+                <label>表示</label>
+                <button class="m1-view-btn active" data-view="year">年代別</button>
+                <button class="m1-view-btn" data-view="gacha">ガチャ別</button>
+            </div>
+            <div class="filter-row">
                 <label>レア</label>
                 <button class="filter-chip active" data-filter-type="rarity" data-filter-val="ALL">全て</button>
-                <button class="filter-chip" data-filter-type="rarity" data-filter-val="SS">SS</button>
-                <button class="filter-chip" data-filter-type="rarity" data-filter-val="S">S</button>
-                <button class="filter-chip" data-filter-type="rarity" data-filter-val="A">A</button>
+                <button class="filter-chip chip-icon" data-filter-type="rarity" data-filter-val="SS"><span class="icon_xs icon_rare_ss">　</span></button>
+                <button class="filter-chip chip-icon" data-filter-type="rarity" data-filter-val="S"><span class="icon_xs icon_rare_s">　</span></button>
+                <button class="filter-chip chip-icon" data-filter-type="rarity" data-filter-val="A"><span class="icon_xs icon_rare_a">　</span></button>
             </div>
             <div class="filter-row">
                 <label>武器種</label>
                 <button class="filter-chip active" data-filter-type="weapon" data-filter-val="ALL">全て</button>
-                <button class="filter-chip" data-filter-type="weapon" data-filter-val="剣">剣</button>
-                <button class="filter-chip" data-filter-type="weapon" data-filter-val="大剣">大剣</button>
-                <button class="filter-chip" data-filter-type="weapon" data-filter-val="斧">斧</button>
-                <button class="filter-chip" data-filter-type="weapon" data-filter-val="棍棒">棍棒</button>
-                <button class="filter-chip" data-filter-type="weapon" data-filter-val="体術">体術</button>
-                <button class="filter-chip" data-filter-type="weapon" data-filter-val="銃">銃</button>
-                <button class="filter-chip" data-filter-type="weapon" data-filter-val="小剣">小剣</button>
-                <button class="filter-chip" data-filter-type="weapon" data-filter-val="弓">弓</button>
-                <button class="filter-chip" data-filter-type="weapon" data-filter-val="槍">槍</button>
-                <button class="filter-chip" data-filter-type="weapon" data-filter-val="杖">杖</button>
+                <button class="filter-chip chip-icon" data-filter-type="weapon" data-filter-val="剣"><span class="icon_xs icon_ken">　</span></button>
+                <button class="filter-chip chip-icon" data-filter-type="weapon" data-filter-val="大剣"><span class="icon_xs icon_dken">　</span></button>
+                <button class="filter-chip chip-icon" data-filter-type="weapon" data-filter-val="斧"><span class="icon_xs icon_ono">　</span></button>
+                <button class="filter-chip chip-icon" data-filter-type="weapon" data-filter-val="棍棒"><span class="icon_xs icon_kon">　</span></button>
+                <button class="filter-chip chip-icon" data-filter-type="weapon" data-filter-val="体術"><span class="icon_xs icon_tai">　</span></button>
+                <button class="filter-chip chip-icon" data-filter-type="weapon" data-filter-val="銃"><span class="icon_xs icon_ju">　</span></button>
+                <button class="filter-chip chip-icon" data-filter-type="weapon" data-filter-val="小剣"><span class="icon_xs icon_sken">　</span></button>
+                <button class="filter-chip chip-icon" data-filter-type="weapon" data-filter-val="弓"><span class="icon_xs icon_yumi">　</span></button>
+                <button class="filter-chip chip-icon" data-filter-type="weapon" data-filter-val="槍"><span class="icon_xs icon_yari">　</span></button>
+                <button class="filter-chip chip-icon" data-filter-type="weapon" data-filter-val="杖"><span class="icon_xs icon_tsue">　</span></button>
             </div>
             <div class="filter-row">
                 <label>年代</label>
@@ -476,7 +516,7 @@
             </div>
         </div>
         <div id="mode1-icon-area">
-            <!-- JS で年代別セクションを生成 -->
+            <!-- JS で年代別/ガチャ別セクションを生成 -->
         </div>
     </div>
 

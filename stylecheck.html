@@ -49,6 +49,7 @@
         <script src="./js/lib/ls.unveilhooks.min.js" defer></script>
         <script src="./js/bootstrap.min.js" defer></script>
         <link rel="stylesheet" type="text/css" href="./css/style2.css" rel="preload" as="style">
+        <link rel="stylesheet" type="text/css" href="./css/icon2.css">
         <!-- Firebase v9以降の compat CDN（名前空間API互換） -->
         <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js" defer></script>
         <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js" defer></script>
@@ -85,7 +86,11 @@
                 "七英雄襲来イベント配布",
                 ]
         </script>
-        <script src="./js/stylecheck.js"  defer></script>
+        <!-- スクショ所持登録＋Mode1グリッド（移植） -->
+        <script src="./js/style_icon_hash.js?v=2026062503c" defer></script>
+        <script src="./js/ocr_style.js?v=2026062619" defer></script>
+        <script src="./js/stylecheck.js?v=2026062601"  defer></script>
+        <script src="./js/stylecheck_grid.js?v=2026062604" defer></script>
         <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet" rel="preload" as="style">
         <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -105,7 +110,10 @@
         }
         canvas {
             display: block;
-        }            
+        }
+        /* 旧UI(フィルタ/旧グリッド/ガチャシミュ)は非表示。集計用にDOMは残す */
+        #filterArea, #styleAreaChecker, #styleAreaRare, #styleAreaGachaWrapper, #styleAreaChar, #displaySimulator { display: none !important; }
+        .sc-chip.chip-icon .icon_xs { background-repeat:no-repeat; background-position:center; vertical-align:middle; }
         </style>
     </head>
     <body>
@@ -238,7 +246,68 @@
 
                 <div class="text-center myinput d-none" style="margin: 20px; ">
                     <a href="./stylecheck.html" class="width-100 h5" style="background-color: rgba(41,163,239,1); color:white; padding:5px 10px; border-radius:10px;"><i class="fas fa-edit"></i> 自分の所持スタイルを入力する</a>
-                </div>                
+                </div>
+
+                <!-- ▼ 移植: スクショ所持登録＋年代別/ガチャ別グリッド -->
+                <div id="sc-ocr-area"></div>
+                <div id="sc-filter">
+                    <div class="sc-frow">
+                        <label>表示</label>
+                        <button class="sc-view-btn active" data-view="year">年代別</button>
+                        <button class="sc-view-btn" data-view="gacha">ガチャ別</button>
+                        <button id="sc-unowned">未所持のみ</button>
+                    </div>
+                    <div class="sc-frow">
+                        <label>レア</label>
+                        <button class="sc-chip active" data-ftype="rarity" data-fval="ALL">全て</button>
+                        <button class="sc-chip chip-icon" data-ftype="rarity" data-fval="SS"><span class="icon_xs icon_rare_ss">　</span></button>
+                        <button class="sc-chip chip-icon" data-ftype="rarity" data-fval="S"><span class="icon_xs icon_rare_s">　</span></button>
+                        <button class="sc-chip chip-icon" data-ftype="rarity" data-fval="A"><span class="icon_xs icon_rare_a">　</span></button>
+                    </div>
+                    <div class="sc-frow">
+                        <label>武器種</label>
+                        <button class="sc-chip active" data-ftype="weapon" data-fval="ALL">全て</button>
+                        <button class="sc-chip chip-icon" data-ftype="weapon" data-fval="剣"><span class="icon_xs icon_ken">　</span></button>
+                        <button class="sc-chip chip-icon" data-ftype="weapon" data-fval="大剣"><span class="icon_xs icon_dken">　</span></button>
+                        <button class="sc-chip chip-icon" data-ftype="weapon" data-fval="斧"><span class="icon_xs icon_ono">　</span></button>
+                        <button class="sc-chip chip-icon" data-ftype="weapon" data-fval="棍棒"><span class="icon_xs icon_kon">　</span></button>
+                        <button class="sc-chip chip-icon" data-ftype="weapon" data-fval="体術"><span class="icon_xs icon_tai">　</span></button>
+                        <button class="sc-chip chip-icon" data-ftype="weapon" data-fval="銃"><span class="icon_xs icon_ju">　</span></button>
+                        <button class="sc-chip chip-icon" data-ftype="weapon" data-fval="小剣"><span class="icon_xs icon_sken">　</span></button>
+                        <button class="sc-chip chip-icon" data-ftype="weapon" data-fval="弓"><span class="icon_xs icon_yumi">　</span></button>
+                        <button class="sc-chip chip-icon" data-ftype="weapon" data-fval="槍"><span class="icon_xs icon_yari">　</span></button>
+                        <button class="sc-chip chip-icon" data-ftype="weapon" data-fval="杖"><span class="icon_xs icon_tsue">　</span></button>
+                    </div>
+                    <div class="sc-frow">
+                        <label>年代</label>
+                        <button class="sc-chip active" data-ftype="year" data-fval="ALL">全て</button>
+                        <button class="sc-chip" data-ftype="year" data-fval="2026">2026</button>
+                        <button class="sc-chip" data-ftype="year" data-fval="2025">2025</button>
+                        <button class="sc-chip" data-ftype="year" data-fval="2024">2024</button>
+                        <button class="sc-chip" data-ftype="year" data-fval="2023">2023</button>
+                        <button class="sc-chip" data-ftype="year" data-fval="2022">2022</button>
+                        <button class="sc-chip" data-ftype="year" data-fval="2021">2021</button>
+                        <button class="sc-chip" data-ftype="year" data-fval="2020">2020</button>
+                        <button class="sc-chip" data-ftype="year" data-fval="2019">2019</button>
+                        <button class="sc-chip" data-ftype="year" data-fval="恒常">恒常</button>
+                    </div>
+                    <div class="sc-frow">
+                        <label>検索</label>
+                        <input type="text" id="sc-search" placeholder="キャラ名・二つ名">
+                    </div>
+                    <div class="sc-frow">
+                        <label>一括</label>
+                        <button class="sc-bulk-on allOn" data-rare="SS">SS 全チェック</button>
+                        <button class="sc-bulk-on allOn" data-rare="S">S 全チェック</button>
+                        <button class="sc-bulk-on allOn" data-rare="A">A 全チェック</button>
+                        <button class="sc-bulk-off allOff" data-rare="SS">SS 全て外す</button>
+                        <button class="sc-bulk-off allOff" data-rare="S">S 全て外す</button>
+                        <button class="sc-bulk-off allOff" data-rare="A">A 全て外す</button>
+                    </div>
+                </div>
+                <div id="sc-grid"></div>
+                <!-- ▲ 移植ここまで -->
+
                 <div class="d-none style-bgcolor smallFont" id="styleAreaChecker">
                     <div id="RANK_TMPL" class="d-none row bg-simple">
                         <div class="col-2 col-lg-1 icon"></div>

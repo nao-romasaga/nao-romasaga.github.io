@@ -148,6 +148,7 @@ var APP = {
     data: null,
     activeIndex: 0,
     mode: 1,
+    mode1view: "year",   // "year"=年代別 / "gacha"=ガチャ別
     // フィルタ状態
     filter: {
         rarity: "ALL",
@@ -265,6 +266,26 @@ function escHtml(str) {
 
 // ===== イベントバインド =====
 function bindEvents() {
+    // アイコンクリック（wrapperのdata-idで所持トグル）— 委譲で一度だけ設定
+    $(document).on("click", ".style-wrapper", function () {
+        var id = $(this).attr("data-id");
+        var styles = APP.data.accounts[APP.activeIndex].styles;
+        if (styles[id]) delete styles[id]; else styles[id] = 1;
+        saveData();
+        updateIconState(id);
+        renderAccountTabs();
+    });
+
+    // Mode1 表示切替（年代別 / ガチャ別）
+    $(document).on("click", ".m1-view-btn", function () {
+        var view = $(this).attr("data-view");
+        if (view === APP.mode1view) return;
+        APP.mode1view = view;
+        $(".m1-view-btn").removeClass("active");
+        $(this).addClass("active");
+        renderMode1();           // キャッシュ済みビューへ即スワップ
+    });
+
     // アカウントタブクリック
     $(document).on("click", ".acct-tab", function() {
         var idx = parseInt($(this).attr("data-idx"));
@@ -494,88 +515,132 @@ function bindEvents() {
 }
 
 // ===== モード1: アイコン一覧生成 =====
-var MODE1_BUILT = false;
+// 各ビューの構築済みDOMをキャッシュ（切替のたびに2000+アイコンを作り直さない＝2回目以降は即時）
+var MODE1_DOM = {};
 
 function renderMode1() {
-    if (!MODE1_BUILT) {
-        buildMode1Icons();
-        MODE1_BUILT = true;
-    }
-    // 全アイコンの所持状態を更新
-    $(".admin-style-icon").each(function() {
-        var id = $(this).attr("data-id");
-        updateIconState(id);
-    });
+    buildMode1Icons();
+    refreshIconStates();   // 表示中ビューの所持状態をまとめて更新（native DOMで高速）
     applyMode1Filter();
 }
 
+// 表示中の全wrapperの所持カバー＆8垢バッジを native DOM で一括更新（jQuery×2005より高速）
+function refreshIconStates() {
+    var accs = APP.data.accounts, active = APP.activeIndex;
+    var wraps = document.querySelectorAll("#mode1-icon-area .style-wrapper");
+    for (var w = 0; w < wraps.length; w++) {
+        var el = wraps[w], id = el.getAttribute("data-id");
+        var cover = el.querySelector(".CHECK_COVER");
+        if (cover) cover.classList.toggle("icon_nocheck", !accs[active].styles[id]);
+        var badges = el.querySelectorAll(".acct-badge");
+        for (var i = 0; i < badges.length; i++) {
+            var ai = +badges[i].getAttribute("data-acct");
+            badges[i].classList.toggle("on", !!accs[ai].styles[id]);
+        }
+    }
+}
+
+// スタイル1件分の wrapper(アイコン＋所持バッジ)を生成（年代別/ガチャ別で共通）
+function buildStyleWrapper(s2) {
+    var $btn = getStyleIcon(s2.rare, s2.id, s2.weapon, false, true);
+    $btn.addClass("admin-style-icon");
+    $btn.attr("data-year", s2.year);
+    $btn.attr("data-another", s2.another);
+    $btn.attr("data-nametext", s2.name);
+    // 名前をアイコン内に透明テキストとして埋め込み（テキスト検索用）
+    $btn.append('<span style="position:absolute;top:0;left:0;font-size:8px;line-height:10px;color:transparent;">' + escHtml(s2.name) + ' ' + escHtml(s2.another) + '</span>');
+    var $badges = $('<div class="acct-badges"></div>');
+    for (var n = 0; n < NUM_ACCOUNTS; n++) {
+        $badges.append('<span class="acct-badge" data-acct="' + n + '">' + (n + 1) + '</span>');
+    }
+    var $wrapper = $('<div class="style-wrapper" data-id="' + s2.id + '" data-year="' + s2.year + '" data-rare="' + s2.rare + '" data-weapon="' + s2.weapon + '" data-name="' + escHtml(s2.name) + ' ' + escHtml(s2.another) + '"></div>');
+    $wrapper.append($btn);
+    $wrapper.append($badges);
+    return $wrapper;
+}
+
+// ガチャ初出グルーピング用ヘルパ
+function debutSeg(g) { return String(g || "").split("/")[0]; }
+function gachaHasDate(s) { return /^\d{4}\.\d{2}\.\d{2}/.test(s); }
+function gachaDate(s) { return s.slice(0, 10); }
+function gachaName(s) { return gachaHasDate(s) ? (s.slice(11) || s) : s; }
+function isRevivalGacha(s) { return /復刻|Re;?vival/i.test(s); }
+
 function buildMode1Icons() {
     var $area = $("#mode1-icon-area");
-    $area.empty();
+    var view = APP.mode1view;
+    // 未構築ならビューを作ってキャッシュ
+    if (!MODE1_DOM[view]) {
+        var $root = $('<div class="m1-viewroot"></div>');
+        if (view === "gacha") buildGachaView($root); else buildYearView($root);
+        MODE1_DOM[view] = $root;
+    }
+    // 現在の表示をdetach(破棄せず退避)して目的ビューを差し込む＝再構築不要で軽い
+    $area.children().detach();
+    $area.toggleClass("gacha-view", view === "gacha");
+    $area.append(MODE1_DOM[view]);
+}
 
-    // yearごとにセクションを作る
-    var years = ["2026","2025","2024","2023","2022","2021","2020","2019","恒常"];
+// 年セクションを作る共通処理（styles配列を icon-grid で並べる）
+function buildYearSection(yr, styles) {
+    var $section = $('<div class="year-section" data-year="' + yr + '"></div>');
+    $section.append('<span class="subtitle-long year-section-title">' + yr + (yr === "恒常" ? "" : "年") + '</span>');
+    return $section;
+}
+
+// 年代別（現行）
+function buildYearView($root) {
+    var years = ["2026", "2025", "2024", "2023", "2022", "2021", "2020", "2019", "恒常"];
     var byYear = {};
     for (var i = 0; i < years.length; i++) byYear[years[i]] = [];
+    for (var j = 0; j < APP.styleList.length; j++) {
+        var s = APP.styleList[j]; var y = String(s.year);
+        if (byYear[y]) byYear[y].push(s); else byYear["恒常"].push(s);
+    }
+    for (var k = 0; k < years.length; k++) {
+        var yr = years[k]; var styles = byYear[yr];
+        if (!styles || !styles.length) continue;
+        var $section = buildYearSection(yr, styles);
+        var $grid = $('<div class="icon-grid"></div>');
+        for (var m = 0; m < styles.length; m++) $grid.append(buildStyleWrapper(styles[m]));
+        $section.append($grid); $root.append($section);
+    }
+}
 
+// ガチャ別：年セクションの中を「初出ガチャ」で小カード分割（復刻除外・日付なしは末尾）
+function buildGachaView($root) {
+    var years = ["2026", "2025", "2024", "2023", "2022", "2021", "2020", "2019", "恒常"];
+    var byYear = {};
+    for (var i = 0; i < years.length; i++) byYear[years[i]] = {};
     for (var j = 0; j < APP.styleList.length; j++) {
         var s = APP.styleList[j];
-        var y = String(s.year);
-        if (byYear[y]) byYear[y].push(s);
-        else {
-            // 想定外の年代は恒常に
-            byYear["恒常"].push(s);
-        }
+        var seg = debutSeg(s.gacha);
+        if (!seg || isRevivalGacha(seg)) continue;
+        var y = String(s.year); if (!byYear[y]) y = "恒常";
+        (byYear[y][seg] = byYear[y][seg] || []).push(s);
     }
-
+    function segSort(a, b) {
+        var da = gachaHasDate(a), db = gachaHasDate(b);
+        if (da && db) return gachaDate(b) > gachaDate(a) ? 1 : -1;
+        if (da) return -1; if (db) return 1; return a > b ? 1 : -1;
+    }
     for (var k = 0; k < years.length; k++) {
-        var yr = years[k];
-        var styles = byYear[yr];
-        if (!styles || styles.length === 0) continue;
-
-        var $section = $('<div class="year-section" data-year="' + yr + '"></div>');
-        $section.append('<span class="subtitle-long year-section-title">' + yr + (yr === "恒常" ? "" : "年") + '</span>');
-        var $grid = $('<div class="icon-grid"></div>');
-
-        for (var m = 0; m < styles.length; m++) {
-            var s2 = styles[m];
-            var $btn = getStyleIcon(s2.rare, s2.id, s2.weapon, false, true);
-            $btn.addClass("admin-style-icon");
-            $btn.attr("data-year", s2.year);
-            $btn.attr("data-another", s2.another);
-            $btn.attr("data-nametext", s2.name);
-            // 名前をアイコン内に透明テキストとして埋め込み（テキスト検索用）
-            $btn.append('<span style="position:absolute;top:0;left:0;font-size:8px;line-height:10px;color:transparent;">' + escHtml(s2.name) + ' ' + escHtml(s2.another) + '</span>');
-
-            // 所持バッジ（8個）
-            var $badges = $('<div class="acct-badges"></div>');
-            for (var n = 0; n < NUM_ACCOUNTS; n++) {
-                $badges.append('<span class="acct-badge" data-acct="' + n + '">' + (n+1) + '</span>');
-            }
-            // wrapperで包む
-            var $wrapper = $('<div class="style-wrapper" data-id="' + s2.id + '" data-year="' + yr + '" data-rare="' + s2.rare + '" data-weapon="' + s2.weapon + '" data-name="' + escHtml(s2.name) + ' ' + escHtml(s2.another) + '"></div>');
-            $wrapper.append($btn);
-            $wrapper.append($badges);
-            $grid.append($wrapper);
+        var yr = years[k]; var segs = byYear[yr];
+        var segKeys = Object.keys(segs);
+        if (!segKeys.length) continue;
+        segKeys.sort(segSort);
+        var $section = buildYearSection(yr, null);
+        var $wrap = $('<div class="gacha-cards-wrap"></div>');
+        for (var i2 = 0; i2 < segKeys.length; i2++) {
+            var seg = segKeys[i2]; var styles = segs[seg];
+            var $card = $('<div class="gacha-card"></div>');
+            $card.append('<span class="gacha-card-title">' + (gachaHasDate(seg) ? gachaDate(seg) + ' ' + escHtml(gachaName(seg)) : escHtml(seg)) + '</span>');
+            var $grid = $('<div class="icon-grid"></div>');
+            for (var m = 0; m < styles.length; m++) $grid.append(buildStyleWrapper(styles[m]));
+            $card.append($grid); $wrap.append($card);
         }
-        $section.append($grid);
-        $area.append($section);
+        $section.append($wrap); $root.append($section);
     }
-
-    // アイコンクリックはwrapperのdata-idを使う形に変更
-    // .admin-style-iconではなく.style-wrapperにイベントを付ける
-    $(document).off("click", ".style-wrapper").on("click", ".style-wrapper", function(e) {
-        var id = $(this).attr("data-id");
-        var styles = APP.data.accounts[APP.activeIndex].styles;
-        if (styles[id]) {
-            delete styles[id];
-        } else {
-            styles[id] = 1;
-        }
-        saveData();
-        updateIconState(id);
-        renderAccountTabs();
-    });
 }
 
 function updateIconState(id) {

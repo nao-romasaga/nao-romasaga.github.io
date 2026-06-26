@@ -209,7 +209,12 @@ function detectGridCells(img) {
     function autocorrPitch(sig, s0, s1, lo, hi) {
         var mean = 0, cnt = 0; for (var i = s0; i < s1; i++) { mean += sig[i]; cnt++; } mean /= cnt;
         var best = lo, bc = -1e18;
-        for (var lag = lo; lag <= hi; lag++) { var c = 0; for (var j = s0; j + lag < s1; j += 2) c += (sig[j] - mean) * (sig[j + lag] - mean); if (c > bc) { bc = c; best = lag; } }
+        for (var lag = lo; lag <= hi; lag++) {
+            var c = 0, n = 0;
+            for (var j = s0; j + lag < s1; j += 2) { c += (sig[j] - mean) * (sig[j + lag] - mean); n++; }
+            if (n) c /= n;   // 項数で正規化（小lagへの偏りを除去＝列数の取り違え防止）
+            if (c > bc) { bc = c; best = lag; }
+        }
         return best;
     }
     // 位相: 周期 pitch・幅 cellW のセル群を off だけずらし、セル内分散和が最大の off を選ぶ
@@ -226,14 +231,40 @@ function detectGridCells(img) {
         return bestOff;
     }
 
-    // --- 列: 5列想定でピッチ≈W/5。自己相関→位相 ---
     var colVar = varProfileCols();
-    var colPitch = autocorrPitch(colVar, Math.round(W * 0.02), Math.round(W * 0.98), Math.round(W * 0.15), Math.round(W * 0.24));
-    var cellW = Math.round(colPitch * 0.88);
-    var nCol = Math.round(W / colPitch);
-    var colOff = bestPhase(colVar, 0, W, colPitch, cellW, nCol);
-    var colLefts = [];
-    for (var k = 0; k < nCol; k++) { var st = colOff + k * colPitch; if (st >= 0 && st + cellW <= W) colLefts.push(st); }
+
+    // --- 列検出① 高分散バンド中心から直接（明背景で正確。列数/ピッチ非依存）---
+    function colsFromBands() {
+        var mx = 0; for (var x = 0; x < W; x++) if (colVar[x] > mx) mx = colVar[x];
+        var thr = mx * 0.30, bands = [], st = -1;
+        for (var x = 0; x < W; x++) {
+            if (colVar[x] >= thr) { if (st < 0) st = x; }
+            else { if (st >= 0) { if (x - st > W * 0.05) bands.push([st, x - 1]); st = -1; } }
+        }
+        if (st >= 0 && (W - st) > W * 0.05) bands.push([st, W - 1]);
+        if (bands.length < 4 || bands.length > 8) return null;
+        var lefts = bands.map(function (b) { return b[0]; });
+        var widths = bands.map(function (b) { return b[1] - b[0]; });
+        var diffs = []; for (var i = 1; i < lefts.length; i++) diffs.push(lefts[i] - lefts[i - 1]);
+        var mn = Math.min.apply(null, diffs), mxd = Math.max.apply(null, diffs);
+        if (mxd / mn > 1.4) return null;   // 間隔が不均一＝バンド融合等→信頼しない
+        return { colLefts: lefts, cellW: Math.round(median(widths)) };
+    }
+
+    var cellW, colLefts, colPitch;
+    var byBand = colsFromBands();
+    if (byBand) {
+        colLefts = byBand.colLefts; cellW = byBand.cellW;
+        colPitch = colLefts.length > 1 ? Math.round((colLefts[colLefts.length - 1] - colLefts[0]) / (colLefts.length - 1)) : cellW;
+    } else {
+        // --- 列検出② 自己相関→位相（暗背景でバンドが融合する場合のフォールバック）---
+        colPitch = autocorrPitch(colVar, Math.round(W * 0.02), Math.round(W * 0.98), Math.round(W * 0.13), Math.round(W * 0.24));
+        cellW = Math.round(colPitch * 0.88);
+        var nCol = Math.round(W / colPitch);
+        var colOff = bestPhase(colVar, 0, W, colPitch, cellW, nCol);
+        colLefts = [];
+        for (var k = 0; k < nCol; k++) { var st2 = colOff + k * colPitch; if (st2 >= 0 && st2 + cellW <= W) colLefts.push(st2); }
+    }
     if (colLefts.length < 2) return null;
 
     // --- 行: アイコン縦ピッチ≈cellW*1.1〜1.9。自己相関→位相 ---
@@ -333,6 +364,11 @@ function injectOcrStyles() {
     if (document.getElementById("ocr-injected-styles")) return;
     var css =
         ".ocr-panel{margin:8px 0 14px;}" +
+        // 目玉機能: スクショ所持登録の大型トグル
+        ".ocr-toggle-big{display:block;width:100%;max-width:480px;margin:6px auto;font-size:19px;font-weight:bold;padding:16px 20px;letter-spacing:.5px;cursor:pointer;border-radius:8px;box-shadow:0 0 0 0 rgba(120,230,150,.6);animation:ocrPulse 2.2s infinite;}" +
+        ".ocr-toggle-big:hover{filter:brightness(1.08);}" +
+        ".ocr-toggle-sub{display:inline-block;font-size:12px;font-weight:normal;background:rgba(0,0,0,.35);color:#fff;border-radius:10px;padding:1px 8px;margin-left:6px;vertical-align:middle;}" +
+        "@keyframes ocrPulse{0%{box-shadow:0 0 0 0 rgba(120,230,150,.55);}70%{box-shadow:0 0 0 12px rgba(120,230,150,0);}100%{box-shadow:0 0 0 0 rgba(120,230,150,0);}}" +
         "#ocrBody{background:rgba(0,0,0,0.55);border-radius:8px;padding:10px;margin-top:8px;}" +
         "#ocrFiles{display:block;margin:8px 0;color:#fff;font-size:13px;}" +
         "#ocrAnalyze{font-size:16px;padding:12px 44px;margin:12px auto;display:block;}" +
@@ -383,7 +419,7 @@ function initOcrUI(containerSel, onConfirm, isOwnedFn) {
     OCR_CANDIDATES = [];
     var html =
         '<div class="ocr-panel">' +
-        '  <button type="button" class="btn btn-sm btn-primary" id="ocrToggle">📷 スクショで所持登録</button>' +
+        '  <button type="button" class="icon_btn_positive ocr-toggle-big" id="ocrToggle">📷 スクショで所持登録</button>' +
         '  <div id="ocrBody" style="display:none;margin-top:10px;">' +
         '    <p class="ocr-help">ゲームの「スタイル一覧」画面のスクショを選んでね（複数可）。アイコンを自動で読み取ります。</p>' +
         '    <input type="file" id="ocrFiles" accept="image/*" multiple>' +
@@ -536,8 +572,9 @@ function renderConfirmUI() {
         var $alts = $cand.find(".ocr-alts");
         if ($alts.is(":visible")) { $alts.hide(); return; }
         // 近い候補(色)＋「名前検索で全スタイルから選ぶ」（候補に無い時の救済）
-        // 近い候補の数: PC=12 / SP=5
-        var topN = (window.innerWidth >= 768) ? 12 : 5;
+        // 近い候補の数: PC(>=1024)=12 / iPad縦など(768-1023)=10 / SP(<768)=5
+        var w = window.innerWidth;
+        var topN = (w >= 1024) ? 12 : (w >= 768 ? 10 : 5);
         var tops = matchIconTopN(OCR_CANDIDATES[i].hash, topN);
         $alts.empty();
         $alts.append('<div class="ocr-alt-head">' +
