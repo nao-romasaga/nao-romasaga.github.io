@@ -437,6 +437,30 @@ function detectGridCells(img) {
 
 function median(a) { var b = a.slice().sort(function (x, y) { return x - y; }); return b[Math.floor(b.length / 2)]; }
 
+// 検出グリッド → 調整用パラメータ
+function paramsFromGrid(grid) {
+    return {
+        left: grid.colLefts[0], top: grid.rowTops[0],
+        cellW: grid.cellW, colPitch: grid.pitch, rowPitch: grid.rowPitch,
+        cols: grid.cols, rows: grid.rows
+    };
+}
+// 調整パラメータ → グリッド（手動調整UIから再構築）
+function gridFromParams(p) {
+    var cols = Math.max(1, Math.round(p.cols)), rows = Math.max(1, Math.round(p.rows));
+    var cellW = Math.round(p.cellW), nameH = Math.max(8, Math.round(p.rowPitch - p.cellW));
+    var cells = [], colLefts = [], rowTops = [];
+    for (var c = 0; c < cols; c++) colLefts.push(Math.round(p.left + c * p.colPitch));
+    for (var r = 0; r < rows; r++) rowTops.push(Math.round(p.top + r * p.rowPitch));
+    for (var ri = 0; ri < rows; ri++) {
+        for (var ci = 0; ci < cols; ci++) {
+            var x = colLefts[ci], y = rowTops[ri];
+            cells.push({ x: x, y: y, w: cellW, h: cellW, nameBox: { x: x, y: y + cellW, w: cellW, h: nameH } });
+        }
+    }
+    return { cells: cells, cols: cols, rows: rows, cellW: cellW, pitch: Math.round(p.colPitch), rowPitch: Math.round(p.rowPitch), colLefts: colLefts, rowTops: rowTops, params: p };
+}
+
 // 1セルを ±オフセットで微調整しながら最良一致を探す（位置ズレ吸収）。
 // カラー署名は縮小で位置ズレに頑健なので軽量な3x3探索で十分。
 function matchCellSnap(img, box) {
@@ -483,7 +507,7 @@ var OCR_NAME_OK = 0.6;      // これ以上は高信頼で確定
 var OCR_NAME_MAYBE = 0.4;   // これ以上は名前で絞る（中スコアは要確認表示）
 function analyzeScreenshotAuto(img, opt) {
     opt = opt || {};
-    var grid = detectGridCells(img);
+    var grid = opt.grid || detectGridCells(img);   // 手動調整済みグリッドがあれば優先
     if (!grid) return Promise.resolve({ grid: null, cells: [] });
     var cells = grid.cells, out = [], i = 0;
     var useText = opt.useText && OCR_TEXT_WORKER;
@@ -599,6 +623,13 @@ function injectOcrStyles() {
         ".ocr-alt{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:9px;padding:3px 0;background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:4px;width:auto;}" +
         ".ocr-alt img{width:40px;height:40px;}" +
         ".ocr-toast{margin:8px 0;padding:8px 12px;background:rgba(40,140,70,0.92);color:#fff;border-radius:6px;font-size:13px;font-weight:bold;}" +
+        ".ocr-adjust-toggle{display:block;margin:6px 0;padding:7px 10px;width:100%;font-size:12px;border:none;border-radius:6px;background:rgba(80,140,200,.85);color:#fff;cursor:pointer;}" +
+        ".ocr-adjust{background:rgba(0,0,0,.45);border-radius:6px;padding:8px;margin-bottom:6px;}" +
+        ".ocr-adj-row{display:flex;align-items:center;gap:8px;margin:4px 0;}" +
+        ".ocr-adj-label{flex:0 0 56px;font-size:11px;color:#cde;}" +
+        ".ocr-adj-slider{flex:1 1 auto;min-width:0;}" +
+        ".ocr-adj-val{flex:0 0 40px;text-align:right;font-size:11px;color:#fff;font-variant-numeric:tabular-nums;}" +
+        ".ocr-adj-reset{margin-top:6px;padding:5px 10px;font-size:11px;border:1px solid rgba(255,255,255,.3);border-radius:6px;background:rgba(255,255,255,.1);color:#fff;cursor:pointer;}" +
         ".ocr-usename{display:block;margin:8px 0;color:#fff;font-size:13px;background:rgba(0,0,0,.35);padding:8px 10px;border-radius:6px;line-height:1.4;cursor:pointer;}" +
         ".ocr-usename input{vertical-align:middle;margin-right:6px;transform:scale(1.2);}" +
         ".ocr-progress{height:10px;background:rgba(0,0,0,0.5);border-radius:5px;overflow:hidden;margin-top:4px;}" +
@@ -645,32 +676,90 @@ function onOcrFiles(e) {
         var url = URL.createObjectURL(file);
         loadImage(url).then(function (img) {
             var shot = { img: img };
-            shot.$row = $('<div class="ocr-shot"><canvas class="ocr-prev"></canvas><div class="ocr-detinfo"></div></div>');
+            shot.$row = $('<div class="ocr-shot">' +
+                '<canvas class="ocr-prev"></canvas>' +
+                '<div class="ocr-detinfo"></div>' +
+                '<button type="button" class="ocr-adjust-toggle">📐 枠がズレてる時はここで調整</button>' +
+                '<div class="ocr-adjust" style="display:none;"></div>' +
+                '</div>');
             OCR_SHOTS.push(shot);
             $("#ocrShots").append(shot.$row);
             drawDetectPreview(shot);
+            renderShotControls(shot);
+            shot.$row.find(".ocr-adjust-toggle").on("click", function () { shot.$row.find(".ocr-adjust").toggle(); });
             if (--pending === 0) $("#ocrAnalyze").show();
         }).catch(function () { if (--pending === 0 && OCR_SHOTS.length) $("#ocrAnalyze").show(); });
     });
 }
 
-// 自動検出したセル枠をプレビュー表示（読取前の確認用）
+// 検出失敗時に手動調整の足場となる既定パラメータ
+function defaultParams(img) {
+    var W = img.width, cols = 5;
+    var colPitch = Math.round(W / cols), cellW = Math.round(colPitch * 0.92);
+    var rowPitch = Math.round(cellW * 1.4);
+    var top = Math.round(img.height * 0.15);
+    var rows = Math.max(1, Math.floor((img.height - top) / rowPitch));
+    return { left: Math.round(W * 0.01), top: top, cellW: cellW, colPitch: colPitch, rowPitch: rowPitch, cols: cols, rows: rows };
+}
+
+// セル枠（緑=アイコン / 水色破線=名前帯）をプレビュー表示。shot.grid があればそれを描画
 function drawDetectPreview(shot) {
-    var grid = detectGridCells(shot.img);
-    shot.grid = grid;
+    if (!shot.grid) {
+        var det = detectGridCells(shot.img);
+        if (det) { shot.grid = det; shot.params = paramsFromGrid(det); shot.detected = true; }
+        else { shot.params = defaultParams(shot.img); shot.grid = gridFromParams(shot.params); shot.detected = false; }
+    }
+    var grid = shot.grid, img = shot.img;
     var cv = shot.$row.find(".ocr-prev")[0];
-    var img = shot.img;
     var maxW = 300, scale = Math.min(1, maxW / img.width);
     cv.width = img.width * scale; cv.height = img.height * scale;
     var g = cv.getContext("2d");
     g.drawImage(img, 0, 0, cv.width, cv.height);
-    if (grid) {
-        g.strokeStyle = "rgba(80,200,120,.95)"; g.lineWidth = 1.5;
-        grid.cells.forEach(function (b) { g.strokeRect(b.x * scale, b.y * scale, b.w * scale, b.h * scale); });
-        shot.$row.find(".ocr-detinfo").text("検出: " + grid.cols + "列 × " + grid.rows + "行 = " + grid.cells.length + "個");
-    } else {
-        shot.$row.find(".ocr-detinfo").html('<span style="color:#f88">アイコンを検出できませんでした。別のスクショを試してね。</span>');
-    }
+    g.lineWidth = 1.5; g.strokeStyle = "rgba(80,200,120,.95)";
+    grid.cells.forEach(function (b) { g.strokeRect(b.x * scale, b.y * scale, b.w * scale, b.h * scale); });
+    // 名前帯（水色破線）も表示してOCR範囲を可視化
+    g.lineWidth = 1; g.strokeStyle = "rgba(90,200,255,.9)"; g.setLineDash([3, 2]);
+    grid.cells.forEach(function (b) { if (b.nameBox) g.strokeRect(b.nameBox.x * scale, b.nameBox.y * scale, b.nameBox.w * scale, b.nameBox.h * scale); });
+    g.setLineDash([]);
+    var msg = (shot.detected ? "検出: " : "手動: ") + grid.cols + "列 × " + grid.rows + "行 = " + grid.cells.length + "個";
+    if (!shot.detected) msg += "（自動検出できず。下の「調整」で枠を合わせてね）";
+    shot.$row.find(".ocr-detinfo").html(shot.detected ? msg : '<span style="color:#fc8">' + msg + '</span>');
+}
+
+// 枠調整スライダーUIを生成（緑枠=アイコン、水色破線=名前帯をライブ更新）
+function renderShotControls(shot) {
+    var img = shot.img, W = img.width, H = img.height;
+    var defs = [
+        { k: "cols", label: "列数", min: 1, max: 8, step: 1 },
+        { k: "rows", label: "行数", min: 1, max: 16, step: 1 },
+        { k: "left", label: "左位置", min: 0, max: Math.round(W * 0.4), step: 1 },
+        { k: "top", label: "上位置", min: 0, max: Math.round(H * 0.7), step: 1 },
+        { k: "cellW", label: "枠サイズ", min: Math.round(W * 0.08), max: Math.round(W * 0.34), step: 1 },
+        { k: "colPitch", label: "横間隔", min: Math.round(W * 0.08), max: Math.round(W * 0.42), step: 1 },
+        { k: "rowPitch", label: "縦間隔", min: Math.round(W * 0.08), max: Math.round(W * 0.55), step: 1 }
+    ];
+    var $box = shot.$row.find(".ocr-adjust").empty();
+    defs.forEach(function (d) {
+        var val = Math.round(shot.params[d.k]);
+        var $row = $('<div class="ocr-adj-row"></div>');
+        $row.append('<span class="ocr-adj-label">' + d.label + '</span>');
+        var $sl = $('<input type="range" class="ocr-adj-slider" min="' + d.min + '" max="' + d.max + '" step="' + d.step + '" value="' + val + '">');
+        var $num = $('<span class="ocr-adj-val">' + val + '</span>');
+        $sl.on("input", function () {
+            var v = parseFloat(this.value); shot.params[d.k] = v; $num.text(Math.round(v));
+            shot.grid = gridFromParams(shot.params); shot.detected = false;   // 手動操作後は手動表示
+            drawDetectPreview(shot);
+        });
+        $row.append($sl); $row.append($num); $box.append($row);
+    });
+    var $reset = $('<button type="button" class="ocr-adj-reset">↺ 自動検出に戻す</button>');
+    $reset.on("click", function () {
+        var det = detectGridCells(img);
+        if (det) { shot.grid = det; shot.params = paramsFromGrid(det); shot.detected = true; }
+        else { shot.params = defaultParams(img); shot.grid = gridFromParams(shot.params); shot.detected = false; }
+        drawDetectPreview(shot); renderShotControls(shot);
+    });
+    $box.append($reset);
 }
 
 function runOcrAnalyze() {
@@ -707,6 +796,7 @@ function runOcrAnalyze() {
         if (idx >= total) { finishAll(); return; }
         var shotNo = idx + 1;
         analyzeScreenshotAuto(OCR_SHOTS[idx].img, {
+            grid: OCR_SHOTS[idx].grid,   // 手動調整済みの枠を使う
             useText: useText,
             onCell: function (done, cnt) {
                 var pct = cnt ? Math.round(done / cnt * 100) : 0;
