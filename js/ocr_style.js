@@ -332,7 +332,10 @@ function injectOcrStyles() {
     if (document.getElementById("ocr-injected-styles")) return;
     var css =
         ".ocr-panel{margin:8px 0 14px;}" +
-        ".ocr-help{font-size:12px;margin:6px 0;padding:7px 10px;background:rgba(0,0,0,0.75);color:#ffeebb;border-radius:6px;line-height:1.4;}" +
+        "#ocrBody{background:rgba(0,0,0,0.55);border-radius:8px;padding:10px;margin-top:8px;}" +
+        "#ocrFiles{display:block;margin:8px 0;color:#fff;font-size:13px;}" +
+        "#ocrAnalyze{font-size:16px;padding:12px 44px;margin:12px auto;display:block;}" +
+        ".ocr-help{font-size:12px;margin:6px 0;padding:7px 10px;background:rgba(0,0,0,0.6);color:#ffeebb;border-radius:6px;line-height:1.4;}" +
         ".ocr-shot{display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap;margin:10px 0;padding:8px;background:rgba(0,0,0,0.6);border-radius:8px;}" +
         ".ocr-prev{max-width:300px;border:1px solid rgba(255,255,255,.35);border-radius:4px;}" +
         ".ocr-detinfo{display:inline-block;font-size:12px;margin-top:6px;padding:4px 10px;background:rgba(0,0,0,0.75);color:#bfe9c8;border-radius:6px;}" +
@@ -346,9 +349,10 @@ function injectOcrStyles() {
         ".ocr-pair img{width:48px;height:48px;border-radius:4px;}" +
         ".ocr-arrow{font-size:14px;opacity:.7;}" +
         ".ocr-name-label{margin-top:3px;max-width:108px;text-align:center;background-color:rgba(100,100,80,0.8);color:#fff;padding:2px 6px;border-radius:6px;font-size:12px;line-height:1.25;word-break:break-all;}" +
-        ".ocr-actions{display:flex;gap:8px;flex:0 0 auto;align-items:center;align-self:center;}" +
-        ".ocr-cand .icon_btn_red,.ocr-cand .icon_btn_on{font-size:11px;padding:5px 16px;cursor:pointer;}" +
+        ".ocr-actions{display:flex;flex-direction:column;gap:8px;flex:0 0 auto;align-self:center;}" +
+        ".ocr-cand .icon_btn_red,.ocr-cand .icon_btn_on{font-size:12px;padding:6px 30px;cursor:pointer;white-space:nowrap;}" +
         ".ocr-alts{flex:1 1 100%;margin-top:4px;}" +
+        "@media(min-width:768px){.ocr-cand{align-items:center;}.ocr-alts{flex:1 1 auto;}}" +
         ".ocr-alt-hint{font-size:11px;color:#cde;margin:2px 0;}" +
         ".ocr-alt-row{display:flex;flex-wrap:wrap;gap:4px;}" +
         ".ocr-search-input{width:100%;max-width:260px;margin:2px 0 4px;padding:4px 8px;border-radius:6px;border:1px solid rgba(255,255,255,.3);background:rgba(0,0,0,.4);color:#fff;font-size:13px;}" +
@@ -376,7 +380,7 @@ function initOcrUI(containerSel, onConfirm) {
         '    <p class="ocr-help">ゲームの「スタイル一覧」画面のスクショを選んでね（複数可）。アイコンを自動で読み取ります。</p>' +
         '    <input type="file" id="ocrFiles" accept="image/*" multiple>' +
         '    <div id="ocrShots"></div>' +
-        '    <button type="button" class="btn btn-sm btn-success" id="ocrAnalyze" style="display:none;">🔍 読み取る</button>' +
+        '    <button type="button" class="icon_btn_positive" id="ocrAnalyze" style="display:none;">🔍 読み取る</button>' +
         '    <div id="ocrToast" class="ocr-toast" style="display:none;"></div>' +
         '    <div id="ocrResult"></div>' +
         '  </div>' +
@@ -514,7 +518,9 @@ function renderConfirmUI() {
         var $alts = $cand.find(".ocr-alts");
         if ($alts.is(":visible")) { $alts.hide(); return; }
         // 近い候補(色)＋「名前検索で全スタイルから選ぶ」（候補に無い時の救済）
-        var tops = matchIconTopN(OCR_CANDIDATES[i].hash, 6);
+        // 近い候補の数: PC=12 / SP=5
+        var topN = (window.innerWidth >= 768) ? 12 : 5;
+        var tops = matchIconTopN(OCR_CANDIDATES[i].hash, topN);
         $alts.empty();
         $alts.append('<div class="ocr-alt-hint">近い候補：</div>');
         var $sug = $('<div class="ocr-alt-row"></div>');
