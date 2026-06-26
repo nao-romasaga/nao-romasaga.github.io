@@ -36,22 +36,33 @@ function defaultData() {
     return { accounts: accounts, activeIndex: 0, updatedAt: "" };
 }
 
+// データを必ず正規化（name/styles を補完）。
+// 重要: Firebaseは空オブジェクト styles:{} を保存しないため、所持0の垢は読み戻すと
+// styles が欠落する。配列がオブジェクト化して返るケースもあるので両方を吸収する。
+function normalizeData(d) {
+    if (!d || typeof d !== "object") return defaultData();
+    var accs = d.accounts;
+    if (!Array.isArray(accs)) {
+        if (accs && typeof accs === "object") { var a = []; for (var k in accs) a[+k] = accs[k]; accs = a; }
+        else accs = [];
+    }
+    var out = [];
+    for (var i = 0; i < NUM_ACCOUNTS; i++) {
+        var s = accs[i] || {};
+        out.push({
+            name: (typeof s.name === "string" && s.name) ? s.name : DEFAULT_ACCOUNT_NAMES[i],
+            styles: (s.styles && typeof s.styles === "object") ? s.styles : {}
+        });
+    }
+    return { accounts: out, activeIndex: d.activeIndex || 0, ts: d.ts || 0, updatedAt: d.updatedAt || "" };
+}
+
 function loadData() {
     try {
         var raw = localStorage.getItem(STORAGE_KEY);
         if (!raw) return defaultData();
-        var d = JSON.parse(raw);
-        // 構造検証
-        if (!d || !Array.isArray(d.accounts) || d.accounts.length !== NUM_ACCOUNTS) {
-            return defaultData();
-        }
-        for (var i = 0; i < NUM_ACCOUNTS; i++) {
-            if (!d.accounts[i] || typeof d.accounts[i].name !== "string" || typeof d.accounts[i].styles !== "object") {
-                return defaultData();
-            }
-        }
-        return d;
-    } catch(e) {
+        return normalizeData(JSON.parse(raw));
+    } catch (e) {
         return defaultData();
     }
 }
@@ -101,11 +112,12 @@ function _initial() {
     if (typeof readUserData !== "function") return;
     readUserData(FB_KEY, function (remote) {
         var localTs = (APP.data && APP.data.ts) || 0;
-        var validRemote = remote && typeof remote === "object" && Array.isArray(remote.accounts) && remote.accounts.length === NUM_ACCOUNTS;
+        // Firebaseは空stylesや配列を省略/オブジェクト化することがあるので正規化してから判定
+        var validRemote = remote && typeof remote === "object" && (Array.isArray(remote.accounts) || typeof remote.accounts === "object");
         if (validRemote && (remote.ts || 0) > localTs) {
-            // クラウドが新しい → 採用
-            APP.data = remote;
-            APP.activeIndex = remote.activeIndex || 0;
+            // クラウドが新しい → 採用（正規化で name/styles を必ず補完）
+            APP.data = normalizeData(remote);
+            APP.activeIndex = APP.data.activeIndex || 0;
             localStorage.setItem(STORAGE_KEY, JSON.stringify(APP.data));
             renderAccountTabs();
             if (APP.mode === 1) renderMode1();
@@ -235,7 +247,7 @@ function renderAccountTabs() {
     $wrap.empty();
     for (var i = 0; i < NUM_ACCOUNTS; i++) {
         var acct = APP.data.accounts[i];
-        var count = Object.keys(acct.styles).length;
+        var count = Object.keys(acct.styles || {}).length;
         var $tab = $('<button class="acct-tab" data-idx="' + i + '"></button>');
         if (i === APP.activeIndex) $tab.addClass("active");
         $tab.append('<span class="acct-name-label">' + escHtml(acct.name) + '</span>');
