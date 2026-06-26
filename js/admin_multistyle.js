@@ -176,7 +176,10 @@ $(document).ready(function() {
 
     // スクショ所持登録（ocr_style.js のモジュールを再利用）
     if (typeof initOcrUI === "function") {
-        initOcrUI("#admin-ocr-area", onAdminOcrConfirm);
+        initOcrUI("#admin-ocr-area", onAdminOcrConfirm, function (sid) {
+            var st = APP.data.accounts[APP.activeIndex].styles;
+            return !!(st && st[sid]);
+        });
     }
 
     // モード3用CSV取得

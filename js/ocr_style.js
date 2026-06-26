@@ -314,8 +314,9 @@ function guessGridOpt(img, cols) {
 /* ---------- 確認・修正UI ---------- */
 
 var OCR_SHOTS = [];        // [{img, opt, $row}]
-var OCR_CANDIDATES = [];   // [{sid, dist, crop, excluded}]
+var OCR_CANDIDATES = [];   // [{sid, dist, crop, excluded, owned}]
 var OCR_ON_CONFIRM = null; // function(sids)
+var OCR_IS_OWNED = null;   // function(sid)->bool（所持済み判定。任意）
 
 function iconUrl(sid) { return "https://romasagatool.com/img/style_icon_bg/" + sid + ".png"; }
 function altButtonHtml(sid) {
@@ -344,6 +345,8 @@ function injectOcrStyles() {
         ".ocr-cand{display:flex;align-items:flex-start;flex-wrap:wrap;gap:10px;padding:6px 8px;border-radius:6px;background:rgba(255,255,255,.10);color:#fff;box-shadow:0 1px 2px rgba(0,0,0,.4);}" +
         ".ocr-cand.ocr-warn{background:rgba(255,90,90,.30);}" +
         ".ocr-cand.ocr-ex{opacity:.4;}" +
+        ".ocr-cand.ocr-owned{background:rgba(255,255,255,.04);opacity:.7;}" +
+        ".ocr-divider{flex:1 1 100%;text-align:center;font-size:11px;color:#9ab;margin:6px 0 2px;border-top:1px dashed rgba(255,255,255,.25);padding-top:6px;}" +
         ".ocr-left{display:flex;flex-direction:column;align-items:center;flex:0 0 auto;}" +
         ".ocr-pair{display:flex;align-items:center;gap:4px;}" +
         ".ocr-pair img{width:48px;height:48px;border-radius:4px;}" +
@@ -371,10 +374,11 @@ function injectOcrStyles() {
     document.head.appendChild(st);
 }
 
-function initOcrUI(containerSel, onConfirm) {
+function initOcrUI(containerSel, onConfirm, isOwnedFn) {
     injectOcrStyles();
     loadLearnedSigs();           // 全体共有の学習辞書を読込
     OCR_ON_CONFIRM = onConfirm;
+    OCR_IS_OWNED = (typeof isOwnedFn === "function") ? isOwnedFn : null;  // 所持判定（任意）
     OCR_SHOTS = [];
     OCR_CANDIDATES = [];
     var html =
@@ -449,8 +453,10 @@ function runOcrAnalyze() {
 
     function step() {
         if (idx >= total) {
-            OCR_CANDIDATES = Object.keys(byBest).map(function (s) { var o = byBest[s]; o.excluded = false; return o; })
+            var arr = Object.keys(byBest).map(function (s) { var o = byBest[s]; o.excluded = false; o.owned = OCR_IS_OWNED ? !!OCR_IS_OWNED(s) : false; return o; })
                 .sort(function (a, b) { return a.dist - b.dist; });
+            // 未所持を先頭・所持済みを末尾に（各グループ内はdist順を維持）
+            OCR_CANDIDATES = arr.filter(function (o) { return !o.owned; }).concat(arr.filter(function (o) { return o.owned; }));
             $("#ocrAnalyze").prop("disabled", false);
             renderConfirmUI();
             return;
@@ -488,13 +494,21 @@ function renderConfirmUI() {
     var $r = $("#ocrResult").empty();
     if (!OCR_CANDIDATES.length) { $r.html('<p class="ocr-help">候補が見つかりませんでした。グリッドを調整して再解析してね。</p>'); return; }
     var ok = OCR_CANDIDATES.filter(function (x) { return x.dist <= OCR_DIST_OK; }).length;
-    $r.append('<p class="ocr-help">検出 ' + OCR_CANDIDATES.length + ' 件（自信あり ' + ok +
+    var ownedCount = OCR_CANDIDATES.filter(function (x) { return x.owned; }).length;
+    var newCount = OCR_CANDIDATES.length - ownedCount;
+    $r.append('<p class="ocr-help">検出 ' + OCR_CANDIDATES.length + ' 件（未所持 ' + newCount + ' 件 / 登録済み ' + ownedCount +
         ' 件）。<span style="color:#f88">赤=要確認</span>。違うものは「除外」か「差替」してね。</p>');
     var $grid = $('<div class="ocr-cands"></div>');
+    var dividerShown = false;
     OCR_CANDIDATES.forEach(function (cand, i) {
+        // 未所持→登録済み の切れ目に区切りを入れる
+        if (cand.owned && !dividerShown) {
+            dividerShown = true;
+            $grid.append('<div class="ocr-divider">― ここから登録済み（' + ownedCount + '件）―</div>');
+        }
         var warn = cand.dist > OCR_DIST_OK;
         // 縦1列・大アイコン。視線は縦スクロールのみ
-        var $c = $('<div class="ocr-cand' + (warn ? " ocr-warn" : "") + (cand.excluded ? " ocr-ex" : "") + '" data-i="' + i + '"></div>');
+        var $c = $('<div class="ocr-cand' + (warn ? " ocr-warn" : "") + (cand.excluded ? " ocr-ex" : "") + (cand.owned ? " ocr-owned" : "") + '" data-i="' + i + '"></div>');
         // 左: アイコン(切出→正解) ＋ その下に名前 / 右: ボタン
         $c.append('<div class="ocr-left">' +
             '<div class="ocr-pair"><img class="ocr-crop" src="' + cand.crop + '">' +

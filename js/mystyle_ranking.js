@@ -176,7 +176,9 @@ function onOcrConfirm(sids) {
 
 function startMystyle() {
     renderSelector();
-    if (typeof initOcrUI === "function") { initOcrUI("#ocrArea", onOcrConfirm); }
+    if (typeof initOcrUI === "function") {
+        initOcrUI("#ocrArea", onOcrConfirm, function (sid) { return MY_STYLE.indexOf(sid) > -1; });
+    }
     loadMyStyle(function () {
         reload();
     });
