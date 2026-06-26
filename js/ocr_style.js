@@ -718,12 +718,12 @@ function drawDetectPreview(shot) {
     cv.width = img.width * scale; cv.height = img.height * scale;
     var g = cv.getContext("2d");
     g.drawImage(img, 0, 0, cv.width, cv.height);
-    // アイコン枠: 暗い縁取り→明るい緑＋薄い塗りで、明暗どちらの背景でもくっきり
+    // アイコン枠: 緑の濃いめ塗り＋青の太縁＋白の内線で、金枠アイコンでもくっきり
     grid.cells.forEach(function (b) {
         var x = b.x * scale, y = b.y * scale, w = b.w * scale, h = b.h * scale;
-        g.fillStyle = "rgba(70,255,130,.10)"; g.fillRect(x, y, w, h);
-        g.lineWidth = 4; g.strokeStyle = "rgba(0,0,0,.7)"; g.strokeRect(x, y, w, h);
-        g.lineWidth = 2; g.strokeStyle = "rgba(60,255,120,1)"; g.strokeRect(x, y, w, h);
+        g.fillStyle = "rgba(40,230,110,.28)"; g.fillRect(x, y, w, h);
+        g.lineWidth = 5; g.strokeStyle = "#2b8cff"; g.strokeRect(x, y, w, h);
+        g.lineWidth = 2; g.strokeStyle = "#ffffff"; g.strokeRect(x, y, w, h);
     });
     // 名前帯（水色）: 暗縁取り→破線シアンでOCR範囲を可視化
     grid.cells.forEach(function (b) {
