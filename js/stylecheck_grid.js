@@ -24,12 +24,27 @@ function scIsOwned(sid) {
 }
 
 /* ---------- アイコン生成（.style 直置き、検索用に名前を埋め込み） ---------- */
+/* styleId→キャラ名 逆引き（CHAR_MASTER.Holders経由。例: 忍者→アザミ等のスタイル） */
+var SC_CHARNAME = null;
+function scCharNameMap() {
+    if (SC_CHARNAME) return SC_CHARNAME;
+    SC_CHARNAME = {};
+    if (typeof CHAR_MASTER !== "undefined") {
+        for (var cid in CHAR_MASTER) {
+            var hs = CHAR_MASTER[cid].Holders || [];
+            for (var hi = 0; hi < hs.length; hi++) SC_CHARNAME[hs[hi]] = CHAR_MASTER[cid].Name;
+        }
+    }
+    return SC_CHARNAME;
+}
+
 function scStyleEl(s) {
     var $btn = getStyleIcon(s.Rarity, s.Id, s.WeaponType, false, true);
     $btn.addClass("year" + s.year);
     $btn.attr("data-year", scYearBucket(s.year));
     $btn.attr("data-nametext", s.Name);
-    $btn.attr("data-search", (s.Name || "") + " " + (s.AnotherName || ""));
+    var cn = scCharNameMap()[s.Id] || "";
+    $btn.attr("data-search", (s.Name || "") + " " + (s.AnotherName || "") + " " + cn);
     $btn.append('<span style="position:absolute;top:0;left:0;font-size:8px;line-height:10px;color:transparent;">' + scEsc(s.Name) + ' ' + scEsc(s.AnotherName) + '</span>');
     return $btn;
 }

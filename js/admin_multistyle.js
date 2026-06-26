@@ -210,11 +210,12 @@ function buildStyleList() {
         console.warn("STYLE_MASTER が未定義です。dataloadの完了を待ってください。");
         return;
     }
-    // CHAR_MASTER から名前とyearを取得
-    var charNameMap = {}; // charId→Name
+    // CHAR_MASTER から styleId→キャラ名 を逆引き（Holders経由。例: 忍者→アザミ等のスタイル）
+    var styleCharName = {}; // styleId→キャラ名
     if (typeof CHAR_MASTER !== "undefined") {
         for (var cid in CHAR_MASTER) {
-            charNameMap[cid] = CHAR_MASTER[cid].Name;
+            var hs = CHAR_MASTER[cid].Holders || [];
+            for (var hi = 0; hi < hs.length; hi++) styleCharName[hs[hi]] = CHAR_MASTER[cid].Name;
         }
     }
     for (var sid in STYLE_MASTER) {
@@ -223,6 +224,7 @@ function buildStyleList() {
             id: sid,
             name: s.Name || "",
             another: s.AnotherName || "",
+            charName: styleCharName[sid] || "",
             rare: s.Rarity || "",
             weapon: s.WeaponType || "",
             year: s.year || "",
@@ -553,7 +555,7 @@ function buildStyleWrapper(s2) {
     for (var n = 0; n < NUM_ACCOUNTS; n++) {
         $badges.append('<span class="acct-badge" data-acct="' + n + '">' + (n + 1) + '</span>');
     }
-    var $wrapper = $('<div class="style-wrapper" data-id="' + s2.id + '" data-year="' + s2.year + '" data-rare="' + s2.rare + '" data-weapon="' + s2.weapon + '" data-name="' + escHtml(s2.name) + ' ' + escHtml(s2.another) + '"></div>');
+    var $wrapper = $('<div class="style-wrapper" data-id="' + s2.id + '" data-year="' + s2.year + '" data-rare="' + s2.rare + '" data-weapon="' + s2.weapon + '" data-name="' + escHtml(s2.name) + ' ' + escHtml(s2.another) + ' ' + escHtml(s2.charName || "") + '"></div>');
     $wrapper.append($btn);
     $wrapper.append($badges);
     return $wrapper;
