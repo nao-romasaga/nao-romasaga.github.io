@@ -118,6 +118,118 @@ function matchIconTopN(sig, n) {
     return arr.slice(0, n);
 }
 
+// 候補sidの中だけで色署名が最も近いものを選ぶ（名前で絞った後の最終決定用）
+function matchIconAmong(sig, sids) {
+    var dict = ensureDictSig(); if (!dict) return null;
+    var best = null, bd = 1e9;
+    for (var i = 0; i < sids.length; i++) {
+        var sid = sids[i]; if (!dict[sid]) continue;
+        var d = colorDist(sig, dict[sid]);
+        if (d < bd) { bd = d; best = sid; }
+    }
+    return best ? { sid: best, dist: bd } : null;
+}
+
+/* ---------- 名前ラベルのテキストOCR（tesseract.js / オンデマンド） ---------- */
+// アイコン下の名前（例「鬼八」「ダイ・ダイ」）を読み、STYLE_MASTER.Name に照合して
+// 同名スタイル群に絞り込む。色マッチが弱い画面（金枠SS・圧縮スクショ）で精度を上げる。
+var NAME_INDEX = null;               // {byName:{name:[sid...]}, names:[name...]}
+var OCR_TEXT_WORKER = null, OCR_TEXT_LOADING = null;
+var TESSERACT_CDN = "https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js";
+
+function buildNameIndex() {
+    if (NAME_INDEX) return NAME_INDEX;
+    var byName = {};
+    if (typeof STYLE_MASTER !== "undefined") {
+        for (var sid in STYLE_MASTER) {
+            var nm = STYLE_MASTER[sid].Name || "";
+            (byName[nm] = byName[nm] || []).push(STYLE_MASTER[sid].Id);
+        }
+    }
+    NAME_INDEX = { byName: byName, names: Object.keys(byName) };
+    return NAME_INDEX;
+}
+
+function cleanNameText(s) {
+    // 日本語名・英数・中黒のみ残す（OCRノイズの記号や枠線「|」を除去）
+    return String(s || "").replace(/[^ぁ-んァ-ヶ一-龠ーA-Za-z0-9・]/g, "");
+}
+function lcsLen(a, b) {
+    var m = a.length, n = b.length; if (!m || !n) return 0;
+    var prev = new Array(n + 1).fill(0), cur = new Array(n + 1).fill(0);
+    for (var i = 1; i <= m; i++) {
+        for (var j = 1; j <= n; j++) cur[j] = (a[i - 1] === b[j - 1]) ? prev[j - 1] + 1 : Math.max(prev[j], cur[j - 1]);
+        var t = prev; prev = cur; cur = t;
+        for (var k = 0; k <= n; k++) cur[k] = 0;
+    }
+    return prev[n];
+}
+// OCR文字列に最も近い既知スタイル名を返す（プレフィックス一致を優遇＝UIの末尾切れ対策）
+function bestNameMatch(ocrText) {
+    var idx = buildNameIndex();
+    var s = cleanNameText(ocrText);
+    if (s.length < 1) return null;
+    var bestName = null, bestScore = -1;
+    for (var i = 0; i < idx.names.length; i++) {
+        var c = cleanNameText(idx.names[i]); if (!c) continue;
+        var l = lcsLen(s, c);
+        var score = l / Math.max(s.length, Math.min(c.length, s.length));
+        if (c.indexOf(s) === 0 || s.indexOf(c) === 0) score += 0.5;  // 先頭一致ボーナス
+        if (score > bestScore) { bestScore = score; bestName = idx.names[i]; }
+    }
+    return { name: bestName, score: bestScore };
+}
+
+function loadScriptOnce(src) {
+    return new Promise(function (res, rej) {
+        var s = document.createElement("script");
+        s.src = src; s.onload = res; s.onerror = function () { rej(new Error("load fail: " + src)); };
+        document.head.appendChild(s);
+    });
+}
+// tesseract worker をオンデマンドで用意（初回のみ数MBのDLが発生）
+function ensureTextOcr() {
+    if (OCR_TEXT_WORKER) return Promise.resolve(OCR_TEXT_WORKER);
+    if (OCR_TEXT_LOADING) return OCR_TEXT_LOADING;
+    OCR_TEXT_LOADING = (function () {
+        return Promise.resolve()
+            .then(function () { return (typeof Tesseract === "undefined") ? loadScriptOnce(TESSERACT_CDN) : null; })
+            .then(function () { return Tesseract.createWorker("jpn"); })
+            .then(function (wk) {
+                return wk.setParameters({ tessedit_pageseg_mode: "7" }).then(function () { OCR_TEXT_WORKER = wk; return wk; });
+            });
+    })();
+    return OCR_TEXT_LOADING;
+}
+
+// 名前帯を二値化して読み取りやすいcanvasにする（暗背景/タン背景どちらも濃い文字＝そのまま）
+function nameStripCanvas(img, nb) {
+    var insetX = 0.05;
+    var nx = nb.x + nb.w * insetX, nw = nb.w * (1 - 2 * insetX);
+    var ny = nb.y + Math.round(nb.h * 0.06), nh = Math.max(8, nb.h - Math.round(nb.h * 0.20));
+    var scale = Math.max(3, Math.min(8, 150 / nh));   // 小さい帯ほど拡大（目標高さ≈150px）
+    var cv = document.createElement("canvas");
+    cv.width = Math.round(nw * scale); cv.height = Math.round(nh * scale);
+    var g = cv.getContext("2d"); g.drawImage(img, nx, ny, nw, nh, 0, 0, cv.width, cv.height);
+    // 平均輝度ベースの閾値で二値化（文字色が濃いことを利用）
+    var id = g.getImageData(0, 0, cv.width, cv.height), d = id.data, sum = 0, n = d.length / 4;
+    for (var i = 0; i < d.length; i += 4) sum += 0.299 * d[i] + 0.587 * d[i + 1] + 0.114 * d[i + 2];
+    var thr = (sum / n) * 0.82;
+    for (var j = 0; j < d.length; j += 4) {
+        var v = 0.299 * d[j] + 0.587 * d[j + 1] + 0.114 * d[j + 2];
+        var b = v > thr ? 255 : 0; d[j] = d[j + 1] = d[j + 2] = b;
+    }
+    g.putImageData(id, 0, 0);
+    return cv;
+}
+// 名前帯OCR → 既知名へ照合。{name,score} or null
+function ocrNameForCell(img, nb) {
+    if (!OCR_TEXT_WORKER || !nb) return Promise.resolve(null);
+    return OCR_TEXT_WORKER.recognize(nameStripCanvas(img, nb))
+        .then(function (r) { return bestNameMatch(r.data.text); })
+        .catch(function () { return null; });
+}
+
 /* ---------- 画像ユーティリティ ---------- */
 
 function loadImage(url) {
@@ -309,13 +421,18 @@ function detectGridCells(img) {
     }
     if (!rowTops.length) return null;
 
+    var nameH = Math.max(8, rowPitch - cellW);   // アイコン下〜次行までが名前ラベル帯
     var cells = [];
     for (var ri = 0; ri < rowTops.length; ri++) {
         for (var ci = 0; ci < colLefts.length; ci++) {
-            cells.push({ x: Math.round(colLefts[ci]), y: rowTops[ri], w: cellW, h: cellW });
+            var cx = Math.round(colLefts[ci]), cy = rowTops[ri];
+            cells.push({
+                x: cx, y: cy, w: cellW, h: cellW,
+                nameBox: { x: cx, y: cy + cellW, w: cellW, h: nameH }
+            });
         }
     }
-    return { cells: cells, cols: colLefts.length, rows: rowTops.length, cellW: cellW, pitch: colPitch, colLefts: colLefts.map(Math.round), rowTops: rowTops };
+    return { cells: cells, cols: colLefts.length, rows: rowTops.length, cellW: cellW, pitch: colPitch, rowPitch: rowPitch, colLefts: colLefts.map(Math.round), rowTops: rowTops };
 }
 
 function median(a) { var b = a.slice().sort(function (x, y) { return x - y; }); return b[Math.floor(b.length / 2)]; }
@@ -341,16 +458,63 @@ function matchCellSnap(img, box) {
     return best;
 }
 
-// 自動検出 → セル毎スナップ照合
-function analyzeScreenshotAuto(img) {
-    var grid = detectGridCells(img);
-    if (!grid) return { grid: null, cells: [] };
-    var out = [];
-    for (var i = 0; i < grid.cells.length; i++) {
-        var b = matchCellSnap(img, grid.cells[i]);
-        if (b) { b.col = i % grid.cols; b.row = Math.floor(i / grid.cols); out.push(b); }
+// 候補sid限定のセルスナップ（名前で絞った後の最終決定）
+function matchCellSnapAmong(img, box, sids) {
+    if (!sids || !sids.length) return null;
+    var best = null;
+    var s = Math.max(2, Math.round(box.w * 0.04));
+    var offs = [-2 * s, -s, 0, s, 2 * s];
+    for (var di = 0; di < offs.length; di++) {
+        for (var dj = 0; dj < offs.length; dj++) {
+            var x = box.x + offs[di], y = box.y + offs[dj], w = box.w, h = box.h;
+            if (x < 0 || y < 0 || x + w > img.width || y + h > img.height) continue;
+            var sig = colorSigBytes(imgToCanvas(img, x, y, w, h, 64, 64));
+            var m = matchIconAmong(sig, sids);
+            if (m && (!best || m.dist < best.dist)) best = { sid: m.sid, dist: m.dist, hash: sig, x: x, y: y, w: w, h: h };
+        }
     }
-    return { grid: grid, cells: out };
+    if (best) best.crop = imgToCanvas(img, best.x, best.y, best.w, best.h, 64, 64).toDataURL("image/png");
+    return best;
+}
+
+// 自動検出 → セル毎照合（Promiseを返す）。
+// opt.useText=true で名前ラベルOCR（先に絞ってから色で確定）。opt.onCell(done,total)で進捗。
+var OCR_NAME_OK = 0.6;      // これ以上は高信頼で確定
+var OCR_NAME_MAYBE = 0.4;   // これ以上は名前で絞る（中スコアは要確認表示）
+function analyzeScreenshotAuto(img, opt) {
+    opt = opt || {};
+    var grid = detectGridCells(img);
+    if (!grid) return Promise.resolve({ grid: null, cells: [] });
+    var cells = grid.cells, out = [], i = 0;
+    var useText = opt.useText && OCR_TEXT_WORKER;
+    function push(idx, picked) {
+        if (picked) { picked.col = idx % grid.cols; picked.row = Math.floor(idx / grid.cols); out.push(picked); }
+        if (opt.onCell) opt.onCell(idx + 1, cells.length);
+    }
+    function step() {
+        if (i >= cells.length) return Promise.resolve({ grid: grid, cells: out });
+        var idx = i++, b = cells[idx];
+        if (useText) {
+            return ocrNameForCell(img, b.nameBox).then(function (nm) {
+                if (nm && nm.name && nm.score >= OCR_NAME_MAYBE) {
+                    var cand = buildNameIndex().byName[nm.name] || [];
+                    var snap = matchCellSnapAmong(img, b, cand);
+                    if (snap) {
+                        snap.matchedName = nm.name;
+                        // 高スコア=高信頼。中スコアは名前で絞りつつ「要確認」表示にする
+                        snap.dist = (nm.score >= OCR_NAME_OK) ? 500 : (OCR_DIST_OK + 1);
+                        push(idx, snap);
+                        return step();
+                    }
+                }
+                push(idx, matchCellSnap(img, b));   // 名前読めず → 従来の色マッチ
+                return step();
+            });
+        }
+        push(idx, matchCellSnap(img, b));
+        return step();
+    }
+    return step();
 }
 
 // 旧API（手動uniformグリッド）。スナップ付きに更新
@@ -435,6 +599,8 @@ function injectOcrStyles() {
         ".ocr-alt{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:9px;padding:3px 0;background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:4px;width:auto;}" +
         ".ocr-alt img{width:40px;height:40px;}" +
         ".ocr-toast{margin:8px 0;padding:8px 12px;background:rgba(40,140,70,0.92);color:#fff;border-radius:6px;font-size:13px;font-weight:bold;}" +
+        ".ocr-usename{display:block;margin:8px 0;color:#fff;font-size:13px;background:rgba(0,0,0,.35);padding:8px 10px;border-radius:6px;line-height:1.4;cursor:pointer;}" +
+        ".ocr-usename input{vertical-align:middle;margin-right:6px;transform:scale(1.2);}" +
         ".ocr-progress{height:10px;background:rgba(0,0,0,0.5);border-radius:5px;overflow:hidden;margin-top:4px;}" +
         ".ocr-progress-bar{height:100%;background:linear-gradient(90deg,#3aa564,#7be0a0);transition:width .2s;}";
     var st = document.createElement("style");
@@ -457,6 +623,7 @@ function initOcrUI(containerSel, onConfirm, isOwnedFn) {
         '    <p class="ocr-help">ゲームの「スタイル一覧」画面のスクショを選んでね（複数可）。アイコンを自動で読み取ります。</p>' +
         '    <input type="file" id="ocrFiles" accept="image/*" multiple>' +
         '    <div id="ocrShots"></div>' +
+        '    <label class="ocr-usename"><input type="checkbox" id="ocrUseName" checked> 名前も読み取って精度UP（おすすめ・少し時間がかかります）</label>' +
         '    <button type="button" class="icon_btn_positive" id="ocrAnalyze" style="display:none;">🔍 読み取る</button>' +
         '    <div id="ocrToast" class="ocr-toast" style="display:none;"></div>' +
         '    <div id="ocrResult"></div>' +
@@ -511,42 +678,60 @@ function runOcrAnalyze() {
     $("#ocrToast").hide();
     var byBest = {};                 // sid -> {sid,dist,crop,hash}
     var total = OCR_SHOTS.length, idx = 0;
+    var useText = $("#ocrUseName").is(":checked");
     $("#ocrAnalyze").prop("disabled", true);
 
-    function progress(done) {
-        var pct = total ? Math.round(done / total * 100) : 0;
-        $("#ocrResult").html(
-            '<p class="ocr-help">読み取り中… ' + done + ' / ' + total + ' 枚目（重いので少し待ってね）</p>' +
-            '<div class="ocr-progress"><div class="ocr-progress-bar" style="width:' + pct + '%"></div></div>');
+    function setHtml(msg, pct) {
+        $("#ocrResult").html('<p class="ocr-help">' + msg + '</p>' +
+            '<div class="ocr-progress"><div class="ocr-progress-bar" style="width:' + (pct || 0) + '%"></div></div>');
+    }
+
+    function finishAll() {
+        var arr = Object.keys(byBest).map(function (s) { var o = byBest[s]; o.excluded = false; o.owned = OCR_IS_OWNED ? !!OCR_IS_OWNED(s) : false; return o; })
+            .sort(function (a, b) { return a.dist - b.dist; });
+        OCR_CANDIDATES = arr.filter(function (o) { return !o.owned; }).concat(arr.filter(function (o) { return o.owned; }));
+        $("#ocrAnalyze").prop("disabled", false);
+        renderConfirmUI();
+    }
+
+    function collect(r) {
+        r.cells.forEach(function (cell) {
+            if (!cell.sid) return;
+            if (!byBest[cell.sid] || cell.dist < byBest[cell.sid].dist) {
+                byBest[cell.sid] = { sid: cell.sid, dist: cell.dist, crop: cell.crop, hash: cell.hash };
+            }
+        });
     }
 
     function step() {
-        if (idx >= total) {
-            var arr = Object.keys(byBest).map(function (s) { var o = byBest[s]; o.excluded = false; o.owned = OCR_IS_OWNED ? !!OCR_IS_OWNED(s) : false; return o; })
-                .sort(function (a, b) { return a.dist - b.dist; });
-            // 未所持を先頭・所持済みを末尾に（各グループ内はdist順を維持）
-            OCR_CANDIDATES = arr.filter(function (o) { return !o.owned; }).concat(arr.filter(function (o) { return o.owned; }));
-            $("#ocrAnalyze").prop("disabled", false);
-            renderConfirmUI();
-            return;
-        }
-        progress(idx + 1);
-        // 進捗テキストを描画させてから重い1枚分を処理（UIが固まって見えないように）
-        setTimeout(function () {
-            try {
-                var r = analyzeScreenshotAuto(OCR_SHOTS[idx].img);
-                r.cells.forEach(function (cell) {
-                    if (!cell.sid) return;
-                    if (!byBest[cell.sid] || cell.dist < byBest[cell.sid].dist) {
-                        byBest[cell.sid] = { sid: cell.sid, dist: cell.dist, crop: cell.crop, hash: cell.hash };
-                    }
-                });
-            } catch (e) { /* この画像は検出失敗 → スキップ */ }
+        if (idx >= total) { finishAll(); return; }
+        var shotNo = idx + 1;
+        analyzeScreenshotAuto(OCR_SHOTS[idx].img, {
+            useText: useText,
+            onCell: function (done, cnt) {
+                var pct = cnt ? Math.round(done / cnt * 100) : 0;
+                setHtml((useText ? "名前＋アイコンで読み取り中… " : "読み取り中… ") + shotNo + " / " + total + " 枚目（" + done + "/" + cnt + " 個）", pct);
+            }
+        }).then(function (r) {
+            collect(r);
             idx++;
-            step();
-        }, 30);
+            setTimeout(step, 10);   // UI更新の隙を作る
+        }).catch(function () { idx++; setTimeout(step, 10); });
     }
-    step();
+
+    // 名前OCRを使う場合はエンジンを用意してから開始
+    if (useText) {
+        setHtml("OCRエンジンを準備中…（初回のみDLがあります）", 5);
+        ensureTextOcr().then(function () { step(); })
+            .catch(function () {
+                // tesseract読込失敗 → 名前無しで続行
+                useText = false;
+                setHtml("OCRエンジンを読み込めませんでした。アイコンのみで読み取ります…", 5);
+                step();
+            });
+    } else {
+        step();
+    }
 }
 
 // 登録後に取込/候補をクリア（次の登録でスクロールしないように）
