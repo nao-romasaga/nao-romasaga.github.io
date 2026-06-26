@@ -624,11 +624,14 @@ function injectOcrStyles() {
         ".ocr-alt img{width:40px;height:40px;}" +
         ".ocr-toast{margin:8px 0;padding:8px 12px;background:rgba(40,140,70,0.92);color:#fff;border-radius:6px;font-size:13px;font-weight:bold;}" +
         ".ocr-adjust-toggle{display:block;margin:6px 0;padding:7px 10px;width:100%;font-size:12px;border:none;border-radius:6px;background:rgba(80,140,200,.85);color:#fff;cursor:pointer;}" +
+        ".ocr-prev{max-width:100%;height:auto;display:block;border-radius:6px;}" +
         ".ocr-adjust{background:rgba(0,0,0,.45);border-radius:6px;padding:8px;margin-bottom:6px;}" +
-        ".ocr-adj-row{display:flex;align-items:center;gap:8px;margin:4px 0;}" +
-        ".ocr-adj-label{flex:0 0 56px;font-size:11px;color:#cde;}" +
+        ".ocr-adj-row{display:flex;align-items:center;gap:6px;margin:5px 0;}" +
+        ".ocr-adj-label{flex:0 0 52px;font-size:11px;color:#cde;}" +
         ".ocr-adj-slider{flex:1 1 auto;min-width:0;}" +
-        ".ocr-adj-val{flex:0 0 40px;text-align:right;font-size:11px;color:#fff;font-variant-numeric:tabular-nums;}" +
+        ".ocr-adj-btn{flex:0 0 auto;width:30px;height:30px;border:none;border-radius:6px;background:rgba(255,255,255,.18);color:#fff;font-size:18px;line-height:1;cursor:pointer;touch-action:manipulation;}" +
+        ".ocr-adj-btn:active{background:rgba(90,200,255,.7);}" +
+        ".ocr-adj-val{flex:0 0 38px;text-align:right;font-size:11px;color:#fff;font-variant-numeric:tabular-nums;}" +
         ".ocr-adj-reset{margin-top:6px;padding:5px 10px;font-size:11px;border:1px solid rgba(255,255,255,.3);border-radius:6px;background:rgba(255,255,255,.1);color:#fff;cursor:pointer;}" +
         ".ocr-usename{display:block;margin:8px 0;color:#fff;font-size:13px;background:rgba(0,0,0,.35);padding:8px 10px;border-radius:6px;line-height:1.4;cursor:pointer;}" +
         ".ocr-usename input{vertical-align:middle;margin-right:6px;transform:scale(1.2);}" +
@@ -711,15 +714,24 @@ function drawDetectPreview(shot) {
     }
     var grid = shot.grid, img = shot.img;
     var cv = shot.$row.find(".ocr-prev")[0];
-    var maxW = 300, scale = Math.min(1, maxW / img.width);
+    var maxW = 420, scale = Math.min(1, maxW / img.width);
     cv.width = img.width * scale; cv.height = img.height * scale;
     var g = cv.getContext("2d");
     g.drawImage(img, 0, 0, cv.width, cv.height);
-    g.lineWidth = 1.5; g.strokeStyle = "rgba(80,200,120,.95)";
-    grid.cells.forEach(function (b) { g.strokeRect(b.x * scale, b.y * scale, b.w * scale, b.h * scale); });
-    // 名前帯（水色破線）も表示してOCR範囲を可視化
-    g.lineWidth = 1; g.strokeStyle = "rgba(90,200,255,.9)"; g.setLineDash([3, 2]);
-    grid.cells.forEach(function (b) { if (b.nameBox) g.strokeRect(b.nameBox.x * scale, b.nameBox.y * scale, b.nameBox.w * scale, b.nameBox.h * scale); });
+    // アイコン枠: 暗い縁取り→明るい緑＋薄い塗りで、明暗どちらの背景でもくっきり
+    grid.cells.forEach(function (b) {
+        var x = b.x * scale, y = b.y * scale, w = b.w * scale, h = b.h * scale;
+        g.fillStyle = "rgba(70,255,130,.10)"; g.fillRect(x, y, w, h);
+        g.lineWidth = 4; g.strokeStyle = "rgba(0,0,0,.7)"; g.strokeRect(x, y, w, h);
+        g.lineWidth = 2; g.strokeStyle = "rgba(60,255,120,1)"; g.strokeRect(x, y, w, h);
+    });
+    // 名前帯（水色）: 暗縁取り→破線シアンでOCR範囲を可視化
+    grid.cells.forEach(function (b) {
+        if (!b.nameBox) return;
+        var x = b.nameBox.x * scale, y = b.nameBox.y * scale, w = b.nameBox.w * scale, h = b.nameBox.h * scale;
+        g.setLineDash([]); g.lineWidth = 3; g.strokeStyle = "rgba(0,0,0,.6)"; g.strokeRect(x, y, w, h);
+        g.setLineDash([4, 2]); g.lineWidth = 1.5; g.strokeStyle = "rgba(90,210,255,1)"; g.strokeRect(x, y, w, h);
+    });
     g.setLineDash([]);
     var msg = (shot.detected ? "検出: " : "手動: ") + grid.cols + "列 × " + grid.rows + "行 = " + grid.cells.length + "個";
     if (!shot.detected) msg += "（自動検出できず。下の「調整」で枠を合わせてね）";
@@ -740,17 +752,25 @@ function renderShotControls(shot) {
     ];
     var $box = shot.$row.find(".ocr-adjust").empty();
     defs.forEach(function (d) {
+        var nudge = (d.k === "cols" || d.k === "rows") ? 1 : 2;   // ボタン1回の増減量
         var val = Math.round(shot.params[d.k]);
         var $row = $('<div class="ocr-adj-row"></div>');
         $row.append('<span class="ocr-adj-label">' + d.label + '</span>');
+        var $minus = $('<button type="button" class="ocr-adj-btn">−</button>');
         var $sl = $('<input type="range" class="ocr-adj-slider" min="' + d.min + '" max="' + d.max + '" step="' + d.step + '" value="' + val + '">');
+        var $plus = $('<button type="button" class="ocr-adj-btn">＋</button>');
         var $num = $('<span class="ocr-adj-val">' + val + '</span>');
-        $sl.on("input", function () {
-            var v = parseFloat(this.value); shot.params[d.k] = v; $num.text(Math.round(v));
+        function apply(v) {
+            v = Math.max(d.min, Math.min(d.max, v));
+            shot.params[d.k] = v; $sl.val(v); $num.text(Math.round(v));
             shot.grid = gridFromParams(shot.params); shot.detected = false;   // 手動操作後は手動表示
             drawDetectPreview(shot);
-        });
-        $row.append($sl); $row.append($num); $box.append($row);
+        }
+        $sl.on("input", function () { apply(parseFloat(this.value)); });
+        $minus.on("click", function () { apply(parseFloat($sl.val()) - nudge); });
+        $plus.on("click", function () { apply(parseFloat($sl.val()) + nudge); });
+        $row.append($minus); $row.append($sl); $row.append($plus); $row.append($num);
+        $box.append($row);
     });
     var $reset = $('<button type="button" class="ocr-adj-reset">↺ 自動検出に戻す</button>');
     $reset.on("click", function () {
