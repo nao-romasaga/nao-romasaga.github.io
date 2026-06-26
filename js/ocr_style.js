@@ -398,7 +398,7 @@ function injectOcrStyles() {
         ".ocr-search-wrap{display:flex;align-items:center;gap:4px;font-size:12px;color:#cde;white-space:nowrap;flex:1 1 auto;min-width:0;}" +
         // 候補はgridでアイコンサイズ据え置きのまま列数を最大化（SP390で5列）
         ".ocr-alt-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(56px,1fr));gap:4px;}" +
-        ".ocr-search-input{flex:1 1 auto;min-width:60px;width:100%;padding:4px 8px;border-radius:6px;border:1px solid rgba(255,255,255,.3);background:rgba(0,0,0,.4);color:#fff;font-size:13px;}" +
+        ".ocr-search-input{flex:1 1 auto;min-width:60px;width:100%;padding:4px 8px;border-radius:6px;border:1px solid rgba(255,255,255,.3);background:rgba(0,0,0,.4);color:#fff;font-size:16px;}" + /* iOSの自動ズーム抑止のため16px以上 */
         ".ocr-alt{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:9px;padding:3px 0;background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:4px;width:auto;}" +
         ".ocr-alt img{width:40px;height:40px;}" +
         ".ocr-toast{margin:8px 0;padding:8px 12px;background:rgba(40,140,70,0.92);color:#fff;border-radius:6px;font-size:13px;font-weight:bold;}" +

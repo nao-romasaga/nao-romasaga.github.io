@@ -273,7 +273,7 @@ function scInjectStyles() {
         ".sc-chip.chip-icon{padding:3px 5px;line-height:0;display:inline-flex;align-items:center;}" +
         "#sc-unowned{padding:3px 10px;border-radius:12px;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.1);color:#fff;font-size:11px;cursor:pointer;}" +
         "#sc-unowned.active{background:rgba(239,120,41,1);border-color:rgba(255,160,60,.9);font-weight:bold;}" +
-        "#sc-search{padding:3px 8px;border-radius:12px;border:1px solid rgba(255,255,255,.3);background:rgba(0,0,0,.4);color:#fff;font-size:12px;width:160px;}" +
+        "#sc-search{padding:3px 8px;border-radius:12px;border:1px solid rgba(255,255,255,.3);background:rgba(0,0,0,.4);color:#fff;font-size:16px;width:160px;}" + /* iOSの自動ズーム抑止のため16px以上 */
         // 一括操作（adminのm1-bulkに合わせる）
         ".sc-bulk-on,.sc-bulk-off{padding:3px 8px;border-radius:12px;border:none;color:#fff;font-size:11px;cursor:pointer;}" +
         ".sc-bulk-on{background:rgba(41,163,100,.85);}.sc-bulk-on:hover{background:rgba(41,163,100,1);}" +

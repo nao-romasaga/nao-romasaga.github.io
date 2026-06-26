@@ -29,7 +29,7 @@
     <script src="./js/utils2.js" defer></script>
     <!-- スクショ所持登録（カラー署名辞書＋OCRモジュール） -->
     <script src="./js/style_icon_hash.js?v=2026062503c" defer></script>
-    <script src="./js/ocr_style.js?v=2026062619" defer></script>
+    <script src="./js/ocr_style.js?v=2026062620" defer></script>
     <script src="./js/admin_multistyle.js?v=2026062617" defer></script>
     <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
     <style>
@@ -239,7 +239,7 @@
             border: 1px solid rgba(255,255,255,0.3);
             background: rgba(0,0,0,0.4);
             color: #fff;
-            font-size: 12px;
+            font-size: 16px; /* iOSの自動ズーム抑止のため16px以上 */
             width: 140px;
         }
         #m1-unowned-toggle, #m1-unfixed-toggle {
@@ -268,7 +268,7 @@
             border: 1px solid rgba(255,255,255,0.3);
             background: rgba(0,0,0,0.4);
             color: #fff;
-            font-size: 14px;
+            font-size: 16px; /* iOSの自動ズーム抑止のため16px以上 */
             margin-bottom: 12px;
         }
         #mode2-table {
