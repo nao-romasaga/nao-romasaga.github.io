@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics         -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138966739-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-138966739-1');
+    </script>
+    <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
+    <script src="./js/lib/lazysizes.min.js"></script>
+    <script src="./js/lib/ls.unveilhooks.min.js"></script>
+    <script type="text/javascript" src="./js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="./js/jquery.ui.touch-punch.js"></script>
+    <script type="text/javascript" src="./js/tabulator.js"></script>
+    <script type="text/javascript" src="./js/dataload.js"></script>
+    <script>
+        // require dataload.js
+        dataload([
+            "data_CHARMASTER",
+            "data_STYLEMASTER_style2",
+            "data_SKILLMASTER",
+            "data_BUFF_RANKING",
+            "data_ABILITY",
+        ]);
+    </script>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <meta charset="utf-8">
+    <title>【ロマサガRS】火力サポート ランキング</title>
+    <meta property="og:title" content="【ロマサガRS】火力サポート ランキング" />
+    <meta property="og:description" content="ロマサガRSの火力サポートランキングです。周回での火力サポートで活躍できるスタイルを探すのにご利用ください。" />
+    <meta name="description" content="ロマサガRSの火力サポートランキングです。周回での火力サポートで活躍できるスタイルを探すのにご利用ください。【ロマンシングサガ リユニバース】" />
+    <meta property="og:site_name" content="ロマサガRS便利ツール" />
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="ja_JP" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@nao_romasaga_rs" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap/bootstrap.min.css" rel="preload" as="style">
+    <link rel="stylesheet" type="text/css" href="./css/style2.css" rel="preload" as="style">
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" / rel="preload" as="style">
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet" rel="preload" as="style">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet" rel="preload" as="style">
+    <script type="text/javascript" src="./js/bootstrap.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/3.5.2/firebase-ui-auth__ja.js"></script>
+    <script type="text/javascript" src="./js/Firebase.js"></script>
+    <script type="text/javascript" src="./js/utils2.js" defer></script>
+
+    <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.  com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+</head>
+
+<body style="background-color: darkgoldenrod;">
+    <div class="dojohaikei" style="padding-bottom: 20px;">
+        <div class="container">
+
+            <h3 class="text-center label-text-small width-100">火力サポートランキング</h3>
+            <span class="title-text d-none"></span>
+
+            <!-- ① アタッカー選択パネル (グラフィカル) -->
+            <div class="filter-bgcolor text-center small row" style="width:100%; margin: 0px 0px 8px;">
+                <ul class="nav text-center width-100" style="margin-bottom: 5px;">
+                    <li id="FILTER" class="subtitle fuchidori-white smallFont">武器種別</li>
+                </ul>
+                <ul class="nav text-center width-100">
+                    <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_ken"><span
+                                class="icon_mini icon_ken weapon-icon-button fButton" onclick=""></span></a></li>
+                    <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_dken"><span
+                                class="icon_mini icon_dken weapon-icon-button fButton" onclick=""></span></a></li>
+                    <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_ono"><span
+                                class="icon_mini icon_ono weapon-icon-button fButton" onclick=""></span></a></li>
+                    <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_kon"><span
+                                class="icon_mini icon_kon weapon-icon-button fButton" onclick=""></span></a></li>
+                    <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_tai"><span
+                                class="icon_mini icon_tai weapon-icon-button fButton" onclick=""></span></a></li>
+                    <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_ju"><span
+                                class="icon_mini icon_ju weapon-icon-button fButton" onclick=""></span></a></li>
+                    <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_sken"><span
+                                class="icon_mini icon_sken weapon-icon-button fButton" onclick=""></span></a></li>
+                    <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_yari"><span
+                                class="icon_mini icon_yari weapon-icon-button fButton" onclick=""></span></a></li>
+                    <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_yumi"><span
+                                class="icon_mini icon_yumi weapon-icon-button fButton" onclick=""></span></a></li>
+                    <li class="col-2 col-sm-1 xs-pad0"><a class="filterList pad0" data-href="_icon_tsue"><span
+                                class="icon_mini icon_tsue weapon-icon-button fButton" onclick=""></span></a></li>
+                </ul>
+                <ul class="nav text-center width-100" style="margin-bottom: 5px;">
+                    <li class="fuchidori-white subtitle smallFont">シリーズ</li>
+                </ul>
+                <ul class="nav text-center width-100">
+                    <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0"
+                        data-href="RS1"><div class="fButton width-100 filter-bgcolor">RS1</div></a></li>
+                    <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0"
+                        data-href="RS2"><div class="fButton width-100 filter-bgcolor">RS2</div></a></li>
+                    <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0"
+                        data-href="RS3"><div class="fButton width-100 filter-bgcolor">RS3</div></a></li>
+                    <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0"
+                        data-href="SF1"><div class="fButton width-100 filter-bgcolor">SF1</div></a></li>
+                    <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0"
+                        data-href="SF2"><div class="fButton width-100 filter-bgcolor">SF2</div></a></li>
+                    <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0"
+                        data-href="US"><div class="fButton width-100 filter-bgcolor">US</div></a></li>
+                    <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0"
+                        data-href="ES"><div class="fButton width-100 filter-bgcolor">ES</div></a></li>
+                    <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0"
+                        data-href="IS"><div class="fButton width-100 filter-bgcolor">IS</div></a></li>
+                    <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0"
+                        data-href="SSG"><div class="fButton width-100 filter-bgcolor">SSG</div></a></li>
+                    <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0"
+                        data-href="SEB"><div class="fButton width-100 filter-bgcolor">SaGaEB</div></a></li>
+                    <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0"
+                        data-href="RSR"><div class="fButton width-100 filter-bgcolor">SaGaRS</div></a></li>
+                    <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0"
+                        data-href="GB"><div class="fButton width-100 filter-bgcolor text-nowrap">GB</div></a></li>
+                    <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0"
+                        data-href="OTHER"><div class="fButton width-100 filter-bgcolor text-nowrap">その他</div></a></li>
+                </ul>
+            </div>
+
+            <!-- キャラグリッドセクション群（武器種） -->
+            <div class="info-modal dotList d-none" id="_SEC_icon_ken">
+                <div class="text-center info-modal-header"><span class="icon_mini icon_ken"></span></div>
+                <section id="_icon_ken" class="char-choise-section"></section>
+            </div>
+            <div class="info-modal dotList d-none" id="_SEC_icon_dken">
+                <div class="text-center info-modal-header"><span class="icon_mini icon_dken"></span></div>
+                <section id="_icon_dken" class="char-choise-section"></section>
+            </div>
+            <div class="info-modal dotList d-none" id="_SEC_icon_ono">
+                <div class="text-center info-modal-header"><span class="icon_mini icon_ono"></span></div>
+                <section id="_icon_ono" class="char-choise-section"></section>
+            </div>
+            <div class="info-modal dotList d-none" id="_SEC_icon_sken">
+                <div class="text-center info-modal-header"><span class="icon_mini icon_sken"></span></div>
+                <section id="_icon_sken" class="char-choise-section"></section>
+            </div>
+            <div class="info-modal dotList d-none" id="_SEC_icon_yumi">
+                <div class="text-center info-modal-header"><span class="icon_mini icon_yumi"></span></div>
+                <section id="_icon_yumi" class="char-choise-section"></section>
+            </div>
+            <div class="info-modal dotList d-none" id="_SEC_icon_yari">
+                <div class="text-center info-modal-header"><span class="icon_mini icon_yari"></span></div>
+                <section id="_icon_yari" class="char-choise-section"></section>
+            </div>
+            <div class="info-modal dotList d-none" id="_SEC_icon_ju">
+                <div class="text-center info-modal-header"><span class="icon_mini icon_ju"></span></div>
+                <section id="_icon_ju" class="char-choise-section"></section>
+            </div>
+            <div class="info-modal dotList d-none" id="_SEC_icon_tai">
+                <div class="text-center info-modal-header"><span class="icon_mini icon_tai"></span></div>
+                <section id="_icon_tai" class="char-choise-section"></section>
+            </div>
+            <div class="info-modal dotList d-none" id="_SEC_icon_kon">
+                <div class="text-center info-modal-header"><span class="icon_mini icon_kon"></span></div>
+                <section id="_icon_kon" class="char-choise-section"></section>
+            </div>
+            <div class="info-modal dotList d-none" id="_SEC_icon_tsue">
+                <div class="text-center info-modal-header"><span class="icon_mini icon_tsue"></span></div>
+                <section class="char-choise-section">
+                    <div id="_icon_hi"><span class="icon_sm icon_hi_sm"></span></div>
+                    <div id="_icon_mizu"><span class="icon_sm icon_mizu_sm"></span></div>
+                    <div id="_icon_tsuchi"><span class="icon_sm icon_tsuchi_sm"></span></div>
+                    <div id="_icon_kaze"><span class="icon_sm icon_kaze_sm"></span></div>
+                    <div id="_icon_hikari"><span class="icon_sm icon_hikari_sm"></span></div>
+                    <div id="_icon_yami"><span class="icon_sm icon_yami_sm"></span></div>
+                    <div id="_icon_noJustu"><span class="icon_sm icon_tsue_sm"></span></div>
+                </section>
+            </div>
+
+            <!-- キャラグリッドセクション群（シリーズ） -->
+            <div class="info-modal dotList d-none" id="_SECRS1">
+                <div class="text-center info-modal-header"><span class="hidden pcBlock">ロマンシング・サガ1</span><span
+                        class="hidden spBlock">ロマサガ1</span></div>
+                <section id="SECRS1" class="char-choise-section"></section>
+            </div>
+            <div class="info-modal dotList d-none" id="_SECRS2">
+                <div class="text-center info-modal-header"><span class="hidden pcBlock">ロマンシング・サガ2</span><span
+                        class="hidden spBlock">ロマサガ2</span></div>
+                <section id="SECRS2" class="char-choise-section"></section>
+            </div>
+            <div class="info-modal dotList d-none" id="_SECRS3">
+                <div class="text-center info-modal-header"><span class="hidden pcBlock">ロマンシング・サガ3</span><span
+                        class="hidden spBlock">ロマサガ3</span></div>
+                <section id="SECRS3" class="char-choise-section"></section>
+            </div>
+            <div class="info-modal dotList d-none" id="_SECSF1">
+                <div class="text-center info-modal-header"><span class="hidden pcBlock">サガフロンティア1</span><span
+                        class="hidden spBlock">サガフロ1</span></div>
+                <section id="SECSF1" class="char-choise-section"></section>
+            </div>
+            <div class="info-modal dotList d-none" id="_SECSF2">
+                <div class="text-center info-modal-header"><span class="hidden pcBlock">サガフロンティア2</span><span
+                        class="hidden spBlock">サガフロ2</span></div>
+                <section id="SECSF2" class="char-choise-section"></section>
+            </div>
+            <div class="info-modal dotList d-none" id="_SECUS">
+                <div class="text-center info-modal-header"><span class="hidden pcBlock">アンリミテッド・サガ</span><span
+                        class="hidden spBlock">アンサガ</span></div>
+                <section id="SECUS" class="char-choise-section"></section>
+            </div>
+            <div class="info-modal dotList d-none" id="_SECSSG">
+                <div class="text-center info-modal-header"><span class="hidden pcBlock">サガ・スカーレットグレイス</span><span
+                        class="hidden spBlock">サガスカ</span></div>
+                <section id="SECSSG" class="char-choise-section"></section>
+            </div>
+            <div class="info-modal dotList d-none" id="_SECES">
+                <div class="text-center info-modal-header"><span class="hidden pcBlock">エンペラーズ・サガ</span><span
+                        class="hidden spBlock">エンサガ</span></div>
+                <section id="SECES" class="char-choise-section"></section>
+            </div>
+            <div class="info-modal dotList d-none" id="_SECIS">
+                <div class="text-center info-modal-header"><span class="hidden pcBlock">インペリアル・サガ</span><span
+                        class="hidden spBlock">インサガ</span></div>
+                <section id="SECIS" class="char-choise-section"></section>
+            </div>
+            <div class="info-modal dotList d-none" id="_SECSEB">
+                <div class="text-center info-modal-header"><span class="hidden pcBlock">サガ エメラルド ビヨンド</span><span
+                    class="hidden spBlock">サガエメ</span></div>
+                <section id="SECSEB" class="char-choise-section"></section>
+            </div>
+            <div class="info-modal dotList d-none" id="_SECRSR">
+                <div class="text-center info-modal-header"><span class="hidden pcBlock">ロマサガ リ・ユニバース</span><span
+                    class="hidden spBlock">ロマサガRS</span></div>
+                <section id="SECRSR" class="char-choise-section"></section>
+            </div>
+            <div class="info-modal dotList d-none" id="_SECGB">
+                <div class="text-center info-modal-header">GB</div>
+                <section class="char-choise-section">
+                    <span id="SECGB1"></span>
+                    <span id="SECGB2"></span>
+                    <span id="SECGB3"></span>
+                </section>
+            </div>
+            <div class="info-modal dotList d-none" id="_SECOTHER">
+                <div class="text-center info-modal-header">その他</div>
+                <section class="char-choise-section">
+                    <span id="SECOTR"></span>
+                </section>
+            </div>
+
+            <!-- 選択結果表示エリア -->
+            <div class="bg-item" style="padding:8px; margin:8px 0;">
+                <div class="fuchidori-white" id="OKI_SELECTED">アタッカーと技を選択してください</div>
+            </div>
+            <div id="OKI_STYLE_LIST" class="d-flex flex-wrap" style="margin:6px 0;"></div>
+            <div id="OKI_SKILL_LIST" style="margin:6px 0;"></div>
+            <div id="OKI_ABILITY_LIST" style="margin:6px 0;"></div>
+
+            <div class="enemy-config bg-item" style="padding:8px; margin-bottom: 12px;">
+                <div class="fuchidori-white" style="margin-bottom:4px;">③ 敵設定</div>
+                敵の数 <input type="number" id="E_COUNT" value="1" min="1" max="7" style="width:50px">
+                敵VIT <input type="number" id="E_VIT" value="1000" style="width:70px">
+                敵MND <input type="number" id="E_MND" value="1000" style="width:70px">
+                <div class="enemy-resist" style="margin-top:6px;">
+                    耐性:
+                    <span data-attr="斬">斬<input type="number" class="E_RESIST" data-attr="斬" value="0" style="width:55px"></span>
+                    <span data-attr="打">打<input type="number" class="E_RESIST" data-attr="打" value="0" style="width:55px"></span>
+                    <span data-attr="突">突<input type="number" class="E_RESIST" data-attr="突" value="0" style="width:55px"></span>
+                    <span data-attr="熱">熱<input type="number" class="E_RESIST" data-attr="熱" value="0" style="width:55px"></span>
+                    <span data-attr="冷">冷<input type="number" class="E_RESIST" data-attr="冷" value="0" style="width:55px"></span>
+                    <span data-attr="雷">雷<input type="number" class="E_RESIST" data-attr="雷" value="0" style="width:55px"></span>
+                    <span data-attr="陽">陽<input type="number" class="E_RESIST" data-attr="陽" value="0" style="width:55px"></span>
+                    <span data-attr="陰">陰<input type="number" class="E_RESIST" data-attr="陰" value="0" style="width:55px"></span>
+                </div>
+            </div>
+
+            <div class="filter-bgcolor text-center small row" style="width:100%; margin: 20px 0px;">
+                <ul class="nav text-center width-100 " style="margin-bottom: 5px;">
+                    <li class="subtitle-long fuchidori-white smallFont">武器種別</li>
+                </ul>
+                <ul class="nav text-center width-100  fuchidori-white" style="line-height: 14px;">
+                    <li class="col-2 col-sm-1 xs-pad0"><div class="filterWeapon weapon-icon-button yubi pad0" data-weapon="剣" data-target="Weapon"><span
+                                class="icon_mini icon_ken  fButton" onclick=""></span></div></li>
+                    <li class="col-2 col-sm-1 xs-pad0"><div class="filterWeapon weapon-icon-button yubi pad0" data-weapon="大剣" data-target="Weapon"><span
+                                class="icon_mini icon_dken  fButton" onclick=""></span></div></li>
+                    <li class="col-2 col-sm-1 xs-pad0"><div class="filterWeapon weapon-icon-button yubi pad0" data-weapon="斧" data-target="Weapon"><span
+                                class="icon_mini icon_ono  fButton" onclick=""></span></div></li>
+                    <li class="col-2 col-sm-1 xs-pad0"><div class="filterWeapon weapon-icon-button yubi pad0" data-weapon="棍棒" data-target="Weapon"><span
+                                class="icon_mini icon_kon  fButton" onclick=""></span></div></li>
+                    <li class="col-2 col-sm-1 xs-pad0"><div class="filterWeapon weapon-icon-button yubi pad0" data-weapon="体術" data-target="Weapon"><span
+                                class="icon_mini icon_tai  fButton" onclick=""></span></div></li>
+                    <li class="col-2 col-sm-1 xs-pad0"><div class="filterWeapon weapon-icon-button yubi pad0" data-weapon="銃" data-target="Weapon"><span
+                                class="icon_mini icon_ju  fButton" onclick=""></span></div></li>
+                    <li class="col-2 col-sm-1 xs-pad0"><div class="filterWeapon weapon-icon-button yubi pad0" data-weapon="小剣" data-target="Weapon"><span
+                                class="icon_mini icon_sken  fButton" onclick=""></span></div></li>
+                    <li class="col-2 col-sm-1 xs-pad0"><div class="filterWeapon weapon-icon-button yubi pad0" data-weapon="槍" data-target="Weapon"><span
+                                class="icon_mini icon_yari  fButton" onclick=""></span></div></li>
+                    <li class="col-2 col-sm-1 xs-pad0"><div class="filterWeapon weapon-icon-button yubi pad0" data-weapon="弓" data-target="Weapon"><span
+                                class="icon_mini icon_yumi  fButton" onclick=""></span></div></li>
+                    <li class="col-2 col-sm-1 xs-pad0"><div class="filterWeapon weapon-icon-button yubi pad0" data-weapon="杖" data-target="Weapon"><span
+                                class="icon_mini icon_tsue  fButton" onclick=""></span></div></li>
+                </ul>                
+
+                <ul class="nav text-center width-100 ">
+                    <li class="subtitle-long fuchidori-white smallFont" style="margin-bottom: 15px;">攻撃属性</li>
+                </ul>
+                <ul class="nav text-center width-100  fuchidori-white" style="line-height: 16px; margin-bottom: 5px;">
+                    <li class="col-2 col-sm-1 xs-pad0"><div class="filterAttr pad0 yubi weapon-icon-button" data-attr="斬" data-target="Type">
+                        <span class="icon_mini_zokusei icon_zan"></span></div></li>
+                    <li class="col-2 col-sm-1 xs-pad0"><div class="filterAttr pad0 yubi weapon-icon-button" data-attr="打" data-target="Type">
+                        <span class="icon_mini_zokusei icon_da"></span></div></li>
+                    <li class="col-2 col-sm-1 xs-pad0"><div class="filterAttr pad0 yubi weapon-icon-button" data-attr="突" data-target="Type">
+                        <span class="icon_mini_zokusei icon_totsu"></span></div></li>
+                    <li class="col-2 col-sm-1 xs-pad0"><div class="filterAttr pad0 yubi weapon-icon-button" data-attr="熱" data-target="Type">
+                        <span class="icon_mini_zokusei icon_netsu"></span></div></li>
+                    <li class="col-2 col-sm-1 xs-pad0"><div class="filterAttr pad0 yubi weapon-icon-button" data-attr="冷" data-target="Type">
+                        <span class="icon_mini_zokusei icon_rei"></span></div></li>
+                    <li class="col-2 col-sm-1 xs-pad0"><div class="filterAttr pad0 yubi weapon-icon-button" data-attr="雷" data-target="Type">
+                        <span class="icon_mini_zokusei icon_rai"></span></div></li>
+                    <li class="col-2 col-sm-1 xs-pad0"><div class="filterAttr pad0 yubi weapon-icon-button" data-attr="陽" data-target="Type">
+                        <span class="icon_mini_zokusei icon_yo"></span></div></li>
+                    <li class="col-2 col-sm-1 xs-pad0"><div class="filterAttr pad0 yubi weapon-icon-button" data-attr="陰" data-target="Type">
+                        <span class="icon_mini_zokusei icon_in"></span></div></li>
+                </ul>
+                <ul class="nav text-center width-100 " style="margin-bottom: 5px;">
+                    <li class="subtitle-long fuchidori-white smallFont">オプション</li>
+                </ul>
+                <div class="d-flex text-center width-100 ">
+                    <div class="area-button"><div class="filterRange yubi pad0"
+                        data-href="単体攻撃" ><div class="fButton text-center width-100 filter-bgcolor">単体</div></div></div>
+                    <div class="area-button"><div class="filterRange yubi pad0"
+                        data-href="全体攻撃" ><div class="fButton text-center width-100 filter-bgcolor">全体</div></div></div>
+                    <div class="area-button"><div class="filterRange yubi pad0"
+                        data-href="縦攻撃,横攻撃,範囲攻撃" ><div class="fButton text-center width-100 filter-bgcolor">縦/横</div></div></div>
+                </div>
+                <div class="d-flex text-center width-100 ">
+                    <div class="area-button"><div class="filterRange yubi pad0"
+                        data-href="直接攻撃" ><div class="fButton text-center width-100 filter-bgcolor">直接</div></div></div>
+                    <div class="area-button"><div class="filterRange yubi pad0"
+                        data-href="間接攻撃" ><div class="fButton text-center width-100 filter-bgcolor">間接</div></div></div>                        
+                </div>
+                <div class="d-flex text-center width-100 ">
+                    <div class="area-button"><div class="filterRange yubi pad0"
+                        data-href="技攻撃" ><div class="fButton text-center width-100 filter-bgcolor">技</div></div></div>
+                    <div class="area-button"><div class="filterRange yubi pad0"
+                        data-href="術攻撃" ><div class="fButton text-center width-100 filter-bgcolor">術</div></div></div>
+                </div>
+                <div class="d-flex text-center width-100 ">
+                    <div class="area-button"><div class="filterRange yubi pad0"
+                        data-href="Weak攻撃" ><div class="fButton text-center width-100 filter-bgcolor">Weak</div></div></div>
+                    <div class="area-button"><div class="filterRange yubi pad0"
+                        data-href="HP満タン時" ><div class="fButton text-center width-100 filter-bgcolor">HP満タン</div></div></div>
+                    <div class="area-button"><div class="filterRange yubi pad0"
+                        data-href="OD攻撃" ><div class="fButton text-center width-100 filter-bgcolor">OD</div></div></div>
+                </div>
+                <div class="d-flex text-center width-100 ">
+                    <div class="area-button"><div class="filterRange yubi pad0"
+                        data-href="男性" ><div class="fButton text-center width-100 filter-bgcolor">男性</div></div></div>
+                    <div class="area-button"><div class="filterRange yubi pad0"
+                        data-href="女性" ><div class="fButton text-center width-100 filter-bgcolor">女性</div></div></div>
+                    <div class="area-button"><div class="filterRange yubi pad0"
+                        data-href="不明" ><div class="fButton text-center width-100 filter-bgcolor">不明</div></div></div>
+                </div>                
+                <ul class="nav text-center width-100 " style="margin-bottom: 5px;">
+                    <li class="subtitle-long fuchidori-white smallFont">スタイル所持チェッカー連動</li>
+                </ul>
+                <ul class="nav text-center width-100  fuchidori-white" style="line-height: 14px;">                
+                    <div class="area-button"><div class="styleChecker yubi pad0"><div class="fButton text-center width-100 filter-bgcolor">ON</div></div></div>
+                </ul>
+                <div style="color: #faf0b4">
+                    <a class="fuchidori-blue" href="stylecheck.html">スタイル所持チェッカー</a>で登録したスタイルのみを表示します
+                </div>
+            </div>
+
+            <div id="BASE_DAMAGE_AREA" class="bg-item d-none" style="padding:8px; margin:8px 0;">
+                <div><span class="fuchidori-white">基本値（素ダメージ）</span>
+                <span id="BASE_DAMAGE_VALUE" class="fuchidori-blue" style="font-size:1.4rem;"></span></div>
+                <div id="BASE_BREAKDOWN" style="margin-top:6px; font-size:0.85em; line-height:1.6;"></div>
+            </div>
+
+            <div id="RANKING_AREA"></div>
+
+            <style>
+                .area-button {
+                    width: 60px;
+                    color:beige;
+                    margin-bottom: 5px;
+                    white-space: nowrap;
+                }
+                .skill-area {
+                    overflow-x: scroll;
+                    line-height: 25px;
+                    padding-bottom: 15px;
+                }
+                .ab-flover {
+                    background: black;
+                    border: 1px solid;
+                    border-radius: 5px;
+                    padding: 2px 10px;
+                    line-height: 1.05rem;
+                }
+
+                /* ===== Task4: 技カード背景・選択強調・レイアウト ===== */
+
+                /* 技カード: style.html の skill-template-table に相当する不透明背景 */
+                .okimono-skill-card {
+                    background: linear-gradient(to left,
+                        rgba(38,16,25,1),
+                        rgba(56,38,24,1) 10%,
+                        rgba(88,66,38,1) 50%,
+                        rgba(56,38,24,1) 90%,
+                        rgba(38,16,25,1));
+                    color: white;
+                    border-radius: 8px;
+                    border: 1px solid rgba(197,187,147,0.5);
+                    margin-bottom: 6px;
+                    padding: 4px 6px;
+                    cursor: pointer;
+                    transition: box-shadow 0.15s, border-color 0.15s;
+                }
+                /* 選択中の技カードを強調 */
+                .okimono-skill-card.skill-selected {
+                    border: 2px solid gold;
+                    box-shadow: 0 0 8px 2px rgba(255,215,0,0.6);
+                }
+                /* ホバー時のフィードバック */
+                .okimono-skill-card:hover {
+                    border-color: rgba(255,215,0,0.5);
+                }
+
+                /* 技一覧コンテナ */
+                #OKI_SKILL_LIST {
+                    margin: 6px 0;
+                }
+
+                /* アビ一覧コンテナ: 背景を持たせる */
+                #OKI_ABILITY_LIST {
+                    background: rgba(30,15,20,0.85);
+                    border-radius: 8px;
+                    padding: 4px 6px;
+                    margin: 6px 0;
+                }
+                #OKI_ABILITY_LIST table {
+                    color: white;
+                }
+
+                /* スタイル一覧: 縦横のはみ出し防止 */
+                #OKI_STYLE_LIST {
+                    margin: 6px 0;
+                    flex-wrap: wrap;
+                    gap: 4px;
+                }
+
+                /* ランキングカードの余白・はみ出し整理 */
+                #RANKING_AREA .style-skill-list {
+                    margin-bottom: 8px;
+                    overflow: hidden;
+                }
+                #RANKING_AREA .col-5,
+                #RANKING_AREA .col-2 {
+                    overflow-x: hidden;
+                }
+
+                /* 増加率の強調（与ダメ増加率テキスト） */
+                .damage-line {
+                    font-size: 0.95rem;
+                    font-weight: bold;
+                }
+
+                /* skill-text: style.html に合わせて黒背景・丸角 */
+                .skill-text {
+                    background: black;
+                    border-radius: 8px;
+                    margin: 2px 5px;
+                    padding: 5px;
+                    font-size: 0.9rem;
+                    line-height: 1.2rem;
+                    color: white;
+                }
+                .skill-text-added {
+                    border-bottom: 2px dashed #faf0b4 !important;
+                }
+                /* skill-template-table の区切り線 */
+                .skill-template-table {
+                    margin-bottom: 5px;
+                    border-bottom: 1px solid rgba(197,187,147,0.4);
+                }
+                /* 技名・BPテキストの色 */
+                .skill-name, .skill-bp {
+                    color: #faf0b4;
+                }
+                .skill-iryoku {
+                    color: #d0e8ff;
+                    font-size: 0.85rem;
+                }
+            </style>
+
+            <div id="SKILL_TEMPLATE" class="d-none style-skill-list-child" style="margin-right: 10px;">
+                <span class="icon_xs SKILL_ICON">　</span> <span class="SKILL_NAME"></span> BP:<span class="SKILL_BP"></span> (<span class="SKILL_PER"></span>%)
+            </div>
+            <div id="AB_TEMPLATE" class="d-none style-skill-list-child">
+                <span class="AB_ICON"></span> <span class="AB_NAME"></span>
+                <div class="ab-flover">
+                    <div class="d-none justify-content-between FLOVER_TEMPLATE">
+                        <div class="WHEN"></div>
+                        <div class="MAIN"></div>
+                        <div class="SUB"></div>
+                        <div class="SIZE"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row width-max no-gutters style-skill-list position-relative d-none" id='TEMPLATE'>
+                <img class="CLOSE_BTN yubi" src="./img/icon/icon_close.png" style="position: absolute;top: 0px;right: 0px;height: 15px;" onclick="">
+                <div class="col-2 col-sm-1 text-nowrap ICON text-center"></div>
+                <div class="col-5 col-sm-2 text-nowrap" style="overflow-x: hidden; line-height:1.2rem;">
+                    <div class="NAME"></div>
+                    <div class="ANOTHER_NAME small"></div>
+                    <div class="" style="line-height:1.5rem;"><span>合計:</span><span class="SUM_PER fuchidori-blue" style="font-size: 1.5rem"></span>%</div>
+                    <div class="damage-line" style="line-height:1.5rem;"><span class="DAMAGE fuchidori-blue" style="font-size: 1rem"></span></div>
+                </div>
+                <div class="col-5 col-sm-2 text-nowrap" style="overflow-x: hidden; line-height:22px; padding: 0 5px">
+                    <div class="d-flex flex-wrap justify-content-between">
+                        <div>
+                            <div class="AB_TITLE">◆アビ+</div>
+                            <span class="AB_VALUE"></span>        
+                        </div>
+                        <div>
+                            <div class="BUFF_TITLE">◆ステ+</div>
+                            <span class="BUFF_VALUE"></span>                            
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-12 col-sm-7 text-nowrap skill-area">
+                    <div class="SKILL_AREA"></div>
+                    <div class="AB_AREA"></div>
+                </div>     
+            </div>
+        </div>
+    </div><!-- isLogin -->
+    </div>
+    </div>
+    <script type="text/javascript" src="./js/okimono_api.js" defer></script>
+    <script type="text/javascript" src="./js/style_cards.js" defer></script>
+    <script type="text/javascript" src="./js/buff_ranking_select.js" defer></script>
+    <script type="text/javascript" src="./js/okimono_filter.js" defer></script>
+    <script type="text/javascript" src="./js/okimono_breakdown_view.js"></script>
+    <script type="text/javascript" src="./js/buff_ranking.js" defer></script>
+    <script type="text/javascript" src="https://romasagatool.com/blog/get_the_archives.php?limit=30&callback=rssCallback" defer></script>
+</body>
+
+</html>
