@@ -1,0 +1,418 @@
+{
+  "702101337": {
+    "id": 702101337,
+    "name": "行動順補正低下(特大)",
+    "flavor_text": "行動順補正値が低下する( 効果特大 )",
+    "attack": 0,
+    "defense": 0,
+    "action": -40
+  },
+  "750100001": {
+    "id": 750100001,
+    "name": "直接攻撃強化(超極大+)＋被ダメージ軽減(中)",
+    "flavor_text": "直接攻撃の与ダメージが上昇する( 効果超極大+ )<br>被ダメージ軽減が付与される( 効果中 )",
+    "attack": 150,
+    "defense": 10,
+    "action": 0
+  },
+  "750100002": {
+    "id": 750100002,
+    "name": "間接攻撃強化(超極大+)＋被ダメージ軽減(中)",
+    "flavor_text": "間接攻撃の与ダメージが上昇する( 効果超極大+ )<br>被ダメージ軽減が付与される( 効果中 )",
+    "attack": 150,
+    "defense": 10,
+    "action": 0
+  },
+  "750100529": {
+    "id": 750100529,
+    "name": "行動前防御強化(特大)＋行動順補正低下(中)",
+    "flavor_text": "「<special_effect data-id=800000077>行動前防御強化</special_effect>」が付与される( 効果特大 )<br>行動順補正値が低下する( 効果中 )",
+    "attack": 0,
+    "defense": 50,
+    "action": -25
+  },
+  "750100548": {
+    "id": 750100548,
+    "name": "行動順補正上昇(中)",
+    "flavor_text": "行動順補正値が上昇する( 効果中 )",
+    "attack": 0,
+    "defense": 0,
+    "action": 25
+  },
+  "750100549": {
+    "id": 750100549,
+    "name": "行動順補正低下(中)",
+    "flavor_text": "行動順補正値が低下する( 効果中 )",
+    "attack": 0,
+    "defense": 0,
+    "action": -25
+  },
+  "750100556": {
+    "id": 750100556,
+    "name": "体術攻撃強化(中)",
+    "flavor_text": "体術装備時　攻撃の<br>与ダメージが上昇する( 効果中 )",
+    "attack": 10,
+    "defense": 0,
+    "action": 0
+  },
+  "750100557": {
+    "id": 750100557,
+    "name": "体術攻撃強化(極大)＋行動順補正低下(小)",
+    "flavor_text": "体術装備時　攻撃の与ダメージが上昇する( 効果極大 )<br>行動順補正値が低下する( 効果小 )",
+    "attack": 40,
+    "defense": 0,
+    "action": -10
+  },
+  "750100558": {
+    "id": 750100558,
+    "name": "行動前防御強化(特大)",
+    "flavor_text": "「<special_effect data-id=800000077>行動前防御強化</special_effect>」が付与される( 効果特大 )",
+    "attack": 0,
+    "defense": 50,
+    "action": 0
+  },
+  "750100623": {
+    "id": 750100623,
+    "name": "カウンター攻撃強化(特大)＋行動順補正上昇(中)",
+    "flavor_text": "カウンター攻撃の与ダメージが上昇する( 効果特大 )<br>行動順補正値が上昇する( 効果中 )",
+    "attack": 30,
+    "defense": 0,
+    "action": 25
+  },
+  "750100630": {
+    "id": 750100630,
+    "name": "行動順補正上昇(特大)",
+    "flavor_text": "行動順補正値が上昇する( 効果特大 )",
+    "attack": 0,
+    "defense": 0,
+    "action": 40
+  },
+  "750100646": {
+    "id": 750100646,
+    "name": "銃攻撃強化(小)",
+    "flavor_text": "銃装備時　攻撃の<br>与ダメージが上昇する( 効果小 )",
+    "attack": 5,
+    "defense": 0,
+    "action": 0
+  },
+  "750100665": {
+    "id": 750100665,
+    "name": "行動前防御強化(特大)＋銃攻撃強化(小)",
+    "flavor_text": "「<special_effect data-id=800000077>行動前防御強化</special_effect>」が付与される( 効果特大 )<br>銃装備時　攻撃の与ダメージが上昇する( 効果小 )",
+    "attack": 5,
+    "defense": 50,
+    "action": 0
+  },
+  "750100698": {
+    "id": 750100698,
+    "name": "行動後防御強化(特大)",
+    "flavor_text": "「<special_effect data-id=800000078>行動後防御強化</special_effect>」が付与される( 効果特大 )",
+    "attack": 0,
+    "defense": 50,
+    "action": 0
+  },
+  "750101002": {
+    "id": 750101002,
+    "name": "行動前防御強化(大)",
+    "flavor_text": "「<special_effect data-id=800000077>行動前防御強化</special_effect>」が付与される( 効果大 )",
+    "attack": 0,
+    "defense": 30,
+    "action": 0
+  },
+  "750101003": {
+    "id": 750101003,
+    "name": "行動後防御強化(大)",
+    "flavor_text": "「<special_effect data-id=800000078>行動後防御強化</special_effect>」が付与される( 効果大 )",
+    "attack": 0,
+    "defense": 30,
+    "action": 0
+  },
+  "750101005": {
+    "id": 750101005,
+    "name": "Weak攻撃強化(大)＋行動順補正上昇(中)",
+    "flavor_text": "Weak攻撃の与ダメージが上昇する( 効果大 )<br>行動順補正値が上昇する( 効果中 )",
+    "attack": 15,
+    "defense": 0,
+    "action": 25
+  },
+  "750101006": {
+    "id": 750101006,
+    "name": "玄武陣の守り",
+    "flavor_text": "味方が全員生存している時、被ダメージが低下する( 効果中 )<br>行動順補正値が低下する( 効果大 )<br>「<special_effect data-id=800000081>ターン開始時HP回復(全員生存時)</special_effect>」が付与される( 効果極小 )",
+    "attack": 0,
+    "defense": 10,
+    "action": -30
+  },
+  "750101034": {
+    "id": 750101034,
+    "name": "被ダメージ軽減(大)",
+    "flavor_text": "被ダメージ軽減が付与される( 効果大 )",
+    "attack": 0,
+    "defense": 25,
+    "action": 0
+  },
+  "750101331": {
+    "id": 750101331,
+    "name": "昇龍の相Ⅱ",
+    "flavor_text": "行動順補正値が上昇する( 効果中 )<br>ターン終了時、BPを回復する( +1 )",
+    "attack": 0,
+    "defense": 0,
+    "action": 25
+  },
+  "750101471": {
+    "id": 750101471,
+    "name": "被ダメージ軽減(大)＋行動順補正低下(特大)",
+    "flavor_text": "被ダメージ軽減が付与される( 効果大 )<br>行動順補正値が低下する( 効果特大 )",
+    "attack": 0,
+    "defense": 25,
+    "action": -40
+  },
+  "750101474": {
+    "id": 750101474,
+    "name": "被ダメージ軽減(中)",
+    "flavor_text": "被ダメージ軽減が付与される( 効果中 )",
+    "attack": 0,
+    "defense": 10,
+    "action": 0
+  },
+  "750101674": {
+    "id": 750101674,
+    "name": "直接攻撃強化(超極大)＋直接ダメージ軽減(大)",
+    "flavor_text": "直接攻撃の与ダメージが上昇する( 効果超極大 )<br>直接攻撃の被ダメージを軽減する( 効果大 )",
+    "attack": 75,
+    "defense": 35,
+    "action": 0
+  },
+  "750101675": {
+    "id": 750101675,
+    "name": "間接ダメージ軽減(大)",
+    "flavor_text": "間接攻撃の被ダメージを軽減する( 効果大 )",
+    "attack": 0,
+    "defense": 35,
+    "action": 0
+  },
+  "750101676": {
+    "id": 750101676,
+    "name": "先攻態勢",
+    "flavor_text": "行動がファストになる。ファスト/ディレイの優先度はアビリティ＞先攻態勢＞技",
+    "attack": 0,
+    "defense": 0,
+    "action": 0
+  },
+  "750101677": {
+    "id": 750101677,
+    "name": "行動順補正低下(大)",
+    "flavor_text": "行動順補正値が低下する( 効果大 )",
+    "attack": 0,
+    "defense": 0,
+    "action": -30
+  },
+  "750101678": {
+    "id": 750101678,
+    "name": "後攻態勢＋Weak攻撃強化(大)",
+    "flavor_text": "行動がディレイになる。ファスト/ディレイの優先度はアビリティ＞後攻態勢＞技<br>Weak攻撃の与ダメージが上昇する( 効果大 )",
+    "attack": 15,
+    "defense": 0,
+    "action": 0
+  },
+  "750102872": {
+    "id": 750102872,
+    "name": "エレメントディフェンド",
+    "flavor_text": "熱属性を含む攻撃を受けた時、被ダメージを軽減する( 効果極大 )<br>冷属性を含む攻撃を受けた時、被ダメージを軽減する( 効果極大 )<br>雷属性を含む攻撃を受けた時、被ダメージを軽減する( 効果極大 )<br>陽属性を含む攻撃を受けた時、被ダメージを軽減する( 効果極大 )<br>陰属性を含む攻撃を受けた時、被ダメージを軽減する( 効果極大 )",
+    "attack": 0,
+    "defense": 50,
+    "action": 0
+  },
+  "750103113": {
+    "id": 750103113,
+    "name": "イーグルヘッド",
+    "flavor_text": "[ターン終了時] <br>自身以外の味方生存者全体のHPを回復する( 効果極小 )<br>自身以外の味方生存者全体のBPを回復する( +1 )<br>自身以外の味方生存者全体のODゲージを上昇させる( 効果小:15 )",
+    "attack": 0,
+    "defense": 0,
+    "action": 0
+  },
+  "750103114": {
+    "id": 750103114,
+    "name": "オーバーディフェンド",
+    "flavor_text": "被ダメージ軽減が付与される( 効果中 )<br>「<special_effect data-id=800000341>ターン終了時ODゲージ上昇(小)</special_effect>」が付与される",
+    "attack": 0,
+    "defense": 10,
+    "action": 0
+  },
+  "750104181": {
+    "id": 750104181,
+    "name": "後攻態勢",
+    "flavor_text": "行動がディレイになる",
+    "attack": 0,
+    "defense": 0,
+    "action": 0
+  },
+  "750104183": {
+    "id": 750104183,
+    "name": "行動前防御強化(特大)＋行動順補正低下(超極大)",
+    "flavor_text": "「<special_effect data-id=800000077>行動前防御強化</special_effect>」が付与される( 効果特大 )<br>行動順補正値が低下する( 効果超極大 )",
+    "attack": 0,
+    "defense": 50,
+    "action": -100
+  },
+  "750104307": {
+    "id": 750104307,
+    "name": "陽法の力",
+    "flavor_text": "被ダメージ軽減が付与される( 効果中 )<br>ターン開始時、自身に「<special_effect data-id=800000008>陽属性攻撃強化</special_effect>」( 効果超極大/効果3ターン )を付与する",
+    "attack": 75,
+    "defense": 10,
+    "action": 0
+  },
+  "750104339": {
+    "id": 750104339,
+    "name": "先攻態勢＋行動順補正上昇(特大)",
+    "flavor_text": "行動がファストになる<br>行動順補正値が上昇する( 効果特大 )",
+    "attack": 0,
+    "defense": 0,
+    "action": 0
+  },
+  "750104717": {
+    "id": 750104717,
+    "name": "斬法の力",
+    "flavor_text": "被ダメージ軽減が付与される( 効果中 )<br>ターン開始時、自身に「<special_effect data-id=800000002>斬属性攻撃強化</special_effect>」( 効果超極大/効果3ターン )を付与する",
+    "attack": 75,
+    "defense": 10,
+    "action": 0
+  },
+  "750104719": {
+    "id": 750104719,
+    "name": "打法の力",
+    "flavor_text": "被ダメージ軽減が付与される( 効果中 )<br>ターン開始時、自身に「<special_effect data-id=800000003>打属性攻撃強化</special_effect>」( 効果超極大/効果3ターン )を付与する",
+    "attack": 75,
+    "defense": 10,
+    "action": 0
+  },
+  "750104721": {
+    "id": 750104721,
+    "name": "突法の力",
+    "flavor_text": "被ダメージ軽減が付与される( 効果中 )<br>ターン開始時、自身に「<special_effect data-id=800000004>突属性攻撃強化</special_effect>」( 効果超極大/効果3ターン )を付与する",
+    "attack": 75,
+    "defense": 10,
+    "action": 0
+  },
+  "750104723": {
+    "id": 750104723,
+    "name": "熱法の力",
+    "flavor_text": "被ダメージ軽減が付与される( 効果中 )<br>ターン開始時、自身に「<special_effect data-id=800000005>熱属性攻撃強化</special_effect>」( 効果超極大/効果3ターン )を付与する",
+    "attack": 75,
+    "defense": 10,
+    "action": 0
+  },
+  "750104725": {
+    "id": 750104725,
+    "name": "冷法の力",
+    "flavor_text": "被ダメージ軽減が付与される( 効果中 )<br>ターン開始時、自身に「<special_effect data-id=800000006>冷属性攻撃強化</special_effect>」( 効果超極大/効果3ターン )を付与する",
+    "attack": 75,
+    "defense": 10,
+    "action": 0
+  },
+  "750104727": {
+    "id": 750104727,
+    "name": "雷法の力",
+    "flavor_text": "被ダメージ軽減が付与される( 効果中 )<br>ターン開始時、自身に「<special_effect data-id=800000007>雷属性攻撃強化</special_effect>」( 効果超極大/効果3ターン )を付与する",
+    "attack": 75,
+    "defense": 10,
+    "action": 0
+  },
+  "750104729": {
+    "id": 750104729,
+    "name": "陰法の力",
+    "flavor_text": "被ダメージ軽減が付与される( 効果中 )<br>ターン開始時、自身に「<special_effect data-id=800000009>陰属性攻撃強化</special_effect>」( 効果超極大/効果3ターン )を付与する",
+    "attack": 75,
+    "defense": 10,
+    "action": 0
+  },
+  "750104804": {
+    "id": 750104804,
+    "name": "ヒストリーパワー(GBSaGa)",
+    "flavor_text": "[ターン開始時]<br>＜シリーズがGBSaGaのキャラクターの場合＞<br>自身に「<special_effect data-id=800000001>攻撃強化</special_effect>」( 効果超極大/効果1ターン )を付与する<br>自身に「<special_effect data-id=800000015>防御強化</special_effect>」( 効果特大/効果1ターン )を付与する<br>自身に「<special_effect data-id=800000341>ターン終了時ODゲージ上昇(小)</special_effect>」( 効果1ターン )を付与する<br><small>※シリーズ「その他」のキャラクターは対象外</small>",
+    "attack": 70,
+    "defense": 30,
+    "action": 0
+  },
+  "750104808": {
+    "id": 750104808,
+    "name": "ヒストリーパワー(RS1)",
+    "flavor_text": "[ターン開始時]<br>＜シリーズがRS1のキャラクターの場合＞<br>自身に「<special_effect data-id=800000001>攻撃強化</special_effect>」( 効果超極大/効果1ターン )を付与する<br>自身に「<special_effect data-id=800000015>防御強化</special_effect>」( 効果特大/効果1ターン )を付与する<br>自身に「<special_effect data-id=800000341>ターン終了時ODゲージ上昇(小)</special_effect>」( 効果1ターン )を付与する<br><small>※シリーズ「その他」のキャラクターは対象外</small>",
+    "attack": 70,
+    "defense": 30,
+    "action": 0
+  },
+  "750104809": {
+    "id": 750104809,
+    "name": "ヒストリーパワー(RS2)",
+    "flavor_text": "[ターン開始時]<br>＜シリーズがRS2のキャラクターの場合＞<br>自身に「<special_effect data-id=800000001>攻撃強化</special_effect>」( 効果超極大/効果1ターン )を付与する<br>自身に「<special_effect data-id=800000015>防御強化</special_effect>」( 効果特大/効果1ターン )を付与する<br>自身に「<special_effect data-id=800000341>ターン終了時ODゲージ上昇(小)</special_effect>」( 効果1ターン )を付与する<br><small>※シリーズ「その他」のキャラクターは対象外</small>",
+    "attack": 70,
+    "defense": 30,
+    "action": 0
+  },
+  "750104810": {
+    "id": 750104810,
+    "name": "ヒストリーパワー(RS3)",
+    "flavor_text": "[ターン開始時]<br>＜シリーズがRS3のキャラクターの場合＞<br>自身に「<special_effect data-id=800000001>攻撃強化</special_effect>」( 効果超極大/効果1ターン )を付与する<br>自身に「<special_effect data-id=800000015>防御強化</special_effect>」( 効果特大/効果1ターン )を付与する<br>自身に「<special_effect data-id=800000341>ターン終了時ODゲージ上昇(小)</special_effect>」( 効果1ターン )を付与する<br><small>※シリーズ「その他」のキャラクターは対象外</small>",
+    "attack": 70,
+    "defense": 30,
+    "action": 0
+  },
+  "750104811": {
+    "id": 750104811,
+    "name": "ヒストリーパワー(SF1)",
+    "flavor_text": "[ターン開始時]<br>＜シリーズがSF1のキャラクターの場合＞<br>自身に「<special_effect data-id=800000001>攻撃強化</special_effect>」( 効果超極大/効果1ターン )を付与する<br>自身に「<special_effect data-id=800000015>防御強化</special_effect>」( 効果特大/効果1ターン )を付与する<br>自身に「<special_effect data-id=800000341>ターン終了時ODゲージ上昇(小)</special_effect>」( 効果1ターン )を付与する<br><small>※シリーズ「その他」のキャラクターは対象外</small>",
+    "attack": 70,
+    "defense": 30,
+    "action": 0
+  },
+  "750104812": {
+    "id": 750104812,
+    "name": "ヒストリーパワー(SF2)",
+    "flavor_text": "[ターン開始時]<br>＜シリーズがSF2のキャラクターの場合＞<br>自身に「<special_effect data-id=800000001>攻撃強化</special_effect>」( 効果超極大/効果1ターン )を付与する<br>自身に「<special_effect data-id=800000015>防御強化</special_effect>」( 効果特大/効果1ターン )を付与する<br>自身に「<special_effect data-id=800000341>ターン終了時ODゲージ上昇(小)</special_effect>」( 効果1ターン )を付与する<br><small>※シリーズ「その他」のキャラクターは対象外</small>",
+    "attack": 70,
+    "defense": 30,
+    "action": 0
+  },
+  "750104813": {
+    "id": 750104813,
+    "name": "ヒストリーパワー(US)",
+    "flavor_text": "[ターン開始時]<br>＜シリーズがUSのキャラクターの場合＞<br>自身に「<special_effect data-id=800000001>攻撃強化</special_effect>」( 効果超極大/効果1ターン )を付与する<br>自身に「<special_effect data-id=800000015>防御強化</special_effect>」( 効果特大/効果1ターン )を付与する<br>自身に「<special_effect data-id=800000341>ターン終了時ODゲージ上昇(小)</special_effect>」( 効果1ターン )を付与する<br><small>※シリーズ「その他」のキャラクターは対象外</small>",
+    "attack": 70,
+    "defense": 30,
+    "action": 0
+  },
+  "750104814": {
+    "id": 750104814,
+    "name": "ヒストリーパワー(ES & IS)",
+    "flavor_text": "[ターン開始時]<br>＜シリーズがESまたはISのキャラクターの場合＞<br>自身に「<special_effect data-id=800000001>攻撃強化</special_effect>」( 効果超極大/効果1ターン )を付与する<br>自身に「<special_effect data-id=800000015>防御強化</special_effect>」( 効果特大/効果1ターン )を付与する<br>自身に「<special_effect data-id=800000341>ターン終了時ODゲージ上昇(小)</special_effect>」( 効果1ターン )を付与する<br><small>※シリーズ「その他」のキャラクターは対象外</small>",
+    "attack": 70,
+    "defense": 30,
+    "action": 0
+  },
+  "750104815": {
+    "id": 750104815,
+    "name": "ヒストリーパワー(SSG)",
+    "flavor_text": "[ターン開始時]<br>＜シリーズがSSGのキャラクターの場合＞<br>自身に「<special_effect data-id=800000001>攻撃強化</special_effect>」( 効果超極大/効果1ターン )を付与する<br>自身に「<special_effect data-id=800000015>防御強化</special_effect>」( 効果特大/効果1ターン )を付与する<br>自身に「<special_effect data-id=800000341>ターン終了時ODゲージ上昇(小)</special_effect>」( 効果1ターン )を付与する<br><small>※シリーズ「その他」のキャラクターは対象外</small>",
+    "attack": 70,
+    "defense": 30,
+    "action": 0
+  },
+  "750104816": {
+    "id": 750104816,
+    "name": "ヒストリーパワー(SaGaEB)",
+    "flavor_text": "[ターン開始時]<br>＜シリーズがSaGaEBのキャラクターの場合＞<br>自身に「<special_effect data-id=800000001>攻撃強化</special_effect>」( 効果超極大/効果1ターン )を付与する<br>自身に「<special_effect data-id=800000015>防御強化</special_effect>」( 効果特大/効果1ターン )を付与する<br>自身に「<special_effect data-id=800000341>ターン終了時ODゲージ上昇(小)</special_effect>」( 効果1ターン )を付与する<br><small>※シリーズ「その他」のキャラクターは対象外</small>",
+    "attack": 70,
+    "defense": 30,
+    "action": 0
+  },
+  "750104817": {
+    "id": 750104817,
+    "name": "ヒストリーパワー(SaGaRS & その他)",
+    "flavor_text": "[ターン開始時]<br>＜シリーズがSaGaRSまたはその他のキャラクターの場合＞<br>自身に「<special_effect data-id=800000001>攻撃強化</special_effect>」( 効果超極大/効果1ターン )を付与する<br>自身に「<special_effect data-id=800000015>防御強化</special_effect>」( 効果特大/効果1ターン )を付与する<br>自身に「<special_effect data-id=800000341>ターン終了時ODゲージ上昇(小)</special_effect>」( 効果1ターン )を付与する",
+    "attack": 70,
+    "defense": 30,
+    "action": 0
+  }
+}

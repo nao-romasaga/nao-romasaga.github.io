@@ -2,11 +2,14 @@
 // ブラウザでは <script> 直読みでグローバル定義。node テスト用に module.exports も付ける。
 
 // hostname から API ベース URL を解決する。
-// localhost/127.0.0.1 → 同一オリジン相対パス（ローカル php -S と同居・CORS 不要）
+// localhost:8888 → romasaga-tool-be の PHP API サーバー（port 8889）へ
+// localhost (port 80) → 同一オリジン相対パス（php -S 同居時）
 // それ以外（本番 GitHub Pages 等） → romasagatool.com 絶対 URL
 function resolveOkimonoApiBase(hostname) {
     if (hostname === 'localhost' || hostname === '127.0.0.1') {
-        return 'api/okimono_rank.php';
+        // ローカル開発: romasaga-tool-be の API サーバーを port 8889 で期待する
+        // cd romasaga-tool-be/api/xserver && php -S localhost:8889
+        return 'http://localhost:8889/okimono_rank.php';
     }
     return 'https://romasagatool.com/api/okimono_rank.php';
 }

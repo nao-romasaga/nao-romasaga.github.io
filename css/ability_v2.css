@@ -1,0 +1,177 @@
+.node {
+    cursor: pointer;
+}
+
+.node circle {
+    fill: #fff;
+    stroke: steelblue;
+    stroke-width: 1.5px;
+}
+
+.link {
+    fill: none;
+    stroke: #555;
+    stroke-opacity: 0.6;
+    stroke-width: 1.5px;
+}
+
+.acdList ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none; 
+}
+
+.acdList a {
+    display: block; 
+}
+.acdList .child {
+    display: none;
+    margin: 0 0 -1px;
+    padding: 0;
+    background: #fff;
+    border: 1px solid #eaeaea; 
+}
+.acdList .child .menu {
+    background: #eaeaea;
+    color: #5e5e5e; 
+}
+.acdList .child .menu:hover {
+    background: #d0d0d0; 
+}
+.acdList .child > li {
+    margin: 4px 0;
+    padding: 0 16px;
+    border-bottom: 1px dotted #dddddd; 
+}
+.acdList .child > li:last-child {
+    border-bottom: 0; 
+}
+
+.switch .menu:after {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    margin-top: -1.4rem;
+    content: '>';
+    font-size: 1.4rem;
+    font-weight: bold;
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+    -moz-transition: all, 0.25s, linear;
+    -o-transition: all, 0.25s, linear;
+    -webkit-transition: all, 0.25s, linear;
+    transition: all, 0.25s, linear; 
+}
+.switch .menu.accordionActive:after {
+    -moz-transform: translate(0, 50%);
+    -ms-transform: translate(0, 50%);
+    -webkit-transform: translate(0, 50%);
+    transform: translate(0, 50%);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg); 
+}
+
+.child01 {
+    border: 1px solid #eaeaea; 
+}
+
+.child02 {
+    color: #5e5e5e; 
+}
+
+.menu {
+    display: block;
+    position: relative;
+    margin: 1px 0 0;
+    padding: 10px;
+    color:white;
+
+}
+
+.skillListSP .child > li {
+    border-bottom: 0; 
+}
+.skillListSP .parent {
+    color: #fff !important;
+}
+
+.skillListSP .menu {
+    background: #3378B8;
+    opacity: 0.8;
+    border: 3px solid #fff;
+    border-radius: 8px;
+
+}
+.skillListSP .menu:hover {
+    background: #334CB8;
+    opacity: 0.8;
+    text-decoration: none; 
+
+}
+
+/* ===== v2試作: クエスト用途プリセット ===== */
+.preset-area {
+    margin: 0 0 14px;
+    padding: 10px 8px 14px;
+    border: 2px solid #faf0b4;
+    border-radius: 10px;
+    background: linear-gradient(180deg, rgba(40, 30, 10, 0.88), rgba(74, 58, 22, 0.88));
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+.preset-area-title {
+    color: #faf0b4;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px #000;
+    margin-bottom: 8px;
+    letter-spacing: 0.08em;
+}
+.preset-chips {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+}
+.preset-chip {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 140px;
+    padding: 5px 12px !important;
+    border: 2px solid #faf0b4 !important;
+    border-radius: 10px;
+    background: linear-gradient(180deg, #5a4a1e, #2e2410) !important;
+    color: #fff;
+    line-height: 1.35;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    transition: filter 0.15s;
+}
+.preset-chip:hover {
+    filter: brightness(1.3);
+}
+.preset-scene {
+    font-size: 0.7rem;
+    color: #ffd76a;
+    letter-spacing: 0.15em;
+}
+.preset-name {
+    font-size: 0.95rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px #000;
+}
+.preset-count {
+    font-size: 0.75rem;
+    color: #9fe8ff;
+}
+.preset-count::after {
+    content: "件";
+}
+.preset-chip.filterActive {
+    background: linear-gradient(180deg, #2a6db8, #143a66) !important;
+    border-color: #9fe8ff !important;
+}

@@ -29,6 +29,8 @@ $(document).ready(function () {
         });
         $("#OKI_SKILL_LIST").html("");
         $("#OKI_ABILITY_LIST").html("");
+        $("#OKI_SELECT_AREA").removeClass("d-none");
+        $("#OKI_SKILL_SECTION").addClass("d-none");
     });
 
     // スタイル選択 → 技一覧＋アビ一覧（委譲）
@@ -55,6 +57,7 @@ $(document).ready(function () {
         // renderAbilityRowHTML は <tr> を返す（#AB_TEMPLATE 準拠）ため、<table> でラップしないと
         // ブラウザが tr を破棄する。必ず table/tbody で包んで挿入する。
         document.getElementById('OKI_ABILITY_LIST').innerHTML = '<table class="width-100">' + abHtml + '</table>';
+        $("#OKI_SKILL_SECTION").removeClass("d-none");
     });
 
     // 技選択 → SELECTED_* セット → ランキング再計算（委譲）

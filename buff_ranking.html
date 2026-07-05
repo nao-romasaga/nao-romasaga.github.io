@@ -254,29 +254,21 @@
             </div>
 
             <!-- 選択結果表示エリア -->
-            <div class="bg-item" style="padding:8px; margin:8px 0;">
+            <div class="bg-item text-center" style="padding:8px; margin:8px 0;">
                 <div class="fuchidori-white" id="OKI_SELECTED">アタッカーと技を選択してください</div>
             </div>
-            <div id="OKI_STYLE_LIST" class="d-flex flex-wrap" style="margin:6px 0;"></div>
-            <div id="OKI_SKILL_LIST" style="margin:6px 0;"></div>
-            <div id="OKI_ABILITY_LIST" style="margin:6px 0;"></div>
 
-            <div class="enemy-config bg-item" style="padding:8px; margin-bottom: 12px;">
-                <div class="fuchidori-white" style="margin-bottom:4px;">③ 敵設定</div>
-                敵の数 <input type="number" id="E_COUNT" value="1" min="1" max="7" style="width:50px">
-                敵VIT <input type="number" id="E_VIT" value="1000" style="width:70px">
-                敵MND <input type="number" id="E_MND" value="1000" style="width:70px">
-                <div class="enemy-resist" style="margin-top:6px;">
-                    耐性:
-                    <span data-attr="斬">斬<input type="number" class="E_RESIST" data-attr="斬" value="0" style="width:55px"></span>
-                    <span data-attr="打">打<input type="number" class="E_RESIST" data-attr="打" value="0" style="width:55px"></span>
-                    <span data-attr="突">突<input type="number" class="E_RESIST" data-attr="突" value="0" style="width:55px"></span>
-                    <span data-attr="熱">熱<input type="number" class="E_RESIST" data-attr="熱" value="0" style="width:55px"></span>
-                    <span data-attr="冷">冷<input type="number" class="E_RESIST" data-attr="冷" value="0" style="width:55px"></span>
-                    <span data-attr="雷">雷<input type="number" class="E_RESIST" data-attr="雷" value="0" style="width:55px"></span>
-                    <span data-attr="陽">陽<input type="number" class="E_RESIST" data-attr="陽" value="0" style="width:55px"></span>
-                    <span data-attr="陰">陰<input type="number" class="E_RESIST" data-attr="陰" value="0" style="width:55px"></span>
-                </div>
+            <!-- スタイル・技・アビ選択（style.html の bg-simple セクション調） -->
+            <div id="OKI_SELECT_AREA" class="d-none">
+                <section class="bg-simple width-max" style="margin-bottom:10px;">
+                    <div class="name-label text-center" style="margin-bottom:6px;">スタイルを選択</div>
+                    <div id="OKI_STYLE_LIST" class="d-flex flex-wrap justify-content-center" style="gap:4px;"></div>
+                </section>
+                <section id="OKI_SKILL_SECTION" class="bg-simple width-max d-none" style="margin-bottom:10px;">
+                    <div class="name-label text-center" style="margin-bottom:6px;">技を選択</div>
+                    <div id="OKI_SKILL_LIST"></div>
+                    <div id="OKI_ABILITY_LIST"></div>
+                </section>
             </div>
 
             <div class="filter-bgcolor text-center small row" style="width:100%; margin: 20px 0px;">
@@ -377,10 +369,43 @@
                 </div>
             </div>
 
-            <div id="BASE_DAMAGE_AREA" class="bg-item d-none" style="padding:8px; margin:8px 0;">
-                <div><span class="fuchidori-white">基本値（素ダメージ）</span>
-                <span id="BASE_DAMAGE_VALUE" class="fuchidori-blue" style="font-size:1.4rem;"></span></div>
-                <div id="BASE_BREAKDOWN" style="margin-top:6px; font-size:0.85em; line-height:1.6;"></div>
+            <div id="BASE_DAMAGE_AREA" class="d-none">
+                <section class="bg-simple width-max" style="margin:8px 0;">
+                    <div class="name-label text-center" style="margin-bottom:6px;">基本値（素ダメージ）</div>
+                    <div class="text-center" style="margin-bottom:6px;">
+                        <span id="BASE_DAMAGE_VALUE" class="fuchidori-blue" style="font-size:1.8rem; font-weight:bold;"></span>
+                        <div id="BASE_DAMAGE_SUB" class="d-none">
+                            <span id="BASE_DAMAGE_ORG" class="bd-orig"></span>
+                            <span id="BASE_DAMAGE_DIFF" class="bd-diff"></span>
+                        </div>
+                    </div>
+                    <div id="BASE_BREAKDOWN"></div>
+                    <div id="BASE_HITS" class="d-none"></div>
+                    <div class="bd-note">値を変更すると基本値が即座に再計算されます（検証用）</div>
+                </section>
+
+                <section class="bg-simple width-max enemy-config" style="margin:8px 0;">
+                    <div class="name-label text-center" style="margin-bottom:6px;">敵設定</div>
+                    <div class="enemy-config-body">
+                        <label>敵の数 <input type="number" id="E_COUNT" value="1" min="1" max="7"></label>
+                        <label>敵VIT <input type="number" id="E_VIT" value="1000"></label>
+                        <label>敵MND <input type="number" id="E_MND" value="1000"></label>
+                    </div>
+                    <div class="enemy-resist">
+                        耐性:
+                        <span data-attr="斬">斬<input type="number" class="E_RESIST" data-attr="斬" value="0"></span>
+                        <span data-attr="打">打<input type="number" class="E_RESIST" data-attr="打" value="0"></span>
+                        <span data-attr="突">突<input type="number" class="E_RESIST" data-attr="突" value="0"></span>
+                        <span data-attr="熱">熱<input type="number" class="E_RESIST" data-attr="熱" value="0"></span>
+                        <span data-attr="冷">冷<input type="number" class="E_RESIST" data-attr="冷" value="0"></span>
+                        <span data-attr="雷">雷<input type="number" class="E_RESIST" data-attr="雷" value="0"></span>
+                        <span data-attr="陽">陽<input type="number" class="E_RESIST" data-attr="陽" value="0"></span>
+                        <span data-attr="陰">陰<input type="number" class="E_RESIST" data-attr="陰" value="0"></span>
+                    </div>
+                    <div class="text-center" style="margin-top:8px;">
+                        <button type="button" id="ENEMY_APPLY" class="icon_btn_off yubi">反映してランキング再計算</button>
+                    </div>
+                </section>
             </div>
 
             <div id="RANKING_AREA"></div>
@@ -405,9 +430,7 @@
                     line-height: 1.05rem;
                 }
 
-                /* ===== Task4: 技カード背景・選択強調・レイアウト ===== */
-
-                /* 技カード: style.html の skill-template-table に相当する不透明背景 */
+                /* ===== 技カード背景・選択強調・レイアウト ===== */
                 .okimono-skill-card {
                     background: linear-gradient(to left,
                         rgba(38,16,25,1),
@@ -423,54 +446,22 @@
                     cursor: pointer;
                     transition: box-shadow 0.15s, border-color 0.15s;
                 }
-                /* 選択中の技カードを強調 */
                 .okimono-skill-card.skill-selected {
                     border: 2px solid gold;
                     box-shadow: 0 0 8px 2px rgba(255,215,0,0.6);
                 }
-                /* ホバー時のフィードバック */
                 .okimono-skill-card:hover {
                     border-color: rgba(255,215,0,0.5);
                 }
 
-                /* 技一覧コンテナ */
-                #OKI_SKILL_LIST {
-                    margin: 6px 0;
-                }
-
-                /* アビ一覧コンテナ: 背景を持たせる */
+                #OKI_SKILL_LIST { margin: 6px 0; }
                 #OKI_ABILITY_LIST {
                     background: rgba(30,15,20,0.85);
                     border-radius: 8px;
                     padding: 4px 6px;
                     margin: 6px 0;
                 }
-                #OKI_ABILITY_LIST table {
-                    color: white;
-                }
-
-                /* スタイル一覧: 縦横のはみ出し防止 */
-                #OKI_STYLE_LIST {
-                    margin: 6px 0;
-                    flex-wrap: wrap;
-                    gap: 4px;
-                }
-
-                /* ランキングカードの余白・はみ出し整理 */
-                #RANKING_AREA .style-skill-list {
-                    margin-bottom: 8px;
-                    overflow: hidden;
-                }
-                #RANKING_AREA .col-5,
-                #RANKING_AREA .col-2 {
-                    overflow-x: hidden;
-                }
-
-                /* 増加率の強調（与ダメ増加率テキスト） */
-                .damage-line {
-                    font-size: 0.95rem;
-                    font-weight: bold;
-                }
+                #OKI_ABILITY_LIST table { color: white; }
 
                 /* skill-text: style.html に合わせて黒背景・丸角 */
                 .skill-text {
@@ -482,21 +473,325 @@
                     line-height: 1.2rem;
                     color: white;
                 }
-                .skill-text-added {
-                    border-bottom: 2px dashed #faf0b4 !important;
-                }
-                /* skill-template-table の区切り線 */
+                .skill-text-added { border-bottom: 2px dashed #faf0b4 !important; }
                 .skill-template-table {
                     margin-bottom: 5px;
                     border-bottom: 1px solid rgba(197,187,147,0.4);
                 }
-                /* 技名・BPテキストの色 */
-                .skill-name, .skill-bp {
-                    color: #faf0b4;
+                .skill-name, .skill-bp { color: #faf0b4; }
+                .skill-iryoku { color: #d0e8ff; font-size: 0.85rem; }
+
+                /* ===== 基本値ブレークダウン（編集フォーム） ===== */
+                .bd-row {
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-items: center;
+                    justify-content: space-between;
+                    gap: 4px 10px;
+                    padding: 6px 4px;
+                    border-bottom: 1px solid rgba(197,187,147,0.25);
                 }
-                .skill-iryoku {
+                .bd-row:last-of-type { border-bottom: none; }
+                .bd-label {
+                    color: #faf0b4;
+                    font-size: 0.9rem;
+                    white-space: nowrap;
+                }
+                .bd-body {
+                    display: flex;
+                    align-items: center;
+                    flex-wrap: wrap;
+                    gap: 3px;
+                    font-size: 1rem;
+                }
+                .bd-input {
+                    width: 72px;
+                    height: 32px;
+                    font-size: 1.05rem;
+                    background: rgba(0,0,0,0.55);
                     color: #d0e8ff;
+                    border: 1px solid rgba(197,187,147,0.6);
+                    border-radius: 5px;
+                    text-align: right;
+                    padding: 2px 6px;
+                    -moz-appearance: textfield;
+                }
+                .bd-input-wide { width: 88px; }
+                .bd-op { color: #c5bb93; padding: 0 1px; }
+                .bd-strong {
+                    color: #7fd4ff;
+                    font-size: 1.15rem;
+                    font-weight: bold;
+                    min-width: 44px;
+                    display: inline-block;
+                    text-align: right;
+                }
+                .bd-note {
+                    color: rgba(250,240,180,0.6);
+                    font-size: 0.75rem;
+                    text-align: right;
+                    margin-top: 4px;
+                }
+                .bd-ex-btns { display: inline-flex; gap: 4px; flex-wrap: wrap; }
+                .bd-ex-add {
+                    background: linear-gradient(to bottom, rgba(88,66,38,1), rgba(56,38,24,1));
+                    color: #faf0b4;
+                    border: 1px solid rgba(197,187,147,0.6);
+                    border-radius: 5px;
+                    font-size: 0.78rem;
+                    padding: 3px 7px;
+                    cursor: pointer;
+                    line-height: 1.1;
+                }
+                .bd-ex-add:active { transform: translateY(1px); }
+                .bd-ex-val { display: block; font-size: 0.68rem; color: #7fd4ff; }
+
+                /* ===== ヒット別ダメージ（カンスト確認） ===== */
+                #BASE_HITS {
+                    background: rgba(0,0,0,0.35);
+                    border-radius: 6px;
+                    padding: 6px 8px;
+                    margin-top: 6px;
+                }
+                .bh-head {
+                    color: #faf0b4;
+                    font-size: 0.82rem;
+                    border-bottom: 1px solid rgba(197,187,147,0.3);
+                    margin-bottom: 3px;
+                    padding-bottom: 1px;
+                }
+                .bh-row {
+                    display: flex;
+                    align-items: baseline;
+                    gap: 6px;
+                    font-size: 0.82rem;
+                    line-height: 1.5;
+                }
+                .bh-no { color: rgba(197,187,147,0.6); width: 20px; text-align: right; flex-shrink: 0; }
+                .bh-name { color: #c5bb93; flex-grow: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+                .bh-first {
+                    display: inline-block;
+                    background: rgba(127,212,255,0.2);
+                    color: #7fd4ff;
+                    font-size: 0.68rem;
+                    border-radius: 3px;
+                    padding: 0 3px;
+                    margin-left: 3px;
+                }
+                .bh-dmg { color: #d0e8ff; white-space: nowrap; }
+                .bh-row-capped .bh-dmg { color: #ff8f8f; font-weight: bold; }
+                .bh-capped {
+                    display: inline-block;
+                    background: rgba(255,80,80,0.25);
+                    color: #ff8f8f;
+                    font-size: 0.7rem;
+                    font-weight: bold;
+                    border-radius: 3px;
+                    padding: 0 4px;
+                    margin-left: 4px;
+                }
+                .bh-warn {
+                    color: #ff8f8f;
+                    font-size: 0.75rem;
+                    margin-top: 4px;
+                    line-height: 1.4;
+                }
+
+                /* ===== 敵設定 ===== */
+                .enemy-config-body {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 6px 14px;
+                    color: #faf0b4;
+                    margin-bottom: 6px;
+                }
+                .enemy-config-body label { margin: 0; }
+                .enemy-config input, .enemy-resist input {
+                    width: 72px;
+                    height: 30px;
+                    font-size: 1rem;
+                    background: rgba(0,0,0,0.55);
+                    color: #d0e8ff;
+                    border: 1px solid rgba(197,187,147,0.6);
+                    border-radius: 5px;
+                    text-align: right;
+                    padding: 2px 6px;
+                }
+                .enemy-resist { color: #faf0b4; display: flex; flex-wrap: wrap; gap: 4px 8px; align-items: center; }
+                .enemy-resist input { width: 58px; }
+
+                /* ===== ランキング（バー形式 + 詳細展開） ===== */
+                .rank-row {
+                    display: flex;
+                    align-items: center;
+                    gap: 6px;
+                    background: rgba(30,15,20,0.85);
+                    border: 1px solid rgba(197,187,147,0.35);
+                    border-radius: 6px;
+                    margin-bottom: 4px;
+                    padding: 3px 6px;
+                    cursor: pointer;
+                    transition: border-color 0.15s;
+                }
+                .rank-row:hover { border-color: rgba(255,215,0,0.5); }
+                .rank-row.rank-open { border-color: gold; }
+                .rank-no {
+                    color: #c5bb93;
                     font-size: 0.85rem;
+                    width: 30px;
+                    text-align: right;
+                    flex-shrink: 0;
+                }
+                .rank-icon { flex-shrink: 0; }
+                .rank-main { flex-grow: 1; min-width: 0; }
+                .rank-name-line {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: baseline;
+                    gap: 6px;
+                }
+                .rank-name {
+                    color: #faf0b4;
+                    font-size: 0.85rem;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+                .rank-rate {
+                    color: #7fd4ff;
+                    font-size: 1.05rem;
+                    font-weight: bold;
+                    white-space: nowrap;
+                }
+                .rank-bar-wrap {
+                    background: rgba(0,0,0,0.5);
+                    border-radius: 3px;
+                    height: 10px;
+                    overflow: hidden;
+                }
+                .rank-bar {
+                    height: 100%;
+                    border-radius: 3px;
+                    background: linear-gradient(to right, #8a6d2f, #ffd700);
+                }
+                .rank-factors {
+                    color: rgba(250,240,180,0.75);
+                    font-size: 0.72rem;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+                /* この技に乗らないバフ（対象外）は薄く表示 */
+                .rank-factor-na {
+                    color: rgba(250,240,180,0.35);
+                }
+                .rank-detail {
+                    background: rgba(20,10,14,0.9);
+                    border: 1px solid rgba(197,187,147,0.35);
+                    border-top: none;
+                    border-radius: 0 0 6px 6px;
+                    margin: -4px 0 6px 0;
+                    padding: 8px;
+                    color: white;
+                }
+
+                /* ===== 詳細カード（trigger グルーピング） ===== */
+                .dtl-head { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+                .dtl-icon { flex-shrink: 0; }
+                .dtl-name { color: #faf0b4; font-size: 1rem; font-weight: bold; }
+                .dtl-another { font-size: 0.8rem; font-weight: normal; }
+                .dtl-rates { font-size: 0.85rem; color: #c5bb93; }
+                .dtl-rate-big { font-size: 1.1rem; font-weight: bold; }
+                .dtl-summary {
+                    background: rgba(0,0,0,0.45);
+                    border-radius: 6px;
+                    padding: 6px 8px;
+                    margin-bottom: 8px;
+                    font-size: 0.85rem;
+                    line-height: 1.6;
+                }
+                .dtl-sum-row { display: flex; gap: 8px; align-items: baseline; }
+                .dtl-sum-label { color: #faf0b4; white-space: nowrap; flex-shrink: 0; }
+                .dtl-sum-total { font-size: 1.05rem; }
+                .dtl-sum-body { flex-grow: 1; min-width: 0; white-space: normal; word-break: break-all; }
+                /* 3列サマリー（火力アビ / ステバフ / ステデバフ） */
+                .dtl-3col {
+                    display: grid;
+                    grid-template-columns: 2fr 1fr 1fr;
+                    gap: 6px 12px;
+                }
+                @media (max-width: 575px) {
+                    .dtl-3col { grid-template-columns: 1fr; gap: 4px; }
+                }
+                .dtl-col-head {
+                    color: #faf0b4;
+                    font-size: 0.82rem;
+                    white-space: nowrap;
+                    border-bottom: 1px solid rgba(197,187,147,0.3);
+                    margin-bottom: 2px;
+                    padding-bottom: 1px;
+                }
+                .dtl-col-body {
+                    font-size: 0.82rem;
+                    line-height: 1.5;
+                    white-space: normal;
+                    word-break: break-all;
+                }
+                /* 火力アビ詳細の アビ/Ex タグ */
+                .dtl-tag {
+                    display: inline-block;
+                    background: rgba(197,187,147,0.25);
+                    color: #faf0b4;
+                    font-size: 0.68rem;
+                    border-radius: 3px;
+                    padding: 0 5px;
+                    margin-right: 5px;
+                    vertical-align: middle;
+                }
+                .dtl-off { color: rgba(255,255,255,0.35); }
+                .trg-group { margin-bottom: 6px; }
+                .trg-head {
+                    color: #ffd700;
+                    font-size: 0.8rem;
+                    border-bottom: 1px solid rgba(255,215,0,0.35);
+                    margin-bottom: 3px;
+                    padding-bottom: 1px;
+                }
+                .trg-ab-line {
+                    font-size: 0.82rem;
+                    line-height: 1.5;
+                    padding-left: 8px;
+                    white-space: normal;
+                    word-break: break-all;
+                }
+                .trg-ab-name { color: #c5bb93; margin-right: 6px; }
+                .trg-ab-name::after { content: ':'; }
+                .trg-sep { color: rgba(197,187,147,0.4); margin: 0 3px; }
+                /* 味方全体付与の多重発動バッジ（×5 = パーティ5人分） */
+                .trg-mult {
+                    display: inline-block;
+                    background: rgba(255,215,0,0.25);
+                    color: #ffd700;
+                    font-size: 0.72rem;
+                    font-weight: bold;
+                    border-radius: 3px;
+                    padding: 0 4px;
+                    margin-left: 3px;
+                }
+                .dtl-note { color: rgba(250,240,180,0.5); font-size: 0.7rem; text-align: right; margin-top: 4px; }
+
+                /* ===== 基本値: 調整前・変化量 ===== */
+                .bd-orig { color: rgba(250,240,180,0.6); font-size: 0.8rem; margin-right: 8px; }
+                .bd-diff { font-size: 0.95rem; font-weight: bold; }
+                .bd-diff-up { color: #7fff9e; }
+                .bd-diff-down { color: #ff8f8f; }
+
+                /* ===== 敵設定 反映ボタン ===== */
+                #ENEMY_APPLY { opacity: 0.55; cursor: default; }
+                #ENEMY_APPLY.enemy-apply-active {
+                    opacity: 1;
+                    cursor: pointer;
+                    filter: drop-shadow(0 0 4px rgba(255,215,0,0.7));
                 }
             </style>
 
