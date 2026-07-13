@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#" lang="ja">
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138966739-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+            gtag('config', 'UA-138966739-1');
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+        <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
+        <script src="./js/dataload.js"></script>
+        <script>
+            // require dataload.js
+            dataload([
+                "data_WEAPON",
+                "data_ARMOR_RANK",
+                "data_CHARMASTER",
+                "data_STYLEMASTER_style",
+                "data_SKILLMASTER",
+                "data_ABILITY",
+                "data_IRYOKU_T1",
+                "data_IRYOKU_SKILLBUFF",
+            ]);
+        </script>
+        <script src="./js/data_ENEMY.js" ></script>
+
+        <meta charset="utf-8">
+        <title>【ロマサガRS】技・術威力計算機</title>
+        <meta property="og:title" content="【ロマサガRS】技・術威力計算機" />
+        <meta property="og:url" content="https://nao-romasaga.github.io/iryoku.html" />
+        <meta property="og:description" content="ロマサガRSの技・術の威力実数を、実測ダメージから逆算するツールです。"/>
+        <meta name="description" content="ロマサガRSの技・術の威力実数を、実測ダメージから逆算するツールです。【ロマンシングサガ リユニバース】" />
+        <meta property="og:image" content="https://nao-romasaga.github.io/img/twitter_card_damage.png" />
+        <meta property="og:site_name" content="ロマサガRS便利ツール" />
+        <meta property="og:type" content="article">
+        <meta property="og:locale" content="ja_JP" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@nao_romasaga_rs" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="./css/bootstrap/bootstrap.min.css">
+        <script src="./js/bootstrap/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="./css/style2.css">
+        <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+
+        <script src="./js/damage.js" ></script>
+        <script src="./js/utils2.js" ></script>
+        <script src="./js/culcStyleBonus.js" ></script>
+        <script src="./js/iryoku_core.js" ></script>
+        <script src="./js/iryoku_calc.js" ></script>
+        <style>
+            .iryoku-panel { color:#faf0b4; }
+            .resist-col { min-width: 30px; }
+            .attr-col { max-width: 30px; }
+            #RESULT_AREA .cand-box {
+                font-size: 22px; font-weight: bold; letter-spacing: 1px;
+            }
+            .taisei-cell.weak { color:#7fd0ff; }
+        </style>
+    </head>
+    <body>
+        <div class="haikei"><div class="container">
+            <h1 class="text-center title-text">技・術威力計算機</h1>
+            <br>
+            <p class="text-right opacity"><small>バグ発見、ご要望は <a href="https://peing.net/ja/nao_romasaga_rs" target="new">質問箱</a>まで</small></p>
+
+            <div class="bg-simple kadomaru iryoku-panel" style="padding:10px; margin-bottom:15px;">
+                実機で計測した「技・術のダメージ実数」を複数入力すると、その技の <b>威力実数（内部値）</b> を逆算して候補を絞り込みます。<br>
+                <small>表示ステ・敵体力・耐性・アビリティ%を実機と合わせるほど候補が絞れます。手動入力ツール版です。</small>
+            </div>
+
+            <div class="info-modal width-max">
+                <div class="info-modal-header">条件設定</div>
+                <div class="row">
+
+                    <!-- ============ (1) キャラ検索→スタイル選択 ============ -->
+                    <div class="form-group col-12 col-md-6">
+                        <label class="subtitle-long">① キャラ検索 → スタイル選択</label>
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text small">キャラ名</span>
+                            </div>
+                            <input type="text" class="form-control" id="charSearch" placeholder="例: アルベルト">
+                        </div>
+                        <div class="bg-simple mb-2" id="HOLDERS_AREA" style="max-height: 220px; overflow-y: scroll; min-height:50px;"></div>
+                        <div class="iryoku-panel" id="SELECTED_STYLE" style="min-height:1.4em;"></div>
+
+                        <!-- ============ (2) 表示ステータス ============ -->
+                        <label class="subtitle-long">② 表示ステータス（スタイル選択で自動入力／手入力で上書き可）</label>
+                        <div class="bg-item text-center">▼ 表示ステ ▼</div>
+                        <div class="row no-gutters text-center mb-1">
+                            <div class="col text-nowrap">腕 <input id="styleSTR" type="number" class="input kadomaru" value="0" style="width:70px"></div>
+                            <div class="col text-nowrap">器 <input id="styleDEX" type="number" class="input kadomaru" value="0" style="width:70px"></div>
+                            <div class="col text-nowrap">速 <input id="styleAGI" type="number" class="input kadomaru" value="0" style="width:70px"></div>
+                            <div class="col text-nowrap">知 <input id="styleINT" type="number" class="input kadomaru" value="0" style="width:70px"></div>
+                        </div>
+                        <small class="opacity">※ 実機の「表示ステータス」を直接入力するのが最も正確です。</small>
+                    </div>
+
+                    <!-- ============ (3) Mレベル・昇能・冒険Rank・武器 ============ -->
+                    <div class="form-group col-12 col-md-6">
+                        <label class="subtitle-long">③ Mレベル・昇能・武器威力</label>
+                        <div class="input-group mb-1">
+                            <div class="input-group-prepend"><span class="input-group-text small">Mレベル</span></div>
+                            <input type="number" class="form-control" id="Mlv" value="50">
+                            <div class="input-group-prepend"><span class="input-group-text small">ﾀﾞﾒｰｼﾞ+</span></div>
+                            <input type="text" class="form-control" readonly id="masterDamage">
+                            <div class="input-group-append"><span class="input-group-text">%</span></div>
+                            <div class="input-group-prepend"><span class="input-group-text small">OD+</span></div>
+                            <input type="text" class="form-control" readonly id="masterODDamage">
+                            <div class="input-group-append"><span class="input-group-text">%</span></div>
+                        </div>
+                        <div class="input-group mb-1">
+                            <div class="input-group-prepend"><span class="input-group-text small">武器威力</span></div>
+                            <input type="number" class="form-control" id="weapon" value="65">
+                        </div>
+                        <div class="input-group mb-1">
+                            <div class="input-group-prepend"><span class="input-group-text small">技Rank</span></div>
+                            <input type="number" class="form-control" id="skill_rank" value="99">
+                        </div>
+                        <label class="subtitle-long">昇能・冒険者Rank（%）</label>
+                        <div class="input-group mb-1">
+                            <div class="input-group-prepend"><span class="input-group-text small">技・術昇能</span></div>
+                            <input type="number" class="form-control" id="shouTech" value="0">
+                            <div class="input-group-append"><span class="input-group-text">%</span></div>
+                            <div class="input-group-prepend"><span class="input-group-text small">Weak昇能</span></div>
+                            <input type="number" class="form-control" id="shouWeak" value="0">
+                            <div class="input-group-append"><span class="input-group-text">%</span></div>
+                        </div>
+                        <div class="input-group mb-1">
+                            <div class="input-group-prepend"><span class="input-group-text small">OD昇能</span></div>
+                            <input type="number" class="form-control" id="shouOD" value="0">
+                            <div class="input-group-append"><span class="input-group-text">%</span></div>
+                            <div class="input-group-prepend"><span class="input-group-text small">冒険Rank</span></div>
+                            <input type="number" class="form-control" id="adventDamage" value="0" step="0.1">
+                            <div class="input-group-append"><span class="input-group-text">%</span></div>
+                        </div>
+                        <small class="opacity">Weak昇能は弱点(耐性≦-35)時のみ、OD昇能はOD攻撃の実測行のみ加算されます。</small>
+                    </div>
+
+                    <!-- ============ (4) アビリティ% ============ -->
+                    <div class="form-group col-12 col-md-6">
+                        <label class="subtitle-long">④ アビリティ強化%</label>
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend"><span class="input-group-text small">アビ其他</span></div>
+                            <input type="number" class="form-control" id="ability_other" value="0" placeholder="アビリティ+X%">
+                            <div class="input-group-append"><span class="input-group-text">%</span></div>
+                        </div>
+
+                        <div class="bg-item text-center">▼ 自動充填（T1発動アビ） ▼</div>
+                        <div id="AUTOFILL_AREA" class="bg-simple kadomaru mb-2" style="padding:6px; min-height:1.5em;"></div>
+                        <small class="opacity">スタイル・技を選ぶと、1ターン目/1hit目に発動するアビ%を自動判定してチェック表示します。外すと合計から除外されます。</small>
+
+                        <div class="bg-item text-center">▼ 聖石（複数追加可・最大20） ▼</div>
+                        <div class="input-group mb-1">
+                            <div class="input-group-prepend"><span class="input-group-text small">聖石+</span></div>
+                            <input type="number" class="form-control" id="holyInput" placeholder="例: 100">
+                            <div class="input-group-append"><span class="input-group-text">%</span></div>
+                            <button class="icon_btn_positive shadow-black" id="ADD_HOLY" style="padding:5px 12px;"><i class="fas fa-plus"></i> 追加</button>
+                        </div>
+                        <div id="HOLY_AREA" class="mb-2"></div>
+
+                        <div class="bg-item text-center">▼ エクストラフォース(EF) ▼</div>
+                        <div class="input-group mb-1">
+                            <select class="form-control" id="efBucket" style="max-width:130px;"></select>
+                            <input type="number" class="form-control" id="efInput" placeholder="+X%">
+                            <div class="input-group-append"><span class="input-group-text">%</span></div>
+                            <button class="icon_btn_positive shadow-black" id="ADD_EF" style="padding:5px 12px;"><i class="fas fa-plus"></i> 追加</button>
+                        </div>
+                        <div id="EF_AREA" class="mb-1"></div>
+                        <small class="opacity">同種別はダメージが高い方が優先(max)、別種別は加算されます。「全」は常時適用。</small>
+                    </div>
+
+                    <!-- ============ (5) 敵情報 ============ -->
+                    <div class="form-group col-12 col-md-6">
+                        <label class="subtitle-long">⑤ 敵情報</label>
+                        <select class="form-control mb-1" id="enemy_vit">
+                            <option value="x">敵を選択</option>
+                        </select>
+                        <div class="input-group mb-1">
+                            <div class="input-group-prepend"><span class="input-group-text small">体力/精神</span></div>
+                            <input type="number" class="form-control" id="vit" value="10">
+                            <div class="input-group-prepend"><span class="input-group-text small">デバフ</span></div>
+                            <input type="number" class="form-control" id="debuff_per" value="0">
+                            <div class="input-group-append"><span class="input-group-text">%</span></div>
+                        </div>
+                        <div class="bg-simple mb-1">
+                            <table class="width-100 table-dark">
+                                <tr class="char-bottom">
+                                    <th class="attr-col"><span class="icon_xs_zokusei icon_zan"></span></th>
+                                    <td id="taisei_zan" class="resist-col taisei-cell" data-attr="斬">999</td>
+                                    <th class="attr-col"><span class="icon_xs_zokusei icon_da"></span></th>
+                                    <td id="taisei_da" class="resist-col taisei-cell" data-attr="打">999</td>
+                                    <th class="attr-col"><span class="icon_xs_zokusei icon_totsu"></span></th>
+                                    <td id="taisei_totsu" class="resist-col taisei-cell" data-attr="突">999</td>
+                                    <th class="attr-col"><span class="icon_xs_zokusei icon_netsu"></span></th>
+                                    <td id="taisei_netsu" class="resist-col taisei-cell" data-attr="熱">999</td>
+                                </tr>
+                                <tr>
+                                    <th><span class="icon_xs_zokusei icon_rei"></span></th>
+                                    <td id="taisei_rei" class="resist-col taisei-cell" data-attr="冷">999</td>
+                                    <th><span class="icon_xs_zokusei icon_rai"></span></th>
+                                    <td id="taisei_rai" class="resist-col taisei-cell" data-attr="雷">999</td>
+                                    <th><span class="icon_xs_zokusei icon_yo"></span></th>
+                                    <td id="taisei_you" class="resist-col taisei-cell" data-attr="陽">999</td>
+                                    <th><span class="icon_xs_zokusei icon_in"></span></th>
+                                    <td id="taisei_in" class="resist-col taisei-cell" data-attr="陰">999</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="input-group mb-1">
+                            <div class="input-group-prepend"><span class="input-group-text small">攻撃属性の耐性</span></div>
+                            <input type="number" class="form-control" id="resist" value="-35">
+                        </div>
+                        <small class="opacity">耐性値 ≦ -35 で弱点(Weak)扱い。上の属性欄をクリックで反映できます。</small>
+                    </div>
+
+                    <!-- ============ (6) 技選択 ============ -->
+                    <div class="form-group col-12 col-md-6">
+                        <label class="subtitle-long">⑥ 技・術選択</label>
+                        <div class="input-group mb-1">
+                            <div class="input-group-prepend"><span class="input-group-text small">武器種</span></div>
+                            <select class="form-control" id="type">
+                                <option value="ken">剣</option>
+                                <option value="dken">大剣</option>
+                                <option value="ono">斧</option>
+                                <option value="sken">小剣</option>
+                                <option value="yari">槍</option>
+                                <option value="yumi">弓</option>
+                                <option value="kon">棍棒</option>
+                                <option value="tai">体術</option>
+                                <option value="ju">銃</option>
+                                <option value="hi">火術</option>
+                                <option value="mizu">水術</option>
+                                <option value="kaze">風術</option>
+                                <option value="tsuchi">土術</option>
+                                <option value="hikari">光術</option>
+                                <option value="yami">闇術</option>
+                            </select>
+                        </div>
+                        <div class="input-group mb-1">
+                            <div class="input-group-prepend"><span class="input-group-text small">威力ﾗﾍﾞﾙ</span></div>
+                            <select class="form-control" id="skill_grade">
+                                <option value="ALL">全て</option>
+                                <option value="SSSS">SSSS (74〜99)</option>
+                                <option value="SSS">SSS (58〜73)</option>
+                                <option value="SS">SS (45〜57)</option>
+                                <option value="S">S (36〜44)</option>
+                                <option value="A">A (28〜35)</option>
+                                <option value="B">B (21〜27)</option>
+                                <option value="C">C (15〜20)</option>
+                                <option value="D">D (10〜14)</option>
+                                <option value="E">E (6〜9)</option>
+                            </select>
+                        </div>
+                        <select class="form-control mb-1" id="skill"></select>
+                        <div class="bg-simple kadomaru iryoku-panel" id="SKILL_INFO" style="padding:8px; min-height:1.5em;"></div>
+                        <div id="ADDSKILL_AREA" class="mt-1"></div>
+                    </div>
+
+                    <!-- ============ (7) 実測ダメージ入力 ============ -->
+                    <div class="form-group col-12">
+                        <label class="subtitle-long">⑦ 実測ダメージ入力（複数行）</label>
+                        <div class="bg-simple kadomaru" style="padding:8px;">
+                            <div class="row no-gutters text-center iryoku-panel small d-none d-sm-flex">
+                                <div class="col-3">ダメージ</div>
+                                <div class="col-2">何hit目</div>
+                                <div class="col-2">OD攻撃</div>
+                                <div class="col-3">hit別アビ%</div>
+                                <div class="col-2"></div>
+                            </div>
+                            <div id="SAMPLE_AREA"></div>
+                            <button class="icon_btn_positive shadow-black mt-2" id="ADD_SAMPLE" style="padding:6px 14px;"><i class="fas fa-plus"></i> 実測行を追加</button>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-12">
+                        <button id="CALC" class="text-nowrap text-center width-100 icon_btn_on shadow-black" style="font-size: 20px; display: block; padding: 8px 0px;"><i class="fas fa-search-dollar"></i> 威力を逆算する</button>
+                    </div>
+
+                    <!-- ============ 結果 ============ -->
+                    <div class="form-group col-12">
+                        <div class="width-100 bg-item text-center">▼ 逆算結果 ▼</div>
+                        <div class="bg-simple kadomaru iryoku-panel" id="RESULT_AREA" style="padding:12px; min-height:3em;">
+                            条件を入力して「威力を逆算する」を押してください。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div>
+
+        <!-- ===== 動的行テンプレート ===== -->
+        <div class="d-none">
+            <div id="HOLY_ROW_TMPL" class="input-group input-group-sm mb-1 HOLY_ROW">
+                <div class="input-group-prepend"><span class="input-group-text small">聖石</span></div>
+                <input type="number" class="form-control holy-per" value="0">
+                <div class="input-group-append"><span class="input-group-text">%</span></div>
+                <button class="icon_btn_red shadow-black DEL_ROW" style="padding:2px 10px;"><i class="fas fa-trash"></i></button>
+            </div>
+            <div id="EF_ROW_TMPL" class="input-group input-group-sm mb-1 EF_ROW">
+                <div class="input-group-prepend"><span class="input-group-text small ef-bucket-label"></span></div>
+                <input type="number" class="form-control ef-per" value="0">
+                <div class="input-group-append"><span class="input-group-text">%</span></div>
+                <button class="icon_btn_red shadow-black DEL_ROW" style="padding:2px 10px;"><i class="fas fa-trash"></i></button>
+            </div>
+            <div id="SAMPLE_ROW_TMPL" class="row no-gutters SAMPLE_ROW align-items-center mb-1">
+                <div class="col-6 col-sm-3 p-1"><input type="number" class="form-control s-damage" placeholder="ダメージ"></div>
+                <div class="col-6 col-sm-2 p-1"><input type="number" class="form-control s-hit" value="1"></div>
+                <div class="col-4 col-sm-2 p-1 text-center"><input type="checkbox" class="s-od" style="transform:scale(1.4);"></div>
+                <div class="col-5 col-sm-3 p-1"><input type="number" class="form-control s-hitab" value="0"></div>
+                <div class="col-3 col-sm-2 p-1 text-center"><button class="icon_btn_red shadow-black DEL_ROW" style="padding:4px 12px;"><i class="fas fa-trash"></i></button></div>
+            </div>
+        </div>
+    </body>
+</html>
