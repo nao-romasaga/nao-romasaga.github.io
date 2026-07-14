@@ -25,6 +25,10 @@
                 "data_ABILITY",
                 "data_IRYOKU_T1",
                 "data_IRYOKU_SKILLBUFF",
+                "data_IRYOKU_SKILLSTATBUFF",
+                "data_IRYOKU_SKILLMARKER",
+                "data_IRYOKU_CHAIN",
+                "data_IRYOKU_REG",
             ]);
         </script>
         <script src="./js/data_ENEMY.js" ></script>
@@ -53,6 +57,8 @@
         <script src="./js/utils2.js" ></script>
         <script src="./js/culcStyleBonus.js" ></script>
         <script src="./js/iryoku_core.js" ></script>
+        <script src="./js/iryoku_engine.js" ></script>
+        <script src="./js/iryoku_chain_replay.js" ></script>
         <script src="./js/iryoku_calc.js" ></script>
         <style>
             .iryoku-panel { color:#faf0b4; }
@@ -101,6 +107,10 @@
                             <div class="col text-nowrap">知 <input id="styleINT" type="number" class="input kadomaru" value="0" style="width:70px"></div>
                         </div>
                         <small class="opacity">※ 実機の「表示ステータス」を直接入力するのが最も正確です。</small>
+                        <div class="iryoku-panel mt-1">
+                            <label class="small mb-0"><input type="checkbox" id="statIncludesBuff"> 入力ステはバフ込み（ターン開始バフ適用後の値）</label>
+                            <small class="opacity d-block">スタイル選択で自動入力される表示ステは、バトル/ターン開始のステバフ適用『前』の値です。既定(OFF)ではツールが自己バフ・技のステバフを自動で乗算します。実機のバフ後の表示ステを直接入れる場合はONにして二重計上を防いでください。</small>
+                        </div>
                     </div>
 
                     <!-- ============ (3) Mレベル・昇能・冒険Rank・武器 ============ -->
@@ -190,6 +200,7 @@
                             <input type="number" class="form-control" id="debuff_per" value="0">
                             <div class="input-group-append"><span class="input-group-text">%</span></div>
                         </div>
+                        <small class="opacity d-block mb-1">※ 選択スタイルのアビ由来の体力/精神ダウンは自動で敵ステに反映されます。この「デバフ%」欄は外部（他キャラ）デバフ用です（二重入力に注意）。</small>
                         <div class="bg-simple mb-1">
                             <table class="width-100 table-dark">
                                 <tr class="char-bottom">
@@ -262,11 +273,16 @@
                         <select class="form-control mb-1" id="skill"></select>
                         <div class="bg-simple kadomaru iryoku-panel" id="SKILL_INFO" style="padding:8px; min-height:1.5em;"></div>
                         <div id="ADDSKILL_AREA" class="mt-1"></div>
+                        <div id="CHAIN_AREA" class="iryoku-panel small mt-1"></div>
                     </div>
 
                     <!-- ============ (7) 実測ダメージ入力 ============ -->
                     <div class="form-group col-12">
                         <label class="subtitle-long">⑦ 実測ダメージ入力（複数行）</label>
+                        <div class="iryoku-panel mb-1">
+                            <label class="small mb-0"><input type="checkbox" id="isCrit"> クリティカル発動（+20%＋クリ条件アビ）</label>
+                            <small class="opacity d-block">入力した実測ダメージがクリティカル時のものならONにしてください（全実測行に共通で適用されます）。</small>
+                        </div>
                         <div class="bg-simple kadomaru" style="padding:8px;">
                             <div class="row no-gutters text-center iryoku-panel small d-none d-sm-flex">
                                 <div class="col-3">ダメージ</div>

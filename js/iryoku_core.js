@@ -44,18 +44,104 @@ function intersectFeasible(samples, ctx) {
 }
 
 // 多段hitの命中時バフによる、そのhit時点での増分%を計算する。
-// hitIndexは1始まり。1hit目は必ず増分0。
-// 各行 { p, maxLimit? } について min(hitIndex - 1, maxLimit ?? Infinity) × p を合算する。
-function computeHitAbilityPer(hitIndex, matchedHitRows, matchedSkillBuffRows) {
-    var rows = (matchedHitRows || []).concat(matchedSkillBuffRows || []);
+// hitIndexは1始まり。
+// 各行 { p, maxLimit?, once?, pre? } について:
+//   - pre:true（攻撃前Mod。Task A）→ 1hit目から既に1回分乗る: min(hitIndex, maxLimit) × p
+//     （非preは各hitの計算「後」に加算されるため効果は次hitから＝1hit目0。preは計算「前」なので1hit目から）
+//   - once:true（1発動1回系。攻撃時/を命中させた/を発動後）→ 1hit目0、2hit目以降は固定でp（伸びない・maxLimit無視）
+//   - どちらも無し（毎hit系。攻撃のたび。技付属バフ・敵ダメージマーカー含む）→ min(hitIndex - 1, maxLimit ?? Infinity) × p
+//   第4引数 matchedDmgMarkers（Task F/E の ch:"dmg" マーカー）は毎hit系として合算する（sign は常に +）。
+function computeHitAbilityPer(hitIndex, matchedHitRows, matchedSkillBuffRows, matchedDmgMarkers) {
+    var rows = (matchedHitRows || []).concat(matchedSkillBuffRows || []).concat(matchedDmgMarkers || []);
     var n = hitIndex - 1;
     var total = 0;
     for (var i = 0; i < rows.length; i++) {
         var row = rows[i];
         var maxLimit = (row.maxLimit === undefined || row.maxLimit === null) ? Infinity : row.maxLimit;
-        total += Math.min(n, maxLimit) * row.p;
+        if (row.pre) {
+            // 攻撃前Mod（Task A）: 攻撃前に適用されるため1hit目から1回分乗る。
+            total += Math.min(hitIndex, maxLimit) * row.p;
+        } else if (row.once) {
+            // 1発動1回系（攻撃時/を命中させた/を発動後）: 発動1hit目に発火し以降は固定値。
+            // 2hit目以降は常にp、1hit目(n=0)は未発火なので0。
+            total += (n >= 1) ? row.p : 0;
+        } else {
+            // 毎hit系（攻撃のたび。技付属バフ・敵ダメージマーカー含む）: 従来通り蓄積。
+            total += Math.min(n, maxLimit) * row.p;
+        }
     }
     return total;
+}
+
+// ─────────────────────────────────────────────────────────────────────────
+// Task K 追加: per-hit 実効敵ステ（VIT/MND）を算出する純関数。
+// エンジン recalcDeBuffStatus (damageCalc.inc:1072-1084) と等価:
+//   実効ステ = orgStat + Σ floor(orgStat × debuffPer/100)
+// debuffPer は「静的デバフ（体力/精神。低下=負）」＋「敵ステマーカー累積」の合算。
+// マーカー累積は sign·p·min(globalHit-1, maxLimit)（Task J: F/E 共通形式・グローバルhit基準）。
+//   staticDebuffPer : 静的デバフ%（負値。例 体力5%デバフ→ -5）
+//   markerRows      : [{ p, sign, maxLimit }]（該当stat・tgt:enemy のみ）
+//   globalHit       : アクション全体を通した通しhit番号（1始まり）
+function enemyStatDebuffPer(staticDebuffPer, markerRows, globalHit) {
+    var per = staticDebuffPer || 0;
+    (markerRows || []).forEach(function (m) {
+        var maxLimit = (m.maxLimit === undefined || m.maxLimit === null) ? Infinity : m.maxLimit;
+        var sign = (m.sign === undefined) ? -1 : m.sign;
+        per += sign * m.p * Math.min(globalHit - 1, maxLimit);
+    });
+    return per;
+}
+function effectiveEnemyStat(orgStat, debuffPer) {
+    return orgStat + Math.floor(orgStat * debuffPer / 100);
+}
+
+// ─────────────────────────────────────────────────────────────────────────
+// Task K 追加(C/D): 攻撃ステのバフ%を実効攻撃ステに適用する純関数。
+// エンジン recalcBuffStatus (damageCalc.inc:1044-1071):
+//   実効ステ = styleMax + floor(buffBase × min(totalPer, MAX_STATUS_BUFF)/100) [+OD時 +20%]
+// ツールは「表示ステ欄＝バフ前入力」を前提に buffPer を乗算する簡易モデル（絶対値の厳密再現は
+// styleMax/buffBase の別入力が要るため；ツール用途では入力ステ×(1+per/100) で近似）。
+//   opts.statIncludesBuff : true なら既にバフ込み入力として乗算しない（既定 false=乗算する）
+//   opts.buffBase : 指定時はエンジン厳密式 styleMax + floor(buffBase × per/100) を使う
+//     （buffBase = charMAX + LIMIT_BASE。styleMax とは別基底なので、指定できれば実機一致する）。
+//     未指定時は 入力ステ × (1 + per/100) の近似（buffBase を持たないツール既定の後方互換）。
+//     ⚠️近似はエンジンと乖離しうる（styleMax >> buffBase の時に過大評価）。Task L で buffBase を配線すべき。
+var IRYOKU_MAX_STATUS_BUFF = 3000;
+function effectiveStat(baseStat, buffPer, opts) {
+    opts = opts || {};
+    if (opts.statIncludesBuff) return baseStat;
+    var per = Math.min(buffPer || 0, IRYOKU_MAX_STATUS_BUFF);
+    if (opts.buffBase !== undefined && opts.buffBase !== null) {
+        return baseStat + Math.floor(opts.buffBase * per / 100);
+    }
+    return baseStat * (1 + per / 100);
+}
+// 攻撃ステに効くステバフ%合計（C=技Mステバフ ＋ D=自己buff{} ＋ 自己ステマーカー）を per-hit で返す。
+//   statKey    : 攻撃に使うステ("STR"/"DEX"/"AGI"/"INT")
+//   selfBuff   : IRYOKU_T1[sid].buff（D。{STR,DEX,...}）
+//   statBuffRows: IRYOKU_SKILLSTATBUFF[skid]（C。[{stat, per(符号付), pre?}]）
+//   selfStatMarkers: 自己ステマーカー（F の ch:stat tgt:self。[{stat, p, sign, maxLimit, pre?}]）
+//   hitIndex   : その技内のhit番号（1始まり）
+function statBuffPercent(statKey, selfBuff, statBuffRows, selfStatMarkers, hitIndex) {
+    var per = 0;
+    // D: 自己buff{}（T1一律・バトル/ターン開始＝pre相当。全hitで乗る）
+    if (selfBuff && typeof selfBuff[statKey] === 'number') per += selfBuff[statKey];
+    // C: 技Mステバフ（該当stat・pre/非preのタイミング）
+    (statBuffRows || []).forEach(function (r) {
+        if (r.stat !== statKey) return;
+        // pre: hit1から。非pre: hit2から蓄積（各hit post-calcで加算）。単発なら pre のみ hit1 で乗る。
+        var times = r.pre ? hitIndex : (hitIndex - 1);
+        if (times < 0) times = 0;
+        per += r.per * times;
+    });
+    // F self ステマーカー
+    (selfStatMarkers || []).forEach(function (m) {
+        if (m.stat !== statKey) return;
+        var maxLimit = (m.maxLimit === undefined || m.maxLimit === null) ? Infinity : m.maxLimit;
+        var sign = (m.sign === undefined) ? 1 : m.sign;
+        per += sign * m.p * Math.min(hitIndex - 1, maxLimit);
+    });
+    return per;
 }
 
 // ─────────────────────────────────────────────────────────────────────────
@@ -199,7 +285,10 @@ function resolveT1Ability(styleT1, skillInfo, opts) {
     targetAttr.add(skillInfo.SkillType + "攻撃");   // "技攻撃"/"術攻撃"
     targetAttr.add(skillInfo.AttackMethod + "攻撃"); // "直接攻撃"/"間接攻撃" (AttackMethodは実データで文字列)
     targetAttr.add(skillInfo.AttackMethod);          // "直接"/"間接"
-    // Critical・防御弱化は abilityPer に含めない (D1 golden採取時に発生しないサンプルを選定済み)
+    // Task G(Critical): crit時のみ "Critical" 条件を有効化。既定 opts.isCrit=false では
+    // 一切追加しない（D1 golden 26 は非crit採取のため不変）。crit確定アビ由来の
+    // "Critical攻撃"行や EF Critical条件がこれでマッチするようになる。
+    if (opts.isCrit) { targetAttr.add("Critical"); targetAttr.add("Critical攻撃"); }
 
     // ── 通常行(nd:0)のマッチ・合計 (damageCalc.inc:1444-1451 + _getAbilityValue) ──
     // BEは targetAttr の各キーごとに _getAbilityValue で集計する。通常キーは加算、
@@ -217,18 +306,41 @@ function resolveT1Ability(styleT1, skillInfo, opts) {
     });
     var abilityPer = 0;
     Object.keys(normalGroups).forEach(function (b) { abilityPer += normalGroups[b].per; });
+    // Task G: crit確定時は +20%（実ゲームの会心補正）。既定 isCrit=false では加算しない。
+    if (opts.isCrit) abilityPer += 20;
+
+    // ── 静的デバフ→ability%変換 (damageCalc.inc:1455-1466, _applyDefenceDownToAbility 相当) ──
+    // styleT1.debuff（自スタイル起点の敵デバフ。generate_iryokuT1.phpがALWAYS+TEMP合算済み）を
+    // targetAttrマッチングでability%へ加算する。重複不可(max)処理は無い＝単純加算（BEと同じ）。
+    // _matchAttrRow は下方の function 宣言だが hoisting によりここで呼べる。
+    var debuff = (styleT1 && styleT1.debuff) || {};
+    var debuffRows = [];
+    Object.keys(debuff).forEach(function (attr) {
+        if (!_matchAttrRow({ b: attr, nd: 0 })) return;
+        var entry = debuff[attr];
+        var label = attr + "防御弱化(" + (entry.target || "敵全体") + ")";
+        var pseudoRow = { n: label, b: attr, p: entry.per, nd: 0, t: "自スタイル起点デバフ" };
+        debuffRows.push(pseudoRow);
+        activeRows.push(pseudoRow);
+        abilityPer += entry.per;
+    });
 
     // ── EF行(nd:1)のマッチ・バケット化 (damageCalc.inc:1468-1517) ──
     var efConditions = new Set(targetAttr);
     efConditions.add(skillInfo.SkillType);       // "術"/"技" (サフィックスなし)
     if (opts.isWeak) efConditions.add("Weak");
     if (opts.isOD) { efConditions.add("OD"); efConditions.add("連携"); }
-    // Critical関連は省略 (Criticalトグルは対象外)
+    if (opts.isCrit) efConditions.add("Critical"); // Task G: crit時のみ
     if (efConditions.has("全体") || efConditions.has("範囲")) { efConditions.add("全体"); efConditions.add("範囲"); }
 
+    // Task B: 技MのEF Mod（IRYOKU_SKILLBUFF の nd:1 行。攻撃前EF等）も styleT1.rows と同じ
+    // EFバケット処理へ流す（従来 nd:1 の skillBuffRows は ability にも EF にも入らず捨てられていた）。
+    // SC cond は EF行にも適用（技名限定EFは稀だが対応）。
+    var efRows = rows.concat(opts.skillBuffRows || []);
     var exBucketMap = {}; // b -> per (max)
-    rows.forEach(function (row) {
+    efRows.forEach(function (row) {
         if (row.nd !== 1) return;
+        if (row.cond && row.cond.indexOf(skillName) === -1) return; // SC gating
         var efCond = row.b.replace(/^エクストラフォース/, "");
         if (efCond === "") return;
         var efCondStripped = efCond.split("/")[0]; // "/特大"等のサフィックス除去
@@ -257,6 +369,11 @@ function resolveT1Ability(styleT1, skillInfo, opts) {
     // compound バケット("打・熱・陽"等)は非破壊的にローカル判定する (通常行 compound と同じ規則)。
     function _matchAttrRow(row) {
         if (row.nd === 1) return false; // EF行は対象外
+        // Task SC: 技名条件付き行は、選択中の技名が cond に含まれるときのみ採用。
+        if (row.cond && row.cond.indexOf(skillName) === -1) return false;
+        // Task G(M): クリ限定行(critOnly)は crit 時のみ採用。SC の cond gating と同じ場所。
+        // 非crit(既定 isCrit=false)ではクリ確定条件付きダメージ強化(かみ リーサル等)を一切適用しない。
+        if (row.critOnly && !opts.isCrit) return false;
         if (targetAttr.has(row.b)) return true;
         if (row.b.indexOf("・") !== -1 && row.b.indexOf("エクストラフォース") === -1) {
             return row.b.split("・").some(function (sub) { return targetAttr.has(sub); });
@@ -264,14 +381,49 @@ function resolveT1Ability(styleT1, skillInfo, opts) {
         return false;
     }
     var matchedHitRows = ((styleT1 && styleT1.hitRows) || []).filter(_matchAttrRow);
-    var matchedSkillBuffRows = (opts.skillBuffRows || []).filter(_matchAttrRow);
+    var matchedSkillBuffRows = (opts.skillBuffRows || []).filter(function (r) { return r.nd !== 1 && _matchAttrRow(r); });
+
+    // ── Task F/E: 敵/自己マーカーのマッチング ──
+    // trigger 属性ゲート: "斬属性攻撃を受けた時" 等はその属性を持つhitのみ。属性接頭辞が無ければ全hit。
+    var IRYOKU_ATTR8 = ["斬", "打", "突", "熱", "冷", "雷", "陽", "陰"];
+    function _matchTrigger(trigger) {
+        if (!trigger) return true;
+        for (var i = 0; i < IRYOKU_ATTR8.length; i++) {
+            if (trigger.indexOf(IRYOKU_ATTR8[i] + "属性") === 0) return targetAttr.has(IRYOKU_ATTR8[i]);
+        }
+        return true;
+    }
+    function _markerCondOk(m) {
+        if (m.cond && m.cond.indexOf(skillName) === -1) return false;
+        return _matchTrigger(m.trigger);
+    }
+    // F(技Mod由来 opts.markers) と E(styleT1.enemyMarker) を合算して分類する。
+    var allMarkers = ((opts.markers || [])).concat((styleT1 && styleT1.enemyMarker) || []);
+    var matchedDmgMarkers = [];   // ch:dmg → ability% 毎hit蓄積
+    var enemyStatMarkers = [];    // ch:stat tgt:enemy → 敵vit/mnd 低下
+    var selfStatMarkers = [];     // ch:stat tgt:self → 自己ステバフ（C/D合流）
+    allMarkers.forEach(function (m) {
+        if (!_markerCondOk(m)) return;
+        if (m.ch === "dmg") {
+            if (_matchAttrRow({ b: m.b, nd: 0 })) matchedDmgMarkers.push({ p: m.p, maxLimit: m.maxLimit });
+        } else if (m.ch === "stat") {
+            if (m.tgt === "self") selfStatMarkers.push(m);
+            else enemyStatMarkers.push(m); // tgt:enemy（既定）
+        }
+    });
 
     return {
         abilityPer: abilityPer, exBuckets: exBuckets, activeRows: activeRows,
-        inactiveCandidates: [], matchedHitRows: matchedHitRows, matchedSkillBuffRows: matchedSkillBuffRows
+        inactiveCandidates: [], matchedHitRows: matchedHitRows, matchedSkillBuffRows: matchedSkillBuffRows,
+        matchedDmgMarkers: matchedDmgMarkers, enemyStatMarkers: enemyStatMarkers, selfStatMarkers: selfStatMarkers
     };
 }
 
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { feasibleIryokuSet, intersectFeasible, computeHitAbilityPer, resolveT1Ability };
+    module.exports = {
+        feasibleIryokuSet, intersectFeasible, computeHitAbilityPer, resolveT1Ability,
+        enemyStatDebuffPer, effectiveEnemyStat, effectiveStat, statBuffPercent,
+        // GAP H: replayChain(iryoku_chain_replay.js)がEF名前付き条件判定を共用するためのadditive export
+        _isEfNamedConditionMet, IRYOKU_EF_CONDITION_MAP
+    };
 }
