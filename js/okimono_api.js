@@ -31,6 +31,7 @@ function buildOkimonoQuery(base, req) {
         add('enemy[resist][' + encodeURIComponent(attr) + ']', resist[attr]);
     }
     if (req.weaponIllust != null) add('weaponIllust', req.weaponIllust);
+    if (req.isOD) add('isOD', '1');
     return base + '?' + parts.join('&');
 }
 

@@ -17,6 +17,7 @@ function recalcRanking() {
         attackerStyleId: SELECTED_ATTACKER['Id'],
         skillId: SELECTED_SKILL['Id'],
         enemy: { count: enemy.count, vit: enemy.vit, mnd: enemy.mnd, resist: enemy.resist },
+        isOD: $("#isOD").is(":checked"),
     };
     const seq = ++RANK_REQ_SEQ;
     $("#RANKING_AREA").html('<div class="text-center" style="padding:20px;">計算中...</div>');
@@ -695,7 +696,7 @@ function getEnemyConfig() {
 }
 
 // 敵設定の変更は即時反映せず、反映ボタンをアクティブにする
-$(document).on('input change', '#E_COUNT,#E_VIT,#E_MND,.E_RESIST', function () {
+$(document).on('input change', '#E_COUNT,#E_VIT,#E_MND,.E_RESIST,#isOD', function () {
     $('#ENEMY_APPLY').addClass('enemy-apply-active').removeClass('icon_btn_off').addClass('icon_btn_on');
 });
 $(document).on('click', '#ENEMY_APPLY', function () {
