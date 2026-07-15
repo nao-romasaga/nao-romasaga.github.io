@@ -1,214 +1,29 @@
-<!DOCTYPE html>
-<html prefix="og: http://ogp.me/ns#" lang="ja">
-    <head>
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138966739-1"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-            gtag('js', new Date());
-
-            gtag('config', 'UA-138966739-1');
-        </script>
-        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <script>
-            (adsbygoogle = window.adsbygoogle || []).push({
-                google_ad_client: "ca-pub-5008373409434899",
-                enable_page_level_ads: true
-            });
-        </script>
-        <meta charset="utf-8">
-        <title>ロマサガRS 開発者からメッセージ</title>
-        <meta property="og:title" content="ロマサガRS 開発者からメッセージ" />
-        <meta property="og:url" content="https://nao-romasaga.github.io/developer.html" />
-        <meta property="og:description" content="ロマサガRS便利ツールの開発者からのメッセージです。" />
-        <meta name="description" content="ロマサガRS便利ツールの開発者からのメッセージです。【ロマンシングサガ リユニバース】" />
-        <meta property="og:image" content="https://nao-romasaga.github.io/img/avatar20190424120328.jpg" />
-        <meta property="og:site_name" content="ロマサガRS便利ツール" />
-        <meta property="og:type" content="article">
-        <meta property="og:locale" content="ja_JP" />
-        <meta name="twitter:card" content="summary" />
-        <meta name="twitter:site" content="@nao_romasaga_rs" />
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-        <link rel="manifest" href="./manifest.json">
-        <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase.js"></script>
-        <!--
-        <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-database.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-messaging.js"></script>
--->    
-        <script src="./js/Firebase.js" ></script>
-        <script src="./js/utils.js" ></script>
-        <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="./css/style.css">
-    </head>
-    <body>
-        <div class ="haikei"><div class="container">
-            <p>
-                <input type="button" id="btnSubscribe" value="通知を許可する">
-                <input type="button" id="btnUnSubscribe" value="トークン削除" style="display:none;">
-            </p>
-            <p>メッセージ：<input type="text" value="YOUR-INCETANCE-ID-TOKEN" id="textInstanceIdToken" style="width:100%;box-sizing:border-box;"></p>
-            <div id="sendWebPushArea" style="">
-                <p>下記をコピーしてこのタブを閉じ、別ブラウザで見てください</p>
-                <input type="text" value="" id="sendWebPush" style="width:100%;box-sizing:border-box;">
-            </div>
-            <script>
-const btnSubscribe = document.getElementById('btnSubscribe');
-const btnUnSubscribe = document.getElementById('btnUnSubscribe');
-const textInstanceIdToken = document.getElementById('textInstanceIdToken');
-const sendWebPushArea = document.getElementById('sendWebPushArea');
-const sendWebPush = document.getElementById('sendWebPush');
-
-// メッセージング オブジェクトの取得
-const messaging = firebase.messaging();
-
-// アプリにウェブ認証情報を設定する
-messaging.usePublicVapidKey("BBVpNqebnrH97wB7oh0LVWId9oWgyqs8wA9ryiFsXRWrzI1Vdb_mk1RpYOBvkcdlM3aDs6RhqYQpyAEdj4a-5V0");
-
-// 権限要求
-function requestPermission() {
-    textInstanceIdToken.value = "requestPermission";
-    // 通知を受信する権限を要求する
-    messaging.requestPermission().then(function() {
-        // 現在の登録トークンの取得
-        messaging.getToken().then(function(token) {
-            textInstanceIdToken.value = token;
-            btnSubscribe.style.display = 'none';
-            btnUnSubscribe.style.display = 'block';
-            sendWebPushArea.style.display = 'block';
-            sendWebPush.value = 'https://romasagatool.com/api/send.php?id=' + token;
-        }).catch(function(err) {
-            textInstanceIdToken.value = 'トークンの取得に失敗しました（' + err + '）。';
-        });
-    }).catch(function(err) {
-        textInstanceIdToken.value = '通知の許可が得られませんでした（' + err + '）。';
-    });
-}
-
-// トークン削除
-function deleteToken() {
-    // トークン取得
-    messaging.getToken().then(function(currentToken) {
-        // トークン削除
-        messaging.deleteToken(currentToken).then(function() {
-            textInstanceIdToken.value = 'トークンが削除されました';
-            btnSubscribe.style.display = 'block';
-            btnUnSubscribe.style.display = 'none';
-            sendWebPushArea.style.display = 'none';
-            sendWebPush.value = '';
-        }).catch(function(err) {
-            textInstanceIdToken.value = 'トークンの削除に失敗しました（' + err + '）。';
-        });
-    }).catch(function(err) {
-        textInstanceIdToken.value = 'トークンの取得に失敗しました（' + err + '）。';
-    });
-}
-
-// 初期化
-window.onload = function() {
-    textInstanceIdToken.value = "window.onload";
-    // イベント登録
-    btnSubscribe.onclick = requestPermission;
-    btnUnSubscribe.onclick = deleteToken;
-    // トークン取得
-    messaging.getToken().then(function(currentToken) {
-        if (currentToken) {
-            // 本来ここでサーバにトークン送る処理
-            //sendTokenToServer(currentToken);
-            textInstanceIdToken.value = currentToken;
-            btnSubscribe.style.display = 'none';
-            btnUnSubscribe.style.display = 'block';
-            sendWebPushArea.style.display = 'block';
-            sendWebPush.value = 'https://romasagatool.com/api/send.php?id=' + currentToken;
-        } else {
-            // トークン無い場合
-            textInstanceIdToken.value = '通知の許可をしていません。「通知を許可する」を押してください。';
-        }
-    }).catch(function(err) {
-        textInstanceIdToken.value = 'トークンの取得に失敗しました（' + err + '）。';
-    });
-};                
-            </script>
-
-
-
-                <h3 class="text-center label-text">開発者からのメッセージ</h3> 
-                <div class="bg-white kadomaru">
-                    <img src="./img/avatar20190424120328.jpg" width="100"> <a href="https://twitter.com/nao_romasaga_rs"><i class="fab fa-twitter"></i> nao_romasaga_rs</a>
-                    <br>
-                    ロマサガRS便利ツールをご利用の皆様。<br>
-                    いつもご利用ありがとうございます。<br>
-                    開発・運用を行なっているnaoです。<br>
-                    <br>
-                    今回メッセージを発信させて頂いたのは、最近のアクセス急増による運用コスト増加についてです。<br><br>
-                    結論を先に述べますと<br>
-                    <h3><i class="fas fa-server"></i>サーバ代がやばいです<i class="fas fa-bomb"></i></h3>
-                    <h4 class="width-100 bg-primary text-center kadomaru"><a href="./kifu.html" class="text-white ">便利ツールの支援はこちら<i class="fas fa-comment-dollar"></i></a></h4>
-                    <br>
-
-                    5月からアクセスが増え始め6月に入ったときにサーバ増設を行ったのですが、その増設したサーバの使用量も限界を迎えてました。<br>
-                    月間でデータ転送量が決まっているのですが、6/13の段階で<span style="color:red">使用限界の80%</span>に達していまいました<br>
-                    このままでは<span style="color:red">6/15,16あたりにサイトが動かなくなってしまいます</span>ので、再度サーバを増設しました。<br>
-                    そして、14日に100%を超え18日現在で4日しか経過していないのに150%を超えました<br>
-                    この調子だと<span style="color:red">月末までには500%程度</span>まで行きそうです<br>
-                    <div class="row">
-                        <div class="col-10 col-md-5 text-center">＜６月の１日あたりのデータ転送量＞<br>
-                            <img src="./img/graph.png" width="320">
-                        </div>
-                        <div class="col-10 col-md-5 text-center">＜データ転送量(その後)＞<br>
-                            <img src="./img/graph2.png" width="320">
-                        </div>
-                    </div>
-                    <br>
-                    この大量アクセスに対応するためにサーバを6倍に増やしたため、運用コストがかさんでおります( ◞‸◟)<br>
-                    <br>
-                    現時点では寄付いただいている内容や広告収入で1-2ヶ月ぐらいは運用できるかもしれません。<br>
-                    しかし、今後アクセスが増加すればするほどサイト運営が難しくなっていきそうです。<br>
-                    <br>
-                    <h4>対応方法についての検討</h4>
-                    ・アクセスを絞って一部のユーザにのみ公開すること<br>
-                    ・負荷の高い機能のクローズ<br>
-                    など暫定対応はできるのですが、私はなるべく多くのユーザに便利ツールを使って頂き、ロマサガRSをもっと盛り上げていきたいと考えています<br>
-                    ですので、上記の対応は取らず利用者の皆様には今の機能をそのままお使い頂けるよう頑張ります<br>
-                    <br>
-                    <h4>今後の新機能について</h4>
-                    ・クエスト攻略<br>
-                    育成パーティの入力欄から周回クエストも記入して、他のユーザがどのクエストをどんなパーティで周回しているかのまとめ<br>
-                    <br>
-                    ・覚醒攻略<br>
-                    覚醒状況を記入して、「このスタイルはこの覚醒パターンが多い」などのまとめ<br>
-                    <br>
-                    などができれば良いなと考えています(๑′ᴗ‵๑)<br>
-                    それもサイト運営が続けられればの話ですがw<br>
-                    <br>
-                    <h4>寄付いただいている方へ</h4>
-                    寄付いただいき誠にありがとうございます<br>
-                    現在ロマサガRS便利ツールが稼動できているのも皆様のおかげです<br>
-                    サーバ運用に当てたり、開発時のカフェオレ☕︎代に当てたり(๑′ᴗ‵๑)非常に助かっております。<br>
-                    この場を借りてお礼申し上げます<br>
-                    <br>
-
-                    <h4>おわりに</h4>
-                    趣味で始めたサイトで見積もりが甘かったのは否めません( ◞‸◟)💦お詫び申し上げます<br>
-                    現在データ更新内容の見直しや負荷軽減などに尽力しております。<br>
-                    今後ともロマサガRS便利ツールをよろしくお願いいたしますm(_ _)m<br>
-                    <br>
-                    <h4 class="width-100 bg-primary text-center kadomaru"><a href="./kifu.html" class="text-white ">便利ツールの支援はこちら<i class="fas fa-comment-dollar"></i></a></h4>
-                    <br>
-                    <small>サーバに課金じゃなくてロマサガRSに課金したい(ºωº)</small><br>
-                </div>
-                <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5008373409434899" data-ad-slot="3051702111"></ins><script> (adsbygoogle = window.adsbygoogle || []).push({});</script>
-                <br><br>
-            </div></div> <!-- main -->
-    </body>
-</html>
+<!DOCTYPE html><html  lang="ja" prefix="og: http://ogp.me/ns#"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ロマサガRS 開発者からメッセージ</title>
+<script src="https://www.googletagmanager.com/gtag/js?id=UA-138966739-1" async></script>
+<script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" async></script>
+<script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-138966739-1');</script>
+<link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css">
+<link rel="stylesheet" href="/css/style2.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/IaW3kovK.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/fEQn5Tea.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/BQBVRe_4.js">
+<script type="module" src="/_nuxt/IaW3kovK.js" crossorigin></script>
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/DkzY1-S7.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/jEfN5Bwx.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/g3TN4GRM.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/25vtyFVQ.js">
+<link rel="manifest" href="/manifest.json">
+<meta property="og:title" content="ロマサガRS 開発者からメッセージ">
+<meta property="og:url" content="https://nao-romasaga.github.io/developer.html">
+<meta property="og:description" content="ロマサガRS便利ツールの開発者からのメッセージです。">
+<meta name="description" content="ロマサガRS便利ツールの開発者からのメッセージです。【ロマンシングサガ リユニバース】">
+<meta property="og:image" content="https://nao-romasaga.github.io/img/avatar20190424120328.jpg">
+<meta property="og:site_name" content="ロマサガRS便利ツール">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@nao_romasaga_rs"></head><body><div id="__nuxt"><!--[--><div class="haikei"><div class="container"><p><input id="btnSubscribe" type="button" value="通知を許可する" style=""><input id="btnUnSubscribe" type="button" value="トークン削除" style="display:none;"></p><p>メッセージ：<input id="textInstanceIdToken" type="text" value="YOUR-INCETANCE-ID-TOKEN" style="width:100%;box-sizing:border-box;"></p><div id="sendWebPushArea" style=""><p>下記をコピーしてこのタブを閉じ、別ブラウザで見てください</p><input id="sendWebPush" type="text" value="" style="width:100%;box-sizing:border-box;"></div><h3 class="text-center label-text">開発者からのメッセージ</h3><div class="bg-white kadomaru"><img src="/img/avatar20190424120328.jpg" width="100"> <a href="https://twitter.com/nao_romasaga_rs"><i class="fab fa-twitter"></i> nao_romasaga_rs</a><br> ロマサガRS便利ツールをご利用の皆様。<br> いつもご利用ありがとうございます。<br> 開発・運用を行なっているnaoです。<br><br> 今回メッセージを発信させて頂いたのは、最近のアクセス急増による運用コスト増加についてです。<br><br> 結論を先に述べますと<br><h3><i class="fas fa-server"></i>サーバ代がやばいです<i class="fas fa-bomb"></i></h3><h4 class="width-100 bg-primary text-center kadomaru"><a href="/kifu.html" class="text-white">便利ツールの支援はこちら<i class="fas fa-comment-dollar"></i></a></h4><br> 5月からアクセスが増え始め6月に入ったときにサーバ増設を行ったのですが、その増設したサーバの使用量も限界を迎えてました。<br> 月間でデータ転送量が決まっているのですが、6/13の段階で<span style="color:red;">使用限界の80%</span>に達していまいました<br> このままでは<span style="color:red;">6/15,16あたりにサイトが動かなくなってしまいます</span>ので、再度サーバを増設しました。<br> そして、14日に100%を超え18日現在で4日しか経過していないのに150%を超えました<br> この調子だと<span style="color:red;">月末までには500%程度</span>まで行きそうです<br><div class="row"><div class="col-10 col-md-5 text-center">＜６月の１日あたりのデータ転送量＞<br><img src="/img/graph.png" width="320"></div><div class="col-10 col-md-5 text-center">＜データ転送量(その後)＞<br><img src="/img/graph2.png" width="320"></div></div><br> この大量アクセスに対応するためにサーバを6倍に増やしたため、運用コストがかさんでおります( ◞‸◟)<br><br> 現時点では寄付いただいている内容や広告収入で1-2ヶ月ぐらいは運用できるかもしれません。<br> しかし、今後アクセスが増加すればするほどサイト運営が難しくなっていきそうです。<br><br><h4>対応方法についての検討</h4> ・アクセスを絞って一部のユーザにのみ公開すること<br> ・負荷の高い機能のクローズ<br> など暫定対応はできるのですが、私はなるべく多くのユーザに便利ツールを使って頂き、ロマサガRSをもっと盛り上げていきたいと考えています<br> ですので、上記の対応は取らず利用者の皆様には今の機能をそのままお使い頂けるよう頑張ります<br><br><h4>今後の新機能について</h4> ・クエスト攻略<br> 育成パーティの入力欄から周回クエストも記入して、他のユーザがどのクエストをどんなパーティで周回しているかのまとめ<br><br> ・覚醒攻略<br> 覚醒状況を記入して、「このスタイルはこの覚醒パターンが多い」などのまとめ<br><br> などができれば良いなと考えています(๑′ᴗ‵๑)<br> それもサイト運営が続けられればの話ですがw<br><br><h4>寄付いただいている方へ</h4> 寄付いただいき誠にありがとうございます<br> 現在ロマサガRS便利ツールが稼動できているのも皆様のおかげです<br> サーバ運用に当てたり、開発時のカフェオレ☕︎代に当てたり(๑′ᴗ‵๑)非常に助かっております。<br> この場を借りてお礼申し上げます<br><br><h4>おわりに</h4> 趣味で始めたサイトで見積もりが甘かったのは否めません( ◞‸◟)💦お詫び申し上げます<br> 現在データ更新内容の見直しや負荷軽減などに尽力しております。<br> 今後ともロマサガRS便利ツールをよろしくお願いいたしますm(_ _)m<br><br><h4 class="width-100 bg-primary text-center kadomaru"><a href="/kifu.html" class="text-white">便利ツールの支援はこちら<i class="fas fa-comment-dollar"></i></a></h4><br><small>サーバに課金じゃなくてロマサガRSに課金したい(ºωº)</small><br></div><ins class="adsbygoogle" style="display:block;text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5008373409434899" data-ad-slot="3051702111"></ins><br><br></div></div><!--]--></div><div id="teleports"></div><script>window.__NUXT__={};window.__NUXT__.config={public:{},app:{baseURL:"/",buildId:"cb73bddc-a242-429d-97fa-fd701d34e281",buildAssetsDir:"/_nuxt/",cdnURL:""}}</script>
+<script type="application/json" data-nuxt-data="nuxt-app" data-ssr="true" id="__NUXT_DATA__">[["ShallowReactive",1],{"prerenderedAt":2,"data":3,"state":5,"once":7,"_errors":8,"serverRendered":10,"path":11},1784108079700,["ShallowReactive",4],{},["Reactive",6],{},["Set"],["ShallowReactive",9],{},true,"\u002Fdeveloper.html"]</script></body></html>

@@ -1,4 +1,4 @@
-import{u as o}from"./Dv7zI4wO.js";import{d as n,A as e,B as t}from"./DHXvymsJ.js";const s={style:{"background-color":"white"}},r=n({__name:"privacy_policy.html",setup(a){return o({title:"プライバシーポリシー"}),(l,i)=>(e(),t("pre",s,`            プライバシーポリシー
+import{u as o}from"./BQBVRe_4.js";import{d as n,B as e,A as t}from"./IaW3kovK.js";const s={style:{"background-color":"white"}},r=n({__name:"privacy_policy.html",setup(a){return o({title:"プライバシーポリシー"}),(l,i)=>(t(),e("pre",s,`            プライバシーポリシー
 
             ▼個人情報の利用目的
             

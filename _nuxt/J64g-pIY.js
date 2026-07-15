@@ -1,0 +1,1 @@
+const s="https://romasagatool.com/data",r="https://romasagatool.com/api/get_update.php";let c=null;const e=new Map;function h(){return c||(c=$fetch(r,{cache:"no-cache"})),c}function n(t){return e.has(t)||e.set(t,(async()=>{let a;try{a=(await h())[t]}catch{}const o=`${s}/${t}.json${a!==void 0?`?up=${a}`:""}`;return $fetch(o)})()),e.get(t)}export{n as f};

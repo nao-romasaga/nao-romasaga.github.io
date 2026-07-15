@@ -40,6 +40,11 @@ var CURRENT_CHAR_INFO = null;
 // 表示ステを手入力で上書きされても buffBase は別途この値を保持する。
 var CURRENT_CHAR_BASE = null; // { STR, DEX, AGI, INT } or null
 
+// 選択中の敵データ行（vit/mndを個別に保持）。#vitは表示専用の単一値のため、混在技/術チェーンで
+// 術ヒットに正しい敵MND値を使うにはこれが必要（プルダウン選択時のみ設定。手動VIT入力時はnull＝
+// 従来通りVIT値をMND代わりに流用するフォールバック）。
+var CURRENT_ENEMY_ROW = null;
+
 // アビ%キャップ（出典: BE damageCalc.inc $MAX_FIRE_DAMAGE）
 var IRYOKU_MAX_FIRE_DAMAGE = 10000;
 
@@ -325,6 +330,7 @@ $(document).on('change', '#enemy_vit', function () {
     var idx = $("#enemy_vit").val();
     if (idx === "x") return;
     var row = ENEMY_DATA[idx];
+    CURRENT_ENEMY_ROW = row; // vit/mndを個別保持（混在技/術チェーンの敵MND用）
     var type = $("#type").val();
     if ($.inArray(type, ["hi", "mizu", "tsuchi", "kaze", "hikari", "yami"]) > -1) {
         $("#vit").val(row['mnd']);
@@ -765,7 +771,12 @@ function computeAll(rows, base, abilityDelta) {
             styleId: CURRENT_STYLE_ID, mainSkillId: CURRENT_CHAIN_MAIN_ID, weaponType: styleWeaponType(),
             charInfo: charInfo, charBasePlusLimit: CURRENT_CHAR_BASE || {}, styleMaxByKey: styleMaxByKey,
             resist: base.resist, isWeak: isWeak, isCrit: IRYOKU_TOOL_OPTS.isCrit,
-            enemyType: '', baseEnemyVit: base.vitRaw, baseEnemyMnd: base.vitRaw,
+            // baseEnemyVitは#vitの現在値を常に使う（手動編集を尊重、従来通り）。baseEnemyMndのみ、
+            // 敵プルダウン選択済み（CURRENT_ENEMY_ROW有）ならその実MND値を使う（混在技/術チェーンで
+            // 術ヒットがVIT値を誤って流用しないように。以前は常にVIT値のエイリアスだった）。
+            enemyType: '',
+            baseEnemyVit: base.vitRaw,
+            baseEnemyMnd: CURRENT_ENEMY_ROW ? Number(CURRENT_ENEMY_ROW.mnd) : base.vitRaw,
             skillMasterOf: function (skillId) { return skillObjById(skillId); },
             reg: (typeof IRYOKU_REG !== 'undefined') ? IRYOKU_REG[CURRENT_STYLE_ID] : undefined,
             chain: chainEntry, chainOn: [],
