@@ -1,0 +1,1 @@
+const n="https://romasagatool.com/api/community_stats.php";function a(t,e){return $fetch(n,{params:{target:t,...e},cache:"no-cache"})}function o(){return a("home_data")}function c(){return a("rank_list")}function r(t){return a("home_rankdetail",t?{charId:t}:void 0)}function i(t){return a("ourchar_detail",t?{charId:t}:void 0)}export{r as a,c as b,i as c,o as f};

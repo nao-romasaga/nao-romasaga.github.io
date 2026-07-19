@@ -1,78 +1,22 @@
-<!DOCTYPE html>
-<!--
-Copyright (c) 2016 Google Inc.
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-http://www.apache.org/licenses/LICENSE-2.0
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
--->
-<html>
-<head>
-  <meta charset=utf-8 />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Twitter Authentication with Popup</title>
-
-  <!-- Material Design Theming -->
-  <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.orange-indigo.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
-
-  <!-- Import and configure the Firebase SDK -->
-  <!-- These scripts are made available when the app is served or deployed on Firebase Hosting -->
-  <!-- If you do not serve/host your project using Firebase Hosting see https://firebase.google.com/docs/web/setup -->
-  <script src="https://www.gstatic.com/firebasejs/9.13.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.13.0/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth__ja.js"></script>
-  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
-  <script type="text/javascript">
-var _0x431644=_0x3f9f;(function(_0x155f73,_0x5f380b){var _0x5321e7=_0x3f9f,_0x49251b=_0x155f73();while(!![]){try{var _0x4ba8ef=parseInt(_0x5321e7(0x118))/0x1*(parseInt(_0x5321e7(0x105))/0x2)+parseInt(_0x5321e7(0x127))/0x3*(parseInt(_0x5321e7(0x132))/0x4)+parseInt(_0x5321e7(0x111))/0x5+-parseInt(_0x5321e7(0xfa))/0x6*(-parseInt(_0x5321e7(0x115))/0x7)+parseInt(_0x5321e7(0x110))/0x8+parseInt(_0x5321e7(0x128))/0x9*(parseInt(_0x5321e7(0x108))/0xa)+-parseInt(_0x5321e7(0x126))/0xb;if(_0x4ba8ef===_0x5f380b)break;else _0x49251b['push'](_0x49251b['shift']());}catch(_0x3eb8ce){_0x49251b['push'](_0x49251b['shift']());}}}(_0x3ec3,0x3568e));var configUsers={'YXBpS2V5':_0x431644(0x11b),'YXV0aERvbWFpbg==':'bmFvLXJvbWFzYWdhLXJzLXVzZXJzLmZpcmViYXNlYXBwLmNvbQ==','ZGF0YWJhc2VVUkw=':_0x431644(0x12e),'bWVzc2FnaW5nU2VuZGVySWQ=':_0x431644(0x107)},Base64={'encode':function(_0x2c0827){return btoa(unescape(encodeURIComponent(_0x2c0827)));},'decode':function(_0x10fe8a){return decodeURIComponent(escape(atob(_0x10fe8a)));}};function _0x3f9f(_0x123754,_0x5d08ce){var _0x3ec33a=_0x3ec3();return _0x3f9f=function(_0x3f9f71,_0x1c2d63){_0x3f9f71=_0x3f9f71-0xf8;var _0x552f2c=_0x3ec33a[_0x3f9f71];return _0x552f2c;},_0x3f9f(_0x123754,_0x5d08ce);}function decodeConfig(_0x2d791d){var _0x22d907=_0x431644;let _0x5903c4={};for(let _0x3d0e73 in _0x2d791d){_0x5903c4[Base64[_0x22d907(0x106)](_0x3d0e73)]=Base64['decode'](_0x2d791d[_0x3d0e73]);}return _0x5903c4;}conf=decodeConfig(configUsers);const appUsers=firebase[_0x431644(0x12f)](decodeConfig(configUsers));var uiConfig={'signInSuccessUrl':_0x431644(0x101),'signInOptions':[firebase[_0x431644(0x102)]['GoogleAuthProvider'][_0x431644(0x117)],firebase[_0x431644(0x102)][_0x431644(0x12b)]['PROVIDER_ID']],'signInFlow':_0x431644(0x11c),'tosUrl':_0x431644(0x131)};function _0x3ec3(){var _0x1abb5c=['52QcTRsr','quickstart-oauthsecret','uid','1608uYUuFB','start','stringify','Signed\x20out','currentUser','quickstart-sign-in','then','https://nao-romasaga.github.io/login.html','auth','auth/account-exists-with-different-credential','emailVerified','546234WNKdJl','decode','ODI4NjkzNDcyNzI=','4061940QjVNLA','user','signOut','You\x20have\x20already\x20signed\x20up\x20with\x20a\x20different\x20auth\x20provider\x20for\x20that\x20email.','email','accessToken','Sign\x20in\x20with\x20Twitter','Signed\x20in','732976bfEyVe','2095810nkpbiy','onAuthStateChanged','quickstart-sign-in-status','quickstart-account-details','2653DysMDY','code','PROVIDER_ID','1lWWrsJ','message','displayName','QUl6YVN5RHZCNmVUNWh5VnJnWVF3dVBNUm9tdmVKbXdJM002T09R','popup','textContent','quickstart-oauthtoken','photoURL','click','signInWithPopup','catch','addEventListener','disabled','secret','16044578ngSlSf','89007FpODkP','9RYMfyP','onload','providerData','TwitterAuthProvider','getElementById','#firebaseui-auth-container','aHR0cHM6Ly9uYW8tcm9tYXNhZ2EtcnMtdXNlcnMuZmlyZWJhc2Vpby5jb20=','initializeApp','null','https://nao-romasaga.github.io/site.html'];_0x3ec3=function(){return _0x1abb5c;};return _0x3ec3();}function toggleSignIn(){var _0x45b160=_0x431644;if(!firebase[_0x45b160(0x102)](appUsers)[_0x45b160(0xfe)]){var _0x2bd4a3=new firebase['auth'][(_0x45b160(0x12b))]();firebase[_0x45b160(0x102)](appUsers)[_0x45b160(0x121)](_0x2bd4a3)[_0x45b160(0x100)](function(_0x47ce4e){var _0x4e0934=_0x45b160,_0x5d27aa=_0x47ce4e['credential'][_0x4e0934(0x10d)],_0x4aa53d=_0x47ce4e['credential'][_0x4e0934(0x125)],_0x18b773=_0x47ce4e[_0x4e0934(0x109)];document[_0x4e0934(0x12c)](_0x4e0934(0x11e))[_0x4e0934(0x11d)]=_0x5d27aa,document[_0x4e0934(0x12c)](_0x4e0934(0xf8))[_0x4e0934(0x11d)]=_0x4aa53d;})[_0x45b160(0x122)](function(_0x5550b6){var _0x15329f=_0x45b160,_0x3c8c80=_0x5550b6[_0x15329f(0x116)],_0xb03c08=_0x5550b6[_0x15329f(0x119)],_0xccc4a4=_0x5550b6['email'],_0x1a8f60=_0x5550b6['credential'];_0x3c8c80===_0x15329f(0x103)?alert(_0x15329f(0x10b)):console['error'](_0x5550b6);});}else firebase['auth'](appUsers)[_0x45b160(0x10a)]();document[_0x45b160(0x12c)](_0x45b160(0xff))[_0x45b160(0x124)]=!![];}function initApp(){var _0x50a97c=_0x431644;firebase[_0x50a97c(0x102)](appUsers)[_0x50a97c(0x112)](function(_0x23330c){var _0x75d83d=_0x50a97c;if(_0x23330c){var _0x41fb3e=_0x23330c[_0x75d83d(0x11a)],_0xcc1321=_0x23330c[_0x75d83d(0x10c)],_0x4d15b3=_0x23330c[_0x75d83d(0x104)],_0x39bacb=_0x23330c[_0x75d83d(0x11f)],_0x4da819=_0x23330c['isAnonymous'],_0x2ef086=_0x23330c[_0x75d83d(0xf9)],_0x12cd6c=_0x23330c[_0x75d83d(0x12a)];document[_0x75d83d(0x12c)]('quickstart-sign-in-status')[_0x75d83d(0x11d)]=_0x75d83d(0x10f),document[_0x75d83d(0x12c)](_0x75d83d(0xff))['textContent']='Sign\x20out',document['getElementById'](_0x75d83d(0x114))[_0x75d83d(0x11d)]=JSON[_0x75d83d(0xfc)](_0x23330c,null,'\x20\x20');}else{var _0x1486da=new firebaseui[(_0x75d83d(0x102))]['AuthUI'](firebase['auth'](appUsers));_0x1486da[_0x75d83d(0xfb)](_0x75d83d(0x12d),uiConfig),document[_0x75d83d(0x12c)](_0x75d83d(0x113))[_0x75d83d(0x11d)]=_0x75d83d(0xfd),document[_0x75d83d(0x12c)](_0x75d83d(0xff))[_0x75d83d(0x11d)]=_0x75d83d(0x10e),document[_0x75d83d(0x12c)](_0x75d83d(0x114))[_0x75d83d(0x11d)]=_0x75d83d(0x130),document[_0x75d83d(0x12c)](_0x75d83d(0x11e))[_0x75d83d(0x11d)]=_0x75d83d(0x130),document[_0x75d83d(0x12c)](_0x75d83d(0xf8))[_0x75d83d(0x11d)]='null';}document['getElementById']('quickstart-sign-in')[_0x75d83d(0x124)]=![];}),document['getElementById'](_0x50a97c(0xff))[_0x50a97c(0x123)](_0x50a97c(0x120),toggleSignIn,![]);}window[_0x431644(0x129)]=function(){var _0x558741=_0x431644;firebase[_0x558741(0x102)](appUsers)[_0x558741(0x112)](function(_0x5d2df9){var _0x428bc0=_0x558741;if(!_0x5d2df9){var _0x594705=new firebaseui[(_0x428bc0(0x102))]['AuthUI'](firebase[_0x428bc0(0x102)](appUsers));_0x594705['start'](_0x428bc0(0x12d),uiConfig);}});};
-  </script>
-</head>
-<body>
-<div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-header">
-  <!-- Header section containing title -->
-  <header class="mdl-layout__header mdl-color-text--white mdl-color--light-blue-700">
-    <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
-      <div class="mdl-layout__header-row mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--8-col-desktop">
-        <h3>ロマサガRS便利ツール</h3>
-      </div>
-    </div>
-  </header>
-
-  <main class="mdl-layout__content mdl-color--grey-100">
-    <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
-
-      <!-- Container for the demo -->
-      <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
-        <div class="mdl-card__title mdl-color--light-blue-600 mdl-color-text--white">
-          <h2 class="mdl-card__title-text">iOS16 Authentication with Popup</h2>
-        </div>
-        <div class="mdl-card__supporting-text mdl-color-text--grey-600">
-          <div class="text-center width-100" id="firebaseui-auth-container"></div>
-          <!--
-          <p>Sign in with your Twitter account below.</p>
-
-          <button disabled class="mdl-button mdl-js-button mdl-button--raised" id="quickstart-sign-in">Sign in with Twitter</button>
-
-          <div class="quickstart-user-details-container">
-            Firebase sign-in status: <span id="quickstart-sign-in-status">Unknown</span>
-            <div>Firebase auth <code>currentUser</code> object value:</div>
-            <pre><code id="quickstart-account-details">null</code></pre>
-            <div>Twitter OAuth Token:</div>
-            <pre><code id="quickstart-oauthtoken">null</code></pre>
-            <div>Twitter OAuth Secret:</div>
-            <pre><code id="quickstart-oauthsecret">null</code></pre>
-          </div>
-          -->
-        </div>
-      </div>
-    </div>
-  </main>
-</div>
-</body>
-</html>
+<!DOCTYPE html><html  lang="ja" prefix="og: http://ogp.me/ns#"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Twitter Authentication with Popup</title>
+<script src="https://www.googletagmanager.com/gtag/js?id=UA-138966739-1" async></script>
+<script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" async></script>
+<script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-138966739-1');</script>
+<link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css">
+<link rel="stylesheet" href="/css/style2.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/BhSFGgm_.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/CQnYK8Ue.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/sspoLA4g.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/1cDNt_5u.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/CthsWBxe.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/BAYIJ1UL.js">
+<script type="module" src="/_nuxt/BhSFGgm_.js" crossorigin></script>
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/CiXZihIt.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/DS_kS5SF.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/DP0Uf30V.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/DNKw9H2h.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/DKhIy8jv.js"></head><body><div id="__nuxt"><!--[--><div class="haikei"><div class="container"><div class="info-modal"><div class="info-modal-header">ログイン(iOS16向け)</div><div class="text-center width-100"><div class="bg-simple" style="padding:15px;color:#faf0b4;"> Now Loading... </div></div></div></div></div><!--]--></div><div id="teleports"></div><script>window.__NUXT__={};window.__NUXT__.config={public:{},app:{baseURL:"/",buildId:"88e462fe-a6cc-42ab-8b47-77eba0124d1b",buildAssetsDir:"/_nuxt/",cdnURL:""}}</script>
+<script type="application/json" data-nuxt-data="nuxt-app" data-ssr="true" id="__NUXT_DATA__">[["ShallowReactive",1],{"prerenderedAt":2,"data":3,"state":5,"once":7,"_errors":8,"serverRendered":10,"path":11},1784470924656,["ShallowReactive",4],{},["Reactive",6],{},["Set"],["ShallowReactive",9],{},true,"\u002Flogin_ios16.html"]</script></body></html>

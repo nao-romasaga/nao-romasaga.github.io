@@ -1,318 +1,37 @@
-<!DOCTYPE html>
-<html prefix="og: http://ogp.me/ns#" lang="ja">
-    <head>
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138966739-1"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-            gtag('js', new Date());
-
-            gtag('config', 'UA-138966739-1');
-        </script>
-        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <meta charset="utf-8">
-        <title>【ロマサガRS】スタイル投票</title>
-        <meta property="og:title" content="【ロマサガRS】スタイル投票" />
-        <meta property="og:url" content="https://nao-romasaga.github.io/stylevote.html" />
-        <meta property="og:description" content="ロマサガRSでとっててよかったスタイルの投票ページです。便利ツールユーザの満足度の高いスタイルを集計します" />
-        <meta name="description" content="ロマサガRSでとっててよかったスタイルの投票ページです。便利ツールユーザの満足度の高いスタイルを集計します リユニバース】" />
-        <meta property="og:image" content="https://nao-romasaga.github.io/img/twitter_card.png" />
-        <meta property="og:site_name" content="ロマサガRS便利ツール" />
-        <meta property="og:type" content="article">
-        <meta property="og:locale" content="ja_JP" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@nao_romasaga_rs" />
-        <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
-        <script src="./js/dataload.js"></script>
-        <script>
-            // require dataload.js
-            dataload([
-                "data_CHARMASTER",
-                "data_STYLEMASTER_checker",
-            ]);
-        </script>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="./css/bootstrap/bootstrap.min.css" rel="preload" as="style">
-        <script src="./js/lib/lazysizes.min.js" defer></script>
-        <script src="./js/lib/ls.unveilhooks.min.js" defer></script>
-        <script src="./js/bootstrap.min.js" defer></script>
-        <link rel="stylesheet" type="text/css" href="./css/style2.css" rel="preload" as="style">
-        <!-- Firebase v9以降の compat CDN（名前空間API互換） -->
-        <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
-
-        <!-- FirebaseUI -->
-        <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
-        <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
-        <script src="./js/Firebase.js" defer></script>
-        <script src="./js/utils2.js"  defer></script>        
-        <script src="./js/stylevote.js"  defer></script>
-        <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet" rel="preload" as="style">
-        <!-- http://ifs.nog.cc/hkaityo.hp.infoseek.co.jp/dq/rs2-01.html -->
-        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-    </head>
-    <style>
-        .post-button {
-            display: block;
-            transition: transform 1s;
-            transition-timing-function: cubic-bezier(.165,.84,.44,1);
-            transform: translate3d(0,100%,0);
-
-        }    
-        .fadeUp {
-            transform: translate3d(0,0,0);
-        }
-        </style>
-    <body>
-        <div class ="haikei">
-            <button id="POST" class="POST_BTN post-button icon_btn_positive width-100 shadow-black" style="position: fixed; bottom: 10px; z-index: 2; font-size: 2rem;">投票する</button>
-            <div class="container">
-                <h3 class="text-center title-text">スタイルオブザイヤー2023投票会場</h3>
-                <div id="firebaseui-auth-container" style="margin-bottom:10px;"></div>
-                <div id="loginInfo" class="opacity kadomaru" style="margin-bottom:10px;">Twitterログインするとチェックしたスタイル情報が保存され、次回開いた場合に自動入力されます。</div>
-                <!-- ツール_スタイルチェッカー_上部 -->
-                <ins class="adsbygoogle"
-                style="display:block"
-                data-ad-client="ca-pub-5008373409434899"
-                data-ad-slot="8179245258"
-                data-ad-format="auto"
-                data-full-width-responsive="true"></ins>
-                <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-                                    <table id="result2023" class="bg-simple" style="width: 100%;text-align: left;"><tbody>
-                                        <tr id="template" class="d-none">
-                                            <td>
-                                                <div class="rank-div">
-                                                    <div class="style-icon"></div>
-                                                    <div style="line-height:1.2em;"><div>
-                                                        <span class="rank">5</span>位 投票数:<span class="count">94</span>（<span class="per">41.4</span>%)
-                                                    </div>
-                                                    <div>
-                                                        <span class="name">アーニャ</span> <span class="anotherName">[光に導かれて]</span>
-                                                    </div>
-                                                    <div class="fz-12px">
-                                                        <span class="role">サポーター</span>: <span class="gacha">2022.05.31.3.5周年記念 Romancing祭 アーニャ編</span>
-                                                        <div></div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody></table>
-                <div class="info-modal">
-                    <div class="text-center info-modal-header">スタイルオブイヤーとは</div>    
-                    <div class="width-100 text-center">
-                        ロマサガRS便利ツールユーザにより、その年でいちばん活躍したスタイルを決める祭典です。<br>
-                        「活躍」の定義は「高難度(討伐系）」「周回」「追憶の幻闘場」など様々です。<br>
-                        評価はあくまで主観ですので、お気軽に。<br>
-                        自分が活躍したと思えば活躍したのだ。<br>
-                        <div class="width-100 text-center bg-item">2023年ルール</div>
-                        2023年に実装されたSSスタイルが対象です（復刻は除く）<br><br>
-                        Q. 部門ごとに投票分けた方がいいんじゃないの？<br>
-                        A. 本当はそうしたかったけど、データベース構築とか色々な都合で諦めました<br>
-                        <br>
-                        Q. 何票でも投票できるの？<br>
-                        A. 好きなだけ投票してください。修正も可能です。<br>
-                        <br>
-                        Q. 便利ツールにログインしてないと投票できないの？<br>
-                        A. 今回は未ログインユーザの投票は実施していません<br>
-                        <div class="width-100 text-center bg-item">SOY 2022</div>
-                        <table class="bg-simple" style="width: 100%;text-align: left;"><tbody>
-                            <tr><td><div class="rank-div"><div class="style-icon"><img alt="" src="https://romasagatool.com/img/style_icon_bg/IDadc16.png" class="icon" style="width: 50px;"></div><div style="line-height:1.2em;"><div><span class="rank">5</span>位 投票数:<span class="count">94</span>（<span class="per">41.4</span>%）</div><div><span class="name">アーニャ</span> <span class="anotherName">[光に導かれて]</span></div><div class="fz-12px"><span class="role">サポーター</span>: <span class="gacha">2022.05.31.3.5周年記念 Romancing祭 アーニャ編</span><div></div></div></div></div></td></tr>
-                            <tr><td><div class="rank-div"><div class="style-icon"><img alt="" src="https://romasagatool.com/img/style_icon_bg/ID9725f.png" class="icon" style="width: 50px;"></div><div style="line-height:1.2em;"><div><span class="rank">4</span>位 投票数:<span class="count">112</span>（<span class="per">49.33</span>%）</div><div><span class="name">ヴァッハ神</span> <span class="anotherName">[精霊が集まってるよ]</span></div><div class="fz-12px"><span class="role">サポーター</span>: <span class="gacha">2022.01.27.祝！旧正月2022！！Romancing祭 ヴァッハ神編</span><div></div></div></div></div></td></tr>
-                            <tr><td><div class="rank-div"><div class="style-icon"><img alt="" src="https://romasagatool.com/img/style_icon_bg/ID37fc3.png" class="icon" style="width: 50px;"></div><div style="line-height:1.2em;"><div><span class="rank">4</span>位 投票数:<span class="count">112</span>（<span class="per">49.33</span>%）</div><div><span class="name">ロックブーケ</span> <span class="anotherName">[いい加減、頭きたわ！]</span></div><div class="fz-12px"><span class="role">ジャマー</span>: <span class="gacha">2022.09.09.Romancing佐賀グランドツアー2022！Romancing祭 佐賀中部編</span><div></div></div></div></div></td></tr>
-                            <tr><td><div class="rank-div"><div class="style-icon"><img alt="" src="https://romasagatool.com/img/style_icon_bg/ID39664.png" class="icon" style="width: 50px;"></div><div style="line-height:1.2em;"><div><span class="rank">3</span>位 投票数:<span class="count">125</span>（<span class="per">55.06</span>%）</div><div><span class="name">聖王</span> <span class="anotherName">[悪戦苦闘]</span></div><div class="fz-12px"><span class="role">ジャマー</span>: <span class="gacha">2022.02.08.ストロベリー・バレンティーナ！開催記念 Romancing祭 聖王編</span><div></div></div></div></div></td></tr>
-                            <tr><td><div class="rank-div"><div class="style-icon"><img alt="" src="https://romasagatool.com/img/style_icon_bg/ID1af45.png" class="icon" style="width: 50px;"></div><div style="line-height:1.2em;"><div><span class="rank">2</span>位 投票数:<span class="count">130</span>（<span class="per">57.26</span>%）</div><div><span class="name">エスパーガール</span> <span class="anotherName">[一緒に乗ってく？]</span></div><div class="fz-12px"><span class="role">アタッカー</span>: <span class="gacha">2022.10.21.Halloween2022 Sa・Ga Romancing祭 エスパーガール編</span><div></div></div></div></div></td></tr>
-                            <tr><td><div class="rank-div"><div class="style-icon"><img alt="" src="https://romasagatool.com/img/style_icon_bg/ID1d973.png" class="icon" style="width: 50px;"></div><div style="line-height:1.2em;"><div><span class="rank">1</span>位 投票数:<span class="count">136</span>（<span class="per">59.91</span>%）</div><div><span class="name">ふくめん</span> <span class="anotherName">[訳ありなんだ]</span></div><div class="fz-12px"><span class="role">ディフェンダー</span>: <span class="gacha">2022.01.24.サガ魂ガチャ クリームヒルト編</span><div></div></div></div></div></td></tr>
-                        </tbody></table>
-                        <a class="shadow-black icon_btn_positive" href="https://romasagatool.com/blog/archives/26437">SOY 2022投票結果 詳細</a>
-                    </div>
-                </div>
-
-                <div class="text-center width-100 bg-black-window">
-                    <table class="width-100 text-nowrap" id="MASTER_TABLE">
-                        <td colspan="7" style="font-size: 1.5rem">2023 スタイル実装数</td>
-                        <tr class="char-bottom" style="line-height: 1rem;">
-                            <td></td>
-                            <td>合計</td>
-                            <td>祭<br>限定</td>
-                            <td>サガ魂<br>限定</td>
-                            <td>UDX<br>限定</td>
-                            <td>プラ<br>チナ</td>
-                            <td>その他</td>
-                        </tr>
-                        <tr class=" d-none" id="masterTableTmpl" style="border-bottom:1px solid #faf0b4;">
-                            <td><span class="icon_mini_zokusei_checker icon_ken"></span></td>
-                            <td><span class="ALL剣">0</span></td>
-                            <td class=""><span class="祭剣">0</span></td>
-                            <td class=""><span class="サガ魂剣">0</span></td>
-                            <td class=""><span class="UDX限定剣">0</span></td>
-                            <td class=""><span class="プラチナ剣">0</span></td>
-                            <td class=""><span class="配布剣">0</span></td>
-                        </tr>
-                    </table>
-                </div>    
-
-                <div id="LOADING" class="label-text text-center">
-                    <div class="loading">
-                        <span>L</span><span>O</span><span>A</span><span>D</span><span>I</span><span>N</span><span>G</span><span>.</span><span>.</span><span>.</span>
-                    </div>
-                    <div class="">
-                        <span class="CHAR_BACK char dot_mid dot char-hashiri-right" style="background: url(./img/dot/IDad82c.png);"></span>
-                        <span class="CHAR_FRONT char dot_mid dot char-hashiri-right" style="background: url(./img/dot/ID38400.png);"></span>
-                    </div>
-                    <div class="loading-notice">Loadingが終わらない場合リロードしてみてください</div>
-                </div>
-
-                <div class="col-12 text-center myinput d-none" style="margin: 20px 0; ">
-                    <a href="./stylevote.html" class="width-100 h5" style="background-color: rgba(41,163,239,1); color:white; padding:5px 10px; border-radius:10px;"><i class="fas fa-edit"></i> 投票に切り替え</a>
-                </div>                
-                <div class="filter-bgcolor " id="filterArea">
-                    <div class="row">
-                        <div class="col-9 subtitle-long fuchidori-white smallFont" style="left: 15px; padding-left: 30px; margin: 10px 0px;">表示内容 切り替え（スタイル所持チェッカー連動）</div>
-                        <div class="DISP_CLASS col-5 col-md-4 text-center" style="margin-bottom:10px"><button class="width-100 icon_btn_off allType fuchidori-white smallFont text-nowrap">全て表示</button></div>
-                        <div class="DISP_CLASS col-7 col-md-4 text-center"><button class="width-100 icon_btn_on onlyDisable fuchidori-white smallFont text-nowrap">未所持を表示しない</button></div>
-                    </div>
-                </div>
-                <div class="d-none style-bgcolor smallFont" id="styleAreaChecker">
-                    <div id="RANK_TMPL" class="d-none row bg-simple">
-                        <div class="col-2 col-lg-1 icon"></div>
-                        <div class="col-8 col-md-3" style="line-height: 17px;">
-                            <span class="name"></span><br>
-                            <span class="anotherName"></span><br>
-                            <span class="d-sm-none fuchidori-white per"></span>
-                        </div>                        
-                        <div class="d-none d-md-block col-sm-6 col-md-2 fuchidori-white per" style="font-size: 25px;"></div>
-                        <div class="col-5 gacha text-nowrap"></div>
-                    </div>
-                </div>
-
-                <!--テンプレ-->
-                <div class="row no-gutters d-none" id="STYLE_AREA_TEMPLATE" style="margin-bottom:10px;">
-                    <div class="col-12 col-sm-1">
-                        <div class="filter-bgcolor width-100 text-center" style="height: 100%; display: flex; align-items: center; justify-content: center;">
-                            <img class="width-100 WP_ICON" src="https://romasagatool.com/img/icon/icon___【WP】__.png" style="max-width: 40px"></div>
-                    </div>
-                    <div class="col-12 col-sm-11 STYLE_AREA___【WP】__"></div>
-                </div>
-                                
-
-                <div class="style-bgcolor max-width" style="padding: 10px 5px;">
-                    <button class="POST_BTN icon_btn_negative width-100 shadow-black" style="margin-bottom: 30px;">投票する</button>
-                    <div class="" id="styleAreaRare" style="padding:5px"></div>
-                    <div class="d-none" id="styleAreaGacha"></div>
-                    <button class="POST_BTN icon_btn_negative width-100 shadow-black" style="margin-top: 30px;">投票する</button>
-                </div>
-
-            </div>
-        </div>
-        <script type="text/javascript" src="https://romasagatool.com/blog/get_the_archives.php?limit=30&callback=rssCallback" defer></script>
-        <div id="INFO_AB_OVERLAY" class="overlay d-none"></div>
-        <div id="INFO_AB_AREA" class="yubi info-modal ab-text-info animation animation-out d-none" style="top: 1000px;">
-            <div id="INFO_AB_NAME" class="text-center info-modal-header">★投票しました★</div>
-            <div id="INFO_AB_TEXT" class="width-100 bg-simple text-center" style="height: 80%; padding: 15px; overflow: scroll; margin-bottom:10px">
-                投票ありがとうございました<br>
-                ぜひ結果をSNSでシェアしてみてください✨<br>
-                <a class="twitter-share-button " rel="nofollow" style="
-    display: block;
-    margin-top: 10px;
-    background-color: #007bff;
-    color: white;
-    border-radius: 10px;
-"><i class="fab fa-twitter"></i> 結果をツイートする</a>
-                <div class="width-100 text-center">
-                    <div class="char-dot-base char dot_mid dot dot-base-char char-thanks" id="DOTCHAR1"></div>
-                    <div class="char-dot-base char dot_mid dot dot-base-char char-thanks" id="DOTCHAR2"></div>
-                    <div class="char-dot-base char dot_mid dot dot-base-char char-thanks" id="DOTCHAR3"></div>
-                    <div class="char-dot-base char dot_mid dot dot-base-char char-thanks" id="DOTCHAR4"></div>
-                </div>
-            </div>
-            <div class="width-100 text-center">
-                <button id="INFO_CLOSE" class="icon_btn_negative">閉じる</button>
-            </div>
-        </div>
-        <style>
-            .rank-div {
-                display: flex;
-                align-items: center;
-                margin: 5px 0px;
-                border: 1px solid;
-            }
-            .style-icon {
-                padding: 10px;
-            }
-            .char-thanks {
-                animation: stup 1.3s steps(1) infinite;
-                animation-fill-mode: forwards;
-            }
-            @keyframes rollkAnime{
-                0% {   transform: rotate(0deg);}
-                25% {   transform: rotate(25deg);}
-                50% {   transform: rotate(0deg);}
-                75% {   transform: rotate(25deg);}
-                100% {  transform: rotate(0deg);}
-            }            
-            .overlay {
-                justify-content: center;
-                position: fixed;
-                width: 100%;
-                height: 100%;
-                z-index: 4;
-                background-color: rgba(0,0,0,0.6);
-                top: 0;
-                left: 0;
-                display: flex;            
-            }        
-            .ab-text-info {
-                position: fixed;
-                width: calc(100% - 20px);
-                max-width: 400px;
-                inset: 0;
-                margin: auto;
-                height: 50%;
-                z-index: 5;
-            }
-            .when-group {
-                margin-top: 20px;
-            }
-            .animation {
-            animation-direction: normal;
-            animation-duration: 0.5s;
-            animation-timing-function: ease;
-            }
-            .animation-in {
-            animation-name: anim_sc;
-            transform: scale(1, 1);
-            }
-            .animation-out {
-            animation-name: anim_sc_out;
-            transform: scale(0, 0);
-            }
-            @keyframes anim_sc {
-            0% {
-                transform: scale(0, 0);
-            }
-            100% {
-                transform: scale(1, 1);
-            }
-            }     
-            @keyframes anim_sc_out {
-            0% {
-                transform: scale(1, 1);
-            }
-            100% {
-                transform: scale(0, 0);
-            }
-            }                    
-        </style>        
-    </body>
-</html>
+<!DOCTYPE html><html  lang="ja" prefix="og: http://ogp.me/ns#"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>【ロマサガRS】スタイル投票</title>
+<script src="https://www.googletagmanager.com/gtag/js?id=UA-138966739-1" async></script>
+<script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" async></script>
+<script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-138966739-1');</script>
+<link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css">
+<link rel="stylesheet" href="/css/style2.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c">
+<style>.dot-series-label{height:40px}@media screen and (max-width:767px){.dot-series-label{flex-basis:100%}}.login-card{min-height:32px}</style>
+<style>#OVERLAY_AREA.overlay-size-illust{height:720px;margin:10% 10px;width:390px}@media screen and (max-width:767px){#OVERLAY_AREA.overlay-size-illust{height:inherit;max-height:680px;width:90%}}</style>
+<style>.rank-div{align-items:center;border:1px solid;display:flex;margin:5px 0}.style-icon{padding:10px}</style>
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/BhSFGgm_.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/CiXZihIt.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/DS_kS5SF.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/DP0Uf30V.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/m5D9rrkL.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/1cDNt_5u.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/J64g-pIY.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/CohyIq6L.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/BAYIJ1UL.js">
+<script type="module" src="/_nuxt/BhSFGgm_.js" crossorigin></script>
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/DNKw9H2h.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/DKhIy8jv.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/JyMWS-WD.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/CthsWBxe.js">
+<meta property="og:title" content="【ロマサガRS】スタイル投票">
+<meta property="og:url" content="https://nao-romasaga.github.io/stylevote.html">
+<meta property="og:description" content="ロマサガRSでとっててよかったスタイルの投票ページです。便利ツールユーザの満足度の高いスタイルを集計します">
+<meta name="description" content="ロマサガRSでとっててよかったスタイルの投票ページです。便利ツールユーザの満足度の高いスタイルを集計します リユニバース】">
+<meta property="og:image" content="https://nao-romasaga.github.io/img/twitter_card.png">
+<meta property="og:site_name" content="ロマサガRS便利ツール">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@nao_romasaga_rs"></head><body><div id="__nuxt"><div><div class="header-area"><div class="header-image"><div class="fuchidori-white" style="position:absolute;left:0px;max-width:100%;"><a href="/index.html"><img src="https://romasagatool.com/img/header.png" style="max-width:80%;" alt="ロマンシング・サガ リ・ユニバース 便利ツール"></a></div><div class="d-none d-lg-block" style="position:absolute;left:calc(50% - 83px);"><img src="/img/cmn_logo01_sp.png" style="height:80px;width:163px;"></div><div class="text-right login-card"><!----></div><div class="text-right info-card row width-max header-button-list"><a href="/login.html" class="col-4 icon_btn_positive text-center text-nowrap shadow-black" style="display:inline-block;padding:5px 15px;"><i class="fab fa-twitter"></i> ログイン <i class="fab fa-google"></i></a><a href="/site.html" class="col-4 icon_btn_positive text-center text-nowrap" style="display:inline-block;width:110px;padding:5px;">利用規約・免責</a><a href="/kifu.html" class="col-4 icon_btn_negative text-center text-nowrap" style="display:inline-block;width:100px;padding:5px;">支援について</a></div><div class="d-none d-lg-block fuchidori-white text-center" style="position:absolute;width:100%;bottom:0px;font-size:8px;"> © 2019 SQUARE ENIX CO., LTD. All Rights Reserved. Powered by Akatsuki Inc. </div></div><nav class="site-header text-nowrap d-none d-sm-block"><img class="d-sm-none blinking" src="https://romasagatool.com/img/icon/icon_arrow_right.png" style="position:fixed;right:0px;height:50px;"><ul><li class="menu-item"><a href="https://romasagatool.com/blog/" target="_blank"><i class="far fa-newspaper"></i> 攻略ブログ</a></li><li class="menu-item"><a href="/ourchar.html"><i class="fas fa-tasks"></i> ステータス上限</a></li><li class="menu-item"><a href="/autodamage.html"><i class="fas fa-crown"></i> ダメージランキング</a></li><li class="menu-item"><a href="/styleranking.html"><i class="fas fa-user-check"></i> スタイル評価</a></li><li class="menu-item"><a href="/buff_ranking.html"><i class="fas fa-hands-helping"></i> 火力サポートランキング</a></li><li class="menu-item dropdown position-relative text-center"><span class="DROPDOWN_OPEN yubi"><i class="fas fa-search"></i> ゲームデータ検索 <i class="d-none fas fa-sort-up"></i><i class="fas fa-sort-down"></i></span><a href="/style.html" class="d-none dropdown-item fuchidori-white" style="font-size:inherit;color:white;"><i class="fas fa-user"></i> スタイル 一覧</a><a href="/skill.html" class="d-none dropdown-item fuchidori-white" style="font-size:inherit;color:white;"><i class="fas fa-lightbulb"></i> 技・術 一覧</a><a href="/ability.html" class="d-none dropdown-item fuchidori-white" style="font-size:inherit;color:white;"><i class="fas fa-ring"></i> アビリティ 一覧</a><a href="/weapon.html" class="d-none dropdown-item fuchidori-white" style="font-size:inherit;color:white;"><i class="fas fa-shield-alt"></i> 装備 一覧</a></li><li class="menu-item"><a href="/limitdata.html"><i class="fas fa-user"></i> スタイルLv50ステ一覧</a></li><li class="menu-item"><a href="/knowledge.html"><i class="fas fa-book"></i> 豆知識</a></li></ul><ul class="bgcolor-brawn"><li class="menu-item"><a href="/home.html"><i class="fas fa-home"></i> ホーム</a></li><li class="menu-item"><a href="/party.html"><i class="fas fa-check-circle"></i> ステータス上限チェック</a></li><li class="menu-item"><a href="/mydata.html"><i class="fas fa-map-marked-alt"></i> マイデータ</a></li><li class="menu-item"><a href="/stylecheck.html"><i class="fas fa-tasks"></i> スタイル所持チェッカー</a></li><li class="menu-item"><a href="/damage.html"><i class="fas fa-calculator"></i> ダメージ計算</a></li><li class="menu-item"><form action="/search.html"><input type="text" name="q" class="input kadomaru" style="width:175px;height:100%;"><input type="submit" class="icon_btn_positive text-center text-nowrap fuchidori-white" style="display:inline-block;padding:0px;height:100%;font-size:0.9rem;width:70px;" value="検索"></form></li></ul></nav><div id="navArea" class=""><h-nav class="bg-simple"><div class="inner"><ul><li><a href="https://romasagatool.com/blog/" target="_blank"><i class="far fa-newspaper"></i> 攻略ブログ</a></li><li><form action="/search.html"><input type="text" name="q" class="input kadomaru" style="width:175px;height:100%;"><input type="submit" class="icon_btn_positive text-center text-nowrap fuchidori-white" style="display:inline-block;padding:0px;height:100%;width:70px;" value="検索"></form></li><li><input id="acd-check2" class="acd-check" type="checkbox" checked><label for="acd-check2" class="acd-label">人気のコンテンツ</label><div class="acd-content"><a href="/autodamage.html"><i class="fas fa-crown"></i> ダメージランキング</a><a href="/ourchar.html"><i class="fas fa-tasks"></i> 全スタイル ステータス上限一覧</a></div></li><li><input id="acd-checktool" class="acd-check" type="checkbox" checked><label for="acd-checktool" class="acd-label">便利ツール</label><div class="acd-content"><a href="/party.html"><i class="fas fa-check-circle"></i> ステータス上限チェック</a><a href="/armor.html"><i class="fas fa-shield-alt"></i> 防具自動選択ツール</a><a href="/stylecheck.html"><i class="fas fa-tasks"></i> スタイル所持チェッカー</a><a href="/damage.html"><i class="fas fa-calculator"></i> ダメージ計算</a></div></li><li><input id="acd-checklogin" class="acd-check" type="checkbox" checked><label for="acd-checklogin" class="acd-label">ログイン機能</label><div class="acd-content"><a href="/home.html"><i class="fas fa-home"></i> ホーム</a><a href="/mydata.html"><i class="fas fa-map-marked-alt"></i> マイデータ</a></div></li><li><input id="acd-check1" class="acd-check" type="checkbox" checked><label for="acd-check1" class="acd-label">スタイル情報</label><div class="acd-content"><a href="/style.html"><i class="fas fa-user"></i> 全スタイル情報 一覧</a><a href="/styleranking.html"><i class="fas fa-user-check"></i> スタイル 評価ランキング</a><a href="/buff_ranking.html"><i class="fas fa-hands-helping"></i> 火力サポートランキング</a><a href="/limitdata.html"><i class="fas fa-user"></i> スタイルLv50 ステータス一覧</a></div></li><li><a href="/soul_ability.html"><i class="fas fa-fire" style="color:plum;width:16px;"></i> 魂アビリティ 一覧</a></li><li><a href="/ability.html"><i class="fas fa-ring"></i> アビリティ 一覧</a></li><li><a href="/skill.html"><i class="fas fa-lightbulb"></i> 技・術 一覧</a></li><li><a href="https://romasagatool.com/blog/archives/12737" target="_new"><i class="fas fa-lightbulb"></i> 技・術練達のやり方とおすすめ一覧 </a></li><li><a href="/weapon.html"><i class="fas fa-shield-alt"></i> 武器・防具・装飾品 一覧</a></li><li><a href="/formation.html"><i class="fas fa-ellipsis-v"></i> 陣形 一覧</a></li><li><input id="acd-checkknowledge" class="acd-check" type="checkbox" checked><label for="acd-checkknowledge" class="acd-label">ゲームシステム解説</label><div class="acd-content"><a class="yubi" href="https://romasagatool.com/blog/archives/10179" target="_new">最強戦闘力のスタイルランキング</a><a class="yubi" href="https://romasagatool.com/blog/archives/10145" target="_new">戦闘力の上げ方</a><a class="yubi" href="https://romasagatool.com/blog/archives/8224" target="_new">最強の2属性攻撃の組み合わせ</a><a class="yubi" href="/knowledge.html?p=7">「術」と「属性」は別物</a><a class="yubi" href="/knowledge.html?p=0">ステータス上限について</a><a class="yubi" href="/knowledge.html?p=1">ステータス上昇率について</a><a class="yubi" href="/knowledge.html?p=11">HP上昇率ってどれぐらい？</a><a class="yubi" href="https://romasagatool.com/blog/archives/2687" target="_new">ステ上限がわかるエフェクトチェックのやり方</a><a class="yubi" href="/knowledge.html?p=2">ダメージ計算について</a><a class="yubi" href="https://romasagatool.com/blog/archives/17561">HP回復量は何に依存する？</a><a class="yubi" href="https://romasagatool.com/blog/archives/1665" target="_new">防具は何装備すれば良い？</a><a class="yubi" href="/knowledge.html?p=4">技・術の命中率</a><a class="yubi" href="/knowledge.html?p=6">技ランクで上がるダメージ量</a><a class="yubi" href="/knowledge.html?p=5">バフ・デバフの効果</a><a class="yubi" href="https://romasagatool.com/blog/archives/15562" target="_new">技ランクで効果が変わる技・術一覧</a><a class="yubi" href="/knowledge.html?p=10">陣形補正は何を参照する？</a><a class="yubi" href="/knowledge.html?p=12">連携/OD連携の行動順について</a><a class="yubi" href="/knowledge.html?p=9">裏道場などの「強さに合った敵」とは？</a><a class="yubi" href="/knowledge.html?p=3">聖石について</a><a class="yubi" href="/knowledge.html?p=8">用語集</a></div></li><li><a href="/login.html"><i class="fab fa-twitter"></i> ログイン <i class="fab fa-google"></i></a></li><li><a href="/site.html"><i class="fas fa-exclamation-triangle"></i> 利用規約・免責</a></li><li><a href="/kifu.html"><i class="fas fa-donate"></i> 支援について</a></li><li>　</li></ul><ul></ul><ul class="bgcolor-brawn"></ul></div></h-nav><div class="yubi toggle-btn toggle-btn-border"><span></span><span></span><span></span></div><div id="mask" class="yubi"></div></div></div><!--[--><div class="haikei"><div class="container"><h3 class="text-center title-text">スタイルオブザイヤー2023結果発表</h3><ins class="adsbygoogle" style="display:block;" data-ad-client="ca-pub-5008373409434899" data-ad-slot="8179245258" data-ad-format="auto" data-full-width-responsive="true"></ins><div class="label-text text-center">読み込み中...</div><div class="info-modal"><div class="text-center info-modal-header">スタイルオブイヤーとは</div><div class="width-100 text-center"> ロマサガRS便利ツールユーザにより、その年でいちばん活躍したスタイルを決める祭典です。<br> 「活躍」の定義は「高難度(討伐系）」「周回」「追憶の幻闘場」など様々です。<br> 評価はあくまで主観ですので、お気軽に。<br> 自分が活躍したと思えば活躍したのだ。<br><div class="width-100 text-center bg-item">2023年ルール</div> 2023年に実装されたSSスタイルが対象です（復刻は除く）<br><br><div class="width-100 text-center bg-item">SOY 2022</div><table class="bg-simple" style="width:100%;text-align:left;"><tbody><!--[--><tr><td><div class="rank-div"><div class="style-icon"><button class="style style_icon_bg_base IDadc16" data-id="IDadc16" data-rare data-type style="background:url(https://romasagatool.com/img/style_icon_bg/IDadc16.png) no-repeat;background-size:contain;"><span class="d-none icon_nocheck CHECK_COVER"></span></button></div><div style="line-height:1.2em;"><div><span class="rank">5</span>位 投票数:<span class="count">94</span>（<span class="per">41.4</span>%） </div><div><span class="name">アーニャ</span> <span class="anotherName">[光に導かれて]</span></div><div class="fz-12px"><span class="role">サポーター</span>: <span class="gacha">2022.05.31.3.5周年記念 Romancing祭 アーニャ編</span><div></div></div></div></div></td></tr><tr><td><div class="rank-div"><div class="style-icon"><button class="style style_icon_bg_base ID9725f" data-id="ID9725f" data-rare data-type style="background:url(https://romasagatool.com/img/style_icon_bg/ID9725f.png) no-repeat;background-size:contain;"><span class="d-none icon_nocheck CHECK_COVER"></span></button></div><div style="line-height:1.2em;"><div><span class="rank">4</span>位 投票数:<span class="count">112</span>（<span class="per">49.33</span>%） </div><div><span class="name">ヴァッハ神</span> <span class="anotherName">[精霊が集まってるよ]</span></div><div class="fz-12px"><span class="role">サポーター</span>: <span class="gacha">2022.01.27.祝！旧正月2022！！Romancing祭 ヴァッハ神編</span><div></div></div></div></div></td></tr><tr><td><div class="rank-div"><div class="style-icon"><button class="style style_icon_bg_base ID37fc3" data-id="ID37fc3" data-rare data-type style="background:url(https://romasagatool.com/img/style_icon_bg/ID37fc3.png) no-repeat;background-size:contain;"><span class="d-none icon_nocheck CHECK_COVER"></span></button></div><div style="line-height:1.2em;"><div><span class="rank">4</span>位 投票数:<span class="count">112</span>（<span class="per">49.33</span>%） </div><div><span class="name">ロックブーケ</span> <span class="anotherName">[いい加減、頭きたわ！]</span></div><div class="fz-12px"><span class="role">ジャマー</span>: <span class="gacha">2022.09.09.Romancing佐賀グランドツアー2022！Romancing祭 佐賀中部編</span><div></div></div></div></div></td></tr><tr><td><div class="rank-div"><div class="style-icon"><button class="style style_icon_bg_base ID39664" data-id="ID39664" data-rare data-type style="background:url(https://romasagatool.com/img/style_icon_bg/ID39664.png) no-repeat;background-size:contain;"><span class="d-none icon_nocheck CHECK_COVER"></span></button></div><div style="line-height:1.2em;"><div><span class="rank">3</span>位 投票数:<span class="count">125</span>（<span class="per">55.06</span>%） </div><div><span class="name">聖王</span> <span class="anotherName">[悪戦苦闘]</span></div><div class="fz-12px"><span class="role">ジャマー</span>: <span class="gacha">2022.02.08.ストロベリー・バレンティーナ！開催記念 Romancing祭 聖王編</span><div></div></div></div></div></td></tr><tr><td><div class="rank-div"><div class="style-icon"><button class="style style_icon_bg_base ID1af45" data-id="ID1af45" data-rare data-type style="background:url(https://romasagatool.com/img/style_icon_bg/ID1af45.png) no-repeat;background-size:contain;"><span class="d-none icon_nocheck CHECK_COVER"></span></button></div><div style="line-height:1.2em;"><div><span class="rank">2</span>位 投票数:<span class="count">130</span>（<span class="per">57.26</span>%） </div><div><span class="name">エスパーガール</span> <span class="anotherName">[一緒に乗ってく？]</span></div><div class="fz-12px"><span class="role">アタッカー</span>: <span class="gacha">2022.10.21.Halloween2022 Sa・Ga Romancing祭 エスパーガール編</span><div></div></div></div></div></td></tr><tr><td><div class="rank-div"><div class="style-icon"><button class="style style_icon_bg_base ID1d973" data-id="ID1d973" data-rare data-type style="background:url(https://romasagatool.com/img/style_icon_bg/ID1d973.png) no-repeat;background-size:contain;"><span class="d-none icon_nocheck CHECK_COVER"></span></button></div><div style="line-height:1.2em;"><div><span class="rank">1</span>位 投票数:<span class="count">136</span>（<span class="per">59.91</span>%） </div><div><span class="name">ふくめん</span> <span class="anotherName">[訳ありなんだ]</span></div><div class="fz-12px"><span class="role">ディフェンダー</span>: <span class="gacha">2022.01.24.サガ魂ガチャ クリームヒルト編</span><div></div></div></div></div></td></tr><!--]--></tbody></table><a class="shadow-black icon_btn_positive" href="https://romasagatool.com/blog/archives/26437">SOY 2022投票結果 詳細</a></div></div></div></div><!--]--><div class="opacity base-footer" id="FOOTER"><div class="row" style="margin-bottom:20px;"><div class="col-12 col-sm-6 col-md-4"><input id="acd-check2" class="acd-check" type="checkbox" checked><label for="acd-check2" class="acd-label">人気のコンテンツ</label><div class="acd-content"><a href="https://romasagatool.com/blog/" target="_blank"><i class="far fa-newspaper"></i> 攻略ブログ</a><br><a href="/autodamage.html"><i class="fas fa-crown"></i> ダメージランキング</a><br><a href="/ourchar.html"><i class="fas fa-tasks"></i> 全スタイル ステータス上限一覧</a><br><a href="/styleranking.html"><i class="fas fa-user-check"></i> スタイル 評価ランキング</a><br><a href="/buff_ranking.html"><i class="fas fa-hands-helping"></i> 火力サポートランキング</a><br></div></div><div class="col-12 col-sm-6 col-md-4"><input id="acd-checktool" class="acd-check" type="checkbox" checked><label for="acd-checktool" class="acd-label">便利ツール</label><div class="acd-content"><a href="/party.html"><i class="fas fa-check-circle"></i> ステータス上限チェック</a><br><a href="/stylecheck.html"><i class="fas fa-tasks"></i> スタイル所持チェッカー</a><br><a href="/damage.html"><i class="fas fa-calculator"></i> ダメージ計算</a><br></div></div><div class="col-12 col-sm-6 col-md-4"><input id="acd-check1" class="acd-check" type="checkbox" checked><label for="acd-check1" class="acd-label">スタイル・装備 情報</label><div class="acd-content"><a href="/style.html"><i class="fas fa-user"></i> 全スタイル情報 一覧</a><br><a href="/limitdata.html"><i class="fas fa-user"></i> スタイルLv50 ステータス一覧</a><br><a href="/skill.html"><i class="fas fa-lightbulb"></i> 技・術 一覧</a><br> ・<a class="yubi" href="/knowledge.html?p=4">技・術の命中率について</a><br> ・<a class="yubi" href="/knowledge.html?p=7">「術」と「属性」は別物</a><br> ・<a class="yubi" href="/knowledge.html?p=6">技ランクで上がるダメージ量</a><br> ・<a class="yubi" href="https://romasagatool.com/blog/archives/15562" target="_new">技ランクで効果が変わる技・術一覧</a><br> ・<a class="yubi" href="https://romasagatool.com/blog/archives/8224" target="_new">最強の2属性攻撃</a><br> ・<a class="yubi" href="/knowledge.html?p=5">バフ・デバフについて</a><br> ・<a href="https://romasagatool.com/blog/archives/12737" target="_new">技・術練達のやり方とおすすめ一覧 </a><br><a href="/ability.html"><i class="fas fa-ring"></i> アビリティ 一覧</a><br><a href="/weapon.html"><i class="fas fa-shield-alt"></i> 武器・防具・装飾品 一覧</a><br> ・<a class="yubi" href="https://romasagatool.com/blog/archives/1665" target="_new">防具は何装備すれば良い？</a><br></div></div><div class="col-12 col-sm-6 col-md-4"><input id="acd-checkknowledge" class="acd-check" type="checkbox" checked><label for="acd-checkknowledge" class="acd-label">戦闘力 / ステータス</label><div class="acd-content"><a class="yubi" href="https://romasagatool.com/blog/archives/10179" target="_new">最強戦闘力のスタイルランキング</a><br><a class="yubi" href="https://romasagatool.com/blog/archives/10145" target="_new">戦闘力の上げ方</a><br><a class="yubi" href="/knowledge.html?p=0">ステータス上限について</a><br><a class="yubi" href="/knowledge.html?p=1">ステータス上昇率について</a><br><a class="yubi" href="/knowledge.html?p=11">HP上昇率ってどれぐらい？</a><br><a class="yubi" href="https://romasagatool.com/blog/archives/2687" target="_new">ステ上限の調べ方</a><br><a class="yubi" href="/knowledge.html?p=10">陣形補正は何を参照する？</a><br><a class="yubi" href="/knowledge.html?p=12">連携/OD連携の行動順について</a><br></div></div><div class="col-12 col-sm-6 col-md-4"><input id="acd-checkknowledge2" class="acd-check" type="checkbox" checked><label for="acd-checkknowledge2" class="acd-label">その他</label><div class="acd-content"><a class="yubi" href="/knowledge.html?p=2">ダメージ計算について</a><br><a class="yubi" href="https://romasagatool.com/blog/archives/17561">HP回復量は何に依存する？</a><br><a class="yubi" href="https://romasagatool.com/blog/archives/14665" target="_new">錬成武器のアビリティ解説</a><br><a class="yubi" href="https://romasagatool.com/blog/archives/15180" target="_new">錬成武器は何%でSS武器を超える？</a><br><a class="yubi" href="https://romasagatool.com/blog/archives/14688" target="_new">錬成武器は多段攻撃と高威力技どっちが強い？</a><br><a class="yubi" href="/knowledge.html?p=9">裏道場などの「強さに合った敵」とは？</a><br><a class="yubi" href="/knowledge.html?p=3">聖石について</a><br><a class="yubi" href="/knowledge.html?p=8">用語集</a><br></div></div></div><br> Powered by <a href="https://twitter.com/nao_romasaga_rs" target="new">nao_romasaga_rs</a><br><small>当サイトは趣味で運営してる非公式のゲーム攻略サイトです。各社の協力や要請の元作成されたものではありません。</small><br><a href="https://www.jp.square-enix.com/saga_reuniverse/">SQUARE ENIX</a> <a href="https://aktsk.jp/">アカツキ</a><br><a href="http://junglesurvey.web.fc2.com/" target="new">密林調査記録</a> , <a href="https://docs.google.com/spreadsheets/d/1-7VaZCUjcyOBYexa_nQ_yidzupaIhcn523EkBW2jrFU/edit#gid=0" target="new">ロマサガRS調査</a> , <a href="https://foollovers.com/" target="new">FOOL LOVERS</a> , Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a><br> Special thanks :<small>各種データ調査を参考にさせて頂いております<br><a href="https://twitter.com/YamadaMeganeOre" target="new">山田メガネ</a> , <a href="https://twitter.com/chin_ohnck" target="new">ちん</a> , <a href="https://twitter.com/HarMakeIt" target="new">春巻</a> , <a href="https://twitter.com/littleblackbee1" target="new">小黒 蜂一</a> , <a href="https://twitter.com/mamu_romasaga" target="new">まむ</a> , <a href="https://twitter.com/eringi_pff" target="new">エリンギ</a> , <a href="https://twitter.com/NEIGEtan" target="new">ねいじゅ</a> , <a href="https://twitter.com/RSR60979033" target="new">まどい＿RSR</a> , <a href="https://twitter.com/ruchigame" target="new">ruchi</a> , <a href="https://twitter.com/imonoki" target="new">imonoki</a></small><br> © 2019 SQUARE ENIX CO., LTD. All Rights Reserved. Powered by Akatsuki Inc.<br> ILLUSTRATION: TOMOMI KOBAYASHI <span class="char-utau footer-liz dot dot_mid dot_liz"></span><div class="row text-right" style="width:100%;" id="DOT_FOOTER"><div class="col-1 offset-11"><span class="char-utau footer-liz dot dot_mid" style=""></span></div></div></div><div id="OVERLAY" class="popup-overlay d-none"><div id="OVERLAY_AREA" class="popup-animation-out info-modal mini-popup-text-info popup-animation" style="top:1000px;"><div id="OVERLAY_TILE" class="text-center info-modal-header"><!--[--><!--]--></div><div id="OVERLAY_BODY" class="width-100 bg-simple small" style="height:75%;padding:15px;overflow:scroll;"><!----></div><!----><div class="width-100 text-center"><button id="OVERLAY_CLOSE" class="icon_btn_negative">閉じる</button></div></div></div></div></div><div id="teleports"></div><script>window.__NUXT__={};window.__NUXT__.config={public:{},app:{baseURL:"/",buildId:"88e462fe-a6cc-42ab-8b47-77eba0124d1b",buildAssetsDir:"/_nuxt/",cdnURL:""}}</script>
+<script type="application/json" data-nuxt-data="nuxt-app" data-ssr="true" id="__NUXT_DATA__">[["ShallowReactive",1],{"prerenderedAt":2,"data":3,"state":5,"once":8,"_errors":9,"serverRendered":11,"path":12},1784470924667,["ShallowReactive",4],{},["Reactive",6],{"$slogin-card-active":7},false,["Set"],["ShallowReactive",10],{},true,"\u002Fstylevote.html"]</script></body></html>
