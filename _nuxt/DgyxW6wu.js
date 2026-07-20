@@ -1,1 +1,0 @@
-import{a0 as n,a1 as s,a2 as r,a3 as u,a4 as o}from"./mtROsm4x.js";function i(e){const t=e||s();return t?.ssrContext?.head||t?.runWithContext(()=>{if(r())return u(o)})}function x(e,t={}){const a=i(t.nuxt);if(a)return n(e,{head:a,...t})}export{x as u};
