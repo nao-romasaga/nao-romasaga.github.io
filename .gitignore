@@ -12,7 +12,16 @@ img/icon/icon_S.png
 .history/
 js/event_*.json
 img/
-test/
+# hygiene changeset item7(2026-07-27): 旧`test/`(ディレクトリ全体を無視)は、
+# test/*.cjs の golden/harvest テスト群(battle_golden.compare.cjs, iryoku_*.test.cjs,
+# okimono_*.test.cjs, style_cards.test.cjs等)がすべて`git add -f`で強制トラックされている
+# 実態と食い違っていた(=新規追加時に毎回-fが要る紛らわしい状態)。test/配下で実際に
+# 追跡不要なのは、この一時npm環境(test/package-lock.json。test/node_modules/は下の
+# 全体node_modules/ルールで既にカバー済み)と、単発の使い捨てスクリプト2本のみなので、
+# それだけをピンポイントで無視する
+test/package-lock.json
+test/raid_engine_test.js
+test/test.js
 examples/
 node_modules/
 
