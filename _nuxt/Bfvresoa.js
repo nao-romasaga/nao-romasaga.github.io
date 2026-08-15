@@ -1,0 +1,1 @@
+import{a as n}from"./CJqwsD_S.js";const r=n("/api/community_stats.php");function a(t,e){return $fetch(r,{params:{target:t,...e},cache:"no-cache"})}function o(){return a("home_data")}function i(){return a("rank_list")}function f(t){return a("home_rankdetail",t?{charId:t}:void 0)}function u(t){return a("ourchar_detail",t?{charId:t}:void 0)}export{f as a,i as b,u as c,o as f};

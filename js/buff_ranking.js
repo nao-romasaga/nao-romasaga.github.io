@@ -201,7 +201,7 @@ function factorSummary(breakdown, styleInfo = null) {
         if (k.includes('エクストラフォース')) {
             push(applicable, `${k.replace('エクストラフォース', 'Ex')}×${(1 + d[k]).toFixed(2)}`);
         } else {
-            push(applicable, `${k}+${d[k]}%`);
+            push(applicable, `${k}${signedPct(d[k])}`);
         }
     }
     const buffSrc = (breakdown && breakdown.buff) ? breakdown.buff : {};
@@ -210,7 +210,7 @@ function factorSummary(breakdown, styleInfo = null) {
         for (const p in buffSrc[tm]) byParam[p] = (byParam[p] ?? 0) + buffSrc[tm][p];
     }
     const buffVals = Object.values(byParam);
-    if (buffVals.length) active.push(`ステ+${Math.max(...buffVals)}%`);
+    if (buffVals.length) active.push(`ステ${signedPct(Math.max(...buffVals))}`);
 
     // ステデバフ: 静的分 + 敵付与マーカーの被弾発動分
     const marker = styleInfo ? computeMarkerBonus(styleInfo) : { defDown: 0, stat: {}, procs: 0 };
@@ -256,7 +256,7 @@ function addRankRow(styleInfo, row, rankNo, maxRate) {
             <div class="rank-main">
                 <div class="rank-name-line">
                     <span class="rank-name">${styleInfo['Name']} ${styleInfo['AnotherName'] ?? ''}</span>
-                    <span class="rank-rate">+${incPct.toFixed(1)}%</span>
+                    <span class="rank-rate">${signedPct(incPct, 1)}</span>
                 </div>
                 <div class="rank-bar-wrap"><div class="rank-bar" style="width:${barPct}%"></div></div>
                 <div class="rank-factors">${factors}</div>
@@ -416,7 +416,7 @@ function buildRankDetailHTML(styleInfo, rate = 0, breakdown = null, damage = nul
         <div class="dtl-title">
             <div class="dtl-name">${styleInfo['Name']} <span class="dtl-another">${styleInfo['AnotherName'] ?? ''}</span></div>
             <div class="dtl-rates">
-                与ダメ増加率 <span class="fuchidori-blue dtl-rate-big">+${incPct.toFixed(1)}%</span>
+                与ダメ増加率 <span class="fuchidori-blue dtl-rate-big">${signedPct(incPct, 1)}</span>
                 ${damage ? `　実ダメージ <span class="fuchidori-blue">${Math.round(damage).toLocaleString()}</span>` : ''}
             </div>
         </div>
