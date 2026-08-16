@@ -72,7 +72,49 @@
             <h3 class="text-center label-text-small width-100">火力サポートランキング</h3>
             <span class="title-text d-none"></span>
 
-            <!-- ① アタッカー選択パネル (グラフィカル) -->
+            <!-- ① 敵設定。アタッカーを選ぶ前に決めたいので最上部に置く（2026-08-16）。
+                 以前は BASE_DAMAGE_AREA の中にあり、アタッカーと技を選ぶまで d-none で
+                 隠れていたため、先に敵を指定できなかった。 -->
+            <section class="bg-simple width-max enemy-config" style="margin:0 0 8px;">
+                <div class="name-label text-center" style="margin-bottom:6px;">敵設定</div>
+                <!-- 行構成は固定（2026-08-17 ユーザー指定）:
+                     敵の数 / 体力・精神 / 耐性(4+4のグリッド)。
+                     flex の成り行き折り返しだと「陰」だけ次の行に落ちる等、情報の切れ目と
+                     折り返しが一致せず読みにくかった。 -->
+                <div class="enemy-config-body">
+                    <div class="ec-row">
+                        <label>敵の数 <input type="number" id="E_COUNT" value="1" min="1" max="7"></label>
+                        <label>OD攻撃 <input type="checkbox" id="isOD"></label>
+                    </div>
+                    <div class="ec-row">
+                        <label>体力 <input type="number" id="E_VIT" value="2100"></label>
+                        <label>精神 <input type="number" id="E_MND" value="2100"></label>
+                    </div>
+                </div>
+                <div class="enemy-resist">
+                    <div class="ec-resist-label">耐性:</div>
+                    <div class="ec-resist-grid">
+                        <span data-attr="斬">斬<input type="number" class="E_RESIST" data-attr="斬" value="-35"></span>
+                        <span data-attr="打">打<input type="number" class="E_RESIST" data-attr="打" value="-35"></span>
+                        <span data-attr="突">突<input type="number" class="E_RESIST" data-attr="突" value="-35"></span>
+                        <span data-attr="熱">熱<input type="number" class="E_RESIST" data-attr="熱" value="-35"></span>
+                        <span data-attr="冷">冷<input type="number" class="E_RESIST" data-attr="冷" value="-35"></span>
+                        <span data-attr="雷">雷<input type="number" class="E_RESIST" data-attr="雷" value="-35"></span>
+                        <span data-attr="陽">陽<input type="number" class="E_RESIST" data-attr="陽" value="-35"></span>
+                        <span data-attr="陰">陰<input type="number" class="E_RESIST" data-attr="陰" value="-35"></span>
+                    </div>
+                </div>
+                <div class="text-center" style="margin-top:8px;">
+                    <button type="button" id="ENEMY_APPLY" class="icon_btn_off yubi">反映してランキング再計算</button>
+                </div>
+            </section>
+
+            <!-- 選択結果表示エリア -->
+            <div class="bg-item text-center" style="padding:8px; margin:8px 0;">
+                <div class="fuchidori-white" id="OKI_SELECTED">アタッカーと技を選択してください</div>
+            </div>
+
+            <!-- ② アタッカー選択パネル (グラフィカル) -->
             <div class="filter-bgcolor text-center small row" style="width:100%; margin: 0px 0px 8px;">
                 <ul class="nav text-center width-100" style="margin-bottom: 5px;">
                     <li id="FILTER" class="subtitle fuchidori-white smallFont">武器種別</li>
@@ -253,11 +295,6 @@
                 </section>
             </div>
 
-            <!-- 選択結果表示エリア -->
-            <div class="bg-item text-center" style="padding:8px; margin:8px 0;">
-                <div class="fuchidori-white" id="OKI_SELECTED">アタッカーと技を選択してください</div>
-            </div>
-
             <!-- スタイル・技・アビ選択（style.html の bg-simple セクション調） -->
             <div id="OKI_SELECT_AREA" class="d-none">
                 <section class="bg-simple width-max" style="margin-bottom:10px;">
@@ -271,103 +308,6 @@
                 </section>
             </div>
 
-            <div class="filter-bgcolor text-center small row" style="width:100%; margin: 20px 0px;">
-                <ul class="nav text-center width-100 " style="margin-bottom: 5px;">
-                    <li class="subtitle-long fuchidori-white smallFont">武器種別</li>
-                </ul>
-                <ul class="nav text-center width-100  fuchidori-white" style="line-height: 14px;">
-                    <li class="col-2 col-sm-1 xs-pad0"><div class="filterWeapon weapon-icon-button yubi pad0" data-weapon="剣" data-target="Weapon"><span
-                                class="icon_mini icon_ken  fButton" onclick=""></span></div></li>
-                    <li class="col-2 col-sm-1 xs-pad0"><div class="filterWeapon weapon-icon-button yubi pad0" data-weapon="大剣" data-target="Weapon"><span
-                                class="icon_mini icon_dken  fButton" onclick=""></span></div></li>
-                    <li class="col-2 col-sm-1 xs-pad0"><div class="filterWeapon weapon-icon-button yubi pad0" data-weapon="斧" data-target="Weapon"><span
-                                class="icon_mini icon_ono  fButton" onclick=""></span></div></li>
-                    <li class="col-2 col-sm-1 xs-pad0"><div class="filterWeapon weapon-icon-button yubi pad0" data-weapon="棍棒" data-target="Weapon"><span
-                                class="icon_mini icon_kon  fButton" onclick=""></span></div></li>
-                    <li class="col-2 col-sm-1 xs-pad0"><div class="filterWeapon weapon-icon-button yubi pad0" data-weapon="体術" data-target="Weapon"><span
-                                class="icon_mini icon_tai  fButton" onclick=""></span></div></li>
-                    <li class="col-2 col-sm-1 xs-pad0"><div class="filterWeapon weapon-icon-button yubi pad0" data-weapon="銃" data-target="Weapon"><span
-                                class="icon_mini icon_ju  fButton" onclick=""></span></div></li>
-                    <li class="col-2 col-sm-1 xs-pad0"><div class="filterWeapon weapon-icon-button yubi pad0" data-weapon="小剣" data-target="Weapon"><span
-                                class="icon_mini icon_sken  fButton" onclick=""></span></div></li>
-                    <li class="col-2 col-sm-1 xs-pad0"><div class="filterWeapon weapon-icon-button yubi pad0" data-weapon="槍" data-target="Weapon"><span
-                                class="icon_mini icon_yari  fButton" onclick=""></span></div></li>
-                    <li class="col-2 col-sm-1 xs-pad0"><div class="filterWeapon weapon-icon-button yubi pad0" data-weapon="弓" data-target="Weapon"><span
-                                class="icon_mini icon_yumi  fButton" onclick=""></span></div></li>
-                    <li class="col-2 col-sm-1 xs-pad0"><div class="filterWeapon weapon-icon-button yubi pad0" data-weapon="杖" data-target="Weapon"><span
-                                class="icon_mini icon_tsue  fButton" onclick=""></span></div></li>
-                </ul>                
-
-                <ul class="nav text-center width-100 ">
-                    <li class="subtitle-long fuchidori-white smallFont" style="margin-bottom: 15px;">攻撃属性</li>
-                </ul>
-                <ul class="nav text-center width-100  fuchidori-white" style="line-height: 16px; margin-bottom: 5px;">
-                    <li class="col-2 col-sm-1 xs-pad0"><div class="filterAttr pad0 yubi weapon-icon-button" data-attr="斬" data-target="Type">
-                        <span class="icon_mini_zokusei icon_zan"></span></div></li>
-                    <li class="col-2 col-sm-1 xs-pad0"><div class="filterAttr pad0 yubi weapon-icon-button" data-attr="打" data-target="Type">
-                        <span class="icon_mini_zokusei icon_da"></span></div></li>
-                    <li class="col-2 col-sm-1 xs-pad0"><div class="filterAttr pad0 yubi weapon-icon-button" data-attr="突" data-target="Type">
-                        <span class="icon_mini_zokusei icon_totsu"></span></div></li>
-                    <li class="col-2 col-sm-1 xs-pad0"><div class="filterAttr pad0 yubi weapon-icon-button" data-attr="熱" data-target="Type">
-                        <span class="icon_mini_zokusei icon_netsu"></span></div></li>
-                    <li class="col-2 col-sm-1 xs-pad0"><div class="filterAttr pad0 yubi weapon-icon-button" data-attr="冷" data-target="Type">
-                        <span class="icon_mini_zokusei icon_rei"></span></div></li>
-                    <li class="col-2 col-sm-1 xs-pad0"><div class="filterAttr pad0 yubi weapon-icon-button" data-attr="雷" data-target="Type">
-                        <span class="icon_mini_zokusei icon_rai"></span></div></li>
-                    <li class="col-2 col-sm-1 xs-pad0"><div class="filterAttr pad0 yubi weapon-icon-button" data-attr="陽" data-target="Type">
-                        <span class="icon_mini_zokusei icon_yo"></span></div></li>
-                    <li class="col-2 col-sm-1 xs-pad0"><div class="filterAttr pad0 yubi weapon-icon-button" data-attr="陰" data-target="Type">
-                        <span class="icon_mini_zokusei icon_in"></span></div></li>
-                </ul>
-                <ul class="nav text-center width-100 " style="margin-bottom: 5px;">
-                    <li class="subtitle-long fuchidori-white smallFont">オプション</li>
-                </ul>
-                <div class="d-flex text-center width-100 ">
-                    <div class="area-button"><div class="filterRange yubi pad0"
-                        data-href="単体攻撃" ><div class="fButton text-center width-100 filter-bgcolor">単体</div></div></div>
-                    <div class="area-button"><div class="filterRange yubi pad0"
-                        data-href="全体攻撃" ><div class="fButton text-center width-100 filter-bgcolor">全体</div></div></div>
-                    <div class="area-button"><div class="filterRange yubi pad0"
-                        data-href="縦攻撃,横攻撃,範囲攻撃" ><div class="fButton text-center width-100 filter-bgcolor">縦/横</div></div></div>
-                </div>
-                <div class="d-flex text-center width-100 ">
-                    <div class="area-button"><div class="filterRange yubi pad0"
-                        data-href="直接攻撃" ><div class="fButton text-center width-100 filter-bgcolor">直接</div></div></div>
-                    <div class="area-button"><div class="filterRange yubi pad0"
-                        data-href="間接攻撃" ><div class="fButton text-center width-100 filter-bgcolor">間接</div></div></div>                        
-                </div>
-                <div class="d-flex text-center width-100 ">
-                    <div class="area-button"><div class="filterRange yubi pad0"
-                        data-href="技攻撃" ><div class="fButton text-center width-100 filter-bgcolor">技</div></div></div>
-                    <div class="area-button"><div class="filterRange yubi pad0"
-                        data-href="術攻撃" ><div class="fButton text-center width-100 filter-bgcolor">術</div></div></div>
-                </div>
-                <div class="d-flex text-center width-100 ">
-                    <div class="area-button"><div class="filterRange yubi pad0"
-                        data-href="Weak攻撃" ><div class="fButton text-center width-100 filter-bgcolor">Weak</div></div></div>
-                    <div class="area-button"><div class="filterRange yubi pad0"
-                        data-href="HP満タン時" ><div class="fButton text-center width-100 filter-bgcolor">HP満タン</div></div></div>
-                    <div class="area-button"><div class="filterRange yubi pad0"
-                        data-href="OD攻撃" ><div class="fButton text-center width-100 filter-bgcolor">OD</div></div></div>
-                </div>
-                <div class="d-flex text-center width-100 ">
-                    <div class="area-button"><div class="filterRange yubi pad0"
-                        data-href="男性" ><div class="fButton text-center width-100 filter-bgcolor">男性</div></div></div>
-                    <div class="area-button"><div class="filterRange yubi pad0"
-                        data-href="女性" ><div class="fButton text-center width-100 filter-bgcolor">女性</div></div></div>
-                    <div class="area-button"><div class="filterRange yubi pad0"
-                        data-href="不明" ><div class="fButton text-center width-100 filter-bgcolor">不明</div></div></div>
-                </div>                
-                <ul class="nav text-center width-100 " style="margin-bottom: 5px;">
-                    <li class="subtitle-long fuchidori-white smallFont">スタイル所持チェッカー連動</li>
-                </ul>
-                <ul class="nav text-center width-100  fuchidori-white" style="line-height: 14px;">                
-                    <div class="area-button"><div class="styleChecker yubi pad0"><div class="fButton text-center width-100 filter-bgcolor">ON</div></div></div>
-                </ul>
-                <div style="color: #faf0b4">
-                    <a class="fuchidori-blue" href="stylecheck.html">スタイル所持チェッカー</a>で登録したスタイルのみを表示します
-                </div>
-            </div>
 
             <div id="BASE_DAMAGE_AREA" class="d-none">
                 <section class="bg-simple width-max" style="margin:8px 0;">
@@ -383,31 +323,85 @@
                     <div id="BASE_HITS" class="d-none"></div>
                     <div class="bd-note">値を変更すると基本値が即座に再計算されます（検証用）</div>
                 </section>
-
-                <section class="bg-simple width-max enemy-config" style="margin:8px 0;">
-                    <div class="name-label text-center" style="margin-bottom:6px;">敵設定</div>
-                    <div class="enemy-config-body">
-                        <label>敵の数 <input type="number" id="E_COUNT" value="1" min="1" max="7"></label>
-                        <label>敵VIT <input type="number" id="E_VIT" value="1000"></label>
-                        <label>敵MND <input type="number" id="E_MND" value="1000"></label>
-                        <label>OD攻撃 <input type="checkbox" id="isOD"></label>
-                    </div>
-                    <div class="enemy-resist">
-                        耐性:
-                        <span data-attr="斬">斬<input type="number" class="E_RESIST" data-attr="斬" value="0"></span>
-                        <span data-attr="打">打<input type="number" class="E_RESIST" data-attr="打" value="0"></span>
-                        <span data-attr="突">突<input type="number" class="E_RESIST" data-attr="突" value="0"></span>
-                        <span data-attr="熱">熱<input type="number" class="E_RESIST" data-attr="熱" value="0"></span>
-                        <span data-attr="冷">冷<input type="number" class="E_RESIST" data-attr="冷" value="0"></span>
-                        <span data-attr="雷">雷<input type="number" class="E_RESIST" data-attr="雷" value="0"></span>
-                        <span data-attr="陽">陽<input type="number" class="E_RESIST" data-attr="陽" value="0"></span>
-                        <span data-attr="陰">陰<input type="number" class="E_RESIST" data-attr="陰" value="0"></span>
-                    </div>
-                    <div class="text-center" style="margin-top:8px;">
-                        <button type="button" id="ENEMY_APPLY" class="icon_btn_off yubi">反映してランキング再計算</button>
-                    </div>
-                </section>
             </div>
+
+
+            <!-- サポート（置物）スタイルの絞り込み。アタッカーの絞り込みではないので、
+                 ランキングの直前・基本値の下に置いてラベルで明示する（2026-08-16）。
+                 アタッカーが決まるまでは絞り込む対象が無いので d-none で隠す（renderRanking が外す）。 -->
+            <section id="SUPPORT_FILTER_AREA" class="bg-simple width-max support-filter d-none" style="margin:8px 0;">
+                <div class="name-label text-center" style="margin-bottom:6px;">サポートスタイルの絞り込み</div>
+                <div class="support-filter-note">下のランキングに出す<strong>サポート側</strong>のスタイルを絞り込みます（アタッカーには影響しません）</div>
+                <div class="filter-bgcolor text-center small row" style="width:100%; margin: 6px 0 0;">
+                    <ul class="nav text-center width-100" style="margin-bottom: 5px;">
+                        <li class="subtitle fuchidori-white smallFont">武器種</li>
+                    </ul>
+                    <ul class="nav text-center width-100">
+                    <li class="col-2 col-sm-1 xs-pad0"><div class="filterWeapon pad0 yubi" data-weapon="剣"><span
+                                class="icon_mini icon_ken weapon-icon-button fButton"></span></div></li>
+                    <li class="col-2 col-sm-1 xs-pad0"><div class="filterWeapon pad0 yubi" data-weapon="大剣"><span
+                                class="icon_mini icon_dken weapon-icon-button fButton"></span></div></li>
+                    <li class="col-2 col-sm-1 xs-pad0"><div class="filterWeapon pad0 yubi" data-weapon="斧"><span
+                                class="icon_mini icon_ono weapon-icon-button fButton"></span></div></li>
+                    <li class="col-2 col-sm-1 xs-pad0"><div class="filterWeapon pad0 yubi" data-weapon="棍棒"><span
+                                class="icon_mini icon_kon weapon-icon-button fButton"></span></div></li>
+                    <li class="col-2 col-sm-1 xs-pad0"><div class="filterWeapon pad0 yubi" data-weapon="体術"><span
+                                class="icon_mini icon_tai weapon-icon-button fButton"></span></div></li>
+                    <li class="col-2 col-sm-1 xs-pad0"><div class="filterWeapon pad0 yubi" data-weapon="銃"><span
+                                class="icon_mini icon_ju weapon-icon-button fButton"></span></div></li>
+                    <li class="col-2 col-sm-1 xs-pad0"><div class="filterWeapon pad0 yubi" data-weapon="小剣"><span
+                                class="icon_mini icon_sken weapon-icon-button fButton"></span></div></li>
+                    <li class="col-2 col-sm-1 xs-pad0"><div class="filterWeapon pad0 yubi" data-weapon="槍"><span
+                                class="icon_mini icon_yari weapon-icon-button fButton"></span></div></li>
+                    <li class="col-2 col-sm-1 xs-pad0"><div class="filterWeapon pad0 yubi" data-weapon="弓"><span
+                                class="icon_mini icon_yumi weapon-icon-button fButton"></span></div></li>
+                    <li class="col-2 col-sm-1 xs-pad0"><div class="filterWeapon pad0 yubi" data-weapon="杖"><span
+                                class="icon_mini icon_tsue weapon-icon-button fButton"></span></div></li>
+                    </ul>
+
+                    <ul class="nav text-center width-100" style="margin-bottom: 5px;">
+                        <li class="subtitle fuchidori-white smallFont">シリーズ</li>
+                    </ul>
+                    <ul class="nav text-center width-100">
+                    <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><div class="filterSeries pad0 yubi"
+                        data-series="RS1"><div class="fButton width-100 filter-bgcolor">RS1</div></div></li>
+                    <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><div class="filterSeries pad0 yubi"
+                        data-series="RS2"><div class="fButton width-100 filter-bgcolor">RS2</div></div></li>
+                    <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><div class="filterSeries pad0 yubi"
+                        data-series="RS3"><div class="fButton width-100 filter-bgcolor">RS3</div></div></li>
+                    <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><div class="filterSeries pad0 yubi"
+                        data-series="SF1"><div class="fButton width-100 filter-bgcolor">SF1</div></div></li>
+                    <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><div class="filterSeries pad0 yubi"
+                        data-series="SF2"><div class="fButton width-100 filter-bgcolor">SF2</div></div></li>
+                    <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><div class="filterSeries pad0 yubi"
+                        data-series="US"><div class="fButton width-100 filter-bgcolor">US</div></div></li>
+                    <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><div class="filterSeries pad0 yubi"
+                        data-series="ES"><div class="fButton width-100 filter-bgcolor">ES</div></div></li>
+                    <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><div class="filterSeries pad0 yubi"
+                        data-series="IS"><div class="fButton width-100 filter-bgcolor">IS</div></div></li>
+                    <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><div class="filterSeries pad0 yubi"
+                        data-series="SSG"><div class="fButton width-100 filter-bgcolor">SSG</div></div></li>
+                    <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><div class="filterSeries pad0 yubi"
+                        data-series="SEB"><div class="fButton width-100 filter-bgcolor">SaGaEB</div></div></li>
+                    <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><div class="filterSeries pad0 yubi"
+                        data-series="RSR"><div class="fButton width-100 filter-bgcolor">SaGaRS</div></div></li>
+                    <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><div class="filterSeries pad0 yubi"
+                        data-series="GB"><div class="fButton width-100 filter-bgcolor">GB</div></div></li>
+                    <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><div class="filterSeries pad0 yubi"
+                        data-series="OTR"><div class="fButton width-100 filter-bgcolor">その他</div></div></li>
+                    </ul>
+
+                    <ul class="nav text-center width-100" style="margin-bottom: 5px;">
+                        <li class="subtitle fuchidori-white smallFont">スタイル所持チェッカー連動</li>
+                    </ul>
+                    <ul class="nav text-center width-100 fuchidori-white" style="line-height: 14px;">
+                        <div class="area-button"><div class="styleChecker yubi pad0"><div class="fButton text-center width-100 filter-bgcolor">ON</div></div></div>
+                    </ul>
+                    <div style="color: #faf0b4">
+                        <a class="fuchidori-blue" href="stylecheck.html">スタイル所持チェッカー</a>で登録したスタイルのみを表示します
+                    </div>
+                </div>
+            </section>
 
             <div id="RANKING_AREA"></div>
 
@@ -447,13 +441,80 @@
                     cursor: pointer;
                     transition: box-shadow 0.15s, border-color 0.15s;
                 }
+                /* 選択中は「見て一発で分かる」強調にする。枠線＋淡い影だけでは弱かった
+                   （2026-08-16 ユーザー指摘）。背景を明るく振り、名前の前に「選択中」を出す。 */
                 .okimono-skill-card.skill-selected {
-                    border: 2px solid gold;
-                    box-shadow: 0 0 8px 2px rgba(255,215,0,0.6);
+                    border: 2px solid #ffd700;
+                    box-shadow: 0 0 0 2px rgba(255,215,0,0.35), 0 0 16px 4px rgba(255,215,0,0.5);
+                    background: linear-gradient(to left,
+                        rgba(74,48,12,1),
+                        rgba(104,72,20,1) 10%,
+                        rgba(146,108,32,1) 50%,
+                        rgba(104,72,20,1) 90%,
+                        rgba(74,48,12,1));
                 }
+                .okimono-skill-card.skill-selected .skill-name::before {
+                    content: "選択中";
+                    display: inline-block;
+                    background: #ffd700;
+                    color: #3a2408;
+                    font-size: 11px;
+                    font-weight: bold;
+                    line-height: 1;
+                    padding: 3px 6px;
+                    border-radius: 4px;
+                    margin-right: 6px;
+                    vertical-align: middle;
+                }
+                .okimono-skill-card.skill-selected .skill-name,
+                .okimono-skill-card.skill-selected .skill-bp { color: #fff6cf; }
                 .okimono-skill-card:hover {
                     border-color: rgba(255,215,0,0.5);
                 }
+
+                /* アイコン列が広がって技名が中央寄りに見えていたので、
+                   アイコン列を内容幅に潰して技名列に残りを持たせる（2026-08-16） */
+                .okimono-skill-card .weaponIconTd {
+                    width: 1%;
+                    white-space: nowrap;
+                    text-align: left;
+                    padding-left: 2px;
+                }
+                .okimono-skill-card .skill-name-cell { width: 100%; }
+
+                /* ===== サポートスタイルの絞り込み ===== */
+                .support-filter-note {
+                    color: #c5bb93;
+                    font-size: 0.75rem;
+                    text-align: center;
+                    line-height: 1.1rem;
+                }
+                .support-filter-note strong { color: #faf0b4; }
+
+                /* ===== アビリティ行（既定は畳む） ===== */
+                .okimono-ability-row .ab-head { cursor: pointer; }
+                .okimono-ability-row .ab-toggle {
+                    color: #c5bb93; font-size: 11px; width: 1em; display: inline-block;
+                    transform: rotate(90deg); transition: transform 0.12s;
+                }
+                .okimono-ability-row.ab-collapsed .ab-toggle { transform: rotate(0deg); }
+                .okimono-ability-row.ab-collapsed .ab-flover { display: none; }
+                .okimono-ability-row .ab-head { margin-bottom: 5px; }
+                .okimono-ability-row.ab-collapsed .ab-head { margin-bottom: 0; }
+
+                /* 構造化された効果（[トリガー] 効果）。フレーバーの言い換えなので、
+                   同じ見た目だと二重に読まされる。小さく・寒色寄りにして区別する。 */
+                .ab-attr-list {
+                    margin-top: 4px;
+                    padding-left: 8px;
+                    border-left: 2px solid rgba(125,180,220,0.45);
+                }
+                .ab-attr {
+                    font-size: 0.78rem;
+                    line-height: 1.15rem;
+                    color: #9fc4de;
+                }
+                .ab-attr-trigger { color: #6f97b3; }
 
                 #OKI_SKILL_LIST { margin: 6px 0; }
                 #OKI_ABILITY_LIST {
@@ -483,12 +544,14 @@
                 .skill-iryoku { color: #d0e8ff; font-size: 0.85rem; }
 
                 /* ===== 基本値ブレークダウン（編集フォーム） ===== */
+                /* ラベルと入力を左から流す。space-between だと PC 幅でラベルが左端・
+                   入力が右端に分かれ、行ごとに視線が往復していた（2026-08-17 修正）。 */
                 .bd-row {
                     display: flex;
                     flex-wrap: wrap;
                     align-items: center;
-                    justify-content: space-between;
-                    gap: 4px 10px;
+                    justify-content: flex-start;
+                    gap: 4px 12px;
                     padding: 6px 4px;
                     border-bottom: 1px solid rgba(197,187,147,0.25);
                 }
@@ -519,6 +582,25 @@
                 }
                 .bd-input-wide { width: 88px; }
                 .bd-op { color: #c5bb93; padding: 0 1px; }
+                /* 入力欄が何の値かを示す小ラベル（素ステ / スタイル補正 / バフ量 など） */
+                .bd-sublabel {
+                    color: #9d926b; font-size: 10px; margin-right: 2px; white-space: nowrap;
+                }
+                /* 小ラベルと入力欄の塊。ステ行は入力が7つ並ぶので、折り返しても
+                   ラベルだけが行末に取り残されないようにする */
+                .bd-field {
+                    display: inline-flex; align-items: center; gap: 1px; white-space: nowrap;
+                }
+                .bd-note { color: #9d926b; font-size: 11px; margin-left: 6px; }
+                /* ヒット別ダメージ: 1ヒット目からの差分 */
+                .bh-diff {
+                    padding: 0 8px 4px 34px; font-size: 11px; color: #b8ad84;
+                    display: flex; flex-wrap: wrap; gap: 4px 10px;
+                }
+                .bh-diff-item { white-space: nowrap; }
+                .bh-val { color: #e8dfc0; }
+                .bh-delta { color: #8ce39a; margin-left: 3px; }
+                .bh-delta-down { color: #e39a8c; }
                 .bd-strong {
                     color: #7fd4ff;
                     font-size: 1.15rem;
@@ -581,6 +663,8 @@
                 }
                 .bh-dmg { color: #d0e8ff; white-space: nowrap; }
                 .bh-row-capped .bh-dmg { color: #ff8f8f; font-weight: bold; }
+                /* カンストバッジはダメージ数値の「左」に置く。右に置くとバッジの有無で
+                   数値の右端がズレて、行をまたいだ桁の視線移動が発生するため。 */
                 .bh-capped {
                     display: inline-block;
                     background: rgba(255,80,80,0.25);
@@ -589,7 +673,7 @@
                     font-weight: bold;
                     border-radius: 3px;
                     padding: 0 4px;
-                    margin-left: 4px;
+                    margin-right: 4px;
                 }
                 .bh-warn {
                     color: #ff8f8f;
@@ -599,14 +683,11 @@
                 }
 
                 /* ===== 敵設定 ===== */
-                .enemy-config-body {
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: 6px 14px;
-                    color: #faf0b4;
-                    margin-bottom: 6px;
-                }
+                /* 行構成を固定する（敵の数 / 体力・精神 / 耐性4列×2行）。
+                   成り行き折り返しだと「陰」だけ孤立する等、情報の切れ目とズレていた（2026-08-17） */
+                .enemy-config-body { color: #faf0b4; margin-bottom: 6px; }
                 .enemy-config-body label { margin: 0; }
+                .ec-row { display: flex; align-items: center; gap: 6px 18px; margin-bottom: 6px; }
                 .enemy-config input, .enemy-resist input {
                     width: 72px;
                     height: 30px;
@@ -618,8 +699,16 @@
                     text-align: right;
                     padding: 2px 6px;
                 }
-                .enemy-resist { color: #faf0b4; display: flex; flex-wrap: wrap; gap: 4px 8px; align-items: center; }
-                .enemy-resist input { width: 58px; }
+                .enemy-resist { color: #faf0b4; }
+                .ec-resist-label { margin-bottom: 4px; }
+                .ec-resist-grid {
+                    display: grid;
+                    grid-template-columns: repeat(4, minmax(0, 1fr));
+                    gap: 4px 8px;
+                    max-width: 420px;
+                }
+                .ec-resist-grid span { display: flex; align-items: center; gap: 3px; white-space: nowrap; }
+                .ec-resist-grid input { width: 100%; min-width: 0; max-width: 64px; }
 
                 /* ===== ランキング（バー形式 + 詳細展開） ===== */
                 .rank-row {

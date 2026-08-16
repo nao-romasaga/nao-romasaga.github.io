@@ -1,40 +1,28 @@
-// 結果ランキングのクライアント側フィルタ判定（純粋関数）。
-// 属性: filterAttr のいずれかが breakdown のキー（属性 or 複合 or "全"）に該当すれば通す。
-// 「全」を持つサポートは全属性に通す。範囲: filterRange は data-href（カンマ区切りOR）で、
-// breakdown.damage のキーにそのトークンを含むものがあれば通す。武器: weaponType 完全一致。
-function _breakdownAttrKeys(breakdown) {
-    const keys = new Set();
-    const dmg = (breakdown && breakdown.damage) ? breakdown.damage : {};
-    for (const k in dmg) keys.add(k);
-    const deb = (breakdown && breakdown.debuff) ? breakdown.debuff : {};
-    for (const k in deb) keys.add(k);
-    return keys;
-}
-function _attrMatches(keys, attr) {
-    if (keys.has('全')) return true;
-    if (keys.has(attr)) return true;
-    for (const k of keys) { if (k.indexOf('・') !== -1 && k.split('・').indexOf(attr) !== -1) return true; }
+// 「サポート（置物）スタイル」のクライアント側フィルタ判定（純粋関数）。
+// アタッカーの絞り込みではない点に注意。アタッカーはスタイル単位で直接選ぶ。
+//
+// 2026-08-16: 攻撃属性(filterAttr)・オプション(filterRange)は使わなくなったので廃止し、
+// 武器種・シリーズの2軸に絞った（所持チェッカー連動は呼び出し側の MY_FLAG で処理）。
+// 古い呼び出しが filterAttr/filterRange を渡してきても無視する。
+
+// シリーズ一致。実データの Series は
+// RS1/RS2/RS3/SF1/SF2/US/ES/IS/SSG/SEB/RSR/GB1/GB2/GB3/OTR。
+// GB だけは 1/2/3 に分かれているが UI は「GB」1つにまとめるので、接頭辞で拾う。
+function seriesMatches(series, filterSeries) {
+    if (!filterSeries) return true;
+    var s = String(series == null ? '' : series);
+    if (s === filterSeries) return true;
+    if (filterSeries === 'GB' && s.indexOf('GB') === 0) return true;
     return false;
 }
+
 function supportPassesFilters(opts) {
-    const { weaponType, breakdown, filterWeapon, filterAttr, filterRange } = opts;
-    if (filterWeapon && weaponType !== filterWeapon) return false;
-    const keys = _breakdownAttrKeys(breakdown);
-    if (Array.isArray(filterAttr) && filterAttr.length > 0) {
-        // 選択属性のいずれかに一致（OR）
-        if (!filterAttr.some(a => _attrMatches(keys, a))) return false;
-    }
-    if (Array.isArray(filterRange) && filterRange.length > 0) {
-        // 各 filterRange エントリ（"a,b,c" は OR）すべてを満たす（AND of entries）
-        const dmgKeys = (breakdown && breakdown.damage) ? Object.keys(breakdown.damage) : [];
-        const ok = filterRange.every(entry => {
-            const toks = String(entry).split(',');
-            return toks.some(t => dmgKeys.some(k => k.indexOf(t) !== -1));
-        });
-        if (!ok) return false;
-    }
+    opts = opts || {};
+    if (opts.filterWeapon && opts.weaponType !== opts.filterWeapon) return false;
+    if (!seriesMatches(opts.series, opts.filterSeries)) return false;
     return true;
 }
+
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { supportPassesFilters };
+    module.exports = { supportPassesFilters, seriesMatches };
 }

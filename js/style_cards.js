@@ -199,8 +199,8 @@ function renderSkillCardHTML(skillInfo) {
 
     return `<table class="width-100 skill-template-table okimono-skill-card" data-skill-id="${id}" id="${id}">
   <tr>
-    <td class="weaponIconTd text-center SKILL_ICON" style="vertical-align: top;">${skillIconHtml}</td>
-    <td class="text-left d-relative" style="line-height: 20px; padding-left: 5px;">
+    <td class="weaponIconTd text-left SKILL_ICON" style="vertical-align: top;">${skillIconHtml}</td>
+    <td class="text-left d-relative skill-name-cell" style="line-height: 20px; padding-left: 5px;">
       <div>
         <div class="d-table-cell">
           <span class="WEAPON_ICON icon_xs ${weaponIconClass}_sm">　</span>
@@ -272,19 +272,31 @@ function renderAbilityRowHTML(abInfo) {
         flover = `<span class="flover">${texts.join('<br>')}</span>`;
     }
 
-    // Attr 効果の簡易列挙（style.html AB_TEMPLATE の .flover 相当）
-    var attrs = Array.isArray(abInfo['Attr']) ? abInfo['Attr'] : [];
-    var attrHtml = attrs.map(function(a) {
-        return `<div>[${a.when ?? ''}] ${a.main ?? ''} ${a.sub ?? ''} ${a.size ?? ''}</div>`;
-    }).join('');
+    // Attr 効果の簡易列挙（style.html AB_TEMPLATE の .flover 相当）。
+    // フレーバーと同じ内容の言い換えなので、色・サイズで区別が付くよう専用クラスを付ける。
+    // 追撃・反撃はフレーバーに技名付きで書いてあり、ここでは技IDが出るだけで読めないため出さない。
+    // トリガーのキーは `trigger`。`when` は実データに無く、空ブラケット `[]` になっていた（2026-08-16 修正）。
+    var ATTR_HIDDEN_MAIN = { '追撃': 1, '反撃': 1 };
+    var attrs = (Array.isArray(abInfo['Attr']) ? abInfo['Attr'] : [])
+        .filter(function (a) { return a && !ATTR_HIDDEN_MAIN[a.main]; });
+    var attrHtml = attrs.length ? '<div class="ab-attr-list">' + attrs.map(function(a) {
+        var trigger = a.trigger ?? a.when ?? '';
+        var body = [a.main, a.sub, a.size]
+            .filter(function (v) { return v != null && v !== '' && v !== '-'; }).join(' ');
+        var trg = trigger ? `<span class="ab-attr-trigger">[${trigger}]</span> ` : '';
+        return `<div class="ab-attr">${trg}${body}</div>`;
+    }).join('') + '</div>' : '';
 
     // option（バフ等の追加テキスト）
     var optionHtml = abInfo['Option'] ? `<span class="option">${abInfo['Option']}</span>` : '';
     var optionHr = (flover || attrHtml) && optionHtml ? `<hr class="skill-text-added" style="margin: 0.2rem 0;">` : `<hr class="skill-text-added d-none" style="margin: 0.2rem 0;">`;
 
-    return `<tr class="okimono-ability-row" data-ability-id="${id}">
+    // 既定は畳んでおく（アビリティは長文で、技の選択を邪魔するため）。
+    // 見出し行のクリックで ab-collapsed が外れて中身が出る（buff_ranking_select.js）。
+    return `<tr class="okimono-ability-row ab-collapsed" data-ability-id="${id}">
   <td style="padding: 5px;">
-    <div class="d-flex" style="gap:10px; margin-bottom: 5px;">
+    <div class="ab-head d-flex align-items-center" style="gap:8px;">
+      <span class="ab-toggle" aria-hidden="true">▶</span>
       <span class="AB_ICON">${iconHtml}</span>
       <span class="ab-name">${name}</span>
     </div>

@@ -4,14 +4,23 @@ let SELECTED_SKILL = null;
 let LAST_RANKING = null;   // 直近 API レスポンス {baseDamage, ranking:[...]}
 let RANK_REQ_SEQ = 0;      // リクエスト世代カウンタ（古いレスポンス破棄用）
 let BASE_BD = null;        // 編集中のブレークダウン（API 応答をコピーして保持）
+let ORIG_HITS = [];        // API 応答のヒット別内訳（無編集の原本。再計算の基準にする）
+let ORIG_BD = null;        // 同 1ヒット目の内訳。BASE_BD との差分が「ユーザーの編集」
 
 function recalcRanking() {
     if (!SELECTED_ATTACKER || !SELECTED_SKILL) {
         LAST_RANKING = null;
         $("#BASE_DAMAGE_AREA").addClass("d-none");
-        $("#RANKING_AREA").html('<div class="text-center" style="padding:20px;">アタッカーと技を選択してください</div>');
+        $("#SUPPORT_FILTER_AREA").addClass("d-none");
+        // 案内は上部の #OKI_SELECTED バーが常時出しているので、ここで重ねて出さない
+        // （同じ文言が2箇所に並び、下のは木目背景に裸のテキストで浮いていた。2026-08-17）
+        $("#RANKING_AREA").html("");
         return;
     }
+    // ここまで来たら敵設定は必ず読み直されるので、「未反映」の点灯を消す。
+    // 敵設定を先に決めてからアタッカーを選ぶ導線（敵設定が最上部へ移動した）だと、
+    // 技選択で再計算されたのにボタンが点いたままになり、未反映に見えるため。
+    $('#ENEMY_APPLY').removeClass('enemy-apply-active icon_btn_on').addClass('icon_btn_off');
     const enemy = getEnemyConfig();
     const req = {
         attackerStyleId: SELECTED_ATTACKER['Id'],
@@ -31,6 +40,7 @@ function recalcRanking() {
             if (seq !== RANK_REQ_SEQ) return;
             LAST_RANKING = null;
             $("#BASE_DAMAGE_AREA").addClass("d-none");
+            $("#SUPPORT_FILTER_AREA").addClass("d-none");
             $("#RANKING_AREA").html('<div class="text-center" style="padding:20px;">ランキングの取得に失敗しました。時間をおいて再度お試しください</div>');
         });
 }
@@ -51,30 +61,43 @@ function renderRanking() {
     $("#RANKING_AREA").html("");
     // 基本値（アタッカー素ダメージ）とその計算内訳を編集可能フォームで表示
     if (LAST_RANKING && LAST_RANKING.baseDamage > 0) {
+        // 無編集の原本を退避する。入力変更のたびに、この原本との差分を全ヒットへ適用して
+        // 計算し直す（1ヒット目×固定倍率だと、ヒットごとに防御弱化が積み上がる構成で外れる）。
+        ORIG_HITS = JSON.parse(JSON.stringify(LAST_RANKING.baseHits || []));
+        ORIG_BD = (ORIG_HITS[0] && ORIG_HITS[0].breakdown)
+            ? ORIG_HITS[0].breakdown
+            : JSON.parse(JSON.stringify(LAST_RANKING.baseBreakdown || {}));
+
         // API 応答をディープコピーして保持。statParts に _origEff/_origStatus を退避しておく
         BASE_BD = JSON.parse(JSON.stringify(LAST_RANKING.baseBreakdown || {}));
         BASE_BD._origStatus = BASE_BD.status;
         BASE_BD._origEnemyEff = BASE_BD.enemyStatEff;
         BASE_BD._origDamage = LAST_RANKING.baseDamage;
         $("#BASE_DAMAGE_SUB").addClass('d-none');
-        // perHitDamage は 1ヒット分。baseDamage はシナリオ全ヒット合計。
-        // hit ratio を保存して、入力変更時の再計算でも合計値を正確に出せるようにする。
+        // ヒット情報が無いとき用のフォールバック倍率（perHitDamage は1ヒット分）
         var perHit = Number(BASE_BD.perHitDamage) || 0;
         BASE_BD._hitRatio = (perHit > 0) ? LAST_RANKING.baseDamage / perHit : 1;
         if (Array.isArray(BASE_BD.statParts)) {
             BASE_BD.statParts.forEach(function(sp) { sp._origEff = sp.eff; });
         }
+        // スタイル補正%と 裏/魂/昇段 の既定値を入れる。BE のランキング計算はこれらを
+        // 含まないので、既定値を入れた時点で基本値は BE の値より上がる（差分は「調整前」に出る）。
+        if (typeof applyStatExtraDefaults === 'function') applyStatExtraDefaults(BASE_BD);
         var bdHtml = (typeof buildBaseBreakdownInputHTML === 'function')
             ? buildBaseBreakdownInputHTML(BASE_BD) : '';
         $("#BASE_BREAKDOWN").html(bdHtml);
-        $("#BASE_DAMAGE_VALUE").text(Math.round(LAST_RANKING.baseDamage).toLocaleString());
-        // ヒット別ダメージ（多段/追撃の内訳。カンスト確認用）
-        renderBaseHits(LAST_RANKING.baseHits);
         $("#BASE_DAMAGE_AREA").removeClass("d-none");
+        // サポートの絞り込みは、絞り込む対象（ランキング）がある時だけ出す
+        $("#SUPPORT_FILTER_AREA").removeClass("d-none");
+        // 基本値とヒット別ダメージは再計算経路で描く（初期表示と編集後で経路を分けない）
+        refreshBaseDamageView();
     } else {
         BASE_BD = null;
+        ORIG_HITS = [];
+        ORIG_BD = null;
         $("#BASE_BREAKDOWN").html("");
         $("#BASE_DAMAGE_AREA").addClass("d-none");
+        $("#SUPPORT_FILTER_AREA").addClass("d-none");
     }
     if (!LAST_RANKING || !Array.isArray(LAST_RANKING.ranking)) return;
     // フィルタ通過分を先に集めて最大レートを求める（バー幅の基準）
@@ -85,12 +108,13 @@ function renderRanking() {
         if (MY_FLAG && MY_STYLE.indexOf(styleId) === -1) continue;
         const styleInfo = STYLE_MASTER[styleId];
         if (!styleInfo) continue;
+        // 絞り込むのは「サポート（置物）スタイル」であって、アタッカーではない
         if (!supportPassesFilters({
             weaponType: styleInfo['WeaponType'],
-            breakdown: row.breakdown,
+            series: (typeof CHAR_MASTER !== 'undefined'
+                ? (CHAR_MASTER[styleInfo['CharacterId']] || {})['Series'] : '') || '',
             filterWeapon: FILTER_WEAPON,
-            filterAttr: FILTER_ATTR,
-            filterRange: FILTER_RANGE,
+            filterSeries: FILTER_SERIES,
         })) continue;
         visible.push({ row, styleInfo });
     }
@@ -136,7 +160,11 @@ const EF_NAMED_CONDITIONS = {
     '神憑りの力': null,
     'けんし': null, // 暫定: 当該アビ持ちは剣士キャラのみ
     '邪神憑りし者': { character: '飯綱こよみ' },
-    '破壊女神': { character: 'サイヴァ' },
+    // サイヴァの専用武器が「味方生存者全体」に付与する効果。'サイヴァ' は付与する側の条件で、
+    // 受け取る側（＝攻撃するキャラ）の条件ではない。character 判定を残すと、
+    // BE は適用しているのに FE が「適用外」とグレー表示する不一致になる。
+    // BE 側 EF_CONDITION_MAP と揃えて条件なしにする（2026-08-16）。
+    '破壊女神': null,
     '目覚めし者': { character: '飯綱こよみ' },
     '呪われし者': { character: 'ヴィンセント・クインブラ' },
     '魔を祓いし者': { character: 'ダリオ・グラナダ' },
@@ -530,7 +558,8 @@ function buildRankDetailHTML(styleInfo, rate = 0, breakdown = null, damage = nul
 
     const entries = []; // {when, abName, main, sub, size}
     // grantMult: 0 = スタイル自身のアビ / 4 = 自身以外の味方に付与 / 5 = 味方全体に付与
-    function collectEntries(abInfo, grantMult) {
+    // partyScopedOnly: true なら「効果対象が自身」の行を落とす（自身へ付与されたアビの展開用）
+    function collectEntries(abInfo, grantMult, partyScopedOnly = false) {
         const isGranted = grantMult > 0;
         const categories = filterAbilityCategory(abInfo, isGranted);
         for (const attr of categories) {
@@ -540,7 +569,19 @@ function buildRankDetailHTML(styleInfo, rate = 0, breakdown = null, damage = nul
                 const addAbInfo = resolveAbInfo(addAbId);
                 if (!addAbInfo || isGranted) continue;
                 const grantTgt = String(attr['target'] ?? '');
-                if (grantTgt === '自身') continue; // バッファー自身専用（チェインアーツ(零絶)等）
+                if (grantTgt === '自身') {
+                    // 付与先が「自身」でも、付与されたアビの効果対象が味方全体なら
+                    // その効果はアタッカーにも届き、BE も計算に含めている。
+                    // 例: サイヴァ「太古の破壊神」→ 自身に「破壊の権化」を付与し、
+                    //     破壊の権化の効果は 味方生存者全体 攻撃強化+150% / ステ+25%。
+                    //     BE のバケット 全390 のうち 150 がこれ（残り240は破壊をもたらす力×4）。
+                    // 一律 continue すると、計算に入っている効果が内訳から消えてしまう
+                    // （2026-08-16: 「ターン開始時に破壊の権化が出ない」として発覚）。
+                    // 効果対象が自身の行だけ落として ×1 で拾う。チェインアーツ(零絶)のような
+                    // 真の自己専用アビは効果対象も自身なので、結果的に何も表示されない。
+                    collectEntries(addAbInfo, 1, true);
+                    continue;
+                }
                 if (grantTgt.includes('敵')) {
                     // 敵マーカー（ブレイクマーカー等）: 被弾トリガー効果はアタッカーの
                     // ヒットごとに発動する。発動回数 = 総ヒット数 - 1（次のヒットから反映）
@@ -578,6 +619,8 @@ function buildRankDetailHTML(styleInfo, rate = 0, breakdown = null, damage = nul
             // 個別に発動する（BE の partyGrantMult と同じ判定。付与者自身の所持分は別行×1）
             const effTgt = attr['target'] ?? '';
             const isPartyOrEnemyEffect = effTgt !== '' && effTgt !== '自身';
+            // 自身へ付与されたアビの展開時は、その中の「自身向け」効果はアタッカーに届かないので出さない
+            if (partyScopedOnly && !isPartyOrEnemyEffect) continue;
             const isPassive = when.includes('開始時') || when.includes('終了時') || when === '常時';
             const mult = (isGranted && isPartyOrEnemyEffect && isPassive) ? grantMult : 1;
             entries.push({
@@ -587,6 +630,9 @@ function buildRankDetailHTML(styleInfo, rate = 0, breakdown = null, damage = nul
                 sub: sub,
                 size: size,
                 mult: mult,
+                // 味方へ付与されたアビ（grantMult 4/5）の行動系トリガーはアタッカーの行動で
+                // 発動する。自身所持（0）/自身付与（1）の行動系はサポーターが動かないと発動しない。
+                grantedToParty: grantMult >= 4,
             });
         }
     }
@@ -629,6 +675,10 @@ function buildRankDetailHTML(styleInfo, rate = 0, breakdown = null, damage = nul
 
     const groups = new Map();
     for (const e of entries) {
+        // サポーターは行動しない・1ターン目のみの前提なので、発動しようがないトリガー
+        // （自身の攻撃時/命中時/発動後、2ターン目以降/偶数ターン/ターン終了時）は出さない。
+        // 判定は okimono_format.js の hiddenTriggerGroup（テスト済み）。
+        if (typeof hiddenTriggerGroup === 'function' && hiddenTriggerGroup(e)) continue;
         if (!groups.has(e.when)) groups.set(e.when, []);
         groups.get(e.when).push(e);
     }
@@ -689,8 +739,9 @@ function getEnemyConfig() {
     });
     return {
         count: Math.max(1, Number($("#E_COUNT").val()) || 1),
-        vit: Number($("#E_VIT").val()) || 1000,
-        mnd: Number($("#E_MND").val()) || 1000,
+        // 入力が空のときの既定値。HTML の value と揃える（2026-08-16: 1000 → 2100）
+        vit: Number($("#E_VIT").val()) || 2100,
+        mnd: Number($("#E_MND").val()) || 2100,
         resist: resist,
     };
 }
@@ -701,8 +752,7 @@ $(document).on('input change', '#E_COUNT,#E_VIT,#E_MND,.E_RESIST,#isOD', functio
 });
 $(document).on('click', '#ENEMY_APPLY', function () {
     if (!$(this).hasClass('enemy-apply-active')) return;
-    $(this).removeClass('enemy-apply-active icon_btn_on').addClass('icon_btn_off');
-    recalcRanking();
+    recalcRanking();   // 点灯の解除は recalcRanking 側で行う
 });
 
 // ヒット別ダメージ表示（多段ヒット・追撃の内訳。1ヒット上限=99,999,999のカンスト確認用）
@@ -715,16 +765,34 @@ function renderBaseHits(hits) {
     }
     let html = `<div class="bh-head">ヒット別ダメージ（${hits.length}hit）</div>`;
     let cappedCount = 0;
+    // 各行は「直前のヒット」を基準に、変わった項目だけを出す（1発ごとの増分）。
+    // 全項目を毎行出すと29行では読めないため変化分のみ（ユーザー判断 2026-08-16）。
     hits.forEach(function (h, i) {
-        const name = (typeof SKILL_MASTER !== 'undefined' && SKILL_MASTER[h.skillId])
-            ? SKILL_MASTER[h.skillId]['Name'] : h.skillId;
+        const name = h.skillName || ((typeof SKILL_MASTER !== 'undefined' && SKILL_MASTER[h.skillId])
+            ? SKILL_MASTER[h.skillId]['Name'] : h.skillId);
         const cappedHtml = h.capped ? '<span class="bh-capped">カンスト</span>' : '';
         if (h.capped) cappedCount++;
+        // 1ヒット目は全項目を絶対値で、2ヒット目以降は変わった項目を「現在値 (+増加量)」で出す
+        let diffHtml = '';
+        if (typeof hitBreakdownParts === 'function') {
+            const refBd = (i > 0 && hits[i - 1]) ? hits[i - 1].breakdown : h.breakdown;
+            const parts = hitBreakdownParts(refBd, h.breakdown, i === 0);
+            if (parts.length) {
+                diffHtml = '<div class="bh-diff">' + parts.map(function (p) {
+                    const up = (p.delta != null && p.delta !== 0)
+                        ? `<span class="bh-delta${p.delta > 0 ? '' : ' bh-delta-down'}">(${p.delta > 0 ? '+' : ''}${p.delta})</span>`
+                        : '';
+                    // 上限（ステバフ3000%）に張り付いている項目はカンスト表示
+                    const cap = p.capped ? '<span class="bh-capped">カンスト</span>' : '';
+                    return `<span class="bh-diff-item">${p.label} <span class="bh-val">${p.value}${p.unit}</span>${up}${cap}</span>`;
+                }).join('') + '</div>';
+            }
+        }
         html += `<div class="bh-row${h.capped ? ' bh-row-capped' : ''}">
             <span class="bh-no">${i + 1}</span>
             <span class="bh-name">${name}${h.first ? '<span class="bh-first">初</span>' : ''}</span>
-            <span class="bh-dmg">${Math.round(h.damage).toLocaleString()}${cappedHtml}</span>
-        </div>`;
+            <span class="bh-dmg">${cappedHtml}${Math.round(h.damage).toLocaleString()}</span>
+        </div>${diffHtml}`;
     });
     if (cappedCount > 0) {
         html += `<div class="bh-warn">⚠ ${cappedCount}ヒットがダメージ上限（1hit=99,999,999×Ex）に到達。バフを盛っても伸びないためランキングが想定と異なる場合があります</div>`;
@@ -735,18 +803,31 @@ function renderBaseHits(hits) {
 // BASE_BD 変更後の再計算＋表示更新（入力・Exボタン共通）
 function refreshBaseDamageView() {
     if (!BASE_BD) return;
-    // 武器威力 + 技威力 の合計
-    $(".bd-sum").text(Math.round(BASE_BD.weapon) + Math.round(BASE_BD.skill));
+    // 武器威力/技威力は素値のみを表示する方針にしたため、実効値の合計欄（.bd-sum）は出していない
     // ステ実効値
     (BASE_BD.statParts || []).forEach(function (sp, idx) {
         $(`.bd-stat-eff[data-idx="${idx}"]`).text(calcStatEff(sp));
     });
     // 敵実効値
-    var enemyEff = Math.max(0, (Number(BASE_BD.enemyStatBase) || 0) * (1 - (Number(BASE_BD.enemyDebuffPer) || 0) / 100));
+    // 「負値=低下」の規約に合わせた共通関数を使う（自前で (1 - per/100) にすると符号が反転する）
+    var enemyEff = effectiveEnemyStat(BASE_BD.enemyStatBase, BASE_BD.enemyDebuffPer);
     $(".bd-enemy-eff").text(Math.round(enemyEff));
     // 基本値 + 調整前の値・変化量
     if (typeof calcBaseDamageFromBreakdown === 'function') {
-        var newDmg = calcBaseDamageFromBreakdown(BASE_BD);
+        // ヒット情報があるなら全ヒットを計算し直して合計する。
+        // 1ヒット目 × 固定倍率では、災邪の紋のようにヒットごとに防御弱化が積み上がる構成
+        // （実測 アビ 700%→9500%）で合計が外れるため。ヒット別の表示も同じ結果で描き直す。
+        var newDmg;
+        if (Array.isArray(ORIG_HITS) && ORIG_HITS.length > 0 && typeof recalcHits === 'function') {
+            var weaponTypeName = (typeof resolveWeaponTypeName === 'function')
+                ? resolveWeaponTypeName(SELECTED_ATTACKER && SELECTED_ATTACKER['WeaponType'])
+                : null;
+            var res = recalcHits(ORIG_HITS, buildHitAdjust(ORIG_BD, BASE_BD), weaponTypeName);
+            newDmg = res.total;
+            renderBaseHits(res.hits);
+        } else {
+            newDmg = calcBaseDamageFromBreakdown(BASE_BD);
+        }
         $("#BASE_DAMAGE_VALUE").text(Math.round(newDmg).toLocaleString());
         var orig = Number(BASE_BD._origDamage) || 0;
         if (orig > 0 && Math.round(newDmg) !== Math.round(orig)) {
@@ -780,9 +861,20 @@ $(document).on('input', '.bd-input', function () {
     var key = $(this).attr('data-bd');
     var val = parseFloat($(this).val()) || 0;
 
-    if (key === 'weapon') { BASE_BD.weapon = val; }
-    else if (key === 'skill') { BASE_BD.skill = val; }
+    // 入力欄は素値を持つ。ダメージ式は実効値を使うので、編集のたびに実効値へ変換して入れ直す
+    // （武器=素×武器種係数 / 技=素+(素-5)*(1+練達rank/100)。BE の damageCalc.inc と同じ式）。
+    if (key === 'weaponRaw') {
+        BASE_BD.weaponRaw = val;
+        BASE_BD.weapon = effectiveWeapon(val, BASE_BD.weaponPer);
+    }
+    else if (key === 'skillRaw') {
+        BASE_BD.skillRaw = val;
+        BASE_BD.skill = effectiveSkill(val, BASE_BD.skillRank);
+    }
     else if (key === 'ability') { BASE_BD.ability = val; }
+    // 「聖石」はアクセサリ倍率込みの合算（BE の $SSS_ACC + 聖石）。実測 1630 = 1515 + 115
+    else if (key === 'holyStone') { BASE_BD.holyStone = val; }
+    else if (key === 'master') { BASE_BD.master = val; }
     else if (key === 'ex') { BASE_BD.ex = val; }
     else if (key === 'enemyDebuffPer') {
         BASE_BD.enemyDebuffPer = val;
@@ -792,12 +884,17 @@ $(document).on('input', '.bd-input', function () {
         var idx = Number($(this).attr('data-idx'));
         var sp = BASE_BD.statParts && BASE_BD.statParts[idx];
         if (sp) {
-            if (key === 'statCharBase') { sp.charBase = val; }
-            else if (key === 'statStyleCorr') {
-                // 補正入力 = styleBonus + correction。correction は据え置き、styleBonus を逆算
-                sp.styleBonus = val - (Number(sp.correction) || 0);
-            }
-            else if (key === 'statBase') { sp.base = val; }
+            // BE の組み立て（setMaxStatus4Battle）の各項。スタイル補正・昇段・魂(%) は
+            // 素ステに掛かる%、裏・魂(実数) は最終ステータスへの加算。
+            if (key === 'statBase')           { sp.statBase = val; }
+            else if (key === 'styleBonusPer') { sp.styleBonusPer = val; }
+            else if (key === 'shoudanPer')    { sp.shoudanPer = val; }
+            else if (key === 'soulPer')       { sp.soulPer = val; }
+            else if (key === 'uraFlat')       { sp.uraFlat = val; }
+            else if (key === 'soulFlat')      { sp.soulFlat = val; }
+            else if (key === 'statusBonus')   { sp.statusBonus = val; }   // 限界突破ボーナス
+            else if (key === 'correction')    { sp.correction = val; }    // 武器＋防具のステ補正
+            else if (key === 'statCharBase')  { sp.charBase = val; }   // 旧応答フォールバック
             else if (key === 'statBuff') { sp.buffPer = val; }
             recalcStatusIntoBD();
         }
@@ -917,41 +1014,18 @@ $(".filterWeapon").click(function(){
     filter();
 });
 
-let FILTER_ATTR = [];
-$(".filterAttr").click(function(){
-    FILTER_ATTR = [];
+// シリーズ絞り込み。武器種と同じく単一選択（もう一度押すと解除）。
+// GB は実データで GB1/GB2/GB3 に分かれるが、ボタンは「GB」1つ（okimono_filter.js が接頭辞で吸収）。
+let FILTER_SERIES = "";
+$(document).on('click', '.filterSeries', function(){
     if($(this).hasClass("filterActive")){
-        // OFF
-        $(this).removeClass("filterActive")
+        $(this).removeClass("filterActive");
+        FILTER_SERIES = "";
     } else {
-        // ON
-        if($(".filterAttr.filterActive").length >= 2){
-            return;
-        }
-        $(this).addClass("filterActive")
+        $(".filterSeries").removeClass("filterActive");
+        $(this).addClass("filterActive");
+        FILTER_SERIES = $(this).attr("data-series");
     }
-    $(".filterAttr.filterActive").each(function(){
-        FILTER_ATTR.push($(this).attr("data-attr"));
-    });
-    filter();
-});
-
-let FILTER_RANGE = [];
-$(".filterRange").click(function(){
-    FILTER_RANGE = [];
-    if($(this).hasClass("filterActive")){
-        // OFF
-        $(this).removeClass("filterActive")
-    } else {
-        // ON
-        if($(".filterRange.filterActive").length >= 2){
-            //return;
-        }
-        $(this).addClass("filterActive")
-    }
-    $(".filterRange.filterActive").each(function(){
-        FILTER_RANGE.push($(this).attr("data-href"));
-    });
     filter();
 });
 $(".styleChecker").click(function(){

@@ -15,7 +15,33 @@ function signedPct(value, digits) {
     return sign + body + '%';
 }
 
+// 詳細パネルに出さないトリガーの判定（2026-08-17 ユーザー指定）。
+// 置物ランキングは「サポーターは行動しない・1ターン目のみのサポート」を前提に計算しているので、
+// 発動しようがないトリガーを表示すると、効いているように誤読される。
+// - サポーター自身の行動系トリガー（攻撃時/命中時/発動後）→ 隠す
+// - 2ターン目以降にしか起きないトリガー（Nターン目以降/Nの倍数/偶数ターン/ターン終了時）→ 隠す
+//   ※ターン終了時の効果が効くのは次ターンの開始時で、消費側（engine_rankOkimono）は
+//     1ターン目開始時の値しか読まないため
+// ただし味方へ付与されたアビ（grantedToParty。ダークボルテージⅣ等）の行動系トリガーは
+// アタッカーの行動で発動して計算にも入っているので出す。敵マーカー（isMarker）も同様。
+function hiddenTriggerGroup(e) {
+    if (!e) return false;
+    var w = String(e.when || '');
+    if (e.isMarker) return false;
+
+    // 2ターン目以降にしか起きないトリガー
+    if (/[2-9]ターン目以降|[0-9]+の倍数のターン/.test(w)) return true;
+    if (w.indexOf('偶数ターン') !== -1) return true;
+    if (w.indexOf('ターン終了時') !== -1) return true;
+
+    // サポーター自身の行動系（「〜を受けた時」は受け身なので除く）
+    var isAction = /攻撃|命中|発動後/.test(w) && w.indexOf('受け') === -1;
+    if (isAction && !e.grantedToParty) return true;
+
+    return false;
+}
+
 // ブラウザでは global 関数として定義（export 無し）。node テスト用にのみ module.exports。
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { signedPct };
+    module.exports = { signedPct, hiddenTriggerGroup };
 }

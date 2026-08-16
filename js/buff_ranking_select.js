@@ -60,6 +60,12 @@ $(document).ready(function () {
         $("#OKI_SKILL_SECTION").removeClass("d-none");
     });
 
+    // アビリティは既定で畳んでおき、見出しのクリックで開閉する。
+    // 長文が並ぶと技の選択が見えなくなるため（2026-08-16 ユーザー指定）。
+    $(document).on('click', '.okimono-ability-row .ab-head', function () {
+        $(this).closest('.okimono-ability-row').toggleClass('ab-collapsed');
+    });
+
     // 技選択 → SELECTED_* セット → ランキング再計算（委譲）
     $(document).on('click', '[data-skill-id]', function () {
         const skillId = $(this).attr("data-skill-id");
