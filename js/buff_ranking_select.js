@@ -34,11 +34,17 @@ $(document).ready(function () {
     });
 
     // スタイル選択 → 技一覧＋アビ一覧（委譲）
-    $(document).on('click', '.style', function () {
+    // セレクタは #OKI_STYLE_LIST 配下に限定する。getStyleIcon が返すボタンは
+    // ランキング行・詳細ヘッダにも同じ .style クラスで置かれるので、`.style` だけだと
+    // ランキングのアイコンを押しただけでアタッカーが差し替わる（2026-08-17 修正）。
+    $(document).on('click', '#OKI_STYLE_LIST .style', function () {
         const styleId = $(this).attr("data-id");
         const styleInfo = STYLE_MASTER[styleId];
         if (!styleInfo) return;
         OKI_NOW_STYLE_ID = styleId;
+        // 選択中スタイルの強調（技カードの skill-selected と同じ扱い）
+        $('#OKI_STYLE_LIST .style').removeClass('style-selected');
+        $(this).addClass('style-selected');
         // 技一覧
         let skillHtml = '';
         for (const k in (styleInfo['SkillIds'] || {})) {

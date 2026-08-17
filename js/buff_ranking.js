@@ -439,13 +439,15 @@ function buildRankDetailHTML(styleInfo, rate = 0, breakdown = null, damage = nul
 
     // ---- ヘッダ（名前・増加率・実ダメージ）----
     const incPct = (rate - 1) * 100;
+    // 増加率と実ダメージは1項目ずつ nowrap の塊にする。地の文のままだと SP 幅で
+    // 「実ダメージ」だけが行末に取り残され、数値が次行に落ちていた（2026-08-17 修正）。
     let headHtml = `<div class="dtl-head">
         <span class="dtl-icon"></span>
         <div class="dtl-title">
             <div class="dtl-name">${styleInfo['Name']} <span class="dtl-another">${styleInfo['AnotherName'] ?? ''}</span></div>
             <div class="dtl-rates">
-                与ダメ増加率 <span class="fuchidori-blue dtl-rate-big">${signedPct(incPct, 1)}</span>
-                ${damage ? `　実ダメージ <span class="fuchidori-blue">${Math.round(damage).toLocaleString()}</span>` : ''}
+                <span class="dtl-rate-item">与ダメ増加率 <span class="fuchidori-blue dtl-rate-big">${signedPct(incPct, 1)}</span></span>
+                ${damage ? `<span class="dtl-rate-item">実ダメージ <span class="fuchidori-blue">${Math.round(damage).toLocaleString()}</span></span>` : ''}
             </div>
         </div>
     </div>`;
@@ -642,30 +644,18 @@ function buildRankDetailHTML(styleInfo, rate = 0, breakdown = null, damage = nul
     }
 
     // ---- trigger → アビ名 でグルーピングして描画 ----
+    // 効果名・効果量の決定は okimono_format.js の純関数に委譲（テスト済み）。
+    // ここで sub だけを見て名前を作ると、攻勢激化Ⅶ(斬・冷) のように
+    // 「属性攻撃強化」と「属性防御弱化」で sub が同一のアビが同じラベルに潰れる。
     function effectLabel(e) {
-        // size から数値部分だけを抽出（「超極大+(150%)」→「150%」、「大(0.75倍)」→「×1.75」）
-        const size = String(e.size || '');
-        let val = '';
-        let m = size.match(/([0-9.]+)\s*%/);
-        if (m) {
-            val = m[1] + '%';
-        } else {
-            m = size.match(/([0-9.]+)\s*倍/);
-            if (m) val = '×' + (1 + parseFloat(m[1])).toFixed(2);
-            else val = size; // 数値なし（付与アビ名等）はそのまま
-        }
+        const val = effectValue(e.main, String(e.size || ''));
+        const n = effectName(e.main, e.sub);
         let name;
-        if (e.main === 'バフ') name = statIconsFromSub(e.sub, true);
-        else if (e.main === 'デバフ') name = `敵${statIconsFromSub(e.sub, false)}`;
-        else {
-            name = e.sub || e.main;
-            name = name.replace('エクストラフォース', 'Ex');
-            // 「斬属性攻撃強化」→「斬」等の短縮（属性のみ残す）
-            name = name.replace(/((?:斬|打|突|熱|冷|雷|陽|陰)(?:・(?:斬|打|突|熱|冷|雷|陽|陰))*)属性攻撃強化/, '$1');
-            // 「単体攻撃強化」→「単体攻撃」「Weak攻撃強化」→「Weak攻撃」（無印の「攻撃強化」はそのまま）
-            name = name.replace(/^(単体|全体|範囲|Weak|直接|間接)攻撃強化$/, '$1攻撃');
-        }
-        return val && val !== size ? `${name}${val.startsWith('×') ? '' : ' '}${val}` : `${name} ${val}`.trim();
+        if (n.kind === 'buff') name = statIconsFromSub(n.sub, true);
+        else if (n.kind === 'debuff') name = `敵${statIconsFromSub(n.sub, false)}`;
+        else name = n.text;
+        // 倍率表記（×1.75）だけは名前と詰めて出す
+        return `${name}${val.startsWith('×') ? '' : ' '}${val}`.trim();
     }
     function effectActive(e) {
         if (e.isMarker) return (e.mult ?? 0) > 0; // 敵マーカーは被弾回数>0なら発動

@@ -481,6 +481,20 @@
                     padding-left: 2px;
                 }
                 .okimono-skill-card .skill-name-cell { width: 100%; }
+                /* 威力セルは skill-name-cell の width:100% で min-content まで潰されるため、
+                   nowrap を指定しないと「威/力:SS/(55)」と1文字ずつ折り返す（2026-08-17 修正）。
+                   回復威力・OD は <br> で明示改行しているので nowrap でも段は保たれる。 */
+                .okimono-skill-card .skill-iryoku { white-space: nowrap; padding-left: 8px; }
+
+                /* ===== 選択中スタイルの強調 ===== */
+                /* getStyleIcon が返す button.style には選択状態が無く、どれを選んだか
+                   分からなかった（2026-08-17 ユーザー指摘）。技カードの skill-selected と
+                   同じ金色系で揃える。 */
+                #OKI_STYLE_LIST .style { border: 2px solid transparent; border-radius: 6px; }
+                #OKI_STYLE_LIST .style.style-selected {
+                    border-color: #ffd700;
+                    box-shadow: 0 0 0 2px rgba(255,215,0,0.35), 0 0 12px 3px rgba(255,215,0,0.5);
+                }
 
                 /* ===== サポートスタイルの絞り込み ===== */
                 .support-filter-note {
@@ -790,8 +804,12 @@
                 .dtl-icon { flex-shrink: 0; }
                 .dtl-name { color: #faf0b4; font-size: 1rem; font-weight: bold; }
                 .dtl-another { font-size: 0.8rem; font-weight: normal; }
-                .dtl-rates { font-size: 0.85rem; color: #c5bb93; }
+                .dtl-rates { font-size: 0.85rem; color: #c5bb93; display: flex; flex-wrap: wrap; gap: 0 12px; }
+                /* 「与ダメ増加率 +216.5%」「実ダメージ 1,126,973,136」をそれぞれ1つの塊として扱う。
+                   地の文のままだと SP 幅でラベルと数値が別行に割れていた（2026-08-17） */
+                .dtl-rate-item { white-space: nowrap; }
                 .dtl-rate-big { font-size: 1.1rem; font-weight: bold; }
+                .dtl-title { min-width: 0; }
                 .dtl-summary {
                     background: rgba(0,0,0,0.45);
                     border-radius: 6px;
@@ -821,12 +839,17 @@
                     margin-bottom: 2px;
                     padding-bottom: 1px;
                 }
+                /* word-break: break-all を外す。「斬・冷属性攻撃 150%」が「斬・冷」/「属性攻撃 150%」と
+                   語の途中で割れて読めなくなっていた（2026-08-17 SP 表示の見直し）。
+                   代わりに効果1件を nowrap の塊にして、折り返しは効果と効果の間でだけ起こす。 */
                 .dtl-col-body {
                     font-size: 0.82rem;
                     line-height: 1.5;
                     white-space: normal;
-                    word-break: break-all;
+                    word-break: normal;
+                    overflow-wrap: anywhere;
                 }
+                .dtl-col-body > div > span:not(.dtl-tag) { white-space: nowrap; display: inline-block; }
                 /* 火力アビ詳細の アビ/Ex タグ */
                 .dtl-tag {
                     display: inline-block;
@@ -852,9 +875,21 @@
                     line-height: 1.5;
                     padding-left: 8px;
                     white-space: normal;
-                    word-break: break-all;
+                    word-break: normal;
+                    overflow-wrap: anywhere;
                 }
-                .trg-ab-name { color: #c5bb93; margin-right: 6px; }
+                /* 効果1件（「斬・冷属性攻撃 150%」等）は途中で折らない。折り返しは
+                   効果と効果の間（／の位置）でだけ起こす（2026-08-17） */
+                .trg-eff { display: inline-block; white-space: nowrap; }
+                /* SP は 1効果1行の縦積みにする。横並びのままだと SP 幅では1行に1〜2件しか
+                   入らず、行末に「／」が残ってどこが効果の切れ目か掴めなかった
+                   （2026-08-17 ユーザー選択: PC=横並び / SP=縦積み）。
+                   ブレークポイントは .dtl-3col の1カラム化と揃える。 */
+                @media (max-width: 575px) {
+                    .trg-eff { display: block; }
+                    .trg-sep { display: none; }
+                }
+                .trg-ab-name { color: #c5bb93; margin-right: 6px; white-space: nowrap; }
                 .trg-ab-name::after { content: ':'; }
                 .trg-sep { color: rgba(197,187,147,0.4); margin: 0 3px; }
                 /* 味方全体付与の多重発動バッジ（×5 = パーティ5人分） */
