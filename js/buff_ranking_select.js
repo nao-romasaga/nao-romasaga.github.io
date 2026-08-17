@@ -42,9 +42,12 @@ $(document).ready(function () {
         const styleInfo = STYLE_MASTER[styleId];
         if (!styleInfo) return;
         OKI_NOW_STYLE_ID = styleId;
-        // 選択中スタイルの強調（技カードの skill-selected と同じ扱い）
-        $('#OKI_STYLE_LIST .style').removeClass('style-selected');
-        $(this).addClass('style-selected');
+        // 選択中スタイルは灰カバー(.icon_nocheck = rgba(0,0,0,0.4))を外して明るく見せる。
+        // styleranking.js / party.js / auto.js と同じ流儀で「全部に掛けてから対象だけ外す」。
+        // getStyleIcon はカバー付きで生成するので、キャラを変えて一覧を作り直した直後は
+        // 全部カバー付き＝未選択の状態から始まる。
+        $('#OKI_STYLE_LIST .CHECK_COVER').addClass('icon_nocheck');
+        $(this).find('.CHECK_COVER').removeClass('icon_nocheck');
         // 技一覧
         let skillHtml = '';
         for (const k in (styleInfo['SkillIds'] || {})) {
@@ -89,7 +92,9 @@ $(document).ready(function () {
         // #OKI_SELECTED にアイコン＋スタイル名 / 技名を表示
         const $selected = $("#OKI_SELECTED").empty();
         if (styleInfo && typeof getStyleIcon === 'function') {
-            const $icon = getStyleIcon(styleInfo['Rarity'], styleInfo['Id'], styleInfo['WeaponType']).clone();
+            // 第4引数 true = カバー無し。ここは「選択済みの表示」なので、
+            // 一覧側で「カバー有り=未選択」を意味させる以上、掛かっていると矛盾する。
+            const $icon = getStyleIcon(styleInfo['Rarity'], styleInfo['Id'], styleInfo['WeaponType'], true).clone();
             $icon.css({ display: 'inline-block', verticalAlign: 'middle', marginRight: '6px' });
             $selected.append($icon);
         }

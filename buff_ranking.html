@@ -487,14 +487,11 @@
                 .okimono-skill-card .skill-iryoku { white-space: nowrap; padding-left: 8px; }
 
                 /* ===== 選択中スタイルの強調 ===== */
-                /* getStyleIcon が返す button.style には選択状態が無く、どれを選んだか
-                   分からなかった（2026-08-17 ユーザー指摘）。技カードの skill-selected と
-                   同じ金色系で揃える。 */
-                #OKI_STYLE_LIST .style { border: 2px solid transparent; border-radius: 6px; }
-                #OKI_STYLE_LIST .style.style-selected {
-                    border-color: #ffd700;
-                    box-shadow: 0 0 0 2px rgba(255,215,0,0.35), 0 0 12px 3px rgba(255,215,0,0.5);
-                }
+                /* 選択状態は枠線ではなく、灰カバー .icon_nocheck の付け外しで表す
+                   （stylecheck と同じ流儀。2026-08-17 ユーザー指定）。
+                   カバー有り=未選択 / カバー無し=選択中。
+                   .icon_nocheck の定義は css/icon2.css（style2.css が @import）にあり、
+                   切り替えは js/buff_ranking_select.js が行うので、ここに専用CSSは要らない。 */
 
                 /* ===== サポートスタイルの絞り込み ===== */
                 .support-filter-note {
