@@ -545,6 +545,13 @@
                 }
                 .rank-add:active { transform: translateY(1px); }
 
+                #RANK_LOAD_MORE {
+                    background: linear-gradient(to bottom, rgba(88,66,38,1), rgba(56,38,24,1));
+                    color: #ffd700; border: 1px solid rgba(255,215,0,0.6);
+                    border-radius: 5px; font-size: 0.9rem; line-height: 1; padding: 8px 20px;
+                }
+                #RANK_LOAD_MORE:active { transform: translateY(1px); }
+
                 /* ===== アビリティ行（既定は畳む） ===== */
                 .okimono-ability-row .ab-head { cursor: pointer; }
                 .okimono-ability-row .ab-toggle {
@@ -888,6 +895,16 @@
                     vertical-align: middle;
                 }
                 .dtl-off { color: rgba(255,255,255,0.35); }
+                /* 「この技に乗らない」(dtl-off)とは別原因＝ロック済みサポーターとの重複で
+                   無効化されている効果。色だけでなく打ち消し線と(重複)バッジの両方で示す
+                   （色のみでの区別に頼らない）。 */
+                .dtl-dup { color: rgba(255,180,90,0.6); text-decoration: line-through; }
+                .dtl-dup-badge {
+                    color: rgba(255,180,90,0.85);
+                    font-size: 0.68rem;
+                    margin-left: 2px;
+                    text-decoration: none;
+                }
                 .trg-group { margin-bottom: 6px; }
                 .trg-head {
                     color: #ffd700;

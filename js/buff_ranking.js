@@ -176,11 +176,13 @@ function renderRanking() {
         })) continue;
         visible.push({ row, styleInfo });
     }
-    const maxRate = visible.length ? Math.max(...visible.map(v => v.row.upRate)) : 1;
     RANK_DETAIL_DATA = {};
-    visible.forEach(function (v, i) {
-        addRankRow(v.styleInfo, v.row, i + 1, maxRate);
-    });
+    // 候補は数百件になるため、初期表示は上位のみDOM描画し「続きを見る」で追加描画する
+    // （renderRankBatch）。フィルタ変更・再計算のたびにこの一覧は作り直すので0件目から。
+    RANK_VISIBLE_LIST = visible;
+    RANK_MAX_RATE = visible.length ? Math.max(...visible.map(v => v.row.upRate)) : 1;
+    RANK_RENDERED_COUNT = 0;
+    renderRankBatch(RANK_INITIAL_COUNT);
     // 満員（サポーター4体ロック）: BE は候補計算をスキップして ranking=[] を返す
     if (SELECTED_SUPPORTS.length >= PARTY_MAX_SUPPORTS && visible.length === 0) {
         $("#RANKING_AREA").html(
@@ -188,6 +190,37 @@ function renderRanking() {
             '編成5人（アタッカー＋サポーター4体）が確定しました。上の×で外すと入れ替え候補を再計算します</div>');
     }
 }
+
+// ランキング行のDOM描画を段階的に行う状態（数百件を一度に描画すると重いため）。
+// renderRanking() がフィルタ通過後の一覧を RANK_VISIBLE_LIST にセットしてから
+// renderRankBatch(RANK_INITIAL_COUNT) を呼び、以降は「続きを見る」クリックのたびに
+// RANK_PAGE_SIZE 件ずつ未描画分を追加描画する。
+let RANK_VISIBLE_LIST = [];   // [{row, styleInfo}, ...]（フィルタ通過・upRate降順）
+let RANK_MAX_RATE = 1;
+let RANK_RENDERED_COUNT = 0;
+const RANK_INITIAL_COUNT = 30;
+const RANK_PAGE_SIZE = 100;
+
+function renderRankBatch(count) {
+    const end = Math.min(RANK_RENDERED_COUNT + count, RANK_VISIBLE_LIST.length);
+    for (let i = RANK_RENDERED_COUNT; i < end; i++) {
+        const v = RANK_VISIBLE_LIST[i];
+        addRankRow(v.styleInfo, v.row, i + 1, RANK_MAX_RATE);
+    }
+    RANK_RENDERED_COUNT = end;
+    $("#RANK_LOAD_MORE_WRAP").remove();
+    const remaining = RANK_VISIBLE_LIST.length - RANK_RENDERED_COUNT;
+    if (remaining > 0) {
+        $("#RANKING_AREA").append(`
+            <div id="RANK_LOAD_MORE_WRAP" class="text-center" style="padding:12px;">
+                <button type="button" id="RANK_LOAD_MORE" class="yubi">続きを見る（残り${remaining}件）</button>
+            </div>`);
+    }
+}
+
+$(document).on('click', '#RANK_LOAD_MORE', function () {
+    renderRankBatch(RANK_PAGE_SIZE);
+});
 
 // ランキング行の詳細展開用データ（styleId → {styleInfo, rate, breakdown, damage}）
 let RANK_DETAIL_DATA = {};
@@ -289,6 +322,8 @@ function computeFactorBreakdown(breakdown, styleInfo, appSet) {
     const debuffs = (breakdown && breakdown.debuff) ? breakdown.debuff : {};
     const markerBonus = styleInfo ? computeMarkerBonus(styleInfo) : { defDown: 0, stat: {}, procs: 0 };
 
+    const duplicateSuppressed = (breakdown && breakdown.duplicateSuppressed) ? breakdown.duplicateSuppressed : [];
+
     let sumValue = 0;
     let exSum = 0; // 適用中Exの加算合計（エンジンと同じ: 最終倍率 = 1 + Σex）
     const abItems = [];
@@ -296,13 +331,18 @@ function computeFactorBreakdown(breakdown, styleInfo, appSet) {
     // 強化系（ダメージ強化）とEx（乗算系）を分離
     for (const attr in abValues) {
         const active = attr === '全' || isFactorApplicable(attr, appSet);
+        // ロック中サポーターと重複（同キーの宣言値がロック側以下）で実質無効化される場合。
+        // 「この技には乗らない」（dtl-off）とは原因が別なので、別クラス・別注記で区別する。
+        const dup = active && isDuplicateSuppressedAttr(attr, duplicateSuppressed);
+        const cls = dup ? 'dtl-dup' : (active ? 'fuchidori-blue' : 'dtl-off');
+        const dupNote = dup ? '<span class="dtl-dup-badge" title="編成にロック済みのサポーターと同じ効果があり、こちらの分は重複して無効化されます">(重複)</span>' : '';
         if (attr.includes('エクストラフォース')) {
-            if (active) exSum += abValues[attr];
+            if (active && !dup) exSum += abValues[attr];
             // タグ側に「Ex」があるので条件名のみ表示（'エクストラフォース単体'→'単体'）
-            exItems.push(`<span class="${active ? 'fuchidori-blue' : 'dtl-off'}">${attr.replace('エクストラフォース', '')}×${(1 + abValues[attr]).toFixed(2)}</span>`);
+            exItems.push(`<span class="${cls}">${attr.replace('エクストラフォース', '')}×${(1 + abValues[attr]).toFixed(2)}</span>${dupNote}`);
         } else {
-            if (active) sumValue += abValues[attr];
-            abItems.push(`<span class="${active ? 'fuchidori-blue' : 'dtl-off'}">${attr}+${abValues[attr]}%</span>`);
+            if (active && !dup) sumValue += abValues[attr];
+            abItems.push(`<span class="${cls}">${attr}+${abValues[attr]}%</span>${dupNote}`);
         }
     }
     // 弱化系（防御弱化。ステ系デバフは除く）
@@ -724,6 +764,14 @@ function buildRankDetailHTML(styleInfo, rate = 0, breakdown = null, damage = nul
         if (e.main === 'バフ' || e.main === 'デバフ' || e.main === '被ダメージ増加') return true;
         return isFactorApplicable(subToAttrKey(e.sub), appSet);
     }
+    // ロック中サポーターとの重複（エクストラフォース/モラルアップ系のみ）で実質無効化されるか。
+    // subToAttrKey(e.sub) は breakdown.damage のキー形式（例: "エクストラフォースWeak"）と
+    // 同じ文字列になるため、BEの duplicateSuppressed をそのまま照合できる（2026-08-18）。
+    function effectDuplicateSuppressed(e) {
+        if (e.isMarker) return false;
+        if (e.main === 'バフ' || e.main === 'デバフ' || e.main === '被ダメージ増加') return false;
+        return isDuplicateSuppressedAttr(subToAttrKey(e.sub), (breakdown && breakdown.duplicateSuppressed) || []);
+    }
 
     const groups = new Map();
     for (const e of entries) {
@@ -759,8 +807,11 @@ function buildRankDetailHTML(styleInfo, rate = 0, breakdown = null, damage = nul
                 seen.get(k).n++;
             }
             const items = [...seen.values()].map(({ e, n }) => {
-                const cls = effectActive(e) ? 'trg-eff fuchidori-white' : 'trg-eff dtl-off';
-                return `<span class="${cls}">${effectLabel(e)}${n > 1 ? ` x${n}` : ''}</span>`;
+                const active = effectActive(e);
+                const dup = active && effectDuplicateSuppressed(e);
+                const cls = dup ? 'trg-eff dtl-dup' : (active ? 'trg-eff fuchidori-white' : 'trg-eff dtl-off');
+                const dupNote = dup ? '<span class="dtl-dup-badge" title="編成にロック済みのサポーターと同じ効果があり、こちらの分は重複して無効化されます">(重複)</span>' : '';
+                return `<span class="${cls}">${effectLabel(e)}${n > 1 ? ` x${n}` : ''}</span>${dupNote}`;
             }).join('<span class="trg-sep">／</span>');
             // ×N = このアビが味方に付与されN人分存在する（自身の所持分は別行×1）
             const abMult = Math.max(...list.map(e => e.mult ?? 1));
@@ -771,7 +822,7 @@ function buildRankDetailHTML(styleInfo, rate = 0, breakdown = null, damage = nul
     }
 
     const html = headHtml + summaryHtml + trgHtml
-        + `<div class="dtl-note">薄い表示はこの技には乗らない効果です</div>`;
+        + `<div class="dtl-note">薄い表示はこの技には乗らない効果／(重複)はロック済みサポーターと重複して無効化される効果です</div>`;
 
     // アイコンは jQuery で後付け（getStyleIcon が jQuery オブジェクトを返すため）
     setTimeout(function () {

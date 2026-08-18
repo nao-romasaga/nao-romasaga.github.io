@@ -98,7 +98,16 @@ function effectValue(main, size) {
     return isDown ? '-' + val : val;
 }
 
+// ロック中サポーターとの重複により実質無効化される属性キーかどうかを判定する。
+// BE(engine_okimonoBreakdown)が breakdown.duplicateSuppressed として返す一覧をそのまま
+// 使うだけで、重複ルール（エクストラフォース/モラルアップ系はmax()採用）自体はFEで
+// 再実装しない。duplicateSuppressed が無い/配列でない応答（旧キャッシュ等）は「重複なし」扱い。
+function isDuplicateSuppressedAttr(attrKey, duplicateSuppressed) {
+    if (!Array.isArray(duplicateSuppressed)) return false;
+    return duplicateSuppressed.includes(attrKey);
+}
+
 // ブラウザでは global 関数として定義（export 無し）。node テスト用にのみ module.exports。
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { signedPct, hiddenTriggerGroup, effectName, effectValue };
+    module.exports = { signedPct, hiddenTriggerGroup, effectName, effectValue, isDuplicateSuppressedAttr };
 }
