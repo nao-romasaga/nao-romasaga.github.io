@@ -81,6 +81,11 @@ $(document).ready(function () {
         if (!OKI_NOW_STYLE_ID || !SKILL_MASTER[skillId]) return;
         SELECTED_ATTACKER = STYLE_MASTER[OKI_NOW_STYLE_ID];
         SELECTED_SKILL = SKILL_MASTER[skillId];
+        // アタッカーのスタイルが変わったら編成（ロック済みサポーター）をリセットする。
+        // 新アタッカーと同一キャラのロックが残ると API が 400 を返すため
+        if (typeof resetSupportsIfAttackerChanged === 'function') {
+            resetSupportsIfAttackerChanged(OKI_NOW_STYLE_ID);
+        }
         const styleInfo = STYLE_MASTER[OKI_NOW_STYLE_ID];
         const sName = styleInfo?.['Name'] ?? '';
         const skillName = SELECTED_SKILL['Name'];

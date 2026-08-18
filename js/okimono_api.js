@@ -30,6 +30,9 @@ function buildOkimonoQuery(base, req) {
     for (const attr in resist) {
         add('enemy[resist][' + encodeURIComponent(attr) + ']', resist[attr]);
     }
+    if (Array.isArray(req.supports) && req.supports.length > 0) {
+        add('supports', req.supports.join(','));
+    }
     if (req.weaponIllust != null) add('weaponIllust', req.weaponIllust);
     if (req.isOD) add('isOD', '1');
     return base + '?' + parts.join('&');

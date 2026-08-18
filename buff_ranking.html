@@ -330,7 +330,11 @@
                  ランキングの直前・基本値の下に置いてラベルで明示する（2026-08-16）。
                  アタッカーが決まるまでは絞り込む対象が無いので d-none で隠す（renderRanking が外す）。 -->
             <section id="SUPPORT_FILTER_AREA" class="bg-simple width-max support-filter d-none" style="margin:8px 0;">
-                <div class="name-label text-center" style="margin-bottom:6px;">サポートスタイルの絞り込み</div>
+                <!-- デフォルト閉。ボタンで #SUPPORT_FILTER_BODY を開閉する（2026-08-18） -->
+                <div id="SUPPORT_FILTER_TOGGLE" class="name-label text-center yubi" style="margin-bottom:6px; cursor:pointer;">
+                    サポートスタイルの絞り込み <span id="SUPPORT_FILTER_ARROW">▼</span>
+                </div>
+                <div id="SUPPORT_FILTER_BODY" class="d-none">
                 <div class="support-filter-note">下のランキングに出す<strong>サポート側</strong>のスタイルを絞り込みます（アタッカーには影響しません）</div>
                 <div class="filter-bgcolor text-center small row" style="width:100%; margin: 6px 0 0;">
                     <ul class="nav text-center width-100" style="margin-bottom: 5px;">
@@ -401,6 +405,16 @@
                         <a class="fuchidori-blue" href="stylecheck.html">スタイル所持チェッカー</a>で登録したスタイルのみを表示します
                     </div>
                 </div>
+                </div>
+            </section>
+
+            <!-- 編成中のサポーター（ロック）。ランキング行の「＋」で追加・チップの×で解除。
+                 ロックすると基本値と増加率が「この編成込み」の基準に切り替わる（2026-08-18）。
+                 サポートスタイルの絞り込みの下・ランキングの上に置く（2026-08-18） -->
+            <section id="OKI_PARTY_AREA" class="bg-simple width-max d-none" style="margin:8px 0;">
+                <div class="name-label text-center" style="margin-bottom:6px;">編成中のサポーター（最大4体）</div>
+                <div id="OKI_PARTY_LIST" class="d-flex flex-wrap justify-content-center align-items-center" style="gap:6px;"></div>
+                <div id="OKI_PARTY_NOTE" class="support-filter-note d-none">基本値と与ダメ増加率は、編成中サポーターを含めた値が基準になります</div>
             </section>
 
             <div id="RANKING_AREA"></div>
@@ -501,6 +515,35 @@
                     line-height: 1.1rem;
                 }
                 .support-filter-note strong { color: #faf0b4; }
+
+                /* ===== 編成（ロック済みサポーター）チップと追加ボタン =====
+                   アイコン / 名前 / ×ボタン を縦並びにする（2026-08-18） */
+                .party-chip {
+                    display: inline-flex; flex-direction: column; align-items: center; gap: 4px;
+                    background: rgba(30,15,20,0.85);
+                    border: 1px solid rgba(255,215,0,0.5);
+                    border-radius: 6px; padding: 4px 6px;
+                }
+                .party-chip-name {
+                    color: #faf0b4; font-size: 0.8rem;
+                    max-width: 62px; /* アイコン(.style_icon_bg_base)の幅60pxに合わせる */
+                    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+                    text-align: center;
+                }
+                .party-remove {
+                    background: rgba(255,80,80,0.25); color: #ff8f8f;
+                    border: 1px solid rgba(255,143,143,0.6); border-radius: 4px;
+                    font-size: 0.8rem; line-height: 1; padding: 2px 6px;
+                }
+                .party-empty { color: #c5bb93; font-size: 0.78rem; }
+                /* ランキング行の追加ボタン。行クリック(詳細開閉)と別イベントなので stopPropagation 必須 */
+                .rank-add {
+                    flex-shrink: 0;
+                    background: linear-gradient(to bottom, rgba(88,66,38,1), rgba(56,38,24,1));
+                    color: #ffd700; border: 1px solid rgba(255,215,0,0.6);
+                    border-radius: 5px; font-size: 1rem; line-height: 1; padding: 4px 8px;
+                }
+                .rank-add:active { transform: translateY(1px); }
 
                 /* ===== アビリティ行（既定は畳む） ===== */
                 .okimono-ability-row .ab-head { cursor: pointer; }
@@ -626,20 +669,6 @@
                     text-align: right;
                     margin-top: 4px;
                 }
-                .bd-ex-btns { display: inline-flex; gap: 4px; flex-wrap: wrap; }
-                .bd-ex-add {
-                    background: linear-gradient(to bottom, rgba(88,66,38,1), rgba(56,38,24,1));
-                    color: #faf0b4;
-                    border: 1px solid rgba(197,187,147,0.6);
-                    border-radius: 5px;
-                    font-size: 0.78rem;
-                    padding: 3px 7px;
-                    cursor: pointer;
-                    line-height: 1.1;
-                }
-                .bd-ex-add:active { transform: translateY(1px); }
-                .bd-ex-val { display: block; font-size: 0.68rem; color: #7fd4ff; }
-
                 /* ===== ヒット別ダメージ（カンスト確認） ===== */
                 #BASE_HITS {
                     background: rgba(0,0,0,0.35);
@@ -964,6 +993,7 @@
     </div>
     <script type="text/javascript" src="./js/okimono_api.js" defer></script>
     <script type="text/javascript" src="./js/okimono_format.js" defer></script>
+    <script type="text/javascript" src="./js/okimono_party.js" defer></script>
     <script type="text/javascript" src="./js/style_cards.js" defer></script>
     <script type="text/javascript" src="./js/buff_ranking_select.js" defer></script>
     <script type="text/javascript" src="./js/okimono_filter.js" defer></script>

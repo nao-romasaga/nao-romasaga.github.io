@@ -1,6 +1,21 @@
 let SELECTED_ATTACKER = null;
 let SELECTED_SKILL = null;
 
+// 編成にロック済みのサポーター styleId（選択順・最大 PARTY_MAX_SUPPORTS 体）。
+// 操作は okimono_party.js の純関数（partyAdd/partyRemove）経由で行う。
+let SELECTED_SUPPORTS = [];
+let LAST_ATTACKER_STYLE_ID = null;
+
+// アタッカーのスタイルが変わったら編成をリセットする（buff_ranking_select.js から呼ばれる）。
+// 新アタッカーとロック済みサポーターが同一キャラだと API が 400 を返すため、
+// 持ち越さずに白紙へ戻すのが安全で、意味的にも「新しい編成」になる。
+function resetSupportsIfAttackerChanged(styleId) {
+    if (LAST_ATTACKER_STYLE_ID !== styleId) {
+        LAST_ATTACKER_STYLE_ID = styleId;
+        SELECTED_SUPPORTS = [];
+    }
+}
+
 let LAST_RANKING = null;   // 直近 API レスポンス {baseDamage, ranking:[...]}
 let RANK_REQ_SEQ = 0;      // リクエスト世代カウンタ（古いレスポンス破棄用）
 let BASE_BD = null;        // 編集中のブレークダウン（API 応答をコピーして保持）
@@ -12,6 +27,13 @@ function recalcRanking() {
         LAST_RANKING = null;
         $("#BASE_DAMAGE_AREA").addClass("d-none");
         $("#SUPPORT_FILTER_AREA").addClass("d-none");
+        $("#OKI_PARTY_AREA").addClass("d-none");
+        // アタッカー/技が未選択＝編成を組む土台が無いので、ロック済みサポーターも
+        // ここで白紙に戻す（そうしないと ×ボタンが無いまま SELECTED_SUPPORTS だけが
+        // 残り、後続の recalcRanking に送られ続けてしまう）。表示は次に
+        // renderPartyChips() が呼ばれた時点でこの空配列を反映するので、ここで
+        // 明示的に呼ぶ必要はない。
+        SELECTED_SUPPORTS = [];
         // 案内は上部の #OKI_SELECTED バーが常時出しているので、ここで重ねて出さない
         // （同じ文言が2箇所に並び、下のは木目背景に裸のテキストで浮いていた。2026-08-17）
         $("#RANKING_AREA").html("");
@@ -27,6 +49,7 @@ function recalcRanking() {
         skillId: SELECTED_SKILL['Id'],
         enemy: { count: enemy.count, vit: enemy.vit, mnd: enemy.mnd, resist: enemy.resist },
         isOD: $("#isOD").is(":checked"),
+        supports: SELECTED_SUPPORTS.slice(),
     };
     const seq = ++RANK_REQ_SEQ;
     $("#RANKING_AREA").html('<div class="text-center" style="padding:20px;">計算中...</div>');
@@ -41,6 +64,11 @@ function recalcRanking() {
             LAST_RANKING = null;
             $("#BASE_DAMAGE_AREA").addClass("d-none");
             $("#SUPPORT_FILTER_AREA").addClass("d-none");
+            // #OKI_PARTY_AREA はここでは意図的に隠さない（SELECTED_SUPPORTS もそのまま）。
+            // API 取得失敗はアタッカー/技の選択自体は有効なままなので、編成チップと
+            // ×ボタンを残しておけば、ユーザーは失敗後も自分で編成を解除できる。
+            // 上の早期リターンや LAST_RANKING 無しの表示リセットとは違い、こちらは
+            // 「土台が無い」わけではないので編成状態を巻き戻さない。
             $("#RANKING_AREA").html('<div class="text-center" style="padding:20px;">ランキングの取得に失敗しました。時間をおいて再度お試しください</div>');
         });
 }
@@ -53,6 +81,28 @@ function fetchOkimonoRanking(req) {
         if (!res.ok) throw new Error('HTTP ' + res.status);
         return res.json();
     });
+}
+
+// 編成チップ（ロック済みサポーター）を描画する。
+// 追加/削除ハンドラと renderRanking の両方から呼ばれ、SELECTED_SUPPORTS を真実として描き直す。
+function renderPartyChips() {
+    const $area = $("#OKI_PARTY_AREA");
+    const $list = $("#OKI_PARTY_LIST").empty();
+    if (!SELECTED_ATTACKER) { $area.addClass("d-none"); return; }
+    $area.removeClass("d-none");
+    if (SELECTED_SUPPORTS.length === 0) {
+        $list.append($('<span class="party-empty">ランキング行の「＋」でサポーターを編成に追加できます（最大4体）</span>'));
+    }
+    SELECTED_SUPPORTS.forEach(function (sid) {
+        const s = STYLE_MASTER[sid];
+        if (!s) return;
+        const $chip = $('<span class="party-chip"></span>').attr('data-style-id', sid);
+        $chip.append(getStyleIcon(s['Rarity'], sid, s['WeaponType'], true));
+        $chip.append($('<span class="party-chip-name"></span>').text(s['Name']));
+        $chip.append($('<button type="button" class="party-remove yubi" title="編成から外す">×</button>').attr('data-style-id', sid));
+        $list.append($chip);
+    });
+    $("#OKI_PARTY_NOTE").toggleClass("d-none", SELECTED_SUPPORTS.length === 0);
 }
 
 // キャッシュ済みランキングを描画。フィルタ変更時はこれだけ呼ぶ（再 fetch しない）。
@@ -89,6 +139,7 @@ function renderRanking() {
         $("#BASE_DAMAGE_AREA").removeClass("d-none");
         // サポートの絞り込みは、絞り込む対象（ランキング）がある時だけ出す
         $("#SUPPORT_FILTER_AREA").removeClass("d-none");
+        renderPartyChips();
         // 基本値とヒット別ダメージは再計算経路で描く（初期表示と編集後で経路を分けない）
         refreshBaseDamageView();
     } else {
@@ -98,6 +149,13 @@ function renderRanking() {
         $("#BASE_BREAKDOWN").html("");
         $("#BASE_DAMAGE_AREA").addClass("d-none");
         $("#SUPPORT_FILTER_AREA").addClass("d-none");
+        $("#OKI_PARTY_AREA").addClass("d-none");
+        // ロックする対象のランキングが無い＝編成を維持する土台が無いので、
+        // SELECTED_SUPPORTS も白紙に戻す（recalcRanking の早期リターンと同様の
+        // 「真のリセット」。renderPartyChips() を今ここで呼ぶ必要は無く、次にこの
+        // 領域が表示される時（＝上の if 分岐）は必ず renderPartyChips() を通るため、
+        // 空になった SELECTED_SUPPORTS が自然に反映される）。
+        SELECTED_SUPPORTS = [];
     }
     if (!LAST_RANKING || !Array.isArray(LAST_RANKING.ranking)) return;
     // フィルタ通過分を先に集めて最大レートを求める（バー幅の基準）
@@ -123,6 +181,12 @@ function renderRanking() {
     visible.forEach(function (v, i) {
         addRankRow(v.styleInfo, v.row, i + 1, maxRate);
     });
+    // 満員（サポーター4体ロック）: BE は候補計算をスキップして ranking=[] を返す
+    if (SELECTED_SUPPORTS.length >= PARTY_MAX_SUPPORTS && visible.length === 0) {
+        $("#RANKING_AREA").html(
+            '<div class="text-center fuchidori-white" style="padding:20px;">' +
+            '編成5人（アタッカー＋サポーター4体）が確定しました。上の×で外すと入れ替え候補を再計算します</div>');
+    }
 }
 
 // ランキング行の詳細展開用データ（styleId → {styleInfo, rate, breakdown, damage}）
@@ -215,56 +279,88 @@ function isFactorApplicable(key, appSet) {
     return false;
 }
 
-// breakdown から「何の要因で上位か」の要約HTMLを作る。
-// 選択中の技に乗らない項目は薄く表示する。敵付与マーカーは被弾回数分を合算表示。
+// breakdown から「火力アビ合計/Ex合計/ステバフ/ステデバフ」を集計する。
+// factorSummary（ランキング行の簡易表示）と buildRankDetailHTML（詳細パネル）の
+// 両方が同じ内訳を必要とするための共通ロジック（2026-08-18 切り出し。集計内容自体は
+// buildRankDetailHTML 側の元の実装のまま変更していない）。
+const STAT_DEBUFF_KEYS = ['体力', '精神', '腕力', '器用さ', '素早さ', '知力'];
+function computeFactorBreakdown(breakdown, styleInfo, appSet) {
+    const abValues = (breakdown && breakdown.damage) ? breakdown.damage : {};
+    const debuffs = (breakdown && breakdown.debuff) ? breakdown.debuff : {};
+    const markerBonus = styleInfo ? computeMarkerBonus(styleInfo) : { defDown: 0, stat: {}, procs: 0 };
+
+    let sumValue = 0;
+    let exSum = 0; // 適用中Exの加算合計（エンジンと同じ: 最終倍率 = 1 + Σex）
+    const abItems = [];
+    const exItems = [];
+    // 強化系（ダメージ強化）とEx（乗算系）を分離
+    for (const attr in abValues) {
+        const active = attr === '全' || isFactorApplicable(attr, appSet);
+        if (attr.includes('エクストラフォース')) {
+            if (active) exSum += abValues[attr];
+            // タグ側に「Ex」があるので条件名のみ表示（'エクストラフォース単体'→'単体'）
+            exItems.push(`<span class="${active ? 'fuchidori-blue' : 'dtl-off'}">${attr.replace('エクストラフォース', '')}×${(1 + abValues[attr]).toFixed(2)}</span>`);
+        } else {
+            if (active) sumValue += abValues[attr];
+            abItems.push(`<span class="${active ? 'fuchidori-blue' : 'dtl-off'}">${attr}+${abValues[attr]}%</span>`);
+        }
+    }
+    // 弱化系（防御弱化。ステ系デバフは除く）
+    for (const k in debuffs) {
+        if (STAT_DEBUFF_KEYS.includes(k)) continue;
+        const active = k === '全' || isFactorApplicable(k, appSet);
+        if (active) sumValue += debuffs[k].per;
+        const scope = debuffs[k].target === '単体' ? '(単)' : '(全)';
+        abItems.push(`<span class="${active ? 'fuchidori-blue' : 'dtl-off'}">防弱${k === '全' ? '' : k}+${debuffs[k].per}%${scope}</span>`);
+    }
+    // 敵付与マーカーの防御弱化（被弾ごとに発動 × ヒット数-1）
+    if (markerBonus.defDown > 0) {
+        sumValue += markerBonus.defDown;
+        abItems.push(`<span class="fuchidori-blue">防弱(被弾×${markerBonus.procs})+${markerBonus.defDown}%</span>`);
+    }
+
+    // ---- ステバフ（全パラメータ同値ならまとめる）----
+    const buffByParam = {};
+    const buffSrc = (breakdown && breakdown.buff) ? breakdown.buff : {};
+    for (const tm in buffSrc) {
+        for (const p in buffSrc[tm]) buffByParam[p] = (buffByParam[p] ?? 0) + buffSrc[tm][p];
+    }
+    let buffHtml = '';
+    const buffVals = Object.values(buffByParam);
+    if (buffVals.length) {
+        buffHtml = (new Set(buffVals).size === 1)
+            ? Object.keys(buffByParam).map(p => statIconHTML(PARAM_FULL_NAME[p] ?? p, true)).join('') + `<span class="fuchidori-white">+${buffVals[0]}%</span>`
+            : Object.entries(buffByParam).map(([p, v]) => `${statIconHTML(PARAM_FULL_NAME[p] ?? p, true)}<span class="fuchidori-white">+${v}%</span>`).join(' ');
+    }
+
+    // ---- ステデバフ（体力/精神等のステータスのみ。マーカー被弾発動分込み）----
+    const statDebuffTotal = {};
+    for (const [k, d] of Object.entries(debuffs)) {
+        if (STAT_DEBUFF_KEYS.includes(k)) statDebuffTotal[k] = { per: d.per, target: d.target };
+    }
+    for (const [p, v] of Object.entries(markerBonus.stat)) {
+        if (!statDebuffTotal[p]) statDebuffTotal[p] = { per: 0, target: '' };
+        statDebuffTotal[p].per += v;
+    }
+    const statDebuffHtml = Object.entries(statDebuffTotal)
+        .map(([k, d]) => `${statIconHTML(k, false)}<span class="fuchidori-white">-${d.per}%</span>${d.target === '単体' ? '(単)' : ''}`)
+        .join(' ');
+
+    return { sumValue, exSum, abItems, exItems, buffVals, buffHtml, statDebuffTotal, statDebuffHtml, markerBonus };
+}
+
+// ランキング行（展開前）の要約テキストを作る。2026-08-18: 個別アビ・デバフを並べる
+// 旧表示から、火力/Ex/バフ/デバフの4つの集計値へ簡略化した（詳細は展開後のパネルで見られる）。
 function factorSummary(breakdown, styleInfo = null) {
     const appSet = getSkillApplicability(SELECTED_SKILL);
-    const active = [];
-    const inactive = [];
-    const push = (applicable, html) => (applicable ? active : inactive).push(html);
+    const { sumValue, exSum, buffVals, statDebuffTotal } = computeFactorBreakdown(breakdown, styleInfo, appSet);
 
-    const d = (breakdown && breakdown.damage) ? breakdown.damage : {};
-    for (const k in d) {
-        const applicable = isFactorApplicable(k, appSet);
-        if (k.includes('エクストラフォース')) {
-            push(applicable, `${k.replace('エクストラフォース', 'Ex')}×${(1 + d[k]).toFixed(2)}`);
-        } else {
-            push(applicable, `${k}${signedPct(d[k])}`);
-        }
-    }
-    const buffSrc = (breakdown && breakdown.buff) ? breakdown.buff : {};
-    const byParam = {};
-    for (const tm in buffSrc) {
-        for (const p in buffSrc[tm]) byParam[p] = (byParam[p] ?? 0) + buffSrc[tm][p];
-    }
-    const buffVals = Object.values(byParam);
-    if (buffVals.length) active.push(`ステ${signedPct(Math.max(...buffVals))}`);
-
-    // ステデバフ: 静的分 + 敵付与マーカーの被弾発動分
-    const marker = styleInfo ? computeMarkerBonus(styleInfo) : { defDown: 0, stat: {}, procs: 0 };
-    const debuffs = (breakdown && breakdown.debuff) ? breakdown.debuff : {};
-    const statTotal = {};
-    for (const k in debuffs) {
-        if (k === '体力' || k === '精神') statTotal[k] = debuffs[k].per;
-        else active.push(`敵${k}-${debuffs[k].per}%`);
-    }
-    for (const [p, v] of Object.entries(marker.stat)) statTotal[p] = (statTotal[p] ?? 0) + v;
-    for (const [k, v] of Object.entries(statTotal)) {
-        active.push(`敵${k}-${v}%`);
-    }
-    if (marker.defDown > 0) active.push(`防弱(被弾×${marker.procs})+${marker.defDown}%`);
-    // 行動トリガーバフ（アクセルブースト等）
-    if (styleInfo) {
-        for (const b of computeGrantActionBuffs(styleInfo)) {
-            active.push(`${b.sub}+${b.per}%/回(×${b.actions}行動)`);
-        }
-    }
-
-    let html = active.join(' ／ ');
-    if (inactive.length) {
-        html += `<span class="rank-factor-na"> ｜ ${inactive.join(' ／ ')}</span>`;
-    }
-    return html;
+    const parts = [`火力${sumValue}%`];
+    if (exSum > 0) parts.push(`Ex×${(1 + exSum).toFixed(2)}`);
+    if (buffVals.length) parts.push(`バフ${signedPct(Math.max(...buffVals))}`);
+    const debuffMags = Object.values(statDebuffTotal).map(d => d.per);
+    if (debuffMags.length) parts.push(`デバフ-${Math.max(...debuffMags)}%`);
+    return parts.join(' ／ ');
 }
 
 // バー形式のランキング1行を追加。クリックで詳細（旧カード）を展開する。
@@ -277,6 +373,9 @@ function addRankRow(styleInfo, row, rankNo, maxRate) {
     const barPct = Math.max(4, (maxRate > 1) ? (row.upRate - 1) / (maxRate - 1) * 100 : 100);
     const factors = factorSummary(row.breakdown, styleInfo);
 
+    const addBtn = (SELECTED_SUPPORTS.length < PARTY_MAX_SUPPORTS)
+        ? `<button type="button" class="rank-add yubi" data-style-id="${styleId}" title="編成に追加">＋</button>`
+        : '';
     const $row = $(`
         <div class="rank-row" data-style-id="${styleId}">
             <div class="rank-no">${rankNo}</div>
@@ -289,6 +388,7 @@ function addRankRow(styleInfo, row, rankNo, maxRate) {
                 <div class="rank-bar-wrap"><div class="rank-bar" style="width:${barPct}%"></div></div>
                 <div class="rank-factors">${factors}</div>
             </div>
+            ${addBtn}
         </div>`);
     $row.find(".rank-icon").append(getStyleIcon(styleInfo['Rarity'], styleId, styleInfo['WeaponType'], true));
     $("#RANKING_AREA").append($row);
@@ -309,6 +409,27 @@ $(document).on('click', '.rank-row', function () {
     const $detail = $('<div class="rank-detail"></div>');
     $detail.html(buildRankDetailHTML(d.styleInfo, d.rate, d.breakdown, d.damage));
     $(this).after($detail);
+});
+
+// 編成に追加（行の＋ボタン）。行クリック＝詳細開閉と別イベントなので伝播を止める
+$(document).on('click', '.rank-add', function (e) {
+    e.stopPropagation();
+    SELECTED_SUPPORTS = partyAdd(SELECTED_SUPPORTS, $(this).attr('data-style-id'));
+    renderPartyChips();
+    recalcRanking();
+});
+
+// 編成から外す（チップの×）
+$(document).on('click', '.party-remove', function () {
+    SELECTED_SUPPORTS = partyRemove(SELECTED_SUPPORTS, $(this).attr('data-style-id'));
+    renderPartyChips();
+    recalcRanking();
+});
+
+// サポートスタイルの絞り込み欄の開閉（デフォルト閉。2026-08-18）
+$(document).on('click', '#SUPPORT_FILTER_TOGGLE', function () {
+    var $body = $('#SUPPORT_FILTER_BODY').toggleClass('d-none');
+    $('#SUPPORT_FILTER_ARROW').text($body.hasClass('d-none') ? '▼' : '▲');
 });
 
 // アビ効果の sub 文字列 → 適用判定用の属性キーに変換する。
@@ -434,7 +555,6 @@ function computeGrantActionBuffs(styleInfo) {
 function buildRankDetailHTML(styleInfo, rate = 0, breakdown = null, damage = null) {
     if (!styleInfo) return '';
     const appSet = getSkillApplicability(SELECTED_SKILL);
-    const markerBonus = computeMarkerBonus(styleInfo);
     const actionBuffs = computeGrantActionBuffs(styleInfo);
 
     // ---- ヘッダ（名前・増加率・実ダメージ）----
@@ -452,67 +572,9 @@ function buildRankDetailHTML(styleInfo, rate = 0, breakdown = null, damage = nul
         </div>
     </div>`;
 
-    // ---- 火力アビ（強化系 + 防御弱化系の合算。適用中は青、対象外は薄表示）----
-    const STAT_DEBUFF_KEYS = ['体力', '精神', '腕力', '器用さ', '素早さ', '知力'];
-    const abValues = (breakdown && breakdown.damage) ? breakdown.damage : {};
-    const debuffs = (breakdown && breakdown.debuff) ? breakdown.debuff : {};
-
-    let sumValue = 0;
-    let exSum = 0; // 適用中Exの加算合計（エンジンと同じ: 最終倍率 = 1 + Σex）
-    const abItems = [];
-    const exItems = [];
-    // 強化系（ダメージ強化）とEx（乗算系）を分離
-    for (const attr in abValues) {
-        const active = attr === '全' || isFactorApplicable(attr, appSet);
-        if (attr.includes('エクストラフォース')) {
-            if (active) exSum += abValues[attr];
-            // タグ側に「Ex」があるので条件名のみ表示（'エクストラフォース単体'→'単体'）
-            exItems.push(`<span class="${active ? 'fuchidori-blue' : 'dtl-off'}">${attr.replace('エクストラフォース', '')}×${(1 + abValues[attr]).toFixed(2)}</span>`);
-        } else {
-            if (active) sumValue += abValues[attr];
-            abItems.push(`<span class="${active ? 'fuchidori-blue' : 'dtl-off'}">${attr}+${abValues[attr]}%</span>`);
-        }
-    }
-    // 弱化系（防御弱化。ステ系デバフは除く）
-    for (const k in debuffs) {
-        if (STAT_DEBUFF_KEYS.includes(k)) continue;
-        const active = k === '全' || isFactorApplicable(k, appSet);
-        if (active) sumValue += debuffs[k].per;
-        const scope = debuffs[k].target === '単体' ? '(単)' : '(全)';
-        abItems.push(`<span class="${active ? 'fuchidori-blue' : 'dtl-off'}">防弱${k === '全' ? '' : k}+${debuffs[k].per}%${scope}</span>`);
-    }
-    // 敵付与マーカーの防御弱化（被弾ごとに発動 × ヒット数-1）
-    if (markerBonus.defDown > 0) {
-        sumValue += markerBonus.defDown;
-        abItems.push(`<span class="fuchidori-blue">防弱(被弾×${markerBonus.procs})+${markerBonus.defDown}%</span>`);
-    }
-
-    // ---- ステバフ（アイコン表示。全パラメータ同値ならまとめる）----
-    const buffByParam = {};
-    const buffSrc = (breakdown && breakdown.buff) ? breakdown.buff : {};
-    for (const tm in buffSrc) {
-        for (const p in buffSrc[tm]) buffByParam[p] = (buffByParam[p] ?? 0) + buffSrc[tm][p];
-    }
-    let buffHtml = '';
-    const buffVals = Object.values(buffByParam);
-    if (buffVals.length) {
-        buffHtml = (new Set(buffVals).size === 1)
-            ? Object.keys(buffByParam).map(p => statIconHTML(PARAM_FULL_NAME[p] ?? p, true)).join('') + `<span class="fuchidori-white">+${buffVals[0]}%</span>`
-            : Object.entries(buffByParam).map(([p, v]) => `${statIconHTML(PARAM_FULL_NAME[p] ?? p, true)}<span class="fuchidori-white">+${v}%</span>`).join(' ');
-    }
-
-    // ---- ステデバフ（アイコン表示。体力/精神等のステータスのみ。マーカー被弾発動分込み）----
-    const statDebuffTotal = {};
-    for (const [k, d] of Object.entries(debuffs)) {
-        if (STAT_DEBUFF_KEYS.includes(k)) statDebuffTotal[k] = { per: d.per, target: d.target };
-    }
-    for (const [p, v] of Object.entries(markerBonus.stat)) {
-        if (!statDebuffTotal[p]) statDebuffTotal[p] = { per: 0, target: '' };
-        statDebuffTotal[p].per += v;
-    }
-    const statDebuffHtml = Object.entries(statDebuffTotal)
-        .map(([k, d]) => `${statIconHTML(k, false)}<span class="fuchidori-white">-${d.per}%</span>${d.target === '単体' ? '(単)' : ''}`)
-        .join(' ');
+    // ---- 火力アビ / Ex / ステバフ / ステデバフ（factorSummary と共通の集計） ----
+    const { sumValue, exSum, abItems, exItems, buffHtml, statDebuffHtml } =
+        computeFactorBreakdown(breakdown, styleInfo, appSet);
 
     const exTotalHtml = exSum > 0
         ? `　Ex<span class="fuchidori-blue dtl-sum-total">×${(1 + exSum).toFixed(2)}</span>`
@@ -864,7 +926,16 @@ $(document).on('input', '.bd-input', function () {
     else if (key === 'ability') { BASE_BD.ability = val; }
     // 「聖石」はアクセサリ倍率込みの合算（BE の $SSS_ACC + 聖石）。実測 1630 = 1515 + 115
     else if (key === 'holyStone') { BASE_BD.holyStone = val; }
-    else if (key === 'master') { BASE_BD.master = val; }
+    // MasterLv / 冒険者Rank は画面では2つに分けているが、bd.master は合算値のまま
+    // 計算に使う（式は不変）。どちらかを編集したら、もう一方は現状維持で合算し直す。
+    else if (key === 'master') {
+        BASE_BD.master = val + (Number(BASE_BD.boukenRank) || 0);
+    }
+    else if (key === 'boukenRank') {
+        var masterLvOnly = (Number(BASE_BD.master) || 0) - (Number(BASE_BD.boukenRank) || 0);
+        BASE_BD.boukenRank = val;
+        BASE_BD.master = masterLvOnly + val;
+    }
     else if (key === 'ex') { BASE_BD.ex = val; }
     else if (key === 'enemyDebuffPer') {
         BASE_BD.enemyDebuffPer = val;
@@ -876,28 +947,19 @@ $(document).on('input', '.bd-input', function () {
         if (sp) {
             // BE の組み立て（setMaxStatus4Battle）の各項。スタイル補正・昇段・魂(%) は
             // 素ステに掛かる%、裏・魂(実数) は最終ステータスへの加算。
+            // 画面では「補正値」(styleBonusPer/shoudanPer/soulPerの合計)と
+            // 「加算値」(uraFlat/soulFlat/statusBonus/correctionの合計)の2つに統合して
+            // 出している（2026-08-18）。統合欄を編集したときは代表項目(styleBonusPer /
+            // uraFlat)へ書き戻し、まとめられていた残りの項目は0にする
+            // （calcStatEff は今までどおり全項目を合算するので、計算式自体は変えない）。
             if (key === 'statBase')           { sp.statBase = val; }
-            else if (key === 'styleBonusPer') { sp.styleBonusPer = val; }
-            else if (key === 'shoudanPer')    { sp.shoudanPer = val; }
-            else if (key === 'soulPer')       { sp.soulPer = val; }
-            else if (key === 'uraFlat')       { sp.uraFlat = val; }
-            else if (key === 'soulFlat')      { sp.soulFlat = val; }
-            else if (key === 'statusBonus')   { sp.statusBonus = val; }   // 限界突破ボーナス
-            else if (key === 'correction')    { sp.correction = val; }    // 武器＋防具のステ補正
+            else if (key === 'styleBonusPer') { sp.styleBonusPer = val; sp.shoudanPer = 0; sp.soulPer = 0; }
+            else if (key === 'uraFlat')       { sp.uraFlat = val; sp.soulFlat = 0; sp.statusBonus = 0; sp.correction = 0; }
             else if (key === 'statCharBase')  { sp.charBase = val; }   // 旧応答フォールバック
             else if (key === 'statBuff') { sp.buffPer = val; }
             recalcStatusIntoBD();
         }
     }
-    refreshBaseDamageView();
-});
-
-// Ex ティア加算ボタン
-$(document).on('click', '.bd-ex-add', function () {
-    if (!BASE_BD) return;
-    var add = parseFloat($(this).attr('data-ex-add')) || 0;
-    BASE_BD.ex = Math.round(((Number(BASE_BD.ex) || 1) + add) * 100) / 100;
-    $('.bd-input[data-bd="ex"]').val(BASE_BD.ex.toFixed(2));
     refreshBaseDamageView();
 });
 

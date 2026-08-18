@@ -29,23 +29,23 @@ function resolveWeaponTypeName(weaponType) {
     return OKIMONO_WEAPON_TYPE_NAME[weaponType] || null;
 }
 
-// Ex 加算ボタンのティア（AbilityCategory_v2 の実値）
-var OKIMONO_EX_TIERS = [
-    { label: '極小', val: 0.12 },
-    { label: '小',   val: 0.25 },
-    { label: '中',   val: 0.5  },
-    { label: '大',   val: 0.75 },
-];
-
 // 魂の既定値（2026-08-16 ユーザー指定）。裏(56) と 昇段(40%) は BE の運用定数
 // $URA / $SHODAN として既にエンジンが適用済みで statParts から降ってくるため、
 // ここで既定値を持つのは「エンジンに存在しない」魂だけ。
 var OKIMONO_STAT_EXTRA_DEFAULTS = { soulPer: 59.20, soulFlat: 30 };
 
-// 魂の既定値を各 statPart に埋める。明示的に入っている値は上書きしない
+// 冒険者Rankの既定値（2026-08-18 ユーザー指定）。BE の $BOUKEN_BONUS(generate_include.php)と
+// 同値。bd.master(MasterLv+冒険者Rank合算, damageEngine.inc の $MASTER_LV_MAP 由来)には
+// 既にこの値が含まれているため、画面では bd.master から差し引いた残りを「MasterLv」として
+// 表示し、この既定値を「冒険者Rank」として別入力にする（合算した値は変えない＝計算式不変）。
+var OKIMONO_BOUKEN_RANK_DEFAULT = 6.2;
+
+// 魂/冒険者Rankの既定値を埋める。明示的に入っている値は上書きしない
 // （0 を「未設定」と誤認して既定値で塗り潰さないよう null/undefined だけを対象にする）。
 function applyStatExtraDefaults(bd) {
-    if (!bd || !Array.isArray(bd.statParts)) return bd;
+    if (!bd) return bd;
+    if (bd.boukenRank == null) bd.boukenRank = OKIMONO_BOUKEN_RANK_DEFAULT;
+    if (!Array.isArray(bd.statParts)) return bd;
     bd.statParts.forEach(function (sp) {
         Object.keys(OKIMONO_STAT_EXTRA_DEFAULTS).forEach(function (k) {
             if (sp[k] == null) sp[k] = OKIMONO_STAT_EXTRA_DEFAULTS[k];
@@ -429,38 +429,32 @@ function buildBaseBreakdownInputHTML(bd) {
 
     var html = '';
 
-    // 武器威力 / 技威力 は「素の値」を出す。
+    // 武器威力は「素の値」を出す。技威力は画面から外す（2026-08-18 表示簡略化。
+    // bd.skillRaw / bd.skillName 自体はダメージ計算にそのまま使い続ける）。
     // 実効値（武器種係数・練達補正の適用後）は内部計算にだけ使い、画面には出さない
     // （素96が144、素77が149と表示されて元の値と結びつかなかったため。2026-08-16）。
-    html += _bdRow('武器威力 ／ 技威力（素の値）',
-        `<span class="bd-sublabel">武器</span>${_bdInput('weaponRaw', r(bd.weaponRaw))}
-         <span class="bd-op">／</span>
-         <span class="bd-sublabel">技</span>${_bdInput('skillRaw', r(bd.skillRaw))}
-         <span class="bd-note">${bd.skillName ? bd.skillName : ''}</span>`);
+    html += _bdRow('武器威力（素の値）',
+        `<span class="bd-sublabel">武器</span>${_bdInput('weaponRaw', r(bd.weaponRaw))}`);
 
     // キャラステ: 素 + スタイル補正(装備込) + バフ%
     (bd.statParts || []).forEach(function(sp, idx) {
         var hasDecomp = sp.statBase != null && sp.styleBonusPer != null;
         if (hasDecomp) {
-            // BE の組み立て（setMaxStatus4Battle）をそのまま並べる。
-            // 限突(statusBonus)と装備(correction)は動かす対象ではないので素の文字で出す。
+            // BE の組み立て（setMaxStatus4Battle）を「補正値」「加算値」に集約して並べる
+            // （2026-08-18 表示簡略化）。内訳（スタイル補正/昇段/魂% と 裏/魂実数/限突/装備）は
+            // calcStatEff の計算式としては変わらず健在——ここで表示用に合算するだけ。
+            // data-bd は代表項目（styleBonusPer / uraFlat）を据え置きで使う。編集時は
+            // その代表項目へ書き戻し、まとめられた残りの項目は0にする（buff_ranking.js 側）。
+            var perSum = (Number(sp.styleBonusPer) || 0) + (Number(sp.shoudanPer) || 0) + (Number(sp.soulPer) || 0);
+            var flatSum = (Number(sp.uraFlat) || 0) + (Number(sp.soulFlat) || 0)
+                + (Number(sp.statusBonus) || 0) + (Number(sp.correction) || 0);
             var pct = '<span class="bd-op">%</span>';
             html += _bdRow(`${sp.jp}力`,
                 _bdField('素ステ', _bdInput('statBase', sp.statBase, {idx:idx}))
-                + '<span class="bd-op">×（</span>'
-                + _bdField('スタイル補正', _bdInput('styleBonusPer', sp.styleBonusPer, {idx:idx, step:'0.01'}) + pct)
+                + '<span class="bd-op">×</span>'
+                + _bdField('補正値', _bdInput('styleBonusPer', perSum, {idx:idx, step:'0.01', wide:true}) + pct)
                 + '<span class="bd-op">+</span>'
-                + _bdField('昇段', _bdInput('shoudanPer', sp.shoudanPer, {idx:idx, step:'0.01'}) + pct)
-                + '<span class="bd-op">+</span>'
-                + _bdField('魂', _bdInput('soulPer', sp.soulPer, {idx:idx, step:'0.01'}) + pct)
-                + '<span class="bd-op">）+</span>'
-                + _bdField('裏', _bdInput('uraFlat', sp.uraFlat, {idx:idx}))
-                + '<span class="bd-op">+</span>'
-                + _bdField('魂', _bdInput('soulFlat', sp.soulFlat, {idx:idx}))
-                + '<span class="bd-op">+</span>'
-                + _bdField('限突', _bdInput('statusBonus', sp.statusBonus, {idx:idx}))
-                + '<span class="bd-op">+</span>'
-                + _bdField('装備', _bdInput('correction', sp.correction, {idx:idx}))
+                + _bdField('加算値', _bdInput('uraFlat', flatSum, {idx:idx}))
                 + '<span class="bd-op">+</span>'
                 + _bdField('バフ量', _bdInput('statBuff', sp.buffPer, {idx:idx}) + pct)
                 + `<span class="bd-op">=</span> <span class="bd-stat-eff bd-strong" data-idx="${idx}">${calcStatEff(sp)}</span>`);
@@ -486,24 +480,27 @@ function buildBaseBreakdownInputHTML(bd) {
          ${_bdInput('enemyDebuffPer', bd.enemyDebuffPer)}<span class="bd-op">%）</span>
          <span class="bd-op">=</span> <span class="bd-enemy-eff bd-strong">${r(effectiveEnemyStat(bd.enemyStatBase, bd.enemyDebuffPer))}</span>`);
 
-    // アビリティ + 聖石 + MasterLV
+    // アビリティ + 聖石 + MasterLv + 冒険者Rank
     // 「聖石」はアクセサリ倍率込みの合算（BE の $SSS_ACC + 聖石。damageCalc.inc:85,113-121）で、
     // 聖石そのものの値ではない。実測 1630 = 1515(アクセ) + 115(関門聖石)。
+    // bd.master は BE の $MASTER_LV_MAP 由来で MasterLv + 冒険者Rank($BOUKEN_BONUS)の合算値
+    // （damageEngine.inc:329）。画面では2つに分けて見せるが、合算値(bd.master)自体は変えない
+    // （計算式は不変。2026-08-18）。
     var pctOp = '<span class="bd-op">%</span>';
-    html += _bdRow('アビ + 聖石 + MasterLv',
+    var boukenRank = Number(bd.boukenRank);
+    if (isNaN(boukenRank)) boukenRank = OKIMONO_BOUKEN_RANK_DEFAULT;
+    var masterLvOnly = (Number(bd.master) || 0) - boukenRank;
+    html += _bdRow('アビ + 聖石 + MasterLv + 冒険者Rank',
         _bdField('アビ', _bdInput('ability', r(bd.ability)) + pctOp)
         + '<span class="bd-op">+</span>'
         + _bdField('聖石＋アクセ', _bdInput('holyStone', bd.holyStone, {wide:true}) + pctOp)
         + '<span class="bd-op">+</span>'
-        + _bdField('MasterLv', _bdInput('master', bd.master, {step:'0.1'}) + pctOp));
+        + _bdField('MasterLv', _bdInput('master', masterLvOnly, {step:'0.1'}) + pctOp)
+        + '<span class="bd-op">+</span>'
+        + _bdField('冒険者Rank', _bdInput('boukenRank', boukenRank, {step:'0.1'}) + pctOp));
 
-    // Ex + ティア加算ボタン
-    var exBtns = OKIMONO_EX_TIERS.map(function(t) {
-        return `<button type="button" class="bd-ex-add" data-ex-add="${t.val}">${t.label}<span class="bd-ex-val">+${t.val}</span></button>`;
-    }).join('');
-    html += _bdRow('Ex倍率',
-        `<span class="bd-op">×</span>${_bdInput('ex', Number(bd.ex).toFixed(2), {step:'0.01', wide:true})}
-         <span class="bd-ex-btns">${exBtns}</span>`);
+    // Ex倍率の編集欄は画面から外す（2026-08-18 表示簡略化）。bd.ex 自体は
+    // ダメージ計算にそのまま使い続ける（このパネルからは編集できなくなるだけ）。
 
     // 敵数（2体以上のみ）
     if ((bd.enemyCount || 1) > 1) {
@@ -532,7 +529,6 @@ if (typeof module !== 'undefined' && module.exports) {
         resolveWeaponTypeName,
         OKIMONO_WEAPON_COEFF,
         OKIMONO_WEAPON_TYPE_NAME,
-        OKIMONO_EX_TIERS,
         OKIMONO_STAT_EXTRA_DEFAULTS,
         OKIMONO_HIT_DAMAGE_CAP,
     };
