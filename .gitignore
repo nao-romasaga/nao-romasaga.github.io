@@ -1,6 +1,6 @@
 .DS_Store
 .vscode/
-data/
+/data
 /js.org/
 /js/backup/
 /php/
@@ -57,3 +57,11 @@ ADMIN_MULTISTYLE_PLAN.md
 
 .superpowers/
 .worktrees/
+
+# ローカル作業物（2026-09-05 整理）
+tmp_*.jpg
+tmp_*.jpeg
+/a
+/test.js
+admin_multistyle_backup_before_debug.json
+abtrisconsulting-interactive-moving-line-chart/

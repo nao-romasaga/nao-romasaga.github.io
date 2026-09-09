@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <link rel="canonical" href="/autodamage.html">
+    <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="./js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="./js/jquery.ui.touch-punch.js"></script>
+    <script src="./js/lib/lazysizes.min.js"></script>
+    <script src="./js/lib/ls.unveilhooks.min.js"></script>
+    <script src="./js/dataload.js"></script>
+    <script>
+        // require dataload.js
+        dataload([
+            "data_WEAPON",
+            "data_ARMOR_CHOICE",
+            "data_STYLEMASTER_style",
+            "data_CHARMASTER",
+            "data_OPENGACHA",
+        ], false);
+    </script>    
+
+    <!-- Global site tag (gtag.js) - Google Analytics         -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138966739-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-138966739-1');
+    </script>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <meta charset="utf-8">
+    <title>【ロマサガRS】全力オート ダメージランキング</title>
+    <meta property="og:title" content="【ロマサガRS】全力オート ダメージランキング" />
+    <meta property="og:url" content="https://nao-romasaga.github.io/autodamage.html" />
+    <meta property="og:description" content="ロマサガRSの全力オートでの平均ダメージのランキングです。覚醒パターンの研究などに攻略の際にご利用ください。" />
+    <meta name="description" content="ロマサガRSの全力オートでの平均ダメージのランキングです。覚醒パターンの研究などに攻略の際にご利用ください。【ロマンシングサガ リユニバース】" />
+    <meta property="og:image" content="https://nao-romasaga.github.io/img/twitter_card_autodamage.png" />
+    <meta property="og:site_name" content="ロマサガRS便利ツール" />
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="ja_JP" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@nao_romasaga_rs" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap/bootstrap.min.css">
+    <script src="./js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/style2.css">
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/3.5.2/firebase-ui-auth__ja.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+    <script src="./js/Firebase.js"></script>
+    <script src="./js/utils2.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+    <style>
+        .NAME_AREA {
+            line-height: 13px;
+        }
+        @media (max-width: 993px) {
+            .NAME_AREA {
+                padding-left: 5px !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .icon_xs {
+                display: inline-block;
+                width: 25px !important;
+                height: 25px !important;
+                background-size: cover !important;
+                margin: 0 0 0 0px;
+            }
+        }
+        .HEAL_DETAIL {
+            padding: 5px 20px;
+            height: 100%;
+        }
+        .heal-color {
+            color:lime;
+        }
+        .big-font {
+            font-size: 2rem;
+            line-height: 2rem;
+        }
+        .eq-icon {
+            width: 30px;
+        }
+        .eq-detail {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: baseline;
+            height: 80px;
+        }
+        .style-icon-td {
+            width: 80px;
+        }
+
+        .ranking-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .ranking-container img {
+            display: block;
+        }
+
+        .ranking-container .ranking-number {
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white; /* 数字の色を設定 */
+            font-weight: bold; /* 数字の太さを設定 */
+        }
+        .PC-AREA {
+            display: none;
+        }
+        @media (min-width: 768px) {
+            .guild-ranking {
+                display: flex;
+                flex-wrap: wrap;
+            }
+            .eq-icon {
+                width: 40px;
+            }
+            .PC-AREA {
+                display: block;
+            }
+            .SP-AREA {
+                display: none;
+            }
+            .style-icon-td {
+                width: 85px;
+            }
+        }        
+    </style>
+</head>
+<body>
+    <div class="dojohaikei">
+        <div class="container">
+            <h3 class="text-center label-text-small width-100">戦闘力ランキング</h3>
+            <span class="title-text d-none"></span>
+
+            <div class="info-modal styleInfoArea width-max text-center">
+                <div class="info-modal-header">装備別 戦闘力ランキング</div>
+                <div class="row">
+                    <div class="col-12 col-lg-4" style="padding:15px;">
+                        <div class="bg-item">主防具</div>
+                        <div class="bg-simple MAIN"></div>
+                    </div>
+                    <div class="col-12 col-lg-4" style="padding:15px;">
+                        <div class="bg-item">副防具</div>
+                        <div class="bg-simple SUB"></div>
+                    </div>
+                    <div class="col-12 col-lg-4" style="padding:15px;">
+                        <div class="bg-item">アクセサリー</div>
+                        <div class="bg-simple ACC"></div>
+                    </div>
+                    <div class="d-none ARMOR_TEMPLATE">
+                        <div class="ranking-container align-content-center">
+                            <img class="CROWN1 d-none" src="https://romasagatool.com/img/icon/icon_crown_g.png" alt="王冠">
+                            <img class="CROWN2 d-none" src="https://romasagatool.com/img/icon/icon_crown_s.png" alt="王冠">
+                            <img class="CROWN3 d-none" src="https://romasagatool.com/img/icon/icon_crown_c.png" alt="王冠">
+                            <div class="CROWN4 d-none" style="width:32px"></div>
+                            <div class="CROWN5 d-none" style="width:32px"></div>
+                            <div class="fuchidori-blue ranking-number RANK"></div>
+                        </div>
+                        <div class="align-content-center ICON"></div>
+                        <div class="d-flex" style="flex-direction: column; align-items: baseline;">
+                            <div>
+                                <span style="font-size:0.6em">戦闘力</span>
+                                <span class="fuchidori-blue POWER"></span>
+                                <span class="NAME"></span>
+                            </div>
+                            <div class="DROP" style="font-size: 0.6em; line-height: 0.6rem;     text-align: left;"></div>
+                        </div>
+                    </div>                    
+                </div>
+                <div class="filter-bgcolor d-flex" style="gap:10px; flex-wrap: wrap;">
+                    <span data-id="剣" class="yubi icon_mini icon_ken weapon-icon-button fwButton filterActive" onclick=""></span>
+                    <span data-id="大剣" class="yubi icon_mini icon_dken weapon-icon-button fwButton" onclick=""></span>
+                    <span data-id="斧" class="yubi icon_mini icon_ono weapon-icon-button fwButton" onclick=""></span>
+                    <span data-id="棍棒" class="yubi icon_mini icon_kon weapon-icon-button fwButton" onclick=""></span>
+                    <span data-id="体術" class="yubi icon_mini icon_tai weapon-icon-button fwButton" onclick=""></span>
+                    <span data-id="銃" class="yubi icon_mini icon_ju weapon-icon-button fwButton" onclick=""></span>
+                    <span data-id="小剣" class="yubi icon_mini icon_sken weapon-icon-button fwButton" onclick=""></span>
+                    <span data-id="弓" class="yubi icon_mini icon_yumi weapon-icon-button fwButton" onclick=""></span>
+                    <span data-id="槍" class="yubi icon_mini icon_yari weapon-icon-button fwButton" onclick=""></span>
+                    <span data-id="杖" class="yubi icon_mini icon_tsue weapon-icon-button fwButton" onclick=""></span>
+                </div>
+                <div class="row WP_BASE">
+                    <div class="col-12 col-lg-4 d-none WP_TMPL" style="padding:15px;">
+                        <div class="bg-item WP_NAME"></div>
+                        <div class="bg-simple WP_CLASS_NAME"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="info-modal styleInfoArea width-max text-center">
+                <div class="info-modal-header">スタイル 戦闘力ランキング</div>
+                <div class="filter-bgcolor text-center small row" style="width:100%; margin: 0px;">
+                    <ul class="nav text-center width-100" style="margin-bottom: 5px;">
+                        <li class="fuchidori-white subtitle smallFont">昇能石 MAX</li>
+                    </ul>
+                    <ul class="nav text-center width-100">
+                        <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0" data-href="GB1_GB2_GB3"><div class="fButton width-100 filter-bgcolor text-nowrap">GB (<span id="VAL_GB1_GB2_GB3">0</span>)</div></a></li>    
+                        <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0" data-href="RS1"><div class="fButton width-100 filter-bgcolor">RS1 (<span id="VAL_RS1">0</span>)</div></a></li>
+                        <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0" data-href="RS2"><div class="fButton width-100 filter-bgcolor">RS2 (<span id="VAL_RS2">0</span>)</div></a></li>
+                        <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0" data-href="RS3"><div class="fButton width-100 filter-bgcolor">RS3 (<span id="VAL_RS3">0</span>)</div></a></li>
+                        <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0" data-href="SF1"><div class="fButton width-100 filter-bgcolor">SF1 (<span id="VAL_SF1">0</span>)</div></a></li>
+                        <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0" data-href="SF2"><div class="fButton width-100 filter-bgcolor">SF2 (<span id="VAL_SF2">0</span>)</div></a></li>
+                        <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0" data-href="US"><div class="fButton width-100 filter-bgcolor">US (<span id="VAL_US">0</span>)</div></a></li>
+                        <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0" data-href="ES_IS"><div class="fButton width-100 filter-bgcolor">ES&IS (<span id="VAL_ES_IS">0</span>)</div></a></li>
+                        <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0" data-href="SSG"><div class="fButton width-100 filter-bgcolor">SSG (<span id="VAL_SSG">0</span>)</div></a></li>
+                        <li class="col-4 col-sm-2 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0" data-href="SEB"><div class="fButton width-100 filter-bgcolor">SaGaEB (<span id="VAL_SEB">0</span>)</div></a></li>
+                        <li class="col-4 col-sm-4 text-center" style="color:beige; margin-bottom: 5px;"><a class="filterList pad0" data-href="RSR_OTR"><div class="fButton width-100 filter-bgcolor">SaGaRS&その他 (<span id="VAL_RSR_OTR">0</span>)</div></a></li>
+                    </ul>
+                </div>
+                <div id="STYLE_RANKING"></div>
+                <div class="bg-simple d-none STYLE_TEMPLATE" style="padding: 5px 10px 10px 10px;">
+                    <table class="width-100 ">
+                        <tr>
+                            <td rowspan="2" class="STYLE_ICON"></td>
+                            <td colspan="8" class="STYLE_NAME bg-item" style="padding: 8px 20px; font-size:0.7rem; line-height: 0.7rem;"></td>
+                        </tr>
+                        <tr style="line-height: 0.8rem;">
+                            <td>腕</td><td>体</td><td>器</td><td>速</td>
+                            <td>知</td><td>精</td><td>愛</td><td>魅</td>
+                        </tr>
+                        <tr style="line-height: 0.8rem;">
+                            <td class="STYLE_POWER fuchidori-blue" style="font-size: 1.2rem;"></td>
+                            <td class="STR"></td><td class="VIT"></td><td class="DEX"></td><td class="AGI"></td>
+                            <td class="INT"></td><td class="MND"></td><td class="AI"></td><td class="MI"></td>
+                        </tr>
+                        <tr class="d-none" style="font-size: 0.6rem;">
+                            <td class="">最大ステ</td>
+                            <td class="STR_BASE"></td><td class="VIT_BASE"></td><td class="DEX_BASE"></td><td class="AGI_BASE"></td>
+                            <td class="INT_BASE"></td><td class="MND_BASE"></td><td class="AI_BASE"></td><td class="MI_BASE"></td>
+                        </tr>
+    
+                    </table>    
+                </div>
+            </div>
+
+            <div class="info-modal styleInfoArea width-max text-center">
+                <div class="info-modal-header">開催中ガチャ 戦闘力ランキング</div>
+                <div id="NOW_STYLE_RANKING"></div>
+                <div class="bg-simple d-none STYLE_TEMPLATE3" style="padding: 5px 10px 10px 10px;">
+                    <table class="width-100 ">
+                        <tr>
+                            <td rowspan="2" class="STYLE_ICON"></td>
+                            <td colspan="9" class="bg-item" style="padding: 8px 20px; line-height: 0.7rem;">
+                                <div class="d-flex">
+                                    <span class="fuchidori-white" style="flex:0.3">[<span class="STYLE_RANK"></span>位]</span>
+                                    <span class="STYLE_NAME" style="flex:0.7; font-size:0.7rem; text-align: left;"></span>    
+                                </div>
+                            </td>
+                        </tr>
+                        <tr style="line-height: 0.8rem;">
+                            <td>計</td><td>腕</td><td>体</td><td>器</td><td>速</td>
+                            <td>知</td><td>精</td><td>愛</td><td>魅</td>
+                        </tr>
+                        <tr style="line-height: 0.8rem;">
+                            <td class="STYLE_POWER fuchidori-blue" style="font-size: 1.2rem;"></td>
+                            <td class="SUM"></td><td class="STR"></td><td class="VIT"></td><td class="DEX"></td><td class="AGI"></td>
+                            <td class="INT"></td><td class="MND"></td><td class="AI"></td><td class="MI"></td>
+                        </tr>
+                    </table>    
+                </div>
+            </div>            
+
+            <div class="info-modal styleInfoArea width-max text-center">
+                <div class="info-modal-header">ギルド用 戦闘力ランキング</div>
+                <div>
+                    パーティ戦闘力 <span class="fuchidori-blue TOTAL_POWER" style="font-size:1.3rem;"></span>
+                </div>
+                <div id="GUILD_RANKING" class="guild-ranking"></div>
+                <div class="bg-simple d-none STYLE_TEMPLATE2" style="padding: 5px 10px 10px 10px;">
+                    <table class="width-100 PC-AREA">
+                        <tr>
+                            <td colspan="8" class="bg-item" style="line-height: 1rem; padding:10px">
+                                <div class="STYLE_NAME2"></div>
+                                <div class="STYLE_ANOTHER" style="font-size: 0.8rem"></div>
+                            </td>
+                        </tr>
+                        <tr style="line-height: 0.8rem;">
+                            <td rowspan="3" class="style-icon-td">
+                                <div class="STYLE_ICON"></div>
+                                <div style="display: flex; flex-wrap: wrap;">
+                                    <div class="eq-icon G_WEAPON"></div>
+                                    <div class="eq-icon G_MAIN"></div>        
+                                    <div class="eq-icon G_SUB"></div>
+                                    <div class="eq-icon G_ACC"></div>
+                                </div>
+                            </td>
+                            <td style="line-height: 1rem;">
+                                <div class="STYLE_POWER fuchidori-blue" style="font-size: 1.2rem;"></div>
+                                <div class="STYLE_POWER1" style="font-size: 0.8rem;"></div>
+                                <div class="STYLE_POWER2" style="font-size: 0.8rem;"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="line-height: 1rem; font-size:0.9rem; text-align: left;">
+                                <div class="eq-detail" >
+                                    <span class="EQ_NAME_WEAPON"></span>
+                                    <span class="EQ_NAME_MAIN"></span>
+                                    <span class="EQ_NAME_SUB"></span>
+                                    <span class="EQ_NAME_ACC"></span>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>                    
+                    <table class="width-100 SP-AREA">
+                        <tr>
+                            <td rowspan="3" class="style-icon-td">
+                                <div class="STYLE_ICON"></div>
+                                <div class="style-icon-td" style="line-height: 1rem;">
+                                    <div class="STYLE_POWER fuchidori-blue" style="font-size: 1.2rem;"></div>
+                                    <div class="STYLE_POWER1" style="font-size: 0.8rem;"></div>
+                                    <div class="STYLE_POWER2" style="font-size: 0.8rem;"></div>
+                                </div>
+                            </td>
+                            <td colspan="8" class="STYLE_NAME bg-item" style="padding: 3px 20px; font-size:0.7rem; line-height: 0.7rem;"></td>
+                        </tr>
+                        <tr style="line-height: 0.8rem;">
+                            <td class="eq-icon G_WEAPON"></td>
+                            <td class="eq-icon G_MAIN"></td>
+                            <td rowspan="2">
+                                <div class="eq-detail" >
+                                    <span class="EQ_NAME_WEAPON"></span>
+                                    <span class="EQ_NAME_MAIN"></span>
+                                    <span class="EQ_NAME_SUB"></span>
+                                    <span class="EQ_NAME_ACC"></span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr style="line-height: 0.8rem;">                            
+                            <td class="eq-icon G_SUB"></td><td class="eq-icon G_ACC"></td>
+                        </tr>
+                    </table>    
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        console.log(WEAPON_DATA);
+        let weapon_rank = {};
+        for(i in WEAPON_DATA) {
+            WEAPON_DATA[i]["SSS"].sort((a, b) => b.Power - a.Power);
+            weapon_rank[i] = WEAPON_DATA[i]["SSS"].filter(x => {
+                return ["(光)アビススタッフ","(火)アビススタッフ","(水)アビススタッフ","(土)アビススタッフ","(風)アビススタッフ","(光)ネビュラワンド","(火)ネビュラワンド","(水)ネビュラワンド","(土)ネビュラワンド","(風)ネビュラワンド"].indexOf(x['Name']) == -1
+            });            
+            weapon_rank[i] = weapon_rank[i].slice(0,5);
+        }
+        for(i in ARMOR_CHOICE) {
+            ARMOR_CHOICE[i].sort((a, b) => b.Power - a.Power);
+            weapon_rank[i] = ARMOR_CHOICE[i].filter(
+                x => {
+                    return ["名将の鎧(US)","名将の鎧(ES&IS)","名将の鎧(SSG)","名将の鎧(SaGaEB)","名将の鎧(SaGaRS&その他)","名将の鎧(GBSaGa)","名将の鎧(SF1)","名将の鎧(SF2)","双華のブローチ(＋)","豪傑のモノクル(＋)","炎翼のイヤリング(＋)","白牙のピアス(＋)","冥淵のタリスマン(＋)"].indexOf(x['Name']) == -1
+                }
+            );
+        }       
+        
+        let armor_power = [];
+        let font_size = [1.2,1.1,1,0.9,0.8];
+        for(i = 0; i < 5; i++) {
+            armor_power.push({
+                "MAIN":weapon_rank["MAIN"][i],
+                "SUB":weapon_rank["SUB"][i],
+                "ACC":weapon_rank["ACC"][0],
+            })
+            for(type of ["MAIN","SUB","ACC"]) {
+                addRankingRow(weapon_rank[type][i], type, false);
+            }
+        }
+        
+
+
+        function addRankingRow(eq_data, type, isWeapon){
+            prefix = (type == "ACC") ? "accessory_": "armor_";
+            prefix = (isWeapon) ? "" : prefix;
+            illustKey = (isWeapon) ? "Illust" : "illust";
+            rare = (isWeapon) ? "SSS" : eq_data['Rarity'];
+            illustName = prefix + ((eq_data[illustKey] == undefined) ? rare.toLowerCase(): eq_data[illustKey]);
+            $tmpl = $(".ARMOR_TEMPLATE").clone().removeClass("d-none ARMOR_TEMPLATE").addClass("d-flex");
+            $tmpl.find(`.CROWN${i+1}`).removeClass("d-none");
+            $tmpl.find(".RANK").append((i+1)).attr("style", `font-size:${font_size[i]}em;`);
+            $tmpl.find(".ICON").append(getWeaponIcon(rare, illustName, ""));
+            $tmpl.find(".NAME").append(eq_data['Name']);
+            $tmpl.find(".POWER").append(eq_data['Power']);
+            let drop = eq_data['drop'];
+            drop = drop.indexOf("ロマンシングメダル") > -1 ? "ロマンシングメダル交換所" : drop;
+            $tmpl.find(".DROP").append(drop);
+            $("." + type).append($tmpl.clone());
+        }
+
+        console.log(armor_power);
+        for(wp_jp in MASTER_LV_KEY) {
+            let clz = wp_jp == "剣" ? "d-none" : "";
+            $tmpl = $(".WP_TMPL").clone().removeClass(`${clz} WP_TMPL`);
+            $tmpl.find(".WP_NAME").removeClass("WP_NAME").append(wp_jp);
+            $tmpl.find(".WP_CLASS_NAME").removeClass("WP_NAME").addClass(`${wp_jp}`);
+            $tmpl.addClass(`${MASTER_LV_KEY[wp_jp]} wpRow`);
+            $(".WP_BASE").append($tmpl);
+            for(i = 0; i < 5; i++) {
+                addRankingRow(weapon_rank[wp_jp][i], wp_jp, true);
+            }
+        }
+
+        let shonoList = new Set();
+
+        createRanking();
+
+        $(".fwButton").click(function () {
+            $(".wpRow").addClass("d-none");
+            $(".fwButton").each(function(){
+                $(this).removeClass("filterActive");
+            });
+            $(this).toggleClass("filterActive");
+            let id = $(this).attr("data-id");
+            $(`.wpRow.${MASTER_LV_KEY[id]}`).removeClass("d-none");
+        });
+
+        $(".fButton").click(function () {
+            $(this).toggleClass("filterActive");
+            const ids = $(this).parent(".filterList").data("href").split("_"); // data-hrefを分割
+            ids.forEach(id => {
+                if ($(this).hasClass("filterActive")) {
+                    shonoList.add(id); // 各idを追加
+                } else {
+                    shonoList.delete(id); // 各idを削除
+                }
+            });
+            createRanking();
+        });
+
+        function createRanking(){
+            $("#STYLE_RANKING").html("");
+            $("#NOW_STYLE_RANKING").html("");
+            $("#GUILD_RANKING").html("");
+            
+            let master = [];
+            for (let i in STYLE_MASTER) {
+                let valueMap = CONST_STYLE_BONUS_VAL[STYLE_MASTER[i]['Rarity']];
+                let tmpSt = {}
+                for (let p of PARAM_KEY) {
+                    tmpSt[p] = 0;
+                }
+                for (let lv in valueMap) {
+                    let name = STYLE_MASTER[i]["StyleBonus"][lv];
+                    if (name === "全能力値") {
+                        for (let p of PARAM_KEY) {
+                            tmpSt[p] += valueMap[lv];
+                        }
+                    } else {
+                        tmpSt[PARAM_KEY[PARAM_NAME.indexOf(name)]] += valueMap[lv];
+                    }
+                }
+                let id = STYLE_MASTER[i]['Id'];
+                let charId = STYLE_MASTER[id]['CharacterId'];
+                let charInfo = CHAR_MASTER[charId];
+
+                const shonoHP = shonoList.has(charInfo['Series'])? 440 : 0;
+                const shonoPer = shonoList.has(charInfo['Series'])? 16 : 0;
+
+                var rarePath =  getImgPath(`icon/icon_${STYLE_MASTER[i]['Rarity']}.png`);
+                var wpPath =  getImgPath(`icon/${ICON_LIST[STYLE_MASTER[i]['WeaponType']]}.png`);
+                var stylePath =  getImgPath(`style_icon/${STYLE_MASTER[i]['IllustId']}.png`);
+
+                var limsum = 0, valsum = 0, totalPer = 0;
+                //var POWER_TABLE = {"STR":6,"VIT":6, "DEX":4, "AGI":4,"INT":4,"MND":4,"AI":2,"MI":2}
+                var power = 0;
+                for (var key of ["Zan","Da","Totsu","Netsu","Rei","Rai","Inn",'You']){
+                    power += STYLE_MASTER[i][`Resist${key}`];
+                }
+                for (let key of PARAM_KEY) {
+                    var tmpPer = STYLE_MASTER[i]["StyleBonusLv50" + key];
+                    totalPer += tmpPer;
+                    let st = (charInfo["MAX" + key] === -99) ? "?" : OVER_LIMIT_POWER + charInfo["MAX" + key] + charInfo[key];
+                    var calcSt = st + (st * (tmpPer + SHODAN + DAI_SEI_PER + shonoPer) / 100 ) + tmpSt[key] + URA;
+                    STYLE_MASTER[i]["CharSt"+key] = st;
+                    STYLE_MASTER[i]["StyleSt"+key] = calcSt;
+                    STYLE_MASTER[i]["StylePer"+key] = tmpPer + SHODAN + DAI_SEI_PER;
+                    STYLE_MASTER[i]["StyleBonus"+key] = (tmpSt[key]+ URA) + " + "+DAI_SEI_VAL;
+                    power += POWER_TABLE[key] * calcSt;
+                    power += (POWER_TABLE[key] / 2) * DAI_SEI_VAL;
+                }
+                
+                STYLE_MASTER[i]["Power"] = Math.floor(power + (HP_LIMIT_POWER + URA_HP + DAI_SEI_HP + shonoHP) * 5 );
+                master.push(STYLE_MASTER[i]);
+            }
+            master.sort((a, b) => b.Power - a.Power);
+            console.log(master);
+            let gachaList = getOpenGacha();
+            let nowStyleList = [];
+            for(i in master) {
+                let styleInfo = master[i];
+                for(g of gachaList) {
+                    if(styleInfo['gacha'] == g) {
+                        styleInfo['RANK'] = (Number(i)+1);
+                        nowStyleList.push(styleInfo);
+                        break;
+                    }
+                }
+            }
+
+            masterSlice = master.slice(0,20);
+
+            let guild = [];
+            let guildData = [];
+            let seriesList = {'RS1':0,'RS2':0,'RS3':0,'SF1':0,'SF2':0,'US':0,'ES_IS':0,'SSG':0,'SEB':0,'GB1_GB2_GB3':0,'RSR_OTR':0}
+            for(i in masterSlice){
+                let styleInfo = masterSlice[i];
+                if(guild.indexOf(styleInfo['CharacterId']) == -1
+                    && guild.length < 5) {
+                    guild.push(styleInfo['CharacterId']);
+                    guildData.push(styleInfo);
+                }
+                let charId = styleInfo['CharacterId'];
+                let charInfo = CHAR_MASTER[charId];
+                let series = charInfo['Series'];
+                if(["ES","IS"].indexOf(series) >-1){
+                    series = "ES_IS";
+                } else if(["GB1","GB2","GB3"].indexOf(series) >-1){
+                    series = "GB1_GB2_GB3";
+                } else if(["RSR","OTR"].indexOf(series) >-1){
+                    series = "RSR_OTR";
+                }                
+                seriesList[series]++;
+                
+                $tmpl = $(".STYLE_TEMPLATE").clone().removeClass(`STYLE_TEMPLATE d-none`);
+
+                let icon = getStyleIcon(styleInfo['Rarity'], styleInfo['Id'], styleInfo['WeaponType']).clone();
+                icon.find(".CHECK_COVER").remove();
+                $tmpl.find(".STYLE_ICON").append(icon);
+                $tmpl.find(".STYLE_POWER").append(styleInfo["Power"].toLocaleString());
+                $tmpl.find(".STYLE_NAME").append(`${styleInfo["Name"]} ${styleInfo["AnotherName"]}`);
+                
+                for (let key of PARAM_KEY) {
+                    let base = styleInfo[`CharSt${key}`];
+                    let styleVal = Math.floor(styleInfo[`StyleSt${key}`]);
+                    let stylePer = styleInfo[`StylePer${key}`];
+                    let bonus = styleInfo[`StyleBonus${key}`];
+                    $tmpl.find(`.${key}`).append(`${styleVal}`);
+                    //$tmpl.find(`.${key}`).append(`${styleVal}<br>${base} * ${stylePer}% + ${bonus}`);
+                    $tmpl.find(`.${key}_BASE`).append(`${base}`);
+                }
+                $("#STYLE_RANKING").append($tmpl);
+            };
+            console.log(seriesList);
+            for(series in seriesList){
+                $("#VAL_"+series).html(seriesList[series]);
+            }
+            for(gacha of gachaList){
+                $("#NOW_STYLE_RANKING").append(gacha);
+                for(i in master){
+                    let styleInfo = master[i];
+                    if(styleInfo['gacha'] != gacha) {
+                        continue;
+                    }
+                    $tmpl = $(".STYLE_TEMPLATE3").clone().removeClass(`STYLE_TEMPLATE3 d-none`);
+
+                    let icon = getStyleIcon(styleInfo['Rarity'], styleInfo['Id'], styleInfo['WeaponType']).clone();
+                    icon.find(".CHECK_COVER").remove();
+                    $tmpl.find(".STYLE_ICON").append(icon);
+                    $tmpl.find(".STYLE_POWER").append(styleInfo["Power"].toLocaleString());
+                    $tmpl.find(".STYLE_RANK").append(`${styleInfo["RANK"]}`);
+                    $tmpl.find(".STYLE_NAME").append(`${styleInfo["Name"]} ${styleInfo["AnotherName"]}`);
+                    console.log(styleInfo);
+                    let sum = 0;
+                    for (let key of PARAM_KEY) {
+                        let stylePer = styleInfo[`StyleBonusLv50${key}`];
+                        sum += stylePer;
+                        $tmpl.find(`.${key}`).append(`${stylePer}%`);
+                    }
+                    $tmpl.find(`.SUM`).append(`${sum}%`);
+                    $("#NOW_STYLE_RANKING").append($tmpl);
+                };      
+            }      
+            
+
+            let total_power = 0;
+            let rank4wp = {};
+            for(i in guildData){
+                let styleInfo = guildData[i];
+
+                rank4wp[styleInfo["WeaponType"]] = rank4wp[styleInfo["WeaponType"]] ?? 0;
+                let wp = weapon_rank[styleInfo["WeaponType"]][rank4wp[styleInfo["WeaponType"]]];
+                rank4wp[styleInfo["WeaponType"]]++;
+
+                $tmpl = $(".STYLE_TEMPLATE2").clone().removeClass(`STYLE_TEMPLATE2 d-none`);
+
+                let icon = getStyleIcon(styleInfo['Rarity'], styleInfo['Id'], styleInfo['WeaponType']).clone();
+                icon.find(".CHECK_COVER").remove();
+                $tmpl.find(".STYLE_ICON").append(icon);
+
+                $tmpl.find(".STYLE_NAME").append(`${styleInfo["Name"]} ${styleInfo["AnotherName"]}`);
+                $tmpl.find(".STYLE_NAME2").append(styleInfo["Name"]);
+                $tmpl.find(".STYLE_ANOTHER").append(styleInfo["AnotherName"]);
+
+                $tmpl.find(`.G_WEAPON`).append(getWeaponIcon("SSS", wp["Illust"], ""));
+                $tmpl.find(`.EQ_NAME_WEAPON`).append(wp["Name"]);
+
+                let power = wp["Power"];
+                for(type of ["MAIN","SUB","ACC"]){
+                    prefix = (type == "ACC") ? "accessory_": "armor_";
+                    illustName = (type == "WEAPON") ? "" : prefix+armor_power[i][type]["illust"];
+                    $tmpl.find(`.G_${type}`).append(getWeaponIcon(armor_power[i][type]['Rarity'], illustName, ""));
+                    $tmpl.find(`.EQ_NAME_${type}`).append(armor_power[i][type]["Name"]);
+                    power += armor_power[i][type]['Power'];
+                }
+                total_p = styleInfo["Power"] + power;
+                total_power += total_p;
+
+                $tmpl.find(".STYLE_POWER").append((total_p).toLocaleString());
+                $tmpl.find(".STYLE_POWER1").append(styleInfo["Power"].toLocaleString());
+                $tmpl.find(".STYLE_POWER2").append("+"+power.toLocaleString());
+
+                $("#GUILD_RANKING").append($tmpl);
+            };
+            $(".TOTAL_POWER").html(total_power.toLocaleString());
+        }
+        function getSmallIcon(styleInfo) {
+            let styleImg = getImgPath(`style_icon/${styleInfo['Id']}.webp`);
+            // スタイルアイコンの追加
+            let icon = $("<button>")
+                .addClass(getStyleIconClass(styleInfo['Rarity']) + "_small")
+                .attr("style", `background:url(${styleImg}) no-repeat;`)
+            let background = $("<span>").addClass(getStyleIconBgClass(styleInfo['Rarity']))
+                .attr("style", "height: 30px;")
+                .append(icon);
+            return background;
+        }
+    </script>
+    <script type="text/javascript" src="https://romasagatool.com/blog/get_the_archives.php?limit=30&callback=rssCallback"></script>
+</body>
+</html>
