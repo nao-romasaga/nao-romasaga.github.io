@@ -107,7 +107,69 @@ function isDuplicateSuppressedAttr(attrKey, duplicateSuppressed) {
     return duplicateSuppressed.includes(attrKey);
 }
 
+// 付与する追撃・行動トリガー効果（BE breakdown.grant）を1行にまとめる。
+// DAMAGE/BUFF/DEBUFF は「溜め計測で出た静的%」だけなので、追撃のように攻撃シミュレーション
+// 時にしか発火しない寄与はどのバケットにも現れない。出さないと「火力15%しか無いのに1位」に
+// 見える（2026-09-16: タチアナ＝よくばり娘が配る ウィークスタンプ の追撃で upRate 1.008→4.51）。
+function buildGrantNoteHTML(breakdown) {
+    var grant = breakdown && breakdown.grant;
+    if (!Array.isArray(grant) || grant.length === 0) return '';
+    var items = grant.map(function (g) {
+        var name = g.GrantName || '';
+        var when = g.when || g.trigger || '';
+        var body;
+        if (g.main === '追撃') {
+            // size は発動する技IDの '/' 連結。同じIDが並ぶ＝その回数だけ発動する
+            var ids = String(g.size || '').split('/').filter(Boolean);
+            var names = ids.map(function (id) {
+                var sk = (typeof SKILL_MASTER !== 'undefined') ? SKILL_MASTER['ID' + Number(id).toString(16)] : null;
+                return (sk && sk['Name']) ? sk['Name'] : id;
+            });
+            var uniq = [];
+            names.forEach(function (n) {
+                var hit = uniq.find(function (u) { return u.name === n; });
+                if (hit) hit.n++; else uniq.push({ name: n, n: 1 });
+            });
+            body = '追撃 ' + uniq.map(function (u) {
+                return u.name + (u.n > 1 ? '×' + u.n + '回' : '');
+            }).join(' / ');
+        } else {
+            body = (g.main || '') + (g.sub && g.sub !== '-' ? ' ' + g.sub : '') + ' ' + (g.size || '');
+        }
+        return '<span class="fuchidori-blue">' + name + '</span>'
+             + '<span class="dtl-off">（' + when + '）</span> ' + body;
+    });
+    return '<div><span class="dtl-tag">付与</span>' + items.join('<br>') + '</div>';
+}
+
+// ランダムな味方1体への付与（BE breakdown.randomGrants）。
+// ランキングはアタッカーに当たった前提の理論値なので、その旨を明示する。
+// 効果自体は静的%へ畳み込まれ damage/buff にも含まれている（二重計上ではない）。
+function buildRandomGrantNoteHTML(breakdown) {
+    var list = breakdown && breakdown.randomGrants;
+    if (!Array.isArray(list) || list.length === 0) return '';
+    var names = list.map(function (r) { return r.grantedName || r.GrantName || ''; })
+                    .filter(Boolean).join(' / ');
+    return '<div><span class="dtl-tag dtl-random">ランダム</span>'
+         + '<span class="fuchidori-blue">' + names + '</span> '
+         + '<span class="dtl-off">は味方1体へランダムに付与。アタッカーに乗った場合の理論値です</span></div>';
+}
+
+// いま成立しているエクストラフォース（BE baseBreakdown.exList: 名前 => 加算倍率）を
+// 表示用に整える。置物候補の Ex と重複不可を人が見比べるための材料。
+// 表記は既存の Ex 表示と揃えて「×1.75」形式（エンジンの最終倍率 = 1 + Σex と同じ読み方）。
+function formatExList(exList) {
+    if (!exList || typeof exList !== 'object' || Array.isArray(exList)) return [];
+    return Object.keys(exList)
+        .map(function (name) { return { name: name, raw: Number(exList[name]) || 0 }; })
+        .sort(function (a, b) { return b.raw - a.raw; })
+        .map(function (e) { return { name: e.name, mult: '×' + (1 + e.raw).toFixed(2) }; });
+}
+
 // ブラウザでは global 関数として定義（export 無し）。node テスト用にのみ module.exports。
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { signedPct, hiddenTriggerGroup, effectName, effectValue, isDuplicateSuppressedAttr };
+    module.exports = {
+        signedPct, hiddenTriggerGroup, effectName, effectValue, isDuplicateSuppressedAttr,
+        buildGrantNoteHTML, buildRandomGrantNoteHTML, formatExList,
+    };
 }

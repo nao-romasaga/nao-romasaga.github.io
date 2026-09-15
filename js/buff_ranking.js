@@ -627,6 +627,14 @@ function buildRankDetailHTML(styleInfo, rate = 0, breakdown = null, damage = nul
         ).join(' ');
         actionHtml = `<div><span class="dtl-tag">行動時</span>${items} <span class="dtl-off">×${actionBuffs[0].actions}行動で累積</span></div>`;
     }
+    // 付与する追撃（BE breakdown.grant）。DAMAGE/BUFF/DEBUFF は「溜め計測で出た静的%」なので
+    // 追撃はどのバケットにも現れない。これを出さないと、火力%をほとんど持たないのに上位へ来る
+    // サポートの理由が読めない（例: タチアナ=「よくばり娘」が配る ウィークスタンプ の追撃で
+    // upRate 1.008→4.51。2026-09-16 ユーザー指摘）。
+    const grantHtml = buildGrantNoteHTML(breakdown);
+    // ランダムな味方1体への付与（BE breakdown.randomGrants）。ランキングはアタッカーに
+    // 当たった前提の理論値なので、その旨を明示する。
+    const randomHtml = buildRandomGrantNoteHTML(breakdown);
     let summaryHtml = `<div class="dtl-summary dtl-3col">
         <div class="dtl-col">
             <div class="dtl-col-head">◆火力アビ <span class="fuchidori-blue dtl-sum-total">${sumValue}%</span>${exTotalHtml}</div>
@@ -634,6 +642,8 @@ function buildRankDetailHTML(styleInfo, rate = 0, breakdown = null, damage = nul
                 ${abItems.length ? `<div><span class="dtl-tag">アビ</span>${abItems.join(' ')}</div>` : ''}
                 ${exItems.length ? `<div><span class="dtl-tag">Ex</span>${exItems.join(' ')}</div>` : ''}
                 ${actionHtml}
+                ${grantHtml}
+                ${randomHtml}
             </div>
         </div>
         <div class="dtl-col">

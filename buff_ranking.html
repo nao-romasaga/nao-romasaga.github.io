@@ -894,6 +894,11 @@
                     margin-right: 5px;
                     vertical-align: middle;
                 }
+                /* 「ランダムな味方1体へ付与」= ランキングはアタッカーに当たった前提の理論値。
+                   確定効果と読み違えないよう、アビ/Exタグとは別色にして注意色で出す。 */
+                .dtl-tag.dtl-random { background: rgba(200,140,60,0.35); color: #ffd9a0; }
+                /* 基本値パネルの「所持中のエクストラフォース」1件分 */
+                .bd-ex-item { display: inline-block; margin-right: 10px; white-space: nowrap; }
                 .dtl-off { color: rgba(255,255,255,0.35); }
                 /* 「この技に乗らない」(dtl-off)とは別原因＝ロック済みサポーターとの重複で
                    無効化されている効果。色だけでなく打ち消し線と(重複)バッジの両方で示す

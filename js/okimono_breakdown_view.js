@@ -501,6 +501,21 @@ function buildBaseBreakdownInputHTML(bd) {
 
     // Ex倍率の編集欄は画面から外す（2026-08-18 表示簡略化）。bd.ex 自体は
     // ダメージ計算にそのまま使い続ける（このパネルからは編集できなくなるだけ）。
+    //
+    // ただし「いま何のエクストラフォースが乗っているか」は読み取り専用で出す。
+    // 置物候補の Ex は同名なら重複不可で無効化されるため、候補を選ぶ前に自分の所持分が
+    // 見えていないと判断できない（2026-09-16 ユーザー要望）。合計倍率(bd.ex)だけでは
+    // どの条件のExかが分からないので、BE の baseBreakdown.exList を名前つきで並べる。
+    var exItems = (typeof formatExList === 'function') ? formatExList(bd.exList) : [];
+    if (exItems.length) {
+        html += _bdRow('所持中のエクストラフォース',
+            exItems.map(function (e) {
+                return '<span class="bd-ex-item"><span class="bd-sublabel">' + e.name + '</span>'
+                     + '<span class="bd-strong">' + e.mult + '</span></span>';
+            }).join(' ')
+            + ' <span class="bd-op">合計</span> <span class="bd-strong">×'
+            + (Number(bd.ex) || 1).toFixed(2) + '</span>');
+    }
 
     // 敵数（2体以上のみ）
     if ((bd.enemyCount || 1) > 1) {
