@@ -1871,5 +1871,66 @@ h-nav .inner ul li a {
 
 .special_effect {
     color: dodgerblue;
-    text-decoration: underline;    
+    text-decoration: underline;
+}
+
+/* ===== マイクロアニメーション（legacy / Nuxt 共通。2026-09-17） =====
+   ゲーム内UIの移植という世界観を崩さない控えめな動き。
+   - ボタン押下: 少し沈んで光る（ON/OFF 画像の入れ替えはこれまで通りクラス差し替え）
+   - .rank-fade-in: ランキング行が上から順に浮上して出る（--i で 40ms ずつ遅延、20件目以降は同時）
+   - .loading-tips: API 待ちの「計算中」＋ Tips（js/loading_tips.js が組む）
+   prefers-reduced-motion では全部止める。 */
+.icon_btn_on, .icon_btn_off, .icon_btn_cancel, .icon_btn_red,
+.icon_btn_positive, .icon_btn_negative, .filterActive, .yubi {
+    transition: transform .12s ease, filter .15s ease;
+}
+.icon_btn_on:active, .icon_btn_off:active, .icon_btn_cancel:active, .icon_btn_red:active,
+.icon_btn_positive:active, .icon_btn_negative:active, .filterActive:active, .yubi:active {
+    transform: scale(.96);
+    filter: brightness(1.15);
+}
+.rank-fade-in {
+    animation: rank-fade-in .25s ease-out both;
+    animation-delay: calc(min(var(--i, 0), 20) * 40ms);
+}
+@keyframes rank-fade-in {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: none; }
+}
+/* 木目背景の上に直接置かれることがある（autodamage の #RANK_AREA）ので、
+   ラベルも含めて暗パネル（.filter-bgcolor と同じ地）で包む */
+.loading-tips {
+    padding: 20px 12px;
+    text-align: center;
+}
+.loading-tips-inner {
+    display: inline-block;
+    max-width: 480px;
+    padding: 12px 18px;
+    border: 1px solid rgb(197,187,147);
+    border-radius: 4px;
+    background: rgba(50,50,50,0.8);
+    color: #faf0b4;
+    animation: rank-fade-in .4s ease-out both;
+}
+.loading-tips-label {
+    font-size: 1.1em;
+    margin-bottom: 8px;
+}
+.loading-tips-body {
+    font-size: .9em;
+    text-align: left;
+}
+.loading-tips-head {
+    color: #ffd479;
+    font-weight: bold;
+    margin-right: 8px;
+}
+@media (prefers-reduced-motion: reduce) {
+    .icon_btn_on, .icon_btn_off, .icon_btn_cancel, .icon_btn_red,
+    .icon_btn_positive, .icon_btn_negative, .filterActive, .yubi,
+    .rank-fade-in, .loading-tips-inner, .blinking {
+        transition: none;
+        animation: none;
+    }
 }

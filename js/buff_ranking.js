@@ -52,7 +52,7 @@ function recalcRanking() {
         supports: SELECTED_SUPPORTS.slice(),
     };
     const seq = ++RANK_REQ_SEQ;
-    $("#RANKING_AREA").html('<div class="text-center" style="padding:20px;">計算中...</div>');
+    $("#RANKING_AREA").html(buildLoadingTipsHTML('計算中...'));
     fetchOkimonoRanking(req)
         .then(function (data) {
             if (seq !== RANK_REQ_SEQ) return;   // 古いレスポンスは破棄
@@ -431,6 +431,8 @@ function addRankRow(styleInfo, row, rankNo, maxRate) {
             ${addBtn}
         </div>`);
     $row.find(".rank-icon").append(getStyleIcon(styleInfo['Rarity'], styleId, styleInfo['WeaponType'], true));
+    // バッチ内の何件目かで出現を 40ms ずつずらす（css .rank-fade-in）。RANK_RENDERED_COUNT はバッチ描画後に進む
+    $row.addClass('rank-fade-in')[0].style.setProperty('--i', rankNo - 1 - RANK_RENDERED_COUNT);
     $("#RANKING_AREA").append($row);
 }
 
