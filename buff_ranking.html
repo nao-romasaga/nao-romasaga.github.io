@@ -414,6 +414,9 @@
             <section id="OKI_PARTY_AREA" class="bg-simple width-max d-none" style="margin:8px 0;">
                 <div class="name-label text-center" style="margin-bottom:6px;">編成中のサポーター（最大4体）</div>
                 <div id="OKI_PARTY_LIST" class="d-flex flex-wrap justify-content-center align-items-center" style="gap:6px;"></div>
+                <!-- いまアタッカーが受けている効果の合計とカンスト（renderPartyEffects が描く）。
+                     次のサポーターを選ぶ判断材料なので、ランキングの直前に置く（2026-09-20） -->
+                <div id="OKI_PARTY_EFFECTS"></div>
                 <div id="OKI_PARTY_NOTE" class="support-filter-note d-none">基本値と与ダメ増加率は、編成中サポーターを含めた値が基準になります</div>
             </section>
 
@@ -536,6 +539,16 @@
                     font-size: 0.8rem; line-height: 1; padding: 2px 6px;
                 }
                 .party-empty { color: #c5bb93; font-size: 0.78rem; }
+                /* 編成中サポーター: 現在の合計効果（読み取り専用の要約）。
+                   行の骨格は基本値パネルの .bd-row/.bd-label/.bd-body を流用し、
+                   カンストバッジも .bh-capped をそのまま使う（同じ意味には同じ見た目）。 */
+                #OKI_PARTY_EFFECTS { margin-top: 8px; }
+                .pe-head {
+                    color: #faf0b4; font-size: 0.82rem; text-align: center;
+                    border-top: 1px solid rgba(197,187,147,0.35); padding-top: 6px;
+                }
+                .pe-seg { white-space: nowrap; color: #d0e8ff; margin-right: 8px; }
+                .pe-note { color: #9d926b; font-size: 11px; }
                 /* ランキング行の追加ボタン。行クリック(詳細開閉)と別イベントなので stopPropagation 必須 */
                 .rank-add {
                     flex-shrink: 0;

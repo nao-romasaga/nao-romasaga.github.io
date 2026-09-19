@@ -53,6 +53,9 @@ function recalcRanking() {
     };
     const seq = ++RANK_REQ_SEQ;
     $("#RANKING_AREA").html(buildLoadingTipsHTML('計算中...'));
+    // ＋/× を押した直後はチップだけ先に更新されるので、古い編成の合計を残すと
+    // 「追加したのに数値が変わらない」ように見える。応答が返るまで空にしておく。
+    $("#OKI_PARTY_EFFECTS").empty();
     fetchOkimonoRanking(req)
         .then(function (data) {
             if (seq !== RANK_REQ_SEQ) return;   // 古いレスポンスは破棄
@@ -105,6 +108,48 @@ function renderPartyChips() {
     $("#OKI_PARTY_NOTE").toggleClass("d-none", SELECTED_SUPPORTS.length === 0);
 }
 
+// 編成セクションの「現在の合計（アタッカー＋編成中サポーター）」を描く。
+// カンストが見えていないと「攻撃強化をこれ以上盛っても薄い」「同じEx斬なら特大でないと
+// 意味がない」の判断ができない（2026-09-20 ユーザー要望）。
+//
+// 読むのは行動終了時＝最終ヒットの breakdown。カンストの条件が「アタッカーが行動終了時に
+// カンストしている」なので、1ヒット目では足りない（災邪の紋のように防御弱化がヒットごとに
+// 積み上がる構成では、1ヒット目と最終ヒットで火力アビ%が桁違いになる）。
+// 基本値パネルの検証用入力はここに反映しない。あちらは「もし裏を積んだら」の仮定の検証で、
+// こちらは API が返した編成そのものの状態を出す欄なので、主語を混ぜない。
+function renderPartyEffects() {
+    const $area = $("#OKI_PARTY_EFFECTS").empty();
+    if (typeof partyEffectSummary !== 'function') return;
+    // 末尾から、内訳スナップショットを持つ最初のヒットを採る（記録なしのヒットは {} で来る）
+    const hits = Array.isArray(LAST_RANKING && LAST_RANKING.baseHits) ? LAST_RANKING.baseHits : [];
+    let bd = null;
+    for (let i = hits.length - 1; i >= 0 && !bd; i--) {
+        const b = hits[i] && hits[i].breakdown;
+        if (b && Object.keys(b).length) bd = b;
+    }
+    if (!bd) bd = (LAST_RANKING && LAST_RANKING.baseBreakdown) || null;
+
+    const rows = partyEffectSummary(bd);
+    if (!rows.length) return;
+
+    let html = '<div class="pe-head">現在の合計（アタッカー＋編成中サポーター）</div>';
+    rows.forEach(function (r) {
+        // カンストバッジは数値の左（.bh-capped の流儀。右だと有無で数値の右端がズレる）
+        const segs = r.segments.map(function (s) {
+            return '<span class="pe-seg">'
+                 + (s.capped ? '<span class="bh-capped">カンスト</span>' : '')
+                 + '<span class="bd-strong">' + s.text + '</span></span>';
+        }).join('');
+        const total = r.total ? `<span class="bd-sublabel">合計</span><span class="bd-strong">${r.total}</span>` : '';
+        const note = r.note ? `<span class="pe-note">${r.note}</span>` : '';
+        html += `<div class="bd-row">
+            <div class="bd-label">${r.label}</div>
+            <div class="bd-body">${segs}${total}${note}</div>
+        </div>`;
+    });
+    $area.html(html);
+}
+
 // キャッシュ済みランキングを描画。フィルタ変更時はこれだけ呼ぶ（再 fetch しない）。
 // 既存のフィルタ意味論を維持: 所持チェッカー(MY_FLAG)のみリストを絞る。upRate<=0 は非表示。
 function renderRanking() {
@@ -140,6 +185,7 @@ function renderRanking() {
         // サポートの絞り込みは、絞り込む対象（ランキング）がある時だけ出す
         $("#SUPPORT_FILTER_AREA").removeClass("d-none");
         renderPartyChips();
+        renderPartyEffects();
         // 基本値とヒット別ダメージは再計算経路で描く（初期表示と編集後で経路を分けない）
         refreshBaseDamageView();
     } else {

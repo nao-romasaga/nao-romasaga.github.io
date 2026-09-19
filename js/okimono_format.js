@@ -166,10 +166,88 @@ function formatExList(exList) {
         .map(function (e) { return { name: e.name, mult: '×' + (1 + e.raw).toFixed(2) }; });
 }
 
+// 火力アビ（攻撃強化＋ダメージ強化＋防御弱化の合算）の上限。BE の $MAX_FIRE_DAMAGE と同値。
+// BE は damageCalc.inc でこの値に clamp してから DAMAGE_BREAKDOWN.ability へ入れるので、
+// 応答の ability が上限と等しければ「張り付いている」と判定できる（生値は応答に無い）。
+// ステバフの上限は応答が statParts[].buffCap で運んでくるのでここには持たない。
+var OKIMONO_ABILITY_CAP = 10000;
+
+// 編成セクションに出す「現在の合計（アタッカー＋編成中サポーター）」の要約を作る。
+// bd は DAMAGE_BREAKDOWN のスナップショットで、呼び出し側は行動終了時＝最終ヒットの
+// ものを渡す（多段で防御弱化が積み上がる構成だと1ヒット目とは値が違う。カンスト条件が
+// 「アタッカーが行動終了時にカンストしている」なので最終ヒットを見る。2026-09-20 ユーザー指定）。
+//
+// カンスト印を付けるのは火力アビとステバフの2つだけ。敵デバフと Ex はエンジンに上限が
+// 無いので、印を付けると実装に無い制限を画面が主張することになる。
+// 値が0（＝効果なし）の行は出さない。読む価値が無い行で縦を使わないため。
+//
+// 戻り値: [{key, label, segments:[{text, capped}], note?, total?}]
+function partyEffectSummary(bd) {
+    if (!bd || typeof bd !== 'object') return [];
+    var rows = [];
+
+    // --- 火力アビ（防御弱化込み。BE が ability% 項へ線形加算している） ---
+    var ability = Number(bd.ability) || 0;
+    if (ability > 0) {
+        rows.push({
+            key: 'ability',
+            label: '火力アビ',
+            segments: [{ text: Math.round(ability) + '%', capped: ability >= OKIMONO_ABILITY_CAP }],
+            note: '攻撃強化・ダメージ強化・防御弱化の合算',
+        });
+    }
+
+    // --- ステバフ（参照ステごと。体術のように2つ使う武器種では2件出る） ---
+    var statSegs = (Array.isArray(bd.statParts) ? bd.statParts : []).map(function (sp) {
+        var per = Number(sp.buffPer) || 0;
+        var cap = Number(sp.buffCap) || 0;
+        // buffPerRaw は上限適用前の生値。無い応答（旧キャッシュ）では buffPer を生値とみなす
+        var raw = (sp.buffPerRaw != null) ? Number(sp.buffPerRaw) : per;
+        return {
+            per: per,
+            text: String(sp.jp || sp.key || '') + ' ' + Math.round(per) + '%',
+            capped: cap > 0 && raw >= cap,
+        };
+    // 0% のステは出さない（火力アビ・敵デバフの0と同じ扱い）。statParts は参照ステを
+    // 常に全部並べてくるので、素のアタッカーだと「腕 0%」だけの行が残っていた。
+    }).filter(function (s) { return s.per !== 0; })
+      .map(function (s) { return { text: s.text, capped: s.capped }; });
+    if (statSegs.length) {
+        rows.push({ key: 'statBuff', label: 'ステバフ', segments: statSegs });
+    }
+
+    // --- 敵ステデバフ（負値＝低下）。上限はエンジンに無いので印は付けない ---
+    var enemyDebuff = Number(bd.enemyDebuffPer) || 0;
+    if (enemyDebuff !== 0) {
+        rows.push({
+            key: 'enemyDebuff',
+            label: '敵デバフ',
+            segments: [{ text: signedPct(enemyDebuff), capped: false }],
+        });
+    }
+
+    // --- Ex（成立中のエクストラフォース）。同名は重複不可＝最大のみ採用される ---
+    var exItems = formatExList(bd.exList);
+    if (exItems.length) {
+        rows.push({
+            key: 'ex',
+            label: 'Ex',
+            segments: exItems.map(function (e) {
+                return { text: e.name + ' ' + e.mult, capped: false };
+            }),
+            total: '×' + (Number(bd.ex) || 1).toFixed(2),
+            note: '同名のExは重複しません（一番大きいものだけが乗ります）',
+        });
+    }
+
+    return rows;
+}
+
 // ブラウザでは global 関数として定義（export 無し）。node テスト用にのみ module.exports。
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = {
         signedPct, hiddenTriggerGroup, effectName, effectValue, isDuplicateSuppressedAttr,
         buildGrantNoteHTML, buildRandomGrantNoteHTML, formatExList,
+        partyEffectSummary, OKIMONO_ABILITY_CAP,
     };
 }
