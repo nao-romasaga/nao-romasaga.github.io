@@ -77,11 +77,9 @@ function getSkillOptionHTML(skillInfo) {
             buff.push("[BP回復]");
         } else if (target === "全ステ") {
             if (attr["Rank1"] > 0) {
-                var path = (typeof getImgPath === 'function') ? getImgPath('icon/icon_formation_up.png') : '';
-                buff.push(`[全ステ<img class="icon_xs" src="${path}">]`);
+                buff.push('[全ステ<span class="icon_xs icon_arrow_up">　</span>]');
             } else {
-                var path2 = (typeof getImgPath === 'function') ? getImgPath('icon/icon_formation_down.png') : '';
-                debuff.push(`[全ステ<img class="icon_xs" src="${path2}">]`);
+                debuff.push('[全ステ<span class="icon_xs icon_arrow_down">　</span>]');
             }
         } else if (ICON_LIST[target + "上昇"] != undefined) {
             if (attr["Rank1"] > 0) {
