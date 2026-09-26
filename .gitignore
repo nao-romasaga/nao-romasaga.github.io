@@ -65,3 +65,5 @@ tmp_*.jpeg
 /test.js
 admin_multistyle_backup_before_debug.json
 abtrisconsulting-interactive-moving-line-chart/
+# app/public は Nuxt の配信物。上の *png で無視すると本番ビルドに入らない（吹き出し画像が404になった）
+!app/public/**/*.png
