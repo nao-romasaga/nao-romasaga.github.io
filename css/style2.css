@@ -1878,7 +1878,7 @@ h-nav .inner ul li a {
    ゲーム内UIの移植という世界観を崩さない控えめな動き。
    - ボタン押下: 少し沈んで光る（ON/OFF 画像の入れ替えはこれまで通りクラス差し替え）
    - .rank-fade-in: ランキング行が上から順に浮上して出る（--i で 40ms ずつ遅延、20件目以降は同時）
-   - .loading-tips: API 待ちの「計算中」＋ Tips（js/loading_tips.js が組む）
+   - .loading-tips: API 待ちの「計算中」＋ Tips（文言は app/lib/loadingTips.ts）
    prefers-reduced-motion では全部止める。 */
 .icon_btn_on, .icon_btn_off, .icon_btn_cancel, .icon_btn_red,
 .icon_btn_positive, .icon_btn_negative, .filterActive, .yubi {
