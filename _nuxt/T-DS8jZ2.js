@@ -1,0 +1,1 @@
+import{X as a}from"./DD7HQCw5.js";import{u as e}from"./C0P2nTF6.js";const r="https://nao-romasaga.github.io";function i(o,n=r){const t=o==="/index.html"?"/":o.replace(/\.html$/,"");return n+t}function c(){const o=a();e(()=>({link:[{rel:"canonical",href:i(o.path)}]}))}export{c as u};
