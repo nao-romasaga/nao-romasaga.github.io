@@ -606,6 +606,22 @@ html {
     padding: 6px 0px;
 }
 
+/* 区切り線（ゲーム素材 tex_ui_common_line_stylestatus 40x16。白のアルファのみ＝暗背景専用）。
+   両端12pxの飾りを等倍のまま、中央だけ伸ばす（border-image 3-slice）。規範は DESIGN.md「区切り線」 */
+.ui-line {
+    height: 16px;
+    border-style: solid;
+    border-width: 0 12px;
+    border-image: url(https://romasagatool.com/img/tex_ui_common_line_stylestatus.webp) 0 12 fill / 0 12px stretch;
+}
+/* 行と行の区切り。ゲームのステ窓と同じく薄く敷く */
+.ui-line.tight {
+    height: 12px;
+    border-width: 0 9px;
+    border-image-width: 0 9px;
+    opacity: .5;
+}
+
 .label-text_bk{
     background:url(https://romasagatool.com/img/bg_window_large.png);
     background-size:100% 100%;
