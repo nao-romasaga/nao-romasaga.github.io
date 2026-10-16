@@ -159,38 +159,45 @@
     height: 56px;
 }
 
+/* ボタンはゲームの元画像1枚(tex_ui_common_button_small_*)を border-image の3スライスで描く。
+   左右の飾りは等倍の幅のまま、中央だけ伸ばす。以前は左・中・右の3枚を background で並べていたため、
+   幅によって継ぎ目に縦線が出ていた(cancel は左 47x47・右 47x48 で高さも1px違った)。
+   切り出し幅と描く幅は以前の分割画像と同じ(on/off/cancel 47・positive 39・negative 28)なので、寸法は変わらない */
 .icon_btn_on {
-    background: 
-    url(https://romasagatool.com/img/icon/icon_btn_on_left.png) left / 47px 100% no-repeat, 
-    url(https://romasagatool.com/img/icon/icon_btn_on_right.png) right / 47px 100% no-repeat, 
-    url(https://romasagatool.com/img/icon/icon_btn_on_center.png) center / calc(100% - 80px) 100% no-repeat;
+    border-style: solid;
+    border-width: 0;
+    border-image: url(https://romasagatool.com/img/icon/tex_ui_common_button_small_system_03.webp) 0 47 fill / 0 47px stretch;
+    background: none;
     padding: 7px 28px 7px 28px;
     display: inline-block;
     color: #faf0b4;
     -webkit-appearance: none;
-    border: 0px;
 }
 .icon_btn_cancel {
-    background: 
-    url(https://romasagatool.com/img/icon/icon_btn_cancel_left.png) left / 47px 100% no-repeat, 
-    url(https://romasagatool.com/img/icon/icon_btn_cancel_right.png) right / 47px 100% no-repeat, 
-    url(https://romasagatool.com/img/icon/icon_btn_cancel_center.png) center / calc(100% - 80px) 100% no-repeat;
+    border-style: solid;
+    border-width: 0;
+    border-image: url(https://romasagatool.com/img/icon/tex_ui_common_button_small_no.webp) 0 47 fill / 0 47px stretch;
+    background: none;
     padding: 7px 28px 7px 28px;
     display: inline-block;
     color: #faf0b4;
     -webkit-appearance: none;
-    border: 0px;
+}
+/* 押せないとき(何も解除するものが無いなど)は、同じ形の灰色(small_disable_01)。寸法が同じなので切り替えても跳ねない */
+.icon_btn_cancel:disabled {
+    border-image-source: url(https://romasagatool.com/img/icon/tex_ui_common_button_small_disable_01.webp);
+    color: #c9c3b0;
+    cursor: default;
 }
 .icon_btn_off {
-    background: 
-    url(https://romasagatool.com/img/icon/icon_btn_off_left.png) left / 47px 100% no-repeat, 
-    url(https://romasagatool.com/img/icon/icon_btn_off_right.png) right / 47px 100% no-repeat, 
-    url(https://romasagatool.com/img/icon/icon_btn_off_center.png) center / calc(100% - 80px) 100% no-repeat;
+    border-style: solid;
+    border-width: 0;
+    border-image: url(https://romasagatool.com/img/icon/tex_ui_common_button_small_disable_05.webp) 0 47 fill / 0 47px stretch;
+    background: none;
     padding: 7px 28px 7px 28px;
     display: inline-block;
     color: #faf0b4;
     -webkit-appearance: none;
-    border: 0px;
 }
 .icon_btn_red {
     background:url(https://romasagatool.com/img/icon/icon_button_red.png) no-repeat;
@@ -202,14 +209,13 @@
     border: 0px;
 }
 .icon_btn_positive {
-    background: 
-    url(https://romasagatool.com/img/icon/icon_btn_positive_left.png) left / 39px 100% no-repeat, 
-    url(https://romasagatool.com/img/icon/icon_btn_positive_right.png) right / 39px 100% no-repeat, 
-    url(https://romasagatool.com/img/icon/icon_btn_positive_center.png) center / calc(100% - 72px) 100% no-repeat;
+    border-style: solid;
+    border-width: 0;
+    border-image: url(https://romasagatool.com/img/icon/tex_ui_common_button_small_positive.webp) 0 39 fill / 0 39px stretch;
+    background: none;
     padding: 5px 20px 5px 20px;
     display: inline-block;
     color: #faf0b4;
-    border: 0px;
 }
 .bottom-line {
     background: 
@@ -219,14 +225,13 @@
     display: inline-block;
 }
 .icon_btn_negative {
-    background: 
-    url(https://romasagatool.com/img/icon/icon_btn_negative_left.png) left / 28px 100% no-repeat, 
-    url(https://romasagatool.com/img/icon/icon_btn_negative_right.png) right / 28px 100% no-repeat, 
-    url(https://romasagatool.com/img/icon/icon_btn_negative_center.png) center / calc(100% - 50px) 100% no-repeat;
+    border-style: solid;
+    border-width: 0;
+    border-image: url(https://romasagatool.com/img/icon/tex_ui_common_button_small_negative.webp) 0 28 fill / 0 28px stretch;
+    background: none;
     padding: 5px 20px 5px 20px;
     display: inline-block;
     color: #faf0b4;
-    border: 0px;
 }
 .fukidashi-left {
     background: 
