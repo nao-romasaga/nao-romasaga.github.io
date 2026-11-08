@@ -1,0 +1,1 @@
+function s(r,t){return new Promise((c,d)=>{const e=`${t}${Date.now()}_${Math.floor(Math.random()*1e6)}`,o=document.createElement("script"),n=()=>{delete window[e],o.remove()};window[e]=a=>{c(a),n()},o.src=r(e),o.onerror=()=>{n(),d(new Error(`JSONP request failed: ${e}`))},document.body.appendChild(o)})}export{s as l};
