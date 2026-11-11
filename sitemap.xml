@@ -75,6 +75,29 @@
         <lastmod>2019-10-11</lastmod>
         <changefreq>monthly</changefreq>
     </url>
+    <url>
+        <loc>https://nao-romasaga.github.io/knowledge</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url><loc>https://nao-romasaga.github.io/knowledge/status-limit</loc><lastmod>2026-11-11</lastmod><changefreq>monthly</changefreq></url>
+    <url><loc>https://nao-romasaga.github.io/knowledge/status-growth-rate</loc><lastmod>2026-11-11</lastmod><changefreq>monthly</changefreq></url>
+    <url><loc>https://nao-romasaga.github.io/knowledge/damage-formula</loc><lastmod>2026-11-11</lastmod><changefreq>monthly</changefreq></url>
+    <url><loc>https://nao-romasaga.github.io/knowledge/holy-stone</loc><lastmod>2026-11-11</lastmod><changefreq>monthly</changefreq></url>
+    <url><loc>https://nao-romasaga.github.io/knowledge/hit-rate</loc><lastmod>2026-11-11</lastmod><changefreq>monthly</changefreq></url>
+    <url><loc>https://nao-romasaga.github.io/knowledge/buff-debuff</loc><lastmod>2026-11-11</lastmod><changefreq>monthly</changefreq></url>
+    <url><loc>https://nao-romasaga.github.io/knowledge/skill-rank</loc><lastmod>2026-11-11</lastmod><changefreq>monthly</changefreq></url>
+    <url><loc>https://nao-romasaga.github.io/knowledge/magic-and-element</loc><lastmod>2026-11-11</lastmod><changefreq>monthly</changefreq></url>
+    <url><loc>https://nao-romasaga.github.io/knowledge/glossary</loc><lastmod>2026-11-11</lastmod><changefreq>monthly</changefreq></url>
+    <url><loc>https://nao-romasaga.github.io/knowledge/matched-enemy</loc><lastmod>2026-11-11</lastmod><changefreq>monthly</changefreq></url>
+    <url><loc>https://nao-romasaga.github.io/knowledge/formation-bonus</loc><lastmod>2026-11-11</lastmod><changefreq>monthly</changefreq></url>
+    <url><loc>https://nao-romasaga.github.io/knowledge/hp-growth-rate</loc><lastmod>2026-11-11</lastmod><changefreq>monthly</changefreq></url>
+    <url><loc>https://nao-romasaga.github.io/knowledge/chain-action-order</loc><lastmod>2026-11-11</lastmod><changefreq>monthly</changefreq></url>
+    <url><loc>https://nao-romasaga.github.io/knowledge/overdrive</loc><lastmod>2026-11-11</lastmod><changefreq>monthly</changefreq></url>
+    <url><loc>https://nao-romasaga.github.io/knowledge/hp-heal-formula</loc><lastmod>2026-11-11</lastmod><changefreq>monthly</changefreq></url>
+    <url><loc>https://nao-romasaga.github.io/knowledge/effect-order</loc><lastmod>2026-11-11</lastmod><changefreq>monthly</changefreq></url>
+    <url><loc>https://nao-romasaga.github.io/knowledge/skill-rank-up-rate</loc><lastmod>2026-11-11</lastmod><changefreq>monthly</changefreq></url>
+    <url><loc>https://nao-romasaga.github.io/knowledge/action-speed</loc><lastmod>2026-11-11</lastmod><changefreq>monthly</changefreq></url>
     <url><loc>https://nao-romasaga.github.io/style/ID1ae15</loc><lastmod>2026-08-16</lastmod><changefreq>monthly</changefreq></url>
     <url><loc>https://nao-romasaga.github.io/style/ID1ae16</loc><lastmod>2026-08-16</lastmod><changefreq>monthly</changefreq></url>
     <url><loc>https://nao-romasaga.github.io/style/ID1ae17</loc><lastmod>2026-08-16</lastmod><changefreq>monthly</changefreq></url>
